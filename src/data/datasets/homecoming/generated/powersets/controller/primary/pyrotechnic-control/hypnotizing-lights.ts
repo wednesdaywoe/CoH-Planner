@@ -12,6 +12,8 @@ export const HypnotizingLights: Power = {
   "name": "Hypnotizing Lights",
   "internalName": "Hypnotizing_Lights",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You conjure a whirl of lights with differing effects depending on the distance from which it is viewed. Most all targets within the area will be placed into a sleep like trance. Up to five enemies within 20 feet of the display are Confused and receive Psionic damage over time.Notes: Although this power is Auto Hit, it requires a To Hit check to apply Deep Sleep. If the Hit check is missed, and the target is not an AV, the weaker form of Sleep will be applied.",
   "shortHelp": "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep",
   "icon": "pyrotechnic_hypnotizinglights.png",
@@ -41,6 +43,9 @@ export const HypnotizingLights: Power = {
       "radius": 20,
       "arc": 0.7853981852531433
     }
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -90,9 +95,12 @@ export const HypnotizingLights: Power = {
   },
   "atoms": [
     ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
-    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
-    ["Mez","Confused",7.5,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
-    ["Damage","Psionic",0.1,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1]
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
+    ["Mez","Sleep",8,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! && arch source> Class_Controller eq &&",null,null,null,null,null,null,null,null,null,"Overpower","Class_Controller"],
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Sleep",8,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq arch source> Class_Controller eq &&",null,null,null,null,null,null,null,null,null,"Overpower","Class_Controller"],
+    ["Mez","Confused",7.5,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",5,1,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq arch source> Class_Controller eq &&",null,null,null,null,null,null,null,null,null,"Overpower","Class_Controller"],
+    ["Damage","Psionic",0.1,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"]
   ]
 };

@@ -21,8 +21,12 @@ import { FoldSpace as FoldSpace } from './fold-space';
 
 export const powerset: Powerset = {
   id: 'controller/gravity-control',
-  internalName: 'gravity_control',
+  setPath: 'Controller_Control.Gravity_Control',
   name: 'Gravity Control',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'This power set allows you to manipulate the forces of gravity to control your foes. Enemies have little defense against Gravity powers.',
   icon: 'gravity_control_set.ico',
   archetype: 'controller',

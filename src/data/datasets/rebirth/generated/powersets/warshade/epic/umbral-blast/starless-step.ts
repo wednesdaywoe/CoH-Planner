@@ -12,12 +12,17 @@ export const StarlessStep: Power = {
   "name": "Extinguish Light",
   "internalName": "Starless_Step",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Teleport to a targeted foe through a dark matter wormhole and launch a barrage of attacks on any foes near the target's location.  This teleports you around the area so quickly that your enemies will find you harder to hit, thus defense to most attacks briefly. You may not take this power if have trained Blitz Teleport, Dive Attack, Spring Attack, or Whirlwind.  Damage: High, Recharge: Slow",
   "shortHelp": "PBAoE High DMG(Negative); Self Teleport, +DEF(All but Psionics)",
   "icon": "umbralblast_extinguishlight.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

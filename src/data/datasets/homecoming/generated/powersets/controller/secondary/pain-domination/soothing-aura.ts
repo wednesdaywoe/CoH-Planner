@@ -12,6 +12,8 @@ export const SoothingAura: Power = {
   "name": "Soothing Aura",
   "internalName": "Soothing_Aura",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active all nearby allies will be healed by Soothing Aura every couple of seconds for a small portion of their health.Notes: While on PvP maps this power will grant affected targets a regeneration effect instead of a periodic heal.).",
   "shortHelp": "Toggle: PBAoE, Team Minor Periodic Heal",
   "icon": "paindomination_soothingaura.png",
@@ -22,6 +24,10 @@ export const SoothingAura: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Friend",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

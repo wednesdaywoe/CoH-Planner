@@ -21,8 +21,12 @@ import { MomentofGlory as MomentofGlory } from './moment-of-glory';
 
 export const powerset: Powerset = {
   id: 'brute/regeneration',
-  internalName: 'regeneration',
+  setPath: 'Brute_Defense.Regeneration',
   name: 'Regeneration',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Regeneration lets you regenerate more quickly from damage and effects. Regeneration offers almost no actual damage resistance, but your Hit Point Regeneration can become so incredibly fast, that your wounds heal almost instantly.  Those who possess this power set have little downtime.',
   icon: 'regeneration_set.ico',
   archetype: 'brute',

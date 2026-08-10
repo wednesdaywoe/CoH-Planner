@@ -12,6 +12,8 @@ export const PsionicDart: Power = {
   "name": "Psionic Dart",
   "internalName": "Psionic_Dart",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed, but has a very fast attack rate. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_mentaldart.png",
@@ -23,6 +25,9 @@ export const PsionicDart: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -52,6 +57,7 @@ export const PsionicDart: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Ranged_Ones"
     },
@@ -60,6 +66,7 @@ export const PsionicDart: Power = {
       "rechargeDebuff": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Slow"
     },

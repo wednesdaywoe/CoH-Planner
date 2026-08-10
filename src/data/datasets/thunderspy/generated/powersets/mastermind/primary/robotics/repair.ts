@@ -12,12 +12,17 @@ export const Repair: Power = {
   "name": "Repair",
   "internalName": "Repair",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can release a small swarm of nanites that can Repair your Robot Henchmen to full health and restores some of its Endurance.  This power only works on your Robot Henchmen. Recharge: Slow",
   "shortHelp": "Heal Robot",
   "icon": "robotics_repair.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

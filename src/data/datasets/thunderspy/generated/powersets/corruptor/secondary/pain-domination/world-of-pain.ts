@@ -12,12 +12,18 @@ export const WorldofPain: Power = {
   "name": "World of Pain",
   "internalName": "World_of_Pain",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "When this power is activated the user and all nearby targets, ally or foe, will take a small amount of damage, team members will gain a moderate damage increase as psionic damage, resistance, To Hit bonus, and will be protected from Placate effects.",
   "shortHelp": "PBAoE Damage(self, friend, foe), Team +To Hit, +Psionic DMG, +RES(All DMG, Placate)",
   "icon": "paindomination_worldofpain.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Any",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 35,
@@ -37,14 +43,9 @@ export const WorldofPain: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.05,
-    "table": "Melee_Ones"
-  },
   "atoms": [
-    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! target.isFriend? ! &&",null,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
-    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"Max.kHitPoints target> 0.5 * Cur.kHitPoints target> > ! target.isFriend? &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
+    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! target.isFriend? ! &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
+    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,"Max.kHitPoints target> 0.5 * Cur.kHitPoints target> > ! target.isFriend? &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
     ["ToHit",null,1,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
     ["Resistance","Smashing",2,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
     ["Resistance","Lethal",2,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],

@@ -12,12 +12,18 @@ export const GeneticCorruption: Power = {
   "name": "Genetic Corruption",
   "internalName": "Genetic_Corruption",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Bio Armor is capable of corrupting the genetic code of nearby foes, reducing the damage they deal. Lesser foes may be put to sleep for a short time.  While Efficiency Adaptation is active, this power grants a moderate bonus to Regeneration.  While Defensive Adaptation is active you gain a minor bonus to all types of damage resistance and increase the potency of this power's damage debuff.  If Offensive Adaptation is active enemies are more likely to fall asleep.  These special bonuses are unenhanceable.  Recharge: Fast",
   "shortHelp": "Toggle: PBAoE, Foe Sleep, -Damage(All), Self +Special",
   "icon": "bioorganicarmor_geneticcorruption.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -40,6 +46,7 @@ export const GeneticCorruption: Power = {
   "effects": {
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Melee_Debuff_Dam"
     },

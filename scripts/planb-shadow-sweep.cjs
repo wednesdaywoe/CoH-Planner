@@ -20,6 +20,7 @@
  * point — do not narrow it back.
  */
 
+require('tsx/cjs'); // `forkResolvedViews` reads the atom codec straight from its TS home
 const fs = require('fs');
 const path = require('path');
 
@@ -93,4 +94,75 @@ function sweepDataset(dataset, onPower, opts = {}) {
   }
 }
 
-module.exports = { REPO, collectPowers, sweepDataset };
+/**
+ * ARCHETYPE-FORK RESOLUTION — the one thing a shadow gate cannot do by reading `power`.
+ *
+ * `atom-query`'s build-agnostic readers drop an archetype-forked atom, because they have
+ * no build to resolve it against. The bag used to drop it too, so a forked slot was
+ * `undefined` on both sides and every gate scored it as agreement — silence matching
+ * silence, which is not evidence of anything. The converter now states a forked slot in
+ * the bag when the fork turned out to make no difference — every archetype in the
+ * roster gets the same value (`_addUnanimousForkedSlots`) — and that claim is exactly
+ * what a gate should be checking rather than stepping around.
+ *
+ * So: hand the reader the power as ONE archetype sees it. If the converter's unanimity
+ * claim holds, every archetype's view reproduces the bag; if it does not, some view
+ * disagrees and the gate says so. Strictly more than the old mutual `undefined`.
+ */
+const { decodeAtoms, encodeAtom, ATOM_TUPLE_FIELDS } = require('../src/data/core/atomic-effect.ts');
+const { derivePlayerClassTokens } = require('./_player-classes.cjs');
+
+const FORK_FIELD = ATOM_TUPLE_FIELDS.indexOf('casterArchetypes');
+const rosterCache = new Map();
+const viewCache = new WeakMap();
+
+function rosterOf(dataset) {
+  if (!rosterCache.has(dataset)) {
+    const base = path.join(REPO, 'exported_powers');
+    const dir = fs.existsSync(path.join(base, dataset, 'tables'))
+      ? path.join(base, dataset, 'tables')
+      : path.join(base, 'tables'); // HC's checked-in tree is unprefixed
+    rosterCache.set(dataset, derivePlayerClassTokens(dir));
+  }
+  return rosterCache.get(dataset);
+}
+
+/**
+ * One `AtomSource` per player archetype, each carrying the unforked atoms plus that
+ * archetype's own arms with the stamp cleared — so `atom-query`'s base readers, which
+ * skip anything stamped, see the arms that genuinely are this archetype's base.
+ *
+ * `[]` for a power with no forked atom, which is the overwhelming majority: the caller
+ * then has nothing to reconcile and the old comparison stands.
+ */
+function forkResolvedViews(dataset, power) {
+  const cached = viewCache.get(power);
+  if (cached) return cached;
+  const raw = power.atoms || [];
+  const views = raw.some((t) => t[FORK_FIELD])
+    ? rosterOf(dataset).map((archetype) => ({
+      archetype,
+      source: {
+        atoms: decodeAtoms(raw)
+          .filter((a) => !a.casterArchetypes || a.casterArchetypes.split(',').includes(archetype))
+          .map((a) => encodeAtom({ ...a, casterArchetypes: undefined })),
+      },
+    }))
+    : [];
+  viewCache.set(power, views);
+  return views;
+}
+
+/**
+ * Does every archetype's fork-resolved view read back the value the bag states?
+ *
+ * `read(source)` is the gate's own atom reader for the slot under test, already
+ * normalized; `eq` its own comparison. False for a power with no fork — there is then
+ * no resolution to appeal to and the plain divergence stands.
+ */
+function forkResolvedAgrees(dataset, power, bagValue, read, eq) {
+  const views = forkResolvedViews(dataset, power);
+  return views.length > 0 && views.every((v) => eq(read(v.source), bagValue));
+}
+
+module.exports = { REPO, collectPowers, sweepDataset, forkResolvedViews, forkResolvedAgrees };

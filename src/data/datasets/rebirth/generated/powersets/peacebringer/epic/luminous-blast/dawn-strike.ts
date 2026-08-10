@@ -12,12 +12,17 @@ export const DawnStrike: Power = {
   "name": "Dawn Strike",
   "internalName": "Dawn_Strike",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You can explode in a tremendous blast of Kheldian energy, sending nearby foes flying and reducing their defense. Dawn Strike deals massive damage to all nearby foes. This power can be used while in Bright Nova form and deals higher damage. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_dawnstrike.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 25,

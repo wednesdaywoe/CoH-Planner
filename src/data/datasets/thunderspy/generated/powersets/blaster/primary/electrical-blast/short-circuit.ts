@@ -12,12 +12,17 @@ export const ShortCircuit: Power = {
   "name": "Short Circuit",
   "internalName": "Short_Circuit",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Releases a burst of electrical energy around you, shocking all nearby foes. This highly accurate discharge deals Moderate damage over time, drains a lot of Endurance from the targets and renders them unable to recover Endurance for quite a while. Additionally, Short Circuit deals extra damage to most robots and mechanical foes. Short Circuit is very effective when used with your other Endurance draining powers. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE, Moderate DoT(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_shortcircuit.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.3,
     "radius": 20,
@@ -50,6 +55,7 @@ export const ShortCircuit: Power = {
   "effects": {
     "buffDuration": 10.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.05,
       "table": "Ranged_Ones"
     },

@@ -12,12 +12,17 @@ export const LashingLife: Power = {
   "name": "Lashing Life",
   "internalName": "Lashing_Life",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You conjure a storm of vines to impede and thrash your enemies. Those caught in the vines will take Lethal damage as long as they're in the vines, and their defense will be reduced.",
   "shortHelp": "Toggle PBAoE Lethal DoT, Foe -Def (All)",
   "icon": "natureaffinity_ragingtempest.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,

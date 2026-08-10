@@ -12,12 +12,17 @@ export const BoundlessEnergy: Power = {
   "name": "Boundless Energy",
   "internalName": "Boundless_Energy",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Your body constantly evolves and addresses weaknesses. As a result you receive a moderate bonus to maximum hit points, regeneration, recovery as well as gaining a measure of Slow and Endurance Drain Resistance. Half of this power's maximum hit point increase is unenhanceable. While Efficient Adaptation is active, this power grants a small bonus to recovery and regeneration. While Defensive Adaptation is active you gain a small amount of additional maximum hit points. This power doesn't grant any bonuses to Offensive Adaptation. These special bonuses are unenhanceable. Boundless Energy is always active.",
   "shortHelp": "Auto: +Max HP, +Regen, +Recovery, +Res(Slow, End Drain), +Special",
   "icon": "bioorganicarmor_inexhaustible.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 5
@@ -35,14 +40,17 @@ export const BoundlessEnergy: Power = {
     "buffDuration": 5.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       }
@@ -59,6 +67,7 @@ export const BoundlessEnergy: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 0.625,
       "table": "Melee_HealSelf"
     },
@@ -98,6 +107,7 @@ export const BoundlessEnergy: Power = {
           "maxHPBuffUnenhanced": 5.25
         },
         "maxHPBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.5625,
           "table": "Melee_HealSelf"
         }
@@ -116,10 +126,12 @@ export const BoundlessEnergy: Power = {
           "regenBuffUnenhanced": 5.25
         },
         "recoveryBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.13,
           "table": "Melee_Ones"
         },
         "regenBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.195,
           "table": "Melee_Ones"
         }

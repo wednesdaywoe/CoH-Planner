@@ -12,6 +12,8 @@ export const MurkyHaze: Power = {
   "name": "Murky Haze",
   "internalName": "Murky_Haze",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a Murky Haze enshrouding you. This haze can absorb most forms of energy, making you more resistant to Fire, Cold and Negative Energy attacks, as well as Endurance Drain effects. It also grants you resistance to powers that DeBuff your Accuracy. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Negative, End Drain, DeBuff To Hit)",
   "icon": "darkcomp_murkyhaze.png",
@@ -22,6 +24,9 @@ export const MurkyHaze: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,14 +48,17 @@ export const MurkyHaze: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 0.692,
         "table": "Melee_Res_Boolean"
       }

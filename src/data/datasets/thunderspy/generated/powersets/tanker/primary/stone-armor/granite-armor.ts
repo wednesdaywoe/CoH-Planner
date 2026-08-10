@@ -12,6 +12,8 @@ export const GraniteArmor: Power = {
   "name": "Granite Armor",
   "internalName": "Granite_Armor",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate this power, you are transformed into a massive bulk of unyielding Granite. Your incredible mass makes you almost completely invulnerable and resistant to most effects.  However, you also become quite heavy, cannot fly, your attack and movement speed are Slowed and you do less damage. Granite Armor also grants you high resistance to Defense DeBuffs.Cannot be active at the same time as other Armors in this set, Fly powers, Sprint, Super Speed, or Jump powers. Recharge: Slow",
   "shortHelp": "Self, +Res(All but Psionics), +DEF(All but Psionics), -SPD, -Recharge, -DMG",
   "icon": "stonearmor_granite.png",
@@ -22,6 +24,9 @@ export const GraniteArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -44,12 +49,14 @@ export const GraniteArmor: Power = {
   "effects": {
     "buffDuration": 0.75,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Melee_Ones",
       "toWho": "Self"
     },
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
@@ -108,25 +115,30 @@ export const GraniteArmor: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "movement": {
       "jumpSpeed": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       }
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.65,
       "table": "Melee_Ones",
       "toWho": "Self"
     },
     "repel": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
@@ -167,15 +179,18 @@ export const GraniteArmor: Power = {
     },
     "slow": {
       "fly": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones",
         "toWho": "Self"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 500,
         "table": "Melee_Ones"
       },
       "runSpeed": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Ones",
         "toWho": "Self"
@@ -221,7 +236,7 @@ export const GraniteArmor: Power = {
     ["Movement","JumpHeight",-500,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Jump",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","FlyMode",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,"@CustomFX NoTransform eq !"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,"@CustomFX NoTransform eq !",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Defense","All",1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["MezResist","Stunned",5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
     ["MezResist","Held",5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],

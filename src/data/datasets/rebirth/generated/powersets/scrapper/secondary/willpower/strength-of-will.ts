@@ -12,6 +12,8 @@ export const StrengthofWill: Power = {
   "name": "Strength of Will",
   "internalName": "Strength_of_Will",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate this power, you not only become extremely resistant to most damage, but also to Disorient, Immobilization, Hold, Knockback, Repel and Sleep effects. Strength of Will costs little Endurance to activate and increases your recovery for its duration, but when it wears off you are left exhausted, and substantially drained of Endurance. This crash can be avoided by training Unrelenting from the Presence pool. Note that Strength of Will is unaffected by Attack Rate changes. Recharge: Very Long",
   "shortHelp": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG), +Recovery",
   "icon": "willpower_strengthofwill.png",
@@ -26,6 +28,9 @@ export const StrengthofWill: Power = {
   ],
   "strengthsDisallowed": [
     "RechargeTime"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,7 @@ export const StrengthofWill: Power = {
     },
     "effectDuration": 120,
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Ones"
     },
@@ -71,23 +77,28 @@ export const StrengthofWill: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       }
@@ -97,6 +108,7 @@ export const StrengthofWill: Power = {
       "table": "Melee_Ones"
     },
     "repel": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },

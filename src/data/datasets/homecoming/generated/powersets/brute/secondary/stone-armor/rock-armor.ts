@@ -12,6 +12,8 @@ export const RockArmor: Power = {
   "name": "Rock Armor",
   "internalName": "Rock_Armor",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your skin becomes stone while this power is active. Stone Armor protects you from Smashing and Lethal attacks. They are less likely to land and affect you. Stone Armor also grants you resistance to Defense DeBuffs.Stone Armor also adds an Elusivity defense bonus to Smashing and Lethal Attacks in PVP zones.Cannot be active at the same time as Granite Armor.Recharge: Fast.",
   "shortHelp": "Toggle: Self +DEF(Lethal, Smashing), Res(DeBuff DEF)",
   "icon": "stonearmor_stonearmor.png",
@@ -22,6 +24,9 @@ export const RockArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const RockArmor: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }

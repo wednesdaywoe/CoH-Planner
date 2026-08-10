@@ -12,6 +12,8 @@ export const FrozenFists: Power = {
   "name": "Frozen Fists",
   "internalName": "Frozen_Fists",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Frozen Fists encrusts your hands in ice, giving them the ability to quickly inflict moderate damage on villains. The foe's attack and movement speed is Slowed, due to the chills caused by the cold blows. Damage: Moderate  Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "icemanipulation_frozenfist.png",
@@ -20,6 +22,9 @@ export const FrozenFists: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,7 @@ export const FrozenFists: Power = {
   "effects": {
     "buffDuration": 5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.088,
       "table": "Melee_Ones"
     },
@@ -66,6 +72,7 @@ export const FrozenFists: Power = {
       "slow": 5
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Melee_Slow"
     },
@@ -75,6 +82,7 @@ export const FrozenFists: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Melee_Slow"
       },
@@ -110,8 +118,8 @@ export const FrozenFists: Power = {
     ["DamageBuff","Psionic",0.088,1,8.83,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Damage","Smashing",0.61,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",1.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"drop_toggles"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"drop_toggles"]
   ],
   "damageTypes": [
     "Cold",

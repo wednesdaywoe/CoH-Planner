@@ -12,12 +12,17 @@ export const WolfSpiderArmor: Power = {
   "name": "Wolf Spider Armor",
   "internalName": "Wolf_Spider_Armor",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Wolf Spider Armor provides good protection to Smashing, Lethal and Psionic damage types, as well as offering basic levels of protection to most status effects, including Confuse, Fear, Disorient, Hold, Sleep and Immobilize effects.",
   "shortHelp": "Auto: Self +RES(Smash, Lethal, Psionic, Status Effects)",
   "icon": "trainingandgadgets_wolfspiderarmor.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10

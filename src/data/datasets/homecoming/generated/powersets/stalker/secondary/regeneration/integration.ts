@@ -12,6 +12,8 @@ export const Integration: Power = {
   "name": "Integration",
   "internalName": "Integration",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Integrate your mind and body, making you resistant to Knockback, Disorient, Hold, Sleep, and Immobilization effects, as well as increase your regeneration rate, for as long as you can keep this toggle power active.",
   "shortHelp": "Toggle: Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize), +Regeneration",
   "icon": "regeneration_integration.png",
@@ -22,6 +24,9 @@ export const Integration: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -73,10 +78,12 @@ export const Integration: Power = {
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }
@@ -86,6 +93,7 @@ export const Integration: Power = {
       "table": "Melee_Ones"
     },
     "regenBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Ones"
     },

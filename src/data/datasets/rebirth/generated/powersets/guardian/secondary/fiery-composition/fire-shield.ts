@@ -12,6 +12,8 @@ export const FireShield: Power = {
   "name": "Fire Shield",
   "internalName": "Fire_Shield",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, Fire Shield gives you good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage as well as protection from Disorient effects. Recharge: Very Fast",
   "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold, Disorient)",
   "icon": "fierycomp_fireshield.png",
@@ -22,6 +24,9 @@ export const FireShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

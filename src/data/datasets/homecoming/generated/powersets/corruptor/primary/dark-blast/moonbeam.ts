@@ -12,12 +12,17 @@ export const Moonbeam: Power = {
   "name": "Moonbeam",
   "internalName": "Moonbeam",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit. This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
   "shortHelp": "Sniper, DMG(Negative), Target -To Hit",
   "icon": "darkcast_moonbeam.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 150,
@@ -65,6 +70,7 @@ export const Moonbeam: Power = {
     ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ],
   "quickSnipe": {
+    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
     "stats": {
       "castTime": 1.33,
       "range": 80
@@ -75,6 +81,10 @@ export const Moonbeam: Power = {
         "scale": 2.28,
         "table": "Ranged_Damage"
       }
+    ],
+    "atoms": [
+      ["Damage","Negative",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *"],
+      ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
     ]
   }
 };

@@ -12,12 +12,17 @@ export const CarrionCreepers: Power = {
   "name": "Carrion Creepers",
   "internalName": "Carrion_Creepers",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You can create a Creeper patch at a targeted location. The patch will snag foes, slowing their movement, and preventing them from jumping or flying. Additionally, a Creeper Vine will burst from under each live and defeated foe in the area and start attacking your enemies. Creeper Vines do minimal damage, but they can knock down your enemies and its poisonous thorns can slow your foes. Any foes that are defeated in the Creeper patch will also produce a growth of Entangle Roots that will Immobilize any enemies near the defeated foe.",
   "shortHelp": "Summon Creepers, Ranged (Location AoE), Target -Speed, -Fly, -Jump,",
   "icon": "plantcontrol_carrioncreeper.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -81,8 +86,13 @@ export const CarrionCreepers: Power = {
               ],
               "effects": [
                 {
-                  "type": "Knockup",
-                  "magnitude": 1,
+                  "type": "KnockupResist",
+                  "scale": 100,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "KnockbackResist",
                   "scale": 100,
                   "table": "Ranged_Ones",
                   "ignoreStrength": true
@@ -98,6 +108,9 @@ export const CarrionCreepers: Power = {
               "castTime": 0,
               "activatePeriod": 3,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "DeadFoe"
+              ],
               "radius": 20,
               "maxTargets": 1
             },
@@ -109,14 +122,32 @@ export const CarrionCreepers: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "runSpeed",
                   "scale": 0.5,
                   "table": "Melee_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 500,
+                  "table": "Melee_Ones",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Melee_SpeedRunning",
+                  "ignoreStrength": true
                 }
               ],
               "recharge": 0,
               "castTime": 0,
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 16
             }

@@ -12,6 +12,8 @@ export const CraneKick: Power = {
   "name": "Crane Kick",
   "internalName": "Crane_Kick",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a slow, high damage kick that will likely knock your target back. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash), Knockback",
   "icon": "martialarts_cranekick.png",
@@ -22,6 +24,9 @@ export const CraneKick: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,

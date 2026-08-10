@@ -12,12 +12,17 @@ export const ShadowSlip: Power = {
   "name": "Starless Gateway",
   "internalName": "Shadow_Slip",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "Starless Gateway allows you to teleport a group of foes in close proximity to each other to your location.  Training this power unlocks Shadow Slip, allowing you to Teleport yourself long distances.  Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Teleport",
   "icon": "umbralaura_starlessgateway.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 150,
@@ -48,6 +53,7 @@ export const ShadowSlip: Power = {
     },
     "mezResistance": {
       "teleport": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Ranged_Ones"
       }

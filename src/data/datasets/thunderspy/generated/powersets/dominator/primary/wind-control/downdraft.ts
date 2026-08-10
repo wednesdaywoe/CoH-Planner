@@ -12,12 +12,17 @@ export const Downdraft: Power = {
   "name": "Downdraft",
   "internalName": "Downdraft",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You gather air above your target before forcefully pressurizing it into a downward flowing vortex. The force of the downdraft prevents your target from moving, effectively holding them in place and preventing flight. The force of the downdraft leaves the target winded, reducing their movement and attack speeds for a short time while they recover. This power builds Pressure. Recharge: Moderate",
   "shortHelp": "Ranged, Hold(Foe), -Movement(Foe), -Rech(Foe), -Fly(Foe), Pressure Builder (Self)",
   "icon": "windcontrol_downdraft.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -59,6 +64,7 @@ export const Downdraft: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
@@ -72,6 +78,7 @@ export const Downdraft: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Ranged_Slow"
       },

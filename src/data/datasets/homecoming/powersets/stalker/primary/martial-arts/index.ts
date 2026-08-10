@@ -21,8 +21,12 @@ import { EaglesClaw as EaglesClaw } from './eagles-claw';
 
 export const powerset: Powerset = {
   id: 'stalker/martial-arts',
-  internalName: 'martial_arts',
+  setPath: 'Stalker_Melee.Martial_Arts',
   name: 'Martial Arts',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'A compilation of various fighting techniques from around the world, Martial Arts makes you a master in the art of hand to hand combat. Martial Artists tend to be very accurate with their strikes. Like all Stalker primary attack powers, Martial Arts attacks can land a Critical Hit for double damage, if you are properly Hidden or if your target is Slept or Held.',
   icon: 'martial_arts_set.ico',
   archetype: 'stalker',

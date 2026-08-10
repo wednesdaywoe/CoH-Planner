@@ -12,12 +12,17 @@ export const ExplosiveArrow: Power = {
   "name": "Explosive Arrow",
   "internalName": "Explosive_Arrow",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a grenade-tipped arrow at long range. This explosion affects all within the blast radius, and can knock them back.Damage: Light.Recharge: Slow.",
   "shortHelp": "Ranged (Targeted AoE), Light DMG(Lethal/Fire), Knockback",
   "icon": "archery_explodingarrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 80,

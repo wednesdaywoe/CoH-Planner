@@ -12,6 +12,8 @@ export const InnerWill: Power = {
   "name": "Inner Will",
   "internalName": "Inner_Will",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "When pushed to your limit, you can tap into an inner reserve of power, allowing you to overcome impossible odds. When you are below half health, below half endurance, or the victim of any status effect, you may activate Inner Will. Inner Will cancels any status effects currently affecting you, increases your resistance to status effects by 100%, and increases the power of your own status effect-inducing powers. Inner Will also heals you for a moderate amount when activated.Recharge: Long.",
   "shortHelp": "Self Heal, Special",
   "icon": "martialmanipulation_innerwill.png",
@@ -26,6 +28,9 @@ export const InnerWill: Power = {
   ],
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -56,6 +61,7 @@ export const InnerWill: Power = {
   "effects": {
     "buffDuration": 30,
     "confuse": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
@@ -72,78 +78,95 @@ export const InnerWill: Power = {
     },
     "effectDuration": 30,
     "fear": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
     },
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "confuse": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
     },
     "specialBuff": {
       "confuse": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       }
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"

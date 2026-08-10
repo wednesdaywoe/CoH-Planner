@@ -20,8 +20,12 @@ import { TRVenomBurst as TRVenomBurst } from './tr-venom-burst';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/tarantula-training',
-  internalName: 'tarantula_training',
+  setPath: 'Widow_Training.Tarantula_Training',
   name: 'Tarantula Training',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Tarantula Training',
   icon: 'tarantula_training_set.png',
   archetype: 'arachnos-widow',

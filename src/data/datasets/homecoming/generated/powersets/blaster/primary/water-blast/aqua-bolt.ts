@@ -12,6 +12,8 @@ export const AquaBolt: Power = {
   "name": "Aqua Bolt",
   "internalName": "Aqua_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You strike your foe with a rapid blast of freezing cold water causing Cold and Smashing damage as well as reducing their defense. Aqua Bolt builds 1 Tidal Power.",
   "shortHelp": "Ranged, DMG(Cold/Smash), Foe -Def, +Wet, Self +Tidal Power",
   "icon": "waterblast_aquabolt.png",
@@ -23,6 +25,9 @@ export const AquaBolt: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -73,7 +78,7 @@ export const AquaBolt: Power = {
     ["Damage","Smashing",0.21,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Cold",0.63,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,188,8,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,188,8,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"WetStatus",null,"set_mode"],
     ["Damage","Smashing",0.305,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",0.9151,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]

@@ -12,12 +12,17 @@ export const WhiteDwarfSublimation: Power = {
   "name": "White Dwarf Sublimation",
   "internalName": "White_Dwarf_Sublimation",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself. This power is only available while in White Dwarf Form. Recharge: Long",
   "shortHelp": "Self Heal",
   "icon": "luminousaura_reformessence.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 60,

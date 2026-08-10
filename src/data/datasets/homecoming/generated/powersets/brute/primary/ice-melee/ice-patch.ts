@@ -12,6 +12,8 @@ export const IcePatch: Power = {
   "name": "Ice Patch",
   "internalName": "Ice_Patch",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You emanate a Patch of Ice around you. Foes that step onto the Ice Patch will slip and fall down. This effect lasts until the ice melts. You must be near the ground to activate this power.",
   "shortHelp": "Location (PBAoE), Foe Knockdown",
   "icon": "icyonslaught_icepatch.png",
@@ -20,6 +22,9 @@ export const IcePatch: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 2,

@@ -12,6 +12,8 @@ export const Parry: Power = {
   "name": "Divine Avalanche",
   "internalName": "Parry",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You can use your katana to parry incoming melee attacks and then quickly return the favor. Divine Avalanche does minor damage, but every successful hit will increase your Defense against melee and lethal attacks for a short while. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG(Lethal), Self +DEF (Melee, Lethal)",
   "icon": "katana_parry.png",
@@ -20,6 +22,9 @@ export const Parry: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -82,10 +87,15 @@ export const Parry: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.BulletCut",
+        "count": 1
+      },
       "effects": {
         "buffDuration": 5,
         "defenseBuff": {
           "ranged": {
+            "ignoreStrength": true,
             "scale": 2,
             "table": "Melee_Buff_Def"
           }

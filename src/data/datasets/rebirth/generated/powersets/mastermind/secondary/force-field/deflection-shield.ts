@@ -12,12 +12,17 @@ export const DeflectionShield: Power = {
   "name": "Deflection Shield",
   "internalName": "Deflection_Shield",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Dramatically protects an ally from Smashing, Lethal and all Melee attacks for a limited time.  Also reduces Toxic damage. You cannot stack multiple Deflection Shields on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Insulation Shield. You cannot use this power on yourself. Recharge: Very Fast",
   "shortHelp": "Ranged, Ally +DEF(Smash, Lethal, Melee), Res(Toxic)",
   "icon": "forcefield_deflectionshield.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -59,6 +64,7 @@ export const DeflectionShield: Power = {
     },
     "resistance": {
       "toxic": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }

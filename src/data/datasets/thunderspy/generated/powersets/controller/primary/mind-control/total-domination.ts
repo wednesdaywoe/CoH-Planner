@@ -12,12 +12,17 @@ export const TotalDomination: Power = {
   "name": "Total Domination",
   "internalName": "Total_Domination",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Tears at the mind of a target foe and those near them. Dominate renders all affected foes helpless, lost in their own minds and unable to defend themselves. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "mentalcontrol_freeze.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

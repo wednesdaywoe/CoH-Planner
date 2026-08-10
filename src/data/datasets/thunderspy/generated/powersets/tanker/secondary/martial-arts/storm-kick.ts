@@ -12,6 +12,8 @@ export const StormKick: Power = {
   "name": "Spinning Kick",
   "internalName": "Storm_Kick",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a high spinning reverse roundhouse kick, smashing anything in front of you with devastating force.  You can activate this ability at any time, no matter what you have targeted; it will strike enemies directly in front of your character, rather than enemies near your target.  Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee Cone, Moderate DMG(Smash), Knockdown",
   "icon": "spinningkickma.png",
@@ -20,6 +22,9 @@ export const StormKick: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

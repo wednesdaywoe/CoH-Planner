@@ -21,8 +21,12 @@ import { ThornBarrage as ThornBarrage } from './thorn-barrage';
 
 export const powerset: Powerset = {
   id: 'dominator/thorny-assault',
-  internalName: 'thorny_assault',
+  setPath: 'Dominator_Assault.Thorny_Assault',
   name: 'Thorny Assault',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Thorns protrude from your body and can deal damage in melee or at range. Thorns are hollow and inject toxin that deals additional Toxic damage and can weaken your enemy\'s Defense. Very few foes have resistance to Thorn toxins.',
   icon: 'thorny_assault_set.ico',
   archetype: 'dominator',

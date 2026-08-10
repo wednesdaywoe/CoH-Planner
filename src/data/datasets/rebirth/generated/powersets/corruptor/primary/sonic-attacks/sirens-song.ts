@@ -12,12 +12,17 @@ export const SirensSong: Power = {
   "name": "Sirens Song",
   "internalName": "Sirens_Song",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You send forth a subsonic pulse which causes your foes to fall unconscious and take some minor damage. Your foes will remain unconscious for a good while, but will awaken if disturbed. Damage: Minor, Recharge: Long",
   "shortHelp": "Ranged (Cone), Minor DMG(Energy), Foe Sleep",
   "icon": "sonicblast_sleep.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 40,

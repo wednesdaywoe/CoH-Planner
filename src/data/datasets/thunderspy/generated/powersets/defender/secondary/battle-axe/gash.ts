@@ -12,6 +12,8 @@ export const Gash: Power = {
   "name": "Beheader",
   "internalName": "Gash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This is an attempt to remove your opponent's head from his neck with your Battle Axe. This attack is fairly quick for such a large weapon, and can knock down foes. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_chop.png",
@@ -22,6 +24,9 @@ export const Gash: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,

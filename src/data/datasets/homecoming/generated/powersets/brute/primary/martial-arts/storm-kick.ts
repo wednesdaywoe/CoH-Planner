@@ -12,6 +12,8 @@ export const StormKick: Power = {
   "name": "Storm Kick",
   "internalName": "Storm_Kick",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can unleash a roundhouse kick that pummels your foe for moderate damage. Storm Kick boosts the Tanker's defense against melee, ranged and area of effect damage slightly for a short period of time after hitting their foe. This bonus defense doesn't stack with itself and is unenhanceable.",
   "shortHelp": "Melee, DMG(Smash), Self +Defense(Melee, Ranged, AoE)",
   "icon": "martialarts_stormkick.png",
@@ -20,6 +22,9 @@ export const StormKick: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -51,38 +56,47 @@ export const StormKick: Power = {
     "buffDuration": 10,
     "defenseBuff": {
       "aoe": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "cold": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "melee": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "ranged": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       }
@@ -93,7 +107,7 @@ export const StormKick: Power = {
   },
   "atoms": [
     ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Defense","Ranged",1,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","Melee",1,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","AoE",1,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

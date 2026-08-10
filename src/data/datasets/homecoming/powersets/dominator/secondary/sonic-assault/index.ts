@@ -21,8 +21,12 @@ import { Earsplitter as Earsplitter } from './earsplitter';
 
 export const powerset: Powerset = {
   id: 'dominator/sonic-assault',
-  internalName: 'sonic_assault',
+  setPath: 'Dominator_Assault.Sonic_Assault',
   name: 'Sonic Assault',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Sonic Assault lets you use the power of sound waves to damage and weaken your foes.',
   icon: 'sonic_attack_set.ico',
   archetype: 'dominator',

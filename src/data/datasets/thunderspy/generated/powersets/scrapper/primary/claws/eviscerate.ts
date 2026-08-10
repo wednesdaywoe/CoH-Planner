@@ -12,6 +12,8 @@ export const Eviscerate: Power = {
   "name": "Eviscerate",
   "internalName": "Eviscerate",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you. This attack has an exceptionally good critical hit capability, better than other Claw attacks, that can sometimes deal double damage. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), +Special",
   "icon": "claws_evicerate.png",
@@ -20,6 +22,9 @@ export const Eviscerate: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

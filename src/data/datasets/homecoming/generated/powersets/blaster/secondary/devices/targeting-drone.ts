@@ -12,6 +12,8 @@ export const TargetingDrone: Power = {
   "name": "Targeting Drone",
   "internalName": "Targeting_Drone",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit, slightly increase the damage you deal, and increase your perception, allowing you to better see stealthy foes. If not engaged in combat, this power will give a large damage buff to your opening attack. Targeting Drone also grants you resistance to powers that debuff your chance to hit.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +To Hit, +Damage, +Perception, Res(DeBuff To Hit)",
   "icon": "gadgets_targetingdrone.png",
@@ -22,6 +24,9 @@ export const TargetingDrone: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,15 +47,18 @@ export const TargetingDrone: Power = {
   "effects": {
     "buffDuration": 0.75,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 1.6,
       "table": "Melee_Buff_Dmg"
     },
     "debuffResistance": {
       "perception": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Ones"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }
@@ -101,6 +109,7 @@ export const TargetingDrone: Power = {
       "effects": {
         "buffDuration": 0.75,
         "damageBuff": {
+          "ignoreStrength": true,
           "scale": 4.8,
           "table": "Melee_Buff_Dmg"
         },

@@ -12,12 +12,17 @@ export const ProtonStream: Power = {
   "name": "Proton Stream",
   "internalName": "Proton_Stream",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Hurls a volley of alpha particles at your target. Proton Volley is highly accurate and will reduce the target's Defense.",
   "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
   "icon": "radiationburst_heavy.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 60,
@@ -68,10 +73,10 @@ export const ProtonStream: Power = {
     }
   },
   "atoms": [
-    ["Damage","Energy",0.57,1,0.41,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1],
-    ["Damage","Energy",0.57,1,0.41,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1],
+    ["Damage","Energy",0.57,1,0.41,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.57,1,0.41,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
     ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",0.5123,1,0.41,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.5123,1,0.41,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1,null,null,null,null,null,null,null,true]
+    ["Damage","Energy",0.5123,1,0.41,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.5123,1,0.41,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
   ]
 };

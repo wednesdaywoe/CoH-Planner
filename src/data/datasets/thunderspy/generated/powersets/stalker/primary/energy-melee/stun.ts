@@ -12,6 +12,8 @@ export const Stun: Power = {
   "name": "Stun",
   "internalName": "Stun",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "By focusing your internal energy on your fists, you can turn them into personal tasers. This Stun attack deals minor smashing and energy damage, but has the best chance to Disorient a target. Damage: Minor, Recharge: Slow",
   "shortHelp": "Melee, Minor DMG(Smash/Energy), Foe Disorient",
   "icon": "powerpunch_stun.png",
@@ -20,6 +22,9 @@ export const Stun: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -52,6 +57,11 @@ export const Stun: Power = {
       "type": "Energy",
       "scale": 0.1,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.25,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -64,10 +74,10 @@ export const Stun: Power = {
   "atoms": [
     ["Damage","Smashing",0.15,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",0.1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.25,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Mez","Stunned",10,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Energy",0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-    ["Damage","Energy",0.25,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Damage","Energy",0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
     ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

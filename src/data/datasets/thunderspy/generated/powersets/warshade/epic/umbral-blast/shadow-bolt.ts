@@ -12,12 +12,17 @@ export const ShadowBolt: Power = {
   "name": "Shadow Bolt",
   "internalName": "Shadow_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. Damage: Minor, Recharge: Very Fast",
   "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_shadowbolt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -52,15 +57,18 @@ export const ShadowBolt: Power = {
       "slow": 4
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
       "runSpeed": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       }

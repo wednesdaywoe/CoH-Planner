@@ -12,6 +12,8 @@ export const Earsplitter: Power = {
   "name": "Earsplitter",
   "internalName": "Earsplitter",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You generate an earsplitting sound wave right in the face of your foe, inflicting great damage. It has a good chance of causing a migraine, leaving them shaking in pain and helpless.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Melee, DMG(Energy/Smash), Foe Chance for Hold",
   "icon": "sonicmanipulation_earsplitter.png",
@@ -20,6 +22,9 @@ export const Earsplitter: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -64,11 +69,11 @@ export const Earsplitter: Power = {
   "atoms": [
     ["Damage","Smashing",1.78,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",1.78,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",5,1,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,null,null,null,true],
-    ["Mez","Held",5,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75],
+    ["Mez","Held",5,1,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq",null,null,true,null,null,null,null,null,null,"SoundBoost"],
+    ["Mez","Held",5,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SoundBoost"],
     ["Damage","Smashing",1.2895,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",1.2895,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,null,true]
+    ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"SoundBoost"]
   ],
   "specialEffects": [
     {

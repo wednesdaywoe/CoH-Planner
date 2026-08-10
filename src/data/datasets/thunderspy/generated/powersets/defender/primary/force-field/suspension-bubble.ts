@@ -12,12 +12,17 @@ export const SuspensionBubble: Power = {
   "name": "Suspension Bubble",
   "internalName": "Suspension_Bubble",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a large bubble which lifts enemies into the air and may knock them down. Choosing this power locks out Force Bubble Recharge: Slow",
   "shortHelp": "Toggle: PBAoE Foe +Fly, -Fly Speed, Knockdown",
   "icon": "forcefield_forcebubble.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 50,
@@ -42,6 +47,7 @@ export const SuspensionBubble: Power = {
       "slow": 1
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Ranged_Ones"
     },
@@ -61,6 +67,7 @@ export const SuspensionBubble: Power = {
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 1.01,
         "table": "Melee_Ones"
       }

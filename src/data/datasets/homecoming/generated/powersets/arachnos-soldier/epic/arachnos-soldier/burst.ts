@@ -12,12 +12,17 @@ export const Burst: Power = {
   "name": "Burst",
   "internalName": "Burst",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Quickly fires a Burst of rounds at a single target at long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense.",
   "shortHelp": "Ranged, DMG(Lethal), Foe -DEF",
   "icon": "arachnossoldier_burst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -61,5 +66,85 @@ export const Burst: Power = {
   "atoms": [
     ["Damage","Lethal",0.5467,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
+  "formVariants": [
+    {
+      "condition": "@CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&",
+      "internalName": "Crab_Burst",
+      "stats": {
+        "accuracy": 1,
+        "range": 80,
+        "recharge": 8,
+        "endurance": 8.528,
+        "castTime": 1
+      },
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.5467,
+        "table": "Ranged_Damage",
+        "duration": 0.7,
+        "tickRate": 0.30000001192092896
+      },
+      "effects": {
+        "buffDuration": 8,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 8
+        }
+      },
+      "shortHelp": "Ranged, DMG(Lethal), Foe -DEF",
+      "description": "Quickly fires a Burst of rounds at a single target at long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense.",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Damage",
+          "Lethal",
+          0.5467,
+          1,
+          0.7,
+          "Ranged_Damage",
+          "Abs",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          0.30000001192092896,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ],
+        [
+          "Defense",
+          "All",
+          1,
+          1,
+          8,
+          "Ranged_Debuff_Def",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ]
+      ]
+    }
   ]
 };

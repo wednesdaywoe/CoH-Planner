@@ -12,12 +12,17 @@ export const EnforcedMorale: Power = {
   "name": "Enforced Morale",
   "internalName": "Enforced_Morale",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Enforced Morale frees an ally from any Disorient, Hold, Sleep, Fear, Confuse and Immobilize effects and leaves them resistant to such effects for a good while. Also, Enforced Morale grants the target clearer Perception to see hidden foes, and a minor recharge and movement speed boost. The Protection and Movement boosts will improve with multiple applications and as you advance in level, although the Recharge and Movement boosts will only apply for the first few applications. If the ally is not damaged, Enforced Morale will cause them some pain before granting its benefits.",
   "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception, +Recharge, +Speed, Light DMG",
   "icon": "paindomination_enforcedmorale.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -31,6 +36,11 @@ export const EnforcedMorale: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Ranged_Ones"
+  },
   "effects": {
     "buffDuration": 90,
     "confuse": {
@@ -53,6 +63,7 @@ export const EnforcedMorale: Power = {
       "mezResistance": 90,
       "movement": 90,
       "perceptionBuff": 90,
+      "rechargeBuff": 90,
       "sleep": 90,
       "stun": 90
     },
@@ -80,18 +91,22 @@ export const EnforcedMorale: Power = {
     },
     "movement": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 0.05,
         "table": "Ranged_SpeedFlying"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.05,
         "table": "Ranged_Leap"
       },
       "jumpSpeed": {
+        "ignoreStrength": true,
         "scale": 0.05,
         "table": "Ranged_SpeedJumping"
       },
       "runSpeed": {
+        "ignoreStrength": true,
         "scale": 0.05,
         "table": "Ranged_SpeedRunning"
       }
@@ -99,6 +114,11 @@ export const EnforcedMorale: Power = {
     "perceptionBuff": {
       "scale": 2.5,
       "table": "Ranged_Res_Boolean"
+    },
+    "rechargeBuff": {
+      "ignoreStrength": true,
+      "scale": 0.05,
+      "table": "Ranged_Ones"
     },
     "sleep": {
       "mag": 1,
@@ -119,6 +139,8 @@ export const EnforcedMorale: Power = {
     ["Mez","Stunned",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter target> 0.9 < isPVPMap? ! &&"],
     ["Mez","Sleep",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter target> 0.9 < isPVPMap? ! &&"],
     ["MezResist","Sleep",5,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter target> 0.9 < isPVPMap? ! &&"],
+    ["Damage","Special",1,1,0,"Ranged_Ones","Abs","Expression","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kHitPoints target> Max.kHitPoints target> 0.9 * > &&",null,null,null,null,null,"Max.kHitPoints target> 0.9 * Cur.kHitPoints target> -"],
+    ["RechargeTime",null,0.05,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Str.kRechargeTime target> 1.21 < &&"],
     ["Movement","Run",0.05,1,90,"Ranged_SpeedRunning","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kRunSpeed target> 1.25 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&"],
     ["Movement","Fly",0.05,1,90,"Ranged_SpeedFlying","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kFlySpeed target> 1.25 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&"],
     ["Movement","Jump",0.05,1,90,"Ranged_SpeedJumping","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kSpeedJumping target> 1.25 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&"],
@@ -136,8 +158,6 @@ export const EnforcedMorale: Power = {
     ["Mez","Held",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"],
     ["Mez","Immobilized",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"],
     ["Mez","Stunned",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"],
-    ["Mez","Sleep",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"],
-    ["Damage","Special",1,1,0,"Ranged_Ones","Abs","Expression","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kHitPoints target> Max.kHitPoints target> 0.9 * > &&",true,null,null,null,null,"Max.kHitPoints target> 0.9 * Cur.kHitPoints target> -"],
-    ["RechargeTime",null,0.05,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Str.kRechargeTime target> 1.21 < &&",true]
+    ["Mez","Sleep",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"]
   ]
 };

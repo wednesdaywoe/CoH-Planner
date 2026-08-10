@@ -12,12 +12,17 @@ export const Confuse: Power = {
   "name": "Confuse",
   "internalName": "Confuse",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Confuse an enemy, forcing it to believe their friends are not who they appear to be. If successful, the enemy will ignore you and attack their own allies. If you Confuse a target before they notice you, your presence will continue to be masked. You will not receive any Experience Points for foes defeated entirely by a Confused enemy. Recharge: Moderate",
   "shortHelp": "Ranged, Target Confuse",
   "icon": "mentalcontrol_mindcontrol.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

@@ -12,6 +12,8 @@ export const BuildUp: Power = {
   "name": "Blood Thirst",
   "internalName": "Build_Up",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly boosts your attacks for a few seconds. This power lasts longer than normal Build Ups and grants all your attacks Life Steal.",
   "shortHelp": "Self +ToHit, +DMG (All), Special",
   "icon": "savagemelee_bloodthirst.png",
@@ -20,6 +22,9 @@ export const BuildUp: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -39,6 +44,7 @@ export const BuildUp: Power = {
   "effects": {
     "buffDuration": 20,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 6,
       "table": "Melee_Buff_Dmg"
     },

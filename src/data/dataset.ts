@@ -110,9 +110,9 @@ export interface PetDamageEntry {
   damageType: string;
   scale: number;
   table: string;
-  /** Sub-1.0 hit chance from the effect group (Trip Mine's third Fire template
-   *  lands 50% of the time). Absent = guaranteed. Damage layers weight by this;
-   *  summing at face value overstates the power. */
+  /** Sub-1.0 hit chance from the effect group (Trip Mine's third Fire
+   *  template lands 50% of the time). Absent = guaranteed. Damage layers
+   *  must weight by this; summing at face value overstates the power. */
   chance?: number;
 }
 
@@ -122,23 +122,30 @@ export interface PetEffect {
   chance?: number;
   scale?: number;
   table?: string;
+  /** The movement axis a Slow / MovementCapDebuff row applies to, spelled the
+   *  way a parent power's `slow[axis]` spells it. A power states several axes
+   *  at different scales, so the merge holds one value per axis rather than
+   *  one per key. Absent on every other type. */
+  axis?: string;
   /** Ally-buff auras (buff-pets like Force Field Generator / Barrier Reef).
-   *  A DefenseBuff/ResistanceBuff aura buffs every listed sub-type at the same
-   *  scale/table; absorbAspect records the source aspect (Maximum/Absolute) for
-   *  provenance. Folded into character totals when the summon's buff-pet toggle
-   *  is enabled. See src/utils/calculations/buff-pet-auras.ts. */
+   *  A DefenseBuff/ResistanceBuff aura buffs every listed sub-type at the
+   *  same scale/table; absorbAspect distinguishes MaxHP-fraction (Maximum)
+   *  from flat (Absolute) absorb. Folded into character totals when the
+   *  summon's buff-pet toggle is enabled. */
   defenseTypes?: string[];
   resistanceTypes?: string[];
   absorbAspect?: string;
-  /** The pet's OWN defensive profile, from its `target: Self` templates —
-   *  `SelfResistance` (signed: a negative scale is a real vulnerability),
-   *  `SelfDefense`, `SelfMezProtection` (magnitude in `scale`),
-   *  `SelfMezResistance`, `SelfDebuffResistance`. A summon is a second character
-   *  (COH-DATA-MODEL §6), so these resolve against the PET's class table at the
-   *  pet's level — they are not the player's stats and must never be folded into
-   *  character totals the way the ally-aura types above are. */
+  /** The pet's OWN defensive profile (`target: Self` templates) —
+   *  `SelfResistance` / `SelfDefense` / `SelfMezProtection` /
+   *  `SelfMezResistance` / `SelfDebuffResistance`. Deliberately NOT the
+   *  ally-aura type names above: those fold into the PLAYER's totals, and a
+   *  pet's own resistance is not the player's. `scale` stays SIGNED on
+   *  SelfResistance (a negative is a real vulnerability). */
   mezTypes?: string[];
   debuffTypes?: string[];
+  /** The source template carried IgnoreStrength: the summoner's slotting does
+   *  not reach this effect even though the pet inherits it via CopyBoosts. */
+  ignoreStrength?: boolean;
 }
 
 export interface PetAbility {
@@ -151,6 +158,18 @@ export interface PetAbility {
   castTime: number;
   activatePeriod?: number;
   effectArea: string;
+  /** EntsAffected — which entity categories this ability's effects can land on.
+   *  Every effect row above is authored `target: AnyAffected`, and that word names
+   *  whoever the ability affects, so this is the only field that separates a
+   *  protection the pet grants its SUMMONER (Force Field Generator's Dispersion
+   *  Bubble, `['Friend','Self']`) from one it inflicts on the foe it just held
+   *  (Singularity's Gravity Distortion, `['Foe']`) — identical type names, identical
+   *  scales. The pet is the caster here, so the polarity inverts against a player
+   *  power: `Self` is the pet alone and the summoner arrives as `Friend`,
+   *  `MyOwner` or `Teammate` (register ENT-12; the power-converter twin is
+   *  MEZRES-3). Omitted when the export states nothing, so absent stays
+   *  distinguishable from an authored empty list. */
+  targetsAffected?: string[];
   range?: number;
   radius?: number;
   maxTargets?: number;
@@ -158,27 +177,21 @@ export interface PetAbility {
   rechargeUnaffected?: boolean;
 }
 
-/**
- * One henchman upgrade — the `_2` / `_3` powerset a Mastermind's Equip/Upgrade
- * power switches the pet over to.
- *
- * "Switches over", not "adds to": see `revokes`. Reading a tier as an append is
- * what made the Skeletal Warrior swing Hack and Slash once per tier and the
- * Howler Wolf keep quoting its un-upgraded resistance.
- */
 export interface PetUpgradeTier {
   tier: number;
   abilities: PetAbility[];
   /** The player power(s) that turn this tier on, by internal name
-   *  (`Equip_Mercenary`, `Tactical_Upgrade`). Derived from which powerset each
+   *  (`Equip_Mercenary`, `Tactical_Upgrade`). Derived from which powerset the
    *  grant targets — the `_2`/`_3` suffix IS the tier — so it holds whatever a
-   *  server names its upgrades, at whatever level. Absent when the export
-   *  carries no resolved grant targets (Thunderspy), where the build alone
-   *  cannot say whether the tier is active. */
+   *  server names its upgrades. Absent when the export carries no resolved
+   *  grant targets (Thunderspy), in which case a consumer cannot tell from the
+   *  build alone whether the tier is active. */
   grantedBy?: string[];
-  /** Abilities this tier TAKES AWAY, by name. Equip Mercenary revokes the
-   *  Soldier's base Resistance as it grants Equip; Enchant Undead revokes the
-   *  Skeletal Warrior's base Hack and Slash as it grants its own. */
+  /** Abilities this tier TAKES AWAY, by name. An upgrade replaces rather than
+   *  adds: Equip Mercenary revokes the Soldier's base Resistance as it grants
+   *  Equip, and Enchant Undead revokes the Skeletal Warrior's base Hack and
+   *  Slash as it grants its own. Appending a tier without applying these
+   *  double-counts the attacks and leaves the stale passive on top. */
   revokes?: string[];
 }
 
@@ -189,12 +202,28 @@ export interface PetEntity {
   commandable: boolean;
   copyCreatorMods: boolean;
   abilities: PetAbility[];
-  /** This pet detonates ONCE: its own bundled Self_Destruct destroys it the
-   *  moment it fires (trip mines, time bombs, seeker drones, Photon Seekers).
-   *  Its attack's recharge is therefore not a repeat cadence — damage layers cap
-   *  fires-per-spawn at 1 rather than dividing the summon window by cycle time.
-   *  Stamped by `scripts/convert-pet-entities.cjs`. */
+  /** Pet lifespan in seconds (from bundled Self_Destruct power's Silent_Kill delay).
+   *  Omitted for permanent pets (mastermind primaries, etc.) that despawn only
+   *  when killed or unsummoned. Used by convert-powerset to populate
+   *  `summon.duration` for summoning powers whose EntCreate Duration is 0. */
+  lifespan?: number;
+  /** This pet detonates ONCE: it is destroyed by its own bundled
+   *  Self_Destruct the moment it fires (trip mines, time bombs, seeker
+   *  drones, high explosives). Its attack's recharge is therefore not a
+   *  repeat cadence — damage layers must cap fires-per-spawn at 1 rather
+   *  than dividing the summon window by the cycle time. */
   oneShot?: boolean;
+  /** Entity defs this pet's own powers create IN PLACE (an `EntCreate` at
+   *  `target: Self`), in walk order. A pet's payload can be one summon deeper —
+   *  Poison Trap's gas cloud, Oil Slick's fire, the Mu Guardian's Voltaic Sentinel —
+   *  so the consumers that merge a pseudo-pet's kit into its summoning power follow
+   *  this chain. Each name is a key into this same record and keeps its OWN class row,
+   *  commandability and lifespan, which is why the link travels instead of the child's
+   *  abilities being folded into `abilities` here: pet damage resolves against
+   *  `characterClass`, and Oil Slick's burn is a different class from its oil.
+   *  A name with no record means the export doesn't carry that entity (NPC-only);
+   *  no player-summonable pet reaches one. */
+  createsEntities?: string[];
   upgradeTiers?: PetUpgradeTier[];
 }
 

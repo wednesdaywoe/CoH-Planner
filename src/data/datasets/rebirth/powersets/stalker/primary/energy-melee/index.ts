@@ -21,8 +21,12 @@ import { TotalFocus as TotalFocus } from './total-focus';
 
 export const powerset: Powerset = {
   id: 'stalker/energy-melee',
-  internalName: 'energy_melee',
+  setPath: 'Stalker_Melee.Energy_Melee',
   name: 'Energy Melee',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can use Energy Melee to power your blows with pure energy. These focused power attacks often Disorient opponents. Like all Stalker primary attack powers, Energy Melee attacks can land a Critical Hit for double damage, if you are properly Hidden or if your target is Slept or Held.',
   icon: 'energy_melee_set.ico',
   archetype: 'stalker',

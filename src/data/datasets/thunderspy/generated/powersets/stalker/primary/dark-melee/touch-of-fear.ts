@@ -12,6 +12,8 @@ export const TouchofFear: Power = {
   "name": "Touch of Fear",
   "internalName": "Touch_of_Fear",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have their chance to hit reduced.  Recharge: Moderate",
   "shortHelp": "Melee Fear, Foe -To Hit",
   "icon": "shadowfighting_touchoffear.png",
@@ -20,6 +22,9 @@ export const TouchofFear: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,

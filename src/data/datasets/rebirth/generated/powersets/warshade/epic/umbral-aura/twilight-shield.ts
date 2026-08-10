@@ -12,6 +12,8 @@ export const TwilightShield: Power = {
   "name": "Twilight Shield",
   "internalName": "Twilight_Shield",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on Twilight Shield, you become highly resistant to Energy and Negative Energy damage. While in Dark Nova or Black Dwarf form, this power's effects are suppressed and cost no endurance. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Energy, Negative)",
   "icon": "umbralaura_twilightshield.png",
@@ -22,6 +24,9 @@ export const TwilightShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -56,7 +61,7 @@ export const TwilightShield: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>"],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>",null,0],
     ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],

@@ -12,12 +12,17 @@ export const EnergyProtection: Power = {
   "name": "Energy Protection",
   "internalName": "Energy_Protection",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Your ability to channel energy makes you naturally resistant to Energy, Negative Energy and Toxic damage.  Additionally, this power grants some resistance to both recharge and movement slowing effects.  This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (Energy, Negative, Toxic, Slow)",
   "icon": "energyaura_protection.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "castTime": 0.5,
@@ -34,10 +39,12 @@ export const EnergyProtection: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       }

@@ -12,12 +12,17 @@ export const BeyondTheVeilAlive: Power = {
   "name": "Beyond The Veil",
   "internalName": "Beyond_The_Veil_Alive",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Mastery of skirting the edges of life and death enable you to defy death for a short time, rendering you untouchable while boosting your recovery. Using this power while defeated will revive you. Recharge: Very Long",
   "shortHelp": "Self Untouchable, +Recovery",
   "icon": "spectralaura10.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 240,
@@ -58,6 +63,7 @@ export const BeyondTheVeilAlive: Power = {
       "table": "Ranged_Ones"
     },
     "untouchable": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Ranged_Ones"
     }
@@ -67,8 +73,8 @@ export const BeyondTheVeilAlive: Power = {
     ["Recovery",null,2,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Meta",null,1,1,30,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,30,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
     ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints source> 1 <",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints source> 1 <",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ]
 };

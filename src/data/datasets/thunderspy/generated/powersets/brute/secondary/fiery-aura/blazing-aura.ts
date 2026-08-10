@@ -12,12 +12,17 @@ export const BlazingAura: Power = {
   "name": "Blazing Aura",
   "internalName": "Blazing_Aura",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you are surrounded by flames that burn all foes that attempt to enter melee range. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Fire)",
   "icon": "flamingshield_fieryaura.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,

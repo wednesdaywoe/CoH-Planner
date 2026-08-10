@@ -12,6 +12,8 @@ export const CrystalArmor: Power = {
   "name": "Crystal Armor",
   "internalName": "Crystal_Armor",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, your skin becomes encrusted in various quartz crystals. Crystal Armor makes Energy and Negative Energy attacks less likely to hit. This power also grants you resistance to Defense DeBuffs. Cannot be active at the same time as Granite Armor. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Energy, Negative), Res(DeBuff DEF)",
   "icon": "stonearmor_crystalarmor.png",
@@ -22,6 +24,9 @@ export const CrystalArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const CrystalArmor: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }

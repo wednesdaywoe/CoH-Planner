@@ -12,6 +12,8 @@ export const ImpenetrableMind: Power = {
   "name": "Impenetrable Mind",
   "internalName": "Impenetrable_Mind",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Knockback and Hold effects. Impenetrable Mind also grants moderate resistance to Psionic based attacks.",
   "shortHelp": "Toggle: Self Res (Psionics, Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Knockback)",
   "icon": "psionicarmor_impenetrablemind.png",
@@ -22,6 +24,9 @@ export const ImpenetrableMind: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,6 +47,7 @@ export const ImpenetrableMind: Power = {
   "effects": {
     "buffDuration": 0.75,
     "confuse": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -60,34 +66,41 @@ export const ImpenetrableMind: Power = {
     },
     "effectDuration": 0.75,
     "fear": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       }
@@ -99,11 +112,13 @@ export const ImpenetrableMind: Power = {
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

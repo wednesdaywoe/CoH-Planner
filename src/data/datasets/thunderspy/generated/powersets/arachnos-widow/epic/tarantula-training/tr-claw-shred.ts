@@ -12,6 +12,8 @@ export const TRClawShred: Power = {
   "name": "Shred",
   "internalName": "TR_Claw_Shred",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Slash at your targets with your set of Tarantula legs. Deals Lethal and Toxic damage and weakens a target's defense and regeneration speed. Requires Tarantula form to use. Recharge: Moderate",
   "shortHelp": "Melee Cone, Heavy Damage(Lethal/Toxic), Foe -Def, Foe -Regen",
   "icon": "tarantulatraining_shred.png",
@@ -20,6 +22,9 @@ export const TRClawShred: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -72,6 +77,7 @@ export const TRClawShred: Power = {
       "table": "Ranged_Ones"
     },
     "taunt": {
+      "ignoreStrength": true,
       "scale": 20,
       "table": "Melee_Taunt"
     }

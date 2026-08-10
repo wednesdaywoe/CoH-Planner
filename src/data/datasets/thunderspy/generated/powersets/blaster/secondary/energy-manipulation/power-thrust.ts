@@ -12,6 +12,8 @@ export const PowerThrust: Power = {
   "name": "Power Thrust",
   "internalName": "Power_Thrust",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A focused attack that violently shoves the target and sends them flying. Deals minimal damage, but can be very effective. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG(Energy/Smash), Foe Knockback",
   "icon": "energymanipulation_powerthrust.png",
@@ -26,6 +28,9 @@ export const PowerThrust: Power = {
   ],
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -63,6 +68,7 @@ export const PowerThrust: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Melee_Ones"
     },

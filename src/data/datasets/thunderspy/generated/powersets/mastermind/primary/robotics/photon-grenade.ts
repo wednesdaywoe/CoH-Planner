@@ -12,12 +12,17 @@ export const PhotonGrenade: Power = {
   "name": "Photon Grenade",
   "internalName": "Photon_Grenade",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Launches an Energy Grenade at long range from your Pulse Rifle. The energy from this explosion can Disorient some targets in the affected area. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Energy/Smash), Disorient",
   "icon": "robotics_laserriflestungrenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

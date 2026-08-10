@@ -12,12 +12,17 @@ export const IceStorm: Power = {
   "name": "Ice Storm",
   "internalName": "Ice_Storm",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed.",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Cold, Lethal), Foe -Recharge, -SPD",
   "icon": "iceblast_freezingrain.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 40,
@@ -81,8 +86,34 @@ export const IceStorm: Power = {
                 },
                 {
                   "type": "Slow",
+                  "axis": "jumpHeight",
                   "scale": 0.4,
                   "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "runSpeed",
+                  "scale": 0.4,
+                  "table": "Melee_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
+                  "scale": 0.4,
+                  "table": "Melee_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 0.3,
+                  "table": "Melee_Slow"
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Melee_SpeedRunning",
                   "ignoreStrength": true
                 }
               ],
@@ -90,6 +121,9 @@ export const IceStorm: Power = {
               "castTime": 0,
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 25,
               "maxTargets": 10
             }

@@ -12,12 +12,17 @@ export const BlackHole: Power = {
   "name": "Black Hole",
   "internalName": "Black_Hole",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Opens up a Black Hole to the Netherworld that temporarily pulls in all foes within its grasp. Enemies that enter the Black Hole's radious will become immobilized and phased for the duration of the effect. Allies who enter the sphere's area of effect will enter the phase as well, allowing them to combat phased enemies. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe Intangible, Attract",
   "icon": "darkmiasma_blackhole.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,

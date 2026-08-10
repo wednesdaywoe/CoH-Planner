@@ -12,6 +12,8 @@ export const SpinningKick: Power = {
   "name": "Eagles Claw",
   "internalName": "Spinning_Kick",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a devastating kick that can severely Disorient most opponents. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Smash), Foe Disorient",
   "icon": "brawling_lowkick.png",
@@ -20,6 +22,9 @@ export const SpinningKick: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

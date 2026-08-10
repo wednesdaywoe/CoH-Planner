@@ -12,6 +12,8 @@ export const Bash: Power = {
   "name": "Bash",
   "internalName": "Bash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a Bashing attack with your mace that deals moderate damage, and can sometimes Disorient your opponent.  This power can bruise an enemy, making them more vulnerable to damage. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Smash), Minor Disorient, -Res (all)",
   "icon": "mace_bash.png",
@@ -22,6 +24,9 @@ export const Bash: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,

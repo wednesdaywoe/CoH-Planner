@@ -12,12 +12,18 @@ export const GaiasBlessing: Power = {
   "name": "Gaia's Blessing",
   "internalName": "Gaias_Blessing",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You are so connected to the Earth, you can draw upon its power to add health to your allies and yourself. Activating this power increases maximum Hit Points, and grants resistance to Toxic Damage to allies and yourself. Recharge: Very Long",
   "shortHelp": "PBAoE Team Heal, +Max HP, Res(Toxic)",
   "icon": "stonecomp_gaiasblessing.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -54,6 +60,7 @@ export const GaiasBlessing: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_HealSelf"
     },

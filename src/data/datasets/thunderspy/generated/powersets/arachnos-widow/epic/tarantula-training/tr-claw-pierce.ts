@@ -12,6 +12,8 @@ export const TRClawPierce: Power = {
   "name": "Pierce",
   "internalName": "TR_Claw_Pierce",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Use one of your Tarantula legs to puncture a target. Deals Lethal and Toxic damage and weakens a target's defense and regeneration speed. Requires Tarantula form to use. Recharge: Very Fast",
   "shortHelp": "Melee: Moderate Damage(Lethal/Toxic), Foe -Def, Foe -Regen",
   "icon": "tarantulatraining_pierce.png",
@@ -20,6 +22,9 @@ export const TRClawPierce: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -69,6 +74,7 @@ export const TRClawPierce: Power = {
       "table": "Ranged_Ones"
     },
     "taunt": {
+      "ignoreStrength": true,
       "scale": 20,
       "table": "Melee_Taunt"
     }

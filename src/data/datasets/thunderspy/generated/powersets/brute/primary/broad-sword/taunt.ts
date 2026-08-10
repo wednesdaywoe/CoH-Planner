@@ -12,12 +12,17 @@ export const Taunt: Power = {
   "name": "Taunt",
   "internalName": "Taunt",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Taunt foes to attack you. Useful to pull enemies off allies and keep them attacking you to raise your Fury. A To-Hit check is required to Taunt enemy players, but is not needed against critter targets. Recharge: Fast",
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "sword_taunt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

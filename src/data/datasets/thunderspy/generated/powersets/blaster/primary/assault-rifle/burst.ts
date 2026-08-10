@@ -12,6 +12,8 @@ export const Burst: Power = {
   "name": "Burst",
   "internalName": "Burst",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Quickly fires a Burst of rounds at a single target at very long range. will also reduce the target's defense. Damage: Moderate(DoT), Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Lethal), Foe -DEF",
   "icon": "assaultweapons_arburst.png",
@@ -23,6 +25,9 @@ export const Burst: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -57,6 +62,7 @@ export const Burst: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Ranged_Ones"
     },

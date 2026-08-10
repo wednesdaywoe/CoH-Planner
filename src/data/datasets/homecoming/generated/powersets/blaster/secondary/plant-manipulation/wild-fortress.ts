@@ -12,6 +12,8 @@ export const WildFortress: Power = {
   "name": "Wild Fortress",
   "internalName": "Wild_Fortress",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You encase yourself in a protective barrier that will absorb a moderate amount of damage. Additionally, you will recover endurance faster and be resistant to toxic damage and have confusion protection.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +Absorb, +Recovery, +Resist(Toxic, Confuse)",
   "icon": "plantmanipulation_wildfortress.png",
@@ -22,6 +24,9 @@ export const WildFortress: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -48,6 +53,7 @@ export const WildFortress: Power = {
     },
     "buffDuration": 2.5,
     "confuse": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"

@@ -22,8 +22,12 @@ import { IcyBastion as IcyBastion } from './icy-bastion';
 
 export const powerset: Powerset = {
   id: 'stalker/ice-armor',
-  internalName: 'ice_armor',
+  setPath: 'Stalker_Defense.Ice_Armor',
   name: 'Ice Armor',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can dramatically reduce your core body temperature to form various armors of ice around yourself. You can protect yourself from many different damage types, and you gain exceptional resistance to Cold based attacks. However, this set offers little protection to Fire based powers and no protection against Psionics.',
   icon: 'ice_armor_set.ico',
   archetype: 'stalker',

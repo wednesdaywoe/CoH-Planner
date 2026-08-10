@@ -12,12 +12,17 @@ export const Buckshot: Power = {
   "name": "Buckshot",
   "internalName": "Buckshot",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Good at close range. Fires a cone of Buckshot pellets and can knock some foes down. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged (Cone), Moderate DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_shotgunbuckshot.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 60,
@@ -51,6 +56,7 @@ export const Buckshot: Power = {
   "effects": {
     "buffDuration": 8.4,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.028,
       "table": "Ranged_Ones"
     },

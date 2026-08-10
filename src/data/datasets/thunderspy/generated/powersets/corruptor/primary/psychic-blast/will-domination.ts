@@ -12,12 +12,17 @@ export const WillDomination: Power = {
   "name": "Will Domination",
   "internalName": "Will_Domination",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "This powerful attack deals Psionic damage, and is so painful it usually renders its target unconscious. The victim is asleep, and will wake if disturbed. Damage: High, Recharge: Slow",
   "shortHelp": "Ranged, High DMG(Psionic), Foe Sleep",
   "icon": "psychicblast_willdomination.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,

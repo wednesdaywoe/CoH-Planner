@@ -12,12 +12,17 @@ export const BlazingArrow: Power = {
   "name": "Blazing Arrow",
   "internalName": "Blazing_Arrow",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a Blazing Arrow at your foe, dealing some Lethal damage and causing them to catch on fire and burn. Damage: High, Recharge: Slow",
   "shortHelp": "Ranged, High DMG(Lethal), Minor DoT(Fire)",
   "icon": "archery_flamingarrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 80,
@@ -55,6 +60,7 @@ export const BlazingArrow: Power = {
   "effects": {
     "buffDuration": 9.33,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.121,
       "table": "Ranged_Ones"
     },

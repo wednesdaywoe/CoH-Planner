@@ -12,12 +12,17 @@ export const RepulsionField: Power = {
   "name": "Containment Shell",
   "internalName": "Repulsion_Field",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Projects a Containment Shell to pull in and capture foes in a targeted location. This hollow force field shell immobilizes and exerts a strong attractive force on any foe that attempts to cross its boundary, pulling them into the shell's interior, though more powerful foes may be able to resist. The attractive force also prevents foes from being pushed out of the shell, preventing jumping, making affected foes immune to Repel effects, and causing Knockback effects to be reduced to Knockdown. Containment Shell's attract effect can still affect a target that has been captured by Barrier Field. Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Foe Attract, Immobilize, -Jump, -Repel, Knockback to Knockdown",
   "icon": "forcefield_containmentshellb.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

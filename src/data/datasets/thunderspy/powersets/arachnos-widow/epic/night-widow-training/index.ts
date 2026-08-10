@@ -18,8 +18,12 @@ import { NWPsychicScream as NWPsychicScream } from './nw-psychic-scream';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/night-widow-training',
-  internalName: 'night_widow_training',
+  setPath: 'Widow_Training.Night_Widow_Training',
   name: 'Night Widow Training',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'With powers of Stealth, and heightened combat skills, coupled with strong mental attacks, the Night Widows of Arachnos are extremely dangerous.',
   icon: 'night_widow_training_set.ico',
   archetype: 'arachnos-widow',

@@ -12,12 +12,17 @@ export const Overcharge: Power = {
   "name": "Overcharge",
   "internalName": "Overcharge",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You overcharge and release a massive blast of energy at a group of distant foes causing Extreme Energy damage, causing Minor Energy damage over time, reducing the defense of all affected foes and potentially stunning affected foes. If Overcharge strikes a target suffering from the Disintegrating effect they will be affected by a longer stun. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE): Extreme DMG(Energy), Foe Minor DoT (Energy), -Def(All), Disorient, Special",
   "icon": "beamrifle_overcharge.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 80,

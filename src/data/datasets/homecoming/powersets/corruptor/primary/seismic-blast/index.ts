@@ -22,8 +22,12 @@ import { Meteor as Meteor } from './meteor';
 
 export const powerset: Powerset = {
   id: 'corruptor/seismic-blast',
-  internalName: 'seismic_blast',
+  setPath: 'Corruptor_Ranged.Seismic_Blast',
   name: 'Seismic Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can manipulate earth and stone to defeat your foes. The crushing force of many Earth Powers can reduce a target\'s Defense. Being of the Earth, you are the most powerful while on the ground. While grounded, your attacks increase Seismic Pressure. As your Seismic Pressure increases, your chance of triggering Seismic Shockwaves increases and the cooldown of other Seismic Blast attacks is slightly reduced. These Seismic Shockwaves will have the chance of knocking down foes and, while standing on the ground, empower some of your attacks; Rock Shards will have its area and target cap increased, Seismic Force will decrease the cooldown of all recharging Seismic Blast attacks by a moderate amount, and Stalagmite will deal a large amount of damage.',
   icon: 'archery_set.ico',
   archetype: 'corruptor',

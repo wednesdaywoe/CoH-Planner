@@ -12,12 +12,17 @@ export const StormCell: Power = {
   "name": "Storm Cell",
   "internalName": "Storm_Cell",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You conjure a storm in the area that defines the boundaries of your stormy powers. Rain from this power will slightly lower a foe's movement and chance to hit. The use of your Storm Blast attacks may create high winds and lightning within the storm cell, delivering stronger debuffs and causing damage. Additionally, Storm Blast attacks will be enhanced when used against foes victimized by Storm Cell.",
   "shortHelp": "Ranged (Location AoE), Foe -Recharge, -SPD, +Wet, Special",
   "icon": "stormblast_stormcell.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -75,6 +80,28 @@ export const StormCell: Power = {
                 },
                 {
                   "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 0.14,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "runSpeed",
+                  "scale": 0.14,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 0.14,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
                   "scale": 0.14,
                   "table": "Melee_Slow",
                   "ignoreStrength": true
@@ -84,15 +111,32 @@ export const StormCell: Power = {
                   "scale": 0.7,
                   "table": "Ranged_Debuff_ToHit",
                   "ignoreStrength": true
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 0.4,
+                  "table": "Melee_SpeedRunning",
+                  "ignoreStrength": true
                 }
               ],
               "recharge": 0,
               "castTime": 0,
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 35,
               "maxTargets": 10,
               "poweredUpEffects": [
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 0.8,
+                  "table": "Melee_SpeedRunning",
+                  "ignoreStrength": true
+                },
                 {
                   "type": "RechargeDebuff",
                   "scale": 0.14,
@@ -101,6 +145,7 @@ export const StormCell: Power = {
                 },
                 {
                   "type": "Slow",
+                  "axis": "jumpHeight",
                   "scale": 0.28,
                   "table": "Melee_Slow",
                   "ignoreStrength": true
@@ -149,6 +194,9 @@ export const StormCell: Power = {
               "castTime": 0,
               "activatePeriod": 1,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 35,
               "maxTargets": 1,
               "poweredUpDamage": [
@@ -167,8 +215,8 @@ export const StormCell: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,60,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
-    ["Meta",null,1,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,185,55,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,185,55,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1]
   ],

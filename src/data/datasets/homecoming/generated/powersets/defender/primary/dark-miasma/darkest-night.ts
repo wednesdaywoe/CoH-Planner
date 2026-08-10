@@ -12,6 +12,8 @@ export const DarkestNight: Power = {
   "name": "Darkest Night",
   "internalName": "Darkest_Night",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
   "icon": "darkmiasma_darkestnight.png",
@@ -22,6 +24,9 @@ export const DarkestNight: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -46,6 +51,7 @@ export const DarkestNight: Power = {
   "effects": {
     "buffDuration": 0.75,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Debuff_Dam"
     },

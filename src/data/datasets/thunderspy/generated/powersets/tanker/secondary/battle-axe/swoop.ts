@@ -12,6 +12,8 @@ export const Swoop: Power = {
   "name": "Swoop",
   "internalName": "Swoop",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "A Swoop of your Battle Axe deals a superior amount of damage, and can send your target flying upwards. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Lethal), Foe Knockup",
   "icon": "battleaxe_swoop.png",
@@ -22,6 +24,9 @@ export const Swoop: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,

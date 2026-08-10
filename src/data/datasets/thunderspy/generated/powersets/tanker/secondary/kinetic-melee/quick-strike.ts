@@ -12,6 +12,8 @@ export const QuickStrike: Power = {
   "name": "Quick Strike",
   "internalName": "Quick_Strike",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick attack that sometimes knock foes down. Fast, but low damage.  This power can bruise an enemy, making them more vulnerable to damage. Damage: Light, Recharge: Fast",
   "shortHelp": "Melee, Light DMG(Smash/Energy), Foe -DMG, Knockdown, -Res (all)",
   "icon": "kineticattack_quickstrike.png",
@@ -22,6 +24,9 @@ export const QuickStrike: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -62,6 +67,7 @@ export const QuickStrike: Power = {
   "effects": {
     "buffDuration": 4,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Debuff_Dam"
     },

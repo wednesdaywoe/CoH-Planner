@@ -12,12 +12,18 @@ export const WildGrowth: Power = {
   "name": "Wild Growth",
   "internalName": "Wild_Growth",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You channel the power of nature into your allies allowing them to more easily shrug off damage and causing their wounds to heal more quickly. Wild Growth increases the damage resistance and boosts the regeneration rate of all affected allies. This power also grants 2 stacks of Bloom.",
   "shortHelp": "PBAoE, Team +Res(All), +Regen, +2 Bloom",
   "icon": "natureaffinity_wildgrowth.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

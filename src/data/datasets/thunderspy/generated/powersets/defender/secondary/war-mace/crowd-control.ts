@@ -12,6 +12,8 @@ export const CrowdControl: Power = {
   "name": "Crowd Control",
   "internalName": "Crowd_Control",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You swing your mace in a wide arc in front of you. This attack strikes all foes within melee range, deals them serious damage, and knocks them down. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Melee (Cone), Moderate DMG(Smashing), Knockback",
   "icon": "mace_crowdcontrol.png",
@@ -20,6 +22,9 @@ export const CrowdControl: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

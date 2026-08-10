@@ -84,9 +84,33 @@ export function atomsOfType(power: AtomSource, effectType: EffectType): AtomicEf
  * variant. `gated` is stamped by the converter (see `AtomicEffect.gated`) and
  * `baseAtoms(power)` is verified corpus-wide to reproduce the converter's own
  * base set exactly (`scripts/planb-shadow-bag.cjs`).
+ *
+ * An archetype-forked atom is excluded here because these readers have no build to
+ * resolve it against: it is base for ONE archetype and absent from every other's (see
+ * `AtomicEffect.casterArchetypes`). The Rust gather, which does know the build, keeps it
+ * and filters by class (AT-FORK-1).
+ *
+ * The bag is no longer blind in quite the same way. The CONVERTER holds the archetype
+ * roster, so it can resolve a fork the readers here cannot and state the slot whenever
+ * every archetype comes out the same (`convert-powerset._addUnanimousForkedSlots`) —
+ * Rebirth Combat Jumping forks only to carve out a Kheldian hover clause and buffs
+ * defense .25 either way. A slot like that reads `undefined` here and populated in the
+ * bag, which is agreement rather than divergence; `planb-shadow-sweep.forkResolvedViews`
+ * is how the shadow gates check it instead of scoring two silences as a match.
  */
 export function baseAtoms(power: AtomSource): AtomicEffect[] {
-  return atomsOf(power).filter((a) => !a.gated);
+  return atomsOf(power).filter(isBagBase);
+}
+
+/**
+ * Is this atom part of the base every build sees, whatever its archetype?
+ *
+ * Not gated, and not archetype-forked. See {@link baseAtoms} for why the fork is
+ * excluded from every reader here rather than resolved, and for the one way the bag
+ * now says more than this does.
+ */
+export function isBagBase(a: AtomicEffect): boolean {
+  return !a.gated && !a.casterArchetypes;
 }
 
 /**
@@ -308,9 +332,34 @@ export function perTargetValueOf(
   // and the caster at 1), so it keeps the bucket-order pick.
   const tied = buckets.filter((b) => b.duration === buckets[0].duration);
   const atomsTied = tied.flatMap((b) => b.atoms);
-  const duplicates = atomsTied.every(
-    (a) => a.stacking === 'Replace' && a.toWho === atomsTied[0].toWho,
-  );
+  const sameRecipient = atomsTied.every((a) => a.toWho === atomsTied[0].toWho);
+  // A `Replace` base beside a `Stack` increment on the same recipient is the
+  // engine's CO-APPLICATION idiom, not two spellings of one value — both land,
+  // so the value at one target is their sum, which is what the bag accumulates
+  // and what `computeAoePerTargetPatches` calls `replaceScale + stackScale`.
+  // Reached only when the converter did not stamp `perTarget`: Memento Mori's
+  // +MaxHP (Replace 3 beside Stack 0.15, both 30s) arrives through a redirect,
+  // and the redirect path deliberately withholds the per-foe stamp. Without
+  // this the tie fell through to "pick a bucket" and read 0.15 for a 3.15 buff.
+  const coApplied = sameRecipient
+    && atomsTied.some((a) => a.stacking === 'Replace')
+    && atomsTied.some(
+      (a) => a.stacking === 'Stack' || a.stacking === 'Continuous'
+        || a.stacking === 'RefreshToCount',
+    );
+  if (coApplied) {
+    // Dedup by (|scale|, table) for the same reason `perTargetFromGroup` does:
+    // a by-type buff repeats one value across N atoms.
+    const distinct = new Map<string, number>();
+    for (const a of atomsTied) {
+      distinct.set(`${Math.abs(a.scale)}|${a.modifierTable}`, Math.abs(a.scale));
+    }
+    let sum = 0;
+    for (const v of distinct.values()) sum += v;
+    return { scale: sum, table };
+  }
+  const duplicates = sameRecipient
+    && atomsTied.every((a) => a.stacking === 'Replace');
   const scale = duplicates
     ? Math.max(...atomsTied.map((a) => Math.abs(a.scale)))
     : Math.abs(buckets[0].atoms[0].scale);
@@ -373,6 +422,68 @@ export function toHitBuffValue(
 }
 
 /**
+ * True when this atom belongs to a `Defiance`-tagged effect group — the Blaster
+ * inherent, which the game data names on the group itself.
+ *
+ * Defiance is a PER-CAST transient: every Blaster attack grants a few seconds of
+ * self +Damage, so what a Blaster actually has is a rotation-dependent ramp, not a
+ * sustained total. A totals dashboard reports the sustained value, which is why the
+ * engine's `inherents` pass does not model Defiance at all and why
+ * `TRANSIENT_UNMODELED_ADJUSTERS` leaves the same class of combat state (Storm's
+ * clear skies, Dual Pistols ammo, Staff perfection) out.
+ *
+ * It reached the total anyway, because the converter routes the tagged group into
+ * the ordinary `damageBuff` slot like any Build Up: End of Time (+5.4%) and Future
+ * Pain (+11%) read as +16.4% global damage on a Blaster with no +Damage set bonus
+ * anywhere, permanently, at one stack, for whichever attacks happened to be flagged
+ * active — a number matching no game state. Reported 2026-08-05.
+ *
+ * Rejected here rather than at the converter because the atom is REAL and the power
+ * info panel is right to show it; only the caster's sustained totals must ignore it,
+ * exactly as {@link AtomicEffect.notOnCaster} is stamped rather than dropped. 115
+ * Homecoming powers carry a Defiance atom; on 31 of them it IS the whole `damageBuff`,
+ * and the one power that mixes it with a genuine +Damage buff (Soul Drain, whose
+ * `Melee_Ones` rider sits beside a `Melee_Buff_Dmg` per-foe increment) is already
+ * settled by the dominant-table filter in {@link damageBuffValue}. So this takes
+ * nothing else with it — Build Up, Aim, Soul Drain, AAO and Fulcrum Shift are
+ * untouched.
+ *
+ * Homecoming-only by the same schema fact that governs every tag: Parse6 has no group
+ * to hang one on, so a Rebirth/Thunderspy Defiance rider is caught only by that
+ * dominant-table filter.
+ */
+function isDefianceAtom(a: AtomicEffect): boolean {
+  return (a.tags ?? '').split(',').some((tag) => tag.trim() === 'Defiance');
+}
+
+/** The `DamageBuff` strength-atom test {@link damageBuffValue} and
+ *  {@link damageBuffIsDefianceOnly} share, so the set one reads and the set the
+ *  other judges cannot drift apart. */
+function isDamageBuffAtom(a: AtomicEffect): boolean {
+  return (
+    a.effectType === 'DamageBuff' &&
+    a.aspect === 'Str' &&
+    a.scale > 0 &&
+    !(a.modifierTable || '').toLowerCase().includes('debuff')
+  );
+}
+
+/**
+ * True when this power carries `DamageBuff` strength atoms and EVERY one of them is
+ * Defiance — i.e. {@link damageBuffValue} found the slot and rejected all of it.
+ *
+ * Callers need this because the `?? effects.damageBuff` bag fallback would otherwise
+ * undo the rejection: the bag slot holds the same Defiance value, and an absent atom
+ * read is exactly the "atom-less legacy power" signal that fallback exists to serve.
+ * Distinguishing "no +damage buff here" from "a +damage buff we decline to count" is
+ * the whole job.
+ */
+export function damageBuffIsDefianceOnly(power: AtomSource): boolean {
+  const atoms = baseAtoms(power).filter(isDamageBuffAtom);
+  return atoms.length > 0 && atoms.every(isDefianceAtom);
+}
+
+/**
  * The atom-native `damageBuff` value — the +Damage strength buff the calc reads
  * off `effects.damageBuff` (Build Up, Assault, Soul Drain, AAO, Fulcrum Shift),
  * reconstructed from atoms. Harder than {@link toHitBuffValue} because a +damage
@@ -397,6 +508,9 @@ export function toHitBuffValue(
  *     (ties broken by longest duration), which is what a single global +damage
  *     slot represents — matching the bag's pick.
  *
+ * A fifth axis is a REJECTION rather than a reconciliation: a `Defiance`-tagged
+ * atom is dropped outright — see {@link isDefianceAtom}.
+ *
  * Returns `undefined` for a power with no +damage atom (→ bag fallback; see
  * {@link atomsOf}). Verified bag-equal corpus-wide by
  * `scripts/planb-shadow-pertarget.cjs`.
@@ -404,13 +518,7 @@ export function toHitBuffValue(
 export function damageBuffValue(
   power: AtomSource,
 ): { scale: number; table: string; perTarget?: number } | undefined {
-  let atoms = baseAtoms(power).filter(
-    (a) =>
-      a.effectType === 'DamageBuff' &&
-      a.aspect === 'Str' &&
-      a.scale > 0 &&
-      !(a.modifierTable || '').toLowerCase().includes('debuff'),
-  );
+  let atoms = baseAtoms(power).filter((a) => isDamageBuffAtom(a) && !isDefianceAtom(a));
   if (!atoms.length) return undefined;
 
   // Dominant table: the one carrying the most total |scale|. Off-table riders
@@ -481,7 +589,7 @@ function isDebuffAtom(a: AtomicEffect): boolean {
 
 /**
  * The atom-native `effects.resistance` — the per-damage-type +resistance BUFF the
- * calc reads today (`legacy-totals.oracle.ts`), reconstructed from atoms.
+ * calc reads today (line ~1258 of character-totals.ts), reconstructed from atoms.
  * Returns an object keyed by lowercase damage type (`{ smashing: { scale, table,
  * perTarget? }, … }`), the SAME shape the applier already iterates, so the applier
  * body is unchanged — only its source swaps to `resistanceBuffValue(power) ??
@@ -534,7 +642,7 @@ export function resistanceBuffValue(
  */
 export function resistanceSelfDebuffValue(
   power: AtomSource,
-): Record<string, { scale: number; table: string; toWho: 'Self'; resistible: boolean }> | undefined {
+): Record<string, { scale: number; table: string; toWho: 'Self' }> | undefined {
   const atoms = baseAtomsOfType(power, 'Resistance').filter(
     (a) =>
       a.aspect === 'Res' &&
@@ -543,14 +651,10 @@ export function resistanceSelfDebuffValue(
       (a.toWho === 'Self' || a.toWho === 'All'),
   );
   if (!atoms.length) return undefined;
-  const out: Record<string, { scale: number; table: string; toWho: 'Self'; resistible: boolean }> = {};
+  const out: Record<string, { scale: number; table: string; toWho: 'Self' }> = {};
   for (const [type, group] of bySubType(atoms)) {
     const last = group[group.length - 1];
-    // `resistible` drives same-type resistance mitigation in the calc: a -Res
-    // debuff applied to the caster (Bio Offensive Adaptation's -7.5% Res) is
-    // reduced by the caster's own resistance to that type. IgnoreResistance
-    // (`resistible === false`) debuffs apply flat.
-    out[type.toLowerCase()] = { scale: Math.abs(last.scale), table: last.modifierTable, toWho: 'Self', resistible: last.resistible !== false };
+    out[type.toLowerCase()] = { scale: Math.abs(last.scale), table: last.modifierTable, toWho: 'Self' };
   }
   return out;
 }
@@ -595,7 +699,7 @@ const DEFENSE_STD_SUBTYPES = new Set([
 function defensePerTypeValue(
   group: readonly AtomicEffect[],
 ): { scale: number; table: string; perTarget?: number } | undefined {
-  const base = group.filter((a) => !a.gated);
+  const base = group.filter(isBagBase);
   const gatedIncr = group.filter((a) => a.gated && a.perTarget);
   if (!base.length && !gatedIncr.length) return undefined;
   const baseIncr = base.filter((a) => a.perTarget);
@@ -655,7 +759,7 @@ function defenseBuffByType(
 
 /**
  * The atom-native `effects.defenseBuff` — the always-on per-type +defense buff the
- * calc reads today (`legacy-totals.oracle.ts`, alongside the pet-aura/override
+ * calc reads today (line ~1220 of character-totals.ts, alongside the pet-aura/override
  * `effects.defense`). Keyed by lowercase position/type (`{ melee: {scale,table,
  * perTarget?}, … }`) — the SAME shape the applier iterates. Returns `undefined` when
  * the power has no always-on standard-type defense atom (→ bag fallback; see
@@ -829,6 +933,40 @@ function resourceBuffValue(
 }
 
 /**
+ * The `effects.knockback` / `effects.knockup` PROTECTION slot, atom-native (ATOM15 / PASS2B-1).
+ * `field ∈ {'knockback','knockup'}`. Reproduces the converter's KB accumulate fold
+ * (`convert-powerset.cjs:4356`), restricted to SELF-DIRECTED PROTECTION atoms — the converter's
+ * branches 2a (`Self` + aspect=Res + Res_Boolean) and 3 (`Self` + aspect≠Res). Branch 1
+ * (`toWho ≠ 'Self'`) is EXCLUDED: that is offensive foe-knockback (Battle Axe Gash's 0.67), not
+ * caster protection — the PASS2B-1 fix that retires the `effectArea + powerType` proxy. Spans BOTH
+ * `Mez` AND `MezResist` effectTypes (the converter keys on the resolved attrib string, so a
+ * `MezResist/Knockback` protection atom counts — Quantum/Evasive Maneuvers carry ONLY that). PvP-twin
+ * atoms are dropped (the converter excludes them upstream). Accumulate `|scale|` with
+ * reset-on-table-change, in list order; returns `{scale, table}` or `undefined`.
+ */
+export function kbProtectionValue(
+  power: AtomSource,
+  field: 'knockback' | 'knockup',
+): { scale: number; table: string } | undefined {
+  const subType = field === 'knockback' ? 'Knockback' : 'Knockup';
+  let cur: { scale: number; table: string } | undefined;
+  for (const a of baseAtoms(power)) {
+    if (a.effectType !== 'Mez' && a.effectType !== 'MezResist') continue;
+    if (a.subType !== subType) continue;
+    if (a.toWho !== 'Self') continue; // branch 1 (foe) excluded → PASS2B-1
+    if (a.pvMode === 'PvP') continue; // the converter drops the PvP twin upstream
+    // branch 2b: a Self aspect=Res KB atom on a NON-Res_Boolean table is KB *resistance*, not protection
+    if (a.aspect === 'Res' && !(a.modifierTable || '').toLowerCase().includes('res_boolean')) continue;
+    if (!a.modifierTable) continue;
+    const table = a.modifierTable;
+    const scale = Math.abs(a.scale || 0);
+    if (cur && cur.table === table) cur.scale += scale;
+    else cur = { scale, table };
+  }
+  return cur;
+}
+
+/**
  * The converter's `foldResourceSlot` SUM semantics, in atom form: walk the atoms in
  * routing order accumulating `Σ|scale|` while the table holds, and RESET to a fresh
  * accumulator on a table change (last-table-wins). Resource slots always sum — the
@@ -888,7 +1026,7 @@ export function recoveryBuffValue(
  * `movementFriction`, and the applier's own `movementKeyMap` ignores all three, so they
  * add zero on both sides — the "compare only what survives to a total" doctrine from
  * Slice 3. `fly` matters most: it is the kFly flight-MODE grant, and reading its mode
- * magnitude as a speed buff double-counts Fly by +200% (see legacy-totals.oracle.ts). It is
+ * magnitude as a speed buff double-counts Fly by +200% (see character-totals.ts). It is
  * excluded here structurally rather than by a scale/table guess, because the atom now
  * carries it as its own `FlyMode` axis — before that split, kFly and FlyingSpeed shared
  * subType `Fly` and Hover's pair (kFly 2.0 / FlyingSpeed 0, both `Melee_Ones`) was
@@ -905,7 +1043,7 @@ function isSlowAtom(a: AtomicEffect): boolean {
 
 /**
  * The atom-native `effects.movement` — the self/current movement BUFF map the calc
- * reads today (`legacy-totals.oracle.ts`), keyed exactly as the applier
+ * reads today (line ~1483 of character-totals.ts), keyed exactly as the applier
  * iterates it (`{ runSpeed: {scale,table,stackKey?,suppressible?}, … }`). Returns
  * `undefined` when the power has no contributing movement atom (→ bag fallback).
  *
@@ -916,6 +1054,8 @@ function isSlowAtom(a: AtomicEffect): boolean {
  *   - self + aspect `Max` + scale > 0 → `movementCapBump` (a travel-CAP raise, not a
  *     speed buff — this is the split that stopped Super Speed reporting 1.938×Melee_Ones
  *     instead of its real 1.0×Melee_SpeedRunning);
+ *   - aspect `Max` + slow → `movementCapDebuff` (the debuff direction of that same split;
+ *     it shared `slow`'s axis slot until ENT-5 and overwrote the speed debuff there);
  *   - slow (negative scale, or a `debuff`/`slow` table) → `slow`;
  *   - self → `movement`; non-self → `movement` ONLY via the trailing `aspect === 'current'`
  *     branch (a foe-targeted Absolute/Maximum movement effect is dropped entirely).
@@ -986,38 +1126,4 @@ function durationlessKey(a: AtomicEffect): string {
     a.modifierTable.toLowerCase(),
     a.scale.toFixed(4),
   ].join('|');
-}
-
-/**
- * The `effects.knockback` / `effects.knockup` PROTECTION slot, atom-native (ATOM15 / PASS2B-1).
- * `field ∈ {'knockback','knockup'}`. Reproduces the converter's KB accumulate fold
- * (`convert-powerset.cjs:4356`), restricted to SELF-DIRECTED PROTECTION atoms — the converter's
- * branches 2a (`Self` + aspect=Res + Res_Boolean) and 3 (`Self` + aspect≠Res). Branch 1
- * (`toWho ≠ 'Self'`) is EXCLUDED: that is offensive foe-knockback (Battle Axe Gash's 0.67), not
- * caster protection — the PASS2B-1 fix that retires the `effectArea + powerType` proxy. Spans BOTH
- * `Mez` AND `MezResist` effectTypes (the converter keys on the resolved attrib string, so a
- * `MezResist/Knockback` protection atom counts — Quantum/Evasive Maneuvers carry ONLY that). PvP-twin
- * atoms are dropped (the converter excludes them upstream). Accumulate `|scale|` with
- * reset-on-table-change, in list order; returns `{scale, table}` or `undefined`.
- */
-export function kbProtectionValue(
-  power: AtomSource,
-  field: 'knockback' | 'knockup',
-): { scale: number; table: string } | undefined {
-  const subType = field === 'knockback' ? 'Knockback' : 'Knockup';
-  let cur: { scale: number; table: string } | undefined;
-  for (const a of baseAtoms(power)) {
-    if (a.effectType !== 'Mez' && a.effectType !== 'MezResist') continue;
-    if (a.subType !== subType) continue;
-    if (a.toWho !== 'Self') continue; // branch 1 (foe) excluded → PASS2B-1
-    if (a.pvMode === 'PvP') continue; // the converter drops the PvP twin upstream
-    // branch 2b: a Self aspect=Res KB atom on a NON-Res_Boolean table is KB *resistance*, not protection
-    if (a.aspect === 'Res' && !(a.modifierTable || '').toLowerCase().includes('res_boolean')) continue;
-    if (!a.modifierTable) continue;
-    const table = a.modifierTable;
-    const scale = Math.abs(a.scale || 0);
-    if (cur && cur.table === table) cur.scale += scale;
-    else cur = { scale, table };
-  }
-  return cur;
 }

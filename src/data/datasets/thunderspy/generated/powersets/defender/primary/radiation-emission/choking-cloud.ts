@@ -12,6 +12,8 @@ export const ChokingCloud: Power = {
   "name": "Choking Cloud",
   "internalName": "Choking_Cloud",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you generate toxic radioactive gas around yourself. Any nearby foes may be overcome by the gas, leaving them choking and helpless. Recharge: Long",
   "shortHelp": "Toggle: PBAoE, Foe Hold",
   "icon": "radiationpoisoning_chokingcloud.png",
@@ -22,6 +24,9 @@ export const ChokingCloud: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

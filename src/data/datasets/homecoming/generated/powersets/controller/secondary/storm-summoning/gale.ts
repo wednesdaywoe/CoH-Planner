@@ -12,12 +12,17 @@ export const Gale: Power = {
   "name": "Gale",
   "internalName": "Gale",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can call forth a tremendous gust of Gale force winds that knock down foes and deal some Smashing damage in a wide cone area.Damage: Minor.Recharge: Moderate.",
   "shortHelp": "Ranged (Cone), Minor DMG(Smash), Foe Knockback",
   "icon": "stormsummoning_gale.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 50,
@@ -59,6 +64,6 @@ export const Gale: Power = {
     ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Smashing",0.1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= ||",true]
+    ["Damage","Smashing",0.1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= ||",true,null,null,null,null,null,null,null,null,"Containment"]
   ]
 };

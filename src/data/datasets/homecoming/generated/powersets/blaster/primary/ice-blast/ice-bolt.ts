@@ -12,6 +12,8 @@ export const IceBolt: Power = {
   "name": "Ice Bolt",
   "internalName": "Ice_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Ice Bolt quickly pelts an enemy with small icy daggers; their chill Slows a foe's attacks and movement for a time. Fast, but little damage.",
   "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
   "icon": "iceblast_bolt.png",
@@ -23,6 +25,9 @@ export const IceBolt: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -58,6 +63,7 @@ export const IceBolt: Power = {
       "slow": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -67,6 +73,7 @@ export const IceBolt: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

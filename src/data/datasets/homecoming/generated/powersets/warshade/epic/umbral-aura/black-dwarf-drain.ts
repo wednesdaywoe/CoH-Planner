@@ -12,6 +12,8 @@ export const BlackDwarfDrain: Power = {
   "name": "Black Dwarf Drain",
   "internalName": "Black_Dwarf_Drain",
   "available": 19,
+  "autoIssue": true,
+  "free": true,
   "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes drained in this manner have their attack and movement speed reduced. This power is only available while in Black Dwarf Form.Damage: Light.Recharge: Slow.",
   "shortHelp": "Melee, Light DMG(Negative), Foe -Recharge, -SPD; Self +HP",
   "icon": "umbralaura_essencedrain.png",
@@ -20,6 +22,9 @@ export const BlackDwarfDrain: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -64,6 +69,7 @@ export const BlackDwarfDrain: Power = {
       "slow": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -73,6 +79,7 @@ export const BlackDwarfDrain: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -91,7 +98,7 @@ export const BlackDwarfDrain: Power = {
     }
   },
   "atoms": [
-    ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SSDamage"],
     ["Heal",null,1.75,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["RechargeTime",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

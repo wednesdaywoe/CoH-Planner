@@ -12,12 +12,17 @@ export const PulseRifleBlast: Power = {
   "name": "Pulse Rifle Blast",
   "internalName": "Pulse_Rifle_Blast",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This Pulse Rifle can fire a long range laser pulse. Deals moderate Smashing/Energy damage. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Energy/Smash)",
   "icon": "robotics_laserrifleburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

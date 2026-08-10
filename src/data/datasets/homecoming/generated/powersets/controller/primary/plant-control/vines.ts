@@ -12,6 +12,8 @@ export const Vines: Power = {
   "name": "Vines",
   "internalName": "Vines",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a field of Strangler Vines that can Hold multiple foes at range. The affected targets are held helpless by the massive root-like vines. Vines lowers damage output of targets and deals toxic damage over time if they are held.",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold, -DMG, -DoT(Toxic)",
   "icon": "plantcontrol_vines.png",
@@ -19,6 +21,9 @@ export const Vines: Power = {
   "targetType": "Foe",
   "effectArea": "SingleTarget",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,
@@ -84,6 +89,9 @@ export const Vines: Power = {
               "castTime": 0,
               "activatePeriod": 4,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 30,
               "maxTargets": 5
             },
@@ -104,6 +112,9 @@ export const Vines: Power = {
               "castTime": 0,
               "activatePeriod": 1000,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 30,
               "maxTargets": 16
             }
@@ -115,6 +126,6 @@ export const Vines: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,0,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"silent_kill"]
   ]
 };

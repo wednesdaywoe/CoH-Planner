@@ -5,7 +5,9 @@
  * Supports the three-tier display: Base → Enhanced → Final
  */
 
-import { getPetEntity, type PetAbility, type PetEffect, type PetEntity } from '@/data/pet-entities';
+import {
+  getPetEntity, getSummonedEntityChain, type PetAbility, type PetEffect, type PetEntity,
+} from '@/data/pet-entities';
 import { getPetTableValue, getTableValue } from '@/data/at-tables';
 import type { ResolvedPseudoPet } from '@/types/power';
 
@@ -531,19 +533,53 @@ export function shouldApplyEnhancements(
   return entity.copyCreatorMods || (copyBoosts === true);
 }
 
-// PetEffect.type → PowerEffects key, restricted to the ENHANCEABLE scalar
-// debuffs the effect registry renders as percent (scale × table). These are
-// the pseudo-pet effects a player's enhancements/global buffs actually scale —
-// convert-pet-entities already drops the binary's IgnoreStrength templates, so
-// what remains is enhanceable. Mez / knockback / heal have non-scalar shapes
-// and stay in the Summons block.
+// PetEffect.type → PowerEffects key, restricted to the scalar effects the effect
+// registry renders as percent (scale × table). Mez / knockback / heal have
+// non-scalar shapes and stay in the Summons block.
+//
+// The name describes the common case, not a guarantee: an entry may carry
+// `ignoreStrength`, and then it lands in the same key carrying that mark and
+// resolves flat across all three tiers. This comment used to claim the converter
+// DROPPED the binary's IgnoreStrength templates so everything here was
+// enhanceable — ENT-4 disproved that; the converter reads the flag and marks the
+// effect rather than discarding it.
+//
+// NOTE: this is the vendored twin of the engine's pet effect vocabulary, which is one
+// table — `PET_EFFECT_ROUTES` in crates/coh_math/src/granted.rs, holding the scalar keys
+// below, the control keys further down, the ally-aura types and the pet's own stat sheet
+// together. The two halves here are exactly that table's `Scalar` and `Control` arms.
+//
+// A type absent from BOTH maps is not "unknown" — it is one of the arms this surface
+// deliberately does not write. An ally aura and a summoner-facing face are the summoner's
+// TOTALS, folded by the buff-pet pass, and writing them here as well would show one
+// contribution twice in two vocabularies; a foe-facing face is the FOE's stat; and a
+// `Self…` row is the pet's own sheet, which the Summons block shows. The engine's match is
+// exhaustive so a new arm breaks its build; this map has no such compiler, so the rule is
+// stated rather than enforced (ENT-9 / ENT-12).
 const PSEUDO_PET_ENHANCEABLE_EFFECT: Record<string, keyof import('@/types/power').PowerEffects> = {
   Slow: 'slow',
   DefenseDebuff: 'defenseDebuff',
   ToHitDebuff: 'tohitDebuff',
   ResistanceDebuff: 'resistanceDebuff',
   DamageDebuff: 'damageDebuff',
+  DamageBuff: 'damageBuff',
+  EnduranceGain: 'enduranceGain',
+  RegenDebuff: 'regenDebuff',
+  RechargeDebuff: 'rechargeDebuff',
+  MovementCapDebuff: 'movementCapDebuff',
+  Knockback: 'knockback',
+  Knockup: 'knockup',
+  Taunt: 'taunt',
+  EndDrain: 'enduranceDrain',
+  RecoveryDebuff: 'recoveryDebuff',
+  Heal: 'healing',
 };
+
+// The two keys whose rows carry a movement axis, and which therefore merge into a
+// per-axis object rather than one value — the shape a parent power's `slow` has had
+// since ENT-5. Blizzard slows fly by 0.6 and everything else by 0.5; Caltrops states
+// run 0.8 beside a jump-height 500. One value per key can hold neither (ENT-8).
+const PSEUDO_PET_BY_AXIS = new Set(['slow', 'movementCapDebuff']);
 
 // PetEffect.type → PowerEffects mez key. These carry magnitude + duration
 // (scale × table), so they hoist as a MezEffect { mag, scale, table } — the same
@@ -569,42 +605,62 @@ const PSEUDO_PET_MEZ_EFFECT: Record<string, keyof import('@/types/power').PowerE
  * Mirrors the pseudo-pet DAMAGE unify: only NON-commandable entities (patches /
  * rains / location pseudo-pets) qualify; commandable pets (MM henchmen, Phantom
  * Army, Lore) keep their own Summons block. Returns null when there's nothing to
- * surface. Additive debuffs sum their scale on a key collision; mez instead keeps
- * the single strongest instance (control doesn't stack into one bigger number).
+ * surface. Additive debuffs combine on a key collision (mergePetContributions);
+ * mez instead keeps the single strongest instance (control doesn't stack into one
+ * bigger number).
+ *
+ * The pet inherits the summoner's enhancements (`CopyBoosts`), which is what makes applying
+ * the SUMMONER's slotting to these correct — and it is a different fact from which class the
+ * magnitudes RESOLVE against, which is the pet's own. Every row an entity supplies is
+ * therefore stamped with that entity's `characterClass`, and the reader resolves each value
+ * against the class on the row it is reading (ENT-10).
+ *
+ * The vendored twin of `granted::pseudo_pet_effects`; the two must agree row for row, and
+ * `powerProjectionParity` grades that they do.
  */
 export function synthesizePseudoPetEffects(
   summon: import('@/types/power').SummonEffect | undefined,
 ): Partial<import('@/types/power').PowerEffects> | null {
   if (!summon) return null;
-  const out: Record<string, { scale: number; table: string }> = {};
-  const outMez: Record<string, { mag: number; scale: number; table: string }> = {};
+  // Keyed by display key, then by movement axis ('' for the keys that carry none).
+  const contributions: Record<string, Record<string, PetContribution[]>> = {};
+  type MezValue = { mag: number; scale: number; table: string; petClass?: string; ignoreStrength?: true };
+  const outMez: Record<string, MezValue> = {};
 
-  const addEnhanceable = (type: string, scale: number | undefined, table: string | undefined) => {
-    const key = PSEUDO_PET_ENHANCEABLE_EFFECT[type];
-    if (!key || scale === undefined || !table) return;
-    if (out[key]) out[key].scale += scale;
-    else out[key] = { scale, table };
+  // `petClass` is the entity's own `characterClass`, or undefined for a row from the inline
+  // block below, whose shells have no class to state (see that branch).
+  const addEnhanceable = (eff: PetEffect, petClass: string | undefined) => {
+    const key = PSEUDO_PET_ENHANCEABLE_EFFECT[eff.type];
+    if (!key || eff.scale === undefined || !eff.table) return;
+    const slot = PSEUDO_PET_BY_AXIS.has(key) ? eff.axis ?? '' : '';
+    ((contributions[key] ??= {})[slot] ??= []).push({
+      scale: eff.scale,
+      table: eff.table,
+      ...(petClass !== undefined ? { petClass } : {}),
+      ...(eff.ignoreStrength ? { ignoreStrength: true } : {}),
+    });
   };
 
-  const addMez = (
-    type: string,
-    mag: number | undefined,
-    scale: number | undefined,
-    table: string | undefined,
-    chance: number | undefined,
-  ) => {
-    const key = PSEUDO_PET_MEZ_EFFECT[type];
+  const addMez = (eff: PetEffect, petClass: string | undefined) => {
+    const key = PSEUDO_PET_MEZ_EFFECT[eff.type];
+    const { magnitude: mag, scale, table } = eff;
     if (!key || mag === undefined || scale === undefined || !table) return;
     // Only surface reliably-applied control. A low-chance mez (e.g. Shadow
     // Field's 5% aura hold proc) would read as a guaranteed Hold here; those stay
     // in the Summons block where their chance is shown alongside.
-    if (chance !== undefined && chance < 1) return;
+    if (eff.chance !== undefined && eff.chance < 1) return;
     // Mez doesn't sum like additive debuffs — keep the single strongest instance:
     // higher magnitude wins, then longer duration (scale is a table-agnostic
     // proxy; the true duration is computed against the AT table at display time).
     const prev = outMez[key];
     if (!prev || mag > prev.mag || (mag === prev.mag && scale > prev.scale)) {
-      outMez[key] = { mag, scale, table };
+      outMez[key] = {
+        mag,
+        scale,
+        table,
+        ...(petClass !== undefined ? { petClass } : {}),
+        ...(eff.ignoreStrength ? { ignoreStrength: true as const } : {}),
+      };
     }
   };
 
@@ -613,28 +669,56 @@ export function synthesizePseudoPetEffects(
   const entityNames = summon.entities && summon.entities.length > 0
     ? summon.entities.map((e) => e.entity)
     : summon.entity ? [summon.entity] : [];
+  let fromEntityTable = false;
   for (const entityName of entityNames) {
-    const entity = getPetEntity(entityName);
-    if (!entity || entity.commandable) continue; // pseudo-pets / patches only
-    for (const ability of entity.abilities) {
-      for (const eff of ability.effects ?? []) {
-        addEnhanceable(eff.type, eff.scale, eff.table);
-        addMez(eff.type, eff.magnitude, eff.scale, eff.table, eff.chance);
+    // The whole in-place chain, not just the named entity — Poison Trap's payload is the gas
+    // cloud its pet's Self_Destruct leaves behind, one summon deeper (ENT-3 step 4). The
+    // pseudo-pets / patches-only rule now lives in the walk.
+    for (const entity of getSummonedEntityChain(entityName)) {
+      for (const ability of entity.abilities) {
+        for (const eff of ability.effects ?? []) {
+          fromEntityTable = true;
+          addEnhanceable(eff, entity.characterClass);
+          addMez(eff, entity.characterClass);
+        }
       }
     }
   }
 
-  // Synthesized location pseudo-pets (Storm Cell, Category Five, …) — only the
-  // ENHANCEABLE debuffs / control merge into Power Effects (scaled by the
-  // summoner's enhancements). IgnoreStrength effects are surfaced informationally
-  // elsewhere.
-  for (const resolved of summon.resolvedEntities ?? []) {
-    for (const ability of resolved.abilities) {
-      for (const eff of ability.effects ?? []) {
-        if (eff.ignoreStrength) continue;
-        addEnhanceable(eff.type, eff.scale, eff.table);
-        addMez(eff.type, eff.magnitude, eff.scale, eff.table, eff.chance);
+  // Synthesized location pseudo-pets (Storm Cell, Category Five) carry their entity inline,
+  // `IgnoreStrength` templates included. Those used to be skipped here on the reading that an
+  // unenhanceable effect was "informational" — but this merge is the only place a pseudo-pet's
+  // kit reaches the summoning power at all, so skipping showed nothing rather than showing
+  // something unboostable, and it made this branch disagree with both the entity-table branch
+  // above and the parent-power route (ENT-4).
+  //
+  // Read only when the entity table produced nothing: the inline block stands in for a pet
+  // the table has no record of, and Homecoming's Sentinel Whirlpool carries both for the
+  // SAME pet — its two blocks identical row for row — so walking both added that pet to
+  // itself and doubled every number it publishes (ENT-8).
+  //
+  // These rows carry NO pet class, and that is the data rather than a gap in it: the shells
+  // they come from (`PL_StaticObject`, `Pet_NoCollision`, …) have no `villaindef.bin` record
+  // at all, so there is no `characterClassName` for the game to resolve them against either.
+  // They resolve against the summoner's archetype (ENT-10).
+  if (!fromEntityTable) {
+    for (const resolved of summon.resolvedEntities ?? []) {
+      for (const ability of resolved.abilities) {
+        for (const eff of ability.effects ?? []) {
+          addEnhanceable(eff, undefined);
+          addMez(eff, undefined);
+        }
       }
+    }
+  }
+
+  const out: Record<string, ScaledOrTermed | Record<string, ScaledOrTermed>> = {};
+  for (const [key, byAxis] of Object.entries(contributions)) {
+    for (const [axis, rows] of Object.entries(byAxis)) {
+      const value = mergePetContributions(rows);
+      if (!value) continue;
+      if (axis === '') out[key] = value;
+      else ((out[key] ??= {}) as Record<string, ScaledOrTermed>)[axis] = value;
     }
   }
 
@@ -642,6 +726,76 @@ export function synthesizePseudoPetEffects(
   return Object.keys(merged).length > 0
     ? (merged as Partial<import('@/types/power').PowerEffects>)
     : null;
+}
+
+/**
+ * One pet row's contribution to a display key, before anything is combined.
+ *
+ * The row is kept whole rather than folded into a running scale, because a scale states
+ * nothing on its own — it is a multiplier on ITS table AT ITS CLASS, and this merge has
+ * neither a class nor a level to spend a table against.
+ */
+type PetContribution = {
+  scale: number;
+  table: string;
+  /**
+   * The summoned entity's own character class. Absent for a row from the inline
+   * `resolvedEntities` block, whose shells have no `villaindef.bin` record and therefore no
+   * class for the game to resolve them against either (ENT-10).
+   */
+  petClass?: string;
+  ignoreStrength?: boolean;
+};
+
+/**
+ * A display value carrying its `scale x table` terms instead of one pair, written when a key's
+ * pet rows name more than one AT table. There is no honest single pair to state, so none is —
+ * a reader that took one would be reading a number in no unit at all.
+ */
+type ScaleTerms = { scaleTerms: PetContribution[]; ignoreStrength?: boolean };
+
+type ScaledOrTermed = PetContribution | ScaleTerms;
+
+/**
+ * The display value one bag key's pet contributions carry.
+ *
+ * Rows naming one table add as scales. Rows naming DIFFERENT tables travel as separate terms
+ * for getEffectBaseValue to resolve and sum, because adding their scales mixes units:
+ * Homecoming's Summon Tarantula published `slow = 500.2` from a `0.2` on `Ranged_Slow` plus a
+ * `500` on `Ranged_Ones`, a number in no unit at all (ENT-8).
+ *
+ * Sameness is a case-insensitive exact name AND the same pet class, because a table name is
+ * only half of a table: `class_GetNamedTableValue(pclass, name, level)` takes both, and one
+ * name holds different values under different classes. Homecoming's Soul Extraction is the
+ * corpus's one case — six `Ranged_Debuff_ToHit` rows off three henchman classes, whose values
+ * differ — and summing their scales would resolve all six at whichever class arrived first
+ * (ENT-10). The name half is the game's own identity: `classes.c` looks the template's table up
+ * in a case-insensitive stash and aliases nothing, so Rebirth's Dark Servant, which spells one
+ * table `Ranged_DeBuff_ToHit` on three rows and `Ranged_Debuff_ToHit` on a fourth, stays one
+ * sum. Splitting a pair that is really one table+class would cost nothing anyway: the terms
+ * resolve identically and add back to the same number.
+ *
+ * The `ignoreStrength` mark is all-or-nothing over the whole key either way. One displayed
+ * number can make only one claim about whether the summoner's slotting reaches it, and a mixed
+ * key drops the mark and reads as enhanceable — what it was before the mark existed (ENT-4).
+ */
+export function mergePetContributions(rows: PetContribution[]): ScaledOrTermed | null {
+  const [first, ...rest] = rows;
+  if (!first) return null;
+  const unenhanceable = rows.every((row) => row.ignoreStrength === true);
+  const term = (row: PetContribution): PetContribution => ({
+    scale: row.scale,
+    table: row.table,
+    ...(row.petClass !== undefined ? { petClass: row.petClass } : {}),
+  });
+
+  const oneSource = rest.every(
+    (row) => row.table.toLowerCase() === first.table.toLowerCase() && row.petClass === first.petClass,
+  );
+  const merged: ScaledOrTermed = oneSource
+    ? { ...term(first), scale: rows.reduce((total, row) => total + row.scale, 0) }
+    : { scaleTerms: rows.map(term) };
+  return unenhanceable ? { ...merged, ignoreStrength: true } : merged;
 }
 
 /**

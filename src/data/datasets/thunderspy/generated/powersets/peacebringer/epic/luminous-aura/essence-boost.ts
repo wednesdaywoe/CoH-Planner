@@ -12,12 +12,17 @@ export const EssenceBoost: Power = {
   "name": "Essence Boost",
   "internalName": "Essence_Boost",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You can activate this power to increase your maximum Hit Points for a short time. Essence Boost also grants you resistance to Toxic Damage. Recharge: Very Long",
   "shortHelp": "Self Heal, +Max HP, Res (Toxic)",
   "icon": "luminousaura_essenceboost.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 360,
@@ -52,6 +57,7 @@ export const EssenceBoost: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_HealSelf"
     },

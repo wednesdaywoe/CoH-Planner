@@ -12,6 +12,8 @@ export const Beanbag: Power = {
   "name": "Single Shot",
   "internalName": "Beanbag",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick single shot from the Assault rifle. Damage: Minor, Recharge: Fast",
   "shortHelp": "Ranged, Minor DMG(Lethal), Foe -DEF",
   "icon": "assaultweapons_shotgunslug.png",
@@ -23,6 +25,9 @@ export const Beanbag: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -55,6 +60,7 @@ export const Beanbag: Power = {
   "effects": {
     "buffDuration": 8.4,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.059,
       "table": "Ranged_Ones"
     },

@@ -12,12 +12,17 @@ export const RainofFire: Power = {
   "name": "Rain of Fire",
   "internalName": "Rain_of_Fire",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area.",
   "shortHelp": "Ranged (Location AoE), DoT(Fire), Foe -SPD",
   "icon": "fireblast_rainoffire.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 40,
@@ -73,8 +78,36 @@ export const RainofFire: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "runSpeed",
                   "scale": 0.4,
                   "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 0.4,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
+                  "scale": 0.4,
+                  "table": "Melee_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 0.3,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Melee_SpeedRunning",
                   "ignoreStrength": true
                 }
               ],
@@ -82,6 +115,9 @@ export const RainofFire: Power = {
               "castTime": 0,
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 25,
               "maxTargets": 10
             }

@@ -21,8 +21,12 @@ import { CategoryFive as CategoryFive } from './category-five';
 
 export const powerset: Powerset = {
   id: 'defender/storm-blast',
-  internalName: 'storm_blast',
+  setPath: 'Defender_Ranged.Storm_Blast',
   name: 'Storm Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Storm Blast conjures violent weather to attack your foes. The use of your storm attacks will empower your created storm cells.',
   icon: 'storm_summoning_set.ico',
   archetype: 'defender',

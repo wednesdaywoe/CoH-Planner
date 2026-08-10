@@ -12,6 +12,8 @@ export const ReactionTime: Power = {
   "name": "Reaction Time",
   "internalName": "Reaction_Time",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You attune yourself to the world around you, moving with preternatural speed. All enemies nearby move slowly and have reduced recharge, and you can absorb small amounts of damage every 2 seconds. When Reaction Time is deactivated, you gain a burst of speed for a short duration, increasing your own recharge and move speed.Recharge: Moderate.",
   "shortHelp": "Toggle (PBAoE), Self Absorb over Time, +Recovery, Foe –Rech, - Move, Special",
   "icon": "martialmanipulation_reactiontime.png",
@@ -31,6 +33,10 @@ export const ReactionTime: Power = {
   ],
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,11 +66,20 @@ export const ReactionTime: Power = {
     "buffDuration": 5,
     "durations": {
       "absorb": 12,
+      "movementCapDebuff": 5,
       "rechargeDebuff": 5,
       "recoveryBuff": 1.25,
       "slow": 5
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -78,6 +93,7 @@ export const ReactionTime: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -86,8 +102,8 @@ export const ReactionTime: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.7,
+        "table": "Melee_Slow"
       }
     }
   },
@@ -104,7 +120,7 @@ export const ReactionTime: Power = {
     ["RechargeTime",null,-0.4,1,10,"Melee_Slow","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","JumpHeight",-0.7,1,10,"Melee_Slow","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Recovery",null,0.5,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Recovery",null,0.5,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Sustain"],
     ["Absorb",null,0.075,1,12,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq || !"],
     ["Absorb",null,0.075,1,12,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq ||"]
   ]

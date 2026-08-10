@@ -12,12 +12,17 @@ export const Tornado: Power = {
   "name": "Tornado",
   "internalName": "Tornado",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Conjures up a funnel cloud at a targeted location. The Tornado will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Tornado is a menacing sight, and can even cause panic among your foes. Recharge: Long",
   "shortHelp": "Summon Tornado: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
   "icon": "stormsummoning_tornado.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

@@ -12,12 +12,17 @@ export const FireImps: Power = {
   "name": "Fire Imps",
   "internalName": "Fire_Imps",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can craft 3 small Fire Imps out of pure flame in a targeted location. Fire Imps will viciously attack any nearby foes, but they only possess the most basic instincts. Fire Imps can be healed and buffed like any teammate. Type ''/release_pets'' in the chat window to release all your pets. Recharge: Very Long",
   "shortHelp": "Summon Imps: Melee Minor DMG(Fire)",
   "icon": "firetrap_fireimps.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,

@@ -12,6 +12,8 @@ export const Slice: Power = {
   "name": "Slice",
   "internalName": "Slice",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "The arms of your backpack may be used to slice at opponents for moderate lethal damage, as well as reducing their defense.  Damage: Moderate Recharge: Medium",
   "shortHelp": "Melee, Moderate DMG(Lethal), Foe -DEF",
   "icon": "crabspider_slice.png",
@@ -20,6 +22,9 @@ export const Slice: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

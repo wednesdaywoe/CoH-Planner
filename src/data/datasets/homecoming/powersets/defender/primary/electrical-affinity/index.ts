@@ -21,8 +21,12 @@ import { AmpUp as AmpUp } from './amp-up';
 
 export const powerset: Powerset = {
   id: 'defender/electrical-affinity',
-  internalName: 'shock_therapy',
+  setPath: 'Defender_Buff.Shock_Therapy',
   name: 'Electrical Affinity',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You are able to control and manipulate electricity to aid your allies and weaken your enemies. Some Electrical Affinity powers build Static, which increases the number of targets your Circuit powers can chain to.',
   icon: 'shock_therapy_set.ico',
   archetype: 'defender',

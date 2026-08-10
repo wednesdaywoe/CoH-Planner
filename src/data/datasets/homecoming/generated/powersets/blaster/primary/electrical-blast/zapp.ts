@@ -12,12 +12,17 @@ export const Zapp: Power = {
   "name": "Zapp",
   "internalName": "Zapp",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "A focused electrical blast that can travel great distances with high Accuracy. Zapp drains Endurance, and is best fired from a distance, as it can be interrupted. Some of the Endurance you drain may transfer back to you. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
   "shortHelp": "Sniper, DMG(Energy), Foe -End, Self +Range",
   "icon": "electricalbolt_zapp.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 150,
@@ -59,6 +64,7 @@ export const Zapp: Power = {
       "table": "Ranged_EndDrain"
     },
     "rangeBuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Ones"
     }
@@ -69,6 +75,7 @@ export const Zapp: Power = {
     ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "quickSnipe": {
+    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
     "stats": {
       "castTime": 1.33,
       "range": 80
@@ -79,6 +86,11 @@ export const Zapp: Power = {
         "scale": 2.28,
         "table": "Ranged_Damage"
       }
+    ],
+    "atoms": [
+      ["Damage","Energy",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *"],
+      ["Endurance",null,-0.15,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true]
     ]
   }
 };

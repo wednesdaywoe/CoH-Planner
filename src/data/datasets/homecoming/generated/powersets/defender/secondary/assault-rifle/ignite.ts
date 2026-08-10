@@ -12,12 +12,17 @@ export const Ignite: Power = {
   "name": "Ignite",
   "internalName": "Ignite",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Sprays a target with accelerant from your flamethrower, igniting it and causing extreme damage over time. Also sets the location on fire if the target is grounded, inflicting damage to additional foes that step in the area.",
   "shortHelp": "Ranged, DoT(Fire)",
   "icon": "assaultweapons_dot.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.15,
     "range": 60,
@@ -52,11 +57,55 @@ export const Ignite: Power = {
       "tickRate": 0.25
     }
   ],
+  "effects": {
+    "summon": {
+      "copyBoosts": true,
+      "displayName": "Flames",
+      "duration": 5.5,
+      "isPseudoPet": true,
+      "powers": [
+        "Pets.ResistAll_NoFly.ResistAll",
+        "Redirects.Assault_Rifle.Ignite",
+        "Redirects.Assault_Rifle.Avoid"
+      ],
+      "resolvedEntities": [
+        {
+          "displayName": "Flames",
+          "duration": 5.5,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Ignite",
+              "displayName": "Ignite",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Fire",
+                  "scale": 0.1,
+                  "table": "Melee_Damage"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.5,
+              "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
+              "radius": 4,
+              "maxTargets": 4
+            }
+          ]
+        }
+      ],
+      "entity": "PL_StaticObject"
+    }
+  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,5.5,"Melee_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround target.EventTimeSince> 0.5 >="],
     ["Damage","Fire",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.1022,1,5.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["EntCreate",null,1,1,5.5,"Melee_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround target.EventTimeSince> 0.5 >=",true],
     ["Damage","Fire",0.9077,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Fire",0.0927,1,5.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]

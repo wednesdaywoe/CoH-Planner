@@ -12,12 +12,17 @@ export const LightningRod: Power = {
   "name": "Lightning Rod",
   "internalName": "Lightning_Rod",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You can polarize your body and become a living Lightning Rod. This power calls forth a massive lightning bolt from the sky to strike you. You can then ride this bolt and instantly Teleport a short distance. You rematerialize in a massive bolt of electricity, dealing massive damage and knocking down all nearby foes. You must be on the ground to activate this power. Damage from the lightning bolt is superior. Damage: Superior, Recharge: Slow",
   "shortHelp": "PBAoE Superior DMG(Energy), Foe Knockback; Self Teleport;",
   "icon": "electricmelee_pbaoeteleport.png",
   "powerType": "Click",
   "targetType": "Teleport",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -63,6 +68,6 @@ export const LightningRod: Power = {
   "atoms": [
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true]
+    ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0]
   ]
 };

@@ -12,12 +12,17 @@ export const DirectStrike: Power = {
   "name": "Direct Strike",
   "internalName": "Direct_Strike",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You channel your storm powers into a direct hit, jolting the enemy with a bolt of lightning that deals Energy damage and saps some endurance. If fired outside of combat, it can be interrupted by enemies, but will do bonus damage. If you are engaged in battle, this attack becomes instant-cast. While in a Storm Cell, targets have a chance to be stunned. The odds of creating High Winds and Lightning are much greater when Direct Strike is cast out of combat.",
   "shortHelp": "Sniper, DMG(Energy), Foe -End, Special",
   "icon": "stormblast_directstrike.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 150,
@@ -57,9 +62,12 @@ export const DirectStrike: Power = {
   },
   "atoms": [
     ["Endurance",null,-0.2,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Damage","Energy",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",4.5,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Sentinel eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST","Class_Sentinel"],
+    ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"arch source> Class_Blaster eq",null,null,null,null,null,null,null,null,null,null,"Class_Blaster"]
   ],
   "quickSnipe": {
+    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
     "stats": {
       "castTime": 1.33,
       "range": 80
@@ -70,6 +78,12 @@ export const DirectStrike: Power = {
         "scale": 2.28,
         "table": "Ranged_Damage"
       }
+    ],
+    "atoms": [
+      ["Endurance",null,-0.1,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+      ["Damage","Energy",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *"],
+      ["Damage","Energy",2.28,1,0,"Ranged_InherentDamage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Sentinel eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *",null,0,null,"SentCrit,SentCritST","Class_Sentinel"],
+      ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,"arch source> Class_Blaster eq",null,null,null,null,null,null,null,null,null,null,"Class_Blaster"]
     ]
   }
 };

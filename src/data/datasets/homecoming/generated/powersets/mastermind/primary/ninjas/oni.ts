@@ -12,6 +12,8 @@ export const Oni: Power = {
   "name": "Oni",
   "internalName": "Oni",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons an ancient and powerful Oni. An Oni is a powerful human-like demon warrior. The Oni is a formidable creature who possesses the skill of a warrior and the powers of wind and fire.",
   "shortHelp": "Summon Oni",
   "icon": "ninjas_calloni.png",
@@ -19,6 +21,9 @@ export const Oni: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

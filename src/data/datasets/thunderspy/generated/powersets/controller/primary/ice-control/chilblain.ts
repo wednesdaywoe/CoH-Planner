@@ -12,6 +12,8 @@ export const Chilblain: Power = {
   "name": "Chilblain",
   "internalName": "Chilblain",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Immobilizes your target in an icy trap, dealing some Cold damage over time as well as slightly slowing the target's attack and movement speed. Targets close enough to the main target take half damage. This power does not benefit from containment Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate Damage (Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "iceblast_iceblast.png",
@@ -19,6 +21,9 @@ export const Chilblain: Power = {
   "targetType": "Foe",
   "effectArea": "AoE",
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -69,6 +74,7 @@ export const Chilblain: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -82,6 +88,7 @@ export const Chilblain: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Ranged_Slow"
       },

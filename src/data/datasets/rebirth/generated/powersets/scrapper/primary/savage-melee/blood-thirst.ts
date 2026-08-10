@@ -12,6 +12,8 @@ export const BloodThirst: Power = {
   "name": "Blood Thirst",
   "internalName": "Blood_Thirst",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You focus for a moment and clear your head to take a moment to recover from your wounds. Blood Thirst will immediately heal you for a small amount and cause you to heal for a moderate amount of health over a short time seconds. Blood Thirst consumes all stacks of Blood Frenzy. This power's heal over time effect grows with each stack of Blood Frenzy. Using this power with 5 stacks of Blood Frenzy causes you to become Exhausted for a short time, but the duration of the heal over time effect is increased. While exhausted you cannot gain Blood Frenzy. Recharge: Very Long",
   "shortHelp": "Self, +HP, +Health over Time, -Blood Frenzy",
   "icon": "savagemelee_bloodthirst.png",
@@ -20,6 +22,9 @@ export const BloodThirst: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -36,40 +41,44 @@ export const BloodThirst: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1,
-    "table": "Melee_HealSelf"
-  },
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 1,
+      "table": "Melee_HealSelf",
+      "duration": 9.1,
+      "tickRate": 3
+    }
+  ],
   "atoms": [
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Heal",null,1,1,9.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 5 <",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .084 * .33 + @StdResult *"],
+    ["Heal",null,1,1,9.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 5 <",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .084 * .33 + @StdResult *"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["Heal",null,1,1,12.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 4 >",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .084 * .33 + @StdResult *"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 4 > &&",true]
   ],
   "conditionalEffects": [
     {
-      "id": "savage_melee_blood_frenzy",
-      "label": "Blood Frenzy",
+      "id": "savage_melee_blood_frenzy-5plus",
+      "label": "Blood Frenzy (5+ stacks)",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Heal",
-          "scale": 1,
-          "table": "Melee_HealSelf",
-          "duration": 9.1,
-          "tickRate": 3
-        },
-        {
-          "type": "Heal",
-          "scale": 1,
-          "table": "Melee_HealSelf",
-          "duration": 12.1,
-          "tickRate": 3
-        }
-      ]
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy",
+        "count": 5
+      },
+      "damage": {
+        "type": "Heal",
+        "scale": 1,
+        "table": "Melee_HealSelf",
+        "duration": 12.1,
+        "tickRate": 3
+      }
     }
   ]
 };

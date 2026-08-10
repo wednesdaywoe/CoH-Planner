@@ -12,12 +12,17 @@ export const MotivateAllies: Power = {
   "name": "Motivate Allies",
   "internalName": "Motivate_Allies",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You find new and excruciating ways to motivate your allies, dealing Psionic damage to them and increasing their damage and ToHit. This power does not work on allies with less than half their health.",
   "shortHelp": "PBAOE Ally Psi DMG, +DMG, +ToHit",
   "icon": "obediencetraining_motivateallies.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 35,
@@ -36,23 +41,52 @@ export const MotivateAllies: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 2.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.5,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "buffDuration": 30,
+    "damageBuff": {
+      "ignoreStrength": true,
+      "scale": 4,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 30,
+      "tohitBuff": 30
+    },
+    "tohitBuff": {
+      "scale": 1.5,
+      "table": "Ranged_Buff_ToHit"
+    }
+  },
   "atoms": [
+    ["Damage","Psionic",2.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
+    ["Damage","Psionic",2.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
+    ["DamageBuff","Smashing",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
+    ["DamageBuff","Lethal",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
+    ["DamageBuff","Fire",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
+    ["DamageBuff","Cold",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
+    ["DamageBuff","Energy",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
+    ["DamageBuff","Negative",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
+    ["DamageBuff","Toxic",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
+    ["DamageBuff","Psionic",4.5,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
+    ["ToHit",null,1.5,1,30,"Ranged_Buff_ToHit","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&"],
     ["Damage","Psionic",2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
     ["Damage","Psionic",2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
-    ["Damage","Psionic",2.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["Damage","Psionic",2.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
     ["Damage","Psionic",0,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 0.1 - 50 < enttype target> player eq &&",true],
     ["Damage","Psionic",0,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 0.1 - 50 < enttype target> player eq &&",true],
     ["Damage","Psionic",0,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 0.1 - 50 < enttype target> critter eq &&",true],
     ["Damage","Psionic",0,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 0.1 - 50 < enttype target> critter eq &&",true],
-    ["DamageBuff","Smashing",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["DamageBuff","Lethal",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["DamageBuff","Fire",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["DamageBuff","Cold",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["DamageBuff","Energy",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["DamageBuff","Negative",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["DamageBuff","Toxic",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["DamageBuff","Psionic",4.5,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
     ["DamageBuff","Smashing",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
     ["DamageBuff","Lethal",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
     ["DamageBuff","Fire",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
@@ -62,7 +96,6 @@ export const MotivateAllies: Power = {
     ["DamageBuff","Toxic",4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
     ["DamageBuff","Psionic",4.5,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
     ["ToHit",null,1.5,1,30,"Ranged_Buff_ToHit","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
-    ["ToHit",null,1.5,1,30,"Ranged_Buff_ToHit","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
     ["DamageBuff","Smashing",2,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
     ["DamageBuff","Lethal",2,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
     ["DamageBuff","Fire",2,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
@@ -72,41 +105,6 @@ export const MotivateAllies: Power = {
     ["DamageBuff","Toxic",2,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
     ["DamageBuff","Psionic",2.25,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
     ["ToHit",null,0.75,1,30,"Ranged_Buff_ToHit","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true]
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": [
-        {
-          "type": "Psionic",
-          "scale": 2.5,
-          "table": "Ranged_Damage"
-        },
-        {
-          "type": "Psionic",
-          "scale": 2.5,
-          "table": "Ranged_Damage"
-        }
-      ],
-      "effects": {
-        "buffDuration": 30,
-        "damageBuff": {
-          "scale": 4.5,
-          "table": "Ranged_Buff_Dmg"
-        },
-        "durations": {
-          "damageBuff": 30,
-          "tohitBuff": 30
-        },
-        "tohitBuff": {
-          "scale": 1.5,
-          "table": "Ranged_Buff_ToHit"
-        }
-      }
-    }
   ],
   "damageTypes": [
     "Psionic"

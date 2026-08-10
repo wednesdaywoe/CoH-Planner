@@ -12,6 +12,8 @@ export const ChargedBolts: Power = {
   "name": "Charged Bolts",
   "internalName": "Charged_Bolts",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can quickly hurl small bolts of electricity at foes, dealing some damage and draining some Endurance. Some of this Endurance may transfer back to you. Charged Bolts deals light damage but recharges quickly. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -End",
   "icon": "electricalbolt_chargedbolts.png",
@@ -23,6 +25,9 @@ export const ChargedBolts: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -54,6 +59,7 @@ export const ChargedBolts: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Ranged_Ones"
     },

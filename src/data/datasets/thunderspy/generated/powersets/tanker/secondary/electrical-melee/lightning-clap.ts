@@ -12,6 +12,8 @@ export const LightningClap: Power = {
   "name": "Lightning Clap",
   "internalName": "Lightning_Clap",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You can clap your hands together to release a violent Lightning Clap. The Lightning Clap can knock down most nearby foes, Disorienting many of them. Lightning Clap deals no damage. Recharge: Slow",
   "shortHelp": "PBAoE, Foe Disorient, Knockback",
   "icon": "electricmelee_pbaoestun.png",
@@ -20,6 +22,9 @@ export const LightningClap: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

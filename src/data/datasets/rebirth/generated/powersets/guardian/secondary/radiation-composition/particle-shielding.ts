@@ -12,12 +12,17 @@ export const ParticleShielding: Power = {
   "name": "Particle Shielding",
   "internalName": "Particle_Shielding",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You channel a tremendous amount of radiation into a barrier around you. For a short time you will gain a small absorption shield every few seconds and gain a powerful regeneration buff. Recharge: Very Long",
   "shortHelp": "Self, +Absorb, +Regeneration",
   "icon": "radiationcomp_particleshielding.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,

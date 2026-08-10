@@ -12,12 +12,17 @@ export const DartBurst: Power = {
   "name": "Dart Burst",
   "internalName": "Dart_Burst",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Dart Burst does light lethal damage to foes in a 30 degree arc cone, then poisons them.  The poison does toxic damage over time and reduces their regeneration rate.  Damage: Light Recharge: Medium",
   "shortHelp": "Light Cone DMG (Lethal/Toxic), DoT(Toxic), -Regeneration, -Recharge, -SPD",
   "icon": "widowtraining_dartburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 50,
@@ -74,6 +79,7 @@ export const DartBurst: Power = {
       "slow": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -87,6 +93,7 @@ export const DartBurst: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -103,7 +110,7 @@ export const DartBurst: Power = {
   "atoms": [
     ["Damage","Lethal",0.1785,1,0.8,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Toxic",0.0765,1,0.8,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Toxic",0.11,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Toxic",0.11,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Run",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

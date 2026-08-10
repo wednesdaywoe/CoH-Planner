@@ -12,12 +12,18 @@ export const EmpoweringCircuit: Power = {
   "name": "Empowering Circuit",
   "internalName": "Empowering_Circuit",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Create a circuit of empowering energy between several nearby allies, increasing their damage output and chance to hit for a short time. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Empowering Circuit grants 1 stack of Static.",
   "shortHelp": "Ranged (Chain), Ally +DMG, +Tohit, Self +Static",
   "icon": "shocktherapy_empoweringcircuit.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "Chain",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "chainTargetExpression": "enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +",
   "maxTargetsExpression": "4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +",
   "stats": {
@@ -42,6 +48,7 @@ export const EmpoweringCircuit: Power = {
   "effects": {
     "buffDuration": 60,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Buff_Dmg"
     },
@@ -64,7 +71,7 @@ export const EmpoweringCircuit: Power = {
     ["DamageBuff","Psionic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
     ["DamageBuff","Toxic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
     ["ToHit",null,1.2,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
-    ["Meta",null,0,0,0,"Ranged_Buff_Dmg","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+    ["Meta",null,0,0,0,"Ranged_Buff_Dmg","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"BuildStatic"]
   ]
 };

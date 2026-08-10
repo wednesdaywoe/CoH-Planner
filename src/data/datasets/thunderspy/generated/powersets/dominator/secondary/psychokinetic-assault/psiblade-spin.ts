@@ -12,6 +12,8 @@ export const PsiBladeSpin: Power = {
   "name": "Psi-Blade Spin",
   "internalName": "PsiBlade_Spin",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a spin with your manifested sword, dealing moderate damage to all nearby targets, each target hit spawns a Psychokinetic sword.  Damage: Moderate, Recharge: Long",
   "shortHelp": "PBAoE, Moderate DMG(Psionic/Energy)",
   "icon": "awakened_psychiclash.png",
@@ -20,6 +22,9 @@ export const PsiBladeSpin: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -66,7 +71,7 @@ export const PsiBladeSpin: Power = {
     ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "damageTypes": [
     "Energy",

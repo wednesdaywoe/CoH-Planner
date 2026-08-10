@@ -12,12 +12,17 @@ export const Subdue: Power = {
   "name": "Subdue",
   "internalName": "Subdue",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Subdue deals moderate Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Immobilize",
   "icon": "psychicblast_subdue.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,

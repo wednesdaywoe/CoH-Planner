@@ -12,6 +12,8 @@ export const ElectricFence: Power = {
   "name": "Electric Fence",
   "internalName": "Electric_Fence",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Surrounds and Immobilizes a single target in an Electric Fence. Deals some damage over time and slowly drains some Endurance. Useful for keeping villains at bay. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Ranged, Moderate DoT(Energy), Foe Immobilize, -End",
   "icon": "electricitymanipulation_electricfence.png",
@@ -23,6 +25,9 @@ export const ElectricFence: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -59,6 +64,7 @@ export const ElectricFence: Power = {
   "effects": {
     "buffDuration": 8.67,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.077,
       "table": "Ranged_Ones"
     },
@@ -93,7 +99,7 @@ export const ElectricFence: Power = {
     ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Knockback",-100,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Knockup",-100,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Recovery",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
+    ["Recovery",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.2],
     ["DamageBuff","Smashing",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

@@ -12,6 +12,8 @@ export const PsionicShield: Power = {
   "name": "Psionic Shield",
   "internalName": "Psionic_Shield",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "This power generates a psionic shield that dampens most energy and elemental damage types while also reducing the effect of endurance drain effects.",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative, Toxic, End Drain)",
   "icon": "psionicarmor_psionicshield.png",
@@ -22,6 +24,9 @@ export const PsionicShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

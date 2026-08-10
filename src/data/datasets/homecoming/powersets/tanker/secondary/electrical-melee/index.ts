@@ -21,8 +21,12 @@ import { LightningRod as LightningRod } from './lightning-rod';
 
 export const powerset: Powerset = {
   id: 'tanker/electrical-melee',
-  internalName: 'electrical_melee',
+  setPath: 'Tanker_Melee.Electrical_Melee',
   name: 'Electrical Melee',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Electricity surges through your body and you can channel this electricity through your fists. Electrical Melee allows you to pummel your foes with various melee attack powers while jolting them with a powerful electric current. Electric Melee powers can drain foes\' Endurance and temporarily halt their Endurance recovery. Some powers may even return a portion of drained Endurance back to you.',
   icon: 'electrical_melee_set.ico',
   archetype: 'tanker',

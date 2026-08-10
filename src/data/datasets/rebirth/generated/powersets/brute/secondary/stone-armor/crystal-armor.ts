@@ -12,6 +12,8 @@ export const CrystalArmor: Power = {
   "name": "Crystal Armor",
   "internalName": "Crystal_Armor",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, your skin becomes encrusted in various quartz crystals. Crystal Armor makes Energy and Negative Energy attacks less likely to hit. This power also grants you resistance to Defense DeBuffs. Crystal Armor also adds an Elusivity defense bonus to Energy and Negative Energy Attacks in PVP zones. While in Granite Armor, this power's effects are suppressed and cost no endurance. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Energy, Negative), Res(DeBuff DEF)",
   "icon": "stonearmor_crystalarmor.png",
@@ -22,6 +24,9 @@ export const CrystalArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const CrystalArmor: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
@@ -63,7 +69,7 @@ export const CrystalArmor: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>"],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>",null,0],
     ["Defense","Energy",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Defense","Negative",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Defense","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

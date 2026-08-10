@@ -16,8 +16,12 @@ import { WillOfArachnae as WillOfArachnae } from './will-of-arachnae';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/tarantula-teamwork',
-  internalName: 'tarantula_teamwork',
+  setPath: 'Teamwork.Tarantula_Teamwork',
   name: 'Tarantula Teamwork',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Tarantula Teamwork',
   icon: 'tarantula_teamwork_set.png',
   archetype: 'arachnos-widow',

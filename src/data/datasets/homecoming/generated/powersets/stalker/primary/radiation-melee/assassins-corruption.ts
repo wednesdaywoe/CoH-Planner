@@ -12,6 +12,8 @@ export const AssassinsCorruption: Power = {
   "name": "Assassin's Corruption",
   "internalName": "Assassins_Corruption",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "A signature Stalker attack. This attack does superior energy and smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not. Assassin's Corruption also has a very high chance to inflict Contaminated while hidden and a high chance while unhidden. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.",
   "shortHelp": "Melee, DMG(Smashing, Energy)",
   "icon": "radiationmelee_assassinsstrike.png",
@@ -20,6 +22,9 @@ export const AssassinsCorruption: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -58,27 +63,15 @@ export const AssassinsCorruption: Power = {
       "type": "Energy",
       "scale": 2.76,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.76,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.169,
-      "table": "Melee_PvPDamage"
     }
   ],
   "fromHideBonus": 2.173913043478261,
   "midCombatCast": 1,
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.8600000143051147,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? ! Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated_Imunity target.ownPower? ! &&"]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Damage","Energy",1.76,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < enttype target> critter eq &&"],
+    ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < enttype target> critter eq &&"],
+    ["Damage","Energy",2.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kMeter source> .9 < enttype target> critter eq &&",null,null,null,null,null,null,null,null,null,"ASCrit"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.8600000143051147,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? ! Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated_Imunity target.ownPower? ! &&",null,null,null,null,null,null,null,null,null,"Contaminated"]
   ]
 };

@@ -12,12 +12,17 @@ export const PsionicDart: Power = {
   "name": "Psionic Darts",
   "internalName": "Psionic_Dart",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed, but has a very fast attack rate.",
   "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_psychicscream.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -52,6 +57,7 @@ export const PsionicDart: Power = {
       "rechargeDebuff": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Slow"
     }
@@ -59,7 +65,7 @@ export const PsionicDart: Power = {
   "atoms": [
     ["Damage","Psionic",0.8321,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.3,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Damage","Psionic",0.5767,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]

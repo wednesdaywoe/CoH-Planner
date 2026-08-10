@@ -12,12 +12,18 @@ export const Farsight: Power = {
   "name": "Farsight",
   "internalName": "Farsight",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You give your allies a brief glimpse of the future and what is to come.  This provides you and your team a moderate increase to your chance to hit and defense for a short period of time.   Recharge: Very Long",
   "shortHelp": "PBAoE Team, +To-Hit, +Defense(All), +Perception",
   "icon": "timemanipulation_farsight.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Teammate",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

@@ -12,6 +12,8 @@ export const DefensiveAdaptation: Power = {
   "name": "Defensive Adaptation",
   "internalName": "Defensive_Adaptation",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to become dense and durable. While active Hardened Carapace grants additional resistance to Lethal, Smashing and Toxic damage, Inexhaustible grants additional Maximum HP, Environmental Modification grants additional defense and also grants a small amount of Maximum HP, Evolving Armor grants additional resistance and a small amount of defense per nearby target but loses the resistance debuff effect, Ablative Carapace grants additional damage absorption, DNA Siphon grants additional health per target hit and Parasitic Aura grants additional damage absorption per target hit. Additionally, many of your damaging attacks will heal you for a minor amount of health. However, the bulkiness of this adaptation reduces your damage moderately. Defensive Adaptation costs no endurance.Recharge: Fast.",
   "shortHelp": "Toggle: Bio Armor Defensive Mode",
   "icon": "bioorganicarmor_defensiveadaptation.png",
@@ -22,6 +24,9 @@ export const DefensiveAdaptation: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -34,6 +39,7 @@ export const DefensiveAdaptation: Power = {
   "effects": {
     "buffDuration": 1.1,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 0.25,
       "table": "Melee_Ones",
       "toWho": "Self"
@@ -43,10 +49,10 @@ export const DefensiveAdaptation: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,154,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,154,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["DamageBuff","Smashing",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

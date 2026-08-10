@@ -12,12 +12,17 @@ export const VolcanicGasses: Power = {
   "name": "Volcanic Gasses",
   "internalName": "Volcanic_Gasses",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You can tap into the geothermal power of the Earth and focus it at a targeted location. Foes that pass near a thermal vent will take minor Fire damage and be overcome by the gasses, leaving them choking and helpless.",
   "shortHelp": "Ranged (Location AoE), Foe Hold, DoT(Fire), Special",
   "icon": "earthgrasp_volcanicgasses.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 60,

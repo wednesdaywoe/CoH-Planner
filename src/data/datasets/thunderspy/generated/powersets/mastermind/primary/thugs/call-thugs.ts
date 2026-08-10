@@ -12,12 +12,17 @@ export const CallThugs: Power = {
   "name": "Call Thugs",
   "internalName": "Call_Thugs",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Calls forth one to three Thugs (depending on your level) to do your bidding. The third Thug you gain will be an Arsonist.  Thugs use Dual Pistols and can be taught additional pistol attacks. You may only have 3 Thugs under your control at any given time.  If you attempt to call more Thugs, you can only replace the ones you have lost in battle.  If you already have three, the power will fail. Recharge: Very Long",
   "shortHelp": "Summon Punks",
   "icon": "thugs_hireposse.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

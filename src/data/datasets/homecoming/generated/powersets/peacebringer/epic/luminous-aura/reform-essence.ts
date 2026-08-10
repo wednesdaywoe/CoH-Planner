@@ -12,12 +12,17 @@ export const ReformEssence: Power = {
   "name": "Reform Essence",
   "internalName": "Reform_Essence",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself.Recharge: Slow.",
   "shortHelp": "Self Heal",
   "icon": "luminousaura_reformessence.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 60,
@@ -40,7 +45,7 @@ export const ReformEssence: Power = {
   },
   "atoms": [
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Meta",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"EyesFX",null,"null"]
   ],
   "modesDisallowed": [
     "Peacebringer_Blaster_Mode",

@@ -12,12 +12,17 @@ export const CallGenin: Power = {
   "name": "Call Genin",
   "internalName": "Call_Genin",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Calls forth one to three Genin Ninja (depending on your level) to do your bidding. Genin have good reflexes and jumping skill, but they are still the lowest rank Ninja and only possess the most rudimentary skills,  However, they can be trained in more advanced techniques and weapons. You may only have 3 Genin under your control at any given time.  If you attempt to call Genin, you can only replace the ones you have lost in battle.  If you already have three, the power will fail. Recharge: Very Long",
   "shortHelp": "Summon Genin",
   "icon": "ninjas_callgenin.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

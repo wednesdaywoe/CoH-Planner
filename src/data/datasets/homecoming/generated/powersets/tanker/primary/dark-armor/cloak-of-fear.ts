@@ -12,6 +12,8 @@ export const CloakofFear: Power = {
   "name": "Cloak of Fear",
   "internalName": "Cloak_of_Fear",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can wrap yourself in a nightmarish Cloak of Fear. Foes close to you are treated to visions most horrific, lowering their damage ouptupt and forcing them to tremble in terror, only attacking if attacked, and even then, with a reduced chance to hit. Feeding on your enemies fear will increase your protection against knockback effects.Notes: Mez enhancements on this power enhance its magnitude instead of its duration.",
   "shortHelp": "Toggle: PBAoE Self +Res(Knockback), Foe Fear, -ACC",
   "icon": "darkarmor_fearfulaura.png",
@@ -25,6 +27,9 @@ export const CloakofFear: Power = {
   ],
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 0.8,
@@ -53,6 +58,7 @@ export const CloakofFear: Power = {
   "effects": {
     "buffDuration": 3,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_Debuff_Dam"
     },
@@ -78,6 +84,7 @@ export const CloakofFear: Power = {
       "table": "Melee_Ones"
     },
     "taunt": {
+      "ignoreStrength": true,
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     },
@@ -102,8 +109,8 @@ export const CloakofFear: Power = {
     ["Enhancement","Knockback",-0.25,1,3,"Melee_Ones","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
     ["Mez","Knockup",-1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1],
     ["Mez","Knockback",-1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1],
-    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !"],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !",null,null,null,null,null,null,null,null,null,"Mez"],
     ["Mez","Terrorized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

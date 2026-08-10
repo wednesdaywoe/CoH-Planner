@@ -12,6 +12,8 @@ export const Hemorrhage: Power = {
   "name": "Hemorrhage",
   "internalName": "Hemorrhage",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You viciously tear at your foe causing a light amount of lethal damage. Additionally, the target will suffer from lethal damage over time. Hemorrhage consumes all stacks of Blood Frenzy. This power's damage over time effect will scale with the number of stacks of Blood Frenzy. Using this power with 5 stacks of Blood Frenzy causes you to become Exhausted for a short time, but the duration of Hemorrhage's damage over time effect is increased. While exhausted you cannot gain Blood Frenzy. Damage: High, Special DoT, Recharge: Slow",
   "shortHelp": "Melee, Light DMG(Lethal), Foe Special DoT(Lethal), -Blood Frenzy",
   "icon": "savagemelee_hemorrhage.png",
@@ -20,6 +22,9 @@ export const Hemorrhage: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,11 +47,20 @@ export const Hemorrhage: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.81,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.81,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.11,
+      "table": "Melee_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "taunt": {
       "scale": 1,
@@ -55,11 +69,11 @@ export const Hemorrhage: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.81,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Lethal",1.11,1,4.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 5 < &&",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .04 * .33 + @StdResult *"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Damage","Fire",0.342,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Damage","Fire",0.1485,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Damage","Lethal",1.11,1,4.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 5 < &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .04 * .33 + @StdResult *"],
+    ["Damage","Fire",0.1485,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Damage","Lethal",1.35,1,5.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 4 > &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .04 * .33 + @StdResult *"],
     ["Damage","Lethal",0.957585,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",1,1,4.1,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 5 < &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .04 * .34 + @StdResult *"],
@@ -70,32 +84,31 @@ export const Hemorrhage: Power = {
   ],
   "conditionalEffects": [
     {
-      "id": "savage_melee_blood_frenzy",
-      "label": "Blood Frenzy",
+      "id": "savage_melee_blood_frenzy-5plus",
+      "label": "Blood Frenzy (5+ stacks)",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Lethal",
-          "scale": 1.11,
-          "table": "Melee_Damage",
-          "duration": 4.1,
-          "tickRate": 1
-        },
-        {
-          "type": "Lethal",
-          "scale": 1.35,
-          "table": "Melee_Damage",
-          "duration": 5.1,
-          "tickRate": 1
-        }
-      ]
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy",
+        "count": 5
+      },
+      "damage": {
+        "type": "Lethal",
+        "scale": 1.35,
+        "table": "Melee_Damage",
+        "duration": 5.1,
+        "tickRate": 1
+      }
     },
     {
       "id": "blooddrink",
       "label": "BloodDrink",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.BloodDrink",
+        "count": 1
+      },
       "damage": {
         "type": "Heal",
         "scale": 1,

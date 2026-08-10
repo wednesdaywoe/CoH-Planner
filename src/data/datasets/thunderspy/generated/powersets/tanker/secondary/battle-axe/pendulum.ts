@@ -12,6 +12,8 @@ export const Pendulum: Power = {
   "name": "Pendulum",
   "internalName": "Pendulum",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "This attack swings your Battle Axe in an arc directly in front of you. Foes struck by this attack are dealt heavy damage, and may be knocked down. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_pendulum.png",
@@ -20,6 +22,9 @@ export const Pendulum: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

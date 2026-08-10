@@ -21,8 +21,12 @@ import { ThrowSpines as ThrowSpines } from './throw-spines';
 
 export const powerset: Powerset = {
   id: 'stalker/spines',
-  internalName: 'spines',
+  setPath: 'Stalker_Melee.Spines',
   name: 'Spines',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Spines protrude from your body and can deal damage in melee or at very short ranges. Spines are hollow and hold a neural toxin that deals additional Toxic damage and can Slow or Immobilize your enemies. The toxin is cumulative, and multiple hits will affect a target more strongly. Very few foes have resistance to Spine poison. Like all Stalker primary attack powers, Spine attacks can land a Critical Hit for double damage, if you are properly Hidden or if your target is Slept or Held.',
   icon: 'spines_set.ico',
   archetype: 'stalker',

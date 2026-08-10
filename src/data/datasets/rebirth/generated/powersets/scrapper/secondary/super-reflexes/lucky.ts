@@ -12,12 +12,17 @@ export const Lucky: Power = {
   "name": "Lucky",
   "internalName": "Lucky",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Your superior reflexes make you seem incredibly Lucky. Lucky improves your Defense to Area of Effect attacks and grants you resistance to Defense DeBuffs. Lucky also grants you minor Damage Resistance to all damage except Toxic and Psionic.  This Damage Resistance is only available as you lose Health but it improves as your HP declines. This power is always on, and permanently increases your chance to evade area effects and cone shaped attacks.",
   "shortHelp": "Auto: Self +DEF(vs. AoE), Res(DeBuff DEF), Res(DMG, Special)",
   "icon": "superreflexes_lucky.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 2

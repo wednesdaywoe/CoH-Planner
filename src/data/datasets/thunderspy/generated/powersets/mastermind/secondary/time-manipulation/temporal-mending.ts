@@ -12,12 +12,18 @@ export const TemporalMending: Power = {
   "name": "Temporal Mending",
   "internalName": "Temporal_Mending",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You mend the wounds of yourself and nearby allies by placing your bodies in a past or future state where they are far less injured.  Temporal Mending will immediately heal its targets and continue to heal them for an equal amount over the next 6 seconds.  Additionally, affected allies will gain some resistance to slow effects and regeneration debuffs.  Allies affected by the Accelerated effect will receive additional healing from this power.  Temporal Mending will apply a regeneration bonus instead of heal over time for a short while if the user is in a PvP zone.  Recharge: Long",
   "shortHelp": "PBAoE, Ally +Heal, Heal Over Time, +Res(Slow, Regen Debuff)",
   "icon": "timemanipulation_temporalmending.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -47,27 +53,23 @@ export const TemporalMending: Power = {
       "table": "Ranged_Heal",
       "duration": 6,
       "tickRate": 1.5
-    },
-    {
-      "type": "Heal",
-      "scale": 0.264,
-      "table": "Ranged_Heal",
-      "duration": 6,
-      "tickRate": 1.5
     }
   ],
   "effects": {
     "buffDuration": 30,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Ones"
       },
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Res_Boolean"
       }
@@ -79,7 +81,6 @@ export const TemporalMending: Power = {
   "atoms": [
     ["Heal",null,0.66,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? !"],
     ["Heal",null,0.176,1,6,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
-    ["Heal",null,0.264,1,6,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
     ["Movement","Run",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Fly",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -87,6 +88,7 @@ export const TemporalMending: Power = {
     ["Movement","Jump",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,1,1,30,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
+    ["Heal",null,0.264,1,6,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&",true],
     ["Regeneration",null,0.94,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
     ["Regeneration",null,1.41,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],

@@ -12,6 +12,8 @@ export const TelekineticThrust: Power = {
   "name": "Telekinetic Thrust",
   "internalName": "Telekinetic_Thrust",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "A focused attack of intense mental power that violently sends a nearby foe flying and deals a high amount of Psionic and Smashing damage. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Psionic/Smash), Foe Knockback",
   "icon": "psionicassault_telekineticthrust.png",
@@ -20,6 +22,9 @@ export const TelekineticThrust: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -64,6 +69,7 @@ export const TelekineticThrust: Power = {
     },
     "resistanceDebuff": {
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
@@ -77,7 +83,7 @@ export const TelekineticThrust: Power = {
     ["Damage","Smashing",1.5183,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1.5183,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockup",8,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "damageTypes": [
     "Psionic",

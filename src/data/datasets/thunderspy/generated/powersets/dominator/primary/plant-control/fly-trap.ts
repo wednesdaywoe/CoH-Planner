@@ -12,12 +12,17 @@ export const FlyTrap: Power = {
   "name": "Fly Trap",
   "internalName": "Fly_Trap",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can summon a giant carnivorous Fly Trap plant beast.  Fly Trap may be an understatement, as this plant beast has a taste for flesh.  The Fly Trap will viciously attack any nearby foes; biting, hurling poisonous Thorns and even casting its own Entangle Roots. The Fly Trap will fight by your side and can be healed and buffed like any teammate. Recharge: Very Long",
   "shortHelp": "Summon Fly Trap: Ranged Control Special",
   "icon": "plantcontrol_venusflytrap.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,

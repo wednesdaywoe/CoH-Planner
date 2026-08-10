@@ -12,12 +12,17 @@ export const MasterfulThrow: Power = {
   "name": "Masterful Throw",
   "internalName": "Masterful_Throw",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You take careful aim and let loose an extremely accurate, extremely forceful blade. This is a sniper attack, and is best fired from a distance, as it can be interrupted.  If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Lethal), Chance for DoT (Lethal)",
   "icon": "martialassault_masterfulthrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 150,
@@ -58,12 +63,12 @@ export const MasterfulThrow: Power = {
     }
   ],
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Lethal",3.56,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",0.1,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0.800000011920929],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1"],
+    ["Damage","Lethal",0.1,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0.800000011920929,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Lethal",4.62,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kToHit source> .97 >=",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kToHit source> .97 >=",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"]
   ],
   "specialEffects": [
     {
@@ -71,5 +76,32 @@ export const MasterfulThrow: Power = {
       "chance": 0.800000011920929,
       "label": "Lethal_Dmg"
     }
-  ]
+  ],
+  "quickSnipe": {
+    "condition": "cur.kToHit source> .97 >=",
+    "stats": {
+      "castTime": 1,
+      "range": 150
+    },
+    "damage": [
+      {
+        "type": "Lethal",
+        "scale": 3.56,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Lethal",
+        "scale": 0.1,
+        "table": "Ranged_Damage",
+        "duration": 10,
+        "tickRate": 2
+      }
+    ],
+    "atoms": [
+      ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
+      ["Damage","Lethal",3.56,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["Damage","Lethal",0.1,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
+      ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ]
+  }
 };

@@ -107,3 +107,18 @@ if (errors.length > 0) {
     console.log(`  ${e.category}/${e.powerset}: ${e.error.split('\n')[0]}`);
   }
 }
+
+// A failure here has already DELETED the powerset: `--force` removes the output
+// directory before invoking the converter, so a child that dies — a throw, or the
+// 30s timeout above under load — leaves no output at all rather than the previous
+// output. Reporting that as success is how Homecoming's Sentinel Willpower left the
+// tree with a green `npm run regen` (2026-08-10): ten files gone, the run's exit
+// code 0, and nothing downstream noticing until an import failed hours later.
+// Fail loud instead — a regen that dropped a powerset is not a regen that worked.
+if (failed > 0) {
+  console.error(
+    `\nconvert-all-powersets: ${failed} powerset(s) failed to convert and their output `
+      + 'directories are now EMPTY — rerun with --force to restore them.',
+  );
+  process.exit(1);
+}

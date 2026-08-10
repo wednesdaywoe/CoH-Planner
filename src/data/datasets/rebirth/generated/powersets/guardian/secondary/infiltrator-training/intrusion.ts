@@ -12,6 +12,8 @@ export const Intrusion: Power = {
   "name": "Intrusion",
   "internalName": "Intrusion",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Your infiltrator training enables you to move quickly without being spotted and recover quickly from injury and exertion. You will only be seen at very close range or if you attack, though even if discovered you will retain a Defense bonus to all attacks, a bonus to your Regeneration, and a reduction in the endurance cost of your powers. Unlike some stealth powers, Intrusion has no movement penalty, and in fact slightly increases your running and jumping speed while active. Intrusion's stealth will not work with any other form of Concealment powers. Recharge: Slow",
   "shortHelp": "Toggle: Self Stealth, +DEF(All), +Regen, +Endurance Discount, +Run Speed, +Jump",
   "icon": "infiltratortraining_intrusion.png",
@@ -22,6 +24,9 @@ export const Intrusion: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -94,6 +99,7 @@ export const Intrusion: Power = {
       "stealth": 0.75
     },
     "enduranceDiscount": {
+      "ignoreStrength": true,
       "scale": 0.35,
       "table": "Melee_Ones"
     },
@@ -125,6 +131,7 @@ export const Intrusion: Power = {
         "table": "Melee_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       }

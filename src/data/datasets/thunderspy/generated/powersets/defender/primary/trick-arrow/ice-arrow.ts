@@ -12,12 +12,17 @@ export const IceArrow: Power = {
   "name": "Ice Arrow",
   "internalName": "Ice_Arrow",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow can freeze a single foe in a block of ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be Held, but all affected targets will be Slowed. Recharge: Moderate",
   "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge",
   "icon": "trickarrow_hold.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -50,6 +55,7 @@ export const IceArrow: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Ranged_Slow"
     },
@@ -59,6 +65,7 @@ export const IceArrow: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Ranged_Slow"
       },

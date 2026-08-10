@@ -12,12 +12,17 @@ export const BlockofIce: Power = {
   "name": "Block of Ice",
   "internalName": "Block_of_Ice",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can freeze a single foe in a Block of Ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be held, but all affected targets will be Slowed and take some Cold damage. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Cold), Foe Hold, -SPD, -Recharge",
   "icon": "iceformation_blockofice.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -59,6 +64,7 @@ export const BlockofIce: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
@@ -68,6 +74,7 @@ export const BlockofIce: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Ranged_Slow"
       },

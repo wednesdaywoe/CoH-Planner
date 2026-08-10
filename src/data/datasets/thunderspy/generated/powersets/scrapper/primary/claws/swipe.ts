@@ -12,6 +12,8 @@ export const Swipe: Power = {
   "name": "Swipe",
   "internalName": "Swipe",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a deadly Swipe with your claws. This is a basic attack that deals a moderate amount of lethal damage. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Lethal)",
   "icon": "claws_clawsswipe.png",
@@ -20,6 +22,9 @@ export const Swipe: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

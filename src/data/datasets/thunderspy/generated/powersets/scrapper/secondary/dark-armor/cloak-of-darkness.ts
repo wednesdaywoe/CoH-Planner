@@ -12,6 +12,8 @@ export const CloakofDarkness: Power = {
   "name": "Cloak of Darkness",
   "internalName": "Cloak_of_Darkness",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "A shroud of Netherworld darkness envelops you, making you difficult to spot at a distance. You can be seen only at close range, or if you attack a target. Even if seen, the Cloak of Darkness grants you a bonus to Defense to all attacks and some protection from Immobilization. This Netherworld Cloak also allows you to see things in a new light, allowing you to better see stealthy foes. Unlike some stealth powers, Cloak of Darkness has no movement penalty.  Cloak of Darkness will not work with any other form of Concealment power such as Shadow Fall or Steamy Mist.  Recharge: Slow",
   "shortHelp": "Toggle: Self Stealth, +DEF(All), +Perception, Res (Immobilize)",
   "icon": "darkarmor_cloakofdarkness.png",
@@ -22,6 +24,9 @@ export const CloakofDarkness: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const CloakofDarkness: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "perception": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Ones"
       }

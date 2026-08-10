@@ -12,12 +12,17 @@ export const ShadowSlipping: Power = {
   "name": "Shadow Slip",
   "internalName": "Shadow_Slipping",
   "available": 23,
+  "autoIssue": true,
+  "free": true,
   "description": "Shadow Slip allows you to teleport very long distances, even across city zones.  Activating this power will bring up a menu that allows the user to choose which zone they'll teleport to.  This power can be used while in Dark Nova or Black Dwarf form.  However, activating it while in either Dark Nova or Black Dwarf will transform you back into your original form.  Recharge: Very Long",
   "shortHelp": "Long Range Teleport",
   "icon": "umbralaura_shadowslip.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,
@@ -37,18 +42,14 @@ export const ShadowSlipping: Power = {
         "scale": 0,
         "table": "Melee_Ones"
       }
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-    ["Meta",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Stealth","Translucency",0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"allyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> earth eq || && praetoria source.MapTeamArea> eq ! &&"],
-    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"allyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> earth eq || && praetoria source.MapTeamArea> eq ! &&"],
+    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"allyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> earth eq || && praetoria source.MapTeamArea> eq ! &&",true],
+    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"allyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> earth eq || && praetoria source.MapTeamArea> eq ! &&",true],
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"praetorianprogress source> praetoria eq praetoria source.MapTeamArea> eq ||",true]
   ],
   "requires": "Warshade_Defensive.Umbral_Aura.Shadow_Slip",

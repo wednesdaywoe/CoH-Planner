@@ -12,6 +12,8 @@ export const EnergyTransfer: Power = {
   "name": "Energy Transfer",
   "internalName": "Energy_Transfer",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme smashing and energy damage. Energy Transfer has a good chance of Disorienting the target. Unlike other Stalker primary attack powers, Energy Transfer cannot land a Critical hit.  However, if this attack is executed successfully while Hidden, you can avoid the Hit Point loss to yourself and deal a massive blow with no penalty. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient, Self -HP",
   "icon": "powerpunch_energytransfer.png",
@@ -20,6 +22,9 @@ export const EnergyTransfer: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -53,6 +58,11 @@ export const EnergyTransfer: Power = {
       "type": "Energy",
       "scale": 3,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 3,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -65,12 +75,12 @@ export const EnergyTransfer: Power = {
   "atoms": [
     ["Damage","Smashing",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Special",3,1,0,"Melee_Damage","Abs","Expression","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + Negate 1.0 + rand >= @StdResult *"],
+    ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.5],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Smashing",1.338661,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",2.774504,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Special",3,1,0,"Melee_Damage","Abs","Expression","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + Negate 1.0 + rand >= @StdResult *"],
-    ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.5]
   ],
   "specialEffects": [
     {

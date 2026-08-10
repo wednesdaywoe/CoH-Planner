@@ -12,12 +12,17 @@ export const DullPain: Power = {
   "name": "Second Wind",
   "internalName": "Dull_Pain",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "When you use this power you will recover a percentage of your missing health, in addition to increasing your maximum hit points. Should you fall in battle after using this power, you can stand up and fight again. If used while defeated, you will stand back up and be protected from XP Debt for 90 seconds and immune to most damage for 15 seconds.Note: the self resurrect granted if this power is activated while alive can not be enhanced.",
   "shortHelp": "Self +Max HP, Rez(Special)",
   "icon": "regeneration_dullpain.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 360,
@@ -51,15 +56,16 @@ export const DullPain: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_HealSelf"
     }
   },
   "atoms": [
-    ["Meta",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["MaxHP",null,1,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["MaxHP",null,1,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,0,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Meta",null,0,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
     ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ]
 };

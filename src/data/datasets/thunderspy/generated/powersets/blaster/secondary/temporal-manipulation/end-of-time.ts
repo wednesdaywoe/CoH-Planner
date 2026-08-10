@@ -12,12 +12,17 @@ export const EndofTime: Power = {
   "name": "End of Time",
   "internalName": "End_of_Time",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You open a rift in time that can suck in enemies and drag them into a doomed future. The affected enemies will be slowed, their chance ToHit decreased, and damage reduced as they try to fight you from their weakest point in time. Targets affected by the Delayed effect will be impacted more harshly. Recharge: Long",
   "shortHelp": "Locational AoE (Toggle), Foe -ToHit, -Damage, -Slow",
   "icon": "timemanipulation_timesjuncture.png",
   "powerType": "Toggle",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

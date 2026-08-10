@@ -12,12 +12,17 @@ export const Rebirth: Power = {
   "name": "Rebirth",
   "internalName": "Rebirth",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Rebirth can either greatly heal a conscious ally for a large amount of health over time or it can revive a fallen ally with a large amount of health and endurance and cause them to recover health over time.  This power also grants 3 stacks of Bloom.  Recharge: Very Long",
   "shortHelp": "Ranged, Ally Rez, +Heal Over Time, Special, +3 Bloom",
   "icon": "natureaffinity_rebirth.png",
   "powerType": "Click",
   "targetType": "Teammate",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadOrAliveLeaguemate"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 45,
@@ -61,8 +66,8 @@ export const Rebirth: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 >"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 >",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Heal",null,5,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Heal",null,0.454545,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],

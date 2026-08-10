@@ -12,12 +12,17 @@ export const Strangler: Power = {
   "name": "Strangler",
   "internalName": "Strangler",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Holds a distant foe by Strangling him with massive root-like vines. The target is held helpless, while he is slowly crushed by the vines. Damage: Moderate(DoT), Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DoT(Smashing), Foe Hold",
   "icon": "plantcontrol_strangler.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

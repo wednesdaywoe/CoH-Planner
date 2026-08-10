@@ -12,6 +12,8 @@ export const GravityShield: Power = {
   "name": "Gravity Shield",
   "internalName": "Gravity_Shield",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on Gravity Shield, you become highly resistant to Smashing and Lethal damage, deflecting away such physical attacks. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
   "icon": "umbralaura_gravityshield.png",
@@ -22,6 +24,9 @@ export const GravityShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

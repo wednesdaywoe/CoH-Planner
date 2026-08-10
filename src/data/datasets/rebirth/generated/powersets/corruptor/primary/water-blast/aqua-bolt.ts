@@ -12,12 +12,17 @@ export const AquaBolt: Power = {
   "name": "Aqua Bolt",
   "internalName": "Aqua_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You strike your foe with a rapid blast of freezing cold water causing Light Cold and Smashing damage as well as reducing their defense. Aqua Bolt builds 1 Tidal Power. Damage: Light, Recharge: Very Fast",
   "shortHelp": "Ranged, Light DMG(Cold/Smash), Foe -Def, Self +Tidal Power",
   "icon": "waterblast_aquabolt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

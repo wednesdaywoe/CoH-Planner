@@ -12,6 +12,8 @@ export const FaradayCage: Power = {
   "name": "Faraday Cage",
   "internalName": "Faraday_Cage",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Create a large energy barrier at your location which provides all allies within resistance to all damage except Toxic. They are also protected from status effects, knockbacks, endurance drain, recovery debuffs and recharge debuffs. Casting this power again will move the energy barrier to your location. Standing inside your own Faraday Cage will grant you a stack of Static every 5 seconds.",
   "shortHelp": "Location (PBAoE), Team +Res(All DMG but Toxic, Status, Knockback, -Rech, -Rec, -End)",
   "icon": "shocktherapy_faradaycage.png",
@@ -22,6 +24,9 @@ export const FaradayCage: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -64,6 +69,15 @@ export const FaradayCage: Power = {
               "effects": [
                 {
                   "type": "ResistanceBuff",
+                  "resistanceTypes": [
+                    "smashing",
+                    "lethal",
+                    "fire",
+                    "cold",
+                    "energy",
+                    "negative",
+                    "psionic"
+                  ],
                   "scale": 1.5,
                   "table": "Ranged_Res_Dmg"
                 },
@@ -120,6 +134,9 @@ export const FaradayCage: Power = {
               "castTime": 0,
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Friend"
+              ],
               "radius": 25,
               "maxTargets": 255
             }

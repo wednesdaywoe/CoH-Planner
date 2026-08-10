@@ -12,12 +12,17 @@ export const ShadowBolt: Power = {
   "name": "Shadow Bolt",
   "internalName": "Shadow_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. This power can be used while in Dwarf form, although only at a reduced range. While in dwarf form, this power will inflict a stronger attack and movement debuff, in addition to taunt its target.Damage: Minor.Recharge: Very Fast.",
   "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_shadowbolt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -52,15 +57,18 @@ export const ShadowBolt: Power = {
       "slow": 4
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
       "runSpeed": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       }
@@ -95,15 +103,18 @@ export const ShadowBolt: Power = {
           "taunt": 4
         },
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.3,
           "table": "Melee_Slow"
         },
         "slow": {
           "flySpeed": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Slow"
           },
           "runSpeed": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Slow"
           }
@@ -117,7 +128,14 @@ export const ShadowBolt: Power = {
       "description": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. Damage: Minor",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Negative",0.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SSDamage"],
+        ["Movement","Run",0.3,1,4,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["Movement","Fly",0.3,1,4,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["RechargeTime",null,0.3,1,4,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["Mez","Taunt",1,1,4,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+      ]
     }
   },
   "modesDisallowed": [

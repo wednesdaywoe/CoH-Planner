@@ -12,12 +12,17 @@ export const Earthquake: Power = {
   "name": "Earthquake",
   "internalName": "Earthquake",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Generates a powerful, localized Earthquake. Most foes that pass through the location will fall down. The violent shaking also reduces their chance to hit and Defense. Recharge: Slow",
   "shortHelp": "Ranged (Location AoE), Foe Knockback, -To Hit, -Def",
   "icon": "stonecomp_earthquake.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

@@ -12,12 +12,17 @@ export const ChiStrike: Power = {
   "name": "Chi Strike",
   "internalName": "Chi_Strike",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You concentrate your Chi to allow you to channel your soul into your strikes. For a short time you will gain a moderate increase to your damage and chance to hit. Additionally, for this period your sword and knife attacks will have a portion of their Lethal damage changed into Energy damage, with a small amount of additional bonus Energy damage added. Recharge: Long",
   "shortHelp": "Self +DMG, +To Hit, Special",
   "icon": "ninjaassault_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const ChiStrike: Power = {
   "effects": {
     "buffDuration": 20,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Melee_Buff_Dmg"
     },

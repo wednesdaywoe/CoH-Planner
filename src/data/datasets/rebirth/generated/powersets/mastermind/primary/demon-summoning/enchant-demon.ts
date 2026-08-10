@@ -12,12 +12,17 @@ export const EnchantDemon: Power = {
   "name": "Enchant Demon",
   "internalName": "Enchant_Demon",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Enchant Demon will permanently bestow new powers and abilities to all of your Demon Henchman. The powers gained are unique and dependent upon the type of Demon Henchman that is Enchanted. Enchant Demon only works on your Demon Henchmen and you can only Enchant your Demon Henchmen once with this power. Recharge: Fast",
   "shortHelp": "Ranged, Enchant Demon Henchman",
   "icon": "demonsummoning_enchantdemon.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,

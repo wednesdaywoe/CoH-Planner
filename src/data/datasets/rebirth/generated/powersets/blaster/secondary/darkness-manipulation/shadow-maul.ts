@@ -12,6 +12,8 @@ export const ShadowMaul: Power = {
   "name": "Shadow Maul",
   "internalName": "Shadow_Maul",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You wrap your entire arms with Negative Energy channeled from the Netherworlds, then perform a series of blows that deal a lot of damage over a short period of time to multiple targets in front of you. These blows cloud your target's vision, lowering his chance to hit for a short time. Damage: High(DoT), Recharge: Moderate",
   "shortHelp": "Melee (Cone), Superior DoT(Smash/Negative), Foe -To Hit",
   "icon": "darknessmanipulation_shadowmaul.png",
@@ -20,6 +22,9 @@ export const ShadowMaul: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

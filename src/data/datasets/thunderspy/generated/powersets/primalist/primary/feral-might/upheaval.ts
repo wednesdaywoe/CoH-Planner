@@ -12,6 +12,8 @@ export const Upheaval: Power = {
   "name": "Upheaval",
   "internalName": "Upheaval",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You channel the forces of nature and release them shattering the earth beneath you sending shards of stone and debris out at nearby foes causing high damage and potentially knocking them down. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a large amount of health. In Hunter form you'll deal lethal damage and reduce the targets' resistance slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. Upheaval will deal high damage if the user has no Primal Energy, however it will deal additional damage for each charge of Primal Energies the user owns. Upheaval consumes all Primal Energies. Damage: Special, Recharge: Long",
   "shortHelp": "PBAoE, Special DMG, Foe Knockdown, -All Primal Energy",
   "icon": "feralmight_upheaval.png",
@@ -20,6 +22,9 @@ export const Upheaval: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -73,7 +78,7 @@ export const Upheaval: Power = {
   "atoms": [
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kMeter source> 1 * 1.3 + @StdResult *"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Heal",null,0.2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Heal",null,0.4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0]
   ],
@@ -107,34 +112,42 @@ export const Upheaval: Power = {
         },
         "resistanceDebuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           }
@@ -144,7 +157,28 @@ export const Upheaval: Power = {
       "description": "You channel the forces of nature and release them shattering the earth beneath you sending shards of stone and debris out at nearby foes causing high damage and potentially knocking them down. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a large amount of health. In Hunter form you'll deal lethal damage and reduce the targets' resistance slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. Upheaval will deal high damage if the user has no Primal Energy, however it will deal additional damage for each charge of Primal Energies the user owns. Upheaval consumes all Primal Energies. Damage: Special, Recharge: Long",
       "effectArea": "AoE",
       "targetType": "Self",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kMeter source> 1 * 1.3 + @StdResult *"],
+        ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["Resistance","Smashing",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Lethal",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Fire",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Cold",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Energy",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Negative",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Psionic",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Toxic",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Smashing",-1.5,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Lethal",-1.5,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Fire",-1.5,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Cold",-1.5,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Energy",-1.5,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Negative",-1.5,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Psionic",-1.5,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Toxic",-1.5,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true]
+      ]
     },
     "ProwlerMode": {
       "internalName": "Upheaval_Prowler",
@@ -200,7 +234,17 @@ export const Upheaval: Power = {
       "description": "You channel the forces of nature and release them shattering the earth beneath you sending shards of stone and debris out at nearby foes causing high damage and potentially knocking them down. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a large amount of health. In Hunter form you'll deal lethal damage and reduce the targets' resistance slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. Upheaval will deal high damage if the user has no Primal Energy, however it will deal additional damage for each charge of Primal Energies the user owns. Upheaval consumes all Primal Energies. Damage: Special, Recharge: Long",
       "effectArea": "AoE",
       "targetType": "Self",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kMeter source> 1 * 1.3 + @StdResult *"],
+        ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["Damage","Lethal",0.65,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true],
+        ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"]
+      ]
     }
   },
   "damageTypes": [

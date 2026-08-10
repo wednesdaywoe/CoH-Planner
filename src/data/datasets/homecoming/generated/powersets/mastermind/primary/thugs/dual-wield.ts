@@ -12,12 +12,17 @@ export const DualWield: Power = {
   "name": "Dual Wield",
   "internalName": "Dual_Wield",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Fires both pistols at once at a time target. Firing both pistols at once is slower than a single shot, but deals more damage, and the target may get knocked down by the force of the impact.Street Cred:If you own Gang War and are at least level 18, activating this power will grant a stack of Street Cred and summon a Pose to fight by your side for 30 up to seconds. Each stack of Street Cred owned will increase the chances to summon all 13 Posse when using Gang War. Enhancements in this power will also enhance the stats of Posse summoned with this attack. You may only have build Street Cred with this power once every 30 seconds.",
   "shortHelp": "Ranged, DMG(Lethal), Foe Knockback",
   "icon": "thugs_targetedrangedheavydmg.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,

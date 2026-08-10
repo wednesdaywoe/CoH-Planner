@@ -12,12 +12,17 @@ export const ShadowStep: Power = {
   "name": "Shadow Step",
   "internalName": "Shadow_Step",
   "available": 0,
+  "autoIssue": true,
+  "free": true,
   "description": "You can Teleport long distances. Shadow Step has no recharge time and can be reactivated without pause, as long as you have Endurance. This power can be used while in Dark Nova or Black Dwarf form. However, activating it while in Dark Nova will transform you back into your original form.",
   "shortHelp": "Ranged (Location), Self Teleport",
   "icon": "umbralaura_shadowstep.png",
   "powerType": "Click",
   "targetType": "Teleport",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 300,
@@ -42,22 +47,26 @@ export const ShadowStep: Power = {
     },
     "movement": {
       "fly": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones"
       }
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones",
         "toWho": "Self"
       },
       "movementControl": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones",
         "toWho": "Self"
       },
       "movementFriction": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones",
         "toWho": "Self"
@@ -65,11 +74,13 @@ export const ShadowStep: Power = {
     },
     "stealth": {
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Ranged_Ones"
       }
     },
     "teleport": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     },
@@ -79,7 +90,7 @@ export const ShadowStep: Power = {
     ]
   },
   "atoms": [
-    ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Movement","FlyMode",1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
@@ -94,6 +105,10 @@ export const ShadowStep: Power = {
       "label": "Shadow Slipping",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Warshade_Defensive.Umbral_Aura.Shadow_Slipping",
+        "count": 1
+      },
       "effects": {
         "buffDuration": 10,
         "durations": {

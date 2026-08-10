@@ -12,12 +12,18 @@ export const ShadowRecall: Power = {
   "name": "Shadow Recall",
   "internalName": "Shadow_Recall",
   "available": 9,
+  "autoIssue": true,
+  "free": true,
   "description": "You can Teleport a single foe or ally directly next to yourself. A successful hit must be made in order to Teleport the foes. Some powerful foes cannot be Teleported. Enemy players that are teleported will be temporarily out of phase, and cannot be targeted or damaged. This power can be interrupted while teleporting foes.Recharge: Fast.",
   "shortHelp": "Teleport Teamate or Foe",
   "icon": "umbralaura_shadowrecall.png",
   "powerType": "Click",
   "targetType": "Any",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadOrAliveLeaguemate",
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 10000,
@@ -58,6 +64,106 @@ export const ShadowRecall: Power = {
   "atoms": [
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+  ],
+  "formVariants": [
+    {
+      "condition": "target.isFriend? !",
+      "internalName": "Starless_Step",
+      "stats": {
+        "accuracy": 1,
+        "range": 200,
+        "recharge": 20,
+        "endurance": 15,
+        "castTime": 3.93,
+        "interruptTime": 2,
+        "timeToRoot": 1.8667
+      },
+      "effects": {
+        "buffDuration": 1.5,
+        "durations": {
+          "stealth": 1.5
+        },
+        "stealth": {
+          "translucency": {
+            "scale": 0,
+            "table": "Ranged_Ones"
+          }
+        },
+        "summon": {
+          "copyBoosts": true,
+          "duration": 1,
+          "entity": "Pets_TPFoeTaunt",
+          "isPseudoPet": false
+        },
+        "teleport": {
+          "scale": 2.1,
+          "table": "Ranged_Ones"
+        }
+      },
+      "shortHelp": "Ranged, Teleport Foe",
+      "description": "You can Teleport a single foe through a dark matter wormhole directly next to you. A successful hit must be made in order to Teleport the target, and some powerful foes cannot be Teleported. This power can be interrupted.",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Stealth",
+          "Translucency",
+          0,
+          1,
+          1.5,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Mez",
+          "Teleport",
+          2.1,
+          1,
+          0,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "EntCreate",
+          null,
+          1,
+          1,
+          1,
+          "Ranged_Level",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ]
+      ]
+    }
   ],
   "requires": "Inherent.Inherent.Shadow_Recall !",
   "modesDisallowed": [

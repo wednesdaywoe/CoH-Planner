@@ -12,12 +12,17 @@ export const ConserveEnergy: Power = {
   "name": "Conserve Energy",
   "internalName": "Conserve_Energy",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You can focus for a moment to Conserve your Energy. After activating this power, you expend less Endurance on all other powers for a while.Recharge: Very Long.",
   "shortHelp": "Self Endurance Discount",
   "icon": "luminousaura_conserveenergy.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 600,
@@ -35,6 +40,7 @@ export const ConserveEnergy: Power = {
       "enduranceDiscount": 90
     },
     "enduranceDiscount": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Stun"
     },
@@ -45,7 +51,7 @@ export const ConserveEnergy: Power = {
   },
   "atoms": [
     ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"EyesFX",null,"null"]
   ],
   "modesDisallowed": [
     "Peacebringer_Blaster_Mode",

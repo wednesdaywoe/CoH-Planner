@@ -21,8 +21,12 @@ import { MassDriver as MassDriver } from './mass-driver';
 
 export const powerset: Powerset = {
   id: 'dominator/kinetic-assault',
-  internalName: 'kinetic_assault',
+  setPath: 'Dominator_Assault.Kinetic_Assault',
   name: 'Kinetic Assault',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Through manipulation of latent energy present all around you, you create powerful blasts and forceful blows that can prove devastating to your opponents. As you manipulate this energy, you will accumulate Impulse.  Each stack of Impulse grants you a scaling damage buff.  Impulse is also used to empower Disrupting Torrent, Kinetic Shockwave, Energetic Strike and Mass Driver.',
   icon: 'kinetic_assault_set.ico',
   archetype: 'dominator',

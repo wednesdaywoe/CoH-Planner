@@ -12,6 +12,8 @@ export const DefensiveSweep: Power = {
   "name": "Defensive Sweep",
   "internalName": "Defensive_Sweep",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You take a defensive stance and strike your opponents.  Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks.  Damage: Light, Recharge: Fast",
   "shortHelp": "Melee(Cone), Light DMG(Smashing), Self +DEF(Melee, Smash)",
   "icon": "titanweapons_defensivesweep.png",
@@ -20,6 +22,9 @@ export const DefensiveSweep: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -115,7 +120,13 @@ export const DefensiveSweep: Power = {
       "description": "You take a defensive stance and strike your opponents.  Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks. Damage: Light, Recharge: Fast",
       "effectArea": "Cone",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Smashing",0.679,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+        ["Defense","Smashing",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+        ["Damage","Fire",0.30555,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+      ]
     }
   },
   "requires": "Scrapper_Defense.Shield_Defense !",

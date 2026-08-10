@@ -12,12 +12,17 @@ export const CombatTrainingDefensive: Power = {
   "name": "Combat Training: Evasive",
   "internalName": "Combat_Training:_Defensive",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Your training allows you to focus your will, allowing you to move faster than normal to more easily evade ranged attacks as well as resist slow effects. This power is always on and permanently increases your ranged defense, attack rate, and movement speed.",
   "shortHelp": "Auto: Self +DEF(Ranged) +Recharge, +SPD, Res (Slow)",
   "icon": "trainingandgadgets_combattrainingdefensive.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 4,
@@ -35,10 +40,12 @@ export const CombatTrainingDefensive: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       }
@@ -66,6 +73,7 @@ export const CombatTrainingDefensive: Power = {
       }
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     }

@@ -12,11 +12,17 @@ export const ShadowRecall: Power = {
   "name": "Starless Recall",
   "internalName": "Shadow_Recall",
   "available": 8,
+  "autoIssue": true,
+  "free": true,
   "description": "You can Teleport your target, be they friend or foe, to yourself. You can also rescue a fallen teammate who may be in a hostile location, as long as they are on the same map. Range is not infinite, but it's long and can be enhanced.  Allies can be teleported from near Zone-Range distances.  However, foes must be much closer. This power can be interrupted.",
   "shortHelp": "Recall",
   "icon": "umbralaura_starlessrecall.png",
   "powerType": "Click",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadOrAliveLeaguemate",
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 10000,
@@ -44,22 +50,397 @@ export const ShadowRecall: Power = {
     },
     "stealth": {
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Ranged_Ones"
       }
     },
     "teleport": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? ! Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? ! &&"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? ! Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? ! &&",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"]
+  ],
+  "formVariants": [
+    {
+      "condition": "target.isFriend? ! Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? ! &&",
+      "internalName": "Shadow_Recall_Enemy",
+      "stats": {
+        "accuracy": 1,
+        "range": 150,
+        "recharge": 20,
+        "endurance": 15,
+        "castTime": 3.93,
+        "interruptTime": 2
+      },
+      "effects": {
+        "buffDuration": 15,
+        "durations": {
+          "mezResistance": 15,
+          "stealth": 1.5
+        },
+        "mezResistance": {
+          "teleport": {
+            "ignoreStrength": true,
+            "scale": 100,
+            "table": "Ranged_Ones"
+          }
+        },
+        "stealth": {
+          "translucency": {
+            "scale": 0,
+            "table": "Ranged_Ones"
+          }
+        },
+        "summon": {
+          "duration": 1,
+          "entity": "Pets_TPFoeTaunt",
+          "isPseudoPet": false
+        },
+        "teleport": {
+          "scale": 2.1,
+          "table": "Ranged_Ones"
+        }
+      },
+      "shortHelp": "Ranged, High DMG(Negative), Self Teleport, +DEF(All)",
+      "description": "Starless Gateway allows you to teleport a group of foes in close proximity to each other to your location.  Training this power unlocks Shadow Slip, allowing you to Teleport yourself long distances.  Recharge: Long",
+      "effectArea": "SingleTarget",
+      "targetType": "Any",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Stealth",
+          "Translucency",
+          0,
+          1,
+          1.5,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Mez",
+          "Teleport",
+          2.1,
+          1,
+          0,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "MezResist",
+          "Teleport",
+          100,
+          1,
+          15,
+          "Ranged_Ones",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "EntCreate",
+          null,
+          -1,
+          1,
+          1,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ]
+      ]
+    },
+    {
+      "condition": "enttype target> critter eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",
+      "internalName": "Shadow_Recall_NPC",
+      "stats": {
+        "accuracy": 1,
+        "range": 100,
+        "recharge": 20,
+        "endurance": 15,
+        "castTime": 1.93
+      },
+      "effects": {
+        "buffDuration": 15,
+        "durations": {
+          "mezResistance": 15,
+          "stealth": 1.5
+        },
+        "mezResistance": {
+          "teleport": {
+            "ignoreStrength": true,
+            "scale": 100,
+            "table": "Ranged_Ones"
+          }
+        },
+        "stealth": {
+          "translucency": {
+            "scale": 0,
+            "table": "Ranged_Ones"
+          }
+        },
+        "summon": {
+          "duration": 1,
+          "entity": "Pets_TPFoeTaunt",
+          "isPseudoPet": false
+        },
+        "teleport": {
+          "scale": 2.1,
+          "table": "Ranged_Ones"
+        }
+      },
+      "shortHelp": "Ranged, High DMG(Negative), Self Teleport, +DEF(All)",
+      "description": "Starless Gateway allows you to teleport a group of foes in close proximity to each other to your location.  Training this power unlocks Shadow Slip, allowing you to Teleport yourself long distances.  Recharge: Long",
+      "effectArea": "SingleTarget",
+      "targetType": "Any",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Stealth",
+          "Translucency",
+          0,
+          1,
+          1.5,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Mez",
+          "Teleport",
+          2.1,
+          1,
+          0,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "MezResist",
+          "Teleport",
+          100,
+          1,
+          15,
+          "Ranged_Ones",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "EntCreate",
+          null,
+          1,
+          1,
+          1,
+          "Ranged_Level",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ]
+      ]
+    },
+    {
+      "condition": "enttype target> player eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",
+      "internalName": "Shadow_Recall_Enemy",
+      "stats": {
+        "accuracy": 1,
+        "range": 150,
+        "recharge": 20,
+        "endurance": 15,
+        "castTime": 3.93,
+        "interruptTime": 2
+      },
+      "effects": {
+        "buffDuration": 15,
+        "durations": {
+          "mezResistance": 15,
+          "stealth": 1.5
+        },
+        "mezResistance": {
+          "teleport": {
+            "ignoreStrength": true,
+            "scale": 100,
+            "table": "Ranged_Ones"
+          }
+        },
+        "stealth": {
+          "translucency": {
+            "scale": 0,
+            "table": "Ranged_Ones"
+          }
+        },
+        "summon": {
+          "duration": 1,
+          "entity": "Pets_TPFoeTaunt",
+          "isPseudoPet": false
+        },
+        "teleport": {
+          "scale": 2.1,
+          "table": "Ranged_Ones"
+        }
+      },
+      "shortHelp": "Ranged, High DMG(Negative), Self Teleport, +DEF(All)",
+      "description": "Starless Gateway allows you to teleport a group of foes in close proximity to each other to your location.  Training this power unlocks Shadow Slip, allowing you to Teleport yourself long distances.  Recharge: Long",
+      "effectArea": "SingleTarget",
+      "targetType": "Any",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Stealth",
+          "Translucency",
+          0,
+          1,
+          1.5,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Mez",
+          "Teleport",
+          2.1,
+          1,
+          0,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "MezResist",
+          "Teleport",
+          100,
+          1,
+          15,
+          "Ranged_Ones",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "EntCreate",
+          null,
+          -1,
+          1,
+          1,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ]
+      ]
+    }
   ],
   "requires": "Inherent.Inherent.Shadow_Recall !",
   "modesDisallowed": [

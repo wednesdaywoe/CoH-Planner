@@ -12,12 +12,17 @@ export const Hypothermia: Power = {
   "name": "Hypothermia",
   "internalName": "Hypothermia",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You hurl a ball of ice cold water at your foe which explodes upon impact. The target and all nearby foes will have their movement speed dramatically reduced and periodically be put to sleep. This power has a small chance to place the Drowning effect on its targets. Hypothermia's slow effect is empowered and has a greater chance to put a foe to sleep if it is suffering from Drowning.  Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Sleep, -Speed",
   "icon": "watercontrol_hypothermia.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -59,6 +64,7 @@ export const Hypothermia: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.35,
         "table": "Ranged_Slow"
       },
@@ -73,17 +79,17 @@ export const Hypothermia: Power = {
     }
   },
   "atoms": [
-    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
+    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&",null,null,null,null,null,null,null,0.6],
     ["Movement","Run",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","Fly",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","Jump",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","JumpHeight",0.35,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.32465052604675293,null,true],
-    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&",true],
-    ["Mez","Sleep",6,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
-    ["Mez","Sleep",4,1,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
-    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
-    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&",true,null,null,null,null,null,null,0.6],
+    ["Mez","Sleep",6,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true,null,null,null,null,null,null,0.6],
+    ["Mez","Sleep",4,1,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true,null,null,null,null,null,null,0.6],
+    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true,null,null,null,null,null,null,0.75],
+    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true,null,null,null,null,null,null,0.75],
     ["Movement","Run",0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
     ["Movement","Fly",0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
     ["Movement","Jump",0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
@@ -132,6 +138,7 @@ export const Hypothermia: Power = {
             "table": "Ranged_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.4375,
             "table": "Ranged_Slow"
           },

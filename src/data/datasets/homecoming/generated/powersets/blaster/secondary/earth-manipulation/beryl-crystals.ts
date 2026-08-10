@@ -12,6 +12,8 @@ export const BerylCrystals: Power = {
   "name": "Beryl Crystals",
   "internalName": "Beryl_Crystals",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power summons several rare Beryl Crystals to orbit around you. These Crystals can bring clarity of the mind and increase your Accuracy, Perception to see hidden foes, and grant resistance to Confusion, Perception and ToHit debuffs.Recharge: Fast.",
   "shortHelp": "Toggle: Self Res(Confuse, Perception, ToHit), +Perception, Accuracy",
   "icon": "earthmanip_beryl.png",
@@ -22,6 +24,9 @@ export const BerylCrystals: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -37,6 +42,7 @@ export const BerylCrystals: Power = {
   "maxSlots": 6,
   "effects": {
     "accuracyBuff": {
+      "ignoreStrength": true,
       "scale": 0.33,
       "table": "Melee_Ones"
     },
@@ -52,6 +58,7 @@ export const BerylCrystals: Power = {
         "table": "Melee_Ones"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }

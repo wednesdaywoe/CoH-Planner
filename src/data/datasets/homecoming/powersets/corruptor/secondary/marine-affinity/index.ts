@@ -21,8 +21,12 @@ import { CallDepths as CallDepths } from './call-depths';
 
 export const powerset: Powerset = {
   id: 'corruptor/marine-affinity',
-  internalName: 'marine_affinity',
+  setPath: 'Corruptor_Buff.Marine_Affinity',
   name: 'Marine Affinity',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Command the various powers of the ocean to buff your allies, and wash away your enemies.',
   icon: 'nature_affinity_set.ico',
   archetype: 'corruptor',

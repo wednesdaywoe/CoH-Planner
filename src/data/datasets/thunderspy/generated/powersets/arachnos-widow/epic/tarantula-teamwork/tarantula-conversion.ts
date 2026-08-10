@@ -12,6 +12,8 @@ export const TarantulaConversion: Power = {
   "name": "Tarantula Conversion",
   "internalName": "Tarantula_Conversion",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Through an excruciating augmentation process you have become an Arachnos Tarantula. Your exoskeleton makes you more resilient to all incoming damage and increases your maximum health. Grants the the ability to use Tarantula powers. Any normal Widow, Pool, or Patron attacks will be restricted from use.",
   "shortHelp": "Toggle: Self +Res (All), Self +Max HP",
   "icon": "tarantulateamwork_tarantulaconversion.png",
@@ -22,6 +24,9 @@ export const TarantulaConversion: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,6 +47,7 @@ export const TarantulaConversion: Power = {
   "effects": {
     "buffDuration": 10.25,
     "defenseDebuff": {
+      "ignoreStrength": true,
       "scale": 1.35,
       "table": "Ranged_Debuff_Def"
     },
@@ -56,6 +62,7 @@ export const TarantulaConversion: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_HealSelf"
     },
@@ -106,9 +113,9 @@ export const TarantulaConversion: Power = {
     ["MaxHP",null,0.5,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["MaxHP",null,0.5,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Mez","Intangible",3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,115,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,10.25,1,null,true],
-    ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,10.25,1,null,true,null,null,null,null,"@CustomFX FemaleTarantula eq !"],
-    ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,10.25,1,null,true,null,null,null,null,"@CustomFX FemaleTarantula eq"],
+    ["Meta",null,1,115,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,10.25,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,10.25,1,null,true,null,null,null,null,"@CustomFX FemaleTarantula eq !",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
+    ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,10.25,1,null,true,null,null,null,null,"@CustomFX FemaleTarantula eq",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Defense","All",1.35,1,10.25,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "setsModes": [

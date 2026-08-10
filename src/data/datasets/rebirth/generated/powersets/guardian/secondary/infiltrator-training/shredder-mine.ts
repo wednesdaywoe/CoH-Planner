@@ -12,12 +12,17 @@ export const ShredderMine: Power = {
   "name": "Shredder Mine",
   "internalName": "Shredder_Mine",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You can place a Shredder Mine on the ground which will explode if any foes pass near it. The blast of armor-piercing shrapnel inflicts moderate Lethal damage on nearby foes and briefly reduces their defense and resistance to damage; foes nearer to the center of the explosion will also take moderate fire damage and may be knocked down. The Shredder Mine is almost impossible to detect, but it is fragile and may be detonated early by an enemy's explosion. Damage: Superior, Recharge: Long",
   "shortHelp": "Place Mine: PBAoE, Superior DAM(Lethal/Fire), Foe Knockdown, -Res, -DEF",
   "icon": "infiltratortraining_shreddermine.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 60,

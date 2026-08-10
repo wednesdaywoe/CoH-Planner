@@ -12,12 +12,17 @@ export const VenomousGas: Power = {
   "name": "Venomous Gas",
   "internalName": "Venomous_Gas",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You surround yourself in a cloud of toxic vapors that significantly weaken any enemies that get near you.  Affected foes have their defense, damage resistance, damage and chance to hit reduced moderately.  Recharge: Moderate",
   "shortHelp": "Toggle: PBAoE, Foe -Res(All), -DMG(All), -Def(All), -To(Hit)",
   "icon": "poison_venomousgas.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -43,6 +48,7 @@ export const VenomousGas: Power = {
   "effects": {
     "buffDuration": 0.75,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Ranged_Debuff_Dam"
     },
@@ -58,34 +64,42 @@ export const VenomousGas: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       }

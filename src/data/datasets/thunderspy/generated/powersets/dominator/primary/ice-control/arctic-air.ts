@@ -12,6 +12,8 @@ export const ArcticAir: Power = {
   "name": "Arctic Air",
   "internalName": "Arctic_Air",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you are surrounded in a fog of Arctic Air that dramatically slows the attack and movement speed of nearby foes.  The chill of Arctic Air is so bitter that many foes are forced to flee, albeit very slowly, from the immediate area. Others may attack their own allies, as the fog from the Arctic Air is thick and can cause much confusion.  The cold air can also reduce the stealth capability of affected foes. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Foe Confuse(Special), -SPD, -Recharge, -Stealth",
   "icon": "iceformation_articair.png",
@@ -22,6 +24,9 @@ export const ArcticAir: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -61,6 +66,7 @@ export const ArcticAir: Power = {
       "table": "Ranged_Fear"
     },
     "durations": {
+      "movementCapDebuff": 2.25,
       "rechargeDebuff": 2.25,
       "slow": 2.25,
       "stealth": 2.25
@@ -70,7 +76,15 @@ export const ArcticAir: Power = {
       "scale": 2,
       "table": "Ranged_Fear"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
@@ -80,6 +94,7 @@ export const ArcticAir: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
@@ -88,8 +103,8 @@ export const ArcticAir: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.65,
+        "table": "Ranged_Slow"
       }
     },
     "stealth": {

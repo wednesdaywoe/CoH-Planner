@@ -12,12 +12,17 @@ export const ShadowSlip: Power = {
   "name": "Shadow Slip",
   "internalName": "Shadow_Slip",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Shadow Slip teleports enemies from up to 100ft away into melee range of the caster.Recharge: Long.",
   "shortHelp": "Melee (PBAoE), Foe Teleport",
   "icon": "umbralaura_shadowslip.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 100,
@@ -40,6 +45,7 @@ export const ShadowSlip: Power = {
     },
     "mezResistance": {
       "teleport": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Ranged_Ones"
       }

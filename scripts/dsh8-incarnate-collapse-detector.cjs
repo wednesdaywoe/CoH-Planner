@@ -59,7 +59,9 @@ const DS_EXPORT_ROOT = DATASET === 'homecoming'
   ? path.join(REPO, 'exported_powers/incarnate')
   : path.join(REPO, 'exported_powers', DATASET, 'incarnate');
 const GEN_FILE = path.join(REPO, 'src/data/datasets', DATASET, 'generated/incarnate-effects.ts');
-const OUT_PATH = path.join(REPO, 'scripts', 'dsh8-incarnate-collapse-worklist.json');
+// --worklist lets callers that only read stdout (the DSH8 vitest gate) redirect
+// the side-effect file somewhere disposable instead of dirtying the committed one.
+const OUT_PATH = argVal('--worklist') || path.join(REPO, 'scripts', 'dsh8-incarnate-collapse-worklist.json');
 
 // ---------------------------------------------------------------------------
 // Canonical subtype token (shared with DSH6): fold bridge subType names and

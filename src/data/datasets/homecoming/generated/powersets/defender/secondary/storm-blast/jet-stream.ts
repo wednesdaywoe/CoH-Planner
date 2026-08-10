@@ -12,12 +12,17 @@ export const JetStream: Power = {
   "name": "Jet Stream",
   "internalName": "Jet_Stream",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You call forth a cone of rapidly moving air that repels enemies, causing Smashing damage. Enemies who are within a Storm Cell will not be repelled, but instead will be knocked down.",
   "shortHelp": "Ranged (Cone), DMG(Smashing), Foe Knockdown or Repel",
   "icon": "stormblast_jetstream.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -60,9 +65,9 @@ export const JetStream: Power = {
   },
   "atoms": [
     ["Damage","Smashing",0.8,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
-    ["Mez","Repel",4,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !"],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25],
+    ["Mez","Repel",4,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !",null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !",null,null,null,null,null,null,null,null,null,"IncreaseStormStrength"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"StormBrewing"],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
     ["Damage","Smashing",0.8037,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Mez","Repel",2,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !",true],

@@ -12,6 +12,8 @@ export const SpiritSunder: Power = {
   "name": "Spirit Sunder",
   "internalName": "Spirit_Sunder",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You Sunder the spirit from one of your foes to create a life transferring conduit between them and yourself. This will transfer Hit Points from your enemy to yourself. Foes Siphoned in this manner will summon a spectral essence to do your bidding. the spirit is only loosely bound to your control and will eventually move on to the next world.  Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Negative/Psionic), Foe Fear, Self +HP, Summon Spirits",
   "icon": "spectralmelee9.png",
@@ -20,6 +22,9 @@ export const SpiritSunder: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "DeadOrAliveFoe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,11 @@ export const SpiritSunder: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Negative",
+      "scale": 3.18,
+      "table": "Melee_Damage"
+    },
+    {
       "type": "Heal",
       "scale": 1,
       "table": "Melee_HealSelf"
@@ -72,6 +82,7 @@ export const SpiritSunder: Power = {
   "atoms": [
     ["Damage","Negative",1.6,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Psionic",1.6,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Negative",3.18,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Mez","Terrorized",10,0.75,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
@@ -80,7 +91,6 @@ export const SpiritSunder: Power = {
     ["Damage","Psionic",1.48,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",2.961006,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
     ["Damage","Negative",2.961006,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-    ["Damage","Negative",3.18,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Damage","Negative",3.18,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
     ["Heal",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 eq",true]
   ],

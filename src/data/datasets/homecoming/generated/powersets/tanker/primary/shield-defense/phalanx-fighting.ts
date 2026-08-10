@@ -12,12 +12,18 @@ export const PhalanxFighting: Power = {
   "name": "Phalanx Fighting",
   "internalName": "Phalanx_Fighting",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Fighting very near your allies allows you to deflect attacks much easier. You will gain a small bonus to your melee, ranged and area of effect defense. This bonus grows for each ally near you. This power is always on and costs no endurance.",
   "shortHelp": "Auto: Self Special +DEF(Melee, Ranged, AoE)",
   "icon": "shielddefense_phalanxfighting.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Leaguemate",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 12,
@@ -58,9 +64,9 @@ export const PhalanxFighting: Power = {
     ["Defense","Ranged",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","Melee",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","AoE",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Defense","Ranged",0.3,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true,0.3],
-    ["Defense","Melee",0.3,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true,0.3],
-    ["Defense","AoE",0.3,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true,0.3]
+    ["Defense","Ranged",0.3,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true,0.3],
+    ["Defense","Melee",0.3,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true,0.3],
+    ["Defense","AoE",0.3,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true,0.3]
   ],
   "mechanicType": "parentMechanic"
 };

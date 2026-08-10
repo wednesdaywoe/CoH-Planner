@@ -12,6 +12,8 @@ export const MentalBlast: Power = {
   "name": "Mental Blast",
   "internalName": "Mental_Blast",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This basic attack does high Psionic damage, and can slightly reduce a target's attack speed. Damage: High, Recharge: Fast",
   "shortHelp": "Ranged, High DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_mentalblast.png",
@@ -23,6 +25,9 @@ export const MentalBlast: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -52,6 +57,7 @@ export const MentalBlast: Power = {
   "effects": {
     "buffDuration": 9.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
@@ -60,6 +66,7 @@ export const MentalBlast: Power = {
       "rechargeDebuff": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Slow"
     },

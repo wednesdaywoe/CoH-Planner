@@ -12,6 +12,8 @@ export const Strike: Power = {
   "name": "Strike",
   "internalName": "Strike",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a deadly Strike with your claws. This is a basic attack that deals a moderate amount of lethal damage.",
   "shortHelp": "Melee, DMG(Lethal)",
   "icon": "claws_clawsstrike.png",
@@ -20,6 +22,9 @@ export const Strike: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -49,7 +54,7 @@ export const Strike: Power = {
   },
   "atoms": [
     ["Damage","Lethal",1.24,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.558,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.558,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Lethal",1.411,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Tanker_Defense.Shield_Defense ! Tanker_Defense.Stone_Armor ! &&"

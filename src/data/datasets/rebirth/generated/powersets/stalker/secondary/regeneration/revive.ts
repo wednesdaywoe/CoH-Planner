@@ -12,12 +12,17 @@ export const Revive: Power = {
   "name": "Revive",
   "internalName": "Revive",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Should you fall in battle, you can turbocharge your metabolism to Revive yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance, and you will have a strong boost to your Regeneration and Recovery rates and be protected from XP Debt for 90 seconds. You will also have 15 seconds of immunity to most damage.  Recharge: Very Long",
   "shortHelp": "Self Rez, +Regeneration, +Recovery",
   "icon": "regeneration_revive.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,
@@ -52,6 +57,7 @@ export const Revive: Power = {
       "table": "Melee_Ones"
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
@@ -61,6 +67,7 @@ export const Revive: Power = {
       "table": "Melee_Ones"
     },
     "untouchable": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
@@ -75,6 +82,6 @@ export const Revive: Power = {
     ["Mez","Untouchable",10,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Regeneration",null,2.5,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
   ]
 };

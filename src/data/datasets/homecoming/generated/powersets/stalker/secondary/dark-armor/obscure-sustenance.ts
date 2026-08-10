@@ -12,12 +12,17 @@ export const ObscureSustenance: Power = {
   "name": "Obscure Sustenance",
   "internalName": "Obscure_Sustenance",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You can tap the dark essence of the Netherworld increase your regeneration and recovery rate, as well as making you resistance to -ToHit and -Regeneration debuffs.This power is mutually exclusive from Dark Regeneration.",
   "shortHelp": "Self Heal, +Regen, Res(-ToHit, -Regeneration), +Recovery(Special)",
   "icon": "darkarmor_darkregeneration.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 60,
@@ -44,10 +49,12 @@ export const ObscureSustenance: Power = {
     "buffDuration": 60,
     "debuffResistance": {
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Res_Boolean"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Res_Boolean"
       }

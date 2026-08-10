@@ -12,12 +12,17 @@ export const Dominate: Power = {
   "name": "Dominate",
   "internalName": "Dominate",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in their own mind and unable to defend themself.  Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Hold",
   "icon": "mentalcontrol_command.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

@@ -12,12 +12,17 @@ export const MudPots: Power = {
   "name": "Mud Pots",
   "internalName": "Mud_Pots",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you draw upon the geothermal power of the Earth to create a bubbling pool of hot mud around yourself. All foes in melee range will become snared and entrapped in the mud, Immobilizing some and slowing others. The boiling heat from Mud Pots may also deal some damage over time to the snared foes. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Fire), Foe Immobilize, -SPD",
   "icon": "earthassault_mudpots.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -44,6 +49,7 @@ export const MudPots: Power = {
   "effects": {
     "buffDuration": 5,
     "durations": {
+      "movementCapDebuff": 5,
       "slow": 5
     },
     "immobilize": {
@@ -51,8 +57,16 @@ export const MudPots: Power = {
       "scale": 2.25,
       "table": "Melee_Ones"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1.5,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "slow": {
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },
@@ -61,8 +75,8 @@ export const MudPots: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1.5,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.5,
+        "table": "Melee_Slow"
       }
     }
   },
@@ -72,8 +86,8 @@ export const MudPots: Power = {
     ["Movement","JumpHeight",0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","Jump",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.18,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||"],
     ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Fire",0.18,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

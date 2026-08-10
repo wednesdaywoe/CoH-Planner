@@ -12,12 +12,17 @@ export const FireBreath: Power = {
   "name": "Fire Breath",
   "internalName": "Fire_Breath",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You can breathe forth a torrent of fire that burns all foes within its narrow cone. Very accurate and very deadly at medium range. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Close (Cone), Moderate DoT(Fire)",
   "icon": "fireblast_arcoffire.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 40,

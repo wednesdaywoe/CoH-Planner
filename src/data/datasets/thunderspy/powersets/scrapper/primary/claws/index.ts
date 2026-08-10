@@ -21,8 +21,12 @@ import { Shockwave as Shockwave } from './shockwave';
 
 export const powerset: Powerset = {
   id: 'scrapper/claws',
-  internalName: 'claws',
+  setPath: 'Scrapper_Melee.Claws',
   name: 'Claws',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Claws are bones or blades that extend from your hands and cause Lethal damage. The lightweight, natural feel of claws gives this power set a reduced Endurance cost and faster attack rate than other Scrapper melee sets. Like all scrapper powers, all Claw attacks can sometimes land a critical hit for double damage.',
   icon: 'claws_set.ico',
   archetype: 'scrapper',

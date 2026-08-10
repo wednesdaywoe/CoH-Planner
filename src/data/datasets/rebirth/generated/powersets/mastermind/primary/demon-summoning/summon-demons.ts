@@ -12,12 +12,17 @@ export const SummonDemons: Power = {
   "name": "Summon Demons",
   "internalName": "Summon_Demons",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons forth one to two Demons (depending on your level) to do your bidding.  One is cloaked in hellfire and has skin as hard as stone while the other manipulates flame. You may only have 2 Demons under your control at any given time. If you attempt to call more Demons, you can only replace the ones you have lost in battle. If you already have your maximum allowed number, the power will fail. Recharge: Very Long",
   "shortHelp": "Summon Demons",
   "icon": "demonsummoning_summondemons.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

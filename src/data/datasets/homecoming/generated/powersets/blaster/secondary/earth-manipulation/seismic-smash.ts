@@ -12,6 +12,8 @@ export const SeismicSmash: Power = {
   "name": "Seismic Smash",
   "internalName": "Seismic_Smash",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage and may Hold the target if they are not defeated outright.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Melee, Extreme DMG(Smashing), Foe Hold",
   "icon": "earthmanip_seismicsmash.png",
@@ -20,6 +22,9 @@ export const SeismicSmash: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,

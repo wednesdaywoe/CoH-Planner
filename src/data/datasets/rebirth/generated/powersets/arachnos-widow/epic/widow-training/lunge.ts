@@ -12,6 +12,8 @@ export const Lunge: Power = {
   "name": "Strike",
   "internalName": "Lunge",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Strike does high lethal damage to your foe, then poisons them.  The poison does toxic damage over time and slows their recovery rate and movement speed.  NOTE: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.  Damage: High Recharge: Slow",
   "shortHelp": "High DMG (Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "widowtraining_strike.png",
@@ -20,6 +22,9 @@ export const Lunge: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -61,6 +66,7 @@ export const Lunge: Power = {
       "slow": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -70,6 +76,7 @@ export const Lunge: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },

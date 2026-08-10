@@ -12,12 +12,17 @@ export const TenebrousTentacles: Power = {
   "name": "Tenebrous Tentacles",
   "internalName": "Tenebrous_Tentacles",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their chance to hit. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Negative/Smash), Foe Immobilize, -To Hit",
   "icon": "darkcast_tenebroustentacles.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

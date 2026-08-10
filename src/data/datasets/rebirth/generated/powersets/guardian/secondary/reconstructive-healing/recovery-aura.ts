@@ -12,12 +12,18 @@ export const RecoveryAura: Power = {
   "name": "Recovery Aura",
   "internalName": "Recovery_Aura",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "The Recovery Aura dramatically increases the Endurance recovery rate of all nearby heroes for a limited time. Emitting this Aura costs you a lot of Endurance, and it takes a long time to recharge. Recharge: Very Long",
   "shortHelp": "PBAoE, Ally +Recovery",
   "icon": "reconhealing_recoveryaura.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

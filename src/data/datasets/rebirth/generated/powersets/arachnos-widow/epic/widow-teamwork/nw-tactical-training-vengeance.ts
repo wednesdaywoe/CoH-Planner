@@ -12,11 +12,17 @@ export const NWTacticalTrainingVengeance: Power = {
   "name": "Tactical Training: Vengeance",
   "internalName": "NW_Tactical_Training:_Vengeance",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "The loss of a comrade enrages the team. When a teammate is defeated in combat, activate this power to grant you and your teammates a bonus to chance to hit, Damage and Defense to all attacks. A Vengeful team has no fear, and Vengeance protects you and your Teammates from Fear effects. It also gives you and your team great resistance to Sleep, Hold, Disorient, Immobilize, Confuse, Taunt, Placate and Knockback. This power does not stack with multiple castings.",
   "shortHelp": "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)",
   "icon": "widowteamwork_tacticaltrainingvengeance.png",
   "powerType": "Click",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Teammate",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -45,6 +51,7 @@ export const NWTacticalTrainingVengeance: Power = {
   "effects": {
     "buffDuration": 120,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 3.5,
       "table": "Melee_Buff_Dmg"
     },
@@ -175,7 +182,7 @@ export const NWTacticalTrainingVengeance: Power = {
     ["DamageBuff","Negative",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
     ["DamageBuff","Toxic",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
     ["DamageBuff","Psionic",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
-    ["Meta",null,1,38,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,130,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Meta",null,1,38,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,130,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !",null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["MezResist","Terrorized",1,1,120,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? ! isPVPMap? &&",true]
   ],
   "setsModes": [

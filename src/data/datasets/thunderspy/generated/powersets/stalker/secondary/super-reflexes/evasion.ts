@@ -12,12 +12,17 @@ export const Evasion: Power = {
   "name": "Block",
   "internalName": "Evasion",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Your reflexes allow you to block and lessen the impact of strikes that hit you.  You gain resistance to smashing, lethal, fire, cold, energy, negative energy, and toxic damage sources.  This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (Smash, Lethal, Cold, Energy, Fire, Negative Energy, Toxic)",
   "icon": "srblock.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10

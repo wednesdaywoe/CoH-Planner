@@ -12,6 +12,8 @@ export const Incinerate: Power = {
   "name": "Incinerate",
   "internalName": "Incinerate",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Intense concentration can allow you to Incinerate an opponent at melee range. This will set your foe ablaze, dealing damage over time.Damage: High.Recharge: Moderate.",
   "shortHelp": "Melee, High DoT(Fire)",
   "icon": "fireassault_incinerate.png",
@@ -20,6 +22,9 @@ export const Incinerate: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -49,6 +54,6 @@ export const Incinerate: Power = {
   "atoms": [
     ["Damage","Fire",0.212,1,4.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.1969,1,4.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

@@ -12,12 +12,18 @@ export const ChronoShift: Power = {
   "name": "Chrono Shift",
   "internalName": "Chrono_Shift",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You cause nearby allies to act more quickly by allowing them to slip through the time stream seamlessly.  Chrono Shift will greatly increase the Recharge Speed of nearby allies for the duration of the power, additionally for a short while the flow of time will constantly undo a portion of your allies' wounds causing them to periodically recover health.  An ally affected by Temporal Selection will recover additional health from Chrono Shift.  Chrono Shift will apply a regeneration bonus instead of heal over time for a short while if the user is in a PvP zone.  Recharge: Very Long",
   "shortHelp": "PBAoE, Team +Recharge, Moderate Healing over Time",
   "icon": "timemanipulation_chronoshift.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -45,19 +51,7 @@ export const ChronoShift: Power = {
     },
     {
       "type": "Heal",
-      "scale": 1.584,
-      "table": "Ranged_Heal"
-    },
-    {
-      "type": "Heal",
       "scale": 0.176,
-      "table": "Ranged_Heal",
-      "duration": 30,
-      "tickRate": 3
-    },
-    {
-      "type": "Heal",
-      "scale": 0.264,
       "table": "Ranged_Heal",
       "duration": 30,
       "tickRate": 3
@@ -70,10 +64,12 @@ export const ChronoShift: Power = {
       "recoveryBuff": 30
     },
     "enduranceGain": {
+      "ignoreStrength": true,
       "scale": 0.15,
       "table": "Ranged_Ones"
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
@@ -84,13 +80,13 @@ export const ChronoShift: Power = {
   },
   "atoms": [
     ["Heal",null,1.056,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
-    ["Heal",null,1.584,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
     ["Heal",null,0.176,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
-    ["Heal",null,0.264,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
     ["Endurance",null,0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Recovery",null,0.3,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["RechargeTime",null,0.5,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Heal",null,1.584,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&",true],
+    ["Heal",null,0.264,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&",true],
     ["Regeneration",null,0.93808,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
     ["Regeneration",null,1.40712,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]

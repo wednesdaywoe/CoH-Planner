@@ -12,6 +12,8 @@ export const Icicles: Power = {
   "name": "Icicles",
   "internalName": "Icicles",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you form sharp icicles on your body that continuously cut all foes that attempt to enter melee range.",
   "shortHelp": "Toggle: PBAoE, DoT(Cold)",
   "icon": "icearmor_icicles.png",
@@ -22,6 +24,9 @@ export const Icicles: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -51,6 +56,6 @@ export const Icicles: Power = {
   },
   "atoms": [
     ["Damage","Cold",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.09,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+    ["Damage","Fire",0.09,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"]
   ]
 };

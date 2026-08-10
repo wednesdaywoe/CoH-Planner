@@ -12,6 +12,8 @@ export const WildArmor: Power = {
   "name": "Wild Armor",
   "internalName": "Wild_Armor",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Being attuned to the lifeforce of everything around nearby, you are able to coax local plant life into forming a living suit of armor around you and increase the potency of heals on your allies.",
   "shortHelp": "Self +Res (Smash, Lethal, Cold, Toxic, Energy), Ally +Healing",
   "icon": "natureaffinity_wildgrowth.png",
@@ -22,6 +24,9 @@ export const WildArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

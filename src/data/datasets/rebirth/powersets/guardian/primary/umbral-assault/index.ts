@@ -21,8 +21,12 @@ import { DarkExtraction as DarkExtraction } from './dark-extraction';
 
 export const powerset: Powerset = {
   id: 'guardian/umbral-assault',
-  internalName: 'umbral_assault',
+  setPath: 'Guardian_Assault.Umbral_Assault',
   name: 'Umbral Assault',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Masters of the void, Umbral Assault wielders can manipulate dark energy, gravity and matter to blast and dominate their foes.  The gravimetric nature of most Umbral Assault powers often slows the targets attack and movement speed.',
   icon: 'umbral_blast_set.ico',
   archetype: 'guardian',

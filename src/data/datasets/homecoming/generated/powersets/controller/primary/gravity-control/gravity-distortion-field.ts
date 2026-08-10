@@ -12,6 +12,8 @@ export const GravityDistortionField: Power = {
   "name": "Gravity Distortion Field",
   "internalName": "Gravity_Distortion_Field",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a large, intensely misshapen Gravity Distortion Field that encompasses several foes, rendering them unable to take any action. Enemies in the area of effect will be affected by the Gravity Distortion effect.",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
   "icon": "gravitycontrol_gravitydistortionfield.png",
@@ -19,6 +21,9 @@ export const GravityDistortionField: Power = {
   "targetType": "Foe",
   "effectArea": "SingleTarget",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,
@@ -82,6 +87,9 @@ export const GravityDistortionField: Power = {
               "castTime": 0,
               "activatePeriod": 4,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 5
             },
@@ -93,12 +101,37 @@ export const GravityDistortionField: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "runSpeed",
                   "scale": 0.5,
                   "table": "Ranged_Slow"
                 },
                 {
-                  "type": "Knockup",
-                  "magnitude": 1,
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 0.5,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
+                  "scale": 0.5,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 0.5,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "KnockupResist",
+                  "scale": 1,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "KnockbackResist",
                   "scale": 1,
                   "table": "Ranged_Ones",
                   "ignoreStrength": true
@@ -108,6 +141,9 @@ export const GravityDistortionField: Power = {
               "castTime": 0,
               "activatePeriod": 0.1,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 16
             },
@@ -122,12 +158,22 @@ export const GravityDistortionField: Power = {
                   "magnitude": 3,
                   "scale": 8,
                   "table": "Ranged_Immobilize"
+                },
+                {
+                  "type": "Hold",
+                  "magnitude": 1,
+                  "scale": 4,
+                  "table": "Ranged_Immobilize",
+                  "chance": 0.2
                 }
               ],
               "recharge": 240,
               "castTime": 0,
               "activatePeriod": 1000,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 16
             }
@@ -139,6 +185,6 @@ export const GravityDistortionField: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,0,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"silent_kill"]
   ]
 };

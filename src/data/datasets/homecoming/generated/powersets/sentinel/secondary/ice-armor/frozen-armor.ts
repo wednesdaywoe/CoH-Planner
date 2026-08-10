@@ -12,6 +12,8 @@ export const FrozenArmor: Power = {
   "name": "Frozen Armor",
   "internalName": "Frozen_Armor",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage and you can resist Defense DeBuffs.",
   "shortHelp": "Self, +Def(Smash, Lethal), +Res(Cold, Fire, DeBuff DEF)",
   "icon": "icearmor_icearmor.png",
@@ -22,6 +24,9 @@ export const FrozenArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const FrozenArmor: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }

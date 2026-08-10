@@ -12,12 +12,17 @@ export const FRTPsychicScream: Power = {
   "name": "Psychic Scream",
   "internalName": "FRT_Psychic_Scream",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Psionic), Foe -Recharge",
   "icon": "fortunatatraining_psychicscream.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -52,6 +57,7 @@ export const FRTPsychicScream: Power = {
       "rechargeDebuff": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     }

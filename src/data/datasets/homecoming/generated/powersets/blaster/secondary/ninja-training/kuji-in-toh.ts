@@ -12,12 +12,17 @@ export const KujiInToh: Power = {
   "name": "Kuji-In Toh",
   "internalName": "Kuji-In_Toh",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Kuji-In Toh invokes the power of Toh, or harmony with the universe. Focusing your inner power, you can make your body regenerate and recover endurance for a while. You also gain resistance to psionic attacks and fear protection.Recharge: Long.",
   "shortHelp": "Self +Regen, +Recovery, Res(Psionic, Fear)",
   "icon": "ninjatools_toh.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 200,
@@ -48,6 +53,7 @@ export const KujiInToh: Power = {
     },
     "effectDuration": 210,
     "fear": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -61,6 +67,7 @@ export const KujiInToh: Power = {
       "table": "Melee_Ones"
     },
     "regenBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1.125,
       "table": "Melee_Ones"
     },

@@ -12,6 +12,8 @@ export const ReactionTime: Power = {
   "name": "Reaction Time",
   "internalName": "Reaction_Time",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You attune yourself to the world around you, moving with preternatural speed.  All enemies nearby move slowly and have reduced recharge, and you can absorb small amounts of damage every 2 seconds.  When Reaction Time is deactivated, you gain a burst of speed for a short duration, increasing your own recharge and move speed.",
   "shortHelp": "Toggle (PBAoE), Self Absorb over Time, +Recovery, Foe –Rech, - Move, Special",
   "icon": "martialmanipulation_reactiontime.png",
@@ -26,6 +28,10 @@ export const ReactionTime: Power = {
   ],
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -50,10 +56,19 @@ export const ReactionTime: Power = {
   "effects": {
     "buffDuration": 5,
     "durations": {
+      "movementCapDebuff": 5,
       "rechargeDebuff": 5,
       "slow": 5
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -63,6 +78,7 @@ export const ReactionTime: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -71,8 +87,8 @@ export const ReactionTime: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.7,
+        "table": "Melee_Slow"
       }
     }
   },

@@ -12,12 +12,17 @@ export const Inexhaustible: Power = {
   "name": "Primal Essence",
   "internalName": "Inexhaustible",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "The Primalist is truly inexhaustible and recovers endurance at an increased rate. This power is always active.",
   "shortHelp": "Auto: Self +Recovery, Self +Res(Endurance Drain, Slow)",
   "icon": "primalgifts_inexhaustible.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -33,14 +38,17 @@ export const Inexhaustible: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       }

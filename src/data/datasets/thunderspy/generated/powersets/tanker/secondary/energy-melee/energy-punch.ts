@@ -12,6 +12,8 @@ export const EnergyPunch: Power = {
   "name": "Energy Punch",
   "internalName": "Energy_Punch",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a powerful Energy Punch that deals moderate damage. When used with other Energy Melee attacks, Energy Punch can Disorient your opponent. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Smash/Energy), Foe Disorient",
   "icon": "powerpunch_energypunch.png",
@@ -22,6 +24,9 @@ export const EnergyPunch: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

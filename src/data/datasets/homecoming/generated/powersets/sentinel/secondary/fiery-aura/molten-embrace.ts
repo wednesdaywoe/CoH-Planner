@@ -12,6 +12,8 @@ export const MoltenEmbrace: Power = {
   "name": "Molten Embrace",
   "internalName": "Molten_Embrace",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Molten Embrace superheats your attacks, increasing the damage they inflict. In addition, all your attacks will have a chance to inflict fire damage over time.",
   "shortHelp": "Toggle: +Dmg, +Special",
   "icon": "flamingshield_fieryembrace.png",
@@ -22,6 +24,9 @@ export const MoltenEmbrace: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -38,6 +43,7 @@ export const MoltenEmbrace: Power = {
   "effects": {
     "buffDuration": 1.2,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Buff_Dmg"
     },
@@ -55,7 +61,7 @@ export const MoltenEmbrace: Power = {
     ["DamageBuff","Psionic",1,1,1.2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",1,1,1.2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ],
   "grantedDamageProcs": [
     {

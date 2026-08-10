@@ -12,12 +12,17 @@ export const PsiWhipLash: Power = {
   "name": "Psi-Whip Lash",
   "internalName": "PsiWhip_Lash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You manifest your whip, striking your target for minor damage and manifesting a Psychokinetic sword. Damage: Minor, Recharge: Fast",
   "shortHelp": "Ranged, Minor DMG(Psionic/energy)",
   "icon": "awakened_psionicdart.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -64,7 +69,7 @@ export const PsiWhipLash: Power = {
     ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,4,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,4,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "damageTypes": [
     "Energy",

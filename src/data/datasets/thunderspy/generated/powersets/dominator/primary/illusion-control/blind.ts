@@ -12,12 +12,17 @@ export const Blind: Power = {
   "name": "Blind",
   "internalName": "Blind",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Painfully Blinds a single targeted foe so severely that they are rendered helpless. Blind is so bright that additional foes may also be blinded, though they will not take any damage, and attacking them will free them from the effects. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Psionic), Foe Hold/Sleep",
   "icon": "illusions_blind.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

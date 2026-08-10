@@ -12,6 +12,8 @@ export const HauntingStrike: Power = {
   "name": "Haunting Strike",
   "internalName": "Haunting_Strike",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You gather spectral energy in your hands and lash out at a target's spirit, dealing minor damage and possibly striking fear into the hearts of your victims. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG (Negative/Psionic), Fear",
   "icon": "spectralmelee1.png",
@@ -20,6 +22,9 @@ export const HauntingStrike: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -52,6 +57,11 @@ export const HauntingStrike: Power = {
       "type": "Psionic",
       "scale": 0.42,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.84,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -65,12 +75,12 @@ export const HauntingStrike: Power = {
     ["Damage","Negative",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Psionic",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Terrorized",6,0.75,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Negative",0.84,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.6499999761581421,null,true],
     ["Damage","Negative",0.555,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",0.555,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",1.116844,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
     ["Damage","Negative",1.116844,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-    ["Damage","Negative",0.84,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Damage","Negative",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
   ],
   "specialEffects": [

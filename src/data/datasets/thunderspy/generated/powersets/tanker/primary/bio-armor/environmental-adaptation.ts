@@ -12,6 +12,8 @@ export const EnvironmentalAdaptation: Power = {
   "name": "Environmental Modification",
   "internalName": "Environmental_Adaptation",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Your body can spontaneously adapt to its surroundings and your mind has learned to shield itself from harmful effects by constant exposure to these dangers. While active you gain moderate defense to Fire, Cold, Energy and Negative Energy damage, and a small amount of defense to Psionic damage. Additionally you are protected against hold, knockdown and immobilize effects.  While Defensive Adaptation is active you gain a minor amount of Lethal, Smashing, Fire, Cold, Energy, Negative Energy and Psionic defense, as well as a minor amount of maximum hit points. If Offensive Adaptation is active you'll gain a moderate To Hit bonus. These special bonuses are unenhanceable. Recharge: Fast",
   "shortHelp": "Self Toggle, +Res(Hold, Knockdown, Immobilize), +Def(Energy, Negative, Fire, Cold, Psionic), +Special",
   "icon": "bioorganicarmor_environmentalmodification.png",
@@ -22,6 +24,9 @@ export const EnvironmentalAdaptation: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -73,6 +78,7 @@ export const EnvironmentalAdaptation: Power = {
     },
     "effectDuration": 0.75,
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -83,19 +89,23 @@ export const EnvironmentalAdaptation: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }
@@ -137,30 +147,37 @@ export const EnvironmentalAdaptation: Power = {
         "buffDuration": 0.75,
         "defenseBuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 0.45,
             "table": "Melee_Buff_Def"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 0.45,
             "table": "Melee_Buff_Def"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 0.45,
             "table": "Melee_Buff_Def"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 0.45,
             "table": "Melee_Buff_Def"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 0.45,
             "table": "Melee_Buff_Def"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 0.225,
             "table": "Melee_Buff_Def"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 0.45,
             "table": "Melee_Buff_Def"
           }
@@ -170,6 +187,7 @@ export const EnvironmentalAdaptation: Power = {
           "maxHPBuffUnenhanced": 0.75
         },
         "maxHPBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.45,
           "table": "Melee_HealSelf"
         }
@@ -187,6 +205,7 @@ export const EnvironmentalAdaptation: Power = {
           "tohitBuffUnenhanced": 0.75
         },
         "tohitBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.75,
           "table": "Melee_Buff_ToHit"
         }

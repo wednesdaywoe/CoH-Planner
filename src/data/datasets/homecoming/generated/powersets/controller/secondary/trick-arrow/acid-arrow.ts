@@ -12,12 +12,17 @@ export const AcidArrow: Power = {
   "name": "Acid Arrow",
   "internalName": "Acid_Arrow",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow explodes in a small shower of acid on impact. This acid eats through armor, causing damage over time, reducing target's Defense as well as their resistance to debuffs, while making it harder for them to be healed.Damage: Minor.Recharge: Slow.",
   "shortHelp": "Ranged AoE Minor DoT(Toxic), Foe -Res(Special), Res(Heal), -DEF",
   "icon": "trickarrow_debuffdefense.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -53,22 +58,27 @@ export const AcidArrow: Power = {
     "buffDuration": 45,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }
@@ -84,11 +94,13 @@ export const AcidArrow: Power = {
       "resistance": 45
     },
     "enduranceDiscount": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Res_Dmg"
     },
     "resistance": {
       "heal": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }
@@ -104,7 +116,7 @@ export const AcidArrow: Power = {
     ["Recovery",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
     ["EnduranceDiscount",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Toxic",0.01,1,20,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true],
+    ["Damage","Toxic",0.01,1,20,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true,null,null,null,null,null,null,null,null,"Containment"],
     ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["HealResistance",null,2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Endurance",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],

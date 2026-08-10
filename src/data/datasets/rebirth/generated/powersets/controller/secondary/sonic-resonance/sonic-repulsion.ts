@@ -12,12 +12,17 @@ export const SonicRepulsion: Power = {
   "name": "Sonic  Repulsion",
   "internalName": "Sonic__Repulsion",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a powerful sonic resonance around an ally, repelling all foes nearby. You will lose endurance for each target repelled.  Recharge: Moderate",
   "shortHelp": "Toggle: Ranged (Target Ally AoE), Foe Knockback",
   "icon": "sonicdebuff_teamknockback.png",
   "powerType": "Toggle",
   "targetType": "Teammate",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -41,6 +46,7 @@ export const SonicRepulsion: Power = {
       "knockback": 0.5
     },
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Ones"
     },
@@ -52,7 +58,7 @@ export const SonicRepulsion: Power = {
   "atoms": [
     ["Mez","Knockback",3,1,0.5,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-2.5,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Mez","Knockback",3,1,0.5,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

@@ -12,6 +12,8 @@ export const GeneticCorruption: Power = {
   "name": "Genetic Corruption",
   "internalName": "Genetic_Corruption",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Bio Armor is capable of corrupting the genetic code of nearby foes, reducing the damage they deal. Lesser foes may be put to sleep for a short time. While Efficiency Adaptation is active, this power grants a moderate bonus to Regeneration. While Defensive Adaptation is active you gain a minor bonus to all types of damage resistance and increase the potency of this power's damage debuff. If Offensive Adaptation is active enemies are more likely to fall asleep. These special bonuses are unenhanceable.Recharge: Fast.",
   "shortHelp": "Toggle: PBAoE, Foe Sleep, -Damage(All), Self +Special",
   "icon": "bioorganicarmor_geneticcorruption.png",
@@ -22,6 +24,10 @@ export const GeneticCorruption: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -45,6 +51,7 @@ export const GeneticCorruption: Power = {
   "effects": {
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Melee_Debuff_Dam"
     },
@@ -58,7 +65,7 @@ export const GeneticCorruption: Power = {
     }
   },
   "atoms": [
-    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&"],
+    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",null,null,null,null,null,null,null,null,null,"NormalDebuffGC"],
     ["DamageBuff","Smashing",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
     ["DamageBuff","Lethal",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
     ["DamageBuff","Fire",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
@@ -67,9 +74,9 @@ export const GeneticCorruption: Power = {
     ["DamageBuff","Negative",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
     ["DamageBuff","Psionic",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
     ["DamageBuff","Toxic",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
-    ["Mez","Sleep",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",true],
-    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.8500000238418579,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",true],
-    ["Mez","Sleep",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.8500000238418579,null,null,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",true],
+    ["Mez","Sleep",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",true,null,null,null,null,null,null,null,null,"NormalDebuffGC"],
+    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.8500000238418579,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",true,null,null,null,null,null,null,null,null,"OffensiveAdaptationGC"],
+    ["Mez","Sleep",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.8500000238418579,null,null,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",true,null,null,null,null,null,null,null,null,"OffensiveAdaptationGC"],
     ["Regeneration",null,0.3,1,4.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kRestedAdaptation Source.Mode? &&",true],
     ["Resistance","Smashing",0.75,1,4.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
     ["Resistance","Lethal",0.75,1,4.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],

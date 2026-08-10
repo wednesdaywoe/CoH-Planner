@@ -12,12 +12,18 @@ export const SonicHaven: Power = {
   "name": "Sonic Haven",
   "internalName": "Sonic_Haven",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You encase yourself and nearby allies in a protective barrier that will absorb a moderate amount of damage.  Recharge: Very Long",
   "shortHelp": "PBAoE, Team +Absorb",
   "icon": "sonicdebuff_protectelements.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

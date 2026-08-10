@@ -12,12 +12,17 @@ export const FRTScrambleThoughts: Power = {
   "name": "Scramble Thoughts",
   "internalName": "FRT_Scramble_Thoughts",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Painfully scrambles the synapses of a targeted foe, leaving him dramatically Disoriented for a short duration. Over time, the pain will increase causing psionic damage.",
   "shortHelp": "Ranged, DoT(Psionic), Foe Disorient",
   "icon": "fortunatatraining_scramblethoughts.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

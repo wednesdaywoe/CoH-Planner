@@ -21,8 +21,12 @@ import { Meltdown as Meltdown } from './meltdown';
 
 export const powerset: Powerset = {
   id: 'tanker/radiation-armor',
-  internalName: 'radiation_armor',
+  setPath: 'Tanker_Defense.Radiation_Armor',
   name: 'Radiation Armor',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Radiation emanates from your body which harms foes, but empowers and shields yourself. You can use this energy to absorb damage, heal from your wounds and debilitate nearby foes.',
   icon: 'radiation_armor_set.ico',
   archetype: 'tanker',

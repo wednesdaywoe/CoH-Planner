@@ -12,6 +12,8 @@ export const XRayBeam: Power = {
   "name": "X-Ray Beam",
   "internalName": "X-Ray_Beam",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can emit a beam of X-Ray energy from your eyes, dealing moderate Energy damage. This attack can bypass some defenses and can reduce the target's Defense. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
   "icon": "radiationburst_xraybeam.png",
@@ -23,6 +25,9 @@ export const XRayBeam: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.1,
@@ -56,6 +61,7 @@ export const XRayBeam: Power = {
   "effects": {
     "buffDuration": 9.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },

@@ -12,6 +12,8 @@ export const ChargedBrawl: Power = {
   "name": "Charged Brawl",
   "internalName": "Charged_Brawl",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your fists become electrically charged and deliver a powerful punch. Charged Brawl can drain some Endurance from the target and may overload their synapses, leaving them writhing for a moment.  A portion of drained Endurance may be returned to you.  Disturbing an overloaded target will disperse the electrical charge and release them  This power can bruise an enemy, making them more vulnerable to damage. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG(Smash/Energy), Target Sleep, -End, -Res (all)",
   "icon": "electricmelee_targetedminordmg.png",
@@ -22,6 +24,9 @@ export const ChargedBrawl: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

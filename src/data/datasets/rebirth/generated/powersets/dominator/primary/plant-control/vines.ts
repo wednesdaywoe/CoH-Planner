@@ -12,12 +12,17 @@ export const Vines: Power = {
   "name": "Vines",
   "internalName": "Vines",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a field of Strangler Vines that can Hold multiple foes at range. The affected targets are held helpless by the massive root-like vines. Unlike the power Strangler, this power does not deal any damage, but it can Hold multiple foes at once. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "plantcontrol_vines.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,

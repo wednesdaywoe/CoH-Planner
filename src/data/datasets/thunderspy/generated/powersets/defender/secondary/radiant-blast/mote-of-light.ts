@@ -12,6 +12,8 @@ export const MoteOfLight: Power = {
   "name": "Mote of Light",
   "internalName": "Mote_Of_Light",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You periodically create a mote of light which will follow you, restoring health to you and your friends while damaging your foes. Unholy foes such as demons, undead, and ghosts take additional damage. Recharge: Long",
   "shortHelp": "Toggle: Create Mote of Light",
   "icon": "luminousblast_photonseekers.png",
@@ -22,6 +24,9 @@ export const MoteOfLight: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

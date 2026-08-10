@@ -12,12 +12,17 @@ export const ReformEssence: Power = {
   "name": "Reform Essence",
   "internalName": "Reform_Essence",
   "available": 19,
+  "autoIssue": true,
+  "free": true,
   "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself. This power can be used while in Bright Nova or White Dwarf form. Recharge: Long",
   "shortHelp": "Self Heal",
   "icon": "luminousaura_reformessence.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 60,

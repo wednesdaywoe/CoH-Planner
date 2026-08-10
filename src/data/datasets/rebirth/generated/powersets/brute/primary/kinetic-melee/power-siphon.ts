@@ -12,12 +12,17 @@ export const PowerSiphon: Power = {
   "name": "Power Siphon",
   "internalName": "Power_Siphon",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Power Siphon adds a small bonus to hit and modifies your other Kinetic Attack powers, so they are now capable of draining the strength of your enemies and adding that strength to you. This effect will stack up to 5 times. Recharge: Very Long",
   "shortHelp": "Self: +ToHit, +Special",
   "icon": "kineticattack_powersiphon.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.2,
     "recharge": 120,
@@ -48,7 +53,7 @@ export const PowerSiphon: Power = {
     ]
   },
   "atoms": [
-    ["Meta",null,1,86,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,true],
+    ["Meta",null,1,86,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["ToHit",null,0.75,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ],
   "setsModes": [

@@ -12,6 +12,8 @@ export const Burn: Power = {
   "name": "Burn",
   "internalName": "Burn",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power.",
   "shortHelp": "Location (PBAoE), DoT (Fire), Self Res(Immobilize, Knockback)",
   "icon": "flamingshield_burn.png",
@@ -20,6 +22,9 @@ export const Burn: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Radius"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -46,6 +51,7 @@ export const Burn: Power = {
     },
     "effectDuration": 100,
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -85,6 +91,9 @@ export const Burn: Power = {
               "castTime": 0,
               "activatePeriod": 0.8,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 15,
               "maxTargets": 10
             },
@@ -118,6 +127,9 @@ export const Burn: Power = {
               "castTime": 0,
               "activatePeriod": 100,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 15,
               "maxTargets": 10
             }

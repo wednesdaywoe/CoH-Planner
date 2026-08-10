@@ -12,12 +12,17 @@ export const Radiance: Power = {
   "name": "Radiance",
   "internalName": "Radiance",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You channel your light inwards, increasing damage and chance to hit. The blessing continues for 30 seconds, giving you a lingering damage and chance to hit after the initial burst fades. Recharge: Slow",
   "shortHelp": "Self, +Dmg, +Tohit)",
   "icon": "luminousblast_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -42,6 +47,7 @@ export const Radiance: Power = {
           "scale": 8
         }
       ],
+      "ignoreStrength": true,
       "scale": 3.2,
       "table": "Melee_Buff_Dmg"
     },

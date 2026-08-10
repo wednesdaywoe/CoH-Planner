@@ -12,12 +12,17 @@ export const SoulExtraction: Power = {
   "name": "Soul Extraction",
   "internalName": "Soul_Extraction",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Advanced forays into dark magic has imbued your aura, you are able extract the soul from defeated enemies and summon a zombie into the realm of existence to do your bidding. Unlike your other Henchman, the extracted Soul is only loosely bound to it's zombie husk and will eventually move on to the next world leaving the rotted souless corpse behind. The Re-Animated is able to gain new powers with Enchanted Undead or Dark Empowerment. Recharge: Very Long",
   "shortHelp": "Summon Zombie Horde (Special)",
   "icon": "necromancy_soulextraction.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -47,7 +52,7 @@ export const SoulExtraction: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Meta",null,0,1,0.9,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,1,1,null,true],
+    ["Meta",null,0,1,0.9,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Minion_Grunt eq || rank target> Class_Lt_PraetorianGrunt eq || rank target> Class_Lt_Grunt eq || rank target> Class_Lt_Sniper eq || rank target> Class_Lt_Henchman eq || rank target> Class_Lt_LongRangeDrone eq || rank target> Class_Lt_Turret eq ||",true],
     ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || rank target> Class_Boss_Archvillain eq ||",true]
   ],

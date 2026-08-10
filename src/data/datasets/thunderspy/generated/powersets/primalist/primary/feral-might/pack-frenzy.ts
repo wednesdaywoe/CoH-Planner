@@ -12,12 +12,18 @@ export const PackFrenzy: Power = {
   "name": "Pack Frenzy",
   "internalName": "Pack_Frenzy",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You let out a primal howl driving your team mates into a frenzy boosting their damage moderately for a short time. If in Primal Form you'll also boost your team's chance to hit. However, if you're in Hunter or Prowler form you'll instead boost their recharge rate. This power grants 10 Primal Energy upon use. Recharge: Very Long",
   "shortHelp": "PBAoE, Allies +DMG, +To Hit, +10 Primal Energy",
   "icon": "feralmight_packfrenzy.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -38,6 +44,7 @@ export const PackFrenzy: Power = {
   "effects": {
     "buffDuration": 15,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Ones"
     },
@@ -60,7 +67,7 @@ export const PackFrenzy: Power = {
     ["DamageBuff","Negative",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["RechargeTime",null,0.25,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true]
   ],
   "conditionalEffects": [
@@ -75,6 +82,7 @@ export const PackFrenzy: Power = {
           "rechargeBuff": 15
         },
         "rechargeBuff": {
+          "ignoreStrength": true,
           "scale": 0.25,
           "table": "Melee_Ones"
         }

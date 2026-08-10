@@ -12,6 +12,8 @@ export const RepulsionField: Power = {
   "name": "Repulsion Field",
   "internalName": "Repulsion_Field",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "This Toggle power creates a field that keeps all foes at bay, protecting all allies inside from melee or short ranged attacks. More powerful foes may be able to penetrate the Repulsion Field, but may slip and get knocked down and forced back if they try.Enemies that get too close will be violently knocked away. In PvP, Each villain that is knocked away costs you additional Endurance.Note: Slotting Knockback to Knockdown enhancement in this power will disable Repel.",
   "shortHelp": "Toggle: PBAoE Knockback",
   "icon": "forcefield_repulsionfield.png",
@@ -22,6 +24,9 @@ export const RepulsionField: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -56,12 +61,12 @@ export const RepulsionField: Power = {
     }
   },
   "atoms": [
-    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858],
-    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"@ToHitRoll .10 + @ToHit >=",true],
-    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Meta",null,0,0,0,"Ranged_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Mez","Repel",10,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll .10 + @ToHit <",true]
+    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ReduceIfKD,RepulsionField"],
+    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Repel,ReduceIfKD"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit >= &&",true,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.5],
+    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,0,0,0,"Ranged_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Mez","Repel",10,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true,null,null,null,null,null,null,null,null,"Repel"]
   ]
 };

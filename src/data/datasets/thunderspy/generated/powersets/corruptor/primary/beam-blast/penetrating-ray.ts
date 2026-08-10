@@ -12,12 +12,17 @@ export const PenetratingRay: Power = {
   "name": "Penetrating Ray",
   "internalName": "Penetrating_Ray",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You take careful aim at your target and deliver a punishing supercharged shot. This causes Extreme Energy damage and may knock the target off their feet. If the target is also suffering from the Disintegrating effect it will also suffer additional damage over time. Like all Sniper attacks it will be interrupted if you're attacked. In addition, targets already affected by the Disintegrating effect will cause this effect to spread to 3 nearby targets. This Disintegrate Spread effect can only hit targets that aren't already affected by the Disintegrating effect. Disintegrate Spread causes Minor Energy damage over time. Damage: Extreme, Recharge: Very Slow",
   "shortHelp": "Sniper: Extreme Dmg(Energy), Foe Knockdown, Special",
   "icon": "beamrifle_penetratingray.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.25,
     "range": 150,

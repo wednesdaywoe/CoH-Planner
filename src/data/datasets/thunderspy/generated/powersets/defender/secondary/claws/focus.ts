@@ -12,12 +12,17 @@ export const Focus: Power = {
   "name": "Focus",
   "internalName": "Focus",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Projects a burst of focused power over a short distance.  Focus deals high damage and can possibly knock down your foe. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Lethal), Knockback",
   "icon": "claws_focus.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

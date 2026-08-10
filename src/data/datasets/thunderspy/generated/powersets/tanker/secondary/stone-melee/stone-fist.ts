@@ -12,6 +12,8 @@ export const StoneFist: Power = {
   "name": "Stone Fist",
   "internalName": "Stone_Fist",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your stone covered fists attack swiftly for moderate damage, and may Disorient your opponent.  This power can bruise an enemy, making them more vulnerable to damage. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee Moderate DMG(Smash), Foe Minor Disorient, -Res (all)",
   "icon": "stonemelee_stonefist.png",
@@ -22,6 +24,9 @@ export const StoneFist: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

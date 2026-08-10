@@ -12,12 +12,17 @@ export const Revive: Power = {
   "name": "Ailment Resistance",
   "internalName": "Revive",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Your superior immune system makes you resilient to disease and multiple ailments. Healing techniques also become more effective. This power is always on.",
   "shortHelp": "Auto: Self +Max HP, -Res(Heal), Res(-Defense, -Endurance, -Speed, -Regeneration, -Recovery, -Recharge, -Range, -ToHit)",
   "icon": "regeneration_resiststun.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 360,
@@ -34,34 +39,42 @@ export const Revive: Power = {
     "buffDuration": 10.3,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "range": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       }
@@ -77,11 +90,13 @@ export const Revive: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1.2,
       "table": "Melee_HealSelf"
     },
     "resistanceDebuff": {
       "heal": {
+        "ignoreStrength": true,
         "scale": 0.15,
         "table": "Melee_Ones",
         "toWho": "Self"

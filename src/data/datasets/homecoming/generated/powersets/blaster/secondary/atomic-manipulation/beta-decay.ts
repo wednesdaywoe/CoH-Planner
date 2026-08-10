@@ -12,6 +12,8 @@ export const BetaDecay: Power = {
   "name": "Beta Decay",
   "internalName": "Beta_Decay",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "While Beta Decay is active, nearby foes will have their chance to hit and defense decreased slightly. You will gain a recharge bonus per nearby target up to 10 targets. The first target grants the largest benefit.",
   "shortHelp": "Toggle: PBAoE, Foe -ToHit, -DEF, Self +Recharge(Special)",
   "icon": "atomicmanipulation_decay.png",
@@ -22,6 +24,9 @@ export const BetaDecay: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -68,6 +73,6 @@ export const BetaDecay: Power = {
     ["ToHit",null,0.75,1,1.25,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Defense","All",1.5,1,1,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["RechargeTime",null,0.1,1,1.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["RechargeTime",null,0.025,1,1,"Melee_Ones","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.025]
+    ["RechargeTime",null,0.025,1,1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.025]
   ]
 };

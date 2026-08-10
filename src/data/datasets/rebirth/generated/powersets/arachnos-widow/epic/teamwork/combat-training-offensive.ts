@@ -12,12 +12,17 @@ export const CombatTrainingOffensive: Power = {
   "name": "Combat Training: Offensive",
   "internalName": "Combat_Training:_Offensive",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Your accuracy is improved.",
   "shortHelp": "Auto: Self +ACC",
   "icon": "teamwork_combattrainingoffensive.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 4,
@@ -36,6 +41,7 @@ export const CombatTrainingOffensive: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "tohit": {
+        "ignoreStrength": true,
         "scale": 0.33,
         "table": "Melee_Ones"
       }

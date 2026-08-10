@@ -12,12 +12,17 @@ export const WebCocoon: Power = {
   "name": "Web Cocoon",
   "internalName": "Web_Cocoon",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "The Bane Mace can fire a more powerful version the common web grenade.  The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed.  Web Cocoon can also bring down flying targets and prevent foes from jumping. Recharge: Long",
   "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
   "icon": "banespidertraining_webcocoon.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 60,
@@ -52,6 +57,7 @@ export const WebCocoon: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },

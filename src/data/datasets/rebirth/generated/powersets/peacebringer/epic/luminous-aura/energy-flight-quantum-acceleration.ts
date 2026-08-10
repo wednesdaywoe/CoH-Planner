@@ -12,6 +12,8 @@ export const EnergyFlightQuantumAcceleration: Power = {
   "name": "Quantum Acceleration",
   "internalName": "Energy_Flight_Quantum_Acceleration",
   "available": 23,
+  "autoIssue": true,
+  "free": true,
   "description": "Quantum Acceleration greatly increases your maximum fly speed, provides a high amount of defense, flight protection and additional flight control, however while active you can only use powers that target yourself.  This flight protection is only active while Energy Flight, Combat Fight, Group Energy Flight or Quantum Flight is active.  Recharge: Long",
   "shortHelp": "Toggle: Self +FlySpeed, Res(-Fly), +Def(All), +Flight Control",
   "icon": "luminousaura_quantumacceleration.png",
@@ -22,6 +24,9 @@ export const EnergyFlightQuantumAcceleration: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -64,11 +69,11 @@ export const EnergyFlightQuantumAcceleration: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true],
+    ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,true],
-    ["Movement","Fly",-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0],
-    ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0]
+    ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,true,null,null,null,null,0],
+    ["Movement","Fly",-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]
   ],
   "requires": "Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration",
   "setsModes": [

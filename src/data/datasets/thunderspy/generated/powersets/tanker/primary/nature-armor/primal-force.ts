@@ -12,12 +12,17 @@ export const PrimalForce: Power = {
   "name": "Primal Force",
   "internalName": "Primal_Force",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Enemies nearby are subject to your control of natural forces, forcing them to the ground.",
   "shortHelp": "Toggle PBAoE Foe -Jump, -Fly, -Range",
   "icon": "natureaffinity_corrosivesap.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

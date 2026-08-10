@@ -12,12 +12,17 @@ export const RadiantStrike: Power = {
   "name": "Radiant Strike",
   "internalName": "Radiant_Strike",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "The Radiant Strike is a slow melee attack, but makes up for it with superior damage. Radiant Strike releases Kheldian light on impact, which can Knock Back foes, bring down fliers, and reduce a target's Defense. This power can be used in Dwarf Form. Damage: Superior, Recharge: Moderate",
   "shortHelp": "Melee, Superior DMG(Smash/Energy), Foe -DEF, Knockback, -Fly",
   "icon": "luminousblast_radiantstrike.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

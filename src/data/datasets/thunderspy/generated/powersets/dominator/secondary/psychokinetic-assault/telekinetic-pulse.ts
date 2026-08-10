@@ -12,6 +12,8 @@ export const TelekineticPulse: Power = {
   "name": "Psychokinetic Pulse",
   "internalName": "Telekinetic_Pulse",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you pulse out waves of Psychokinetic force, slowing the movement speed of all nearby foes, as well as having a chance to knock them down. Recharge: Very Fast",
   "shortHelp": "Toggle PBAoE, Minor DMG(Psionic/Energy), Slow, Chance for knock up",
   "icon": "awakened_masslevitate.png",
@@ -22,6 +24,9 @@ export const TelekineticPulse: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -61,14 +66,23 @@ export const TelekineticPulse: Power = {
   "effects": {
     "buffDuration": 5,
     "durations": {
+      "movementCapDebuff": 5,
       "slow": 5
     },
     "knockback": {
       "scale": 0.01,
       "table": "Ranged_Knockback"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1.5,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "slow": {
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },
@@ -77,8 +91,8 @@ export const TelekineticPulse: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1.5,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.5,
+        "table": "Melee_Slow"
       }
     }
   },

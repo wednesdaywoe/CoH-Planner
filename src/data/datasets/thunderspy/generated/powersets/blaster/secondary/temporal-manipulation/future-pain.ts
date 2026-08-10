@@ -12,12 +12,17 @@ export const FuturePain: Power = {
   "name": "Be Gone",
   "internalName": "Future_Pain",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "With but a whim, you can banish your foe into their past or future and then back to the present. This process Disorients them and leaves them exposed to further assault. Recharge: Slow",
   "shortHelp": "Ranged, Single Target Teleport Foe",
   "icon": "timemanipulation_futurepain.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -43,6 +48,7 @@ export const FuturePain: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Melee_Ones"
     },

@@ -12,6 +12,8 @@ export const Swipe: Power = {
   "name": "Swipe",
   "internalName": "Swipe",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick Swipe with your claws. Does minor lethal damage, but has a quick recharge rate.",
   "shortHelp": "Melee, DMG(Lethal)",
   "icon": "claws_clawsswipe.png",
@@ -20,6 +22,9 @@ export const Swipe: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -49,7 +54,7 @@ export const Swipe: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.83,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.3735,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.3735,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Lethal",1.077,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Tanker_Defense.Shield_Defense ! Tanker_Defense.Stone_Armor ! &&"

@@ -12,6 +12,8 @@ export const TemporalHealing: Power = {
   "name": "Temporal Ablation",
   "internalName": "Temporal_Healing",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You manipulate time to distribute damage inflicted upon you across alternate timelines, reducing your injuries. Temporal Ablation will immediately absorb damage as it's inflicted.  Additionally, you will gain some resistance to slow effects.  If you are affected by the Accelerated effect, you absorb even more damage from this power.  Recharge: Low",
   "shortHelp": "Self Toggle, +Absorb, +Recovery, +Res(Slow)",
   "icon": "timemanipulation_temporalhealing.png",
@@ -22,6 +24,9 @@ export const TemporalHealing: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -47,10 +52,12 @@ export const TemporalHealing: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       }
@@ -112,6 +119,7 @@ export const TemporalHealing: Power = {
           "recoveryBuffUnenhanced": 0.75
         },
         "recoveryBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.3,
           "table": "Ranged_Ones"
         }

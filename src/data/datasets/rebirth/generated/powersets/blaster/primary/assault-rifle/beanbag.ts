@@ -12,12 +12,17 @@ export const Beanbag: Power = {
   "name": "Beanbag",
   "internalName": "Beanbag",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Fires a single non lethal Beanbag that can seriously Disorient a target. Deals little damage and takes a long time to reload, but renders most targets unable to attack for a good while. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged, Minor DMG(Smash), Foe Disorient",
   "icon": "assaultweapons_shotgunbeanbag.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 60,
@@ -49,6 +54,7 @@ export const Beanbag: Power = {
   "effects": {
     "buffDuration": 8.4,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.059,
       "table": "Ranged_Ones"
     },

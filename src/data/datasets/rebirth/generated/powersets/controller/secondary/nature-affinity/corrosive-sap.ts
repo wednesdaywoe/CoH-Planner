@@ -12,12 +12,17 @@ export const CorrosiveSap: Power = {
   "name": "Corrosive Enzymes",
   "internalName": "Corrosive_Sap",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You spray a target with toxic, corrosive Enzymes reducing the damage they deal as well as their damage resistance. Recharge: Slow",
   "shortHelp": "Ranged, Foe -Res(All), -DMG(All)",
   "icon": "natureaffinity_corrosivesap.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -35,6 +40,7 @@ export const CorrosiveSap: Power = {
   "effects": {
     "buffDuration": 30,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Debuff_Dam"
     },
@@ -44,34 +50,42 @@ export const CorrosiveSap: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       }

@@ -12,6 +12,8 @@ export const MindOverBody: Power = {
   "name": "Mind Over Body",
   "internalName": "Mind_Over_Body",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on this power, you empower your Mind Over Body to become highly resistant to Smashing, Lethal and Psionic damage.",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
   "icon": "willpower_mindoverbody.png",
@@ -22,6 +24,9 @@ export const MindOverBody: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

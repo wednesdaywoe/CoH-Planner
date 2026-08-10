@@ -12,12 +12,17 @@ export const NeutronBomb: Power = {
   "name": "Neutron Bomb",
   "internalName": "Neutron_Bomb",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "This devastating attack lobs an explosive sphere of deadly radiation, damaging the target and all nearby foes. Neutron Bomb can bypass some of a target's defenses and reduce the target's Defense. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Energy), Foe -DEF",
   "icon": "radiationburst_radiationblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,

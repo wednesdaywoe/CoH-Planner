@@ -12,6 +12,8 @@ export const ThickHide: Power = {
   "name": "Thick Hide",
   "internalName": "Thick_Hide",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active you gain good resistance to Lethal, Smashing and Cold damage as well as moderate resistance to slow effects. Thick Hide may be active in all 3 forms. Recharge: Fast",
   "shortHelp": "Toggle: +Res(Lethal, Smashing, Cold, Slow)",
   "icon": "primalgifts_thickhide.png",
@@ -22,6 +24,9 @@ export const ThickHide: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,10 +48,12 @@ export const ThickHide: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       }

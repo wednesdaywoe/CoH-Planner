@@ -12,6 +12,8 @@ export const VolcanicArmor: Power = {
   "name": "Volcanic Armor",
   "internalName": "Volcanic_Armor",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, your skin becomes encrusted in cracked magma. Volcanic Armor makes you highly resistant to Fire and Cold damage. You are also protected from hold, sleep and disorient effects. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Hold, Sleep)",
   "icon": "stonecomp_volcanicarmor.png",
@@ -22,6 +24,9 @@ export const VolcanicArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

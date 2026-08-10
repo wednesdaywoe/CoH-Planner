@@ -12,12 +12,17 @@ export const FocusChi: Power = {
   "name": "Focus Chi",
   "internalName": "Focus_Chi",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Tapping into your inner Chi greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "martialarts_focuschi.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const FocusChi: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },

@@ -21,6 +21,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
+const { isPvpOnlyGroup: isPvpOnlyByRequires } = require('./_pv-scope.cjs');
 const datasetId = parseDatasetArg();
 
 // Source: bin-crawler JSON export. HC keeps the legacy flat layout
@@ -198,8 +199,15 @@ function isExplicitPvpOnlyGroup(effectGroup) {
   return (effectGroup && effectGroup.is_pvp) === 'PVP_ONLY';
 }
 
-/** PvP-gated requires forms used by bin exports. */
-function isPvpEnttypePlayerRequires(req) {
+/**
+ * The BARE trailing `enttype target> player eq` — the leaguemate-buff shape.
+ *
+ * Deliberately narrower than the group's structural PvP verdict
+ * (`_pv-scope.cjs`): this identifies one authored spelling so the beneficial
+ * leaguemate rows below can be kept, and widening it to every PvP-only group
+ * would grant that exception to conjunctions that have not earned it.
+ */
+function isBareLeaguematePlayerRequires(req) {
   return /enttype\s+target>\s+player\s+eq\s*$/i.test(req || '');
 }
 function isPvpMapOnlyRequires(req) {
@@ -647,7 +655,7 @@ function extractDestiny() {
     for (const eff of data.effects || []) {
       const req = eff.requires_expression || '';
       const pvpByMode = isExplicitPvpOnlyGroup(eff);
-      const pvpByReq = isPvpMapOnlyRequires(req) || isPvpEnttypePlayerRequires(req);
+      const pvpByReq = isPvpMapOnlyRequires(req) || isPvpOnlyByRequires(eff);
       for (const t of eff.templates || []) {
         const attrib = (t.attribs || [])[0];
         if (!attrib || attrib === 'Grant_Power' || attrib === 'Revoke_Power' || attrib === 'Set_Mode') continue;
@@ -660,7 +668,7 @@ function extractDestiny() {
         // Targeted PvP awareness: drop explicit/synthetically-PvP rows by
         // default, with the same beneficial `player eq` leaguemate exception
         // used in Hybrid (Parse6 can synthesize those rows as PVP_ONLY).
-        const isLeaguematePlayer = scale > 0 && isPvpEnttypePlayerRequires(req);
+        const isLeaguematePlayer = scale > 0 && isBareLeaguematePlayerRequires(req);
         if ((pvpByMode || pvpByReq) && !isLeaguematePlayer) continue;
 
         const resistible = isTemplateResistible(t);
@@ -877,7 +885,7 @@ function extractHybrid() {
     for (const eff of data.effects || []) {
       const req = eff.requires_expression || '';
       const pvpByMode = isExplicitPvpOnlyGroup(eff);
-      const pvpByReq = isPvpMapOnlyRequires(req) || isPvpEnttypePlayerRequires(req);
+      const pvpByReq = isPvpMapOnlyRequires(req) || isPvpOnlyByRequires(eff);
 
       for (const t of eff.templates || []) {
         const attribs = t.attribs || [];
@@ -905,7 +913,7 @@ function extractHybrid() {
         // Targeted PvP awareness: drop explicit PvP-only rows by default, but
         // keep the known leaguemate-buff shape (`enttype target> player eq` +
         // beneficial polarity) that Parse6 can synthesize as PVP_ONLY.
-        const isLeaguematePlayer = scale > 0 && isPvpEnttypePlayerRequires(req);
+        const isLeaguematePlayer = scale > 0 && isBareLeaguematePlayerRequires(req);
         if ((pvpByMode || pvpByReq) && !isLeaguematePlayer) continue;
 
         // Collect the DISTINCT stat keys this template maps to. A uniform
@@ -977,8 +985,12 @@ function extractHybrid() {
         //      match must be case-insensitive (`/i`).
         //   2. SYNTHESIZED is_pvp — Rebirth/Thunderspy are Parse6, which has no
         //      explicit is_pvp field, so the bin parser SYNTHESIZES it from the
-        //      requires target-type and marks EVERY `player eq` group PVP_ONLY
-        //      (_parse_effects_parse6). That synthesis is harmless for FOE effects
+        //      requires target-type. A BARE `player eq` — which is exactly what
+        //      this Hybrid buff carries — is structurally PvP-only, so the
+        //      synthesis marks it PVP_ONLY. (Since MAPGATE-1 that verdict is a
+        //      structural read, not a token scan, so a negated or disjunct
+        //      clause no longer lands here — but the bare form still does.)
+        //      That synthesis is harmless for FOE effects
         //      (the `critter eq` sibling carries the effect to the critter foe in
         //      PvE) but WRONG for this ally-BUFF, whose caster is a *player*. HC's
         //      explicit is_pvp=EITHER for the same buff is the ground truth.

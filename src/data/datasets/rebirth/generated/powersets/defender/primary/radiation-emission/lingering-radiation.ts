@@ -12,12 +12,17 @@ export const Lingeringradiation: Power = {
   "name": "Lingering Radiation",
   "internalName": "Lingering_radiation",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can emit Lingering Radiation that reduces the attack rate, movement speed, and Regeneration rate of the target, and all nearby foes. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe -Speed, -Recharge, -Regen",
   "icon": "radiationpoisoning_lingeringradiation.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -42,15 +47,25 @@ export const Lingeringradiation: Power = {
   "effects": {
     "buffDuration": 30,
     "durations": {
+      "movementCapDebuff": 30,
       "rechargeDebuff": 30,
       "regenDebuff": 30,
       "slow": 30
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.6,
       "table": "Ranged_Slow"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Ones"
     },
@@ -60,6 +75,7 @@ export const Lingeringradiation: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Ranged_Slow"
       },
@@ -68,8 +84,8 @@ export const Lingeringradiation: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.6,
+        "table": "Ranged_Slow"
       }
     }
   },

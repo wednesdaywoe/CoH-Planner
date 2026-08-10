@@ -12,12 +12,17 @@ export const Howl: Power = {
   "name": "Howl",
   "internalName": "Howl",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "A short range, but powerful sonic attack that can hit multiple enemies in an arc in front of you. Damage: Medium, Recharge: Slow",
   "shortHelp": "Ranged Cone, Medium DMG(Smashing/Energy), Foe -Res(All)",
   "icon": "sonicblast_cone.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -56,6 +61,7 @@ export const Howl: Power = {
   "effects": {
     "buffDuration": 9.83,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.063,
       "table": "Ranged_Ones"
     },
@@ -65,34 +71,42 @@ export const Howl: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }

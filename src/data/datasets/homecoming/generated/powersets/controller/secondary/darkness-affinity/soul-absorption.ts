@@ -12,12 +12,18 @@ export const SoulAbsorption: Power = {
   "name": "Soul Absorption",
   "internalName": "Soul_Absorption",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You drain the essence of both nearby conscious and defeated foes to cause you and your allies to regenerate and recovery much more quickly. The more defeated foes affected, the more powerful the regeneration and recovery effect will be.",
   "shortHelp": "PBAoE Team +Regen, +Recovery, Foe -To Hit",
   "icon": "darknessaffinity_soulabsorption.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "DeadFoe",
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "radius": 20,

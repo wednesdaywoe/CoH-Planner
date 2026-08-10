@@ -12,12 +12,17 @@ export const PsychicWail: Power = {
   "name": "Psychic Wail",
   "internalName": "Psychic_Wail",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes which deals Extreme Psionic damage. Those that survive will have a severely reduced attack rate and may be left Disoriented.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Psionic), Foe Disorient -Recharge",
   "icon": "psychicblast_psychicwail.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.5,
     "radius": 25,
@@ -52,6 +57,7 @@ export const PsychicWail: Power = {
       "rechargeDebuff": 20
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.7,
       "table": "Ranged_Slow"
     },

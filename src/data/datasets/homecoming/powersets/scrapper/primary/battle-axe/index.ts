@@ -21,8 +21,12 @@ import { Cleave as Cleave } from './cleave';
 
 export const powerset: Powerset = {
   id: 'scrapper/battle-axe',
-  internalName: 'battle_axe',
+  setPath: 'Scrapper_Melee.Battle_Axe',
   name: 'Battle Axe',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can wield a Battle Axe and master a variety of powerful Lethal attacks. Battle Axe is a slow but powerful weapon that has a tendency to send foes flying. This massive weapon has a bonus to hit.',
   icon: 'battle_axe_set.ico',
   archetype: 'scrapper',

@@ -12,12 +12,17 @@ export const PowerSink: Power = {
   "name": "Power Sink",
   "internalName": "Power_Sink",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance. Recharge: Long",
   "shortHelp": "PBAoE, Self +End, Foe -End",
   "icon": "electricitymanipulation_powersink.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 12,
@@ -38,6 +43,7 @@ export const PowerSink: Power = {
   "effects": {
     "buffDuration": 9.53,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.048,
       "table": "Melee_Ones"
     },

@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
+const { isPvpOnlyGroup: isPvpOnlyByRequires } = require('./_pv-scope.cjs');
 
 const datasetId = parseDatasetArg();
 
@@ -78,9 +79,9 @@ const DAMAGE_ATTRIBS = new Set([
 // `*_Damage` table (the element lives only in the shortHelp `DMG(...)`), and its
 // AttribMod schema DROPS the aspect — so neither the specific-`*_Dmg`-attrib gate
 // nor the `aspect === 'Absolute'` gate below can fire. Without a tspy branch every
-// melee/attack pet extracted ZERO damage, so ~287 of 619 pets (the pure-attack ones
-// like Howler Wolf, Demonlings, Knight Minion) were dropped as "no combat abilities"
-// and their summoning power surfaced only the pet NAME. This mirrors the player-power
+// melee/attack pet extracts ZERO damage, and ~287 of 619 pets (the pure-attack ones
+// like Howler Wolf, Demonlings, Knight Minion) carry no ability at all, so their
+// summoning power surfaces only the pet NAME. This mirrors the player-power
 // `applyThunderspyDamageType` handling in convert-powerset.cjs.
 const _TSPY = datasetId === 'thunderspy';
 const _DMG_TYPE_MAP = {
@@ -116,18 +117,182 @@ const MEZ_ATTRIBS = {
   'taunt': 'Taunt',
 };
 
-// Debuff attributes (negative effects on targets)
+// Debuff attributes (negative effects on targets). The slow family is absent: what a
+// movement or recharge attrib IS depends on its aspect and direction, not on its name,
+// so `classifySlowFamily` below owns those five.
 const DEBUFF_ATTRIBS = {
   'endurance': 'EndDrain',
   'recovery': 'RecoveryDebuff',
+  'regeneration': 'RegenDebuff',
   'tohit': 'ToHitDebuff',
   'base_defense': 'DefenseDebuff',
-  'runningspeed': 'Slow',
-  'flyingspeed': 'Slow',
-  'jumpingspeed': 'Slow',
-  'jumpheight': 'Slow',
-  'rechargetime': 'Slow',
 };
+
+/**
+ * Which FACE of the stat its attrib names a template moves — the discriminator the attrib
+ * name cannot carry (§2).
+ *
+ * A `Held` at aspect=Resistance is hold-duration RESISTANCE; a NEGATIVE `Held` at
+ * aspect=Current is a protection MAGNITUDE (the game's own encoding for mez protection);
+ * at aspect=Strength it modifies the target's hold strength. None of the three is a hold,
+ * and this route published all three under the applied type until now — so a pet that
+ * protects its summoner from knockback advertised knockback, and the mez merge's
+ * strongest-instance contest was being entered by rows that apply no mez at all.
+ *
+ * Both twins already fork this way and this route was the odd one out:
+ * `convert-powerset.cjs` sends a parent power's mez to `mezResistance` / `specialBuff` /
+ * the mez by the same three aspects, and its `classifyPseudoPetEffect` — the inline
+ * pseudo-pet route — emits `<Type>Protection` for the negative-Current face and
+ * `<Debuff>Resist` for the resistance face. Those names are this suffix rule applied to
+ * the applied type, so both are derived here rather than restated (ENT-9).
+ *
+ * Scoped to the families whose applied face is Current/Absolute. The slow family is
+ * absent because `classifySlowFamily` owns its own aspect fork (Maximum is the movement
+ * CAP, and Strength is how the game states a −Recharge), and the damage-type attribs
+ * because aspect=Resistance is a resistance DEBUFF there and aspect=Strength a damage
+ * buff — `extractDamageStrength` and the tspy resistance branch own those.
+ */
+const FACE_FORKED_ATTRIBS = new Set([
+  ...Object.keys(MEZ_ATTRIBS), ...Object.keys(DEBUFF_ATTRIBS), 'heal_dmg',
+]);
+
+/** Mez/knock attribs, where a negative Current scale is protection rather than the effect. */
+const PROTECTABLE_ATTRIBS = new Set(Object.keys(MEZ_ATTRIBS));
+
+function templateFace(attribLower, template) {
+  if (!FACE_FORKED_ATTRIBS.has(attribLower)) return 'applied';
+  // A resistance face states its DIRECTION, and a negative one is a vulnerability — the target
+  // resists the effect LESS. Named here rather than left to fall through, because falling
+  // through reads it as the applied effect: Rebirth's Disruption Arrow lowers six mez
+  // resistances on the foes under it, and 'applied' would publish those as six mezzes it never
+  // lands (they published as +40% resistance instead, at `Math.abs(scale)`).
+  //
+  // The sign carries the direction only on a plain table — `isDebuffTable` exists because a
+  // `*_Debuff_*` name carries it too, and then the sign means something else. No face-forked
+  // attrib rides a debuff table anywhere in the pet corpus (the 3 negative rows that do are
+  // `*_Dmg` attribs, which this fork does not claim), so that case is left undecided rather
+  // than guessed: every vulnerability the corpus really ships is on a `*_Ones` table.
+  if (template.aspect === 'Resistance') {
+    const vulnerability = (template.scale || 0) < 0 && !isDebuffTable(template.table);
+    return vulnerability ? 'vulnerability' : 'resistance';
+  }
+  if (template.aspect === 'Strength') return 'strength';
+  if ((template.scale || 0) < 0 && PROTECTABLE_ATTRIBS.has(attribLower)) return 'protection';
+  return 'applied';
+}
+
+/**
+ * The type name a non-applied face publishes under, or `null` for a face with no name.
+ *
+ * The suffixes reproduce every name the inline route already emits — `EndDrainResist`,
+ * `RecoveryDebuffResist`, `RegenDebuffResist`, `HoldProtection`, `KnockbackProtection`, … —
+ * by construction, so the two routes agree without either listing the names.
+ *
+ * The STRENGTH face has no name because it has no meaning in this vocabulary: it modifies
+ * how strongly the target applies the stat, which is neither an effect the pet delivers nor
+ * a protection it grants (`convert-powerset.cjs` parks the parent-power form in
+ * `specialBuff`, which no pet consumer reads). Measured before dropping: every such row in
+ * all three forks is on a Lore boss's `Weakening_Shot`, whose entity is commandable and so
+ * is never walked by either consumer — 2 rows per attrib per fork, 0 of them reachable.
+ *
+ * The VULNERABILITY face has none for the same reason, and this route was the odd one out in
+ * lacking the fork: the inline twin requires `scale > 0` before it names a resistance and
+ * `classifySlowFamily` says so out loud, while this one read the aspect alone and published
+ * `Math.abs(scale)` — so a −40% mez resistance shipped as +40% resistance, the sign being the
+ * whole difference between the two (25 rows, 12 of them on Rebirth's build-reachable
+ * Disruption Arrow). Naming it would need a display key the PARENT route writes, and neither
+ * route has one for a −resistance debuff, so it stays out until one exists (register ENT-12).
+ */
+function facedType(appliedType, face) {
+  if (face === 'applied') return appliedType;
+  if (face === 'resistance') return `${appliedType}Resist`;
+  if (face === 'protection') return `${appliedType}Protection`;
+  return null;
+}
+
+// The movement axis a speed attrib names. Spelled to match `MOVEMENT_TYPES` in
+// convert-powerset.cjs, including the Thunderspy variants, so a pet row and a parent-power
+// row land in the same axis of the same `slow` key rather than in two vocabularies.
+const MOVEMENT_AXIS = {
+  'runningspeed': 'runSpeed', 'speed_running': 'runSpeed', 'speedrunning': 'runSpeed',
+  'runspeed': 'runSpeed',
+  'flyingspeed': 'flySpeed', 'speed_flying': 'flySpeed', 'speedflying': 'flySpeed',
+  'flyspeed': 'flySpeed',
+  'jumpingspeed': 'jumpSpeed', 'speed_jumping': 'jumpSpeed', 'speedjumping': 'jumpSpeed',
+  'jumpheight': 'jumpHeight',
+};
+
+// A debuff states its direction in the SIGN or in the TABLE, and either alone is
+// incomplete: a foe -ToHit is stored as a POSITIVE scale on a `*_Debuff_ToHit`
+// table, and a -Recharge foe debuff rides a `*_Slow` table. This is the same test
+// convert-powerset.cjs applies as `isDebuff = scale < 0 || table.includes('debuff')`,
+// factored out here because both `extractBuffAura` and the attrib classification
+// below ask it and a drift between them is a sign trap.
+function isDebuffTable(table) {
+  const lower = (table || '').toLowerCase();
+  return lower.includes('debuff') || lower.endsWith('_slow');
+}
+
+function isDebuffDirection(template) {
+  return (template.scale || 0) < 0 || isDebuffTable(template.table);
+}
+
+/**
+ * Classify one movement-speed or recharge attrib, which the attrib NAME cannot do alone.
+ *
+ * The three faces of a slow are three different attributes and the game keeps them apart:
+ * a Current/Strength-aspect speed debuff, a Maximum-aspect movement CAP debuff, and a
+ * -Recharge. `convert-powerset.cjs` routes a parent power's rows to `slow[axis]`,
+ * `movementCapDebuff[axis]` and `rechargeDebuff` for exactly that reason (ENT-5), and this
+ * returns the same three so a pet row lands in the key its parent-power twin would.
+ *
+ * The other two directions are not debuffs at all and previously published as one:
+ * aspect=Resistance is protection FROM being slowed (Lore Knives' Rallying Cry), and the
+ * buff direction is a +Recharge or +Speed aura (Tech Lab's Haste, whose own tooltip reads
+ * "+Recharge, +SPD"). Both showed under a `-Speed` label. Neither has a pet debuff slot,
+ * and `extractBuffAura` owns whatever the buff direction is worth.
+ *
+ * The recharge half of the resistance face DOES have a name — the inline route's
+ * `RechargeDebuffResist` — so it is published rather than dropped, which is what stops the
+ * two routes disagreeing about the same template. The movement half still has none, as it
+ * has none on the inline route either (ENT-9).
+ *
+ * Returns `null` when the attrib is not in this family or the row is not a debuff.
+ */
+function classifySlowFamily(attribLower, template) {
+  const axis = MOVEMENT_AXIS[attribLower];
+  const isRecharge = attribLower === 'rechargetime';
+  if (!axis && !isRecharge) return null;
+  if (template.aspect === 'Resistance') {
+    // Positive only, as the inline route requires: the negative direction of a resistance
+    // face is a vulnerability, which neither route has a name for.
+    return isRecharge && (template.scale || 0) > 0 ? { type: 'RechargeDebuffResist' } : null;
+  }
+  if (!isDebuffDirection(template)) return null;
+  if (isRecharge) return { type: 'RechargeDebuff' };
+  if (template.aspect === 'Maximum') return { type: 'MovementCapDebuff', axis };
+  return { type: 'Slow', axis };
+}
+
+/**
+ * The identity a pet effect is deduplicated on: the §2 discriminators the emitted row
+ * carries, not its type name.
+ *
+ * Keying on the type alone kept one effect per type per power and dropped the rest by
+ * template ORDER, so Sentinel Whirlpool published its run-speed CAP kill as its `-Speed`
+ * and lost the real 0.4 speed debuff, the 0.3 fly debuff and the -Recharge underneath
+ * (ENT-8). Two rows are the same effect only when they agree on every axis that reaches
+ * the wire; anything else is a distinct effect the merge is entitled to see.
+ */
+function effectIdentity(effect, template) {
+  // Every field the row carries, not a chosen subset — `defenseTypes`, `resistanceTypes`
+  // and `absorbAspect` discriminate as surely as the scale does, and a hand-listed key is
+  // how a discriminator gets left out again. `ignoreStrength` is read from the template
+  // because it is stamped onto the row after this runs.
+  const fields = Object.keys(effect).sort().map((k) => `${k}=${JSON.stringify(effect[k])}`);
+  if ((template.flags || []).includes('IgnoreStrength')) fields.push('ignoreStrength=true');
+  return fields.join('|');
+}
 
 // Thunderspy pet debuff vocabulary. Its Parse6-derived schema names the APPLIED
 // attrib directly (Slow, Debuff_Def, DeBuff_ToHit, Res_DMG, …) — NOT the HC
@@ -152,15 +317,18 @@ const DEBUFF_ATTRIBS = {
 //    (survivability, e.g. blaster_time Res_DMG +2.0) and -N for a foe debuff
 //    (Freezing Rain Res_DMG -1.0). Positive = self-buff → dropped (matches HC
 //    dropping pet ResistAll self-buffs); negative = the foe debuff we surface.
-//    These are further gated to a REAL magnitude table: Thunderspy also carries
-//    Recovery / Endurance as bare MARKERS on a `*_Ones` placeholder table (the
+//    Two of them are further gated to a REAL magnitude table: Thunderspy carries
+//    Recovery and Endurance as bare MARKERS on a `*_Ones` placeholder table (the
 //    actual -End rides the separate `EndDrain` attrib on a real `*_EndDrain`
 //    table) whose scale is not a computable percentage — surfacing those printed
 //    a meaningless ~100% (and mislabeled +Recovery ally-buffs like Adrenalin
-//    Boost / Guardianship as "-Recovery"). The `*_Ones` guard drops the markers
-//    while keeping the real-table debuffs (Res_DMG→ResistanceDebuff,
-//    EndDrain→EndDrain). -Regeneration is intentionally absent: the pet panel has
-//    no RegenDebuff display, so there's nothing to show.
+//    Boost / Guardianship as "-Recovery").
+//    That exclusion belongs to those two attribs, not to the `*_Ones` table: for
+//    -Regeneration the `*_Ones` scale IS the magnitude, exactly as it is on the
+//    Homecoming and Rebirth twins (Poison Gas -10 @Melee_Ones) and on the parent
+//    route, where convert-powerset.cjs ships `regenDebuff` on `Ranged_Ones`. A
+//    blanket table guard would have dropped every tspy pet -Regen, since all of
+//    them ride `*_Ones` (ENT-7).
 // The `debuff_*` keys are CATEGORY tokens — what a tspy effect element carries at its
 // front. Since the parser began reading each AttribMod's own index array (TSPY-4) most
 // of these arrive under their real HC attrib name instead (`Base_Defense`, `ToHit`, the
@@ -168,17 +336,28 @@ const DEBUFF_ATTRIBS = {
 // front one, the real name for the mods that now name themselves. Without the real
 // names every location/patch pseudo-pet lost the -Def half again — Sleet's
 // `Base_Defense 3.0 Melee_Debuff_Def` is byte-identical to its HC and Rebirth twins.
+// The slow family is absent for the reason it is absent from DEBUFF_ATTRIBS: these keys
+// fired on the attrib NAME alone, so a Resistance-aspect slow PROTECTION (Temporal
+// Mending) published as a foe `-Speed`. `classifySlowFamily` runs for tspy too — the
+// aspect and the table both survive its schema, and it states the same movement attribs
+// Homecoming does. The fork's own aggregate `slow` attrib went with them: it appears on no
+// pet power in the corpus, and `MOVEMENT_TYPES` has no entry for it either, so a parent
+// power carrying one already emits nothing.
 const _TSPY_DEBUFF_NAMED = {
-  'slow': 'Slow', 'speedrunning': 'Slow', 'speedflying': 'Slow', 'speedjumping': 'Slow',
   'debuff_def': 'DefenseDebuff', 'debuff_tohit': 'ToHitDebuff', 'debuff_dam': 'DamageDebuff',
   'base_defense': 'DefenseDebuff', 'tohit': 'ToHitDebuff',
-  'runningspeed': 'Slow', 'flyingspeed': 'Slow', 'jumpingspeed': 'Slow',
-  'jumpheight': 'Slow', 'rechargetime': 'Slow',
 };
 const _TSPY_DEBUFF_SIGNED = {
   'res_dmg': 'ResistanceDebuff', 'recovery': 'RecoveryDebuff',
+  'regeneration': 'RegenDebuff',
   'endurance': 'EndDrain', 'enddrain': 'EndDrain',
 };
+
+// The two `_TSPY_DEBUFF_SIGNED` attribs whose `*_Ones` rows are markers rather than
+// magnitudes. Measured over the reachable pet corpus: `recovery` and `endurance` are
+// the only signed attribs that ever ride a `*_Ones` table with a negative scale
+// (65 and 43 templates), so naming them costs the other keys nothing.
+const _TSPY_ONES_MARKER_ATTRIBS = new Set(['recovery', 'endurance']);
 
 // ---------------------------------------------------------------------------
 // Ally-buff-aura vocabulary (buff-pets: Force Field Generator, Barrier Reef,
@@ -214,11 +393,11 @@ const BUFF_RES_TYPE_MAP = {
 };
 
 // Scalar ally-buff attribs (single-value stats). aspect=Current + positive scale.
-// Several of these attribs ALSO key DEBUFF_ATTRIBS (a negative `recovery` is a
-// -Recovery debuff, a negative `rechargetime` is a Slow) — so the caller must
-// skip the debuff path for an attrib we've consumed here as a positive buff, or
-// a Triage-Beacon-style +Regen aura would emit both a RegenBuff and a phantom
-// debuff. Regeneration isn't in DEBUFF_ATTRIBS, but list it here for symmetry.
+// Every one of these attribs ALSO keys DEBUFF_ATTRIBS in its other direction (a
+// negative `recovery` is a -Recovery debuff, a negative `regeneration` a -Regen,
+// a negative `rechargetime` a Slow) — so the caller must skip the debuff path for
+// an attrib consumed here as a positive buff, or a Triage-Beacon-style +Regen aura
+// would emit both a RegenBuff and a phantom debuff.
 const BUFF_SCALAR_ATTRIBS = {
   regeneration: 'RegenBuff',
   recovery: 'RecoveryBuff',
@@ -229,20 +408,25 @@ const BUFF_SCALAR_ATTRIBS = {
 // ---------------------------------------------------------------------------
 // SELF-buff vocabulary — the pet's OWN defensive profile.
 //
-// A summon is a second character (COH-DATA-MODEL §6): the pet has its own class
-// row and its own always-on powers, and those powers carry its resistance, defense,
-// mez protection and mez resistance on `target: Self` templates. `isDebuffTemplate`
-// rejects target=Self wholesale, so every one of them was parsed from the bin and
-// then dropped — 352 of the entities a player power can summon have at least one.
-// This is what "can I see my pet's stats" needs.
+// A summon is a second character: the pet has its own class row and its own
+// always-on powers, and those powers carry its resistance, defense, mez protection
+// and mez resistance on `target: Self` templates. `isDebuffTemplate` rejects
+// target=Self wholesale, so every one of them was parsed from the bin and then
+// dropped — 352 of the entities a player power can summon have at least one. This
+// is what "can I see my pet's stats" needs.
+//
+// Distinct from the faced vocabulary `templateFace`/`facedType` produce. Those come
+// off rows the pet addresses to somebody else (`AnyAffected`), where the recipient —
+// summoner or foe — is decided by the ABILITY's `targetsAffected` (ENT-12). These
+// come off rows addressed to the pet itself, so there is no recipient question to
+// ask: the stat is the pet's, full stop.
 //
 // CRITICAL — these MUST NOT reuse the `DefenseBuff`/`ResistanceBuff`/`Absorb` type
-// names. Those are the ALLY-aura vocabulary below, and `buff-pet-auras.ts` folds
-// them into the PLAYER's totals by exact type string. A pet's own +Res is not the
-// player's +Res, and emitting it under the ally name would leak a pet stat onto the
-// character sheet — the same failure as a pet-set proc read as a self buff
-// (COH-DATA-MODEL §6). Hence the `Self…` prefix, and a guard test that asserts the
-// two vocabularies stay disjoint.
+// names. Those are the ALLY-aura vocabulary below, and `buff_pets` folds them into
+// the PLAYER's totals by exact type string. A pet's own +Res is not the player's
+// +Res, and emitting it under the ally name would leak a pet stat onto the character
+// sheet. Hence the `Self…` prefix, and a guard test that asserts the two
+// vocabularies stay disjoint.
 //
 // The families below are the census of what actually appears on self templates
 // across all 760 pet powers reachable from a player summon — not a guess.
@@ -366,6 +550,40 @@ function extractSelfBuff(template) {
 }
 
 /**
+ * Every effect type this converter can emit, and the only names it may.
+ *
+ * A pet effect type is a string, so the Rust consumers can only route the ones they know
+ * and drop the rest in silence — which is how six types shipped for months reaching no
+ * consumer at all, and how a seventh (`RegenDebuff`) reached one only after ENT-7 went
+ * looking. The set cannot grow silently now: an unlisted type throws at the push below,
+ * where a new type is born, and `pet_effect_vocabulary.rs` grades the other direction —
+ * every type in the shipped corpus must have a route or a stated reason for having none.
+ *
+ * Derived from the classification maps rather than hand-listed, so adding an attrib to
+ * one of them cannot leave this behind. Only the names that are literals in their own
+ * emitter are literals here (ENT-9).
+ */
+const EMITTED_EFFECT_TYPES = new Set([
+  ...Object.values(MEZ_ATTRIBS),
+  ...Object.values(DEBUFF_ATTRIBS),
+  ...Object.values(_TSPY_DEBUFF_NAMED),
+  ...Object.values(_TSPY_DEBUFF_SIGNED),
+  ...Object.values(BUFF_SCALAR_ATTRIBS),
+  // classifySlowFamily
+  'Slow', 'MovementCapDebuff', 'RechargeDebuff', 'RechargeDebuffResist',
+  // extractBuffAura's typed branches, extractDamageStrength, and the direct heal
+  'DefenseBuff', 'ResistanceBuff', 'Absorb',
+  'DamageBuff', 'DamageDebuff', 'EnduranceGain', 'Heal',
+  // The non-applied faces, built from the same applied names `facedType` suffixes.
+  ...Object.values(MEZ_ATTRIBS).flatMap((t) => [`${t}Protection`, `${t}Resist`]),
+  ...Object.values(DEBUFF_ATTRIBS).map((t) => `${t}Resist`),
+  'HealResist',
+  // extractSelfBuff — the pet's own stat sheet, off its `target: Self` templates.
+  'SelfResistance', 'SelfDefense', 'SelfMezProtection', 'SelfMezResistance',
+  'SelfDebuffResistance',
+]);
+
+/**
  * Classify an ally-buff-aura template (Defense / Resistance / Absorb / +Regen /
  * +Recovery / +ToHit / +Recharge — the vocabulary of "floaty" buff-pets: Force
  * Field Generator, Barrier Reef, Triage Beacon, …). Returns `{ effects, consumed }`:
@@ -396,9 +614,8 @@ function extractBuffAura(template) {
   // Buff vs debuff is encoded in the TABLE name, not the sign: a foe -ToHit is
   // stored as a POSITIVE scale on a `*_Debuff_ToHit` table (verified: Liquefy
   // 2.856, Earthquake 1.0), and a -Recharge foe debuff rides a `*_Slow` table.
-  // So an ally buff is a positive scale on a table that is neither (mirrors
-  // convert-powerset's `isDebuff = scale < 0 || table.includes('debuff')`).
-  const isBuffTable = !tableLower.includes('debuff') && !tableLower.endsWith('_slow');
+  // So an ally buff is a positive scale on a table that is neither.
+  const isBuffTable = !isDebuffTable(template.table);
 
   // Defense buff: `*_Buff_Def` table (aspect Current). Collect every def sub-type.
   // The leading underscore + debuff guard keeps `*_Debuff_Def` (a foe -Def) out.
@@ -449,6 +666,66 @@ function extractBuffAura(template) {
         consumed.add(a);
       }
     }
+  }
+
+  return { effects: out, consumed };
+}
+
+/**
+ * Classify a damage-STRENGTH modifier (an ally +Damage buff, a foe -Damage debuff) or an
+ * ally endurance grant. Same `{ effects, consumed }` contract as extractBuffAura.
+ *
+ * These sit outside every other vocabulary in this file, which is why a pet carrying only
+ * them classified nothing at all (ENT-3): a `*_Dmg` attrib at aspect=Strength is not damage
+ * (extractDamage wants aspect=Absolute), not a resistance (that is aspect=Resistance), and
+ * DEBUFF_ATTRIBS holds no damage-type keys — so it fell through all three. It is the §2
+ * discriminator rule biting the converter: the ASPECT is what makes those rows a damage
+ * buff/debuff rather than damage, and there was no slot for the pair.
+ *
+ * Homecoming is the oracle for the shape. It routes the same three mechanics through the
+ * PARENT power instead of a pet, and `convert-powerset.cjs` emits them as `damageBuff`,
+ * `damageDebuff` and `enduranceGain` — so the pet forms carry the same names to the same
+ * consumers rather than inventing a parallel vocabulary (Rebirth's Siphon Power keeps its
+ * own parent `damageDebuff` and was losing only the pet's ally +damage half).
+ *
+ * The TABLE discriminates direction, not the sign — the rule extractBuffAura already
+ * documents: a foe -Dam is stored POSITIVE on a `*_Debuff_Dam` table, an ally +Dam positive
+ * on `*_Buff_Dmg`. Only on a neutral `*_Ones` table does the sign carry it. A `*_Dmg` at
+ * aspect=Strength on any other table is a different mechanic (a Lore boss's `Ranged_Stun`
+ * row is the live case) and classifies as neither — falling through is the correct answer
+ * there, not a default.
+ */
+function extractDamageStrength(template) {
+  const out = [];
+  const consumed = new Set();
+  const scale = template.scale;
+  if (typeof scale !== 'number' || !template.table || template.target === 'Self') {
+    return { effects: out, consumed };
+  }
+  const tableLower = template.table.toLowerCase();
+  const attribsLower = (template.attribs || []).map(a => a.toLowerCase());
+
+  if (template.aspect === 'Strength' && attribsLower.some(a => /_dmg$/.test(a))) {
+    let type = null;
+    if (/_debuff_dam$/.test(tableLower)) type = scale > 0 ? 'DamageDebuff' : null;
+    else if (/_buff_dmg$/.test(tableLower)) type = scale > 0 ? 'DamageBuff' : null;
+    else if (/_ones$/.test(tableLower)) {
+      type = scale > 0 ? 'DamageBuff' : (scale < 0 ? 'DamageDebuff' : null);
+    }
+    if (type) {
+      // One modifier moves every damage type it names at the same scale, so the per-type
+      // attribs collapse to a single effect — as DefenseBuff/ResistanceBuff collapse theirs.
+      out.push({ type, scale: Math.abs(scale), table: template.table });
+      for (const a of attribsLower) if (/_dmg$/.test(a)) consumed.add(a);
+    }
+  }
+
+  // Ally endurance grant. `endurance` is a DEBUFF_ATTRIBS key (an EndDrain) in the draining
+  // direction only — both debuff paths already require a negative scale — so the granting
+  // direction had nowhere to land. aspect=Absolute is an amount off the table.
+  if (template.aspect === 'Absolute' && attribsLower.includes('endurance') && scale > 0) {
+    out.push({ type: 'EnduranceGain', scale, table: template.table });
+    consumed.add('endurance');
   }
 
   return { effects: out, consumed };
@@ -516,17 +793,13 @@ function isUtilityPower(powerData) {
 
 // A PvE/PvP `enttype` pair is split into `enttype target> critter eq` (PvE) and
 // `enttype target> player eq` (PvP) groups, BOTH tagged is_pvp='EITHER', so the
-// PVP_ONLY flag never catches the PvP half — this requires clause does. Same
-// helper (and same RPN spelling) as convert-powerset.cjs `isPvpEnttypeVariant`
-// and validate-converter-output.cjs. This converter previously matched the
-// CoD2 *infix* spelling `target>enttype eq 'player'`, which the parser never
-// emits, so the guard was dead: every summoned rain/storm pet kept BOTH halves
-// of its damage pair. Blizzard read four sources (Lethal 0.05 + PvE Cold 0.05 +
-// PvP Cold 0.01 + PvP Cold 0.09) instead of two; Ice Storm and Rain of Fire
-// read three instead of one.
-function isPvpEnttypeVariant(requiresExpression) {
-  return /\benttype\s+target>\s+player\s+eq/i.test(requiresExpression || '');
-}
+// PVP_ONLY flag never catches the PvP half — the requires clause does, and
+// `_pv-scope.cjs` reads the parser's verdict on it. This converter previously
+// matched the CoD2 *infix* spelling `target>enttype eq 'player'`, which the
+// parser never emits, so the guard was dead: every summoned rain/storm pet kept
+// BOTH halves of its damage pair. Blizzard read four sources (Lethal 0.05 + PvE
+// Cold 0.05 + PvP Cold 0.01 + PvP Cold 0.09) instead of two; Ice Storm and Rain
+// of Fire read three instead of one.
 
 // Thunderspy spells the same split as an `isPVPMap?` check (negated for the PvE
 // half), so read both idioms — reading only one leaves tspy pets double-counted.
@@ -541,8 +814,8 @@ function isPvpMapOnly(requiresExpression) {
 function isPvpOnlyGroup(effectGroup) {
   if (!effectGroup) return false;
   if (effectGroup.is_pvp === 'PVP_ONLY') return true;
-  const req = effectGroup.requires_expression || '';
-  return isPvpEnttypeVariant(req) || isPvpMapOnly(req);
+  if (isPvpOnlyByRequires(effectGroup)) return true;
+  return isPvpMapOnly(effectGroup.requires_expression || '');
 }
 
 /**
@@ -557,14 +830,37 @@ function isPvpOnlyGroup(effectGroup) {
  * entirely (see `_isUntoggleableGate` in convert-powerset.cjs). A pet's powers carry
  * no user toggles, so the honest reading is base damage only.
  *
- * Deliberately narrow: this converter still lacks the general
- * `_isConditionalGate` pass that convert-powerset.cjs applies, so other gated pet
- * bonuses remain summed. Widening it needs its own audit of every pet damage number
- * — tracked in docs/HOMECOMING_PARSER.md.
+ * Deliberately narrow: this converter still lacks the general `_isConditionalGate`
+ * pass that convert-powerset.cjs applies, so other gated pet bonuses remain summed.
+ * Widening it needs its own audit of every pet damage number.
  */
 function isTargetTokenWindowGroup(effectGroup) {
   const req = effectGroup?.requires_expression || '';
   return /\btarget\.TokenTime>/.test(req);
+}
+
+/**
+ * The probability an effect group states, or `undefined` when it states none.
+ *
+ * **Zero is not a probability here.** `convert-powerset.cjs` settled this on the parent
+ * route — "a chance:0 group is a mode-gate SENTINEL, not literal 0%" — and the export
+ * bears it out: Thunderspy alone ships 2383 groups at `chance: 0.0`, among them Bullet
+ * Rain's slow, which lands every time. Reading the sentinel as a number publishes
+ * `chance: 0` on rows that always fire, and every consumer that weights by chance then
+ * reports them as never happening: Howler Wolf's Vicious Bite lost its 0.42 Lethal
+ * rider, and `granted::pseudo_pet_effects` drops a control row outright on `chance < 1`.
+ *
+ * Only a value strictly inside (0, 1) is a real roll. `1` and absence both mean the
+ * group always applies, and are equally uninteresting to a display, so both answer
+ * `undefined` — a stated `chance: 1` on a row would read as a fact somebody measured.
+ *
+ * Unlike the parent route this converter has no `gated` mark to move the sentinel onto,
+ * so the gate itself is not recorded; the row is published ungated, which is what it
+ * already was. Naming the sentinel is the fix available here.
+ */
+function groupProbability(chance) {
+  if (typeof chance !== 'number') return undefined;
+  return chance > 0 && chance < 1 ? chance : undefined;
 }
 
 /**
@@ -619,18 +915,7 @@ function extractDamage(powerData) {
         // has always carried this through; damage silently did not, so every such
         // entry was summed at face value — Trip Mine read ~14% high before the
         // fires-per-spawn bug even entered into it.
-        //
-        // Zero is excluded because it is not a probability here: a chance:0 group
-        // carrying a payload is a mode GATE, the same sentinel `collectTemplatesDeep`
-        // reads in convert-powerset.cjs and `pet-damage.ts` already honours for
-        // ability-level damage (`damageChance > 0 ? … : undefined`). Consuming it as
-        // a literal 0 multiplies the component away: all three datasets author the
-        // Howler Wolf's third Lethal bite (scale 0.42) under a chance:0 group, and
-        // it was being dropped from the pet's damage entirely.
-        const chance = typeof effectGroup.chance === 'number'
-          && effectGroup.chance > 0 && effectGroup.chance < 1
-          ? effectGroup.chance
-          : undefined;
+        const chance = groupProbability(effectGroup.chance);
         for (const attrib of template.attribs) {
           const attribLower = attrib.toLowerCase();
           if (DAMAGE_ATTRIBS.has(attribLower)) {
@@ -681,7 +966,7 @@ function isDebuffTemplate(template, effectGroup) {
  */
 function extractEffects(powerData) {
   const effects = [];
-  const seenTypes = new Set(); // Avoid duplicate effect types per power
+  const seen = new Set(); // Identities already held — see effectIdentity
   // Transient self-buffs that must not be read as permanent pet stats — see
   // SELF_BUFF_EXCLUDED_POWERSETS for why the binary can't tell us this itself.
   const selfBuffsSuppressed = SELF_BUFF_EXCLUDED_POWERSETS.has(
@@ -693,26 +978,48 @@ function extractEffects(powerData) {
 
     const processTemplates = (templates, chance) => {
       for (const template of (templates || [])) {
-        // The pet's OWN defensive stats (target: Self) — a separate vocabulary
-        // from everything below, which is foe/ally-facing. `isDebuffTemplate`
-        // rejects target=Self, so this branch has to run before it, not after.
-        // Deduped per (type + sub-type set + scale) so a pet whose Resistance power
-        // lists S/L and F/C on separate templates keeps BOTH rows (different
-        // scales) while a genuine repeat collapses.
+        // Hold an effect unless one agreeing on every discriminator is already held. A
+        // power states the same template several times — once per effect group, and again
+        // through a child group — and those repeats are genuine duplicates; two rows
+        // differing on an axis, an aspect, a scale or a table are not.
+        const push = (effect) => {
+          if (!EMITTED_EFFECT_TYPES.has(effect.type)) {
+            throw new Error(
+              `convert-pet-entities: '${effect.type}' is not a registered pet effect type. `
+                + 'Add it to EMITTED_EFFECT_TYPES and give it a route in '
+                + 'granted.rs PET_EFFECT_ROUTES, or the consumers will drop it in silence.',
+            );
+          }
+          if (chance !== undefined) effect.chance = chance;
+          const identity = effectIdentity(effect, template);
+          if (seen.has(identity)) return;
+          seen.add(identity);
+          // A template the caster's Strength does not reach is not enhanceable by the
+          // summoner's slotting, even though the pet inherits it through CopyBoosts.
+          // Recorded per effect: this converter read no flags at all before, so an
+          // unenhanceable pet debuff was indistinguishable from an enhanceable one and
+          // 93-100% of the pet -Resistance corpus was the wrong kind (ENT-4).
+          //
+          // `granted::pseudo_pet_effects` merges the mark into the summoning power's
+          // display bag, where a marked value resolves flat across all three tiers — the
+          // same rule `convert-powerset.cjs` now stamps on a parent power, so neither
+          // route can overstate what the other understates.
+          if ((template.flags || []).includes('IgnoreStrength')) effect.ignoreStrength = true;
+          effects.push(effect);
+        };
+
+        // The pet's OWN defensive stats (`target: Self`) — a separate vocabulary from
+        // everything below, which is foe/ally-facing. `isDebuffTemplate` rejects
+        // target=Self, so this branch takes the template instead of, not after, that
+        // gate. `push`'s identity covers every field the row carries, so a pet whose
+        // Resistance power lists S/L and F/C on separate templates keeps BOTH rows
+        // (different scales) while a genuine repeat collapses.
         if (template.target === 'Self') {
-          if (selfBuffsSuppressed) continue;
-          for (const self of extractSelfBuff(template)) {
-            const subKey = (self.resistanceTypes || self.defenseTypes || self.mezTypes
-              || self.debuffTypes || []).join(',');
-            const key = `${self.type}|${subKey}|${self.scale}`;
-            if (seenTypes.has(key)) continue;
-            seenTypes.add(key);
-            if (chance < 1.0) self.chance = chance;
-            effects.push(self);
+          if (!selfBuffsSuppressed) {
+            for (const self of extractSelfBuff(template)) push(self);
           }
           continue;
         }
-
         if (!isDebuffTemplate(template, effectGroup)) continue;
 
         // Ally-buff auras (Def/Res/Absorb/+Regen/…) — the whole point of a buff-pet.
@@ -722,33 +1029,72 @@ function extractEffects(powerData) {
         // debuff loop below skips them (a positive `recovery`/`rechargetime` must
         // not ALSO surface as a -Recovery/Slow debuff).
         const { effects: buffAuras, consumed: buffConsumed } = extractBuffAura(template);
-        for (const buff of buffAuras) {
-          if (seenTypes.has(buff.type)) continue;
-          seenTypes.add(buff.type);
-          if (chance < 1.0) buff.chance = chance;
-          effects.push(buff);
-        }
+        // Damage-strength modifiers and the endurance grant, which every branch below is
+        // blind to. Runs for all datasets — aspect and table both survive the tspy schema.
+        const { effects: dmgMods, consumed: dmgConsumed } = extractDamageStrength(template);
+        for (const attrib of dmgConsumed) buffConsumed.add(attrib);
+
+        for (const buff of [...buffAuras, ...dmgMods]) push(buff);
 
         for (const attrib of (template.attribs || [])) {
           const attribLower = attrib.toLowerCase();
           if (buffConsumed.has(attribLower)) continue;
 
+          // Which FACE of the stat this row moves (see `templateFace`). The attrib names
+          // the stat; the aspect and the sign name what is being done to it, and every
+          // branch below reads the APPLIED face only. A resistance or protection row
+          // publishes under its own name and is never also the effect it protects from —
+          // ENT-3 closed this on `Heal_Dmg` alone and ENT-7 on `Regeneration` alone; the
+          // guard is general now, so the next family cannot arrive without one.
+          const face = templateFace(attribLower, template);
+          if (face !== 'applied') {
+            const appliedType = MEZ_ATTRIBS[attribLower] || DEBUFF_ATTRIBS[attribLower]
+              || (attribLower === 'heal_dmg' ? 'Heal' : null);
+            const type = facedType(appliedType, face);
+            if (type) {
+              const effect = { type };
+              if (template.scale && template.table) {
+                // Stored at |scale| like every other row here and on the inline route: a
+                // protection magnitude is authored negative and is not a smaller number
+                // than a weaker one.
+                effect.scale = Math.abs(template.scale);
+                effect.table = template.table;
+              }
+              push(effect);
+            }
+            continue;
+          }
+
+          // The direction half of the same rule, which the face fork cannot carry: a
+          // POSITIVE `Regeneration` is the buff direction, which `extractBuffAura` owns.
+          if (attribLower === 'regeneration' && !isDebuffDirection(template)) continue;
+
           // Check mez effects
           const mezType = MEZ_ATTRIBS[attribLower];
-          if (mezType && !seenTypes.has(mezType)) {
-            seenTypes.add(mezType);
+          if (mezType) {
             const effect = { type: mezType };
             if (template.magnitude && template.magnitude > 0) {
               effect.magnitude = template.magnitude;
-            }
-            if (chance < 1.0) {
-              effect.chance = chance;
             }
             if (template.scale && template.table) {
               effect.scale = template.scale;
               effect.table = template.table;
             }
-            effects.push(effect);
+            push(effect);
+          }
+
+          // The slow family — three different attributes the attrib name alone cannot
+          // tell apart. Runs for every dataset: the aspect and the table survive the tspy
+          // schema, and tspy states the same movement attribs Homecoming does.
+          const slowFamily = classifySlowFamily(attribLower, template);
+          if (slowFamily && Math.abs(template.scale || 0) >= 0.001) {
+            const effect = { type: slowFamily.type };
+            if (slowFamily.axis) effect.axis = slowFamily.axis;
+            if (template.scale && template.table) {
+              effect.scale = Math.abs(template.scale);
+              effect.table = template.table;
+            }
+            push(effect);
           }
 
           // Check debuff effects. Thunderspy uses its own attrib vocabulary and
@@ -762,10 +1108,12 @@ function extractEffects(powerData) {
               const signed = _TSPY_DEBUFF_SIGNED[attribLower];
               // Resource attrib: only the draining/foe direction (negative scale)
               // is a debuff; the positive direction is a pet self-buff (dropped).
-              // AND only when it rides a real magnitude table — a `*_Ones`
-              // placeholder is a marker, not a computable percent (see the map).
-              if (signed && template.scale < 0
-                  && !/_ones$/i.test(template.table || '')) debuffType = signed;
+              // Recovery and Endurance are additionally gated to a real magnitude
+              // table — their `*_Ones` rows are markers, not computable percents
+              // (see the map). No other signed attrib carries that ambiguity.
+              const isOnesMarker = _TSPY_ONES_MARKER_ATTRIBS.has(attribLower)
+                && /_ones$/i.test(template.table || '');
+              if (signed && template.scale < 0 && !isOnesMarker) debuffType = signed;
             }
             // Surfaced per-type resistance: the powers parser now expands a
             // `Res_DMG`-front template into its real `*_Dmg` index attribs and
@@ -780,77 +1128,79 @@ function extractEffects(powerData) {
                 && !/_ones$/i.test(template.table || '')) {
               debuffType = 'ResistanceDebuff';
             }
-            if (debuffType && !seenTypes.has(debuffType)) {
-              // Skip a scale-0 slow tag row (a marker, not a real slow).
-              if (!(debuffType === 'Slow' && Math.abs(template.scale || 0) < 0.001)) {
-                seenTypes.add(debuffType);
-                const effect = { type: debuffType };
-                if (chance < 1.0) effect.chance = chance;
-                if (template.scale && template.table) {
-                  effect.scale = Math.abs(template.scale);
-                  effect.table = template.table;
-                }
-                effects.push(effect);
-              }
-            }
-            // tspy ally heal (support pseudo-pets) — positive-scale `Heal` attrib.
-            if (attribLower === 'heal' && template.scale > 0 && !seenTypes.has('Heal')) {
-              seenTypes.add('Heal');
-              const effect = { type: 'Heal' };
-              if (chance < 1.0) effect.chance = chance;
+            if (debuffType) {
+              const effect = { type: debuffType };
               if (template.scale && template.table) {
                 effect.scale = Math.abs(template.scale);
                 effect.table = template.table;
               }
-              effects.push(effect);
+              push(effect);
+            }
+            // tspy ally heal (support pseudo-pets: Triage Beacon, Lifegiving Spores,
+            // Spirit Tree). Spelled `Heal_Dmg`, exactly as HC spells it — the duplicate
+            // exists because the tspy branch `continue`s before the HC heal block below,
+            // so that block is unreachable from here.
+            //
+            // The ASPECT discriminates, not the attrib name (GAME-DATA §2): the same
+            // `Heal_Dmg` carries heal-debuff RESISTANCE at aspect=Resistance, which is not
+            // a heal at all. Both amount forms are kept — Absolute is an HP amount off the
+            // table, Current on a `*_Ones` table is a max-HP fraction (the rez full-heals).
+            if (attribLower === 'heal_dmg' && template.aspect !== 'Resistance'
+                && template.scale > 0) {
+              const effect = { type: 'Heal' };
+              if (template.scale && template.table) {
+                effect.scale = Math.abs(template.scale);
+                effect.table = template.table;
+              }
+              push(effect);
             }
             continue; // tspy handled; skip the HC debuff/heal blocks below
           }
 
           // Check debuff effects
           const debuffType = DEBUFF_ATTRIBS[attribLower];
-          if (debuffType && !seenTypes.has(debuffType)) {
+          if (debuffType) {
             // For endurance drain, check the scale is negative (draining, not granting)
             if (attribLower === 'endurance' && template.scale >= 0) continue;
-            // For slow effects, skip if scale is 0 (just a tag)
-            if (debuffType === 'Slow' && Math.abs(template.scale || 0) < 0.001) continue;
 
-            seenTypes.add(debuffType);
             const effect = { type: debuffType };
-            if (chance < 1.0) {
-              effect.chance = chance;
-            }
             if (template.scale && template.table) {
               effect.scale = Math.abs(template.scale);
               effect.table = template.table;
             }
-            effects.push(effect);
+            push(effect);
           }
 
-          // Check healing effects (Heal_Dmg = direct ally heal)
-          if (attribLower === 'heal_dmg' && !seenTypes.has('Heal')) {
-            seenTypes.add('Heal');
+          // Check healing effects (Heal_Dmg = direct ally heal). The aspect gate is the
+          // one in the tspy branch above: heal-debuff resistance wears the same attrib.
+          if (attribLower === 'heal_dmg' && template.aspect !== 'Resistance') {
             const effect = { type: 'Heal' };
-            if (chance < 1.0) {
-              effect.chance = chance;
-            }
             if (template.scale && template.table) {
               effect.scale = Math.abs(template.scale);
               effect.table = template.table;
             }
-            effects.push(effect);
+            push(effect);
           }
         }
+
       }
     };
 
     // Process main templates
-    processTemplates(effectGroup.templates, effectGroup.chance);
+    processTemplates(effectGroup.templates, groupProbability(effectGroup.chance));
 
-    // Process child effects
+    // Process child effects. The two rolls compose, but only the ones that ARE rolls:
+    // a sentinel parent (`groupProbability` → undefined) leaves its child's own chance
+    // standing rather than multiplying it to zero, which is what read every child of a
+    // mode-gated group as never happening.
     for (const child of (effectGroup.child_effects || [])) {
       if (isPvpOnlyGroup(child)) continue;
-      processTemplates(child.templates, effectGroup.chance * child.chance);
+      const outer = groupProbability(effectGroup.chance);
+      const inner = groupProbability(child.chance);
+      const combined = outer !== undefined && inner !== undefined
+        ? outer * inner
+        : (outer ?? inner);
+      processTemplates(child.templates, combined);
     }
   }
 
@@ -889,6 +1239,12 @@ function processPetPower(powerFilePath, powerData) {
     castTime: powerData.activation_time || 0,
     activatePeriod: powerData.activate_period || undefined,
     effectArea: powerData.effect_area || 'SingleTarget',
+    // The recipient every emitted row needs and none of them carries: see the field doc on
+    // `PetAbility.targetsAffected`. Omitted when the export states nothing, mirroring the
+    // power-converter twin, so absent stays distinguishable from an authored empty list.
+    targetsAffected: Array.isArray(powerData.targets_affected) && powerData.targets_affected.length
+      ? powerData.targets_affected
+      : undefined,
     range: powerData.range > 0 ? powerData.range : undefined,
     radius: powerData.radius > 0 ? powerData.radius : undefined,
     maxTargets: powerData.max_targets_hit > 0 ? powerData.max_targets_hit : undefined,
@@ -1110,9 +1466,9 @@ function extractSelfDestructDelay(powerFilePath) {
  * by their own bundled Self_Destruct. The damage layer otherwise models fires
  * -per-spawn as `summonDuration / (castTime + recharge)`, which for a Blaster's
  * Trip Mine (260s window, 20s attack recharge) says the mine detonates THIRTEEN
- * times (report 2026-07-26: "the damage is incorrectly very high"). Only the
- * Controller/Corruptor/Mastermind mine escaped, because its shared entity carries
- * a 1000s recharge that happens to round the same formula down to one.
+ * times. Only the Controller/Corruptor/Mastermind mine escaped, because its
+ * shared entity carries a 1000s recharge that happens to round the same formula
+ * down to one.
  *
  * The recharge is the wrong basis either way — a destroyed pet cannot recharge —
  * so mark the shape and let the damage layer cap it at one.
@@ -1138,6 +1494,41 @@ function detectOneShot(abilities, selfDestructDelay) {
 }
 
 /**
+ * The entities one pet power creates IN PLACE — its `EntCreate` AttribMods at `target: Self`.
+ *
+ * A pet's payload can be one summon deeper: Poison Trap's pet carries only a Self_Destruct and
+ * a self-resistance, and the choke/vomit/−Regen everyone associates with the power lives in the
+ * `Pets_*_Poison_Gas` entity that Self_Destruct creates as the trap dies (ENT-3 step 4).
+ *
+ * `target` is the discriminator, and it is the §2 recipient axis doing its usual job. An
+ * EntCreate at `Self` puts the new entity where the PET is, so it continues the same payload at
+ * the same place — the gas cloud, Oil Slick's fire, the Voltaic Sentinel the Mu Guardian calls.
+ * An EntCreate at `AnyAffected` puts one copy on EACH target the pet's power hit: Jolting Chain's
+ * Jump1 spawns Jump2 on the foe it just zapped, which spawns Jump3 on the next one. Those are
+ * per-target quantities, and folding one copy into a per-target-agnostic bag would state a
+ * three-link chain's damage as if all of it landed on one foe. They are the larger population
+ * (79 / 91 / 88 edges against 19 / 23 / 16 here), and they stay out until the `per_target` axis
+ * can carry them.
+ *
+ * Names are emitted whether or not an entity record exists for them — the export carries only
+ * player-facing pets, so a pet that creates an NPC entity (Fire Imps, Dust Devils) names one
+ * that isn't there. Filtering it here would hide a real fact about the export's scope; no
+ * player-summonable pet reaches one, which is what `pet_summon_chain.rs` asserts.
+ */
+function createsInPlace(powerData) {
+  const out = [];
+  for (const effectGroup of (powerData.effects || [])) {
+    for (const t of (effectGroup.templates || [])) {
+      const params = t.params || {};
+      if (params.type !== 'EntCreate' || !params.entity_def) continue;
+      if (t.target !== 'Self') continue;
+      if (!out.includes(params.entity_def)) out.push(params.entity_def);
+    }
+  }
+  return out;
+}
+
+/**
  * Read an entity file and extract its powers
  */
 function processEntity(entityFilePath, upgradeMap) {
@@ -1159,6 +1550,7 @@ function processEntity(entityFilePath, upgradeMap) {
   const powersetPaths = new Set(); // Track unique powerset directories
   let lifespan = null;
   let selfDestructDelay = null;
+  const createsEntities = [];
 
   for (let i = 0; i < powerFullNames.length; i++) {
     const fullName = powerFullNames[i]; // e.g., "Pets.Tornado.Tornado_Attack"
@@ -1196,7 +1588,18 @@ function processEntity(entityFilePath, upgradeMap) {
       selfDestructDelay = extractSelfDestructDelay(powerFilePath);
     }
 
-    const ability = processPetPower(powerFilePath);
+    const powerData = readJsonFile(powerFilePath);
+    if (!powerData) continue;
+
+    // Read BEFORE the ability filter, not after it: every in-place summon this corpus has
+    // rides on a power the vocabulary rejects — Self_Destruct is a utility name, Oil Slick's
+    // Res_Target and Generate_Target carry no combat attrib — so scanning only the powers that
+    // became abilities would find none of them.
+    for (const child of createsInPlace(powerData)) {
+      if (!createsEntities.includes(child)) createsEntities.push(child);
+    }
+
+    const ability = processPetPower(powerFilePath, powerData);
     if (ability) {
       abilities.push(ability);
     }
@@ -1242,15 +1645,26 @@ function processEntity(entityFilePath, upgradeMap) {
     }
   }
 
+  // The class the pet's own magnitudes resolve against (ENT-10), so a default here would be a
+  // guess shipped as a number rather than an absence anyone could see. Every entity in all
+  // three forks states one, so this throws rather than falling back.
+  if (!defaults.character_class_name) {
+    throw new Error(
+      `convert-pet-entities: entity '${entityData.name}' states no character_class_name — its `
+        + 'magnitudes have no class to resolve against.',
+    );
+  }
+
   return {
     name: entityData.name,
     displayName,
-    characterClass: defaults.character_class_name || 'minion_pets',
+    characterClass: defaults.character_class_name,
     commandable: entityData.commandable_pet === 1,
     copyCreatorMods: entityData.copy_creator_mods === true,
     abilities,
     lifespan: lifespan ?? undefined,
     oneShot: detectOneShot(abilities, selfDestructDelay) || undefined,
+    createsEntities: createsEntities.length > 0 ? createsEntities : undefined,
     upgradeTiers: upgradeTiers.length > 0 ? upgradeTiers : undefined,
   };
 }
@@ -1263,7 +1677,7 @@ function main() {
 
   const entities = {};
   let totalAbilities = 0;
-  let skippedNoAbilities = 0;
+  let noAbilities = 0;
 
   // Process all pet entity files
   const entityFiles = fs.readdirSync(ENTITIES_PATH)
@@ -1289,17 +1703,21 @@ function main() {
 
     if (!entity) continue;
 
-    if (entity.abilities.length === 0) {
-      skippedNoAbilities++;
-      continue;
-    }
+    // Emitted whether or not any of its powers classified. Class, commandability and
+    // lifespan are facts independent of this script's effect vocabulary, and a summoning
+    // power names its pet by NAME: withholding the record makes that name unresolvable,
+    // which both Rust consumers (`granted::pseudo_pet_effects`, `buff_pets::each_folded_row`)
+    // answer by skipping in silence — the power then shows and contributes nothing (ENT-3).
+    // So absence from this table means "the export has no such entity" and nothing else,
+    // which is the invariant `summon_resolution.rs` asserts.
+    if (entity.abilities.length === 0) noAbilities++;
 
     entities[entity.name] = entity;
     totalAbilities += entity.abilities.length;
   }
 
   console.log(`\nProcessed ${Object.keys(entities).length} entities with ${totalAbilities} abilities`);
-  console.log(`Skipped ${skippedNoAbilities} entities with no combat abilities\n`);
+  console.log(`${noAbilities} of them carry no classified ability\n`);
 
   // Generate TypeScript
   const tsContent = generateTypeScript(entities);
@@ -1354,6 +1772,33 @@ function main() {
   }
 }
 
+/**
+ * One ability literal, at `indent`. Both places an ability is written — an entity's own
+ * abilities and a Mastermind upgrade tier's — go through here, because they held two copies
+ * of one field list and a field added to either alone would reach only half the corpus.
+ */
+function abilityLines(ability, indent) {
+  const lines = [`${indent}{`];
+  const field = (name, value) => lines.push(`${indent}  ${name}: ${value},`);
+  field('name', JSON.stringify(ability.name));
+  field('displayName', JSON.stringify(ability.displayName));
+  field('type', JSON.stringify(ability.type));
+  field('damage', JSON.stringify(ability.damage));
+  if (ability.effects) field('effects', JSON.stringify(ability.effects));
+  field('recharge', ability.recharge);
+  field('castTime', ability.castTime);
+  if (ability.activatePeriod) field('activatePeriod', ability.activatePeriod);
+  field('effectArea', JSON.stringify(ability.effectArea));
+  if (ability.targetsAffected) field('targetsAffected', JSON.stringify(ability.targetsAffected));
+  if (ability.range) field('range', ability.range);
+  if (ability.radius) field('radius', ability.radius);
+  if (ability.maxTargets) field('maxTargets', ability.maxTargets);
+  if (ability.attackTypes) field('attackTypes', JSON.stringify(ability.attackTypes));
+  if (ability.rechargeUnaffected) field('rechargeUnaffected', true);
+  lines.push(`${indent}},`);
+  return lines;
+}
+
 function generateTypeScript(entities) {
   const lines = [];
 
@@ -1381,6 +1826,11 @@ function generateTypeScript(entities) {
   lines.push(`  chance?: number;`);
   lines.push(`  scale?: number;`);
   lines.push(`  table?: string;`);
+  lines.push(`  /** The movement axis a Slow / MovementCapDebuff row applies to, spelled the`);
+  lines.push(`   *  way a parent power's \`slow[axis]\` spells it. A power states several axes`);
+  lines.push(`   *  at different scales, so the merge holds one value per axis rather than`);
+  lines.push(`   *  one per key. Absent on every other type. */`);
+  lines.push(`  axis?: string;`);
   lines.push(`  /** Ally-buff auras (buff-pets like Force Field Generator / Barrier Reef).`);
   lines.push(`   *  A DefenseBuff/ResistanceBuff aura buffs every listed sub-type at the`);
   lines.push(`   *  same scale/table; absorbAspect distinguishes MaxHP-fraction (Maximum)`);
@@ -1397,6 +1847,9 @@ function generateTypeScript(entities) {
   lines.push(`   *  SelfResistance (a negative is a real vulnerability). */`);
   lines.push(`  mezTypes?: string[];`);
   lines.push(`  debuffTypes?: string[];`);
+  lines.push(`  /** The source template carried IgnoreStrength: the summoner's slotting does`);
+  lines.push(`   *  not reach this effect even though the pet inherits it via CopyBoosts. */`);
+  lines.push(`  ignoreStrength?: boolean;`);
   lines.push(`}`);
   lines.push(``);
   lines.push(`export interface PetAbility {`);
@@ -1409,6 +1862,18 @@ function generateTypeScript(entities) {
   lines.push(`  castTime: number;`);
   lines.push(`  activatePeriod?: number;`);
   lines.push(`  effectArea: string;`);
+  lines.push(`  /** EntsAffected — which entity categories this ability's effects can land on.`);
+  lines.push(`   *  Every effect row above is authored \`target: AnyAffected\`, and that word names`);
+  lines.push(`   *  whoever the ability affects, so this is the only field that separates a`);
+  lines.push(`   *  protection the pet grants its SUMMONER (Force Field Generator's Dispersion`);
+  lines.push(`   *  Bubble, \`['Friend','Self']\`) from one it inflicts on the foe it just held`);
+  lines.push(`   *  (Singularity's Gravity Distortion, \`['Foe']\`) — identical type names, identical`);
+  lines.push(`   *  scales. The pet is the caster here, so the polarity inverts against a player`);
+  lines.push(`   *  power: \`Self\` is the pet alone and the summoner arrives as \`Friend\`,`);
+  lines.push(`   *  \`MyOwner\` or \`Teammate\` (register ENT-12; the power-converter twin is`);
+  lines.push(`   *  MEZRES-3). Omitted when the export states nothing, so absent stays`);
+  lines.push(`   *  distinguishable from an authored empty list. */`);
+  lines.push(`  targetsAffected?: string[];`);
   lines.push(`  range?: number;`);
   lines.push(`  radius?: number;`);
   lines.push(`  maxTargets?: number;`);
@@ -1452,6 +1917,17 @@ function generateTypeScript(entities) {
   lines.push(`   *  repeat cadence — damage layers must cap fires-per-spawn at 1 rather`);
   lines.push(`   *  than dividing the summon window by the cycle time. */`);
   lines.push(`  oneShot?: boolean;`);
+  lines.push(`  /** Entity defs this pet's own powers create IN PLACE (an \`EntCreate\` at`);
+  lines.push(`   *  \`target: Self\`), in walk order. A pet's payload can be one summon deeper —`);
+  lines.push(`   *  Poison Trap's gas cloud, Oil Slick's fire, the Mu Guardian's Voltaic Sentinel —`);
+  lines.push(`   *  so the consumers that merge a pseudo-pet's kit into its summoning power follow`);
+  lines.push(`   *  this chain. Each name is a key into this same record and keeps its OWN class row,`);
+  lines.push(`   *  commandability and lifespan, which is why the link travels instead of the child's`);
+  lines.push(`   *  abilities being folded into \`abilities\` here: pet damage resolves against`);
+  lines.push(`   *  \`characterClass\`, and Oil Slick's burn is a different class from its oil.`);
+  lines.push(`   *  A name with no record means the export doesn't carry that entity (NPC-only);`);
+  lines.push(`   *  no player-summonable pet reaches one. */`);
+  lines.push(`  createsEntities?: string[];`);
   lines.push(`  upgradeTiers?: PetUpgradeTier[];`);
   lines.push(`}`);
   lines.push(``);
@@ -1468,25 +1944,13 @@ function generateTypeScript(entities) {
       lines.push(`    lifespan: ${entity.lifespan},`);
     }
     if (entity.oneShot) lines.push(`    oneShot: true,`);
+    if (entity.createsEntities) {
+      lines.push(`    createsEntities: ${JSON.stringify(entity.createsEntities)},`);
+    }
     lines.push(`    abilities: [`);
 
     for (const ability of entity.abilities) {
-      lines.push(`      {`);
-      lines.push(`        name: ${JSON.stringify(ability.name)},`);
-      lines.push(`        displayName: ${JSON.stringify(ability.displayName)},`);
-      lines.push(`        type: ${JSON.stringify(ability.type)},`);
-      lines.push(`        damage: ${JSON.stringify(ability.damage)},`);
-      if (ability.effects) lines.push(`        effects: ${JSON.stringify(ability.effects)},`);
-      lines.push(`        recharge: ${ability.recharge},`);
-      lines.push(`        castTime: ${ability.castTime},`);
-      if (ability.activatePeriod) lines.push(`        activatePeriod: ${ability.activatePeriod},`);
-      lines.push(`        effectArea: ${JSON.stringify(ability.effectArea)},`);
-      if (ability.range) lines.push(`        range: ${ability.range},`);
-      if (ability.radius) lines.push(`        radius: ${ability.radius},`);
-      if (ability.maxTargets) lines.push(`        maxTargets: ${ability.maxTargets},`);
-      if (ability.attackTypes) lines.push(`        attackTypes: ${JSON.stringify(ability.attackTypes)},`);
-      if (ability.rechargeUnaffected) lines.push(`        rechargeUnaffected: true,`);
-      lines.push(`      },`);
+      lines.push(...abilityLines(ability, '      '));
     }
 
     lines.push(`    ],`);
@@ -1501,22 +1965,7 @@ function generateTypeScript(entities) {
         if (tier.revokes) lines.push(`        revokes: ${JSON.stringify(tier.revokes)},`);
         lines.push(`        abilities: [`);
         for (const ability of tier.abilities) {
-          lines.push(`          {`);
-          lines.push(`            name: ${JSON.stringify(ability.name)},`);
-          lines.push(`            displayName: ${JSON.stringify(ability.displayName)},`);
-          lines.push(`            type: ${JSON.stringify(ability.type)},`);
-          lines.push(`            damage: ${JSON.stringify(ability.damage)},`);
-          if (ability.effects) lines.push(`            effects: ${JSON.stringify(ability.effects)},`);
-          lines.push(`            recharge: ${ability.recharge},`);
-          lines.push(`            castTime: ${ability.castTime},`);
-          if (ability.activatePeriod) lines.push(`            activatePeriod: ${ability.activatePeriod},`);
-          lines.push(`            effectArea: ${JSON.stringify(ability.effectArea)},`);
-          if (ability.range) lines.push(`            range: ${ability.range},`);
-          if (ability.radius) lines.push(`            radius: ${ability.radius},`);
-          if (ability.maxTargets) lines.push(`            maxTargets: ${ability.maxTargets},`);
-          if (ability.attackTypes) lines.push(`            attackTypes: ${JSON.stringify(ability.attackTypes)},`);
-          if (ability.rechargeUnaffected) lines.push(`            rechargeUnaffected: true,`);
-          lines.push(`          },`);
+          lines.push(...abilityLines(ability, '          '));
         }
         lines.push(`        ],`);
         lines.push(`      },`);
@@ -1533,13 +1982,25 @@ function generateTypeScript(entities) {
   return lines.join('\n');
 }
 
-// Only convert when run as a script — `require()`ing this module (pet-self-buffs.test.ts
-// grades the two classifiers directly, which is the only way to catch a self-buff
-// emitted under an ally-aura type name) must not rewrite the committed datasets.
-if (require.main === module) main();
-
+// The classification is exported so a test can feed it a template the shipped corpus never
+// states. Both guards on `Regeneration` — the aspect fork and the debuff-direction fork — select
+// nothing in any fork today, so a corpus-driven gate would go green with either one deleted; the
+// only way to grade them is to build the violating case (see pet-regen-classification.test.ts).
+// `--dataset thunderspy` selects the tspy branch, exactly as a regen run does.
+// `processPetPower` is exported for the recipient half of the gate: every shipped ability states a
+// `targetsAffected`, so the corpus cannot grade what an export that states none produces, and only
+// the record builder can be asked directly.
+// `extractSelfBuff` and `extractBuffAura` are exported for the disjointness gate: the pet's own
+// stat sheet and the ally-aura vocabulary must never share a type name, and only asking the two
+// classifiers directly can prove it (pet-self-buffs.test.ts).
 module.exports = {
+  extractEffects,
+  processPetPower,
   extractSelfBuff,
   extractBuffAura,
   SELF_BUFF_EXCLUDED_POWERSETS,
 };
+
+if (require.main === module) {
+  main();
+}

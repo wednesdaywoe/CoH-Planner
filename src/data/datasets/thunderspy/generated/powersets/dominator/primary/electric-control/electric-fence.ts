@@ -12,12 +12,18 @@ export const ElectricFence: Power = {
   "name": "Synaptic Surge",
   "internalName": "Electric_Fence",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "The Recovery Aura dramatically increases the Endurance recovery rate of all nearby heroes for a limited time. Emitting this Aura costs you a lot of Endurance, and it takes a long time to recharge. Recharge: Very Long",
   "shortHelp": "PBAoE, Ally +Recovery",
   "icon": "electricarmor_selfbuffrecovery.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -37,18 +43,22 @@ export const ElectricFence: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Boolean"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Boolean"
       }

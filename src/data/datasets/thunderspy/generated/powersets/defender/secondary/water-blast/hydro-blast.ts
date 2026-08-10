@@ -12,12 +12,17 @@ export const HydroBlast: Power = {
   "name": "Hydro Blast",
   "internalName": "Hydro_Blast",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You briefly focus before releasing an intense blast of chilling water at your foe that causes High Cold and Smashing damage. Affected foes will have their movement speed reduced briefly and have a chance to be knocked down. Hydro Blast builds 1 Tidal Power. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Cold/Smash), Foe -Speed, Knockdown, Self +Tidal Power",
   "icon": "waterblast_hydroblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -69,6 +74,7 @@ export const HydroBlast: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

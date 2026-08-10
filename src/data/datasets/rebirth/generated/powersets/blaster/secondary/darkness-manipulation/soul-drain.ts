@@ -12,6 +12,8 @@ export const SoulDrain: Power = {
   "name": "Soul Drain",
   "internalName": "Soul_Drain",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit. Damage: Moderate, Recharge: Very Long",
   "shortHelp": "PBAoE Moderate DMG(Negative), Self +DMG, +To Hit",
   "icon": "darknessmanipulation_souldrain.png",
@@ -20,6 +22,9 @@ export const SoulDrain: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,

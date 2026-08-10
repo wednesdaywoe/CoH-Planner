@@ -21,8 +21,12 @@ import { HeadSplitter as HeadSplitter } from './head-splitter';
 
 export const powerset: Powerset = {
   id: 'scrapper/katana',
-  internalName: 'katana',
+  setPath: 'Scrapper_Melee.Katana',
   name: 'Katana',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Wield a Katana and master a variety of powerful Lethal attacks. A quick and elegant weapon, the Katana is faster than a Broad Sword, and can reduce an enemy\'s Defense. The Katana is a fine blade that always has a bonus to Accuracy. Like all scrapper powers, all Katana attacks can sometimes land a critical hit for double damage.',
   icon: 'katana_set.ico',
   archetype: 'scrapper',

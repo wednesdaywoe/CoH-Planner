@@ -12,6 +12,8 @@ export const Quickness: Power = {
   "name": "Gymnastics",
   "internalName": "Quickness",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "Years of training have made you extremely agile and quick on your feet. This power slightly increases your defense, attack rate and movement speed, in addition of protecting you from knockback.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +Recharge, +DEF(All), +SPD, +Res(Slow, Knockback)",
   "icon": "tacticalarrow_quickness.png",
@@ -22,6 +24,9 @@ export const Quickness: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -50,10 +55,12 @@ export const Quickness: Power = {
     "buffDuration": 0.5,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       }
@@ -113,10 +120,12 @@ export const Quickness: Power = {
       "rechargeBuff": 0.5
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 9,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 9,
       "table": "Melee_Ones"
     },
@@ -131,6 +140,7 @@ export const Quickness: Power = {
       }
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     }

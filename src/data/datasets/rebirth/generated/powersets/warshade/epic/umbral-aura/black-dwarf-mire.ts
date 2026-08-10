@@ -12,6 +12,8 @@ export const BlackDwarfMire: Power = {
   "name": "Black Dwarf Mire",
   "internalName": "Black_Dwarf_Mire",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. Damage: Moderate, Recharge: Very Long",
   "shortHelp": "PBAoE, Moderate DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC",
   "icon": "umbralaura_blackdwarfmire.png",
@@ -20,6 +22,9 @@ export const BlackDwarfMire: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -63,6 +68,7 @@ export const BlackDwarfMire: Power = {
       "tohitBuff": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -72,6 +78,7 @@ export const BlackDwarfMire: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },

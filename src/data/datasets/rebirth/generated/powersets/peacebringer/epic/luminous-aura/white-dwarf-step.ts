@@ -12,12 +12,17 @@ export const WhiteDwarfStep: Power = {
   "name": "White Dwarf Step",
   "internalName": "White_Dwarf_Step",
   "available": 19,
+  "autoIssue": true,
+  "free": true,
   "description": "White Dwarfs can Teleport long distances. White Dwarf Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
   "shortHelp": "Ranged (Location), Self Teleport",
   "icon": "luminousaura_teleportself.png",
   "powerType": "Click",
   "targetType": "Teleport",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 300,
@@ -42,22 +47,26 @@ export const WhiteDwarfStep: Power = {
     },
     "movement": {
       "fly": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones"
       }
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones",
         "toWho": "Self"
       },
       "movementControl": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones",
         "toWho": "Self"
       },
       "movementFriction": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones",
         "toWho": "Self"

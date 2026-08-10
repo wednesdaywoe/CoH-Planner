@@ -12,6 +12,8 @@ export const ThunderStrike: Power = {
   "name": "Thunder Strike",
   "internalName": "Thunder_Strike",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave. Damage: High, Recharge: Slow",
   "shortHelp": "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback",
   "icon": "electricitymanipulation_thunderstrike.png",
@@ -20,6 +22,9 @@ export const ThunderStrike: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

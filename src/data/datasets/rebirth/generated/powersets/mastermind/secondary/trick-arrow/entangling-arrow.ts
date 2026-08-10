@@ -12,12 +12,17 @@ export const EntanglingArrow: Power = {
   "name": "Entangling Arrow",
   "internalName": "Entangling_Arrow",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Upon impact, the Entangling Arrow releases a strong net that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, though their motions are hampered, reducing the damage of their attacks. The Entangling Arrow can bring down flying entities, halts jumping and slows all of their actions. Entangling Arrow has a fairly low Endurance cost and a bonus to its Accuracy. Recharge: Fast",
   "shortHelp": "Ranged, Target Immobilize, -Fly, Slow, -DMG",
   "icon": "trickarrow_immobilize.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -43,11 +48,13 @@ export const EntanglingArrow: Power = {
   "effects": {
     "buffDuration": 15,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Debuff_Dam"
     },
     "durations": {
       "damageDebuff": 15,
+      "movementCapDebuff": 0.75,
       "rechargeDebuff": 15,
       "slow": 15
     },
@@ -56,7 +63,15 @@ export const EntanglingArrow: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1.5,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Ranged_Slow"
     },
@@ -74,14 +89,13 @@ export const EntanglingArrow: Power = {
         "table": "Ranged_Ones"
       },
       "runSpeed": {
-        "scale": 1.5,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.4,
+        "table": "Ranged_Slow"
       }
     }
   },
   "atoms": [
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.DisruptionArrow_Disrupted target.ownPower? && Pets_OilSlickTarget target.VillainName> ! &&"],
     ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Mez","Knockback",-100,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
@@ -100,6 +114,7 @@ export const EntanglingArrow: Power = {
     ["DamageBuff","Negative",2.5,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",2.5,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",2.5,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Immobilized",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.DisruptionArrow_Disrupted target.ownPower? && Pets_OilSlickTarget target.VillainName> ! &&",true],
     ["RechargeTime",null,0.08,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn target.ownPower?",true],
     ["Movement","Run",0.08,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn target.ownPower?",true],
     ["Movement","Fly",0.08,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn target.ownPower?",true],
@@ -119,6 +134,7 @@ export const EntanglingArrow: Power = {
           "slow": 15
         },
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.08,
           "table": "Ranged_Slow"
         },

@@ -12,12 +12,17 @@ export const FireShield: Power = {
   "name": "Thermal Shield",
   "internalName": "Fire_Shield",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Casts a Thermal Shield on one of your allies and grants them damage resistance to Lethal, Smashing and Fire damage. Thermal Shield also provides minimal resistance to Cold damage. You cannot stack multiple Thermal Shields on the same target, however the shield can be improved by another ally using the same power. Can also be used in conjunction with your Plasma Shield. You cannot use this power on yourself.",
   "shortHelp": "Ranged, Ally +Res(Fire, Lethal, Smash, Cold)",
   "icon": "thermalradiation_fireshield.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

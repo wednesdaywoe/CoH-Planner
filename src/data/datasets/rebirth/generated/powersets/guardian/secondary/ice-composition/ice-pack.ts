@@ -12,12 +12,18 @@ export const IcePack: Power = {
   "name": "Ice Pack",
   "internalName": "Ice_Pack",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power covers you and your allies in a thick layer of ice. The ice can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Ice Pack also grants you resistance to Toxic Damage. Recharge: Very Long",
   "shortHelp": "PBAoE Team Heal, +Max HP, Res(Toxic)",
   "icon": "icecomp_icepack.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -54,6 +60,7 @@ export const IcePack: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_HealSelf"
     },

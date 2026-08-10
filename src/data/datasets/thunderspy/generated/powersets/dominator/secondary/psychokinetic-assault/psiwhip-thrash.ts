@@ -12,12 +12,17 @@ export const PsiWhipThrash: Power = {
   "name": "Psi-Whip Thrash",
   "internalName": "PsiWhip_Thrash",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You manifest your whip and make an impressive sweep causing moderate damage to enemies within a wide cone and also manifesting swords for each target hit. Targets that are struck may be knocked down. This Attack does not need a target to activate. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Short Ranged (Cone), Moderate DMG(Psi/Energy), Knockdown",
   "icon": "awakened_psionicslash.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -73,7 +78,7 @@ export const PsiWhipThrash: Power = {
     ["Damage","Energy",1.4147,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1.4147,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",0.3,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

@@ -12,12 +12,17 @@ export const TimesJuncture: Power = {
   "name": "Time's Juncture",
   "internalName": "Times_Juncture",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a time dilation field around you causing enemies who get too close to be slowed to a crawl, their movement speed, damage and chance to hit will be decreased substantially.  Enemies affected by Delayed have these affects increased.  Recharge: Slow",
   "shortHelp": "Toggle: PBAoE Foe (-Damage, -Speed, -To Hit)",
   "icon": "temporalreaction_timesjuncture.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -42,13 +47,22 @@ export const TimesJuncture: Power = {
   "effects": {
     "buffDuration": 1,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Debuff_Dam"
     },
     "durations": {
       "damageDebuff": 1,
+      "movementCapDebuff": 1,
       "slow": 1,
       "tohitDebuff": 1
+    },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
     },
     "slow": {
       "fly": {
@@ -60,6 +74,7 @@ export const TimesJuncture: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
@@ -68,8 +83,8 @@ export const TimesJuncture: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.3,
+        "table": "Ranged_Slow"
       }
     },
     "tohitDebuff": {
@@ -119,13 +134,22 @@ export const TimesJuncture: Power = {
       "effects": {
         "buffDuration": 1,
         "damageDebuff": {
+          "ignoreStrength": true,
           "scale": 2.4,
           "table": "Ranged_Debuff_Dam"
         },
         "durations": {
           "damageDebuff": 1,
+          "movementCapDebuff": 1,
           "slow": 1,
           "tohitDebuff": 1
+        },
+        "movementCapDebuff": {
+          "runSpeed": {
+            "ignoreStrength": true,
+            "scale": 1.2,
+            "table": "Ranged_SpeedRunning"
+          }
         },
         "slow": {
           "fly": {
@@ -137,6 +161,7 @@ export const TimesJuncture: Power = {
             "table": "Ranged_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.36,
             "table": "Ranged_Slow"
           },
@@ -145,8 +170,8 @@ export const TimesJuncture: Power = {
             "table": "Ranged_Slow"
           },
           "runSpeed": {
-            "scale": 1.2,
-            "table": "Ranged_SpeedRunning"
+            "scale": 0.36,
+            "table": "Ranged_Slow"
           }
         },
         "tohitDebuff": {

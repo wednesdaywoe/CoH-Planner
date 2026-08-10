@@ -12,6 +12,8 @@ export const WhirlingMace: Power = {
   "name": "Whirling Mace",
   "internalName": "Whirling_Mace",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You swing your mace in a circle all around you, attacking everyone in melee range. Your Whirling Mace deals moderate damage, and has a chance to Disorient every foe you hit. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smash), Minor Disorient",
   "icon": "mace_whirlingmace.png",
@@ -20,6 +22,9 @@ export const WhirlingMace: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

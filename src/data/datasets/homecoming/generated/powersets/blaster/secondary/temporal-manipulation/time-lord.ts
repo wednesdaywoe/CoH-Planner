@@ -12,12 +12,17 @@ export const TimeLord: Power = {
   "name": "Time Lord",
   "internalName": "Time_Lord",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You are a time lord, for you time is just a small hurdle that can easily be overcome or ignored. As a time lord, all your attacks recharge faster and you are resistant to energy attacks in addition to disorient effects, movement debuffs and recharge debuffs. If you are affected by the Accelerated effect, your powers will recharge even faster and you will become nearly immune to recharge debuffs. This power is always on and cost no endurance.",
   "shortHelp": "Auto: Self +Recharge, +Resist(Energy, Disorient, Slow)",
   "icon": "timemanipulation_timelord.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 0.5
@@ -33,10 +38,12 @@ export const TimeLord: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Ones"
       }
@@ -45,10 +52,11 @@ export const TimeLord: Power = {
       "debuffResistance": 0.75,
       "rechargeBuff": 0.75,
       "resistance": 0.75,
-      "stun": 0.5
+      "stun": 0.75
     },
-    "effectDuration": 0.5,
+    "effectDuration": 0.75,
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     },
@@ -59,6 +67,7 @@ export const TimeLord: Power = {
       }
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"
@@ -71,12 +80,12 @@ export const TimeLord: Power = {
     ["RechargeTime",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Energy",1,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Mez","Stunned",-10,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,true],
-    ["Mez","Stunned",-5,1,0.5,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
     ["RechargeTime",null,0.1,1,0.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
     ["Movement","Run",0.3,1,0.5,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
     ["Movement","Fly",0.3,1,0.5,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
     ["RechargeTime",null,0.3,1,0.5,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
-    ["Resistance","Energy",0.5,1,0.5,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true]
+    ["Resistance","Energy",0.5,1,0.5,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
+    ["Mez","Stunned",-5,1,0.5,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&",true]
   ],
   "conditionalEffects": [
     {
@@ -89,10 +98,12 @@ export const TimeLord: Power = {
         "buffDuration": 0.5,
         "debuffResistance": {
           "movement": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Ones"
           },
           "recharge": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Ones"
           }
@@ -103,6 +114,7 @@ export const TimeLord: Power = {
           "resistance": 0.5
         },
         "rechargeBuff": {
+          "ignoreStrength": true,
           "scale": 0.1,
           "table": "Melee_Ones"
         },

@@ -12,6 +12,8 @@ export const SpeedSiphon: Power = {
   "name": "Velocity Siphon",
   "internalName": "Speed_Siphon",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You siphon speed from foes close to you, Slowing their movement and damaging them while boosting your own movement. Recharge: Fast",
   "shortHelp": "Toggle PBAoE, Foe Light DMG (Energy), -Speed, Self +Speed",
   "icon": "kineticassault_repulsion.png",
@@ -22,6 +24,10 @@ export const SpeedSiphon: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -50,9 +56,10 @@ export const SpeedSiphon: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "buffDuration": 10,
+    "buffDuration": 5,
     "durations": {
       "movement": 10,
+      "movementCapDebuff": 5,
       "slow": 5
     },
     "movement": {
@@ -69,8 +76,16 @@ export const SpeedSiphon: Power = {
         "table": "Melee_Ones"
       }
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1.5,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "slow": {
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },
@@ -79,15 +94,15 @@ export const SpeedSiphon: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1.5,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.5,
+        "table": "Melee_Slow"
       }
     }
   },
   "atoms": [
-    ["Movement","Run",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",10,null,null,1],
-    ["Movement","Jump",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",10,null,null,1],
-    ["Movement","Fly",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",10,null,null,1],
+    ["Movement","Run",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1],
+    ["Movement","Jump",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1],
+    ["Movement","Fly",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1],
     ["Damage","Energy",0.11,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
     ["Movement","Run",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
     ["Movement","JumpHeight",0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref source> entref target> eq !"],

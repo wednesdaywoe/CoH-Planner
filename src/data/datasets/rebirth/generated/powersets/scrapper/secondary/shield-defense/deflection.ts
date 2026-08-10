@@ -12,6 +12,8 @@ export const Deflection: Power = {
   "name": "Battle Agility",
   "internalName": "Deflection",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Your incredible agility allows you to position your shield to protect yourself from incoming ranged damage.  While Battle Agility is active you will benefit from increased Ranged and AoE defense as well as some moderate protection from Defense Debuffs.  Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Ranged, AoE), +Res(Defense Debuff)",
   "icon": "shielddefense_deflection.png",
@@ -22,6 +24,9 @@ export const Deflection: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

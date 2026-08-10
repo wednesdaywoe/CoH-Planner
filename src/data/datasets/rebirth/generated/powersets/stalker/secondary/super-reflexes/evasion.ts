@@ -12,6 +12,8 @@ export const Evasion: Power = {
   "name": "Evasion",
   "internalName": "Evasion",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You are Evasive against area effect and cone shaped attacks. This power increases your Defense versus such attacks as long as it is active. Evasion also helps you resist Defense DeBuffs. Evasion also adds an Elusivity defense bonus to AOE Attacks in PVP zones.  Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(vs. AoE), Res(DeBuff DEF)",
   "icon": "superreflexes_evasion.png",
@@ -22,6 +24,9 @@ export const Evasion: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

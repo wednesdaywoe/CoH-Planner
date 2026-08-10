@@ -12,6 +12,8 @@ export const Hide: Power = {
   "name": "Hibernate",
   "internalName": "Hide",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power. you cannot Hibernate for more than 30 seconds while in a PvP zone and will be locked out from hibernating again for 60 seconds. If you activate this power while in the air, you will fall. Recharge: Long",
   "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
   "icon": "icearmor_hybernate.png",
@@ -22,6 +24,9 @@ export const Hide: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -51,24 +56,29 @@ export const Hide: Power = {
       "regenBuff": 0.75
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       }
     },
     "onlyAffectsSelf": {
+      "ignoreStrength": true,
       "scale": 0.75,
       "table": "Melee_Ones"
     },
@@ -81,6 +91,7 @@ export const Hide: Power = {
       "table": "Melee_Ones"
     },
     "untouchable": {
+      "ignoreStrength": true,
       "scale": 0.75,
       "table": "Melee_Ones"
     }

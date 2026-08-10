@@ -12,12 +12,17 @@ export const DisruptingTorrent: Power = {
   "name": "Disrupting Torrent",
   "internalName": "Disrupting_Torrent",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You form the potential energies around you into a cone of surging energy that crashes into the foes in front of you. This torrent causes moderate smashing and energy damage on impact, and has a chance to knock affected targets down. Affected targets will also have their regeneration rate reduced slightly. Disrupting Torrent's knockdown chance, damage and regeneration debuff scale with the number of consumed stacks.  If used when you have 5 stacks of Impulse, this power consumes all impulse stacks and has a chance to immediately refresh Coalescence.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG (Smashing/Energy), Foe Knockdown, -Regen, Self -Impulse",
   "icon": "kineticassault_disruptingtorrent.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 40,
@@ -65,6 +70,7 @@ export const DisruptingTorrent: Power = {
       "table": "Ranged_Ones"
     },
     "regenBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     }
@@ -74,21 +80,25 @@ export const DisruptingTorrent: Power = {
     ["Damage","Energy",0.441,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,1,1,15,"Ranged_Ones","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? -.08 * .1 - @StdResult *"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <"],
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .063 * @StdResult *"],
     ["Damage","Smashing",1.037488,1,0,"Ranged_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.558647,1,0,"Ranged_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .079 * @StdResult *"],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >=",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >=",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,0.14000000059604645,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= Defender_Ranged.Kinetic_Assault.Coalescence source.ownPower? &&",true]
   ],
   "conditionalEffects": [
     {
-      "id": "kinetic_assault_impulse",
-      "label": "Impulse",
+      "id": "kinetic_assault_impulse-1plus",
+      "label": "Impulse (1+ stacks)",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+        "count": 1
+      },
       "damage": {
         "type": "Energy",
         "scale": 1,

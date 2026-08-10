@@ -12,12 +12,17 @@ export const ShadowDweller: Power = {
   "name": "Shadow Dweller",
   "internalName": "Shadow_Dweller",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You are a true Shadow Dweller of the Netherworld.  Your affinity for the shadows grants you an inherent bonus to all Defense, as well as an increased Perception and a resistance to Immobilization.  Your Perception bonus and resistance to Immobilization improves over level.  Shadow Dweller is an Auto power.  It is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +DEF(All), +Res(Immobilize), +Perception",
   "icon": "darkarmor_selfbuffdefense.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -33,6 +38,7 @@ export const ShadowDweller: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "perception": {
+        "ignoreStrength": true,
         "scale": 1.25,
         "table": "Melee_Res_Boolean"
       }

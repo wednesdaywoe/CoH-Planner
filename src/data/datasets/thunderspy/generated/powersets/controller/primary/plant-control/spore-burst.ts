@@ -12,12 +12,17 @@ export const SporeBurst: Power = {
   "name": "Spore Burst",
   "internalName": "Spore_Burst",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You hurl a large fungi pod at your foes.  This pod is full of Spores that burst on impact, engulfing the target and all those around them.  All affected targets may succumb to the narcotic effect of the Spores and will fall asleep. The targets will remain asleep for some time, but will awaken if attacked. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
   "icon": "plantcontrol_sporeburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

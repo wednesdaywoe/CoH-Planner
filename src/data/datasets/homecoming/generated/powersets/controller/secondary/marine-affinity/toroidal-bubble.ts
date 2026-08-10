@@ -12,12 +12,18 @@ export const ToroidalBubble: Power = {
   "name": "Toroidal Bubble",
   "internalName": "Toroidal_Bubble",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a ring of Bubbles that surrounds your allies, hydrating them to replenish endurance and reducing the effects of endurance drain. The bubble also reduces all incoming damage, providing extra resistance to Smashing and Fire damage, and also increases jump height thanks to added buoyancy.",
   "shortHelp": "PBAoE, Team +Res(All DMG, End Drain), +End, +Recovery, +Jump",
   "icon": "marineaffinity_toroidalbubble.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 40,
@@ -45,10 +51,12 @@ export const ToroidalBubble: Power = {
     "buffDuration": 60,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Boolean"
       }

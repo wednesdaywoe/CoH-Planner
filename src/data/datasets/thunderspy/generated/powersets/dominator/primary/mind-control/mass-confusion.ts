@@ -12,12 +12,17 @@ export const MassConfusion: Power = {
   "name": "Mass Confusion",
   "internalName": "Mass_Confusion",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can cause Mass Confusion within a group of foes, creating chaos. All affected foes within the area will turn and attack each other, ignoring all your allies. If you Confuse your foes before they noticed you, your presence will continue to go unnoticed. You will not receive any Experience Points for foes defeated entirely by Confused enemies. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Confuse",
   "icon": "mentalcontrol_confuse.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

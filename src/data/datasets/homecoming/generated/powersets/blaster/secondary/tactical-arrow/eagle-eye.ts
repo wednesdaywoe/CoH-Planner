@@ -12,6 +12,8 @@ export const EagleEye: Power = {
   "name": "Eagle Eye",
   "internalName": "Eagle_Eye",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You have developed an incredible eyesight. Your accuracy is dramatically improved and your perception increased allowing you to better see distant and stealthy foes. You have also become resistant to powers that debuff your accuracy or chance to hit. In addition to being more accurate, your training also allows you to regenerate health and recovery endurance at an accelerated rate while this power is active. However, only half of this regeneration bonus is enhanceable.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +ACC, +Perception, +Res(DeBuff ToHit), +Regeneration, +Recovery",
   "icon": "tacticalarrow_eagleeye.png",
@@ -22,6 +24,9 @@ export const EagleEye: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -41,16 +46,19 @@ export const EagleEye: Power = {
   "maxSlots": 6,
   "effects": {
     "accuracyBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     },
     "buffDuration": 0.75,
     "debuffResistance": {
       "perception": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Ones"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }
@@ -76,6 +84,7 @@ export const EagleEye: Power = {
       "table": "Melee_Ones"
     },
     "regenBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1.125,
       "table": "Melee_Ones"
     }

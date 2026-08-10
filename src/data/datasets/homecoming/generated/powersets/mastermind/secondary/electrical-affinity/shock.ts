@@ -12,12 +12,17 @@ export const Shock: Power = {
   "name": "Shock",
   "internalName": "Shock",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Strike a single foe with a highly-charged electrical shock, draining some endurance and moderately reducing their recovery, regeneration and damage output.",
   "shortHelp": "Ranged, Foe -DMG, -End, -Recovery, -Regen",
   "icon": "shocktherapy_shock.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -39,6 +44,7 @@ export const Shock: Power = {
   "effects": {
     "buffDuration": 25,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Debuff_Dam"
     },

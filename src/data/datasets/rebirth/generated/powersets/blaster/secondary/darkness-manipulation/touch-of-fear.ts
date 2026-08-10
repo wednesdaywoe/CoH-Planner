@@ -12,12 +12,17 @@ export const TouchofFear: Power = {
   "name": "Touch of the Beyond",
   "internalName": "Touch_of_Fear",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit.  Additionally, drawing upon this connection to the Netherworld causes you to rapidly regenerate health and recover endurance for a short time.  Recharge: Moderate",
   "shortHelp": "Fear, Foe -To Hit, Self +Regeneration, +Recovery",
   "icon": "darknessmanipulation_touchoffear.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.5,
     "range": 80,
@@ -46,6 +51,7 @@ export const TouchofFear: Power = {
   "effects": {
     "buffDuration": 60,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.077,
       "table": "Melee_Ones"
     },
@@ -70,6 +76,7 @@ export const TouchofFear: Power = {
       "table": "Melee_Ones"
     },
     "regenBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1.125,
       "table": "Melee_Ones"
     },
@@ -84,7 +91,7 @@ export const TouchofFear: Power = {
   },
   "atoms": [
     ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.3],
     ["ToHit",null,1.5,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Regeneration",null,1.125,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Regeneration",null,1.125,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

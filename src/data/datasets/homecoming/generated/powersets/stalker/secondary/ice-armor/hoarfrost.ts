@@ -12,12 +12,17 @@ export const Hoarfrost: Power = {
   "name": "Hoarfrost",
   "internalName": "Hoarfrost",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage.",
   "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
   "icon": "icearmor_hoarfrost.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 360,
@@ -52,6 +57,7 @@ export const Hoarfrost: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_HealSelf"
     },

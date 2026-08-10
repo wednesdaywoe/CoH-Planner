@@ -12,6 +12,8 @@ export const EaglesClaw: Power = {
   "name": "Eagles Claw",
   "internalName": "Eagles_Claw",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a devastating kick that can severely Disorient most opponents. Eagle's Claw strikes so powerfully that it weakens your target's resolve, reducing their Range and Recharge for several seconds after attacking, and has an additional chance to cause your target to bleed for Lethal damage over time.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Melee, Extreme DMG(Smash), DoT(Lethal), Foe Minor Disorient, +Special",
   "icon": "martialmanipulation_eaglesclaw.png",
@@ -20,6 +22,9 @@ export const EaglesClaw: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -61,6 +66,7 @@ export const EaglesClaw: Power = {
   "effects": {
     "buffDuration": 10.03,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.167,
       "table": "Melee_Ones"
     },
@@ -69,6 +75,7 @@ export const EaglesClaw: Power = {
       "rechargeDebuff": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.25,
       "table": "Melee_Ones"
     },
@@ -84,7 +91,7 @@ export const EaglesClaw: Power = {
   },
   "atoms": [
     ["Damage","Smashing",3.24,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",0.5,1,5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.5,1,5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true],
     ["Mez","Stunned",4,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Range",null,-0.25,1,10,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["RechargeTime",null,-0.25,1,10,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

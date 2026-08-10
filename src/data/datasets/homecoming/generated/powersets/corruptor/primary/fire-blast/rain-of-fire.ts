@@ -12,12 +12,17 @@ export const RainofFire: Power = {
   "name": "Rain of Fire",
   "internalName": "Rain_of_Fire",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area.",
   "shortHelp": "Ranged (Location AoE), DoT(Fire), -SPD",
   "icon": "fireblast_rainoffire.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

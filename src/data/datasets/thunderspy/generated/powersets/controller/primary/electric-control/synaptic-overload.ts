@@ -12,12 +12,17 @@ export const SynapticOverload: Power = {
   "name": "Synaptic Overload",
   "internalName": "Synaptic_Overload",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "This power can subtly scramble the synapses of any target affected, causing hallucinations and confusion amongst foes.  The electric charge lasts for some time, and will jump slowly to other opponents causing wide spread confusion.  Foes may not be aware that this has happened, and will not be alerted to your presence.  You will also not receive experience for any damage dealt by confused opponents. Recharge: Slow",
   "shortHelp": "Ranged Chain AoE, Foe Confuse, -End",
   "icon": "electriccontrol_synapticoverload.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

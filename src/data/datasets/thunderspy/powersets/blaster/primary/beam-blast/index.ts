@@ -21,8 +21,12 @@ import { Overcharge as Overcharge } from './overcharge';
 
 export const powerset: Powerset = {
   id: 'blaster/beam-blast',
-  internalName: 'beam_rifle',
+  setPath: 'Blaster_Ranged.Beam_Rifle',
   name: 'Beam Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Beam Blast allows you to blast your foes with powerful beams. Your Beam Blast attacks will have greater potency while Disintegration is in effect on your target.  Additionally, single target Beam Blast attacks used on targets suffering from the Disintegrating effect have a chance to spread this effect to nearby foes.',
   icon: 'beam_rifle_set.ico',
   archetype: 'blaster',

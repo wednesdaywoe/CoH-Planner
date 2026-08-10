@@ -12,12 +12,17 @@ export const DullPain: Power = {
   "name": "Dull Pain",
   "internalName": "Dull_Pain",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Using ancient techniques, you can make yourself more resilient to pain. Thus, you can take more damage before being defeated. When you activate this power you will increase your maximum Hit Points for a couple of minutes. Recharge: Very Long",
   "shortHelp": "Self +Max HP",
   "icon": "regeneration_dullpain.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 360,
@@ -49,6 +54,7 @@ export const DullPain: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_HealSelf"
     },
@@ -61,7 +67,7 @@ export const DullPain: Power = {
     ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Meta",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Meta",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+    ["Meta",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ]
 };

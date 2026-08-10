@@ -12,12 +12,17 @@ export const TimeCrawl: Power = {
   "name": "Time Crawl",
   "internalName": "Time_Crawl",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You're able to dramatically slow the time around a single enemy, reducing their movement speed and attack rate.  Time is slowed to such an extreme that their wounds will take longer to heal, reducing their regeneration rate.  Time Crawl applies the Delayed effect on its target.  Debuff and control effects from other Time Manipulation powers are increased on targets affected by Delayed.  Recharge: Long.",
   "shortHelp": "Ranged Foe, -Speed, -Recharge, -Regen, Special",
   "icon": "timemanipulation_timecrawl.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -39,15 +44,25 @@ export const TimeCrawl: Power = {
   "effects": {
     "buffDuration": 20,
     "durations": {
+      "movementCapDebuff": 20,
       "rechargeDebuff": 20,
       "regenDebuff": 20,
       "slow": 20
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.6,
       "table": "Ranged_Slow"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     },
@@ -57,6 +72,7 @@ export const TimeCrawl: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -65,8 +81,8 @@ export const TimeCrawl: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.5,
+        "table": "Ranged_Slow"
       }
     }
   },
@@ -77,7 +93,7 @@ export const TimeCrawl: Power = {
     ["Movement","Jump",0.5,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Fly",0.5,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Movement","Run",-1,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-4,1,20,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]

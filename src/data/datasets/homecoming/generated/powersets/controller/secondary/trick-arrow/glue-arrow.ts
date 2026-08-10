@@ -12,12 +12,17 @@ export const GlueArrow: Power = {
   "name": "Glue Arrow",
   "internalName": "Glue_Arrow",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow carries a cartridge of intensely sticky glue, which explodes on impact. The glue Slows the movement and attack rates of any foes in the area.Recharge: Slow.",
   "shortHelp": "Ranged (Location AoE), Foe -Speed, -Recharge",
   "icon": "trickarrow_slow.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -60,6 +65,7 @@ export const GlueArrow: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "runSpeed",
                   "scale": 0.72,
                   "table": "Ranged_Slow"
                 },
@@ -68,12 +74,29 @@ export const GlueArrow: Power = {
                   "scale": 0.32,
                   "table": "Ranged_Slow",
                   "ignoreStrength": true
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Ranged_SpeedRunning",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 500,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true
                 }
               ],
               "recharge": 0,
               "castTime": 0,
               "activatePeriod": 1,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 25,
               "maxTargets": 16
             }

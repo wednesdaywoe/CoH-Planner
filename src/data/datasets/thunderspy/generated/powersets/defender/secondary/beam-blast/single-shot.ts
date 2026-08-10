@@ -12,12 +12,17 @@ export const SingleShot: Power = {
   "name": "Single Shot",
   "internalName": "Single_Shot",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a single beam which deals Moderate Energy damage and has a chance to knock the target down.  If the target is suffering from Disintegrate, Single Shot will reduce the target's regeneration rate slightly.  In addition, targets already affected by the Disintegrating effect have a chance to spread to 3 nearby targets.  This Spread Disintegration effect can only hit targets that aren't already affected by the Disintegration effect.  Spread Disintegration causes Minor Energy damage over time.  Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged: Moderate DMG(Energy), Foe Knockdown, Special",
   "icon": "beamrifle_singleshot.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,
@@ -72,6 +77,7 @@ export const SingleShot: Power = {
           "regenDebuff": 10
         },
         "regenDebuff": {
+          "ignoreStrength": true,
           "scale": 0.75,
           "table": "Ranged_Ones"
         },

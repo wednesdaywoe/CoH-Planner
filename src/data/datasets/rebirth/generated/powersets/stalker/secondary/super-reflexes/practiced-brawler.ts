@@ -12,6 +12,8 @@ export const PracticedBrawler: Power = {
   "name": "Practiced Brawler",
   "internalName": "Practiced_Brawler",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Your training has allowed you to become a Practiced Brawler, tuning you into a perfect fighting machine. You gain a resistance to Knockback, Disorient, Hold, Sleep, and Immobilization powers for a short duration. Additionally, you will periodically gain a small amount of damage absorption.  Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize), +Minor Absorb",
   "icon": "superreflexes_practicedbrawler.png",
@@ -22,6 +24,9 @@ export const PracticedBrawler: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -76,10 +81,12 @@ export const PracticedBrawler: Power = {
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }

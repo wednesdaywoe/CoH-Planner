@@ -12,6 +12,8 @@ export const Snakeshot: Power = {
   "name": "Venom Shell",
   "internalName": "Snakeshot",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Fire a special concoction of Chemical ammunition at your foes. Enemies afflicted with Venom Shell will take Toxic damage over time. Using Dragon's Breath or Cryo Shell on a foe afflicted with Venom Shell will deal bonus Toxic damage over time.",
   "shortHelp": "Ranged, Toxic DoT",
   "icon": "dualpistols_chemicalammo.png",
@@ -20,6 +22,9 @@ export const Snakeshot: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,7 +65,7 @@ export const Snakeshot: Power = {
   "atoms": [
     ["Damage","Lethal",0.272,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Toxic",0.272,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1],
+    ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ],

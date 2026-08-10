@@ -12,12 +12,17 @@ export const AimedShot: Power = {
   "name": "Aimed Shot",
   "internalName": "Aimed_Shot",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot.Damage: Light.Recharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Lethal)",
   "icon": "archery_mediumarrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 80,

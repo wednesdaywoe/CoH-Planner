@@ -12,12 +12,17 @@ export const QuantumAcceleration: Power = {
   "name": "Starfall",
   "internalName": "Quantum_Acceleration",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You dive in the air and smash down among ranks of foes in the blink of an eye. Using this power allows you to dive to a selected area to deal significant smashing damage to all foes near the location you teleport to, most foes that are struck by your Starfall will be knocked down. This power also unlocks Quantum Acceleration, a power that greatly increases your maximum fly speed. You may not take this power if have trained Blitz Teleport, Dive Attack, Spring Attack, or Whirlwind.  Damage: High, Recharge: Slow.",
   "shortHelp": "PBAoE High DMG(Smashing), Foe Knockdown; Self Teleport, +Jump",
   "icon": "luminousaura_diveattack.png",
   "powerType": "Click",
   "targetType": "Teleport",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,

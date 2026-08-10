@@ -12,12 +12,17 @@ export const ProtonVolley: Power = {
   "name": "Proton Volley",
   "internalName": "Proton_Volley",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Hurls a volley of alpha particles over an extremely long range. Proton Volley can bypass some of a target's defenses and reduce the target's Defense. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
   "shortHelp": "Sniper, DMG(Energy), Foe -DEF",
   "icon": "radiationburst_protonvolley.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 150,
@@ -68,6 +73,7 @@ export const ProtonVolley: Power = {
     ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ],
   "quickSnipe": {
+    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
     "stats": {
       "castTime": 1.33,
       "range": 100
@@ -80,6 +86,11 @@ export const ProtonVolley: Power = {
         "duration": 1.6,
         "tickRate": 0.5
       }
+    ],
+    "atoms": [
+      ["Damage","Energy",2.28,1,1.6,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult * 4 /"],
+      ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+      ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
     ]
   }
 };

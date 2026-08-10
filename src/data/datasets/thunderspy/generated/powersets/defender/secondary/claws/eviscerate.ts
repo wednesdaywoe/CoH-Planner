@@ -12,6 +12,8 @@ export const Eviscerate: Power = {
   "name": "Eviscerate",
   "internalName": "Eviscerate",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), Foe -DEF",
   "icon": "claws_evicerate.png",
@@ -20,6 +22,9 @@ export const Eviscerate: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

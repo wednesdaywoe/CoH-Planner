@@ -12,6 +12,8 @@ export const LightningBolt: Power = {
   "name": "Lightning Bolt",
   "internalName": "Lightning_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can send a large blast of electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you. Lightning Bolt deals more damage than Charged Bolts, but recharges more slowly. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Energy), Foe -End",
   "icon": "electricalbolt_lightningbolt.png",
@@ -23,6 +25,9 @@ export const LightningBolt: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -54,6 +59,7 @@ export const LightningBolt: Power = {
   "effects": {
     "buffDuration": 9.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },

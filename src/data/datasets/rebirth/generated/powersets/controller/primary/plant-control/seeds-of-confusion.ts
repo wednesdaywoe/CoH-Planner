@@ -12,12 +12,17 @@ export const SeedsofConfusion: Power = {
   "name": "Seeds of Confusion",
   "internalName": "Seeds_of_Confusion",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You throw a handful of seeds from a rare Baffle plant at your foes.  The seeds spread out in a wide cone and release a dusty chaff that contain a number of alkaloids and hallucinogenic compounds.  Foes that come into contact with these seeds become violently confused and will turn and attack each other, ignoring you and all your allies. You will not receive any Experience Points for foes defeated entirely by Confused enemies. Recharge: Very Long",
   "shortHelp": "Ranged (Cone), Foe Confuse",
   "icon": "plantcontrol_seedsconfusion.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -50,7 +55,7 @@ export const SeedsofConfusion: Power = {
   },
   "atoms": [
     ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Mez","Confused",4,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

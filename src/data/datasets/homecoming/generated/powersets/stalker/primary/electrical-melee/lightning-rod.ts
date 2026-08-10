@@ -12,12 +12,17 @@ export const LightningRod: Power = {
   "name": "Lightning Rod",
   "internalName": "Lightning_Rod",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You can polarize your body and become a living Lightning Rod. This power calls forth a massive lightning bolt from the sky to strike you. You can then ride this bolt and instantly Teleport a short distance. You rematerialize in a massive bolt of electricity, dealing massive damage and knocking down all nearby foes. Damage from the lightning bolt is superior.",
   "shortHelp": "PBAoE, Foe Knockback; Self Teleport;",
   "icon": "electricmelee_pbaoeteleport.png",
   "powerType": "Click",
   "targetType": "Teleport",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -72,6 +77,9 @@ export const LightningRod: Power = {
               "castTime": 0,
               "activatePeriod": 100,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 5,
               "maxTargets": 1
             },
@@ -104,6 +112,9 @@ export const LightningRod: Power = {
               "castTime": 0,
               "activatePeriod": 100,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 16
             }

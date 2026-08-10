@@ -12,12 +12,17 @@ export const Surveillance: Power = {
   "name": "Surveillance",
   "internalName": "Surveillance",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "When this power is activated, you focus your senses to analyze your targets defensive capabilities and discover their weaknesses.  By sharing your knowledge of the targets weaknesses with your team mates, you effectively reduce their defense and resistance to damage. Recharge: Slow",
   "shortHelp": "Ranged Foe -DEF, -RES (All)",
   "icon": "banespidertraining_surveillance.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -47,41 +52,49 @@ export const Surveillance: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_DMG"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_DMG"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_DMG"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_DMG"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_DMG"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_DMG"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_DMG"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_DMG"
       }
     }
   },
   "atoms": [
-    ["Meta",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Meta",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"view_attributes"],
     ["Resistance","Smashing",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Lethal",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Fire",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

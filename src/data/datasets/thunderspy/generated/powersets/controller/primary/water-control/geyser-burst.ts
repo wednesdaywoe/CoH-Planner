@@ -12,12 +12,17 @@ export const GeyserBurst: Power = {
   "name": "Geyser Burst",
   "internalName": "Geyser_Burst",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You cause a geyser to erupt from the ground beneath a chosen area. Foes standing in the area have their movement speed reduced, suffer from Minor Fire damage over time and may be thrown into the air. This power has a small chance to place the Drowning effect on its targets. Damage: Minor DoT, Recharge: Long",
   "shortHelp": "Target (Location AoE), Foe Knock Up, -Speed, Minor DoT(Fire)",
   "icon": "watercontrol_geyserburst.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

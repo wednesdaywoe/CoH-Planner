@@ -12,12 +12,17 @@ export const TameBeasts: Power = {
   "name": "Tame Beasts",
   "internalName": "Tame_Beasts",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Tame Beasts will permanently teach the most deadly and ferocious powers to all of your Beast Henchmen. The Tamed Beasts will gain new abilities and powers. The powers gained are unique and dependent upon the type of Beast Henchman that is Tamed. Tame Beasts only works on your Beast Henchmen and you can only Tame your Beast Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Upgrade Beast Henchmen",
   "icon": "beastmastery_tamebeasts.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,

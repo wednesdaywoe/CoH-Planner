@@ -12,6 +12,8 @@ export const TacticalTrainingManeuvers: Power = {
   "name": "Tactical Training: Maneuvers",
   "internalName": "Tactical_Training:_Maneuvers",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "A good leader knows how to protect his team. While active, this power increases the Defense of yourself and all nearby teammates to all attacks.",
   "shortHelp": "PBAoE, Team +DEF(All)",
   "icon": "teamwork_tacticaltrainingmaneuvers.png",
@@ -22,6 +24,10 @@ export const TacticalTrainingManeuvers: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Teammate",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

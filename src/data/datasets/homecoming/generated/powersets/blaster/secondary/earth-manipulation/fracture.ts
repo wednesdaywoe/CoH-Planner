@@ -12,12 +12,17 @@ export const Fracture: Power = {
   "name": "Fracture",
   "internalName": "Fracture",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Fracture the ground around an enemy, disorienting all affected targets for a good while. You must be on the ground to activate this power.Recharge: Long.",
   "shortHelp": "Ranged (Targeted AoE), Foe Disorient, -DEF",
   "icon": "earthmanip_fracture.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 70,

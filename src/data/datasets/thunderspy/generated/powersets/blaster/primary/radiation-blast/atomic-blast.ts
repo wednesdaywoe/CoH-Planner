@@ -12,12 +12,17 @@ export const AtomicBlast: Power = {
   "name": "Atomic Blast",
   "internalName": "Atomic_Blast",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "This attack taps most of your stored energy to deal a devastating Atomic Blast which deals Extreme Energy and Smashing damage.  Any foes left standing will have their Defense greatly reduced and may be left helplessly choking on toxic vapors. Affected enemies will be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Energy/Toxic), Foe Hold, -DEF, Special",
   "icon": "radiationburst_atomicblast.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 25,
@@ -56,6 +61,7 @@ export const AtomicBlast: Power = {
   "effects": {
     "buffDuration": 20,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.041,
       "table": "Ranged_Ones"
     },

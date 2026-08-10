@@ -12,12 +12,17 @@ export const SmokeFlash: Power = {
   "name": "Smoke Flash",
   "internalName": "Smoke_Flash",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can command one of your Ninja Henchmen to throw down a Smoke Bomb. The Smoke Flash will allow the Ninja to Placate his nearby foes, and thus unable to target the Ninja.  The Smoke Flash also makes the Ninja stealthy and Hidden for about 10 seconds, enabling him to perform Critical hits with his next few attacks. You can only use this power on a Ninja Henchmen. Recharge: Slow",
   "shortHelp": "Hide Ninja",
   "icon": "ninjas_kujikiri.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,
@@ -35,7 +40,7 @@ export const SmokeFlash: Power = {
   "atoms": [
     ["Stealth","RadiusPvE",54,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true,null,true],
     ["Stealth","RadiusPvP",500,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true,null,true],
-    ["Meta",null,1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true],
+    ["Meta",null,1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true,null,null,null,null,null,null,null,null,null,null,"meter"],
     ["Stealth","Translucency",0.2,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true]
   ]

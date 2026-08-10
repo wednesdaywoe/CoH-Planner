@@ -12,6 +12,8 @@ export const PersonalForceField: Power = {
   "name": "Personal Force Field",
   "internalName": "Personal_Force_Field",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest.",
   "shortHelp": "Toggle: Self +Def, Res(All except Toxic)",
   "icon": "forcefield_personalforcefield.png",
@@ -22,6 +24,9 @@ export const PersonalForceField: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -99,39 +104,48 @@ export const PersonalForceField: Power = {
       }
     },
     "onlyAffectsSelf": {
+      "ignoreStrength": true,
       "scale": 0.75,
       "table": "Melee_Ones"
     },
     "resistance": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Dmg"
       }

@@ -12,6 +12,8 @@ export const WillDomination: Power = {
   "name": "Dominate Will",
   "internalName": "Will_Domination",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This attack deals Psionic damage, and is capable of rendering its target unconscious. The victim is asleep, and will wake if disturbed.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Sleep",
   "icon": "psychicblast_willdomination.png",
@@ -23,6 +25,9 @@ export const WillDomination: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,9 +65,9 @@ export const WillDomination: Power = {
   },
   "atoms": [
     ["Damage","Psionic",1,0,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Sleep",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929],
+    ["Mez","Sleep",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Psionic",1.2602,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,null,true]
+    ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

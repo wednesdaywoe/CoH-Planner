@@ -12,6 +12,8 @@ export const SummonDireWolf: Power = {
   "name": "Summon Dire Wolf",
   "internalName": "Summon_Dire_Wolf",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You call upon the aid of the fabled Dire Wolf. It has powerful bite and breath attacks. Unlike wolves and lions, the Dire Wolf has some limited ranged attacks. The Dire Wolf has good defense to Melee, Ranged and AoE attacks and good resistance to Cold damage.Dire Wolf attacks have a chance to build a charge of Pack Mentality. Pack Mentality is a Damage buff aura that radiates from the Mastermind and can stack up to 10 times.",
   "shortHelp": "Summon Dire Wolf",
   "icon": "beastmastery_summondirewolves.png",
@@ -19,6 +21,9 @@ export const SummonDireWolf: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

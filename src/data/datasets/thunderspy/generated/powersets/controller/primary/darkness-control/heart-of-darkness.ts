@@ -12,12 +12,17 @@ export const HeartofDarkness: Power = {
   "name": "Heart of Darkness",
   "internalName": "Heart_of_Darkness",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "In a burst of negative energy you overwhelm the minds of those around you causing them to be disoriented and suffer minor negative energy damage over a short time.  Affected targets will also have their chance to hit reduced.  Damage: Minor (DoT), Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Disorient, -To Hit, Minor DoT(Negative)",
   "icon": "darknesscontrol_heartofdarkness.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

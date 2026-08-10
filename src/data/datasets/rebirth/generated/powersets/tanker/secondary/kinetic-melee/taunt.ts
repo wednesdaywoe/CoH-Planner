@@ -12,12 +12,17 @@ export const Taunt: Power = {
   "name": "Taunt",
   "internalName": "Taunt",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Taunts a foe, and some nearby foes, to attack you. Useful for pulling villains off an ally who find themselves in over their head. Taunted foes tend to ignore other Heroes and focus on you for quite a while, so use this power cautiously.  A To Hit check is required to Taunt enemy players, but is not needed against critter targets.  Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "kineticattack_taunt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

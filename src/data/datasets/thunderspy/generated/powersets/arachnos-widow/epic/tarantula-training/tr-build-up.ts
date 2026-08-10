@@ -12,12 +12,17 @@ export const TRBuildUp: Power = {
   "name": "Aim",
   "internalName": "TR_Build_Up",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly increases your chance to hit with attacks for a few seconds. Slightly increases damage. Requires Tarantula form to use. Recharge: Long",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "tarantulatraining_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const TRBuildUp: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },

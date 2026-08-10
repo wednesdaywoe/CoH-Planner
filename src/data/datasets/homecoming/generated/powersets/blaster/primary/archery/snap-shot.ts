@@ -12,6 +12,8 @@ export const SnapShot: Power = {
   "name": "Snap Shot",
   "internalName": "Snap_Shot",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.",
   "shortHelp": "Ranged, DMG(Lethal)",
   "icon": "archery_quickarrow.png",
@@ -23,6 +25,9 @@ export const SnapShot: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.155,
@@ -52,6 +57,7 @@ export const SnapShot: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Ranged_Ones"
     },

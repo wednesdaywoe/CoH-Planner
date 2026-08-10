@@ -12,12 +12,17 @@ export const StunningAura: Power = {
   "name": "Conductive Aura",
   "internalName": "Stunning_Aura",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, the air around you becomes charged with electricity, leaping out and shocking foes that get too close.  Foes will lose some endurance, while you gain Recovery and Regeneration per target hit. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Foe -End, Self +Rec, +Regen",
   "icon": "electriccontrol_stunningaura.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 20,

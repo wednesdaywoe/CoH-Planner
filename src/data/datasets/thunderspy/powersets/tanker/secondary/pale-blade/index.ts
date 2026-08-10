@@ -22,8 +22,12 @@ import { SunderBone as SunderBone } from './sunder-bone';
 
 export const powerset: Powerset = {
   id: 'tanker/pale-blade',
-  internalName: 'pale_blade',
+  setPath: 'Tanker_Melee.Pale_Blade',
   name: 'Pale Blade',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'The Pale Blade commands rot and disease as deftly as he swings his sword. Wield the Pale Blade to spread sickening Toxic damage in a wide area. The Pale Blade\'s powers are adept at reducing enemy Regeneration, and spreading contagious DoTs.',
   icon: 'battle_axe_set.ico',
   archetype: 'tanker',

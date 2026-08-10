@@ -12,12 +12,17 @@ export const Wellspring: Power = {
   "name": "Barrier Reef",
   "internalName": "Wellspring",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Create a Barrier Reef teeming with life at your target location. The Barrier Reef will emit an aura that washes over allies in range, providing them with a defensive cover of water that will absorb and deflect some damage.",
   "shortHelp": "Summon Barrier Reef: Team +Absorb, +DEF(All)",
   "icon": "marineaffinity_wellspring.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

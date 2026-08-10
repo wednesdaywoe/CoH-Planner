@@ -12,12 +12,17 @@ export const TimeBomb: Power = {
   "name": "Auto Turret",
   "internalName": "Time_Bomb",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You can summon a Gun Drone. The Drone has an extremely fast fire rate and is equipped with a customized tracking system. Once locked on, the Drone will continue to unload a volley of lead into the target until it is destroyed. The Drone is armored, but can be destroyed. Damage: Moderate, Recharge: Very Long",
   "shortHelp": "Build Turret: Ranged, Moderate DMG(Lethal)",
   "icon": "gadgets_turret.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 180,

@@ -12,6 +12,8 @@ export const Minerals: Power = {
   "name": "Minerals",
   "internalName": "Minerals",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power summons several rare earth rock Minerals to orbit around you. These Minerals can disperse thought patterns and make Psionic attacks less likely to hit. They also bring clarity of the mind reducing the recharge time of your powers, increasing your Perception, and making you resistant to Confusion.Cannot be active at the same time as Granite Armor.Recharge: Fast.",
   "shortHelp": "Toggle: Self +Recharge, +DEF(Psionic), Res(Confuse), +Perception",
   "icon": "stonearmor_mineralcrust.png",
@@ -22,6 +24,9 @@ export const Minerals: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -78,6 +83,7 @@ export const Minerals: Power = {
       "table": "Melee_Ones"
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.15,
       "table": "Melee_Ones"
     }

@@ -15,6 +15,11 @@
 export const EPIC_POOLS_RAW = {
   "arctic_mastery": {
     "id": "arctic_mastery",
+    "setPath": "Epic.Arctic_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Ice Mastery",
     "displayName": "Ice Mastery",
     "archetype": "tanker",
@@ -26,8 +31,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Chilblain",
         "fullName": "Epic.Arctic_Mastery.Chilblain",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Immobilizes your target in an icy trap. Deals some damage over time and slightly Slows the target's attack and movement speed. Useful for keeping villains at bay.",
         "shortHelp": "Ranged, DoT(Cold), Foe Immobilize, -SPD, -Recharge",
         "icon": "ice_mastery_chillblain.png",
@@ -65,7 +75,7 @@ export const EPIC_POOLS_RAW = {
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Movement","FlyMode",-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-          ["Damage","Fire",0.0776,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0],
+          ["Damage","Fire",0.0776,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Cold",0.3078,1,9.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -103,6 +113,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -116,6 +127,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Ranged_Slow"
             },
@@ -133,8 +145,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Block of Ice",
         "fullName": "Epic.Arctic_Mastery.Block_of_Ice",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can freeze a single foe in a Block of Ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be held, but all affected targets will be Slowed.",
         "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge",
         "icon": "ice_mastery_blockofice.png",
@@ -173,7 +190,7 @@ export const EPIC_POOLS_RAW = {
           ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Mez","Knockup",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Mez","Knockback",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Cold",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -207,6 +224,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           },
@@ -216,6 +234,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Ranged_Slow"
             },
@@ -233,8 +252,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Blast",
         "fullName": "Epic.Arctic_Mastery.Ice_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_iceblast.png",
@@ -266,7 +290,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","Run",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Fly",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Jump",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",0.5357,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.5357,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Cold",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -294,6 +318,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 10
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -303,6 +328,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.2,
               "table": "Ranged_Slow"
             },
@@ -320,8 +346,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shiver",
         "fullName": "Epic.Arctic_Mastery.Shiver",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
         "icon": "ice_mastery_shiver.png",
@@ -363,10 +394,19 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 10,
           "buffDuration": 10,
           "durations": {
+            "movementCapDebuff": 10,
             "rechargeDebuff": 10,
             "slow": 10
           },
+          "movementCapDebuff": {
+            "runSpeed": {
+              "ignoreStrength": true,
+              "scale": 1,
+              "table": "Ranged_SpeedRunning"
+            }
+          },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.65,
             "table": "Ranged_Slow"
           },
@@ -376,6 +416,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.65,
               "table": "Ranged_Slow"
             },
@@ -384,8 +425,8 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "runSpeed": {
-              "scale": 1,
-              "table": "Ranged_SpeedRunning"
+              "scale": 0.65,
+              "table": "Ranged_Slow"
             }
           }
         }
@@ -393,8 +434,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Storm",
         "fullName": "Epic.Arctic_Mastery.Ice_Storm",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Location AoE), DoT(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_icestorm.png",
@@ -420,7 +466,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+          ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"]
         ],
         "effects": {
           "accuracy": 2,
@@ -450,6 +496,11 @@ export const EPIC_POOLS_RAW = {
   },
   "blaster_dark_mastery": {
     "id": "blaster_dark_mastery",
+    "setPath": "Epic.Blaster_Dark_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Dark Mastery",
     "displayName": "Dark Mastery",
     "archetype": "blaster",
@@ -461,8 +512,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Murky Cloud",
         "fullName": "Epic.Blaster_Dark_Mastery.Murky_Cloud",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
         "icon": "dark_mastery_murkycloud.png",
@@ -530,8 +586,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fearsome Stare",
         "fullName": "Epic.Blaster_Dark_Mastery.Fearsome_Stare",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Instills tremendous Fear within a cone area in front of you, causing all affected targets to tremble in Terror uncontrollably.",
         "shortHelp": "Ranged (Cone), Foe Fear, -To Hit",
         "icon": "dark_mastery_fearsomestare.png",
@@ -589,8 +650,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Possess",
         "fullName": "Epic.Blaster_Dark_Mastery.Possess",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You cause your targeted foe to be possessed by a dark entity from the Netherworld causing them to be confused for a short period of time. While confused they will be unable to tell the difference between friend or foe and will attack nearby allies. Possess will also hinder the target's abilities, lowering their chance ToHit, Damage, Healing, and the strength of their buffs, You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Target Confuse, -ToHit, -Damage, -Healing, -Special",
         "icon": "dark_mastery_possess.png",
@@ -663,6 +729,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "damageDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Ones"
           },
@@ -674,102 +741,126 @@ export const EPIC_POOLS_RAW = {
           },
           "slow": {
             "flySpeed": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "runSpeed": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             }
           },
           "specialBuff": {
             "absorb": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "confuse": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "endurance": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "fear": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "heal": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "hold": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "immobilize": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "sleep": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "stun": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             }
           },
           "specialDebuff": {
             "aoe": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "cold": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "defense": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "melee": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "ranged": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             }
@@ -779,8 +870,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Black Hole",
         "fullName": "Epic.Blaster_Dark_Mastery.Black_Hole",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Opens up a Black Hole to the Netherworld that temporarily pulls in all foes within its grasp. If the main target is immune to the pull, it will become phase shifted and are completely intangible. They are hard to see, and cannot affect or be affected by those in normal space.",
         "shortHelp": "Ranged (Targeted AoE), Foe Intangible",
         "icon": "dark_mastery_blackhole.png",
@@ -838,6 +934,7 @@ export const EPIC_POOLS_RAW = {
           },
           "stealth": {
             "translucency": {
+              "ignoreStrength": true,
               "scale": 0.1,
               "table": "Melee_Ones"
             }
@@ -851,8 +948,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Consumption",
         "fullName": "Epic.Blaster_Dark_Mastery.Soul_Consumption",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You consume life and soul from all enemies nearby, thus siginficantly increasing your maximum hitpoints and endurance. The more foes affected, the stronger the effect. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
         "icon": "dark_mastery_soulconsumption.png",
@@ -915,6 +1017,7 @@ export const EPIC_POOLS_RAW = {
             "perTarget": 0.4
           },
           "regenDebuff": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Melee_Ones"
           }
@@ -924,6 +1027,11 @@ export const EPIC_POOLS_RAW = {
   },
   "blaster_mace_mastery": {
     "id": "blaster_mace_mastery",
+    "setPath": "Epic.Blaster_Mace_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mace Mastery",
     "displayName": "Mace Mastery",
     "archetype": "blaster",
@@ -935,8 +1043,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Envelope",
         "fullName": "Epic.Blaster_Mace_Mastery.Web_Envelope",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Nullifier Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -1004,6 +1117,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -1030,8 +1144,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Scorpion Shield",
         "fullName": "Epic.Blaster_Mace_Mastery.Scorpion_Shield",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
@@ -1109,8 +1228,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mace Beam Volley",
         "fullName": "Epic.Blaster_Mace_Mastery.Mace_Beam_Volley",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Fires a volley of multiple kinetic energy blasts from your Nullifier Mace. These blast spread out in a wide cone and are powerful enough to knock down some foes. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -1137,9 +1261,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Energy",1.1489,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
+          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Energy",1.2118,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,true]
+          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -1165,8 +1289,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Spiderlings",
         "fullName": "Epic.Blaster_Mace_Mastery.Power_Boost",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion has granted you access to a small squadron of Arachnobot Spiderlings. Three Spiderlings that are one level less than you will show up when summoned. Your access to these Arachnobots is very limited. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Summon Spiderlings: Ranged DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -1216,8 +1345,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Cocoon",
         "fullName": "Epic.Blaster_Mace_Mastery.Web_Cocoon",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
         "icon": "arachnos_patron_targetedhold.png",
@@ -1281,6 +1415,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
@@ -1308,6 +1443,11 @@ export const EPIC_POOLS_RAW = {
   },
   "blaster_mu_mastery": {
     "id": "blaster_mu_mastery",
+    "setPath": "Epic.Blaster_Mu_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mu Mastery",
     "displayName": "Mu Mastery",
     "archetype": "blaster",
@@ -1319,8 +1459,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Static Discharge",
         "fullName": "Epic.Blaster_Mu_Mastery.Static_Discharge",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -1389,8 +1534,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Charged Armor",
         "fullName": "Epic.Blaster_Mu_Mastery.Charged_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -1453,8 +1603,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Adept",
         "fullName": "Epic.Blaster_Mu_Mastery.Thunder_Strike",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -1506,8 +1661,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electrifying Fences",
         "fullName": "Epic.Blaster_Mu_Mastery.Electrifying_Fences",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -1584,8 +1744,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Blaster_Mu_Mastery.Electric_Shackles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
@@ -1667,6 +1832,11 @@ export const EPIC_POOLS_RAW = {
   },
   "blaze_mastery": {
     "id": "blaze_mastery",
+    "setPath": "Epic.Blaze_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Fire Mastery",
     "displayName": "Fire Mastery",
     "archetype": "scrapper",
@@ -1678,8 +1848,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ring of Fire",
         "fullName": "Epic.Blaze_Mastery.Ring_of_Fire",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.",
         "shortHelp": "Ranged, DoT(Fire), Foe Immobilize",
         "icon": "pyremastery_ringoffire.png",
@@ -1709,16 +1884,16 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["MezResist","Knockup",100,1,15,"Melee_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Melee_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+          ["Damage","Fire",0.0853,1,9.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Fire",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Fire",0.3078,1,9.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Immobilized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",0.9483,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Fire",0.9483,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Fire",1.539,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",0.0853,1,9.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Fire",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Fire",1.539,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Fire",1.539,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Fire",0.9483,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",0.9483,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",1.539,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,null,"Class_Stalker"],
+          ["Damage","Fire",1.539,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Fire",1.539,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -1744,8 +1919,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Char",
         "fullName": "Epic.Blaze_Mastery.Char",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial.",
         "shortHelp": "Ranged, DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
@@ -1773,16 +1953,16 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Fire",0.1,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.045,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Fire",0.4218,1,4.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Fire",2.109,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",0.045,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Fire",2.109,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Fire",2.109,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",2.109,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Fire",2.109,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Fire",2.109,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -1808,8 +1988,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Blast",
         "fullName": "Epic.Blaze_Mastery.Fire_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Fire)",
         "icon": "fireblast_fireblast.png",
@@ -1834,18 +2019,18 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Fire",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"FireBlastBonusDoT"],
+          ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Fire",0.045,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,0.8,true,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Fire",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Fire",1.4266,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Fire",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Fire",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Fire",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Fire",1.809,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.045,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Fire",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Fire",1.809,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Fire",1.809,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Fire",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",1.809,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Fire",1.809,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Fire",1.809,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -1875,8 +2060,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Melt Armor",
         "fullName": "Epic.Blaze_Mastery.Melt_Armor",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
@@ -1930,34 +2120,42 @@ export const EPIC_POOLS_RAW = {
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             }
@@ -1967,8 +2165,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Ball",
         "fullName": "Epic.Blaze_Mastery.Fire_Ball",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
@@ -1994,19 +2197,19 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",0.1977,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Fire",0.7008,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Fire",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true,"FireBlastBonusDoT"],
+          ["Damage","Fire",0.405,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Fire",0.045,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,0.8,true,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Fire",0.8985,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Smashing",0.1611,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Fire",0.5712,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",0.0732,1,2.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.8985,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == &&",true],
-          ["Damage","Fire",0.8985,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",true],
-          ["Damage","Fire",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> Class_Scrapper == &&",true],
-          ["Damage","Fire",0.405,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.045,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.8985,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Fire",0.8985,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Fire",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Fire",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Fire",0.0732,1,2.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.8,true,"FireBlastBonusDoT"],
+          ["Damage","Fire",0.8985,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Fire",0.8985,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Fire",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Fire",0.8985,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Fire",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Fire",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -2044,6 +2247,11 @@ export const EPIC_POOLS_RAW = {
   },
   "body_mastery": {
     "id": "body_mastery",
+    "setPath": "Epic.Body_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Energy Mastery",
     "displayName": "Energy Mastery",
     "archetype": "scrapper",
@@ -2055,8 +2263,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Conserve Power",
         "fullName": "Epic.Body_Mastery.Conserve_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can focus for a moment to conserve your Endurance. After activating this power, you expend less Endurance on all other powers for a while.",
         "shortHelp": "Self Endurance Discount",
         "icon": "bodymastery_conservepower.png",
@@ -2087,6 +2300,7 @@ export const EPIC_POOLS_RAW = {
             "enduranceDiscount": 90
           },
           "enduranceDiscount": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Stun"
           },
@@ -2099,8 +2313,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Body_Mastery.Focused_Accuracy",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "gadgets_targetingdrone.png",
@@ -2135,16 +2354,19 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "accuracyBuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Ones"
           },
           "buffDuration": 0.75,
           "debuffResistance": {
             "perception": {
+              "ignoreStrength": true,
               "scale": 0.6,
               "table": "Melee_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Boolean"
             }
@@ -2168,8 +2390,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Body_Mastery.Laser_Beam_Eyes",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can not miss and will reduce the target's Defense. Damage inflicted will fluctuate the current hit roll. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
         "icon": "bodymastery_laserbeameyes.png",
@@ -2196,20 +2423,20 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
           ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true]
+          ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"]
         ],
         "effects": {
           "accuracy": 1,
@@ -2253,8 +2480,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Body_Mastery.Physical_Perfection",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
@@ -2300,8 +2532,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Body_Mastery.Energy_Torrent",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.<br>",
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
         "icon": "bodymastery_energytorrent.png",
@@ -2330,17 +2567,17 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.2874,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Energy",0.6706,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.432,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Fire",0.432,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Smashing",0.2658,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.6203,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Energy",0.8861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Energy",0.8861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Energy",0.8861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Energy",0.8861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Energy",0.8861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Energy",0.8861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -2379,6 +2616,11 @@ export const EPIC_POOLS_RAW = {
   },
   "body_mastery_stalker": {
     "id": "body_mastery_stalker",
+    "setPath": "Epic.Body_Mastery_Stalker",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Energy Mastery",
     "displayName": "Energy Mastery",
     "archetype": "stalker",
@@ -2390,8 +2632,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Superior Conditioning",
         "fullName": "Epic.Body_Mastery_Stalker.Conserve_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Your Superior Condition has increased your maximum endurance by 5%.",
         "shortHelp": "Self +Endurance",
         "icon": "bodymastery_conservepower.png",
@@ -2429,8 +2676,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Body_Mastery_Stalker.Focused_Accuracy",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "gadgets_targetingdrone.png",
@@ -2465,16 +2717,19 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "accuracyBuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Ones"
           },
           "buffDuration": 0.75,
           "debuffResistance": {
             "perception": {
+              "ignoreStrength": true,
               "scale": 0.6,
               "table": "Melee_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Boolean"
             }
@@ -2498,8 +2753,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Body_Mastery_Stalker.Laser_Beam_Eyes",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can not miss and will reduce the target's Defense. Damage inflicted will fluctuate the current hit roll. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
         "icon": "bodymastery_laserbeameyes.png",
@@ -2526,19 +2786,19 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"]
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"],
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"]
         ],
         "effects": {
           "accuracy": 1,
@@ -2572,8 +2832,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Body_Mastery_Stalker.Physical_Perfection",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
@@ -2619,8 +2884,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Body_Mastery_Stalker.Energy_Torrent",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
         "icon": "bodymastery_energytorrent.png",
@@ -2649,13 +2919,13 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.2874,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Energy",0.6706,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
           ["Damage","Smashing",0.2658,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.6203,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.8861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-          ["Damage","Energy",0.8861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
+          ["Damage","Energy",0.8861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+          ["Damage","Energy",0.8861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"PvPCrit"],
+          ["Damage","Energy",0.958,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true,null,null,null,null,null,null,null,null,"StealthCrit"]
         ],
         "effects": {
           "accuracy": 1,
@@ -2677,6 +2947,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.6706,
               "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.958,
+              "table": "Melee_InherentDamage"
             }
           ],
           "knockback": {
@@ -2689,6 +2964,11 @@ export const EPIC_POOLS_RAW = {
   },
   "brute_leviathan_mastery": {
     "id": "brute_leviathan_mastery",
+    "setPath": "Epic.Brute_Leviathan_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Leviathan Mastery",
     "displayName": "Leviathan Mastery",
     "archetype": "brute",
@@ -2700,8 +2980,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Spirit Shark",
         "fullName": "Epic.Brute_Leviathan_Mastery.Spirit_Shark",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
         "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -2729,16 +3014,16 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Lethal",0.84,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.378,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-          ["Damage","Fire",0.063,1,3.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
-          ["Damage","Lethal",0.14,1,3.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 ==",true],
-          ["Damage","Lethal",0.14,1,3.2,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0.8 * 1 + @StdResult *"],
-          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true],
+          ["Damage","Lethal",0.14,1,3.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 == &&"],
+          ["Damage","Fire",0.378,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+          ["Damage","Fire",0.063,1,3.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+          ["Damage","Lethal",0.14,1,3.2,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0.8 * 1 + @StdResult *"],
+          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
           ["Damage","Lethal",1.392,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Lethal",0.232,1,3.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 ==",true],
-          ["Damage","Lethal",0.14,1,3.2,"Ranged_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true],
-          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true]
+          ["Damage","Lethal",0.232,1,3.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 == &&",true],
+          ["Damage","Lethal",0.14,1,3.2,"Ranged_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true],
+          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
         ],
         "effects": {
           "accuracy": 1,
@@ -2752,6 +3037,13 @@ export const EPIC_POOLS_RAW = {
               "type": "Lethal",
               "scale": 0.84,
               "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.14,
+              "table": "Ranged_Damage",
+              "duration": 3.2,
+              "tickRate": 1
             },
             {
               "type": "Fire",
@@ -2770,13 +3062,37 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.7,
             "table": "Ranged_Knockback"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "leviathan_hunger-1plus",
+            "label": "Leviathan Hunger (1+ stacks)",
+            "scope": "global",
+            "defaultActive": false,
+            "ownedPower": {
+              "path": "Temporary_Powers.Temporary_Powers.Leviathan_Hunger",
+              "count": 1
+            },
+            "damage": {
+              "type": "Lethal",
+              "scale": 0.14,
+              "table": "Ranged_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          }
+        ]
       },
       {
         "name": "School of Sharks",
         "fullName": "Epic.Brute_Leviathan_Mastery.School_of_Sharks",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -2805,8 +3121,8 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.1673,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Negative",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.0753,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-          ["Damage","Fire",0.0377,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
+          ["Damage","Fire",0.0753,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+          ["Damage","Fire",0.0377,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Damage","Negative",0.124,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -2859,8 +3175,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Bile Spray",
         "fullName": "Epic.Brute_Leviathan_Mastery.Chum_Spray",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -2886,8 +3207,8 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Toxic",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Toxic",0.1,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.315,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-          ["Damage","Fire",0.045,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
+          ["Damage","Fire",0.315,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+          ["Damage","Fire",0.045,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Toxic",0.6132,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Toxic",0.0682,1,4.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -2932,8 +3253,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Arctic Breath",
         "fullName": "Epic.Brute_Leviathan_Mastery.Arctic_Breath",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this freezing acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take cold damage over time, and have their damage resistance, Defense, movement rate, and recharge rate reduced. This ice will stick to foes, causing them to fall down occasionally. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
         "icon": "arachnos_patron_coneslow.png",
@@ -2964,7 +3290,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Cold",0.1,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.03],
           ["Movement","JumpHeight",0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["RechargeTime",null,0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Movement","Run",0.3,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -2979,11 +3305,11 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Psionic",-1.5,1,10,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Toxic",-1.5,1,10,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Defense","All",1.5,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-          ["Damage","Fire",0.225,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-          ["Damage","Fire",0.045,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
+          ["Damage","Fire",0.225,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+          ["Damage","Fire",0.045,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Cold",0.1208,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Cold",0.1813,1,4.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> player eq",true]
+          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.02]
         ],
         "effects": {
           "accuracy": 1,
@@ -3034,43 +3360,53 @@ export const EPIC_POOLS_RAW = {
             "slow": 10
           },
           "knockback": {
+            "ignoreStrength": true,
             "scale": 0.1,
             "table": "Ranged_Ones"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             }
@@ -3081,6 +3417,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Ranged_Slow"
             },
@@ -3098,8 +3435,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Guardian",
         "fullName": "Epic.Brute_Leviathan_Mastery.Summon_Guardian",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Captain Mako has shown you how to summon a Coralax Guardian Sentinel to do your bidding. These creatures are composed of living coral made from the sea-goddess Merulina. Your access to this Guardian is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Summon Sentinel: Ranged DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
@@ -3152,6 +3494,11 @@ export const EPIC_POOLS_RAW = {
   },
   "brute_mace_mastery": {
     "id": "brute_mace_mastery",
+    "setPath": "Epic.Brute_Mace_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mace Mastery",
     "displayName": "Mace Mastery",
     "archetype": "brute",
@@ -3163,8 +3510,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mace Blast",
         "fullName": "Epic.Brute_Mace_Mastery.Mace_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Executioner's Mace is capable of firing a powerful bolt of kinetic energy. The blast is powerful enough that it may knock some foes back. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
         "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -3191,10 +3543,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Energy",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",0.7,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
-          ["Damage","Fire",0.594,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Mez","Knockback",0.7,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.594,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Energy",2.16,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",0.7,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,true]
+          ["Mez","Knockback",0.7,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -3224,8 +3576,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Envelope",
         "fullName": "Epic.Brute_Mace_Mastery.Web_Envelope",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -3256,7 +3613,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Toxic",0.0837,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Toxic",0.0377,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0],
+          ["Damage","Toxic",0.0377,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["RechargeTime",null,0.2,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Movement","Run",0.2,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Movement","Fly",0.2,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
@@ -3303,6 +3660,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -3329,8 +3687,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Brute_Mace_Mastery.Focused_Accuracy",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When this power is activated, the Villain focuses their senses to dramatically improve their accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
@@ -3365,16 +3728,19 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "accuracyBuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Ones"
           },
           "buffDuration": 0.75,
           "debuffResistance": {
             "perception": {
+              "ignoreStrength": true,
               "scale": 0.6,
               "table": "Ranged_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Res_Boolean"
             }
@@ -3398,8 +3764,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Disruptor Blast",
         "fullName": "Epic.Brute_Mace_Mastery.Disruptor_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -3426,10 +3797,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
-          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Energy",0.9477,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,true]
+          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -3461,8 +3832,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Blaster",
         "fullName": "Epic.Brute_Mace_Mastery.Summon_Blaster",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion has granted you an Arachnobot Blaster for you to command. Arachnobot Blasters were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Your access to this Arachnobot is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -3513,6 +3889,11 @@ export const EPIC_POOLS_RAW = {
   },
   "brute_mu_mastery": {
     "id": "brute_mu_mastery",
+    "setPath": "Epic.Brute_Mu_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mu Mastery",
     "displayName": "Mu Mastery",
     "archetype": "brute",
@@ -3524,8 +3905,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mu Lightning",
         "fullName": "Epic.Brute_Mu_Mastery.Mu_Lightning",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you.",
         "shortHelp": "Ranged, DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -3555,7 +3941,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-3,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
           ["Endurance",null,4.29,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
-          ["Damage","Fire",0.594,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.594,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Energy",1.579,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-2,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -3603,8 +3989,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electrifying Fences",
         "fullName": "Epic.Brute_Mu_Mastery.Electrifying_Fences",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -3638,7 +4029,7 @@ export const EPIC_POOLS_RAW = {
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Recovery",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
-          ["Damage","Fire",0.0377,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
+          ["Damage","Fire",0.0377,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Energy",0.0929,1,7.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-1,1,6.2,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -3691,8 +4082,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ball Lightning",
         "fullName": "Epic.Brute_Mu_Mastery.Ball_Lightning",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -3722,8 +4118,8 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.18,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
-          ["Damage","Fire",0.135,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-          ["Damage","Fire",0.081,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
+          ["Damage","Fire",0.135,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+          ["Damage","Fire",0.081,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Energy",0.2242,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.1046,1,3.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -3780,8 +4176,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Static Discharge",
         "fullName": "Epic.Brute_Mu_Mastery.Static_Discharge",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -3811,7 +4212,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Endurance",null,4.29,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,0.10000000149011612],
-          ["Damage","Fire",0.432,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.432,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Energy",1.1803,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -3858,8 +4259,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Striker",
         "fullName": "Epic.Brute_Mu_Mastery.Summon_Striker",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Scirocco has shown you how to call upon a mystical Mu Striker to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Striker is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Summon Mu Strike: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -3908,6 +4314,11 @@ export const EPIC_POOLS_RAW = {
   },
   "brute_soul_mastery": {
     "id": "brute_soul_mastery",
+    "setPath": "Epic.Brute_Soul_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Soul Mastery",
     "displayName": "Soul Mastery",
     "archetype": "brute",
@@ -3919,8 +4330,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Gloom",
         "fullName": "Epic.Brute_Soul_Mastery.Gloom",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Gloom slowly drains a target of life, while reducing his Accuracy. Slower than Dark Blast, but deals more damage over time.",
         "shortHelp": "Ranged, DoT(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -3949,7 +4365,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Negative",0.22,1,3.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",0.099,1,3.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0],
+          ["Damage","Fire",0.099,1,3.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Negative",0.1833,1,3.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -3988,8 +4404,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Tentacles",
         "fullName": "Epic.Brute_Soul_Mastery.Soul_Tentacles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -4018,7 +4439,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.1,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Negative",0.135,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.045,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
+          ["Damage","Fire",0.045,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Damage","Negative",0.1206,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -4066,8 +4487,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Darkest Night",
         "fullName": "Epic.Brute_Soul_Mastery.Darkest_Night",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "arachnos_patron_aoedamagedebuff.png",
@@ -4119,6 +4545,7 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 10,
           "buffDuration": 0.75,
           "damageDebuff": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Ranged_Debuff_Dam"
           },
@@ -4135,8 +4562,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Obliteration",
         "fullName": "Epic.Brute_Soul_Mastery.Dark_Obliteration",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -4165,7 +4597,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Negative",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",0.405,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.405,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Negative",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -4202,8 +4634,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Widow",
         "fullName": "Epic.Brute_Soul_Mastery.Summon_Widow",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Ghost Widow has assigned a beautiful but deadly Blood Widow assassins for you to command. Their weapons of choice include wrist retractable mounted razors and darts, all tipped in deadly poison. Your access to this Blood Widow is very limited, and you can only summon her once every 15 minutes and she will leave after 4 minutes, until defeated, or until you leave a zone or mission. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Summon Blood Widow: Melee DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -4249,6 +4686,11 @@ export const EPIC_POOLS_RAW = {
   },
   "charge_mastery": {
     "id": "charge_mastery",
+    "setPath": "Epic.Charge_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Electricity Mastery",
     "displayName": "Electricity Mastery",
     "archetype": "mastermind",
@@ -4260,8 +4702,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Static Discharge",
         "fullName": "Epic.Charge_Mastery.Static_Discharge",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "electrical_mastery_static_discharge.png",
@@ -4316,8 +4763,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Charge_Mastery.Electric_Shackles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you.",
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "electrical_mastery_shocking_bolt.png",
@@ -4401,8 +4853,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "chargemastery_thunderstrike.png",
@@ -4430,17 +4887,17 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",2.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Energy",2.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929],
+          ["Damage","Energy",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Splash"],
+          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Endurance",null,-2,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",2.971,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,null,true]
+          ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Splash"],
+          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -4489,8 +4946,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Surge of Power",
         "fullName": "Epic.Charge_Mastery.Surge_of_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics. However, expending all this energy will leave you exhausted, and drained of all endurance. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Self, +Res(Special)",
         "icon": "electrical_mastery_powersurge.png",
@@ -4523,7 +4985,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Stealth","Translucency",0,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
           ["Recovery",null,-100,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
@@ -4540,14 +5002,17 @@ export const EPIC_POOLS_RAW = {
             "stealth": 120
           },
           "enduranceDrain": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
           "recoveryBuffUnenhanced": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
           "recoveryDebuff": {
+            "ignoreStrength": true,
             "scale": 100,
             "table": "Melee_Ones"
           },
@@ -4583,6 +5048,7 @@ export const EPIC_POOLS_RAW = {
           },
           "stealth": {
             "translucency": {
+              "ignoreStrength": true,
               "scale": 0,
               "table": "Melee_Ones"
             }
@@ -4592,8 +5058,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "ESD",
         "fullName": "Epic.Charge_Mastery.EM_Pulse",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and leave them incapacitated and Disoriented for a while. Additionally, most machines and robots will take moderate high damage. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
         "icon": "electrical_mastery_em_pulse.png",
@@ -4620,7 +5091,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Stunned",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Endurance",null,-50,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Regeneration",null,-10,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Stunned",8,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5],
+          ["Mez","Stunned",8,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Stunned",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-16.67,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Regeneration",null,-30,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
@@ -4643,6 +5114,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_EndDrain"
           },
           "regenDebuff": {
+            "ignoreStrength": true,
             "scale": 10,
             "table": "Ranged_Ones"
           },
@@ -4651,12 +5123,30 @@ export const EPIC_POOLS_RAW = {
             "scale": 8,
             "table": "Ranged_Immobilize"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "vs-electronic",
+            "label": "vs Machines/Robots",
+            "scope": "per-power",
+            "defaultActive": false,
+            "damage": {
+              "type": "Energy",
+              "scale": 1.64,
+              "table": "Ranged_Damage"
+            }
+          }
+        ]
       }
     ]
   },
   "chill_mastery": {
     "id": "chill_mastery",
+    "setPath": "Epic.Chill_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Ice Mastery",
     "displayName": "Ice Mastery",
     "archetype": "mastermind",
@@ -4668,8 +5158,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Blast",
         "fullName": "Epic.Chill_Mastery.Ice_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
         "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_iceblast.png",
@@ -4721,6 +5216,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 10
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -4730,6 +5226,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.2,
               "table": "Ranged_Slow"
             },
@@ -4747,8 +5244,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Flash Freeze",
         "fullName": "Epic.Chill_Mastery.Flash_Freeze",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "Ranged (Targeted AoE), DMG(Cold/Lethal), Foe Sleep",
         "icon": "ice_mastery_flashfreeze.png",
@@ -4774,10 +5276,10 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
-          ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
-          ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+          ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
+          ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
           ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Cold",1.1914,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -4805,8 +5307,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hoarfrost",
         "fullName": "Epic.Chill_Mastery.Hoarfrost",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "ice_mastery_hoarfrost.png",
@@ -4856,6 +5363,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_HealSelf"
           },
           "maxHPBuffUnenhanced": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_HealSelf"
           },
@@ -4874,8 +5382,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frozen Armor",
         "fullName": "Epic.Chill_Mastery.Snow_Storm",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "ice_mastery_frozenarmor.png",
@@ -4953,8 +5466,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hibernate",
         "fullName": "Epic.Chill_Mastery.Hibernate",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "ice_mastery_hibernate.png",
@@ -4981,14 +5499,14 @@ export const EPIC_POOLS_RAW = {
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"]
         ],
         "effects": {
           "accuracy": 1,
@@ -5007,6 +5525,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 0.75
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
             "table": "Melee_Ones"
@@ -5021,15 +5540,18 @@ export const EPIC_POOLS_RAW = {
           },
           "mezResistance": {
             "knockback": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             },
             "knockup": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             }
           },
           "onlyAffectsSelf": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           },
@@ -5049,6 +5571,7 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           }
@@ -5058,6 +5581,11 @@ export const EPIC_POOLS_RAW = {
   },
   "cold_mastery": {
     "id": "cold_mastery",
+    "setPath": "Epic.Cold_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Ice Mastery",
     "displayName": "Ice Mastery",
     "archetype": "blaster",
@@ -5069,8 +5597,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Snow Storm",
         "fullName": "Epic.Cold_Mastery.Snow_Storm",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes.",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge",
         "icon": "ice_mastery_snowstorm.png",
@@ -5111,10 +5644,19 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 10,
           "buffDuration": 0.75,
           "durations": {
+            "movementCapDebuff": 0.75,
             "rechargeDebuff": 0.75,
             "slow": 0.75
           },
+          "movementCapDebuff": {
+            "runSpeed": {
+              "ignoreStrength": true,
+              "scale": 1,
+              "table": "Ranged_SpeedRunning"
+            }
+          },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
@@ -5128,6 +5670,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.5,
               "table": "Ranged_Slow"
             },
@@ -5136,8 +5679,8 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "runSpeed": {
-              "scale": 1,
-              "table": "Ranged_SpeedRunning"
+              "scale": 0.5,
+              "table": "Ranged_Slow"
             }
           }
         }
@@ -5145,8 +5688,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Flash Freeze",
         "fullName": "Epic.Cold_Mastery.Flash_Freeze",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "Ranged (Targeted AoE), DMG(Cold/Lethal), Foe Sleep",
         "icon": "ice_mastery_flashfreeze.png",
@@ -5172,12 +5720,12 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
-          ["Damage","Lethal",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
-          ["Damage","Lethal",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Cold",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+          ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Lethal",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Cold",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
+          ["Damage","Lethal",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
+          ["Damage","Cold",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
           ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Lethal",0.5957,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Cold",0.5957,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -5213,8 +5761,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hoarfrost",
         "fullName": "Epic.Cold_Mastery.Hoarfrost",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "ice_mastery_hoarfrost.png",
@@ -5264,6 +5817,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_HealSelf"
           },
           "maxHPBuffUnenhanced": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_HealSelf"
           },
@@ -5282,8 +5836,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frozen Armor",
         "fullName": "Epic.Cold_Mastery.Frozen_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "ice_mastery_frozenarmor.png",
@@ -5361,8 +5920,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hibernate",
         "fullName": "Epic.Cold_Mastery.Hibernate",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "ice_mastery_hibernate.png",
@@ -5389,14 +5953,14 @@ export const EPIC_POOLS_RAW = {
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"]
         ],
         "effects": {
           "accuracy": 1,
@@ -5415,6 +5979,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 0.75
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
             "table": "Melee_Ones"
@@ -5429,15 +5994,18 @@ export const EPIC_POOLS_RAW = {
           },
           "mezResistance": {
             "knockback": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             },
             "knockup": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             }
           },
           "onlyAffectsSelf": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           },
@@ -5457,6 +6025,7 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           }
@@ -5466,6 +6035,11 @@ export const EPIC_POOLS_RAW = {
   },
   "controller_dark_mastery": {
     "id": "controller_dark_mastery",
+    "setPath": "Epic.Controller_Dark_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Dark Mastery",
     "displayName": "Dark Mastery",
     "archetype": "controller",
@@ -5477,8 +6051,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Murky Cloud",
         "fullName": "Epic.Controller_Dark_Mastery.Murky_Cloud",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
         "icon": "dark_mastery_murkycloud.png",
@@ -5546,8 +6125,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Blast",
         "fullName": "Epic.Controller_Dark_Mastery.Dark_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy.",
         "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
         "icon": "dark_mastery_darkblast.png",
@@ -5576,9 +6160,9 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,6,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true]
+          ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -5605,8 +6189,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Umbral Torrent",
         "fullName": "Epic.Controller_Dark_Mastery.Torrent",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
         "icon": "dark_mastery_umbraltorrent.png",
@@ -5638,10 +6227,10 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",5,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Negative",0.8471,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",5,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",0.8471,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true]
+          ["Damage","Negative",0.8471,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -5678,8 +6267,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
         "icon": "dark_mastery_midnightgrasp.png",
@@ -5711,11 +6305,11 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Damage","Negative",0.11,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1],
-          ["Damage","Negative",2.21,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true],
+          ["Damage","Negative",2.21,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Negative",2.0793,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Immobilized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",2.0793,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true],
-          ["Damage","Negative",0.11,1,3.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true]
+          ["Damage","Negative",2.0793,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Negative",0.11,1,3.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -5756,8 +6350,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Consumption",
         "fullName": "Epic.Controller_Dark_Mastery.Soul_Consumption",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You consume life and soul from all enemies nearby, thus siginficantly increasing your maximum hitpoints and endurance. The more foes affected, the stronger the effect. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
         "icon": "dark_mastery_soulconsumption.png",
@@ -5820,6 +6419,7 @@ export const EPIC_POOLS_RAW = {
             "perTarget": 0.4
           },
           "regenDebuff": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Melee_Ones"
           }
@@ -5829,6 +6429,11 @@ export const EPIC_POOLS_RAW = {
   },
   "controller_mace_mastery": {
     "id": "controller_mace_mastery",
+    "setPath": "Epic.Controller_Mace_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mace Mastery",
     "displayName": "Mace Mastery",
     "archetype": "controller",
@@ -5840,8 +6445,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Poisonous Ray",
         "fullName": "Epic.Controller_Mace_Mastery.Poisonous_Ray",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Bane Mace can fire a nasty Poison Ray. This toxin is suspended in a polarized plasma field and delivered like an energy blast. Upon impact, the toxin directly attacks the immune system, reducing the affected targets Defense and Damage Resistance as it deals toxic damage.",
         "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
@@ -5881,8 +6491,8 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Toxic",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Damage","Energy",1.38,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Toxic",0.1255,1,9.3,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Energy",2.76,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Energy",2.76,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -5916,34 +6526,42 @@ export const EPIC_POOLS_RAW = {
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             }
@@ -5953,8 +6571,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Scorpion Shield",
         "fullName": "Epic.Controller_Mace_Mastery.Scorpion_Shield",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
@@ -6032,8 +6655,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Disruptor Blast",
         "fullName": "Epic.Controller_Mace_Mastery.Disruptor_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Fires a tremendous charge of kinetic energy from your Bane Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -6060,11 +6688,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
-          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || arch source> Class_Controller == &&",true],
+          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || arch source> Class_Controller == && &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Energy",0.9477,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.9477,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller == &&",true],
-          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,null,true]
+          ["Damage","Energy",0.9477,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller == && &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -6089,8 +6717,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Controller_Mace_Mastery.Personal_Force_Field",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "When this power is activated, the Villain focuses their senses to dramatically improve their range and accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
@@ -6125,16 +6758,19 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "accuracyBuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Ones"
           },
           "buffDuration": 0.75,
           "debuffResistance": {
             "perception": {
+              "ignoreStrength": true,
               "scale": 0.6,
               "table": "Melee_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Boolean"
             }
@@ -6158,8 +6794,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Tarantula",
         "fullName": "Epic.Controller_Mace_Mastery.Summon_Tarantula",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion has granted you an Toxic Tarantula for you to command. Weaver One developed the Tarantula Exoskeleton Armor, which so radically transforms an Arachnos troop that hardly anything human is recognizable. Your access to this Tarantula is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Summon Tarantula: Ranged DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -6211,6 +6852,11 @@ export const EPIC_POOLS_RAW = {
   },
   "corruptor_fire_mastery": {
     "id": "corruptor_fire_mastery",
+    "setPath": "Epic.Corruptor_Fire_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Fire Mastery",
     "displayName": "Fire Mastery",
     "archetype": "corruptor",
@@ -6222,8 +6868,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Consume",
         "fullName": "Epic.Corruptor_Fire_Mastery.Consume",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage",
         "shortHelp": "PBAoE, DMG(Fire), Self +End",
         "icon": "flamingshield_consume.png",
@@ -6285,8 +6936,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Char",
         "fullName": "Epic.Corruptor_Fire_Mastery.Char",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot.",
         "shortHelp": "Ranged, DoT (Fire), Foe Hold",
         "icon": "flamemastery_soot.png",
@@ -6343,8 +6999,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Shield",
         "fullName": "Epic.Corruptor_Fire_Mastery.Fire_Shield",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "While this power is active, you get a good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "flamingshield_flamingshield.png",
@@ -6412,8 +7073,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Corruptor_Fire_Mastery.Rise_of_the_Phoenix",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 41 and have one other Fire Mastery Powers before selecting this power.<br>",
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
@@ -6445,7 +7111,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
         ],
         "effects": {
           "accuracy": 1,
@@ -6464,6 +7130,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
@@ -6475,6 +7142,7 @@ export const EPIC_POOLS_RAW = {
             "isPseudoPet": false
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 15,
             "table": "Melee_Ones"
           },
@@ -6490,8 +7158,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Melee, DMG(Fire)",
         "icon": "firemastery_greaterfiresword.png",
@@ -6515,7 +7188,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Fire",2.44,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Fire",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
           ["Damage","Fire",2.44,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq && arch source> Class_Corruptor == &&",true],
           ["Damage","Fire",2.319,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Fire",2.319,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq && arch source> Class_Corruptor == &&",true]
@@ -6549,6 +7222,11 @@ export const EPIC_POOLS_RAW = {
   },
   "corruptor_leviathan_mastery": {
     "id": "corruptor_leviathan_mastery",
+    "setPath": "Epic.Corruptor_Leviathan_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Leviathan Mastery",
     "displayName": "Leviathan Mastery",
     "archetype": "corruptor",
@@ -6560,8 +7238,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "School of Sharks",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.School_of_Sharks",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -6595,8 +7278,8 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",0.1102,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Lethal",0.124,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",0.8367,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
-          ["Damage","Negative",1.1016,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true]
+          ["Damage","Negative",0.8367,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Corruptor eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,null,"Class_Corruptor"],
+          ["Damage","Negative",1.1016,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Corruptor eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,null,"Class_Corruptor"]
         ],
         "effects": {
           "accuracy": 1,
@@ -6632,8 +7315,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shark Skin",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Shark_Skin",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing and cold damage.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -6696,8 +7384,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hibernate",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Hibernate",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -6724,14 +7417,14 @@ export const EPIC_POOLS_RAW = {
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"]
         ],
         "effects": {
           "accuracy": 1,
@@ -6750,6 +7443,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 0.75
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
             "table": "Melee_Ones"
@@ -6764,15 +7458,18 @@ export const EPIC_POOLS_RAW = {
           },
           "mezResistance": {
             "knockback": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             },
             "knockup": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             }
           },
           "onlyAffectsSelf": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           },
@@ -6792,6 +7489,7 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           }
@@ -6800,8 +7498,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Spirit Shark Jaws",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Spirit_Shark_Jaws",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You can summon a massive Spirit Shark that will attack your foe from below. The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
@@ -6834,8 +7537,8 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Lethal",0.5861,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Lethal",0.2604,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Lethal",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
-          ["Damage","Lethal",2.669,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true]
+          ["Damage","Lethal",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Corruptor eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,null,"Class_Corruptor"],
+          ["Damage","Lethal",2.669,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Corruptor eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,null,"Class_Corruptor"]
         ],
         "effects": {
           "accuracy": 1,
@@ -6878,8 +7581,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Coralax",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Summon_Coralax",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Captain Mako has shown you how to summon a Coralax Red Hybrid to do your bidding. The Coralax are humans who have been infected with living coral. Your access to this Hybrid is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Summon Hybrid: Ranged DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -6932,6 +7640,11 @@ export const EPIC_POOLS_RAW = {
   },
   "corruptor_mace_mastery": {
     "id": "corruptor_mace_mastery",
+    "setPath": "Epic.Corruptor_Mace_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mace Mastery",
     "displayName": "Mace Mastery",
     "archetype": "corruptor",
@@ -6943,8 +7656,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Envelope",
         "fullName": "Epic.Corruptor_Mace_Mastery.Web_Envelope",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -7014,6 +7732,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -7040,8 +7759,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Scorpion Shield",
         "fullName": "Epic.Corruptor_Mace_Mastery.Scorpion_Shield",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
@@ -7119,8 +7843,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Corruptor_Mace_Mastery.Focused_Accuracy",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When this power is activated, the Villain focuses their senses to dramatically improve their range and accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
@@ -7155,16 +7884,19 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "accuracyBuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Ones"
           },
           "buffDuration": 0.75,
           "debuffResistance": {
             "perception": {
+              "ignoreStrength": true,
               "scale": 0.6,
               "table": "Melee_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Boolean"
             }
@@ -7188,8 +7920,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Cocoon",
         "fullName": "Epic.Corruptor_Mace_Mastery.Web_Cocoon",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
         "icon": "arachnos_patron_targetedhold.png",
@@ -7255,6 +7992,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
@@ -7281,8 +8019,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Disruptor",
         "fullName": "Epic.Corruptor_Mace_Mastery.Summon_Disruptor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion has granted you an Arachnobot Disruptor for you to command. Arachnobots were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Your access to this Arachnobot is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -7335,6 +8078,11 @@ export const EPIC_POOLS_RAW = {
   },
   "corruptor_mu_mastery": {
     "id": "corruptor_mu_mastery",
+    "setPath": "Epic.Corruptor_Mu_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mu Mastery",
     "displayName": "Mu Mastery",
     "archetype": "corruptor",
@@ -7346,8 +8094,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Power Sink",
         "fullName": "Epic.Corruptor_Mu_Mastery.Power_Sink",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.",
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "arachnos_patron_pbaoedrain.png",
@@ -7403,8 +8156,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Charged Armor",
         "fullName": "Epic.Corruptor_Mu_Mastery.Charged_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -7467,8 +8225,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Corruptor_Mu_Mastery.Electric_Shackles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
@@ -7551,8 +8314,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energize",
         "fullName": "Epic.Corruptor_Mu_Mastery.Conserve_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You can channel a tremendous amount of electricity through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Self Endurance Discount, Heal, +Regen",
         "icon": "arachnos_patron_conservepower.png",
@@ -7594,6 +8362,7 @@ export const EPIC_POOLS_RAW = {
             "regenBuff": 30
           },
           "enduranceDiscount": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Stun"
           },
@@ -7606,8 +8375,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Adept",
         "fullName": "Epic.Corruptor_Mu_Mastery.Summon_Adept",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -7660,6 +8434,11 @@ export const EPIC_POOLS_RAW = {
   },
   "corruptor_soul_mastery": {
     "id": "corruptor_soul_mastery",
+    "setPath": "Epic.Corruptor_Soul_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Soul Mastery",
     "displayName": "Soul Mastery",
     "archetype": "corruptor",
@@ -7671,8 +8450,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Storm",
         "fullName": "Epic.Corruptor_Soul_Mastery.Soul_Storm",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 41 and have Soul Drain or Dark Embrace before selecting this power.",
         "shortHelp": "Ranged, DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
@@ -7729,8 +8513,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Embrace",
         "fullName": "Epic.Corruptor_Soul_Mastery.Dark_Embrace",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -7798,8 +8587,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Power Boost",
         "fullName": "Epic.Corruptor_Soul_Mastery.Power_Boost",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Self +Special",
         "icon": "arachnos_patron_powerboost.png",
@@ -7817,30 +8611,30 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [],
         "atoms": [
-          ["Heal",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Absorb",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Endurance",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Movement","Run",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Movement","Fly",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Confused",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Terrorized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Held",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Immobilized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Stunned",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Sleep",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Ranged",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Melee",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","AoE",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Smashing",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Lethal",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Fire",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Cold",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Energy",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Negative",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Psionic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Toxic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","All",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["ToHit",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"]
+          ["Heal",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Absorb",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Endurance",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Movement","Run",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Movement","Fly",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Confused",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Terrorized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Held",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Immobilized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Stunned",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Sleep",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Ranged",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Melee",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","AoE",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Smashing",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Lethal",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Fire",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Cold",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Energy",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Negative",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Psionic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Toxic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","All",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["ToHit",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"]
         ],
         "effects": {
           "accuracy": 1,
@@ -7854,94 +8648,117 @@ export const EPIC_POOLS_RAW = {
           },
           "specialBuff": {
             "absorb": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "aoe": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "cold": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "confuse": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "defense": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "endurance": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "fear": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "heal": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "hold": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "immobilize": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "melee": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "movement": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "ranged": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "sleep": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "stun": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             }
@@ -7955,8 +8772,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Drain",
         "fullName": "Epic.Corruptor_Soul_Mastery.Soul_Drain",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE DMG(Negative), Self +DMG, +ACC",
         "icon": "arachnos_patron_pbaoebuffdamage.png",
@@ -8036,8 +8858,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Mistress",
         "fullName": "Epic.Corruptor_Soul_Mastery.Summon_Mistress",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Ghost Widow has assigned a Fortunata Mistress for you to command. Arguably, the most powerful of the Fortunatas, these rare few have mastered numerous psychic abilities and risen to the top of Lord Recluse's beautiful Black Widows. Your access to this Fortunata is very limited. You can only summon her once every 15 minutes and she will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Summon Fortunata Mistress: Ranged DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -8091,6 +8918,11 @@ export const EPIC_POOLS_RAW = {
   },
   "dark_mastery": {
     "id": "dark_mastery",
+    "setPath": "Epic.Dark_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Dark Mastery",
     "displayName": "Dark Mastery",
     "archetype": "defender",
@@ -8102,8 +8934,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Oppressive Gloom",
         "fullName": "Epic.Dark_Mastery.Oppressive_Gloom",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use.",
         "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
         "icon": "dark_mastery_oppressivegloom.png",
@@ -8154,8 +8991,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Consumption",
         "fullName": "Epic.Dark_Mastery.Dark_Consumption",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance.",
         "shortHelp": "PBAoE DMG(Negative), Self +End",
         "icon": "dark_mastery_darkconsumption.png",
@@ -8207,8 +9049,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Embrace",
         "fullName": "Epic.Dark_Mastery.Dark_Embrace",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Toxic, and Negative Energy damage. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "dark_mastery_darkembrace.png",
@@ -8276,8 +9123,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Transfer",
         "fullName": "Epic.Dark_Mastery.Soul_Transfer",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Should you fall in battle, you can perform a Soul Transfer, sucking the life force of all foes around you to bring yourself back from the brink of death. The more foes nearby, the more life is restored to you. Drained foes are left Disoriented. The dark effects of this Soul Transfer will actually leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds. There must be at least one foe nearby to fuel the Transfer and revive yourself. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Self Rez, Special",
         "icon": "dark_mastery_soultransfer.png",
@@ -8310,7 +9162,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Mez","Untouchable",10,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Stealth","RadiusPvE",300,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-          ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
           ["Mez","Stunned",8,30,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
           ["Mez","Stunned",1,30,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -8347,6 +9199,7 @@ export const EPIC_POOLS_RAW = {
             "perTarget": 30
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
@@ -8363,6 +9216,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Stun"
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 10,
             "table": "Melee_Ones"
           }
@@ -8371,8 +9225,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Spirit Drain",
         "fullName": "Epic.Dark_Mastery.Soul_Drain",
+        "targetsAffected": [
+          "DeadOrAliveFoe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Using this power, you can drain the spirits of your foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Damged AoE, DMG(Negative), Self +DMG, +ACC",
         "icon": "dark_mastery_spiritdrain.png",
@@ -8455,6 +9314,11 @@ export const EPIC_POOLS_RAW = {
   },
   "darkness_mastery": {
     "id": "darkness_mastery",
+    "setPath": "Epic.Darkness_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Dark Mastery",
     "displayName": "Dark Mastery",
     "archetype": "scrapper",
@@ -8466,8 +9330,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Umbral Torrent",
         "fullName": "Epic.Darkness_Mastery.Torrent",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit.",
         "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
         "icon": "darkcast_torrent.png",
@@ -8499,16 +9368,16 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",5,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",0.4533,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Fire",0.4533,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Negative",0.8471,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",5,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Negative",0.8471,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",0.8471,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",0.8471,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true]
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Negative",0.8471,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Negative",0.8471,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Negative",0.8471,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -8549,8 +9418,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Petrifying Gaze",
         "fullName": "Epic.Darkness_Mastery.Petrifying_Gaze",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless.",
         "shortHelp": "Ranged, DMG(Negative), Foe Hold",
         "icon": "darknessmastery_petrifyinggaze.png",
@@ -8578,15 +9452,15 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Negative",2.529,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Negative",2.529,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",2.529,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",2.529,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true]
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",2.529,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Negative",2.529,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Negative",2.529,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -8610,8 +9484,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Blast",
         "fullName": "Epic.Darkness_Mastery.Dark_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy. You must be level 38 and have one other Dark Mastery Powers before selecting this power",
         "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
         "icon": "darkcast_darkblast.png",
@@ -8640,15 +9519,15 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,6,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",0.5357,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Fire",0.5357,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true]
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -8682,8 +9561,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Night Fall",
         "fullName": "Epic.Darkness_Mastery.Night_Fall",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe -To Hit",
         "icon": "darkcast_nightfall.png",
@@ -8712,15 +9596,15 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Negative",0.11,1,2.8,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",0.0495,1,2.8,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,0],
+          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Fire",0.0495,1,2.8,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Negative",0.0938,1,2.8,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Negative",1.0317,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1.0317,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1.0317,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true]
+          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Negative",1.0317,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Negative",1.0317,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Negative",1.0317,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -8761,8 +9645,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Tenebrous Tentacles",
         "fullName": "Epic.Darkness_Mastery.Tenebrous_Tentacles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their Accuracy. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize, -ACC",
         "icon": "darkcast_tenebroustentacles.png",
@@ -8797,18 +9686,18 @@ export const EPIC_POOLS_RAW = {
           ["ToHit",null,0.75,1,8,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-          ["Damage","Fire",0.0171,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-          ["Damage","Fire",0.0368,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
+          ["Damage","Negative",0.7823,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Fire",0.0171,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+          ["Damage","Fire",0.0368,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Negative",0.1127,1,7.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Negative",0.1524,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Immobilized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",0.7823,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Negative",0.7823,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Negative",1.0542,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",0.7823,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",0.7823,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1.0542,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1.0542,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true]
+          ["Damage","Negative",0.7823,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Negative",0.7823,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Negative",1.0542,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Negative",0.7823,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Negative",1.0542,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Negative",1.0542,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -8865,6 +9754,11 @@ export const EPIC_POOLS_RAW = {
   },
   "defender_fire_mastery": {
     "id": "defender_fire_mastery",
+    "setPath": "Epic.Defender_Fire_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Fire Mastery",
     "displayName": "Fire Mastery",
     "archetype": "defender",
@@ -8876,8 +9770,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Consume",
         "fullName": "Epic.Defender_Fire_Mastery.Consume",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.",
         "shortHelp": "PBAoE, DMG(Fire), Self +End",
         "icon": "flamingshield_consume.png",
@@ -8938,8 +9837,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Char",
         "fullName": "Epic.Defender_Fire_Mastery.Char",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot.",
         "shortHelp": "Ranged, DoT (Fire), Foe Hold",
         "icon": "flamemastery_soot.png",
@@ -8994,8 +9898,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Shield",
         "fullName": "Epic.Defender_Fire_Mastery.Fire_Shield",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "While this power is active, you get a good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "flamingshield_flamingshield.png",
@@ -9063,8 +9972,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Defender_Fire_Mastery.Rise_of_the_Phoenix",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
@@ -9096,7 +10010,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
         ],
         "effects": {
           "accuracy": 1,
@@ -9115,6 +10029,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
@@ -9126,6 +10041,7 @@ export const EPIC_POOLS_RAW = {
             "isPseudoPet": false
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 15,
             "table": "Melee_Ones"
           },
@@ -9141,8 +10057,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Melee, DMG(Fire)",
         "icon": "firemastery_greaterfiresword.png",
@@ -9166,7 +10087,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Fire",2.44,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Fire",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
           ["Damage","Fire",2.319,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -9198,6 +10119,11 @@ export const EPIC_POOLS_RAW = {
   },
   "defender_ice_mastery": {
     "id": "defender_ice_mastery",
+    "setPath": "Epic.Defender_Ice_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Ice Mastery",
     "displayName": "Ice Mastery",
     "archetype": "defender",
@@ -9209,8 +10135,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frozen Armor",
         "fullName": "Epic.Defender_Ice_Mastery.Frozen_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage.",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "ice_mastery_frozenarmor.png",
@@ -9288,8 +10219,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Flash Freeze",
         "fullName": "Epic.Defender_Ice_Mastery.Flash_Freeze",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "Ranged (Targeted AoE), DMG(Cold), Foe Sleep",
         "icon": "ice_mastery_flashfreeze.png",
@@ -9316,9 +10252,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? ||",true],
-          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
+          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
           ["Mez","Sleep",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -9345,8 +10281,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hoarfrost",
         "fullName": "Epic.Defender_Ice_Mastery.Hoarfrost",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "ice_mastery_hoarfrost.png",
@@ -9396,6 +10337,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_HealSelf"
           },
           "maxHPBuffUnenhanced": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_HealSelf"
           },
@@ -9414,8 +10356,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Build Up",
         "fullName": "Epic.Defender_Ice_Mastery.Ice_Slick",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your Accuracy.<br><br><color #fcfc95>Recharge: Long.</color>",
         "shortHelp": "Self +DMG, +To Hit",
         "icon": "ice_mastery_buildup.png",
@@ -9450,6 +10397,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 10,
           "damageBuff": {
+            "ignoreStrength": true,
             "scale": 8,
             "table": "Melee_Buff_Dmg"
           },
@@ -9472,8 +10420,13 @@ export const EPIC_POOLS_RAW = {
         "name": "Ice Elemental",
         "fullName": "Epic.Defender_Ice_Mastery.Ice_Elemental",
         "procsAllowed": false,
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You can create a very powerful entity of animated ice at a targeted location. Ice Elemental possesses several ice powers to attack any nearby foes and can be healed and buffed like any teammate. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Summon Ice Elemental: Melee DMG(Lethal/Cold)",
         "icon": "ice_mastery_iceelemental.png",
@@ -9523,6 +10476,11 @@ export const EPIC_POOLS_RAW = {
   },
   "dominator_dark_mastery": {
     "id": "dominator_dark_mastery",
+    "setPath": "Epic.Dominator_Dark_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Dark Mastery",
     "displayName": "Dark Mastery",
     "archetype": "dominator",
@@ -9534,8 +10492,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Murky Cloud",
         "fullName": "Epic.Dominator_Dark_Mastery.Murky_Cloud",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
         "icon": "dark_mastery_murkycloud.png",
@@ -9603,8 +10566,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Tar Patch",
         "fullName": "Epic.Dominator_Dark_Mastery.Tar_Patch",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Drops a large patch of viscous Negative Energy which dramatically slows down enemies that run through it and reduces their damage resistance. Affected targets stuck in the Tar Patch cannot jump or fly.",
         "shortHelp": "Ranged (Location AoE), Target -Speed, -Res, -Fly",
         "icon": "dark_mastery_tarpatch.png",
@@ -9650,8 +10618,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Darkest Night",
         "fullName": "Epic.Dominator_Dark_Mastery.Darkest_Night",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "dark_mastery_darkestnight.png",
@@ -9703,6 +10676,7 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 10,
           "buffDuration": 0.75,
           "damageDebuff": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Ranged_Debuff_Dam"
           },
@@ -9719,8 +10693,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Umbral Torrent",
         "fullName": "Epic.Dominator_Dark_Mastery.Torrent",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
         "icon": "dark_mastery_umbraltorrent.png",
@@ -9787,8 +10766,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Consumption",
         "fullName": "Epic.Dominator_Dark_Mastery.Soul_Consumption",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You consume life and soul from all enemies nearby, thus siginficantly increasing your maximum hitpoints and endurance. The more foes affected, the stronger the effect. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
         "icon": "dark_mastery_soulconsumption.png",
@@ -9851,6 +10835,7 @@ export const EPIC_POOLS_RAW = {
             "perTarget": 0.4
           },
           "regenDebuff": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Melee_Ones"
           }
@@ -9860,6 +10845,11 @@ export const EPIC_POOLS_RAW = {
   },
   "dominator_leviathan_mastery": {
     "id": "dominator_leviathan_mastery",
+    "setPath": "Epic.Dominator_Leviathan_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Leviathan Mastery",
     "displayName": "Leviathan Mastery",
     "archetype": "dominator",
@@ -9871,8 +10861,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Water Spout",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Water_Spout",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes.",
         "shortHelp": "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet",
         "icon": "arachnos_patron_dropknockback.png",
@@ -9921,8 +10916,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Bile Spray",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Chum_Spray",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time.",
         "shortHelp": "Ranged (Cone), DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -9950,8 +10950,8 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Toxic",0.1,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Toxic",0.6132,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Toxic",0.0682,1,4.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Toxic",1.2,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Toxic",1.0219,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Toxic",1.2,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Toxic",1.0219,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -9982,8 +10982,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hibernate",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Hibernate",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -10010,14 +11015,14 @@ export const EPIC_POOLS_RAW = {
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"]
         ],
         "effects": {
           "accuracy": 1,
@@ -10036,6 +11041,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 0.75
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
             "table": "Melee_Ones"
@@ -10050,15 +11056,18 @@ export const EPIC_POOLS_RAW = {
           },
           "mezResistance": {
             "knockback": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             },
             "knockup": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             }
           },
           "onlyAffectsSelf": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           },
@@ -10078,6 +11087,7 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           }
@@ -10086,8 +11096,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shark Skin",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Shark_Skin",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing and cold damage. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -10150,8 +11165,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Coralax",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Summon_Coralax",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Captain Mako has shown you how to summon a Coralax Blue Hybrid to do your bidding. The Coralax are humans who have been infected with living coral. Your access to this Hybrid is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Summon Hybrid: Ranged DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -10199,6 +11219,11 @@ export const EPIC_POOLS_RAW = {
   },
   "dominator_mace_mastery": {
     "id": "dominator_mace_mastery",
+    "setPath": "Epic.Dominator_Mace_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mace Mastery",
     "displayName": "Mace Mastery",
     "archetype": "dominator",
@@ -10210,8 +11235,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Poisonous Ray",
         "fullName": "Epic.Dominator_Mace_Mastery.Poisonous_Ray",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Bane Mace can fire a nasty Poison Ray. This toxin is suspended in a polarized plasma field and delivered like an energy blast. Upon impact, the toxin directly attacks the immune system, reducing the affected targets Defense and Damage Resistance as it deals toxic damage.",
         "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
@@ -10249,10 +11279,10 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Psionic",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Toxic",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || arch source> Class_Controller == &&",true],
+          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || arch source> Class_Controller == && &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Energy",1.38,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Toxic",0.1255,1,9.3,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",2.76,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller == &&",true]
+          ["Damage","Energy",2.76,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller == && &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -10286,34 +11316,42 @@ export const EPIC_POOLS_RAW = {
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             }
@@ -10323,8 +11361,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Scorpion Shield",
         "fullName": "Epic.Dominator_Mace_Mastery.Scorpion_Shield",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
@@ -10402,8 +11445,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Disruptor Blast",
         "fullName": "Epic.Dominator_Mace_Mastery.Disruptor_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Fires a tremendous charge of kinetic energy from your Bane Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -10430,11 +11478,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
-          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || arch source> Class_Controller == &&",true],
+          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || arch source> Class_Controller == && &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Energy",0.9477,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.9477,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller == &&",true],
-          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,null,true]
+          ["Damage","Energy",0.9477,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller == && &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -10459,8 +11507,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Personal Force Field",
         "fullName": "Epic.Dominator_Mace_Mastery.Personal_Force_Field",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Def, Res(All)",
         "icon": "arachnos_patron_megabuff.png",
@@ -10577,39 +11630,48 @@ export const EPIC_POOLS_RAW = {
             "resistance": 0.75
           },
           "onlyAffectsSelf": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           },
           "resistance": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             }
@@ -10619,8 +11681,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Tarantula",
         "fullName": "Epic.Dominator_Mace_Mastery.Summon_Tarantula",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion has granted you an Toxic Tarantula for you to command. Weaver One developed the Tarantula Exoskeleton Armor, which so radically transforms an Arachnos troop that hardly anything human is recognizable. Your access to this Tarantula is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Summon Tarantula: Ranged DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -10672,6 +11739,11 @@ export const EPIC_POOLS_RAW = {
   },
   "dominator_mu_mastery": {
     "id": "dominator_mu_mastery",
+    "setPath": "Epic.Dominator_Mu_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mu Mastery",
     "displayName": "Mu Mastery",
     "archetype": "dominator",
@@ -10683,8 +11755,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Power Sink",
         "fullName": "Epic.Dominator_Mu_Mastery.Power_Sink",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.",
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "arachnos_patron_pbaoedrain.png",
@@ -10740,8 +11817,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Charged Armor",
         "fullName": "Epic.Dominator_Mu_Mastery.Charged_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -10804,8 +11886,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ball Lightning",
         "fullName": "Epic.Dominator_Mu_Mastery.Ball_Lightning",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -10838,8 +11925,8 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.2242,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.1046,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",1.02,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Energy",0.7474,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Energy",1.02,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Energy",0.7474,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -10881,8 +11968,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Surge of Power",
         "fullName": "Epic.Dominator_Mu_Mastery.Surge_of_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics, and your endurance recovery is also increased. Expending all this energy will leave you exhausted, drained of all your endurance and unable to recover endurance for a short time. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Self, +Res(Special)",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -10915,7 +12007,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Stealth","Translucency",0,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
           ["Recovery",null,-100,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
@@ -10932,14 +12024,17 @@ export const EPIC_POOLS_RAW = {
             "stealth": 120
           },
           "enduranceDrain": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
           "recoveryBuffUnenhanced": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
           "recoveryDebuff": {
+            "ignoreStrength": true,
             "scale": 100,
             "table": "Melee_Ones"
           },
@@ -10975,6 +12070,7 @@ export const EPIC_POOLS_RAW = {
           },
           "stealth": {
             "translucency": {
+              "ignoreStrength": true,
               "scale": 0,
               "table": "Melee_Ones"
             }
@@ -10984,8 +12080,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Guardian",
         "fullName": "Epic.Dominator_Mu_Mastery.Summon_Guardian",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Scirocco has shown you how to call upon a mystical Mu Guardian to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Guardian is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Summon Mu Guardian: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -11035,6 +12136,11 @@ export const EPIC_POOLS_RAW = {
   },
   "dominator_soul_mastery": {
     "id": "dominator_soul_mastery",
+    "setPath": "Epic.Dominator_Soul_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Soul Mastery",
     "displayName": "Soul Mastery",
     "archetype": "dominator",
@@ -11046,8 +12152,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Consumption",
         "fullName": "Epic.Dominator_Soul_Mastery.Dark_Consumption",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance.",
         "shortHelp": "PBAoE DMG(Negative), Self +End",
         "icon": "arachnos_patron_pbaoedrain.png",
@@ -11073,8 +12184,8 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25],
-          ["Damage","Negative",0.8,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Negative",0.9553,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Negative",0.8,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Negative",0.9553,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -11099,8 +12210,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Embrace",
         "fullName": "Epic.Dominator_Soul_Mastery.Dark_Embrace",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -11168,8 +12284,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Obliteration",
         "fullName": "Epic.Dominator_Soul_Mastery.Dark_Obliteration",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -11199,8 +12320,8 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Damage","Negative",0.5299,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",0.9,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Negative",0.5299,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Negative",0.9,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Negative",0.5299,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -11229,8 +12350,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Drain",
         "fullName": "Epic.Dominator_Soul_Mastery.Soul_Drain",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE DMG(Negative), Self +DMG, +ACC",
         "icon": "arachnos_patron_pbaoebuffdamage.png",
@@ -11274,8 +12400,8 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Negative",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["DamageBuff","Psionic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["DamageBuff","Toxic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Negative",0.5192,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Negative",0.5192,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1.2,
@@ -11310,8 +12436,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Seer",
         "fullName": "Epic.Dominator_Soul_Mastery.Summon_Seer",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Ghost Widow has assigned a Fortunata Seer for you to command. Fortunata Seers can glimpse moments into the future. They use this ability to increase the Perception of their teammate. Your access to this Fortunata Seer is very limited. You can only summon her once every 15 minutes and she will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Summon Fortunata Seer: Ranged DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -11359,6 +12490,11 @@ export const EPIC_POOLS_RAW = {
   },
   "earth_mastery": {
     "id": "earth_mastery",
+    "setPath": "Epic.Earth_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Earth Mastery",
     "displayName": "Earth Mastery",
     "archetype": "tanker",
@@ -11370,8 +12506,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Stone Prison",
         "fullName": "Epic.Earth_Mastery.Stone_Prison",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Immobilizes a single target within an earthy formation and deals some Smashing damage over time. Some more resilient foes may require multiple attacks to Immobilize. Stone Prison can also reduce a target's Defense.",
         "shortHelp": "Ranged, DoT(Smash), Foe Immobilize, -DEF, -Fly",
         "icon": "earth_mastery_stoneprison.png",
@@ -11399,8 +12540,8 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",0.1724,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Immobilized",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
-          ["Damage","Fire",0.0776,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0],
+          ["Mez","Immobilized",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.0776,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Defense","All",2,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
@@ -11456,8 +12597,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Salt Crystals",
         "fullName": "Epic.Earth_Mastery.Salt_Crystals",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "PBAoE, Foe Sleep, -DEF",
         "icon": "earth_mastery_saltcrystals.png",
@@ -11479,11 +12625,11 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "atoms": [
-          ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Sleep",15,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5],
+          ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Sleep",15,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Defense","All",2,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-          ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
-          ["Mez","Sleep",15,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true],
+          ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
+          ["Mez","Sleep",15,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
           ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -11512,8 +12658,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fossilize",
         "fullName": "Epic.Earth_Mastery.Fossilize",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Encases a single target within solid stone. The stone slowly crushes the victim, dealing Smashing damage. The Fossilized victim is held helpless and unable to defend himself. You must be level 38 and have one other Earth Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Smash), Foe Hold, -DEF",
         "icon": "earth_mastery_fossilize.png",
@@ -11541,7 +12692,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Defense","All",2,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Smashing",2.809,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -11583,8 +12734,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Quicksand",
         "fullName": "Epic.Earth_Mastery.Quick_Sand",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You can cause the ground to liquefy like Quicksand at a targeted location. Any foes that pass through the Quicksand will become snared, their movement will be dramatically Slowed, and their Defense reduced. Foes trapped in the Quicksand cannot jump or Fly. You must be level 41 and have one other Earth Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Location AoE), Foe -Speed, -Jump, -Fly, -DEF",
         "icon": "earth_mastery_quicksand.png",
@@ -11626,8 +12782,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Stalagmites",
         "fullName": "Epic.Earth_Mastery.Stalagmites",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You can cause Stalagmites to erupt all around an enemy, slicing all nearby foes. The Stalagmites deal Lethal damage, and reduce the affected targets Defense. Some affected foes may be Disorient for a short while. You must be on the ground to activate this power. You must be level 44 and have two other Earth Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Lethal), Foe -DEF, Minor Disorient",
         "icon": "earth_mastery_rangedaoe.png",
@@ -11654,11 +12815,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",0.8985,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
-          ["Damage","Fire",0.405,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.405,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Defense","All",2,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Damage","Lethal",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Stunned",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,true]
+          ["Mez","Stunned",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -11700,6 +12861,11 @@ export const EPIC_POOLS_RAW = {
   },
   "electrical_mastery": {
     "id": "electrical_mastery",
+    "setPath": "Epic.Electrical_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Electricity Mastery",
     "displayName": "Electricity Mastery",
     "archetype": "blaster",
@@ -11711,8 +12877,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Static Discharge",
         "fullName": "Epic.Electrical_Mastery.Static_Discharge",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "electrical_mastery_static_discharge.png",
@@ -11767,8 +12938,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shocking Bolt",
         "fullName": "Epic.Electrical_Mastery.Shocking_Bolt",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Holds a distant foe by shocking him with electricity. The seized target is left writhing in agony and is unable to defend himself. Shocking Bolt also drains some Endurance from the target over time. A portion of drained Endurance may be returned to you.",
         "shortHelp": "Ranged, DoT(Energy), Foe Hold, -END",
         "icon": "electrical_mastery_shocking_bolt.png",
@@ -11844,8 +13020,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Charged Armor",
         "fullName": "Epic.Electrical_Mastery.Charged_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "electrical_mastery_charged_armor.png",
@@ -11908,8 +13089,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Surge of Power",
         "fullName": "Epic.Electrical_Mastery.Surge_of_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics. However, expending all this energy will leave you exhausted, and drained of all endurance. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Self, +Res(Special)",
         "icon": "electrical_mastery_powersurge.png",
@@ -11942,7 +13128,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Stealth","Translucency",0,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
           ["Recovery",null,-100,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
@@ -11959,14 +13145,17 @@ export const EPIC_POOLS_RAW = {
             "stealth": 120
           },
           "enduranceDrain": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
           "recoveryBuffUnenhanced": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
           "recoveryDebuff": {
+            "ignoreStrength": true,
             "scale": 100,
             "table": "Melee_Ones"
           },
@@ -12002,6 +13191,7 @@ export const EPIC_POOLS_RAW = {
           },
           "stealth": {
             "translucency": {
+              "ignoreStrength": true,
               "scale": 0,
               "table": "Melee_Ones"
             }
@@ -12011,8 +13201,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "EM Pulse",
         "fullName": "Epic.Electrical_Mastery.EM_Pulse",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and leave them incapacitated and Disoriented for a while. Additionally, most machines and robots will take moderate high damage. However, this power uses a lot of endurance and leaves you unable to recover endurance for a while. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
         "icon": "electrical_mastery_em_pulse.png",
@@ -12064,10 +13259,12 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_EndDrain"
           },
           "recoveryDebuff": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Ranged_Ones"
           },
           "regenDebuff": {
+            "ignoreStrength": true,
             "scale": 10,
             "table": "Ranged_Ones"
           },
@@ -12076,12 +13273,30 @@ export const EPIC_POOLS_RAW = {
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "vs-electronic",
+            "label": "vs Machines/Robots",
+            "scope": "per-power",
+            "defaultActive": false,
+            "damage": {
+              "type": "Energy",
+              "scale": 1.64,
+              "table": "Ranged_Damage"
+            }
+          }
+        ]
       }
     ]
   },
   "electricity_mastery": {
     "id": "electricity_mastery",
+    "setPath": "Epic.Electricity_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Electricity Mastery",
     "displayName": "Electricity Mastery",
     "archetype": "defender",
@@ -12093,8 +13308,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electric Fence",
         "fullName": "Epic.Electricity_Mastery.Electric_Fence",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Surrounds and Immobilizes a single target in an Electric Fence. Deals some damage over time and slowly drains some Endurance. Useful for keeping villains at bay.",
         "shortHelp": "Ranged, DoT(Energy), Foe Immobilize, -End",
         "icon": "electricitymanipulation_electricfence.png",
@@ -12171,8 +13391,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Thunder Strike",
         "fullName": "Epic.Electricity_Mastery.Thunder_Strike",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave.",
         "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback",
         "icon": "electricitymanipulation_thunderstrike.png",
@@ -12200,21 +13425,21 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",2.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Energy",2.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929],
-          ["Damage","Energy",2.98,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor == &&",true],
-          ["Damage","Energy",0.42,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor == &&",true],
+          ["Damage","Energy",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Splash"],
+          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",2.98,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor == && &&",true],
+          ["Damage","Energy",0.42,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor == && &&",true],
           ["Endurance",null,-2,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",2.971,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",2.971,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor == &&",true],
-          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor == &&",true]
+          ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",2.971,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor == && &&",true],
+          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Splash"],
+          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor == && &&",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -12263,8 +13488,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Charged Armor",
         "fullName": "Epic.Electricity_Mastery.Charged_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "electricitymastery_chargedarmor.png",
@@ -12327,8 +13557,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shocking Bolt",
         "fullName": "Epic.Electricity_Mastery.Shocking_Bolt",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Holds a distant foe by shocking him with electricity. The seized target is left writhing in agony and is unable to defend himself. Shocking Bolt also drains some Endurance from the target over time. A portion of drained Endurance may be returned to you. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Energy), Foe Hold, -END",
         "icon": "electricitymastery_shockingbolt.png",
@@ -12363,8 +13598,8 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.552,1,4.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-1,1,8.1,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.1,1,4.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq && arch source> Class_Corruptor == &&",true],
-          ["Damage","Energy",0.552,1,4.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq && arch source> Class_Corruptor == &&",true]
+          ["Damage","Energy",0.1,1,4.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"arch source> Class_Corruptor == kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq && arch source> Class_Corruptor == && &&",true,null,null,null,null,null,null,null,null,null,"Class_Corruptor"],
+          ["Damage","Energy",0.552,1,4.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"arch source> Class_Corruptor == kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq && arch source> Class_Corruptor == && &&",true,null,null,null,null,null,null,null,null,null,"Class_Corruptor"]
         ],
         "effects": {
           "accuracy": 1,
@@ -12406,8 +13641,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Power Sink",
         "fullName": "Epic.Electricity_Mastery.Power_Sink",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "electricitymanipulation_powersink.png",
@@ -12464,6 +13704,11 @@ export const EPIC_POOLS_RAW = {
   },
   "energy_mastery": {
     "id": "energy_mastery",
+    "setPath": "Epic.Energy_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Energy Mastery",
     "displayName": "Energy Mastery",
     "archetype": "tanker",
@@ -12475,8 +13720,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Conserve Power",
         "fullName": "Epic.Energy_Mastery.Conserve_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can focus for a moment to conserve your Endurance. After activating this power, you expend less Endurance on all other powers for a while.",
         "shortHelp": "Self Endurance Discount",
         "icon": "energymastery_conservepower.png",
@@ -12507,6 +13757,7 @@ export const EPIC_POOLS_RAW = {
             "enduranceDiscount": 90
           },
           "enduranceDiscount": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Stun"
           },
@@ -12519,8 +13770,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Energy_Mastery.Focused_Accuracy",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "energymastery_focusedaccuracy.png",
@@ -12555,16 +13811,19 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "accuracyBuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Ones"
           },
           "buffDuration": 0.75,
           "debuffResistance": {
             "perception": {
+              "ignoreStrength": true,
               "scale": 0.6,
               "table": "Melee_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Boolean"
             }
@@ -12588,8 +13847,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Energy_Mastery.Laser_Beam_Eyes",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can not miss and will reduce the target's Defense. Damage inflicted will fluctuate the current hit roll. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Light DMG(Energy), Foe -DEF",
         "icon": "energymastery_laserbeameyes.png",
@@ -12616,16 +13880,16 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
           ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"]
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"]
         ],
         "effects": {
           "accuracy": 1,
@@ -12669,8 +13933,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Energy_Mastery.Physical_Perfection",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "energymastery_physicalperfection.png",
@@ -12716,8 +13985,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Energy_Mastery.Energy_Torrent",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), Light DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_energytorrent.png",
@@ -12746,7 +14020,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.2874,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Energy",0.6706,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.432,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.432,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Smashing",0.2658,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.6203,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -12788,6 +14062,11 @@ export const EPIC_POOLS_RAW = {
   },
   "energy_mastery_brute": {
     "id": "energy_mastery_brute",
+    "setPath": "Epic.Energy_Mastery_Brute",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Energy Mastery",
     "displayName": "Energy Mastery",
     "archetype": "brute",
@@ -12799,8 +14078,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Superior Conditioning",
         "fullName": "Epic.Energy_Mastery_Brute.Conserve_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Your Superior Condition has increased your maximum endurance by 5%.",
         "shortHelp": "Self +Endurance",
         "icon": "energymastery_conservepower.png",
@@ -12838,8 +14122,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Energy_Mastery_Brute.Focused_Accuracy",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "energymastery_focusedaccuracy.png",
@@ -12874,16 +14163,19 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "accuracyBuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Ones"
           },
           "buffDuration": 0.75,
           "debuffResistance": {
             "perception": {
+              "ignoreStrength": true,
               "scale": 0.6,
               "table": "Melee_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Boolean"
             }
@@ -12907,8 +14199,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Energy_Mastery_Brute.Laser_Beam_Eyes",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can not miss and will reduce the target's Defense. Damage inflicted will fluctuate the current hit roll. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
         "icon": "energymastery_laserbeameyes.png",
@@ -12935,16 +14232,16 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
           ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
-          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"]
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",1.889,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"],
+          ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"1 1 @ToHit - @ToHitRoll * - @StdResult *"]
         ],
         "effects": {
           "accuracy": 1,
@@ -12988,8 +14285,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Energy_Mastery_Brute.Physical_Perfection",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Energy Mastery Powers before selecting this power.<br>",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "energymastery_physicalperfection.png",
@@ -13035,8 +14337,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Energy_Mastery_Brute.Energy_Torrent",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_energytorrent.png",
@@ -13065,7 +14372,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.2874,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Energy",0.6706,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.432,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.432,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Smashing",0.2658,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.6203,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -13107,6 +14414,11 @@ export const EPIC_POOLS_RAW = {
   },
   "field_mastery": {
     "id": "field_mastery",
+    "setPath": "Epic.Field_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Energy Mastery",
     "displayName": "Energy Mastery",
     "archetype": "mastermind",
@@ -13118,8 +14430,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Field_Mastery.Personal_Force_Field",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "fieldmastery_tempinvulnerability.png",
@@ -13177,8 +14494,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Power Blast",
         "fullName": "Epic.Field_Mastery.Power_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock him back.",
         "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_powerblast.png",
@@ -13239,8 +14561,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Field_Mastery.Energy_Torrent",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
@@ -13304,8 +14631,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Explosive Blast",
         "fullName": "Epic.Field_Mastery.Repulsion_Bomb",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target. Explosive Blast may knock targets backwards. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
         "icon": "powerblast_explosion.png",
@@ -13368,8 +14700,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Force of Nature",
         "fullName": "Epic.Field_Mastery.Foce_of_Nature",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your endurance recovery is also increased. Force of Nature costs little endurance to activate, but when it wears off you are left exhausted, and drained of almost all endurance, and unable to recover endurance for a short while. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "fieldmastery_forceofnature.png",
@@ -13416,6 +14753,7 @@ export const EPIC_POOLS_RAW = {
             "resistance": 120
           },
           "enduranceDrain": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
@@ -13424,6 +14762,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "recoveryDebuff": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
@@ -13468,6 +14807,11 @@ export const EPIC_POOLS_RAW = {
   },
   "fire_mastery": {
     "id": "fire_mastery",
+    "setPath": "Epic.Fire_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Fire Mastery",
     "displayName": "Fire Mastery",
     "archetype": "controller",
@@ -13479,8 +14823,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Blast",
         "fullName": "Epic.Fire_Mastery.Fire_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.",
         "shortHelp": "Ranged, DMG(Fire)",
         "icon": "fireblast_fireblast.png",
@@ -13505,10 +14854,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Fire",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"FireBlastBonusDoT"],
           ["Damage","Fire",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",1.1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Fire",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Fire",1.1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Fire",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -13538,8 +14887,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Ball",
         "fullName": "Epic.Fire_Mastery.Fire_Ball",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
@@ -13565,12 +14919,12 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Fire",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.1,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Fire",0.1,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"FireBlastBonusDoT"],
           ["Damage","Smashing",0.0732,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Fire",0.6591,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",1.05,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Smashing",0.0732,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true],
-          ["Damage","Fire",0.6591,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Fire",1.05,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Smashing",0.0732,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Fire",0.6591,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -13607,8 +14961,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Shield",
         "fullName": "Epic.Fire_Mastery.Fire_Shield",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "While this power is active, you get a good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "firemastery_flamingshield.png",
@@ -13676,8 +15035,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Fire_Mastery.Rise_of_the_Phoenix",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Self Rez, Special",
         "icon": "firemastery_riseofthephoenix.png",
@@ -13709,7 +15073,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
         ],
         "effects": {
           "accuracy": 1,
@@ -13728,6 +15092,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
@@ -13739,6 +15104,7 @@ export const EPIC_POOLS_RAW = {
             "isPseudoPet": false
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 15,
             "table": "Melee_Ones"
           },
@@ -13751,8 +15117,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Consume",
         "fullName": "Epic.Fire_Mastery.Consume",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE, DMG(Fire), Self +End",
         "icon": "firemastery_consume.png",
@@ -13780,8 +15151,8 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,20],
           ["Recovery",null,0.05,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
           ["Damage","Fire",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",0.4,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Fire",0.4,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Fire",0.4,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Fire",0.4,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -13816,6 +15187,11 @@ export const EPIC_POOLS_RAW = {
   },
   "fire_mastery_dominator": {
     "id": "fire_mastery_dominator",
+    "setPath": "Epic.Fire_Mastery_Dominator",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Fire Mastery",
     "displayName": "Fire Mastery",
     "archetype": "dominator",
@@ -13827,8 +15203,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rain of Fire",
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Blast",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area.",
         "shortHelp": "Ranged (Location AoE), DoT(Fire), -SPD",
         "icon": "fireblast_rainoffire.png",
@@ -13872,8 +15253,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Ball",
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Ball",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
@@ -13899,12 +15285,12 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Fire",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.1,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Fire",0.1,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"FireBlastBonusDoT"],
           ["Damage","Smashing",0.0732,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Fire",0.6591,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",1.05,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Smashing",0.0732,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true],
-          ["Damage","Fire",0.6591,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Fire",1.05,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Smashing",0.0732,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Fire",0.6591,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -13941,8 +15327,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Shield",
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Shield",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "While this power is active, you get a good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "firemastery_flamingshield.png",
@@ -14010,8 +15401,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Fire_Mastery_Dominator.Rise_of_the_Phoenix",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Self Rez, Special",
         "icon": "firemastery_riseofthephoenix.png",
@@ -14043,7 +15439,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
         ],
         "effects": {
           "accuracy": 1,
@@ -14062,6 +15458,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
@@ -14073,6 +15470,7 @@ export const EPIC_POOLS_RAW = {
             "isPseudoPet": false
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 15,
             "table": "Melee_Ones"
           },
@@ -14085,8 +15483,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Melt Armor",
         "fullName": "Epic.Fire_Mastery_Dominator.Consume",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
@@ -14140,34 +15543,42 @@ export const EPIC_POOLS_RAW = {
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             }
@@ -14178,6 +15589,11 @@ export const EPIC_POOLS_RAW = {
   },
   "flame_mastery": {
     "id": "flame_mastery",
+    "setPath": "Epic.Flame_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Fire Mastery",
     "displayName": "Fire Mastery",
     "archetype": "blaster",
@@ -14189,8 +15605,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Bonfire",
         "fullName": "Epic.Flame_Mastery.Bonfire",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can create a Bonfire that knocks back and burns any foes who try to pass through it.",
         "shortHelp": "Ranged (Location AoE), DMG(Fire), Foe Knockback",
         "icon": "flamemastery_bonfire.png",
@@ -14239,8 +15660,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Char",
         "fullName": "Epic.Flame_Mastery.Char",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot.",
         "shortHelp": "Ranged, DoT(Fire), Foe Hold",
         "icon": "flamemastery_soot.png",
@@ -14295,8 +15721,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Shield",
         "fullName": "Epic.Flame_Mastery.Fire_Shield",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "While this power is active, you get a good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "flamingshield_flamingshield.png",
@@ -14364,8 +15795,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Melt Armor",
         "fullName": "Epic.Flame_Mastery.Melt_Armor",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "flamemastery_meltarmor.png",
@@ -14419,34 +15855,42 @@ export const EPIC_POOLS_RAW = {
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             }
@@ -14456,8 +15900,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Flame_Mastery.Rise_of_the_Phoenix",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
@@ -14489,7 +15938,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
         ],
         "effects": {
           "accuracy": 1,
@@ -14508,6 +15957,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
@@ -14519,6 +15969,7 @@ export const EPIC_POOLS_RAW = {
             "isPseudoPet": false
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 15,
             "table": "Melee_Ones"
           },
@@ -14532,6 +15983,11 @@ export const EPIC_POOLS_RAW = {
   },
   "force_mastery": {
     "id": "force_mastery",
+    "setPath": "Epic.Force_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Force Mastery",
     "displayName": "Force Mastery",
     "archetype": "blaster",
@@ -14543,8 +15999,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Personal Force Field",
         "fullName": "Epic.Force_Mastery.Personal_Force_Field",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest.",
         "shortHelp": "Toggle: Self +Def, Res(All)",
         "icon": "forcefield_personalforcefield.png",
@@ -14661,39 +16122,48 @@ export const EPIC_POOLS_RAW = {
             "resistance": 0.75
           },
           "onlyAffectsSelf": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           },
           "resistance": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 4,
               "table": "Melee_Res_Dmg"
             }
@@ -14703,8 +16173,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Repulsion Field",
         "fullName": "Epic.Force_Mastery.Repulsion_Field",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "This Toggle power creates a field that violently repels nearby foes. Each villain that is repelled costs you additional Endurance.",
         "shortHelp": "Toggle: PBAoE Knockback",
         "icon": "forcefield_repulsionfield.png",
@@ -14725,7 +16200,7 @@ export const EPIC_POOLS_RAW = {
           "Knockback"
         ],
         "atoms": [
-          ["Mez","Knockback",3,0,0.5,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Knockback",3,0,0.5,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
           ["Mez","Knockback",3,0,0.5,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -14750,8 +16225,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Force_Mastery.Temp_Invulnerability",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Force Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "forcemastery_temporaryinvulnerabilty.png",
@@ -14809,8 +16289,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Force Bomb",
         "fullName": "Epic.Force_Mastery.Repulsion_Bomb",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "A powerful Force Bomb is hurled at your foes dealing a moderate amount of damage and knocking them off of their feet. Foes struck by Repulsion Bomb have a chance to become disoriented, and the force of the blow will leave their armor shattered, lowering their damage resistance. You must be level 41 and have one other Force Mastery Powers before selecting this power.<br>",
         "shortHelp": "Ranged (Targeted AoE), DMG(Smash), Foe -Res, Knockdown, Disorient",
         "icon": "forcefield_repulsionbomb.png",
@@ -14840,25 +16325,25 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",0.7818,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Mez","Knockback",9,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Stunned",8,2,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
-          ["Resistance","Smashing",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Resistance","Lethal",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Resistance","Fire",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Resistance","Cold",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Resistance","Energy",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Resistance","Negative",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Resistance","Psionic",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Resistance","Toxic",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+          ["Mez","Stunned",8,2,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Resistance","Smashing",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+          ["Resistance","Lethal",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+          ["Resistance","Fire",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+          ["Resistance","Cold",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+          ["Resistance","Energy",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+          ["Resistance","Negative",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+          ["Resistance","Psionic",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+          ["Resistance","Toxic",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Stunned",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,true],
-          ["Resistance","Smashing",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-          ["Resistance","Lethal",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-          ["Resistance","Fire",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-          ["Resistance","Cold",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-          ["Resistance","Energy",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-          ["Resistance","Negative",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-          ["Resistance","Psionic",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-          ["Resistance","Toxic",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
+          ["Mez","Stunned",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Resistance","Smashing",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+          ["Resistance","Lethal",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+          ["Resistance","Fire",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+          ["Resistance","Cold",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+          ["Resistance","Energy",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+          ["Resistance","Negative",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+          ["Resistance","Psionic",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+          ["Resistance","Toxic",-1.5,1,15,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.2,
@@ -14884,34 +16369,42 @@ export const EPIC_POOLS_RAW = {
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             }
@@ -14926,8 +16419,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Force of Nature",
         "fullName": "Epic.Force_Mastery.Foce_of_Nature",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your endurance recovery is also increased. Force of Nature costs little endurance to activate, but when it wears off you are left exhausted, and drained of almost all endurance, and unable to recover endurance for a short while. You must be level 44 and have two other Force Mastery Powers before selecting this power.",
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "forcemastery_unstoppable.png",
@@ -14974,6 +16472,7 @@ export const EPIC_POOLS_RAW = {
             "resistance": 120
           },
           "enduranceDrain": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
@@ -14982,6 +16481,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "recoveryDebuff": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
@@ -15026,6 +16526,11 @@ export const EPIC_POOLS_RAW = {
   },
   "heat_mastery_stalker": {
     "id": "heat_mastery_stalker",
+    "setPath": "Epic.Heat_Mastery_Stalker",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Fire Mastery",
     "displayName": "Fire Mastery",
     "archetype": "mastermind",
@@ -15037,8 +16542,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Bonfire",
         "fullName": "Epic.Heat_Mastery_Stalker.Bonfire",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can create a Bonfire that knocks back and burns any foes who try to pass through it. Cannot do critical hits.",
         "shortHelp": "Ranged (Location AoE), DMG(Fire), Foe Knockback",
         "icon": "heatmastery_bonfire.png",
@@ -15087,8 +16597,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Blast",
         "fullName": "Epic.Heat_Mastery_Stalker.Fire_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.",
         "shortHelp": "Ranged, DMG(Fire)",
         "icon": "fireblast_fireblast.png",
@@ -15113,7 +16628,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Fire",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"FireBlastBonusDoT"],
           ["Damage","Fire",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -15144,8 +16659,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Ball",
         "fullName": "Epic.Heat_Mastery_Stalker.Fire_Ball",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
@@ -15171,7 +16691,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Fire",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.1,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Fire",0.1,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
           ["Damage","Smashing",0.0732,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Fire",0.6591,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -15210,8 +16730,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Char",
         "fullName": "Epic.Heat_Mastery_Stalker.Melt_Armor",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
@@ -15266,8 +16791,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Heat_Mastery_Stalker.Rise_of_the_Phoenix",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Self Rez, Special",
         "icon": "heatmastery_riseofthephoenix.png",
@@ -15299,7 +16829,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
         ],
         "effects": {
           "accuracy": 1,
@@ -15318,6 +16848,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
@@ -15329,6 +16860,7 @@ export const EPIC_POOLS_RAW = {
             "isPseudoPet": false
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 15,
             "table": "Melee_Ones"
           },
@@ -15342,6 +16874,11 @@ export const EPIC_POOLS_RAW = {
   },
   "ice_mastery": {
     "id": "ice_mastery",
+    "setPath": "Epic.Ice_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Ice Mastery",
     "displayName": "Ice Mastery",
     "archetype": "controller",
@@ -15353,8 +16890,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Blast",
         "fullName": "Epic.Ice_Mastery.Ice_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
         "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_iceblast.png",
@@ -15386,9 +16928,9 @@ export const EPIC_POOLS_RAW = {
           ["Movement","Run",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Fly",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Jump",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || arch source> Class_Controller == &&",true],
+          ["Damage","Cold",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || arch source> Class_Controller == && &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Cold",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Cold",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller == &&",true]
+          ["Damage","Cold",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller == && &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -15408,6 +16950,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 10
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -15417,6 +16960,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.2,
               "table": "Ranged_Slow"
             },
@@ -15434,8 +16978,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hibernate",
         "fullName": "Epic.Ice_Mastery.Hibernate",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "ice_mastery_hibernate.png",
@@ -15462,14 +17011,14 @@ export const EPIC_POOLS_RAW = {
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"]
         ],
         "effects": {
           "accuracy": 1,
@@ -15488,6 +17037,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 0.75
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
             "table": "Melee_Ones"
@@ -15502,15 +17052,18 @@ export const EPIC_POOLS_RAW = {
           },
           "mezResistance": {
             "knockback": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             },
             "knockup": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             }
           },
           "onlyAffectsSelf": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           },
@@ -15530,6 +17083,7 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           }
@@ -15538,8 +17092,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frozen Armor",
         "fullName": "Epic.Ice_Mastery.Frozen_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "ice_mastery_frozenarmor.png",
@@ -15617,8 +17176,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frost Breath",
         "fullName": "Epic.Ice_Mastery.Frost_Breath",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range. You must have two other Ice Mastery power to select this power. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_frostbreath.png",
@@ -15650,9 +17214,9 @@ export const EPIC_POOLS_RAW = {
           ["Movement","Run",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Fly",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Jump",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",0.7,1,0.6,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
+          ["Damage","Cold",0.7,1,0.6,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Cold",0.5477,1,0.6,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Cold",0.5477,1,0.6,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Cold",0.5477,1,0.6,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1.2,
@@ -15677,6 +17241,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 10
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -15686,6 +17251,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.2,
               "table": "Ranged_Slow"
             },
@@ -15703,8 +17269,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Storm",
         "fullName": "Epic.Ice_Mastery.Ice_Storm",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Location AoE), DoT(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_icestorm.png",
@@ -15750,6 +17321,11 @@ export const EPIC_POOLS_RAW = {
   },
   "ice_mastery_dominator": {
     "id": "ice_mastery_dominator",
+    "setPath": "Epic.Ice_Mastery_Dominator",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Ice Mastery",
     "displayName": "Ice Mastery",
     "archetype": "dominator",
@@ -15761,8 +17337,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Sleet",
         "fullName": "Epic.Ice_Mastery_Dominator.Ice_Blast",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Summons a Sleet Storm at a targeted location. Sleet deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm.",
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
         "icon": "ice_mastery_sleet.png",
@@ -15815,8 +17396,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hibernate",
         "fullName": "Epic.Ice_Mastery_Dominator.Hibernate",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "ice_mastery_hibernate.png",
@@ -15843,14 +17429,14 @@ export const EPIC_POOLS_RAW = {
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"]
         ],
         "effects": {
           "accuracy": 1,
@@ -15869,6 +17455,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 0.75
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
             "table": "Melee_Ones"
@@ -15883,15 +17470,18 @@ export const EPIC_POOLS_RAW = {
           },
           "mezResistance": {
             "knockback": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             },
             "knockup": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             }
           },
           "onlyAffectsSelf": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           },
@@ -15911,6 +17501,7 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           }
@@ -15919,8 +17510,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frozen Armor",
         "fullName": "Epic.Ice_Mastery_Dominator.Frozen_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "ice_mastery_frozenarmor.png",
@@ -15998,8 +17594,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hoarfrost",
         "fullName": "Epic.Ice_Mastery_Dominator.Frost_Breath",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "ice_mastery_hoarfrost.png",
@@ -16049,6 +17650,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_HealSelf"
           },
           "maxHPBuffUnenhanced": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_HealSelf"
           },
@@ -16067,8 +17669,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Storm",
         "fullName": "Epic.Ice_Mastery_Dominator.Ice_Storm",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed. You must be level 44 and have two other Ice Mastery Powers before selecting this power. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Location AoE), DoT(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_icestorm.png",
@@ -16114,6 +17721,11 @@ export const EPIC_POOLS_RAW = {
   },
   "mastermind_dark_mastery": {
     "id": "mastermind_dark_mastery",
+    "setPath": "Epic.Mastermind_Dark_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Dark Mastery",
     "displayName": "Dark Mastery",
     "archetype": "mastermind",
@@ -16125,8 +17737,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Murky Cloud",
         "fullName": "Epic.Mastermind_Dark_Mastery.Murky_Cloud",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
         "icon": "dark_mastery_murkycloud.png",
@@ -16194,8 +17811,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shadowy Binds",
         "fullName": "Epic.Mastermind_Dark_Mastery.Shadowy_Binds",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You take control of your victim's shadow causing it to entangle and bind its owner thus leaving them immobilized and suffering from negative energy damage over time and reducing their chance to hit. Immobilized foes cannot move but can still attack.",
         "shortHelp": "Ranged, Moderate DoT(Negative), Foe Immobilize, -To Hit, -Fly",
         "icon": "dark_mastery_penumbralgrasp.png",
@@ -16268,8 +17890,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Pit",
         "fullName": "Epic.Mastermind_Dark_Mastery.Dark_Pit",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Envelops a targeted foe and any nearby enemies in a pit of Negative Energy. The attack deals no damage, but Disorients all affected foes for a good while. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), Foe Disorient",
         "icon": "dark_mastery_darkpit.png",
@@ -16314,8 +17941,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Possess",
         "fullName": "Epic.Mastermind_Dark_Mastery.Possess",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You cause your targeted foe to be possessed by a dark entity from the Netherworld causing them to be confused for a short period of time. While confused they will be unable to tell the difference between friend or foe and will attack nearby allies. Possess will also hinder the target's abilities, lowering their chance ToHit, Damage, Healing, and the strength of their buffs, You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Target Confuse, -ToHit, -Damage, -Healing, -Special",
         "icon": "dark_mastery_possess.png",
@@ -16384,6 +18016,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "damageDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Ones"
           },
@@ -16395,102 +18028,126 @@ export const EPIC_POOLS_RAW = {
           },
           "slow": {
             "flySpeed": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "runSpeed": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             }
           },
           "specialBuff": {
             "absorb": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "confuse": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "endurance": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "fear": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "heal": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "hold": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "immobilize": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "sleep": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "stun": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             }
           },
           "specialDebuff": {
             "aoe": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "cold": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "defense": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "melee": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "ranged": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Ones"
             }
@@ -16500,8 +18157,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Consumption",
         "fullName": "Epic.Mastermind_Dark_Mastery.Soul_Consumption",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You consume life and soul from all enemies nearby, thus siginficantly increasing your maximum hitpoints and endurance. The more foes affected, the stronger the effect. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
         "icon": "dark_mastery_soulconsumption.png",
@@ -16564,6 +18226,7 @@ export const EPIC_POOLS_RAW = {
             "perTarget": 0.4
           },
           "regenDebuff": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Melee_Ones"
           }
@@ -16573,6 +18236,11 @@ export const EPIC_POOLS_RAW = {
   },
   "mastermind_leviathan_mastery": {
     "id": "mastermind_leviathan_mastery",
+    "setPath": "Epic.Mastermind_Leviathan_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Leviathan Mastery",
     "displayName": "Leviathan Mastery",
     "archetype": "mastermind",
@@ -16584,8 +18252,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "School of Sharks",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.School_of_Sharks",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -16654,8 +18327,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Bile Spray",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.Chum_Spray",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time.",
         "shortHelp": "Ranged (Cone), DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -16716,8 +18394,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Melee, DMG(Smash), Foe Hold",
         "icon": "arachnos_patron_koblow.png",
@@ -16777,8 +18460,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shark Skin",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.Shark_Skin",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing and cold damage. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -16841,8 +18529,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Spirit Shark Jaws",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.Spirit_Shark_Jaws",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You can summon a massive Spirit Shark that will attack your foe from below. The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
@@ -16918,6 +18611,11 @@ export const EPIC_POOLS_RAW = {
   },
   "mastermind_mace_mastery": {
     "id": "mastermind_mace_mastery",
+    "setPath": "Epic.Mastermind_Mace_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mace Mastery",
     "displayName": "Mace Mastery",
     "archetype": "mastermind",
@@ -16929,8 +18627,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Envelope",
         "fullName": "Epic.Mastermind_Mace_Mastery.Web_Envelope",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Nullifier Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -16998,6 +18701,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -17024,8 +18728,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Scorpion Shield",
         "fullName": "Epic.Mastermind_Mace_Mastery.Scorpion_Shield",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
@@ -17103,8 +18812,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mace Beam Volley",
         "fullName": "Epic.Mastermind_Mace_Mastery.Mace_Beam_Volley",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Fires a volley of multiple kinetic energy blasts from your Nullifier Mace. These blast spread out in a wide cone and are powerful enough to knock down some foes. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -17131,9 +18845,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Energy",1.1489,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
+          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Energy",1.2118,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,true]
+          ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -17159,8 +18873,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Power Boost",
         "fullName": "Epic.Mastermind_Mace_Mastery.Power_Boost",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Self +Special",
         "icon": "arachnos_patron_powerboost.png",
@@ -17178,30 +18897,30 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [],
         "atoms": [
-          ["Heal",null,0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Absorb",null,0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Endurance",null,0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Movement","Run",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Movement","Fly",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Confused",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Terrorized",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Held",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Immobilized",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Stunned",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Sleep",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Ranged",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Melee",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","AoE",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Smashing",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Lethal",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Fire",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Cold",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Energy",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Negative",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Psionic",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Toxic",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","All",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["ToHit",null,0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"]
+          ["Heal",null,0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Absorb",null,0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Endurance",null,0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Movement","Run",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Movement","Fly",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Confused",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Terrorized",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Held",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Immobilized",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Stunned",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Sleep",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Ranged",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Melee",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","AoE",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Smashing",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Lethal",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Fire",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Cold",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Energy",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Negative",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Psionic",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Toxic",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","All",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["ToHit",null,0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"]
         ],
         "effects": {
           "accuracy": 1,
@@ -17215,94 +18934,117 @@ export const EPIC_POOLS_RAW = {
           },
           "specialBuff": {
             "absorb": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "aoe": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "cold": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "confuse": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "defense": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "endurance": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "fear": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "heal": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "hold": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "immobilize": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "melee": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "movement": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "ranged": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "sleep": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "stun": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 0.44,
               "table": "Melee_Stun"
             }
@@ -17316,8 +19058,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Cocoon",
         "fullName": "Epic.Mastermind_Mace_Mastery.Web_Cocoon",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
         "icon": "arachnos_patron_targetedhold.png",
@@ -17381,6 +19128,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
@@ -17408,6 +19156,11 @@ export const EPIC_POOLS_RAW = {
   },
   "mastermind_mu_mastery": {
     "id": "mastermind_mu_mastery",
+    "setPath": "Epic.Mastermind_Mu_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mu Mastery",
     "displayName": "Mu Mastery",
     "archetype": "mastermind",
@@ -17419,8 +19172,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Static Discharge",
         "fullName": "Epic.Mastermind_Mu_Mastery.Static_Discharge",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -17489,8 +19247,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Charged Armor",
         "fullName": "Epic.Mastermind_Mu_Mastery.Charged_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -17556,8 +19319,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "arachnos_patron_meleetargetedaoe.png",
@@ -17587,17 +19355,17 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",2.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Energy",2.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929],
+          ["Damage","Energy",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Splash"],
+          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Endurance",null,-2,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",2.971,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,null,true]
+          ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Splash"],
+          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -17646,8 +19414,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electrifying Fences",
         "fullName": "Epic.Mastermind_Mu_Mastery.Electrifying_Fences",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -17724,8 +19497,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Mastermind_Mu_Mastery.Electric_Shackles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
@@ -17807,6 +19585,11 @@ export const EPIC_POOLS_RAW = {
   },
   "mastermind_soul_mastery": {
     "id": "mastermind_soul_mastery",
+    "setPath": "Epic.Mastermind_Soul_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Soul Mastery",
     "displayName": "Soul Mastery",
     "archetype": "mastermind",
@@ -17818,8 +19601,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Night Fall",
         "fullName": "Epic.Mastermind_Soul_Mastery.Night_Fall",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced Accuracy.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_conedot.png",
@@ -17880,8 +19668,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Embrace",
         "fullName": "Epic.Mastermind_Soul_Mastery.Dark_Embrace",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -17949,8 +19742,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Oppressive Gloom",
         "fullName": "Epic.Mastermind_Soul_Mastery.Oppressive_Gloom",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
         "icon": "arachnos_patron_pbaoestun.png",
@@ -17974,7 +19772,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Special",0.1,1,0,"Melee_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["Meta",null,0,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Meta",null,0,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
           ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -18001,8 +19799,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Tentacles",
         "fullName": "Epic.Mastermind_Soul_Mastery.Soul_Tentacles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -18071,8 +19874,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Storm",
         "fullName": "Epic.Mastermind_Soul_Mastery.Soul_Storm",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
@@ -18128,6 +19936,11 @@ export const EPIC_POOLS_RAW = {
   },
   "melee_psionic_mastery": {
     "id": "melee_psionic_mastery",
+    "setPath": "Epic.Melee_Psionic_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Psionic Mastery",
     "displayName": "Psionic Mastery",
     "archetype": "scrapper",
@@ -18139,8 +19952,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mental Blast",
         "fullName": "Epic.Melee_Psionic_Mastery.Mental_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
         "icon": "psionic_mastery_mentalblast.png",
@@ -18166,14 +19984,14 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Psionic",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["RechargeTime",null,0.3,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+          ["Damage","Psionic",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Psionic",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Psionic",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Psionic",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Psionic",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Psionic",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Psionic",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Psionic",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Psionic",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Psionic",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Psionic",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Psionic",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Psionic",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Psionic",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Psionic",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -18192,6 +20010,7 @@ export const EPIC_POOLS_RAW = {
             "rechargeDebuff": 6
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           }
@@ -18200,8 +20019,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Psionic Lance",
         "fullName": "Epic.Melee_Psionic_Mastery.Psionic_Lance",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "This extremely long range Psionic attack has a bonus to Accuracy, and can Slow a target's attack rate. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
         "shortHelp": "Sniper, DMG(Psionic), Target -Recharge",
         "icon": "psionic_mastery_psioniclance.png",
@@ -18226,16 +20050,38 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+          "stats": {
+            "castTime": 1.33,
+            "range": 100
+          },
+          "damage": [
+            {
+              "type": "Psionic",
+              "scale": 1.75,
+              "table": "Melee_Damage"
+            }
+          ],
+          "atoms": [
+            ["Damage","Psionic",1.75,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *"],
+            ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+            ["Damage","Fire",0.7875,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+            ["Damage","Psionic",1.75,1,0,"Melee_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.9 < enttype target> critter eq && &&",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *",null,null,null,"ASTeamCrit","Class_Stalker"]
+          ]
+        },
         "atoms": [
           ["Damage","Psionic",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+          ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+          ["Damage","Fire",1.602,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Energy",1.78,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.9 < enttype target> critter eq && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
           "range": 175,
           "recharge": 24,
           "endurance": 14.352,
-          "activationTime": 1.33,
+          "activationTime": 3,
           "effectArea": "SingleTarget",
           "damage": {
             "type": "Psionic",
@@ -18247,16 +20093,23 @@ export const EPIC_POOLS_RAW = {
             "rechargeDebuff": 10
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.15,
             "table": "Ranged_Slow"
-          }
+          },
+          "interruptTime": 2
         }
       },
       {
         "name": "Psychic Scream",
         "fullName": "Epic.Melee_Psionic_Mastery.Psychic_Scream",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.",
         "shortHelp": "Ranged (Cone), DMG(Psionic), Foe -Recharge",
         "icon": "psionic_mastery_psychicscream.png",
@@ -18282,14 +20135,14 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["RechargeTime",null,0.5,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Damage","Psionic",1.04,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Psionic",1.0401,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Psionic",0.9741,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Psionic",1.0401,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Psionic",1.0401,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Psionic",0.9741,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Psionic",1.0401,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Psionic",1.0401,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Psionic",0.9741,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Psionic",0.9741,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Psionic",1.0401,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Psionic",1.0401,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Psionic",0.9741,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Psionic",1.0401,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Psionic",0.9741,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Psionic",0.9741,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -18311,6 +20164,7 @@ export const EPIC_POOLS_RAW = {
             "rechargeDebuff": 10
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Ranged_Slow"
           }
@@ -18319,8 +20173,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Harmonic Mind",
         "fullName": "Epic.Melee_Psionic_Mastery.Harmonic_Mind",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to conserve and recover endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Auto: Self, +Recovery, Endurance Discount",
         "icon": "psionic_mastery_harmonicmind.png",
@@ -18352,6 +20211,7 @@ export const EPIC_POOLS_RAW = {
             "recoveryBuff": 10.25
           },
           "enduranceDiscount": {
+            "ignoreStrength": true,
             "scale": 0.125,
             "table": "Melee_Stun"
           },
@@ -18364,8 +20224,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Psionic Nexus",
         "fullName": "Epic.Melee_Psionic_Mastery.Psionic_Nexus",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You create a nexus of psionic energy at your location.",
         "shortHelp": "Summon Psionic Nexus: Ranged DMG(Psionic)",
         "icon": "psionic_mastery_psionicnexus.png",
@@ -18419,6 +20284,11 @@ export const EPIC_POOLS_RAW = {
   },
   "munitions_mastery": {
     "id": "munitions_mastery",
+    "setPath": "Epic.Munitions_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Arsenal Mastery",
     "displayName": "Arsenal Mastery",
     "archetype": "blaster",
@@ -18430,8 +20300,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Body Armor",
         "fullName": "Epic.Munitions_Mastery.Body_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You have Body Armor that will reduce all damage except Psionic. This power is always on, and costs no Endurance.",
         "shortHelp": "Auto: Self +Res (All but Psionic)",
         "icon": "munitionsmastery_bodyarmor.png",
@@ -18509,8 +20384,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Cryo Freeze Ray",
         "fullName": "Epic.Munitions_Mastery.Cryo_Freeze_Ray",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Although this weapon deals very little damage, the Cryo Freeze Ray encases your foe in a block of ice, holding him helpless in place for a while.",
         "shortHelp": "Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge",
         "icon": "munitionsmastery_cryofreezeray.png",
@@ -18573,6 +20453,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           },
@@ -18582,6 +20463,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Ranged_Slow"
             },
@@ -18599,8 +20481,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Sleep Grenade",
         "fullName": "Epic.Munitions_Mastery.Sleep_Grenade",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "The Sleep Grenade can be launched at long range from beneath the barrel of your Assault Rifle. It releases a cloud of gas that will make enemies fall asleep. You must be level 35 and have one other Arsenal Mastery powers before selecting this power.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "Ranged (Targeted AoE), Minor DMG(Smash), Foe Sleep",
         "icon": "munitionsmastery_sleepgrenade.png",
@@ -18626,9 +20513,9 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+          ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Smashing",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
+          ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
           ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -18655,8 +20542,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Surveillance",
         "fullName": "Epic.Munitions_Mastery.Surveillance",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "When this power is activated, you focus your senses to analyze your target's defensive capabilities and discover their weaknesses. By sharing your knowledge of the target's weaknesses with your team mates, you effectively reduce their defense and resistance to damage. Your Combat Attributes Window will also show the combat attributes of the target. You must be level 41 and have one other Arsenal Mastery powers before selecting this power.",
         "shortHelp": "Ranged Foe -DEF, -RES (All)",
         "icon": "munitionsmastery_surveillance.png",
@@ -18679,7 +20571,7 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff"
         ],
         "atoms": [
-          ["Meta",null,100,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+          ["Meta",null,100,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"view_attributes"],
           ["Resistance","Smashing",-2,1,20,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Lethal",-2,1,20,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Fire",-2,1,20,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -18708,34 +20600,42 @@ export const EPIC_POOLS_RAW = {
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Debuff_Res_Dmg"
             }
@@ -18745,8 +20645,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "LRM Rocket",
         "fullName": "Epic.Munitions_Mastery.LRM_Rocket",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "The LRM Rocket is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. The LRM Rocket is bulky, awkward to use and you must take your time to aim, so this attack can be interrupted. You must be level 44 and have two other Arsenal Mastery Powers before selecting this power. If you are engaged in battle this attack becomes instant-cast, but inflicts lower damage on a reduced area and range.",
         "shortHelp": "Interruptible (Targeted AoE), DMG(Lethal/Smash), Foe Knockback",
         "icon": "munitionsmastery_lrmrocket.png",
@@ -18772,10 +20677,34 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+          "stats": {
+            "castTime": 2.33,
+            "range": 80
+          },
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.8514,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.8514,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "atoms": [
+            ["Damage","Smashing",0.8514,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+            ["Damage","Lethal",0.8514,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+            ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"]
+          ]
+        },
         "atoms": [
           ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Lethal",1.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5]
+          ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -18801,13 +20730,19 @@ export const EPIC_POOLS_RAW = {
           "knockback": {
             "scale": 0.7,
             "table": "Ranged_Knockback"
-          }
+          },
+          "interruptTime": 2
         }
       }
     ]
   },
   "power_mastery": {
     "id": "power_mastery",
+    "setPath": "Epic.Power_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Energy Mastery",
     "displayName": "Energy Mastery",
     "archetype": "defender",
@@ -18819,8 +20754,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Conserve Power",
         "fullName": "Epic.Power_Mastery.Conserve_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can focus for a moment to conserve your Endurance. After activating this power, you expend less Endurance on all other powers for a while.",
         "shortHelp": "Self Endurance Discount",
         "icon": "energymanipulation_conservepower.png",
@@ -18851,6 +20791,7 @@ export const EPIC_POOLS_RAW = {
             "enduranceDiscount": 90
           },
           "enduranceDiscount": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Stun"
           },
@@ -18863,8 +20804,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Power Build Up",
         "fullName": "Epic.Power_Mastery.Power_Build_Up",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Your mastery of power and energy allows you to greatly increase the damage you deal for a few seconds, as well as slightly increasing your Accuracy Additionally, Power Build Up greatly boosts the secondary effects of your powers. Your powers effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved.",
         "shortHelp": "Self +DMG, +ACC, +Special",
         "icon": "powermastery_powerbuildup.png",
@@ -18894,30 +20840,30 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Negative",8,1,12.5,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["DamageBuff","Psionic",8,1,12.5,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["DamageBuff","Toxic",8,1,12.5,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Heal",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Absorb",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Endurance",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Movement","Run",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Movement","Fly",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Confused",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Terrorized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Held",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Immobilized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Stunned",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Sleep",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Ranged",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Melee",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","AoE",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Smashing",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Lethal",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Fire",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Cold",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Energy",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Negative",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Psionic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Toxic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","All",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["ToHit",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"]
+          ["Heal",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Absorb",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Endurance",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Movement","Run",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Movement","Fly",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Confused",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Terrorized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Held",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Immobilized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Stunned",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Sleep",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Ranged",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Melee",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","AoE",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Smashing",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Lethal",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Fire",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Cold",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Energy",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Negative",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Psionic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Toxic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","All",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["ToHit",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"]
         ],
         "effects": {
           "accuracy": 1,
@@ -18927,6 +20873,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 12.5,
           "damageBuff": {
+            "ignoreStrength": true,
             "scale": 8,
             "table": "Melee_Buff_Dmg"
           },
@@ -18937,94 +20884,117 @@ export const EPIC_POOLS_RAW = {
           },
           "specialBuff": {
             "absorb": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "aoe": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "cold": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "confuse": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "defense": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "endurance": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "fear": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "heal": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "hold": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "immobilize": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "melee": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "movement": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "ranged": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "sleep": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "stun": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             }
@@ -19042,8 +21012,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Power_Mastery.Temp_Invulnerability",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "powermastery_tempinvulnerability.png",
@@ -19101,8 +21076,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Force of Nature",
         "fullName": "Epic.Power_Mastery.Force_of_Nature",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your Endurance recovery is also increased. Force of Nature costs little Endurance to activate, but when it wears off you are left exhausted, and drained of almost all Endurance, and unable to recover Endurance for a short while. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "powermastery_forceofnature.png",
@@ -19149,6 +21129,7 @@ export const EPIC_POOLS_RAW = {
             "resistance": 120
           },
           "enduranceDrain": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
@@ -19157,6 +21138,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "recoveryDebuff": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Ones"
           },
@@ -19200,8 +21182,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Total Focus",
         "fullName": "Epic.Power_Mastery.Total_Focus",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Total Focus is complete mastery over Energy Melee. This is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient",
         "icon": "energymanipulation_totalfocus.png",
@@ -19265,6 +21252,11 @@ export const EPIC_POOLS_RAW = {
   },
   "primal_forces_mastery": {
     "id": "primal_forces_mastery",
+    "setPath": "Epic.Primal_Forces_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Energy Mastery",
     "displayName": "Energy Mastery",
     "archetype": "controller",
@@ -19276,8 +21268,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Power Blast",
         "fullName": "Epic.Primal_Forces_Mastery.Power_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock him back.",
         "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_powerblast.png",
@@ -19308,8 +21305,8 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Smashing",0.3778,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",1.5112,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Energy",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true],
+          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Energy",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -19340,8 +21337,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Conserve Power",
         "fullName": "Epic.Primal_Forces_Mastery.Conserve_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can focus for a moment to conserve your Endurance. After activating this power, you expend less Endurance on all other powers for a while.",
         "shortHelp": "Self Endurance Discount",
         "icon": "primalforcesmastery_conservepower.png",
@@ -19372,6 +21374,7 @@ export const EPIC_POOLS_RAW = {
             "enduranceDiscount": 90
           },
           "enduranceDiscount": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Stun"
           },
@@ -19384,8 +21387,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Primal_Forces_Mastery.Temp_Invulnerability",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
@@ -19443,8 +21451,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Primal_Forces_Mastery.Energy_Torrent",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
@@ -19475,8 +21488,8 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",0.3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Smashing",0.2658,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.6203,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.96,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Energy",0.8861,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true],
+          ["Damage","Energy",0.96,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Energy",0.8861,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Mez","Knockback",0.3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -19510,8 +21523,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Power Boost",
         "fullName": "Epic.Primal_Forces_Mastery.Power_Boost",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Self +Special",
         "icon": "primalforcesmastery_powerboost.png",
@@ -19529,30 +21547,30 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [],
         "atoms": [
-          ["Heal",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Absorb",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Endurance",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Movement","Run",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Movement","Fly",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Confused",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Terrorized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Held",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Immobilized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Stunned",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Sleep",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Ranged",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Melee",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","AoE",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Smashing",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Lethal",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Fire",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Cold",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Energy",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Negative",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Psionic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","Toxic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["Enhancement","All",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-          ["ToHit",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"]
+          ["Heal",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Absorb",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Endurance",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Movement","Run",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Movement","Fly",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Confused",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Terrorized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Held",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Immobilized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Stunned",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Sleep",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+          ["Enhancement","Ranged",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Melee",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","AoE",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Smashing",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Lethal",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Fire",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Cold",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Energy",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Negative",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Psionic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","Toxic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["Enhancement","All",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+          ["ToHit",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"]
         ],
         "effects": {
           "accuracy": 1,
@@ -19566,94 +21584,117 @@ export const EPIC_POOLS_RAW = {
           },
           "specialBuff": {
             "absorb": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "aoe": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "cold": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "confuse": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "defense": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "endurance": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "fear": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "heal": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "hold": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "immobilize": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "melee": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "movement": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "ranged": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "sleep": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "stun": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 0.66,
               "table": "Melee_Stun"
             }
@@ -19668,6 +21709,11 @@ export const EPIC_POOLS_RAW = {
   },
   "primal_forces_mastery_dominator": {
     "id": "primal_forces_mastery_dominator",
+    "setPath": "Epic.Primal_Forces_Mastery_Dominator",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Energy Mastery",
     "displayName": "Energy Mastery",
     "archetype": "dominator",
@@ -19682,8 +21728,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target.",
         "shortHelp": "Melee, DMG(Energy/Smash), Foe Disorient, Self -HP",
         "icon": "primalforcesmasterydominator_energytransfer.png",
@@ -19750,8 +21801,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Conserve Power",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Conserve_Power",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can focus for a moment to conserve your Endurance. After activating this power, you expend less Endurance on all other powers for a while.",
         "shortHelp": "Self Endurance Discount",
         "icon": "primalforcesmastery_conservepower.png",
@@ -19782,6 +21838,7 @@ export const EPIC_POOLS_RAW = {
             "enduranceDiscount": 90
           },
           "enduranceDiscount": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Stun"
           },
@@ -19794,8 +21851,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Temp_Invulnerability",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
@@ -19853,8 +21915,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Energy_Torrent",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 41 and have one other Energy Mastery Powers before selecting this power.<br>",
         "shortHelp": "Ranged (Cone), Light DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
@@ -19885,8 +21952,8 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",0.3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Smashing",0.2658,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.6203,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.958,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Energy",0.8861,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true],
+          ["Damage","Energy",0.958,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Energy",0.8861,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Mez","Knockback",0.3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -19920,8 +21987,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Explosive Blast",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Explosive_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target. Explosive Blast may knock targets backwards. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
         "icon": "primalforcesmasterydominator_explosiveblast.png",
@@ -19984,6 +22056,11 @@ export const EPIC_POOLS_RAW = {
   },
   "psionic_mastery": {
     "id": "psionic_mastery",
+    "setPath": "Epic.Psionic_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Psionic Mastery",
     "displayName": "Psionic Mastery",
     "archetype": "controller",
@@ -19995,8 +22072,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mental Blast",
         "fullName": "Epic.Psionic_Mastery.Mental_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed.",
         "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
         "icon": "psychicblast_mentalblast.png",
@@ -20023,8 +22105,8 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["RechargeTime",null,0.3,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Damage","Psionic",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Psionic",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
-          ["Damage","Psionic",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true]
+          ["Damage","Psionic",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Damage","Psionic",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1,
@@ -20043,6 +22125,7 @@ export const EPIC_POOLS_RAW = {
             "rechargeDebuff": 6
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           }
@@ -20051,8 +22134,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Indomitable Will",
         "fullName": "Epic.Psionic_Mastery.Indomitable_Will",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Activating this power greatly boosts your resistance to Sleep, Disorient, Fear and Hold effects for 90 seconds. Indomitable Will also grants a high defense to Psionic based attacks.",
         "shortHelp": "Self Res(Disorient, Hold, Sleep, Fear). DEF(Psionics)",
         "icon": "psionicmastery_indomitablewill.png",
@@ -20093,6 +22181,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 90,
           "confuse": {
+            "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
@@ -20113,21 +22202,25 @@ export const EPIC_POOLS_RAW = {
           },
           "effectDuration": 90,
           "fear": {
+            "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "hold": {
+            "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "sleep": {
+            "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "stun": {
+            "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
@@ -20141,8 +22234,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mind Over Body",
         "fullName": "Epic.Psionic_Mastery.Mind_Over_Body",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you empower your Mind Over Body to become highly resistant to Smashing, Lethal and Psionic damage. You must be level 38 and have one other Psionic Mastery Powers before selecting this power.<br>",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psionicmastery_mindoverbody.png",
@@ -20205,8 +22303,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "World of Confusion",
         "fullName": "Epic.Psionic_Mastery.World_of_Confusion",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
         "icon": "psionicmastery_worldofconfusion.png",
@@ -20234,8 +22337,8 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
           ["Mez","Confused",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit < enttype target> player eq &&",true],
           ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit < enttype target> critter eq &&",true],
-          ["Mez","Confused",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.20000000298023224,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit < enttype target> player eq &&",true],
-          ["Mez","Confused",1,1,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.20000000298023224,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit < enttype target> critter eq &&",true]
+          ["Mez","Confused",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.20000000298023224,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit < enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"Overpower"],
+          ["Mez","Confused",1,1,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.20000000298023224,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit < enttype target> critter eq &&",true,null,null,null,null,null,null,null,null,"Overpower"]
         ],
         "effects": {
           "accuracy": 1,
@@ -20257,8 +22360,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Psionic Tornado",
         "fullName": "Epic.Psionic_Mastery.Psionic_Tornado",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
         "icon": "psychicblast_psionictornado.png",
@@ -20287,9 +22395,9 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Psionic",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockup",1.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
           ["RechargeTime",null,0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-          ["Damage","Psionic",1.1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",true],
+          ["Damage","Psionic",1.1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && arch source> Class_Controller == && &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Psionic",0.8409,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Psionic",0.8409,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == &&",true],
+          ["Damage","Psionic",0.8409,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> Class_Controller == && &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Mez","Knockup",1.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -20315,6 +22423,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           }
@@ -20324,6 +22433,11 @@ export const EPIC_POOLS_RAW = {
   },
   "psionic_mastery_domingator": {
     "id": "psionic_mastery_domingator",
+    "setPath": "Epic.Psionic_Mastery_Domingator",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Psionic Mastery",
     "displayName": "Psionic Mastery",
     "archetype": "dominator",
@@ -20335,8 +22449,14 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Link Minds",
         "fullName": "Epic.Psionic_Mastery_Domingator.Link_Minds",
+        "targetsAffected": [
+          "Teammate",
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Your Mind Link Power will enable you to link the minds of all your teammates who are near you for the next 90 seconds. This shared link improves your team's chance to hit foes, your defensive abilities and dramatically reduces psionic damage.",
         "shortHelp": "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
         "icon": "psionicmastery_linkminds.png",
@@ -20446,8 +22566,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Indomitable Will",
         "fullName": "Epic.Psionic_Mastery_Domingator.Indomitable_Will",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Activating this power greatly boosts your resistance to Sleep, Disorient, Fear and Hold effects for 90 seconds. Indomitable Will also grants a high defense to Psionic based attacks.",
         "shortHelp": "Self Res( Disorient, Hold, Sleep, Fear). DEF(Psionics)",
         "icon": "psionicmastery_indomitablewill.png",
@@ -20488,6 +22613,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 90,
           "confuse": {
+            "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
@@ -20508,21 +22634,25 @@ export const EPIC_POOLS_RAW = {
           },
           "effectDuration": 90,
           "fear": {
+            "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "hold": {
+            "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "sleep": {
+            "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "stun": {
+            "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
@@ -20536,8 +22666,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mind Over Body",
         "fullName": "Epic.Psionic_Mastery_Domingator.Mind_Over_Body",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you empower your Mind Over Body to become highly resistant to Smashing, Lethal and Psionic damage. You must be level 38 and have one other Psionic Mastery Powers before selecting this power.<br>",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psionicmastery_mindoverbody.png",
@@ -20600,8 +22735,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "World of Confusion",
         "fullName": "Epic.Psionic_Mastery_Domingator.World_of_Confusion",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.<br>",
         "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
         "icon": "psionicmastery_worldofconfusion.png",
@@ -20627,10 +22767,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
-          ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit <",true],
-          ["Mez","Confused",1.5,1,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,null,true],
-          ["Mez","Confused",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit <",true],
-          ["Mez","Confused",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,null,true]
+          ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @ToHitRoll 0.25 + @ToHit < &&",true],
+          ["Mez","Confused",1.5,1,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @ToHitRoll 0.25 + @ToHit < &&",true,null,null,null,null,null,null,null,null,"Domination"],
+          ["Mez","Confused",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll 0.25 + @ToHit < &&",true],
+          ["Mez","Confused",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll 0.25 + @ToHit < &&",true,null,null,null,null,null,null,null,null,"Domination"]
         ],
         "effects": {
           "accuracy": 1,
@@ -20647,13 +22787,33 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage",
             "tickRate": 2
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "domination",
+            "label": "Domination Active",
+            "scope": "global",
+            "defaultActive": false,
+            "effects": {
+              "confuse": {
+                "mag": 1,
+                "scale": 1.5,
+                "table": "Ranged_Ones"
+              }
+            }
+          }
+        ]
       },
       {
         "name": "Psionic Tornado",
         "fullName": "Epic.Psionic_Mastery_Domingator.Psionic_Tornado",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
         "icon": "psychicblast_psionictornado.png",
@@ -20681,9 +22841,9 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["RechargeTime",null,0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Damage","Psionic",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
+          ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Psionic",0.8409,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true]
+          ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -20708,6 +22868,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           }
@@ -20717,6 +22878,11 @@ export const EPIC_POOLS_RAW = {
   },
   "psychic_mastery": {
     "id": "psychic_mastery",
+    "setPath": "Epic.Psychic_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Psionic Mastery",
     "displayName": "Psionic Mastery",
     "archetype": "defender",
@@ -20728,8 +22894,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dominate",
         "fullName": "Epic.Psychic_Mastery.Dominate",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in his own mind and unable to defend himself.",
         "shortHelp": "Ranged, DMG(Psionic), Foe Hold",
         "icon": "mentalcontrol_command.png",
@@ -20784,8 +22955,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mass Hypnosis",
         "fullName": "Epic.Psychic_Mastery.Mass_Hypnosis",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Hypnotizes a group of foes at a distance and puts them to Sleep. The targets will remain asleep for some time, but will awaken if attacked. This power deals no damage, but if done discreetly, the targets will never be aware of your presence.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
         "icon": "mentalcontrol_masshypnosis.png",
@@ -20808,8 +22984,8 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "atoms": [
-          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
-          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
+          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
           ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -20831,8 +23007,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mind Over Body",
         "fullName": "Epic.Psychic_Mastery.Mind_Over_Body",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you toggle on this power, you empower your Mind Over Body to become highly resistant to Smashing, Lethal and Psionic damage. You must be level 38 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psychicmastery_mindoverbody.png",
@@ -20895,8 +23076,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "World of Confusion",
         "fullName": "Epic.Psychic_Mastery.World_of_Confusion",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You must have two other Psychic Mastery powers to select this power. You will not receive any Experience Points for foes defeated by Confused enemies. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
         "icon": "psychicmastery_worldofconfusion.png",
@@ -20945,8 +23131,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Telekinesis",
         "fullName": "Epic.Psychic_Mastery.Telekinesis",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Lifts a foe, and any nearby foes, off the ground and repels them. The targets are helpless, unable to move, and will continue to hover away, picking up any passing targets, as long as you keep this power active. Keeping up this level of concentration costs a lot of Endurance. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe Immobilize, Repel",
         "icon": "mentalcontrol_telekinesis.png",
@@ -20969,16 +23160,16 @@ export const EPIC_POOLS_RAW = {
           "Immobilize"
         ],
         "atoms": [
-          ["MezResist","Knockup",100,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",false,"No",2,null,null,1,null,true],
-          ["MezResist","Knockback",100,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",false,"No",2,null,null,1,null,true],
+          ["MezResist","Knockup",100,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Telekinesis"],
+          ["MezResist","Knockback",100,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Telekinesis"],
           ["Mez","Immobilized",5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Refresh",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"distance 40 <",true,null,null,null,null,"40 distance -","Immobilized"],
-          ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"distance 40 <",true,null,true],
-          ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"distance 60 >",true,null,null,null,null,"distance 60 -","Immobilized"],
-          ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"distance 60 >",true,null,true],
-          ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,"Immobilized"],
-          ["Movement","FlyMode",1,1,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized"],
-          ["Movement","Fly",1.1788,1,1.5,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized"],
+          ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"Continuous",2,null,null,1,null,null,null,null,null,null,"distance 40 <",true,null,null,null,null,"40 distance -","Immobilized"],
+          ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"distance 40 <",true,null,true],
+          ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"Continuous",2,null,null,1,null,null,null,null,null,null,"distance 60 >",true,null,null,null,null,"distance 60 -","Immobilized"],
+          ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"distance 60 >",true,null,true],
+          ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Continuous",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,"Immobilized"],
+          ["Movement","FlyMode",1,1,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized",null,null,"Telekinesis"],
+          ["Movement","Fly",1.1788,1,1.5,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized",null,null,"Telekinesis"],
           ["Mez","Immobilized",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Refresh",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -21002,6 +23193,11 @@ export const EPIC_POOLS_RAW = {
   },
   "pyre_mastery": {
     "id": "pyre_mastery",
+    "setPath": "Epic.Pyre_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Fire Mastery",
     "displayName": "Fire Mastery",
     "archetype": "tanker",
@@ -21013,8 +23209,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ring of Fire",
         "fullName": "Epic.Pyre_Mastery.Ring_of_Fire",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.",
         "shortHelp": "Ranged, DoT(Fire), Foe Immobilize",
         "icon": "pyremastery_ringoffire.png",
@@ -21044,7 +23245,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-          ["Damage","Fire",0.0853,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0],
+          ["Damage","Fire",0.0853,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Fire",0.3078,1,9.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -21081,8 +23282,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Char",
         "fullName": "Epic.Pyre_Mastery.Char",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial.",
         "shortHelp": "Ranged, DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
@@ -21110,7 +23316,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Fire",0.1,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.045,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
+          ["Damage","Fire",0.045,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Fire",0.4218,1,4.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -21147,8 +23353,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Blast",
         "fullName": "Epic.Pyre_Mastery.Fire_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Fire)",
         "icon": "fireblast_fireblast.png",
@@ -21173,9 +23384,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Fire",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-          ["Damage","Fire",0.045,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
+          ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"FireBlastBonusDoT"],
+          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+          ["Damage","Fire",0.045,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Fire",1.809,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -21218,8 +23429,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Melt Armor",
         "fullName": "Epic.Pyre_Mastery.Melt_Armor",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "The searing Heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
@@ -21273,34 +23489,42 @@ export const EPIC_POOLS_RAW = {
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 3,
               "table": "Ranged_Debuff_Res_Dmg"
             }
@@ -21310,8 +23534,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Ball",
         "fullName": "Epic.Pyre_Mastery.Fire_Ball",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
@@ -21337,12 +23566,12 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Fire",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Fire",0.045,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
-          ["Damage","Fire",0.405,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true,"FireBlastBonusDoT"],
+          ["Damage","Fire",0.045,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+          ["Damage","Fire",0.405,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Smashing",0.0732,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Fire",0.6591,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",0.0732,1,2.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
+          ["Damage","Fire",0.0732,1,2.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.8,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -21392,6 +23621,11 @@ export const EPIC_POOLS_RAW = {
   },
   "scrapper_ice_mastery": {
     "id": "scrapper_ice_mastery",
+    "setPath": "Epic.Scrapper_Ice_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Ice Mastery",
     "displayName": "Ice Mastery",
     "archetype": "scrapper",
@@ -21403,8 +23637,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Bolt",
         "fullName": "Epic.Scrapper_Ice_Mastery.Ice_Bolt",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Ice Bolt quickly pelts an enemy with small icy daggers; their chill Slows a foe's attacks and movement for a time. Fast, but little damage.",
         "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_icebolt.png",
@@ -21436,14 +23675,14 @@ export const EPIC_POOLS_RAW = {
           ["Movement","Jump",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","JumpHeight",0.2,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["RechargeTime",null,0.2,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Cold",1.2602,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Cold",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Cold",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Cold",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Cold",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Cold",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Cold",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -21463,6 +23702,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 6
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -21472,6 +23712,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.2,
               "table": "Ranged_Slow"
             },
@@ -21489,8 +23730,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frozen Spear",
         "fullName": "Epic.Scrapper_Ice_Mastery.Frozen_Spear",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "A focused spear of ice that can travel great distances with high Accuracy. Frozen Spear slows its target and has a high chance of encasing them in a frail block of ice, but can break free if disturbed. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
         "shortHelp": "Sniper, DMG(Cold), Foe Sleep, -Recharge, -SPD",
         "icon": "ice_mastery_frozenspear.png",
@@ -21519,9 +23765,36 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+          "stats": {
+            "castTime": 1.33,
+            "range": 80
+          },
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 1.75,
+              "table": "Melee_Damage"
+            }
+          ],
+          "atoms": [
+            ["Damage","Cold",1.75,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *"],
+            ["Mez","Sleep",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq"],
+            ["Damage","Fire",0.7875,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+            ["Damage","Cold",1.75,1,0,"Melee_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.9 < enttype target> critter eq && &&",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *",null,null,null,"ASTeamCrit","Class_Stalker"],
+            ["Movement","JumpHeight",0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+            ["RechargeTime",null,0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+            ["Movement","Run",0.2,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+            ["Movement","Fly",0.2,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+            ["Movement","Jump",0.2,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+          ]
+        },
         "atoms": [
           ["Damage","Cold",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Sleep",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.75],
+          ["Mez","Sleep",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Cold",1.78,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.9 < enttype target> critter eq && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Fire",1.602,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
           ["Movement","JumpHeight",0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["RechargeTime",null,0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Movement","Run",0.2,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -21533,7 +23806,7 @@ export const EPIC_POOLS_RAW = {
           "range": 150,
           "recharge": 24,
           "endurance": 14.352,
-          "activationTime": 1.33,
+          "activationTime": 4.33,
           "effectArea": "SingleTarget",
           "damage": {
             "type": "Cold",
@@ -21546,6 +23819,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 18
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -21560,6 +23834,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.2,
               "table": "Ranged_Slow"
             },
@@ -21571,14 +23846,20 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.2,
               "table": "Ranged_Slow"
             }
-          }
+          },
+          "interruptTime": 3
         }
       },
       {
         "name": "Shiver",
         "fullName": "Epic.Scrapper_Ice_Mastery.Shiver",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
         "icon": "ice_mastery_shiver.png",
@@ -21620,10 +23901,19 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 10,
           "buffDuration": 10,
           "durations": {
+            "movementCapDebuff": 10,
             "rechargeDebuff": 10,
             "slow": 10
           },
+          "movementCapDebuff": {
+            "runSpeed": {
+              "ignoreStrength": true,
+              "scale": 1,
+              "table": "Ranged_SpeedRunning"
+            }
+          },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.65,
             "table": "Ranged_Slow"
           },
@@ -21633,6 +23923,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.65,
               "table": "Ranged_Slow"
             },
@@ -21641,8 +23932,8 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "runSpeed": {
-              "scale": 1,
-              "table": "Ranged_SpeedRunning"
+              "scale": 0.65,
+              "table": "Ranged_Slow"
             }
           }
         }
@@ -21650,8 +23941,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frigid Wind",
         "fullName": "Epic.Scrapper_Ice_Mastery.Frigid_Wind",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Unleashes a cone of icy wind that can Slow your opponents' movement and attacks. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_frigidwind.png",
@@ -21683,14 +23979,14 @@ export const EPIC_POOLS_RAW = {
           ["Movement","Run",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Fly",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Jump",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Cold",1.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Cold",0.1958,1,3.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Cold",1.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Cold",1.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Cold",1.3704,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Cold",1.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Cold",1.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Cold",1.3704,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Cold",1.3704,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Cold",1.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Cold",1.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Cold",1.3704,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Cold",1.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Cold",1.3704,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Cold",1.3704,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -21715,6 +24011,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 10
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -21724,6 +24021,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.2,
               "table": "Ranged_Slow"
             },
@@ -21742,8 +24040,13 @@ export const EPIC_POOLS_RAW = {
         "name": "Ice Elemental",
         "fullName": "Epic.Scrapper_Ice_Mastery.Ice_Elemental",
         "procsAllowed": false,
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You can create a very powerful entity of animated ice at a targeted location. Ice Elemental possesses several ice powers to attack any nearby foes and can be healed and buffed like any teammate. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Summon Ice Elemental: Melee DMG(Lethal/Cold)",
         "icon": "ice_mastery_iceelemental.png",
@@ -21793,6 +24096,11 @@ export const EPIC_POOLS_RAW = {
   },
   "sentinel_dark_mastery": {
     "id": "sentinel_dark_mastery",
+    "setPath": "Epic.Sentinel_Dark_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Dark Mastery",
     "displayName": "Dark Mastery",
     "archetype": "sentinel",
@@ -21804,8 +24112,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Netherworld Tentacles",
         "fullName": "Epic.Sentinel_Dark_Mastery.Netherworld_Tentacles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their chance to hit.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize, -To Hit, -Fly",
         "icon": "darknesscontrol_livingshadows.png",
@@ -21835,15 +24148,15 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Negative",0.1088,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
-          ["Damage","Negative",0.1088,1,5.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
+          ["Damage","Negative",0.1088,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",0.1088,1,5.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["ToHit",null,0.75,1,8,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Movement","FlyMode",-1.6,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",0.2166,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",0.2166,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,true]
+          ["Damage","Negative",0.2166,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Negative",0.2166,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -21899,8 +24212,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You wrap your fists with Negative Energy channeled from the Netherworlds, then perform a Smite that deals more damage than Shadow Punch, but has a longer recharge time. Smite clouds the target's vision, lowering their chance to hit for a short time.",
         "shortHelp": "Melee, DMG(Smash/Negative), Foe -To Hit",
         "icon": "darknesscontrol_punch.png",
@@ -21926,15 +24244,15 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Smashing",0.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Smashing",0.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Smashing",0.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Smashing",0.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Smashing",0.3898,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",1.1693,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Smashing",0.3898,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",1.1693,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Smashing",0.3898,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Negative",1.1693,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Smashing",0.3898,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Damage","Negative",1.1693,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
         ],
         "effects": {
           "accuracy": 1,
@@ -21978,8 +24296,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Netherworld Grasp",
         "fullName": "Epic.Sentinel_Dark_Mastery.Netherworld_Grasp",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Mastery over the forces of the Netherworld allows you to summon dark tentacles to render your target helpless and inflicting moderate negative energy damage. Even if the target is powerful enough to resist the power's hold effect they will have their chance to hit reduced. You must be level 38 and have one other Dark Mastery Powers before selecting this power.<br>",
         "shortHelp": "Ranged, DMG(Negative), Foe Hold, -To Hit",
         "icon": "darknesscontrol_darkgrasp.png",
@@ -22008,13 +24331,13 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",2.809,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",2.809,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Mez","Held",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Negative",2.809,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Negative",2.809,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -22053,8 +24376,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Engulfing Darkness",
         "fullName": "Epic.Sentinel_Dark_Mastery.Engulfing_Darkness",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You release a burst of negative energy to foes around you dealing moderate Negative Energy damage, reducing their chance to hit and sapping their health over time. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE, DMG(Negative), Foe -To Hit, DoT(Negative)",
         "icon": "darknesscontrol_pbaoe.png",
@@ -22080,13 +24408,13 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",0.1,1,3.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Damage","Negative",0.1,1,3.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,-0.2,true,"SentCrit,SentCritAoE"],
           ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",0.9969,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",0.9969,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Negative",0.9969,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Negative",0.9969,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -22137,8 +24465,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Darkest Night",
         "fullName": "Epic.Sentinel_Dark_Mastery.Darkest_Night",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "darknesscontrol_debuff.png",
@@ -22190,6 +24523,7 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 10,
           "buffDuration": 0.75,
           "damageDebuff": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Ranged_Debuff_Dam"
           },
@@ -22207,6 +24541,11 @@ export const EPIC_POOLS_RAW = {
   },
   "sentinel_electricity_mastery": {
     "id": "sentinel_electricity_mastery",
+    "setPath": "Epic.Sentinel_Electricity_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Electricity Mastery",
     "displayName": "Electricity Mastery",
     "archetype": "sentinel",
@@ -22218,8 +24557,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Chain Fences",
         "fullName": "Epic.Sentinel_Electricity_Mastery.Chain_Fences",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can immobilize multiple foes in a chain of electricity, dealing minor damage to all foes in range and draining some endurance. This power also reduces Flight capacity in targets.",
         "shortHelp": "Ranged AoE, DMG(Energy), Foe Immobilize, -End, -Fly",
         "icon": "electriccontrol_chainfences.png",
@@ -22248,17 +24592,17 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",0.251,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",0.251,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Energy",0.251,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",0.251,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645],
           ["Movement","FlyMode",-1.6,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Endurance",null,3,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.338,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",0.338,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Energy",0.338,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",0.338,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -22313,8 +24657,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with a greater damage. Havoc Punch can may knock down targets, drain some Endurance from your target, or even overload their synapses, leaving them writhing for a moment. A portion of the drained Endurance may be given back to you. Disturbing an overloaded target will disperse the electrical charge and release them.",
         "shortHelp": "Melee, DMG(Smash/Energy), Foe Sleep, -End, Knock back",
         "icon": "electriccontrol_havokpunch.png",
@@ -22344,16 +24693,16 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Endurance",null,-0.1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Smashing",0.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Smashing",0.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",2,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Smashing",0.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Smashing",0.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Damage","Energy",2,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["Mez","Sleep",15,3,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",0.75,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
           ["Endurance",null,-4,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",2.57,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",2.57,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+          ["Damage","Energy",2.57,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",2.57,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["Mez","Sleep",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",0.75,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -22412,8 +24761,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Paralyzing Jolt",
         "fullName": "Epic.Sentinel_Electricity_Mastery.Paralyzing_Jolt",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You strike an enemy with a powerful jolt of electricity, disorienting him, draining some endurance and causing moderate damage over time. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe Stun, -End",
         "icon": "electriccontrol_teslacage.png",
@@ -22442,14 +24796,14 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Stunned",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Stunned",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",2.489,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",2.489,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Mez","Stunned",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Energy",2.489,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",2.489,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Stunned",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -22492,8 +24846,14 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shocking Field",
         "fullName": "Epic.Sentinel_Electricity_Mastery.Lightning_Field",
+        "targetsAffected": [
+          "Foe",
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "While active, you emit a storm of electricity that constantly damages all nearby foes. Enemies shocked by this field will continue to take electric damage over time for a while. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: PBAoE, DoT(Energy), Foe -End",
         "icon": "electriccontrol_lightningfield.png",
@@ -22519,11 +24879,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Endurance",null,-0.02,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
-          ["Damage","Energy",0.17,1,10,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,2.0999999046325684,1],
-          ["Damage","Energy",0.17,1,10,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,2.0999999046325684,1],
+          ["Damage","Energy",0.17,1,10,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,2.0999999046325684,1,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+          ["Damage","Energy",0.17,1,10,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,2.0999999046325684,1,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["Endurance",null,-1,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",true],
-          ["Damage","Energy",0.17,1,10,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,2.0999999046325684,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",0.17,1,10,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,2.0999999046325684,1,null,null,null,null,null,null,null,true]
+          ["Damage","Energy",0.17,1,10,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,2.0999999046325684,1,null,null,null,null,null,null,"enttype target> player eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",true],
+          ["Damage","Energy",0.17,1,10,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,2.0999999046325684,1,null,null,null,null,null,null,"enttype target> player eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -22559,8 +24919,14 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rehabilitating Circuit",
         "fullName": "Epic.Sentinel_Electricity_Mastery.Rehabilitating_Circuit",
+        "targetsAffected": [
+          "Friend",
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You can use your Rehabilitating Circuit to heal the wounds of your group. Although you can be healed by this power, you need to use it against an ally for the chain to affect you. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Chain, Team +Heal",
         "icon": "electriccontrol_heal.png",
@@ -22603,6 +24969,11 @@ export const EPIC_POOLS_RAW = {
   },
   "sentinel_fire_mastery": {
     "id": "sentinel_fire_mastery",
+    "setPath": "Epic.Sentinel_Fire_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Fire Mastery",
     "displayName": "Fire Mastery",
     "archetype": "sentinel",
@@ -22614,8 +24985,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Cages",
         "fullName": "Epic.Sentinel_Fire_Mastery.Fire_Cages",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Immobilizes a group of foes in Fire Cages, dealing Fire damage over time. More resilient foes may require multiple Fire Cages to Immobilize. Fire Cages is slower and less damaging than Ring of Fire, but can capture multiple targets.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Fire), Foe Immobilize",
         "icon": "firetrap_firecage.png",
@@ -22642,14 +25018,14 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.092,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
-          ["Damage","Fire",0.092,1,5.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
+          ["Damage","Fire",0.092,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.092,1,5.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["MezResist","Knockup",100,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Mez","Immobilized",1,5,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",0.1067,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.1067,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,true]
+          ["Damage","Fire",0.1067,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Fire",0.1067,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -22699,8 +25075,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "A slow but devastating attack. Cremate clobbers your foes with a massive 2 handed fiery smash that leaves your foe set on fire.",
         "shortHelp": "Melee, DMG(Smash/Fire)",
         "icon": "firetrap_punch.png",
@@ -22723,12 +25104,12 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Fire",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",1.64,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Fire",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",1.64,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["Damage","Fire",0.164,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Fire",0.164,1,3.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Fire",2.09,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",2.09,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Fire",0.164,1,3.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Damage","Fire",2.09,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Fire",2.09,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
         ],
         "effects": {
           "accuracy": 1,
@@ -22768,8 +25149,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Char",
         "fullName": "Epic.Sentinel_Fire_Mastery.Char",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Fire), Foe Hold",
         "icon": "firetrap_hold.png",
@@ -22795,12 +25181,12 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Fire",0.1,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Fire",0.1,1,4.2,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",0.4218,1,4.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.4218,1,4.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Fire",0.1,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.1,1,4.2,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.4218,1,4.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Fire",0.4218,1,4.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -22835,8 +25221,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Sword Circle",
         "fullName": "Epic.Sentinel_Fire_Mastery.Fire_Sword_Circle",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Mastery of your Fire Sword has enabled you to make an attack on every foe within melee distance. This will slash and burn your enemies, dealing moderate damage and setting them ablaze. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Melee, DMG(Fire/Lethal)",
         "icon": "firetrap_pbaoe.png",
@@ -22859,12 +25250,12 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Fire",1.424,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",1.424,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Fire",0.1,1,3.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Fire",1.5476,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",1.5476,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Fire",1.424,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",1.424,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Damage","Fire",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
+          ["Damage","Fire",0.1,1,3.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,-0.2,true,"SentCrit,SentCritAoE"],
+          ["Damage","Fire",1.5476,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Fire",1.5476,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -22907,8 +25298,14 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Warmth",
         "fullName": "Epic.Sentinel_Fire_Mastery.Warmth",
+        "targetsAffected": [
+          "Friend",
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You can use your Warmth to heal some of your wounds, and the wounds of your group. This power has a small radius, so your allies need to be near you if they wish to be affected. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE, Team +Heal",
         "icon": "firetrap_heal.png",
@@ -22950,6 +25347,11 @@ export const EPIC_POOLS_RAW = {
   },
   "sentinel_ice_mastery": {
     "id": "sentinel_ice_mastery",
+    "setPath": "Epic.Sentinel_Ice_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Ice Mastery",
     "displayName": "Ice Mastery",
     "archetype": "sentinel",
@@ -22961,8 +25363,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frostbite",
         "fullName": "Epic.Sentinel_Ice_Mastery.Frostbite",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Immobilizes a group of foes in icy traps. Deals minimal Cold damage over time and slightly Slows the targets. Slower and less damaging than Chilblain, but can capture multiple targets. More resilient foes may only be Slowed.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Cold), Foe Immobilize, -SPD, -Recharge",
         "icon": "ice_mastery_frostbite.png",
@@ -22991,8 +25398,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Cold",0.0837,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
-          ["Damage","Cold",0.0837,1,5.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
+          ["Damage","Cold",0.0837,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Cold",0.0837,1,5.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["Movement","Run",0.3,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Fly",0.3,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Jump",0.3,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -23002,8 +25409,8 @@ export const EPIC_POOLS_RAW = {
           ["MezResist","Knockback",100,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Mez","Immobilized",1,5,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Cold",0.2553,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,true],
-          ["Damage","Cold",0.2553,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,true]
+          ["Damage","Cold",0.2553,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Cold",0.2553,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -23041,6 +25448,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -23054,6 +25462,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Ranged_Slow"
             },
@@ -23074,8 +25483,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You create a blade of solid ice that deals higher damage then Frozen Fists. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.",
         "shortHelp": "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
         "icon": "ice_mastery_icesword.png",
@@ -23100,17 +25514,17 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Lethal",0.96,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Lethal",0.96,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Lethal",0.96,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Cold",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Lethal",0.96,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["Movement","JumpHeight",0.1,1,8,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["RechargeTime",null,0.1,1,8,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Movement","Run",0.1,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Fly",0.1,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Jump",0.1,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",2.131,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Cold",2.131,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Cold",2.131,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Cold",2.131,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
         ],
         "effects": {
           "accuracy": 1,
@@ -23147,6 +25561,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 8
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.1,
             "table": "Melee_Slow"
           },
@@ -23156,6 +25571,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.1,
               "table": "Melee_Slow"
             },
@@ -23173,8 +25589,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Block of Ice",
         "fullName": "Epic.Sentinel_Ice_Mastery.Block_of_Ice",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You can freeze a single foe in a Block of Ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be held, but all affected targets will be Slowed. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge",
         "icon": "ice_mastery_blockofice.png",
@@ -23202,9 +25623,9 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Cold",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Cold",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Movement","JumpHeight",0.3,1,18,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Movement","Run",0.3,1,18,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Fly",0.3,1,18,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -23214,9 +25635,9 @@ export const EPIC_POOLS_RAW = {
           ["MezResist","Knockback",100,1,10,"Melee_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Mez","Knockup",-100,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Mez","Knockback",-100,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-          ["Damage","Cold",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Cold",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Cold",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Cold",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -23248,6 +25669,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Slow"
           },
@@ -23257,6 +25679,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Melee_Slow"
             },
@@ -23274,8 +25697,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frozen Aura",
         "fullName": "Epic.Sentinel_Ice_Mastery.Frozen_Aura",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Your mastery of cold enables you to dramatically lower the temperature immediately around you. When you perform a Frozen Aura, nearby foes will be frozen within a fragile casing of ice and suffer a moderate amount of cold damage. These frozen foes will break free if attacked. Frozen Aura deals moderate damage. You must be level 41 and have one other Ice Mastery Powers before selecting this power.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "PBAoE, DMG(Cold), Foe Sleep",
         "icon": "ice_mastery_frozenaura.png",
@@ -23300,15 +25728,15 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Mez","Sleep",10,2,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",1.424,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",1.424,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Mez","Sleep",10,2,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Cold",1.424,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Cold",1.424,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["Mez","Sleep",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Cold",1.388,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Cold",1.388,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Mez","Sleep",10,2,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
-          ["Damage","Cold",1.424,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Cold",1.424,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Cold",1.388,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Cold",1.388,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Mez","Sleep",10,2,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
+          ["Damage","Cold",1.424,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
+          ["Damage","Cold",1.424,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -23340,8 +25768,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Snow Storm",
         "fullName": "Epic.Sentinel_Ice_Mastery.Snow_Storm",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes. The torrent winds of the Snow Storm are enough to bring down flying foes. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly",
         "icon": "ice_mastery_snowstorm.png",
@@ -23382,10 +25815,19 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 10,
           "buffDuration": 0.75,
           "durations": {
+            "movementCapDebuff": 0.75,
             "rechargeDebuff": 0.75,
             "slow": 0.75
           },
+          "movementCapDebuff": {
+            "runSpeed": {
+              "ignoreStrength": true,
+              "scale": 1,
+              "table": "Ranged_SpeedRunning"
+            }
+          },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
@@ -23399,6 +25841,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.5,
               "table": "Ranged_Slow"
             },
@@ -23407,8 +25850,8 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "runSpeed": {
-              "scale": 1,
-              "table": "Ranged_SpeedRunning"
+              "scale": 0.5,
+              "table": "Ranged_Slow"
             }
           }
         }
@@ -23417,6 +25860,11 @@ export const EPIC_POOLS_RAW = {
   },
   "sentinel_leviathan_mastery": {
     "id": "sentinel_leviathan_mastery",
+    "setPath": "Epic.Sentinel_Leviathan_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Leviathan Mastery",
     "displayName": "Leviathan Mastery",
     "archetype": "sentinel",
@@ -23428,8 +25876,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "School of Sharks",
         "fullName": "Epic.Sentinel_Leviathan_Mastery.School_of_Sharks",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -23456,17 +25909,17 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Negative",0.1339,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",0.0595,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Negative",0.1339,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",0.0595,1,7.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Negative",0.1339,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",0.0595,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",0.1339,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Damage","Negative",0.0595,1,7.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",0.124,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",0.1102,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",0.124,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",0.1102,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Negative",0.124,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Negative",0.1102,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Negative",0.124,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Damage","Negative",0.1102,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -23517,8 +25970,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target.",
         "shortHelp": "Melee, DMG(Smash), Foe Hold",
         "icon": "arachnos_patron_koblow.png",
@@ -23547,12 +26005,12 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Smashing",3.56,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Smashing",3.56,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Smashing",3.561,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Smashing",3.561,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Smashing",3.561,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Smashing",3.561,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
         ],
         "effects": {
           "accuracy": 1.2,
@@ -23587,8 +26045,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Spirit Shark Jaws",
         "fullName": "Epic.Sentinel_Leviathan_Mastery.Spirit_Shark_Jaws",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You can summon a massive Spirit Shark that will attack your foe from below. The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
@@ -23614,17 +26077,17 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Lethal",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Lethal",0.1,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Lethal",0.2,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Lethal",0.1,1,7.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Lethal",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Lethal",0.1,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Lethal",0.2,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Damage","Lethal",0.1,1,7.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Movement","FlyMode",-1.6,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-          ["Damage","Lethal",0.5861,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Lethal",0.2604,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Lethal",0.5861,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Lethal",0.2604,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Lethal",0.5861,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Lethal",0.2604,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Lethal",0.5861,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Damage","Lethal",0.2604,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -23679,8 +26142,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Arctic Breath",
         "fullName": "Epic.Sentinel_Leviathan_Mastery.Arctic_Breath",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this freezing acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take cold damage over time, and have their Defense, movement rate, and recharge rate reduced. This ice will stick to foes, causing them to fall down occasionally. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF, knock down",
         "icon": "arachnos_patron_coneslow.png",
@@ -23709,11 +26177,11 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Cold",0.4796,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",0.0977,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Cold",0.4796,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Cold",0.0977,1,4.25,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.03],
+          ["Damage","Cold",0.4796,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Cold",0.0977,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Cold",0.4796,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Damage","Cold",0.0977,1,4.25,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["Movement","JumpHeight",0.4,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["RechargeTime",null,0.4,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Movement","Run",0.4,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -23728,11 +26196,11 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Psionic",-1.5,1,10,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Toxic",-1.5,1,10,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Defense","All",1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Cold",0.6042,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Cold",0.1208,1,4.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Cold",0.6042,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Cold",0.1208,1,4.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true]
+          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.02],
+          ["Damage","Cold",0.6042,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Cold",0.1208,1,4.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Cold",0.6042,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Damage","Cold",0.1208,1,4.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -23783,43 +26251,53 @@ export const EPIC_POOLS_RAW = {
             "slow": 10
           },
           "knockback": {
+            "ignoreStrength": true,
             "scale": 0.1,
             "table": "Ranged_Ones"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.4,
             "table": "Ranged_Slow"
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Melee_Debuff_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Melee_Debuff_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Melee_Debuff_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Melee_Debuff_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Melee_Debuff_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Melee_Debuff_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Melee_Debuff_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Melee_Debuff_Res_Dmg"
             }
@@ -23830,6 +26308,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.4,
               "table": "Ranged_Slow"
             },
@@ -23847,8 +26326,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Coralax",
         "fullName": "Epic.Sentinel_Leviathan_Mastery.Summon_Coralax",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Captain Mako has shown you how to summon a Coralax Blue Hybrid to do your bidding. The Coralax are humans who have been infected with living coral. Your access to this Hybrid is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Summon Hybrid: Ranged DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -23895,6 +26379,11 @@ export const EPIC_POOLS_RAW = {
   },
   "sentinel_mace_mastery": {
     "id": "sentinel_mace_mastery",
+    "setPath": "Epic.Sentinel_Mace_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mace Mastery",
     "displayName": "Mace Mastery",
     "archetype": "sentinel",
@@ -23906,8 +26395,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Envelope",
         "fullName": "Epic.Sentinel_Mace_Mastery.Web_Envelope",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -23935,20 +26429,20 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Toxic",0.0837,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
-          ["Damage","Toxic",0.0837,1,5.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
-          ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-          ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Damage","Toxic",0.0837,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Toxic",0.0837,1,5.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["RechargeTime",null,0.2,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Movement","Run",0.2,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Movement","Fly",0.2,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-          ["Damage","Toxic",0.2503,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,true],
-          ["Damage","Toxic",0.2503,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,true],
-          ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Movement","JumpHeight",-1.5,1,15,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Toxic",0.2503,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Toxic",0.2503,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Movement","JumpHeight",-1.5,1,15,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -23986,6 +26480,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -24015,8 +26510,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You are capable of Pulverizing a foe with your Nullifier Mace dealing high damage, causing toxic damage over time. Pulverize will occasionally disorient foes as well.",
         "shortHelp": "Melee, High DMG(Smash), Minor DoT(Toxic), Foe Disorient",
         "icon": "arachnos_patron_pulverize.png",
@@ -24041,13 +26541,13 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Smashing",1.64,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Smashing",1.64,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["Damage","Toxic",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Toxic",0.1,1,4.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Toxic",0.1,1,4.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Smashing",2.09,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Smashing",2.09,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+          ["Damage","Smashing",2.09,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Smashing",2.09,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -24093,8 +26593,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Cocoon",
         "fullName": "Epic.Sentinel_Mace_Mastery.Web_Cocoon",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
         "icon": "arachnos_patron_targetedhold.png",
@@ -24122,18 +26627,18 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Toxic",0.1169,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Toxic",0.1169,1,7.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-          ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Damage","Toxic",0.1169,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Toxic",0.1169,1,7.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["RechargeTime",null,0.5,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Movement","Run",0.5,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Movement","Fly",0.5,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-          ["Damage","Toxic",0.345,1,7.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Toxic",0.345,1,7.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Movement","JumpHeight",-1.5,1,15,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Toxic",0.345,1,7.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Toxic",0.345,1,7.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Movement","JumpHeight",-1.5,1,15,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -24169,6 +26674,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
@@ -24195,8 +26701,14 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Coordinated Targeting",
         "fullName": "Epic.Sentinel_Mace_Mastery.Focused_Accuracy",
+        "targetsAffected": [
+          "Teammate",
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "When this power is activated, the Villain and allies focus their offensive to dramatically improve their accuracy. Additionally, Coordinated Targeting increases the team's Perception, allowing to better see stealthy foes. It also grants resistance to powers that DeBuff Accuracy. Coordinated Targeting is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Coordinated Targeting drains Endurance while active. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Team +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_teamtohitbuff.png",
@@ -24233,16 +26745,19 @@ export const EPIC_POOLS_RAW = {
           "radius": 25,
           "maxTargets": 16,
           "accuracyBuff": {
+            "ignoreStrength": true,
             "scale": 2,
             "table": "Ranged_Buff_ToHit"
           },
           "buffDuration": 0.75,
           "debuffResistance": {
             "perception": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Res_Boolean"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Ranged_Res_Boolean"
             }
@@ -24266,8 +26781,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Tarantula",
         "fullName": "Epic.Sentinel_Mace_Mastery.Summon_Tarantula",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion has granted you an Toxic Tarantula for you to command. Weaver One developed the Tarantula Exoskeleton Armor, which so radically transforms an Arachnos troop that hardly anything human is recognizable. Your access to this Tarantula is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Summon Tarantula: Ranged Moderate DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -24319,6 +26839,11 @@ export const EPIC_POOLS_RAW = {
   },
   "sentinel_mu_mastery": {
     "id": "sentinel_mu_mastery",
+    "setPath": "Epic.Sentinel_Mu_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mu Mastery",
     "displayName": "Mu Mastery",
     "archetype": "sentinel",
@@ -24330,8 +26855,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electrifying Fences",
         "fullName": "Epic.Sentinel_Mu_Mastery.Electrifying_Fences",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -24361,15 +26891,15 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Endurance",null,-0.04,1,6.2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",0.0729,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Energy",0.0729,1,7.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+          ["Damage","Energy",0.0729,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",0.0729,1,7.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Recovery",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
           ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-1,1,6.2,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.0929,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",0.0929,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true]
+          ["Damage","Energy",0.0929,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",0.0929,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -24422,8 +26952,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained.",
         "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "arachnos_patron_thunderstrike.png",
@@ -24453,21 +26988,21 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",2.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",2.98,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929],
-          ["Damage","Energy",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",0.42,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Energy",2.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",2.98,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",0.42,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["Endurance",null,-2,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",2.971,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",2.971,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",2.971,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",2.971,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",0.3506,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -24526,8 +27061,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Sentinel_Mu_Mastery.Electric_Shackles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
@@ -24556,15 +27096,15 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",0.15,1,6.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Energy",0.15,1,6.3,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Mez","Held",10,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Energy",0.15,1,6.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",0.15,1,6.3,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",10,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-1,1,8,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Endurance",null,4.29,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",0.4113,1,6.3,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",0.4113,1,6.3,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Energy",0.4113,1,6.3,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",0.4113,1,6.3,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -24619,8 +27159,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Static Discharge",
         "fullName": "Epic.Sentinel_Mu_Mastery.Static_Discharge",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -24647,13 +27192,13 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Energy",0.958,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Energy",0.958,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Energy",0.958,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",0.958,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["Recovery",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Endurance",null,4.29,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,0.10000000149011612],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",1.1803,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1.1803,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Energy",1.1803,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",1.1803,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -24698,8 +27243,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Adept",
         "fullName": "Epic.Sentinel_Mu_Mastery.Summon_Adept",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -24753,6 +27303,11 @@ export const EPIC_POOLS_RAW = {
   },
   "sentinel_ninja_mastery": {
     "id": "sentinel_ninja_mastery",
+    "setPath": "Epic.Sentinel_Ninja_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Weapon Mastery",
     "displayName": "Weapon Mastery",
     "archetype": "sentinel",
@@ -24764,8 +27319,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Tashibishi",
         "fullName": "Epic.Sentinel_Ninja_Mastery.Caltrops",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You toss a handful of Caltrops at a targeted location and spread the tiny metal spikes over a large area. Any villains that pass over the Caltrops will be forced to move at a slower rate. They will also take some trivial Lethal damage over time.",
         "shortHelp": "Ranged (Location AoE), DoT(Lethal), Foe -Speed",
         "icon": "ninjatools_slow.png",
@@ -24814,8 +27374,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You perform a standard attack with your Ninja Blade. This attack is slower than Gambler's Cut, but deals more lethal damage. Sting of the Wasp can reduce a target's Defense, making them easier to hit.",
         "shortHelp": "Melee, DMG(Lethal), Foe -Def",
         "icon": "ninjatools_katanalight.png",
@@ -24842,11 +27407,11 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Lethal",1.16,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Lethal",1.619,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Lethal",1.619,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Lethal",1.16,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+          ["Damage","Lethal",1.619,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Lethal",1.619,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -24880,8 +27445,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Paralyzing Dart",
         "fullName": "Epic.Sentinel_Ninja_Mastery.Paralizing_Dart",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Paralyzing Darts do minor toxic damage over time and incapacitate your foe. You must be level 38 and have one other Weapon Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Toxic), Foe Hold",
         "icon": "ninjatools_hold.png",
@@ -24908,17 +27478,17 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Toxic",0.25,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Toxic",0.25,1,3.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Toxic",0.25,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Toxic",0.25,1,3.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Movement","JumpHeight",0.3,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Movement","Run",0.3,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Fly",0.3,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Movement","Jump",0.3,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["RechargeTime",null,0.3,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-          ["Damage","Toxic",0.6025,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Toxic",0.6025,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Toxic",0.6025,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Toxic",0.6025,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -24954,6 +27524,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           },
@@ -24963,6 +27534,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Ranged_Slow"
             },
@@ -24983,8 +27555,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense. You must be level 41 and have one other Weapon Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Melee, DMG(Lethal), Foe -Def",
         "icon": "ninjatools_katanaaoe.png",
@@ -25011,13 +27588,13 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
           ["Damage","Lethal",0.12,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Lethal",0.12,1,2.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Lethal",1.2732,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Lethal",1.2732,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Lethal",0.12,1,2.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Damage","Lethal",1.2732,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Lethal",1.2732,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -25066,8 +27643,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Kemuridama",
         "fullName": "Epic.Sentinel_Ninja_Mastery.Kemuridama",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You activate a kemuridama smoke bomb at your feet. The resulting flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. A mixture of toxins in the smoke also weaken your foes, reducing how much damage they inflict in addition to lowering their chance to hit. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.<br>",
         "shortHelp": "PBAoE, Foe Placate -DMG -To Hit",
         "icon": "ninjatools_placate.png",
@@ -25123,6 +27705,7 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 10,
           "buffDuration": 30,
           "damageDebuff": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Ranged_Debuff_Dam"
           },
@@ -25144,6 +27727,11 @@ export const EPIC_POOLS_RAW = {
   },
   "sentinel_psionic_mastery": {
     "id": "sentinel_psionic_mastery",
+    "setPath": "Epic.Sentinel_Psionic_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Psionic Mastery",
     "displayName": "Psionic Mastery",
     "archetype": "sentinel",
@@ -25155,8 +27743,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mass Hypnosis",
         "fullName": "Epic.Sentinel_Psionic_Mastery.Mass_Hypnosis",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Hypnotizes a group of foes at a distance and puts them to Sleep. The targets will remain asleep for some time, but will awaken if attacked. This power deals no damage, but if done discreetly, the targets will never be aware of your presence.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
         "icon": "mentalcontrol_masshypnosis.png",
@@ -25179,8 +27772,8 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "atoms": [
-          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
-          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
+          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
           ["Mez","Sleep",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -25205,8 +27798,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wreaks havoc on your foes synapses, dealing high Psionic Damage while reducing their attack speed.",
         "shortHelp": "Melee, DMG(Psionic), Target -Recharge",
         "icon": "mentalcontrol_mindprobe.png",
@@ -25229,11 +27827,11 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Psionic",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Psionic",1.96,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Psionic",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Psionic",1.96,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["RechargeTime",null,0.4,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-          ["Damage","Psionic",2.019,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Psionic",2.019,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Psionic",2.019,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Psionic",2.019,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
         ],
         "effects": {
           "accuracy": 1,
@@ -25259,6 +27857,7 @@ export const EPIC_POOLS_RAW = {
             "rechargeDebuff": 6
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.4,
             "table": "Melee_Slow"
           }
@@ -25267,8 +27866,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dominate",
         "fullName": "Epic.Sentinel_Psionic_Mastery.Dominate",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in their own mind and unable to defend themselves. You must be level 38 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Psionic), Foe Hold",
         "icon": "mentalcontrol_command.png",
@@ -25294,12 +27898,12 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Psionic",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Held",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Psionic",2.13,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Psionic",2.13,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Psionic",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Psionic",2.13,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Psionic",2.13,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
         ],
         "effects": {
           "accuracy": 1,
@@ -25330,8 +27934,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Psychic Shockwave",
         "fullName": "Epic.Sentinel_Psionic_Mastery.Psychic_Shockwave",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Psychic Shockwave is a devastating Psionic attack that wracks the minds of all nearby foes. Affected foes may have a reduced attack rate and may be left Disoriented. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE, DMG(Psionic), Foe Disorient -Recharge",
         "icon": "mentalcontrol_psionicshockwave.png",
@@ -25356,12 +27965,12 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Psionic",1.0954,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Psionic",1.0954,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Psionic",1.0954,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Psionic",1.0954,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
           ["RechargeTime",null,0.5,1,20,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-          ["Damage","Psionic",0.7935,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Psionic",0.7935,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+          ["Damage","Psionic",0.7935,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Psionic",0.7935,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -25389,6 +27998,7 @@ export const EPIC_POOLS_RAW = {
             "rechargeDebuff": 20
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Slow"
           },
@@ -25402,8 +28012,14 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Link Minds",
         "fullName": "Epic.Sentinel_Psionic_Mastery.Link_Minds",
+        "targetsAffected": [
+          "Teammate",
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Your Mind Link Power will enable you to link the minds of all your teammates who are near you for the next 90 seconds. This shared link improves your team's chance to hit foes, your defensive abilities and reduces psionic damage. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
         "icon": "mentalcontrol_mindlink.png",
@@ -25514,6 +28130,11 @@ export const EPIC_POOLS_RAW = {
   },
   "sentinel_soul_mastery": {
     "id": "sentinel_soul_mastery",
+    "setPath": "Epic.Sentinel_Soul_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Soul Mastery",
     "displayName": "Soul Mastery",
     "archetype": "sentinel",
@@ -25525,8 +28146,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Tentacles",
         "fullName": "Epic.Sentinel_Soul_Mastery.Soul_Tentacles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -25553,17 +28179,17 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Negative",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Negative",0.113,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",0.0837,1,7.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Negative",0.113,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Negative",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",0.113,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",0.0837,1,7.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Damage","Negative",0.113,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",0.1125,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",0.1588,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",0.1125,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",0.1588,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Negative",0.1125,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Negative",0.1588,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Negative",0.1125,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+          ["Damage","Negative",0.1588,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
         ],
         "effects": {
           "accuracy": 1,
@@ -25614,8 +28240,13 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.",
         "shortHelp": "Melee, DMG(Negative), Foe Immobilize, -To Hit",
         "icon": "arachnos_patron_midnightgrasp.png",
@@ -25644,14 +28275,14 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Negative",2.21,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",2.21,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Negative",2.21,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",2.21,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["ToHit",null,0.75,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Damage","Negative",0.11,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1],
-          ["Damage","Negative",0.11,1,3.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1],
+          ["Damage","Negative",0.11,1,3.1,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["Mez","Immobilized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",2.499,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",2.499,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Negative",2.499,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Negative",2.499,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
         ],
         "effects": {
           "accuracy": 1,
@@ -25704,8 +28335,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Storm",
         "fullName": "Epic.Sentinel_Soul_Mastery.Soul_Storm",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
@@ -25731,12 +28367,12 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Damage","Negative",0.11,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Damage","Negative",0.11,1,10,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Negative",0.2879,1,10,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",0.2879,1,10,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-          ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Damage","Negative",0.11,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",0.11,1,10,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Negative",0.2879,1,10,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Negative",0.2879,1,10,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -25771,8 +28407,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Darkest Night",
         "fullName": "Epic.Sentinel_Soul_Mastery.Darkest_Night",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "arachnos_patron_aoedamagedebuff.png",
@@ -25824,6 +28465,7 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 10,
           "buffDuration": 0.75,
           "damageDebuff": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Ranged_Debuff_Dam"
           },
@@ -25840,8 +28482,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Mistress",
         "fullName": "Epic.Sentinel_Soul_Mastery.Summon_Mistress",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Ghost Widow has assigned a Fortunata Mistress for you to command. Arguably, the most powerful of the Fortunatas, these rare few have mastered numerous psychic abilities and risen to the top of Lord Recluse's beautiful Black Widows. Your access to this Fortunata is very limited. You can only summon her once every 15 minutes and she will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Summon Fortunata Mistress: Ranged DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -25895,6 +28542,11 @@ export const EPIC_POOLS_RAW = {
   },
   "stalker_leviathan_mastery": {
     "id": "stalker_leviathan_mastery",
+    "setPath": "Epic.Stalker_Leviathan_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Leviathan Mastery",
     "displayName": "Leviathan Mastery",
     "archetype": "stalker",
@@ -25906,8 +28558,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Spirit Shark",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Spirit_Shark",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
         "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
@@ -25933,25 +28590,25 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
+          ["Damage","Fire",0.378,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Fire",0.063,1,3.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Lethal",1.4,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",0.7,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Lethal",1.4,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == &&",true],
-          ["Damage","Lethal",1.4,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",true],
-          ["Damage","Lethal",2.32,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> Class_Scrapper == &&",true],
-          ["Damage","Fire",0.378,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.063,1,3.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,true],
-          ["Damage","Lethal",1.4,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Lethal",1.4,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Lethal",2.32,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Lethal",2.32,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-          ["Damage","Lethal",0.14,1,3.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 ==",true],
-          ["Damage","Lethal",0.14,1,3.2,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0.8 * 1 + @StdResult *"],
-          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true],
+          ["Damage","Lethal",0.14,1,3.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 == &&"],
+          ["Damage","Lethal",1.4,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Lethal",1.4,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Lethal",2.32,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Lethal",1.4,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Lethal",2.32,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Lethal",2.32,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"],
+          ["Damage","Lethal",0.14,1,3.2,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0.8 * 1 + @StdResult *"],
+          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
           ["Damage","Lethal",1.0694,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",0.7,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Lethal",0.1782,1,3.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 ==",true],
-          ["Damage","Lethal",0.1075,1,3.2,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true],
-          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true]
+          ["Damage","Lethal",0.1782,1,3.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 == &&",true],
+          ["Damage","Lethal",0.1075,1,3.2,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true],
+          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
         ],
         "effects": {
           "accuracy": 1,
@@ -25960,22 +28617,55 @@ export const EPIC_POOLS_RAW = {
           "endurance": 7.28,
           "activationTime": 2,
           "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Lethal",
-            "scale": 0.84,
-            "table": "Melee_Damage"
-          },
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.84,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.14,
+              "table": "Melee_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          ],
           "knockback": {
             "scale": 0.7,
             "table": "Melee_Knockback"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "leviathan_hunger-1plus",
+            "label": "Leviathan Hunger (1+ stacks)",
+            "scope": "global",
+            "defaultActive": false,
+            "ownedPower": {
+              "path": "Temporary_Powers.Temporary_Powers.Leviathan_Hunger",
+              "count": 1
+            },
+            "damage": {
+              "type": "Lethal",
+              "scale": 0.14,
+              "table": "Melee_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          }
+        ]
       },
       {
         "name": "Water Spout",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Water_Spout",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes.",
         "shortHelp": "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet",
         "icon": "arachnos_patron_dropknockback.png",
@@ -26024,8 +28714,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hibernate",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Hibernate",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -26052,14 +28747,14 @@ export const EPIC_POOLS_RAW = {
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Immobilized",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
+          ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"]
         ],
         "effects": {
           "accuracy": 1,
@@ -26078,6 +28773,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 0.75
           },
           "immobilize": {
+            "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
             "table": "Melee_Ones"
@@ -26092,15 +28788,18 @@ export const EPIC_POOLS_RAW = {
           },
           "mezResistance": {
             "knockback": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             },
             "knockup": {
+              "ignoreStrength": true,
               "scale": 10,
               "table": "Melee_Ones"
             }
           },
           "onlyAffectsSelf": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           },
@@ -26120,6 +28819,7 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "untouchable": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones"
           }
@@ -26128,8 +28828,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Spirit Shark Jaws",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Spirit_Shark_Jaws",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You can summon a massive Spirit Shark that will attack your foe from below. The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
@@ -26159,18 +28864,18 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Lethal",0.1,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Movement","FlyMode",-1.6,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+          ["Damage","Fire",0.09,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Fire",0.045,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Lethal",0.5861,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Lethal",0.2604,1,7.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == &&",true],
-          ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",true],
-          ["Damage","Lethal",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> Class_Scrapper == &&",true],
-          ["Damage","Fire",0.09,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.045,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,true],
-          ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Lethal",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Lethal",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Lethal",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Lethal",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Lethal",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -26213,8 +28918,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Guardian",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Summon_Guardian",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Captain Mako has shown you how to summon a Coralax Guardian Warder to do your bidding. These creatures are composed of living coral made from the sea-goddess Merulina. Your access to this Guardian is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Summon Warder: Ranged DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
@@ -26267,6 +28977,11 @@ export const EPIC_POOLS_RAW = {
   },
   "stalker_mace_mastery": {
     "id": "stalker_mace_mastery",
+    "setPath": "Epic.Stalker_Mace_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mace Mastery",
     "displayName": "Mace Mastery",
     "archetype": "stalker",
@@ -26278,8 +28993,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mace Blast",
         "fullName": "Epic.Stalker_Mace_Mastery.Mace_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Bane Mace is capable of firing a bolt of kinetic energy. The blast is powerful enough that it may knockback some foes. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
         "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
@@ -26306,17 +29026,17 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Energy",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",0.7,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
+          ["Mez","Knockback",0.7,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.9 < enttype target> critter eq && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Energy",2.16,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",0.7,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Energy",2.28,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"kMeter source> 0.9 < enttype target> critter eq &&",true],
-          ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0.0 > enttype target> critter eq &&",true],
-          ["Damage","Energy",2.28,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> 0.9 < kHeld target> 0.0 > kSleep target> 0.0 > || && enttype target> player eq &&",true],
-          ["Damage","Energy",2.28,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0.0 > enttype target> player eq &&",true]
+          ["Mez","Knockback",0.7,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper eq arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper eq arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Energy",2.28,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper eq enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Energy",2.28,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.9 < kHeld target> 0.0 > kSleep target> 0.0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Energy",2.28,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -26334,13 +29054,34 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.7,
             "table": "Melee_Ones"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "conditional",
+            "label": "Conditional",
+            "scope": "per-power",
+            "defaultActive": false,
+            "casterArchetypes": [
+              "Class_Stalker"
+            ],
+            "damage": {
+              "type": "Energy",
+              "scale": 1.32,
+              "table": "Melee_InherentDamage"
+            }
+          }
+        ]
       },
       {
         "name": "Mace Beam",
         "fullName": "Epic.Stalker_Mace_Mastery.Mace_Beam",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Fires an extremely long range and accurate beam of kinetic Energy from the Bane Mace that deals tremendous damage and knocks the target back.This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
         "shortHelp": "Sniper, DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
@@ -26367,16 +29108,38 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+          "stats": {
+            "castTime": 2,
+            "range": 80
+          },
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1.75,
+              "table": "Melee_Damage"
+            }
+          ],
+          "atoms": [
+            ["Damage","Energy",1.75,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *"],
+            ["Mez","Knockback",2,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+            ["Damage","Energy",1.75,1,0,"Melee_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.9 < enttype target> critter eq && &&",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *",null,null,null,"ASTeamCrit","Class_Stalker"],
+            ["Damage","Fire",0.7875,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"]
+          ]
+        },
         "atoms": [
           ["Damage","Energy",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",2,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+          ["Mez","Knockback",2,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Energy",1.78,1,0,"Melee_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.9 < enttype target> critter eq && &&",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *",null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Fire",1.602,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"]
         ],
         "effects": {
           "accuracy": 1.05,
           "range": 150,
           "recharge": 24,
           "endurance": 14.352,
-          "activationTime": 2,
+          "activationTime": 5,
           "effectArea": "SingleTarget",
           "damage": {
             "type": "Energy",
@@ -26386,14 +29149,20 @@ export const EPIC_POOLS_RAW = {
           "knockback": {
             "scale": 2,
             "table": "Melee_Ones"
-          }
+          },
+          "interruptTime": 3
         }
       },
       {
         "name": "Disruptor Blast",
         "fullName": "Epic.Stalker_Mace_Mastery.Disruptor_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 44 and have two other Mace Mastery powers before selecting this power. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -26420,17 +29189,17 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
+          ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Energy",0.9477,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",true],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == &&",true],
-          ["Damage","Energy",0.9477,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> Class_Scrapper == &&",true],
-          ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Energy",0.9477,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Energy",0.9477,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Energy",0.9477,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Scrapper"],
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Energy",0.9477,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Energy",0.9477,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -26455,8 +29224,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Cocoon",
         "fullName": "Epic.Stalker_Mace_Mastery.Web_Cocoon",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
         "icon": "arachnos_patron_targetedhold.png",
@@ -26491,16 +29265,16 @@ export const EPIC_POOLS_RAW = {
           ["Movement","Run",0.5,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Movement","Fly",0.5,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+          ["Damage","Toxic",0.935,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Toxic",0.345,1,7.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Movement","JumpHeight",-1.5,1,15,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Toxic",0.935,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",true],
-          ["Damage","Toxic",0.935,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == &&",true],
-          ["Damage","Toxic",2.76,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> Class_Scrapper == &&",true],
-          ["Damage","Toxic",0.935,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Toxic",0.935,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Toxic",2.76,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Toxic",2.76,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Toxic",0.935,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Toxic",0.935,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Toxic",2.76,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Scrapper"],
+          ["Damage","Toxic",0.935,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Toxic",2.76,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Toxic",2.76,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -26527,6 +29301,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
@@ -26553,8 +29328,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Spiderlings",
         "fullName": "Epic.Stalker_Mace_Mastery.Summon_Spiderlings",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion has granted you access to a small squadron of Arachnobot Spiderlings. Three Spiderlings that are one level less than you will show up when summoned. Your access to these Arachnobots is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Summon Spiderlings: Ranged DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -26605,6 +29385,11 @@ export const EPIC_POOLS_RAW = {
   },
   "stalker_mu_mastery": {
     "id": "stalker_mu_mastery",
+    "setPath": "Epic.Stalker_Mu_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mu Mastery",
     "displayName": "Mu Mastery",
     "archetype": "stalker",
@@ -26616,8 +29401,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mu Bolts",
         "fullName": "Epic.Stalker_Mu_Mastery.Mu_Bolts",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can quickly hurl small bolts of Mu electricity at foes, dealing some damage and draining some Endurance. Some of this Endurance may transfer back to you. Mu Bolts deals light damage but recharges quickly.",
         "shortHelp": "Ranged, DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
@@ -26647,16 +29437,16 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
           ["Endurance",null,3.25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
+          ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Energy",1.459,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-0.125,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",true],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == &&",true],
-          ["Damage","Energy",1.459,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> Class_Scrapper == &&",true],
-          ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Energy",1.459,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Energy",1.459,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Energy",1.459,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Energy",1.459,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Energy",1.459,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -26695,8 +29485,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Zapp",
         "fullName": "Epic.Stalker_Mu_Mastery.Zapp",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "A focused blast of Mu electrical energy that can travel great distances with high Accuracy. Zapp drains Endurance, some of which may transfer back to you.This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
         "shortHelp": "Sniper, DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
@@ -26723,18 +29518,42 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+          "stats": {
+            "castTime": 1.33,
+            "range": 80
+          },
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1.75,
+              "table": "Melee_Damage"
+            }
+          ],
+          "atoms": [
+            ["Damage","Energy",1.75,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *"],
+            ["Endurance",null,-0.14,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+            ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
+            ["Endurance",null,8.97,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
+            ["Damage","Fire",0.7875,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+            ["Damage","Energy",1.75,1,0,"Melee_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.9 < enttype target> critter eq && &&",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *",null,null,null,"ASTeamCrit","Class_Stalker"]
+          ]
+        },
         "atoms": [
           ["Damage","Energy",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Endurance",null,-0.14,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
-          ["Endurance",null,8.97,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896]
+          ["Endurance",null,8.97,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
+          ["Damage","Energy",1.78,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq kMeter source> 0.9 < enttype target> critter eq && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Fire",1.602,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"]
         ],
         "effects": {
           "accuracy": 1,
           "range": 150,
           "recharge": 24,
           "endurance": 14.352,
-          "activationTime": 1.33,
+          "activationTime": 4.33,
           "effectArea": "SingleTarget",
           "damage": {
             "type": "Energy",
@@ -26756,14 +29575,20 @@ export const EPIC_POOLS_RAW = {
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
-          }
+          },
+          "interruptTime": 3
         }
       },
       {
         "name": "Ball Lightning",
         "fullName": "Epic.Stalker_Mu_Mastery.Ball_Lightning",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -26793,18 +29618,18 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.18,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
+          ["Damage","Fire",0.135,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Fire",0.081,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Energy",1.02,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Energy",0.2242,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.1046,1,3.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-1.25,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",1.02,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",true],
-          ["Damage","Energy",1.02,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == &&",true],
-          ["Damage","Energy",0.7474,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> Class_Scrapper == &&",true],
-          ["Damage","Fire",0.135,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,true],
-          ["Damage","Fire",0.081,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1.02,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Energy",1.02,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Energy",0.7474,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Energy",0.7474,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Energy",1.02,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Energy",1.02,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Energy",0.7474,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Scrapper"],
+          ["Damage","Energy",1.02,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Energy",0.7474,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Energy",0.7474,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -26846,8 +29671,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Stalker_Mu_Mastery.Electric_Shackles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
@@ -26880,17 +29710,17 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Recovery",null,-1,1,8,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Endurance",null,4.29,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
+          ["Damage","Fire",0.0675,1,6.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Energy",1.05,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.4113,1,6.3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Endurance",null,-1.25,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Energy",1.05,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",true],
-          ["Damage","Energy",1.05,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == &&",true],
-          ["Damage","Energy",2.879,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> Class_Scrapper == &&",true],
-          ["Damage","Fire",0.0675,1,6.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,true],
-          ["Damage","Energy",1.05,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Energy",1.05,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Energy",2.879,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Energy",2.879,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Energy",1.05,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Energy",1.05,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Energy",2.879,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq arch source> Class_Scrapper == && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Scrapper"],
+          ["Damage","Energy",1.05,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Energy",2.879,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Energy",2.879,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -26936,8 +29766,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Adept",
         "fullName": "Epic.Stalker_Mu_Mastery.Summon_Adept",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -26990,6 +29825,11 @@ export const EPIC_POOLS_RAW = {
   },
   "stalker_soul_mastery": {
     "id": "stalker_soul_mastery",
+    "setPath": "Epic.Stalker_Soul_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Soul Mastery",
     "displayName": "Soul Mastery",
     "archetype": "stalker",
@@ -27001,8 +29841,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Blast",
         "fullName": "Epic.Stalker_Soul_Mastery.Dark_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy.",
         "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
@@ -27031,15 +29876,15 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,6,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper ==",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Negative",0.8575,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Negative",0.8575,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Negative",0.8575,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Negative",0.8575,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",0.8575,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,null,"Class_Stalker"],
+          ["Damage","Negative",0.8575,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Negative",0.8575,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -27066,8 +29911,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Moonbeam",
         "fullName": "Epic.Stalker_Soul_Mastery.Moonbeam",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's Accuracy.This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
         "shortHelp": "Sniper, DMG(Negative), Target -ACC",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
@@ -27095,16 +29945,38 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+          "stats": {
+            "castTime": 1.33,
+            "range": 80
+          },
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1.75,
+              "table": "Melee_Damage"
+            }
+          ],
+          "atoms": [
+            ["Damage","Negative",1.75,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *"],
+            ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+            ["Damage","Fire",0.7875,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+            ["Damage","Negative",1.75,1,0,"Melee_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.314285714 * 1 + @StdResult *",null,null,null,"ASTeamCrit","Class_Stalker"]
+          ]
+        },
         "atoms": [
           ["Damage","Negative",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+          ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Damage","Fire",2.025,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"arch source> Class_Scrapper eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Negative",1.78,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker eq enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
           "range": 150,
           "recharge": 24,
           "endurance": 14.352,
-          "activationTime": 1.33,
+          "activationTime": 4.33,
           "effectArea": "SingleTarget",
           "damage": {
             "type": "Negative",
@@ -27118,14 +29990,20 @@ export const EPIC_POOLS_RAW = {
           "tohitDebuff": {
             "scale": 0.75,
             "table": "Melee_DeBuff_ToHit"
-          }
+          },
+          "interruptTime": 3
         }
       },
       {
         "name": "Shadow Meld",
         "fullName": "Epic.Stalker_Soul_Mastery.Shadow_Meld",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Your mastery over the shadows allows you to become a living shadow entity for a short time, increasing your defense to all attacks. You must be level 35 and have Dark Blast or Moonbeam before selecting this power. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Self: +Def(All)",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -27218,6 +30096,7 @@ export const EPIC_POOLS_RAW = {
           },
           "stealth": {
             "translucency": {
+              "ignoreStrength": true,
               "scale": 0,
               "table": "Melee_Ones"
             }
@@ -27227,8 +30106,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Storm",
         "fullName": "Epic.Stalker_Soul_Mastery.Soul_Storm",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
@@ -27256,16 +30140,16 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Negative",0.11,1,10,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.0495,1,10,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
+          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Fire",0.0495,1,10,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Negative",0.2879,1,10,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Negative",2.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-          ["Damage","Negative",2.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Negative",2.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Negative",2.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Scrapper"],
+          ["Damage","Negative",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,null,"Class_Stalker"],
+          ["Damage","Negative",2.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Negative",2.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,
@@ -27300,8 +30184,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Widow",
         "fullName": "Epic.Stalker_Soul_Mastery.Summon_Widow",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Ghost Widow has assigned a beautiful but deadly Blood Widow assassins for you to command. Their weapons of choice include wrist retractable mounted razors and darts, all tipped in deadly poison. Your access to this Blood Widow is very limited, and you can only summon her once every 15 minutes and she will leave after 4 minutes, until defeated, or until you leave a zone or mission. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Summon Night Widow: Melee DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -27350,6 +30239,11 @@ export const EPIC_POOLS_RAW = {
   },
   "stone_mastery": {
     "id": "stone_mastery",
+    "setPath": "Epic.Stone_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Earth Mastery",
     "displayName": "Earth Mastery",
     "archetype": "controller",
@@ -27361,8 +30255,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hurl Boulder",
         "fullName": "Epic.Stone_Mastery.Hurl_Boulder",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack is close ranged, deals high damage, and can knock foes back.",
         "shortHelp": "Ranged, DMG(Smash), Foe Knockback",
         "icon": "earth_mastery_hurlboulder.png",
@@ -27389,11 +30288,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
-          ["Damage","Smashing",1.64,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true],
+          ["Mez","Knockback",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Smashing",1.64,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Smashing",2.44,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Smashing",2.44,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true],
-          ["Mez","Knockback",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true]
+          ["Damage","Smashing",2.44,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Mez","Knockback",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -27416,8 +30315,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fissure",
         "fullName": "Epic.Stone_Mastery.Fissure",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "This powerful stomp can cause a seismic disturbance. This will crack the Earth itself and send a Fault towards a targeted foe. Affected targets take moderate damage and may be thrown in the air and possibly Disoriented.",
         "shortHelp": "Close (Targeted AoE), DMG(Lethal/Smash), Foe Knockback, Disorient",
         "icon": "earth_mastery_fissure.png",
@@ -27446,14 +30350,14 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Smashing",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
-          ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5],
-          ["Mez","Stunned",8,1,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5],
-          ["Damage","Smashing",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true],
+          ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Stunned",8,1,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Smashing",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Smashing",0.8215,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Smashing",0.8215,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true],
-          ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true],
-          ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true]
+          ["Damage","Smashing",0.8215,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"],
+          ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
+          ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -27483,8 +30387,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rock Armor",
         "fullName": "Epic.Stone_Mastery.Stone_Armor",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Your skin becomes stone while this power is active. Stone Armor makes you highly resistant to Smashing and Lethal attacks. They are less likely to land and affect you. You must be level 38 and have one other Earth Mastery Powers before selecting this power.<br>",
         "shortHelp": "Toggle: Self +DEF(Lethal, Smashing)",
         "icon": "earth_mastery_rockarmor.png",
@@ -27553,8 +30462,13 @@ export const EPIC_POOLS_RAW = {
           "Range"
         ],
         "procsOnlyOnMainTarget": true,
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright. You must be level 41 and have one other Earth Mastery Powers before selecting this power.",
         "shortHelp": "Melee, DMG(Smash), Foe Hold",
         "icon": "earth_mastery_seismicsmash.png",
@@ -27581,10 +30495,10 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",2.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Held",8,4,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Smashing",2.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true],
+          ["Damage","Smashing",2.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Smashing",2.57,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Held",1,4,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Smashing",2.57,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true]
+          ["Damage","Smashing",2.57,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"]
         ],
         "effects": {
           "accuracy": 1.2,
@@ -27608,8 +30522,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Embrace of the Earth",
         "fullName": "Epic.Stone_Mastery.Earths_Embrace",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "You are so connected to the Earth, you can draw upon its power to add to your own health. Activating this power increases your maximum Hit Points, and grants you resistance to Toxic Damage. You must be level 44 and have two other Earth Mastery Powers before selecting this power.",
         "shortHelp": "Self +HP",
         "icon": "earth_mastery_earthsembrace.png",
@@ -27659,6 +30578,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_HealSelf"
           },
           "maxHPBuffUnenhanced": {
+            "ignoreStrength": true,
             "scale": 2,
             "table": "Melee_HealSelf"
           },
@@ -27678,6 +30598,11 @@ export const EPIC_POOLS_RAW = {
   },
   "tank_dark_mastery": {
     "id": "tank_dark_mastery",
+    "setPath": "Epic.Tank_Dark_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Dark Mastery",
     "displayName": "Dark Mastery",
     "archetype": "tanker",
@@ -27689,8 +30614,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Penumbral Grasp",
         "fullName": "Epic.Tank_Dark_Mastery.Penumbral_Grasp",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Penumbral Grasp deals moderate Negative Energy damage, reduces their chance to hit and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.",
         "shortHelp": "Ranged, DOT(Negative), Foe Immobilize, -To Hit",
         "icon": "dark_mastery_penumbralgrasp.png",
@@ -27759,8 +30689,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Petrifying Gaze",
         "fullName": "Epic.Tank_Dark_Mastery.Petrifying_Gaze",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless.",
         "shortHelp": "Ranged, DMG(Negative), Foe Hold",
         "icon": "dark_mastery_petrifyinggaze.png",
@@ -27813,8 +30748,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Blast",
         "fullName": "Epic.Tank_Dark_Mastery.Dark_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy. You must be level 35 and have Torrent or Petrifying Gaze before selecting this power. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
         "icon": "dark_mastery_darkblast.png",
@@ -27843,7 +30783,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["ToHit",null,0.75,1,6,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Fire",0.5357,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.5357,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Negative",1.42,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -27878,8 +30818,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Night Fall",
         "fullName": "Epic.Tank_Dark_Mastery.Night_Fall",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe -To Hit",
         "icon": "dark_mastery_nightfall.png",
@@ -27940,8 +30885,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Tar Patch",
         "fullName": "Epic.Tank_Dark_Mastery.Tar_Patch",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Drops a large patch of viscous Negative Energy which dramatically slows down enemies that run through it and reduces their damage resistance. Affected targets stuck in the Tar Patch cannot jump or fly. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Location AoE), Target -Speed, -Res, -Fly",
         "icon": "dark_mastery_tarpatch.png",
@@ -27988,6 +30938,11 @@ export const EPIC_POOLS_RAW = {
   },
   "tank_psionic_mastery": {
     "id": "tank_psionic_mastery",
+    "setPath": "Epic.Tank_Psionic_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Psionic Mastery",
     "displayName": "Psionic Mastery",
     "archetype": "tanker",
@@ -27999,8 +30954,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mesmerize",
         "fullName": "Epic.Tank_Psionic_Mastery.Mesmerize",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Mesmerize painfully assails a target with psychic energy, rendering them unconscious. The target will remain asleep for some time, but will awaken if attacked.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "Ranged, DMG(Psionic), Foe Sleep",
         "icon": "psionic_mastery_mesmerize.png",
@@ -28026,10 +30986,10 @@ export const EPIC_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Mez","Sleep",30,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Mez","Sleep",30,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
-          ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+          ["Mez","Sleep",30,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Sleep",30,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
+          ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
           ["Damage","Psionic",1.809,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Sleep",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -28055,8 +31015,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dominate",
         "fullName": "Epic.Tank_Psionic_Mastery.Dominate",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in their own mind and unable to defend themselves.",
         "shortHelp": "Ranged, DMG(Psionic), Foe Hold",
         "icon": "psionic_mastery_dominate.png",
@@ -28084,7 +31049,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Mez","Held",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Psionic",2.13,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -28117,8 +31082,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Harmonic Mind",
         "fullName": "Epic.Tank_Psionic_Mastery.Harmonic_Mind",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to conserve and recover endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 38 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Auto: Self, +Recovery, Endurance Discount",
         "icon": "psionic_mastery_harmonicmind.png",
@@ -28150,6 +31120,7 @@ export const EPIC_POOLS_RAW = {
             "recoveryBuff": 10.25
           },
           "enduranceDiscount": {
+            "ignoreStrength": true,
             "scale": 0.125,
             "table": "Melee_Stun"
           },
@@ -28162,8 +31133,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mental Blast",
         "fullName": "Epic.Tank_Psionic_Mastery.Mental_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
         "icon": "psionic_mastery_mentalblast.png",
@@ -28188,7 +31164,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["RechargeTime",null,0.3,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Damage","Psionic",1.889,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -28216,6 +31192,7 @@ export const EPIC_POOLS_RAW = {
             "rechargeDebuff": 6
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           }
@@ -28224,8 +31201,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Psionic Tornado",
         "fullName": "Epic.Tank_Psionic_Mastery.Psionic_Tornado",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
         "icon": "psionic_mastery_psionictornado.png",
@@ -28252,11 +31234,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Psionic",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
-          ["Damage","Fire",0.495,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Fire",0.495,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["RechargeTime",null,0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Damage","Psionic",1.0095,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true]
+          ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -28288,6 +31270,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           }
@@ -28297,6 +31280,11 @@ export const EPIC_POOLS_RAW = {
   },
   "veat_leviathan_mastery": {
     "id": "veat_leviathan_mastery",
+    "setPath": "Epic.VEAT_Leviathan_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Leviathan Mastery",
     "displayName": "Leviathan Mastery",
     "archetype": "arachnos_soldier",
@@ -28308,8 +31296,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Spirit Shark",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Spirit_Shark",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
         "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -28337,14 +31330,14 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Lethal",0.84,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Lethal",0.14,1,3.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 ==",true],
-          ["Damage","Lethal",0.14,1,3.2,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0.8 * 1 + @StdResult *"],
-          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true],
+          ["Damage","Lethal",0.14,1,3.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 == &&"],
+          ["Damage","Lethal",0.14,1,3.2,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0.8 * 1 + @StdResult *"],
+          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
           ["Damage","Lethal",1.0694,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Lethal",0.1782,1,3.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 ==",true],
-          ["Damage","Lethal",0.1075,1,3.2,"Ranged_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true],
-          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=",true]
+          ["Damage","Lethal",0.1782,1,3.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 == &&",true],
+          ["Damage","Lethal",0.1075,1,3.2,"Ranged_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true],
+          ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >= &&",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
         ],
         "effects": {
           "accuracy": 1,
@@ -28353,22 +31346,55 @@ export const EPIC_POOLS_RAW = {
           "endurance": 7.28,
           "activationTime": 2,
           "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Lethal",
-            "scale": 0.84,
-            "table": "Ranged_Damage"
-          },
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.84,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.14,
+              "table": "Ranged_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          ],
           "knockback": {
             "scale": 0.7,
             "table": "Ranged_Knockback"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "leviathan_hunger-1plus",
+            "label": "Leviathan Hunger (1+ stacks)",
+            "scope": "global",
+            "defaultActive": false,
+            "ownedPower": {
+              "path": "Temporary_Powers.Temporary_Powers.Leviathan_Hunger",
+              "count": 1
+            },
+            "damage": {
+              "type": "Lethal",
+              "scale": 0.14,
+              "table": "Ranged_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          }
+        ]
       },
       {
         "name": "School of Sharks",
         "fullName": "Epic.VEAT_Leviathan_Mastery.School_of_Sharks",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -28437,8 +31463,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Bile Spray",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Chum_Spray",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -28496,8 +31527,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Arctic Breath",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Arctic_Breath",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this freezing acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take cold damage over time, and have their damage resistance, Defense, movement rate, and recharge rate reduced. This ice will stick to foes, causing them to fall down occasionally. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
         "icon": "arachnos_patron_coneslow.png",
@@ -28528,7 +31564,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Cold",0.1,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.03],
           ["Movement","JumpHeight",0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["RechargeTime",null,0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Movement","Run",0.3,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -28545,7 +31581,7 @@ export const EPIC_POOLS_RAW = {
           ["Defense","All",1.5,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Damage","Cold",0.1208,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Cold",0.1813,1,4.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> player eq",true]
+          ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.02]
         ],
         "effects": {
           "accuracy": 1,
@@ -28584,43 +31620,53 @@ export const EPIC_POOLS_RAW = {
             "slow": 10
           },
           "knockback": {
+            "ignoreStrength": true,
             "scale": 0.1,
             "table": "Ranged_Ones"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Ranged_Slow"
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             }
@@ -28631,6 +31677,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Slow"
             },
             "jumpHeight": {
+              "ignoreStrength": true,
               "scale": 0.3,
               "table": "Ranged_Slow"
             },
@@ -28648,8 +31695,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Guardian",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Summon_Guardian",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Captain Mako has shown you how to summon a Coralax Guardian Sentinel to do your bidding. These creatures are composed of living coral made from the sea-goddess Merulina. Your access to this Guardian is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Summon Sentinel: Ranged Moderate DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
@@ -28702,6 +31754,11 @@ export const EPIC_POOLS_RAW = {
   },
   "veat_mace_mastery": {
     "id": "veat_mace_mastery",
+    "setPath": "Epic.VEAT_Mace_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mace Mastery",
     "displayName": "Mace Mastery",
     "archetype": "arachnos_soldier",
@@ -28713,8 +31770,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mace Blast",
         "fullName": "Epic.VEAT_Mace_Mastery.Mace_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Executioner's Mace is capable of firing a powerful bolt of kinetic energy. The blast is powerful enough that it may knock some foes back. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
         "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -28741,9 +31803,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Energy",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",0.7,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
+          ["Mez","Knockback",0.7,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Energy",2.16,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",0.7,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,true]
+          ["Mez","Knockback",0.7,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -28766,8 +31828,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Envelope",
         "fullName": "Epic.VEAT_Mace_Mastery.Web_Envelope",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -28835,6 +31902,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -28861,8 +31929,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Disruptor Blast",
         "fullName": "Epic.VEAT_Mace_Mastery.Disruptor_Blast",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. Your access to this Adept is very limited. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -28889,9 +31962,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
+          ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Energy",0.9477,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,true]
+          ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
           "accuracy": 1.05,
@@ -28916,8 +31989,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shatter Armor",
         "fullName": "Epic.VEAT_Mace_Mastery.Focused_Accuracy",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "You deliver a punishing blow with your Arachnos Mace dealing superior damage and reducing the target's resistance to damage for a short time. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Melee, DMG(Smash), Foe -Res",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
@@ -28949,7 +32027,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Psionic",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Toxic",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Meta",null,1,1,20,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Meta",null,1,1,20,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
           ["Damage","Smashing",3.231,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -28970,34 +32048,42 @@ export const EPIC_POOLS_RAW = {
           },
           "resistanceDebuff": {
             "cold": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
             "energy": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
             "fire": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
             "lethal": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
             "negative": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
             "psionic": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
             "smashing": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
             "toxic": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Dmg"
             }
@@ -29007,8 +32093,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Blaster",
         "fullName": "Epic.VEAT_Mace_Mastery.Summon_Blaster",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Black Scorpion has granted you an Arachnobot Blaster for you to command. Arachnobot Blasters were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Your access to this Arachnobot is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -29059,6 +32150,11 @@ export const EPIC_POOLS_RAW = {
   },
   "veat_mu_mastery": {
     "id": "veat_mu_mastery",
+    "setPath": "Epic.VEAT_Mu_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Mu Mastery",
     "displayName": "Mu Mastery",
     "archetype": "arachnos_soldier",
@@ -29070,8 +32166,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mu Lightning",
         "fullName": "Epic.VEAT_Mu_Mastery.Mu_Lightning",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you.",
         "shortHelp": "Ranged, DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -29141,8 +32242,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electrifying Fences",
         "fullName": "Epic.VEAT_Mu_Mastery.Electrifying_Fences",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -29219,8 +32325,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ball Lightning",
         "fullName": "Epic.VEAT_Mu_Mastery.Ball_Lightning",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -29294,8 +32405,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Static Discharge",
         "fullName": "Epic.VEAT_Mu_Mastery.Static_Discharge",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -29364,8 +32480,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Striker",
         "fullName": "Epic.VEAT_Mu_Mastery.Summon_Striker",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Scirocco has shown you how to call upon a mystical Mu Striker to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Striker is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Summon Mu Strike: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -29414,6 +32535,11 @@ export const EPIC_POOLS_RAW = {
   },
   "veat_soul_mastery": {
     "id": "veat_soul_mastery",
+    "setPath": "Epic.VEAT_Soul_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Soul Mastery",
     "displayName": "Soul Mastery",
     "archetype": "arachnos_soldier",
@@ -29425,8 +32551,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Gloom",
         "fullName": "Epic.VEAT_Soul_Mastery.Gloom",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Gloom slowly drains a target of life, while reducing his Accuracy. Slower than Dark Blast, but deals more damage over time.",
         "shortHelp": "Ranged, DoT(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -29484,8 +32615,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Tentacles",
         "fullName": "Epic.VEAT_Soul_Mastery.Soul_Tentacles",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -29554,8 +32690,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Dark Obliteration",
         "fullName": "Epic.VEAT_Soul_Mastery.Dark_Obliteration",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -29613,8 +32754,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Darkest Night",
         "fullName": "Epic.VEAT_Soul_Mastery.Darkest_Night",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "arachnos_patron_aoedamagedebuff.png",
@@ -29666,6 +32812,7 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 10,
           "buffDuration": 0.75,
           "damageDebuff": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Ranged_Debuff_Dam"
           },
@@ -29682,8 +32829,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Widow",
         "fullName": "Epic.VEAT_Soul_Mastery.Summon_Widow",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "Ghost Widow has assigned a beautiful but deadly Blood Widow assassins for you to command. Their weapons of choice include wrist retractable mounted razors and darts, all tipped in deadly poison. Your access to this Blood Widow is very limited, and you can only summon her once every 15 minutes and she will leave after 4 minutes, until defeated, or until you leave a zone or mission. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Summon Blood Widow: Melee DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -29729,6 +32881,11 @@ export const EPIC_POOLS_RAW = {
   },
   "weapon_mastery": {
     "id": "weapon_mastery",
+    "setPath": "Epic.Weapon_Mastery",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Weapon Mastery",
     "displayName": "Weapon Mastery",
     "archetype": "scrapper",
@@ -29740,8 +32897,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Grenade",
         "fullName": "Epic.Weapon_Mastery.Web_Grenade",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
         "icon": "gadgets_webgrenade.png",
@@ -29781,9 +32943,9 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Movement","JumpHeight",-1.5,1,15,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Smashing",1.679,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Smashing",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Smashing",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Smashing",1.679,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true]
+          ["Damage","Smashing",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Smashing",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Smashing",1.679,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"]
         ],
         "effects": {
           "accuracy": 1,
@@ -29808,6 +32970,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
@@ -29834,8 +32997,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Caltrops",
         "fullName": "Epic.Weapon_Mastery.Caltrops",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "You toss a handful of Caltrops at a targeted location and spread the tiny metal spikes over a large area. Any villains that pass over the Caltrops will be forced to move at a slower rate. They will also take some trivial Lethal damage over time.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Slow.</color>",
         "shortHelp": "Ranged (Location AoE), DoT(Lethal), Foe -Speed",
         "icon": "gadgets_caltrops.png",
@@ -29880,8 +33048,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shuriken",
         "fullName": "Epic.Weapon_Mastery.Shuriken",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "A classic small throwing weapon, you can throw Shurikens at a pretty fast rate of fire. You must be level 38 and have one other Weapon Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Lethal)",
         "icon": "weaponmastery_shuriken.png",
@@ -29906,11 +33079,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.378,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.378,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Lethal",1.389,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Lethal",0.84,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Lethal",0.84,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Lethal",1.389,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true]
+          ["Damage","Lethal",0.84,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Lethal",0.84,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Lethal",1.389,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"]
         ],
         "effects": {
           "accuracy": 1,
@@ -29936,8 +33109,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Targeting Drone",
         "fullName": "Epic.Weapon_Mastery.Targeting_Drone",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit and increase your perception, allowing you to better see stealthy foes. Targeting Drone also grants you resistance to powers that debuff your chance to hit. This is a toggle power and must be activated and deactivated manually. Like all toggle powers, Targeting Drone costs endurance while active. You must be level 41 and have one other Weapon Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "weaponmastery_targetingdrone.png",
@@ -29972,16 +33150,19 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "accuracyBuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Ones"
           },
           "buffDuration": 0.75,
           "debuffResistance": {
             "perception": {
+              "ignoreStrength": true,
               "scale": 0.6,
               "table": "Melee_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Boolean"
             }
@@ -30005,8 +33186,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Exploding Shuriken",
         "fullName": "Epic.Weapon_Mastery.Exploding_Shuriken",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "This small throwing star is rigged to explode on impact. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Lethal)",
         "icon": "weaponmastery_explodingshuriken.png",
@@ -30031,11 +33217,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Damage","Fire",0.405,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+          ["Damage","Fire",0.405,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Damage","Lethal",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Lethal",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-          ["Damage","Lethal",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-          ["Damage","Lethal",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true]
+          ["Damage","Lethal",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Lethal",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch source> Class_Scrapper == arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE","Class_Scrapper"],
+          ["Damage","Lethal",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch source> Class_Scrapper == enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE","Class_Scrapper"]
         ],
         "effects": {
           "accuracy": 1,
@@ -30064,6 +33250,11 @@ export const EPIC_POOLS_RAW = {
   },
   "weapon_mastery_stalker": {
     "id": "weapon_mastery_stalker",
+    "setPath": "Epic.Weapon_Mastery_Stalker",
+    "buyRequires": [],
+    "buyRequiresFailed": "",
+    "specializeAt": 0,
+    "specializeRequires": [],
     "name": "Weapon Mastery",
     "displayName": "Weapon Mastery",
     "archetype": "stalker",
@@ -30075,8 +33266,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Web Grenade",
         "fullName": "Epic.Weapon_Mastery_Stalker.Web_Grenade",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
         "icon": "gadgets_webgrenade.png",
@@ -30113,10 +33309,10 @@ export const EPIC_POOLS_RAW = {
           ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+          ["Damage","Lethal",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Movement","JumpHeight",-1.5,1,15,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Smashing",1.679,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Lethal",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
           ["Damage","Lethal",0.8621,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Lethal",1.679,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Lethal",1.679,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true]
@@ -30144,6 +33340,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
@@ -30170,8 +33367,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Weapon_Mastery_Stalker.Caltrops",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
+        "autoIssue": false,
+        "free": false,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
@@ -30217,8 +33419,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shuriken",
         "fullName": "Epic.Weapon_Mastery_Stalker.Shuriken",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 3,
         "available": 37,
+        "autoIssue": false,
+        "free": false,
         "description": "A classic small throwing weapon, you can throw Shurikens at a pretty fast rate of fire. You must be level 38 and have one other Weapon Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Lethal)",
         "icon": "weaponmastery_shuriken.png",
@@ -30243,8 +33450,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Lethal",0.84,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Lethal",1.389,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Lethal",0.84,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
           ["Damage","Lethal",1.389,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Lethal",1.389,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Lethal",0.84,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true]
@@ -30266,8 +33473,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Targeting Drone",
         "fullName": "Epic.Weapon_Mastery_Stalker.Targeting_Drone",
+        "targetsAffected": [
+          "Self"
+        ],
         "rank": 4,
         "available": 40,
+        "autoIssue": false,
+        "free": false,
         "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit and increase your perception, allowing you to better see stealthy foes. Targeting Drone also grants you resistance to powers that debuff your chance to hit. This is a toggle power and must be activated and deactivated manually. Like all toggle powers, Targeting Drone costs endurance while active. You must be level 41 and have one other Weapon Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "weaponmastery_targetingdrone.png",
@@ -30302,16 +33514,19 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "accuracyBuff": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Ones"
           },
           "buffDuration": 0.75,
           "debuffResistance": {
             "perception": {
+              "ignoreStrength": true,
               "scale": 0.6,
               "table": "Melee_Ones"
             },
             "tohit": {
+              "ignoreStrength": true,
               "scale": 2,
               "table": "Melee_Res_Boolean"
             }
@@ -30335,8 +33550,13 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Exploding Shuriken",
         "fullName": "Epic.Weapon_Mastery_Stalker.Exploding_Shuriken",
+        "targetsAffected": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 43,
+        "autoIssue": false,
+        "free": false,
         "description": "This small throwing star is rigged to explode on impact. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.<br>",
         "shortHelp": "Ranged (Targeted AoE), DMG(Lethal)",
         "icon": "weaponmastery_explodingshuriken.png",
@@ -30361,11 +33581,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Lethal",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"arch source> Class_Stalker == enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Lethal",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Damage","Lethal",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
-          ["Damage","Lethal",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Lethal",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Lethal",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true]
+          ["Damage","Lethal",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Lethal",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
+          ["Damage","Lethal",0.7323,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker == kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq && &&",true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ],
         "effects": {
           "accuracy": 1,

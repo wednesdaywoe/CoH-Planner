@@ -12,12 +12,17 @@ export const AmpUp: Power = {
   "name": "Amp Up",
   "internalName": "Amp_Up",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Empower an ally with raw energy, causing all of their abilities to unleash chained bolts of electricity at nearby foes. These bolts drain a small amount of endurance and have a chance to knock up the target. Amp Up also moderately increases their attack rate and greatly boosts the secondary effects of their powers. Their power effects like heals, defense debuffs, endurance drains, disorients, holds, immobilizes and more, are all improved.",
   "shortHelp": "Ranged, Ally +Special, +Recharge",
   "icon": "shocktherapy_ampup.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -38,51 +43,63 @@ export const AmpUp: Power = {
       "specialBuff": 90
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Ones"
     },
     "specialBuff": {
       "absorb": {
+        "ignoreStrength": true,
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
       "confuse": {
+        "ignoreStrength": true,
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
       "defense": {
+        "ignoreStrength": true,
         "scale": 3.6,
         "table": "Ranged_Buff_Dmg"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
       "heal": {
+        "ignoreStrength": true,
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 3.6,
         "table": "Ranged_Buff_Dmg"
       }
@@ -91,18 +108,18 @@ export const AmpUp: Power = {
   "atoms": [
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,0.5,1,90,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Heal",null,6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Absorb",null,6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Endurance",null,6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Movement","Run",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Movement","Fly",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Enhancement","Confused",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Enhancement","Terrorized",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Enhancement","Held",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Enhancement","Immobilized",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Enhancement","Stunned",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Enhancement","Sleep",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["Enhancement","All",3.6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"],
-    ["ToHit",null,3.6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost"]
+    ["Heal",null,6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Absorb",null,6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Endurance",null,6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Movement","Run",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Movement","Fly",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Enhancement","Confused",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Enhancement","Terrorized",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Enhancement","Held",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Enhancement","Immobilized",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Enhancement","Stunned",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Enhancement","Sleep",6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
+    ["Enhancement","All",3.6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
+    ["ToHit",null,3.6,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"]
   ]
 };

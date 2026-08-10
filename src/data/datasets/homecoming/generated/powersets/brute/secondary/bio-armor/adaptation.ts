@@ -12,6 +12,8 @@ export const Adaptation: Power = {
   "name": "Evolving Armor",
   "internalName": "Adaptation",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "When faced with danger, your Bio Armor reacts by becoming incredibly durable as well as infecting nearby enemies, lowering their resistance to damage. While active, Evolving Armor will grant you small amount of damage resistance, plus an additional amount for each nearby target. Nearby foes will also be taunted and have their damage resistance reduced. While Efficient Adaptation is active, this power grants a moderate bonus to Regeneration and Recovery plus a tiny amount of both for each nearby foe up to 10 foes. While Defensive Adaptation is active you gain a very minor amount of defense and damage resistance for each nearby foe, however you lose the benefit of this power's resistance debuff. If Offensive Adaptation is active this power's damage resistance debuff is increased. These special bonuses are unenhanceable.Recharge: Moderate.",
   "shortHelp": "Self Toggle, +Res(All), Foe -Res(All), Taunt, +Special",
   "icon": "bioorganicarmor_evolution.png",
@@ -22,6 +24,9 @@ export const Adaptation: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -93,34 +98,42 @@ export const Adaptation: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       }
@@ -147,21 +160,20 @@ export const Adaptation: Power = {
     ["Resistance","Smashing",0.5,1,1.125,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",0.5,1,1.125,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Toxic",0.5,1,1.125,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Fire",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
-    ["Resistance","Cold",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
-    ["Resistance","Energy",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
-    ["Resistance","Negative",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
-    ["Resistance","Psionic",0.03,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,0.03],
-    ["Resistance","Smashing",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
-    ["Resistance","Lethal",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
-    ["Resistance","Toxic",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
-    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&"],
-    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&"],
+    ["Resistance","Fire",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
+    ["Resistance","Cold",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
+    ["Resistance","Energy",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
+    ["Resistance","Negative",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
+    ["Resistance","Psionic",0.03,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.03],
+    ["Resistance","Smashing",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
+    ["Resistance","Lethal",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
+    ["Resistance","Toxic",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&",null,null,null,null,null,null,null,null,null,"StealthOn"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? !"],
     ["Regeneration",null,0.3,1,1.125,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
-    ["Regeneration",null,0.06,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
+    ["Regeneration",null,0.06,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
     ["Recovery",null,0.15,1,1.125,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
-    ["Recovery",null,0.03,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
+    ["Recovery",null,0.03,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
     ["Resistance","Smashing",-1.33,1,1.125,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
     ["Resistance","Lethal",-1.33,1,1.125,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
     ["Resistance","Fire",-1.33,1,1.125,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
@@ -178,14 +190,14 @@ export const Adaptation: Power = {
     ["Resistance","Smashing",0.15,1,1.125,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["Resistance","Lethal",0.15,1,1.125,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["Resistance","Toxic",0.15,1,1.125,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Fire",0.0114,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Cold",0.0114,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Energy",0.0114,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Negative",0.0114,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Psionic",0.009,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Smashing",0.015,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Lethal",0.015,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Toxic",0.015,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Fire",0.0114,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Cold",0.0114,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Energy",0.0114,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Negative",0.0114,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Psionic",0.009,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Smashing",0.015,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Lethal",0.015,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Toxic",0.015,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["Defense","Smashing",0.375,1,1.125,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["Defense","Lethal",0.375,1,1.125,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["Defense","Fire",0.28,1,1.125,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
@@ -193,14 +205,15 @@ export const Adaptation: Power = {
     ["Defense","Energy",0.28,1,1.125,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["Defense","Negative",0.28,1,1.125,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["Defense","Psionic",0.2,1,1.125,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Defense","Smashing",0.045,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Defense","Lethal",0.045,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Defense","Fire",0.0336,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Defense","Cold",0.0336,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Defense","Energy",0.0336,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Defense","Negative",0.0336,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Defense","Psionic",0.024,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Defense","Smashing",0.045,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Lethal",0.045,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Fire",0.0336,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Cold",0.0336,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Energy",0.0336,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Negative",0.0336,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Psionic",0.024,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&",true,null,null,null,null,null,null,null,null,"StealthOn"],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ],
   "conditionalEffects": [
     {
@@ -239,34 +252,42 @@ export const Adaptation: Power = {
         },
         "resistanceDebuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Debuff_Res_Dmg"
           }

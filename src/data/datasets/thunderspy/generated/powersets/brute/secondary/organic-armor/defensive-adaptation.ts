@@ -12,6 +12,8 @@ export const DefensiveAdaptation: Power = {
   "name": "Defensive Adaptation",
   "internalName": "Defensive_Adaptation",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "Adapt your Organic Armor in order to outlast your opposition. This Adaptation is focused on high damage mitigation and survival.",
   "shortHelp": "Toggle: Bio Armor Defensive Mode",
   "icon": "bioorganicarmor_defensiveadaptation.png",
@@ -23,6 +25,9 @@ export const DefensiveAdaptation: Power = {
     "sleep",
     "stun"
   ],
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 4,
@@ -32,9 +37,9 @@ export const DefensiveAdaptation: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Meta",null,1,106,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,106,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ],
   "requires": "Brute_Defense.Organic_Armor.Evolution",
   "setsModes": [

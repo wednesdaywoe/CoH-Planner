@@ -21,8 +21,12 @@ import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 
 export const powerset: Powerset = {
   id: 'stalker/dark-melee',
-  internalName: 'dark_melee',
+  setPath: 'Stalker_Melee.Dark_Melee',
   name: 'Dark Melee',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Dark Melee allows you to focus the powers of the Netherworld to defeat your foes. The draining effects of most of these powers can reduce the target\'s chance to hit.  Like all Stalker primary attack powers, Dark Melee attacks can land a Critical Hit for double damage, if you are properly Hidden, or if the target is Slept or Held.',
   icon: 'dark_melee_set.ico',
   archetype: 'stalker',

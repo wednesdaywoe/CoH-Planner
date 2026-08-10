@@ -12,12 +12,17 @@ export const Crush: Power = {
   "name": "Crush",
   "internalName": "Crush",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a localized gravitational field strong enough to Immobilize a single foe. Crush can also bring down flying entities. This power deals Smashing damage over time and can Slow the movement of targets that escape its grasp. Damage: Moderate(DoT), Recharge: Fast",
   "shortHelp": "Ranged, Moderate DoT(Smash), Foe Immobilize, -Fly",
   "icon": "gravitycontrol_crush.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -71,6 +76,7 @@ export const Crush: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },

@@ -12,6 +12,8 @@ export const Incinerate: Power = {
   "name": "Incinerate",
   "internalName": "Incinerate",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Intense concentration can allow you to Incinerate an opponent. This will set your foe ablaze, dealing damage over time.",
   "shortHelp": "Melee, DoT (Fire)",
   "icon": "fieryfray_incinerate.png",
@@ -20,6 +22,9 @@ export const Incinerate: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,7 +65,7 @@ export const Incinerate: Power = {
   ],
   "atoms": [
     ["Damage","Fire",0.25,1,4.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.1125,1,4.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0],
+    ["Damage","Fire",0.1125,1,4.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Fire",0.1969,1,4.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

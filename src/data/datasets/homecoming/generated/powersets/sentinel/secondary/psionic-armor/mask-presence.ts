@@ -12,6 +12,8 @@ export const MaskPresence: Power = {
   "name": "Mask Presence",
   "internalName": "Mask_Presence",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Mask Presence makes you almost impossible to detect. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense to melee and ranged attacks. While stealthed you will get additional defense to all attack types and the strength of your next attack will be more powerful; however, you can only attempt this after spending 8 seconds without attacking.",
   "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged)",
   "icon": "psionicarmor_maskpresence.png",
@@ -22,6 +24,9 @@ export const MaskPresence: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,6 +47,7 @@ export const MaskPresence: Power = {
   "effects": {
     "buffDuration": 0.75,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Melee_Buff_Dmg"
     },
@@ -118,20 +124,21 @@ export const MaskPresence: Power = {
         "table": "Melee_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.15,
         "table": "Melee_Ones"
       }
     }
   },
   "atoms": [
-    ["DamageBuff","Smashing",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Lethal",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Fire",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Cold",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Energy",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Negative",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Psionic",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Toxic",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["DamageBuff","Smashing",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Lethal",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Fire",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Cold",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Energy",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Negative",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Psionic",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Toxic",4,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
     ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Ranged",1,1,0.55,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > && Helped source.EventTimeSince> 10 > && CommandedPet source.EventTimeSince> 10 > && PseudoPetAttacked source.EventTimeSince> 10 > && PseudoPetHelped source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],

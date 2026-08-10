@@ -12,12 +12,17 @@ export const PowerSink: Power = {
   "name": "Power Sink",
   "internalName": "Power_Sink",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance and regeneration rate. If there are no foes within range, you will not gain any Endurance.",
   "shortHelp": "PBAoE, Self +End, +Regen, Foe -End",
   "icon": "electricarmor_pbaoeendurancedrain.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

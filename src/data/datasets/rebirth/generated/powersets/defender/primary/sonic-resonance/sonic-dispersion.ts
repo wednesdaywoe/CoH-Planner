@@ -12,6 +12,8 @@ export const SonicDispersion: Power = {
   "name": "Sonic Dispersion",
   "internalName": "Sonic_Dispersion",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a large field of sonic waves, protecting all allies inside. The Sonic Dispersion gives all allies within increased Resistance against all damage except Psionic. The Sonic Bubble also protects allies from Immobilization, Disorient, and Hold effects. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Ally +Res(All DMG except Psionic, Hold, Immobilize, Disorient)",
   "icon": "sonicdebuff_buffdamageres.png",
@@ -22,6 +24,10 @@ export const SonicDispersion: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Friend",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

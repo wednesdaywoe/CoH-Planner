@@ -12,12 +12,17 @@ export const ForceBubble: Power = {
   "name": "Damping Bubble",
   "internalName": "Force_Bubble",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a large bubble at your location which protects all allies inside. While active, this power will grant resistance to Accuracy, Defense, Regeneration, Perception, and Slow debuffs on yourself and allies. Foes within this bubble will have the strength of their Accuracy, Defense, Regeneration, Perception, and Speed debuff powers weakened directly.",
   "shortHelp": "Location (PBAoE), Team +Res(Accuracy, Defense, Perception, Recharge, Regen, Speed, ToHit), Foe -Str(Defense, Perception, Regen, Speed, ToHit)",
   "icon": "forcefield_dampeningbubble.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -58,6 +63,12 @@ export const ForceBubble: Power = {
               "damage": [],
               "effects": [
                 {
+                  "type": "ToHitDebuffResist",
+                  "scale": 1,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
                   "type": "RegenDebuffResist",
                   "scale": 1,
                   "table": "Ranged_Res_Boolean",
@@ -70,7 +81,7 @@ export const ForceBubble: Power = {
                   "ignoreStrength": true
                 },
                 {
-                  "type": "DefenseDebuff",
+                  "type": "DefenseDebuffResist",
                   "scale": 0.5,
                   "table": "Ranged_Res_Boolean"
                 }
@@ -79,6 +90,9 @@ export const ForceBubble: Power = {
               "castTime": 0,
               "activatePeriod": 0.5,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Friend"
+              ],
               "radius": 55,
               "maxTargets": 255
             },
@@ -89,14 +103,23 @@ export const ForceBubble: Power = {
               "damage": [],
               "effects": [
                 {
-                  "type": "ToHitDebuff",
+                  "type": "Slow",
+                  "axis": "runSpeed",
                   "scale": 1,
                   "table": "Ranged_Res_Boolean",
                   "ignoreStrength": true
                 },
                 {
-                  "type": "DefenseDebuff",
-                  "scale": 0.5,
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 1,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
+                  "scale": 1,
                   "table": "Ranged_Res_Boolean",
                   "ignoreStrength": true
                 }
@@ -105,6 +128,9 @@ export const ForceBubble: Power = {
               "castTime": 0,
               "activatePeriod": 0.5,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 55,
               "maxTargets": 16
             }

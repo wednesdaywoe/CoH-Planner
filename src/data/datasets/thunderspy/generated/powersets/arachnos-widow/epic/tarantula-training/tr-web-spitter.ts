@@ -12,12 +12,17 @@ export const TRWebSpitter: Power = {
   "name": "Web Spitter",
   "internalName": "TR_Web_Spitter",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Launch a web over a wide area from your Tarantula exoskeleton. Covers enemies in webs which slow and can immobilize foes. Requires Tarantula form to use. Recharge: Long",
   "shortHelp": "Ranged(Targeted AoE), Foe -Fly, -Jump, -Recharge, Immobilize, Slow",
   "icon": "tarantulatraining_webspitter.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -55,6 +60,7 @@ export const TRWebSpitter: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },

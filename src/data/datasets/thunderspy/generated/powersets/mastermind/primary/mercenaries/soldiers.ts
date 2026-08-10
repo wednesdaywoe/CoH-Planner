@@ -12,11 +12,16 @@ export const Soldiers: Power = {
   "name": "Soldiers",
   "internalName": "Soldiers",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Calls forth one to three Mercenary Soldiers (depending on your level) to do your bidding. All Soldiers use a combination of Machine Guns & Grenade Launchers, but these can be upgraded. You may only have 3 Soldiers under your control at any given time.  If you attempt to call more Soldiers, you can only replace the ones you have lost in battle.  If you already have three, the power will fail. Recharge: Very Long",
   "icon": "paramilitary_draftarmy.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

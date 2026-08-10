@@ -12,12 +12,18 @@ export const Burn: Power = {
   "name": "Burn",
   "internalName": "Burn",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Location (PBAoE), Moderate DoT(Fire), Self Res(Immobilize)",
   "icon": "firemanipulation_burn.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -54,12 +60,14 @@ export const Burn: Power = {
       "damageBuff": 9.53
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": -15,
       "scale": 100,
       "table": "Melee_Res_Boolean"
     },
     "mezResistance": {
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }

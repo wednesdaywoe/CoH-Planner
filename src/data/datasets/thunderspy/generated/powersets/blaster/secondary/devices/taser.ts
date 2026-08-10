@@ -12,12 +12,17 @@ export const Taser: Power = {
   "name": "Taser",
   "internalName": "Taser",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "The Taser is basically a stun-gun. This small device releases a high-voltage, low-amperage electrical charge that can Disorient most opponents with minimal damage. The Taser has a very short range. Damage: Minor, Recharge: Slow",
   "shortHelp": "Melee, Foe Disorient",
   "icon": "gadgets_taser.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 20,
@@ -47,6 +52,7 @@ export const Taser: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Melee_Ones"
     },

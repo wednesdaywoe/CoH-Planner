@@ -12,12 +12,17 @@ export const ForceBubble: Power = {
   "name": "Force Bubble",
   "internalName": "Force_Bubble",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a large bubble which protects all allies inside. While active, this power keeps all foes at bay, protecting all allies inside from melee or short ranged attacks. More powerful foes may be able to penetrate the Force Bubble, buy may slip and get knocked down and forced back if they try. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE Foe Repel, Knockdown",
   "icon": "forcefield_forcebubble.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 50,
@@ -38,6 +43,7 @@ export const ForceBubble: Power = {
       "repel": 0.25
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Ranged_Ones"
     },
@@ -51,7 +57,7 @@ export const ForceBubble: Power = {
     ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
     ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit >= &&",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit >= &&",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "specialEffects": [
     {

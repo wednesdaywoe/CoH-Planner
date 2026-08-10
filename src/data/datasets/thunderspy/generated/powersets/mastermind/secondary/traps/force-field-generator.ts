@@ -12,6 +12,8 @@ export const ForceFieldGenerator: Power = {
   "name": "Force Field Generator",
   "internalName": "Force_Field_Generator",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You can build a Force Field Generator Drone.  It will generate a Dispersion Bubble that gives all nearby allies increased Defense against all attacks including Psionic. The Dispersion Bubble also protects allies from Immobilization, Disorient, and Hold effects. The Drone will follow you, can be buffed and healed or even destroyed.  However, it is not a Henchman and cannot be given commands. Limited to one Force Field Generator.  Recharge: Very Slow",
   "shortHelp": "Place Drone: PBAoE, Team +DEF, +Res(Hold, Immobilize, Disorient)",
   "icon": "traps_droppedaoebuffdefense.png",
@@ -20,6 +22,9 @@ export const ForceFieldGenerator: Power = {
   "effectArea": "Location",
   "strengthsDisallowed": [
     "RechargeTime"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

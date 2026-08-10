@@ -12,12 +12,17 @@ export const Fallout: Power = {
   "name": "Neutron Burst",
   "internalName": "Fallout",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "By unleashing a large amount of radiation you can completely paralyze a group of foes for a short time. Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE): Foe Hold",
   "icon": "radiationpoisoning_fallout.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

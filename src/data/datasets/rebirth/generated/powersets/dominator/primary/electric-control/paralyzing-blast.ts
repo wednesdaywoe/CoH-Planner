@@ -12,12 +12,17 @@ export const ParalyzingBlast: Power = {
   "name": "Paralyzing Blast",
   "internalName": "Paralyzing_Blast",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Summoning a large amount of energy, you can completely paralyze a group of foes in cages of electricity for a short time.  These foes may be drained of some endurance as well.  Recharge: Very Long",
   "shortHelp": "Ranged AoE, Foe Hold, -End",
   "icon": "electriccontrol_paralyzingblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,

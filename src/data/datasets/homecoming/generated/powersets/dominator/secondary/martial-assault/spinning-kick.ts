@@ -12,6 +12,8 @@ export const SpinningKick: Power = {
   "name": "Spinning Kick",
   "internalName": "Spinning_Kick",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a high spinning reverse roundhouse kick, smashing anything in front of you with devastating force. You can activate this ability at any time, no matter what you have targeted; it will strike enemies directly in front of your character, rather than enemies near your target.Damage: Light.Recharge: Moderate.",
   "shortHelp": "Melee Cone, Light DMG(Smash), Knockdown",
   "icon": "martialassault_spinningkick.png",
@@ -20,6 +22,9 @@ export const SpinningKick: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -60,7 +65,7 @@ export const SpinningKick: Power = {
     ["Mez","Knockback",0.66,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.66,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",1.403,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

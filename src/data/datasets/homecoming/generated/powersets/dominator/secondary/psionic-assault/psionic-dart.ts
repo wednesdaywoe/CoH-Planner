@@ -12,12 +12,17 @@ export const PsionicDart: Power = {
   "name": "Psionic Dart",
   "internalName": "Psionic_Dart",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed.Damage: Light.Recharge: Very Fast.",
   "shortHelp": "Ranged, Light DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mentaldart.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,
@@ -48,6 +53,7 @@ export const PsionicDart: Power = {
       "rechargeDebuff": 5
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Slow"
     }
@@ -56,6 +62,6 @@ export const PsionicDart: Power = {
     ["Damage","Psionic",0.84,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.3,1,5,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Damage","Psionic",1.101,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

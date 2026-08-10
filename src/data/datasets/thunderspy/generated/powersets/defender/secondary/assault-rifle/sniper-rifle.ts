@@ -12,12 +12,17 @@ export const SniperRifle: Power = {
   "name": "Sniper Rifle",
   "internalName": "Sniper_Rifle",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Sniper Rifle is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. Like most sniper attacks, you must take your time to aim, so this attack can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_sniperrifle.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.25,
     "range": 150,

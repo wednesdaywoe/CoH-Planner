@@ -12,12 +12,17 @@ export const Serum: Power = {
   "name": "Serum",
   "internalName": "Serum",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You can activate this power to increase your maximum Hit Points for a short time. Recharge: Very Long",
   "shortHelp": "Self Heal, +Max HP",
   "icon": "crabspidertraining_serum.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 360,
@@ -49,6 +54,7 @@ export const Serum: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_HealSelf"
     },

@@ -127,8 +127,7 @@ function overridePath(archetype, type, powersetSlug, powerSlug) {
  * SingleTarget in the main file but redirects to a Cone AoE) and the
  * location-teleport special case (Shield Charge, Lightning Rod).
  */
-function inferForPower(powerJson, archetypeId, type) {
-  const powerType = type; // ignored by inferAllowedSetCategories today
+function inferForPower(powerJson) {
   const redirectArea = inferEffectiveArea(powerJson);
   const hasTeleportAttrib = (powerJson.effects || []).some(eff =>
     (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
@@ -141,8 +140,6 @@ function inferForPower(powerJson, archetypeId, type) {
     : (powerJson.boosts_allowed || []);
   return inferAllowedSetCategories(
     boosts,
-    archetypeId,
-    powerType,
     effectiveArea,
     powerJson.range,
     powerJson.powerset || powerJson.full_name,

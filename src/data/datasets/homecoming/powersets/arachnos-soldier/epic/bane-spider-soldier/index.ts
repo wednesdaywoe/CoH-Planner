@@ -22,8 +22,12 @@ import { CrowdControl as CrowdControl } from './crowd-control';
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/bane-spider-soldier',
-  internalName: 'bane_spider_soldier',
+  setPath: 'Arachnos_Soldiers.Bane_Spider_Soldier',
   name: 'Bane Spider Soldier',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Bane Spiders are the commandos of the Arachnos organization, providing excellent stealth and offensive capabilities.',
   icon: 'bane_spider_soldier_set.ico',
   archetype: 'arachnos-soldier',

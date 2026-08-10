@@ -12,12 +12,17 @@ export const EquipRobot: Power = {
   "name": "Equip Robot",
   "internalName": "Equip_Robot",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Equip your Robots with the latest gear and weaponry.  This power permanently bestows new tech, powers and abilities to all of your Robot Henchman. The powers gained are unique and dependent upon the type of Robot Henchman that is Equipped.  This power only works on your Robot Henchmen and you can only Equip your Robot Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Equip Robot Henchman",
   "icon": "robotics_equiprobot.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,

@@ -12,12 +12,17 @@ export const Irradiate: Power = {
   "name": "Irradiate",
   "internalName": "Irradiate",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You can emit lethal amounts of radiation in all directions, damaging all nearby foes for a short time. Like other Radiation attacks, this power can bypass some of a target's defenses. Irradiate severely reduces the target's Defense. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Close (AoE), Moderate DoT(Energy), Foe -DEF",
   "icon": "radiationburst_irradiate.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "radius": 20,

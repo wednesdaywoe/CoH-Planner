@@ -12,6 +12,8 @@ export const FollowUp: Power = {
   "name": "Blinding Feint",
   "internalName": "Follow_Up",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a feint attack that deals light damage. After this attack hits, it gives you a large bonus to To Hit and damage for a brief time. This power is the finishing move in the Empower combination attack. Damage: Light, Recharge: Slow",
   "shortHelp": "Melee, Light DMG(Lethal), Self +DMG +To Hit",
   "icon": "dualblades_followup.png",
@@ -22,6 +24,9 @@ export const FollowUp: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -85,7 +90,7 @@ export const FollowUp: Power = {
     ["DamageBuff","Negative",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
     ["DamageBuff","Toxic",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
     ["DamageBuff","Psionic",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["Damage","Fire",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.07999999821186066,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -106,9 +111,14 @@ export const FollowUp: Power = {
       "label": "ComboBlade3",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.ComboBlade3",
+        "count": 1
+      },
       "effects": {
         "buffDuration": 20,
         "damageBuff": {
+          "ignoreStrength": true,
           "scale": 1.5,
           "table": "Melee_Buff_Dmg"
         },

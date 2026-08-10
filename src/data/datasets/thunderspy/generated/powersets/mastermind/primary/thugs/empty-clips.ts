@@ -12,12 +12,17 @@ export const EmptyClips: Power = {
   "name": "Empty Clips",
   "internalName": "Empty_Clips",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You empty the clips of both your pistols in a arc of suppression fire. This attack can blast multiple foes in the affected cone area, and has a small chance of knocking some foes down. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged (Cone), Moderate DMG(Lethal), Knockback",
   "icon": "thugs_conerangedmoderatedmg.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 40,

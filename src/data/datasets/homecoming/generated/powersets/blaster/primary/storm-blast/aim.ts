@@ -12,12 +12,17 @@ export const Aim: Power = {
   "name": "Intensify",
   "internalName": "Aim",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly increases the chance to hit of your attacks, and slightly increases damage for a few seconds. Moderately increases the chance for Storm Blast powers to summon powerful lightning from your Storm Cell while active.",
   "shortHelp": "Self +To Hit, +DMG, Special",
   "icon": "stormblast_aim.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const Aim: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Melee_Buff_Dmg"
     },

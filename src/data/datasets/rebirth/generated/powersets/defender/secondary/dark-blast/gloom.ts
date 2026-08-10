@@ -12,12 +12,17 @@ export const Gloom: Power = {
   "name": "Gloom",
   "internalName": "Gloom",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Gloom slowly drains a target of life, while reducing their chance to hit. Slower than Dark Blast, but deals more damage over time. Damage: High(DoT), Recharge: Moderate",
   "shortHelp": "Ranged, High DoT(Negative), Foe -To Hit",
   "icon": "darkcast_souldrain.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

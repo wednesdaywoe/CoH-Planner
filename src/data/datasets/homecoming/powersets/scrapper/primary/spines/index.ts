@@ -21,8 +21,12 @@ import { QuillThrowing as QuillThrowing } from './quill-throwing';
 
 export const powerset: Powerset = {
   id: 'scrapper/spines',
-  internalName: 'quills',
+  setPath: 'Scrapper_Melee.Quills',
   name: 'Spines',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Spines protrude from your body and can deal damage in melee or at very short ranges. Spines are hollow and hold a neural toxin that deals additional Toxic damage and can Slow or Immobilize your enemies. The toxin is cumulative, and multiple hits will affect a target more strongly. Very few foes have resistance to Spine poison. Like all scrapper powers, all Spine attacks can sometimes land a critical hit for double damage.',
   icon: 'quills_set.ico',
   archetype: 'scrapper',

@@ -12,12 +12,17 @@ export const DualWield: Power = {
   "name": "Dual Wield",
   "internalName": "Dual_Wield",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Fires both pistols at once at a time target. Firing both pistols at once is slower than a single shot, but deals more damage, and the target may get knocked down by the force of the impact. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Lethal), Foe Knockback",
   "icon": "thugs_targetedrangedheavydmg.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,

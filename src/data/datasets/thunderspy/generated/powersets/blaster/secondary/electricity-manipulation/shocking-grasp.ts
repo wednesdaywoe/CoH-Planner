@@ -12,6 +12,8 @@ export const ShockingGrasp: Power = {
   "name": "Shocking Grasp",
   "internalName": "Shocking_Grasp",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Shocking Grasp causes the target to be overcome with a violent electrical charge. The seized target is left writhing in agony and is unable to defend themselves. Shocking Grasp also drains a significant amount of Endurance from the target and may return a portion of it to you. Damage: High(DoT), Recharge: Slow",
   "shortHelp": "Melee, High DoT(Energy), Target Hold, -End",
   "icon": "electricitymanipulation_shockinggrasp.png",
@@ -20,6 +22,9 @@ export const ShockingGrasp: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -54,6 +59,7 @@ export const ShockingGrasp: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Melee_Ones"
     },

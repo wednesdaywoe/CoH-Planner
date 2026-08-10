@@ -12,12 +12,17 @@ export const KujiInZen: Power = {
   "name": "Kuji In Zen",
   "internalName": "Kuji_In_Zen",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Kuji In Zen will permanently bestow the most advanced techniques and powers to all of your Ninja Henchman. The Enlightened Ninja will gain new abilities, powers and weapons. The powers gained are unique and dependent upon the type of Ninja Henchman that is Enlightened. This power only works on your Ninja Henchmen and you can only Enlighten your Ninja Henchmen once with this power. Recharge: Medium",
   "shortHelp": "Ranged, Enlighten Ninja Henchman",
   "icon": "ninjas_upgradeequipment.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 30,
@@ -46,6 +51,6 @@ export const KujiInZen: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
-    ["Mez","Evade",100,1,7,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true]
+    ["Mez","Evade",100,1,7,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true,null,null,null,null,null,null,0]
   ]
 };

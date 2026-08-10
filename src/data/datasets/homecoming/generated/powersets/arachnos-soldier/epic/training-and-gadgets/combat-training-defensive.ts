@@ -12,12 +12,17 @@ export const CombatTrainingDefensive: Power = {
   "name": "Combat Training: Defensive",
   "internalName": "Combat_Training:_Defensive",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You are more evasive to ranged attacks.",
   "shortHelp": "Auto: Self +DEF(Ranged)",
   "icon": "trainingandgadgets_combattrainingdefensive.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 4,

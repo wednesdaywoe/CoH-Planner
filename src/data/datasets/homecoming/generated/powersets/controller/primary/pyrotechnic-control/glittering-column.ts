@@ -12,12 +12,17 @@ export const GlitteringColumn: Power = {
   "name": "Glittering Column",
   "internalName": "Glittering_Column",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You summon a column of brilliant, glittering energy that is sure to capture foes' attention. The column will reduce the ToHit of any foe within a short range, while also Taunting them, forcing them to direct their attacks in its direction. When the Glittering Column expires, it explodes, Blasting Off nearby enemies into the air.",
   "shortHelp": "Summon Glittering Column: Taunt, -ToHit, AoE DMG (Fire, Energy), Blast Off",
   "icon": "pyrotechnic_glitteringcolumn.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -77,6 +82,9 @@ export const GlitteringColumn: Power = {
               "castTime": 0,
               "activatePeriod": 10,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 40,
               "maxTargets": 5
             },
@@ -96,6 +104,9 @@ export const GlitteringColumn: Power = {
               "castTime": 0,
               "activatePeriod": 2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 15,
               "maxTargets": 16
             }

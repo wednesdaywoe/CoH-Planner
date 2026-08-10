@@ -12,12 +12,17 @@ export const TrainNinjas: Power = {
   "name": "Train Ninjas",
   "internalName": "Train_Ninjas",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Advanced training has been engrained into your Ninjas. They now understand more advanced techniques and weaponry passively.  This power permanently bestows new powers and abilities to all of your Ninja Henchman. The powers gained are unique and dependent upon the type of Ninja Henchman.  This power only works on your Ninja Henchmen and you can only Train your Ninja Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Train Ninja Henchman",
   "icon": "ninjas_trainninjas.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,

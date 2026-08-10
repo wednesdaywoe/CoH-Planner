@@ -21,8 +21,12 @@ import { GraniteArmor as GraniteArmor } from './granite-armor';
 
 export const powerset: Powerset = {
   id: 'tanker/stone-armor',
-  internalName: 'stone_armor',
+  setPath: 'Tanker_Defense.Stone_Armor',
   name: 'Stone Armor',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can transform your skin into various forms of rock and stone. Stone Armor is one of the only Tanker Defensive Power Sets that offers defense to Psionics. Stone Armor offers amazing defense, but a few Stone Armors are mutually exclusive to each other. Some Armors, although offering superior defense, also slow you down due to their enormous bulk.',
   icon: 'stone_armor_set.ico',
   archetype: 'tanker',

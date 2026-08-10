@@ -22,6 +22,9 @@ const {
   extractEffects,
   extractDamage,
   extractModeVariants,
+  extractFormVariants,
+  extractQuickSnipeData,
+  extractSnipeBaseTiming,
   assignModes,
   guardThunderspyOnesBuffs,
   resolveThunderspyMovementTargets,
@@ -32,6 +35,7 @@ const {
   collectAtomTemplates,
   collectBaseTemplates,
   encodeAtomsForEmit,
+  extractConditionalEffects,
   RAW_DATA_PATH,
   BIN_BOOST_MAP,
   EFFECT_AREA_MAP,
@@ -50,8 +54,6 @@ const RAW_POWERS_PATH = (() => {
   return oldLayout;
 })();
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
-// Text fields that didn't resolve to text (message-store keys like
-// `P2937209522`) must not reach the UI as if they had.
 const { displayText } = require('./_display-text.cjs');
 const datasetId = parseDatasetArg();
 
@@ -160,21 +162,37 @@ function convertPoolPower(rawJson, rank, availableLevel) {
       && getStrengthsDisallowedIndex().get(rawJson.full_name.toLowerCase());
     if (sd && sd.global.length) power.globalStrengthsDisallowed = sd.global;
   }
-  // ProcMainTargetOnly — procs roll single-target here regardless of the power's
-  // radius. See the field doc on `Power.procsOnlyOnMainTarget`.
+
+  // ProcMainTargetOnly — procs roll single-target here regardless of radius.
+  // See the field doc on `Power.procsOnlyOnMainTarget`.
   if (rawJson.procs_only_on_main_target) power.procsOnlyOnMainTarget = true;
-  // ProcAllowed kNone — this power's own activation is not a proc window. See
-  // the field doc on `Power.procsAllowed`.
+
+  // ProcAllowed kNone — the game fires no proc in this power. Sparse-false, mirroring
+  // the export: absent means procs fire. See the field doc on `Power.procsAllowed`.
   if (rawJson.procs_allowed === false) power.procsAllowed = false;
   // …unless an executed child rolls in its place — Spring Attack does exactly
   // that. See collectProcRollSites.
   const procRollSites = collectProcRollSites(rawJson);
   if (procRollSites) power.procRollSites = procRollSites;
+
+  // EntsAffected — who this power's effects can land on, which is what an atom
+  // targeting `AnyAffected` means by "the target". See the field doc on
+  // `Power.targetsAffected` (DATA-GAP-REGISTER MEZRES-3).
+  if (Array.isArray(rawJson.targets_affected) && rawJson.targets_affected.length) {
+    power.targetsAffected = rawJson.targets_affected;
+  }
+
   power.rank = rank;
   power.available = availableLevel;
+  // See the field doc on the archetype converter's `autoIssue`/`free`: the game
+  // grants rather than offers a power when AutoIssue passes together with
+  // BuyRequires and available <= level (character_base.c:1952).
+  power.autoIssue = rawJson.auto_issue === true;
+  power.free = rawJson.free === true;
 
   // Description & help
   power.description = displayText(rawJson.display_help) || '';
+  // An unresolved message-store key is not text — see `_display-text.cjs`.
   if (displayText(rawJson.display_short_help)) {
     power.shortHelp = rawJson.display_short_help.replace(/\u00a0/g, ' ');
   }
@@ -195,6 +213,14 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   const modeVariants = extractModeVariants(rawJson);
   if (modeVariants) {
     power.modeVariants = modeVariants;
+  }
+
+  // Alternate records the redirect table selects by an evaluated condition — the same transform
+  // archetype powers get. This partition's carriers are the Teleportation pool's, whose record
+  // varies with which other Teleportation picks the build holds.
+  const formVariants = extractFormVariants(rawJson);
+  if (formVariants) {
+    power.formVariants = formVariants;
   }
 
   // Game modes — the same four arrays archetype powers carry. The pools were left
@@ -318,6 +344,23 @@ function convertPoolPower(rawJson, rank, availableLevel) {
 
   }
 
+  // The fast (uninterruptible) redirect form, and the slow form's real timing — the third
+  // converter to need the block convert-powerset.cjs and convert-epic-pools.cjs already run.
+  // This partition's one carrier is Aid Other, whose interruptible 3.93s cast becomes an
+  // uninterruptible 2.93s (Thunderspy 2.0 → 1.0) while the build holds Field Medic; the
+  // structural pair is identical to a snipe's, and `findFastFormRedirect` has always matched
+  // it. Nothing was ever wrong with the DETECTOR — this converter simply never called it, so
+  // a Medicine build with Field Medic read a cast a full second too slow and an interrupt
+  // channel the game had removed. Into this partition's bag keys, as the epic converter does
+  // (`normalize_legacy_power` fills `castTime` from `activationTime` at load).
+  const quickSnipe = extractQuickSnipeData(rawJson);
+  if (quickSnipe) {
+    power.quickSnipe = quickSnipe;
+    const base = extractSnipeBaseTiming(rawJson);
+    if (base?.castTime != null) effects.activationTime = base.castTime;
+    if (base?.interruptTime != null) effects.interruptTime = base.interruptTime;
+  }
+
   // Plan B — emit the pre-projection atom list alongside the bag, exactly as
   // convert-powerset.cjs does for archetype powers. Pool powers went without it
   // until 2026-07-15, which meant every atom-native applier silently fell back to
@@ -347,6 +390,25 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   }
 
   power.effects = effects;
+
+  // Conditional bonus effects (Mechanic Adjusters) — the positive state gates the base
+  // collector filters out, surfaced as toggles. Called AFTER the atom emit above for the
+  // reason convert-powerset.cjs orders them that way: `extractConditionalEffects` stamps
+  // `_perTargetIncrement` on the templates it patches, and `encodeAtomsForEmit` copies that
+  // stamp onto the atom, so running it first would put a conditional group's per-foe
+  // increment on the base atoms.
+  //
+  // This converter shipped no conditionals at all until 2026-08-07 (COND-2) — a
+  // partition-wide zero on all three forks while the gated groups sat in the export naming
+  // real caster state: Arcane Bolt's mode, Cross Punch's Fighting Synergy on Boxing and
+  // Kick, Field Medic on Aid Self, Domination on Homecoming's Cross Punch, Intimidate and
+  // Invoke Panic. Same class as the epic snipes and Aid Other — a capability built in
+  // convert-powerset.cjs and never given to the sibling converters. `audit-conditional-
+  // coverage.cjs` is the check that now fails from outside all three when it recurs.
+  if (rawJson.effects?.length) {
+    const conditional = extractConditionalEffects(rawJson.effects, rawJson);
+    if (conditional) power.conditionalEffects = conditional;
+  }
 
   // Thunderspy: veto the `Ones`-relabel false positives (resistance-as-recharge,
   // foe-attack self-buffs) the binary can't disambiguate. No-op elsewhere.
@@ -392,8 +454,20 @@ function convertPool(poolId) {
   }
 
   // Build pool metadata from index
+  // The pool's binary name, which `POOL_DIR_MAP` renames on the way in (manipulation/ →
+  // `presence`) — so the id below can never answer a `Pool.Manipulation` gate and this is
+  // the field that does.
+  if (!poolIndex.key) {
+    throw new Error(`${indexPath}: missing key (the binary set path)`);
+  }
+
   const pool = {
     id: poolId,
+    setPath: poolIndex.key,
+    buyRequires: poolIndex.buy_requires || [],
+    buyRequiresFailed: poolIndex.buy_requires_failed || '',
+    specializeAt: poolIndex.specialize_at || 0,
+    specializeRequires: poolIndex.specialize_requires || [],
     name: poolIndex.display_name,
     displayName: poolIndex.display_name,
     description: poolIndex.description || poolIndex.display_help || '',
@@ -424,14 +498,10 @@ function convertPool(poolId) {
     }
 
     const rawJson = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    // Bin reads available_level as u4. UINT_MAX (4294967295) is the unsigned
-    // form of -1, used to mark auto-granted powers (Afterburner from Fly,
-    // Translocation from Mystic Flight, Arcane Power from Arcane Bolt).
-    // Normalize to -1 so the planner's `available < 0` filter catches them.
-    let availableLevel = availableLevels[i];
-    if (availableLevel === 4294967295 || availableLevel === undefined) {
-      availableLevel = availableLevel === 4294967295 ? -1 : 0;
-    }
+    // -1 marks the auto-granted powers (Afterburner from Fly, Translocation
+    // from Mystic Flight, Arcane Power from Arcane Bolt) — the planner's
+    // `available < 0` filter keeps them out of the picker.
+    const availableLevel = availableLevels[i] ?? 0;
     // Minimum number of other pool picks required to satisfy this power's
     // requires expression. Heuristic on the RPN form (see below), sufficient
     // for every pool currently in the game:

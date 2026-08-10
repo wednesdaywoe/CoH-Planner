@@ -21,8 +21,12 @@ import { TameBeasts as TameBeasts } from './tame-beasts';
 
 export const powerset: Powerset = {
   id: 'mastermind/beast-mastery',
-  internalName: 'beast_mastery',
+  setPath: 'Mastermind_Summon.Beast_Mastery',
   name: 'Beast Mastery',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Command wild animals to aid you in battle. These beastly allies lack ranged attacks, but make up for it with a specialized focus in melee combat. Call forth wolves, lions, dire wolves, hawks and insects to harass your foes.  Additionally, you have a chance to gain a stack of Pack Mentality when you and your pets land a hit on an enemy.  Each stack of Pack Mentality will boost the damage of all of your nearby beast henchmen.  Pack Mentality can stack up to 10 times and will fade after a short time.',
   icon: 'beast_mastery_set.ico',
   archetype: 'mastermind',

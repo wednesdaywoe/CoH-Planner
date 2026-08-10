@@ -12,6 +12,8 @@ export const Parry: Power = {
   "name": "Parry",
   "internalName": "Parry",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You can use this power to Parry incoming melee attacks. The Parry itself does minor damage, but every successful hit will increase your Defense against melee and lethal attacks for a short while. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG(Lethal), Self +DEF(Melee,Lethal)",
   "icon": "sword_parry.png",
@@ -20,6 +22,9 @@ export const Parry: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

@@ -12,6 +12,8 @@ export const DarkConsumption: Power = {
   "name": "Dark Consumption",
   "internalName": "Dark_Consumption",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "PBAoE DMG(Negative), Self +End",
   "icon": "shadowfighting_darkconsumption.png",
@@ -20,6 +22,9 @@ export const DarkConsumption: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "maxTargetsExpression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
   "stats": {
@@ -61,6 +66,6 @@ export const DarkConsumption: Power = {
   "atoms": [
     ["Damage","Negative",0.6154,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25],
-    ["Damage","Fire",0.2769,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+    ["Damage","Fire",0.2769,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"]
   ]
 };

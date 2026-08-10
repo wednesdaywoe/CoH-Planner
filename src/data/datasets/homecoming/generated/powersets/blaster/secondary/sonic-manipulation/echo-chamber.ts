@@ -12,12 +12,17 @@ export const EchoChamber: Power = {
   "name": "Echo Chamber",
   "internalName": "Echo_Chamber",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Encases the target in a field of sonic waves, dealing energy damage and holding them in place.Damage: Light.Recharge: Slow.",
   "shortHelp": "Ranged, DMG(Energy), Foe Hold",
   "icon": "sonicmanipulation_echochamber.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

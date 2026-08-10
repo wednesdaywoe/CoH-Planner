@@ -12,12 +12,17 @@ export const GenomicEvolution: Power = {
   "name": "Genomic Evolution",
   "internalName": "Genomic_Evolution",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Your body has evolved to protect you from all damage types. As a result you receive a moderate bonus to damage resistance against all types.*While Offensive Adaptation is active you gain increased range buff.*While Defensive Adaptation is active you gain a bonus to damage resistance.*While Efficient Adaptation is active you gain a power bonus to your max endurance.Bonuses granted from Adaptations are unenhanceable.This power is always active and cost no endurance.",
   "shortHelp": "Auto: +Res(All), +Special",
   "icon": "bioorganicarmor_genomicevolution.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 5
@@ -101,6 +106,7 @@ export const GenomicEvolution: Power = {
           "rangeBuff": 5.25
         },
         "rangeBuff": {
+          "ignoreStrength": true,
           "scale": 0.15,
           "table": "Melee_Ones"
         }
@@ -118,6 +124,7 @@ export const GenomicEvolution: Power = {
           "maxEndBuff": 5.25
         },
         "maxEndBuff": {
+          "ignoreStrength": true,
           "scale": 5,
           "table": "Melee_Ones"
         }
@@ -136,34 +143,42 @@ export const GenomicEvolution: Power = {
         },
         "resistance": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 0.15,
             "table": "Melee_Res_Dmg"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 0.15,
             "table": "Melee_Res_Dmg"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 0.15,
             "table": "Melee_Res_Dmg"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 0.225,
             "table": "Melee_Res_Dmg"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 0.15,
             "table": "Melee_Res_Dmg"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 0.18,
             "table": "Melee_Res_Dmg"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 0.225,
             "table": "Melee_Res_Dmg"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Res_Dmg"
           }

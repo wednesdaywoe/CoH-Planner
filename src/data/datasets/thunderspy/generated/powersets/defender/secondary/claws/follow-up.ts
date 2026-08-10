@@ -12,12 +12,17 @@ export const FollowUp: Power = {
   "name": "Follow Up",
   "internalName": "Follow_Up",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You are constantly looking for vulnerabilities in your foes' stances and positioning. Whenever you attack, you have a chance to gain a moderate +Damage bonus for a short duration. Additionally, the friction from your claws strikes causes them to do a small amount of fire damage.",
   "shortHelp": "Self +To Hit, +Fire Damage on all attacks, Chance for +DMG(All)",
   "icon": "claws_feint.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 1

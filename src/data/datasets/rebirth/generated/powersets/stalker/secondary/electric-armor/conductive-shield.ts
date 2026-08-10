@@ -12,6 +12,8 @@ export const ConductiveShield: Power = {
   "name": "Conductive Shield",
   "internalName": "Conductive_Shield",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on this power, you are surrounded in a Conductive Shield that will conduct many sorts of energy away from your body. Conductive Shield grants high resistant to Fire, Cold, and Energy damage, as well as good resistance to Negative Energy damage. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
   "icon": "electricarmor_selfresistelements.png",
@@ -22,6 +24,9 @@ export const ConductiveShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

@@ -12,12 +12,18 @@ export const GlacialShield: Power = {
   "name": "Glacial Shield",
   "internalName": "Glacial_Shield",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Envelopes nearby allies in gleaming Glacial Ice. Its crystalline structure has refracting properties that grants the targets damage resistance to Fire, Cold, and Energy. You cannot stack multiple Glacial Shields on the same target, however the shield can be improved by another ally using the same power. Can also be used in conjunction with your Ice Shield. You recive lessened benefits from this power. Recharge: Very Fast",
   "shortHelp": "Wide Area PBAoE, Ally Res(Fire, Cold, Energy)",
   "icon": "colddomination_glaciate.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 80,

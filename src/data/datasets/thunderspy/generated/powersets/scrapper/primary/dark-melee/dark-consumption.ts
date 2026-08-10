@@ -12,6 +12,8 @@ export const DarkConsumption: Power = {
   "name": "Dark Consumption",
   "internalName": "Dark_Consumption",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance. Damage: Moderate, Recharge: Very Long",
   "shortHelp": "PBAoE Moderate DMG(Negative), Self +End",
   "icon": "shadowfighting_darkconsumption.png",
@@ -20,6 +22,9 @@ export const DarkConsumption: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

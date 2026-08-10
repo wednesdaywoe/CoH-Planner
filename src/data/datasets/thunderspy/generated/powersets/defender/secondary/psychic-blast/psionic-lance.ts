@@ -12,12 +12,17 @@ export const PsionicLance: Power = {
   "name": "Psionic Lance",
   "internalName": "Psionic_Lance",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "This extremely long range Psionic attack has a bonus to Accuracy, and can Slow a target's attack rate. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Superior DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_psioniclance.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 175,
@@ -52,6 +57,7 @@ export const PsionicLance: Power = {
       "rechargeDebuff": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.15,
       "table": "Ranged_Slow"
     }

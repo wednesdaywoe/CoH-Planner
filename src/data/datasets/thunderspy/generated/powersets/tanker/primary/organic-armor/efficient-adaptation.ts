@@ -12,6 +12,8 @@ export const EfficientAdaptation: Power = {
   "name": "Efficient Adaptation",
   "internalName": "Efficient_Adaptation",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "Adapt your Organic Armor in order to more fluidly fight. This Adaptation is focused on energy efficiency and speed.",
   "shortHelp": "Toggle: Bio Armor Efficient Mode",
   "icon": "bioorganicarmor_efficientadaptation.png",
@@ -23,6 +25,9 @@ export const EfficientAdaptation: Power = {
     "sleep",
     "stun"
   ],
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 4,
@@ -32,7 +37,7 @@ export const EfficientAdaptation: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Meta",null,1,105,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,105,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"]
   ],
   "requires": "Tanker_Defense.Organic_Armor.Evolution",
   "setsModes": [

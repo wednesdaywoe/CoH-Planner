@@ -21,8 +21,12 @@ import { TimeBomb as TimeBomb } from './time-bomb';
 
 export const powerset: Powerset = {
   id: 'defender/traps',
-  internalName: 'traps',
+  setPath: 'Defender_Buff.Traps',
   name: 'Traps',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Traps are devices and gadgets you construct to cripple your foes. By using them strategically, you can gain a great tactical advantage. Traps include ambush devises, as well as gadgets that can be constructed to aid you and your allies.',
   icon: 'traps_set.ico',
   archetype: 'defender',

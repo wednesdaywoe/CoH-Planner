@@ -12,6 +12,8 @@ export const TacticalTrainingAssault: Power = {
   "name": "Tactical Training: Assault",
   "internalName": "Tactical_Training:_Assault",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you and your nearby teammates deal more damage and are more resistant to Taunt and Placate.",
   "shortHelp": "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
   "icon": "teamwork_tacticaltrainingassault.png",
@@ -22,6 +24,10 @@ export const TacticalTrainingAssault: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Teammate",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -40,6 +46,7 @@ export const TacticalTrainingAssault: Power = {
   "effects": {
     "buffDuration": 2.25,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Ranged_Buff_Dmg"
     },

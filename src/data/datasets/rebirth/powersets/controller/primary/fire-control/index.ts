@@ -21,8 +21,12 @@ import { FireImps as FireImps } from './fire-imps';
 
 export const powerset: Powerset = {
   id: 'controller/fire-control',
-  internalName: 'fire_control',
+  setPath: 'Controller_Control.Fire_Control',
   name: 'Fire Control',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can control the essence of fire to entrap, scorch, and manipulate your foes with smoke and flame.',
   icon: 'fire_control_set.ico',
   archetype: 'controller',

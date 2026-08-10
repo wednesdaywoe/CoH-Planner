@@ -12,6 +12,8 @@ export const Chop: Power = {
   "name": "Chop",
   "internalName": "Chop",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "The Chop deals heavy damage with your Battle Axe, although it is much slower than Gash. This attack can knock down a target. Damage: High, Recharge: Slow",
   "shortHelp": "Melee, High DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_gash.png",
@@ -22,6 +24,9 @@ export const Chop: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,

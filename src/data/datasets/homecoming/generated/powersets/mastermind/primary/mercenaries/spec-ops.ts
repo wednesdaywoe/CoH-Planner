@@ -12,6 +12,8 @@ export const SpecOps: Power = {
   "name": "Spec Ops",
   "internalName": "Spec_Ops",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can enlist one to two highly skilled Spec Ops Mercenary (depending on your level). Spec Ops weapons are highly accurate and long ranged, and they are adept in many different tactical weapons. Like all Henchmen, Spec Ops can be equipped with even deadlier munitions.You may only have 2 Spec Ops under your control at any given time. If you attempt to summon more Spec Ops, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
   "shortHelp": "Summon Spec Ops",
   "icon": "paramilitary_enlistspecialforces.png",
@@ -19,6 +21,9 @@ export const SpecOps: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

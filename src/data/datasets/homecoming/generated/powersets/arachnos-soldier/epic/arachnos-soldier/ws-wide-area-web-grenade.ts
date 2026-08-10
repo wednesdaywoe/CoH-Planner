@@ -12,12 +12,17 @@ export const WSWideAreaWebGrenade: Power = {
   "name": "Wide Area Web Grenade",
   "internalName": "WS_Wide_Area_Web_Grenade",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Launches a Grenade at long range from under the barrel of your Assault rifle. It explodes into a field of sticky webs which slow and can immobilize all foes within its radius.",
   "shortHelp": "Ranged (Targeted AoE), Foe Immobilize, -SPD, -Recharge, -Fly, -Jump",
   "icon": "arachnossoldier_wideareawebgrenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -50,6 +55,7 @@ export const WSWideAreaWebGrenade: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
@@ -81,5 +87,437 @@ export const WSWideAreaWebGrenade: Power = {
     ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+  ],
+  "formVariants": [
+    {
+      "condition": "@CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&",
+      "internalName": "Crab_WAWG",
+      "stats": {
+        "accuracy": 1,
+        "range": 80,
+        "radius": 25,
+        "recharge": 20,
+        "endurance": 15.6,
+        "castTime": 1.67,
+        "maxTargets": 16
+      },
+      "effects": {
+        "buffDuration": 15,
+        "durations": {
+          "rechargeDebuff": 15,
+          "slow": 15
+        },
+        "immobilize": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Ranged_Immobilize"
+        },
+        "rechargeDebuff": {
+          "ignoreStrength": true,
+          "scale": 0.5,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "fly": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "flySpeed": {
+            "scale": 0.5,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 500,
+            "table": "Ranged_Ones"
+          },
+          "runSpeed": {
+            "scale": 0.5,
+            "table": "Ranged_Slow"
+          }
+        }
+      },
+      "shortHelp": "Ranged (Targeted AoE), Foe Immobilize, -SPD, -Recharge, -Fly, -Jump",
+      "description": "Launches a Grenade at long range from an arm of your backpack. It explodes into a field of sticky webs which slow and can immobilize all foes within its radius.",
+      "effectArea": "AoE",
+      "targetType": "Foe",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Mez",
+          "Immobilized",
+          15,
+          3,
+          0,
+          "Ranged_Immobilize",
+          "Cur",
+          "Duration",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ],
+        [
+          "Movement",
+          "JumpHeight",
+          -500,
+          1,
+          15,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ],
+        [
+          "RechargeTime",
+          null,
+          0.5,
+          1,
+          15,
+          "Ranged_Slow",
+          "Str",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Movement",
+          "Run",
+          0.5,
+          1,
+          15,
+          "Ranged_Slow",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Movement",
+          "Fly",
+          0.5,
+          1,
+          15,
+          "Ranged_Slow",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "MezResist",
+          "Knockup",
+          100,
+          1,
+          15,
+          "Ranged_Ones",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "MezResist",
+          "Knockback",
+          100,
+          1,
+          15,
+          "Ranged_Ones",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Movement",
+          "FlyMode",
+          -10,
+          1,
+          15,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ]
+      ]
+    },
+    {
+      "condition": "@CustomFX NullifierMace eq @CustomFX NullifierMaceTintable eq || Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor source.ownPower? &&",
+      "internalName": "Bane_WAWG",
+      "stats": {
+        "accuracy": 1,
+        "range": 80,
+        "radius": 25,
+        "recharge": 20,
+        "endurance": 15.6,
+        "castTime": 1.67,
+        "maxTargets": 16
+      },
+      "effects": {
+        "buffDuration": 15,
+        "durations": {
+          "rechargeDebuff": 15,
+          "slow": 15
+        },
+        "immobilize": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Ranged_Immobilize"
+        },
+        "rechargeDebuff": {
+          "ignoreStrength": true,
+          "scale": 0.5,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "fly": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "flySpeed": {
+            "scale": 0.5,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 500,
+            "table": "Ranged_Ones"
+          },
+          "runSpeed": {
+            "scale": 0.5,
+            "table": "Ranged_Slow"
+          }
+        }
+      },
+      "shortHelp": "Ranged (Targeted AoE), Foe Immobilize, -SPD, -Recharge, -Fly, -Jump",
+      "description": "Launches a Grenade at long range from your Nullifier Mace. It explodes into a field of sticky webs which slow and can immobilize all foes within its radius.",
+      "effectArea": "AoE",
+      "targetType": "Foe",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Mez",
+          "Immobilized",
+          15,
+          3,
+          0,
+          "Ranged_Immobilize",
+          "Cur",
+          "Duration",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ],
+        [
+          "Movement",
+          "JumpHeight",
+          -500,
+          1,
+          15,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ],
+        [
+          "RechargeTime",
+          null,
+          0.5,
+          1,
+          15,
+          "Ranged_Slow",
+          "Str",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Movement",
+          "Run",
+          0.5,
+          1,
+          15,
+          "Ranged_Slow",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Movement",
+          "Fly",
+          0.5,
+          1,
+          15,
+          "Ranged_Slow",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "MezResist",
+          "Knockup",
+          100,
+          1,
+          15,
+          "Ranged_Ones",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "MezResist",
+          "Knockback",
+          100,
+          1,
+          15,
+          "Ranged_Ones",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Movement",
+          "FlyMode",
+          -10,
+          1,
+          15,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ]
+      ]
+    }
   ]
 };

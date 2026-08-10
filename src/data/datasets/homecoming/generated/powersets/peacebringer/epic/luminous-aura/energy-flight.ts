@@ -12,6 +12,8 @@ export const EnergyFlight: Power = {
   "name": "Energy Flight",
   "internalName": "Energy_Flight",
   "available": 0,
+  "autoIssue": true,
+  "free": true,
   "description": "Energy Flight allows you to travel large distances quickly. Energy Flight also increases your maximum flying speed by 50% and gives you access to the Quantum Acceleration power whilst it is active.If you attack a target while this power is on, your flight speed will be temporarily reduced to Hover speed.Energy Flight can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
   "shortHelp": "Toggle: Self Fly",
   "icon": "luminousaura_energyflight.png",
@@ -22,6 +24,9 @@ export const EnergyFlight: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -67,6 +72,7 @@ export const EnergyFlight: Power = {
     },
     "movementCapBump": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 2.0475,
         "stackKey": "TravelMaxBuff",
         "table": "Melee_Ones"
@@ -77,12 +83,12 @@ export const EnergyFlight: Power = {
     ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
     ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
     ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-    ["Meta",null,1,168,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,168,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true],
-    ["Movement","FlyMode",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","FlyMode",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SuppressBackup"],
+    ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
     ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
     ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelMaxBuff"],
     ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],

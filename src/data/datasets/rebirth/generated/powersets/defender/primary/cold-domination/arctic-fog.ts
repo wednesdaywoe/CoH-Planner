@@ -12,6 +12,8 @@ export const ArcticFog: Power = {
   "name": "Arctic Fog",
   "internalName": "Arctic_Fog",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mastery of Cold allows you to hide yourself and all nearby allies within thick Arctic Fog. Arctic Fog makes you and your allies harder to see and increases your Defense to area effect, melee and ranged attacks, as well as your resistance to Slow, Fire, Cold, and Energy damage. You cannot use any other Concealment type powers while using Arctic Fog.  Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Team Stealth, +DEF,  +Res(Fire, Cold, Energy, Slow)",
   "icon": "colddomination_arcticfog.png",
@@ -22,6 +24,10 @@ export const ArcticFog: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Friend",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -47,10 +53,12 @@ export const ArcticFog: Power = {
     "buffDuration": 2.25,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Ranged_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Ranged_Ones"
       }
@@ -127,6 +135,7 @@ export const ArcticFog: Power = {
         "table": "Ranged_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Ranged_Ones"
       }

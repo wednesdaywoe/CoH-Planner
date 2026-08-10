@@ -12,12 +12,17 @@ export const Tombstone: Power = {
   "name": "Tombstone",
   "internalName": "Tombstone",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Create a giant pillar of stone, creating a Tombstone around your target, dealing extreme damage and limiting their ability to jump and fly for a short time. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Tombstone grants two stacks of Seismic Pressure.",
   "shortHelp": "Sniper, DMG(Smash), Foe -Jump, -Fly",
   "icon": "seismicblast_snipe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 150,
@@ -50,31 +55,37 @@ export const Tombstone: Power = {
   "effects": {
     "buffDuration": 16,
     "durations": {
+      "movementCapDebuff": 16,
       "slow": 16
+    },
+    "movementCapDebuff": {
+      "jumpHeight": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_Slow"
+      }
     },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
-      },
-      "jumpHeight": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
       }
     }
   },
   "atoms": [
     ["Movement","FlyMode",-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Meta",null,-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Meta",null,-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"jump pack"],
     ["Movement","Jump",1,1,16,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelDebuff"],
     ["Movement","JumpHeight",1,1,16,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelDebuff"],
     ["Damage","Smashing",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
   ],
   "quickSnipe": {
+    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
     "stats": {
       "castTime": 1.67,
       "range": 80
@@ -85,6 +96,14 @@ export const Tombstone: Power = {
         "scale": 2.28,
         "table": "Ranged_Damage"
       }
+    ],
+    "atoms": [
+      ["Movement","FlyMode",-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+      ["Meta",null,-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"jump pack"],
+      ["Movement","Jump",1,1,16,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelDebuff"],
+      ["Movement","JumpHeight",1,1,16,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelDebuff"],
+      ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"arch source> Class_Blaster eq",null,null,null,null,null,null,null,null,null,null,"Class_Blaster"],
+      ["Damage","Smashing",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *"]
     ]
   }
 };

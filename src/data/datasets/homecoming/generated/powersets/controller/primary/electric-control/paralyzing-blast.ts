@@ -12,6 +12,8 @@ export const ParalyzingBlast: Power = {
   "name": "Tesla Coil",
   "internalName": "Paralyzing_Blast",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Summoning a large amount of energy that periodically jolts at nearby enemies dealing energy damage and paralizing them for a short time. These foes may be drained of some endurance as well.",
   "shortHelp": "Ranged (Targeted AoE), Foe DMG(Energy), Hold, -End, -Fly, -Jump, -Recharge",
   "icon": "electriccontrol_paralyzingblastpatch.png",
@@ -19,6 +21,9 @@ export const ParalyzingBlast: Power = {
   "targetType": "Foe",
   "effectArea": "SingleTarget",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,
@@ -94,6 +99,9 @@ export const ParalyzingBlast: Power = {
               "castTime": 0,
               "activatePeriod": 4,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 30,
               "maxTargets": 1
             },
@@ -105,6 +113,7 @@ export const ParalyzingBlast: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "jumpHeight",
                   "scale": 1.6,
                   "table": "Ranged_Ones"
                 },
@@ -119,6 +128,9 @@ export const ParalyzingBlast: Power = {
               "castTime": 0,
               "activatePeriod": 4,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 30,
               "maxTargets": 16
             },
@@ -144,6 +156,9 @@ export const ParalyzingBlast: Power = {
               "castTime": 0,
               "activatePeriod": 1000,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 30,
               "maxTargets": 16
             }
@@ -155,6 +170,6 @@ export const ParalyzingBlast: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,0,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"silent_kill"]
   ]
 };

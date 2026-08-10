@@ -12,6 +12,8 @@ export const HeavyMallet: Power = {
   "name": "Heavy Mallet",
   "internalName": "Heavy_Mallet",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "A more impressive form of Stone Mallet, the Heavy Mallet deals more damage, but is slower to swing. It has a greater chance of knocking down opponents. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Smash), Knockback",
   "icon": "stonemelee_heavymallet.png",
@@ -22,6 +24,9 @@ export const HeavyMallet: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

@@ -12,6 +12,8 @@ export const Decoy: Power = {
   "name": "Phantom Army",
   "internalName": "Decoy",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can fabricate 3 Phantom heroes around a targeted foe. These Phantoms are not real, and are indestructible. Though they deal damage, it is illusory and will heal if the victim survives long enough. Phantoms are short lived and cannot be buffed or healed.",
   "shortHelp": "Summon Decoys: Ranged DMG(Psionic)",
   "icon": "illusions_phantomarmy2.png",
@@ -19,6 +21,9 @@ export const Decoy: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -53,13 +58,13 @@ export const Decoy: Power = {
     ]
   },
   "atoms": [
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !"],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !"],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !"],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !"],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||"],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||"],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||"],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||"]
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !",null,null,null,null,null,null,null,null,null,"PhantomArmy"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !",null,null,null,null,null,null,null,null,null,"PhantomArmy"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !",null,null,null,null,null,null,null,null,null,"PhantomArmy"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !",null,null,null,null,null,null,null,null,null,"PhantomArmy",null,"cancel_mods"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||",null,null,null,null,null,null,null,null,null,"MirrorArmy"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||",null,null,null,null,null,null,null,null,null,"MirrorArmy"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||",null,null,null,null,null,null,null,null,null,"MirrorArmy"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||",null,null,null,null,null,null,null,null,null,"MirrorArmy",null,"cancel_mods"]
   ]
 };

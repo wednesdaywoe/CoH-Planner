@@ -21,8 +21,12 @@ import { WorldofPain as WorldofPain } from './world-of-pain';
 
 export const powerset: Powerset = {
   id: 'guardian/pain-focusing',
-  internalName: 'pain_focusing',
+  setPath: 'Guardian_Comp.Pain_Focusing',
   name: 'Pain Focusing',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'It takes more than a little pain to keep you down! Pain Focusing uses your willpower to master overwhelming pain. With it, you can channel your pain to protect your allies, yourself, and weaken adversaries.',
   icon: 'pain_domination_set.ico',
   archetype: 'guardian',

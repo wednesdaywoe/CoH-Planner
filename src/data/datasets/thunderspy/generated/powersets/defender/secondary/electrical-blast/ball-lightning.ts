@@ -12,12 +12,17 @@ export const BallLightning: Power = {
   "name": "Ball Lightning",
   "internalName": "Ball_Lightning",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Hurls a highly charged ball of lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
   "icon": "electricalbolt_balllightning.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

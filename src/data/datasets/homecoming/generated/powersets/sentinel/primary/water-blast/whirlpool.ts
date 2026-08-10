@@ -12,12 +12,17 @@ export const Whirlpool: Power = {
   "name": "Whirlpool",
   "internalName": "Whirlpool",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a violent whirlpool at the target location causing Cold damage over time, reducing the targets' speed and defense for a short time. Whirlpool grants 1 stack of Tidal Power.",
   "shortHelp": "Ranged (Location AoE), DoT(Cold), -Speed, -Defense, +Wet, Self +Tidal Power",
   "icon": "waterblast_whirlpool.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 40,
@@ -73,10 +78,36 @@ export const Whirlpool: Power = {
               ],
               "effects": [
                 {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Melee_SpeedRunning",
+                  "ignoreStrength": true
+                },
+                {
                   "type": "Slow",
+                  "axis": "jumpHeight",
                   "scale": 0.4,
                   "table": "Melee_Slow",
                   "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "runSpeed",
+                  "scale": 0.4,
+                  "table": "Melee_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
+                  "scale": 0.4,
+                  "table": "Melee_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 0.3,
+                  "table": "Melee_Slow"
                 },
                 {
                   "type": "DefenseDebuff",
@@ -88,6 +119,9 @@ export const Whirlpool: Power = {
               "castTime": 0,
               "activatePeriod": 0.5,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 25,
               "maxTargets": 10
             }

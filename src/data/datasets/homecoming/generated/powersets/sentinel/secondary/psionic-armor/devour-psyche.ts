@@ -12,12 +12,17 @@ export const DevourPsyche: Power = {
   "name": "Devour Psyche",
   "internalName": "Devour_Psyche",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You Devour the Psyche of foes in front of you, weakening their Hit Point Regeneration and Endurance Recovery and boosting your own. Hitting any foe with this power will refresh all existing stacks you currently have.Notes: This power has adaptive recharge. It has a base recharge of 5 seconds and each affected foe will increase the recharge by 5.5 seconds for a maximum total of 60 seconds.",
   "shortHelp": "Cone Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery",
   "icon": "psionicarmor_devourpsyche.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -69,11 +74,13 @@ export const DevourPsyche: Power = {
       "perTarget": 0.35
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
     "resistance": {
       "heal": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       }
@@ -85,14 +92,14 @@ export const DevourPsyche: Power = {
     ["Regeneration",null,0.35,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,null,null,null,null,null,null,null,0.35],
     ["Recovery",null,0.05,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,null,null,null,null,null,null,null,0.05],
     ["RechargePower",null,5.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["Meta",null,1,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["HealResistance",null,0.25,1,45,"Melee_Ones","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-1,1,45,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-0.2,1,45,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-0.8,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["GlobalChanceMod",null,1,1,35,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,true],
-    ["GlobalChanceMod",null,1,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,true],
-    ["GlobalChanceMod",null,10,1,35,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,-9,null,true]
+    ["GlobalChanceMod",null,1,1,35,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Monitor"],
+    ["GlobalChanceMod",null,1,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Monitor"],
+    ["GlobalChanceMod",null,10,1,35,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,-9,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"MaxPsycheFullDuration"]
   ]
 };

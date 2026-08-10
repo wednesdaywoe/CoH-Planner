@@ -22,8 +22,12 @@ import { Painbringer as Painbringer } from './painbringer';
 
 export const powerset: Powerset = {
   id: 'corruptor/pain-domination',
-  internalName: 'pain_domination',
+  setPath: 'Corruptor_Buff.Pain_Domination',
   name: 'Pain Domination',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Pain Domination gives a character the ability to manipulate, nullify and amplify pain.  Ultimately this grants the user powerful healing, buffing and debuffing powers.  It\'s healing output is unmatched!',
   icon: 'pain_domination_set.ico',
   archetype: 'corruptor',

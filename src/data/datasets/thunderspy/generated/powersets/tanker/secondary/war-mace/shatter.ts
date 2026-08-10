@@ -12,6 +12,8 @@ export const Shatter: Power = {
   "name": "Shatter",
   "internalName": "Shatter",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You attempt to Shatter the bones of your opponent by striking them with all your might. This attack will deal great damage and can knock foes back a great ways. The power of this attack can actually extend a short distance through multiple foes. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Smash), High Knockback",
   "icon": "mace_shatter.png",
@@ -20,6 +22,9 @@ export const Shatter: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

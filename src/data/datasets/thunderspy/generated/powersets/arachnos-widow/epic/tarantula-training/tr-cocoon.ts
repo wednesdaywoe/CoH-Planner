@@ -12,12 +12,17 @@ export const TRCocoon: Power = {
   "name": "Cocoon",
   "internalName": "TR_Cocoon",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Launch a web cocoon from your Tarantula exoskeleton. Encases enemies in webs which slow and can hold foes. Requires Tarantula form to use. Recharge: Long",
   "shortHelp": "Ranged, DoT(Smashing), Foe Hold, -Recharge, -Fly, -Jump, Slow",
   "icon": "tarantulatraining_cocoon.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -76,6 +81,7 @@ export const TRCocoon: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },

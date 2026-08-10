@@ -12,12 +12,17 @@ export const UmbralTorrent: Power = {
   "name": "Umbral Torrent",
   "internalName": "Umbral_Torrent",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals Moderate Negative Energy damage and sends foes flying and reduces their chance to hit. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Smashing), Foe -To Hit, Knockback",
   "icon": "darkcast_torrent.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -61,6 +66,7 @@ export const UmbralTorrent: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.02,
       "table": "Ranged_Ones"
     },

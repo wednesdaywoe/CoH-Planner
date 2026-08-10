@@ -12,6 +12,8 @@ export const FocusedSenses: Power = {
   "name": "Focused Senses",
   "internalName": "Focused_Senses",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You become more evasive against ranged attacks while you have Focused Senses activated. This will increase your Defense versus ranged attacks as long as it is active. Your Improved Senses also allow you to perceive stealthy foes as well as resist Defense DeBuffs. If you own Master Brawler you will also gain resistance to Disorient, Hold, Sleep powers. Focused Senses also adds an Elusivity defense bonus to Ranged Attacks in PVP zones.Recharge: Fast.",
   "shortHelp": "Toggle: Self +DEF(Ranged), +Perception, Res(DeBuff DEF)",
   "icon": "superreflexes_focusedsenses.png",
@@ -22,6 +24,9 @@ export const FocusedSenses: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

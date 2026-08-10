@@ -12,6 +12,8 @@ export const BrutalSwipe: Power = {
   "name": "Brutal Swipe",
   "internalName": "Brutal_Swipe",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You lash out at nearby foes in a single broad strike hitting up to 5 enemies in a cone in front of you. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a fair amount of health. In Hunter form you'll deal lethal damage and reduce the targets' defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a good chance to stun. Brutal Swipe builds 1 Primal Energy. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee Cone, High DMG(Special), Special",
   "icon": "feralmight_brutalswipe.png",
@@ -20,6 +22,9 @@ export const BrutalSwipe: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -69,7 +74,7 @@ export const BrutalSwipe: Power = {
   ],
   "atoms": [
     ["Damage","Smashing",1.95,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Heal",null,0.195,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Heal",null,0.39,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0]
   ],
@@ -108,7 +113,13 @@ export const BrutalSwipe: Power = {
       "description": "You lash out at nearby foes in a single broad strike hitting up to 5 enemies in a cone in front of you. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a fair amount of health. In Hunter form you'll deal lethal damage and reduce the targets' defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a good chance to stun. Brutal Swipe builds 1 Primal Energy. Damage: High, Recharge: Moderate",
       "effectArea": "Cone",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Lethal",1.95,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Defense","All",1.5,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true]
+      ]
     },
     "ProwlerMode": {
       "internalName": "Brutal_Swipe_Prowler",
@@ -162,7 +173,15 @@ export const BrutalSwipe: Power = {
       "description": "You lash out at nearby foes in a single broad strike hitting up to 5 enemies in a cone in front of you. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a fair amount of health. In Hunter form you'll deal lethal damage and reduce the targets' defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a good chance to stun. Brutal Swipe builds 1 Primal Energy. Damage: High, Recharge: Moderate",
       "effectArea": "Cone",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Lethal",1.95,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Damage","Lethal",0.975,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
+        ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true],
+        ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"]
+      ]
     }
   },
   "damageTypes": [

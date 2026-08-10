@@ -12,12 +12,17 @@ export const MassHypnosis: Power = {
   "name": "Mass Hypnosis",
   "internalName": "Mass_Hypnosis",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Hypnotizes a group of foes at a distance and puts them to Sleep. The targets will remain asleep for some time, but will awaken if attacked. This power deals no damage, but if done discreetly, the targets will never be aware of your presence. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
   "icon": "mentalcontrol_masshypnosis.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

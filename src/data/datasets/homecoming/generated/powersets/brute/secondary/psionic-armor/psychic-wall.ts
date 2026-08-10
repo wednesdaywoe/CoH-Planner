@@ -12,6 +12,8 @@ export const PsychicWall: Power = {
   "name": "Psychic Wall",
   "internalName": "Psychic_Wall",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You focus to create a psychic wall that dampens the smashing, lethal and psionic damage.",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionic)",
   "icon": "psionicarmor_psychicwall.png",
@@ -22,6 +24,9 @@ export const PsychicWall: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

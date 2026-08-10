@@ -12,12 +12,18 @@ export const WorldofPain: Power = {
   "name": "World of Pain",
   "internalName": "World_of_Pain",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "When this power is activated the user and all nearby team members will gain a moderate damage, resistance, and To Hit bonus. Additionally those affected by this power will also be protected from Placate effects.",
   "shortHelp": "PBAoE Team +To Hit, +DMG, +RES(All DMG, Placate)",
   "icon": "paindomination_worldofpain.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Teammate",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 35,
@@ -39,6 +45,7 @@ export const WorldofPain: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 1.6,
       "table": "Ranged_Buff_Dmg"
     },

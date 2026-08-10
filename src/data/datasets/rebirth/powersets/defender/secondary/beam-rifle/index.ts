@@ -21,8 +21,12 @@ import { Overcharge as Overcharge } from './overcharge';
 
 export const powerset: Powerset = {
   id: 'defender/beam-rifle',
-  internalName: 'beam_rifle',
+  setPath: 'Defender_Ranged.Beam_Rifle',
   name: 'Beam Rifle',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Your weapon of choice is a high tech beam rifle capable of firing a wide variety of energy blasts at your foes. Your Beam Rifle attacks will have greater potency while Disintegration is in effect on your target.  Additionally, single target Beam Rifle attacks used on targets suffering from the Disintegrating effect have a chance to spread this effect to nearby foes.  Beam Rifle focuses on dealing a great deal of single target damage, but has a few area of effect attacks as well.',
   icon: 'beam_rifle_set.ico',
   archetype: 'defender',

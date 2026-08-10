@@ -12,6 +12,8 @@ export const ThermalShield: Power = {
   "name": "Thermal Shield",
   "internalName": "Thermal_Shield",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on Thermal Shield, you emit tendrils of Kheldian energy that give you resistance to Fire and Cold damage. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Fire, Cold)",
   "icon": "luminousaura_thermalshield.png",
@@ -22,6 +24,9 @@ export const ThermalShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

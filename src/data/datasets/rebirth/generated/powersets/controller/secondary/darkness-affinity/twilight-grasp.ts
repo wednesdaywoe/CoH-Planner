@@ -12,12 +12,17 @@ export const TwilightGrasp: Power = {
   "name": "Twilight Grasp",
   "internalName": "Twilight_Grasp",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You channel Negative Energy from the Netherworld through yourself to a targeted foe. Twilight Grasp drains the power from that target and slowly transfers it to you and all nearby allies. The targeted foe's chance to hit, damage and regeneration rate are reduced, while you and your nearby allies are healed. Recharge: Moderate",
   "shortHelp": "Ranged, Foe -To Hit, -DMG, -Regen, Team Heal",
   "icon": "darkmiasma_twilightgrasp.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -44,6 +49,7 @@ export const TwilightGrasp: Power = {
   "effects": {
     "buffDuration": 20,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Debuff_Dam"
     },
@@ -53,6 +59,7 @@ export const TwilightGrasp: Power = {
       "tohitDebuff": 20
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Ones"
     },

@@ -12,12 +12,17 @@ export const PoisonGasArrow: Power = {
   "name": "Poison Gas Arrow",
   "internalName": "Poison_Gas_Arrow",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow carries a capsule cloud of poisonous gas, which explodes on impact and weakens all foes in its vicinity. Affected foes damage potential will be severely reduced and their regeneration rate will be decreased. Some foes will react badly to the poison and choke for a time, though they will react if attacked.  Recharge: Slow",
   "shortHelp": "Ranged AoE, Foe -DMG, -Regen, Sleep",
   "icon": "trickarrow_debuffdamage.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

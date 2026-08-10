@@ -12,6 +12,8 @@ export const HuntersHowl: Power = {
   "name": "Hunter's Howl",
   "internalName": "Hunters_Howl",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "While in Hunter Form you can use this power to unleash an unnerving howl to significantly weaken the attack speed, movement speed and chance to hit of nearby foes for a short time. This power's potency varies depending on the amount of Primal Energy the user has. Hunter's Howl drains all of the user's Primal Energy. This power is automatically awarded when Hunter Form is purchased. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe -Recharge, -To Hit, Requires Hunter Form, -All Primal Energy",
   "icon": "feralmight_huntershowl.png",
@@ -20,6 +22,9 @@ export const HuntersHowl: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -59,6 +64,7 @@ export const HuntersHowl: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Slow"
       },
@@ -89,7 +95,7 @@ export const HuntersHowl: Power = {
     ["Movement","JumpHeight",1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .45 * .45 + @StdResult *"],
     ["Movement","Jump",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .45 * .45 + @StdResult *"],
     ["ToHit",null,1,1,30,"Melee_DeBuff_ToHit","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> 1.5 * 1.5 + @StdResult *"],
-    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "requires": "Feral_Might.Feral_Might.Hunter_Form",
   "modesRequired": [

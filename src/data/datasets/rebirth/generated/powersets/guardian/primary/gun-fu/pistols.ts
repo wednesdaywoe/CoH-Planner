@@ -12,12 +12,17 @@ export const Pistols: Power = {
   "name": "Pistols",
   "internalName": "Pistols",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Quickly fires a round from one of your heavy automatic pistols. Damage is average, but the fire rate is very fast.  Pistols will also reduce the target's defense.  Damage: Minor, Recharge: Very Fast",
   "shortHelp": "Ranged, Minor DMG(Lethal)",
   "icon": "gunfu_pistols.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,
@@ -65,7 +70,7 @@ export const Pistols: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Lethal",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Lethal",0.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],

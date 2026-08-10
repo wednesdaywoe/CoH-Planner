@@ -12,6 +12,8 @@ export const Telekinesis: Power = {
   "name": "Telekinesis",
   "internalName": "Telekinesis",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Lifts a foe, and any nearby foes, off the ground and repels them. The targets are helpless, unable to move, and will continue to hover away, picking up any passing targets, as long as you keep this power active. Keeping up this level of concentration costs a lot of Endurance. Note despite this power being auto-hit, it still requires a ToHit check.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe Immobilize, Repel",
   "icon": "mentalcontrol_telekinesis.png",
@@ -22,6 +24,10 @@ export const Telekinesis: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "DeadFoe"
   ],
   "stats": {
     "accuracy": 1,
@@ -45,20 +51,27 @@ export const Telekinesis: Power = {
     "Immobilize"
   ],
   "maxSlots": 6,
+  "effects": {
+    "immobilize": {
+      "mag": 4,
+      "scale": 5,
+      "table": "Ranged_Immobilize"
+    }
+  },
   "atoms": [
-    ["Meta",null,1,175,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true],
-    ["Mez","Immobilized",5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 0 > &&",true],
-    ["Mez","Immobilized",7.5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.25,null,null,null,null,null,null,null,true],
+    ["Mez","Immobilized",5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 0 > &&"],
+    ["Meta",null,1,175,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Telekinesis",null,"set_mode"],
+    ["Mez","Immobilized",7.5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 0 > &&",true,null,null,null,null,null,null,null,null,"Domination"],
     ["Mez","Immobilized",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 0 > &&",true],
-    ["MezResist","Knockup",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,"Immobilized"],
-    ["MezResist","Knockback",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,"Immobilized"],
-    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"distance 40 < kHitPoints% target> 0 > &&",true,null,null,null,null,"40 distance -","Immobilized"],
-    ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"distance 40 < kHitPoints% target> 0 > &&",true,null,true],
-    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"distance 60 > kHitPoints% target> 0 > &&",true,null,null,null,null,"distance 60 -","Immobilized"],
-    ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"distance 60 > kHitPoints% target> 0 > &&",true,null,true],
-    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized"],
-    ["Movement","FlyMode",1,1,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized"],
-    ["Movement","Fly",1.1788,1,1.5,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized"]
+    ["MezResist","Knockup",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,"Immobilized",null,null,"Telekinesis"],
+    ["MezResist","Knockback",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,"Immobilized",null,null,"Telekinesis"],
+    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"Continuous",2,null,null,1,null,null,null,null,null,null,"distance 40 < kHitPoints% target> 0 > &&",true,null,null,null,null,"40 distance -","Immobilized",null,null,"Telekinesis"],
+    ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"distance 40 < kHitPoints% target> 0 > &&",true,null,true,null,null,null,null,null,null,"Telekinesis"],
+    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"Continuous",2,null,null,1,null,null,null,null,null,null,"distance 60 > kHitPoints% target> 0 > &&",true,null,null,null,null,"distance 60 -","Immobilized",null,null,"Telekinesis"],
+    ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"distance 60 > kHitPoints% target> 0 > &&",true,null,true,null,null,null,null,null,null,"Telekinesis"],
+    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Continuous",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized",null,null,"Telekinesis"],
+    ["Movement","FlyMode",1,1,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized",null,null,"Telekinesis"],
+    ["Movement","Fly",1.1788,1,1.5,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized",null,null,"Telekinesis"]
   ],
   "conditionalEffects": [
     {

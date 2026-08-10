@@ -12,12 +12,17 @@ export const RestoreEssence: Power = {
   "name": "Restore Essence",
   "internalName": "Restore_Essence",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "Should you fall in battle, you can Restore your Essence and bring yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds.Recharge: Very Long.",
   "shortHelp": "Self Rez",
   "icon": "luminousaura_restoreessence.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,
@@ -49,11 +54,13 @@ export const RestoreEssence: Power = {
       "table": "Melee_Ones"
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
     },
     "untouchable": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
@@ -67,7 +74,7 @@ export const RestoreEssence: Power = {
     ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Mez","Untouchable",10,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
   ],
   "modesDisallowed": [
     "Peacebringer_Blaster_Mode",

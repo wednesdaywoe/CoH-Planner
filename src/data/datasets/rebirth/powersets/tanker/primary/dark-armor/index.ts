@@ -21,8 +21,12 @@ import { SoulTransfer as SoulTransfer } from './soul-transfer';
 
 export const powerset: Powerset = {
   id: 'tanker/dark-armor',
-  internalName: 'dark_armor',
+  setPath: 'Tanker_Defense.Dark_Armor',
   name: 'Dark Armor',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Dark Armor allows you to tap into the powers of the Netherworld for protection.  Many Dark Armor powers drain your foes to strengthen you.  Dark Armor offers very good resistance to Negative Energy damage, and is one of the only defensive sets that offer some resistance to Psionic damage.  However, its resistance to Energy is weak and it offers no protection from Knockback or Immobilization.',
   icon: 'dark_armor_set.ico',
   archetype: 'tanker',

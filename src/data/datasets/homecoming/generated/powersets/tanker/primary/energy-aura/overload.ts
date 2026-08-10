@@ -12,6 +12,8 @@ export const Overload: Power = {
   "name": "Overload",
   "internalName": "Overload",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Overcharge your Energy Aura and significantly improve your defense to all attack types. Overcharge also grants you Defense Debuffs. This Energy Aura is so powerful, that it can even absorb some damage, effectively increasing your Max Hit Points. Overcharge also adds a moderate Elusivity defense bonus to all attacks in PVP zones.",
   "shortHelp": "Self +DEF(All), +Recovery, +MaxHP, Res(DeBuff DEF)",
   "icon": "energyaura_overload.png",
@@ -23,6 +25,9 @@ export const Overload: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -48,6 +53,7 @@ export const Overload: Power = {
     "buffDuration": 30,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }

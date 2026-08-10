@@ -12,6 +12,8 @@ export const MudPots: Power = {
   "name": "Mud Pots",
   "internalName": "Mud_Pots",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you draw upon the geothermal power of the Earth to create a bubbling pool of hot mud around you. All foes in melee range will become snared and entrapped in the mud, Immobilizing some and slowing others. The boiling heat from Mud Pots may also deal some damage over time to the snared foes.Damage: Minor(DoT).Recharge: Fast.",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Fire), Foe Immobilize, -SPD",
   "icon": "stonearmor_clay.png",
@@ -22,6 +24,9 @@ export const MudPots: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -49,6 +54,7 @@ export const MudPots: Power = {
   "effects": {
     "buffDuration": 5,
     "durations": {
+      "movementCapDebuff": 5,
       "slow": 5
     },
     "immobilize": {
@@ -56,8 +62,16 @@ export const MudPots: Power = {
       "scale": 2.25,
       "table": "Melee_Ones"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "slow": {
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },
@@ -66,8 +80,8 @@ export const MudPots: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.5,
+        "table": "Melee_Slow"
       }
     }
   },

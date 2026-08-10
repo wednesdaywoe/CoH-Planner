@@ -12,6 +12,8 @@ export const Jab: Power = {
   "name": "Jab",
   "internalName": "Jab",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick jab that deals minor damage, but has a chance of Disorienting the target, especially if coupled with other attacks.  This power can bruise an enemy, making them more vulnerable to damage. Bruising does not stack even from different powers. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG(Smash), Minor Disorient, -Res (all)",
   "icon": "superstrength_jab.png",
@@ -22,6 +24,9 @@ export const Jab: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

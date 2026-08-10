@@ -12,12 +12,17 @@ export const Meltdown: Power = {
   "name": "Meltdown",
   "internalName": "Meltdown",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "After building up a dangerous amount of radiation you release it to both shield and empower yourself. While active you will gain a good amount of damage resistance to all types of damage, recover endurance more quickly and deal more damage for a short time. When this power wears off you will lose a small amount endurance. Recharge: Very Long",
   "shortHelp": "Self, +Res(All), +Recovery, +DMG(All)",
   "icon": "radiationarmor_meltdown.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 480,
@@ -38,6 +43,7 @@ export const Meltdown: Power = {
   "effects": {
     "buffDuration": 60,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 3.3,
       "table": "Melee_Buff_Dmg"
     },
@@ -48,10 +54,12 @@ export const Meltdown: Power = {
       "resistance": 60
     },
     "maxEndBuff": {
+      "ignoreStrength": true,
       "scale": 15,
       "table": "Melee_Ones"
     },
     "recoveryBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Melee_Ones"
     },

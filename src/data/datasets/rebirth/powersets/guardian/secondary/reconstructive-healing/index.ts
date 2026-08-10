@@ -21,8 +21,12 @@ import { FortitudeAura as FortitudeAura } from './fortitude-aura';
 
 export const powerset: Powerset = {
   id: 'guardian/reconstructive-healing',
-  internalName: 'reconstructive_healing',
+  setPath: 'Guardian_Comp.Reconstructive_Healing',
   name: 'Reconstructive Healing',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Reconstructive Healing lets you regenerate more quickly from damage and effects. Your Hit Point Regeneration can become so incredibly fast, that your wounds heal almost instantly.  Reconstructive Healing gives you the ability to heal and aid allies as well.',
   icon: 'regeneration_set.ico',
   archetype: 'guardian',

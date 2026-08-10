@@ -12,6 +12,8 @@ export const Scorch: Power = {
   "name": "Scorch",
   "internalName": "Scorch",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This power engulfs your hands in flames, and can ignite the target of your Scorching attack. Once on fire, the target will suffer damage over time. Choosing this power locks out Fire Blast Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG(Fire)",
   "icon": "fieryfray_targetedlightmelee.png",
@@ -20,6 +22,9 @@ export const Scorch: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -59,7 +64,7 @@ export const Scorch: Power = {
   ],
   "atoms": [
     ["Damage","Fire",1.48,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.2,1,1.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.2,1,1.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Damage","Fire",1.74,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Defender_Ranged.Fire_Blast.Fire_Blast !",

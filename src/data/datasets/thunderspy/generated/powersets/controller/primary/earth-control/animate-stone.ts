@@ -12,12 +12,17 @@ export const AnimateStone: Power = {
   "name": "Animate Stone",
   "internalName": "Animate_Stone",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Earth and stone coalesce to form an incredibly tough entity that can attack your foes. The Animated Stone is not alive and is immune to Psionic damage. It is also virtually immune to Sleep, Immobilize, Disorient, and Hold effects. The entity can be healed and buffed like any teammate. Type ''/release_pets'' in the chat window to release all your pets. Recharge: Very Long",
   "shortHelp": "Summon Golem: Melee Heavy DMG(Smashing)",
   "icon": "earthgrasp_animatestone.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

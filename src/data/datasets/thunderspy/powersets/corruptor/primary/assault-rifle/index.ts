@@ -21,8 +21,12 @@ import { FullAuto as FullAuto } from './full-auto';
 
 export const powerset: Powerset = {
   id: 'corruptor/assault-rifle',
-  internalName: 'assault_rifle',
+  setPath: 'Corruptor_Ranged.Assault_Rifle',
   name: 'Assault Rifle',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'The Assault Rifle is a state-of-the-art piece of hardware. It is equipped to handle an impressive arsenal of munitions and firing modes. The Assault Rifle is also equipped with the latest in targeting technology, and is a very accurate weapon.',
   icon: 'assault_rifle_set.ico',
   archetype: 'corruptor',

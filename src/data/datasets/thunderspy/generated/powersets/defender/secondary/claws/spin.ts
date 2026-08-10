@@ -12,6 +12,8 @@ export const Spin: Power = {
   "name": "Spin",
   "internalName": "Spin",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You spin around in a circle, attacking everyone within melee range with a Strike attack. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal)",
   "icon": "claws_spinningclawsattack.png",
@@ -20,6 +22,9 @@ export const Spin: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

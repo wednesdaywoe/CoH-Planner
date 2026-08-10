@@ -12,12 +12,17 @@ export const PowerofthePhoenix: Power = {
   "name": "Power of the Phoenix",
   "internalName": "Power_of_the_Phoenix",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Revives a fallen ally. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. Your ally will revive with most of their Hit Points and Endurance. He will also be invulnerable for a brief time, as well as protected from XPDebt for 90 seconds.",
   "shortHelp": "Ally Rez, Special",
   "icon": "thermalradiation_phoenix.png",
   "powerType": "Click",
   "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadPlayerFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -80,7 +85,7 @@ export const PowerofthePhoenix: Power = {
     ["Heal",null,7,1,0.5,"Ranged_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Untouchable",10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
     ["Endurance",null,70,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Stealth","RadiusPvE",300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true]
   ]

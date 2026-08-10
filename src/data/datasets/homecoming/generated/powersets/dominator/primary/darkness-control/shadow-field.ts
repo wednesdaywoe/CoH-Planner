@@ -12,12 +12,17 @@ export const ShadowField: Power = {
   "name": "Shadow Field",
   "internalName": "Shadow_Field",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You blanket a targeted area in darkness immediately holding foes within the field. Any foe who enters this area will have their chance to hit reduced and has a chance to be held for a short period of time.Recharge: Long.",
   "shortHelp": "Target (Location AoE), Foe Hold, -To Hit",
   "icon": "darknesscontrol_shadowfield.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -50,7 +55,7 @@ export const ShadowField: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true]
+    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

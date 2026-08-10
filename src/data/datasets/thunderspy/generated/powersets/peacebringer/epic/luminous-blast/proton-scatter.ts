@@ -12,12 +12,17 @@ export const ProtonScatter: Power = {
   "name": "Proton Scatter",
   "internalName": "Proton_Scatter",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Proton Scatter sends bolts of Kheldian energy to multiple targets at once within a cone area in front of the caster.  Proton Scatter deals moderate Energy damage to each affected target and reduces their Defense.  Damage: Moderate. Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Energy), Foe -DEF",
   "icon": "luminousblast_protonscatter.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

@@ -12,12 +12,18 @@ export const GroupInvisibility: Power = {
   "name": "Group Invisibility",
   "internalName": "Group_Invisibility",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Makes you and all teammates around you Invisible. While Invisible, you and your teammates are almost impossible to detect. Even if discovered, Group Invisibility grants a bonus to your Defense to all attacks, although you will lose some of your defense bonus if you attack. Recharge: Slow",
   "shortHelp": "PBAoE, Team Stealth, +DEF(All)",
   "icon": "illusions_giveinvisibility.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Teammate",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -99,6 +105,7 @@ export const GroupInvisibility: Power = {
       }
     },
     "threatDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     }

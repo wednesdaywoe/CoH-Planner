@@ -12,12 +12,17 @@ export const AgingTouch: Power = {
   "name": "Dangerous Acceleration",
   "internalName": "Aging_Touch",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You rapidly accelerate the space around your foes and send them flying backwards. Like most Temporal Manipulation attacks, manipulating time like this increases your movement speed and attack rate briefly. Recharge: Fast",
   "shortHelp": "Ranged Cone Knockback, Self +Movement, +Recharge",
   "icon": "timemanipulation_agingtouch.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 30,
@@ -69,6 +74,7 @@ export const AgingTouch: Power = {
       }
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     },

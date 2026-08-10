@@ -12,12 +12,17 @@ export const Lift: Power = {
   "name": "Lift",
   "internalName": "Lift",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Negates the gravity around a single target. Lift violently sends an enemy straight into the air, then slams them to the ground for Smashing damage. This power can bring flying foes to the ground, and can deal bonus damage when used against targets held by Gravity Distortion. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Smash)",
   "icon": "gravitycontrol_lift.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

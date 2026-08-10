@@ -12,12 +12,17 @@ export const ExplosiveShuriken: Power = {
   "name": "Explosive Shuriken",
   "internalName": "Explosive_Shuriken",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You rig a shuriken with a powerful explosive, then send it flying towards your enemies.  Damage: Superior, Recharge: Slow",
   "shortHelp": "Ranged, Superior DMG(Fire), Minor Splash Damage (Fire DoT)",
   "icon": "martialassault_explosiveshuriken.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -55,7 +60,7 @@ export const ExplosiveShuriken: Power = {
     }
   ],
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Fire",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.05,1,5.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",1.232,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

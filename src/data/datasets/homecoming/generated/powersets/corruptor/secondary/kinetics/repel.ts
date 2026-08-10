@@ -12,6 +12,8 @@ export const Repel: Power = {
   "name": "Repel",
   "internalName": "Repel",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Repel creates a zone of kinetic energy that violently repels nearby foes. Each foe that is repelled costs additional Endurance.Recharge: Slow.",
   "shortHelp": "Toggle: Self AoE Knockback",
   "icon": "kineticboost_repel.png",
@@ -22,6 +24,9 @@ export const Repel: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const Repel: Power = {
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     },
@@ -52,8 +58,8 @@ export const Repel: Power = {
     }
   },
   "atoms": [
-    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1.100000023841858,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
+    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1.100000023841858,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
     ["Mez","Knockback",3,0,0.5,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ]

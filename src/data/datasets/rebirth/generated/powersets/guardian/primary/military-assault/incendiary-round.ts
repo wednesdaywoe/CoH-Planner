@@ -12,12 +12,17 @@ export const IncendiaryRound: Power = {
   "name": "Incendiary Round",
   "internalName": "Incendiary_Round",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You load and fire a blazing Incendiary Round from your Assault Rifle, dealing High Lethal and Fire damage to your target. The burst of white-hot shrapnel can also set ablaze all foes in a small area around the target, causing them to take Minor Fire damage over time. Damage: High, Recharge: Slow",
   "shortHelp": "Ranged, High DMG (Lethal/Fire), Minor Splash DMG (Fire DoT)",
   "icon": "militaryassault_incendiaryround.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,
@@ -60,7 +65,7 @@ export const IncendiaryRound: Power = {
     }
   ],
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Lethal",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.1,1,4.125,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],

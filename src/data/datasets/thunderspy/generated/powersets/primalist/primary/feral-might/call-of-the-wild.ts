@@ -12,12 +12,17 @@ export const CalloftheWild: Power = {
   "name": "Call of the Wild",
   "internalName": "Call_of_the_Wild",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You call 2 wolves to your side to aid you in combat. These wolves will bite and shred your foe. These summoned wolves will only remain with you for a short time before returning to the wild. Recharge: Very Long",
   "shortHelp": "Summon Wolves",
   "icon": "feralmight_callofthewild.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

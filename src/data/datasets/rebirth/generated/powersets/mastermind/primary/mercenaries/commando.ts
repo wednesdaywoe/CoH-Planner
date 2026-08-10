@@ -12,12 +12,17 @@ export const Commando: Power = {
   "name": "Commando",
   "internalName": "Commando",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Enlists one highly trained Commando. The Commando is a seasoned professional who favors heavy assault weapons.  He is simply a one man army that can leave a wake of destruction in his path. In addition to standard Soldier resistance, the Commandos experience also makes him resistant to Fear and his rugged advanced training makes him slightly resistant to Fire, Cold and Toxic Damage. You may only have 1 Commando under your control at any given time.  If you attempt to summon another Commando, the power will fail. Recharge: Very Long",
   "shortHelp": "Summon Commando",
   "icon": "paramilitary_supersoldier.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

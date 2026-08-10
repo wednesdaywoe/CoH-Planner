@@ -12,12 +12,17 @@ export const DampeningField: Power = {
   "name": "Dampening Field",
   "internalName": "Dampening_Field",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your body resonates a mild Dampening Field that absorbs kinetic energy from physical weapons as well as Energy damage. This auto power permanently reduces all incoming Smashing, Lethal and Energy damage as well as providing a minor amount of resistance to Endurance Drain effects. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (Smashing, Lethal, Energy, Endurance Drain)",
   "icon": "energyaura_powershield.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -33,10 +38,12 @@ export const DampeningField: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       }

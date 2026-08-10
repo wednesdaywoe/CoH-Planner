@@ -12,6 +12,8 @@ export const MineralArmor: Power = {
   "name": "Minerals",
   "internalName": "Mineral_Armor",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power summons several rare earth rock Minerals to orbit around you.  These Minerals can disperse thought patterns and make Psionic attacks less likely to hit. They also bring clarity of the mind and increase your Perception to see hidden foes, and grant resistance to Confusion. Minerals also add an Elusivity defense bonus to Psionic Attacks in PVP zones. While in Granite Armor, this power's effects are suppressed and cost no endurance. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Psionic), Res(Confuse), +Perception",
   "icon": "stonearmor_mineralcrust.png",
@@ -22,6 +24,9 @@ export const MineralArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -78,7 +83,7 @@ export const MineralArmor: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>"],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>",null,0],
     ["Defense","Psionic",2.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

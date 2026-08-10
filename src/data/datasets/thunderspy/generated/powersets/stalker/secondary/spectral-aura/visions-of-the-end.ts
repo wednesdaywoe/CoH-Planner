@@ -12,12 +12,17 @@ export const VisionsOfTheEnd: Power = {
   "name": "Visions Of The End",
   "internalName": "Visions_Of_The_End",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You cause your enemies to be subjected to visions of their untimely demise, fearing targets in an area around you. While this power is active you also gain an aura that causes fear to targets near you and your attacks gain the ability to inflict additional fear when striking a foe. Recharge: long",
   "shortHelp": "Click: PBAoE Foe Fear, Foe Fear Proc",
   "icon": "spectralaura5.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "radius": 15,
@@ -46,7 +51,7 @@ export const VisionsOfTheEnd: Power = {
     ["Mez","Terrorized",10,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+    ["Meta",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "damageTypes": [
     "Psionic"

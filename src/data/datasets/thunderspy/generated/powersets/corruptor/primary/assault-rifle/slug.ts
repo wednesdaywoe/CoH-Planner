@@ -12,12 +12,17 @@ export const Slug: Power = {
   "name": "Slug",
   "internalName": "Slug",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Fires a single Slug at a targeted foe. Firing a single Slug is slower than firing a Burst, but deals more damage, is longer range, will knock down and disorient foes. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Lethal), Foe Knockback, Disorient",
   "icon": "assaultweapons_shotgunbeanbag.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 100,

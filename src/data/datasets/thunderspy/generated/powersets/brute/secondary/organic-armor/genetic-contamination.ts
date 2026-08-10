@@ -12,12 +12,17 @@ export const GeneticContamination: Power = {
   "name": "Genetic Contamination",
   "internalName": "Genetic_Contamination",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You're capable of breaking down the genetic material of your foes with a powerful toxin that is produced by your Organic Armor. Nearby foes afflicted by Genetic Contamination will deal reduced damage and receive Toxic damage over time. While Defensive Adaptation is active, enemies deal even less damage. While Offensive Adaptation is active, the Toxic damage over time will ramp up at the cost of your resistances.",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Toxic), -Damage(All)",
   "icon": "bioorganicarmor_geneticcontamination.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -49,6 +54,7 @@ export const GeneticContamination: Power = {
   "effects": {
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Melee_Debuff_Dam"
     },
@@ -109,36 +115,43 @@ export const GeneticContamination: Power = {
         },
         "resistanceDebuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Res_DMG",
             "toWho": "Self"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Res_DMG",
             "toWho": "Self"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Res_DMG",
             "toWho": "Self"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Res_DMG",
             "toWho": "Self"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Res_DMG",
             "toWho": "Self"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Res_DMG",
             "toWho": "Self"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 0.3,
             "table": "Melee_Res_DMG",
             "toWho": "Self"
@@ -155,6 +168,7 @@ export const GeneticContamination: Power = {
       "effects": {
         "buffDuration": 5,
         "damageDebuff": {
+          "ignoreStrength": true,
           "scale": 1.995,
           "table": "Melee_Debuff_Dam"
         },

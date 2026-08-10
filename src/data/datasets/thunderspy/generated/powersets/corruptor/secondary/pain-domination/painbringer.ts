@@ -12,12 +12,17 @@ export const Painbringer: Power = {
   "name": "Painbringer",
   "internalName": "Painbringer",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You transform an ally into an inexhaustible killing machine. Both you and your target will benefit from incredible health regeneration, endurance recovery and improved damage potential for a short time. If used on a foe this power will debuff their regeneration and damage potential.",
   "shortHelp": "Ally and Self, +Regeneration, +Recovery, +DMG. Foe -regeneration, -DMG.",
   "icon": "paindomination_painbringer.png",
   "powerType": "Click",
   "targetType": "Any",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Any"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -40,10 +45,12 @@ export const Painbringer: Power = {
   "effects": {
     "buffDuration": 60,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Buff_Dmg"
     },
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Buff_Dmg"
     },

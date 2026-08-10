@@ -12,12 +12,17 @@ export const Praise: Power = {
   "name": "Praise",
   "internalName": "Praise",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You praise your allies, helping them shrug off wounds both new and old. This power provides a moderate heal over time and resistance to all damage, especially Psionic attacks.",
   "shortHelp": "Ally Heal Over Time, +Res(All)",
   "icon": "obediencetraining_praise.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

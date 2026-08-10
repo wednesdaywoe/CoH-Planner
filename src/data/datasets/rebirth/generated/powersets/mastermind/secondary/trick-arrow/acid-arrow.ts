@@ -12,12 +12,17 @@ export const AcidArrow: Power = {
   "name": "Acid Arrow",
   "internalName": "Acid_Arrow",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow explodes in a small shower of acid on impact. This acid eats through armor, causing damage over time. It reduces the target's Defense as well as their Damage Resistance. Acid Arrow places the Acid Burn effect on targets; Acid Burned targets are more vulnerable to debilitating effects and will suffer increased Tohit debuff from Flash Arrow, increased Regeneration debuffs from Poison Gas Arrow and EMP Arrow, increased Slows from Entangling Arrow, Glue Arrow, Ice Arrow, and Oil Slick Arrow, and increased Endurance Drain from EMP Arrow. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged AoE Minor DoT(Toxic), Foe -Res(All), -DEF, Special",
   "icon": "trickarrow_debuffdefense.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -62,34 +67,42 @@ export const AcidArrow: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
@@ -135,34 +148,42 @@ export const AcidArrow: Power = {
         },
         "resistanceDebuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           }

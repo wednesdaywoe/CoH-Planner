@@ -12,12 +12,17 @@ export const SmokeFlash: Power = {
   "name": "Smoke Flash",
   "internalName": "Smoke_Flash",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You throw a smoke bomb at your feet.  The resulting flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. Combined with Hide, Smoke Flash is the perfect distraction to get out of a bad situation. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Placate",
   "icon": "ninjitsu_smokeflash.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 20,

@@ -12,6 +12,8 @@ export const ShockingGrasp: Power = {
   "name": "Voltaic Sentinel",
   "internalName": "Shocking_Grasp",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You manifest a polarized electricity field that hovers above the ground and hurls bolts of electricity at nearby foes. Any enemy that passes near this Sentinel risks serious injury. The Sentinel is not alive and cannot be targeted or attacked by enemies. The Sentinel can fly and will follow you. A new Sentinel will be generated every 30s for a maximum of three.",
   "shortHelp": "Toggle: Summon Sentinel, Ranged, Moderate DMG(Energy), Foe -End, -Recovery",
   "icon": "electricalassault_voltaicsentinel.png",
@@ -22,6 +24,9 @@ export const ShockingGrasp: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

@@ -12,6 +12,8 @@ export const KineticShield: Power = {
   "name": "Kinetic Shield",
   "internalName": "Kinetic_Shield",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Kinetic Shield creates a harmonic Energy Aura that can deflect physical attacks.  Your Defense to Smashing and Lethal attacks is increased as weapons and powers like bullets, blades and punches tend to deflect off the shield. Kinetic Shield also grants you good resistance to Defense Debuffs. The Energy based nature of Kinetic Shield also offers some minimal Defense to Energy attacks.  Kinetic Shield also adds an Elusivity defense bonus to Smashing, Lethal, and Energy Attacks in PVP zones.  Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Smashing, Lethal, Energy), Res(DeBuff DEF)",
   "icon": "energyaura_kineticshield.png",
@@ -22,6 +24,9 @@ export const KineticShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const KineticShield: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       }

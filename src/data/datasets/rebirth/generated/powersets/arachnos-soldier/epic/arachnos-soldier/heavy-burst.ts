@@ -12,12 +12,17 @@ export const HeavyBurst: Power = {
   "name": "Heavy Burst",
   "internalName": "Heavy_Burst",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Fires a Heavy Burst of rounds at foes in a long cone in front of the user. Can also reduce the targets' defense. Damage: Moderate(DoT) Recharge: Medium",
   "shortHelp": "Ranged Cone, Moderate DMG(Lethal), Foe -DEF",
   "icon": "arachnossoldier_heavyburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,

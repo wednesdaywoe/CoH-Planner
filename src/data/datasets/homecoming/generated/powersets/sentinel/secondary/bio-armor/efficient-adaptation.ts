@@ -12,6 +12,8 @@ export const EfficientAdaptation: Power = {
   "name": "Efficient Adaptation",
   "internalName": "Efficient_Adaptation",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "Efficient AdaptationBy activating this power you cause your Bio Armor to spontaneously mutate, causing it to become evenly distributed along your body. While active Hardened Carapace grants a minor Endurance Discount, Inexhaustible and Parasitic Leech will grant additional regeneration and recovery, Ablative Carapace grants a bonus to regeneration, Rebuild DNA grants a massive bonus to recovery, Athletic Regulation will increase your run and flight speeds, and Genomic Evolution will increase your maximum endurance.Efficient Adaptation costs no endurance.",
   "shortHelp": "Toggle: Bio Armor Efficient Mode",
   "icon": "bioorganicarmor_efficientadaptation.png",
@@ -23,6 +25,9 @@ export const EfficientAdaptation: Power = {
     "sleep",
     "stun"
   ],
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 4,
@@ -32,7 +37,7 @@ export const EfficientAdaptation: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Meta",null,1,153,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,153,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"]
   ],
   "requires": "Sentinel_Defense.Bio_Organic_Armor.Adaptation",
   "setsModes": [

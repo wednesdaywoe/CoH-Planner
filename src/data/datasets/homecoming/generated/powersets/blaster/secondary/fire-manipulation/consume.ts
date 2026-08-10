@@ -12,12 +12,17 @@ export const Consume: Power = {
   "name": "Consume",
   "internalName": "Consume",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Consume some fuel from your nearby enemies to recover Endurance.",
   "shortHelp": "PBAoE, DMG(Fire), Self +End",
   "icon": "firemanipulation_consume.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 20,

@@ -12,6 +12,8 @@ export const FrostArmor: Power = {
   "name": "Frost Armor",
   "internalName": "Frost_Armor",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you coat yourself in rock hard Frost Armor. The hardness of the Frost Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, you can resist Defense DeBuffs. Recharge: Very Fast",
   "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, DeBuff DEF)",
   "icon": "icecomp_frostarmor.png",
@@ -22,6 +24,9 @@ export const FrostArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const FrostArmor: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
@@ -64,6 +70,7 @@ export const FrostArmor: Power = {
     },
     "resistance": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Melee_Res_Dmg"
       }

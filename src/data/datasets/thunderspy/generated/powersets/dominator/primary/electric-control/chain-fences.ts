@@ -12,12 +12,17 @@ export const ChainFences: Power = {
   "name": "Chain Fences",
   "internalName": "Chain_Fences",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can immobilize multiple foes in a chain of electricity, dealing minor damage to all foes in range and draining some endurance.  This power also reduces Flight capacity in targets. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged AoE, Minor DMG(Energy), Foe Immobilize, -End, -Fly",
   "icon": "electriccontrol_chainfences.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

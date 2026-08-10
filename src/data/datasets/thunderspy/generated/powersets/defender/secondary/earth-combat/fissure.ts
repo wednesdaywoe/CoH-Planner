@@ -12,12 +12,17 @@ export const Fissure: Power = {
   "name": "Fissure",
   "internalName": "Fissure",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "This powerful stomp can crack the earth itself, damaging a nearby targeted foe and any foes around it.  This Fissure can only affect foes on the ground, dealing moderate smashing damage and possibly throwing them into the air or disorienting them.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Close (Targeted AoE), Moderate DMG(Smash), Foe Knockback, Disorient",
   "icon": "earthassault_fissure.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 30,
@@ -69,7 +74,7 @@ export const Fissure: Power = {
     ["Mez","Stunned",12,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
     ["Mez","Stunned",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
     ["Damage","Smashing",1.2048,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "conditionalEffects": [
     {

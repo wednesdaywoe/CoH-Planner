@@ -12,6 +12,8 @@ export const TidePool: Power = {
   "name": "Tide Pool",
   "internalName": "Tide_Pool",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You summon a large pool of water at a targeted location to swell the damage that your allies deal, while reducing the damage, movement speeds, and stealth of enemies within the Tide Pool. If an enemy is defeated in the pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
   "shortHelp": "Ranged (Location AoE), Team +DMG, Foe -DMG, -SPD, -Jump, -Stealth, Special",
   "icon": "marineaffinity_tidepool.png",
@@ -22,6 +24,9 @@ export const TidePool: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -65,8 +70,25 @@ export const TidePool: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "runSpeed",
                   "scale": 0.72,
                   "table": "Ranged_Slow",
+                  "conditional": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 500,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true,
+                  "conditional": true
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Ranged_SpeedRunning",
+                  "ignoreStrength": true,
                   "conditional": true
                 },
                 {
@@ -81,6 +103,9 @@ export const TidePool: Power = {
               "castTime": 0,
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Friend"
+              ],
               "radius": 25,
               "maxTargets": 255
             },
@@ -92,14 +117,33 @@ export const TidePool: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "runSpeed",
                   "scale": 0.72,
                   "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 500,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Ranged_SpeedRunning",
+                  "ignoreStrength": true
                 }
               ],
               "recharge": 0,
               "castTime": 0,
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe",
+                "DeadFoe"
+              ],
               "radius": 25,
               "maxTargets": 16
             }

@@ -12,12 +12,18 @@ export const StoneShelter: Power = {
   "name": "Stone Shelter",
   "internalName": "Stone_Shelter",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Stones surround your nearby allies and you. These stones will absorb a small amount of incoming damage. Recharge: Moderate",
   "shortHelp": "PBAoE, Ally +Absorb",
   "icon": "stonecomp_stoneshelter.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

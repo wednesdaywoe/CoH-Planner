@@ -12,12 +12,17 @@ export const RisetotheChallenge: Power = {
   "name": "Rise to the Challenge",
   "internalName": "Rise_to_the_Challenge",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "The more the odds are against you, the more determined you become. When surrounded by foes, your ability to regenerate health increases greatly. Additionally, your resolve and the look in your eye is enough to leave most foes shaken, so their attacks are less accurate. The first foe you engage in melee grants the highest regeneration bonus, and up to 10 foes can contribute to this effect. Recharge: Slow",
   "shortHelp": "Toggle: Self +Regen, Foe -To Hit",
   "icon": "willpower_risetothechallenge.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,

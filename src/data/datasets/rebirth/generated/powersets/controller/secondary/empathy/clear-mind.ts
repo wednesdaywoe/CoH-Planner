@@ -12,12 +12,17 @@ export const ClearMind: Power = {
   "name": "Clear Mind",
   "internalName": "Clear_Mind",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mind has been cleared of negative effects, and you are granted temporary resistance to Disorient, Hold, Sleep, Fear, Confuse and Immobilize effects and your Perception is improved.  Some of the effects of this power will improve with multiple applications.",
   "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception, +DEF(Psionic)",
   "icon": "empathy_mindwall.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

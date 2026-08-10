@@ -12,12 +12,17 @@ export const GravimetricSnare: Power = {
   "name": "Gravimetric Snare",
   "internalName": "Gravimetric_Snare",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can hurl Gravimetric fibers to Snare your foes.  Gravimetric Snare can Immobilize a single target and crush them.  The target's attack rate and movement speed are also slowed, even if they resist the Immobilization effect. Damage: High(DoT), Recharge: Moderate",
   "shortHelp": "Ranged, High DoT(Negative/Smash), Foe Immobilize, -Recharge, -SPD",
   "icon": "umbralassault_gravimetricsnare.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -72,6 +77,7 @@ export const GravimetricSnare: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -81,6 +87,7 @@ export const GravimetricSnare: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -95,7 +102,7 @@ export const GravimetricSnare: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Negative",0.11,1,3.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",0.11,1,3.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",6,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],

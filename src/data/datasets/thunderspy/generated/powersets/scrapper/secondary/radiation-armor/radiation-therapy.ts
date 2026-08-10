@@ -12,6 +12,8 @@ export const RadiationTherapy: Power = {
   "name": "Radiation Therapy",
   "internalName": "Radiation_Therapy",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You concentrate your energies to harness the healing powers of radiation to mend your wounds. Each nearby foe will increase the health you recover. Affected foes will have their regeneration rates substantially reduced for a short time. Recharge: Very Long",
   "shortHelp": "PBAoE, Minor DMG(Energy), Minor DoT(Toxic), Foe -Regen, Self +HP",
   "icon": "radiationarmor_radiationtherapy.png",
@@ -20,6 +22,9 @@ export const RadiationTherapy: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -69,6 +74,7 @@ export const RadiationTherapy: Power = {
       "regenDebuff": 30
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Melee_Ones"
     }

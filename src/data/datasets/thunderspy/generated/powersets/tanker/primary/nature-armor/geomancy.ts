@@ -12,6 +12,8 @@ export const Geomancy: Power = {
   "name": "Geomancy",
   "internalName": "Geomancy",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Geomancy is the purest expression of primal power, enabling you to interface with the ground nearby. While Geomancy is active, you gain bonus resists for each target in the area, in addition to resistance to immobilize, knockback, knockup, and repel.",
   "shortHelp": "Self +Res (Immobilize, Knockback, Knockup, Repel)",
   "icon": "natureaffinity_wildgrowth.png",
@@ -22,6 +24,9 @@ export const Geomancy: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -50,19 +55,23 @@ export const Geomancy: Power = {
       "resistance": 1.25
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }
@@ -111,7 +120,7 @@ export const Geomancy: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,0,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,0,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Mez","Knockback",-10,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Knockup",-10,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Smashing",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],

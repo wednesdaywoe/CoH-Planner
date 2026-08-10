@@ -12,12 +12,17 @@ export const HeavyBurst: Power = {
   "name": "Heavy Burst",
   "internalName": "Heavy_Burst",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Fires a Heavy Burst of rounds at foes in a long cone in front of the user. Can also reduce the targets' defense.",
   "shortHelp": "Ranged (Cone), DMG(Lethal), Foe -DEF",
   "icon": "arachnossoldier_heavyburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -64,5 +69,88 @@ export const HeavyBurst: Power = {
   "atoms": [
     ["Damage","Lethal",0.1557,1,2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
+  "formVariants": [
+    {
+      "condition": "@CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&",
+      "internalName": "Crab_Heavy_Burst",
+      "stats": {
+        "accuracy": 1,
+        "range": 50,
+        "radius": 50,
+        "arc": 0.5235987901687622,
+        "recharge": 12,
+        "endurance": 11.856,
+        "castTime": 2.5,
+        "maxTargets": 10
+      },
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.1557,
+        "table": "Ranged_Damage",
+        "duration": 2,
+        "tickRate": 0.30000001192092896
+      },
+      "effects": {
+        "buffDuration": 12,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 12
+        }
+      },
+      "shortHelp": "Ranged (Cone), DMG(Lethal), Foe -DEF",
+      "description": "Fires a Heavy Burst of rounds at foes in a long cone in front of the user. Can also reduce the targets' defense.",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Damage",
+          "Lethal",
+          0.1557,
+          1,
+          2,
+          "Ranged_Damage",
+          "Abs",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          0.30000001192092896,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ],
+        [
+          "Defense",
+          "All",
+          1,
+          1,
+          12,
+          "Ranged_Debuff_Def",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ]
+      ]
+    }
   ]
 };

@@ -12,12 +12,17 @@ export const SoulTransfer: Power = {
   "name": "Soul Transfer",
   "internalName": "Soul_Transfer",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You transfer the souls of nearby enemies into yourself, stunning them while making you able to absorb some damage. This will also make you resistant to control effects, -ToHit debuffs and endurance drain for a short time. You can use this power while concious or after defeat. If used while concious and are defeated soon after, you will automatically bounce back into the fight. If used after defeat, Soul Transfer will also inflict damage as you suck the life force of all foes around you and bring yourself back from the brink of death. This form of the power is much more likely to stun foes.Notes: This power recharges in 10 seconds if no foes are hit. Otherwise, it recharges in 300 seconds.",
   "shortHelp": "Self Rez, +Absorb, +Res(Disorient, Sleep, Hold, Immobilize, Knockback, -ToHit, -Endurance), +Special, Foe Disorient",
   "icon": "darkarmor_soultransfer.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -51,10 +56,12 @@ export const SoulTransfer: Power = {
     "buffDuration": 30,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.11,
         "table": "Melee_Res_Boolean"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 0.11,
         "table": "Melee_Res_Boolean"
       }
@@ -95,9 +102,9 @@ export const SoulTransfer: Power = {
       "table": "Melee_Res_Boolean"
     },
     "stun": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Stun"
     }
   },
   "atoms": [
@@ -119,6 +126,8 @@ export const SoulTransfer: Power = {
     ["Mez","Knockback",-1.25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Endurance",null,0.11,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["ToHit",null,0.11,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["RechargePower",null,290,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1]
+    ["RechargePower",null,290,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1],
+    ["Meta",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >",null,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
+    ["Mez","Stunned",10,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 > enttype target> critter eq &&"]
   ]
 };

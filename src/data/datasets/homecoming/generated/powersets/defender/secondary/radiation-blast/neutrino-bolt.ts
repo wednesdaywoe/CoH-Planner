@@ -12,12 +12,17 @@ export const NeutrinoBolt: Power = {
   "name": "Neutrino Bolt",
   "internalName": "Neutrino_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A very quick, but low damage attack. Neutrino Bolt can reduce the target's Defense.",
   "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
   "icon": "radiationburst_neutrinoblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

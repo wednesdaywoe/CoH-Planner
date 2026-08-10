@@ -12,6 +12,8 @@ export const GroundZero: Power = {
   "name": "Ground Zero",
   "internalName": "Ground_Zero",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You release a mixture of radiation into the area. Nearby foes will be barraged with harmful radiation and will suffer Moderate Energy damage immediately, followed by moderate toxic damage over time. Affected foes will also have their defense reduced. Nearby allies will be healed for a moderate amount and will recover health over time. This power can affect a total of 30 targets. This includes both friends and foes. Ground Zero has no effect on the caster, only nearby allies and enemies.",
   "shortHelp": "PBAoE, Foe DMG(Energy), DoT (Toxic), -DEF(All), Ally +HP, +Heal over time",
   "icon": "radiationarmor_groundzero.png",
@@ -19,6 +21,10 @@ export const GroundZero: Power = {
   "targetType": "Self",
   "effectArea": "AoE",
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Friend",
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "radius": 15,

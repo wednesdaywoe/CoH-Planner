@@ -12,12 +12,18 @@ export const GraceofNature: Power = {
   "name": "Grace of Nature",
   "internalName": "Grace_of_Nature",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Grace of Nature heals nearby allies for a large amount of health and grants a large amount of defense for a short period of time. The amount of health healed by Grace of Nature will be increased for each point of Primal Energy owned by the user. Grace of Nature consumes all Primal Energy and can be used in all forms. Recharge: Very Long",
   "shortHelp": "PBAoE, Special Team Heal, +Def(All), -All Primal Energy",
   "icon": "primalgifts_graceofnature.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -102,6 +108,6 @@ export const GraceofNature: Power = {
     ["Defense","Energy",2,1,45,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Negative",2,1,45,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Psionic",2,1,45,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

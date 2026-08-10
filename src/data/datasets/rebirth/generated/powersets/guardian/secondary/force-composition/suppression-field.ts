@@ -12,12 +12,17 @@ export const SuppressionField: Power = {
   "name": "Suppression Field",
   "internalName": "Suppression_Field",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Projects a debilitating Suppression Field at a targeted location. This semi-solid force field greatly hampers the movements of all enemies caught in it. Affected enemies will have their movement greatly Slowed and will not be able to fly or jump, and will sometimes be completely Held for brief periods. Their movements will also be weakened to such a degree that their attacks will deal less damage. Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Foe -Speed, -Jump, -Fly, Hold, -DMG(All)",
   "icon": "forcecomp_suppressionfieldb.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -12,12 +12,17 @@ export const Confront: Power = {
   "name": "Feint",
   "internalName": "Confront",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Allows you to trick foes to no longer attack you while granting you defense to area of effect attacks.  If you attack a Placated Foe, he will be able to attack you back. Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Placate, Self +DEF(AoE)",
   "icon": "stafffighting_placate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

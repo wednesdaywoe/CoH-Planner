@@ -12,12 +12,17 @@ export const Smoke: Power = {
   "name": "Smoke",
   "internalName": "Smoke",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Covers all foes near your target in clouds of Smoke. The villains are so blinded that they can hardly see a thing. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit.",
   "shortHelp": "Ranged (Targeted AoE), Foe -Perception, -To Hit",
   "icon": "firetrap_smoke.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

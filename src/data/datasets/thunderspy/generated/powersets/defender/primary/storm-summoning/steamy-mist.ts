@@ -12,6 +12,8 @@ export const SteamyMist: Power = {
   "name": "Steamy Mist",
   "internalName": "Steamy_Mist",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mastery of the elements allows you to hide yourself and all nearby allies within a Steamy Mist. Steamy Mist makes you and your allies harder to see and increases your Defense bonus to all attacks, while reducing Fire, Cold, and Energy damage, as well as your Foes ability to Confuse you. You cannot use any other Concealment type powers while using Steamy Mist.  Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Team Stealth, +DEF(All), +Res(Fire, Cold, Energy, Confuse)",
   "icon": "stormsummoning_fog.png",
@@ -22,6 +24,10 @@ export const SteamyMist: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Friend",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -130,6 +136,7 @@ export const SteamyMist: Power = {
         "table": "Ranged_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Ranged_Ones"
       }

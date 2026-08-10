@@ -12,12 +12,17 @@ export const EntanglingArrow: Power = {
   "name": "Entangling Arrow",
   "internalName": "Entangling_Arrow",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Upon impact, the Entangling Arrow releases a strong net that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking. The Entangling Arrow can bring down flying entities, halts jumping and slows all of your actions. Entangling Arrow has a fairly low Endurance cost and a bonus to its Accuracy. Recharge: Fast",
   "shortHelp": "Ranged, Target Immobilize, -Fly, Slow",
   "icon": "trickarrow_immobilize.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -41,15 +46,24 @@ export const EntanglingArrow: Power = {
   "effects": {
     "buffDuration": 15,
     "durations": {
+      "movementCapDebuff": 0.75,
       "rechargeDebuff": 15,
-      "slow": 0.75
+      "slow": 15
     },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1.5,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Ranged_Slow"
     },
@@ -67,8 +81,8 @@ export const EntanglingArrow: Power = {
         "table": "Ranged_Ones"
       },
       "runSpeed": {
-        "scale": 1.5,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.1,
+        "table": "Ranged_Slow"
       }
     }
   },

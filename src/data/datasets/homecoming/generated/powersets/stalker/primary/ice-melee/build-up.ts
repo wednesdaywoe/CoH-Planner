@@ -12,12 +12,17 @@ export const BuildUp: Power = {
   "name": "Build Up",
   "internalName": "Build_Up",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Burmal lowers the temperature of your hands even further, making all your icy attacks do additional cold damage over time. It also greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your Accuracy.",
   "shortHelp": "Self +DMG, +To Hit, +Special",
   "icon": "icyonslaught_followup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const BuildUp: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },

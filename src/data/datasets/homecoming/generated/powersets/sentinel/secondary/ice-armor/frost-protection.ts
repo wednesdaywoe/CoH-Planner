@@ -12,12 +12,17 @@ export const FrostProtection: Power = {
   "name": "Frost Protection",
   "internalName": "Frost_Protection",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "The lower temperature of your body makes you sturdier to damage increasing your maximum HP. You also become resistant to slow debuffs.",
   "shortHelp": "Auto: +HP, Res (Slow)",
   "icon": "icearmor_hp.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 10,
@@ -34,10 +39,12 @@ export const FrostProtection: Power = {
     "buffDuration": 10.3,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Melee_Ones"
       }
@@ -52,6 +59,7 @@ export const FrostProtection: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_HealSelf"
     }

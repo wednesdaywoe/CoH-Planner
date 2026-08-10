@@ -12,12 +12,17 @@ export const AbyssalGaze: Power = {
   "name": "Abyssal Gaze",
   "internalName": "Abyssal_Gaze",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You gaze into your foe's eyes giving them a glimpse into the terrifying netherworld rendering them held, reducing their chance to hit and dealing High Negative Energy damage over the next couple of seconds.",
   "shortHelp": "Ranged, DoT(Negative), Foe Hold, -To Hit",
   "icon": "darkcast_abyssalgaze.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

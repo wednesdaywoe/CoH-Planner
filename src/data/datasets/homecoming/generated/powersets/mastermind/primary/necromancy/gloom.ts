@@ -12,12 +12,17 @@ export const Gloom: Power = {
   "name": "Gloom",
   "internalName": "Gloom",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Gloom slowly drains a target of life, while reducing their chance to hit Slower than Dark Blast, but deals more damage over time.Spectral Forces:Activating this power has a chance to summon a Specter to your side! Specters fade away over 30 seconds. They cannot be healed, regenerate, upgraded, or commanded, but provide a good distraction. Enhancements in this power will also enhance the stats of summoned Specters. You may only have 1 Specter active per Necromancy attack.",
   "shortHelp": "Ranged, DoT (Negative), Foe -To Hit",
   "icon": "necromancy_gloom.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

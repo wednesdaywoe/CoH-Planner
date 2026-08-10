@@ -12,12 +12,17 @@ export const ParalyticPoison: Power = {
   "name": "Paralytic Poison",
   "internalName": "Paralytic_Poison",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "This Paralytic Poison viciously attacks a foe's nervous system and can leave an affected target completely Held and defenseless. Recharge: Slow",
   "shortHelp": "Ranged Hold",
   "icon": "poison_paralytic.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

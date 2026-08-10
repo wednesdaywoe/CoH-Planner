@@ -12,12 +12,17 @@ export const HowlingTwilight: Power = {
   "name": "Howling Twilight",
   "internalName": "Howling_Twilight",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power channels the power of the Netherworld to weaken your foes, in an attempt to revive all nearby fallen allies. You must stand near your defeated allies to revive them, then select a foe. The selected foe and all nearby foes will be Slowed, Disoriented, have their Regeneration rate reduced and drained of some life. Revived allies will have full Hit Points and Endurance and will be protected from XP Debt for 90 seconds. Recharge: Very Long",
   "shortHelp": "Ranged (AoE), Minor DMG(Negative), Target Slow, -Recharge, -Regen, Disorient, Ally Rez",
   "icon": "darkmiasma_howlingtwilight.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -63,10 +68,12 @@ export const HowlingTwilight: Power = {
       "table": "Ranged_Ones"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Ones"
     },
@@ -76,6 +83,7 @@ export const HowlingTwilight: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },

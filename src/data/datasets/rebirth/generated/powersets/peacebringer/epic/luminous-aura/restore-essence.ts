@@ -12,12 +12,17 @@ export const RestoreEssence: Power = {
   "name": "Restore Essence",
   "internalName": "Restore_Essence",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Should you fall in battle, you can Restore your Essence and bring yourself from the brink of death with greater power. You will revive with most of your Hit Points and half your Endurance, and you will benefit from increased damage, chance to hit, and recovery and be protected from XP Debt for 90 seconds. Recharge: Very Long",
   "shortHelp": "Self Rez, +DMG (All), +To Hit, +Recovery",
   "icon": "luminousaura_restoreessence.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,
@@ -46,6 +51,7 @@ export const RestoreEssence: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Buff_DMG"
     },
@@ -60,6 +66,7 @@ export const RestoreEssence: Power = {
       "table": "Melee_Ones"
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
@@ -73,6 +80,7 @@ export const RestoreEssence: Power = {
       "table": "Ranged_Buff_ToHit"
     },
     "untouchable": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
@@ -96,7 +104,7 @@ export const RestoreEssence: Power = {
     ["DamageBuff","Psionic",4,1,90,"Ranged_Buff_DMG","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["ToHit",null,3,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Recovery",null,0.5,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
   ],
   "modesDisallowed": [
     "Peacebringer_Blaster_Mode",

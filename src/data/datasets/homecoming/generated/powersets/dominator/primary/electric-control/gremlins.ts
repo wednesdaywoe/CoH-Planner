@@ -12,6 +12,8 @@ export const Gremlins: Power = {
   "name": "Gremlins",
   "internalName": "Gremlins",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Mastery over electricity allows you to create almost sentient elementals of lightning. These elementals are mischievous in nature, and enjoy creating havoc and interfering with electronic equipment or magical cantrips. They also never work alone, where there is one Gremlin, there is often another nearby.",
   "shortHelp": "Summon Gremlins: Melee DMG(Energy)",
   "icon": "electriccontrol_gremlins.png",
@@ -19,6 +21,9 @@ export const Gremlins: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

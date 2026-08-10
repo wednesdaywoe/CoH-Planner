@@ -12,12 +12,17 @@ export const EMPPulse: Power = {
   "name": "EM Pulse",
   "internalName": "EMP_Pulse",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You can unleash a massive pulse of electromagnetic energy. This EMP can affect machines, and is even powerful enough to affect synaptic brain patterns.  It will drain the Endurance and HP Regeneration of all affected targets and leave them incapacitated and Held for a long while. Additionally, most machines and robots will take moderate high damage. However, this power uses a lot of Endurance and leaves you unable to recover Endurance for a while. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Hold, -END, -Regen, Special vs. Robots; Self -Recovery",
   "icon": "radiationpoisoning_emppulse.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 60,
@@ -55,17 +60,19 @@ export const EMPPulse: Power = {
       "table": "Ranged_Immobilize"
     },
     "recoveryDebuff": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Ranged_Ones"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Ranged_Ones"
     }
   },
   "atoms": [
     ["Mez","Held",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.5,true],
     ["Endurance",null,-0.55,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-10,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

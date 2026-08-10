@@ -12,12 +12,18 @@ export const FortitudeAura: Power = {
   "name": "Fortitude Aura",
   "internalName": "Fortitude_Aura",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Fortitude Aura immensely enhances nearby heroes chance to hit, Damage, and Defense to all attacks. Recharge: Very Long",
   "shortHelp": "PBAoE, Ally +DEF(All), +DMG, +To Hit",
   "icon": "reconhealing_fortitudeaura.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -40,6 +46,7 @@ export const FortitudeAura: Power = {
   "effects": {
     "buffDuration": 120,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },

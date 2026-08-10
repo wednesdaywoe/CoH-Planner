@@ -12,6 +12,8 @@ export const NWEviscerate: Power = {
   "name": "Eviscerate",
   "internalName": "NW_Eviscerate",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Eviscerate does superior lethal damage to your foe, then poisons them.  The poison does toxic damage over time and slows their recovery rate and movement speed.  NOTE: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.  Damage: Superior Recharge: Very Slow",
   "shortHelp": "Superior DMG (Lethal/Toxic), DoT(Toxic), -Regeneration, -Recharge, -SPD.",
   "icon": "nightwidowtraining_eviscerate.png",
@@ -20,6 +22,9 @@ export const NWEviscerate: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -72,6 +77,7 @@ export const NWEviscerate: Power = {
       "slow": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -85,6 +91,7 @@ export const NWEviscerate: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Slow"
       },
@@ -101,7 +108,7 @@ export const NWEviscerate: Power = {
   "atoms": [
     ["Damage","Lethal",1.4592,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Toxic",0.62537,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Run",0.4,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.4,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

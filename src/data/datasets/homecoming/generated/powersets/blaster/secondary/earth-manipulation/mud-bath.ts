@@ -12,6 +12,8 @@ export const MudBath: Power = {
   "name": "Mud Bath",
   "internalName": "Mud_Bath",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you draw upon the geothermal power of the Earth to create a bubbling pool of hot mud around you. All foes in melee range will become snared and entrapped in the mud, slowing them down. You recover a small amount of health every few seconds while this power is active.Recharge: Fast.",
   "shortHelp": "Toggle: PBAoE, -SPD, Self +Heal Over Time, +Recovery",
   "icon": "earthmanip_mudbath.png",
@@ -22,6 +24,9 @@ export const MudBath: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -46,8 +51,16 @@ export const MudBath: Power = {
   "effects": {
     "buffDuration": 5,
     "durations": {
+      "movementCapDebuff": 5,
       "recoveryBuff": 2.1,
       "slow": 5
+    },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
     },
     "recoveryBuff": {
       "scale": 0.5,
@@ -55,6 +68,7 @@ export const MudBath: Power = {
     },
     "slow": {
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },
@@ -63,8 +77,8 @@ export const MudBath: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.5,
+        "table": "Melee_Slow"
       }
     }
   },
@@ -73,6 +87,6 @@ export const MudBath: Power = {
     ["Movement","Jump",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","JumpHeight",0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,0.5,1,2.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+    ["Recovery",null,0.5,1,2.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Sustain"]
   ]
 };

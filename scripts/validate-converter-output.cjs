@@ -43,6 +43,7 @@ const path = require('path');
 require('tsx/cjs');
 const { ingestExportGroup } = require('../src/data/core/atomic-effect.ts');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
+const { isPvpOnlyGroup: isPvpOnlyByRequires } = require('./_pv-scope.cjs');
 
 const args = process.argv.slice(2);
 const GATE = args.includes('--gate');
@@ -106,14 +107,13 @@ function flattenTemplatesWithMeta(groups, out = []) {
   for (const g of groups || []) {
     const pvMode = g.is_pvp || 'EITHER';
     const requires = g.requires_expression || '';
-    for (const t of g.templates || []) out.push({ t, pvMode, requires });
+    // Carried per row because the PvP verdict is the parser's structural read
+    // of the expression, not something re-derivable from the string here.
+    const pvpByRequires = isPvpOnlyByRequires(g);
+    for (const t of g.templates || []) out.push({ t, pvMode, requires, pvpByRequires });
     if (g.child_effects) flattenTemplatesWithMeta(g.child_effects, out);
   }
   return out;
-}
-
-function isPvpEnttypeVariant(requires) {
-  return /\benttype\s+target>\s+player\s+eq/i.test(requires || '');
 }
 
 function isPvpMapOnly(requires) {
@@ -154,7 +154,7 @@ function sc4Check(power) {
     if (!bySig.has(sig)) bySig.set(sig, { pve: 0, pvp: 0, pvpDropped: 0, pvpKept: 0 });
     const b = bySig.get(sig);
     const pvpByMode = row.pvMode === 'PVP_ONLY';
-    const pvpByReq = isPvpEnttypeVariant(row.requires) || isPvpMapOnly(row.requires);
+    const pvpByReq = row.pvpByRequires || isPvpMapOnly(row.requires);
     const isPvpSibling = pvpByMode || pvpByReq;
     if (isPvpSibling) {
       b.pvp++;
@@ -264,13 +264,13 @@ function loadGeneratedPower(outputAbsPath) {
  * PvP variants are NOT twins — they are the same effect on a different map, and
  * the converter gates them rather than routing them to a base slot, so no
  * `unresistable` stamp is owed. Both idioms must be excluded: Homecoming splits
- * on `enttype target> player eq`, Thunderspy on `isPVPMap?`. Reading only the
+ * on the target's entity type, Thunderspy on `isPVPMap?`. Reading only the
  * first made every tspy power whose PvP half carries IgnoreResistance (Unyielding's
  * knockback/repel protection and 10 others) look like an unstamped twin. */
 function hasResistibleTwin(power) {
   const templates = flattenTemplatesWithMeta(power.effects)
-    .filter(({ pvMode, requires }) => pvMode !== 'PVP_ONLY'
-      && !isPvpEnttypeVariant(requires) && !isPvpMapOnly(requires))
+    .filter(({ pvMode, requires, pvpByRequires }) => pvMode !== 'PVP_ONLY'
+      && !pvpByRequires && !isPvpMapOnly(requires))
     .map(({ t }) => t);
   const seen = {};
   for (const t of templates) {

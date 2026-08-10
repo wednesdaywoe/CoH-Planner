@@ -12,6 +12,8 @@ export const QuantumBoost: Power = {
   "name": "Quantum Acceleration",
   "internalName": "Quantum_Boost",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "Quantum Acceleration greatly increases your fly speed and maximum fly speed for a short period of time.Notes: Quantum Acceleration is unaffected by Recharge Time changes.Recharge: Slow.",
   "shortHelp": "Self +FlySpeed (Special)",
   "icon": "luminousaura_quantumacceleration.png",
@@ -20,6 +22,9 @@ export const QuantumBoost: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "RechargeTime"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -37,6 +42,7 @@ export const QuantumBoost: Power = {
     },
     "movementCapBump": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 1,
         "stackKey": "TravelTurboMaxBuff",
         "suppressible": true,
@@ -45,6 +51,7 @@ export const QuantumBoost: Power = {
     },
     "specialBuff": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.35,
         "table": "Ranged_SpeedFlying"
       }

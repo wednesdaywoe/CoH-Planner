@@ -12,12 +12,17 @@ export const Hide: Power = {
   "name": "Quick Recovery",
   "internalName": "Hide",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You recover Endurance at a faster rate than normal. This power is always on.",
   "shortHelp": "Auto: Self +Recovery",
   "icon": "srrecovery.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10

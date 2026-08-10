@@ -12,12 +12,17 @@ export const IceArrow: Power = {
   "name": "Ice Arrow",
   "internalName": "Ice_Arrow",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow can freeze a single foe in a block of ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be Held, but all affected targets will be Slowed, have their secondary effects weakened, and damage output reduced.Recharge: Slow.",
   "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge, -DMG, -Special",
   "icon": "trickarrow_hold.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -42,6 +47,7 @@ export const IceArrow: Power = {
   "effects": {
     "buffDuration": 60,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.6,
       "table": "Ranged_Debuff_Dam"
     },
@@ -58,6 +64,7 @@ export const IceArrow: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -67,6 +74,7 @@ export const IceArrow: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
@@ -81,92 +89,114 @@ export const IceArrow: Power = {
     },
     "specialBuff": {
       "absorb": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "confuse": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "heal": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       }
     },
     "specialDebuff": {
       "aoe": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "cold": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "melee": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "ranged": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 0.45,
         "table": "Ranged_Special"
       }
@@ -182,30 +212,30 @@ export const IceArrow: Power = {
     ["DamageBuff","Negative",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Psionic",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Toxic",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Heal",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Absorb",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Endurance",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Run",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Fly",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Confused",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Terrorized",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Held",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Immobilized",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Stunned",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Sleep",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Ranged",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Melee",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","AoE",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Smashing",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Lethal",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Fire",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Cold",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Energy",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Negative",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Psionic",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","Toxic",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Enhancement","All",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["ToHit",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Heal",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Absorb",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Endurance",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Movement","Run",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Movement","Fly",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Confused",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Terrorized",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Held",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Immobilized",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Stunned",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Sleep",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Ranged",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Melee",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","AoE",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Smashing",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Lethal",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Fire",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Cold",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Energy",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Negative",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Psionic",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Toxic",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","All",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["ToHit",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ScheduleB"],
     ["Movement","Run",0.1,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.1,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["RechargeTime",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -214,27 +244,27 @@ export const IceArrow: Power = {
     ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Endurance",null,-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Movement","Run",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Movement","Fly",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Confused",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Terrorized",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Held",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Immobilized",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Stunned",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Sleep",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Ranged",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Melee",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","AoE",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Smashing",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Lethal",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Fire",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Cold",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Energy",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Negative",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Psionic",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Toxic",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","All",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["ToHit",null,-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
+    ["Endurance",null,-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Movement","Run",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Movement","Fly",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Confused",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Terrorized",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Held",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Immobilized",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Stunned",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Sleep",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Ranged",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Melee",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","AoE",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Smashing",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Lethal",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Fire",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Cold",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Energy",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Negative",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Psionic",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Toxic",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","All",-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["ToHit",null,-0.45,1,10,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"ScheduleB"]
   ]
 };

@@ -12,12 +12,17 @@ export const FastHealing: Power = {
   "name": "Fast Healing",
   "internalName": "Fast_Healing",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You heal Hit Points at a faster rate than normal. This power is always on.",
   "shortHelp": "Auto: Self +Regeneration",
   "icon": "regeneration_fasthealing.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10

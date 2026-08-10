@@ -12,6 +12,8 @@ export const DNASiphon: Power = {
   "name": "DNA Siphon",
   "internalName": "DNA_Siphon",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "DNA Siphon drains the cellular material of nearby enemies, inflicting them with minor Lethal damage and some Toxic damage over time. This grants you some Health and Endurance for each enemy struck. While Efficient Adaptation is active, this power grants a small haste boost for each nearby target and will trigger off of defeated enemies. While Defensive Adaptation is active, this power grants a minor HoT for each target struck. While Offensive Adaptation is active, this power grants an increase to damage and a decrease to defense for each target struck.",
   "shortHelp": "Click, PBAoE Minor DMG(Lethal/Toxic) Foe -Regen, Taunt, Self +HP, +End, +Special",
   "icon": "bioorganicarmor_dnasiphon.png",
@@ -20,6 +22,10 @@ export const DNASiphon: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "DeadFoe"
   ],
   "stats": {
     "accuracy": 1,
@@ -89,13 +95,14 @@ export const DNASiphon: Power = {
       "perTarget": 0.2
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     }
   },
   "atoms": [
     ["Damage","Lethal",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
-    ["Damage","Toxic",0.1,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Damage","Toxic",0.1,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >",null,null,null,null,null,null,null,0.8,true],
     ["Heal",null,1.25,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
     ["Endurance",null,5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >",null,5],
     ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 ==",null,0.2],
@@ -193,36 +200,43 @@ export const DNASiphon: Power = {
         },
         "defenseDebuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Buff_Def",
             "toWho": "Self"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Buff_Def",
             "toWho": "Self"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Buff_Def",
             "toWho": "Self"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Buff_Def",
             "toWho": "Self"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Buff_Def",
             "toWho": "Self"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Buff_Def",
             "toWho": "Self"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Buff_Def",
             "toWho": "Self"
@@ -234,6 +248,7 @@ export const DNASiphon: Power = {
           "regenDebuff": 30
         },
         "regenDebuff": {
+          "ignoreStrength": true,
           "scale": 1.33,
           "table": "Melee_Ones"
         }

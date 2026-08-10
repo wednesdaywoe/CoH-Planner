@@ -12,12 +12,17 @@ export const M30Grenade: Power = {
   "name": "M30 Grenade",
   "internalName": "M30_Grenade",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Launches a Grenade at long range from beneath the barrel of your Assault Rifle. This explosion affects all within the blast radius, and can knock them back. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal/Smash), Knockback",
   "icon": "assaultweapons_arm30grenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,

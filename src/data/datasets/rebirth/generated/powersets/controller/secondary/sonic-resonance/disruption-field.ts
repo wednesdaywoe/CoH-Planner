@@ -12,12 +12,17 @@ export const DisruptionField: Power = {
   "name": "Disruption Field",
   "internalName": "Disruption_Field",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You set up a constant wave of sonic energy around an ally, weakening the Damage Resistance of all nearby foes. Recharge: Moderate",
   "shortHelp": "Toggle: Ranged (Target Ally AoE), Foe -Res",
   "icon": "sonicdebuff_teamdebuffdamres.png",
   "powerType": "Toggle",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -40,34 +45,42 @@ export const DisruptionField: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }

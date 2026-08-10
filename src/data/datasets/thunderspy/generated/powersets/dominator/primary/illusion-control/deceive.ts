@@ -12,12 +12,17 @@ export const Deceive: Power = {
   "name": "Deceive",
   "internalName": "Deceive",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Deceive an enemy into believing their friends are not who they appear to be. If successful, the enemy will ignore you and attack their own allies. If you Deceive someone before they have noticed you, your presence will continue to be masked. You will not receive any Experience Points for foes defeated by a Deceived enemy. Recharge: Moderate",
   "shortHelp": "Ranged, Foe Confuse",
   "icon": "illusions_decieve.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

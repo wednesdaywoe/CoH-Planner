@@ -12,6 +12,8 @@ export const ShadowPunch: Power = {
   "name": "Shadow Punch",
   "internalName": "Shadow_Punch",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You wrap your fists with Negative Energy channeled from the Netherworlds, then perform a quick punch that deals minor damage. Shadow Punches cloud the target's vision, lowering his chance to hit for a short time.  This power can bruise an enemy, making them more vulnerable to damage. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG (Smash/Negative), Foe -To Hit, -Res (all)",
   "icon": "shadowfighting_shadowpunch.png",
@@ -22,6 +24,9 @@ export const ShadowPunch: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

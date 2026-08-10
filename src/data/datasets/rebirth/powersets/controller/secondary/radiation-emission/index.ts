@@ -21,8 +21,12 @@ import { EMPPulse as EMPPulse } from './emp-pulse';
 
 export const powerset: Powerset = {
   id: 'controller/radiation-emission',
-  internalName: 'radiation_emission',
+  setPath: 'Controller_Buff.Radiation_Emission',
   name: 'Radiation Emission',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Radiation Emission powers allow you to manipulate atomic particles and waves to protect your allies and weaken your enemies.',
   icon: 'radiation_emission_set.ico',
   archetype: 'controller',

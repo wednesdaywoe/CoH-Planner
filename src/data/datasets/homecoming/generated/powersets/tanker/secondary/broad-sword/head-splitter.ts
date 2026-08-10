@@ -12,6 +12,8 @@ export const HeadSplitter: Power = {
   "name": "Head Splitter",
   "internalName": "Head_Splitter",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a devastating Head Splitter attack that deals a massive amount of damage and can even knock a foe down to the ground and reduce its Defense. The power of this attack can actually extend a short distance through multiple foes.",
   "shortHelp": "Melee, DMG(Lethal), Foe Knockback, -DEF",
   "icon": "sword_headsplitter.png",
@@ -22,6 +24,9 @@ export const HeadSplitter: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 10,
@@ -75,9 +80,12 @@ export const HeadSplitter: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",2.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",2.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq arch source> Class_Stalker eq &&",null,null,null,null,null,null,null,null,null,null,"Class_Stalker"],
+    ["Damage","Lethal",2.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq arch source> Class_Stalker eq && kMeter source> .9 < &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+    ["Damage","Lethal",2.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> critter eq arch source> Class_Scrapper eq &&",null,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.6],
+    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,1,true],
     ["Damage","Lethal",0.86,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]

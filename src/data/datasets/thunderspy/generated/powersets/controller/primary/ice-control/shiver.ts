@@ -12,12 +12,17 @@ export const Shiver: Power = {
   "name": "Shiver",
   "internalName": "Shiver",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can blast forth a wide cone of chilling air that dramatically lowers the temperature of nearby foes inducing hyopthermia and Disorienting them while also Slowing their movement and attack rate. Recharge: Slow",
   "shortHelp": "Ranged (Cone), Foe Disorient, -SPD, -Recharge",
   "icon": "iceformation_shiver.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -45,10 +50,19 @@ export const Shiver: Power = {
   "effects": {
     "buffDuration": 60,
     "durations": {
+      "movementCapDebuff": 60,
       "rechargeDebuff": 60,
       "slow": 60
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.65,
       "table": "Ranged_Slow"
     },
@@ -58,6 +72,7 @@ export const Shiver: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
@@ -66,8 +81,8 @@ export const Shiver: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.65,
+        "table": "Ranged_Slow"
       }
     },
     "stun": {

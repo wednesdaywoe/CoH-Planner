@@ -12,6 +12,8 @@ export const MetabolicAcceleration: Power = {
   "name": "Metabolic Acceleration",
   "internalName": "Metabolic_Acceleration",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You cloak yourself in a field of radiation that increases your attack speed, Endurance recovery and Regeneration rate. However, only half of this regeneration bonus is enhanceable. Your metabolism is increased so much that you become resistant to effects such as Sleep, Hold, Disorient, Immobilization and Endurance Drain.",
   "shortHelp": "Toggle: Self +Recharge, +Regeneration, +Recovery, +Resist(Hold, Immobilize, Disorient, Sleep, End Drain)",
   "icon": "atomicmanipulation_metabolism.png",
@@ -22,6 +24,9 @@ export const MetabolicAcceleration: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,10 +48,12 @@ export const MetabolicAcceleration: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
@@ -61,23 +68,28 @@ export const MetabolicAcceleration: Power = {
     },
     "mezResistance": {
       "hold": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     },
@@ -90,6 +102,7 @@ export const MetabolicAcceleration: Power = {
       "table": "Melee_Ones"
     },
     "regenBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1.125,
       "table": "Melee_Ones"
     }

@@ -12,12 +12,17 @@ export const IdentifyWeakness: Power = {
   "name": "Identify Weakness",
   "internalName": "Identify_Weakness",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Your trained eye allows you to easily spot where enemies are lacking or exposed and punish them for it. Their attacks weaken, their resistance to your attacks weaken, and their regeneration is reduced.",
   "shortHelp": "-Res (All), -DMG (All), -Regen",
   "icon": "obediencetraining_identifyweakness.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -38,6 +43,7 @@ export const IdentifyWeakness: Power = {
   "effects": {
     "buffDuration": 30,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Debuff_Dam"
     },
@@ -47,39 +53,48 @@ export const IdentifyWeakness: Power = {
       "resistanceDebuff": 30
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Ones"
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }

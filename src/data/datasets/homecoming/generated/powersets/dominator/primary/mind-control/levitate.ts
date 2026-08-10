@@ -12,12 +12,18 @@ export const Levitate: Power = {
   "name": "Levitate",
   "internalName": "Levitate",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can send a single target violently into the air, then slam them to the ground for Smashing damage. This power can bring flying foes to the ground. This power will affect enemies around your primary target, should it be used on the primary target of your Telekinesis.",
   "shortHelp": "Ranged, Light DMG(Smash), Foe Knock Up",
   "icon": "mentalcontrol_levitate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe",
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -66,6 +72,6 @@ export const Levitate: Power = {
     ["Damage","Smashing",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockup",6,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",1.9491,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kLevitated target.mode?",true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kLevitated target.mode?",true,null,null,null,null,null,null,null,null,"MassLevitate"]
   ]
 };

@@ -12,12 +12,17 @@ export const Flashfire: Power = {
   "name": "Flashfire",
   "internalName": "Flashfire",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can bring forth a Flashfire to Disorient a group of foes and deal some damage over time. Target must be on the ground to activate Flashfire. Damage: Minor(DoT), Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Fire), Foe Disorient",
   "icon": "firetrap_flashfire.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 70,

@@ -12,6 +12,8 @@ export const SummonDemonPrince: Power = {
   "name": "Summon Demon Prince",
   "internalName": "Summon_Demon_Prince",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons forth a foul Demon Prince from the deepest reaches of the Abyss. The Demon Prince is mighty among its kind and is a master of cold powers. It serves the conjuror only so that it may wreak havoc upon the material plane. The Demon has some defense versus lethal, smashing, fire and cold attacks.",
   "shortHelp": "Summon Demon Prince",
   "icon": "demonsummoning_summondemonprince.png",
@@ -19,6 +21,9 @@ export const SummonDemonPrince: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

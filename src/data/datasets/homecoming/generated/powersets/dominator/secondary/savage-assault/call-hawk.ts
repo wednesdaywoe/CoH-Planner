@@ -12,12 +12,17 @@ export const CallHawk: Power = {
   "name": "Call Hawk",
   "internalName": "Call_Hawk",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You call forth a hawk ally to swoop in and viciously peck at your target causing High Lethal damage. The attack often catches foes off their guard and can knock them down as well as reducing their chance to hit. This power's damage over time effect will scale with the number of stacks of Blood Frenzy. Using this power with 5 stacks of Blood Frenzy causes you to become Exhausted for a short time, but the duration of its damage over time effect is increased. While exhausted you cannot gain Blood Frenzy.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Ranged, Foe DoT (Lethal), -To Hit, Knockdown, -Fly",
   "icon": "savagemelee_callhawk.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -41,13 +46,22 @@ export const CallHawk: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.52,
-    "table": "Ranged_Damage",
-    "duration": 1.3,
-    "tickRate": 0.30000001192092896
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.52,
+      "table": "Ranged_Damage",
+      "duration": 1.3,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.2429,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "buffDuration": 10,
     "durations": {
@@ -71,39 +85,34 @@ export const CallHawk: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.52,1,1.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.2429,1,4.1,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 < &&",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
     ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",0.2429,1,4.1,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 < &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
     ["Damage","Lethal",0.2543,1,5.1,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
     ["Damage","Lethal",0.4683,1,1.3,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> player eq",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&",true]
   ],
   "conditionalEffects": [
     {
-      "id": "savage_melee_blood_frenzy_stalker",
-      "label": "Savage Melee Blood Frenzy Stalker",
+      "id": "savage_melee_blood_frenzy_stalker-5plus",
+      "label": "Savage Melee Blood Frenzy Stalker (5+ stacks)",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Lethal",
-          "scale": 0.2429,
-          "table": "Ranged_Damage",
-          "duration": 4.1,
-          "tickRate": 1
-        },
-        {
-          "type": "Lethal",
-          "scale": 0.2543,
-          "table": "Ranged_Damage",
-          "duration": 5.1,
-          "tickRate": 1
-        }
-      ]
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker",
+        "count": 5
+      },
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.2543,
+        "table": "Ranged_Damage",
+        "duration": 5.1,
+        "tickRate": 1
+      }
     }
   ],
   "specialEffects": [

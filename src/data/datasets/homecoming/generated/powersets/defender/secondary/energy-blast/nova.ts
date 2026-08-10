@@ -12,12 +12,17 @@ export const Nova: Power = {
   "name": "Nova",
   "internalName": "Nova",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You can explode in a tremendous blast of energy, sending nearby foes flying. The Nova deals extreme Energy and Smashing damage to all nearby foes.",
   "shortHelp": "PBAoE, DMG(Energy), Foe Knockback",
   "icon": "powerblast_novablast.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 25,

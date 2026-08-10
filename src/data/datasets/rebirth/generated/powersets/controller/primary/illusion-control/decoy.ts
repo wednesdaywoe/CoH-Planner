@@ -12,12 +12,17 @@ export const Decoy: Power = {
   "name": "Phantom Army",
   "internalName": "Decoy",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can fabricate 3 Phantom heroes around a targeted foe. These Phantoms are not real, and are indestructible. Their attacks are similar to Spectral Wounds. Though they deal damage, it is illusory and will heal if the victim survives long enough. Phantoms are short lived and cannot be buffed or healed. Recharge: Very Long",
   "shortHelp": "Summon Decoys: Ranged Minor DMG(Energy/Special)",
   "icon": "illusions_phantomarmy.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

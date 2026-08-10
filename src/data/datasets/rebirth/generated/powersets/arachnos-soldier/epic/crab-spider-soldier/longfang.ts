@@ -12,12 +12,17 @@ export const Longfang: Power = {
   "name": "Longfang",
   "internalName": "Longfang",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Longfang Channelgun may also fire short bursts, causing greater damage. This attack also reduces your foe's defense.  Damage: High Recharge: Medium",
   "shortHelp": "Ranged, High DMG(Lethal), Foe -DEF",
   "icon": "crabspider_longfang.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -12,12 +12,17 @@ export const FrostBreath: Power = {
   "name": "Frost Breath",
   "internalName": "Frost_Breath",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range.",
   "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
   "icon": "iceblast_frostbreath.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 40,
@@ -57,6 +62,7 @@ export const FrostBreath: Power = {
       "slow": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -66,6 +72,7 @@ export const FrostBreath: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

@@ -12,6 +12,8 @@ export const CripplingAxeKick: Power = {
   "name": "Crippling Axe Kick",
   "internalName": "Crippling_Axe_Kick",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a Crippling Axe Kick that deals superior smashing damage, reduces the targets defense, may Immobilize, and Slowing their run speed. Crippling Axe Kick may also knock some flying entities out of the sky. Damage: Superior, Recharge: Moderate",
   "shortHelp": "Melee, Superior DMG(Smash), Foe Immobilize, -SPD, -Fly, -DEF",
   "icon": "martialarts_cripplinghookkick.png",
@@ -20,6 +22,9 @@ export const CripplingAxeKick: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -70,6 +75,7 @@ export const CripplingAxeKick: Power = {
         "table": "Melee_Ones"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },

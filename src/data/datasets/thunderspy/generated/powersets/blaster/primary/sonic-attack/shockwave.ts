@@ -12,12 +12,17 @@ export const Shockwave: Power = {
   "name": "Shockwave",
   "internalName": "Shockwave",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can call forth a tremendous Shockwave that can knock down foes and deal some Smashing damage in a wide cone area. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged (Cone), Minor DMG(Smashing/Energy), Foe Knockback, -Res(All)",
   "icon": "sonicblast_knockback.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 50,
@@ -58,6 +63,7 @@ export const Shockwave: Power = {
   "effects": {
     "buffDuration": 9.67,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.058,
       "table": "Ranged_Ones"
     },

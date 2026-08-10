@@ -12,12 +12,17 @@ export const EnergyTorrent: Power = {
   "name": "Energy Torrent",
   "internalName": "Energy_Torrent",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_energytorrent.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

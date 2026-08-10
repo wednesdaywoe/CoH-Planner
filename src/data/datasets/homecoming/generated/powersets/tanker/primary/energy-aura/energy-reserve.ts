@@ -12,12 +12,17 @@ export const EnergyReserve: Power = {
   "name": "Power Armor",
   "internalName": "Energy_Reserve",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Power Armor increases Hit Points and resistance to all damage types. This power is always on and costs no endurance.",
   "shortHelp": "Auto: Self +MaxHP, +Resist(All DMG)",
   "icon": "energyaura_powerarmor.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -43,6 +48,7 @@ export const EnergyReserve: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_HealSelf"
     },

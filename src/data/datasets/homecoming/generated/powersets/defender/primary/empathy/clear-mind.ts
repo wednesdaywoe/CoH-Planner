@@ -12,12 +12,17 @@ export const ClearMind: Power = {
   "name": "Clear Mind",
   "internalName": "Clear_Mind",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Frees an ally from any Disorient, Hold, Sleep, Fear, Confuse and Immobilize effects and leaves them resistant to such effects for a good while. Also, grants target clearer Perception to see hidden foes. Protection will improve with Multiple applications and as you advance in level.",
   "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception",
   "icon": "empathy_mindwall.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

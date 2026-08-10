@@ -12,6 +12,8 @@ export const FeralBlow: Power = {
   "name": "Feral Blow",
   "internalName": "Feral_Blow",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You lash out at a nearby foe dealing Light damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a tiny amount of health. In Hunter form you'll deal lethal damage and reduce the target's defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a small chance to stun. This power builds 1 Primal Energy. Damage: Light, Recharge: Very Fast",
   "shortHelp": "Melee, Light DMG(Special), Special",
   "icon": "feralmight_feralblow.png",
@@ -20,6 +22,9 @@ export const FeralBlow: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -67,7 +72,7 @@ export const FeralBlow: Power = {
   ],
   "atoms": [
     ["Damage","Smashing",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Heal",null,0.084,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Heal",null,0.168,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0]
   ],
@@ -104,7 +109,13 @@ export const FeralBlow: Power = {
       "description": "You lash out at a nearby foe dealing Light damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a tiny amount of health. In Hunter form you'll deal lethal damage and reduce the target's defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a small chance to stun. This power builds 1 Primal Energy. Damage: Light, Recharge: Very Fast",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Defense","All",1.5,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true]
+      ]
     },
     "ProwlerMode": {
       "internalName": "Feral_Blow_Prowler",
@@ -149,7 +160,14 @@ export const FeralBlow: Power = {
       "description": "You lash out at a nearby foe dealing Light damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a tiny amount of health. In Hunter form you'll deal lethal damage and reduce the target's defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a small chance to stun. This power builds 1 Primal Energy. Damage: Light, Recharge: Very Fast",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Damage","Lethal",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
+        ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true]
+      ]
     }
   },
   "damageTypes": [

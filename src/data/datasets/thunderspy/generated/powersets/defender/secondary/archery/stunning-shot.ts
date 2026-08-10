@@ -12,12 +12,17 @@ export const StunningShot: Power = {
   "name": "Stunning Shot",
   "internalName": "Stunning_Shot",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a blunt, weighted arrow at your target's chest. The Stunning Shot has a good chance of stunning your foe. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged Disorient, Minor DMG(Smashing)",
   "icon": "archery_stunarrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 60,

@@ -12,6 +12,8 @@ export const QuantumFlight: Power = {
   "name": "Quantum Flight",
   "internalName": "Quantum_Flight",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You shift your quantum matrix and become more energy than matter. No longer bound by the laws of normal physics, you become intangible to other entities and can fly at high speeds.  However, after 30 seconds the phase out effect will wear off.  30 seconds later, if this power is still active the user will become phased out once again.  Quantum Flight offers greater flight speed and some stealth, but costs more endurance. This power can be used while in Bright Nova or White Dwarf form. However, activating it while in either Bright Nova or White Dwarf will transform you back into your original form.",
   "shortHelp": "Toggle: Self Fly, Intangible",
   "icon": "luminousaura_quantumflight.png",
@@ -22,6 +24,9 @@ export const QuantumFlight: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -79,12 +84,13 @@ export const QuantumFlight: Power = {
       }
     },
     "threatDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Fly",1.5,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Control",3,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

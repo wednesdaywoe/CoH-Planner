@@ -12,6 +12,8 @@ export const KiPush: Power = {
   "name": "Ki Push",
   "internalName": "Ki_Push",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You smash your foe with a burst of Ki Energy, sending them flying through the air in slow motion.  Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Smash), Foe Repel, KB",
   "icon": "martialmanipulation_kipush.png",
@@ -28,6 +30,9 @@ export const KiPush: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -58,6 +63,7 @@ export const KiPush: Power = {
   "effects": {
     "buffDuration": 2,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.055,
       "table": "Melee_Ones"
     },
@@ -68,6 +74,7 @@ export const KiPush: Power = {
     },
     "effectDuration": 2,
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"

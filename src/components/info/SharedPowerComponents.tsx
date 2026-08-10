@@ -735,7 +735,7 @@ export function RegistryEffectsDisplay({
     const dominationBonus = domExtra && isMezEffect(domExtra.value) ? domExtra.value : undefined;
 
     displayableEffects.push({
-      effect: { key: row.rowKey, value: row.rawValue, config: row.config },
+      effect: { key: row.rowKey, effectKey: row.effectKey, value: row.rawValue, config: row.config },
       baseValue: row.tiers.base,
       tiers: row.tiers,
       byTypeLabel: row.byTypeLabel,

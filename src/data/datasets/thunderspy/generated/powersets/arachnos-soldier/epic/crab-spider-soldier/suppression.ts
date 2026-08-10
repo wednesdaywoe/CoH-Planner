@@ -12,12 +12,17 @@ export const Suppression: Power = {
   "name": "Suppression",
   "internalName": "Suppression",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Longfang Channelgun may also fire long bursts of energy, causing moderate damage in an large cone in front of you.  Damage: Moderate Recharge: Medium",
   "shortHelp": "Ranged Cone, Moderate DoT (Energy), Foe -DEF",
   "icon": "crabspider_suppression.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,

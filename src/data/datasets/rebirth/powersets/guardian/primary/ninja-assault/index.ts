@@ -21,8 +21,12 @@ import { GoldenDragonfly as GoldenDragonfly } from './golden-dragonfly';
 
 export const powerset: Powerset = {
   id: 'guardian/ninja-assault',
-  internalName: 'ninja_assault',
+  setPath: 'Guardian_Assault.Ninja_Assault',
   name: 'Ninja Assault',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Your mastery of the ways of Ninja Assault allows you to dispatch opponents with lethal grace, cutting down foes with the razor edge of your Ninja Blade and delivering death from afar with throwing knives. Your attacks often carry additional poison damage over time, and can also knock opponents down or reduce their defense.',
   icon: 'ninja_sword_set.ico',
   archetype: 'guardian',

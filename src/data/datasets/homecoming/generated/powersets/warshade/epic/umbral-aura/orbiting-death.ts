@@ -12,6 +12,8 @@ export const OrbitingDeath: Power = {
   "name": "Orbiting Death",
   "internalName": "Orbiting_Death",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You surround yourself with orbiting particles and dark matter that will continually cause Negative Energy damage to any nearby foes.Damage: Minor(DoT).Recharge: Fast.",
   "shortHelp": "Toggle: PBAoE Minor DoT(Negative)",
   "icon": "umbralaura_orbitingdeath.png",
@@ -22,6 +24,9 @@ export const OrbitingDeath: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -53,7 +58,7 @@ export const OrbitingDeath: Power = {
   },
   "atoms": [
     ["Damage","Negative",0.17,1,2.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1],
-    ["Meta",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,2,1]
+    ["Meta",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "modesSuspended": [
     "Warshade_Blaster_Mode",

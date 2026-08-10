@@ -12,6 +12,8 @@ export const SavageBlow: Power = {
   "name": "Savage Blow",
   "internalName": "Savage_Blow",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Before delivering an absolutely punishing blow you concentrate and channel the forces of nature into your strike to cause Extreme damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a moderate amount of health. In Hunter form you'll deal lethal damage and significantly reduce the target's damage. In Prowler form you'll deal lethal damage, cause moderate lethal damage over time and stun the target. This power builds 2 primal energy. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Special), Special",
   "icon": "feralmight_savageblow.png",
@@ -20,6 +22,9 @@ export const SavageBlow: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -63,7 +68,7 @@ export const SavageBlow: Power = {
   ],
   "atoms": [
     ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Heal",null,0.712,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Heal",null,1.424,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0]
   ],
@@ -88,6 +93,7 @@ export const SavageBlow: Power = {
       "effects": {
         "buffDuration": 8,
         "damageDebuff": {
+          "ignoreStrength": true,
           "scale": 3.75,
           "table": "Melee_Debuff_Dam"
         },
@@ -99,7 +105,27 @@ export const SavageBlow: Power = {
       "description": "Before delivering an absolutely punishing blow you concentrate and channel the forces of nature into your strike to cause Extreme damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a moderate amount of health. In Hunter form you'll deal lethal damage and significantly reduce the target's damage. In Prowler form you'll deal lethal damage, cause moderate lethal damage over time and stun the target. This power builds 2 primal energy. Damage: Extreme, Recharge: Slow",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Lethal",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["DamageBuff","Smashing",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Lethal",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Fire",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Cold",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Energy",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Negative",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Toxic",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Psionic",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Smashing",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Lethal",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Fire",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Cold",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Energy",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Negative",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Toxic",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Psionic",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true]
+      ]
     },
     "ProwlerMode": {
       "internalName": "Savage_Blow_Prowler",
@@ -143,7 +169,14 @@ export const SavageBlow: Power = {
       "description": "Before delivering an absolutely punishing blow you concentrate and channel the forces of nature into your strike to cause Extreme damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a moderate amount of health. In Hunter form you'll deal lethal damage and significantly reduce the target's damage. In Prowler form you'll deal lethal damage, cause moderate lethal damage over time and stun the target. This power builds 2 primal energy. Damage: Extreme, Recharge: Slow",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Lethal",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Damage","Lethal",1.78,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
+        ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true]
+      ]
     }
   },
   "damageTypes": [

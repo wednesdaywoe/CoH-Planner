@@ -12,12 +12,17 @@ export const Permafrost: Power = {
   "name": "Permafrost",
   "internalName": "Permafrost",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your body temperature permanently lowers to 33 degrees Fahrenheit. You gain additional hit points and resistance to fire, cold, and toxic damage sources. You also gain an inherent resistance to Slow effects. This power is always on and does not cost Endurance.",
   "shortHelp": "Auto: Self +MaxHealth +Res(Cold, Fire, Toxic, Slow)",
   "icon": "icearmor_permafrost.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -35,10 +40,12 @@ export const Permafrost: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       }

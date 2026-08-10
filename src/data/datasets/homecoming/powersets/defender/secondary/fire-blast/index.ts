@@ -21,8 +21,12 @@ import { Inferno as Inferno } from './inferno';
 
 export const powerset: Powerset = {
   id: 'defender/fire-blast',
-  internalName: 'fire_blast',
+  setPath: 'Defender_Ranged.Fire_Blast',
   name: 'Fire Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Fire Blast allows you to blast fire at foes, with a tendency to set them ablaze for added damage over time.',
   icon: 'fire_blast_set.ico',
   archetype: 'defender',

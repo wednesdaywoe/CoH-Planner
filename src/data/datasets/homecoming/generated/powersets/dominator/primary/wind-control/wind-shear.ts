@@ -12,6 +12,8 @@ export const WindShear: Power = {
   "name": "Wind Shear",
   "internalName": "Wind_Shear",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a sphere of high speed winds around yourself. This significantly slows the movement of any enemies caught within the sphere and makes their attacks less likely to hit. Damage potential is also reduced. Flying foes are brought to the ground. This power neither builds nor releases Pressure, but does have a continuous Endurance cost.Recharge: Slow.",
   "shortHelp": "PBAoE (Toggle), -Speed (Foe, All), -Fly(Foe), -ToHit(Foe), -DMG(Foe, All)",
   "icon": "windcontrol_windshear.png",
@@ -25,6 +27,9 @@ export const WindShear: Power = {
   ],
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -50,13 +55,22 @@ export const WindShear: Power = {
   "effects": {
     "buffDuration": 2.1,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.25,
       "table": "Melee_Debuff_Dam"
     },
     "durations": {
       "damageDebuff": 2.1,
+      "movementCapDebuff": 2.1,
       "slow": 2.1,
       "tohitDebuff": 2.1
+    },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
     },
     "slow": {
       "fly": {
@@ -68,6 +82,7 @@ export const WindShear: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.65,
         "table": "Melee_Slow"
       },
@@ -76,8 +91,8 @@ export const WindShear: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.65,
+        "table": "Melee_Slow"
       }
     },
     "tohitDebuff": {

@@ -12,6 +12,8 @@ export const PhantasmalPhase: Power = {
   "name": "Spectral Shroud",
   "internalName": "Phantasmal_Phase",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You shroud yourself in spectral forces which may intercept some of your foes attacks while also allowing you to pass through most entities. While the shroud is active you are protected from Sleep, Fear, Hold and Disorient attacks. Recharge: Fast",
   "shortHelp": "Toggle: Self+ Absorb, Self+ Intangible, Self +Res(Immobilize, Sleep, Hold, Disorient, Fear, Confuse, Knock)",
   "icon": "spectralaura4.png",
@@ -22,6 +24,9 @@ export const PhantasmalPhase: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -48,6 +53,7 @@ export const PhantasmalPhase: Power = {
     },
     "buffDuration": 2.25,
     "confuse": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -67,11 +73,13 @@ export const PhantasmalPhase: Power = {
     },
     "effectDuration": 2.25,
     "fear": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -82,14 +90,17 @@ export const PhantasmalPhase: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "repel": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
@@ -100,11 +111,13 @@ export const PhantasmalPhase: Power = {
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

@@ -12,12 +12,17 @@ export const GeomancyRootBonus: Power = {
   "name": "Centered",
   "internalName": "Geomancy_Root_Bonus",
   "available": 0,
+  "autoIssue": true,
+  "free": true,
   "description": "",
   "shortHelp": "",
   "icon": "widowteamwork_mentaltraining.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -31,10 +36,12 @@ export const GeomancyRootBonus: Power = {
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }

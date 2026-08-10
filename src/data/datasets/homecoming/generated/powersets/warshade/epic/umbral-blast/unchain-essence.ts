@@ -12,12 +12,17 @@ export const UnchainEssence: Power = {
   "name": "Unchain Essence",
   "internalName": "Unchain_Essence",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "The Warshade can release the energy of a defeated foe and cause a massive Negative Energy explosion that can devastate any remaining foes. This power can only be activated by targeting a defeated foe.Damage: Superior.Recharge: Long.",
   "shortHelp": "Ranged (Targeted AoE Special), Superior DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
   "icon": "umbralblast_unchainessence.png",
   "powerType": "Click",
   "targetType": "DeadFoe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -62,6 +67,7 @@ export const UnchainEssence: Power = {
       "table": "Ranged_Knockback"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
@@ -71,6 +77,7 @@ export const UnchainEssence: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Ranged_Slow"
       },

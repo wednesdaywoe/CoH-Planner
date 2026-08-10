@@ -44,3 +44,37 @@ export function getPetEntity(name: string | undefined): PetEntity | undefined {
   if (!name) return undefined;
   return PET_ENTITIES[name] ?? PET_ENTITIES[`Pets_${name}`];
 }
+
+/**
+ * The pseudo-pets one summon reference actually delivers: the named entity, then the ones its
+ * own powers create in place (`createsEntities`), transitively. Twin of the engine's
+ * `granted::summoned_entity_chain`.
+ *
+ * A pet's payload can be one summon deeper — Poison Trap's pet carries only a Self_Destruct and
+ * a self-resistance, and the choke and vomit live in the gas cloud that Self_Destruct leaves
+ * behind as the trap dies. Stopping at the named entity showed the power doing nothing at all
+ * (ENT-3 step 4). Only in-place summons are here; the converter has already excluded the
+ * `target: AnyAffected` ones, which spawn a copy per foe hit and would report a bounce chain as
+ * if every link landed on the same target.
+ *
+ * Commandability is checked here rather than by callers, so the root and its descendants answer
+ * to one rule — a directable combat pet keeps its own Summons block instead of folding into the
+ * summoning power, at either depth — and its subtree is not descended into.
+ */
+export function getSummonedEntityChain(name: string | undefined): PetEntity[] {
+  const root = getPetEntity(name);
+  if (!root) return [];
+
+  const out: PetEntity[] = [];
+  const seen = new Set<string>();
+  const queue: (string | undefined)[] = [name];
+  while (queue.length > 0) {
+    const entity = getPetEntity(queue.shift());
+    if (!entity || entity.commandable || seen.has(entity.name)) continue;
+    seen.add(entity.name);
+    out.push(entity);
+    queue.push(...(entity.createsEntities ?? []));
+  }
+  return out;
+}
+

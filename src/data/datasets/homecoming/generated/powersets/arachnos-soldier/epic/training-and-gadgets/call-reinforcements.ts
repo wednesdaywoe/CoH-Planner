@@ -12,12 +12,17 @@ export const CallReinforcements: Power = {
   "name": "Call Reinforcements",
   "internalName": "Call_Reinforcements",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "As an Arachnos Soldier you have access to a small squadron of Arachnobot Disruptors. Two Disruptors that are one level less than you will show up when summoned.",
   "shortHelp": "Call Reinforcements: Ranged Moderate DMG(Lethal)",
   "icon": "trainingandgadgets_callreinforcements.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

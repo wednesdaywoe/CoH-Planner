@@ -12,12 +12,17 @@ export const Torrent: Power = {
   "name": "Torrent",
   "internalName": "Torrent",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Minor DMG(Smashing), Foe -To Hit, Knockback",
   "icon": "darkcast_torrent.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

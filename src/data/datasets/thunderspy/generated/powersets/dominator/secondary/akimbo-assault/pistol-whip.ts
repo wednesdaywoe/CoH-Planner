@@ -12,6 +12,8 @@ export const PistolWhip: Power = {
   "name": "Pistol Whip",
   "internalName": "Pistol_Whip",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a quick melee strike with your pistol that can Disorient your target. Damage: High, Recharge: Moderate  NOTE: This power does not benefit from 'Cryo Rounds', 'Incendiary Rounds', or 'Chemical Rounds'.",
   "shortHelp": "Ranged, Minor DMG(Lethal/Special), Foe Disorient/Special",
   "icon": "domdppistolwhip.png",
@@ -20,6 +22,9 @@ export const PistolWhip: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.1,
@@ -58,7 +63,7 @@ export const PistolWhip: Power = {
     ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",4,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

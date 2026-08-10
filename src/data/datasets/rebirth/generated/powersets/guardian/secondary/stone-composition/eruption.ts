@@ -12,12 +12,17 @@ export const Eruption: Power = {
   "name": "Eruption",
   "internalName": "Eruption",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Eruption unleashes the force of the Earth to deal a massive amount of Fire damage to any nearby foes. All affected foes are extremely weakened by the Eruption, and their Accuracy, Defense, Damage and Damage Resistance is severely reduced.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Ranged (Location AoE), Extreme DoT(Fire), Foe -To Hit, -DEF, -DMG, -Res(All)",
   "icon": "stonecomp_eruption.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,

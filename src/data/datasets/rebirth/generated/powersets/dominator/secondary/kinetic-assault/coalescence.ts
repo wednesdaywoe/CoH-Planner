@@ -12,12 +12,17 @@ export const Coalescence: Power = {
   "name": "Coalescence",
   "internalName": "Coalescence",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You form the potential energies around you into surge of power that increases your damage potential and chance to hit moderately for a short time.  Recharge: Very Long",
   "shortHelp": "Self, +DMG (All), +To Hit",
   "icon": "kineticassault_coalescence.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,
@@ -36,6 +41,7 @@ export const Coalescence: Power = {
   "effects": {
     "buffDuration": 15,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Melee_Buff_Dmg"
     },

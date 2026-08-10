@@ -26,8 +26,12 @@ import { SavageBlow as SavageBlow } from './savage-blow';
 
 export const powerset: Powerset = {
   id: 'primalist/feral-might',
-  internalName: 'feral_might',
+  setPath: 'Feral_Might.Feral_Might',
   name: 'Feral Might',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Primalists are competent melee combatants; this is enhanced by their ability to shapeshift into a Hunter or a Prowler form. While in Primal Form, the Primalist will deal good damage and heal nearby allies. When taking on the form of a Hunter you can attack foes with tooth and nail weakening nearby foes. When in the form of a Prowler you can shred enemies with your mighty claws stunning them.',
   icon: 'feral_might_set.ico',
   archetype: 'primalist',

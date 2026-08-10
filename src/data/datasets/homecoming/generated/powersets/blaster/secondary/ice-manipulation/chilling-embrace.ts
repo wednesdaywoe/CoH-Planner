@@ -12,6 +12,8 @@ export const ChillingEmbrace: Power = {
   "name": "Frigid Protection",
   "internalName": "Chilling_Embrace",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their movement speed and damage. The air around your body becomes so cold that attacks deflect off of it, granting you absorption, while your body becomes extremely energy efficient, granting you bonus Recovery.Recharge: Moderate.",
   "shortHelp": "Toggle: PBAoE, Foe -Recharge, -Speed, -DMG, Self +Absorb over Time, +Recovery",
   "icon": "icemanipulation_chillingembrace.png",
@@ -31,6 +33,9 @@ export const ChillingEmbrace: Power = {
   ],
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,17 +65,27 @@ export const ChillingEmbrace: Power = {
     },
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_Debuff_Dam"
     },
     "durations": {
       "absorb": 12,
       "damageDebuff": 5,
+      "movementCapDebuff": 5,
       "rechargeDebuff": 5,
       "recoveryBuff": 3,
       "slow": 5
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -84,6 +99,7 @@ export const ChillingEmbrace: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -92,8 +108,8 @@ export const ChillingEmbrace: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.7,
+        "table": "Melee_Slow"
       }
     }
   },

@@ -12,6 +12,8 @@ export const SuppressPain: Power = {
   "name": "Suppress Pain",
   "internalName": "Suppress_Pain",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active all nearby allies will have their regeneration rate increased dramatically.  Recharge: Fast.",
   "shortHelp": "Toggle: PBAoE, Ally +Regeneration",
   "icon": "painfocusing_suppresspain.png",
@@ -22,6 +24,10 @@ export const SuppressPain: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Friend",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

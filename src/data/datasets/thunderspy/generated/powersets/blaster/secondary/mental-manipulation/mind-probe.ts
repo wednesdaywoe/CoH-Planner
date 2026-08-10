@@ -12,12 +12,17 @@ export const MindProbe: Power = {
   "name": "Mind Probe",
   "internalName": "Mind_Probe",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wrecks havoc on your foes synapses, dealing moderate Psionic Damage while reducing their attack speed. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee, Moderate DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mindprobe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -45,6 +50,7 @@ export const MindProbe: Power = {
   "effects": {
     "buffDuration": 8.67,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.077,
       "table": "Melee_Ones"
     },
@@ -53,6 +59,7 @@ export const MindProbe: Power = {
       "rechargeDebuff": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -73,7 +80,7 @@ export const MindProbe: Power = {
     ["DamageBuff","Toxic",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Damage","Psionic",1.892299,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"drop_toggles"]
   ],
   "damageTypes": [
     "Psionic"

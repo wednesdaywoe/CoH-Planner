@@ -12,12 +12,17 @@ export const LancerShot: Power = {
   "name": "Lancer Shot",
   "internalName": "Lancer_Shot",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You charge up a beam to deliver an incredibly focused ray of energy at a nearby foe that deals Superior Energy damage and will briefly stun the target. Lancer Shot will cause additional damage if the target is suffering from the Disintegrating effect. In addition, targets already affected by the Disintegrating effect have a chance to spread to 3 nearby targets. This Disintegrate Spread effect can only hit targets that aren't already affected by the Disintegration effect. Disintegrate Spread causes Minor Energy damage over time. Damage: Superior, Recharge: Slow",
   "shortHelp": "Ranged: Superior DMG(Energy), Foe Stun, Special",
   "icon": "beamrifle_lancershot.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,
@@ -48,6 +53,7 @@ export const LancerShot: Power = {
   "effects": {
     "buffDuration": 9.4,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.125,
       "table": "Ranged_Ones"
     },

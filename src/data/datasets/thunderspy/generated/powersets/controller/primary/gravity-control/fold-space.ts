@@ -12,12 +12,17 @@ export const FoldSpace: Power = {
   "name": "Singularity",
   "internalName": "Fold_Space",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can create a very powerful Gravitational Singularity.  The Singularity will engage your foes, assaulting them with various gravity powers.  Any foes that attempt to approach the Singularity will be violently hurled away.  The Singularity cannot be healed, but is highly resistant to all forms of damage and nearly impervious to Controlling type powers. Type ''/release_pets'' in the chat window to release all your pets. Recharge: Very Long",
   "shortHelp": "Summon Singularity: Ranged Control Special",
   "icon": "gravitycontrol_singularity.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

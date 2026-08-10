@@ -13,10 +13,10 @@
  * shows no tags, which is true, where a hash chip is false and unreadable.
  *
  * This is a symptom guard, not the fix. The fix is a message-store resolver in
- * the parser (which lives in the canonical `coh-sidekick-1.0` repo); this only
- * makes sure an unresolved key can never masquerade as a display string. Keeping
- * it as a named predicate rather than an inline regex is what lets the guard
- * test enumerate the same rule the converters apply.
+ * `tools/bin-crawler`; this only makes sure an unresolved key can never
+ * masquerade as a display string. Keeping it as a named predicate rather than an
+ * inline regex is what lets the guard test enumerate the same rule the converters
+ * apply.
  */
 
 // `P` + at least six digits. Real short-help text never matches: it always

@@ -27,12 +27,17 @@
  *   node scripts/planb-shadow-resistance.cjs
  *   node scripts/planb-shadow-resistance.cjs --dataset homecoming
  *   node scripts/planb-shadow-resistance.cjs --power "Evolving Armor"
+ *
+ * ARCHETYPE FORK: a slot the converter resolved across the whole roster reads as
+ * `undefined` from the build-agnostic atom readers and populated in the bag. That is
+ * not a divergence — it is checked, per archetype, through
+ * `planb-shadow-sweep.forkResolvedViews`, and counted separately in the summary.
  */
 
 require('tsx/cjs');
 const fs = require('fs');
 const path = require('path');
-const { sweepDataset } = require('./planb-shadow-sweep.cjs');
+const { sweepDataset, forkResolvedAgrees } = require('./planb-shadow-sweep.cjs');
 const { resistanceBuffValue, resistanceSelfDebuffValue } = require('../src/data/core/atom-query.ts');
 
 const REPO = path.resolve(__dirname, '..');
@@ -67,7 +72,7 @@ function atomSelf(v) {
   return v ? r4(Math.abs(v.scale)) : undefined;
 }
 
-const stats = { powers: 0, buffTypes: 0, buffAgree: 0, perTargetTypes: 0, selfTypes: 0, selfAgree: 0 };
+const stats = { powers: 0, buffTypes: 0, buffAgree: 0, forkResolved: 0, perTargetTypes: 0, selfTypes: 0, selfAgree: 0 };
 const findings = [];
 
 function checkPower(dataset, power, genPath) {
@@ -87,7 +92,12 @@ function checkPower(dataset, power, genPath) {
     if (bag || atom) {
       stats.buffTypes++;
       if ((bag && bag.perTarget) || (atom && atom.perTarget)) stats.perTargetTypes++;
-      if (eqBuff(bag, atom)) stats.buffAgree++;
+      const agrees = eqBuff(bag, atom)
+        // The build-agnostic reader abstains on an archetype-forked slot; ask each
+        // archetype's resolved view instead (see `forkResolvedAgrees`).
+        || (!atom && bag && forkResolvedAgrees(dataset, power, bag,
+          (src) => atomBuff((resistanceBuffValue(src) || {})[t]), eqBuff));
+      if (agrees) { stats.buffAgree++; stats.forkResolved += eqBuff(bag, atom) ? 0 : 1; }
       else {
         findings.push({ kind: 'buff', dataset, name, type: t, bag, atom });
         if (POWER_FILTER) console.log(`  [DIVERGE buff] ${name} ${t}  bag=${JSON.stringify(bag)} atom=${JSON.stringify(atom)}`);
@@ -118,7 +128,7 @@ for (const ds of DATASETS) sweep(ds);
 console.log(`\nPlan B Slice 3 — resistance reconstruction (buff + self-penalty)`);
 console.log(`  powers swept:        ${stats.powers}`);
 console.log(`  buff type-slots:     ${stats.buffTypes}  (of which per-target: ${stats.perTargetTypes})`);
-console.log(`  buff agree:          ${stats.buffAgree}`);
+console.log(`  buff agree:          ${stats.buffAgree}  (of which archetype-fork resolved: ${stats.forkResolved})`);
 console.log(`  self type-slots:     ${stats.selfTypes}`);
 console.log(`  self agree:          ${stats.selfAgree}`);
 console.log(`  diverge:             ${findings.length}`);

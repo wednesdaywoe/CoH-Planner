@@ -12,9 +12,10 @@
  *           converter-stamped increment atoms, `scale` the N=1 value.
  *
  * The stamp is what makes this exact: the atom's own `stacking` can't identify a
- * per-target increment (Invincibility's `Continuous` folds to `No`), and the AoE
- * geometry / redirect / Defiance provenance never reaches the runtime — so the
- * converter decides and stamps, exactly as it does for `gated` (Slice 0).
+ * per-target increment on its own (Invincibility's `Continuous` reaches the atom
+ * since STACK-3, but the flavor is only one of `computeAoePerTargetPatches`'
+ * terms), and the AoE geometry / redirect / Defiance provenance never reaches the
+ * runtime — so the converter decides and stamps, as it does for `gated` (Slice 0).
  *
  * `damageBuff` is harder than `tohitBuff` (scalar): a +damage buff explodes into
  * one atom per damage type, so `damageBuffValue` collapses that dimension (dedup
@@ -24,6 +25,11 @@
  * reproduce. Other effect types (regen, recovery, defense, endurance) carry
  * perTarget too and migrate in their own slices; Phalanx's self-counted residual
  * lives there.
+ *
+ * One class is graded by a DIFFERENT assertion than equality: a power whose whole
+ * `damageBuff` is Defiance. There the reader rejects the slot on purpose and the bag
+ * keeps it, so "atoms reproduce the bag" is the wrong property — the gate asserts the
+ * rejection held (empty atom read, bag still populated) and counts it separately.
  *
  * Exit code is nonzero on any divergence — this GATES, unlike the triage reports.
  *
@@ -37,7 +43,9 @@ require('tsx/cjs');
 const fs = require('fs');
 const path = require('path');
 const { sweepDataset } = require('./planb-shadow-sweep.cjs');
-const { toHitBuffValue, damageBuffValue } = require('../src/data/core/atom-query.ts');
+const {
+  toHitBuffValue, damageBuffValue, damageBuffIsDefianceOnly, baseAtoms,
+} = require('../src/data/core/atom-query.ts');
 
 const REPO = path.resolve(__dirname, '..');
 const argv = process.argv.slice(2);
@@ -66,7 +74,27 @@ const SLOTS = [
   { key: 'damageBuff', get: (p) => damageBuffValue(p) },
 ];
 
-const stats = { powers: 0, withToHit: 0, agree: 0, perTargetPowers: 0 };
+/** The effectType whose base atom VALUES each buff slot. */
+const SLOT_EFFECT_TYPE = { tohitBuff: 'ToHit', tohitBuffUnenhanced: 'ToHit', damageBuff: 'DamageBuff' };
+
+/**
+ * Whether this slot's buff is EXPRESSION-VALUED for `power` — its value is a runtime
+ * `magnitude_expression` (evaluated by the calc's expr VM), not a static `scale`. Brute Fury's
+ * `Rage_Buff` is the case: eight `DamageBuff` atoms of `attribType 'Expression'` carrying
+ * `kRage source> .02 *`, which the calc DERIVES at build time (Pass 3, `inherents::fury_damage_derived`)
+ * — never through this bag applier. The bag can't represent an expression, so it stores a lossy
+ * `scale:0` placeholder, while `damageBuffValue`/`toHitBuffValue` (scale-based) correctly return
+ * undefined. The scale/perTarget shadow — a precondition for migrating the BAG applier — therefore
+ * does not apply here, so the slot is skipped (mirroring how planb-shadow-resources PUNTS on
+ * Expression-typed resource templates rather than gating them). Scale-valued buffs (Vigilance's
+ * `*Uniqueness` steps included) are unaffected.
+ */
+function isExpressionValued(power, slotKey) {
+  const effectType = SLOT_EFFECT_TYPE[slotKey];
+  return baseAtoms(power).some((a) => a.effectType === effectType && a.attribType === 'Expression');
+}
+
+const stats = { powers: 0, withToHit: 0, agree: 0, perTargetPowers: 0, defianceRejected: 0 };
 const findings = [];
 
 function checkPower(dataset, power, genPath) {
@@ -75,11 +103,29 @@ function checkPower(dataset, power, genPath) {
   stats.powers++;
 
   for (const slot of SLOTS) {
+    // Expression-valued buffs (Fury's Rage_Buff) carry no static scale/perTarget — the calc derives
+    // them from their magnitude_expression (Pass 3), never through this bag applier — so skip them.
+    if (isExpressionValued(power, slot.key)) continue;
     const bag = bagValue(power.effects?.[slot.key]);
     const atomCmp = atomCmpOf(slot.get(power));
     if (!bag && !atomCmp) continue;
     stats.withToHit++;
     if ((bag && bag.perTarget) || (atomCmp && atomCmp.perTarget)) stats.perTargetPowers++;
+
+    // A Defiance-only `damageBuff` is a DELIBERATE reader-side rejection, not a failed
+    // reconstruction: `damageBuffValue` finds the slot and drops all of it, while the
+    // converter still routes the same value into the bag's named slot. Equality is the
+    // wrong assertion here — so grade the rejection instead of waiving it. The atom read
+    // must be EMPTY and the bag must still hold the value the reader declines to count,
+    // which is what makes the `?? effects.damageBuff` fallback's own guard meaningful.
+    // A power that merely carries a Defiance rider beside a real buff is not this case
+    // (`damageBuffIsDefianceOnly` is false) and stays graded by equality below.
+    if (slot.key === 'damageBuff' && damageBuffIsDefianceOnly(power)) {
+      stats.defianceRejected++;
+      if (atomCmp === undefined && bag !== undefined) continue;
+      findings.push({ dataset, name, slot: slot.key, bag, atoms: atomCmp, defiance: true });
+      continue;
+    }
 
     const eq = bag && atomCmp && bag.scale === atomCmp.scale && bag.perTarget === atomCmp.perTarget;
     if (eq) { stats.agree++; continue; }
@@ -106,10 +152,11 @@ console.log(`  powers swept:        ${stats.powers}`);
 console.log(`  buff slots checked:  ${stats.withToHit}`);
 console.log(`  of which per-target: ${stats.perTargetPowers}`);
 console.log(`  agree:               ${stats.agree}`);
+console.log(`  defiance-rejected:   ${stats.defianceRejected} (graded as empty-atoms + bag-holds)`);
 console.log(`  diverge:             ${findings.length}`);
 
 for (const f of findings.slice(0, 40)) {
-  console.log(`\n  [DIVERGE] ${f.name} (${f.dataset}) ${f.slot}`);
+  console.log(`\n  [DIVERGE] ${f.name} (${f.dataset}) ${f.slot}${f.defiance ? ' — Defiance rejection did not hold' : ''}`);
   console.log(`      bag  : ${JSON.stringify(f.bag)}`);
   console.log(`      atoms: ${JSON.stringify(f.atoms)}`);
 }
@@ -117,6 +164,16 @@ if (findings.length > 40) console.log(`\n  ... and ${findings.length - 40} more`
 
 if (findings.length) {
   console.log('\nFAIL — atom-derived tohitBuff/damageBuff diverges from the bag. Fix before migrating the applier.');
+  process.exit(1);
+}
+
+// The Defiance arm above must GRADE something. Homecoming is the only fork that can
+// carry the tag (Parse6 has no effect group to hang one on), so a zero there means the
+// rejection stopped happening — the arm would then be waiving a class that no longer
+// exists while reporting the same green as a corpus it actually checked.
+if (DATASETS.includes('homecoming') && stats.defianceRejected === 0) {
+  console.log('\nFAIL — no Defiance-only damageBuff found in homecoming. The reader-side '
+    + 'rejection this gate grades has vanished; re-measure before trusting the green.');
   process.exit(1);
 }
 console.log('\nOK — atom-derived tohitBuff + damageBuff (scale + perTarget) reproduce the bag corpus-wide.');

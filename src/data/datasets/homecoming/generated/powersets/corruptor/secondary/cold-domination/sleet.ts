@@ -12,12 +12,17 @@ export const Sleet: Power = {
   "name": "Sleet",
   "internalName": "Sleet",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons a Sleet Storm at a targeted location. Sleet deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm.Damage: Minor(DoT).Recharge: Slow.",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF, -Res (All), Knockdown",
   "icon": "colddomination_sleet.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -73,12 +78,70 @@ export const Sleet: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "runSpeed",
+                  "scale": 0.32,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 0.32,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
                   "scale": 0.32,
                   "table": "Ranged_Slow"
                 },
                 {
                   "type": "RechargeDebuff",
                   "scale": 0.32,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Ranged_SpeedRunning",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 0.4,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "runSpeed",
+                  "scale": 0.16,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 0.16,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
+                  "scale": 0.16,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 0.16,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.16,
                   "table": "Ranged_Slow",
                   "ignoreStrength": true
                 },
@@ -106,6 +169,9 @@ export const Sleet: Power = {
               "castTime": 0,
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 16
             }

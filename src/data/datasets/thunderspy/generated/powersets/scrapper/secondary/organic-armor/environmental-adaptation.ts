@@ -12,6 +12,8 @@ export const EnvironmentalAdaptation: Power = {
   "name": "Environmental Modification",
   "internalName": "Environmental_Adaptation",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Environmental Modification grants you some measure of defense against non-physical damage types. While Defensive Adaptation is active, these defenses are transformed into resistances. While Offensive Adaptation is active, this power slightly increases your ToHit.",
   "shortHelp": "Self Toggle, +Res(Hold, Knockdown, Immobilize), +Def(Energy, Negative, Fire, Cold, Psionic), +Special",
   "icon": "bioorganicarmor_environmentalmodification.png",
@@ -22,6 +24,9 @@ export const EnvironmentalAdaptation: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -75,6 +80,7 @@ export const EnvironmentalAdaptation: Power = {
     },
     "effectDuration": 0.75,
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -85,19 +91,23 @@ export const EnvironmentalAdaptation: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }
@@ -142,6 +152,7 @@ export const EnvironmentalAdaptation: Power = {
           "resistance": 0.75
         },
         "maxHPBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.45,
           "table": "Melee_HealSelf"
         },
@@ -181,6 +192,7 @@ export const EnvironmentalAdaptation: Power = {
           "tohitBuffUnenhanced": 0.75
         },
         "tohitBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.75,
           "table": "Melee_Buff_ToHit"
         }

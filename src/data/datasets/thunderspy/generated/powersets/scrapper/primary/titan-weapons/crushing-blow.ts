@@ -12,6 +12,8 @@ export const CrushingBlow: Power = {
   "name": "Crushing Blow",
   "internalName": "Crushing_Blow",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.  Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smashing), -DEF",
   "icon": "titanweapons_crushingblow.png",
@@ -20,6 +22,9 @@ export const CrushingBlow: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -95,7 +100,12 @@ export const CrushingBlow: Power = {
       "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.  Damage: High, Recharge: Moderate",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Smashing",1.7548,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Damage","Fire",0.78966,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+      ]
     }
   },
   "requires": "Scrapper_Defense.Shield_Defense !",

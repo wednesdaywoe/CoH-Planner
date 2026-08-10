@@ -12,6 +12,8 @@ export const Khloros: Power = {
   "name": "Khloros",
   "internalName": "Khloros",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "A deadly whirl with the blade creates a pale breeze to afflict nearby targets. Enemies within 15 feet take medium Lethal and minor Toxic damage. If a target is affected by the poison of another Pale Blade attack, his poison is spread to up to 3 nearby foes. Khloros reduces enemy resists while the user is under the effects of Plaguebearer.",
   "shortHelp": "PBAoE, Lethal dmg, Toxic dmg, Spread Affliction",
   "icon": "paleblade_khloros.png",
@@ -20,6 +22,9 @@ export const Khloros: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -108,7 +113,7 @@ export const Khloros: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Meta",null,0,1,3,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["Meta",null,0,1,3,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
     ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_Lash target.ownPower?",true],
@@ -132,6 +137,10 @@ export const Khloros: Power = {
       "label": "Pale Self Buff Plaguebearer",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer",
+        "count": 1
+      },
       "damage": {
         "type": "Cold",
         "scale": 0.45,
@@ -144,34 +153,42 @@ export const Khloros: Power = {
         },
         "resistanceDebuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           }

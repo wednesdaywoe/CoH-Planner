@@ -12,12 +12,17 @@ export const ParticleShielding: Power = {
   "name": "Particle Shielding",
   "internalName": "Particle_Shielding",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You channel a tremendous amount of radiation into a barrier around you. For a short time you will have a strong absorption shield in addition to a regeneration and recovery buff.Recharge: Long.",
   "shortHelp": "Self, +Absorb, +Regeneration",
   "icon": "radiationarmor_particleshielding.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,
@@ -46,6 +51,7 @@ export const ParticleShielding: Power = {
       "regenBuff": 30
     },
     "recoveryBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Ones"
     },

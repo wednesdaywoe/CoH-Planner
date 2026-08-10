@@ -12,12 +12,17 @@ export const GroundingShield: Power = {
   "name": "Grounding Shield",
   "internalName": "Grounding_Shield",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You are protected by a Grounding Shield and become naturally very resistant to Fire, Cold, Energy and Negative Energy damage. You also have added resistance to Endurance Drain effects. Additionally, Grounding Shield provides Immobilize and Knockback protection, but only applies when you are near the ground. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (Fire, Cold, Energy, Negative, End Drain, Immobilize, KB)",
   "icon": "atmosphericcomp_groundingshield.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "castTime": 0.5,
@@ -34,6 +39,7 @@ export const GroundingShield: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }

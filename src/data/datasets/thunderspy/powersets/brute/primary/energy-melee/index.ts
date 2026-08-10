@@ -21,8 +21,12 @@ import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
 
 export const powerset: Powerset = {
   id: 'brute/energy-melee',
-  internalName: 'energy_melee',
+  setPath: 'Brute_Melee.Energy_Melee',
   name: 'Energy Melee',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can use Energy Melee to power your blows with pure energy. These focused power attacks often Disorient opponents.',
   icon: 'energy_melee_set.ico',
   archetype: 'brute',

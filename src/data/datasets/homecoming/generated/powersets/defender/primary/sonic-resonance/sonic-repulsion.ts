@@ -12,6 +12,8 @@ export const SonicRepulsion: Power = {
   "name": "Sonic Repulsion",
   "internalName": "Sonic_Repulsion",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a powerful sonic resonance around an ally, repelling all foes nearby. You will lose endurance for each target repelled.Recharge: Moderate.",
   "shortHelp": "Toggle: Ranged (Target Ally AoE), Foe Knockback",
   "icon": "sonicdebuff_teamknockback.png",
@@ -22,6 +24,9 @@ export const SonicRepulsion: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -45,6 +50,7 @@ export const SonicRepulsion: Power = {
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     },
@@ -54,8 +60,8 @@ export const SonicRepulsion: Power = {
     }
   },
   "atoms": [
-    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1.100000023841858,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
+    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1.100000023841858,null,true,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
     ["Mez","Knockback",3,0,0.5,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ]

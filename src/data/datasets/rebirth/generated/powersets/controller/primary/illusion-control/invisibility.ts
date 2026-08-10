@@ -12,6 +12,8 @@ export const Invisibility: Power = {
   "name": "Superior Invisibility",
   "internalName": "Invisibility",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You can bend light around yourself to become completely Invisible. While this power is active, you are all but impossible to detect, and have an extremely high Defense bonus to all attacks. Superior Invisibility is the only toggle invisibility power that allows you to attack while it is active, although you will lose some of your defense bonus if you do so. Superior Invisibility cannot be used with any other self affecting Concealment type power.  Recharge: Slow",
   "shortHelp": "Toggle: Self Stealth, +DEF(All)",
   "icon": "illusions_invisibility.png",
@@ -22,6 +24,9 @@ export const Invisibility: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -146,6 +151,7 @@ export const Invisibility: Power = {
       }
     },
     "threatDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     }

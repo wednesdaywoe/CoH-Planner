@@ -12,6 +12,8 @@ export const PenumbralShield: Power = {
   "name": "Penumbral Shield",
   "internalName": "Penumbral_Shield",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on Penumbral Shield, you become highly resistant to Fire, Cold, and Toxic damage.Recharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Toxic)",
   "icon": "umbralaura_penumbralshield.png",
@@ -22,6 +24,9 @@ export const PenumbralShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

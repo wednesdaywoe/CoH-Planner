@@ -12,12 +12,17 @@ export const TemporalSelection: Power = {
   "name": "Temporal Selection",
   "internalName": "Temporal_Selection",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You distort time around an ally, selecting a period of time where their abilities are at their highest.  Their damage, attack rate and regeneration rates are dramatically increased for a brief period.  This power places the Accelerated effect on the target.  While this is in effect, the target has any healing and healing over time effects from Temporal Mending or Chrono Shift significantly increased.  Recharge: Very Long",
   "shortHelp": "Ally +Damage, +Recharge, +Regeneration",
   "icon": "timemanipulation_temporalselection.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -38,6 +43,7 @@ export const TemporalSelection: Power = {
   "effects": {
     "buffDuration": 120,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },
@@ -47,6 +53,7 @@ export const TemporalSelection: Power = {
       "regenBuff": 120
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Ones"
     },
@@ -58,8 +65,8 @@ export const TemporalSelection: Power = {
   "atoms": [
     ["RechargeTime",null,0.3,1,120,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,1.5,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Smashing",2.5,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",2.5,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],

@@ -12,6 +12,8 @@ export const HotFeet: Power = {
   "name": "Hot Feet",
   "internalName": "Hot_Feet",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you heat the earth in a large area around yourself. Enemy movement is Slowed as they attempt to flee the immediate area. All foes in the affected area may also suffer some damage over time. You cannot fly and must be near the ground to use this power.",
   "shortHelp": "Toggle: PBAoE, DoT (Fire), Foe -SPD",
   "icon": "firemanipulation_hotfeet.png",
@@ -22,6 +24,9 @@ export const HotFeet: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,7 @@ export const HotFeet: Power = {
       "slow": 2.3
     },
     "fear": {
+      "ignoreStrength": true,
       "mag": 3,
       "scale": 4,
       "table": "Melee_Ones"

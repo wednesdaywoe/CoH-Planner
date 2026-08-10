@@ -12,12 +12,17 @@ export const ElectricFence: Power = {
   "name": "Electric Fence",
   "internalName": "Electric_Fence",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Surrounds and Immobilizes a single target in an Electric Fence. Deals some damage over time and slowly drains some Endurance. Useful for keeping villains at bay and bringing down fliers. Targets close enough to the main target take half damage. This power does not benefit from containment Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DoT(Energy), Foe Immobilize, -End, -Fly, -Knockback",
   "icon": "electriccontrol_electricfence.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -22,8 +22,12 @@ import { OmegaManeuver as OmegaManeuver } from './omega-maneuver';
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/crab-spider-soldier',
-  internalName: 'crab_spider_soldier',
+  setPath: 'Arachnos_Soldiers.Crab_Spider_Soldier',
   name: 'Crab Spider Soldier',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Crab Spiders are heavy infantry in the Arachnos Organization, with a wide array of ranged and melee combat skills.',
   icon: 'crab_spider_soldier_set.ico',
   archetype: 'arachnos-soldier',

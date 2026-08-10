@@ -44,6 +44,7 @@ require('tsx/cjs');
 const fs = require('fs');
 const path = require('path');
 const { ingestExportPower } = require('../src/data/core/atomic-effect.ts');
+const { isPvpOnlyGroup: isPvpOnlyByRequires } = require('./_pv-scope.cjs');
 
 const REPO = path.resolve(__dirname, '..');
 const GEN_ROOT = path.join(REPO, 'src/data/datasets/homecoming/generated/powersets');
@@ -95,8 +96,11 @@ const SLOT_TABLE = {
   // movementCapBump holds the aspect=Maximum speed-cap raises (Super Speed
   // +1.938 run cap etc.) split out of `movement` 2026-07-12 — same Movement
   // class, distinct output slot so the Current-aspect buff isn't clobbered.
+  // movementCapDebuff is that split's debuff direction, out of `slow`
+  // 2026-08-04 for the same reason (ENT-5).
   movement: { et: 'Movement', sign: null, byType: true },
   movementCapBump: { et: 'Movement', sign: null, byType: true },
+  movementCapDebuff: { et: 'Movement', sign: null, byType: true },
   slow: { et: 'Movement', sign: null, byType: true },
   // resources
   maxHPBuff: { et: 'MaxHP', sign: '+' },
@@ -151,7 +155,8 @@ const META_SLOT = new Set([
 // clean, aspect-stable, table-independent bridge↔converter correspondence.
 // Excluded from v1 (tracked as coverage, never mis-flagged):
 //   - aspect=Str  → the Power-Boost→specialBuff Enhancement boundary (DSH4/DSH6).
-//   - aspect=Res base-defense (Resistance|All) → converter's debuffResistance (DDR).
+//   - aspect=Res base-defense (Defense|All since BRIDGE-1; was Resistance|All) →
+//     converter's debuffResistance (DDR). Excluded in inputIdentities, aspect-keyed.
 //   - exotic resist types the converter's DAMAGE_TYPES map omits (radiation/…).
 //   - KB subtypes (foe KB-protection has documented target-conditional drops).
 //   - all SCALAR effectTypes (ToHit/Recovery/…) — their collapse is same-key
@@ -161,20 +166,6 @@ const META_SLOT = new Set([
 const CHECKABLE_ET = new Set(['Defense', 'Resistance', 'Elusivity', 'Mez', 'MezResist', 'Movement']);
 // effectTypes whose slots encode sign (buff/debuff split) — match sign strictly.
 const SIGNED_ET = new Set(['Defense', 'Resistance']);
-// by-type effectTypes whose aspect=Res form is NOT the primary buff but debuff-
-// RESISTANCE (→ debuffResistance.<child>, which collectRepresented registers as the
-// unsigned `<et>||` identity, never `<et>|<sub>|+`). An aspect=Res atom on one of these
-// must be skipped in the by-type gate or it false-positives as a dropped by-type buff.
-//   • Defense — Base_Defense DDR (Agile / Heightened Senses / Rooted / … 128 powers):
-//     `Base_Defense` + aspect=Res bridges to Defense|All and routes to
-//     debuffResistance.defense. It USED to bridge to Resistance|all (hence checkableSub's
-//     stale "NOT 'all'" exclusion below); the bridge now gives it the correct Defense
-//     effectType, moving the false-positive from a suppressed Resistance|all to an
-//     un-suppressed Defense|all — this set re-suppresses it at the right effectType.
-//   • Movement — slow-RES → debuffResistance.movement (already handled here historically).
-// Resistance is deliberately ABSENT: its aspect=Res form IS the primary damage-resistance
-// buff (Fire Shield +3 Fire = Resistance|fire, aspect=Res), so it must stay checkable.
-const DDR_BY_TYPE_ET = new Set(['Defense', 'Movement']);
 
 // Canonical subtype token: map BOTH the bridge subType names and the converter
 // slot keys onto one token, so `Run`(bridge) and `runSpeed`(slot) — or
@@ -199,7 +190,8 @@ const CANON_SUB = {
 const normSub = (s) => (s == null ? '' : (CANON_SUB[String(s).toLowerCase()] ?? String(s).toLowerCase()));
 const tableNorm = (t) => (t == null ? '' : String(t).toLowerCase());
 
-// Mirror the converter's PvP-variant drop EXACTLY (convert-powerset.cjs:667,1037):
+// Mirror the converter's PvP-variant drop EXACTLY (convert-powerset.cjs
+// `isPvpEnttypeVariant`, applied in `collectTemplatesDeep` and its siblings):
 // HC splits many powers into `enttype target> critter eq` (PvE) and
 // `enttype target> player eq` (PvP) groups, BOTH tagged is_pvp='EITHER', so the
 // is_pvp='PVP_ONLY' flag doesn't catch them — the requires clause does. The bridge
@@ -215,9 +207,28 @@ const tableNorm = (t) => (t == null ? '' : String(t).toLowerCase());
 // `isPVPMap? !`) — the converter drops the former, so the detector must too or every
 // one of those 5 resist attribs false-positives. The negative lookahead `(?!\s+!)`
 // matches `isPVPMap?` used positively (PvP) and spares the negated `isPVPMap? !` (PvE).
+//
+// The entity-type half of that split is the parser's structural verdict, exported
+// per GROUP as `requires_pv`. These gates walk the flattened atom stream, where
+// only the group's expression survives — so index expression → verdict from the
+// source JSON each power is read from. The verdict is a pure function of the
+// expression, which is what makes the index exact. This has to mirror the
+// converter's drop precisely: skip an atom the converter now KEEPS and the gate
+// goes blind to exactly the population this change added.
+const PVP_ONLY_REQUIRES = new Set();
+function indexRequiresScopes(sourceJson) {
+  const walk = (groups) => {
+    for (const g of groups || []) {
+      if (isPvpOnlyByRequires(g)) PVP_ONLY_REQUIRES.add(g.requires_expression || '');
+      walk(g.child_effects);
+    }
+  };
+  walk(sourceJson && sourceJson.effects);
+  walk(sourceJson && sourceJson.activation_effects);
+}
 const isPvpVariant = (a) => {
   const req = a.requiresExpression || '';
-  return /\benttype\s+target>\s+player\s+eq/.test(req) || /\bisPVPMap\?(?!\s+!)/.test(req);
+  return PVP_ONLY_REQUIRES.has(req) || /\bisPVPMap\?(?!\s+!)/.test(req);
 };
 
 // Allowed (checkable) subtypes per effectType — anything else is coverage, not a flag.
@@ -225,7 +236,7 @@ const STD_TYPE = new Set(['smashing', 'lethal', 'fire', 'cold', 'energy', 'negat
 const MEZ_SUB = new Set(['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear', 'taunt', 'placate', 'teleport', 'untouchable', 'onlyaffectsself']);
 const MOVE_AXIS = new Set(['run', 'fly', 'jump', 'jumpheight', 'control', 'friction']);
 function checkableSub(et, canon) {
-  if (et === 'Resistance') return STD_TYPE.has(canon);            // typed only, NOT 'all' (base-defense DDR now bridges to Defense — see DDR_BY_TYPE_ET)
+  if (et === 'Resistance') return STD_TYPE.has(canon);            // NOT 'all' (that is base-defense DDR)
   if (et === 'Defense') return STD_TYPE.has(canon) || canon === 'all';
   if (et === 'Elusivity') return STD_TYPE.has(canon) || canon === 'all';
   if (et === 'Mez' || et === 'MezResist') return MEZ_SUB.has(canon);
@@ -347,6 +358,7 @@ const SCALAR_CHECK_ET = new Set([
   'EnduranceDiscount',
 ]);
 function scalarInputIdentities(sourceJson) {
+  indexRequiresScopes(sourceJson);
   let atoms;
   try { atoms = ingestExportPower(sourceJson); } catch { return []; }
   const out = [];
@@ -397,6 +409,7 @@ const UNENHANCED_ET = new Set(['MaxHP', 'Recovery', 'Regeneration', 'ToHit']);
 const SELF_PENALTY_ET = new Set(['Resistance', 'Defense', 'DamageBuff', 'RechargeTime', 'Movement', 'ToHit']);
 
 function discriminatorInput(sourceJson) {
+  indexRequiresScopes(sourceJson);
   let atoms;
   try { atoms = ingestExportPower(sourceJson); } catch { return { twinET: new Set(), selfET: new Set() }; }
   const twinET = new Set(); // et∈UNENHANCED_ET with an IgnoreStrength BUFF atom
@@ -423,6 +436,7 @@ function discriminatorInput(sourceJson) {
 // INPUT-side: source atoms → checkable surviving identities.
 // ---------------------------------------------------------------------------
 function inputIdentities(sourceJson) {
+  indexRequiresScopes(sourceJson);
   let atoms;
   try { atoms = ingestExportPower(sourceJson); } catch { return []; }
   const out = [];
@@ -432,7 +446,14 @@ function inputIdentities(sourceJson) {
     if (!a.scale) continue;                            // scale 0 = marker/no-op
     if (a.attribType === 'Expression') continue;       // engine phantoms / caps
     if (a.aspect === 'Str') continue;                  // Power-Boost → specialBuff (Enhancement boundary)
-    if (a.aspect === 'Res' && DDR_BY_TYPE_ET.has(a.effectType)) continue; // DDR → debuffResistance.<child>, not a by-type buff
+    if (a.aspect === 'Res' && a.effectType === 'Movement') continue; // slow-RES → debuffResistance.movement
+    // [BRIDGE-1] base_defense@Res is now typed Defense/all (was Resistance/all, which
+    // checkableSub excluded as DDR); it routes to debuffResistance.defense, NOT a
+    // defenseBuff.all slot — the same DDR family as the Movement slow-RES above.
+    // Exclude it so the retyped atom isn't mis-flagged as a dropped Defense/all sibling.
+    // Aspect-keyed on purpose: Defense/all @Current (Base_Defense@Current) IS a real
+    // defense buff routed to defenseBuff, so it stays checkable.
+    if (a.aspect === 'Res' && a.effectType === 'Defense' && normSub(a.subType) === 'all') continue;
     if (!CHECKABLE_ET.has(a.effectType)) continue;     // scalar/DamageBuff/Heal/Damage/engine/Unmapped
     const subL = normSub(a.subType);
     if (!checkableSub(a.effectType, subL)) continue;   // exotic type / KB / base-defense DDR / unrouted mez

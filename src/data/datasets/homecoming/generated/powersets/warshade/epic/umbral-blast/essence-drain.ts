@@ -12,12 +12,17 @@ export const EssenceDrain: Power = {
   "name": "Essence Drain",
   "internalName": "Essence_Drain",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to you. Foes drained in this manner have their attack rate and movement speed reduced.Damage: Light.Recharge: Slow.",
   "shortHelp": "Melee, Light DMG(Negative), Foe -Recharge, -SPD; Self +HP",
   "icon": "umbralblast_essencedrain.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -61,6 +66,7 @@ export const EssenceDrain: Power = {
       "slow": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -70,6 +76,7 @@ export const EssenceDrain: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },

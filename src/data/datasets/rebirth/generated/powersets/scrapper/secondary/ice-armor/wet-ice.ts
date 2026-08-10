@@ -12,6 +12,8 @@ export const WetIce: Power = {
   "name": "Wet Ice",
   "internalName": "Wet_Ice",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate this power, you cover yourself in a thick coating of slick, melting ice. This makes you slippery, leaving you nearly immune to Disorient, Immobilization, Hold, Sleep, Slow and Knockback effects. This power also gives you an absorb shield that replenishes itself periodically. Wet Ice also reduces Cold damage and grants you resistance to Defense DeBuffs. Recharge: Very Fast",
   "shortHelp": "Self Absorb, +Res(Cold, Disorient, Immobilize, Hold, Sleep, Slow, Knockback, DeBuff DEF)",
   "icon": "icearmor_wetice.png",
@@ -22,6 +24,9 @@ export const WetIce: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -47,14 +52,17 @@ export const WetIce: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Ones"
       }
@@ -92,16 +100,19 @@ export const WetIce: Power = {
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }
     },
     "resistance": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Melee_Res_Dmg"
       }

@@ -12,12 +12,17 @@ export const ThornBarrage: Power = {
   "name": "Thorn Barrage",
   "internalName": "Thorn_Barrage",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "A devastating attack, Thorn Barrage unleashes your Thorns at high velocity causing severe damage at range.  The impact of this attack can knock most foes on their back. Thorn poison deals additional Toxic damage and can reduce your foes Defense. Damage: High, Recharge: Slow",
   "shortHelp": "High DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_thornbarrage.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -74,12 +79,12 @@ export const ThornBarrage: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.53,1,1.75,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Toxic",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929],
+    ["Damage","Toxic",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Mez","Knockback",1,1,1.75,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Lethal",0.784,1,1.75,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",1,1,1.75,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

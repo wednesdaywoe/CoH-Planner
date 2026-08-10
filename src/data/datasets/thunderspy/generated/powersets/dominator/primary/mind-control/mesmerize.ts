@@ -12,12 +12,17 @@ export const Mesmerize: Power = {
   "name": "Mesmerize",
   "internalName": "Mesmerize",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Mesmerize painfully assails a target with psychic energy, rendering him unconscious. The target will remain asleep for some time, but will awaken if attacked. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Sleep",
   "icon": "mentalcontrol_hypnotize.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 100,

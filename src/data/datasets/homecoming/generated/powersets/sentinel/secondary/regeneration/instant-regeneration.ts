@@ -12,6 +12,8 @@ export const InstantRegeneration: Power = {
   "name": "Reactive Regeneration",
   "internalName": "Instant_Regeneration",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate this power, you can regenerate your health at an astounding rate. This boost becomes stronger every time you take damage, as it scales you also become resistant to regeneration and recovery debuffs as well as endurance drain.",
   "shortHelp": "Toggle: Self +Regeneration, +Res(-Regeneration, -End, -Recovery)",
   "icon": "regeneration_instanthealing.png",
@@ -22,6 +24,9 @@ export const InstantRegeneration: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,14 +48,17 @@ export const InstantRegeneration: Power = {
     "buffDuration": 20,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.03,
         "table": "Melee_Ones"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 0.03,
         "table": "Melee_Ones"
       },
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 0.055,
         "table": "Melee_Ones"
       }
@@ -67,14 +75,14 @@ export const InstantRegeneration: Power = {
   },
   "atoms": [
     ["Regeneration",null,2,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Refresh",2,null,null,1,null,true],
-    ["Regeneration",null,0.25,1,20,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat",null,null,0.25,true],
-    ["Regeneration",null,0.055,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat",null,null,0.055,true],
-    ["Endurance",null,0.03,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat",null,null,0.03,true],
-    ["Recovery",null,0.03,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat",null,null,0.03,true],
-    ["GlobalChanceMod",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat",null,null,null,true],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Refresh",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Regeneration",null,0.25,1,20,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat","MissByOther source.EventTimeSince> 2 <= kRegenerationMoG Source.Mode? && Damaged source.EventTimeSince> 2 <= ||",null,0.25,true],
+    ["Regeneration",null,0.055,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat","MissByOther source.EventTimeSince> 2 <= kRegenerationMoG Source.Mode? && Damaged source.EventTimeSince> 2 <= ||",null,0.055,true],
+    ["Endurance",null,0.03,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat","MissByOther source.EventTimeSince> 2 <= kRegenerationMoG Source.Mode? && Damaged source.EventTimeSince> 2 <= ||",null,0.03,true],
+    ["Recovery",null,0.03,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat","MissByOther source.EventTimeSince> 2 <= kRegenerationMoG Source.Mode? && Damaged source.EventTimeSince> 2 <= ||",null,0.03,true],
+    ["GlobalChanceMod",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat","MissByOther source.EventTimeSince> 2 <= kRegenerationMoG Source.Mode? && Damaged source.EventTimeSince> 2 <= ||",null,null,true],
     ["Regeneration",null,2,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvP",false,"Refresh",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvP",false,"Refresh",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,"OutOfCombat","MissByOther source.EventTimeSince> 2 <= kRegenerationMoG Source.Mode? && Damaged source.EventTimeSince> 2 <= ||",true,null,true]
   ]
 };

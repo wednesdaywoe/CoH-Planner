@@ -12,6 +12,8 @@ export const EntropyShield: Power = {
   "name": "Entropic Aura",
   "internalName": "Entropy_Shield",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Entropic Aura diminishes and dampens the energy of controlling type effects.  The shield makes you resistant to Knockback, Repel, Disorient, Hold, Sleep, Immobilization, and enemy Teleportation for as long as you can keep this toggle power active. Entropic Aura also grants you good resistance to Defense Debuffs as well as providing you a recharge bonus for each foe in melee, up to the first 10 foes.  Foes that get close to the user will have their own recharge rate reduced and may be taunted.  Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Knockback, Repel, Disorient, Hold, Sleep, Immobilize, Teleport, DeBuff DEF), Self +Recharge, Foe -Recharge",
   "icon": "energyaura_entropy.png",
@@ -22,6 +24,10 @@ export const EntropyShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,6 +48,7 @@ export const EntropyShield: Power = {
     "buffDuration": 2.25,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       }
@@ -71,19 +78,23 @@ export const EntropyShield: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
@@ -102,6 +113,7 @@ export const EntropyShield: Power = {
       "perTarget": 0.035
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },

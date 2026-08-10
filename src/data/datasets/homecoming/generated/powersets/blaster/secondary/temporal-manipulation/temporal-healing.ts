@@ -12,6 +12,8 @@ export const TemporalHealing: Power = {
   "name": "Temporal Healing",
   "internalName": "Temporal_Healing",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You mend your wounds by placing your bodies in a past or future state where they are far less injured. Temporal Mending will immediately absorb damage as it's inflicted. Additionally, you will gain some resistance to slow effects and regeneration debuffs. If you are affected by the Accelerated effect, you absorb even more damage from this power.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +Absorb, +Recovery, +Resist(Slow, Regen Debuff)",
   "icon": "timemanipulation_temporalhealing.png",
@@ -22,6 +24,9 @@ export const TemporalHealing: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -47,14 +52,17 @@ export const TemporalHealing: Power = {
     "buffDuration": 2.25,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       }
@@ -79,8 +87,8 @@ export const TemporalHealing: Power = {
     ["Regeneration",null,0.5,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq ||"],
     ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq || !"],
-    ["Absorb",null,0.045,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
-    ["Absorb",null,0.045,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true]
+    ["Absorb",null,0.045,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq || Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? &&",true],
+    ["Absorb",null,0.045,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq || ! Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? &&",true]
   ],
   "conditionalEffects": [
     {

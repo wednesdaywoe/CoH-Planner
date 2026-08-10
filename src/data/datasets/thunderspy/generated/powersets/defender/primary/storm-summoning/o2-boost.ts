@@ -12,12 +12,18 @@ export const O2Boost: Power = {
   "name": "O2 Boost",
   "internalName": "O2_Boost",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You Saturates the air around a targeted ally with rich oxygen, healing their wounds. O2 Boost can protect a targeted ally from Sleep, Stun and Endurance Drain effects as well as increase perception. You cannot use this power on yourself but you will be healed if you are close enough to the target. Recharge: Fast. Choosing this power locks out Oxygenate.",
   "shortHelp": "Ally Heal, +Res(Disorient, Sleep, End Drain), +Perception",
   "icon": "stormsummoning_o2boost.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -53,6 +59,7 @@ export const O2Boost: Power = {
     "buffDuration": 60,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
@@ -61,6 +68,7 @@ export const O2Boost: Power = {
         "table": "Ranged_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       }

@@ -12,6 +12,8 @@ export const Barrage: Power = {
   "name": "Barrage",
   "internalName": "Barrage",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a quick punch that deals moderate damage. Coupled with other energy punches, Barrage can Disorient a foe. This power will have a 100% chance to stun and weaken the target's secondary effects and regeneration rate if used while in Energy Focus mode.",
   "shortHelp": "Melee, DMG(Smash/Energy), Foe Disorient, Special",
   "icon": "powerpunch_quick.png",
@@ -20,6 +22,9 @@ export const Barrage: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -70,38 +75,38 @@ export const Barrage: Power = {
   "atoms": [
     ["Damage","Energy",0.5,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",0.16,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower? !"],
-    ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,0],
+    ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq Redirects.Energy_Melee.Energy_Store source.ownPower? ! &&"],
+    ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Energy",0.5891,1,0.3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",0.1964,1,0.3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,true],
-    ["Regeneration",null,-1,0,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true],
-    ["Heal",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Absorb",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Endurance",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Movement","Run",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Movement","Fly",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Confused",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Terrorized",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Held",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Immobilized",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Stunned",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Sleep",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Ranged",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Melee",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","AoE",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Smashing",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Lethal",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Fire",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Cold",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Energy",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Negative",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Psionic",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","Toxic",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Enhancement","All",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["ToHit",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true]
+    ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"EnergyRelease"],
+    ["Regeneration",null,-1,0,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"EnergyRelease"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"EnergyRelease",null,"revoke_power"],
+    ["Heal",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Absorb",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Endurance",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Movement","Run",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Movement","Fly",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Confused",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Terrorized",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Held",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Immobilized",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Stunned",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Sleep",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleA"],
+    ["Enhancement","Ranged",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Melee",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","AoE",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Smashing",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Lethal",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Fire",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Cold",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Energy",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Negative",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Psionic",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","Toxic",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Enhancement","All",-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["ToHit",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower?",true,null,null,null,null,null,null,null,null,"ScheduleB"],
+    ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower? enttype target> critter eq &&",true]
   ],
   "conditionalEffects": [
     {
@@ -110,12 +115,17 @@ export const Barrage: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
+      "ownedPower": {
+        "path": "Redirects.Energy_Melee.Energy_Store",
+        "count": 1
+      },
       "effects": {
         "buffDuration": 15,
         "durations": {
           "regenDebuff": 15
         },
         "regenDebuff": {
+          "ignoreStrength": true,
           "scale": 1,
           "table": "Melee_Ones"
         }

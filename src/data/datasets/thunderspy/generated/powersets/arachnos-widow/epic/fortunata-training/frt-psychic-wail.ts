@@ -12,12 +12,17 @@ export const FRTPsychicWail: Power = {
   "name": "Psychic Wail",
   "internalName": "FRT_Psychic_Wail",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes. Those that survive will have a severely reduced attack rate and may be left Disoriented. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE , Extreme DMG(Psionic), Foe Disorient -Recharge",
   "icon": "fortunatatraining_psychicwail.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -51,6 +56,7 @@ export const FRTPsychicWail: Power = {
       "rechargeDebuff": 20
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.7,
       "table": "Ranged_Slow"
     },

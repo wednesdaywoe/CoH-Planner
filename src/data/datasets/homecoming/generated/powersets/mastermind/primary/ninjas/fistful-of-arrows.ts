@@ -12,12 +12,17 @@ export const FistfulofArrows: Power = {
   "name": "Fistful of Arrows",
   "internalName": "Fistful_of_Arrows",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a fistful of arrows at foes in a cone in front of you. Good at close range.Sensei's Guidance:Hitting with this power will grant your Ninja Henchman +3% Critical Hit chance for 30 seconds. This does not stack from the same power.",
   "shortHelp": "Ranged (Cone), DMG(Lethal)",
   "icon": "ninjas_fistfullarrows.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 40,

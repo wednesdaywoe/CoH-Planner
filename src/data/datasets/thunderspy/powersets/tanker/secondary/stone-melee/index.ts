@@ -21,8 +21,12 @@ import { SeismicSmash as SeismicSmash } from './seismic-smash';
 
 export const powerset: Powerset = {
   id: 'tanker/stone-melee',
-  internalName: 'stone_melee',
+  setPath: 'Tanker_Melee.Stone_Melee',
   name: 'Stone Melee',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can use the powers of earth and stone to do battle with your foes. Stone Melee allows you to strike with fists of stone, summon earthen weapons, and even quake the very ground itself.',
   icon: 'stone_melee_set.ico',
   archetype: 'tanker',

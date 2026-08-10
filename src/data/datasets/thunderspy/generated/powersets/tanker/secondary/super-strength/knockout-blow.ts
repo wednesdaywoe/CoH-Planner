@@ -12,6 +12,8 @@ export const KnockoutBlow: Power = {
   "name": "Knockout Blow",
   "internalName": "Knockout_Blow",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a Knockout Blow on your opponent. This punch does extreme damage, and has a great chance of Holding your target. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Smash), Foe Hold",
   "icon": "superstrength_knockoutblow.png",
@@ -22,6 +24,9 @@ export const KnockoutBlow: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 13.199999809265137,

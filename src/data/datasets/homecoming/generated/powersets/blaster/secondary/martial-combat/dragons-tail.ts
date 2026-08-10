@@ -12,6 +12,8 @@ export const DragonsTail: Power = {
   "name": "Dragon's Tail",
   "internalName": "Dragons_Tail",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "This low spinning kick deals moderate damage, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.Damage: Light.Recharge: Slow.",
   "shortHelp": "PBAoE Melee, Light DMG(Smash), Foe Knockdown",
   "icon": "martialmanipulation_dragonstail.png",
@@ -20,6 +22,9 @@ export const DragonsTail: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -51,6 +56,7 @@ export const DragonsTail: Power = {
   "effects": {
     "buffDuration": 9,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.045,
       "table": "Melee_Ones"
     },

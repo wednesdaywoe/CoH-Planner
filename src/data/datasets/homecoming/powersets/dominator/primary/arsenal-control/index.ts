@@ -21,8 +21,12 @@ import { GunDrone as GunDrone } from './gun-drone';
 
 export const powerset: Powerset = {
   id: 'dominator/arsenal-control',
-  internalName: 'arsenal_control',
+  setPath: 'Dominator_Control.Arsenal_Control',
   name: 'Arsenal Control',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Armed with a state-of-the-art multipurpose rifle, you are able to deliver a wide variety of payloads to control your enemies and render them incapable of responding.',
   icon: 'assault_rifle_set.ico',
   archetype: 'dominator',

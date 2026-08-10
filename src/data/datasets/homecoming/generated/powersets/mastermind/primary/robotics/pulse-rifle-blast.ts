@@ -12,12 +12,17 @@ export const PulseRifleBlast: Power = {
   "name": "Pulse Rifle Blast",
   "internalName": "Pulse_Rifle_Blast",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This Pulse Rifle can fire a long range laser pulse that deals Energy damage.Laser Burn:Targets struck by this attack will have their Regeneration debuffed for 30 seconds.",
   "shortHelp": "Ranged, DMG(Energy), -Regen",
   "icon": "robotics_laserrifleburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -49,6 +54,7 @@ export const PulseRifleBlast: Power = {
       "regenDebuff": 30
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Ones"
     }
@@ -56,9 +62,9 @@ export const PulseRifleBlast: Power = {
   "atoms": [
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-2,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,179,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,179,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"RefreshReminder",null,"set_mode"],
     ["Damage","Energy",1.26,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Regeneration",null,-4,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"@ToHitRoll @ToHit / 0.3 <=",true]
+    ["Regeneration",null,-4,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit / 0.3 <= &&",true]
   ],
   "setsModes": [
     "PersonalAttack1"

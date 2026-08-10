@@ -27,7 +27,7 @@
  */
 import type { NumberOrScaled, PowerEffects } from '@/types';
 import { getScaleValue } from '@/types';
-import { getTableValue } from '@/data/at-tables';
+import { getPetTableValue, getTableValue } from '@/data/at-tables';
 import {
   groupEffectsByCategory,
   isMezEffect,
@@ -123,7 +123,55 @@ function calcEffectThreeTier(
 }
 
 /**
- * Get the base value from an effect, handling different value types.
+ * The `scale x table` terms a value carries when its pet rows named more than one AT table
+ * (or one table under more than one pet class), instead of the single pair it cannot honestly
+ * state. `synthesizePseudoPetEffects` writes it; see `mergePetContributions` for why.
+ */
+type ScaleTerm = { scale: number; table: string; petClass?: string };
+function scaleTermsOf(value: unknown): ScaleTerm[] | undefined {
+  if (typeof value !== 'object' || value === null) return undefined;
+  const terms = (value as { scaleTerms?: unknown }).scaleTerms;
+  return Array.isArray(terms) ? (terms as ScaleTerm[]) : undefined;
+}
+
+/**
+ * One `scale x table` term resolved into a number, against the class the term itself names.
+ *
+ * `class_GetNamedTableValue(pclass, name, level)` takes a class as well as a table name, and a
+ * pseudo-pet's rows are a second character's — Choking Cloud's gas resolves against
+ * `minion_pets`, not against the Controller who dropped it, and the two tables differ (ENT-10).
+ * A term with no class is the power's own row (or an inline pseudo-pet shell with no
+ * `villaindef.bin` record at all) and resolves against the build's archetype, as before.
+ */
+function termValue(term: ScaleTerm, archetypeId: string | undefined, level: number): number | undefined {
+  if (term.petClass !== undefined) return getPetTableValue(term.petClass, term.table, level);
+  return archetypeId ? getTableValue(archetypeId, term.table, level) : undefined;
+}
+
+/** `scale × table` for a single term, against the class the term itself names. */
+function tableProduct(value: unknown, archetypeId: string | undefined, level: number): number | undefined {
+  if (typeof value !== 'object' || value === null) return undefined;
+  if (!('table' in value) || !('scale' in value)) return undefined;
+  const term = value as ScaleTerm;
+  const tableVal = termValue(term, archetypeId, level);
+  return tableVal === undefined ? undefined : term.scale * tableVal;
+}
+
+/**
+ * Get the base value from an effect: the one pair it states, or the several terms it carries.
+ *
+ * A `scaleTerms` value resolves each term through its OWN table and sums the resolved
+ * MAGNITUDES, not the scales — the only order in which they are addable. The game computes
+ * every AttribMod's magnitude as `scale × table[class][level]` at the template's own table, and
+ * where it reduces several templates to one number it accumulates the resolved magnitudes.
+ * Adding the scales first is the operation the game performs nowhere, and it is ENT-8;
+ * summing the signed products first is the same mistake one step later, and it cancels rather
+ * than adds — Ice Elemental's `rechargeDebuff` states `0.1` on `Melee_Ones` (+1) beside `0.2` on
+ * `Ranged_Slow` (−1), two debuff contributions whose tables carry opposite signs, and `|0.1 −
+ * 0.2| = 10%` where the pet really lowers recharge by 30%.
+ *
+ * A term that resolves to nothing contributes nothing, exactly as a lone unresolvable value
+ * produces no row.
  */
 function getEffectBaseValue(
   value: unknown,
@@ -132,13 +180,54 @@ function getEffectBaseValue(
   archetypeId?: string,
   level?: number
 ): number | null {
-  // Handle by-type objects - get first value
+  // A by-type value the config does not expand collapses to its first entry, and that entry can
+  // itself carry terms, so the collapse happens here rather than inside `termBaseValue` — a term
+  // is never a by-type object, and reading the terms off the uncollapsed object would find none.
   if (config.canBeByType && isByTypeObject(value)) {
     const firstVal = getByTypeFirstValue(value as Record<string, unknown>);
     if (!firstVal) return null;
     value = firstVal;
   }
+  const terms = scaleTermsOf(value);
+  if (!terms) return termBaseValue(value, config, buffDebuffMod, archetypeId, level);
+  const resolved = terms
+    .map((term) => termBaseValue(term, config, buffDebuffMod, archetypeId, level))
+    .filter((v): v is number => v !== null);
+  return resolved.length > 0 ? resolved.reduce((a, b) => a + b, 0) : null;
+}
 
+/** Whether a value declares that the caster's Strength never reaches it. */
+function ignoresStrength(value: unknown): boolean {
+  return typeof value === 'object' && value !== null
+    && (value as { ignoreStrength?: unknown }).ignoreStrength === true;
+}
+
+/**
+ * The authored entry a row's BASE was actually read from.
+ *
+ * A `canBeByType` key the config does not expand (`slow`, `damageDebuff`) collapses to its
+ * FIRST entry — `getEffectBaseValue` does the same — so the row shows one axis's number under
+ * a summary label like `-Speed (FlyJmpHJmpRun)`. Any per-value mark has to follow that same
+ * entry; the outer object carries none.
+ */
+function collapsedSource(value: unknown, config: EffectDisplayConfig): unknown {
+  if (config.canBeByType && isByTypeObject(value)) {
+    return getByTypeFirstValue(value as Record<string, unknown>) ?? value;
+  }
+  return value;
+}
+
+/**
+ * One `scale × table` term's displayable base quantity, handling the different value types.
+ * Never receives a by-type object or a `scaleTerms` value — `getEffectBaseValue` unwraps both.
+ */
+function termBaseValue(
+  value: unknown,
+  config: EffectDisplayConfig,
+  buffDebuffMod: number,
+  archetypeId?: string,
+  level?: number
+): number | null {
   // Handle mez effects (magnitude)
   if (config.format === 'mag') {
     if (typeof value === 'number') return value;
@@ -151,10 +240,9 @@ function getEffectBaseValue(
       return value.mag;
     }
     // ScaledEffect without mag (knockback, knockup, repel) — resolve via table when available
-    if (archetypeId && typeof value === 'object' && value !== null && 'scale' in value && 'table' in value) {
-      const sv = value as { scale: number; table: string };
-      const tableVal = getTableValue(archetypeId, sv.table, level ?? DEFAULT_TABLE_LEVEL);
-      if (tableVal !== undefined) return Math.abs(sv.scale * tableVal);
+    {
+      const product = tableProduct(value, archetypeId, level ?? DEFAULT_TABLE_LEVEL);
+      if (product !== undefined) return Math.abs(product);
     }
     const scaled = getScaleValue(value as NumberOrScaled);
     if (scaled !== undefined) return scaled;
@@ -176,11 +264,9 @@ function getEffectBaseValue(
       return Math.abs(scaleNum * config.flatPercentPerScale);
     }
     // Use AT table directly when available (accurate per-AT values)
-    if (archetypeId && typeof scaled === 'object' && scaled !== null && 'table' in scaled && 'scale' in scaled) {
-      const tableVal = getTableValue(archetypeId, (scaled as { scale: number; table: string }).table, level ?? DEFAULT_TABLE_LEVEL);
-      if (tableVal !== undefined) {
-        return Math.abs((scaled as { scale: number; table: string }).scale * tableVal) * 100;
-      }
+    {
+      const product = tableProduct(scaled, archetypeId, level ?? DEFAULT_TABLE_LEVEL);
+      if (product !== undefined) return Math.abs(product) * 100;
     }
     // Fallback to legacy formula for plain number scales
     const result = calculateBuffDebuffFraction(scaled, buffDebuffMod, config.calculation);
@@ -195,20 +281,16 @@ function getEffectBaseValue(
   // Accuracy uses 75 (base to-hit rate), other percents use 100
   if (config.format === 'percent') {
     // Use AT table directly when available (accurate per-AT values)
-    if (archetypeId && typeof value === 'object' && value !== null && 'table' in value && 'scale' in value) {
-      const tableVal = getTableValue(archetypeId, (value as { scale: number; table: string }).table, level ?? DEFAULT_TABLE_LEVEL);
-      if (tableVal !== undefined) {
-        return Math.abs((value as { scale: number; table: string }).scale * tableVal) * 100;
-      }
-    }
+    const product = tableProduct(value, archetypeId, level ?? DEFAULT_TABLE_LEVEL);
+    if (product !== undefined) return Math.abs(product) * 100;
     const multiplier = config.baseMultiplier ?? 100;
     return scaled * multiplier * buffDebuffMod;
   }
 
   // Heal / absorb resolve their scale through the table into an HP amount.
-  if (config.valueFromTable && typeof value === 'object' && value !== null && 'table' in value && archetypeId) {
-    const tableVal = getTableValue(archetypeId, (value as { table: string }).table, level ?? DEFAULT_TABLE_LEVEL);
-    if (tableVal !== undefined) return scaled * tableVal;
+  if (config.valueFromTable) {
+    const product = tableProduct(value, archetypeId, level ?? DEFAULT_TABLE_LEVEL);
+    if (product !== undefined) return product;
   }
 
   return scaled;
@@ -282,15 +364,17 @@ export function resolvePowerMagnitudes({
   const push = (row: ResolvedMagnitude) => rows.push(row);
 
   for (const group of groupEffectsByCategory(effects as Record<string, unknown>)) {
-    for (const { key, value, config } of group.effects) {
-      // Handle expandByType effects (defense, resistance, elusivity, protection)
-      if (config.expandByType && typeof value === 'object' && value !== null) {
+    for (const { key, effectKey, value, config, fromSplitSlot } of group.effects) {
+      // Handle expandByType effects (defense, resistance, elusivity, protection).
+      // A split slot never expands: no split family ships a by-type half today, and
+      // an expansion would read each entry's own (absent) mark instead of the slot's.
+      if (!fromSplitSlot && config.expandByType && typeof value === 'object' && value !== null) {
         // Protection: expand mez magnitudes, never enhanceable
         if (config.format === 'mag') {
           for (const entry of expandProtectionEntries(value as Record<string, number>, config.label)) {
             push({
               rowKey: `${key}_${entry.typeKey}`,
-              effectKey: key,
+              effectKey,
               config,
               expandedLabel: entry.typeLabel,
               rawValue: entry.magnitude,
@@ -307,7 +391,7 @@ export function resolvePowerMagnitudes({
             if (entry.basePercent === 0) continue;
             push({
               rowKey: `${key}_${entry.typeKey}`,
-              effectKey: key,
+              effectKey,
               config,
               expandedLabel: entry.typeLabel,
               rawValue: entry.basePercent,
@@ -324,7 +408,7 @@ export function resolvePowerMagnitudes({
           if (pct === 0) continue;
           push({
             rowKey: `${key}__all`,
-            effectKey: key,
+            effectKey,
             config,
             expandedLabel: config.label,
             rawValue: value,
@@ -353,13 +437,23 @@ export function resolvePowerMagnitudes({
       // A mez's duration and a knockback's distance are scaled by the bonus named by the
       // EFFECT key (a hold's duration reads the `hold` bonus), not by the config's
       // enhancement aspect — which `mag`-format effects do not declare.
-      const tiers = quantity.kind === 'value'
-        ? calcEffectThreeTier(rowConfig, baseValue, enhancementBonuses, globalBonuses)
-        : calcThreeTier(key, baseValue, enhancementBonuses, globalBonuses);
+      //
+      // A split slot takes neither: the slot NAME is the IgnoreStrength mark, so the
+      // row is flat at every tier (ENT-6). A value carrying the mark on itself is the
+      // same verdict spelled the other way (ENT-4), and it is read off the entry the
+      // BASE was read from: a `canBeByType` key the config does not expand collapses to
+      // its first entry, and the outer object never carries a mark, so asking it
+      // reported Ice Arrow's part-marked slow as wholly enhanceable.
+      const unenhanceable = fromSplitSlot || ignoresStrength(collapsedSource(value, config));
+      const tiers = unenhanceable
+        ? { base: baseValue, enhanced: baseValue, final: baseValue }
+        : quantity.kind === 'value'
+          ? calcEffectThreeTier(rowConfig, baseValue, enhancementBonuses, globalBonuses)
+          : calcThreeTier(effectKey, baseValue, enhancementBonuses, globalBonuses);
 
       push({
         rowKey: key,
-        effectKey: key,
+        effectKey,
         config: rowConfig,
         rawValue: value,
         tiers,

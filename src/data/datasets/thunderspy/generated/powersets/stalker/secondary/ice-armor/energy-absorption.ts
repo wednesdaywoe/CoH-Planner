@@ -12,12 +12,17 @@ export const EnergyAbsorption: Power = {
   "name": "Energy Absorption",
   "internalName": "Energy_Absorption",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power draws moisture directly from the bodies of all nearby foes, draining their Endurance while also slowing their movment speed and attack rage. Each foe you draw moisture from adds to your own Endurance as well as Defense to all attacks except psionics. The first foe you absorb grants the highest Defense bonus, and you can absorb up to 10 foes.  In addition to Defense, Energy Absorption also grants you resistance to Slow effects. If there are no foes within range, this power will fail. Recharge: Long",
   "shortHelp": "PBAoE, Self +End, +DEF(All but Psionics), Res (Slow), Foe -End, -Recharge, -Speed",
   "icon": "icearmor_energyabsorption.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 12,
@@ -43,10 +48,12 @@ export const EnergyAbsorption: Power = {
     "buffDuration": 45,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       }
@@ -86,6 +93,7 @@ export const EnergyAbsorption: Power = {
     "durations": {
       "debuffResistance": 45,
       "defenseBuff": 45,
+      "movementCapDebuff": 45,
       "rechargeDebuff": 45,
       "slow": 45
     },
@@ -98,7 +106,15 @@ export const EnergyAbsorption: Power = {
       "table": "Melee_Ones",
       "perTarget": 15
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -108,6 +124,7 @@ export const EnergyAbsorption: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -116,8 +133,8 @@ export const EnergyAbsorption: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.7,
+        "table": "Melee_Slow"
       }
     }
   },

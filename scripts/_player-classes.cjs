@@ -108,4 +108,21 @@ function discoverPetClasses(entitiesDir) {
   return [...found].sort();
 }
 
-module.exports = { derivePlayerArchetypes, PET_CLASSES, discoverPetClasses };
+// The same player subset in the `Class_*` spelling an effect gate uses, read off
+// each record's own `name` rather than transformed from its file stem — the
+// parser resolves an archetype fork against exactly this roster
+// (`export_powers._player_class_names`), so a spelling this side invented could
+// silently fail to match a `requires_archetypes` entry and read as "not in the
+// roster", which is the answer that decides whether a bag slot is stated at all.
+function derivePlayerClassTokens(tablesDir) {
+  return derivePlayerArchetypes(tablesDir)
+    .map((stem) => JSON.parse(fs.readFileSync(path.join(tablesDir, `${stem}.json`), 'utf-8')).name)
+    .sort();
+}
+
+module.exports = {
+  derivePlayerArchetypes,
+  derivePlayerClassTokens,
+  PET_CLASSES,
+  discoverPetClasses,
+};

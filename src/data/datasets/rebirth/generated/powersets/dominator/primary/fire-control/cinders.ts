@@ -12,12 +12,17 @@ export const Cinders: Power = {
   "name": "Cinders",
   "internalName": "Cinders",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Incapacitates foes around the caster by whirling Cinders around them. The targets are left helpless, choking on the soot. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Hold",
   "icon": "firetrap_cinders.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "radius": 30,

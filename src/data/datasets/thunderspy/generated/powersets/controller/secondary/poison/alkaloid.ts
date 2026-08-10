@@ -12,12 +12,18 @@ export const Alkaloid: Power = {
   "name": "Alkaloid",
   "internalName": "Alkaloid",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "When used correctly, poisons can be used to heal, as well as harm. Alkaloid consists of just the right amount of amino acids to safely heal allies, including yourself if you are within its area of effect. The healed targets are also left with some resistance to Toxic Damage (This Toxic Damage Resistance cannot be Enhanced). Choosing this power locks out Alkaloid Splash. Recharge: Fast",
   "shortHelp": "Ally Heal, +Res(Toxic)",
   "icon": "poison_alkaloid.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -56,6 +62,7 @@ export const Alkaloid: Power = {
     },
     "resistance": {
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }

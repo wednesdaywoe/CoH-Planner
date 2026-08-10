@@ -12,12 +12,17 @@ export const SpeedBoost: Power = {
   "name": "Speed Boost",
   "internalName": "Speed_Boost",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You can hasten a targeted ally and its nearby allies. The allies' movement speed, attack rate, and Endurance recovery are all greatly increased and they gain resistance to Slow effects. You cannot use this power on yourself.Recharge: Very Fast.",
   "shortHelp": "Ranged, Allies +SPD, +Recharge, +Recovery, Res Slow",
   "icon": "kineticboost_speedboost.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -49,6 +54,7 @@ export const SpeedBoost: Power = {
         "table": "Melee_SpeedFlying"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       }
@@ -70,6 +76,7 @@ export const SpeedBoost: Power = {
       }
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Ones"
     },

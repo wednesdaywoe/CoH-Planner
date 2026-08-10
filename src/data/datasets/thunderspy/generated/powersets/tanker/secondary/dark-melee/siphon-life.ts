@@ -12,6 +12,8 @@ export const SiphonLife: Power = {
   "name": "Siphon Life",
   "internalName": "Siphon_Life",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You tap the power of the Netherworld and create a life transferring conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes Siphoned in this manner have their chance to hit reduced. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Negative), Foe -To Hit, Self +HP",
   "icon": "shadowfighting_siphonlife.png",
@@ -22,6 +24,9 @@ export const SiphonLife: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

@@ -12,6 +12,8 @@ export const Haymaker: Power = {
   "name": "Haymaker",
   "internalName": "Haymaker",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "A slow but devastating attack, the Haymaker has a great chance of knocking your opponent down. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash), Knockback",
   "icon": "superstrength_haymaker.png",
@@ -22,6 +24,9 @@ export const Haymaker: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

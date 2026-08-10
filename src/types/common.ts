@@ -102,7 +102,12 @@ export type EffectArea =
   | 'AoE'
   | 'Cone'
   | 'Location'
-  | 'Chain';
+  | 'Chain'
+  // Whole-map reach, which the export states outright. Rare on a player power and
+  // absent from `EFFECT_AREA_MAP`, so the converter passes it through unmapped —
+  // Time Bomb's remote-detonation branch is the case. Carried rather than dropped:
+  // the alternative is a form whose area silently reads as its base record's.
+  | 'Map';
 
 // ============================================
 // CHARACTER ORIGIN

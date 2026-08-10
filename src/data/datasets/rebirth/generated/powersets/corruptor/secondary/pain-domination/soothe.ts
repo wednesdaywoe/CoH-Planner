@@ -12,12 +12,17 @@ export const Soothe: Power = {
   "name": "Soothe",
   "internalName": "Soothe",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You heal an ally by numbing their pain and calming their mind. You cannot use this power on yourself.",
   "shortHelp": "Ally Heal",
   "icon": "paindomination_soothe.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

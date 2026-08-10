@@ -12,6 +12,8 @@ export const Chilblain: Power = {
   "name": "Chilblain",
   "internalName": "Chilblain",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Immobilizes your target in an icy trap. Deals some damage over time and slightly Slows the target's attack and movement speed. Useful for keeping villains at bay. Damage: Moderate(DoT),  Recharge: Fast",
   "shortHelp": "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "icemanipulation_chillblains.png",
@@ -23,6 +25,9 @@ export const Chilblain: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -58,6 +63,7 @@ export const Chilblain: Power = {
   "effects": {
     "buffDuration": 18,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.077,
       "table": "Ranged_Ones"
     },
@@ -72,6 +78,7 @@ export const Chilblain: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -85,6 +92,7 @@ export const Chilblain: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

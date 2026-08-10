@@ -12,12 +12,17 @@ export const PoisonousRay: Power = {
   "name": "Poisonous Ray",
   "internalName": "Poisonous_Ray",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a Poisonous Ray from your mace causing damage over time as reducing the target's defense.",
   "shortHelp": "Ranged, DoT(Toxic), -DEF",
   "icon": "banespider_poisonousray.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 40,
