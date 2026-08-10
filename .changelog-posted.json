@@ -600,6 +600,56 @@
       "id": "scrapper-crit-own-rows",
       "date": "2026-08-09",
       "preview": "The \"w/ Crit\" column now shows what a critical hit actually deals: the power's o"
+    },
+    {
+      "id": "blaster-defiance-not-permanent",
+      "date": "2026-08-10",
+      "preview": "Blasters: Defiance was being counted as a permanent damage buff. The few-seconds"
+    },
+    {
+      "id": "proc-roll-in-executed-child",
+      "date": "2026-08-10",
+      "preview": "Walking back part of a proc change that affected Fault, Whitecap, Hypnotizing Li"
+    },
+    {
+      "id": "pseudopet-resolves-on-pet-tables",
+      "date": "2026-08-10",
+      "preview": "Rain and patch debuffs were reading off archetype's tables instead of the summon"
+    },
+    {
+      "id": "slow-movement-axes-shown",
+      "date": "2026-08-10",
+      "preview": "Slows now say what they slow."
+    },
+    {
+      "id": "unenhanceable-values-were-enhanced",
+      "date": "2026-08-10",
+      "preview": "Values the game flags un-enhanceable were being enhanced anyway wherever a power"
+    },
+    {
+      "id": "pet-multi-table-cancellation",
+      "date": "2026-08-10",
+      "preview": "A pet effect that resolves against more than one of the game's tables was cancel"
+    },
+    {
+      "id": "mode-gated-rows-read-as-zero-chance",
+      "date": "2026-08-10",
+      "preview": "Pet and pseudo-pet effects gated by mode were being read as \"0% chance\" and drop"
+    },
+    {
+      "id": "hunter-mode-damage-always-on",
+      "date": "2026-08-10",
+      "preview": "Thunderspy: Pack Master's damage buff only applies in Hunter Mode, and was being"
+    },
+    {
+      "id": "level-one-is-two-picks",
+      "date": "2026-08-10",
+      "preview": "Fixed a regression: choosing a secondary set force-added its first power at leve"
+    },
+    {
+      "id": "setbonus-knockback-endurance-stats",
+      "date": "2026-08-10",
+      "preview": "Knockback Strength and Endurance Drain Resistance set bonuses now resolve to rea"
     }
   ]
 }
