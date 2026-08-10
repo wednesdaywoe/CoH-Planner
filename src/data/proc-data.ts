@@ -2902,7 +2902,11 @@ export function isVariableProc(procData: ProcData): boolean {
 
 export const DEFAULT_PROC_OVERRIDE: ProcOverride = { enabled: true, mode: 'auto' };
 
-/** The Build.procOverrides map key for a slotted proc. */
+/** The Build.procOverrides map key for a slotted proc — the power's DISPLAY name, which is
+ *  what a saved build carries. Two picks can share a display name, so an override set on one
+ *  lands on both; the engine addresses the pick instead (`<powerset>:<internalName>:<slot>`)
+ *  and the adapter re-addresses on the way in, carrying that collision over rather than
+ *  resolving it on a guess. Fixing it properly means migrating the save format. */
 export function procOverrideKey(powerName: string, slotIndex: number): string {
   return `${powerName}:${slotIndex}`;
 }

@@ -24,8 +24,10 @@
 import type { SummonEffect } from '@/types/power';
 import { getPetEntity, type PetEffect } from '@/data/pet-entities';
 
-/** mechanicAdjusters sub-id for a summon's "count this buff-pet's aura" toggle,
- *  keyed `${power.internalName}:${BUFF_PET_TOGGLE_ID}`. Off by default. */
+/** mechanicAdjusters sub-id for a summon's "count this buff-pet's aura" toggle, stored
+ *  `${power.internalName}:${BUFF_PET_TOGGLE_ID}`. Off by default. The adapter re-addresses
+ *  it onto the pick and moves it to the engine's `power_state`, which is the caster-side
+ *  map — this is a switch on your own character, not a foe's state. */
 export const BUFF_PET_TOGGLE_ID = 'buffpet';
 
 /** PetEffect.type values that are ally buffs a buff-pet projects onto the team. */

@@ -395,6 +395,18 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     enhancementAspect: 'slow',
     priority: 8,
   },
+  movementCapDebuff: {
+    // The other half of a slow: `slow` lowers how fast you move, this lowers how fast you are
+    // ALLOWED to move. Same attrib, different face of it (aspect Max vs Cur), so a power can
+    // carry both and they must not collapse into one row.
+    label: '-Speed Cap',
+    category: 'debuff',
+    colorClass: STAT_COLORS.slow,
+    format: 'percent',
+    canBeByType: true,
+    enhancementAspect: 'slow',
+    priority: 8,
+  },
   enduranceDrain: {
     label: '-End Drain',
     category: 'debuff',

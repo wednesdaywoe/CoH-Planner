@@ -104,9 +104,9 @@ export const SET_BONUS_STAT_NAME_MAP: Record<string, string | null> =
     "perception": "perceptionradius",
     "+res(recharge_debuff)": "debuffresistrecharge",
     "+res(slow)": "debuffresistslow",
-    "defense_(all)": null,
-    "knockback_strength": null,
-    "endurance_drain_resistance": null
+    "knockback_strength": "knockbackstrength",
+    "endurance_drain_resistance": "debuffresistendurance",
+    "defense_(all)": null
   };
 
 export const SET_BONUS_PAIRED_STATS: Record<string, string> =

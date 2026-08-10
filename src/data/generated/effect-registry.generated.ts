@@ -206,6 +206,14 @@ export const EFFECT_RESOLUTION: Record<string, Record<string, unknown>> =
       "priority": 8,
       "canBeByType": true
     },
+    "movementCapDebuff": {
+      "label": "-Speed Cap",
+      "category": "debuff",
+      "format": "percent",
+      "enhancementAspect": "slow",
+      "priority": 8,
+      "canBeByType": true
+    },
     "enduranceDrain": {
       "label": "-End Drain",
       "category": "debuff",

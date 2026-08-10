@@ -24,7 +24,7 @@ import { normalizeStatName } from '@/utils/calculations/set-bonuses';
  *
  * Every emitted stat key must now resolve through normalizeStatName — either to
  * an internal key (modeled) or to `null` (explicitly ignored, e.g.
- * knockback_strength, which has no offensive-KB-strength stat yet). An
+ * defense_(all), which is a summary line rather than a stat of its own). An
  * `undefined` result means the planner silently drops the bonus, which is the
  * regression this guards against.
  */
@@ -62,8 +62,13 @@ describe('IO-set bonus key handling', () => {
   it('perception is modeled (Rectified Reticle → perceptionRadius global)', () => {
     expect(normalizeStatName('perception')).toBe('perceptionradius');
   });
-  it('knockback_strength is explicitly ignored (no offensive-KB-strength stat yet)', () => {
-    expect(normalizeStatName('knockback_strength')).toBeNull();
+  // SETSTAT-1 — both of these used to resolve to null. The engine tracks them now, and the
+  // shared vocabulary is generated from its contract, so the beta follows rather than decides.
+  it('knockback_strength is modeled (offensive KB strength has its own stat)', () => {
+    expect(normalizeStatName('knockback_strength')).toBe('knockbackstrength');
+  });
+  it('endurance_drain_resistance is modeled (it joins the attrib it shares)', () => {
+    expect(normalizeStatName('endurance_drain_resistance')).toBe('debuffresistendurance');
   });
 });
 

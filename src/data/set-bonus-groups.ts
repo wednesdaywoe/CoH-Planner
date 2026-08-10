@@ -29,6 +29,9 @@ export const STAT_GROUP_INFO: Record<string, StatGroupInfo> = {
   range: { group: 'General', label: 'Range' },
   perceptionradius: { group: 'General', label: 'Perception' },
   kbprotection: { group: 'General', label: 'KB Protection' },
+  // The offensive twin of the row above — how hard YOUR knockback hits, not how well you
+  // resist theirs. Two different stats, so they get two rows.
+  knockbackstrength: { group: 'General', label: 'KB Strength' },
   kbresistance: { group: 'General', label: 'KB Resistance' },
   // Health & Endurance
   maxhp: { group: 'Health & Endurance', label: 'Max HP' },
@@ -63,6 +66,7 @@ export const STAT_GROUP_INFO: Record<string, StatGroupInfo> = {
   mezresist: { group: 'Mez/Debuff Res', label: 'Mez Resistance' },
   debuffresistrecharge: { group: 'Mez/Debuff Res', label: 'Slow Res (Rech)' },
   debuffresistslow: { group: 'Mez/Debuff Res', label: 'Slow Res (Move)' },
+  debuffresistendurance: { group: 'Mez/Debuff Res', label: 'End Drain Res' },
   // Mez / control duration (offensive — boosts the mez you apply)
   immobilizeDuration: { group: 'Mez Duration', label: 'Immobilize' },
   holdDuration: { group: 'Mez Duration', label: 'Hold' },
