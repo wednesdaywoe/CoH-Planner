@@ -22,23 +22,22 @@ export const HypnotizingLights: Power = {
   "procRollSites": [
     {
       "power": "Redirects.Pyrotechnic_Control.Hypnotizing_Lights",
-      "setCategories": [],
-      "powerType": "Click",
-      "baseRecharge": 45,
-      "castTime": 0,
+      "boostsAllowed": [
+        "Range",
+        "Sleep",
+        "Recharge",
+        "Accuracy"
+      ],
       "radius": 70,
       "arc": 0.7853981852531433
     },
     {
       "power": "Redirects.Pyrotechnic_Control.HypnotizingLights_Narrow",
-      "setCategories": [
+      "boostsAllowed": [
+        "Damage",
         "Confuse",
-        "Ranged AoE Damage",
-        "Universal Damage Sets"
+        "Accuracy"
       ],
-      "powerType": "Click",
-      "baseRecharge": 40,
-      "castTime": 0,
       "radius": 20,
       "arc": 0.7853981852531433
     }

@@ -29,7 +29,6 @@ import {
   findProcData,
   isProcAlwaysOn,
   arcToDegrees,
-  getIOSet,
   resolveProcRollGeometry,
   resolveProcRollSchedule,
   resolveProcRollSite,
@@ -260,8 +259,8 @@ export function GeneralStatsBlock({
         // ProcAllowed kNone: nothing rolls against this power's recharge, so the
         // row prints why instead of a chance the game will never honour.
         procsAllowed={power.procsAllowed}
-        // …except on the ten powers whose kNone comes paired with ProcSeparately
-        // children that roll in their place, each with its own window.
+        // …except on the powers whose kNone shell hands its slotting to executed
+        // children that roll in its place, each against its own geometry.
         procRollSites={power.procRollSites}
         // A rain/patch hands its rolls to the summon, which is an Auto: they are
         // scored against the proc's own 10s period, once every 10s the patch
@@ -351,10 +350,16 @@ interface ProcEntry {
    */
   roll?: ProcRollWindow;
   /**
-   * Set on a kNone shell whose children all refuse this piece's set category,
+   * Set on a kNone shell no child of which can hold this piece's boost type,
    * so nothing rolls it anywhere — distinct from always-on, which fires.
    */
   unrouted?: boolean;
+  /**
+   * Set on a kNone shell where TWO children could hold this piece (the
+   * multi-mez ATO procs in Hypnotizing Lights) — no single roll exists, and
+   * the routing refuses to pick a geometry. DATA-GAP-REGISTER HC-4.
+   */
+  unroutable?: boolean;
 }
 
 interface ProcRollWindow {
@@ -410,14 +415,11 @@ function ProcChanceRow({
       ? resolveProcRollGeometry(
         site.procsOnlyOnMainTarget, site.radius, arcToDegrees(site.arc) || undefined)
       : resolveProcRollGeometry(procsOnlyOnMainTarget, radius, arcDegrees);
-    // No roll site summons a patch, so only this power's own window can take
-    // the patch branch.
-    const schedule = site
-      ? resolveProcRollSchedule({
-        powerType: site.powerType, baseRecharge: site.baseRecharge, castTime: site.castTime,
-      })
-      : resolveProcRollSchedule({ powerType, baseRecharge, castTime, patchDuration });
-    const windowRecharge = site ? site.baseRecharge : baseRecharge;
+    // The schedule is this power's whether the proc was routed or not: a site
+    // changes the area factor, never the window. See collectProcRollSites.
+    const schedule = resolveProcRollSchedule({
+      powerType, baseRecharge, castTime, patchDuration,
+    });
     return {
       geometry,
       window: {
@@ -425,10 +427,10 @@ function ProcChanceRow({
         // On a fixed-period schedule the recharge terms are inert.
         modifiedRecharge: schedule.fixedPeriod
           ? schedule.window
-          : (windowRecharge * (1 + globalRechargeBonus))
+          : (baseRecharge * (1 + globalRechargeBonus))
             / (1 + globalRechargeBonus + slottedRechargeBonus),
-        castTime: site ? site.castTime : castTime,
-        baseRecharge: windowRecharge,
+        castTime,
+        baseRecharge,
         areaDenom: getPPMAreaDenominator(geometry.radius, geometry.arcDegrees),
         ...(site ? { via: site.power } : {}),
       },
@@ -459,14 +461,19 @@ function ProcChanceRow({
       continue;
     }
 
-    // `getIOSet(...).type` is the piece's real game set category — the key the
-    // picker slots by — not procData.setCategory, whose spellings drift from
-    // the game's ("Defense", "Brute ATO") and would mis-route on the difference.
-    // Guarded on the site list: `getIOSet` reaches into the active dataset, and
-    // only the ten powers that have sites need the lookup.
-    const site = procRollSites?.length
-      ? resolveProcRollSite(procRollSites, ioSlot.setId ? getIOSet(ioSlot.setId)?.type : undefined)
-      : null;
+    // Routed by the piece's own `boostsAllowed` — the key `CopyBoosts` filters
+    // by when the shell hands its slotting to a child. A piece two children
+    // could hold has no single roll; the throw becomes this entry's visible
+    // marker rather than a crashed panel.
+    let site: ProcRollSite | null;
+    try {
+      site = resolveProcRollSite(procRollSites, procData.boostsAllowed);
+    } catch {
+      entries.push({
+        key, name: ioSlot.name, setName: ioSlot.setName, ppm: procData.ppm, unroutable: true,
+      });
+      continue;
+    }
     if (!site && procsAllowed === false) {
       entries.push({
         key, name: ioSlot.name, setName: ioSlot.setName, ppm: procData.ppm, unrouted: true,
@@ -624,7 +631,19 @@ function ProcDetailLine({
         <span className="text-slate-300">{entry.name}</span>
         <span className="text-amber-400"> — never rolls here</span>
         <span className="text-slate-500">
-          {' '}— this power rolls in its executed children, and none of them accepts this set
+          {' '}— this power rolls in its executed children, and none of them can hold this piece
+        </span>
+      </div>
+    );
+  }
+  if (entry.unroutable) {
+    return (
+      <div className="text-xs">
+        <span className="text-slate-300">{entry.name}</span>
+        <span className="text-amber-400"> — no single roll</span>
+        <span className="text-slate-500">
+          {' '}— two of this power's executed children could roll this piece, and which one the
+          game runs is unmeasured; no chance is shown rather than a guessed one
         </span>
       </div>
     );

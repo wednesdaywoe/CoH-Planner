@@ -637,55 +637,78 @@ function collectTemplatesAnyBag(node, out = []) {
  * Where a power's PPM procs actually roll when the power itself cannot.
  *
  * `ProcAllowed kNone` says this power's own activation is not a proc window.
- * On the powers that hand their work to an executed child, HC pairs it with
- * `ProcSeparately` on the `kExecutePower` template — the game's statement that
- * the executed power rolls on its own. The two always travel together: every
- * `ProcSeparately` template in all three forks (10 powers, 14 templates, all
- * Homecoming) sits under a `ProcAllowed kNone` parent, so the pair never means
- * "parent AND child roll" and a site list never adds a roll to a power that
- * already had one.
+ * A power that hands its work to a `kExecutePower` child with `CopyBoosts` has
+ * given that child its slotting, and the child rolls in its place.
  *
- * A proc rolls in the ONE site whose set categories accept its set. The
- * children partition the parent's categories exactly — Fault's sphere child
- * takes Knockback/Stuns/Threat Duration while its cone child takes the damage
- * categories, with no overlap on any of the four archetype copies — which is
- * `CopyBoosts` handing the child only the boosts the child's own allowed list
- * accepts. A category the parent lists and no child accepts (Hypnotizing
- * Lights' Sleep) reaches no site and fires nothing.
+ * What each half of the roll comes from, measured 2026-08-09 against a pylon
+ * (Fault 48 casts / Bombardment, Spring Attack 30 casts / Eradication, neither
+ * with recharge slotted):
  *
- * Returns null for every power that is not one of the ten.
+ *  - **One roll per cast.** Both of Fault's children execute every cast, yet
+ *    no cast ever paid two procs (37 firings over 48 casts, never a double).
+ *    So a site is a place a proc *can* roll, not an extra roll.
+ *  - **Which child** is the one whose own `BoostsAllowed` accepts the piece.
+ *    Fault logs a to-hit per child, and the proc tracked the cone's roll
+ *    exactly: the cone missed three times and paid nothing, the sphere missed
+ *    twice and the proc still fired. `CopyBoosts` filters by the destination's
+ *    boost types — a damage proc is a `Damage` boost, and Fault's cone is the
+ *    child that takes `Damage`.
+ *  - **The window is the PARENT's** recharge and cast, with the CHILD's
+ *    geometry. Fault paid 37/45 = 0.822 where the parent's 22.1s against the
+ *    cone's area factor predicts 0.820 and the child's own 6s predicts 0.301.
+ *    Spring Attack paid 26/28 = 0.929 where the parent's 121.5s caps at 0.9
+ *    and the child's own 20s predicts 0.434. Same rule the pseudo-pet powers
+ *    already follow: PPM scores the click the player pressed.
+ *
+ * So a site carries its routing key and GEOMETRY ONLY. The shell's schedule is
+ * already the right window; a site that also carried a recharge would be
+ * overriding it with the wrong one.
+ *
+ * The key is the child's `boosts_allowed`, not its set categories: Spring
+ * Attack's child lists no set categories yet fires at the cap, and Hypnotizing
+ * Lights' wide child lists none either yet takes a Sleep proc — both carry the
+ * boost types that say so. A proc piece's own `boosts_allowed` is one real
+ * boost type plus the five origins, no power's list names an origin, and the
+ * routing (engine and beta both) fails loud if a piece ever intersects two
+ * sites — sibling lists may share types no proc carries (Fault's children both
+ * list Range and Accuracy), so the collision is per PIECE and cannot be
+ * checked here.
+ *
+ * `ProcSeparately` deliberately plays no part here. It governs whether an
+ * entity the parent already targeted may roll a second time from the child —
+ * a per-target rule this expected-value model has no dimension for. Keying on
+ * it excluded Spring Attack, whose parent is a teleport affecting Self and so
+ * never consumes a foe to need re-permitting.
+ *
+ * Returns null for every power that delegates nothing.
  */
 function collectProcRollSites(powerJson) {
   if (powerJson.procs_allowed !== false) return null;
   const sites = [];
   for (const t of collectTemplatesAnyBag(powerJson)) {
     if ((t.attribs || []).join(',') !== 'Execute_Power') continue;
-    if (!(t.flags || []).includes('ProcSeparately')) continue;
+    // Without CopyBoosts the child never receives the slotting, so there is
+    // nothing of the player's to roll there.
+    if (!(t.flags || []).includes('CopyBoosts')) continue;
     for (const name of (t.params || {}).power_names || []) {
       const childPath = fs.existsSync(resolveRedirectPath(name))
         ? resolveRedirectPath(name)
         : resolveAuxRedirectPath(name);
-      // Loud: the whole population is 14 templates and every one resolves
-      // today. An unresolvable child means the export moved under us, and a
-      // skipped site is a power that silently stops firing procs.
+      // Loud: every child in this population resolves today. An unresolvable
+      // one means the export moved under us, and a skipped site is a power
+      // that silently stops firing procs.
       if (!childPath || !fs.existsSync(childPath)) {
         throw new Error(
-          `ProcSeparately child "${name}" of ${powerJson.full_name} has no exported power file`);
+          `Executed child "${name}" of ${powerJson.full_name} has no exported power file`);
       }
       const child = JSON.parse(fs.readFileSync(childPath, 'utf-8'));
-      // A child with its own kNone rolls nothing either, so it is not a site.
-      // None of the ten has one today; the rule is stated so that a future
-      // HC patch flagging a child reads as "no procs" rather than as a site
-      // whose flag nobody consulted.
+      // A child with its own kNone rolls nothing either, and a child that
+      // accepts no boosts is handed none to roll — neither is a site.
       if (child.procs_allowed === false) continue;
+      if (!(child.boosts_allowed || []).length) continue;
       sites.push({
         power: child.full_name,
-        setCategories: child.allowed_set_categories || [],
-        // The child's own Click/Toggle/Auto — the schedule branch is the
-        // child's to pick, not the shell's. All ten children are Click today.
-        powerType: child.type || 'Click',
-        baseRecharge: child.recharge_time,
-        castTime: child.activation_time,
+        boostsAllowed: child.boosts_allowed,
         radius: child.radius,
         // Raw radians, exactly as `stats.arc` carries it; every consumer runs
         // it through the same arcToDegrees.
@@ -694,22 +717,7 @@ function collectProcRollSites(powerJson) {
       });
     }
   }
-  if (sites.length === 0) return null;
-  // One proc, one site. Two sites sharing a category would make the routing
-  // pick arbitrarily between two different windows, so the shape the model
-  // cannot express fails the build instead of resolving quietly.
-  const claimed = new Map();
-  for (const site of sites) {
-    for (const cat of site.setCategories) {
-      if (claimed.has(cat)) {
-        throw new Error(
-          `${powerJson.full_name}: proc roll sites ${claimed.get(cat)} and ${site.power} `
-          + `both accept "${cat}" — a proc slotted here has no single window`);
-      }
-      claimed.set(cat, site.power);
-    }
-  }
-  return sites;
+  return sites.length ? sites : null;
 }
 
 // Combat-suppressing events from EVENT_NAME (parser/_enums.py). When an
@@ -6944,8 +6952,9 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // Sparse-false, mirroring how the exporter emits it. See the field doc on
   // `Power.procsAllowed`.
   if (powerJson.procs_allowed === false) power.procsAllowed = false;
-  // …but a kNone power that executes a `ProcSeparately` child still fires
-  // procs — in the child's window, not its own. See collectProcRollSites.
+  // …but a kNone power that hands its slotting to an executed child still
+  // fires procs, in this power's window against the child's geometry. See
+  // collectProcRollSites.
   const procRollSites = collectProcRollSites(powerJson);
   if (procRollSites) power.procRollSites = procRollSites;
 

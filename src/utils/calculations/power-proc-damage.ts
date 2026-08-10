@@ -20,7 +20,6 @@ import {
   getProcEffects,
   interpolateProcDamage,
   arcToDegrees,
-  getIOSet,
   resolveProcRollGeometry,
   resolveProcRollSchedule,
   resolveProcRollSite,
@@ -52,7 +51,8 @@ export interface SlottedProcDamageInput {
    *  not a proc window; see powerFiresProcs. */
   procsAllowed?: boolean;
   /** The executed children that roll in a `ProcAllowed kNone` power's place,
-   *  each with its own window and geometry; see `Power.procRollSites`. */
+   *  each with its own geometry; see `Power.procRollSites`. The WINDOW stays
+   *  this power's own `baseRecharge`/`castTime` — measured, not assumed. */
   procRollSites?: ProcRollSite[];
   /** Click / Toggle / Auto. Auto and Toggle roll on the proc's own 10s period
    *  rather than a recharge window; see resolveProcRollSchedule. */
@@ -84,15 +84,21 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
   // subtle case, and they survive this check: their `procRollSites` children
   // roll in the shell's place.
   if (!powerFiresProcs(input)) return 0;
-  // The shell's own window, for every proc that is not routed to a child. On a
-  // kNone power it is not a window at all — such a proc must find a site.
+  // A kNone shell is not a proc window of its own, so a proc slotted here must
+  // find a site or pay nothing.
   const shellRollsNothing = input.procsAllowed === false;
   // In a main-target-only power every proc — damage or not — rolls
   // single-target: the AoE radius belongs to a secondary effect (the knockback
   // splash) that the proc never rolls against.
   const shellGeometry =
     resolveProcRollGeometry(input.procsOnlyOnMainTarget, radius, arcDegrees);
-  const shellSchedule = resolveProcRollSchedule({
+  // ONE schedule for every piece, sites or not. A site changes where the proc
+  // rolls, never when: the window is the recharge of the power the player
+  // pressed. Measured 2026-08-09 on two delegating powers whose children have
+  // very different recharges from their parents — Fault paid 37/45 where the
+  // parent's window predicts 0.820 and the child's 0.301, Spring Attack 26/28
+  // where the parent's caps at 0.9 and the child's predicts 0.434.
+  const schedule = resolveProcRollSchedule({
     powerType: input.powerType,
     baseRecharge,
     castTime,
@@ -119,28 +125,21 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
     // levelRange. (@Redlynne report, 2026-06-12 — was using io.level for
     // non-attuned, so Global-IO-Level builds under-counted 10×.)
     const procDmg = interpolateProcDamage(dmg.value, dmg.valueMax, procData.levelRange, buildLevel);
-    // Which window this piece rolls against. `getIOSet(...).type` is the piece's
-    // real game set category — the same key the picker slots by — rather than
-    // `procData.setCategory`, whose spellings drift from the game's ("Defense",
-    // "Brute ATO") and would mis-route on the difference.
-    // Guarded on the site list, not just handed to the resolver: `getIOSet`
-    // reaches into the active dataset, and the ten powers that have sites are
-    // the only reason to pay for that lookup at all.
-    const site = input.procRollSites?.length
-      ? resolveProcRollSite(input.procRollSites, io.setId ? getIOSet(io.setId)?.type : undefined)
-      : null;
-    // A kNone shell with no site for this piece rolls it nowhere: Hypnotizing
-    // Lights lists Sleep, and neither of its children accepts an IO set that
-    // carries a Sleep proc.
+    // Which geometry this piece rolls against: routed by the piece's own
+    // `boostsAllowed` — the key `CopyBoosts` filters by when the shell hands
+    // its slotting to a child. A piece TWO children could hold (the multi-mez
+    // ATO procs in Hypnotizing Lights) has no single roll: it pays nothing
+    // here, and the Info panel carries the loud marker (DATA-GAP-REGISTER
+    // HC-4).
+    let site: ProcRollSite | null;
+    try {
+      site = resolveProcRollSite(input.procRollSites, procData.boostsAllowed);
+    } catch {
+      continue;
+    }
+    // A kNone shell with no site for this piece rolls it nowhere: no child's
+    // `BoostsAllowed` can hold it, so `CopyBoosts` hands it to no one.
     if (!site && shellRollsNothing) continue;
-    // No site summons a patch, so none of them takes the patchDuration branch.
-    const schedule = site
-      ? resolveProcRollSchedule({
-        powerType: site.powerType,
-        baseRecharge: site.baseRecharge,
-        castTime: site.castTime,
-      })
-      : shellSchedule;
     const { radius: areaRadius, arcDegrees: areaArc } = site
       ? resolveProcRollGeometry(
         site.procsOnlyOnMainTarget, site.radius, arcToDegrees(site.arc) || undefined)

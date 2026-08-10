@@ -22,26 +22,24 @@ export const Fault: Power = {
   "procRollSites": [
     {
       "power": "Redirects.Stone_Melee.Fault_Stalker",
-      "setCategories": [
+      "boostsAllowed": [
+        "EnduranceDiscount",
+        "Range",
+        "Stun",
+        "Recharge",
         "Knockback",
-        "Stuns"
+        "Accuracy"
       ],
-      "powerType": "Click",
-      "baseRecharge": 20,
-      "castTime": 2.1,
       "radius": 15,
       "arc": 0
     },
     {
       "power": "Redirects.Stone_Melee.Fault_Cone_Stalker",
-      "setCategories": [
-        "Ranged AoE Damage",
-        "Stalker Archetype Sets",
-        "Universal Damage Sets"
+      "boostsAllowed": [
+        "Range",
+        "Damage",
+        "Accuracy"
       ],
-      "powerType": "Click",
-      "baseRecharge": 6,
-      "castTime": 2.1,
       "radius": 20,
       "arc": 0.9599311351776123
     }

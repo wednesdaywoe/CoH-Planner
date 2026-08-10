@@ -163,12 +163,11 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   // ProcMainTargetOnly — procs roll single-target here regardless of the power's
   // radius. See the field doc on `Power.procsOnlyOnMainTarget`.
   if (rawJson.procs_only_on_main_target) power.procsOnlyOnMainTarget = true;
-  // ProcAllowed kNone — no PPM proc rolls here at all (Spring Attack, whose
-  // executed child carries CopyBoosts but NOT ProcSeparately). See the field
-  // doc on `Power.procsAllowed`.
+  // ProcAllowed kNone — this power's own activation is not a proc window. See
+  // the field doc on `Power.procsAllowed`.
   if (rawJson.procs_allowed === false) power.procsAllowed = false;
-  // …unless a ProcSeparately child rolls in its place. No pool power has one
-  // today; the call is here so a pool that grows one is not a silent gap.
+  // …unless an executed child rolls in its place — Spring Attack does exactly
+  // that. See collectProcRollSites.
   const procRollSites = collectProcRollSites(rawJson);
   if (procRollSites) power.procRollSites = procRollSites;
   power.rank = rank;

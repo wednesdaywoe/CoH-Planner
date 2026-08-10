@@ -22,16 +22,11 @@ export const Whitecap: Power = {
   "procRollSites": [
     {
       "power": "Redirects.Marine_Affinity.Whitecap_Arrive",
-      "setCategories": [
-        "Corruptor Archetype Sets",
-        "Defender Archetype Sets",
+      "boostsAllowed": [
         "Knockback",
-        "Melee AoE Damage",
-        "Universal Damage Sets"
+        "Damage",
+        "Accuracy"
       ],
-      "powerType": "Click",
-      "baseRecharge": 15,
-      "castTime": 0,
       "radius": 20,
       "arc": 0
     }

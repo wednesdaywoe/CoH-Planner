@@ -6,6 +6,7 @@ import { PROC_GLOBAL_EFFECTS } from './generated/proc-globals.generated';
 import { PROC_DAMAGE_EFFECTS } from './generated/proc-damage.generated';
 import { PROC_OTHER_EFFECTS } from './generated/proc-effects.generated';
 import { PROC_PPM } from './generated/proc-ppm.generated';
+import { PROC_BOOSTS_ALLOWED } from './generated/proc-boosts-allowed.generated';
 import { PROC_RESIDUAL_EFFECTS } from './proc-residual-effects';
 import { PROC_VARIABLE_CONTROLS } from './proc-variable-controls';
 import type { ProcOverride } from '../types/build';
@@ -112,6 +113,14 @@ export interface ProcData {
   ioName: string;
   /** Procs Per Minute value (null for Globals and some Proc120s) */
   ppm: number | null;
+  /**
+   * The PIECE's own `BoostsAllowed`, verbatim: one real boost type plus the
+   * five origins. The routing key for `procRollSites` — `CopyBoosts` filters
+   * by the destination's boost types, and no power's list names an origin, so
+   * the origins ride along harmlessly. Absent where the extractor resolved no
+   * piece.
+   */
+  boostsAllowed?: string[];
   /** Detailed mechanics description */
   mechanics: string;
   /** PvP-specific notes */
@@ -2431,6 +2440,13 @@ for (const [key, ppm] of Object.entries(PROC_PPM)) {
   const entry = PROC_DATABASE[key];
   if (entry) entry.ppm = ppm;
 }
+// Binary-sourced per-piece BoostsAllowed: the routing key for `procRollSites`
+// (the executed children a `ProcAllowed kNone` shell hands its slotting to).
+// See resolveProcRollSite.
+for (const [key, boosts] of Object.entries(PROC_BOOSTS_ALLOWED)) {
+  const entry = PROC_DATABASE[key];
+  if (entry) entry.boostsAllowed = boosts;
+}
 // Hand-curated residual (P4/P5): the genuinely underivable procs the generator
 // can't reach — Rebirth-only sets, Create_Entity pet summons, PBAoE ally buffs,
 // self-meter/conditional stacks. Faithful structured transcriptions so EVERY
@@ -2809,10 +2825,10 @@ export function resolveProcRollGeometry(
  * (where the proc still rides `CopyBoosts` into the pet's own attacks) and the
  * ordinary attacks where nothing fires.
  *
- * On the ten powers that also carry `procRollSites` it does not: HC pairs the
- * flag with a `ProcSeparately` executed child that rolls in the shell's place,
- * so the power fires procs — in the child's window. `resolveProcRollSite` picks
- * which child a given proc reaches.
+ * On the powers that also carry `procRollSites` it does not: the flag sits on
+ * a shell that hands its slotting to an executed child, and the child rolls in
+ * its place — in this power's window, against the child's geometry.
+ * `resolveProcRollSite` picks which child a given proc reaches.
  *
  * Deliberately says nothing about GLOBAL IOs. LotG +Recharge, Call to Arms
  * +Def and the rest are not rolled — they are always-on auras granted by the
@@ -2827,19 +2843,36 @@ export function powerFiresProcs(
 }
 
 /**
- * The roll site a proc from `setCategory` reaches, or null when it reaches
- * none — either because the power rolls in its own window (no sites) or
- * because no child accepts that category.
+ * The roll site a proc piece reaches: the one child whose `boostsAllowed`
+ * intersects the piece's own, or null when none does — either because the
+ * power rolls in its own window (no sites) or because no child can hold the
+ * piece's boost type, in which case `CopyBoosts` hands it to no one and it
+ * fires nothing.
  *
- * At most one site can match: the converter fails the build when two sites of
- * one power claim the same category, so this never has to choose.
+ * A piece's `boostsAllowed` is one real boost type plus the five origins, and
+ * no power's list names an origin, so the origins never route. Sibling sites
+ * may share types no proc carries (Fault's children both list Range and
+ * Accuracy), which is why the collision check is per PIECE and lives here
+ * rather than in the converter. Two matches would be two geometries for one
+ * roll — a shape the model cannot express — and a piece with no
+ * `boostsAllowed` at all is an extractor gap the routing cannot answer
+ * around; both throw rather than pick.
  */
 export function resolveProcRollSite(
   sites: ProcRollSite[] | undefined,
-  setCategory: string | undefined,
+  procBoostsAllowed: string[] | undefined,
 ): ProcRollSite | null {
-  if (!sites?.length || !setCategory) return null;
-  return sites.find(s => (s.setCategories as string[]).includes(setCategory)) ?? null;
+  if (!sites?.length) return null;
+  if (!procBoostsAllowed?.length) {
+    throw new Error('proc piece has no boostsAllowed to route by');
+  }
+  const hits = sites.filter(s => s.boostsAllowed.some(b => procBoostsAllowed.includes(b)));
+  if (hits.length > 1) {
+    throw new Error(
+      `sites ${hits[0].power} and ${hits[1].power} both accept [${procBoostsAllowed.join(', ')}] `
+      + '— a proc slotted here has no single roll');
+  }
+  return hits[0] ?? null;
 }
 
 // ============================================================================

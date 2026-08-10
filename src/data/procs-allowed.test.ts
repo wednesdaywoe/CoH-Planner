@@ -21,7 +21,7 @@ import type { IOSetEnhancement } from '@/types';
  * converter carried it, so nothing downstream could see it. That is a silent
  * failure by construction: the PPM formula happily computes a chance from any
  * recharge, and the flagged powers are disproportionately LONG-recharge ones
- * (Paralyzing Blast 240s, Spring Attack 120s, the pet summons 60–240s), where
+ * (Paralyzing Blast 240s, the pet summons 60–240s), where
  * every proc in the pool pins to the 90% ceiling. The proc-potential badge was
  * therefore loudest exactly where the game fires nothing.
  *

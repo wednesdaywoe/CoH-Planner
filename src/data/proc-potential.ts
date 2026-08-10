@@ -136,11 +136,12 @@ export interface ProcPotential {
    */
   procsDisallowed: boolean;
   /**
-   * True on the ten powers whose `kNone` is paired with `ProcSeparately`
-   * children: procs DO fire, but each entry was scored against the child that
-   * accepts its set, so the flat recharge/radius/areaDenominator fields above
-   * describe the shell and not any roll. Read `entries[].viaPower` for the one
-   * that scored each row, and do not print the flat window when this is set.
+   * True on the powers whose `kNone` shell hands its slotting to executed
+   * children: procs DO fire, but each entry was scored against the geometry of
+   * the child that can hold it (over this power's own window), so the flat
+   * radius/areaDenominator fields above describe the shell and not any roll.
+   * Read `entries[].viaPower` for the one that scored each row, and do not
+   * print the flat geometry when this is set.
    */
   rollsInExecutedChildren: boolean;
 }
@@ -228,19 +229,15 @@ function resolveProcContext(power: Power) {
 }
 
 /**
- * The roll geometry and schedule of one `procRollSites` child — the window a
- * proc routed there is scored against instead of the shell's. No site summons
- * a patch, so this never takes the patch branch and `rolls` is always 1.
+ * The roll geometry of one `procRollSites` child, over the shell's schedule.
+ * A site moves WHERE a proc rolls, not when — the window stays the recharge of
+ * the power the player presses. See `collectProcRollSites` for the pylon
+ * measurements that separate the two.
  */
-function resolveSiteContext(site: ProcRollSite) {
+function resolveSiteContext(ctx: ReturnType<typeof resolveProcContext>, site: ProcRollSite) {
   const roll = resolveProcRollGeometry(
     site.procsOnlyOnMainTarget, site.radius, arcToDegrees(site.arc) || undefined);
-  const schedule = resolveProcRollSchedule({
-    powerType: site.powerType,
-    baseRecharge: site.baseRecharge,
-    castTime: site.castTime,
-  });
-  return { schedule, radius: roll.radius, arcDegrees: roll.arcDegrees };
+  return { schedule: ctx.schedule, radius: roll.radius, arcDegrees: roll.arcDegrees };
 }
 
 /**
@@ -268,12 +265,12 @@ const _cache = new WeakMap<Power, ProcPotential>();
  * were long-recharge flagged powers (Paralyzing Blast at 240s, Spring Attack at
  * 120s) where every proc in the pool pinned to the 90% cap.
  *
- * The ten powers carrying `procRollSites` are the exception and keep a badge:
- * their kNone is paired with a `ProcSeparately` child that rolls in the shell's
- * place, so each entry is scored against the child that accepts its set and
- * names it in `viaPower`. `rollsInExecutedChildren` marks them, and the flat
- * recharge/radius/areaDenominator fields describe the shell rather than any
- * roll — do not print them for those powers.
+ * The powers carrying `procRollSites` are the exception and keep a badge:
+ * their kNone shell hands its slotting to executed children, so each entry is
+ * scored against the child that can hold it — the child's geometry over this
+ * power's own window — and names it in `viaPower`. `rollsInExecutedChildren`
+ * marks them, and the flat radius/areaDenominator fields describe the shell
+ * rather than any roll — do not print them for those powers.
  */
 export function getProcPotential(power: Power): ProcPotential | null {
   const categories = power.allowedSetCategories ?? [];
@@ -324,13 +321,20 @@ export function getProcPotential(power: Power): ProcPotential | null {
     // Proc120s and any PPM-less entry can't use the PPM formula.
     if (data.type !== 'Proc' || data.ppm == null) continue;
 
-    // On a kNone shell with ProcSeparately children, the child that accepts
-    // this set is what rolls it — and a set no child accepts rolls nowhere,
-    // which is why an unrouted proc drops out rather than falling back to the
-    // shell's window.
-    const site = resolveProcRollSite(power.procRollSites, set.type);
+    // On a kNone shell that delegates, the child whose `BoostsAllowed` can
+    // hold this piece is what rolls it — and a piece no child can hold rolls
+    // nowhere, which is why an unrouted proc drops out rather than falling
+    // back to the shell's geometry. A piece TWO children could hold has no
+    // single roll and drops out the same way; the slotted surfaces carry the
+    // loud marker (DATA-GAP-REGISTER HC-4).
+    let site: ProcRollSite | null;
+    try {
+      site = resolveProcRollSite(power.procRollSites, data.boostsAllowed);
+    } catch {
+      continue;
+    }
     if (ctx.rollsInExecutedChildren && !site) continue;
-    const roll = site ? resolveSiteContext(site) : ctx;
+    const roll = site ? resolveSiteContext(ctx, site) : ctx;
 
     const chance = calculateScheduledProcChance(
       data.ppm,

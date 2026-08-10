@@ -4284,6 +4284,18 @@ export const POWER_POOLS_RAW = {
         "name": "Spring Attack",
         "fullName": "Pool.Leaping.Spring_Attack",
         "procsAllowed": false,
+        "procRollSites": [
+          {
+            "power": "Redirects.Pool_Leaping.Spring_Attack",
+            "boostsAllowed": [
+              "Knockback",
+              "Damage",
+              "Accuracy"
+            ],
+            "radius": 15,
+            "arc": 0
+          }
+        ],
         "rank": 5,
         "available": 13,
         "description": "You leap into the air and smash down among ranks of foes in the blink of an eye. Using this power allows you to jump to a selected area to deal significant smashing damage to all foes near the location you teleport to, most foes that are struck by your Spring Attack will be knocked down.<br><br>You must be at least level 14 and have two other Leaping Powers before selecting Spring Attack.",
