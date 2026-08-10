@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "887ea3f17936da351748dcb45979d71d29dfb2d8",
-  "synced_from_subject": "Assets registry schema 2: roots per workstation, rings as subpaths",
-  "synced_from_date": "2026-08-08T08:17:51-04:00",
-  "tree_fingerprint": "872dc3ed2ab47a83b292b56a1b4fc12397d088766b593a4873f139257673fa29",
-  "export_manifest_digest": "6625a666726bded36a33a1b718999a02189c54fd7b9127a6497a9411c67623f8",
+  "synced_from_commit": "c27e7e46d8efaab23e535790d4f61559d701b218",
+  "synced_from_subject": "EEA6 work",
+  "synced_from_date": "2026-08-10T12:30:16-04:00",
+  "tree_fingerprint": "91e1968f8e2d5ce14f7978acdd111959231e9bf6c86a5dadee0f00864de50d03",
+  "export_manifest_digest": "28af4a69e4ea3f11da0b594f31208987e631cd506ce0bd76116fd3b04ec0178a",
   "export_manifest_count": 10
 }
