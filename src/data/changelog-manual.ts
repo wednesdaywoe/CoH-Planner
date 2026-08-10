@@ -45,7 +45,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { id: 'pet-multi-table-cancellation', message: 'A pet effect that resolves against more than one of the game\'s tables was cancelling itself out instead of adding up', type: 'fix' },
       { id: 'mode-gated-rows-read-as-zero-chance', message: 'Pet and pseudo-pet effects gated by mode were being read as "0% chance" and dropped off the cards entirely', type: 'fix' },
       { id: 'hunter-mode-damage-always-on', message: 'Thunderspy: Pack Master\'s damage buff only applies in Hunter Mode, and was being counted as always-on.', type: 'fix' },
-      { id: 'level-one-is-two-picks', message: 'Fixed a regression from yesterday: choosing a secondary set force-added its first power at level 1 and then refused to let you remove or move it', type: 'fix' },
+      { id: 'level-one-is-two-picks', message: 'Fixed a regression: choosing a secondary set force-added its first power at level 1 and then refused to let you remove or move it', type: 'fix' },
       { id: 'setbonus-knockback-endurance-stats', message: 'Knockback Strength and Endurance Drain Resistance set bonuses now resolve to real tracked stats instead of nothing, so they should highlight and total like every other bonus. -Speed Cap is a recognised effect now too', type: 'fix' },
     ]
   },
