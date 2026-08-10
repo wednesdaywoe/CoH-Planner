@@ -38,7 +38,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
 
     items: [
       { id: 'blaster-defiance-not-permanent', message: 'Blasters: Defiance was being counted as a permanent damage buff. The few-seconds ramp every Blaster attack grants were added to totals as if it were always on', type: 'fix' },
-      { id: 'proc-roll-in-executed-child', message: 'Walking back part of a proc change that affected Fault, Whitecap, Hypnotizing Lights and Spring Attack. The powers don\.t trigger procs, but they do through a child power that can', type: 'fix' },
+      { id: 'proc-roll-in-executed-child', message: 'Walking back part of a proc change that affected Fault, Whitecap, Hypnotizing Lights and Spring Attack. The powers don\'t trigger procs, but they do through a child power that can', type: 'fix' },
       { id: 'pseudopet-resolves-on-pet-tables', message: 'Rain and patch debuffs were reading off archetype\'s tables instead of the summon\'s', type: 'fix' },
       { id: 'slow-movement-axes-shown', message: 'Slows now say what they slow.', type: 'fix' },
       { id: 'unenhanceable-values-were-enhanced', message: 'Values the game flags un-enhanceable were being enhanced anyway wherever a power\'s effect collapsed into one row', type: 'fix' },
