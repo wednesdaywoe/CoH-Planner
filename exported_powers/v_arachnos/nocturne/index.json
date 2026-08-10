@@ -47,5 +47,9 @@
     "Melee, Moderate DMG(Lethal), Minor DoT(Toxic), Foe -SPD, -Recharge",
     "PBAoE Melee, Moderate DMG(Lethal), Minor DoT(Toxic), Foe -SPD, -Recharge",
     "Melee, Heavy DMG(Lethal), Minor DoT(Toxic), Foe -SPD, -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

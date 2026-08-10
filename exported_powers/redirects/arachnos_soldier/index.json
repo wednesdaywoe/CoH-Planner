@@ -63,5 +63,9 @@
     "Ranged (Targeted AoE), Foe Immobilize, -SPD, -Recharge, -Fly, -Jump",
     "Ranged (Targeted AoE), Foe Immobilize, -SPD, -Recharge, -Fly, -Jump",
     "Ranged (Targeted AoE), Foe Immobilize, -SPD, -Recharge, -Fly, -Jump"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

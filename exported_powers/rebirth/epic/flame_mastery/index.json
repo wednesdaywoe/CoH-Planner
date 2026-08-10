@@ -31,5 +31,9 @@
     "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
     "Ranged (Targeted AoE), Foe -Res, -DEF",
     "Self Rez, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

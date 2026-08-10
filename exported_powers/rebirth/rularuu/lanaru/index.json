@@ -59,5 +59,9 @@
     "Minor DoT(Cold), -Recharge, -SPD",
     "DoT(Cold), -ACC, -Speed, -Recharge",
     "Minor DoT(Cold), -Speed, -Recharge, -DEF -RES"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

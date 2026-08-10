@@ -31,5 +31,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ACC",
     "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
     "Summon Fortunata Seer: Ranged Moderate DMG(Psionic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

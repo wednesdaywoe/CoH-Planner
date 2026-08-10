@@ -47,5 +47,9 @@
     "PBAoE, Self +End, +Def, Foe -End",
     "Self Endurance Discount, Heal, +Regen",
     "Self +DEF(All but Psionics), +Recovery, +Max HP, Res(DeBuff DEF), +Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

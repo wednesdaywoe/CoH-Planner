@@ -39,5 +39,9 @@
     "Trial Badge Checker",
     "Trial Badge Checker",
     "Trial Badge Checker"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

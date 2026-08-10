@@ -31,5 +31,9 @@
     "Ranged, DoT(Toxic), Foe Hold",
     "PBAoE Melee, DMG(Lethal), Foe -Def",
     "PBAoE, Foe Placate -DMG -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "Melee (Cone), Moderate Dam(Lethal), Foe -DEF",
     "Melee, High Dam(Lethal), Foe -DEF",
     "Ranged, High DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

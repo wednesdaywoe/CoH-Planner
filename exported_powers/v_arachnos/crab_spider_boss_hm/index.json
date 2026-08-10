@@ -31,5 +31,9 @@
     "Auto: Self +Recharge, +SPD, Res (Slow/Confuse)",
     "Auto: Self +RES(Smash, Lethal, Psionic, Status Effects)",
     "Self Heal, +Max HP"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

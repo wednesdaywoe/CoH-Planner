@@ -67,5 +67,9 @@
     "DoT(Cold), -ACC, -Speed, -Recharge",
     "-Speed, -Recharge",
     "Hold, -SPD, -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

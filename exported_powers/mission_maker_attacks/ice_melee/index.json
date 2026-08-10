@@ -47,5 +47,9 @@
     "Melee, High DoT(Cold), Foe Hold",
     "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
     "PBAoE, Moderate DMG(Cold), Foe Sleep"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "Ranged (Cone), DoT(Toxic)",
     "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
     "Summon Sentinel: Ranged DMG(Smashing)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

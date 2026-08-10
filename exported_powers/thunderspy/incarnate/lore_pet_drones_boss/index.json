@@ -23,5 +23,9 @@
     "Ranged, Moderate DMG(Energy), Foe -Regen",
     "Ranged Cone, Moderate DMG(Energy), Foe -Regen",
     "Ranged, High DMG(Energy), Foe -Regen"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

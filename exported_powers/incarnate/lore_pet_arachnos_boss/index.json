@@ -23,5 +23,9 @@
     "Moderate Moderate DMG, DoT(Toxic)",
     "Moderate Light DMG, DoT(Toxic)",
     "DoT(Toxic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -27,5 +27,9 @@
     "Ranged, Light DMG(Energy), Foe -End",
     "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
     "PBAoE, Moderate DoT(Energy), Foe -End, -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -35,5 +35,9 @@
     "Ranged, Moderate DOT(Negative), Foe Immobilize, -To Hit, -Fly",
     "Resistance",
     "Ranged Cone, Moderate DMG(Smashing/Negative Energy), Foe Terrorize, -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

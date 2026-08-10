@@ -47,5 +47,9 @@
     "Toggle: PBAoE, Foe Hold",
     "Sacrifice Henchman, PBAoE, Extreme DMG(Energy), Foe -To Hit, -DEF, -DMG, -Res(All)",
     "PBAoE, Foe Hold, -END, -Regen, Special vs. Robots; Self -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

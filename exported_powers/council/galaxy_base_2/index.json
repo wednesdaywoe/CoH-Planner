@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged, Moderate DoT(Negative), Foe Immobilize, -Recharge, -SPD",
     "Ranged, High DMG(Negative), Foe Knockback, -Recharge, -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

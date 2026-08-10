@@ -23,5 +23,9 @@
     "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
     "Ranged, Light DMG(Fire)",
     "PBAoE Melee, Moderate DMG(Fire/Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "Self Endurance Discount, Heal, +Regen",
     "PBAoE, Self +End, +Regen, Foe -End",
     "Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery, +Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

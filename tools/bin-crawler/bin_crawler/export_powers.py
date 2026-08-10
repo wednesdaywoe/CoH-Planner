@@ -715,6 +715,15 @@ def _write_power_tree(powers, ps_records, ps_available, msgs, set_cats_index,
                 # build a slot index (e.g. src/data/incarnates.ts).
                 'power_display_names': [pw.display_name for pw in powers_in_set],
                 'power_short_helps': [pw.short_help for pw in powers_in_set],
+                # The SET-level gates. A power's own `requires` says whether the
+                # game would sell it; these say whether the SET may be taken at
+                # all — how "only one Specialized power pool" and the VEAT branch
+                # choices are stated. Emitted unconditionally (empty where the set
+                # states none) so a consumer can tell "no rule" from "not read".
+                'buy_requires': ps_rec.buy_requires if ps_rec else [],
+                'buy_requires_failed': ps_rec.buy_requires_failed if ps_rec else '',
+                'specialize_at': ps_rec.specialize_at if ps_rec else 0,
+                'specialize_requires': ps_rec.specialize_requires if ps_rec else [],
             }
 
             if msgs and ps_rec:

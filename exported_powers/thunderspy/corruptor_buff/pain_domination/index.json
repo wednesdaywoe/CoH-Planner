@@ -51,5 +51,9 @@
     "PBAoE Damage(self, friend, foe), Foe -RES(All), -DEF(All)",
     "Ally Rez, +DMG, +Recharge, +To Hit. Self +DMG, +Recharge, +To Hit",
     "Ally and Self, +Regeneration, +Recovery, +DMG. Foe -regeneration, -DMG."
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

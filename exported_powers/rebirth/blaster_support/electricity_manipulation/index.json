@@ -47,5 +47,9 @@
     "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback",
     "PBAoE, Self +End, Foe -End",
     "Melee, High DoT(Energy), Target Hold, -End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

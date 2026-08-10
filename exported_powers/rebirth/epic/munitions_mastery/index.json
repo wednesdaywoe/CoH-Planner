@@ -31,5 +31,9 @@
     "Ranged (Targeted AoE), Minor DMG(Smash), Foe Sleep",
     "Ranged Foe -DEF, -RES (All)",
     "Interruptible (Targeted AoE), Superior DMG(Lethal/Smash), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

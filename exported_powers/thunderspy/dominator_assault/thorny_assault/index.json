@@ -47,5 +47,9 @@
     "Melee (Cone), High DMG(Lethal), DoT(Toxic) -DEF, Knockback, -SPD",
     "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
     "High DMG(Lethal), DoT(Toxic) -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

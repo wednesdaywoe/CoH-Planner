@@ -43,5 +43,22 @@
     "Ranged(Targeted AoE), Foe -Fly, -Jump, -Recharge, Immobilize, Slow",
     "Ranged, DoT(Smashing), Foe Hold, -Recharge, -Fly, -Jump, Slow",
     "Ranged(Targeted AoE), Heavy Energy, Extreme DoT(Toxic), Foe -Regen"
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 23,
+  "specialize_requires": [
+    "Widow_Training.Night_Widow_Training",
+    "powerset?",
+    "Teamwork.Widow_Teamwork",
+    "powerset?",
+    "||",
+    "Widow_Training.Fortunata_Training",
+    "powerset?",
+    "Teamwork.Fortunata_Teamwork",
+    "powerset?",
+    "||",
+    "||",
+    "!"
   ]
 }

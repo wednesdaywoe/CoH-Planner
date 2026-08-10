@@ -35,5 +35,9 @@
     "Ranged, Ally +DEF(Smash, Lethal, Energy, Negative), +Res(Cold, Fire, Toxic), +MaxHP",
     "High-Accuracy, Ranged, Foe -DMG, -End, -Regen, -Special",
     "Self Heal, +MaxHP"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

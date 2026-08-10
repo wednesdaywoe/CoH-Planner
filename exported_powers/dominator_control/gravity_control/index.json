@@ -47,5 +47,9 @@
     "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
     "Ranged (Targeted AoE), Foe Teleport, Disorient, Knockback",
     "Summon Singularity: Ranged Control Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

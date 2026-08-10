@@ -47,5 +47,9 @@
     "Foe Targeted, Summon Shades",
     "Target (Location AoE), Foe Hold, -To Hit",
     "Toggle: Summon Shades"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

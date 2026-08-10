@@ -31,5 +31,9 @@
     "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback, -End",
     "Self Endurance Discount",
     "Summon Mu Guardian: Ranged Moderate DMG(Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

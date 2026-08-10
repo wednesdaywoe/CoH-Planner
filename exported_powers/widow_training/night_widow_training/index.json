@@ -35,5 +35,16 @@
     "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
     "Melee (Cone), DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
     "Ranged (Cone), DMG(Psionic), Foe -Recharge"
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 23,
+  "specialize_requires": [
+    "Widow_Training.Fortunata_Training",
+    "powerset?",
+    "Teamwork.Fortunata_Teamwork",
+    "powerset?",
+    "||",
+    "!"
   ]
 }

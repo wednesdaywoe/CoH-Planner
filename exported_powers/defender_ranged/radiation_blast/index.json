@@ -47,5 +47,9 @@
     "Ranged, DMG(Energy), Foe Disorient, -DEF",
     "Ranged (Targeted AoE), DMG(Energy), Foe -DEF",
     "PBAoE, DMG(Energy/Smash), Foe Hold, -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

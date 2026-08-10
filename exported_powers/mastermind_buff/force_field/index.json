@@ -47,5 +47,9 @@
     "Toggle: PBAoE Knockback",
     "Ranged (Targeted AoE), DMG(Smash), Foe Knockdown, Disorient",
     "Location (PBAoE), Team +Res(Accuracy, Defense, Perception, Recharge, Regen, Speed, ToHit), Foe -Str(Defense, Perception, Regen, Speed, ToHit)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

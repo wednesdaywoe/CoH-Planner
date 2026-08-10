@@ -47,5 +47,9 @@
     "Ranged (Cone), Moderate DMG(Energy), -END",
     "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback",
     "Summon Sentinel: Ranged, Moderate DMG(Energy), Foe -End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

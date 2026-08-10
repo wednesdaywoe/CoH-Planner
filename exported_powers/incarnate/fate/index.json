@@ -47,5 +47,9 @@
     "PBAoE Ally +DEF(All), +Res(All), Ally Rez x2",
     "Wide PBAoE Ally Status Effect Protection",
     "Wide PBAoE Ally Status Effect Protection, +Range, +Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

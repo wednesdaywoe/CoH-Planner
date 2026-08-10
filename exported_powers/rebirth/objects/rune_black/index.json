@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "AoE Foe -DMG -ACC"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

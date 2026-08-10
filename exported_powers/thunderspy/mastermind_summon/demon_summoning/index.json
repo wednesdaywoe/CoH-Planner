@@ -47,5 +47,9 @@
     "Ranged, Pet +Dmg, +To Hit, Summon Living Hellfire",
     "Summon Demon Prince",
     "Auto PBAoE: Empower Demon Henchman"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

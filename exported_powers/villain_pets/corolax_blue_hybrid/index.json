@@ -43,5 +43,9 @@
     "Cone Lethal",
     "Ranged, Light DMG(Lethal)",
     "DoT(Cold), -Recharge, -SPD, +Wet"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

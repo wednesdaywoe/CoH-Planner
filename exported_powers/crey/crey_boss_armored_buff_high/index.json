@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged, Ally +DEF(Smash, Lethal, Fire, Cold, Energy, Negative), +Res(Toxic, End Drain)",
     "Ranged, Minor DMG(Smash), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

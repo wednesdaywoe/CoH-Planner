@@ -27,5 +27,9 @@
     "Melee, Light DMG(Fire/Cold), Minor DoT(Fire), -Speed(Foe, All), -Recharge(Foe)",
     "PBAoE, Moderate DoT (Fire or Cold), Special",
     "Ranged, Minor DMG(Cold), Minor DoT (Fire), Hold(Foe), -Speed(Foe, All), -Rech(Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

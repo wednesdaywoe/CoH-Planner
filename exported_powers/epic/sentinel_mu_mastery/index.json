@@ -31,5 +31,9 @@
     "Ranged, DMG(Energy), Foe Hold, -End",
     "Ranged (Cone), DMG(Energy), -END",
     "Summon Mu Adept: Ranged DMG(Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

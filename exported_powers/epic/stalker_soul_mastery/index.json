@@ -31,5 +31,9 @@
     "Self: +Def(All)",
     "Ranged, DoT(Negative), Foe Hold",
     "Summon Night Widow: Melee DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

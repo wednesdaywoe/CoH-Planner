@@ -47,5 +47,9 @@
     "Melee, Minor DMG(Energy/Smash), Foe -Def, Disorient, Special",
     "Sniper, Minor DMG(Energy), Foe -DEF",
     "Sniper, Light DMG(Energy), Foe -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

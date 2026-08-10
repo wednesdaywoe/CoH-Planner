@@ -55,5 +55,9 @@
     "Post Death Special: PBAoE, Moderate DMG(Fire/Smash), Foe Disorient, Knockback",
     "Auto: Self +Regen, +Res(Regen Debuff)",
     "Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "PBAoE, DMG(Fire), Self +End",
     "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
     "Toggle: PBAoE, DoT (Fire), Foe -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

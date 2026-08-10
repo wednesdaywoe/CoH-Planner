@@ -47,5 +47,9 @@
     "Close, High DMG(Fire), Foe -Res, Knockdown, Minor DoT(Toxic)",
     "Ranged, High DMG(Fire/Toxic), Foe -Res",
     "Ranged, Extreme DoT(Fire), Short Foe Hold, Foe -Res"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

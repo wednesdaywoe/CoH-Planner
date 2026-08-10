@@ -47,5 +47,9 @@
     "Toggle: Ranged (Target Ally AoE), Foe Knockback",
     "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confusion), +Perception",
     "Ranged (Location AoE), Foe Knockback, Hold, -To Hit, -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

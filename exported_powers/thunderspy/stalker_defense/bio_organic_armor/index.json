@@ -47,5 +47,9 @@
     "Toggle: PBAoE, Foe Sleep, -Damage(All), Self +Special",
     "Self Rez, Special",
     "PBAoE, Self +Absorb, +Regeneration, +Recovery, Foe -DMG"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

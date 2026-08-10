@@ -23,5 +23,9 @@
     "Team AoE Ally +Heal",
     "Team AoE +Speed, +Recharge, +Recovery, +Dam +Res(Effects)",
     "Ally +DEF(Smash, Lethal, Fire, Cold, Energy, Negative)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

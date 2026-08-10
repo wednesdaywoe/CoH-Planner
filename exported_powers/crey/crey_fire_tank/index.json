@@ -43,5 +43,9 @@
     "DoT (Fire)",
     "Close, DMG(Fire)",
     "PBAoE, DMG(Fire), Self -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -27,5 +27,16 @@
     "Toggle: Self +Res(Disorient, Hold, Immobilize, Sleep, All DMG but Psionics)",
     "Self Heal, +Max HP",
     "Summon Spiderlings: Ranged Moderate DMG(Lethal)"
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 23,
+  "specialize_requires": [
+    "Arachnos_Soldiers.Bane_Spider_Soldier",
+    "powerset?",
+    "Training_Gadgets.Bane_Spider_Training",
+    "Powerset?",
+    "||",
+    "!"
   ]
 }

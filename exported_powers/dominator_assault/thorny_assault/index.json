@@ -47,5 +47,9 @@
     "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
     "Melee (Cone), Superior DMG(Lethal), DoT(Toxic) -DEF, Knockback, -SPD",
     "Ranged, Extreme DMG(Lethal), DoT(Toxic) -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

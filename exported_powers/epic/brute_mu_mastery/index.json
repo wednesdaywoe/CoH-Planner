@@ -31,5 +31,9 @@
     "Ranged (Targeted AoE), DoT(Energy), Foe -End",
     "Ranged (Cone), DMG(Energy), -END",
     "Summon Mu Strike: Ranged DMG(Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

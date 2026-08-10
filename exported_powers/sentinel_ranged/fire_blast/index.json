@@ -47,5 +47,9 @@
     "Ranged, DMG(Fire), DoT(Fire), Foe Knockback, Repel",
     "Ranged (Location AoE), DoT(Fire), Foe -SPD",
     "PBAoE, DMG(Fire/Smash), DoT(Fire)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "Ranged (Location AoE), -Res(All), -MaxEnd",
     "Ranged (Location AoE), Knockdown, -Speed, -DEF, +Special",
     "AoE, Foe Hold, -Boost, Special vs. Robots"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

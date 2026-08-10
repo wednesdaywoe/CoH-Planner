@@ -47,5 +47,9 @@
     "PBAoE Melee, Moderate DMG(Lethal), Foe Knockdown",
     "Melee, Extreme DMG(Lethal), Foe Knockdown",
     "Melee (Cone), Superior DMG(Lethal), Foe Knockdown"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

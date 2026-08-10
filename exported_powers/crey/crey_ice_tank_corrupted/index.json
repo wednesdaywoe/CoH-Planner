@@ -23,5 +23,9 @@
     "Melee Cold, Knockback, Foe -Recharge, -SPD",
     "Melee, Minor DMG(Cold), Foe Stun, Foe -Recharge, -SPD",
     "Ranged, Moderate DMG(Smash)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

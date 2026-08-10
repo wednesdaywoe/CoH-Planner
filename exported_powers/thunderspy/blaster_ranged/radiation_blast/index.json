@@ -47,5 +47,9 @@
     "Self +DMG, +To Hit, Special",
     "Sniper, Superior DMG(Energy), Foe -DEF",
     "PBAoE, Extreme DMG(Energy/Toxic), Foe Hold, -DEF, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

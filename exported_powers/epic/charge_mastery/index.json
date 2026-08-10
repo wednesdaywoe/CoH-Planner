@@ -31,5 +31,9 @@
     "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
     "Self, +Res(Special)",
     "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

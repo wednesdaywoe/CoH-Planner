@@ -39,5 +39,9 @@
     "Ranged, Moderate DMG(Negative), Target -To Hit, Self +HP",
     "Summon Ghost (Special)",
     "Summon Lich"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

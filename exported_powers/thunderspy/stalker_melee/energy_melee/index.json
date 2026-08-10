@@ -47,5 +47,9 @@
     "Melee, Extreme DMG(Energy/Smash), Foe Disorient",
     "Melee, Minor DMG(Smash/Energy), Foe Disorient",
     "Melee, Extreme DMG(Energy/Smash), Foe Disorient, Self -HP"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

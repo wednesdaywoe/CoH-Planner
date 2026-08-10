@@ -23,5 +23,9 @@
     "PBAoE, Foe -End, -Recovery, Self +End, +Res(All DMG)",
     "PBAoE, Extreme DMG(Negative), Foe -Recharge, -SPD, Knockback",
     "Self Rez, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

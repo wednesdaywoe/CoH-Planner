@@ -47,5 +47,9 @@
     "Ally Rez, Self +DMG, +Recharge, +Recovery, +To Hit, +Special",
     "PBAoE, Foe -RES(All), -DEF(All)",
     "PBAoE Team +To Hit, +DMG, +RES(All DMG, Placate)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

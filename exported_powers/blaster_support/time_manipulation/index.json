@@ -47,5 +47,9 @@
     "Melee, DMG(Psionic), Foe Fear",
     "Ranged (Targeted AoE), Foe Disorient, -SPD, -ToHit",
     "Auto: Self +Recharge, +Resist(Energy, Disorient, Slow)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

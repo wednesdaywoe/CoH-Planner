@@ -27,5 +27,9 @@
     "Melee, Moderate DMG(Cold/Lethal), Foe -Recharge, -SPD",
     "Ranged, Moderate DMG(Cold), Foe Hold, -SPD, -Recharge",
     "Enchant Demon"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

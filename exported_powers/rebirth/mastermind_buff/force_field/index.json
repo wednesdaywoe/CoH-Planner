@@ -51,5 +51,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Smash), Foe Knockdown, Disorient",
     "Toggle: PBAoE Foe -Speed, -DMG(All), Knockdown, Repel (Special)",
     "Toggle: PBAoE Knockback OR Repel (Special)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

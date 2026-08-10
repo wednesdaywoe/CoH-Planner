@@ -47,5 +47,9 @@
     "Ranged, DMG(Fire)",
     "Sniper, DMG(Fire), Self +Range",
     "PBAoE, DMG(Fire/Smash), Foe DoT(Fire)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

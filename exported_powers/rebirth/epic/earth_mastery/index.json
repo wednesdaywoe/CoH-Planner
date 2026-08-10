@@ -31,5 +31,9 @@
     "Ranged, Moderate DMG(Smash), Foe Hold, -DEF",
     "Ranged (Location AoE), Foe Attract, -Speed, -Jump, -Fly, -DEF",
     "Ranged (Targeted AoE), Moderate DMG(Lethal), Foe -DEF, Minor Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

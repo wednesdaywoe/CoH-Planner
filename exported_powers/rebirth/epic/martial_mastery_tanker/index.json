@@ -31,5 +31,9 @@
     "Ranged, High DMG(Lethal), -Def (All), -Res(All)",
     "Auto: Global Chance of +DMG (all), +End Discount",
     "Toggle: Self +Regen; Ally +Regen, +Res (Fear, Confuse)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

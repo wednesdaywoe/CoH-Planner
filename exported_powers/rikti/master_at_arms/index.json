@@ -35,5 +35,9 @@
     "Melee (Cone), Extreme DMG(Energy/Lethal), Foe Disorient",
     "Toggle: PBAoE, Ally +DMG, +Res(Confuse, Fear, Sleep)",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

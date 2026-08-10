@@ -39,5 +39,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Lethal/Smash), Knockback",
     "Summon Commando",
     "Buff Mercenary +DMG, +RES(All except Psionic), +To Hit, +Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

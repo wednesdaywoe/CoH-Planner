@@ -47,5 +47,9 @@
     "PBAoE, Minor DMG(Fire), Self +End",
     "Location (PBAoE), Moderate DoT(Fire), Self Res(Immobilize)",
     "Toggle: PBAoE, Minor DoT(Fire), Foe -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

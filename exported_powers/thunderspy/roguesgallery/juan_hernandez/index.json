@@ -47,5 +47,9 @@
     "PBAoE, Superior DMG (Smashing), Chance for Knockback (Foe)",
     "Ranged, High DMG (Cold), -Speed (Foe, All), -Rech (Foe), Immobilize (Foe)",
     "Ranged (Cone), High DoT (Cold), -Speed (Foe, All), -Rech (Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

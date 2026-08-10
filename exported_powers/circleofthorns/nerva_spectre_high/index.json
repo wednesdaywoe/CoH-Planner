@@ -23,5 +23,9 @@
     "Ranged (Cone), High DoT(Cold), Foe -Recharge, -SPD",
     "Ranged (Cone), Foe Fear, -SPD, -Recharge",
     "PBAoE Melee, Moderate DMG(Negative/Cold), Self +DMG, +ToHit, Heal"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

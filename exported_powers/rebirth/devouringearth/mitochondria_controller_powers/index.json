@@ -27,5 +27,9 @@
     "Fear, DoT, -Recharge, -SPD",
     "Self Hover",
     "Auto Res Knockback, Sleep, Disorient, Immobilize, Hold, Fear, Confuse, Teleport, Lethal"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

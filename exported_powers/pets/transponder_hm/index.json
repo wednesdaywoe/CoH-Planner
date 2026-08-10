@@ -31,5 +31,9 @@
     "Clear Damage",
     "Auto: Self +RES(All), Weak(Hold, Stun, Fear, Sleep)",
     "Summon"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

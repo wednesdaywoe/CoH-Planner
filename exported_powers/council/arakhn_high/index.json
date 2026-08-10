@@ -47,5 +47,9 @@
     "PBAoE, Foe -DMG, Self Heal (Special), +End",
     "Melee, Superior DMG(Negative), Foe -Recharge, -SPD, Self Heal",
     "PBAoE, Extreme DMG(Negative), Foe -Recharge, -SPD, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

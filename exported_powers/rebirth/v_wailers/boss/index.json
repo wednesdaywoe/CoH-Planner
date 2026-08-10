@@ -31,5 +31,9 @@
     "Ranged Cone, Medium DMG(Smashing/Energy)",
     "Ranged (Cone), Minor DMG(Smashing/Energy), Foe Knockback",
     "Toggle: PBAoE, Ally +Res(All Damage, Hold, Immobilize, Disorient)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

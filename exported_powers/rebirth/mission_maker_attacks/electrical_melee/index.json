@@ -47,5 +47,9 @@
     "Melee, Moderate DMG(Smash/Energy), Foe -End +Special",
     "PBAoE, Foe Disorient, Knockback",
     "PBAoE Superior DMG(Energy), Foe Knockback; Self Teleport;"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

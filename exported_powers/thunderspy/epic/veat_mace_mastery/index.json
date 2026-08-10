@@ -31,5 +31,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
     "Melee, Superior DMG(Smash/Toxic), Foe -Res",
     "Summon Tarantula: Ranged Moderate DMG(Toxic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

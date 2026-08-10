@@ -47,5 +47,9 @@
     "Ranged (Location AoE), Foe Knockback, -DEF, -To Hit",
     "Ranged (Location AoE), Foe Attract, -Speed, -Jump, -Fly, -DEF",
     "Ranged (Location AoE), Foe Hold, Minor DoT(Fire), Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

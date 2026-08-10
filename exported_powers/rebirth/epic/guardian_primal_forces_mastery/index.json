@@ -31,5 +31,9 @@
     "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
     "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
     "Auto: Self, +Regeneration, +Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

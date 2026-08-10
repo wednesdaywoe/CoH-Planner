@@ -51,5 +51,9 @@
     "Melee, Extreme DMG(Energy/Smash), Foe Disorient, -DEF, -Resist(All)",
     "Melee (Cone), Extreme DMG(Energy/Smash), Foe Knockdown, Disorient",
     "Melee (Cone), Extreme DMG(Energy/Smash), Foe Knockdown, Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

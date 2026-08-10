@@ -35,5 +35,9 @@
     "Moderate Lethal DMG, DoT(Toxic)",
     "DoT(Toxic)",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

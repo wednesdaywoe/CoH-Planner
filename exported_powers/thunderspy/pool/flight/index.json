@@ -31,5 +31,9 @@
     "Toggle: Self Fly",
     "Toggle: Team Fly, -ACC",
     "Toggle: Self +FlySpeed, Res(-Fly), +Def(All), +Flight Control"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

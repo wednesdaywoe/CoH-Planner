@@ -27,5 +27,9 @@
     "Melee, Light DMG(Smashing), Chance for Stun(Foe), Critical",
     "Ranged, Moderate DMG(Smashing), Chance for Knockdown, Critical Hit",
     "PBAoE, Moderate DMG(Smashing), -RES(Foe,All), Chance for Knockdown, Critical"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

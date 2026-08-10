@@ -27,5 +27,9 @@
     "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
     "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
     "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

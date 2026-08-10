@@ -35,5 +35,9 @@
     "Cone Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery",
     "Monitor",
     "PBAoE Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

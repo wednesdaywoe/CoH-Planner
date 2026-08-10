@@ -27,5 +27,9 @@
     "Self Heal, Res(Fire, Cold, Energy, Negative, Toxic, Psionic), Self Rez, Special",
     "Self, +Res(Taunt, Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG, Debuffs), +Recovery, +DMG",
     "Self, +Res(Taunt, Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG, Debuffs), +Recovery, +DMG"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

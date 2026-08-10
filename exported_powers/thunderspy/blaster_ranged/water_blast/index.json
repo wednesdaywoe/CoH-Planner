@@ -47,5 +47,9 @@
     "Self +To Hit, +DMG",
     "Ranged (Location AoE), High DoT(Cold), -Speed, -Defense, Self +Tidal Power",
     "Ranged (Targeted AoE), High DMG(Fire/Smash), Foe High DoT(Fire), -Speed, Knock Up, Disorient, Self -Tidal Power"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

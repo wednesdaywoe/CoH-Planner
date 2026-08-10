@@ -31,5 +31,9 @@
     "Ranged (Cone), DMG(Psionic), Foe -Recharge",
     "Auto: Self, +Recovery, Endurance Discount",
     "Summon Psionic Nexus: Ranged DMG(Psionic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

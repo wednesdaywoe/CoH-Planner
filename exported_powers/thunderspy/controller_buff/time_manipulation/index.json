@@ -47,5 +47,9 @@
     "PBAoE Team, +To-Hit, +Defense(All), +Perception",
     "Ranged (Targeted AoE), Foe -Defense, -Resistance",
     "PBAoE, Team +Recharge, Heal, +End, Moderate Healing over Time, +Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

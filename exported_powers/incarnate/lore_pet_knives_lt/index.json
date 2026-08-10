@@ -23,5 +23,9 @@
     "Ranged (Cone), Light DMG(Lethal), Moderate DoT (Lethal), Chance for -Speed(All), -Recharge on Foes",
     "Melee, Moderate DMG(Lethal), Moderate DoT (Lethal)",
     "Melee, Light DMG(Lethal), Moderate DoT (Lethal), Heal(Self), RES(Heal,Foe), -Rec(Foe), -Regen(Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

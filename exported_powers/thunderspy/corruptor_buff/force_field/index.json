@@ -47,5 +47,9 @@
     "Ranged, Foe Capture (Special)",
     "Ranged (Targeted AoE), Moderate DMG(Smash), Foe Knockdown, Disorient",
     "Toggle: PBAoE Foe Repel, Knockdown"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -23,5 +23,9 @@
     "Cold/Lethal, -Speed, -Recharge, Knockdown",
     "Avoid",
     "Cold/Lethal, -Speed, -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

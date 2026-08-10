@@ -51,5 +51,9 @@
     "Close (Targeted AoE), Minor DMG(Smashing), Foe Knockback, Disorient",
     "Melee, Extreme DMG(Smash)",
     "Melee, Superior DMG(Smash)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

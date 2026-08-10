@@ -23,5 +23,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
     "Ranged (Cone), Moderate DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
     "Self Rez, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

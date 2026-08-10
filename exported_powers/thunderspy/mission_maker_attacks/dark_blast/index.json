@@ -43,5 +43,9 @@
     "Ranged (Cone), Minor DMG(Smashing), Foe -To-hit, Knockback",
     "Ranged, Moderate DMG(Negative), Target -To-hit, Self +HP",
     "Close (AoE), Extreme DMG(Negative), Foe -To-hit, Self -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

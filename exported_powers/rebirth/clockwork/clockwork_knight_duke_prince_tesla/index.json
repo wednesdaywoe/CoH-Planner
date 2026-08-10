@@ -23,5 +23,9 @@
     "Sleep - End",
     "Sleep - End",
     "Toggle AoE Energy, -End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

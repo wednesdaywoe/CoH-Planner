@@ -47,5 +47,9 @@
     "PBAoE, Moderate DMG(Energy/Toxic), Foe -Def, Disorient, Special",
     "Sniper, Extreme DMG(Energy), Foe -DEF",
     "Melee, Extreme DMG(Energy/Smash), Foe -Def, Disorient, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

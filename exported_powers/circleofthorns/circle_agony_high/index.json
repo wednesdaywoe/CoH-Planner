@@ -27,5 +27,9 @@
     "Ranged (Targeted AoE), Foe -DMG, Team +DMG",
     "PBAoE, Team +ToHit, +DMG, +Res(All DMG, Placate)",
     "Toggle: Self +Res(Smashing/Lethal/Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

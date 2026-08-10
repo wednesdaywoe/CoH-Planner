@@ -31,5 +31,9 @@
     "Ranged (Chain), Ally Heal, Self +Static",
     "Ranged (Chain), Ally +End, +Recharge, Self +Static",
     "Ranged (Chain), Ally +DMG, +Tohit, Self +Static"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -39,5 +39,9 @@
     "Self +To-hit, +DMG",
     "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe Knockback",
     "PBAoE, Extreme DMG(Energy/Smash), Foe Knockback, Self -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

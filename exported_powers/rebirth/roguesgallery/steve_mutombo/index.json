@@ -43,5 +43,9 @@
     "Ranged, Extreme DMG (Lethal), -Regen (Foe), -Rec (Foe), -ToHit (Foe), Chance to Stun (Foe)",
     "PBAoE, Superior DoT(Lethal), -RES (Foe, All)",
     "Ranged, Superior DMG (Lethal), Hold (Foe), Chance for -Regen (Foe), -Rec (Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

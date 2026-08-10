@@ -47,5 +47,9 @@
     "Short Ranged, Target Confuse, +Special",
     "Melee, Extreme DMG(Psionic/Lethal), Foe -Rech, Hold; Self -Insight",
     "PBAoE, Moderate DMG(Smash), Foe Knock Up, +Insight"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

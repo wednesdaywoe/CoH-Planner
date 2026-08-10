@@ -47,5 +47,9 @@
     "PBAoE, DMG(Lethal), Foe DoT (Lethal), -Blood Frenzy",
     "Melee, DMG(Lethal), Foe Special DoT (Lethal), -Blood Frenzy",
     "PBAoE, DMG(Lethal), Foe DoT (Lethal), Self 1 to 3 Blood Frenzy, Teleport"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

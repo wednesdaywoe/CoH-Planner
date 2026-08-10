@@ -35,5 +35,9 @@
     "Melee, Light DMG(Toxic/Lethal), Minor DoT(Toxic), Foe -SPD, -Recharge",
     "Melee (Cone), Moderate DMG(Toxic/Lethal), Minor DoT(Toxic), Foe -SPD, -Recharge",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

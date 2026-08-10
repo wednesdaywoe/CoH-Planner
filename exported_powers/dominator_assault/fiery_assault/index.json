@@ -47,5 +47,9 @@
     "PBAoE DMG(Fire), Self +End",
     "Sniper, Extreme DMG(Fire)",
     "Ranged, Superior DMG(Fire)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

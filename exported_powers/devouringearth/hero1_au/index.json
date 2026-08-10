@@ -39,5 +39,9 @@
     "Auto: PBAoE, Minor DoT(Lethal), Foe -Speed, -Recharge",
     "Toggle: Self +Res(Smash, Lethal)",
     "Self Toggle, +DEF +ACC"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

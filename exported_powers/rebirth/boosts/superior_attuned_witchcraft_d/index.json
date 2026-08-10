@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "Enhances To Hit and Defense Debuffs and Slows, Reduces Endurance Cost, and Increases Attack Rate"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

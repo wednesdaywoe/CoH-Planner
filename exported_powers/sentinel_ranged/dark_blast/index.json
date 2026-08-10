@@ -47,5 +47,9 @@
     "Ranged, DMG(Negative), Target -To Hit",
     "Ranged, DMG(Negative), Target -To Hit, Self +HP",
     "PBAoE, DMG(Negative), Foe -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "PBAoE,Self, Pets +Defense, +Regeneration",
     "Summon Knight",
     "Auto PBAoE: Upgrade Knight Henchman"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "Melee, DMG(Lethal), Self +DEF (Melee, Lethal)",
     "Melee, DMG(Lethal), Foe Knockup, -DEF",
     "Melee, High DMG(Lethal), Foe Knockback, -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

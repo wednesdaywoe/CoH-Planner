@@ -31,5 +31,9 @@
     "Add Proc: +Unresistable Damage",
     "Add Proc: +Unresistable Damage",
     "Inner Inspiration Lock"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

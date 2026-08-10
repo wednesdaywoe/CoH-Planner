@@ -23,5 +23,9 @@
     "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
     "PBAoE, DMG(Cold), Foe Sleep",
     "Empower"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

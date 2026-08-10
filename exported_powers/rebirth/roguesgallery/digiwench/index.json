@@ -43,5 +43,9 @@
     "Melee, Moderate DMG (Smashing/Energy), EndDrain (Foe), Chance for -Rec (Foe), EndGain (Self)",
     "Melee, High DMG (Smashing/Energy), EndDrain (Foe), Chance for -Rec (Foe), Knockdown (Foe), EndGain (Self)",
     "Ranged (Cone), Moderate DMG (Energy), EndDrain (Foe), -Rec (Foe), Chance for EndGain (Self)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

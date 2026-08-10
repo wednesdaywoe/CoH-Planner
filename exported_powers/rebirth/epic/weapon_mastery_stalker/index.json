@@ -31,5 +31,9 @@
     "Ranged, Minor DMG(Lethal)",
     "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
     "Ranged (Targeted AoE), Moderate DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "Melee, Superior DMG(Energy/Smash), Foe -DEF; Self Heal Over Time",
     "Ranged, Minor DMG(Energy), Foe -DEF",
     "Ranged, Moderate DoT(Energy), Foe Hold, -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

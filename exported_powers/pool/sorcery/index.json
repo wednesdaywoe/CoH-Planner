@@ -39,5 +39,34 @@
     "Click, Self Teleport",
     "Toggle: Ranged Friend/Foe, Special",
     "Self, +Res(All Dmg, Hold, Sleep, Immobilize, Knockdown, Disorient)"
-  ]
+  ],
+  "buy_requires": [
+    "Pool.Gadgetry.Nano_Net",
+    "Pool.Gadgetry.Wrist_Blaster",
+    "||",
+    "Pool.Gadgetry.Jetpack",
+    "||",
+    "Pool.Experimentation.Experimental_Injection",
+    "||",
+    "Pool.Experimentation.Toxic_Dart",
+    "||",
+    "Pool.Experimentation.Speed_of_Sound",
+    "||",
+    "Pool.Force_of_Will.Weaken_Resolve",
+    "||",
+    "Pool.Force_of_Will.Project_Will",
+    "||",
+    "Pool.Force_of_Will.Mighty_Leap",
+    "||",
+    "Pool.Utility_Belt.Bolas",
+    "||",
+    "Pool.Utility_Belt.Poisoned_Dagger",
+    "||",
+    "Pool.Utility_Belt.Freerunning",
+    "||",
+    "!"
+  ],
+  "buy_requires_failed": "You can only have one Specialized power pool in your build.",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

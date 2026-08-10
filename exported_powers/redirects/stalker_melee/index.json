@@ -23,5 +23,9 @@
     "PBAoE, High DMG(Lethal), Foe Minor DoT(Lethal), +3 Blood Frenzy, Self Teleport",
     "Melee, Minor DMG(Lethal), Foe -DEF",
     "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE), +Stealth Crit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

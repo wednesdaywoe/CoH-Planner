@@ -47,5 +47,9 @@
     "Extreme DMG(Energy), Foe Disorient, -DEF",
     "Ranged (Targeted AoE), Moderate DMG(Energy), Foe -DEF",
     "PBAoE, Extreme DMG(Energy/Smash), Foe Hold, -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

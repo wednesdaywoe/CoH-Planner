@@ -31,5 +31,9 @@
     "Ranged, Superior DMG(Cold), Light DoT(Toxic), Foe Immobilize, -SPD, -Recharge, -Fly",
     "Close, Extreme DMG(Cold), Light DoT(Toxic), Foe Knockback, -Recharge, -SPD",
     "Toggle: PBAoE, Minor DoT(Cold), Foe -Recharge, -SPD, -DMG"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

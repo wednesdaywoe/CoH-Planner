@@ -31,5 +31,9 @@
     "Ranged, High DMG(Energy), Foe -DEF, Knockback",
     "Ranged (Cone), Moderate DMG(Energy), Foe -DEF",
     "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe -DEF, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

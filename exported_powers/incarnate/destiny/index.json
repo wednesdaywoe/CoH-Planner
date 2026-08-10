@@ -191,5 +191,9 @@
     "Targeted Wide AoE League Teleport, +Healing Received, +Intangible. Foe Knockback, Stun.",
     "Targeted Wide AoE League Teleport, +Healing Received. Foe Knockback, Stun.",
     "Targeted Wide AoE League Teleport, +Healing Received, +Stealth, +Perception Radius, +Move Speed. Foe Knockback, Stun."
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

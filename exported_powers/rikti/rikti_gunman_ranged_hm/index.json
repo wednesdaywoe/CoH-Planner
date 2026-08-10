@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged, High DMG(Energy), Foe Knockback, Disorient",
     "Ranged (Targeted AoE), Moderate DMG(Energy), Foe Knockback, Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

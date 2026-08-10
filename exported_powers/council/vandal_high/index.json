@@ -51,5 +51,9 @@
     "Auto: Self +Res(Smash, Lethal)",
     "Self +DEF(All but Psionics), +Recovery, +MaxHP, +Res(DeBuff DEF)",
     "PBAoE, Moderate DMG(Smash), Minor DoT(Smash), Foe Knockup"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

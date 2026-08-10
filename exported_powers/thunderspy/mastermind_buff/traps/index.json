@@ -47,5 +47,9 @@
     "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
     "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
     "Build Turret: Ranged, Moderate DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

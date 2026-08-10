@@ -43,5 +43,9 @@
     "Ranged (Location AoE), Foe -SPD, -Recharge, -Jump, -Fly, Special",
     "Toggle: PBAoE, Team +DEF(All), +DMG, +ToHit, +Res(Confuse, Placate), +Perception",
     "Auto: Self +Res(Smash, Lethal, Psionic, Toxic, Confuse, Hold, Disorient, Sleep, Knockback, Placate, Defense, ToHit, Recharge Debuffs), Vulnerable(Fear, Repel, Taunt, End Drain)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

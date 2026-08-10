@@ -23,5 +23,9 @@
     "Melee, Superior DMG(Negative), Foe -ToHit, Self Heal",
     "Melee, Light DMG(Negative/Smash), Foe -ToHit",
     "Melee, Heavy DMG(Negative/Smash), Foe -ToHit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

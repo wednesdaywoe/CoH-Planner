@@ -51,5 +51,9 @@
     "Auto: Self +Res(All damage, Slow)",
     "Toggle: PBAoE, DoT(Cold)",
     "Toggle: Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery, Invulnerable; Self Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
     "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe Knockback",
     "Self, +Res(All DMG but Psionics)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

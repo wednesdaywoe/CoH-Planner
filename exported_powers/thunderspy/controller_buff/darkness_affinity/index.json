@@ -51,5 +51,9 @@
     "PBAoE Team +Regen, +Recovery, Foe -To Hit",
     "Ranged (Targeted AoE), Foe Intangible",
     "Summon Dark Servant: Ranged Debuff Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

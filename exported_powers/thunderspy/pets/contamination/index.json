@@ -39,5 +39,9 @@
     "Ranged, Minor DMG(Energy/Toxic), Foe -DEF",
     "Ranged, Moderate DMG(Energy/Toxic), Foe -DEF",
     "Extreme DMG(Energy/Toxic), Foe Disorient, -DEF, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

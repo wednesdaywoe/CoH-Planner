@@ -227,5 +227,9 @@
     "Wide PBAoE Extreme DMG(Negative Energy), Foe -DMG",
     "Wide PBAoE Extreme DMG(Negative Energy)",
     "Wide PBAoE Extreme DMG(Negative Energy), Foe -DMG"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

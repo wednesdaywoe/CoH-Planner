@@ -31,5 +31,9 @@
     "DoT (Lethal), -SPD",
     "Self Leap",
     "Auto +DEF(Melee, Ranged, AoE), Res(Confuse, Taunt), +SPD,"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

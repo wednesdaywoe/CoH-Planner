@@ -35,5 +35,9 @@
     "Low-Accuracy, Ranged (Targeted AoE), Foe Hold",
     "Ranged (Cone), Moderate DMG(Psionic), Foe Fear",
     "PBAoE, Team +ToHit, +DEF, +Res(Psionic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

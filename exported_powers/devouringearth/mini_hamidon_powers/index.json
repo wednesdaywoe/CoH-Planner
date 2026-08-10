@@ -27,5 +27,9 @@
     "Auto Res Lethal, Smash",
     "Auto Res Lethal, Smash",
     "Self Destruct"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -51,5 +51,22 @@
     "Ranged, Minor DMG(Psionic), Foe Disorient",
     "Ranged (Targeted AoE), Foe Hold",
     "PBAoE , Extreme DMG(Psionic), Foe Disorient -Recharge"
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 23,
+  "specialize_requires": [
+    "Widow_Training.Night_Widow_Training",
+    "powerset?",
+    "Teamwork.Widow_Teamwork",
+    "powerset?",
+    "||",
+    "Widow_Training.Tarantula_Training",
+    "powerset?",
+    "Teamwork.Tarantula_Teamwork",
+    "powerset?",
+    "||",
+    "||",
+    "!"
   ]
 }

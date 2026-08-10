@@ -47,5 +47,9 @@
     "PBAoE, Allies +Jump",
     "Ranged (Targeted AoE), Target -End, Team +Recovery, Special",
     "Ranged (Foe AoE), Foe -DMG, Team +DMG"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

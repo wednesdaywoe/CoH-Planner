@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Auto: Self +DEF(Melee), +ACC, +Res(ToHit Debuff), Scaling DMG Resistance",
     "Auto: Self +Res(Confuse, Fear, Hold, Immobilize, Disorient, Sleep, Psionic), +DEF(Melee, Ranged, AoE), Scaling DMG Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ally Heal, +Res(Disorient, Sleep, End Drain), +Perception",
     "Toggle: PBAoE, Foe -Range, -To-hit, Repel, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

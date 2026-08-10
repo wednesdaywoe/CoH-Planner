@@ -47,5 +47,9 @@
     "Ranged (Targeted AoE), DMG(Energy), Disorient, -To Hit",
     "Ranged (Location AoE), DoT(Toxic), Foe Hold, -DMG",
     "Build Tri-Cannon: Ranged, DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

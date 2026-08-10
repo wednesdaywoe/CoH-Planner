@@ -47,5 +47,9 @@
     "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
     "Melee (Cone), High DMG(Lethal), DoT(Toxic), Knockback, -SPD, -Recharge",
     "PBAoE Melee, Moderate DMG(Lethal), DoT(Toxic), -SPD, -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

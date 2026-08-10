@@ -31,5 +31,9 @@
     "Toggle: Self +DEF(Lethal, Smashing)",
     "Melee, DMG(Smash), Foe Hold",
     "Self +HP"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

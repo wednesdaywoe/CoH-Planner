@@ -31,5 +31,9 @@
     "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
     "Ranged, Moderate DoT(Lethal), Foe Hold, -Fly",
     "Summon Warder: Ranged Moderate DMG(Smashing)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

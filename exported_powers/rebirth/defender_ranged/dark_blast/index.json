@@ -47,5 +47,9 @@
     "Ranged (Cone), Minor DMG(Smashing), Foe -To Hit, Knockback",
     "Ranged, High DMG(Negative), Target -To Hit, Self +HP",
     "PBAoE, Extreme DMG(Negative/Smash), Foe -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

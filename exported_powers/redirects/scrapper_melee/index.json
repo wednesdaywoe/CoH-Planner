@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "PBAoE, DMG(Lethal), Foe Minor DoT(Lethal), +3 Blood Frenzy, Self Teleport"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

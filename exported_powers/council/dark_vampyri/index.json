@@ -47,5 +47,9 @@
     "PBAoE, Moderate DMG(Negative), Foe -Recharge, -SPD, Self +DMG, +ToHit",
     "Toggle: Self +Res(All DMG but Psionics)",
     "Lycanthropy"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

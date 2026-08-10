@@ -47,5 +47,9 @@
     "Location (PBAoE), DoT (Fire), Self Res(Immobilize, Knockback)",
     "Self +DMG",
     "Self Heal, MaxHP, Rez, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

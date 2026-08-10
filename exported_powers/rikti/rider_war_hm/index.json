@@ -39,5 +39,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Fire/Energy), Moderate DoT(Fire), Foe -Resist(All), -Regen",
     "Post Death Special: PBAoE, High DMG(Fire), Extreme DoT(Fire), Foe -Resist(All), -Regen",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

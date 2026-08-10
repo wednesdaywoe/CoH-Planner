@@ -31,5 +31,9 @@
     "Ranged, DMG(Psionic), Foe Hold",
     "PBAoE, DMG(Psionic), Foe Disorient -Recharge",
     "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

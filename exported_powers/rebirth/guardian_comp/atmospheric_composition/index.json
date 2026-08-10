@@ -47,5 +47,9 @@
     "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly",
     "PBAoE, Self +End, Foe -End",
     "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF, -Res"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

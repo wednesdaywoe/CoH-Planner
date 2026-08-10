@@ -31,5 +31,9 @@
     "DoT(Toxic) -DEF",
     "DoT(Toxic) -DEF",
     "Auto: Self +Res"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

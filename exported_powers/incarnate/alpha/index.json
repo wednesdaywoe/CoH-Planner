@@ -299,5 +299,9 @@
     "Increases Healing, Accuracy, Endurance Reduction, and Confuse Duration",
     "Increases Healing, Accuracy, and Endurance Reduction",
     "Increases Healing, Accuracy, Endurance Reduction, Confuse Duration, Sleep Duration, and Fear Duration"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

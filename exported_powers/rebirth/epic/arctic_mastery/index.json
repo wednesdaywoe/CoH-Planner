@@ -31,5 +31,9 @@
     "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
     "Ranged (Cone), Foe -SPD, -Recharge",
     "Ranged (Location AoE), Minor DoT(Cold), Foe -Recharge, -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

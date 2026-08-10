@@ -23,5 +23,9 @@
     "Ranged, Moderate DMG(Lethal), Foe -DEF",
     "Ranged, High DMG(Lethal), Foe Knockback",
     "Ranged (Targeted AoE), Moderate DMG(Lethal/Smash), Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

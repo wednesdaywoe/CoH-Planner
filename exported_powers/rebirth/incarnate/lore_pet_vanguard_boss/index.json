@@ -27,5 +27,9 @@
     "Ranged, Superior DMG(Cold/Smash), Foe -Recharge, -SPD, -ACC, -ToHit",
     "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
     "Sleep"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

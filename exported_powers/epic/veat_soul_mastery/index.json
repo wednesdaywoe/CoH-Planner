@@ -31,5 +31,9 @@
     "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
     "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
     "Summon Blood Widow: Melee DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

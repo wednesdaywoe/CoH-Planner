@@ -35,5 +35,9 @@
     "Melee, High DMG (Smashing), -DEF (Foe, All), Chance for Stun (Foe)",
     "PBAoE, High DMG (Smashing), Chance for Stun (Foe), Knockback (Foe)",
     "Ranged (Targeted AoE), Superior DMG (Lethal/Smashing), Chance for Knockback (Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

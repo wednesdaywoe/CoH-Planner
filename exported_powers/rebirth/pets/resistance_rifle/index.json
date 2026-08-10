@@ -31,5 +31,9 @@
     "Ranged Cone, Moderate DMG(Lethal), Foe -Def",
     "Ranged, Light DMG(Lethal), Foe -Recharge, -SPD",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

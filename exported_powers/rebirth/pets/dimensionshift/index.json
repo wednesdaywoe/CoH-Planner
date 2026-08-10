@@ -23,5 +23,9 @@
     "Ranged (Targeted AoE), Foe Intangible",
     "Ranged (Targeted AoE), Foe Intangible",
     "Ranged (Targeted AoE), Foe Intangible"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

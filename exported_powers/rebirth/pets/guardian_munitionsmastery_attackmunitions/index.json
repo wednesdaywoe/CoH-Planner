@@ -23,5 +23,9 @@
     "Ranged (Targeted AoE), Moderate DMG (Lethal/Smash OR Lethal), Knockback, Special",
     "Ranged (Targeted AoE), Moderate DMG (Lethal/Smash OR Lethal), Knockback, Special",
     "Ranged (Targeted AoE), Moderate DMG (Lethal/Smash OR Lethal), Knockback, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

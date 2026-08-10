@@ -31,5 +31,9 @@
     "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
     "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
     "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -23,5 +23,9 @@
     "-Speed, -Recharge",
     "-Speed, Low Lethal",
     "Self Destruct"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

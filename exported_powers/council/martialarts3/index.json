@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Melee, Superior DMG(Smash), Foe Knockback, Chance for Critical Hit",
     "Melee, Extreme DMG(Smash), Foe Immobilize, -SPD, -Fly, -DEF, Chance for Critical Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

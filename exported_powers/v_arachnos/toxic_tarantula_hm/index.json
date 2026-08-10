@@ -27,5 +27,9 @@
     "High-Accuracy, Ranged Foe -RES, -DEF, -Regen, -Heal",
     "High-Accuracy, Ranged Foe -DMG -To Hit, -Special",
     "Auto: Self +DEF(Ranged), +KB Protection"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

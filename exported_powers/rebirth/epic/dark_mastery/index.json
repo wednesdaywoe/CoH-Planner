@@ -31,5 +31,9 @@
     "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
     "Self Rez, Special",
     "PBAoE Moderate DMG(Negative), Self +DMG, +ACC"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

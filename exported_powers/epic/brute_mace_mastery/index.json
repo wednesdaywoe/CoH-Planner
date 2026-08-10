@@ -31,5 +31,9 @@
     "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
     "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
     "Summon Arachnobot: Ranged DMG(Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

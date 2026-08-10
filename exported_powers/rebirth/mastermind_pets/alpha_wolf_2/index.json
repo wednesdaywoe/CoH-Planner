@@ -31,5 +31,9 @@
     "PBAoE, Foes -Dmg, -To Hit",
     "Grants Pack Mentality",
     "Train Beasts"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -23,5 +23,9 @@
     "PBAoE: Cold/Fire, Foe Knockback, Immobilize, Slow, -Rech",
     "Self Destruct",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

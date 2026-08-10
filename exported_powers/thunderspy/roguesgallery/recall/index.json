@@ -43,5 +43,9 @@
     "Melee, Minor DMG (Psionic/Smashing), Knockback (Foe)",
     "Ranged, Moderate DMG (Psionic), -Rech (Foe)",
     "Ranged, Moderate DMG (Psionic), Chance for Immobilize (Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

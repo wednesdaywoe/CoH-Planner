@@ -47,5 +47,9 @@
     "Ranged (Cone), Light DMG(Energy), Foe Sleep",
     "Ranged, High DMG(Smashing/Energy), Foe Disorient, -Res(All)",
     "PBAoE, Extreme DMG(Energy/Smash), Foe Disorient, -Res(All)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

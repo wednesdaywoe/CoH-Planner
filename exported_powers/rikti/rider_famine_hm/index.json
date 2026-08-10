@@ -39,5 +39,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Cold/Energy), Minor DoT(Cold), Foe -Resist(All), -Regen, -SPD, -Recharge",
     "Post Death Special: PBAoE, High DMG(Cold/Energy), Minor DoT(Cold), Foe -Resist(All), -Regen, -SPD, -Recharge",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

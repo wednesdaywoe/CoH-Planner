@@ -83,5 +83,9 @@
     "Ally Heal",
     "Summon Drones: Ranged Special, High DMG(Energy)",
     "PBAoE, Extreme DMG(Energy), Foe -DEF, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

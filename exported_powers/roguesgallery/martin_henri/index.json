@@ -35,5 +35,9 @@
     "Ranged, Moderate DMG (Fire), Minor DoT (Fire)",
     "PBAoE, Moderate DMG(Fire), Minor DoT(Fire), Knockback(Foe)",
     "Ranged Cone, High DoT (Fire)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

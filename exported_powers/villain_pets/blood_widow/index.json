@@ -51,5 +51,9 @@
     "Melee, DMG(Lethal), Self +DMG",
     "Ranged (Cone), Light DMG(Lethal), Minor DoT(Toxic), Foe -Regeneration",
     "Toxic DoT, Slow"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

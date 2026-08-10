@@ -27,5 +27,9 @@
     "Self +DMG, +ACC",
     "Melee, Moderate DMG(Lethal), DoT(Lethal) -DEF",
     "Melee (Cone), High DMG(Lethal), DoT(Lethal) -DEF, Knockback, -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

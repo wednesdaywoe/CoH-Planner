@@ -23,5 +23,9 @@
     "Ranged, Ally +Res(Smash, Lethal, Toxic)",
     "Ranged, Minor Damage (Smashing/Energy), Foe Disorient, -Res(All)",
     "Self Rez"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

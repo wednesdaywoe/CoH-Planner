@@ -43,5 +43,9 @@
     "Ranged, High DMG (Energy/Smashing), Chance for Knockdown (Foe)",
     "Ranged, Superior DMG (Energy/Smashing), Chance for Knockback (Foe)",
     "Ranged (Close), Extreme DMG (Energy/Smashing), Chance for Knockback (Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "Melee, High DMG(Psionic/Smash), Foe Knockback",
     "Sniper, Extreme DMG(Psionic), Target -Recharge",
     "Ranged, High DMG(Psionic), Foe Immobilize"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

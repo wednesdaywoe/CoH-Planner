@@ -47,5 +47,9 @@
     "Toggle: Self +Recharge, +DEF(Psionic), Res(Confuse), +Perception",
     "Toggle: Self +Res(Fire, Cold, Toxic), +Special",
     "Self, +Res(All but Psionics), +DEF(All but Psionics), -SPD, -Recharge, -DMG, -Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

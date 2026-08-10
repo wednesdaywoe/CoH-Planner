@@ -39,5 +39,9 @@
     "Ranged, DMG(Smash)",
     "Ranged, Light DMG(Psionic), Foe Deep Sleep",
     "Melee(Cone), Light DMG(Smashing), Self +DEF(Melee, Smash)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

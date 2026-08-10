@@ -47,5 +47,9 @@
     "PBAoE DMG(Negative), Self +DMG, +To Hit",
     "PBAoE DMG(Negative), Self +End",
     "Melee, DMG(Negative), Foe Immobilize, -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

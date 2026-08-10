@@ -47,5 +47,9 @@
     "PBAoE, Foe Placate",
     "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
     "Self +DEF, +SPD, +Recovery, Res(DeBuff DEF), +Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

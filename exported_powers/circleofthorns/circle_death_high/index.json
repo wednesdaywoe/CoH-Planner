@@ -23,5 +23,9 @@
     "Ranged (Location AoE), Foe -Speed, -Resist(All), -Fly",
     "PBAoE, Extreme DMG(Negative/Smash), Foe -ToHit",
     "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -39,5 +39,9 @@
     "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
     "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
     "Auto: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Psionics, Special), +Def (all)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -39,5 +39,9 @@
     "Self +DMG, +Speed, +Res(Slow, Immobilize)",
     "Ranged (Narrow Cone), Moderate DMG(Cold), Minor DoT(Cold), -Rech, -Speed, -Fly",
     "Grants Pack Mentality"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

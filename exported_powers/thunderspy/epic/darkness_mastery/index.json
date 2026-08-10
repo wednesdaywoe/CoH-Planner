@@ -31,5 +31,9 @@
     "Ranged, Moderate DMG(Negative), Foe -ACC",
     "Ranged (Cone), Moderate DMG(Negative), Foe -To Hit",
     "Ranged (Cone), Moderate DMG(Negative/Smash), Foe Immobilize, -ACC"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

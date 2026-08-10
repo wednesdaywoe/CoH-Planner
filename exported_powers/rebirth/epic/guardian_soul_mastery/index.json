@@ -31,5 +31,9 @@
     "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
     "PBAoE Moderate DMG(Negative), Self +End",
     "Summon Blood Widow: Melee Moderate DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

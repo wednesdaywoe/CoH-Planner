@@ -47,5 +47,9 @@
     "Melee (Targeted AoE), Heavy DMG (Smash), Foe Knockdown, Finisher",
     "Melee, Superior DMG (Smashing), Foe -Speed, -Defense, Combo Builder",
     "Melee, Extreme DMG (Smash), Foe Knock Up, Disorient, Finisher"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

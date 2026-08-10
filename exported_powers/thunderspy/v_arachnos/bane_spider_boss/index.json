@@ -51,5 +51,9 @@
     "AoE Ranged, High DMG(Energy/Smash), Foe Knockback",
     "Ranged, Target Immobilize, -Recharge, -Fly",
     "Ranged,  Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

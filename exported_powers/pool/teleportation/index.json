@@ -31,5 +31,9 @@
     "Ranged (Location), Self Teleport",
     "Ranged (Location), Team Teleport",
     "Melee (PBAoE), Foe Teleport"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

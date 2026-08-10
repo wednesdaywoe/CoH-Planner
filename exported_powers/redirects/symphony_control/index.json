@@ -23,5 +23,9 @@
     "Cone Minor DMG(Psionic), Immobilize",
     "Ranged, Minor DMG(Psionic), Confuse",
     "Ranged, Minor DMG(Psionic), Confuse"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

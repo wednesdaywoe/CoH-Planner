@@ -63,5 +63,9 @@
     "Ranged (Targeted AoE Special), Superior DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
     "Summon Essence: Ranged Moderate DMG (Negative)",
     "PBAoE, Extreme DMG(Negative), Foe -Recharge, -SPD, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

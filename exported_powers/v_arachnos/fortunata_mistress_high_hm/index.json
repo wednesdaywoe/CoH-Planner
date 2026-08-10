@@ -27,5 +27,9 @@
     "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
     "Ranged, Target Confuse",
     "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

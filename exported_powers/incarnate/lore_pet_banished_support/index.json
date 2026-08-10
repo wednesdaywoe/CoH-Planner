@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Targeted AoE, Minor DoT(Cold/Negative Energy), -DMG(Foe, All)",
     "Targeted AoE, +Regen, +Rec, +End, +Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

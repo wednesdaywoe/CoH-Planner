@@ -51,5 +51,9 @@
     "Ranged, Foe Capture (Special)",
     "Ally +Res(Disorient, Hold, Sleep, Immobilize, Terrorize, Confusion), +Perception",
     "Ranged (Location AoE), Minor DMG(Smashing/Energy), Foe Hold, Knockdown, -To Hit, -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

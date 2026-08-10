@@ -59,5 +59,9 @@
     "Auto: Self +SPD, +Special",
     "Auto: +Res(All), +Special",
     "PBAoE, Self +Absorb, +Regeneration, +Recovery, Foe -DMG"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

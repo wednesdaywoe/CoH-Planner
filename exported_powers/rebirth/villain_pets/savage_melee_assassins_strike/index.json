@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Melee, Special DMG(Lethal), +3 Blood Frenzy",
     "Melee, Special DMG(Lethal), +2 Blood Frenzy"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

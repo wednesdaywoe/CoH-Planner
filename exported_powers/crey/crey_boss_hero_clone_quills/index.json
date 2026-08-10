@@ -43,5 +43,9 @@
     "Toggle: Self +Res(Smash, Lethal)",
     "Self +DEF, +Special",
     "Held: Lose Elude"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

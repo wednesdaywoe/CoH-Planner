@@ -47,5 +47,9 @@
     "Summon Seekers: Ranged Disorient, -DMG, -ACC, -Perception, Low DMG(Energy)",
     "Place Mine: PBAoE, Superior DAM(Lethal/Fire)",
     "Place Bomb: PBAoE, Extreme DAM (Lethal/Fire)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

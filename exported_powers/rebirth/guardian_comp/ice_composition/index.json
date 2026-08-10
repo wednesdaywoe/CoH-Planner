@@ -47,5 +47,9 @@
     "Toggle: PBAoE, Foe -Recharge, -Speed, -DMG",
     "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF, -Res (All), Knockdown",
     "Ranged (Foe AoE), Foe -RES, -END, Slow; Team +END, +Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

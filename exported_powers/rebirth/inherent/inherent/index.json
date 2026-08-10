@@ -627,5 +627,9 @@
     "Self, -Primal Energy",
     "Primal Energy",
     "Foe Defeat, Nearby Team +Absorb, +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

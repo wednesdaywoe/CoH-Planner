@@ -23,5 +23,9 @@
     "Disorient",
     "Disorient, -To Hit, -Perception",
     "Equip"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -35,5 +35,34 @@
     "PBAoE Melee, Self +Jump, Foe Knockdown",
     "Ranged Cone, Minor DMG(Psionic/Smashing), Foe Knockdown",
     "Self, +Regen, +Recovery, +Defense"
-  ]
+  ],
+  "buy_requires": [
+    "Pool.Sorcery.Spirit_Ward",
+    "Pool.Sorcery.Arcane_Bolt",
+    "||",
+    "Pool.Sorcery.Mystic_Flight",
+    "||",
+    "Pool.Experimentation.Experimental_Injection",
+    "||",
+    "Pool.Experimentation.Toxic_Dart",
+    "||",
+    "Pool.Experimentation.Speed_of_Sound",
+    "||",
+    "Pool.Gadgetry.Nano_Net",
+    "||",
+    "Pool.Gadgetry.Wrist_Blaster",
+    "||",
+    "Pool.Gadgetry.Jetpack",
+    "||",
+    "Pool.Utility_Belt.Bolas",
+    "||",
+    "Pool.Utility_Belt.Poisoned_Dagger",
+    "||",
+    "Pool.Utility_Belt.Freerunning",
+    "||",
+    "!"
+  ],
+  "buy_requires_failed": "You can only have one Specialized power pool in your build.",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

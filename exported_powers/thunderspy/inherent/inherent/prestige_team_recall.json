@@ -143,6 +143,6 @@
     "Disable_Teleport",
     "Disable_Recall"
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Inherent.Inherent"
 }

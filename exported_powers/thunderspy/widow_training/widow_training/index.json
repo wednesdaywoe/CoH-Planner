@@ -43,5 +43,9 @@
     "PBAoE Melee, Moderate DMG (Lethal/Toxic), DoT(Toxic), -Regeneration, -Recharge, -SPD.",
     "High DMG (Lethal/Toxic), DoT(Toxic), -Regeneration, -Recharge, -SPD",
     "Ranged, Foe Taunt"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

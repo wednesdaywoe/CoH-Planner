@@ -31,5 +31,9 @@
     "Melee, Light DMG(Smash/Energy), Foe Disorient",
     "Ranged, Light DMG(Energy/Smash), Foe Knockback",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

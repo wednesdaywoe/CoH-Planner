@@ -51,5 +51,9 @@
     "Ranged (Targeted AoE), Confuse(Foe), EndDrain(Foe), +End(Self)",
     "Ranged (Targeted AoE), Hold (Foe), Moderate DoT (Lethal), -Movement(Foe), -Rech(Foe), -ToHit(Foe), Special(Pet), Pressure Consumer (Self)",
     "Self (Auto), +ToHit, +Rech, +Rec, -EndCost"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "AoE Smash, Knockback",
     "Cone Lethal, Med Damage, Knockback",
     "Moderate Damage (Negative)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

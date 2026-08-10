@@ -47,5 +47,9 @@
     "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback",
     "Toggle: Summon Sentinel, Ranged, Moderate DMG(Energy), Foe -End, -Recovery",
     "Ranged, High DMG(Energy), Foe -End, -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

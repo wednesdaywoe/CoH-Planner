@@ -47,5 +47,9 @@
     "Ranged, Foe -To-hit -DMG, Team Heal",
     "Ranged (Location AoE), Target -Speed, -Res, -Fly",
     "Toggle: Ranged (Targeted AoE), Foe -DMG -To-hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

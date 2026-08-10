@@ -27,5 +27,9 @@
     "Self Travel",
     "Minor DoT(Energy)",
     "Ranged Energy, -End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -39,5 +39,16 @@
     "Ranged, Foe Placate, Self Stealth/Hide",
     "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)",
     "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special"
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 23,
+  "specialize_requires": [
+    "Widow_Training.Fortunata_Training",
+    "powerset?",
+    "Teamwork.Fortunata_Teamwork",
+    "powerset?",
+    "||",
+    "!"
   ]
 }

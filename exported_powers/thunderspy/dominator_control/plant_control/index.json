@@ -47,5 +47,9 @@
     "Melee AoE, High DoT (Smashing, Lethal), Stun, Knock up",
     "Summon Creepers, Ranged (Location AoE), Target -Speed, -Fly, -Jump,",
     "Ranged (Targeted AoE), Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

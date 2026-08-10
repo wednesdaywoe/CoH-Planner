@@ -31,5 +31,9 @@
     "Melee, DMG(Energy/Smash), Foe -Res(Debuffs), Chance for Hold",
     "Melee (Cone), Foe Disorient, Knockdown",
     "Melee (Cone), Foe Disorient, Knockdown"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

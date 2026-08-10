@@ -31,5 +31,9 @@
     "Ranged, DoT(Lethal), Foe Hold, -Fly",
     "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF, knock down",
     "Summon Hybrid: Ranged DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

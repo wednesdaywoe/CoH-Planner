@@ -47,5 +47,9 @@
     "Ranged DMG(Energy/Smash), Foe High Knockback",
     "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
     "PBAoE, DMG(Energy), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
     "Toggle: Team +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
     "Summon Tarantula: Ranged Moderate DMG(Toxic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

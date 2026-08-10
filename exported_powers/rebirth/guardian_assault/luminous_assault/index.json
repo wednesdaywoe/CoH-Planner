@@ -47,5 +47,9 @@
     "Ranged, High DMG(Energy), Foe -DEF, Knockback",
     "Melee, Extreme DMG(Energy/Smash), Foe -DEF, -Fly, Hold",
     "PBAoE Melee, High DMG(Energy), Foe -DEF, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

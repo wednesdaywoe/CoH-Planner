@@ -59,5 +59,9 @@
     "+Res, +Movement",
     "Melee (Targeted AoE), Ally Rez, Foe Sleep, -End, -Recovery",
     "Ranged (Targeted AoE), Foe -DMG, -End, -Recovery, -Regen"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

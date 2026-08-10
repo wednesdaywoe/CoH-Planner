@@ -43,5 +43,9 @@
     "Ranged (Targeted AoE), Moderate DMG (Smashing), Chance for Knockdown(Foe), Fear(Foe)",
     "PBAoE, Buff(Self and Allies), +DMG(All), +ToHit, +RES(All Status Effects), +Prot(All Status Effects)",
     "Melee, High DMG(Smashing), Knockup(Foe), -Fly(Foe), -DEF(All,Foe), Chance for Confuse OR Stun(Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

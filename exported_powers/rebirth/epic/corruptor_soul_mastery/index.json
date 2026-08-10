@@ -31,5 +31,9 @@
     "Self +Special",
     "Ranged, Moderate DoT(Negative), Foe Hold",
     "Summon Fortunata Mistress: Ranged Moderate DMG(Psionic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

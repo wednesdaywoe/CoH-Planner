@@ -47,5 +47,9 @@
     "Melee, High DMG(Psionic/energy)",
     "Toggle PBAoE, Minor DMG(Psionic/Energy), Slow, Chance for knock up",
     "Ranged, Superior DMG(Psionic/Energy), Foe Hold,"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

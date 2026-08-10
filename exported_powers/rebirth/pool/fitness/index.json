@@ -27,5 +27,20 @@
     "Auto: Self +Leap",
     "Auto: Self +Regeneration, Res(Sleep)",
     "Auto: Self +Recovery"
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 6,
+  "specialize_requires": [
+    "Inherent.Fitness.Swift",
+    "!",
+    "Inherent.Fitness.Hurdle",
+    "!",
+    "||",
+    "level",
+    "char>",
+    "2",
+    ">",
+    "&&"
   ]
 }

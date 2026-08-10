@@ -372,6 +372,19 @@ class PowersetRecord:
     icon: str
     powers: list = field(default_factory=list)
     available: list = field(default_factory=list)
+    # SetBuyRequires — the set-level gate, in the same postfix language a power's
+    # `requires` uses. It is how the game states "only one Specialized power pool"
+    # (Sorcery / Experimentation / Force of Will / Gadgetry / Utility Belt each
+    # exclude the others' powers), and `buy_requires_failed` is the message it
+    # shows when the gate refuses. Empty on every other set.
+    buy_requires: list = field(default_factory=list)
+    buy_requires_failed: str = ""
+    # SpecializeAt / SpecializeRequires — the level a set branches at and the gate
+    # on taking THIS branch. The VEAT branch choices (Bane vs Crab, and the widow
+    # branches) are written here at 23, and Pool.Fitness at 6. The gate uses a
+    # `powerset?` reader the per-power language has no need for.
+    specialize_at: int = 0
+    specialize_requires: list = field(default_factory=list)
 
 
 @dataclass

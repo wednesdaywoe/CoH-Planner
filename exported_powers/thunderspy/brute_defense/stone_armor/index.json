@@ -47,5 +47,9 @@
     "Toggle: Self +DEF(Energy, Negative), Res(DeBuff DEF)",
     "Toggle: Self +DEF(Psionic), Res(Confuse), +Perception",
     "Self, +Res(All but Psionics), +DEF(All but Psionics), -SPD, -Recharge, -DMG"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

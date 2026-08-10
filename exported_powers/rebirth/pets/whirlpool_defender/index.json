@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged (Location AoE), High DoT(Cold), -Speed, -Defense, Self +Tidal Power",
     "Avoid"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

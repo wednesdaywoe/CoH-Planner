@@ -35,5 +35,9 @@
     "Melee, Moderate DMG (Smashing), Chance for Stun (Foe)",
     "Melee, High DMG (Smashing), Chance for Knockback (Foe)",
     "Melee, Superior DMG (Smashing), Chance for Knockback (Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

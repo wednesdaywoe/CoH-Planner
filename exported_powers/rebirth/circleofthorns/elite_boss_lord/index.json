@@ -35,5 +35,9 @@
     "Ranged, Superior DMG(Cold/Smash), Foe -Recharge, -SPD, -ACC",
     "Ranged (Cone), Minor DMG(Psionic), Foe Fear(Special)",
     "Self, +Def(Smash, Lethal), +Res(Cold)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

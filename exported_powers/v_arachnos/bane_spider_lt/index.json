@@ -27,5 +27,9 @@
     "Ranged, Superior DoT(Toxic), Foe -DEF",
     "Auto: Self +ToHit, +Res(Confuse, Fear), +Perception",
     "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

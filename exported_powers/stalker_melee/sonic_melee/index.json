@@ -47,5 +47,9 @@
     "Melee (Cone), Foe Disorient, Knockdown",
     "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
     "Melee, DMG(Energy/Smash), Foe Chance for Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

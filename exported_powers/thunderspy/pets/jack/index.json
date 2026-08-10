@@ -39,5 +39,9 @@
     "PBAoE Melee, Moderate DMG(Cold/Lethal), Foe -Recharge, -SPD",
     "Toggle: Foe PBAoE, Minor DoT(Lethal), -Recharge, -Speed, -DMG",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

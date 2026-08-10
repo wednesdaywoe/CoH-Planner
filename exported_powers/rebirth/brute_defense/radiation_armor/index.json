@@ -47,5 +47,9 @@
     "Self, +Absorb, +Regeneration",
     "PBAoE, Foe Moderate DMG(Energy), Moderate DoT(Toxic), -DEF(All), Ally +HP, +Heal over time",
     "Self, +Res(All), +Recovery, +DMG(All)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

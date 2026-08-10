@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Moderate Energy DMG, DoT (Toxic), -Fly",
     "Moderate Energy DMG, DoT (Toxic), -Fly"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

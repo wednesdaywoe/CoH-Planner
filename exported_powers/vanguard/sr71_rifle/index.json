@@ -35,5 +35,9 @@
     "Targeted AoE Lethal/Smashing, Knockback",
     "Ranged Lethal, +KB",
     "-ACC, -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged Lethal/Negative, Low Dam",
     "Ranged Lethal/Negative, Med Dam +KB"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

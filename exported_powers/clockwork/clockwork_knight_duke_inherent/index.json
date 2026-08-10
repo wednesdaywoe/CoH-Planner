@@ -23,5 +23,9 @@
     "Auto Res Lethal Disorient",
     "Ranged Energy, -End",
     "Melee Smash, Energy"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

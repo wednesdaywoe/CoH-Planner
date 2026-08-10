@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Sniper, DMG(Lethal), Foe Knockback",
     "Sniper, DMG(Lethal), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

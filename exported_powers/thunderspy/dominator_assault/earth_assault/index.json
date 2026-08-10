@@ -47,5 +47,9 @@
     "Melee, Extreme DMG(Smash), Foe Hold",
     "Toggle: PBAoE, Minor DoT(Fire), Foe Immobilize, -SPD",
     "Close (Targeted AoE), Moderate DMG(Smash), Foe Knockback, Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

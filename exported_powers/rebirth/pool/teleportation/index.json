@@ -39,5 +39,9 @@
     "Ranged (Location), Team Teleport",
     "Ranged (Targeted AoE), Foe Teleport",
     "Long Range Teleport"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

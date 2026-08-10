@@ -47,5 +47,9 @@
     "Melee, High DMG(Smash/Energy), Foe Sleep, -End, Knock Back",
     "Sniper, Extreme DMG(Energy), Foe -End",
     "PBAoE Superior DMG(Energy), Foe Knockback; Self Teleport;"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

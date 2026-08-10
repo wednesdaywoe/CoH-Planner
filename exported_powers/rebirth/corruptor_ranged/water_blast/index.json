@@ -47,5 +47,9 @@
     "Ranged, High DMG(Cold/Smash), Foe -Speed, Self +/-Tidal Power",
     "Ranged (Cone), High DMG(Fire), Foe -Defense, Minor DoT(Fire), Self +Tidal Power",
     "Ranged (Targeted AoE), High DMG(Fire/Smash), Foe High DoT(Fire), -Speed, Knock Up, Disorient, Self -Tidal Power"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

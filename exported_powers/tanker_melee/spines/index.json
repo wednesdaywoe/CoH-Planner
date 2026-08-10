@@ -47,5 +47,9 @@
     "Ranged, DMG(Lethal), DoT(Toxic), Immobilize, -Recharge, -Fly",
     "Toggle: PBAoE, DoT(Lethal), Foe -Speed, -Recharge",
     "Ranged (Cone), DMG(Lethal), DoT(Toxic), -SPD, -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

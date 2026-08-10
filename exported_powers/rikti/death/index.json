@@ -35,5 +35,9 @@
     "Melee, Foe Fear, -ToHit",
     "Ranged, High DMG(Negative), Foe -ToHit, Self Heal",
     "Melee, Superior DMG(Negative), Foe -ToHit, Self Heal"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

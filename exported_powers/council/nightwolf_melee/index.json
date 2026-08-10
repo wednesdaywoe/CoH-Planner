@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Melee (Cone), Heavy DMG(Lethal), Foe Knockback",
     "Ranged, High DMG(Smash), Foe Knockback, Disorient, -Fly"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

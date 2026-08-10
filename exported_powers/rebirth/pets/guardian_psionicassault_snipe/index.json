@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Sniper, Extreme DMG(Psionic), Foe -Recharge; Self -Insight",
     "Sniper, Extreme DMG(Psionic), Foe -Recharge; Self -Insight"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

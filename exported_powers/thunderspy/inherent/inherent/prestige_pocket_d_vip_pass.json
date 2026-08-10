@@ -144,6 +144,6 @@
     "Disable_All",
     "Disable_Toggle"
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Inherent.Inherent"
 }

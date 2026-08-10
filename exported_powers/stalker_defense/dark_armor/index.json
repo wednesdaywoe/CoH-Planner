@@ -51,5 +51,9 @@
     "Toggle: PBAoE Self +Res(Knockback), Foe Fear, -ACC",
     "Toggle: PBAoE, Foe Disorient, Self -HP",
     "Self Rez, +Absorb, +Res(Disorient, Sleep, Hold, Immobilize, Knockback, -ToHit, -Endurance), +Special, Foe Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

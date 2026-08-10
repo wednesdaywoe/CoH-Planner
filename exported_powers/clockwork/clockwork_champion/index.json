@@ -71,5 +71,9 @@
     "Toggle: Self +DEF(All), Res(Disorient, Hold, Immobilize, Sleep, Knock, Repel)",
     "Summon Clockwork",
     "Ranged (Targeted AoE), Foe Taunt"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -39,5 +39,9 @@
     "Ranged Energy Knockback",
     "Ranged Energy/Smash, Knockback",
     "Targeted AoE Smash/Energy, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

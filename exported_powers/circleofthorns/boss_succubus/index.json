@@ -27,5 +27,9 @@
     "Melee, Moderate DMG(Negative/Lethal), Foe -DEF",
     "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ToHit",
     "Ranged, Moderate DMG(Psionic), Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

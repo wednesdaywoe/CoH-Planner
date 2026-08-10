@@ -31,5 +31,9 @@
     "PBAoE, Extreme DMG(Energy/Smash), Foe Knockback",
     "Melee, High DMG(Energy/Smash), Foe Disorient",
     "Self Endurance Discount, Heal, +Regen, Res(Stun)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

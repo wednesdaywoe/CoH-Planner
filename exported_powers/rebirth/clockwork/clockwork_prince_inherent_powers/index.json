@@ -35,5 +35,9 @@
     "Melee Smash, Energy",
     "Melee Heavy Smash, Energy",
     "Melee Heavy Smash, Energy"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

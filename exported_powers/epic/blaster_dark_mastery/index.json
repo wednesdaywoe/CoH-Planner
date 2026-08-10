@@ -31,5 +31,9 @@
     "Ranged, Target Confuse, -ToHit, -Damage, -Healing, -Special",
     "Ranged (Targeted AoE), Foe Intangible",
     "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

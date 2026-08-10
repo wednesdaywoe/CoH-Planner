@@ -31,5 +31,9 @@
     "Ranged (Cone), Moderate DMG(Energy), -END",
     "Self, +Res(Special)",
     "Summon Mu Guardian: Ranged Moderate DMG(Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

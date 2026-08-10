@@ -35,5 +35,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
     "Melee (AoE), Moderate DMG(Negative), Self +DMG, +ACC",
     "Toggle: Self +Res(All DMG but Psionics)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -35,5 +35,9 @@
     "Ranged (Foe Targeted AoE), Minor DMG(Energy), Chance for Stun (Foe)",
     "Pressurization",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

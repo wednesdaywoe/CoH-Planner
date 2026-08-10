@@ -47,5 +47,9 @@
     "Melee, DMG(Lethal), Foe Knockup",
     "PBAoE Melee, DMG(Lethal), Foe Knockdown",
     "Ranged, DMG(Lethal), Foe Knockdown"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

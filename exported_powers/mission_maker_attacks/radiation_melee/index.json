@@ -47,5 +47,9 @@
     "Toggle, Minor DoT(Toxic) Patch, Foe -Def, Special",
     "Melee, Superior DMG(Energy/Smash), Foe -Def, Disorient, Special",
     "PBAoE, Moderate DMG(Energy/Toxic), Foe -Def, Disorient, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

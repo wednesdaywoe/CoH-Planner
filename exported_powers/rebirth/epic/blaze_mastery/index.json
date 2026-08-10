@@ -31,5 +31,9 @@
     "Ranged, Moderate DMG(Fire)",
     "Ranged (Targeted AoE), Foe -Res, -DEF",
     "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

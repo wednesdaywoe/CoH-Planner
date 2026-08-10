@@ -47,5 +47,9 @@
     "Auto: Self +Res (Smash, Lethal, Cold, Energy, Fire, Negative Energy, Toxic)",
     "Auto: Self +Recovery",
     "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Absorb"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

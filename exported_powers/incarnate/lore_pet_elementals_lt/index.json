@@ -23,5 +23,9 @@
     "Ranged, Moderate DMG(Energy), Foe -End",
     "Ranged, Light DMG(Energy), Foe -End",
     "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

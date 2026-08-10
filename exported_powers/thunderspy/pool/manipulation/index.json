@@ -31,5 +31,9 @@
     "Ranged, Fear (Foe)",
     "PBAoE, Fear (Foe)",
     "Self, Heal over Time, +DMG(All), +Rech, +Rec, Self Resurrect (Special)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

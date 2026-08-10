@@ -27,5 +27,9 @@
     "Ranged, DMG(Lethal)",
     "Toggle: Self +DEF(Ranged, AoE), +Perception, Res(DeBuff DEF)",
     "Train"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

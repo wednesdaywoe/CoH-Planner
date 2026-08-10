@@ -23,5 +23,9 @@
     "Ranged (Location), Self Teleport, +ToHit",
     "Ranged (Cone), Moderate DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
     "PBAoE, Self Heal (Special), +End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

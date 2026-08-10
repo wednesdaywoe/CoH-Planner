@@ -47,5 +47,9 @@
     "Toggle: Self +Recharge, +DEF(All), +SPD, +Res(Slow, Knockback)",
     "Ranged (Targeted AoE), Foe Disorient, -End, Special vs. Robots",
     "Ranged (Location AoE), Foe Knockdown, -SPD, -Jump, +Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

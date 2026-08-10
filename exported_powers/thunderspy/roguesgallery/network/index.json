@@ -43,5 +43,9 @@
     "Ranged, Immobilize (Foe), -Speed (Foe, All), -Rech (Foe)",
     "Ranged (Targeted AoE), -Perception (Foe), -ToHit (Foe)",
     "Self (Auto), +Perception, +ToHit, +RES (Perception, ToHit)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

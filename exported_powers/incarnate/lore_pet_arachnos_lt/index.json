@@ -23,5 +23,9 @@
     "Melee, Light DMG(Smash), Minor DoT(Toxic), Minor Disorient",
     "Melee, Moderate DMG(Smash), Minor DoT(Toxic), Minor Disorient",
     "Ranged, Minor DMG(Energy), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

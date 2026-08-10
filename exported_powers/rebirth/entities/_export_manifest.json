@@ -1,7 +1,7 @@
 {
   "schema": "bin-crawler-export-manifest/2",
   "note": "entities_fingerprint is the sha256 of the entities exporter (bin_crawler/parser/**/*.py + export_entities.py) at export time. If it disagrees with the current committed exporter source, THIS entities/ tree is stale \u2014 re-run export_entities for this dataset and commit. Guarded by src/data/export-staleness.test.ts. `source` names the assets shard the bytes were read from; guarded by src/data/export-provenance.test.ts.",
-  "entities_fingerprint": "57f6b8108f4a150592b4fa1bc737a4bb44bc7ed30d8092017480b38f91d3c3d9",
+  "entities_fingerprint": "4c7adaac529af1ba6ae4ac63fe50cbacab568fae8d118e6ff586d91510a20b59",
   "source": {
     "assets_dir": "/home/jiiwii/Games/coh-sweettea/drive_c/users/jiiwii/AppData/Local/Thunderspy Gaming/Sweet Tea/rebirth",
     "shard": "rebirth",
