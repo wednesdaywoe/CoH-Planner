@@ -34,6 +34,22 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-08-10',
+
+    items: [
+      { id: 'blaster-defiance-not-permanent', message: 'Blasters: Defiance was being counted as a permanent damage buff. The few-seconds ramp every Blaster attack grants were added to totals as if it were always on', type: 'fix' },
+      { id: 'proc-roll-in-executed-child', message: 'Walking back part of a proc change that affected Fault, Whitecap, Hypnotizing Lights and Spring Attack. The powers don\.t trigger procs, but they do through a child power that can', type: 'fix' },
+      { id: 'pseudopet-resolves-on-pet-tables', message: 'Rain and patch debuffs were reading off archetype\'s tables instead of the summon\'s', type: 'fix' },
+      { id: 'slow-movement-axes-shown', message: 'Slows now say what they slow.', type: 'fix' },
+      { id: 'unenhanceable-values-were-enhanced', message: 'Values the game flags un-enhanceable were being enhanced anyway wherever a power\'s effect collapsed into one row', type: 'fix' },
+      { id: 'pet-multi-table-cancellation', message: 'A pet effect that resolves against more than one of the game\'s tables was cancelling itself out instead of adding up', type: 'fix' },
+      { id: 'mode-gated-rows-read-as-zero-chance', message: 'Pet and pseudo-pet effects gated by mode were being read as "0% chance" and dropped off the cards entirely', type: 'fix' },
+      { id: 'hunter-mode-damage-always-on', message: 'Thunderspy: Pack Master\'s damage buff only applies in Hunter Mode, and was being counted as always-on.', type: 'fix' },
+      { id: 'level-one-is-two-picks', message: 'Fixed a regression from yesterday: choosing a secondary set force-added its first power at level 1 and then refused to let you remove or move it', type: 'fix' },
+      { id: 'setbonus-knockback-endurance-stats', message: 'Knockback Strength and Endurance Drain Resistance set bonuses now resolve to real tracked stats instead of nothing, so they should highlight and total like every other bonus. -Speed Cap is a recognised effect now too', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-08-09',
 
     items: [
