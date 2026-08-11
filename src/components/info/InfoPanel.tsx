@@ -36,7 +36,7 @@ import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
 import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, getAlphaEdBypassBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, calculateDamageWithATTable, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import { resolveAtMechanic, applyAtMechanicBonus, critBranchSummary, critComponents, VS_HIGHER_RANK_SEGMENT, VS_MINION_RANK_SEGMENT } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
-import { isPermaEligible } from '@/utils/calculations/perma';
+import { isPermaEligible, recastVerdict } from '@/utils/calculations/perma';
 import { getRechargeBounds } from '@/data/at-tables';
 import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from './buildDisplayEffects';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, resolveProcAreaGeometry, resolveProcPatchDuration, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
@@ -909,7 +909,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         archetypeId={archetypeId ?? undefined}
         level={build.level}
         categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
-        executionKeys={['accuracy', 'enduranceCost', 'recharge']}
+        executionKeys={['accuracy', 'enduranceCost', 'recharge', 'healing']}
         dominationActive={dominationActive}
         header="Power Effects"
         duration={effects?.buffDuration}
@@ -1270,6 +1270,24 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                       {permaInfo.isPerma ? 'None' : `${(permaInfo.effectiveRecharge - permaInfo.duration).toFixed(1)}s`}
                     </span>
                   </div>
+                  {/* What an early re-fire buys: nothing extra (the running copy restarts
+                    * its clock) or a second stacked copy for the overlap. Engine verdict
+                    * when the artifact carries it; the TS twin answers for older artifacts.
+                    * No row rather than a guess when the atoms don't state a single answer. */}
+                  {(() => {
+                    const recast = permaInfo.recast ?? recastVerdict(power, permaInfo.duration);
+                    if (!recast) return null;
+                    return (
+                      <div className="flex justify-between col-span-2">
+                        <span className="text-slate-400">Recast</span>
+                        <span className="text-slate-300">
+                          {recast === 'refreshes'
+                            ? 'Refreshes (recasting early never overlaps)'
+                            : 'Stacks (recasting early overlaps copies)'}
+                        </span>
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
             )}

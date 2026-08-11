@@ -104,7 +104,9 @@ interface EngineThreeTier {
   final: number;
 }
 
-/** Per-power perma tracking (engine `PermaInfo`), snake_case. */
+/** Per-power perma tracking (engine `PermaInfo`), snake_case. `recast` is the engine's
+ *  `RecastBehavior` unit variant ("Refreshes"/"Stacks"), null when the atoms don't state a
+ *  single answer; absent entirely on artifacts built before it existed. */
 interface EnginePerma {
   base_recharge: number;
   duration: number;
@@ -113,6 +115,7 @@ interface EnginePerma {
   total_recharge: number;
   perma_percent: number;
   is_perma: boolean;
+  recast?: 'Refreshes' | 'Stacks' | null;
 }
 
 /** One selected power's non-DPS execution + perma projection (engine `PowerProjection`,
@@ -759,6 +762,8 @@ const mapPerma = (p: EnginePerma | null): PermaInfo | null =>
         totalRecharge: p.total_recharge,
         permaPercent: p.perma_percent,
         isPerma: p.is_perma,
+        recast:
+          p.recast === 'Refreshes' ? 'refreshes' : p.recast === 'Stacks' ? 'stacks' : undefined,
       }
     : null;
 

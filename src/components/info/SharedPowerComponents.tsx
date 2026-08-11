@@ -697,9 +697,10 @@ export function RegistryEffectsDisplay({
   const shouldShowExecutionEffect = (key: string, config: EffectDisplayConfig): boolean => {
     if (config.category !== 'execution') return true;
 
-    // Honor the per-key whitelist when caller passes one (InfoPanel scopes
-    // this section to accuracy/end/recharge; sibling GeneralStatsBlock owns
-    // the rest).
+    // Honor the per-key whitelist when caller passes one (InfoPanel scopes this
+    // section to accuracy/end/recharge/healing; sibling GeneralStatsBlock owns
+    // the geometry stats). `healing` is execution-categorized but has no other
+    // home — dropping it here removes the heal row from the panel entirely.
     if (executionKeysSet && !executionKeysSet.has(key)) return false;
 
     // Find the enhancement type that enables this effect

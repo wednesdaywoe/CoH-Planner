@@ -37,6 +37,68 @@ export interface RechargeBounds {
   cap: number;
 }
 
+/**
+ * How re-firing the power while its caster-side window is still running combines
+ * with the copy already up — "does casting early double the buff, or just restart
+ * the clock". Read off the atoms' authored stacking flavour, never inferred from
+ * durations.
+ */
+export type RecastBehavior = 'refreshes' | 'stacks';
+
+/**
+ * The recast verdict for the caster-side window at `seconds`: every atom that
+ * times that window and lands on the caster is classified by its authored
+ * stacking flavour, and only a unanimous family yields a verdict. A mix — or a
+ * flavour whose recast semantics this repo has not proven (`Extend` lengthens,
+ * `Overlap`/`Maximize`/`Ignore`/`Suppress`/`StackThenIgnore`/`Continuous` each
+ * mean something else) — yields `undefined`: a single badge would misdescribe at
+ * least one row, and an absent verdict is "unstated", never a claim.
+ *
+ * The duration join and the caster filter are `casterHoldsStateAt`'s, for the
+ * same reason it needs them: the bag's slots carry no target, so the atoms are
+ * the only place the export records *whose* clock the flavour governs.
+ */
+export function recastVerdict(power: Power | SelectedPower, seconds: number): RecastBehavior | undefined {
+  const foeTargeting = targetsAFoe(power);
+  let refreshes = false;
+  let stacks = false;
+  for (const atom of atomsOf(power)) {
+    if (!atom.duration) continue;
+    if (Math.abs(atom.duration - seconds) > DURATION_MATCH_TOLERANCE) continue;
+    if (!landsOnCaster(atom, foeTargeting)) continue;
+    switch (atom.stacking) {
+      case 'Replace':
+      case 'Refresh':
+        refreshes = true;
+        break;
+      // The converter's own self-stacking rule (`detectSelfStacking`): these two
+      // accumulate only with room above one copy. A capped-at-one or cap-less
+      // read is unproven, so it refuses a verdict rather than guessing.
+      case 'Stack':
+      case 'RefreshToCount':
+        if ((atom.stackCap ?? 0) > 1) {
+          stacks = true;
+          break;
+        }
+        return undefined;
+      case 'Extend':
+      case 'Overlap':
+      case 'Maximize':
+      case 'Ignore':
+      case 'Suppress':
+      case 'StackThenIgnore':
+      case 'Continuous':
+      case 'Yes':
+      case 'No':
+        return undefined;
+    }
+  }
+  if (refreshes && !stacks) return 'refreshes';
+  if (stacks && !refreshes) return 'stacks';
+  // No atom timed the window, or the families disagree across rows.
+  return undefined;
+}
+
 export interface PermaInfo {
   /** Base recharge time in seconds */
   baseRecharge: number;
@@ -52,6 +114,12 @@ export interface PermaInfo {
   permaPercent: number;
   /** True when the power can be kept up permanently */
   isPerma: boolean;
+  /**
+   * Whether recasting inside the window stacks or merely refreshes
+   * (`recastVerdict` at this window's duration); absent when the atoms don't
+   * state a single answer.
+   */
+  recast?: RecastBehavior;
 }
 
 /**
@@ -122,7 +190,7 @@ const SELF_BUFF_KEYS = [
   'tohitBuff', 'damageBuff', 'defenseBuff', 'defenseBuffSuppressible', 'rechargeBuff',
   'recoveryBuff', 'regenBuff', 'regenBuffUnenhanced', 'speedBuff', 'enduranceBuff',
   'enduranceGain', 'maxHPBuff', 'maxEndBuff', 'rangeBuff', 'enduranceDiscount',
-  'perceptionBuff', 'absorb', 'defense', 'resistance', 'elusivity', 'movement', 'stealth',
+  'perceptionBuff', 'specialBuff', 'absorb', 'defense', 'resistance', 'elusivity', 'movement', 'stealth',
   'debuffResistance', 'mezResistance', 'protection', 'untouchable', 'fly',
 ] as const;
 
@@ -368,6 +436,7 @@ export function calculatePermaInfo(
     totalRecharge,
     permaPercent,
     isPerma: effectiveRecharge <= duration,
+    recast: recastVerdict(power, duration),
   };
 }
 
