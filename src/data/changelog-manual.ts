@@ -29,10 +29,32 @@ export interface ManualEntry {
   message: string;
   type: 'feat' | 'fix' | 'update' | 'known-issue';
 }
+/* template
+{
+    date: '2026-00-00',
+
+    items: [
+      { id: 'x-x-x', message: 'y', type: 'fix' },
+    ]
+  },
+*/
+
+
+
 /*When ready, npm run changelog:push -- --dry-run
 */
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-11',
+
+    items: [
+      { id: 'heal-filter-bug', message: 'Fixed a bug that was discarding the calculated heal row when it arrived at the infopanel', type: 'fix' },
+      { id: 'perma-tracking-adj', message: 'Fix for perma-tracking logic', type: 'fix' },
+      { id: 'enh-piece-display', message: 'Hovering a slotted enhancement now shows more info, like which set piece you have slotted', type: 'feat' },
+      { id: 'stacking-flag-indicator', message: 'Buffs should now also show flags that indicate whether it stacks with itself, or overwrites', type: 'fix' },
+    ]
+  },
   {
     date: '2026-08-10',
 

@@ -650,6 +650,26 @@
       "id": "setbonus-knockback-endurance-stats",
       "date": "2026-08-10",
       "preview": "Knockback Strength and Endurance Drain Resistance set bonuses now resolve to rea"
+    },
+    {
+      "id": "heal-filter-bug",
+      "date": "2026-08-11",
+      "preview": "Fixed a bug that was discarding the calculated heal row when it arrived at the i"
+    },
+    {
+      "id": "perma-tracking-adj",
+      "date": "2026-08-11",
+      "preview": "Fix for perma-tracking logic"
+    },
+    {
+      "id": "enh-piece-display",
+      "date": "2026-08-11",
+      "preview": "Hovering a slotted enhancement now shows more info, like which set piece you hav"
+    },
+    {
+      "id": "stacking-flag-indicator",
+      "date": "2026-08-11",
+      "preview": "Buffs should now also show flags that indicate whether it stacks with itself, or"
     }
   ]
 }
