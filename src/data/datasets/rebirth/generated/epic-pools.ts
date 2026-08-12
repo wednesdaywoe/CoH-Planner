@@ -1792,7 +1792,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
         ],
@@ -4913,10 +4912,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge",
           "Resistance"
         ],
-        "allowedSetCategories": [
-          "Healing",
-          "Resist Damage"
-        ],
         "atoms": [
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -7097,7 +7092,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Meta",null,0,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
@@ -7379,7 +7373,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Enhancement","Stunned",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Enhancement","Sleep",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -11294,7 +11287,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
         ],
@@ -16439,7 +16431,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Meta",null,0,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
@@ -19884,10 +19875,6 @@ export const EPIC_POOLS_RAW = {
           "Range",
           "Recharge"
         ],
-        "allowedSetCategories": [
-          "Teleport",
-          "Universal Travel"
-        ],
         "atoms": [
           ["Stealth","Translucency",0.15,1,8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
           ["Mez","Teleport",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -20298,7 +20285,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
           ["Damage","Special",-0.25,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
@@ -21106,7 +21092,6 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Battle_Hardened ||",
         "maxSlots": 0,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "atoms": [
           ["DamageBuff","Smashing",0.075,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,null,null,null,null,null,"ActivateAttackClick target.EventCount> 0 >",true],
           ["DamageBuff","Lethal",0.075,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,0.8500000238418579,null,null,null,null,null,null,"ActivateAttackClick target.EventCount> 0 >",true,null,null,null,null,null,null,0.85],
@@ -21846,7 +21831,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Enhancement","Stunned",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Enhancement","Sleep",0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -23261,7 +23245,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
         ],
@@ -23815,7 +23798,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
         ],
@@ -24001,7 +23983,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Enhancement","Stunned",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Enhancement","Sleep",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -24249,7 +24230,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
         ],
@@ -24890,10 +24870,6 @@ export const EPIC_POOLS_RAW = {
           "Defense",
           "ToHit"
         ],
-        "allowedSetCategories": [
-          "Defense Sets",
-          "To Hit Buff"
-        ],
         "atoms": [
           ["ToHit",null,0.33,1,90,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["Resistance","Psionic",0.2,1,90,"Melee_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -25003,9 +24979,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [
-          "Defense Sets"
-        ],
         "atoms": [
           ["Mez","Stunned",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
           ["Mez","Sleep",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
@@ -25103,9 +25076,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge",
           "Resistance"
         ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
@@ -25170,11 +25140,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [
-          "Confuse",
-          "Melee AoE Damage",
-          "Universal Damage Sets"
-        ],
         "atoms": [
           ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
           ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit <",true],
@@ -25225,11 +25190,6 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Range",
           "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Psionic",0.175,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -25552,7 +25512,6 @@ export const EPIC_POOLS_RAW = {
           "Range",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Mez","Held",0.75,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Repel",1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],

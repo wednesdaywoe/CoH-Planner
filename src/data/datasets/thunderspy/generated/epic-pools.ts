@@ -4796,10 +4796,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge",
           "Resistance"
         ],
-        "allowedSetCategories": [
-          "Healing",
-          "Resist Damage"
-        ],
         "atoms": [
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["MaxHP",null,2.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -8631,7 +8627,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Enhancement","Stunned",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Enhancement","Sleep",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -17752,7 +17747,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Enhancement","Stunned",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Enhancement","Sleep",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -19899,7 +19893,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Enhancement","Stunned",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Enhancement","Sleep",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -20813,9 +20806,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [
-          "Defense Sets"
-        ],
         "atoms": [
           ["Mez","Stunned",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
           ["Mez","Sleep",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
@@ -20872,9 +20862,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge",
           "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
         ],
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -20933,10 +20920,6 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Defense",
           "ToHit"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets",
-          "To Hit Buff"
         ],
         "atoms": [
           ["ToHit",null,0.5,1,90,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
@@ -21049,11 +21032,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [
-          "Confuse",
-          "Melee AoE Damage",
-          "Universal Damage Sets"
-        ],
         "atoms": [
           ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
           ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1]
@@ -21107,10 +21085,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Range",
           "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Psionic",1.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -21427,7 +21401,6 @@ export const EPIC_POOLS_RAW = {
           "Range",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Mez","Held",0.75,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Repel",1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -25973,9 +25946,6 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge",
           "ToHit"
-        ],
-        "allowedSetCategories": [
-          "To Hit Buff"
         ],
         "atoms": [
           ["ToHit",null,0.5,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
