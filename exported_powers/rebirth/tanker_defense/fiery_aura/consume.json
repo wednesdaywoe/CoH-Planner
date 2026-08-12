@@ -41,9 +41,9 @@
   ],
   "allowed_set_categories": [
     "Endurance Modification",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "cast_through": [],

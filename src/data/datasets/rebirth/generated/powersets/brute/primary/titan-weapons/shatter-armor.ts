@@ -46,7 +46,7 @@ export const ShatterArmor: Power = {
     "Brute Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

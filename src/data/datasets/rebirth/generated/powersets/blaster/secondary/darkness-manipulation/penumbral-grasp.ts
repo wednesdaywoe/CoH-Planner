@@ -51,7 +51,7 @@ export const PenumbralGrasp: Power = {
     "Immobilize",
     "Ranged Damage",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

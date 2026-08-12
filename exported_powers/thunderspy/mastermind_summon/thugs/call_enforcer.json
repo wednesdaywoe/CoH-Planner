@@ -41,9 +41,11 @@
   ],
   "allowed_set_categories": [
     "Defense Debuff",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -41,9 +41,9 @@
   ],
   "allowed_set_categories": [
     "Corruptor Archetype Sets",
-    "Ranged AoE Damage",
     "Sleep",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "cast_through": [],

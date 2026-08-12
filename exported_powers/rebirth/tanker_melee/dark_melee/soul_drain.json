@@ -40,9 +40,9 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "To Hit Buff",
     "Universal Damage Sets"
   ],

@@ -45,8 +45,8 @@ export const SeismicSmash: Power = {
     "Brute Archetype Sets",
     "Holds",
     "Melee Damage",
-    "Threat Duration",
-    "Universal Control Duration",
+    "Taunt",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

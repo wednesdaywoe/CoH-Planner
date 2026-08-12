@@ -48,8 +48,8 @@ export const DNASiphon: Power = {
     "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
-    "Threat Duration",
+    "PBAoE Damage",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

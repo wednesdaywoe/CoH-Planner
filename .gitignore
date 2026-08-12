@@ -58,10 +58,16 @@ tools/mids-oracle/.oracle_cache/
 # Thunderspy Mids' Reborn DB reference drop (44MB binaries + icon dumps).
 # Reference asset only — useful icons are already extracted into
 # public/img/powers/ via scripts/extract-thunderspy-icons.py. Not app data.
-Thunderspy/
+#
+# ANCHORED to the repo root, and it must stay that way. An unanchored
+# `Thunderspy/` matches at any depth, and `core.ignorecase` is true on macOS
+# and Windows checkouts — so it also swallowed `src/data/datasets/thunderspy/`.
+# Files already tracked there kept working, which is what hid this: only NEW
+# files under the Thunderspy dataset went silently un-added. That is how a
+# Thunderspy-only fix ships as a no-op.
+/Thunderspy/
 Mids MXD files/
 dump/
-docs/
 tools/ghidra-audit/project/
 CoH-Planner.code-workspace
 completed/

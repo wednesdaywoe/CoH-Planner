@@ -44,7 +44,9 @@
     "Holds",
     "Knockback",
     "Melee Damage",
-    "Stuns"
+    "Stalker Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

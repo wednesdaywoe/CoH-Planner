@@ -46,7 +46,7 @@ export const UmbralTorrent: Power = {
     "Accurate To-Hit Debuff",
     "Blaster Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets",
     "Universal Debuff"

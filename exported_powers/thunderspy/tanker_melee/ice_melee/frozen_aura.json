@@ -40,9 +40,11 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Sleep",
-    "Threat Duration"
+    "Tanker Archetype Sets",
+    "Taunt",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -45,7 +45,7 @@ export const CrowdControl: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],

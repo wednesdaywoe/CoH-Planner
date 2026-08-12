@@ -40,7 +40,9 @@
   ],
   "allowed_set_categories": [
     "Ranged Damage",
-    "Stuns"
+    "Soldiers of Arachnos Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

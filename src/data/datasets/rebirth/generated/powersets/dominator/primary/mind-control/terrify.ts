@@ -46,9 +46,9 @@ export const Terrify: Power = {
     "Accurate To-Hit Debuff",
     "Dominator Archetype Sets",
     "Fear",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

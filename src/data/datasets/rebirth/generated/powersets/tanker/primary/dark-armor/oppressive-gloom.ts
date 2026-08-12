@@ -43,7 +43,7 @@ export const OppressiveGloom: Power = {
   ],
   "allowedSetCategories": [
     "Stuns",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "damage": {

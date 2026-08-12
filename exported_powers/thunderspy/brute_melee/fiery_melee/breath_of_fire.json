@@ -40,8 +40,9 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Ranged AoE Damage",
-    "Threat Duration"
+    "Targeted AoE Damage",
+    "Taunt",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

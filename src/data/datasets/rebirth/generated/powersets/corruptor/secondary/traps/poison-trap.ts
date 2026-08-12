@@ -37,7 +37,7 @@ export const PoisonTrap: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

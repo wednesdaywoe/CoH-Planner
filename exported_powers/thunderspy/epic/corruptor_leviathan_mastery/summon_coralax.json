@@ -45,7 +45,8 @@
     "Knockback",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

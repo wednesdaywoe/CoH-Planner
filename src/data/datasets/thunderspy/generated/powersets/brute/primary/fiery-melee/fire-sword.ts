@@ -43,7 +43,7 @@ export const FireSword: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Melee Damage",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

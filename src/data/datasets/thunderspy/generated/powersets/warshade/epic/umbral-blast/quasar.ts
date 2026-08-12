@@ -42,7 +42,7 @@ export const Quasar: Power = {
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],

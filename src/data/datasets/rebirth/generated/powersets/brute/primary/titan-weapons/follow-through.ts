@@ -47,8 +47,8 @@ export const FollowThrough: Power = {
     "Knockback",
     "Melee Damage",
     "Stuns",
-    "Threat Duration",
-    "Universal Control Duration",
+    "Taunt",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

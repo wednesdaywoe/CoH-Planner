@@ -40,7 +40,7 @@ export const KujiInRetsu: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Endurance Modification",
-    "Running & Sprints",
+    "Running",
     "Universal Travel"
   ],
   "maxSlots": 6,

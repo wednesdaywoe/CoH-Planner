@@ -37,7 +37,7 @@ export const TripMine: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Ranged Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

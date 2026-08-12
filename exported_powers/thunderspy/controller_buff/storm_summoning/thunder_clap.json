@@ -38,6 +38,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Controller Archetype Sets",
     "Stuns"
   ],
   "cast_through": [],

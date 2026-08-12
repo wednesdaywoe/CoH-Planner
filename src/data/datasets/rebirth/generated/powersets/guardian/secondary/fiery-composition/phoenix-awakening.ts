@@ -41,10 +41,10 @@ export const PhoenixAwakening: Power = {
   "allowedSetCategories": [
     "Guardian Archetype Sets",
     "Healing",
-    "Melee AoE Damage",
-    "Resurrection",
+    "PBAoE Damage",
+    "Rez Sets",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

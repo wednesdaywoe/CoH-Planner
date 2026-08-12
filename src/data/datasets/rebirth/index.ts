@@ -26,6 +26,7 @@ import {
 import { getBaseToHit, getCombatModifier, getDefenseSoftcap } from './purple-patch';
 import { GRANTED_POWER_GROUPS } from './granted-powers';
 import { ENHANCEMENT_CURVES } from './generated/enhancement-curves';
+import { GENERATED_ARCHETYPE_INHERENTS } from './generated/archetype-inherents';
 import { PET_ENTITIES } from './pet-entities';
 import { MODULAR_POWERSETS } from './powersets/index';
 import { IO_SETS_RAW } from './io-sets-raw';
@@ -78,6 +79,7 @@ const dataset: Dataset = {
     // Pool.Utility_Belt.Athletics instead). Drop it from the HC-sourced
     // inherent list so it doesn't show up under Inherents on Rebirth builds.
     excludeInherents: ['Athletic_Run'],
+    archetypeInherents: GENERATED_ARCHETYPE_INHERENTS,
   },
 
   petEntities: PET_ENTITIES,

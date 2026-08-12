@@ -43,7 +43,7 @@ export const GroupEnergyFlight: Power = {
   ],
   "allowedSetCategories": [
     "Defense Debuff",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

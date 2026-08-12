@@ -40,10 +40,10 @@ export const SoulTransfer: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
-    "Resurrection",
+    "PBAoE Damage",
+    "Rez Sets",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

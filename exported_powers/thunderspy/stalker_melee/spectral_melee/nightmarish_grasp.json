@@ -42,7 +42,9 @@
   "allowed_set_categories": [
     "Fear",
     "Immobilize",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

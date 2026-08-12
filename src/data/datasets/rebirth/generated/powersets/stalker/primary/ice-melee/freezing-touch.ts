@@ -45,7 +45,7 @@ export const FreezingTouch: Power = {
     "Holds",
     "Melee Damage",
     "Stalker Archetype Sets",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

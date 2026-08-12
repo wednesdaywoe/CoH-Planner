@@ -49,7 +49,7 @@ export const SerpentsReach: Power = {
     "Knockback",
     "Ranged Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -42,6 +42,9 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   'Melee Damage': 'Melee Damage',
   'Ranged AoE Damage': 'Ranged AoE Damage',
   'Melee AoE Damage': 'Melee AoE Damage',
+  // Rebirth/Thunderspy's own GroupName for the same two concepts.
+  'Targeted AoE Damage': 'Targeted AoE Damage',
+  'PBAoE Damage': 'PBAoE Damage',
   'Universal Damage Sets': 'Universal Damage Sets',
   'Sniper Attacks': 'Sniper Attacks',
   'Pet Damage': 'Pet Damage',
@@ -68,6 +71,8 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   'Defense Debuff': 'Defense Debuff',
   'Slow Movement': 'Slow Movement',
   'Threat Duration': 'Threat Duration',
+  // Rebirth/Thunderspy's own GroupName for the same Threat Duration concept.
+  Taunt: 'Taunt',
   'Accurate Defense Debuff': 'Accurate Defense Debuff',
   'Accurate Healing': 'Accurate Healing',
   'Accurate To-Hit Debuff': 'Accurate To-Hit Debuff',
@@ -102,10 +107,10 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   // Indoctrination) + the single-piece Rest enhancement (Inexhaustibility).
   // Without these identity entries the picker silently drops the sets even
   // though the per-power `allowedSetCategories` already lists the category.
-  'Universal Control Duration': 'Universal Control Duration',
+  'Universal Control Duration Sets': 'Universal Control Duration Sets',
   'Rest Buff': 'Rest Buff',
   'Universal Debuff': 'Universal Debuff',
-  'Resurrection': 'Resurrection',
+  'Rez Sets': 'Rez Sets',
 };
 
 /**

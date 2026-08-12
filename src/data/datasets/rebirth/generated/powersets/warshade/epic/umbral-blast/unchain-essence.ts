@@ -45,10 +45,10 @@ export const UnchainEssence: Power = {
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

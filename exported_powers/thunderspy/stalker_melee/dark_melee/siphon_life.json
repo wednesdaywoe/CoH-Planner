@@ -44,7 +44,9 @@
     "Accurate To-Hit Debuff",
     "Healing",
     "Melee Damage",
-    "To Hit Debuff"
+    "Stalker Archetype Sets",
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

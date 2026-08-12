@@ -42,7 +42,8 @@
   ],
   "allowed_set_categories": [
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

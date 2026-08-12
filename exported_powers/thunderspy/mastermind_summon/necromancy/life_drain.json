@@ -44,7 +44,8 @@
     "Accurate Healing",
     "Healing",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -39,8 +39,10 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Defender Archetype Sets",
     "Melee Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

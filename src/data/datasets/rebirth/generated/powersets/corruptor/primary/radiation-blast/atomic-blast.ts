@@ -42,7 +42,7 @@ export const AtomicBlast: Power = {
     "Accurate Defense Debuff",
     "Corruptor Archetype Sets",
     "Defense Debuff",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

@@ -36,7 +36,9 @@
     "Damage"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage"
+    "PBAoE Damage",
+    "Tanker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

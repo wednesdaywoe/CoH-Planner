@@ -42,9 +42,9 @@
   "allowed_set_categories": [
     "Accurate To-Hit Debuff",
     "Fear",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "cast_through": [],

@@ -41,7 +41,7 @@ export const FRTScrambleThoughts: Power = {
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -136,6 +136,12 @@ export type IOSetCategory =
   | 'Melee Damage'
   | 'Ranged AoE Damage'
   | 'Melee AoE Damage'
+  // Rebirth/Thunderspy read straight off the binary and name these two
+  // "Targeted AoE Damage" / "PBAoE Damage" — Homecoming's own GroupName is
+  // "Ranged AoE Damage" / "Melee AoE Damage" for the equivalent sets. Two
+  // real category names for the same concept, not a converter inference.
+  | 'Targeted AoE Damage'
+  | 'PBAoE Damage'
   | 'Universal Damage Sets'
   | 'Sniper Attacks'
   | 'Pet Damage'
@@ -159,6 +165,8 @@ export type IOSetCategory =
   | 'Defense Debuff'
   | 'Slow Movement'
   | 'Threat Duration'
+  // Rebirth/Thunderspy's own GroupName for the same Threat Duration concept.
+  | 'Taunt'
   | 'Accurate Defense Debuff'
   | 'Accurate Healing'
   | 'Accurate To-Hit Debuff'
@@ -189,14 +197,15 @@ export type IOSetCategory =
   | 'Primalist Archetype Sets'
   // Rebirth Challenge Enhancement categories — universal mez set (Forced
   // Indoctrination) and the single-piece Rest enhancement (Inexhaustibility)
-  | 'Universal Control Duration'
+  | 'Universal Control Duration Sets'
   | 'Rest Buff'
   // Rebirth multi-aspect debuff event sets (Witchcraft) — slottable in any
   // Slow / Defense-debuff / ToHit-debuff power (e.g. Tar Patch via Slow)
   | 'Universal Debuff'
   // Rebirth resurrection event set (Return From The Grave) — slottable only
-  // in resurrection powers (Revive, Rise of the Phoenix, Howling Twilight, …)
-  | 'Resurrection';
+  // in resurrection powers (Revive, Rise of the Phoenix, Howling Twilight, …).
+  // "Rez Sets" is the game's own GroupName, read straight from the binary.
+  | 'Rez Sets';
 
 // ============================================
 // IO SET RARITY

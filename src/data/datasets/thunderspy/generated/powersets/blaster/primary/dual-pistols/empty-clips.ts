@@ -48,8 +48,8 @@ export const EmptyClips: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Ranged AoE Damage",
     "Slow Movement",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

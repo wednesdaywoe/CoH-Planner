@@ -39,7 +39,9 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Ranged Damage"
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

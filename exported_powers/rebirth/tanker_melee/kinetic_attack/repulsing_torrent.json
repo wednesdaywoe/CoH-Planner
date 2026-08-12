@@ -42,9 +42,9 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Ranged AoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Targeted AoE Damage",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "cast_through": [],

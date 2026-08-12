@@ -43,10 +43,12 @@
   "allowed_set_categories": [
     "Accurate Defense Debuff",
     "Accurate Healing",
+    "Brute Archetype Sets",
     "Defense Debuff",
     "Healing",
     "Melee Damage",
-    "Threat Duration"
+    "Taunt",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

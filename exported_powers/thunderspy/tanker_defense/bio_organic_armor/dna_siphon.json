@@ -45,8 +45,10 @@
     "Accurate Healing",
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
-    "Threat Duration"
+    "PBAoE Damage",
+    "Tanker Archetype Sets",
+    "Taunt",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -39,7 +39,7 @@ export const Aim: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Buff",
     "Universal Damage Sets"
   ],

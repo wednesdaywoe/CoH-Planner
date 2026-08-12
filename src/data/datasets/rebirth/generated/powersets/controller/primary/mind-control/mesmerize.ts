@@ -42,7 +42,7 @@ export const Mesmerize: Power = {
     "Controller Archetype Sets",
     "Ranged Damage",
     "Sleep",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

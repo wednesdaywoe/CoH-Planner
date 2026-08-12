@@ -44,9 +44,9 @@ export const Fissure: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

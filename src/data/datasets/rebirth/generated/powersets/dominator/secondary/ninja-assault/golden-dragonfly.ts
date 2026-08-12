@@ -48,7 +48,7 @@ export const GoldenDragonfly: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

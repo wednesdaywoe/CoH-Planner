@@ -48,7 +48,7 @@ export const Chop: Power = {
     "Knockback",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

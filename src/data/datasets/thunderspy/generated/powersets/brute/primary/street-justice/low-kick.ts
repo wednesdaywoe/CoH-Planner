@@ -47,7 +47,7 @@ export const LowKick: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Slow Movement",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

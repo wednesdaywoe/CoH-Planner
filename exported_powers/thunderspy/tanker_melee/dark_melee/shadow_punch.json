@@ -42,8 +42,10 @@
   "allowed_set_categories": [
     "Accurate To-Hit Debuff",
     "Melee Damage",
-    "Threat Duration",
-    "To Hit Debuff"
+    "Tanker Archetype Sets",
+    "Taunt",
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

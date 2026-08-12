@@ -42,7 +42,8 @@
   ],
   "allowed_set_categories": [
     "Healing",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -41,7 +41,8 @@
   "allowed_set_categories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage"
+    "PBAoE Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

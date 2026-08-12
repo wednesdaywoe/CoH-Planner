@@ -35,7 +35,7 @@
     "Buff_ToHit"
   ],
   "allowed_set_categories": [
-    "Threat Duration",
+    "Taunt",
     "To Hit Buff"
   ],
   "cast_through": [],

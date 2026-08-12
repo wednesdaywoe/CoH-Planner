@@ -49,7 +49,7 @@ export const Ripper: Power = {
     "Defense Debuff",
     "Guardian Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

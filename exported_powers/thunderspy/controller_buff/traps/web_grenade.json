@@ -40,6 +40,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Controller Archetype Sets",
     "Immobilize"
   ],
   "cast_through": [],

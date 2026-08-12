@@ -38,7 +38,7 @@ export const WarriorsProvocation: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

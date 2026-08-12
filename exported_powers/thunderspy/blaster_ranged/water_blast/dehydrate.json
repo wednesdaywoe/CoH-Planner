@@ -44,10 +44,12 @@
   "allowed_set_categories": [
     "Accurate Defense Debuff",
     "Accurate Healing",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Healing",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

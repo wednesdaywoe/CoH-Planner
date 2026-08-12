@@ -44,7 +44,9 @@
     "Accurate Healing",
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage"
+    "PBAoE Damage",
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

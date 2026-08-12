@@ -40,7 +40,9 @@
   ],
   "allowed_set_categories": [
     "Defense Sets",
-    "Melee AoE Damage"
+    "PBAoE Damage",
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

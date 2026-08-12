@@ -670,7 +670,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Ranged AoE Damage"
+    "type": "Targeted AoE Damage"
   },
   "analyze_weakness": {
     "bonuses": [
@@ -933,7 +933,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Ranged AoE Damage"
+    "type": "Targeted AoE Damage"
   },
   "annoyance": {
     "bonuses": [
@@ -1000,7 +1000,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Threat Duration"
+    "type": "Taunt"
   },
   "apocalypse": {
     "bonuses": [
@@ -1248,7 +1248,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Melee AoE Damage"
+    "type": "PBAoE Damage"
   },
   "ascendency_of_the_dominator": {
     "bonuses": [
@@ -1675,7 +1675,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Melee AoE Damage"
+    "type": "PBAoE Damage"
   },
   "basilisks_gaze": {
     "bonuses": [
@@ -3475,7 +3475,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Melee AoE Damage"
+    "type": "PBAoE Damage"
   },
   "cloud_senses": {
     "bonuses": [
@@ -5334,7 +5334,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Ranged AoE Damage"
+    "type": "Targeted AoE Damage"
   },
   "devastation": {
     "bonuses": [
@@ -6854,7 +6854,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Melee AoE Damage"
+    "type": "PBAoE Damage"
   },
   "essence_of_curare": {
     "bonuses": [
@@ -8390,7 +8390,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Ranged AoE Damage"
+    "type": "Targeted AoE Damage"
   },
   "fury_of_the_gladiator": {
     "bonuses": [
@@ -8559,7 +8559,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Melee AoE Damage"
+    "type": "PBAoE Damage"
   },
   "gauntleted_fist": {
     "bonuses": [
@@ -11279,7 +11279,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Ranged AoE Damage"
+    "type": "Targeted AoE Damage"
   },
   "karma": {
     "bonuses": [
@@ -13401,7 +13401,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Threat Duration"
+    "type": "Taunt"
   },
   "multi_strike": {
     "bonuses": [
@@ -13550,7 +13550,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Melee AoE Damage"
+    "type": "PBAoE Damage"
   },
   "neuronic_shutdown": {
     "bonuses": [
@@ -14082,7 +14082,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Melee AoE Damage"
+    "type": "PBAoE Damage"
   },
   "overpowering_presence": {
     "bonuses": [
@@ -14916,7 +14916,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Threat Duration"
+    "type": "Taunt"
   },
   "performance_shifter": {
     "bonuses": [
@@ -15303,7 +15303,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Ranged AoE Damage"
+    "type": "Targeted AoE Damage"
   },
   "pounding_slugfest": {
     "bonuses": [
@@ -15924,7 +15924,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Ranged AoE Damage"
+    "type": "Targeted AoE Damage"
   },
   "razzle_dazzle": {
     "bonuses": [
@@ -17197,7 +17197,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Melee AoE Damage"
+    "type": "PBAoE Damage"
   },
   "scourging_blast": {
     "bonuses": [
@@ -19644,7 +19644,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Melee AoE Damage"
+    "type": "PBAoE Damage"
   },
   "superior_blasters_wrath": {
     "bonuses": [
@@ -21289,7 +21289,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Ranged AoE Damage"
+    "type": "Targeted AoE Damage"
   },
   "superior_gauntleted_fist": {
     "bonuses": [
@@ -24734,7 +24734,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": "Threat Duration"
+    "type": "Taunt"
   },
   "unbounded_leap": {
     "bonuses": [

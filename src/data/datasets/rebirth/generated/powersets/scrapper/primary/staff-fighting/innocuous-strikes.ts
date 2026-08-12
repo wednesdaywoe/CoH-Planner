@@ -46,10 +46,10 @@ export const InnocuousStrikes: Power = {
   ],
   "allowedSetCategories": [
     "Immobilize",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

@@ -39,9 +39,10 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Ranged Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

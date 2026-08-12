@@ -42,8 +42,8 @@
   "allowed_set_categories": [
     "Defense Sets",
     "Healing",
-    "Leaping & Sprints",
-    "Running & Sprints",
+    "Leaping",
+    "Running",
     "Universal Travel"
   ],
   "cast_through": [],

@@ -42,7 +42,7 @@ export const FRTDominate: Power = {
     "Holds",
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

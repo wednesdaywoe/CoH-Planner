@@ -42,7 +42,7 @@ export const ParasiticAura: Power = {
     "Accurate Healing",
     "Endurance Modification",
     "Healing",
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

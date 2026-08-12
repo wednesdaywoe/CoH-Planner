@@ -44,7 +44,8 @@
     "Accurate Healing",
     "Defense Debuff",
     "Healing",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

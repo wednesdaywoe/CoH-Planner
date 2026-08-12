@@ -39,7 +39,7 @@ export const ConduitofPain: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Resurrection",
+    "Rez Sets",
     "To Hit Buff"
   ],
   "maxSlots": 6,

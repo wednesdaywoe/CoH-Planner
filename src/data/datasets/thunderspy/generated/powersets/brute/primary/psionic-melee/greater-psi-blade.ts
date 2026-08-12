@@ -45,7 +45,7 @@ export const GreaterPsiBlade: Power = {
     "Brute Archetype Sets",
     "Holds",
     "Melee Damage",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -41,10 +41,12 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Brute Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
-    "Threat Duration"
+    "Taunt",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

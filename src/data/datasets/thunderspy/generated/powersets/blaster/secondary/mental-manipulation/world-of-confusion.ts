@@ -47,7 +47,7 @@ export const WorldofConfusion: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Confuse",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

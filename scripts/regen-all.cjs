@@ -56,6 +56,7 @@ const datasets = (() => {
 //   convert-archetypes     -> generated/archetype-stats.generated.ts (HP/cap/resCap)
 //   generate-powerset-index-> powersets/index.ts      (needs powersets first)
 //   convert-pet-entities   -> pet-entities.ts (+ sidecars)
+//   convert-archetype-inherents -> generated/archetype-inherents.ts (needs powersets first)
 const STEPS = [
   { script: 'extract-at-tables.cjs',          args: [],          generated: false },
   { script: 'convert-archetypes.cjs',         args: [],          generated: true },
@@ -67,6 +68,10 @@ const STEPS = [
   { script: 'convert-enhancement-curves.cjs', args: [],          generated: true },
   { script: 'convert-salvage.cjs',            args: [],          generated: true },
   { script: 'convert-pet-entities.cjs',       args: [],          generated: false },
+  // MUST run after convert-all-powersets: it decides an archetype inherent is
+  // missing by checking that no powerset already displays that name, so a stale
+  // powerset layer would make it emit powers the build can already reach.
+  { script: 'convert-archetype-inherents.cjs', args: [],         generated: true },
   // Guard: fail the regen if a malformed boostset poisoned a whole IO-set
   // category (the Thunderspy "KB"/SumoBoostName pollution class). Runs on the
   // freshly-generated output, so it also gates the CI regen-and-diff pass.

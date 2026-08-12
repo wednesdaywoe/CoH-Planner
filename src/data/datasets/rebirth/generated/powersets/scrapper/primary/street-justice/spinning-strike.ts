@@ -44,8 +44,8 @@ export const SpinningStrike: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
     "Scrapper Archetype Sets",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

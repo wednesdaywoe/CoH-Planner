@@ -40,7 +40,7 @@ export const Possess: Power = {
   "allowedSetCategories": [
     "Confuse",
     "Controller Archetype Sets",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

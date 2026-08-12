@@ -45,7 +45,7 @@ export const ForceBolt: Power = {
     "Knockback",
     "Ranged Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

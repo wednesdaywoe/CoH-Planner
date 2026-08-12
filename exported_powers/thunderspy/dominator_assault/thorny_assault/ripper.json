@@ -43,7 +43,8 @@
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
-    "Melee AoE Damage"
+    "PBAoE Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

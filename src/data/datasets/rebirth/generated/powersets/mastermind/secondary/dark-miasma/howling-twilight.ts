@@ -41,11 +41,11 @@ export const HowlingTwilight: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Resurrection",
+    "Rez Sets",
     "Slow Movement",
     "Stuns",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

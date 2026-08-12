@@ -42,8 +42,8 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Leaping & Sprints",
-    "Melee AoE Damage",
+    "Leaping",
+    "PBAoE Damage",
     "Universal Damage Sets",
     "Universal Travel"
   ],

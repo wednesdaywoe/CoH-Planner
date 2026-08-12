@@ -42,9 +42,9 @@
   ],
   "allowed_set_categories": [
     "Immobilize",
-    "Ranged AoE Damage",
     "Slow Movement",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

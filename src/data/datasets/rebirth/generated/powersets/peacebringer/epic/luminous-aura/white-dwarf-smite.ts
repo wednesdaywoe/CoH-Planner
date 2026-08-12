@@ -49,7 +49,7 @@ export const WhiteDwarfSmite: Power = {
     "Knockback",
     "Melee Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

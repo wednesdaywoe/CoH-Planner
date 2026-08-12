@@ -42,9 +42,9 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Ranged AoE Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "cast_through": [],

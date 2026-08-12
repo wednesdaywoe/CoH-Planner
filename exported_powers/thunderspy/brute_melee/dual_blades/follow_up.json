@@ -40,9 +40,11 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Brute Archetype Sets",
     "Melee Damage",
-    "Threat Duration",
-    "To Hit Buff"
+    "Taunt",
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

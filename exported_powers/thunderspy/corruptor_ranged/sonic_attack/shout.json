@@ -39,7 +39,9 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Ranged Damage"
+    "Corruptor Archetype Sets",
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

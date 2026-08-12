@@ -38,7 +38,7 @@
     "Damage"
   ],
   "allowed_set_categories": [
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "cast_through": [],

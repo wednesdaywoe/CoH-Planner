@@ -5,17 +5,15 @@ import { IO_SETS_RAW as IO_SETS_RAW_REBIRTH } from './datasets/rebirth/io-sets-r
 import { IO_SET_TYPE_TO_CATEGORY } from './io-sets';
 
 /**
- * Rebirth "Resurrection" category (Return From The Grave / Superior).
+ * Rebirth "Rez Sets" category (Return From The Grave / Superior).
  *
  * Rebirth's first-ever Rez IO Set. Its 60-power pool is exclusively
  * resurrection powers (Revive, Rise of the Phoenix, Soul Transfer, Resurgence,
  * Howling Twilight, Resurrect, Rebirth, Mutation, Stygian Return, …). No
- * common-rarity set shares that pool, so pool-matching failed and the
+ * common-rarity set shares that pool, so pool-matching used to fail and an
  * AT-prefix fallback mislabeled it "Brute Archetype Sets" off its first rez
- * power (Brute_Defense.Dark_Armor.Soul_Transfer). Recategorized to a bespoke
- * "Resurrection" category (a `_CHALLENGE_SET_OVERRIDES_BY_NAME` entry in
- * _boostsets.py), surgically re-applied to `exported_powers/rebirth`
- * allowed_set_categories, and plumbed through the planner. See HOMECOMING_PARSER.
+ * power (Brute_Defense.Dark_Armor.Soul_Transfer). "Rez Sets" is the set's own
+ * authoritative GroupName, read straight from the binary. See HOMECOMING_PARSER.
  */
 function gen(rel: string): string {
   const p = fileURLToPath(new URL(`./datasets/rebirth/generated/powersets/${rel}`, import.meta.url));
@@ -27,30 +25,30 @@ function setCats(text: string): string[] {
 }
 
 describe('Rebirth Resurrection (Return From The Grave) categorization', () => {
-  it('the set itself is typed "Resurrection", not "Brute Archetype Sets"', () => {
-    expect(IO_SETS_RAW_REBIRTH['return_from_the_grave']?.type).toBe('Resurrection');
-    expect(IO_SETS_RAW_REBIRTH['superior_return_from_the_grave']?.type).toBe('Resurrection');
+  it('the set itself is typed "Rez Sets", not "Brute Archetype Sets"', () => {
+    expect(IO_SETS_RAW_REBIRTH['return_from_the_grave']?.type).toBe('Rez Sets');
+    expect(IO_SETS_RAW_REBIRTH['superior_return_from_the_grave']?.type).toBe('Rez Sets');
   });
 
-  it('the "Resurrection" set type maps to the "Resurrection" picker category', () => {
-    expect(IO_SET_TYPE_TO_CATEGORY['Resurrection']).toBe('Resurrection');
+  it('the "Rez Sets" set type maps to the "Rez Sets" picker category', () => {
+    expect(IO_SET_TYPE_TO_CATEGORY['Rez Sets']).toBe('Rez Sets');
   });
 
-  it('a non-Brute rez power (Scrapper Revive) gains Resurrection and DROPS the spurious Brute Archetype Sets', () => {
+  it('a non-Brute rez power (Scrapper Revive) gains Rez Sets and DROPS the spurious Brute Archetype Sets', () => {
     const cats = setCats(gen('scrapper/secondary/regeneration/revive.ts'));
-    expect(cats).toContain('Resurrection');
+    expect(cats).toContain('Rez Sets');
     expect(cats).not.toContain('Brute Archetype Sets');
   });
 
-  it('an ally-rez buff power (Controller Resurrect) gains Resurrection, no spurious Brute Archetype Sets', () => {
+  it('an ally-rez buff power (Controller Resurrect) gains Rez Sets, no spurious Brute Archetype Sets', () => {
     const cats = setCats(gen('controller/secondary/empathy/resurrect.ts'));
-    expect(cats).toContain('Resurrection');
+    expect(cats).toContain('Rez Sets');
     expect(cats).not.toContain('Brute Archetype Sets');
   });
 
-  it('a genuine Brute rez power (Brute Rise of the Phoenix) KEEPS Brute Archetype Sets (real Brute ATOs) AND gains Resurrection', () => {
+  it('a genuine Brute rez power (Brute Rise of the Phoenix) KEEPS Brute Archetype Sets (real Brute ATOs) AND gains Rez Sets', () => {
     const cats = setCats(gen('brute/secondary/fiery-aura/rise-of-the-phoenix.ts'));
-    expect(cats).toContain('Resurrection');
+    expect(cats).toContain('Rez Sets');
     expect(cats).toContain('Brute Archetype Sets'); // legit: Brute ATOs slot every Brute power
   });
 });

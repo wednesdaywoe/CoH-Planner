@@ -48,8 +48,8 @@ export const FreezingTouch: Power = {
     "Holds",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Control Duration",
+    "Taunt",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

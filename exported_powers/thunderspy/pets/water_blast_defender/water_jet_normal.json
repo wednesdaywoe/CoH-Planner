@@ -40,8 +40,10 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Defender Archetype Sets",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

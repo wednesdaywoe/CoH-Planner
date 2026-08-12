@@ -41,8 +41,8 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Ranged AoE Damage",
     "Stalker Archetype Sets",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "cast_through": [],

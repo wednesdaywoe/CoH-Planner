@@ -40,11 +40,11 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
     "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Control Duration",
+    "Taunt",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "cast_through": [],

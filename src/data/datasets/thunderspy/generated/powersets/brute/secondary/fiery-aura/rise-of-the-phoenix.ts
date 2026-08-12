@@ -39,7 +39,7 @@ export const RiseofthePhoenix: Power = {
     "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

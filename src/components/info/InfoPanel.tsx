@@ -70,7 +70,7 @@ import {
   findSelectedPowerInBuild,
   calcThreeTier,
 } from './powerDisplayUtils';
-import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden } from './resolveEffectivePower';
+import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, currentToHitFraction, isQuickSnipeActive } from './resolveEffectivePower';
 import {
   RegistryEffectsDisplay,
 } from './SharedPowerComponents';
@@ -267,26 +267,31 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
 
   // When combatMode is active and power has quickSnipe, use Quick-cast stats/damage
-  const isQuickSnipe = combatMode && !!power?.quickSnipe;
-
   // The power this panel actually shows: the snipe's fast form, the mid-combat cast, and the
   // active mode-gated contributions merged in (drowning bonus, Disintegrating, Bio Armor
   // adaptation). Single-sourced as `resolveEffectivePower` so the picker tooltip and the engine
   // gate resolve the same power, and mirrored in the engine's `effective.rs` (PROD6C-3k).
   const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
   const globalAdjusters = useUIStore((s) => s.globalAdjusters);
-  const conditionalMerge = useMemo(() => {
-    if (!power) return { power, extraInstances: {} };
-    return resolveEffectivePower(power, {
+  const effectivePowerState = useMemo(
+    () => ({
       combatMode,
       hidden: effectiveHidden,
       globalAdjusters: effectiveGlobalAdjusters(build, globalAdjusters),
       mechanicAdjusters,
       atInherentState: { dominationActive },
       activeModes: build.activeModes,
-    });
-  }, [power, combatMode, effectiveHidden, mechanicAdjusters, globalAdjusters, dominationActive, build]);
+      build,
+      currentToHit: currentToHitFraction(archetypeId, globalBonuses),
+    }),
+    [combatMode, effectiveHidden, mechanicAdjusters, globalAdjusters, dominationActive, build, archetypeId, globalBonuses],
+  );
+  const conditionalMerge = useMemo(() => {
+    if (!power) return { power, extraInstances: {} };
+    return resolveEffectivePower(power, effectivePowerState);
+  }, [power, effectivePowerState]);
   const effectivePower = conditionalMerge.power;
+  const isQuickSnipe = !!power && isQuickSnipeActive(power, effectivePowerState);
   const extraInstances = conditionalMerge.extraInstances;
 
   // Incarnate damage procs (Interface DoTs, Hybrid Assault) fire on outgoing

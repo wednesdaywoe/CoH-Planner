@@ -48,11 +48,13 @@
     "Defense Debuff",
     "Healing",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Running & Sprints",
+    "Running",
     "To Hit Buff",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

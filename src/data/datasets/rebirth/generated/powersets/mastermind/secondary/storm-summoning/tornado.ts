@@ -47,7 +47,7 @@ export const Tornado: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

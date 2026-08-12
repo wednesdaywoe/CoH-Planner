@@ -46,7 +46,7 @@ export const IncandescentStrike: Power = {
     "Holds",
     "Knockback",
     "Melee Damage",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

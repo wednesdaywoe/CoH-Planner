@@ -48,7 +48,7 @@ export const TurbulentAura: Power = {
     "Accurate Healing",
     "Healing",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

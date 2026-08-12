@@ -42,7 +42,9 @@
   "allowed_set_categories": [
     "Defense Debuff",
     "Melee Damage",
-    "Slow Movement"
+    "Scrapper Archetype Sets",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

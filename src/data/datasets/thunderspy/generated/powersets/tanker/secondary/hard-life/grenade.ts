@@ -45,9 +45,9 @@ export const Grenade: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Targeted AoE Damage",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

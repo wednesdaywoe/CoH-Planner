@@ -44,7 +44,7 @@ export const NightFall: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Guardian Archetype Sets",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets",
     "Universal Debuff"

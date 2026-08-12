@@ -41,10 +41,12 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Brute Archetype Sets",
     "Endurance Modification",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Sleep",
-    "Threat Duration"
+    "Taunt",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

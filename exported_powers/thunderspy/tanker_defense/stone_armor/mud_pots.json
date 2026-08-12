@@ -41,8 +41,10 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage",
-    "Slow Movement"
+    "PBAoE Damage",
+    "Slow Movement",
+    "Tanker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -44,9 +44,11 @@
   "allowed_set_categories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Ranged AoE Damage",
+    "Dominator Archetype Sets",
     "Slow Movement",
-    "Stuns"
+    "Stuns",
+    "Targeted AoE Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

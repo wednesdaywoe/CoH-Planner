@@ -470,7 +470,7 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
     # `.powers` source authors them (`kTrue` or absent). The proc one drives the
     # PPM area factor: the game returns 1.0 outright for a flagged power, before it
     # looks at radius. Parsed here since HC-3, read by the calc since PPM-3 (both
-    # in DATA-GAP-REGISTER-RESOLVED.md). Parse7 only — the Parse6 tail reader stops
+    # in docs/gaps/procs-ppm.md). Parse7 only — the Parse6 tail reader stops
     # at StrengthsDisallowed, so the forks' zero is this reader's, not their bins'.
     if pw.proc_main_target_only:
         d['procs_only_on_main_target'] = True
@@ -864,16 +864,16 @@ def main():
     if resolver.has('boostsets.bin'):
         print('Parsing boostsets.bin...', flush=True)
         boost_sets = parse_boostsets(resolver.read('boostsets.bin'))
-        set_cats_index = build_power_category_index(boost_sets)
-        print(f'  {len(boost_sets)} IO sets loaded, '
-              f'{len(set_cats_index)} powers indexed.', flush=True)
-        # Resolve P-hashes, same as the all_powers pass above — otherwise
-        # boostsets.json ships raw message-store keys (e.g. "P83626102")
-        # instead of the display strings consumers actually need.
+        # Resolve P-hashes before the index, not after: the index is keyed on
+        # `group_name`, so building it first would file every power under raw
+        # message-store keys ("P2611858036" for "Melee Damage").
         if msgs:
             for s in boost_sets:
                 s.display_name = msgs.resolve(s.display_name)
-                s.description = msgs.resolve(s.description)
+                s.group_name = msgs.resolve(s.group_name)
+        set_cats_index = build_power_category_index(boost_sets)
+        print(f'  {len(boost_sets)} IO sets loaded, '
+              f'{len(set_cats_index)} powers indexed.', flush=True)
         _export_boostsets(boost_sets, output_dir)
 
     _export_enhancement_curves(resolver, powers_data, output_dir)

@@ -40,7 +40,7 @@ export const Entangle: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

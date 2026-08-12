@@ -41,8 +41,10 @@
   ],
   "allowed_set_categories": [
     "Holds",
+    "Kheldian Archetype Sets",
     "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

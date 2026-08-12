@@ -41,9 +41,11 @@
   ],
   "allowed_set_categories": [
     "Accurate To-Hit Debuff",
-    "Melee AoE Damage",
+    "Dominator Archetype Sets",
+    "PBAoE Damage",
     "Stuns",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

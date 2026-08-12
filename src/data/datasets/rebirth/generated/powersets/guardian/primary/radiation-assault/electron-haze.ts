@@ -47,7 +47,7 @@ export const ElectronHaze: Power = {
     "Defense Debuff",
     "Guardian Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

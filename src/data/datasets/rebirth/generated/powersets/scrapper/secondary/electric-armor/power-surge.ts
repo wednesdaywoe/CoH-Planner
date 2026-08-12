@@ -47,7 +47,7 @@ export const PowerSurge: Power = {
     "Endurance Modification",
     "Holds",
     "Resist Damage",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

@@ -45,7 +45,7 @@ export const ChainInduction: Power = {
     "Brute Archetype Sets",
     "Endurance Modification",
     "Melee Damage",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

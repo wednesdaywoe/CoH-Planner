@@ -47,8 +47,8 @@ export const HavocPunch: Power = {
     "Endurance Modification",
     "Melee Damage",
     "Sleep",
-    "Threat Duration",
-    "Universal Control Duration",
+    "Taunt",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

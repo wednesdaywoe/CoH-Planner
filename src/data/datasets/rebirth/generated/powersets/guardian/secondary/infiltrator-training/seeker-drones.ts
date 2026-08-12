@@ -45,7 +45,7 @@ export const SeekerDrones: Power = {
     "Ranged Damage",
     "Stuns",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

@@ -42,9 +42,11 @@
   ],
   "allowed_set_categories": [
     "Accurate To-Hit Debuff",
+    "Defender Archetype Sets",
     "Ranged Damage",
     "Stuns",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -40,7 +40,7 @@ export const NebulousForm: Power = {
     "Jump"
   ],
   "allowedSetCategories": [
-    "Leaping & Sprints",
+    "Leaping",
     "Universal Travel"
   ],
   "maxSlots": 6,

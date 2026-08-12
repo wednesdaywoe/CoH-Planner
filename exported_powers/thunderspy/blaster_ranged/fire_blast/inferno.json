@@ -38,7 +38,9 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage"
+    "Blaster Archetype Sets",
+    "PBAoE Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

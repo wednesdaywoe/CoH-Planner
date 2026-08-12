@@ -39,7 +39,9 @@
   ],
   "allowed_set_categories": [
     "Healing",
-    "Melee Damage"
+    "Melee Damage",
+    "Primalist Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

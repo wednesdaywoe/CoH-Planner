@@ -44,7 +44,7 @@ export const GravityDistortionField: Power = {
     "Controller Archetype Sets",
     "Holds",
     "Slow Movement",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "maxSlots": 6,

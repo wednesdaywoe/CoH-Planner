@@ -41,6 +41,10 @@ export const IceSwordCircle: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

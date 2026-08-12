@@ -42,7 +42,7 @@
   "allowed_set_categories": [
     "Immobilize",
     "Slow Movement",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "cast_through": [

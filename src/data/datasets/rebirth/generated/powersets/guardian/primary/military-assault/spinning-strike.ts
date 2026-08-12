@@ -45,7 +45,7 @@ export const SpinningStrike: Power = {
   "allowedSetCategories": [
     "Guardian Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

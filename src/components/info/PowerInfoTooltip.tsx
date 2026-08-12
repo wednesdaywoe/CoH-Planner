@@ -54,7 +54,7 @@ import { buildDisplayEffects, withPseudoPetEffects } from './buildDisplayEffects
 import { formatPetEffectValue, petEffectLabel } from './petEffectDisplay';
 import { getPetEntity } from '@/data/pet-entities';
 import { resolveActiveUpgradeTiers, takenPowerNames } from '@/utils/calculations/pet-upgrades';
-import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden } from './resolveEffectivePower';
+import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, currentToHitFraction } from './resolveEffectivePower';
 import type { ArchetypeId } from '@/types';
 import {
   convertGlobalBonusesToAspects,
@@ -200,9 +200,11 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
             mechanicAdjusters,
             atInherentState: { dominationActive },
             activeModes: build.activeModes,
+            build,
+            currentToHit: currentToHitFraction(archetypeId, globalBonuses),
           }).power
         : undefined,
-    [basePower, combatMode, effectiveHidden, mechanicAdjusters, globalAdjusters, dominationActive, build],
+    [basePower, combatMode, effectiveHidden, mechanicAdjusters, globalAdjusters, dominationActive, build, archetypeId, globalBonuses],
   );
 
   // Calculate actual damage using archetype modifiers and level

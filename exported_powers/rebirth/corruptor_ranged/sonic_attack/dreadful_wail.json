@@ -40,9 +40,9 @@
   ],
   "allowed_set_categories": [
     "Corruptor Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "cast_through": [],

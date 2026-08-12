@@ -39,9 +39,11 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Defender Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
-    "Ranged Damage"
+    "PBAoE Damage",
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

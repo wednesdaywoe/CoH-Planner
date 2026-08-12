@@ -42,7 +42,8 @@
   "allowed_set_categories": [
     "Accurate To-Hit Debuff",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -37,8 +37,10 @@
     "Recovery"
   ],
   "allowed_set_categories": [
+    "Dominator Archetype Sets",
     "Endurance Modification",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -43,7 +43,7 @@ export const SerpentsReach: Power = {
     "Brute Archetype Sets",
     "Knockback",
     "Ranged Damage",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

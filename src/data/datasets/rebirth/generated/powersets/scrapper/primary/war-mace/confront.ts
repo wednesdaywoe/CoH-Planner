@@ -37,7 +37,7 @@ export const Confront: Power = {
   ],
   "allowedSetCategories": [
     "Scrapper Archetype Sets",
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

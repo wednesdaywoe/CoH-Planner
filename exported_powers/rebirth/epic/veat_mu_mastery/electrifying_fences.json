@@ -43,8 +43,8 @@
   "allowed_set_categories": [
     "Endurance Modification",
     "Immobilize",
-    "Ranged AoE Damage",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "cast_through": [],

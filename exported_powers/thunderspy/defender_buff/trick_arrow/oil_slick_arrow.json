@@ -39,9 +39,11 @@
     "Damage"
   ],
   "allowed_set_categories": [
+    "Defender Archetype Sets",
     "Defense Debuff",
-    "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Targeted AoE Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -40,7 +40,9 @@
   ],
   "allowed_set_categories": [
     "Melee Damage",
-    "To Hit Buff"
+    "Scrapper Archetype Sets",
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

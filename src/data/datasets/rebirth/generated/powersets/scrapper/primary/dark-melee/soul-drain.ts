@@ -42,7 +42,7 @@ export const SoulDrain: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Scrapper Archetype Sets",
     "To Hit Buff",
     "Universal Damage Sets"

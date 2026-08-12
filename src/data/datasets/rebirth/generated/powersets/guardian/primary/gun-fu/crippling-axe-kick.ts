@@ -49,7 +49,7 @@ export const CripplingAxeKick: Power = {
     "Immobilize",
     "Melee Damage",
     "Slow Movement",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

@@ -40,7 +40,7 @@ export const GeneticContamination: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Tanker Archetype Sets",
     "Universal Damage Sets"
   ],

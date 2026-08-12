@@ -45,7 +45,7 @@ export const TouchofFear: Power = {
     "Endurance Modification",
     "Fear",
     "Healing",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

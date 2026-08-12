@@ -43,7 +43,7 @@ export const BlackDwarfMire: Power = {
   ],
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
     "Universal Damage Sets",
     "Universal Debuff"

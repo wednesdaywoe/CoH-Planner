@@ -41,8 +41,10 @@
   ],
   "allowed_set_categories": [
     "Defense Sets",
-    "Melee AoE Damage",
-    "Threat Duration"
+    "PBAoE Damage",
+    "Tanker Archetype Sets",
+    "Taunt",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

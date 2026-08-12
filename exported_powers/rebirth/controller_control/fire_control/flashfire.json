@@ -41,9 +41,9 @@
   ],
   "allowed_set_categories": [
     "Controller Archetype Sets",
-    "Ranged AoE Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "cast_through": [],

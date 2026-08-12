@@ -42,7 +42,7 @@ export const WillDomination: Power = {
     "Corruptor Archetype Sets",
     "Ranged Damage",
     "Sleep",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

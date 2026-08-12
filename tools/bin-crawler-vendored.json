@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "c27e7e46d8efaab23e535790d4f61559d701b218",
-  "synced_from_subject": "EEA6 work",
-  "synced_from_date": "2026-08-10T12:30:16-04:00",
-  "tree_fingerprint": "91e1968f8e2d5ce14f7978acdd111959231e9bf6c86a5dadee0f00864de50d03",
-  "export_manifest_digest": "28af4a69e4ea3f11da0b594f31208987e631cd506ce0bd76116fd3b04ec0178a",
+  "synced_from_commit": "e92ad065265b72d9194b73c6b28ac8c379a3b114",
+  "synced_from_subject": "AUTOISSUE-2: grant the inherents a fork gates on the archetype alone",
+  "synced_from_date": "2026-08-12T11:44:39-04:00",
+  "tree_fingerprint": "ea49a9c83383150166f6f56e050a17a434c3fbff273ab1d864bbbf06c56f9050",
+  "export_manifest_digest": "a17dbabba88d102837b829c83b943260736b85b868e504e3720e08a427ef3618",
   "export_manifest_count": 10
 }

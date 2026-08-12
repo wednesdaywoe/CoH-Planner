@@ -40,7 +40,7 @@ export const Confuse: Power = {
   "allowedSetCategories": [
     "Confuse",
     "Dominator Archetype Sets",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

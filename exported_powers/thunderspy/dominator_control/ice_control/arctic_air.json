@@ -40,9 +40,11 @@
   ],
   "allowed_set_categories": [
     "Confuse",
+    "Dominator Archetype Sets",
     "Fear",
-    "Melee AoE Damage",
-    "Slow Movement"
+    "PBAoE Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [

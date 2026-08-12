@@ -45,7 +45,7 @@ export const Suffocate: Power = {
     "Defense Debuff",
     "Holds",
     "Ranged Damage",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

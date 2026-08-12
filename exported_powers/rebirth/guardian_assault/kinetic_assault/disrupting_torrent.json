@@ -42,7 +42,7 @@
   "allowed_set_categories": [
     "Guardian Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "cast_through": [],

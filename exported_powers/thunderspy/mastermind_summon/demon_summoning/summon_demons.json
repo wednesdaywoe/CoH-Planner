@@ -42,9 +42,11 @@
   "allowed_set_categories": [
     "Healing",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Resist Damage"
+    "Resist Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

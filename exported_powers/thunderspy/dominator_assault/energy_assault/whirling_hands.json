@@ -39,8 +39,10 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage",
-    "Stuns"
+    "Dominator Archetype Sets",
+    "PBAoE Damage",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

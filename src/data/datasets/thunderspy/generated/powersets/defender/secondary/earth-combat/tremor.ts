@@ -41,7 +41,7 @@ export const Tremor: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

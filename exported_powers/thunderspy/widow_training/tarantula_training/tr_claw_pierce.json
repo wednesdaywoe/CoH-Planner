@@ -40,7 +40,9 @@
   ],
   "allowed_set_categories": [
     "Defense Debuff",
-    "Melee Damage"
+    "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -43,7 +43,9 @@
   "allowed_set_categories": [
     "Immobilize",
     "Ranged Damage",
-    "Slow Movement"
+    "Scrapper Archetype Sets",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

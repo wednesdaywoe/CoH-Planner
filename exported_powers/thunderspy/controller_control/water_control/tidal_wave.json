@@ -42,10 +42,12 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Controller Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
     "Slow Movement",
-    "Stuns"
+    "Stuns",
+    "Targeted AoE Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -1,22 +1,26 @@
 /**
  * Quick-cast snipe form.
  *
- * Snipe powers carry a `quickSnipe` variant (fast cast, higher damage) that
- * applies when the build is in combat mode (Experienced Marksman / sustained
- * combat ToHit). This returns the power with the quick-snipe stats and damage
- * merged in, or the power unchanged when combat mode is off or the power has no
- * snipe form.
+ * Snipe powers carry a `quickSnipe` variant (fast cast, higher damage). This merges it in when
+ * told to, or returns the power unchanged. `fastFormActive` is a plain boolean rather than a
+ * condition-aware gate ON PURPOSE — this function has no build/combat context of its own, so
+ * whether the fast form SHOULD be active is entirely the caller's call:
+ *  - `resolveEffectivePower` evaluates `power.quickSnipe.condition` for real (SNIPE-2 —
+ *    Homecoming gates on combat engagement, Rebirth/Thunderspy on ToHit ≥ 97%) before calling
+ *    this, since it's answering "what does the build show RIGHT NOW".
+ *  - `attack-chain-powers.ts` and `useBuildMaxAttackDamage.ts` are answering a different
+ *    question ("what does this attack chain look like once the fast form is reachable") and
+ *    pass their own simplified boolean deliberately — not a stale copy of this gate.
  *
- * Single-sourced so the display surfaces (via `resolveEffectivePower`) and
- * `useBuildMaxAttackDamage` (the damage-bar normalization reference) apply the SAME adjustment. If they
- * diverged, a fast snipe's bar numerator (boosted damage) would be normalized
- * against a reference computed from its slow damage and clamp to 100% — and the
+ * Single-sourced so every caller applies the SAME stats/damage merge once it decides the fast
+ * form is active. If that merge diverged, a fast snipe's bar numerator (boosted damage) would be
+ * normalized against a reference computed from its slow damage and clamp to 100% — and the
  * understated reference could push other powers' bars to 100% too.
  */
 import type { Power } from '@/types';
 
-export function applyQuickSnipe<T extends Power>(power: T, combatMode: boolean): T {
-  if (!combatMode || !power.quickSnipe) return power;
+export function applyQuickSnipe<T extends Power>(power: T, fastFormActive: boolean): T {
+  if (!fastFormActive || !power.quickSnipe) return power;
   const qs = power.quickSnipe;
   return {
     ...power,

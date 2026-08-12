@@ -40,10 +40,10 @@ export const OmegaManeuver: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
-    "Threat Duration",
+    "Targeted AoE Damage",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -41,8 +41,10 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Melee AoE Damage",
-    "Slow Movement"
+    "PBAoE Damage",
+    "Slow Movement",
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

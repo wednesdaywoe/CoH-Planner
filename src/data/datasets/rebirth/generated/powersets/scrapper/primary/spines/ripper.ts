@@ -46,7 +46,7 @@ export const Ripper: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",
     "Universal Damage Sets",

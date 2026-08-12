@@ -42,8 +42,8 @@
   "allowed_set_categories": [
     "Knockback",
     "Stuns",
-    "Threat Duration",
-    "Universal Control Duration"
+    "Taunt",
+    "Universal Control Duration Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

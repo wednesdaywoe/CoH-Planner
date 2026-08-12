@@ -43,7 +43,7 @@
   "allowed_set_categories": [
     "Knockback",
     "Stuns",
-    "Threat Duration"
+    "Taunt"
   ],
   "cast_through": [],
   "toggle_ignore": [],

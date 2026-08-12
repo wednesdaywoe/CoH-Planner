@@ -41,10 +41,12 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Brute Archetype Sets",
     "Immobilize",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
-    "Threat Duration"
+    "Taunt",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

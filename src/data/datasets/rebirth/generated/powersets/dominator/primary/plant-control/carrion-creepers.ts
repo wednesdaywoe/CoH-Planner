@@ -44,9 +44,9 @@ export const CarrionCreepers: Power = {
     "Dominator Archetype Sets",
     "Immobilize",
     "Knockback",
-    "Ranged AoE Damage",
     "Slow Movement",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

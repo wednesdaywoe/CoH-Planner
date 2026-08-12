@@ -47,9 +47,9 @@ export const MidnightGrasp: Power = {
     "Brute Archetype Sets",
     "Immobilize",
     "Melee Damage",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

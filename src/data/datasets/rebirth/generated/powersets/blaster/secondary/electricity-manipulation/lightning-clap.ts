@@ -49,7 +49,7 @@ export const LightningClap: Power = {
     "Healing",
     "Knockback",
     "Stuns",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

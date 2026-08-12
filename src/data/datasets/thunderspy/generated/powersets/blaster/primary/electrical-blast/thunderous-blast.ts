@@ -42,7 +42,7 @@ export const ThunderousBlast: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Endurance Modification",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

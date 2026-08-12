@@ -47,7 +47,7 @@ export const MidnightGrasp: Power = {
     "Melee Damage",
     "Scrapper Archetype Sets",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

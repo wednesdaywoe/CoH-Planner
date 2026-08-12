@@ -44,11 +44,13 @@
   "allowed_set_categories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
     "Holds",
     "Knockback",
-    "Ranged AoE Damage",
-    "To Hit Debuff"
+    "Targeted AoE Damage",
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

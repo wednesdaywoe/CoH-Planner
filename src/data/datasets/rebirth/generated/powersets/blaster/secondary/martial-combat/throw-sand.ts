@@ -45,7 +45,7 @@ export const ThrowSand: Power = {
     "Accurate To-Hit Debuff",
     "Stuns",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "maxSlots": 6,

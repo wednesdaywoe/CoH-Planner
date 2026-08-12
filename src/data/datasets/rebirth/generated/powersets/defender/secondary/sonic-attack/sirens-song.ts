@@ -43,9 +43,9 @@ export const SirensSong: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
-    "Ranged AoE Damage",
     "Sleep",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

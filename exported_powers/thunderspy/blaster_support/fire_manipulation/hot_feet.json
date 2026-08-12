@@ -39,8 +39,10 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage",
-    "Slow Movement"
+    "Blaster Archetype Sets",
+    "PBAoE Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -39,7 +39,7 @@ export const Adaptation: Power = {
   ],
   "allowedSetCategories": [
     "Resist Damage",
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

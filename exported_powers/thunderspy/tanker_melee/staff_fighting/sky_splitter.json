@@ -44,7 +44,9 @@
     "Knockback",
     "Melee Damage",
     "Stuns",
-    "Threat Duration"
+    "Tanker Archetype Sets",
+    "Taunt",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

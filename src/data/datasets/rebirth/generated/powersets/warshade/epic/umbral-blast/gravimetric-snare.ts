@@ -45,7 +45,7 @@ export const GravimetricSnare: Power = {
     "Melee Damage",
     "Ranged Damage",
     "Slow Movement",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

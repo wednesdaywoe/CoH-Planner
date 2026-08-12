@@ -41,8 +41,9 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Melee AoE Damage",
-    "Slow Movement"
+    "PBAoE Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -45,7 +45,7 @@ export const TheLotusDrops: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Guardian Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

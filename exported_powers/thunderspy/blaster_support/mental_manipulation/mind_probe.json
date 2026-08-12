@@ -38,7 +38,9 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee Damage"
+    "Blaster Archetype Sets",
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

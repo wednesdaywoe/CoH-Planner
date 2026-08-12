@@ -39,8 +39,10 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage",
-    "Stuns"
+    "PBAoE Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

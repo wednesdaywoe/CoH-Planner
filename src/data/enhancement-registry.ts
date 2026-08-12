@@ -101,6 +101,9 @@ export const SET_CATEGORY_TO_ENHANCEMENT: Record<string, EnhancementStatType[]> 
   'Melee Damage': ['Damage', 'Accuracy'],
   'Ranged AoE Damage': ['Damage', 'Accuracy', 'Range'],
   'Melee AoE Damage': ['Damage', 'Accuracy'],
+  // Rebirth/Thunderspy's own GroupName for the same two concepts.
+  'Targeted AoE Damage': ['Damage', 'Accuracy', 'Range'],
+  'PBAoE Damage': ['Damage', 'Accuracy'],
   'Universal Damage Sets': ['Damage', 'Accuracy'],
   'Sniper Attacks': ['Damage', 'Accuracy', 'Range'],
   'Pet Damage': ['Damage', 'Accuracy', 'Recharge'],
@@ -127,11 +130,14 @@ export const SET_CATEGORY_TO_ENHANCEMENT: Record<string, EnhancementStatType[]> 
   // Rebirth multi-aspect debuff event sets (Witchcraft): pieces span Defense
   // Debuff + Slow + ToHit Debuff, hence slottable in any of those power types.
   'Universal Debuff': ['Defense Debuff', 'Slow', 'ToHit Debuff'],
-  // Rebirth resurrection event set (Return From The Grave). Slots only in
-  // resurrection powers; the enhanceable aspects on those powers are heal /
-  // recharge / end-reduction (fallback only — real categories come from the binary).
-  'Resurrection': ['Healing', 'Recharge', 'EnduranceReduction'],
+  // Rebirth resurrection event set (Return From The Grave, GroupName "Rez
+  // Sets"). Slots only in resurrection powers; the enhanceable aspects on
+  // those powers are heal / recharge / end-reduction (fallback only — real
+  // categories come from the binary).
+  'Rez Sets': ['Healing', 'Recharge', 'EnduranceReduction'],
   'Threat Duration': ['Taunt'],
+  // Rebirth/Thunderspy's own GroupName for the same Threat Duration concept.
+  'Taunt': ['Taunt'],
   'Endurance Modification': ['EnduranceReduction'],
   // Movement
   'Running': ['Run Speed'],
@@ -180,6 +186,9 @@ export const CATEGORY_PRIORITY: IOSetCategory[] = [
   'Melee Damage',
   'Ranged AoE Damage',
   'Melee AoE Damage',
+  // Rebirth/Thunderspy's own GroupName for the same two concepts.
+  'Targeted AoE Damage',
+  'PBAoE Damage',
   'Sniper Attacks',
   'Pet Damage',
   'Recharge Intensive Pets',
@@ -196,7 +205,7 @@ export const CATEGORY_PRIORITY: IOSetCategory[] = [
   'Knockback',
   // Universal Control Duration sits with the other mez categories — a
   // single-set niche (Forced Indoctrination) that buffs every mez type.
-  'Universal Control Duration',
+  'Universal Control Duration Sets',
   // Support primary categories
   'Healing',
   'To Hit Buff',
@@ -211,10 +220,12 @@ export const CATEGORY_PRIORITY: IOSetCategory[] = [
   // Other support
   'Endurance Modification',
   'Threat Duration',
+  // Rebirth/Thunderspy's own GroupName for the same Threat Duration concept.
+  'Taunt',
   'Accurate Healing',
-  // Rebirth resurrection event set (Return From The Grave) — niche, sits with
-  // the support categories.
-  'Resurrection',
+  // Rebirth resurrection event set (Return From The Grave, GroupName "Rez
+  // Sets") — niche, sits with the support categories.
+  'Rez Sets',
   // Travel (usually specific travel powers)
   'Running',
   'Running & Sprints',

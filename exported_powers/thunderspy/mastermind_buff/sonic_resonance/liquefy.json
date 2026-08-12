@@ -47,8 +47,9 @@
     "Defense Debuff",
     "Holds",
     "Knockback",
-    "Ranged AoE Damage",
-    "To Hit Debuff"
+    "Targeted AoE Damage",
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

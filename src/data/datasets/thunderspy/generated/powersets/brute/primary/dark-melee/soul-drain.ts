@@ -44,8 +44,8 @@ export const SoulDrain: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
-    "Melee AoE Damage",
-    "Threat Duration",
+    "PBAoE Damage",
+    "Taunt",
     "To Hit Buff",
     "Universal Damage Sets"
   ],

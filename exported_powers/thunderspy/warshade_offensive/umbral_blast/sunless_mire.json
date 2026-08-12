@@ -40,9 +40,11 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage",
+    "Kheldian Archetype Sets",
+    "PBAoE Damage",
     "Slow Movement",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

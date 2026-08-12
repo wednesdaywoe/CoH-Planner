@@ -46,7 +46,7 @@ export const AtomSmasher: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Dominator Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

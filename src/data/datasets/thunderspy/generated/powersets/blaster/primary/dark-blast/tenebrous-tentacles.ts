@@ -46,7 +46,7 @@ export const TenebrousTentacles: Power = {
     "Accurate To-Hit Debuff",
     "Blaster Archetype Sets",
     "Immobilize",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

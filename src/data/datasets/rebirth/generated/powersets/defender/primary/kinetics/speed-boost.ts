@@ -43,7 +43,7 @@ export const SpeedBoost: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Flight",
-    "Running & Sprints",
+    "Running",
     "Universal Travel"
   ],
   "maxSlots": 6,

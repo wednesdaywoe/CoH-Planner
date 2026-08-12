@@ -37,7 +37,8 @@
     "Heal"
   ],
   "allowed_set_categories": [
-    "Healing"
+    "Healing",
+    "Kheldian Archetype Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -41,7 +41,7 @@
   "allowed_set_categories": [
     "Holds",
     "Melee Damage",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "cast_through": [],

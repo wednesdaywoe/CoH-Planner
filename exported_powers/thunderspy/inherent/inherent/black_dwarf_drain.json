@@ -42,8 +42,10 @@
   "allowed_set_categories": [
     "Accurate Healing",
     "Healing",
+    "Kheldian Archetype Sets",
     "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -215,7 +215,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",0.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -289,7 +290,7 @@ export const POWER_POOLS_RAW = {
           "Run Speed"
         ],
         "allowedSetCategories": [
-          "Running & Sprints",
+          "Running",
           "Universal Travel"
         ],
         "atoms": [
@@ -349,7 +350,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,14,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
@@ -543,7 +545,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee Damage",
-          "Stuns"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -640,7 +643,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee Damage",
-          "Stuns"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -737,7 +741,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage"
+          "Melee Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -830,7 +835,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage"
+          "Melee Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1082,8 +1088,9 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.3434,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1184,8 +1191,9 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.3636,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1657,7 +1665,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage"
+          "Melee Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Movement","FlyMode",-1.6,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -2219,7 +2228,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -2297,7 +2307,7 @@ export const POWER_POOLS_RAW = {
           "Jump"
         ],
         "allowedSetCategories": [
-          "Leaping & Sprints",
+          "Leaping",
           "Universal Travel"
         ],
         "atoms": [
@@ -2381,7 +2391,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.181818,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -2791,7 +2802,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.41,1,0.9,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -2961,7 +2973,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1.35,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -3641,7 +3654,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Running & Sprints"
+          "Running"
         ],
         "atoms": [
           ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -4295,7 +4308,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage"
+          "Melee Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -4358,7 +4372,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Leaping & Sprints",
+          "Leaping",
           "Universal Travel"
         ],
         "atoms": [
@@ -4488,7 +4502,7 @@ export const POWER_POOLS_RAW = {
           "Jump"
         ],
         "allowedSetCategories": [
-          "Leaping & Sprints",
+          "Leaping",
           "Universal Travel"
         ],
         "atoms": [
@@ -4643,7 +4657,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage"
+          "PBAoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -4714,7 +4729,7 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Threat Duration"
+          "Taunt"
         ],
         "atoms": [
           ["Mez","Placate",10,3,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4764,7 +4779,7 @@ export const POWER_POOLS_RAW = {
           "Taunt"
         ],
         "allowedSetCategories": [
-          "Threat Duration"
+          "Taunt"
         ],
         "atoms": [
           ["Mez","Taunt",8,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -5531,7 +5546,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -5693,7 +5709,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -5958,8 +5975,9 @@ export const POWER_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.21,1,1.8,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -6088,7 +6106,7 @@ export const POWER_POOLS_RAW = {
           "Run Speed"
         ],
         "allowedSetCategories": [
-          "Running & Sprints",
+          "Running",
           "Universal Travel"
         ],
         "atoms": [
@@ -6838,7 +6856,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",1.04,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -6932,8 +6951,8 @@ export const POWER_POOLS_RAW = {
           "Run Speed"
         ],
         "allowedSetCategories": [
-          "Leaping & Sprints",
-          "Running & Sprints",
+          "Leaping",
+          "Running",
           "Universal Travel"
         ],
         "atoms": [
@@ -7023,7 +7042,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],

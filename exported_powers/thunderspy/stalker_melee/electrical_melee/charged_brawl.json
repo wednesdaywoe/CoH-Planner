@@ -42,7 +42,9 @@
   "allowed_set_categories": [
     "Endurance Modification",
     "Melee Damage",
-    "Sleep"
+    "Sleep",
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

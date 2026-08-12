@@ -42,7 +42,7 @@ export const WhirlingMace: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Scrapper Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

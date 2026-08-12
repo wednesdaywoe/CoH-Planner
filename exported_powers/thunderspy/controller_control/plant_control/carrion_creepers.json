@@ -42,10 +42,12 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Controller Archetype Sets",
     "Immobilize",
     "Knockback",
-    "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Targeted AoE Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

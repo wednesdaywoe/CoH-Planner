@@ -41,9 +41,11 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Ranged AoE Damage",
+    "Soldiers of Arachnos Archetype Sets",
     "Stuns",
-    "Threat Duration"
+    "Targeted AoE Damage",
+    "Taunt",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

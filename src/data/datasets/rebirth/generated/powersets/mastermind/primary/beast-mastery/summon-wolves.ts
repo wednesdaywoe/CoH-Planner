@@ -50,7 +50,7 @@ export const SummonWolves: Power = {
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Running & Sprints",
+    "Running",
     "To Hit Buff",
     "To Hit Debuff",
     "Universal Damage Sets",

@@ -46,10 +46,10 @@ export const Microburst: Power = {
     "Accurate Defense Debuff",
     "Controller Archetype Sets",
     "Defense Debuff",
-    "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

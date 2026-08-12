@@ -44,9 +44,11 @@
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

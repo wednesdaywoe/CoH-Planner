@@ -48,7 +48,7 @@ export const SiphonLife: Power = {
     "Brute Archetype Sets",
     "Healing",
     "Melee Damage",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

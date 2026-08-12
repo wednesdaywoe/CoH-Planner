@@ -104,8 +104,16 @@ def salvage_fingerprint(pkg_root: Path | None = None) -> str:
     return _fingerprint(root, _parser_py_files(root) + [root / "export_salvage.py"])
 
 
+def incarnate_recipes_fingerprint(pkg_root: Path | None = None) -> str:
+    """sha256 of the recipes-exporter source: parser/**/*.py + export_incarnate_recipes.py."""
+    root = pkg_root or _PKG_ROOT
+    return _fingerprint(
+        root, _parser_py_files(root) + [root / "export_incarnate_recipes.py"])
+
+
 if __name__ == "__main__":
     print(f"parser_fingerprint   {parser_fingerprint()}")
     print(f"classes_fingerprint  {classes_fingerprint()}")
     print(f"entities_fingerprint {entities_fingerprint()}")
     print(f"salvage_fingerprint  {salvage_fingerprint()}")
+    print(f"incarnate_recipes_fingerprint {incarnate_recipes_fingerprint()}")

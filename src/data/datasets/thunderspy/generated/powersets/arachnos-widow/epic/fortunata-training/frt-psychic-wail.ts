@@ -39,7 +39,7 @@ export const FRTPsychicWail: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

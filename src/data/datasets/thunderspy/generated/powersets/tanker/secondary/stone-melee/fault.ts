@@ -44,7 +44,7 @@ export const Fault: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Stuns",
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

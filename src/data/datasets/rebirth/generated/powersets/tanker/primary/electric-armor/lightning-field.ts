@@ -42,7 +42,7 @@ export const LightningField: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Tanker Archetype Sets",
     "Universal Damage Sets"
   ],

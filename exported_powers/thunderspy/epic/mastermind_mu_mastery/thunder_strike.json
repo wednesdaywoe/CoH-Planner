@@ -42,8 +42,9 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Melee AoE Damage",
-    "Stuns"
+    "PBAoE Damage",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

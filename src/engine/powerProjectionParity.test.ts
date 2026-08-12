@@ -49,7 +49,7 @@ import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
 import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from '@/components/info/buildDisplayEffects';
-import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, type EffectivePowerState } from '@/components/info/resolveEffectivePower';
+import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, currentToHitFraction, type EffectivePowerState } from '@/components/info/resolveEffectivePower';
 import { selectableModes } from '@/utils/mode-suppression';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { mapGlobal, mapOnePowerProjection, mapPowerProjection, projectionKey, type EngineTotals, type GrantedMagnitude, type PowerProjection } from './engineTotalsMap';
@@ -162,6 +162,19 @@ function carriesTransform(power: Power): boolean {
   return p.quickSnipe != null || p.midCombatCast != null || (p.conditionalEffects?.length ?? 0) > 0;
 }
 
+/** Does this power's fast-snipe form read the CASTER's own ToHit (SNIPE-2), the way canonical's
+ *  `effective::fast_form_reads_caster_to_hit` reads it — structurally (the pair of tokens),
+ *  not by matching the fork. Rebirth/Thunderspy's `cur.kToHit source> .97 >=` is a state the
+ *  `combatMode` toggle alone can never move; only a build whose ToHit crosses 97% can, which
+ *  this file's fixtures don't attempt to construct. Homecoming's `kEngaged Source.Mode? …`
+ *  reads no such pair, so the toggle IS its reach signal. Used to keep the anti-vacuity
+ *  `castMoved` check from asserting a toggle can move a state it structurally cannot. */
+function quickSnipeReadsCasterToHit(power: Power): boolean {
+  const condition = (power as unknown as { quickSnipe?: { condition?: string } }).quickSnipe?.condition ?? '';
+  const tokens = condition.split(/\s+/);
+  return tokens.some((t, i) => t.toLowerCase() === 'cur.ktohit' && tokens[i + 1]?.toLowerCase() === 'source>');
+}
+
 /** Does this power redirect on a caster mode (PROD6C-3l)? Read off the power's own table so the
  *  fixture discovers which archetypes have modes instead of naming any. */
 function carriesModeVariant(power: Power): boolean {
@@ -208,6 +221,13 @@ function strengthCandidates(server: Server): { build: Build; atId: string; carri
       const placed = { id: set.id, name: set.name, powers: selected };
       if ((set.category ?? '').toLowerCase() === 'secondary') build.secondary = placed;
       else build.primary = placed;
+      // `buildStore`'s toggle handler keeps `activeModes` in sync with every active power's own
+      // `setsModes` (a click like Power Boost sets `kBoostPower` the moment it's switched on —
+      // see `mode-suppression.ts`'s `computeModeSuppression`). This fixture builds the Build by
+      // hand rather than through the store, so it has to do that same sync itself, or a carrier
+      // that ALSO sets a mode (Power Boost redirects Stun via `kBoostPower Source.Mode?`) would
+      // look inactive to every mode/form-variant read below.
+      build.activeModes = [...new Set(selected.filter((p) => p.isActive).flatMap((p) => p.setsModes ?? []))];
       out.push({ build, atId, carriers: carriers.map((c) => c.internalName) });
     }
   }
@@ -565,7 +585,7 @@ function betaReference(
   // Every execution value describes the power the surface SHOWS (PROD6C-3k): a snipe read in
   // combat mode reports its fast cast, not its slow one. Only `perma` below stays on the base
   // power, which is where both beta surfaces read it.
-  const shown = shownPower(power, build, state.ctx) as unknown as SelectedPower;
+  const shown = shownPower(power, build, archetypeId, rawGlobal, state.ctx) as unknown as SelectedPower;
   const rechargeBase = truthyStat(shown, 'recharge', 'recharge');
   const endBase = baseEnduranceCost(shown);
   const accBase = truthyStat(shown, 'accuracy', 'accuracy');
@@ -615,7 +635,12 @@ function betaReference(
 /** The state the effective-power resolution reads, assembled from a ctx exactly as the adapter
  *  assembles the engine's (PROD6C-3k) — the stance overlay included — so a delta can never come
  *  from the two sides being handed different toggle state. */
-function shownState(build: Build, ctx: AdapterCalcContext): EffectivePowerState {
+function shownState(
+  build: Build,
+  archetypeId: string,
+  rawGlobal: ReturnType<typeof mapGlobal>,
+  ctx: AdapterCalcContext,
+): EffectivePowerState {
   return {
     combatMode: ctx.combatMode,
     hidden: isCasterHidden(build, ctx.stalkerHidden),
@@ -625,6 +650,8 @@ function shownState(build: Build, ctx: AdapterCalcContext): EffectivePowerState 
     // Read off the build, exactly as the adapter reads it for the engine — the mode redirect is
     // build state, not ctx state (PROD6C-3l).
     activeModes: build.activeModes,
+    build,
+    currentToHit: currentToHitFraction(archetypeId, rawGlobal),
   };
 }
 
@@ -632,8 +659,14 @@ function shownState(build: Build, ctx: AdapterCalcContext): EffectivePowerState 
  *  cast, the active mode-gated contributions merged in (PROD6C-3k). Not the identity even under the
  *  all-toggles-off `CTX` — a conditional whose own `defaultActive` is true merges with no toggle
  *  touched, which is why every bag below goes through this rather than the authored power. */
-function shownPower(power: Power | SelectedPower, build: Build, ctx: AdapterCalcContext = CTX): Power {
-  return resolveEffectivePower(power as Power, shownState(build, ctx)).power;
+function shownPower(
+  power: Power | SelectedPower,
+  build: Build,
+  archetypeId: string,
+  rawGlobal: ReturnType<typeof mapGlobal>,
+  ctx: AdapterCalcContext = CTX,
+): Power {
+  return resolveEffectivePower(power as Power, shownState(build, archetypeId, rawGlobal, ctx)).power;
 }
 
 /** The bag a surface resolves for one power: the built bag, the power's own slider, then the
@@ -1067,7 +1100,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
         );
         rows += engine.grantedMagnitudes.length;
-        const petKeys = pseudoPetKeys(power, shownPower(power, build));
+        const petKeys = pseudoPetKeys(power, shownPower(power, build, atId, rawGlobal));
         if (petKeys.size > 0) {
           petPowers += 1;
           enginePetRows += engine.grantedMagnitudes.filter((row) => petKeys.has(row.effectKey)).length;
@@ -1253,7 +1286,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
             engine.grantedMagnitudes,
             magnitudes,
             bag,
-            enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build)) : {},
+            enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : {},
           );
           const perma = permaDelta(engine.perma, beta.perma, enginePower, power);
           deltas.push(
@@ -1473,7 +1506,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           magnitudes,
           slidEvidence,
           enginePower
-            ? displayBag(enginePower as unknown as Power, targetsHit, shownPower(enginePower as unknown as Power, build))
+            ? displayBag(enginePower as unknown as Power, targetsHit, shownPower(enginePower as unknown as Power, build, atId, rawGlobal))
             : {},
         );
         deltas.push(...mags.real);
@@ -1483,7 +1516,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           `${atId}/${power.internalName}@0`,
           zeroed.get(key)?.grantedMagnitudes ?? [],
           betaReference(power, build, atId, rawGlobalZero).magnitudes,
-          displayBag(power, 0, shownPower(power, build)),
+          displayBag(power, 0, shownPower(power, build, atId, rawGlobal)),
         );
         deltas.push(...atZero.real);
         adjudicated.push(...atZero.adjudicated.map((d) => `${atId}/${power.internalName}@0.${d}`));
@@ -1529,6 +1562,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     const deltas: string[] = [];
     const adjudicated: string[] = [];
     let quickForms = 0;
+    // Of `quickForms`, how many the `combatMode` toggle alone can reach (SNIPE-2) — the rest
+    // gate on the caster's own ToHit, a state this fixture never buffs.
+    let toggleReachableQuickForms = 0;
     let openers = 0;
     let mergedPowers = 0;
     let mergedRows = 0;
@@ -1556,7 +1592,10 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           if (conditional.scope === 'global') globalAdjusters[conditional.id] = true;
           else mechanicAdjusters[`${power.internalName}:${conditional.id}`] = true;
         }
-        if ((power as unknown as { quickSnipe?: unknown }).quickSnipe != null) quickForms += 1;
+        if ((power as unknown as { quickSnipe?: unknown }).quickSnipe != null) {
+          quickForms += 1;
+          if (!quickSnipeReadsCasterToHit(power)) toggleReachableQuickForms += 1;
+        }
         if (power.midCombatCast != null) openers += 1;
       }
 
@@ -1580,7 +1619,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         refused.push(`${atId}: ${String(err).split(' — ')[0]}`);
         continue;
       }
-      const plain = mapPowerProjection(engineTotals(server, build).power_projection);
+      const plainTotals = engineTotals(server, build);
+      const plain = mapPowerProjection(plainTotals.power_projection);
+      const plainRawGlobal = mapGlobal(plainTotals.bonuses, plainTotals.stats);
 
       for (const { ctx, projection, rawGlobal } of runs) {
         const tag = ctx === hidden ? 'hidden' : 'engaged';
@@ -1614,7 +1655,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           if (tag === 'engaged') {
             const before = plain.get(key)?.castTime;
             if (before && engine.castTime && Math.abs(before.base - engine.castTime.base) > TOLERANCE) castMoved += 1;
-            const offBag = displayBag(power, 0, shownPower(power, build));
+            const offBag = displayBag(power, 0, shownPower(power, build, atId, plainRawGlobal));
             const changed = [...new Set([...Object.keys(offBag), ...Object.keys(bag)])].filter(
               (bagKey) => JSON.stringify(offBag[bagKey]) !== JSON.stringify(bag[bagKey]),
             );
@@ -1632,8 +1673,8 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
     // eslint-disable-next-line no-console
     console.warn(
-      `[PROD6C-3k effective] ${server}: ${quickForms} quick forms, ${openers} from-Hide openers — ` +
-        `${castMoved} casts move in combat, ${hiddenMoved} move again from cover, ` +
+      `[PROD6C-3k effective] ${server}: ${quickForms} quick forms (${toggleReachableQuickForms} combat-mode-reachable), ` +
+        `${openers} from-Hide openers — ${castMoved} casts move in combat, ${hiddenMoved} move again from cover, ` +
         `${mergedRows} rows on ${mergedPowers} powers change under the toggles`,
     );
     if (refused.length) {
@@ -1652,8 +1693,19 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     // and reported when it does not — the PROD6C-3b shape. The conditional merge is the one every
     // fork carries, so it is unconditional: without it this whole sweep would be the CTX sweep again.
     expect(mergedRows, `${server}: no row changes under any toggle — the merge is ungraded here`).toBeGreaterThan(0);
-    if (quickForms > 0) {
-      expect(castMoved, `${server}: ${quickForms} quick forms in the corpus and not one cast moved in combat`).toBeGreaterThan(0);
+    if (toggleReachableQuickForms > 0) {
+      expect(
+        castMoved,
+        `${server}: ${toggleReachableQuickForms} combat-mode-reachable quick forms in the corpus and not one cast moved in combat`,
+      ).toBeGreaterThan(0);
+    } else if (quickForms > 0) {
+      // Every quick form here gates on the caster's own ToHit (SNIPE-2 — Rebirth/Thunderspy),
+      // not on `combatMode`. This fixture drives no ToHit buff, so 0 is the CORRECT reading:
+      // asserting >0 would demand the toggle move a state it structurally cannot.
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[PROD6C-3k effective] ${server}: ${quickForms} quick forms, all ToHit-gated (SNIPE-2) — this fixture cannot grade the snipe swap without a ToHit buff`,
+      );
     } else {
       // eslint-disable-next-line no-console
       console.warn(`[PROD6C-3k effective] ${server}: no quick form in the corpus — this fork cannot grade the snipe swap`);
@@ -1693,7 +1745,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       const modes = selectableModes(powers as unknown as { modeVariants?: Record<string, unknown> }[]);
       if (modes.length === 0) continue;
 
-      const plain = mapPowerProjection(engineTotals(server, base).power_projection);
+      const plainTotals = engineTotals(server, base);
+      const plain = mapPowerProjection(plainTotals.power_projection);
+      const plainRawGlobal = mapGlobal(plainTotals.bonuses, plainTotals.stats);
 
       for (const mode of modes) {
         // One mode at a time: the Header selector is single-select, and a variant is chosen by
@@ -1724,7 +1778,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
           // Reach: what the mode actually MOVED against the no-mode run. A redirect that changes
           // nothing is ungraded however green the parity goes (the PROD6C-3f method).
-          const offBag = displayBag(power, 0, shownPower(power, base));
+          const offBag = displayBag(power, 0, shownPower(power, base, atId, plainRawGlobal));
           const changed = [...new Set([...Object.keys(offBag), ...Object.keys(bag)])].filter(
             (bagKey) => JSON.stringify(offBag[bagKey]) !== JSON.stringify(bag[bagKey]),
           );

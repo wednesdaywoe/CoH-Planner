@@ -38,6 +38,7 @@
     "Debuff_ToHit"
   ],
   "allowed_set_categories": [
+    "Controller Archetype Sets",
     "Slow Movement",
     "To Hit Debuff"
   ],

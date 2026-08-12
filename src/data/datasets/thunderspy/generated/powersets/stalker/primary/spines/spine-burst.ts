@@ -42,7 +42,7 @@ export const SpineBurst: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

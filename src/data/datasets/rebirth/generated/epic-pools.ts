@@ -62,7 +62,7 @@ export const EPIC_POOLS_RAW = {
           "Immobilize",
           "Ranged Damage",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -182,7 +182,7 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Ranged Damage",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -491,8 +491,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
           "Slow Movement",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -571,7 +571,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -741,7 +741,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -869,7 +869,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Debuff"
         ],
         "atoms": [
@@ -971,7 +971,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -1171,8 +1171,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -1258,7 +1258,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -1361,7 +1361,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -1441,7 +1441,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -1696,7 +1696,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -2046,7 +2046,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -2386,7 +2386,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -2574,8 +2574,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -2668,7 +2668,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -2758,8 +2758,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged AoE Damage",
           "Slow Movement",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -3099,7 +3099,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -3275,7 +3275,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -3522,8 +3522,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -3624,7 +3624,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -3726,7 +3726,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -3968,8 +3968,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -4134,7 +4134,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets",
           "Universal Debuff"
@@ -4284,7 +4284,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -4348,7 +4348,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -4437,9 +4437,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -4644,7 +4644,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Stuns",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Stunned",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4847,9 +4847,9 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
           "Sleep",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -5289,9 +5289,9 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
           "Sleep",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -5851,7 +5851,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -6070,8 +6070,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -6321,7 +6321,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -6478,7 +6478,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -6726,7 +6726,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Debuff"
         ],
         "atoms": [
@@ -7016,7 +7016,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -7223,7 +7223,7 @@ export const EPIC_POOLS_RAW = {
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "To Hit Buff",
           "Universal Damage Sets"
         ],
@@ -7539,7 +7539,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -7672,7 +7672,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Stuns",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -7729,7 +7729,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -7858,10 +7858,10 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Resurrection",
+          "PBAoE Damage",
+          "Rez Sets",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -7965,7 +7965,7 @@ export const EPIC_POOLS_RAW = {
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "To Hit Buff",
           "Universal Damage Sets"
         ],
@@ -8071,7 +8071,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets",
           "Universal Debuff"
@@ -8152,7 +8152,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -8279,7 +8279,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets",
           "Universal Debuff"
@@ -8359,9 +8359,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Immobilize",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "To Hit Debuff",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -8473,9 +8473,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Knockback",
-          "Ranged AoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -8525,7 +8525,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -9049,7 +9049,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -9438,7 +9438,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -9703,7 +9703,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -9837,7 +9837,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets",
           "Universal Debuff"
@@ -9902,7 +9902,7 @@ export const EPIC_POOLS_RAW = {
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "To Hit Buff",
           "Universal Damage Sets"
         ],
@@ -10059,7 +10059,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -10153,7 +10153,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Sleep",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -10219,7 +10219,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -10355,9 +10355,9 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -10455,7 +10455,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -10519,7 +10519,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -10781,7 +10781,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Stuns",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Stunned",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -10892,7 +10892,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Immobilize",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -10975,9 +10975,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -11137,9 +11137,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -11553,7 +11553,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -11896,7 +11896,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -12123,7 +12123,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -12189,7 +12189,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -12445,7 +12445,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -12594,10 +12594,10 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Resurrection",
+          "PBAoE Damage",
+          "Rez Sets",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -12694,7 +12694,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -12787,7 +12787,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -12836,7 +12836,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -12985,10 +12985,10 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Resurrection",
+          "PBAoE Damage",
+          "Rez Sets",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -13208,7 +13208,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -13260,7 +13260,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -13517,10 +13517,10 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Resurrection",
+          "PBAoE Damage",
+          "Rez Sets",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -13872,9 +13872,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -14087,7 +14087,7 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Ranged Damage",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -14186,9 +14186,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage",
           "Slow Movement",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -14578,7 +14578,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Immobilize",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -14642,7 +14642,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Guardian Archetype Sets",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -14717,7 +14717,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -14779,7 +14779,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Guardian Archetype Sets",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -14923,7 +14923,7 @@ export const EPIC_POOLS_RAW = {
           "Immobilize",
           "Ranged Damage",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -15029,9 +15029,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Guardian Archetype Sets",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Sleep",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -15095,7 +15095,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Melee Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -15161,8 +15161,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Guardian Archetype Sets",
-          "Ranged AoE Damage",
           "Slow Movement",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -15322,7 +15322,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -15406,8 +15406,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Guardian Archetype Sets",
-          "Ranged AoE Damage",
           "Slow Movement",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -15572,7 +15572,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Guardian Archetype Sets",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -15641,9 +15641,9 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Guardian Archetype Sets",
           "Knockback",
-          "Ranged AoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -15872,7 +15872,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Debuff"
         ],
         "atoms": [
@@ -15958,7 +15958,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Guardian Archetype Sets",
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -16180,7 +16180,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -16266,7 +16266,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Guardian Archetype Sets",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -16352,9 +16352,9 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Guardian Archetype Sets",
           "Knockback",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -16567,7 +16567,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -16626,7 +16626,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "formVariants": [
@@ -17022,7 +17022,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Melee Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -17097,7 +17097,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Guardian Archetype Sets",
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -17166,7 +17166,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Guardian Archetype Sets",
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -17381,7 +17381,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Confuse",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Confused",15,3,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -17436,7 +17436,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Melee Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -17515,7 +17515,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Guardian Archetype Sets",
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -17589,7 +17589,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Guardian Archetype Sets",
           "Knockback",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -17647,7 +17647,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Sleep",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -17719,7 +17719,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -17781,7 +17781,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Guardian Archetype Sets",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets",
           "Universal Debuff"
@@ -17845,7 +17845,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Guardian Archetype Sets",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "To Hit Buff",
           "Universal Damage Sets"
         ],
@@ -17930,7 +17930,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Guardian Archetype Sets",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -18057,7 +18057,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -18168,7 +18168,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -18242,7 +18242,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -18318,10 +18318,10 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Resurrection",
+          "PBAoE Damage",
+          "Rez Sets",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -18704,8 +18704,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
           "Slow Movement",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -18797,8 +18797,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
           "Slow Movement",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -18869,8 +18869,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged AoE Damage",
           "Slow Movement",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -19184,8 +19184,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
           "Slow Movement",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -19255,7 +19255,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -19317,7 +19317,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -19466,7 +19466,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -19517,10 +19517,10 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Resurrection",
+          "PBAoE Damage",
+          "Rez Sets",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -19739,7 +19739,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -20049,7 +20049,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -20536,7 +20536,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -20860,7 +20860,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -21239,8 +21239,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -21311,7 +21311,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -21379,7 +21379,7 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Knockback",
           "Melee Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -21514,7 +21514,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -21612,7 +21612,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -21782,7 +21782,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -22006,7 +22006,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Debuff"
         ],
         "atoms": [
@@ -22108,7 +22108,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -22256,9 +22256,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -22351,8 +22351,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -22438,7 +22438,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -22540,7 +22540,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets",
           "Universal Debuff"
@@ -22680,7 +22680,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Stuns",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -22740,8 +22740,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -22815,7 +22815,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -22953,7 +22953,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -23014,9 +23014,9 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
           "Sleep",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -23181,7 +23181,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -23665,7 +23665,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -23935,7 +23935,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -24181,7 +24181,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -24369,7 +24369,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -24437,7 +24437,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -24748,8 +24748,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Confuse",
-          "Melee AoE Damage",
-          "Universal Control Duration",
+          "PBAoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -24805,7 +24805,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -25319,7 +25319,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -25379,7 +25379,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Sleep",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -25500,8 +25500,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Confuse",
-          "Melee AoE Damage",
-          "Universal Control Duration",
+          "PBAoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -25633,7 +25633,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -25712,7 +25712,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -25979,7 +25979,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -26163,9 +26163,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Knockback",
-          "Ranged AoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -26323,7 +26323,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -26653,7 +26653,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -26730,7 +26730,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Debuff"
         ],
         "atoms": [
@@ -27080,7 +27080,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -27170,7 +27170,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -27595,7 +27595,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -27788,9 +27788,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -27935,7 +27935,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Melee Damage",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -28156,8 +28156,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -28228,7 +28228,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -28296,8 +28296,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged AoE Damage",
           "Slow Movement",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -28602,7 +28602,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Debuff"
         ],
         "atoms": [
@@ -28689,7 +28689,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -29009,8 +29009,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -29093,7 +29093,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -29173,7 +29173,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -29383,8 +29383,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Control Duration",
+          "Targeted AoE Damage",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -29457,7 +29457,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets",
           "Universal Debuff"
@@ -29666,7 +29666,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Debuff"
         ],
         "atoms": [
@@ -29756,8 +29756,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
           "Slow Movement",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -29940,7 +29940,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -30018,7 +30018,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Slow Movement",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Debuff"
         ],
         "atoms": [
@@ -30288,7 +30288,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [

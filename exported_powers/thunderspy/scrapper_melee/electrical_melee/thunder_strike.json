@@ -41,8 +41,10 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Melee AoE Damage",
-    "Stuns"
+    "PBAoE Damage",
+    "Scrapper Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

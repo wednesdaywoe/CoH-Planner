@@ -40,9 +40,9 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Ranged AoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Targeted AoE Damage",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "cast_through": [],

@@ -39,8 +39,10 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage",
+    "Blaster Archetype Sets",
+    "PBAoE Damage",
     "Teleport",
+    "Universal Damage Sets",
     "Universal Travel"
   ],
   "cast_through": [],

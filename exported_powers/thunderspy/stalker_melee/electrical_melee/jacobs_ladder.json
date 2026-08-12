@@ -41,8 +41,10 @@
   ],
   "allowed_set_categories": [
     "Endurance Modification",
-    "Melee AoE Damage",
-    "Sleep"
+    "PBAoE Damage",
+    "Sleep",
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

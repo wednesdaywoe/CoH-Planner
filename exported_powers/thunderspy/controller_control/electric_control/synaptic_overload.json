@@ -40,7 +40,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Confuse"
+    "Confuse",
+    "Controller Archetype Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

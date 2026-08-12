@@ -44,9 +44,9 @@ export const WhirlingMace: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

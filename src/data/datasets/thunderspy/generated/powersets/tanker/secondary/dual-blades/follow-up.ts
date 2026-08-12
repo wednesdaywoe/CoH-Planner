@@ -47,7 +47,7 @@ export const FollowUp: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "To Hit Buff",
     "Universal Damage Sets"
   ],

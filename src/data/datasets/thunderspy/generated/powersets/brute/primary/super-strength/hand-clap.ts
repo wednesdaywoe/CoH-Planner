@@ -45,7 +45,7 @@ export const HandClap: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Stuns",
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

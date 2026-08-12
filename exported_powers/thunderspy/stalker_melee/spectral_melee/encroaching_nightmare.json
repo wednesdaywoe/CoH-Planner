@@ -42,7 +42,9 @@
   "allowed_set_categories": [
     "Fear",
     "Immobilize",
-    "Melee AoE Damage"
+    "PBAoE Damage",
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

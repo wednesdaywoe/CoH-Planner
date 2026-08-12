@@ -45,7 +45,7 @@ export const Parry: Power = {
     "Brute Archetype Sets",
     "Defense Sets",
     "Melee Damage",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

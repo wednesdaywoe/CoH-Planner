@@ -49,7 +49,7 @@ export const DevastatingBlow: Power = {
     "Melee Damage",
     "Stalker Archetype Sets",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

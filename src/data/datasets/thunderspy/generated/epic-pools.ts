@@ -59,7 +59,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Cold",0.2,1,9.2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -175,7 +176,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",12,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -282,7 +284,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Ranged Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.501,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -480,8 +483,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -716,7 +720,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -787,7 +792,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
@@ -942,7 +948,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1080,7 +1087,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -1133,7 +1141,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.1,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1217,7 +1226,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",8,3,0,"Ranged_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1318,7 +1328,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Fire",0.22,1,9.2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1396,7 +1407,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1468,7 +1480,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1646,7 +1659,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1870,7 +1884,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -1988,7 +2003,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -2202,7 +2218,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -2325,7 +2342,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -2420,7 +2438,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -2511,7 +2530,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.135,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -2603,7 +2623,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Toxic",0.7,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -2692,8 +2713,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged AoE Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Cold",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -2882,7 +2904,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -2950,7 +2973,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.66,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -3205,7 +3229,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -3289,7 +3314,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -3357,7 +3383,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -3450,7 +3477,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.1,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -3550,7 +3578,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -3651,7 +3680,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -3742,7 +3772,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -3811,7 +3842,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Ranged Damage",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.22,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -3890,7 +3922,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.1,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4045,8 +4078,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
-          "To Hit Debuff"
+          "Targeted AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4124,7 +4158,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Pet Damage",
           "Recharge Intensive Pets",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -4192,7 +4227,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.91,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4254,7 +4290,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",8,3,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4342,8 +4379,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4639,7 +4677,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Ranged Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4732,8 +4771,9 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Sleep"
+          "Sleep",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -5187,8 +5227,9 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Sleep"
+          "Sleep",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -5541,8 +5582,9 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Knockback",
-          "Ranged AoE Damage",
-          "Stuns"
+          "Stuns",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
@@ -5591,7 +5633,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Toxic",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -5901,7 +5944,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -6097,7 +6141,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -6246,7 +6291,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -6438,7 +6484,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -6689,7 +6736,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",0.4175,1,0.91,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -6753,7 +6801,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -7021,7 +7070,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage"
+          "PBAoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -7146,10 +7196,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Pet Damage",
           "To Hit Buff",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -7211,7 +7262,7 @@ export const EPIC_POOLS_RAW = {
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "To Hit Buff"
         ],
         "atoms": [
@@ -7366,7 +7417,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.15,1,3,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -7604,7 +7656,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -7681,7 +7734,8 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Pet Damage",
           "Recharge Intensive Pets",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -8069,7 +8123,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -8263,7 +8318,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",8,3,0,"Ranged_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -8418,7 +8474,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -8484,8 +8541,9 @@ export const EPIC_POOLS_RAW = {
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "To Hit Buff"
+          "PBAoE Damage",
+          "To Hit Buff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -8816,7 +8874,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -8882,7 +8941,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -9004,7 +9064,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage"
+          "PBAoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -9124,8 +9185,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -9214,8 +9276,9 @@ export const EPIC_POOLS_RAW = {
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "To Hit Buff"
+          "PBAoE Damage",
+          "To Hit Buff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -9319,8 +9382,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Knockback",
-          "Ranged AoE Damage",
-          "To Hit Debuff"
+          "Targeted AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -9452,7 +9516,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Ranged Damage",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -9522,8 +9587,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
-          "To Hit Debuff"
+          "Targeted AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.11,1,2.8,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -9600,8 +9666,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Immobilize",
-          "Ranged AoE Damage",
-          "To Hit Debuff"
+          "Targeted AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.1,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -9774,7 +9841,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running & Sprints"
+          "Running"
         ],
         "atoms": [
           ["DamageBuff","Smashing",2,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -10026,7 +10093,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.945,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -10124,8 +10192,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Knockback",
-          "Ranged AoE Damage",
-          "Stuns"
+          "Stuns",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
@@ -10174,7 +10243,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Toxic",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -10414,7 +10484,8 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Knockback",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -10483,7 +10554,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -10679,7 +10751,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -10869,7 +10942,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -11061,7 +11135,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1.23,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -11237,7 +11312,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
@@ -11304,7 +11380,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage"
+          "PBAoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -11428,8 +11505,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Immobilize",
-          "Ranged AoE Damage",
-          "To Hit Debuff"
+          "Targeted AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.16875,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -11525,8 +11603,9 @@ export const EPIC_POOLS_RAW = {
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "To Hit Buff"
+          "PBAoE Damage",
+          "To Hit Buff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -11610,7 +11689,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -11678,7 +11758,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.2,1,9.2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -11835,7 +11916,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",12,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -11960,8 +12042,9 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Stuns"
+          "Stuns",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -12058,7 +12141,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1.23,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -12120,7 +12204,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -12467,7 +12552,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.2,1,8.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -12549,8 +12635,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.89,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -12701,8 +12788,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Melee AoE Damage",
-          "Ranged Damage"
+          "PBAoE Damage",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -12984,7 +13072,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -13107,7 +13196,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.29,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -13324,7 +13414,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -13447,7 +13538,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.29,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -13606,7 +13698,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -13672,7 +13765,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.29,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -13737,7 +13831,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -13913,7 +14008,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Fire",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -13976,7 +14072,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -14116,8 +14213,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
@@ -14196,7 +14294,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage"
+          "PBAoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Fire",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -14288,7 +14387,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
@@ -14337,7 +14437,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Fire",0.585,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -14460,8 +14561,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
@@ -14662,7 +14764,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
@@ -14713,7 +14816,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -14958,8 +15062,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
@@ -15279,8 +15384,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
-          "Stuns"
+          "Stuns",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -15474,7 +15580,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
@@ -15523,7 +15630,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Fire",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -15584,7 +15692,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -15656,7 +15765,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",12,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -15729,8 +15839,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
@@ -15827,7 +15938,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Ranged Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -16113,8 +16225,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Cold",0.7,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -16204,8 +16317,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
@@ -16275,8 +16389,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged AoE Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
@@ -16591,8 +16706,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
@@ -16936,7 +17052,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Melee Damage",
-          "Stuns"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.77,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -17027,7 +17144,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Defense Debuff"
+          "Defense Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1]
@@ -17079,7 +17197,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.77,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -17168,7 +17287,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.135,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -17238,7 +17358,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Toxic",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -17305,7 +17426,8 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Knockback",
           "Melee Damage",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -17435,7 +17557,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -17689,7 +17812,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -18038,7 +18162,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -18177,8 +18302,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
-          "Stuns"
+          "PBAoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.29,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -18270,7 +18396,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.1,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -18354,7 +18481,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",8,3,0,"Ranged_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -18455,8 +18583,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
-          "To Hit Debuff"
+          "Targeted AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.11,1,2.8,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -18644,7 +18773,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.1,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -18716,7 +18846,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -18844,7 +18975,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Cold",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -18904,8 +19036,9 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Sleep"
+          "Sleep",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -19068,7 +19201,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",1.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -19563,7 +19697,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee Damage",
-          "Stuns"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -19649,7 +19784,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -19834,7 +19970,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.29,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -20104,7 +20241,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee Damage",
-          "Stuns"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -20294,7 +20432,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -20483,7 +20622,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -20670,7 +20810,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Confuse",
-          "Melee AoE Damage"
+          "PBAoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
@@ -20729,7 +20870,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Psionic",0.178,1,2.05,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -21201,7 +21343,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -21372,7 +21515,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Confuse",
-          "Melee AoE Damage"
+          "PBAoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
@@ -21507,7 +21651,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Fire",0.22,1,9.2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -21584,7 +21729,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",12,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -21655,7 +21801,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -21846,7 +21993,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -21952,7 +22100,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",0.7,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -22030,8 +22179,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Knockback",
-          "Ranged AoE Damage",
-          "Stuns"
+          "Stuns",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
@@ -22189,7 +22339,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -22272,7 +22423,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -22340,7 +22492,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -22417,7 +22570,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Ranged Damage",
-          "Sniper Attacks"
+          "Sniper Attacks",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.15,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -22492,7 +22646,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -22655,7 +22810,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
@@ -22726,7 +22882,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -22814,7 +22971,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Ranged Damage",
-          "Sniper Attacks"
+          "Sniper Attacks",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",2.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -22893,7 +23051,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -22983,7 +23142,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",8,3,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -23070,7 +23230,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -23139,7 +23300,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Ranged Damage",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -23213,7 +23375,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Ranged Damage",
           "Sniper Attacks",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",2.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -23388,7 +23551,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -23450,7 +23614,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Pet Damage",
           "Recharge Intensive Pets",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -23518,7 +23683,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -23578,8 +23744,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
-          "Stuns"
+          "Stuns",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -23722,7 +23889,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage"
+          "Melee Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",2.6,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -23875,7 +24043,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",1.1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -23943,7 +24112,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.15,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -24014,7 +24184,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Toxic",0.75,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -24082,8 +24253,9 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged AoE Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Cold",0.75,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -24250,7 +24422,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -24318,7 +24491,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.66,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -24471,7 +24645,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -24536,7 +24711,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage"
+          "Melee Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",1.932,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -24650,7 +24826,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -24719,7 +24896,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",1.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -24797,7 +24975,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.11,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -24880,7 +25059,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -24960,7 +25140,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Energy",0.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -25036,7 +25217,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -25106,7 +25288,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Ranged Damage",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.22,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -25169,7 +25352,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",0.11,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -25242,8 +25426,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
-          "To Hit Debuff"
+          "Targeted AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Negative",1.24,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -25371,7 +25556,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Pet Damage",
-          "Recharge Intensive Pets"
+          "Recharge Intensive Pets",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
@@ -25528,8 +25714,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Slow Movement"
+          "Slow Movement",
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
@@ -25578,7 +25765,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -25710,7 +25898,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -25924,7 +26113,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged Damage"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Lethal",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -26054,7 +26244,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage"
+          "Targeted AoE Damage",
+          "Universal Damage Sets"
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],

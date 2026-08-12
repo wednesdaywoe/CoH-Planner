@@ -41,6 +41,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Controller Archetype Sets",
     "Sleep",
     "Slow Movement"
   ],

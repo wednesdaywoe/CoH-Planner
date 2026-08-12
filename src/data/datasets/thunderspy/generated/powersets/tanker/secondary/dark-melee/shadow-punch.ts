@@ -48,7 +48,7 @@ export const ShadowPunch: Power = {
     "Accurate To-Hit Debuff",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

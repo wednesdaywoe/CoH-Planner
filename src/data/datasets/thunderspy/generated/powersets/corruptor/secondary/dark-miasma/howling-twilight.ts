@@ -41,9 +41,9 @@ export const HowlingTwilight: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

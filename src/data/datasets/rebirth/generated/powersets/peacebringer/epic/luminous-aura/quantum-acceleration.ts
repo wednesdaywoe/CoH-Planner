@@ -42,7 +42,7 @@ export const QuantumAcceleration: Power = {
     "Flight",
     "Kheldian Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

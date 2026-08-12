@@ -42,8 +42,10 @@
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Healing",
-    "Melee AoE Damage",
-    "Stuns"
+    "PBAoE Damage",
+    "Primalist Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

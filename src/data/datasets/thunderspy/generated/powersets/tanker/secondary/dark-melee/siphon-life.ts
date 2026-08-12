@@ -51,7 +51,7 @@ export const SiphonLife: Power = {
     "Healing",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

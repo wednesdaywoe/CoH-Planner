@@ -39,8 +39,10 @@
     "Damage"
   ],
   "allowed_set_categories": [
-    "Ranged AoE Damage",
-    "Slow Movement"
+    "Blaster Archetype Sets",
+    "Slow Movement",
+    "Targeted AoE Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

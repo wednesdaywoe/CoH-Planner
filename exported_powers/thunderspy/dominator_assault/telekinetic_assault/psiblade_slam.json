@@ -39,7 +39,8 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

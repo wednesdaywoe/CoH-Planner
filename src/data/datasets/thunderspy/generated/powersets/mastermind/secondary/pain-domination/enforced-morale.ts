@@ -39,7 +39,7 @@ export const EnforcedMorale: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Running & Sprints",
+    "Running",
     "Universal Travel"
   ],
   "maxSlots": 6,

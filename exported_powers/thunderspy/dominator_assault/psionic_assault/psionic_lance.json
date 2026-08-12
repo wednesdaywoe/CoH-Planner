@@ -41,7 +41,8 @@
   ],
   "allowed_set_categories": [
     "Ranged Damage",
-    "Sniper Attacks"
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -42,7 +42,7 @@ export const Elude: Power = {
     "Defense Sets",
     "Endurance Modification",
     "Healing",
-    "Running & Sprints",
+    "Running",
     "Universal Travel"
   ],
   "maxSlots": 6,

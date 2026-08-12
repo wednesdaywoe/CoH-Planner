@@ -45,7 +45,7 @@ export const LivingShadows: Power = {
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
     "Immobilize",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

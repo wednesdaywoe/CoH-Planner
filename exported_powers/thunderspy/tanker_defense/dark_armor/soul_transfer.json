@@ -41,8 +41,9 @@
   "allowed_set_categories": [
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
-    "Stuns"
+    "PBAoE Damage",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

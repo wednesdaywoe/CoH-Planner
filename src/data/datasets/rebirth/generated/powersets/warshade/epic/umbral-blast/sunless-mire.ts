@@ -41,7 +41,7 @@ export const SunlessMire: Power = {
   ],
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
     "To Hit Buff",
     "Universal Damage Sets",

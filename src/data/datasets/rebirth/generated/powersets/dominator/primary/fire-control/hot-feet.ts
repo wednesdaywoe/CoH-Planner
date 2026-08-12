@@ -40,7 +40,7 @@ export const HotFeet: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
     "Universal Damage Sets",
     "Universal Debuff"

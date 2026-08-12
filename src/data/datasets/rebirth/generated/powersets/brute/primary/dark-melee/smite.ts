@@ -45,7 +45,7 @@ export const Smite: Power = {
     "Accurate To-Hit Debuff",
     "Brute Archetype Sets",
     "Melee Damage",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff",
     "Universal Damage Sets",
     "Universal Debuff"

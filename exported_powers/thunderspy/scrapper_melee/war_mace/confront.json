@@ -38,7 +38,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Threat Duration"
+    "Scrapper Archetype Sets",
+    "Taunt"
   ],
   "cast_through": [],
   "toggle_ignore": [],

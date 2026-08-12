@@ -41,9 +41,9 @@
   ],
   "allowed_set_categories": [
     "Dominator Archetype Sets",
-    "Ranged AoE Damage",
     "Sleep",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "cast_through": [],

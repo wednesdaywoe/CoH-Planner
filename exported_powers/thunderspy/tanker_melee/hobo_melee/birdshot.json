@@ -41,9 +41,9 @@
   ],
   "allowed_set_categories": [
     "Immobilize",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
-    "Threat Duration"
+    "Taunt"
   ],
   "cast_through": [],
   "toggle_ignore": [],

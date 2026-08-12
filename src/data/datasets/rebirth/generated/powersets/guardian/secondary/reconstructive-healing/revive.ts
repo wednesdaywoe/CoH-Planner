@@ -36,7 +36,7 @@ export const Revive: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
-    "Resurrection"
+    "Rez Sets"
   ],
   "maxSlots": 6,
   "damage": {

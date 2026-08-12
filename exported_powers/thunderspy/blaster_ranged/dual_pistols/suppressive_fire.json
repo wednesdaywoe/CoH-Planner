@@ -41,9 +41,11 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Blaster Archetype Sets",
     "Holds",
     "Ranged Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

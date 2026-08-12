@@ -45,7 +45,7 @@ export const ProtonScatter: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Guardian Archetype Sets",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

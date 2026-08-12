@@ -45,7 +45,7 @@ export const SummonDemonPrince: Power = {
     "Recharge Intensive Pets",
     "Sleep",
     "Slow Movement",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

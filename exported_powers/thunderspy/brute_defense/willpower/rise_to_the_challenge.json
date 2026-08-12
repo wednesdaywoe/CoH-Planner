@@ -40,7 +40,7 @@
   ],
   "allowed_set_categories": [
     "Healing",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff"
   ],
   "cast_through": [],

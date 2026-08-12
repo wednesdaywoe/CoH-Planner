@@ -46,7 +46,7 @@ export const JacobsLadder: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Scrapper Archetype Sets",
     "Sleep",
     "Universal Damage Sets"

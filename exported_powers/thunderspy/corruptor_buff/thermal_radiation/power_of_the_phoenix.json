@@ -40,10 +40,12 @@
     "Damage"
   ],
   "allowed_set_categories": [
+    "Corruptor Archetype Sets",
     "Endurance Modification",
     "Healing",
-    "Ranged AoE Damage",
-    "Stuns"
+    "Stuns",
+    "Targeted AoE Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

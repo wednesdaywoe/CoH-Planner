@@ -42,8 +42,8 @@
   ],
   "allowed_set_categories": [
     "Flight",
-    "Leaping & Sprints",
-    "Running & Sprints",
+    "Leaping",
+    "Running",
     "Slow Movement",
     "Universal Debuff",
     "Universal Travel"

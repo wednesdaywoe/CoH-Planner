@@ -39,7 +39,8 @@
   ],
   "allowed_set_categories": [
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

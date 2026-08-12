@@ -47,7 +47,7 @@ export const DNASiphon: Power = {
     "Accurate Healing",
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

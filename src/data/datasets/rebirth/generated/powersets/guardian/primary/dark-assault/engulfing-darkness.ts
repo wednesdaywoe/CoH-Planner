@@ -41,7 +41,7 @@ export const EngulfingDarkness: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Guardian Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets",
     "Universal Debuff"

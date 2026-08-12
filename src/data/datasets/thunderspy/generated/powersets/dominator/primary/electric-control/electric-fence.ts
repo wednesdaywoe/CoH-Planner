@@ -36,7 +36,8 @@ export const ElectricFence: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Endurance Modification",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

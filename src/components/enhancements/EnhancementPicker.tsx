@@ -866,7 +866,7 @@ export function EnhancementPicker() {
               <MobileCategoryButton
                 key={cat}
                 label={cat.replace(' Damage', '').replace(' Sets', '')}
-                count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration' || cat === 'Rest Buff' || cat === 'Universal Debuff' || cat === 'Resurrection' || !isSpecialSet(s))).length}
+                count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration Sets' || cat === 'Rest Buff' || cat === 'Universal Debuff' || cat === 'Rez Sets' || !isSpecialSet(s))).length}
                 isActive={sidebarFilter === cat}
                 onClick={() => setSidebarFilter(cat)}
                 textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}
@@ -968,7 +968,7 @@ export function EnhancementPicker() {
                 <SidebarButton
                   key={cat}
                   label={cat}
-                  count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration' || cat === 'Rest Buff' || cat === 'Universal Debuff' || cat === 'Resurrection' || !isSpecialSet(s))).length}
+                  count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration Sets' || cat === 'Rest Buff' || cat === 'Universal Debuff' || cat === 'Rez Sets' || !isSpecialSet(s))).length}
                   isActive={sidebarFilter === cat}
                   onClick={() => setSidebarFilter(cat)}
                   textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}

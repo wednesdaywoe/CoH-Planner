@@ -40,7 +40,9 @@
   ],
   "allowed_set_categories": [
     "Holds",
-    "Melee Damage"
+    "Melee Damage",
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

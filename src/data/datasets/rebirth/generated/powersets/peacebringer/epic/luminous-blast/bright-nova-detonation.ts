@@ -46,7 +46,7 @@ export const BrightNovaDetonation: Power = {
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

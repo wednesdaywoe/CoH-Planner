@@ -43,9 +43,11 @@
   "allowed_set_categories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
+    "Defender Archetype Sets",
     "Healing",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

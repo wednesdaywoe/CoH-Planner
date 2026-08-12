@@ -45,7 +45,7 @@ export const CosmicBurst: Power = {
     "Defense Debuff",
     "Ranged Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

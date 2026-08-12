@@ -41,7 +41,9 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Ranged Damage"
+    "Defender Archetype Sets",
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -41,9 +41,11 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Blaster Archetype Sets",
     "Knockback",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [
     "hold",

@@ -47,11 +47,13 @@
     "Defense Debuff",
     "Fear",
     "Healing",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Resist Damage",
-    "Running & Sprints",
-    "Slow Movement"
+    "Running",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

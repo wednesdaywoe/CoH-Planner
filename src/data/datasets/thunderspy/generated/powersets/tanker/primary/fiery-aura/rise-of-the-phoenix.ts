@@ -38,7 +38,7 @@ export const RiseofthePhoenix: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
     "Tanker Archetype Sets",
     "Universal Damage Sets"

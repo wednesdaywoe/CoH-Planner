@@ -40,8 +40,10 @@
   ],
   "allowed_set_categories": [
     "Confuse",
-    "Melee AoE Damage",
-    "Slow Movement"
+    "Controller Archetype Sets",
+    "PBAoE Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [

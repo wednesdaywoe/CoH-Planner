@@ -39,7 +39,7 @@ export const FetidPresence: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Tanker Archetype Sets",
     "Universal Damage Sets"
   ],

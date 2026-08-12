@@ -37,6 +37,7 @@
     "Buff_ToHit"
   ],
   "allowed_set_categories": [
+    "Scrapper Archetype Sets",
     "To Hit Buff"
   ],
   "cast_through": [],

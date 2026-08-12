@@ -42,7 +42,8 @@
   "allowed_set_categories": [
     "Endurance Modification",
     "Ranged Damage",
-    "Sniper Attacks"
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

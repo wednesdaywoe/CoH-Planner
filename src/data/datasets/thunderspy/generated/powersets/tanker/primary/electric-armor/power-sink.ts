@@ -39,7 +39,7 @@ export const PowerSink: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

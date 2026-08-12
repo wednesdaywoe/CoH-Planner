@@ -43,10 +43,12 @@
   "allowed_set_categories": [
     "Defense Sets",
     "Healing",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Running & Sprints",
-    "Stuns"
+    "Running",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -49,7 +49,7 @@ export const HeadSplitter: Power = {
     "Defender Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

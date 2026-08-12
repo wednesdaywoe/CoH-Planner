@@ -48,7 +48,7 @@ export const CrushingUppercut: Power = {
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

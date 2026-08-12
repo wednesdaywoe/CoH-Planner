@@ -43,7 +43,8 @@ export const Chilblain: Power = {
     "Dominator Archetype Sets",
     "Immobilize",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

@@ -43,7 +43,7 @@ export const CloakofFear: Power = {
     "Accurate To-Hit Debuff",
     "Fear",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "maxSlots": 6,

@@ -42,9 +42,11 @@
   ],
   "allowed_set_categories": [
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
     "Immobilize",
-    "Ranged AoE Damage",
-    "To Hit Debuff"
+    "Targeted AoE Damage",
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],

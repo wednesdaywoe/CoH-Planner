@@ -50,8 +50,8 @@ export const DevastatingBlow: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Stuns",
-    "Threat Duration",
-    "Universal Control Duration",
+    "Taunt",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],
