@@ -190,7 +190,7 @@ establish what Thunderspy means by `0` — the two readings disagree on hundreds
 
 ## Still open
 
-1. **The rebuild** (`coh-sidekick-1.0-1`) has the same gap, and it drops more: 62 of 97
+1. **The rebuild** (`coh-sidekick-1.0`) has the same gap, and it drops more: 62 of 97
    Thunderspy auto-issue inherent members, 46 of them archetype-gated.
    `scripts/convert-inherents.cjs`'s grant closure keeps a member only if its `requires`
    names a power token, and `$archetype @Class_Stalker ==` names none. The fix there is a
