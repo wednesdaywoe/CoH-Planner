@@ -21,6 +21,7 @@ export const ShatterArmor: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 9,
@@ -43,7 +44,7 @@ export const ShatterArmor: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

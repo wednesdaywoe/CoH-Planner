@@ -195,6 +195,193 @@ def summarize_deep(left: dict[str, dict], right: dict[str, dict],
             print(f'  {k}: +{a} -{r} ~{c}')
 
 
+# --- Generic sweeps ------------------------------------------------------
+#
+# Two note-free detectors, run by default because the whole reason they exist is
+# that they are easy to forget. Neither reads a patch note: each asks whether the
+# NEW build is consistent with itself and with the shape of the old one, so both
+# survive a note being wrong, missing, or written against a different build.
+#
+# On the 2026-07-30 Homecoming beta they produced two of the four Tier 1 findings
+# in docs/HC-BETA-2026-07.md — Tanker Foot Stomp's PvP branch carrying a sibling
+# power's templates, and Rain of Arrows losing its Avoid on four of five player
+# pets — and nothing else in the pass found either of them.
+
+
+def _template_signature(power: dict) -> tuple:
+    """A power's effects, order-independent, with the per-copy fields stripped.
+
+    Equal signatures mean template-for-template the same behaviour. Name,
+    powerset, icon and display name are not in it, so one archetype's copy of a
+    power compares equal to another's whenever the two behave alike. Built from
+    the same identity/value field lists the deep diff pairs on, so the two stay
+    in step when a field is added there.
+    """
+    rows = []
+    for ident, t in _flatten_templates(power):
+        values = tuple(
+            tuple(t[f]) if isinstance(t.get(f), list) else t.get(f)
+            for f in TEMPLATE_VALUE_FIELDS)
+        rows.append((ident, values))
+    return tuple(sorted(rows, key=repr))
+
+
+def _by_shared_power(powers: dict[str, dict]) -> dict[tuple, dict[str, dict]]:
+    """`(powerset, power) -> {category: power}` — one archetype's copies grouped
+    with the others'. The category is the only part of the key that carries the
+    archetype, so dropping it is what makes the copies comparable."""
+    out: dict[tuple, dict[str, dict]] = {}
+    for key, power in powers.items():
+        parts = key.split('/')
+        if len(parts) != 3:
+            continue
+        category, powerset, name = parts
+        out.setdefault((powerset, name), {})[category] = power
+    return out
+
+
+def find_cross_at_divergence(left: dict[str, dict], right: dict[str, dict]):
+    """Powers whose archetype copies agreed on the left and disagree on the right.
+
+    A powerset copied onto several archetypes ships the same power several times.
+    When those copies are template-for-template identical on live and stop being
+    identical on beta, an edit reached some copies and not the rest. That is
+    either a deliberate per-AT split — in which case the notes say so — or an
+    edit applied to the wrong copy, and the build disagreeing with itself is what
+    makes it worth asking about with no note in hand.
+
+    The comparison is per AGREEING SET, not per power. A power often ships an
+    NPC or mission-maker copy beside its archetype ones that has always been
+    different; asking whether *every* copy agrees would let that copy mask a
+    split among the copies that did agree. Foot Stomp is exactly this case —
+    `mission_maker_attacks` carries a third copy — and the whole-group form of
+    this sweep silently misses the build's strongest finding.
+    """
+    L, R = _by_shared_power(left), _by_shared_power(right)
+    hits = []
+    agreeing_sets = 0
+    for shared in sorted(L):
+        left_copies, right_copies = L[shared], R.get(shared) or {}
+        categories = sorted(set(left_copies) & set(right_copies))
+        if len(categories) < 2:
+            continue
+        live_classes: dict[tuple, list[str]] = {}
+        for c in categories:
+            live_classes.setdefault(_template_signature(left_copies[c]), []).append(c)
+        for agreed in live_classes.values():
+            if len(agreed) < 2:
+                continue
+            agreeing_sets += 1
+            groups: dict[tuple, list[str]] = {}
+            for c in agreed:
+                groups.setdefault(_template_signature(right_copies[c]), []).append(c)
+            if len(groups) > 1:
+                hits.append((shared, right_copies, groups))
+    return hits, agreeing_sets
+
+
+def sweep_cross_at_divergence(left: dict[str, dict], right: dict[str, dict],
+                              limit: int = 25) -> None:
+    """Report [`find_cross_at_divergence`], each hit carrying the template-level
+    diff between one representative of each surviving behaviour."""
+    hits, agreeing_sets = find_cross_at_divergence(left, right)
+    print('\n=== Sweep: powers that agreed across archetypes and no longer do ===')
+    print(f'  Sets of copies that agreed on the left: {agreeing_sets}')
+    print(f'  Diverged: {len(hits)}')
+    for (powerset_name, power_name), right_copies, groups in hits[:limit]:
+        ordered = sorted(groups.values(), key=lambda cats: cats[0])
+        print(f'\n  ~ {powerset_name}/{power_name} — '
+              f'{len(ordered)} behaviours across {sum(len(c) for c in ordered)} archetypes')
+        reference = ordered[0]
+        print(f'      {", ".join(reference)}  (reference)')
+        for cats in ordered[1:]:
+            print(f'      {", ".join(cats)}')
+            added, removed, changes = deep_diff_power(
+                right_copies[reference[0]], right_copies[cats[0]])
+            for ident in added:
+                print(f'         + {_ident_str(ident)}')
+            for ident in removed:
+                print(f'         - {_ident_str(ident)}')
+            for ident, f, old, new in changes:
+                print(f'         ~ {_ident_str(ident)}: {f} {old!r} -> {new!r}')
+    if len(hits) > limit:
+        print(f'\n  ... and {len(hits) - limit} more')
+
+
+def load_powerset_indexes(root: Path) -> dict[str, dict]:
+    """Every powerset's `index.json`, keyed `category/powerset`."""
+    indexes: dict[str, dict] = {}
+    if not root.exists():
+        return indexes
+    for cat_dir in root.iterdir():
+        if not cat_dir.is_dir():
+            continue
+        for ps_dir in cat_dir.iterdir():
+            index_file = ps_dir / 'index.json'
+            if not ps_dir.is_dir() or not index_file.exists():
+                continue
+            try:
+                with open(index_file) as f:
+                    indexes[f'{cat_dir.name}/{ps_dir.name}'] = json.load(f)
+            except (json.JSONDecodeError, OSError) as e:
+                print(f'  WARN: could not read {index_file}: {e}')
+    return indexes
+
+
+def _powerset_power_names(entry: dict) -> set:
+    """A powerset's power DISPLAY names."""
+    return set(entry.get('power_display_names') or [])
+
+
+def find_powerset_losses(left: dict[str, dict], right: dict[str, dict]):
+    """`(vanished, shrunk)` — powerset keys gone from the right, and
+    `(key, lost, gained)` for those that kept existing but lost a power."""
+    gone = sorted(set(left) - set(right))
+    shrunk = []
+    for key in sorted(set(left) & set(right)):
+        lost = _powerset_power_names(left[key]) - _powerset_power_names(right[key])
+        if lost:
+            gained = _powerset_power_names(right[key]) - _powerset_power_names(left[key])
+            shrunk.append((key, sorted(lost), sorted(gained)))
+    return gone, shrunk
+
+
+def sweep_powerset_losses(left: dict[str, dict], right: dict[str, dict],
+                          limit: int = 40) -> None:
+    """Powersets that lost a power, and powersets that vanished outright.
+
+    Keyed by DISPLAY name rather than by file name, because a file name is not a
+    stable identity across builds — Homecoming reuses power slots, and this beta
+    alone ships seven files whose display name belongs to a different file.
+
+    A powerset losing one of several powers is invisible in the top-level removed
+    list, which is one flat line per removed key. Grouping the loss under the
+    powerset that still exists is what turns a line among dozens into "this pet
+    lost its Avoid while its siblings kept theirs".
+
+    Each loss is printed with whatever that powerset GAINED, because keying on
+    the display name means a rename reads as a loss. Shown side by side a rename
+    is obvious (Adrenalin Boost out, Adrenaline Boost in) and a real deletion has
+    nothing beside it — which is the whole distinction the reader needs.
+    """
+    gone, shrunk = find_powerset_losses(left, right)
+    names = _powerset_power_names
+
+    print('\n=== Sweep: powersets that lost powers ===')
+    print(f'  Powersets: {len(left)} -> {len(right)}')
+    print(f'  Vanished entirely: {len(gone)}')
+    print(f'  Kept but lost a power: {len(shrunk)}')
+    for key in gone[:limit]:
+        print(f'  - {key}  ({", ".join(sorted(names(left[key]))) or "no powers"})')
+    if len(gone) > limit:
+        print(f'  ... and {len(gone) - limit} more')
+    for key, lost, gained in shrunk[:limit]:
+        trailer = f'  gained {gained}' if gained else '  gained nothing'
+        print(f'  ~ {key}  lost {lost}{trailer}')
+    if len(shrunk) > limit:
+        print(f'  ... and {len(shrunk) - limit} more')
+
+
 def summarize(left_name: str, left: dict[str, dict],
               right_name: str, right: dict[str, dict]) -> None:
     left_keys = set(left)
@@ -263,6 +450,11 @@ def main():
     ap.add_argument('--deep', action='store_true',
                     help='Also diff inside effects, pairing templates by '
                          'identity instead of array position')
+    ap.add_argument('--no-sweeps', action='store_true',
+                    help='Skip the two note-free consistency sweeps (cross-'
+                         'archetype divergence, powerset losses). They run by '
+                         'default: both are cheap, and both found things no '
+                         'note-driven pass did.')
     ap.add_argument('--left-dir', default=None,
                     help='Diff an existing export tree directly (implies '
                          '--skip-export); pairs with --right-dir')
@@ -282,6 +474,10 @@ def main():
         summarize(args.left_dir, left, args.right_dir, right)
         if args.deep:
             summarize_deep(left, right)
+        if not args.no_sweeps:
+            sweep_cross_at_divergence(left, right)
+            sweep_powerset_losses(load_powerset_indexes(Path(args.left_dir)),
+                                  load_powerset_indexes(Path(args.right_dir)))
         return
 
     # The assets ROOT holds two assets dirs (<left>/ and <right>/), so validate
@@ -317,6 +513,10 @@ def main():
     summarize(args.left, left, args.right, right)
     if args.deep:
         summarize_deep(left, right)
+    if not args.no_sweeps:
+        sweep_cross_at_divergence(left, right)
+        sweep_powerset_losses(load_powerset_indexes(left_out),
+                              load_powerset_indexes(right_out))
 
 
 if __name__ == '__main__':

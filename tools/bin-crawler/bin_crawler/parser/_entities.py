@@ -15,19 +15,17 @@ etc.). The planner only consumes a slice of it via
   - `defaults.powers` (the wildcard-expandable [cat, set, pow, level] list)
   - `levels[0].display_names[0]` (primary display name)
 
-So this parser is intentionally minimal — it reads the leading scalar block,
-the powers struct_array, and the levels struct_array sequentially, then
-heuristically skips into the trailing scalar block to fish out
-`copy_creator_mods`. Fields whose meaning isn't yet decoded are kept as raw
-ints in `_unknown_*` for future expansion.
+Every flavor reads the whole record: the leading scalar block, the powers and
+levels struct_arrays, then the trailing block field by field down
+`ParseVillainDef[]` (`Common/gameComm/VillainDef.c:165`), with anything past
+`Flags` preserved verbatim as `tail_raw`.
 
-Both Parse7 (HC) and Parse6 (Rebirth) are supported. The struct shape is
-identical — only string encoding (offset vs inline) differs.
+The one schema axis that differs is the `levels` element, and it does not track
+the container format — see `detect_level_ints`.
 """
 
 from __future__ import annotations
 
-import struct
 from dataclasses import dataclass, field
 
 from ._reader import open_parse7, BinReader, Parse6BinReader
@@ -48,9 +46,17 @@ class EntityPower:
 
 @dataclass
 class EntityLevel:
-    """One entry in `levels[]` — per-level display name + costume."""
-    min_level: int = 0
-    max_level: int = 0
+    """One entry in `levels[]` — per-level display name + costume.
+
+    `level` is `ParseVillainLevelDef`'s `Level`, which every flavor carries.
+    `max_level` is Homecoming's alone: it widened the field into a RANGE whose
+    start is `Level`, so one HC element covers 1-55 where a fork writes 54
+    elements. On a fork the record states no upper bound, so this is `None`
+    rather than a copy of `level` — an absent field is not a defaulted one, and
+    a fabricated bound would read as authored data.
+    """
+    level: int = 0
+    max_level: int | None = None
     display_names: list[str] = field(default_factory=list)
     costumes: list[str] = field(default_factory=list)
     experience: int = 0
@@ -60,12 +66,13 @@ class EntityLevel:
 class EntityRecord:
     """A villaindef.bin entity record.
 
-    Field names match the in-game C struct as decoded from the VillainDef
-    sub-descriptor at 0x1408fa9f0 (see Ghidra `bin_serializer_report.txt`).
-    The binary serialization order is: Name, Class, Gender, Description,
-    GroupDescription, DisplayClassName, AIConfig, VillainGroup, Power,
-    Level, Rank, Ally, Gang, Exclusion, IgnoreCombatMods, CopyCreatorMods,
-    IgnoreReduction, CanZone, ... (full list in the report).
+    Field names and order follow `ParseVillainDef[]` in the game source
+    (`Common/gameComm/VillainDef.c:165`), which is what the serializer walks.
+    `TOK_REDUNDANTNAME` entries there are parse-time synonyms for a member
+    already listed, so they are written once: `SuccessRewards` shares
+    `additional_rewards` with `AdditionalRewards`, and `StatusFailureRewards`
+    shares `skill_status_rewards` with `IntegrityFailureRewards`. Counting them
+    twice is what previously pushed the walk two slots out of alignment.
     """
     name: str = ""
     character_class_name: str = ""        # `Class` in the descriptor — raw "Class_Minion_Pets" form
@@ -77,14 +84,36 @@ class EntityRecord:
     villain_group_raw: int = 0            # `VillainGroup` (u4 enum)
     powers: list[EntityPower] = field(default_factory=list)
     levels: list[EntityLevel] = field(default_factory=list)
-    rank_raw: int = 0                     # `Rank` (u4 enum: VR_PET=2, etc.) — comes AFTER Level in the binary
+    rank_raw: int = 0                     # `Rank` (u4 `ParseVillainRankEnum`) — comes AFTER Level in the binary
+    ally: str = ""
+    gang: str = ""
+    exclusion_raw: int = 0                # `Exclusion` (u4 `ParseVillainExclusion`)
+    ignore_combat_mods: bool = False
     copy_creator_mods: bool = False
-    commandable_pet: int = 0              # 0 or 1
+    ignore_reduction: bool = False
     can_zone: bool = False
+    spawn_limit: int = -1
+    spawn_limit_mission: int = -2         # -2 = "unspecified"; the game then defaults it to spawn_limit
+    additional_rewards: list[str] = field(default_factory=list)
+    favorite_weapon: str = ""
+    skill_hp_rewards: list[str] = field(default_factory=list)
+    skill_status_rewards: list[str] = field(default_factory=list)
+    reward_scale: float = 1.0
     power_tags: list[str] = field(default_factory=list)
+    special_pet_power: str = ""
     # Source path the def was compiled from (e.g.
     # "DEFS/VILLAINS/PETS.VILLAIN") — keep it for debugging/provenance.
     source_file: str = ""
+    file_age: int = 0
+    pet_command_strings: list[list[str]] = field(default_factory=list)
+    pet_visibility: int = -1
+    commandable_pet: int = 0              # `PetCommandability` — 0 or 1
+    badge_stat: str = ""
+    flags_raw: int = 0                    # `Flags` (u4 `ParseVillainDefFlags`)
+    # Whatever the record carries past `Flags`. The parse table continues with
+    # `ScriptDef`, which is `TOK_NULLSTRUCT` on the client — kept raw rather
+    # than dropped so a future decode has the bytes to work from.
+    tail_raw: bytes = b""
 
     # Backward-compat: the old API exposed `display_name`. Keep it as a
     # property pointing at the field we actually parse (group_description),
@@ -99,7 +128,7 @@ class EntityRecord:
 
 
 # ---------------------------------------------------------------------------
-# Parse7 (HC) implementation
+# Record walk — shared by every flavor; only the two element readers fork
 # ---------------------------------------------------------------------------
 
 def _parse_power_sub(r: BinReader) -> EntityPower:
@@ -115,183 +144,12 @@ def _parse_power_sub(r: BinReader) -> EntityPower:
     return EntityPower(power_category=cat, power_set=pset, power=power, level=level)
 
 
-# A genuine string-array count in a level record is tiny (0-2 display names /
-# costumes). A string-table offset is thousands+. So when the u4 where a count
-# is expected exceeds this bound, we're actually looking at a bare string
-# offset — the Thunderspy encoding, which drops the display_names array count.
-_MAX_LEVEL_STRING_ARRAY_COUNT = 64
+def _read_header(r: BinReader, rec: EntityRecord, power_sub) -> EntityRecord:
+    """`ParseVillainDef[]` from `Name` down to `Power` — identical on every flavor.
 
-
-def _read_level_display_names(r: BinReader) -> list[str]:
-    """Read levels[].display_names, tolerating both known encodings:
-
-      - HC / Rebirth: a length-prefixed string_array (u4 count + offsets).
-      - Thunderspy:   a single bare string offset — the count u4 is ABSENT.
-
-    Discriminate on the leading u4: a real array count is tiny, a string-table
-    offset is far larger. The level element is length-bounded by the caller's
-    sub_reader, so a wrong guess can only mis-read this one element — it can
-    never desync the rest of the file.
+    Shared with `detect_level_ints` rather than duplicated into it, so the probe
+    cannot drift from the parse it is choosing a shape for.
     """
-    if r.remaining() < 4:
-        return []
-    if r.peek_u4() <= _MAX_LEVEL_STRING_ARRAY_COUNT:
-        return r.read_string_array()          # HC/Rebirth: count-prefixed
-    return [r.read_string()]                  # Thunderspy: bare single offset
-
-
-def _parse_level_sub(r: BinReader) -> EntityLevel:
-    """Levels sub-record. HC (28 bytes, 1-display-name case):
-    min, max, string_array display_names, string_array costumes, experience.
-
-    Thunderspy (24 bytes) drops the display_names array count — it stores a
-    single bare string offset — so display_names is read tolerantly (see
-    `_read_level_display_names`). Never raises: a malformed element yields a
-    best-effort record so one bad entry can't abort the whole parse. The outer
-    read_struct_array advances past the element by its length regardless, so
-    under-consuming here is safe.
-    """
-    min_lvl = r.read_u4() if r.remaining() >= 4 else 0
-    max_lvl = r.read_u4() if r.remaining() >= 4 else 0
-    try:
-        display_names = _read_level_display_names(r)
-        costumes = r.read_string_array() if r.remaining() >= 4 else []
-        experience = r.read_u4() if r.remaining() >= 4 else 0
-    except ValueError:
-        display_names, costumes, experience = [], [], 0
-    return EntityLevel(
-        min_level=min_lvl,
-        max_level=max_lvl,
-        display_names=display_names,
-        costumes=costumes,
-        experience=experience,
-    )
-
-
-def _parse_entity_parse7(r: BinReader, rec_len: int) -> EntityRecord:
-    """Parse a single VillainDef record (Parse7).
-
-    Field order matches the descriptor at 0x1408fa9f0 — see Ghidra's
-    `bin_serializer_report.txt` for the authoritative layout.
-    """
-    rec = EntityRecord()
-    rec.name = r.read_string()
-    rec.character_class_name = r.read_string()
-    rec.gender_raw = r.read_u4()                    # was mislabeled as rank_raw
-    rec.description = r.read_string()
-    rec.group_description = r.read_string()         # was mislabeled as display_name
-    rec.display_class_name = r.read_string()
-    rec.ai_config = r.read_string()
-    rec.villain_group_raw = r.read_u4()             # was the "mystery u4" before powers
-    rec.powers = r.read_struct_array(_parse_power_sub)
-    rec.levels = r.read_struct_array(_parse_level_sub)
-    _read_tail_flags(r, rec)
-    return rec
-
-
-def _read_tail_flags(r: BinReader, rec: EntityRecord) -> None:
-    """The block after `levels`. The Ghidra descriptor at 0x1408fa9f0
-    says serialization should resume with Rank → Ally → Gang → ... but
-    in practice the bytes at this position start with a constant `10`
-    (no valid rank/ally/gang interpretation) — so the binary inserts
-    one or more fields here that aren't in the descriptor (probably
-    HC-only additions like the chain_effect_array slot in powers.bin).
-
-    Layout below comes from comparing Pets_Tornado vs Pets_LightningStorm
-    (only differ in copy_creator_mods at +5 u4s) and
-    MastermindPets_Assault_Bot (power_tags=4 entries, source MASTERMINDPETS):
-
-        u4 ???                   (always 10 in samples)
-        u4 ??? × 4               (zeros)
-        u4 copy_creator_mods     (bool, masked to bit 0)
-        u4 ???                   (zero)
-        u4 ???                   (zero in pet samples, 1 in MM henchmen)
-        s4 spawn_limit           (-1 default)
-        s4 spawn_limit_mission   (-1 default)
-        u4 ??? × 4               (zeros)
-        f4 reward_scale          (1.0)
-        string_array power_tags
-        u4 ???                   (zero)
-        string source_file       (e.g. DEFS/VILLAINS/PETS.VILLAIN)
-    """
-    try:
-        r.read_u4()                          # unknown leading u4 (=10)
-        for _ in range(4):
-            r.read_u4()                      # zeros
-        rec.copy_creator_mods = bool(r.read_u4() & 1)
-        r.read_u4()                          # unknown (zero)
-        _maybe_dynamic = r.read_u4()         # noqa: F841
-        r.read_s4()                          # spawn_limit
-        r.read_s4()                          # spawn_limit_mission
-        for _ in range(4):
-            r.read_u4()                      # zeros
-        r.read_f4()                          # reward_scale
-        rec.power_tags = r.read_string_array()
-        if r.remaining() >= 4:
-            r.read_u4()                      # delim
-        if r.remaining() >= 4:
-            rec.source_file = r.read_string()
-    except ValueError:
-        pass
-
-    # commandable_pet / can_zone aren't reliably positionable in this
-    # record yet, so infer them from the character class. Rebirth Parse6
-    # names henchman tiers `Class_Boss_Henchman` etc.; HC Parse7 swaps
-    # the parts to `Class_Henchman_Boss`. Match either ordering.
-    cls = rec.character_class_name.lower()
-    if "henchman" in cls:
-        rec.commandable_pet = 1
-        rec.can_zone = True
-
-
-def parse_entities(bin_path_or_data) -> list[EntityRecord]:
-    """Parse villaindef.bin into EntityRecord list.
-
-    Accepts a file path (str/Path) or raw bytes.
-    """
-    r = open_parse7(bin_path_or_data)
-    if isinstance(r, Parse6BinReader):
-        return _parse_entities_parse6(r)
-
-    r.read_u4()  # block_size
-    count = r.read_u4()
-
-    records = []
-    for _ in range(count):
-        rec_len = r.read_u4()
-        sub = r.sub_reader(rec_len)
-        records.append(_parse_entity_parse7(sub, rec_len))
-        r.skip(rec_len)
-    return records
-
-
-# ---------------------------------------------------------------------------
-# Parse6 (Rebirth) implementation
-# ---------------------------------------------------------------------------
-
-def _parse_entity_parse6(r: Parse6BinReader, rec_len: int) -> EntityRecord:
-    """Parse6 record layout mirrors Parse7's, but every string is an inline
-    pascal-pad rather than a u4 strtab offset. The struct_array shape and
-    field order are identical for the fields we currently consume — name,
-    class, ai_config, powers — and we stop there.
-
-    What's NOT yet decoded for Parse6:
-      - The levels[] struct_array. Between powers and levels there's a
-        4 × u4 block (`54, 52, 1, 1` consistent across every record I
-        sampled), and the level sub-record itself appears to be inline
-        rather than length-prefixed. Until that's fully decoded the
-        downstream display-name comes from the entity's own `name`
-        (`Pets_Tornado` → "Tornado"), which is what
-        convert-pet-entities.cjs already uses as its fallback.
-      - copy_creator_mods / power_tags / source_file. Same blocker —
-        they live past the unparsed levels block. Keeping defaults
-        (False / [] / "") means Rebirth pets render with HC-style
-        damage scaling, which is wrong for the small subset of pets
-        that actually copy creator mods (Storm's Lightning Storm,
-        some incarnate pets) but right for the rest. Worth revisiting
-        when more bytes are reverse-engineered.
-    """
-    rec = EntityRecord()
     rec.name = r.read_string()
     rec.character_class_name = r.read_string()
     rec.gender_raw = r.read_u4()
@@ -300,53 +158,212 @@ def _parse_entity_parse6(r: Parse6BinReader, rec_len: int) -> EntityRecord:
     rec.display_class_name = r.read_string()
     rec.ai_config = r.read_string()
     rec.villain_group_raw = r.read_u4()
-    try:
-        rec.powers = r.read_struct_array(_parse_power_sub_p6)
-    except ValueError:
-        # If a record's power array fails to parse, leave it empty rather
-        # than aborting the whole parse run.
-        rec.powers = []
-
-    # commandable_pet / can_zone heuristic from class name (same rule as
-    # Parse7's _read_tail_flags fallback).
-    cls = rec.character_class_name.lower()
-    # Rebirth Parse6 names the henchman tiers as `Class_Boss_Henchman`,
-    # `Class_Lt_Henchman`, `Class_Minion_Henchman`; HC Parse7 swaps the
-    # parts to `Class_Henchman_Boss` etc. Match either ordering.
-    if "henchman" in cls:
-        rec.commandable_pet = 1
-        rec.can_zone = True
+    rec.powers = r.read_struct_array(power_sub)
     return rec
 
 
-def _parse_power_sub_p6(r: Parse6BinReader) -> EntityPower:
-    cat = r.read_string()
-    pset = r.read_string()
-    power = r.read_string()
-    level = r.read_u4()
-    # The two trailing u4s present in Parse7 may not exist in Parse6 — read
-    # what's left of the sub-record so we don't overrun.
-    while r.remaining() >= 4:
+def _make_level_sub(level_ints: int):
+    """A `levels[]` element reader for a schema carrying `level_ints` leading ints.
+
+    `ParseVillainLevelDef` (`VillainDef.c:123`) is `Level`, `DisplayNames`,
+    `Costumes`, `XP` — one leading int. Homecoming widened `Level` into a range
+    and writes two. Nothing else about the element moved.
+
+    The element is consumed exactly, and a residue raises: this is the read that
+    a wrong `level_ints` gets wrong, so it has to be the read that says so. Both
+    of the recoveries that used to live here — a tolerance on the display-names
+    count, and an `except ValueError` yielding empty lists — turned that signal
+    into plausible data, and between them they emptied `display_names` AND
+    `costumes` on 5,139 Thunderspy elements while every gate stayed green.
+    """
+    def parse(r: BinReader) -> EntityLevel:
+        ints = [r.read_u4() for _ in range(level_ints)]
+        element = EntityLevel(
+            level=ints[0],
+            max_level=ints[1] if level_ints > 1 else None,
+            display_names=r.read_string_array(),
+            costumes=r.read_string_array(),
+        )
+        element.experience = r.read_u4()
+        if r.remaining():
+            raise ValueError(
+                f"levels[] element has {r.remaining()} bytes left over under a "
+                f"{level_ints}-int schema — the element shape is wrong"
+            )
+        return element
+    return parse
+
+
+# How many whole records to try each candidate shape against. The shapes
+# disagree on the very first populated element, so this is about crossing any
+# run of empty ones, not about accumulating confidence.
+_LEVEL_SHAPE_PROBE_RECORDS = 64
+
+
+def detect_level_ints(data, reader_factory, power_sub) -> int:
+    """How many leading ints this file's `levels[]` element carries.
+
+    Detected, never configured — and NOT inferrable from the container, which is
+    the trap that hid this. Thunderspy ships a Parse7 container over the i24
+    one-int element, so a container-keyed rule reads its `Level` as HC's
+    `min_level` and its display-names COUNT as `max_level`. Measured over whole
+    corpora, the shapes are mutually exclusive rather than merely better-fitting:
+
+        homecoming  2-int fits 8875/8875, 1-int fits 52
+        thunderspy  1-int fits 7309/7309, 2-int fits 0
+        rebirth     1-int fits 7187/7187, 2-int fits 0
+
+    So the discriminator is exact consumption of the element, and ambiguity is
+    an error rather than a tie to break: if both shapes fit, or neither does,
+    the file is not one we know how to read and saying so beats picking.
+    """
+    def probe(candidate: int | None) -> int:
+        """Elements the probe window yields at `candidate`, or -1 if it does not fit.
+
+        `candidate=None` only counts what the struct_array DECLARES, without reading
+        an element — the one measurement that does not depend on the width, and so
+        the only way to tell "this window has no levels in it" from "no width fits".
+        """
+        r = reader_factory(data)
         r.read_u4()
-    return EntityPower(power_category=cat, power_set=pset, power=power, level=level)
+        count = r.read_u4()
+        seen = 0
+        for _ in range(min(count, _LEVEL_SHAPE_PROBE_RECORDS)):
+            rec_len = r.read_u4()
+            sub = r.sub_reader(rec_len)
+            try:
+                _read_header(sub, EntityRecord(), power_sub)
+                if candidate is None:
+                    seen += sub.peek_u4()
+                else:
+                    seen += len(sub.read_struct_array(_make_level_sub(candidate)))
+            except ValueError:
+                return seen if candidate is None else -1
+            r.skip(rec_len)
+        return seen
+
+    if not probe(None):
+        raise ValueError(
+            f"villaindef levels[] element width is ungradeable: the first "
+            f"{_LEVEL_SHAPE_PROBE_RECORDS} records declare no level element between them, so "
+            f"every width fits vacuously. Widen the probe rather than picking one."
+        )
+
+    fits = [c for c in (1, 2) if probe(c) > 0]
+    if len(fits) != 1:
+        raise ValueError(
+            f"villaindef levels[] element width is undecidable: {fits or 'no'} width(s) fit the "
+            f"first {_LEVEL_SHAPE_PROBE_RECORDS} records, and exactly one must. Two fitting means "
+            f"the probe cannot tell them apart here; none means this is a schema we cannot read."
+        )
+    return fits[0]
 
 
-def _parse_level_sub_p6(r: Parse6BinReader) -> EntityLevel:
-    min_lvl = r.read_u4()
-    max_lvl = r.read_u4()
-    display_names = r.read_string_array()
-    costumes = r.read_string_array()
-    experience = r.read_u4() if r.remaining() >= 4 else 0
-    return EntityLevel(
-        min_level=min_lvl,
-        max_level=max_lvl,
-        display_names=display_names,
-        costumes=costumes,
-        experience=experience,
-    )
+def _parse_entity(r: BinReader, power_sub, level_sub) -> EntityRecord:
+    """Parse one VillainDef record, whole, down `ParseVillainDef[]`.
+
+    One walk for every flavor: the container decides how a string and a powers
+    element are encoded (`power_sub`) and the file's own schema decides the
+    `levels` element (`level_sub`), but the FIELD ORDER is the parse table's and
+    does not fork. Field order also matches the Parse7 descriptor at 0x1408fa9f0
+    — see Ghidra's `bin_serializer_report.txt`.
+    """
+    rec = _read_header(r, EntityRecord(), power_sub)
+    rec.levels = r.read_struct_array(level_sub)
+    _read_tail_flags(r, rec)
+    return rec
 
 
-def _parse_entities_parse6(r: Parse6BinReader) -> list[EntityRecord]:
+def _read_tail_flags(r: BinReader, rec: EntityRecord) -> None:
+    """The block after `levels`, read straight down `ParseVillainDef[]`.
+
+    An earlier version could not place this block and read most of it as
+    anonymous "zero" slots, inferring `commandable_pet`/`can_zone` from the
+    class name instead. It was two slots out because it counted the two
+    `TOK_REDUNDANTNAME` reward aliases as fields of their own (see
+    `EntityRecord`); with those collapsed the table lands exactly, which four
+    independent checks confirm across all 8,875 HC records:
+
+      - `copy_creator_mods` stays where the old walk already had it,
+      - `pet_visibility` carries the parse table's declared `-1` default on
+        727 of 744 pet records,
+      - `source_file` resolves to real paths (`DEFS/VILLAINS/PETS.VILLAIN`),
+      - every boolflag reads 0/1 and `flags` reads 0 on every record.
+
+    All four reproduce on Rebirth's Parse6, which reaches this block only once
+    its `levels` element is read at the right width: `pet_visibility` is -1 on
+    7,165 of 7,187, every `source_file` is a `DEFS/…` path, `ally` is one of
+    {Hero, Monster, Villain} or empty, `flags` is 0 throughout — and `tail_raw`
+    lands on 4 bytes for every record, which a misaligned `levels` cannot do.
+
+    `PetCommandability` is the authoritative `commandable_pet`: the server
+    assigns it verbatim in `MapServer/src/entity/character_pet.c:569`
+    (`pPet->commandablePet = pPet->villainDef->petCommadability`).
+    """
+    rec.rank_raw = r.read_u4()
+    rec.ally = r.read_string()
+    rec.gang = r.read_string()
+    rec.exclusion_raw = r.read_u4()
+    rec.ignore_combat_mods = bool(r.read_u4() & 1)
+    rec.copy_creator_mods = bool(r.read_u4() & 1)
+    rec.ignore_reduction = bool(r.read_u4() & 1)
+    rec.can_zone = bool(r.read_u4() & 1)
+    rec.spawn_limit = r.read_s4()
+    rec.spawn_limit_mission = r.read_s4()
+    rec.additional_rewards = r.read_string_array()
+    rec.favorite_weapon = r.read_string()
+    rec.skill_hp_rewards = r.read_string_array()
+    rec.skill_status_rewards = r.read_string_array()
+    rec.reward_scale = r.read_f4()
+    rec.power_tags = r.read_string_array()
+    rec.special_pet_power = r.read_string()
+    rec.source_file = r.read_string()
+    rec.file_age = r.read_u4()
+    rec.pet_command_strings = r.read_struct_array(_parse_pet_command_strings_sub)
+    rec.pet_visibility = r.read_s4()
+    rec.commandable_pet = r.read_s4()
+    rec.badge_stat = r.read_string()
+    rec.flags_raw = r.read_u4()
+    rec.tail_raw = r.read_raw(r.remaining())
+
+
+def _parse_pet_command_strings_sub(r: BinReader) -> list[str]:
+    """One `PetCommandStrings` record — the eleven parallel response lists of
+    `ParsePetCommandStrings[]` (Passive, Defensive, Aggressive, AttackTarget,
+    AttackNoTarget, StayHere, UsePower, UsePowerNone, FollowMe, GotoSpot,
+    Dismiss), flattened because nothing downstream distinguishes the commands.
+
+    Written to the table rather than to a permissive "read until exhausted"
+    loop, so a wrong shape raises out of the bounded sub-reader instead of
+    silently returning a short list that looks like data. That bet paid: the
+    shape rested on the parse table alone while Homecoming was the only corpus
+    (69 of 8,875 records populate it), and it reads clean on the two forks that
+    populate it too — 61 Rebirth records, 73 Thunderspy.
+    """
+    return [s for _ in range(11) for s in r.read_string_array()]
+
+
+def parse_entities(bin_path_or_data) -> list[EntityRecord]:
+    """Parse villaindef.bin into EntityRecord list.
+
+    Accepts a file path (str/Path) or raw bytes.
+
+    The container picks the string and powers-element encoding; the file's own
+    `levels` element width is detected separately, because the two axes are
+    independent — Thunderspy ships a Parse7 container over the i24 one-int
+    element.
+    """
+    if isinstance(bin_path_or_data, (bytes, memoryview)):
+        data = bin_path_or_data
+    else:
+        from pathlib import Path
+        data = Path(bin_path_or_data).read_bytes()
+
+    r = open_parse7(data)
+    parse6 = isinstance(r, Parse6BinReader)
+    power_sub = _parse_power_sub_p6 if parse6 else _parse_power_sub
+    level_sub = _make_level_sub(detect_level_ints(data, open_parse7, power_sub))
+
     r.read_u4()  # block_size
     count = r.read_u4()
 
@@ -354,6 +371,24 @@ def _parse_entities_parse6(r: Parse6BinReader) -> list[EntityRecord]:
     for _ in range(count):
         rec_len = r.read_u4()
         sub = r.sub_reader(rec_len)
-        records.append(_parse_entity_parse6(sub, rec_len))
+        records.append(_parse_entity(sub, power_sub, level_sub))
         r.skip(rec_len)
     return records
+
+
+def _parse_power_sub_p6(r: Parse6BinReader) -> EntityPower:
+    """Parse6's powers element: the Parse7 fields, minus its two trailing u4s.
+
+    The element is length-prefixed, so the tail is drained rather than assumed —
+    Parse6 pads inline strings to 4-byte alignment, which makes the residue a
+    property of the strings in this element, not a constant.
+    """
+    cat = r.read_string()
+    pset = r.read_string()
+    power = r.read_string()
+    level = r.read_u4()
+    while r.remaining() >= 4:
+        r.read_u4()
+    return EntityPower(power_category=cat, power_set=pset, power=power, level=level)
+
+

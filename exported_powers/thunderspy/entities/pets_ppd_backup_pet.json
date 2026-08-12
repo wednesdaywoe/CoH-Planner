@@ -10,7 +10,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Default_Melee",
     "character_class_name": "minion_pets",
     "description": "To keep up with the inhuman abilities of some villains, the PPD has engineered a powered armor unit. Trained PPD officers don servo-assisted combat armor which not only protects them, but increases their strength and reflexes. Heavy machineguns and energy weapons add impressive firepower to the mix. These awesome but costly suits are reserved for major conflicts against Paragon City's most fearsome foes.",
@@ -48,8 +48,8 @@
   },
   "levels": [
     {
-      "min_level": 10,
-      "max_level": 1,
+      "level": 10,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -59,8 +59,8 @@
       ]
     },
     {
-      "min_level": 11,
-      "max_level": 1,
+      "level": 11,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -70,8 +70,8 @@
       ]
     },
     {
-      "min_level": 12,
-      "max_level": 1,
+      "level": 12,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -81,8 +81,8 @@
       ]
     },
     {
-      "min_level": 13,
-      "max_level": 1,
+      "level": 13,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -92,8 +92,8 @@
       ]
     },
     {
-      "min_level": 14,
-      "max_level": 1,
+      "level": 14,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -103,8 +103,8 @@
       ]
     },
     {
-      "min_level": 15,
-      "max_level": 1,
+      "level": 15,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -114,8 +114,8 @@
       ]
     },
     {
-      "min_level": 16,
-      "max_level": 1,
+      "level": 16,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -125,8 +125,8 @@
       ]
     },
     {
-      "min_level": 17,
-      "max_level": 1,
+      "level": 17,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -136,8 +136,8 @@
       ]
     },
     {
-      "min_level": 18,
-      "max_level": 1,
+      "level": 18,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -147,8 +147,8 @@
       ]
     },
     {
-      "min_level": 19,
-      "max_level": 1,
+      "level": 19,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -158,8 +158,8 @@
       ]
     },
     {
-      "min_level": 20,
-      "max_level": 1,
+      "level": 20,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -169,8 +169,8 @@
       ]
     },
     {
-      "min_level": 21,
-      "max_level": 1,
+      "level": 21,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -180,8 +180,8 @@
       ]
     },
     {
-      "min_level": 22,
-      "max_level": 1,
+      "level": 22,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -191,8 +191,8 @@
       ]
     },
     {
-      "min_level": 23,
-      "max_level": 1,
+      "level": 23,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -202,8 +202,8 @@
       ]
     },
     {
-      "min_level": 24,
-      "max_level": 1,
+      "level": 24,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -213,8 +213,8 @@
       ]
     },
     {
-      "min_level": 25,
-      "max_level": 1,
+      "level": 25,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -224,8 +224,8 @@
       ]
     },
     {
-      "min_level": 26,
-      "max_level": 1,
+      "level": 26,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -235,8 +235,8 @@
       ]
     },
     {
-      "min_level": 27,
-      "max_level": 1,
+      "level": 27,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -246,8 +246,8 @@
       ]
     },
     {
-      "min_level": 28,
-      "max_level": 1,
+      "level": 28,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -257,8 +257,8 @@
       ]
     },
     {
-      "min_level": 29,
-      "max_level": 1,
+      "level": 29,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -268,8 +268,8 @@
       ]
     },
     {
-      "min_level": 30,
-      "max_level": 1,
+      "level": 30,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -279,8 +279,8 @@
       ]
     },
     {
-      "min_level": 31,
-      "max_level": 1,
+      "level": 31,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -290,8 +290,8 @@
       ]
     },
     {
-      "min_level": 32,
-      "max_level": 1,
+      "level": 32,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -301,8 +301,8 @@
       ]
     },
     {
-      "min_level": 33,
-      "max_level": 1,
+      "level": 33,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -312,8 +312,8 @@
       ]
     },
     {
-      "min_level": 34,
-      "max_level": 1,
+      "level": 34,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -323,8 +323,8 @@
       ]
     },
     {
-      "min_level": 35,
-      "max_level": 1,
+      "level": 35,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -334,8 +334,8 @@
       ]
     },
     {
-      "min_level": 36,
-      "max_level": 1,
+      "level": 36,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -345,8 +345,8 @@
       ]
     },
     {
-      "min_level": 37,
-      "max_level": 1,
+      "level": 37,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -356,8 +356,8 @@
       ]
     },
     {
-      "min_level": 38,
-      "max_level": 1,
+      "level": 38,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -367,8 +367,8 @@
       ]
     },
     {
-      "min_level": 39,
-      "max_level": 1,
+      "level": 39,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -378,8 +378,8 @@
       ]
     },
     {
-      "min_level": 40,
-      "max_level": 1,
+      "level": 40,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -389,8 +389,8 @@
       ]
     },
     {
-      "min_level": 41,
-      "max_level": 1,
+      "level": 41,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -400,8 +400,8 @@
       ]
     },
     {
-      "min_level": 42,
-      "max_level": 1,
+      "level": 42,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -411,8 +411,8 @@
       ]
     },
     {
-      "min_level": 43,
-      "max_level": 1,
+      "level": 43,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -422,8 +422,8 @@
       ]
     },
     {
-      "min_level": 44,
-      "max_level": 1,
+      "level": 44,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -433,8 +433,8 @@
       ]
     },
     {
-      "min_level": 45,
-      "max_level": 1,
+      "level": 45,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -444,8 +444,8 @@
       ]
     },
     {
-      "min_level": 46,
-      "max_level": 1,
+      "level": 46,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -455,8 +455,8 @@
       ]
     },
     {
-      "min_level": 47,
-      "max_level": 1,
+      "level": 47,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -466,8 +466,8 @@
       ]
     },
     {
-      "min_level": 48,
-      "max_level": 1,
+      "level": 48,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -477,8 +477,8 @@
       ]
     },
     {
-      "min_level": 49,
-      "max_level": 1,
+      "level": 49,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"
@@ -488,8 +488,8 @@
       ]
     },
     {
-      "min_level": 50,
-      "max_level": 1,
+      "level": 50,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "PPD Reinforcement"

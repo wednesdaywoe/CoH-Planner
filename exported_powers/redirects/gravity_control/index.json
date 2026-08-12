@@ -27,5 +27,9 @@
     "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
     "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
     "Self Destruct"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

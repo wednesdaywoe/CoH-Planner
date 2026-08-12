@@ -47,5 +47,9 @@
     "Ranged (Targeted AoE), Minor DoT(Cold), Foe Forced Movement",
     "Ranged (Targeted AoE), Foe Sleep, -Speed",
     "Ranged (Targeted AoE), Foe Hold, -Def"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

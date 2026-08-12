@@ -37,7 +37,7 @@ export const RendingFlurry: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -35,8 +35,8 @@ export const FreezingRain: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Ranged AoE Damage",
     "Slow Movement",
+    "Targeted AoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

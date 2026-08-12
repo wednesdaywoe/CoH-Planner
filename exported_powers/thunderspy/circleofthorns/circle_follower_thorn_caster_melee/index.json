@@ -31,5 +31,9 @@
     "Melee Lethal Dam",
     "Melee Lethal/Negative, High Dam",
     "Melee Lethal/Negative, +Slow"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

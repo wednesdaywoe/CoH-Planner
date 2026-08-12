@@ -40,7 +40,7 @@ export const UmbraBeast: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

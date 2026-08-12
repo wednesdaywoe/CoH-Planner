@@ -18,6 +18,7 @@ export const Hurl: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -40,7 +41,7 @@ export const Hurl: Power = {
     "Knockback",
     "Ranged Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

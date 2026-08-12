@@ -27,5 +27,9 @@
     "Ranged, DMG(Cold), Foe -Recharge, -SPD",
     "Ranged (Cone), Foe -SPD, -Recharge",
     "Self Leap"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

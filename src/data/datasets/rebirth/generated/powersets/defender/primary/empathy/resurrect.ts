@@ -34,7 +34,7 @@ export const Resurrect: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Resurrection",
+    "Rez Sets",
     "To Hit Buff"
   ],
   "maxSlots": 6,

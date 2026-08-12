@@ -47,5 +47,9 @@
     "PBAoE,  Moderate DMG(Smash), Knockback",
     "Toggle: PBAoE, Minor DoT(Fire), Foe Immobilize, -SPD",
     "Melee, Extreme DMG(Smash), Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

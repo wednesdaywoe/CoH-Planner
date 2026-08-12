@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Toggle: PBAoE, Team +Res(Hold, Immobilize, Disorient) +DEF",
     "Ranged, Ally +DEF(Fire, Cold, Energy, Negative)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

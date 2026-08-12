@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged (Location AoE), Foe Hold, -To Hit",
     "Ranged (Location AoE), Foe Hold, -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

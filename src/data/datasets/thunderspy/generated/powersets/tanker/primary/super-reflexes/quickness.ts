@@ -29,7 +29,7 @@ export const Quickness: Power = {
   ],
   "allowedSetCategories": [
     "Flight",
-    "Running & Sprints",
+    "Running",
     "Universal Travel"
   ],
   "maxSlots": 6,

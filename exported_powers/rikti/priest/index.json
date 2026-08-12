@@ -23,5 +23,9 @@
     "Ranged, Foe -End, -Regen, Team Heal",
     "Ranged (Foe AoE), Foe -DMG, Team +DMG",
     "PBAoE, Ally +Regeneration"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

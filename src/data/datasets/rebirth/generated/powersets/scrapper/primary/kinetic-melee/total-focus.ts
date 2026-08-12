@@ -21,6 +21,7 @@ export const TotalFocus: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.2,
     "range": 7,
@@ -39,7 +40,7 @@ export const TotalFocus: Power = {
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

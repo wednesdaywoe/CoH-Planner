@@ -41,7 +41,7 @@ export const Torrent: Power = {
     "Accurate To-Hit Debuff",
     "Defender Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

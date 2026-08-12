@@ -35,5 +35,9 @@
     "Melee, Extreme DMG(Lethal), Foe Knockback, -DEF",
     "Equip",
     "Equip"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

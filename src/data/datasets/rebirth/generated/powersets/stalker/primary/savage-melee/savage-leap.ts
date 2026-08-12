@@ -33,7 +33,7 @@ export const SavageLeap: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

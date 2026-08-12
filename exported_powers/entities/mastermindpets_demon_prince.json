@@ -12,7 +12,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "henchman_boss",
     "description": "Demon Princes are the infernal ruling class within the cold depths of the abyss. They are bound by only the most powerful conjurors, as they are tremendously dangerous to bring to the material plane.",
@@ -56,7 +56,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

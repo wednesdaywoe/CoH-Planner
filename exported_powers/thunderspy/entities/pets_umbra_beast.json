@@ -1,15 +1,15 @@
 {
   "name": "Pets_Umbra_Beast",
   "group_name": "Pets",
-  "commandable_pet": 0,
+  "commandable_pet": 1,
   "power_tags": [
     "HumanSkeleton",
     "Demon"
   ],
   "copy_creator_mods": false,
-  "can_zone": false,
+  "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "minion_pets",
     "description": "The Umbral Beast is among the most horrific predators of the Netherworld.  They tear their foes with their vicious claws and can manipulate the shadows of their victims to bind them in place.",
@@ -50,8 +50,8 @@
   },
   "levels": [
     {
-      "min_level": 1,
-      "max_level": 1,
+      "level": 1,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -61,8 +61,8 @@
       ]
     },
     {
-      "min_level": 2,
-      "max_level": 1,
+      "level": 2,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -72,8 +72,8 @@
       ]
     },
     {
-      "min_level": 3,
-      "max_level": 1,
+      "level": 3,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -83,8 +83,8 @@
       ]
     },
     {
-      "min_level": 4,
-      "max_level": 1,
+      "level": 4,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -94,8 +94,8 @@
       ]
     },
     {
-      "min_level": 5,
-      "max_level": 1,
+      "level": 5,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -105,8 +105,8 @@
       ]
     },
     {
-      "min_level": 6,
-      "max_level": 1,
+      "level": 6,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -116,8 +116,8 @@
       ]
     },
     {
-      "min_level": 7,
-      "max_level": 1,
+      "level": 7,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -127,8 +127,8 @@
       ]
     },
     {
-      "min_level": 8,
-      "max_level": 1,
+      "level": 8,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -138,8 +138,8 @@
       ]
     },
     {
-      "min_level": 9,
-      "max_level": 1,
+      "level": 9,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -149,8 +149,8 @@
       ]
     },
     {
-      "min_level": 10,
-      "max_level": 1,
+      "level": 10,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -160,8 +160,8 @@
       ]
     },
     {
-      "min_level": 11,
-      "max_level": 1,
+      "level": 11,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -171,8 +171,8 @@
       ]
     },
     {
-      "min_level": 12,
-      "max_level": 1,
+      "level": 12,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -182,8 +182,8 @@
       ]
     },
     {
-      "min_level": 13,
-      "max_level": 1,
+      "level": 13,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -193,8 +193,8 @@
       ]
     },
     {
-      "min_level": 14,
-      "max_level": 1,
+      "level": 14,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -204,8 +204,8 @@
       ]
     },
     {
-      "min_level": 15,
-      "max_level": 1,
+      "level": 15,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -215,8 +215,8 @@
       ]
     },
     {
-      "min_level": 16,
-      "max_level": 1,
+      "level": 16,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -226,8 +226,8 @@
       ]
     },
     {
-      "min_level": 17,
-      "max_level": 1,
+      "level": 17,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -237,8 +237,8 @@
       ]
     },
     {
-      "min_level": 18,
-      "max_level": 1,
+      "level": 18,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -248,8 +248,8 @@
       ]
     },
     {
-      "min_level": 19,
-      "max_level": 1,
+      "level": 19,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -259,8 +259,8 @@
       ]
     },
     {
-      "min_level": 20,
-      "max_level": 1,
+      "level": 20,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -270,8 +270,8 @@
       ]
     },
     {
-      "min_level": 21,
-      "max_level": 1,
+      "level": 21,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -281,8 +281,8 @@
       ]
     },
     {
-      "min_level": 22,
-      "max_level": 1,
+      "level": 22,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -292,8 +292,8 @@
       ]
     },
     {
-      "min_level": 23,
-      "max_level": 1,
+      "level": 23,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -303,8 +303,8 @@
       ]
     },
     {
-      "min_level": 24,
-      "max_level": 1,
+      "level": 24,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -314,8 +314,8 @@
       ]
     },
     {
-      "min_level": 25,
-      "max_level": 1,
+      "level": 25,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -325,8 +325,8 @@
       ]
     },
     {
-      "min_level": 26,
-      "max_level": 1,
+      "level": 26,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -336,8 +336,8 @@
       ]
     },
     {
-      "min_level": 27,
-      "max_level": 1,
+      "level": 27,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -347,8 +347,8 @@
       ]
     },
     {
-      "min_level": 28,
-      "max_level": 1,
+      "level": 28,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -358,8 +358,8 @@
       ]
     },
     {
-      "min_level": 29,
-      "max_level": 1,
+      "level": 29,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -369,8 +369,8 @@
       ]
     },
     {
-      "min_level": 30,
-      "max_level": 1,
+      "level": 30,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -380,8 +380,8 @@
       ]
     },
     {
-      "min_level": 31,
-      "max_level": 1,
+      "level": 31,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -391,8 +391,8 @@
       ]
     },
     {
-      "min_level": 32,
-      "max_level": 1,
+      "level": 32,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -402,8 +402,8 @@
       ]
     },
     {
-      "min_level": 33,
-      "max_level": 1,
+      "level": 33,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -413,8 +413,8 @@
       ]
     },
     {
-      "min_level": 34,
-      "max_level": 1,
+      "level": 34,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -424,8 +424,8 @@
       ]
     },
     {
-      "min_level": 35,
-      "max_level": 1,
+      "level": 35,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -435,8 +435,8 @@
       ]
     },
     {
-      "min_level": 36,
-      "max_level": 1,
+      "level": 36,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -446,8 +446,8 @@
       ]
     },
     {
-      "min_level": 37,
-      "max_level": 1,
+      "level": 37,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -457,8 +457,8 @@
       ]
     },
     {
-      "min_level": 38,
-      "max_level": 1,
+      "level": 38,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -468,8 +468,8 @@
       ]
     },
     {
-      "min_level": 39,
-      "max_level": 1,
+      "level": 39,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -479,8 +479,8 @@
       ]
     },
     {
-      "min_level": 40,
-      "max_level": 1,
+      "level": 40,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -490,8 +490,8 @@
       ]
     },
     {
-      "min_level": 41,
-      "max_level": 1,
+      "level": 41,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -501,8 +501,8 @@
       ]
     },
     {
-      "min_level": 42,
-      "max_level": 1,
+      "level": 42,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -512,8 +512,8 @@
       ]
     },
     {
-      "min_level": 43,
-      "max_level": 1,
+      "level": 43,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -523,8 +523,8 @@
       ]
     },
     {
-      "min_level": 44,
-      "max_level": 1,
+      "level": 44,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -534,8 +534,8 @@
       ]
     },
     {
-      "min_level": 45,
-      "max_level": 1,
+      "level": 45,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -545,8 +545,8 @@
       ]
     },
     {
-      "min_level": 46,
-      "max_level": 1,
+      "level": 46,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -556,8 +556,8 @@
       ]
     },
     {
-      "min_level": 47,
-      "max_level": 1,
+      "level": 47,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -567,8 +567,8 @@
       ]
     },
     {
-      "min_level": 48,
-      "max_level": 1,
+      "level": 48,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -578,8 +578,8 @@
       ]
     },
     {
-      "min_level": 49,
-      "max_level": 1,
+      "level": 49,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -589,8 +589,8 @@
       ]
     },
     {
-      "min_level": 50,
-      "max_level": 1,
+      "level": 50,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -600,8 +600,8 @@
       ]
     },
     {
-      "min_level": 51,
-      "max_level": 1,
+      "level": 51,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -611,8 +611,8 @@
       ]
     },
     {
-      "min_level": 52,
-      "max_level": 1,
+      "level": 52,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -622,8 +622,8 @@
       ]
     },
     {
-      "min_level": 53,
-      "max_level": 1,
+      "level": 53,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"
@@ -633,8 +633,8 @@
       ]
     },
     {
-      "min_level": 54,
-      "max_level": 1,
+      "level": 54,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Umbra Beast"

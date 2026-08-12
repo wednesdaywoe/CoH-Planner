@@ -40,7 +40,7 @@ export const MaimingSlash: Power = {
     "Brute Archetype Sets",
     "Melee Damage",
     "Slow Movement",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

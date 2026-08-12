@@ -47,5 +47,9 @@
     "Melee, High DMG(Lethal/Special), Foe -Defense, Knockback/Special",
     "Toggle (PBAoE), Foe \u2013Rech, - Move, Special",
     "Narrow Ranged (Cone), Superior DMG(Lethal/Special), Foes -Res(All)/Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

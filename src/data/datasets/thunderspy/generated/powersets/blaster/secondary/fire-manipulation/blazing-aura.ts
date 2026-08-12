@@ -48,7 +48,7 @@ export const BlazingAura: Power = {
     "Blaster Archetype Sets",
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

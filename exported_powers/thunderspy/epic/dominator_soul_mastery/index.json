@@ -31,5 +31,9 @@
     "Ranged (Cone), Moderate DMG(Negative), Foe Immobilize",
     "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
     "Summon Fortunata Seer: Ranged Moderate DMG(Psionic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

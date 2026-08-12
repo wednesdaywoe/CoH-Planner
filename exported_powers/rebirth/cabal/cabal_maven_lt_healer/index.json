@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged Energy, -End",
     "Ally Heal, +Res(Disorient, Sleep, End Drain)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

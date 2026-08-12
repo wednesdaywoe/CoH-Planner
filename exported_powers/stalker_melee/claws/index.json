@@ -47,5 +47,9 @@
     "Ranged, DMG(Lethal), Knockback",
     "Melee, DMG(Lethal), +Special",
     "Ranged (Cone), DMG(Lethal), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

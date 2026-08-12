@@ -31,5 +31,9 @@
     "Toggle: Self Long Jump",
     "Toggle: Self +Res(Knockback, Hold)",
     "PBAoE Superior DMG(Smashing), Foe Knockdown; Self Teleport"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

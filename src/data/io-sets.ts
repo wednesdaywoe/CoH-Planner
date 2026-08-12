@@ -105,7 +105,7 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   'Universal Control Duration': 'Universal Control Duration',
   'Rest Buff': 'Rest Buff',
   'Universal Debuff': 'Universal Debuff',
-  'Resurrection': 'Resurrection',
+  'Rez Sets': 'Rez Sets',
 };
 
 /**

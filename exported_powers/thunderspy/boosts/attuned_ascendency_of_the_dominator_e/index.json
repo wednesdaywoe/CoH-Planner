@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "Enhances Accuracy and Control Duration, Increases Attack Rate, and Reduces Endurance Cost"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

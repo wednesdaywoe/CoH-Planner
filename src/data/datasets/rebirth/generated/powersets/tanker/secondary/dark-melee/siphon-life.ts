@@ -21,6 +21,7 @@ export const SiphonLife: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -45,7 +46,7 @@ export const SiphonLife: Power = {
     "Healing",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff",
     "Universal Damage Sets",
     "Universal Debuff"

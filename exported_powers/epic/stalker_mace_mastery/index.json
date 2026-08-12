@@ -31,5 +31,9 @@
     "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
     "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
     "Summon Spiderlings: Ranged DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

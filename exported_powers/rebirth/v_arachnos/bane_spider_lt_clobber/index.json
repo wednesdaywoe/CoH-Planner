@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "Melee, Minor DMG(Smash), Minor DoT(Toxic), Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

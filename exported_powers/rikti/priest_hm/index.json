@@ -27,5 +27,9 @@
     "Ranged (Targeted AoE), Foe -DMG, Team +DMG",
     "PBAoE, Team +Regeneration, +Recovery",
     "Ranged, Ally +DEF, +DMG, +ToHit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Fire/Lethal), Knockback",
     "Ranged (Cone), Extreme DoT(Fire)",
     "Ranged (Targeted AoE), Moderate DoT(Fire)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

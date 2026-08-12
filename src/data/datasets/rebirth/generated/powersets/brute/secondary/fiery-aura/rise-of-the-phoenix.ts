@@ -34,10 +34,10 @@ export const RiseofthePhoenix: Power = {
     "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
-    "Resurrection",
+    "PBAoE Damage",
+    "Rez Sets",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -21,6 +21,7 @@ export const MercurialBlow: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.05,
     "range": 9,
@@ -43,7 +44,7 @@ export const MercurialBlow: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

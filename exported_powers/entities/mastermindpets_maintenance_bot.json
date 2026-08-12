@@ -1,16 +1,16 @@
 {
   "name": "MastermindPets_Maintenance_Bot",
   "group_name": "MastermindPets",
-  "commandable_pet": 1,
+  "commandable_pet": 0,
   "power_tags": [
     "Electronic",
     "Detonator",
     "TemporaryHenchman"
   ],
   "copy_creator_mods": false,
-  "can_zone": true,
+  "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 2,
     "ai_config": "Pets_Robot_Protector",
     "character_class_name": "henchman_boss",
     "description": "This sturdy Maintenance Drone serves as a health battery reserve for your machines. As your other drones are hurt, it will use its own health to heal other drones. Once all its health is used up, it will self destruct. Maintenance Drone does not regenerate health, and can't be healed.",
@@ -45,7 +45,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

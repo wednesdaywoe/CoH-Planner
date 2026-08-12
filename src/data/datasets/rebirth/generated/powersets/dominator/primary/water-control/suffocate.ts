@@ -40,7 +40,7 @@ export const Suffocate: Power = {
     "Dominator Archetype Sets",
     "Holds",
     "Ranged Damage",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

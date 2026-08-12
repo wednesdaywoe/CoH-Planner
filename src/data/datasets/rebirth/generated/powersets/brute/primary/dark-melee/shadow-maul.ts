@@ -42,8 +42,8 @@ export const ShadowMaul: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Brute Archetype Sets",
-    "Melee AoE Damage",
-    "Threat Duration",
+    "PBAoE Damage",
+    "Taunt",
     "To Hit Debuff",
     "Universal Damage Sets",
     "Universal Debuff"
@@ -88,6 +88,6 @@ export const ShadowMaul: Power = {
     ["Damage","Smashing",0.485048,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",0.485048,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 70 < &&",true]
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 70 < &&",true]
   ]
 };

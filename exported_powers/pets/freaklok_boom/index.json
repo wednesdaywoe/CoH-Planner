@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Suicide Special: PBAoE, Extreme DMG(Toxic/Fire), Foe Knockback",
     "Location AoE, DoT(Fire), Foe Knockdown"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

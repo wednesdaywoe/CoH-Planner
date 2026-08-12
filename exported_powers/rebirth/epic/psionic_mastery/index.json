@@ -31,5 +31,9 @@
     "Toggle: Self +Res(Smash, Lethal, Psionics)",
     "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse",
     "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

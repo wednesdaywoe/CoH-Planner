@@ -55,5 +55,9 @@
     "Melee, Superior DMG(Smash), Foe Minor Disorient, +Special",
     "Toggle: Self Stealth, +DEF",
     "Toggle: Self Stealth, +DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

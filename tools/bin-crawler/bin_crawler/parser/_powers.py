@@ -22,6 +22,8 @@ from pathlib import Path
 from typing import NamedTuple
 from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import PowerRecord, EffectGroup, EffectTemplate
+from ._gate_default import evaluate as gate_evaluate
+from ._requires import entity_scope
 from ._enums import (
     BOOST_TYPE, BOOST_TYPE_REBIRTH, ATTRIB_NAME, ATTRIB_NAME_REBIRTH,
     EVENT_NAME, EVENT_NAME_PARSE6, resolve_attrib,
@@ -304,7 +306,7 @@ def detect_dataset_flavor(bin_path_or_data) -> str:
     return "homecoming"
 
 
-def parse_powers(bin_path_or_data) -> list[PowerRecord]:
+def parse_powers(bin_path_or_data, *, player_classes=()) -> list[PowerRecord]:
     r = open_parse7(bin_path_or_data)
     is_parse6 = isinstance(r, Parse6BinReader)
 
@@ -312,7 +314,7 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
     count = r.read_u4()
 
     if is_parse6:
-        parser = _parse_power_parse6
+        parser = lambda sub: _parse_power_parse6(sub, player_classes=player_classes)
         is_thunderspy = is_veracity = False
     else:
         # Auto-detect HC format version by testing the first few records.
@@ -324,16 +326,19 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
         if is_thunderspy:
             # Thunderspy: Parse7 wrapper, Parse6-derived schema with HC-style
             # box (24 bytes) and no field 43b. Reuses _parse_power_parse6.
-            parser = lambda sub: _parse_power_parse6(sub, thunderspy=True)
+            parser = lambda sub: _parse_power_parse6(sub, thunderspy=True,
+                                                     player_classes=player_classes)
         elif is_veracity:
             # Veracity: Parse7 wrapper, base retail field set + Dictionary,
             # 43b present, box 24, HC-style EffectGroup effects.
-            parser = lambda sub: _parse_power_parse6(sub, veracity=True)
+            parser = lambda sub: _parse_power_parse6(sub, veracity=True,
+                                                     player_classes=player_classes)
         else:
-            parser = lambda sub: _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
+            parser = lambda sub: _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b,
+                                              player_classes=player_classes)
 
     global _undecoded_message_fx_tails, _undecoded_params_tails, _undecoded_parse6_tails
-    global _undecoded_thunderspy_tails
+    global _undecoded_thunderspy_tails, _misaligned_thunderspy_stack
 
     records_start = r._pos
 
@@ -341,6 +346,7 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
         """One full pass over the record block. Re-runnable from the top."""
         global _undecoded_message_fx_tails, _undecoded_params_tails
         global _undecoded_parse6_tails, _undecoded_thunderspy_tails
+        global _misaligned_thunderspy_stack
         r._pos = records_start
         _dropped_powers.clear()
         _out_of_range_chances.clear()
@@ -348,6 +354,7 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
         _undecoded_params_tails = 0
         _undecoded_parse6_tails = 0
         _undecoded_thunderspy_tails = 0
+        _misaligned_thunderspy_stack = 0
         out = []
         dropped = 0
         for i in range(count):
@@ -429,6 +436,12 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
               f"had a post-stack tail that didn't match the validated layout; "
               f"flags read at the fixed offset and Params left undecoded "
               f"(see _read_thunderspy_template_tail)", file=sys.stderr)
+    if _misaligned_thunderspy_stack:
+        import sys
+        print(f"  Warning: {_misaligned_thunderspy_stack} Thunderspy sub-record(s) "
+              f"had a DelayedRequires count with no room for the stack quadruple "
+              f"after it; caster_stack/stack/limit/key left undecoded rather than "
+              f"read from a shifted offset", file=sys.stderr)
 
     if not (is_parse6 or is_thunderspy or is_veracity):
         recalibrate_event_names(records)
@@ -1271,16 +1284,17 @@ def _parse_effect_template(r: BinReader, *, veracity: bool = False) -> EffectTem
     tick_mul = r.read_f4()
     tick_add = r.read_f4()
 
-    # DelayedRequires — Ghidra descriptor (0x1408ed5a0 row 17) types this as
-    # string_array (0x500009), not a single string. Empty for most templates
-    # (count=0 → 4 bytes, equivalent to old single-string read). For Create_Entity
-    # / Summon / AoE-control templates with delayed conditionals (e.g.
-    #   `DelayedRequires arch target> Class_Henchman_Lt eq … 18 tokens`)
-    # the array contains the compiled token offsets. The old single-string
-    # read shifted every downstream field by 4*N bytes, breaking stack reads
-    # on ~29 pet-summon templates (Summon_Wolves, Paralyzing_Blast, etc.).
-    r.read_u4_array()  # delayed_requires_tokens
-    jit_requires = ''  # legacy field name kept to avoid churn; tokens not resolved here
+    # The AttribMod's own `Requires` — `ppchApplicationRequires` in the source
+    # table (`Common/entity/attribmod.h:692`), an application-time gate distinct
+    # from the enclosing EffectGroup's cast-time one. A string_array (Ghidra
+    # descriptor 0x1408ed5a0 row 17 types it 0x500009), empty on all but 339
+    # Homecoming templates. Reading it as a single string shifted every
+    # downstream field by 4*N bytes and broke stack reads on ~29 pet-summon
+    # templates (Summon_Wolves, Paralyzing_Blast); the tokens were then resolved
+    # but thrown away, which is the other half of the same lesson — Parse6 has
+    # carried this field into `jit_requires` all along, so discarding it here
+    # made one fork's gate vanish and the other's survive.
+    jit_requires = ' '.join(r.read_string_array())
 
     # Stack info — preserve raw value when unmapped so the unknown is debuggable
     _caster_stack_raw = r.read_u4()
@@ -1402,7 +1416,8 @@ def _parse_effect_template(r: BinReader, *, veracity: bool = False) -> EffectTem
 
 
 def _parse_effect_group(r: BinReader, *, veracity: bool = False,
-                        power_name: str = "") -> EffectGroup:
+                        power_name: str = "",
+                        player_classes=()) -> EffectGroup:
     """Parse an effect group containing templates.
 
     Per the EffectGroup sub-descriptor at 0x1408ea180 (Ghidra dump in
@@ -1460,11 +1475,10 @@ def _parse_effect_group(r: BinReader, *, veracity: bool = False,
     # (`enttype target> critter eq` / `… player eq`), parse6-style, rather than
     # in the flags bitmask — so derive is_pvp from requires when the flags
     # didn't already pin it. Mirrors the _parse_effects_parse6 logic.
-    if veracity and is_pvp == "EITHER":
-        if "target> player eq" in requires:
-            is_pvp = "PVP_ONLY"
-        elif "target> critter eq" in requires:
-            is_pvp = "PVE_ONLY"
+    requires_pv = entity_scope(requires)
+    gate = gate_evaluate(requires, player_classes=player_classes)
+    if veracity and is_pvp == "EITHER" and requires_pv in ("PVE_ONLY", "PVP_ONLY"):
+        is_pvp = requires_pv
 
     # Templates struct_array
     templates = []
@@ -1502,7 +1516,8 @@ def _parse_effect_group(r: BinReader, *, veracity: bool = False,
         child_reader = r.sub_reader(child_len)
         try:
             child = _parse_effect_group(child_reader, veracity=veracity,
-                                        power_name=power_name)
+                                        power_name=power_name,
+                                        player_classes=player_classes)
             child_groups.append(child)
         except Exception as e:
             _warn_dropped(power_name, f"nested effect group parse failed ({e})")
@@ -1520,6 +1535,9 @@ def _parse_effect_group(r: BinReader, *, veracity: bool = False,
         requires_expression=requires,
         flags=flags,
         is_pvp=is_pvp,
+        requires_pv=requires_pv,
+        requires_default=gate.verdict,
+        requires_archetypes=list(gate.archetypes),
         eval_flags=eval_flags,
         tags=tags,
         templates=templates,
@@ -1572,7 +1590,8 @@ def _parse_redirects(r: BinReader, *, power_name: str = "") -> list[dict]:
 
 
 def _parse_effects(r: BinReader, *, veracity: bool = False,
-                   power_name: str = "") -> tuple[list[EffectGroup], list[EffectGroup]]:
+                   power_name: str = "",
+                   player_classes=()) -> tuple[list[EffectGroup], list[EffectGroup]]:
     """Parse the effects and activation_effects struct_arrays from a power record.
 
     The binary stores two parallel top-level structures:
@@ -1598,7 +1617,8 @@ def _parse_effects(r: BinReader, *, veracity: bool = False,
         eff_reader = r.sub_reader(eff_len)
         try:
             eg = _parse_effect_group(eff_reader, veracity=veracity,
-                                     power_name=power_name)
+                                     power_name=power_name,
+                                     player_classes=player_classes)
             effects.append(eg)
         except Exception as e:
             _warn_dropped(power_name, f"effect group parse failed ({e})")
@@ -1627,7 +1647,8 @@ def _parse_effects(r: BinReader, *, veracity: bool = False,
             break
         eff_reader = r.sub_reader(eff_len)
         try:
-            eg = _parse_effect_group(eff_reader, power_name=power_name)
+            eg = _parse_effect_group(eff_reader, power_name=power_name,
+                                     player_classes=player_classes)
             activation_effects.append(eg)
         except Exception as e:
             _warn_dropped(power_name, f"activation effect group parse failed ({e})")
@@ -1794,11 +1815,25 @@ def _parse_power_tail(r: BinReader) -> PowerTail:
     )
 
 
+class Parse6PowerTail(NamedTuple):
+    """The named slice of the Parse6/Thunderspy post-effects tail.
+
+    Deliberately not `PowerTail`: Parse6 has no `GlobalStrengthsDisallowed`
+    and no HC unnamed bools, and an empty list standing in for a field the
+    layout does not contain is indistinguishable from one that was read and
+    came back empty — the TSPY-5 shape.
+    """
+    max_boosts: int
+    proc_allowed_raw: int
+    strengths_disallowed: list[int]
+    proc_main_target_only: bool
+    anim_main_target_only: bool
+
+
 def _parse_power_tail_parse6(
         r: BinReader, *, rebirth_fork_words: bool,
-        has_proc_allowed: bool) -> tuple[int, int, list[int]]:
-    """Decode the leading slice of the Parse6/Thunderspy post-effects tail;
-    return (max_boosts, proc_allowed_raw, strengths_disallowed).
+        has_proc_allowed: bool) -> Parse6PowerTail:
+    """Decode the leading slice of the Parse6/Thunderspy post-effects tail.
 
     The tail follows the stock i24 ParseBasePower order after `AttribMod`
     (the released-source parse table, no HC insertions):
@@ -1814,7 +1849,8 @@ def _parse_power_tail_parse6(
       MaxSlotLevel (49), MaxBoostLevel (50),
       Var (struct_array), ToggleDroppable (u4),
       [Thunderspy: ProcAllowed (u4)],
-      StrengthsDisallowed (u4_array of attrib offsets).
+      StrengthsDisallowed (u4_array of attrib offsets),
+      ProcMainTargetOnly (u4 bool), AnimMainTargetOnly (u4 bool).
 
     Rebirth carries two fork-added words with no stock counterpart, one on
     each side of MaxBoosts (2026-07-21 corpus census, 21,559 records, zero
@@ -1824,17 +1860,33 @@ def _parse_power_tail_parse6(
     BEFORE this tail, which the caller consumes into `activation_effects`,
     and `ProcAllowed` — the HC-added word between ToggleDroppable and
     StrengthsDisallowed, which Thunderspy carries and stock Parse6 does not
-    (TSPY-5, 2026-07-31). Everything beyond StrengthsDisallowed
+    (TSPY-5, 2026-07-31). Everything beyond AnimMainTargetOnly
     (highlight/FX/position metadata) stays skipped by the caller's
     skip_to_end; Thunderspy has no GlobalStrengthsDisallowed, so the HC read
     is not simply inherited whole — continuing past StrengthsDisallowed under
     HC's layout breaks its guards on 299 records.
 
-    ProcAllowed is where TSPY-5 lived. Reading the tail without it left the
-    always-0 ProcAllowed word standing where the StrengthsDisallowed count
-    belongs, so `read_u4_array` returned empty on every one of 20,965 records
-    and the fork appeared to author none — an absence no guard can catch,
-    because an empty array trips neither the length nor the alignment check.
+    The two main-target bools sit IMMEDIATELY after StrengthsDisallowed here
+    (`powers_load.c:2192-2194`), where HC interposes GlobalStrengthsDisallowed
+    and two unnamed bools. Recovered 2026-08-03 (PPM-3): the forks exported
+    zero carriers because the reader stopped at StrengthsDisallowed, not
+    because stock Parse6 lacks the fields — they are in the released parse
+    table, so an all-zero fork was the WRAP-2 shape (suspect the reader before
+    concluding a fork-wide absence). Proven four ways over the full corpus:
+    both words are strictly 0/1 on all 21,559 Rebirth and 20,965 Thunderspy
+    records; what follows decodes as HighlightEval's string_array (small
+    counts, evaluator expressions like `cur.kToHit`); the two forks agree with
+    each other on 91% of their union (191 of 209) while agreeing with HC far
+    less, which is their closer ancestry; and the pairing is unambiguous
+    against HC's defs-validated read — Proc↔Proc overlaps 108/150 where
+    Proc↔Anim overlaps 22.
+
+    The fork-vs-HC divergence is Gauntlet. The powers both forks flag and HC
+    does not are `Tanker_Melee.*` (Battle Axe, War Mace, Brawling, Martial
+    Arts, …), and `bUseNonBoostTemplatesOnMainTarget` is what scopes an i24
+    Tanker attack's non-boost templates to the main target. Homecoming
+    reworked Gauntlet and dropped the flag; the forks kept i24's.
+
     Implausible values raise so the caller drops the fields LOUDLY instead of
     shipping a misread.
     """
@@ -1879,10 +1931,23 @@ def _parse_power_tail_parse6(
     if len(strengths_disallowed) > 64 or any(
             v > 4096 or v % 4 for v in strengths_disallowed):
         raise ValueError(f"implausible StrengthsDisallowed {strengths_disallowed} — wrong position?")
-    return max_boosts, proc_allowed_raw, strengths_disallowed
+    proc_main_target_only_raw = r.read_u4()
+    anim_main_target_only_raw = r.read_u4()
+    for label, value in (("ProcMainTargetOnly", proc_main_target_only_raw),
+                         ("AnimMainTargetOnly", anim_main_target_only_raw)):
+        if value > 1:
+            raise ValueError(f"implausible {label} {value} — wrong position?")
+    return Parse6PowerTail(
+        max_boosts=max_boosts,
+        proc_allowed_raw=proc_allowed_raw,
+        strengths_disallowed=strengths_disallowed,
+        proc_main_target_only=bool(proc_main_target_only_raw),
+        anim_main_target_only=bool(anim_main_target_only_raw),
+    )
 
 
-def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: bool = False) -> PowerRecord:
+def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: bool = False,
+                 player_classes=()) -> PowerRecord:
     """Parse a single power record (HC Parse7 layout)."""
 
     # 1. key (string) — full_name
@@ -2142,7 +2207,8 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # Parse effects
     effects_aligned = True
     try:
-        effects, activation_effects = _parse_effects(r, power_name=full_name)
+        effects, activation_effects = _parse_effects(r, power_name=full_name,
+                                                     player_classes=player_classes)
     except Exception as e:
         effects = []
         activation_effects = []
@@ -2434,16 +2500,22 @@ def _tspy_submods(strtab_data, elem_start: int, elem_end: int) -> list[tuple[int
     return out
 
 
-# Thunderspy AttribMod sub-records whose tail past the stack triple didn't match
+# Thunderspy AttribMod sub-records whose tail past the stack quadruple didn't match
 # the layout below. Same loud-at-parse-end contract as the Parse7 counters.
 _undecoded_thunderspy_tails = 0
+
+# Thunderspy sub-records whose DelayedRequires count does not leave room for the
+# stack quadruple that must follow it. Such a count is a misalignment signal, not
+# a long expression, so the stack fields are left undecoded rather than read from
+# whatever the shifted offset happens to hold.
+_misaligned_thunderspy_stack = 0
 
 
 def _read_thunderspy_template_tail(
     strtab_data, strtab_base: int, start: int, end: int,
 ) -> dict | None:
     """Structurally decode a Thunderspy AttribMod's tail, from the byte after
-    the stack triple to the end of the sub-record.
+    the stack quadruple to the end of the sub-record.
 
     Layout, pinned corpus-wide over 79,735 sub-records (99.94% account for
     every tail byte under it):
@@ -2601,10 +2673,13 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     group_delay = r.read_f4()
     radius_inner = r.read_f4()
     radius_outer = r.read_f4()
-    # Requires expression (RPN string tokens)
+    # The ELEMENT's Requires — the cast-time gate on HC's EffectGroup, which a
+    # tspy element is. It rides `group_extras` to the synthetic group the caller
+    # builds; the template's own `jit_requires` is the AttribMod-level
+    # DelayedRequires read further down, as it is on the other two forks.
     req_offs = r.read_u4_array()
     req_parts = [n for n in (_resolve_str(o) for o in req_offs) if n]
-    jit_requires = ' '.join(req_parts) if req_parts else ''
+    group_requires = ' '.join(req_parts) if req_parts else ''
 
     # This element's AttribMod sub-records; everything below reads the one
     # `sub_index` names. Falling back to the rest of the element keeps the
@@ -2695,6 +2770,8 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     tick_chance = 1.0
     dur_expr = ''
     mag_expr = ''
+    jit_requires = ''
+    caster_stack = ''
     stack = ''
     stack_limit = 0
     stack_key_id = 0
@@ -2804,33 +2881,51 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         # anchor — its 0.1-scale burn reads 0.8 here against a group chance of
         # 1.0, exactly as Homecoming authors it.
         tick_chance = _f4(pos + 8)
-        # The next two words — where HC keeps TickMultiplier and TickAdditive —
-        # read 0.0 on all 79,759 records. A field that is one value corpus-wide
-        # is a default showing through, not a decode, so they are deliberately
-        # NOT assigned: the multiplier especially, since HC authors it 1.0 and
-        # writing a 0 would hand every consumer a silent zero. Undecoded, left
-        # at the dataclass defaults.
+        # Thunderspy has no TickMultiplier/TickAdditive — HC's two additions to
+        # this block are absent, and `pos + 12` is already the next field.
 
-        # Stack triple, three words past the tick block. `stack` is what separates a per-target
-        # INCREMENT (`Stack`) from the cap that replaces it (`Replace`) — the field
-        # `computeAoePerTargetPatches` keys on, and with it blank every Thunderspy
-        # AoE self-buff skipped that pass entirely. Anchored on Soul Drain, whose
-        # two ToHit sub-records read 0/`Stack` (scale 0.2) and 3/`Replace` (scale
-        # 1.0) with stack_limit 2 — byte-for-byte what its HC and Rebirth twins
-        # carry. Corpus-wide the slot is a valid enum on 99% of sub-records and
-        # stack_limit is 2 on 98%, so this is the field, not a coincidence.
         def _stack_u4(off: int) -> int | None:
             return (struct.unpack_from('<I', tail, off)[0]
                     if off + 4 <= len(tail) else None)
 
-        _stack_raw = _stack_u4(pos + 20)
-        if _stack_raw is not None:
+        # DelayedRequires — the AttribMod's own application-time gate
+        # (`ppchApplicationRequires`), a string_array in HC's Parse7 position:
+        # immediately after the tick block and immediately before the stack
+        # quadruple. It is empty on 79,655 of 79,718 sub-records, which is why a
+        # fixed read of the quadruple at pos+20 looked right for so long — and
+        # why the 63 that carry one had their stack, limit, key, flags and whole
+        # tail read 4*(1+N) bytes early. 61 surfaced as `Unknown(<string offset>)`;
+        # 2 landed on a valid enum and were silently wrong. The array's own count
+        # is the only thing that says where the quadruple starts.
+        _dr_count = _stack_u4(pos + 12)
+        # Distrust the count: it is credible only if the array AND the four words
+        # that must follow it fit inside the sub-record. Anything else is a
+        # misalignment, and reading the quadruple from a shifted offset is exactly
+        # the failure this block exists to fix — so leave the fields undecoded and
+        # say so, rather than recover into a plausible wrong answer.
+        _stack_at = pos + 16 + 4 * (_dr_count or 0)
+        if _dr_count is None or _stack_at + 16 > len(tail):
+            global _misaligned_thunderspy_stack
+            _misaligned_thunderspy_stack += 1
+        else:
+            if _dr_count:
+                jit_requires = ' '.join(
+                    t for t in (_resolve_str(_stack_u4(pos + 16 + 4 * i) or 0)
+                                for i in range(_dr_count)) if t)
+            _caster_raw = _stack_u4(_stack_at)
+            caster_stack = ATTRIB_MOD_CASTER_STACK.get(
+                _caster_raw, f"Unknown({_caster_raw})")
+            # `stack` is what separates a per-target INCREMENT (`Stack`) from the
+            # cap that replaces it (`Replace`) — the field
+            # `computeAoePerTargetPatches` keys on, and with it blank every
+            # Thunderspy AoE self-buff skipped that pass entirely. Anchored on
+            # Soul Drain, whose two ToHit sub-records read 0/`Stack` (scale 0.2)
+            # and 3/`Replace` (scale 1.0) with stack_limit 2 — byte-for-byte what
+            # its HC and Rebirth twins carry.
+            _stack_raw = _stack_u4(_stack_at + 4)
             stack = ATTRIB_MOD_STACK.get(_stack_raw, f"Unknown({_stack_raw})")
-        _limit_raw = _stack_u4(pos + 24)
-        if _limit_raw is not None:
-            stack_limit = _limit_raw
-        _key_raw = _stack_u4(pos + 28)
-        if _key_raw is not None:
+            stack_limit = _stack_u4(_stack_at + 8)
+            _key_raw = _stack_u4(_stack_at + 12)
             stack_key_id = 0 if _key_raw == 0xFFFFFFFF else _key_raw
 
         # AttribMod flags — a PACKED bitmask here, not Parse6's loose bool block.
@@ -2848,15 +2943,19 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         # enhancement piece without its `Boost` flag.
         #
         # The word's POSITION comes from the structural walk of everything past
-        # the stack triple (`_read_thunderspy_template_tail`), because the three
-        # blocks in between are variable-length: on the 6,724 sub-records that
-        # carry a CancelEvents id or a RequiredEvents record, the fixed pos+44
+        # the stack quadruple (`_read_thunderspy_template_tail`), because the
+        # three blocks in between are variable-length: on the 6,724 sub-records
+        # that carry a CancelEvents id or a RequiredEvents record, the fixed
         # slot holds one of those instead of the flags. The fixed read stays as
-        # the fallback for the tail shapes the walk rejects.
+        # the fallback for the tail shapes the walk rejects. Both offsets start
+        # from the end of the quadruple, so a DelayedRequires array moves them
+        # with it — reading from a fixed `pos` is what left the 63 records that
+        # carry one with a tail the walk could not match.
+        _after_stack = _stack_at + 16
         _tail = _read_thunderspy_template_tail(
-            strtab_data, strtab_base, tail_start + pos + 32, _sub_end
+            strtab_data, strtab_base, tail_start + _after_stack, _sub_end
         )
-        _flags_raw = _tail['flags_raw'] if _tail else _stack_u4(pos + 44)
+        _flags_raw = _tail['flags_raw'] if _tail else _stack_u4(_after_stack + 12)
         if _flags_raw is not None and _flags_raw < (1 << 24):
             flags_raw = (_flags_raw & 0x7F) | ((_flags_raw & ~0x7F) << 1)
             flags = _decode_flags(flags_raw)
@@ -3031,6 +3130,7 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         duration_expression=dur_expr,
         magnitude_expression=mag_expr,
         jit_requires=jit_requires,
+        caster_stack=caster_stack,
         stack=stack,
         stack_limit=stack_limit,
         stack_key_id=stack_key_id,
@@ -3053,6 +3153,7 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         'delay': group_delay,
         'radius_inner': radius_inner,
         'radius_outer': radius_outer,
+        'requires_expression': group_requires,
     }
     return template, group_extras
 
@@ -3484,7 +3585,8 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
 
 def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
                           incarnate_scope: str | None = None,
-                          power_name: str = "") -> tuple[list[EffectGroup], list[EffectGroup]]:
+                          power_name: str = "",
+                          player_classes=()) -> tuple[list[EffectGroup], list[EffectGroup]]:
     """Parse Parse6 effects: a flat struct_array of AttribMod records.
 
     Wraps each AttribMod in a synthetic single-template EffectGroup so
@@ -3537,7 +3639,13 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
             # player eq` (PvP) or `enttype target> critter eq` (PvE).
             # Synthesize the equivalent flag so downstream filters
             # (`if (effect.is_pvp === 'PVP_ONLY') continue;`) work.
-            req = tmpl.jit_requires or ''
+            # Thunderspy's element IS the group and carries its own Requires, so
+            # that is the group gate; the template's `jit_requires` is the
+            # AttribMod-level DelayedRequires and belongs to the AttribMod alone.
+            # Rebirth has no group to carry one, which is why its AttribMod gate
+            # is what gets lifted here.
+            req = (group_extras.pop('requires_expression') if thunderspy
+                   else (tmpl.jit_requires or ''))
             # A SELF-targeted AttribMod whose requires carries the self-exclusion
             # clause `entref target> entref source> eq !` ("target != self") is a
             # proximity / ally-counting self-buff — it applies +X to the caster
@@ -3553,15 +3661,54 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
             # `player eq` as PvP-only made convert-powerset drop the ally scaling
             # in PvE — contradicting the power's own description and HC's explicit
             # is_pvp=EITHER for the same template. Treat these as EITHER.
+            #
+            # This carve-out survives the move to `entity_scope` because it is a
+            # fact about the TEMPLATE, not about the expression: `target` in the
+            # requires names the entity being scanned, not the AttribMod's
+            # recipient, so the clause is not a combat-scope test at all and no
+            # reading of the expression alone could tell.
+            requires_pv = entity_scope(req)
+            gate = gate_evaluate(req, player_classes=player_classes)
             self_exclusion = 'entref target> entref source> eq !' in req.lower()
             if tmpl.target == 'Self' and self_exclusion:
                 is_pvp = 'EITHER'
-            elif 'target> player eq' in req:
-                is_pvp = 'PVP_ONLY'
-            elif 'target> critter eq' in req:
-                is_pvp = 'PVE_ONLY'
+            elif requires_pv in ('PVE_ONLY', 'PVP_ONLY'):
+                is_pvp = requires_pv
             else:
                 is_pvp = 'EITHER'
+
+            def _pvp_of(t, _element_verdict=is_pvp):
+                """The element's verdict, unless this AttribMod's own
+                DelayedRequires names the map.
+
+                `isPVPMap?` is the forks' other encoding of the combat split — a
+                gate on the MAP rather than on the target's type — and it can sit
+                on the AttribMod instead of the element. Thunderspy's Share Pain
+                writes its +ToHit pair exactly that way (1.0 under `isPVPMap? !`,
+                0.5 under `isPVPMap?`), and the two differ in nothing else, so
+                with the field unread they arrived as indistinguishable same-slot
+                duplicates and the bag's last-write-wins handed the PvE build the
+                PvP value. The element gate is shared by every sibling and the
+                DelayedRequires is not, which is why this cannot be decided once
+                from sub-record 0 and handed to the rest.
+
+                The 440 tspy powers stating the same token on the ELEMENT gate are
+                untouched: their DelayedRequires is empty, so they fall through to
+                the element verdict and reach the converter's own `isPVPMap?`
+                handling (`dsh6-collapse-detector.cjs`,
+                `convert-incarnate-effects.cjs`) exactly as before.
+
+                The map gate is read on its own rather than through
+                `entity_scope`, because it is not an entity-type test: it asks
+                where the fight is, not who is being hit. Its two spellings are
+                the bare token and the token followed by `!`, and a
+                DelayedRequires is a flat conjunction, so there is no structure
+                for a parse to recover.
+                """
+                delayed = (t.jit_requires or '') if thunderspy else ''
+                if 'isPVPMap?' not in delayed:
+                    return _element_verdict
+                return 'PVE_ONLY' if 'isPVPMap? !' in delayed else 'PVP_ONLY'
             # Group-level fields Parse6 stores on the AttribMod (HC moved them
             # to the EffectGroup wrapper): radii, PPM, EvalFlags.
             # Thunderspy's element IS the group, so its chance is read from the
@@ -3580,7 +3727,10 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
             effects.append(EffectGroup(
                 chance=group_chance,
                 requires_expression=req,
-                is_pvp=is_pvp,
+                is_pvp=_pvp_of(tmpl),
+                requires_pv=requires_pv,
+                requires_default=gate.verdict,
+                requires_archetypes=list(gate.archetypes),
                 templates=[tmpl],
                 **group_extras,
             ))
@@ -3598,7 +3748,10 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
                 effects.append(EffectGroup(
                     chance=group_chance,
                     requires_expression=req,
-                    is_pvp=is_pvp,
+                    is_pvp=_pvp_of(sibling),
+                    requires_pv=requires_pv,
+                    requires_default=gate.verdict,
+                    requires_archetypes=list(gate.archetypes),
                     templates=[sibling],
                     **group_extras,
                 ))
@@ -3609,7 +3762,8 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
 
 
 def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
-                        veracity: bool = False) -> PowerRecord:
+                        veracity: bool = False,
+                        player_classes=()) -> PowerRecord:
     """Parse a single power record (Parse6/Rebirth layout).
 
     The `thunderspy` flag selects Thunderspy's Parse7-wrapped variant of this
@@ -3806,7 +3960,8 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
                 # Veracity uses HC-style EffectGroup effects (no Redirect /
                 # ActivationEffect precede them), reached directly here.
                 effects, activation_effects = _parse_effects(
-                    r, veracity=True, power_name=full_name)
+                    r, veracity=True, power_name=full_name,
+                    player_classes=player_classes)
             else:
                 # Scope the Thunderspy generic-token relabels to the Incarnate
                 # Hybrid/Destiny slots (Alpha/Judgement/mode-marker templates share
@@ -3823,7 +3978,7 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
                         incarnate_scope = "destiny"
                 effects, activation_effects = _parse_effects_parse6(
                     r, thunderspy=thunderspy, incarnate_scope=incarnate_scope,
-                    power_name=full_name)
+                    power_name=full_name, player_classes=player_classes)
                 if thunderspy:
                     # Thunderspy appends an ActivationEffect struct_array
                     # after Effects (same AttribMod element shape) — the
@@ -3833,7 +3988,8 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
                     # all but 15 powers; before this read, the non-empty
                     # carriers misaligned the post-effects tail.
                     activation_effects, _ = _parse_effects_parse6(
-                        r, thunderspy=True, power_name=full_name)
+                        r, thunderspy=True, power_name=full_name,
+                        player_classes=player_classes)
             effects_aligned = True
         except Exception as e:
             effects = []
@@ -3867,22 +4023,18 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     # Post-effects tail — only positioned there when the effects parse
     # succeeded; Veracity's retail tail layout is unverified, so it stays
     # skipped (not an exported dataset).
-    max_boosts = MAX_BOOSTS_DEFAULT
-    proc_allowed_raw = 0
-    strengths_disallowed: list[int] = []
+    tail = Parse6PowerTail(MAX_BOOSTS_DEFAULT, 0, [], False, False)
     if effects_aligned and not veracity:
         try:
-            max_boosts, proc_allowed_raw, strengths_disallowed = _parse_power_tail_parse6(
+            tail = _parse_power_tail_parse6(
                 r,
                 rebirth_fork_words=not thunderspy,
                 has_proc_allowed=thunderspy)
         except Exception as e:
             _warn_dropped(full_name,
                           f"post-effects tail parse failed ({e}); "
-                          f"MaxBoosts/StrengthsDisallowed lost")
-            max_boosts = MAX_BOOSTS_DEFAULT
-            proc_allowed_raw = 0
-            strengths_disallowed = []
+                          f"MaxBoosts/StrengthsDisallowed/ProcMainTargetOnly lost")
+            tail = Parse6PowerTail(MAX_BOOSTS_DEFAULT, 0, [], False, False)
     r.skip_to_end()
 
     return PowerRecord(
@@ -3934,9 +4086,11 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
         # the tail reader gates it on the flavor and leaves it 0 elsewhere.
         castable_after_death=castable_after_death,
         chain_delay=chain_delay,
-        max_boosts=max_boosts,
-        proc_allowed_raw=proc_allowed_raw,
-        strengths_disallowed=strengths_disallowed,
+        max_boosts=tail.max_boosts,
+        proc_allowed_raw=tail.proc_allowed_raw,
+        strengths_disallowed=tail.strengths_disallowed,
+        proc_main_target_only=tail.proc_main_target_only,
+        anim_main_target_only=tail.anim_main_target_only,
         effects=effects,
         activation_effects=activation_effects,
         redirects=redirects,

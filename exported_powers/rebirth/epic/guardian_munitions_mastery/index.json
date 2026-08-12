@@ -31,5 +31,9 @@
     "Self +Endurance",
     "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
     "Ranged Foe -DEF, -RES (All)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

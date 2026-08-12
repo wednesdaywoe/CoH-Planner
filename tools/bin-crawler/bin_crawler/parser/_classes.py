@@ -579,6 +579,34 @@ def _detect_parse7_flavor(r: BinReader) -> str:
     return verdicts[0]
 
 
+def is_player_class(rec: ClassRecord) -> bool:
+    """Whether `rec` is an archetype a player can be, not an NPC/pet class.
+
+    The membership signal differs by dataset SCHEMA, not by name: Homecoming
+    deleted i24's origin-restriction fields and added VillainRank (VR_NONE=0 on
+    players, 1-11 on NPC ranks), while the forks kept i24's restriction gating,
+    where every playable class carries Hero/Villain/Kheldian/Arachnos vocab and
+    NPC classes carry none. Each field is present on exactly the dataset that
+    owns it, so testing for presence picks the right one per record.
+
+    Twin of `isPlayerClass` in `scripts/_player-classes.cjs`, which asks the same
+    question of the same fields one hop downstream (the exported `tables/` JSON).
+    """
+    if rec.villain_rank is not None:
+        return rec.villain_rank == 0
+    return bool(rec.special_restrictions)
+
+
+def player_class_names(records) -> tuple[str, ...]:
+    """The `Class_*` tokens of `records`' player archetypes, in file order.
+
+    These are the names the game's own gates compare against (`arch source>
+    Class_Scrapper eq`), so they ship as the dataset spells them rather than as
+    a derived id.
+    """
+    return tuple(rec.name for rec in records if is_player_class(rec))
+
+
 def parse_classes(bin_path_or_data) -> list[ClassRecord]:
     """Parse classes.bin or villain_classes.bin into ClassRecord list."""
     r = open_parse7(bin_path_or_data)

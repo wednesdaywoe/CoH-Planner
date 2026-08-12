@@ -38,7 +38,7 @@ export const Roots: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Immobilize",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

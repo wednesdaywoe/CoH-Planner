@@ -47,5 +47,9 @@
     "Ranged, High DMG(Psionic), Foe Immobilize; Self +Insight",
     "Sniper, Extreme DMG(Psionic), Foe -Recharge; Self -Insight",
     "PBAoE, Moderate DMG(Psionic), Foe Disorient -Recharge; Self +Insight"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

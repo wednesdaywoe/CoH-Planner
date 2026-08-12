@@ -43,5 +43,9 @@
     "Ranged, Hold (Foe), Immobilize (Foe)",
     "PBAoE (Toggle), Team +Res(Hold, Immobilize, Disorient) +DEF",
     "Ranged (Targeted Ally AoE), Foe Knockback, Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

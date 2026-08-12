@@ -40,9 +40,9 @@ export const Liquefy: Power = {
     "Accurate To-Hit Debuff",
     "Defense Debuff",
     "Holds",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

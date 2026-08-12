@@ -37,7 +37,7 @@ export const FireSwordCircle: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

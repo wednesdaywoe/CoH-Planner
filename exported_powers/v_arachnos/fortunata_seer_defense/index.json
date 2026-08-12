@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "Toggle: Self +Res(Confuse, Fear, Hold, Immobilize, Disorient, Sleep, Knockback, Repel, Psionic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

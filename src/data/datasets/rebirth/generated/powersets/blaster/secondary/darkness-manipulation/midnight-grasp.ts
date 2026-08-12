@@ -42,7 +42,7 @@ export const MidnightGrasp: Power = {
     "Immobilize",
     "Melee Damage",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

@@ -43,5 +43,9 @@
     "Melee, Extreme DoT(Negative), Foe Hold, -Recharge, -SPD",
     "PBAoE, Foe -DMG, Self Heal (Special), +End",
     "Melee, Superior DMG(Negative), Foe -Recharge, -SPD, Self Heal"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

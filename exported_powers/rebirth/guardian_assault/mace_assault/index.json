@@ -47,5 +47,9 @@
     "Ranged Cone, Moderate DMG(Energy/Smash), Foe Knockback",
     "Melee, Extreme DMG(Smash), Minor DoT(Toxic), High Knockback",
     "Melee (Cone), High DMG(Smash), Minor DoT(Toxic), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

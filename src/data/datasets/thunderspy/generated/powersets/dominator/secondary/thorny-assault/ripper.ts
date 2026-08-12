@@ -43,7 +43,7 @@ export const Ripper: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

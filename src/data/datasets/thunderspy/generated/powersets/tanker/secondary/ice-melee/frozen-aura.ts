@@ -38,10 +38,10 @@ export const FrozenAura: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Sleep",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

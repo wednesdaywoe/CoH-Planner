@@ -31,5 +31,9 @@
     "Melee, Moderate DMG(Smash/Fire), Minor DoT(Fire), Foe Disorient",
     "Ranged, Extreme DMG(Smash/Fire), Moderate DoT(Fire), Foe -Jump, -Fly, -DEF",
     "Toggle: Self +DEF(Smash, Lethal), +Res(Fire, Cold, DeBuff DEF)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "Melee, Extreme DMG(Smash), Foe Hold",
     "Toggle: Self +Res(Smash, Lethal, Cold, Fire)",
     "Ranged, Moderate DoT(Lethal), Foe Hold, -Fly"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "PBAoE, Superior DMG(Smashing), Foe Knockback",
     "Self, +Res(-Endurance, -Recovery, Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG but Psi), +Recovery, +Max HP, +Absorb, Speciall",
     "Self, +Res(-Endurance, -Recovery, Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG but Psi), +Recovery, +Max HP, +Absorb, Speciall"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

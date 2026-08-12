@@ -23,5 +23,9 @@
     "Resistance",
     "Self Travel",
     "Ranged, Moderate DoT(Toxic), Foe Hold, -SPD, -Recharge, -Jump, -Fly"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

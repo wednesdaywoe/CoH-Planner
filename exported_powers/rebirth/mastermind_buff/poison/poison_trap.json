@@ -42,8 +42,8 @@
   "allowed_set_categories": [
     "Endurance Modification",
     "Holds",
-    "Melee AoE Damage",
-    "Universal Control Duration",
+    "PBAoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "cast_through": [],
@@ -65,6 +65,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {

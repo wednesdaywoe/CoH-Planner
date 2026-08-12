@@ -39,5 +39,9 @@
     "Ranged DMG(Energy) Knockback",
     "Ranged DMG(Energy), Knockback",
     "Targeted AoE DMG(Energy), Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

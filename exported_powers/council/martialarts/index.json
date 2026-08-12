@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Melee, Light DMG(Smash), Foe Disorient, Chance for Critical Hit",
     "Melee, Heavy DMG(Smash), Chance for Critical Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

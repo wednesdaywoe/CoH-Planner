@@ -31,5 +31,9 @@
     "Melee, High DoT(Cold), Foe Hold",
     "Ranged (Location AoE), Minor DoT(Cold), Foe -Recharge, -SPD",
     "Ranged (Cone), Foe -SPD, -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

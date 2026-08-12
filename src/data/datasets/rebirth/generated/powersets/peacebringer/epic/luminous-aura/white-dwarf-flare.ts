@@ -42,7 +42,7 @@ export const WhiteDwarfFlare: Power = {
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

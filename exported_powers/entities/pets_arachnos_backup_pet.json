@@ -9,7 +9,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Default_Ranged",
     "character_class_name": "minion_pets",
     "description": "Crab Spiders function much like SWAT teams in other cities, and are dispatched to deal with high-level threats like super-types. They're equipped with full body armor, larger weapons, and a set of mechanical spider arms that turn them into death-dealing machines.",
@@ -47,7 +47,7 @@
   },
   "levels": [
     {
-      "min_level": 10,
+      "level": 10,
       "max_level": 50,
       "experience": 0,
       "display_names": [

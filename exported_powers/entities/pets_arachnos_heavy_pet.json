@@ -8,7 +8,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Base",
     "character_class_name": "minion_pets",
     "description": "The Arachnos Mini-Blaster is a miniaturized and mass-produced version of the Arachnos Heavy Blaster found in Recluse' Victory.",
@@ -67,7 +67,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

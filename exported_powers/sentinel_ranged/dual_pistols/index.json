@@ -59,5 +59,9 @@
     "Ranged, DMG(Lethal/Special), Foe -Defense, Knockback/Special",
     "Narrow Ranged (Cone), DMG(Lethal/Special), Foes -Res(All)/Special",
     "PBAoE, DMG(Lethal/Special), Self +Def(Melee, Ranged, AoE), Foe Knockdown/Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

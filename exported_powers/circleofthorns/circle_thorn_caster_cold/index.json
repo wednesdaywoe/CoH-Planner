@@ -23,5 +23,9 @@
     "-Recharge, -SPD",
     "Melee, Moderate DMG(Cold/Lethal), Foe -Recharge, -SPD",
     "Immobilize, DoT(Cold)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "PBAoE, High DMG(Fire), Moderate heal",
     "Toggle: Create Mote of Light",
     "Ranged, Extreme DMG(Fire), High Heal"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

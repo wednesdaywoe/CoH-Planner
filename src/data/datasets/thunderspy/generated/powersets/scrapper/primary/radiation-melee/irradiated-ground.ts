@@ -33,7 +33,7 @@ export const IrradiatedGround: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

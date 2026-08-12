@@ -43,7 +43,7 @@ export const ArcticAir: Power = {
     "Confuse",
     "Dominator Archetype Sets",
     "Fear",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],

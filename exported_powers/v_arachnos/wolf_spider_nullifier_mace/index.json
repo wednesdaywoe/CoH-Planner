@@ -23,5 +23,9 @@
     "Melee, Heavy DMG(Smash)",
     "Ranged, Moderate DMG(Energy), Foe Knockback",
     "Ranged, Superior DoT(Toxic), Foe -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

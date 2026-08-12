@@ -55,5 +55,9 @@
     "Self +DMG, +ToHit, +Special, +Momentum",
     "Summon Transponder: Summon Chief Soldier/Chief Mentalist",
     "Linked Health"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

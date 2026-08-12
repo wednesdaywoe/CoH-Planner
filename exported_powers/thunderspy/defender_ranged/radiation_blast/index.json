@@ -47,5 +47,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Energy), Foe -DEF",
     "Sniper, Superior DMG(Energy), Foe -DEF",
     "PBAoE, Extreme DMG(Energy/Toxic), Foe Hold, -DEF, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

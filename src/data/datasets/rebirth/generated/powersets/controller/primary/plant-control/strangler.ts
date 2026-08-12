@@ -37,7 +37,7 @@ export const Strangler: Power = {
     "Controller Archetype Sets",
     "Holds",
     "Ranged Damage",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

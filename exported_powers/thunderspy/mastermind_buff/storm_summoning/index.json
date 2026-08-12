@@ -59,5 +59,9 @@
     "PBAoE, Foe Disorient",
     "Summon Tornado: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
     "Create Storm: Ranged, High DMG(Energy), Foe -End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

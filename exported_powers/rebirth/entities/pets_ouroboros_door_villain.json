@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Default_Stationary_Untargetable",
     "character_class_name": "minion_unkillablenpc",
     "description": "This portal will transport you to the Ouroboros Headquarters.",
@@ -41,14 +41,16 @@
   },
   "levels": [
     {
-      "min_level": 1,
-      "max_level": 50,
+      "level": 1,
+      "max_level": null,
       "experience": 0,
       "display_names": [
-        "Ouroboros Door Villain"
+        "Ouroboros Portal"
       ],
-      "costumes": []
+      "costumes": [
+        "Ouroboros_Portal_Villain"
+      ]
     }
   ],
-  "source_file": ""
+  "source_file": "DEFS/VILLAINS/PETS.VILLAIN"
 }

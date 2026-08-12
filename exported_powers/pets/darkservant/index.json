@@ -35,5 +35,9 @@
     "Toggle: Ranged (Targeted AoE), Foe -DMG",
     "Ranged (Cone), Minor DMG(Negative), Foe Immobilize, -To Hit",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

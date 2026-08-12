@@ -21,6 +21,7 @@ export const FollowThrough: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 9,
@@ -44,8 +45,8 @@ export const FollowThrough: Power = {
     "Melee Damage",
     "Stuns",
     "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Control Duration",
+    "Taunt",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

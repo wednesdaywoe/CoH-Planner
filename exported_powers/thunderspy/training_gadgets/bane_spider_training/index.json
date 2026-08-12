@@ -27,5 +27,16 @@
     "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
     "Ranged Foe -DEF, -RES (All)",
     "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow"
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 23,
+  "specialize_requires": [
+    "Arachnos_Soldiers.Crab_Spider_Soldier",
+    "powerset?",
+    "Training_Gadgets.Crab_Spider_Training",
+    "powerset?",
+    "||",
+    "!"
   ]
 }

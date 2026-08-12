@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Melee, Light DMG(Negative/Smash), Foe Disorient, -Recharge, -SPD",
     "Auto: Self +Res(Energy, Negative)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

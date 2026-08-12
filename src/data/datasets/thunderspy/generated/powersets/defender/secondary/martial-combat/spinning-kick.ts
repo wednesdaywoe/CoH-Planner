@@ -37,8 +37,8 @@ export const SpinningKick: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
-    "Melee AoE Damage",
     "Melee Damage",
+    "PBAoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

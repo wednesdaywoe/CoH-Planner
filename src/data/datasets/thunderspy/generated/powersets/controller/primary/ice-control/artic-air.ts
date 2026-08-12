@@ -42,7 +42,7 @@ export const ArticAir: Power = {
   "allowedSetCategories": [
     "Confuse",
     "Controller Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],

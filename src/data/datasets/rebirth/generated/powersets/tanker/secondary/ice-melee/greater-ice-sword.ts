@@ -21,6 +21,7 @@ export const GreaterIceSword: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.2,
     "range": 7,
@@ -42,7 +43,7 @@ export const GreaterIceSword: Power = {
     "Melee Damage",
     "Slow Movement",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

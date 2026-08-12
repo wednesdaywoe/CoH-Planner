@@ -31,5 +31,9 @@
     "Melee, Moderate DMG(Lethal/Toxic), Foe Knockdown",
     "Ranged, Minor DMG(Fire), Foe Minor DoT (Toxic), -Res",
     "Self Leap"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

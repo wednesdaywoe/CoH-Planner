@@ -31,5 +31,9 @@
     "Ranged (Cone), Moderate DMG(Negative), Foe -Recharge, -SPD",
     "Self Destruct",
     "Self Travel"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

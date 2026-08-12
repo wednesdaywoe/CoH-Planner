@@ -31,5 +31,9 @@
     "Toggle: Self +Res(Smash, Lethal, Energy)",
     "Ranged, DoT(Energy), Foe Hold, -END",
     "PBAoE, Self +End, Foe -End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

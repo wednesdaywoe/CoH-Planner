@@ -66,6 +66,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -113,6 +115,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -164,6 +168,8 @@
       ],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 1,
       "templates": [
         {
@@ -185,7 +191,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "arch target> Class_Lt_Henchman eq arch target> Class_Boss_Henchman eq || arch target> Class_Minion_Henchman eq || arch target> Class_Henchman_Lt eq || arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq ||",
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,

@@ -31,5 +31,9 @@
     "Toggle: Self +Res(Smash, Lethal, Psionics)",
     "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
     "Toggle: Ranged (Targeted AoE), Foe Immobilize, Repel"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

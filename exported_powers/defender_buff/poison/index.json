@@ -47,5 +47,9 @@
     "Ranged Hold",
     "Place Trap: PBAoE Foe Hold, -END, -Recovery, Chance to Hold, Minor DoT(Toxic)",
     "Toggle: PBAoE, Foe -Res(All), -DMG(All), -Def(All), -To(Hit)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

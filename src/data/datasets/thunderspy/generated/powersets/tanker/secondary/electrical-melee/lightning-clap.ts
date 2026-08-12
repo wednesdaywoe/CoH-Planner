@@ -40,7 +40,7 @@ export const LightningClap: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Stuns",
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

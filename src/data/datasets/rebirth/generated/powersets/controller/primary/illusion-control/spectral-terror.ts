@@ -35,7 +35,7 @@ export const SpectralTerror: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Fear",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

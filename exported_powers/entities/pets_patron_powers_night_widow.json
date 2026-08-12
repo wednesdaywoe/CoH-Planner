@@ -7,9 +7,9 @@
     "HumanSkeleton"
   ],
   "copy_creator_mods": false,
-  "can_zone": false,
+  "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Base",
     "character_class_name": "minion_pets",
     "description": "Night Widows are trained in stealth, infiltration, disguise, and cold-blooded murder. Most of their victims never even see them coming.",
@@ -62,7 +62,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

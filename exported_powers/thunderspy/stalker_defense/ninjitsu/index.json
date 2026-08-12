@@ -47,5 +47,9 @@
     "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
     "Auto: Self +Recovery",
     "Self +DEF, +SPD, +Recovery, Res(DeBuff DEF), +Absorb"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

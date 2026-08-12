@@ -47,5 +47,9 @@
     "Melee, Extreme DMG (Smashing/Energy), Foe Disorient, -DMG, Self -Impulse",
     "Sniper, Extreme DMG (Energy/Lethal), Foe Minor DoT (Lethal), -Speed, -Recharge, Self +Impulse",
     "Ranged, Superior DMG (Smashing/Energy), Foe Light DoT (Lethal), -Speed, -Recharge, Self +/- Impulse"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

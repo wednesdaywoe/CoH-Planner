@@ -67,5 +67,9 @@
     "PBAoE Melee, High DMG(Energy), Foe -DEF, Knockback",
     "Summon Drones: Ranged Special, High DMG(Energy)",
     "PBAoE, Extreme DMG(Energy), Foe -DEF, Knockback; Self -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

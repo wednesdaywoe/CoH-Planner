@@ -47,5 +47,9 @@
     "Summon Decoys: Ranged Minor DMG(Energy/Special)",
     "Summon Terror: Ranged Fear",
     "Summon Phantasm: Ranged, Moderate DMG(Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

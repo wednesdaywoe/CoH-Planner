@@ -12,7 +12,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Medic",
     "character_class_name": "henchman_minion",
     "description": "The Arsonist probably suffers from some form of pyromania. He likely hides some deep-seated trauma or has some background of family dysfunction. None of that matters now. The Arsonist's only pleasure is to burn things, and people, to the ground.",
@@ -56,7 +56,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

@@ -47,5 +47,9 @@
     "Summon Seekers: Ranged Disorient, -DMG, -To Hit, -Perception, Low DMG(Energy)",
     "Place Mine: PBAoE, Superior DMG(Lethal/Fire), Foe Knockback",
     "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

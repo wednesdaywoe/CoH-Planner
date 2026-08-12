@@ -51,5 +51,9 @@
     "Ranged, High DMG(Lethal), Knockback",
     "Melee (Cone), Moderate DMG(Lethal), Foe Knockback",
     "Melee (Cone), Superior DMG(Lethal), Foe -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

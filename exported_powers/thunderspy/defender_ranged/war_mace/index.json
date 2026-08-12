@@ -47,5 +47,9 @@
     "Melee (Cone), Moderate DMG(Smashing), Knockback",
     "Melee, Extreme DMG(Smashing), High Knockback",
     "Melee, Extreme DMG(Smashing), Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

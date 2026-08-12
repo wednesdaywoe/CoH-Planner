@@ -51,5 +51,9 @@
     "Self Heal, Special",
     "Ranged (Cone), Foe Stun, -Perception",
     "Melee, Superior DMG(Smash), Foe Minor Disorient, +Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

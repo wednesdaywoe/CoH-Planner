@@ -41,9 +41,9 @@ export const Microburst: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Dominator Archetype Sets",
-    "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

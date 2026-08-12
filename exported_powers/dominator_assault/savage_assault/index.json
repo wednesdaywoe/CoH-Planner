@@ -47,5 +47,9 @@
     "Self +HP, +Health over Time",
     "Ranged, Foe DoT (Lethal), -To Hit, Knockdown, -Fly",
     "Melee, DMG(Lethal), Foe DoT (Lethal), +3 Blood Frenzy, Self Teleport"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

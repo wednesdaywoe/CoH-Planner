@@ -23,5 +23,9 @@
     "Ranged, Moderate DMG(Psionic), Foe Sleep",
     "Ranged, Moderate DMG(Psionic), Foe Hold",
     "Self Heal, +Res(Toxic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

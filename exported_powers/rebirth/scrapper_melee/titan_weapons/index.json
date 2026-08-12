@@ -47,5 +47,9 @@
     "Melee, Extreme DMG(Smashing), Foe -Def(All), -Res(All)",
     "PBAoE Melee, Moderate DMG(Smashing), Foe Minor DoT(Lethal), Knockdown, Requires Momentum",
     "Melee (Cone), Superior DMG(Smashing), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

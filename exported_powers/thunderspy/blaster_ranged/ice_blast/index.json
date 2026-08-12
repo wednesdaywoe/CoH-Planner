@@ -47,5 +47,9 @@
     "Self +To Hit, +DMG",
     "Ranged, Moderate DMG(Cold), Foe Hold",
     "Ranged (Location AoE), Extreme DoT(Cold), Foe -To Hit, -SPD, -Recharge, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "Close (Cone) DoT (Fire)",
     "PBAoE Melee, DMG(Fire), -Defense",
     "Melee, DMG(Fire), -Defense"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

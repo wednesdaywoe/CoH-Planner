@@ -54,6 +54,8 @@
       ],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -99,6 +101,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "INDETERMINATE_ARCHETYPE",
           "eval_flags": 0,
           "templates": [
             {
@@ -134,6 +138,9 @@
               },
               "flags_raw": 1280
             }
+          ],
+          "requires_archetypes": [
+            "Class_Blaster"
           ]
         },
         {
@@ -146,6 +153,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "INDETERMINATE_ARCHETYPE",
           "eval_flags": 0,
           "templates": [
             {
@@ -181,6 +190,9 @@
               },
               "flags_raw": 1280
             }
+          ],
+          "requires_archetypes": [
+            "Class_Corruptor"
           ]
         },
         {
@@ -193,6 +205,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "INDETERMINATE_ARCHETYPE",
           "eval_flags": 0,
           "templates": [
             {
@@ -228,6 +242,9 @@
               },
               "flags_raw": 1280
             }
+          ],
+          "requires_archetypes": [
+            "Class_Defender"
           ]
         },
         {
@@ -240,6 +257,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "INDETERMINATE_ARCHETYPE",
           "eval_flags": 0,
           "templates": [
             {
@@ -275,6 +294,9 @@
               },
               "flags_raw": 1280
             }
+          ],
+          "requires_archetypes": [
+            "Class_Sentinel"
           ]
         }
       ]
@@ -289,6 +311,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -341,6 +365,8 @@
       ],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {

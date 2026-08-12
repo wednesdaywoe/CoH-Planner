@@ -38,7 +38,7 @@ export const GroundZero: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Healing",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

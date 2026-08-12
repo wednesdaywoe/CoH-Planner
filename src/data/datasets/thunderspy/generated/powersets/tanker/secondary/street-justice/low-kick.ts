@@ -21,6 +21,7 @@ export const LowKick: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -44,7 +45,7 @@ export const LowKick: Power = {
     "Melee Damage",
     "Slow Movement",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

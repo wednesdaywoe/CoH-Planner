@@ -47,5 +47,16 @@
     "Ranged,  Moderate DoT(Toxic), -DEF",
     "Melee, Extreme DMG(Smash/Toxic), Minor DoT(Toxic), High Knockback",
     "Melee (Cone), High DMG(Smash/Toxic), Minor DoT(Toxic), Foe Knockback"
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 23,
+  "specialize_requires": [
+    "Arachnos_Soldiers.Crab_Spider_Soldier",
+    "powerset?",
+    "Training_Gadgets.Crab_Spider_Training",
+    "powerset?",
+    "||",
+    "!"
   ]
 }

@@ -59,5 +59,9 @@
     "PBAoE Superior DMG(Smashing), Foe Knockdown; Self Teleport",
     "Toggle: Self +Res(All DMG but Psionics), +MaxHP, +Regen, +Recovery",
     "Auto: Self +SPD, +Recharge, +Res(Slow)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

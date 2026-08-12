@@ -31,5 +31,9 @@
     "Disorient",
     "Disorient",
     "Melee, Extreme DMG(Energy/Smash), Foe Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

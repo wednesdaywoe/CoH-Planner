@@ -47,5 +47,9 @@
     "Melee (Cone), Superior DMG(Lethal), Foe Knockdown",
     "Melee, Superior DMG(Lethal), Foe Knockup",
     "Melee, Extreme DMG(Lethal), Foe Knockdown"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

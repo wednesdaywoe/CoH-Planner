@@ -12,7 +12,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "henchman_minion",
     "description": "Genin may be the lowest ranking Ninja and only possess basic Ninjitsu skills, but they are nothing to be trifled with. Genin are highly trained warriors and deeply devoted to their Master.",
@@ -56,7 +56,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged Energy, -End",
     "DoT(Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

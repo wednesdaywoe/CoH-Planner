@@ -59,6 +59,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {

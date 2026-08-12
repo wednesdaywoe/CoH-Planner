@@ -37,7 +37,7 @@ export const Burst: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

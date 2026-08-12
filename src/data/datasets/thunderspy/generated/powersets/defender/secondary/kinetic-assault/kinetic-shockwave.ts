@@ -40,7 +40,7 @@ export const KineticShockwave: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

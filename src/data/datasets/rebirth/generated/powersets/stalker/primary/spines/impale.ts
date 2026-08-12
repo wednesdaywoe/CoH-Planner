@@ -39,7 +39,7 @@ export const Impale: Power = {
     "Ranged Damage",
     "Slow Movement",
     "Stalker Archetype Sets",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

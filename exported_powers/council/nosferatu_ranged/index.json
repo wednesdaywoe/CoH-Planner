@@ -35,5 +35,9 @@
     "Ranged (Cone), Moderate DoT(Negative), Foe Immobilize, -ToHit",
     "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ToHit, Self Heal",
     "Ranged, High DoT(Negative), Foe -ToHit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

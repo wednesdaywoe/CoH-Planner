@@ -10,9 +10,9 @@
  *
  * 11 power(s):
  *   mastermind: Hold Ground
- *   peacebringer: Combat Flight, Energy Flight, Group Energy Flight, Quantum Acceleration
+ *   peacebringer: Energy Flight, Combat Flight, Group Energy Flight, Quantum Acceleration
  *   stalker: Hide, Placate
- *   warshade: Shadow Recall, Shadow Slip, Shadow Step, Starless Step
+ *   warshade: Shadow Step, Starless Step, Shadow Recall, Shadow Slip
  */
 
 import type { InherentPowerDef } from '@/data/datasets/homecoming/levels';
@@ -126,9 +126,307 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
   ],
   'peacebringer': [
     {
+      "name": "Energy Flight",
+      "internalName": "Energy_Flight",
+      "available": 0,
+      "description": "Energy Flight allows you to travel large distances quickly.  If you attack a target while this power is on, your flight speed will be temporarily reduced.  Your Energy Flight speed increases with your Level.",
+      "shortHelp": "Toggle: Self Fly",
+      "icon": "inherentpeacebringer_energyflight.png",
+      "powerType": "Toggle",
+      "targetType": "Self",
+      "effectArea": "SingleTarget",
+      "toggleIgnoreMez": [
+        "hold",
+        "sleep",
+        "stun"
+      ],
+      "stats": {
+        "accuracy": 1,
+        "endurance": 0.182,
+        "activatePeriod": 0.5
+      },
+      "allowedEnhancements": [
+        "EnduranceReduction",
+        "Fly"
+      ],
+      "allowedSetCategories": [
+        "Flight",
+        "Universal Travel"
+      ],
+      "maxSlots": 6,
+      "effects": {
+        "buffDuration": 0.75,
+        "durations": {
+          "movement": 0.75,
+          "slow": 0.75
+        },
+        "movement": {
+          "fly": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "flySpeed": {
+            "scale": 0.8,
+            "suppressible": true,
+            "table": "Melee_Ones"
+          },
+          "movementControl": {
+            "scale": 2,
+            "table": "Melee_Control"
+          },
+          "movementFriction": {
+            "scale": 2,
+            "table": "Melee_Friction"
+          }
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 1.01,
+            "table": "Melee_Ones",
+            "toWho": "Self"
+          }
+        }
+      },
+      "atoms": [
+        [
+          "Movement",
+          "FlyMode",
+          1,
+          1,
+          0.75,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Movement",
+          "Fly",
+          1,
+          1,
+          0.75,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Movement",
+          "Fly",
+          -1.01,
+          1,
+          0.75,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "GlobalChanceMod",
+          null,
+          1,
+          1,
+          0.75,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Movement",
+          "Fly",
+          1.25,
+          1,
+          0.75,
+          "Melee_SpeedFlying",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "isPVPMap? !",
+          null,
+          null,
+          true
+        ],
+        [
+          "Movement",
+          "Fly",
+          0.8,
+          1,
+          0.75,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true,
+          null,
+          null,
+          null,
+          null,
+          "isPVPMap? !",
+          null,
+          null,
+          true
+        ],
+        [
+          "Movement",
+          "Control",
+          2,
+          1,
+          0.75,
+          "Melee_Control",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Movement",
+          "Friction",
+          2,
+          1,
+          0.75,
+          "Melee_Friction",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Movement",
+          "Fly",
+          1,
+          1,
+          0.75,
+          "Melee_SpeedFlying",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "isPVPMap?",
+          true
+        ],
+        [
+          "Movement",
+          "Fly",
+          0.8,
+          1,
+          0.75,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true,
+          null,
+          null,
+          null,
+          null,
+          "isPVPMap?",
+          true
+        ]
+      ],
+      "requires": "$archetype @Class_Peacebringer ==",
+      "modesDisallowed": [
+        "Peacebringer_Blaster_Mode",
+        "Peacebringer_Tanker_Mode",
+        "Warshade_Blaster_Mode",
+        "Warshade_Tanker_Mode",
+        "Disable_Travel"
+      ],
+      "isLocked": true,
+      "category": "archetype",
+      "fullName": "Inherent.Inherent.Energy_Flight"
+    },
+    {
       "name": "Combat Flight",
       "internalName": "Combat_Flight",
-      "available": 0,
+      "available": 9,
       "description": "For hovering and aerial combat. This power is much slower than Energy Flight, but provides some Defense, offers good air control, costs little Endurance, and has none of the penalties associated with Energy Flight. Switch to this mode when fighting other flying foes.",
       "shortHelp": "Toggle: Self Fly, +DEF",
       "icon": "inherentpeacebringer_combatflight.png",
@@ -557,307 +855,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "fullName": "Inherent.Inherent.Combat_Flight"
     },
     {
-      "name": "Energy Flight",
-      "internalName": "Energy_Flight",
-      "available": 0,
-      "description": "Energy Flight allows you to travel large distances quickly.  If you attack a target while this power is on, your flight speed will be temporarily reduced.  Your Energy Flight speed increases with your Level.",
-      "shortHelp": "Toggle: Self Fly",
-      "icon": "inherentpeacebringer_energyflight.png",
-      "powerType": "Toggle",
-      "targetType": "Self",
-      "effectArea": "SingleTarget",
-      "toggleIgnoreMez": [
-        "hold",
-        "sleep",
-        "stun"
-      ],
-      "stats": {
-        "accuracy": 1,
-        "endurance": 0.182,
-        "activatePeriod": 0.5
-      },
-      "allowedEnhancements": [
-        "EnduranceReduction",
-        "Fly"
-      ],
-      "allowedSetCategories": [
-        "Flight",
-        "Universal Travel"
-      ],
-      "maxSlots": 6,
-      "effects": {
-        "buffDuration": 0.75,
-        "durations": {
-          "movement": 0.75,
-          "slow": 0.75
-        },
-        "movement": {
-          "fly": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "flySpeed": {
-            "scale": 0.8,
-            "suppressible": true,
-            "table": "Melee_Ones"
-          },
-          "movementControl": {
-            "scale": 2,
-            "table": "Melee_Control"
-          },
-          "movementFriction": {
-            "scale": 2,
-            "table": "Melee_Friction"
-          }
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 1.01,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          }
-        }
-      },
-      "atoms": [
-        [
-          "Movement",
-          "FlyMode",
-          1,
-          1,
-          0.75,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1
-        ],
-        [
-          "Movement",
-          "Fly",
-          1,
-          1,
-          0.75,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1,
-          null,
-          true
-        ],
-        [
-          "Movement",
-          "Fly",
-          -1.01,
-          1,
-          0.75,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1,
-          null,
-          true
-        ],
-        [
-          "GlobalChanceMod",
-          null,
-          1,
-          1,
-          0.75,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1,
-          null,
-          true
-        ],
-        [
-          "Movement",
-          "Fly",
-          1.25,
-          1,
-          0.75,
-          "Melee_SpeedFlying",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          "isPVPMap? !",
-          null,
-          null,
-          true
-        ],
-        [
-          "Movement",
-          "Fly",
-          0.8,
-          1,
-          0.75,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1,
-          null,
-          true,
-          null,
-          null,
-          null,
-          null,
-          "isPVPMap? !",
-          null,
-          null,
-          true
-        ],
-        [
-          "Movement",
-          "Control",
-          2,
-          1,
-          0.75,
-          "Melee_Control",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1
-        ],
-        [
-          "Movement",
-          "Friction",
-          2,
-          1,
-          0.75,
-          "Melee_Friction",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1
-        ],
-        [
-          "Movement",
-          "Fly",
-          1,
-          1,
-          0.75,
-          "Melee_SpeedFlying",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          "isPVPMap?",
-          true
-        ],
-        [
-          "Movement",
-          "Fly",
-          0.8,
-          1,
-          0.75,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1,
-          null,
-          true,
-          null,
-          null,
-          null,
-          null,
-          "isPVPMap?",
-          true
-        ]
-      ],
-      "requires": "$archetype @Class_Peacebringer ==",
-      "modesDisallowed": [
-        "Peacebringer_Blaster_Mode",
-        "Peacebringer_Tanker_Mode",
-        "Warshade_Blaster_Mode",
-        "Warshade_Tanker_Mode",
-        "Disable_Travel"
-      ],
-      "isLocked": true,
-      "category": "archetype",
-      "fullName": "Inherent.Inherent.Energy_Flight"
-    },
-    {
       "name": "Group Energy Flight",
       "internalName": "Group_Energy_Flight",
-      "available": 0,
+      "available": 13,
       "description": "You can endow your nearby teammates with Flight. Be mindful! Your friends will fall if you run out of Endurance or if they travel too far away from you. Group Energy Flight travel speed is slower than Energy Flight.",
       "shortHelp": "Toggle: Team Fly",
       "icon": "luminousaura_groupenergyflight.png",
@@ -1024,7 +1024,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
     {
       "name": "Quantum Acceleration",
       "internalName": "Quantum_Acceleration",
-      "available": 0,
+      "available": 19,
       "description": "Quantum Acceleration greatly increases your maximum fly speed, provides a high amount of defense, flight protection and additional flight control, however while active you can only use powers that target yourself.  This flight protection is only active while Energy Flight, Combat Fight, Group Energy Flight or Quantum Flight is active.  Recharge: Long",
       "shortHelp": "Toggle: Self +FlySpeed, Res(-Fly), +Def(All), +Flight Control",
       "icon": "luminousaura_quantumacceleration.png",
@@ -2634,244 +2634,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
   ],
   'warshade': [
     {
-      "name": "Shadow Recall",
-      "internalName": "Shadow_Recall",
-      "available": 0,
-      "description": "You can Teleport one of your teammates to yourself. The target must be a teammate or leaguemate and can be selected from the Team Window. You can also rescue a fallen teammate who may be in a hostile location, as long as he is on the same map. Range is not infinite, but extremely long and can be enhanced. This power can be interrupted.",
-      "shortHelp": "Zone-Range: Teleport Teammate",
-      "icon": "inherentwarshade_shadowrecall.png",
-      "powerType": "Click",
-      "targetType": "Teammate",
-      "effectArea": "SingleTarget",
-      "stats": {
-        "accuracy": 1,
-        "range": 10000,
-        "recharge": 6,
-        "endurance": 20,
-        "castTime": 5.93,
-        "interruptTime": 4
-      },
-      "allowedEnhancements": [
-        "Interrupt",
-        "EnduranceReduction",
-        "Range",
-        "Recharge"
-      ],
-      "allowedSetCategories": [
-        "Teleport",
-        "Universal Travel"
-      ],
-      "maxSlots": 6,
-      "effects": {
-        "buffDuration": 1.5,
-        "durations": {
-          "stealth": 1.5
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Ranged_Ones"
-          }
-        },
-        "teleport": {
-          "scale": 1,
-          "table": "Ranged_Ones"
-        }
-      },
-      "atoms": [
-        [
-          "Stealth",
-          "Translucency",
-          0,
-          1,
-          1.5,
-          "Ranged_Ones",
-          "Cur",
-          "Magnitude",
-          "Target",
-          "Any",
-          false,
-          "Stack",
-          2,
-          null,
-          null,
-          1
-        ],
-        [
-          "Mez",
-          "Teleport",
-          1,
-          1,
-          0,
-          "Ranged_Ones",
-          "Cur",
-          "Magnitude",
-          "Target",
-          "Any",
-          false,
-          "Stack",
-          2,
-          null,
-          null,
-          1
-        ]
-      ],
-      "requires": "$archetype @Class_Warshade ==",
-      "modesDisallowed": [
-        "Peacebringer_Blaster_Mode",
-        "Peacebringer_Tanker_Mode",
-        "Warshade_Blaster_Mode",
-        "Warshade_Tanker_Mode",
-        "Disable_Recall"
-      ],
-      "isLocked": true,
-      "category": "archetype",
-      "fullName": "Inherent.Inherent.Shadow_Recall"
-    },
-    {
-      "name": "Shadow Slip",
-      "internalName": "Shadow_Slip",
-      "available": 0,
-      "description": "Shadow Slip allows you to teleport very long distances, even across city zones.  Activating this power will bring up a menu that allows the user to choose which zone they'll teleport to.  Recharge: Very Long",
-      "shortHelp": "Long Range Teleport",
-      "icon": "umbralaura_shadowslip.png",
-      "powerType": "Click",
-      "targetType": "Self",
-      "effectArea": "SingleTarget",
-      "stats": {
-        "accuracy": 1,
-        "recharge": 300,
-        "endurance": 26,
-        "castTime": 12,
-        "interruptTime": 10
-      },
-      "allowedEnhancements": [
-        "EnduranceReduction",
-        "Recharge"
-      ],
-      "maxSlots": 6,
-      "effects": {
-        "buffDuration": 5,
-        "durations": {
-          "stealth": 5
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Melee_Ones"
-          }
-        },
-        "teleport": {
-          "scale": 1,
-          "table": "Melee_Ones"
-        }
-      },
-      "atoms": [
-        [
-          "Stealth",
-          "Translucency",
-          0,
-          1,
-          5,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Stack",
-          2,
-          null,
-          null,
-          1
-        ],
-        [
-          "Mez",
-          "Teleport",
-          1,
-          1,
-          0,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Stack",
-          2,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          "AllyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&"
-        ],
-        [
-          "Mez",
-          "Teleport",
-          1,
-          1,
-          0,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Stack",
-          2,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          "AllyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&"
-        ],
-        [
-          "Mez",
-          "Teleport",
-          1,
-          1,
-          0,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Stack",
-          2,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          "praetorianprogress source> praetoria eq praetoria source.MapTeamArea> eq ||",
-          true
-        ]
-      ],
-      "requires": "$archetype @Class_Warshade ==",
-      "modesDisallowed": [
-        "Warshade_Blaster_Mode",
-        "Warshade_Tanker_Mode"
-      ],
-      "isLocked": true,
-      "category": "archetype",
-      "fullName": "Inherent.Inherent.Shadow_Slip"
-    },
-    {
       "name": "Shadow Step",
       "internalName": "Shadow_Step",
       "available": 0,
@@ -3025,7 +2787,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
     {
       "name": "Starless Step",
       "internalName": "Starless_Step",
-      "available": 0,
+      "available": 7,
       "description": "You can Teleport a single foe through a dark matter wormhole directly next to you. A successful hit must be made in order to Teleport the target, and some powerful foes cannot be Teleported. This power can be interrupted.",
       "shortHelp": "Ranged, Teleport Foe",
       "icon": "umbralblast_starlessstep.png",
@@ -3337,6 +3099,244 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "isLocked": true,
       "category": "archetype",
       "fullName": "Inherent.Inherent.Starless_Step"
+    },
+    {
+      "name": "Shadow Recall",
+      "internalName": "Shadow_Recall",
+      "available": 9,
+      "description": "You can Teleport one of your teammates to yourself. The target must be a teammate or leaguemate and can be selected from the Team Window. You can also rescue a fallen teammate who may be in a hostile location, as long as he is on the same map. Range is not infinite, but extremely long and can be enhanced. This power can be interrupted.",
+      "shortHelp": "Zone-Range: Teleport Teammate",
+      "icon": "inherentwarshade_shadowrecall.png",
+      "powerType": "Click",
+      "targetType": "Teammate",
+      "effectArea": "SingleTarget",
+      "stats": {
+        "accuracy": 1,
+        "range": 10000,
+        "recharge": 6,
+        "endurance": 20,
+        "castTime": 5.93,
+        "interruptTime": 4
+      },
+      "allowedEnhancements": [
+        "Interrupt",
+        "EnduranceReduction",
+        "Range",
+        "Recharge"
+      ],
+      "allowedSetCategories": [
+        "Teleport",
+        "Universal Travel"
+      ],
+      "maxSlots": 6,
+      "effects": {
+        "buffDuration": 1.5,
+        "durations": {
+          "stealth": 1.5
+        },
+        "stealth": {
+          "translucency": {
+            "scale": 0,
+            "table": "Ranged_Ones"
+          }
+        },
+        "teleport": {
+          "scale": 1,
+          "table": "Ranged_Ones"
+        }
+      },
+      "atoms": [
+        [
+          "Stealth",
+          "Translucency",
+          0,
+          1,
+          1.5,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Mez",
+          "Teleport",
+          1,
+          1,
+          0,
+          "Ranged_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ]
+      ],
+      "requires": "$archetype @Class_Warshade ==",
+      "modesDisallowed": [
+        "Peacebringer_Blaster_Mode",
+        "Peacebringer_Tanker_Mode",
+        "Warshade_Blaster_Mode",
+        "Warshade_Tanker_Mode",
+        "Disable_Recall"
+      ],
+      "isLocked": true,
+      "category": "archetype",
+      "fullName": "Inherent.Inherent.Shadow_Recall"
+    },
+    {
+      "name": "Shadow Slip",
+      "internalName": "Shadow_Slip",
+      "available": 19,
+      "description": "Shadow Slip allows you to teleport very long distances, even across city zones.  Activating this power will bring up a menu that allows the user to choose which zone they'll teleport to.  Recharge: Very Long",
+      "shortHelp": "Long Range Teleport",
+      "icon": "umbralaura_shadowslip.png",
+      "powerType": "Click",
+      "targetType": "Self",
+      "effectArea": "SingleTarget",
+      "stats": {
+        "accuracy": 1,
+        "recharge": 300,
+        "endurance": 26,
+        "castTime": 12,
+        "interruptTime": 10
+      },
+      "allowedEnhancements": [
+        "EnduranceReduction",
+        "Recharge"
+      ],
+      "maxSlots": 6,
+      "effects": {
+        "buffDuration": 5,
+        "durations": {
+          "stealth": 5
+        },
+        "stealth": {
+          "translucency": {
+            "scale": 0,
+            "table": "Melee_Ones"
+          }
+        },
+        "teleport": {
+          "scale": 1,
+          "table": "Melee_Ones"
+        }
+      },
+      "atoms": [
+        [
+          "Stealth",
+          "Translucency",
+          0,
+          1,
+          5,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Mez",
+          "Teleport",
+          1,
+          1,
+          0,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "AllyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&"
+        ],
+        [
+          "Mez",
+          "Teleport",
+          1,
+          1,
+          0,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "AllyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&"
+        ],
+        [
+          "Mez",
+          "Teleport",
+          1,
+          1,
+          0,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "praetorianprogress source> praetoria eq praetoria source.MapTeamArea> eq ||",
+          true
+        ]
+      ],
+      "requires": "$archetype @Class_Warshade ==",
+      "modesDisallowed": [
+        "Warshade_Blaster_Mode",
+        "Warshade_Tanker_Mode"
+      ],
+      "isLocked": true,
+      "category": "archetype",
+      "fullName": "Inherent.Inherent.Shadow_Slip"
     }
   ],
 };

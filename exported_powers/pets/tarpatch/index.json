@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "Ranged (Location AoE), Target -Speed, -Res, -Fly"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

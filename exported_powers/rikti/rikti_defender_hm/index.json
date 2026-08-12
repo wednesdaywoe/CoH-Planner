@@ -31,5 +31,9 @@
     "Ranged, Ally +DEF(Smash, Lethal, Fire, Cold, Energy, Negative), +Res(Toxic, End Drain)",
     "Ranged (Targeted AoE), Foe -DEF, -ToHit",
     "Ranged, Heavy DMG(Energy), Foe Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

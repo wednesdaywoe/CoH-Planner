@@ -31,5 +31,9 @@
     "Ranged (Cone), DoT (Fire)",
     "Sniper (Targeted AoE), DMG(Smash/Lethal), Foe Knockback",
     "Tactical Upgrade"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "Melee, Moderate DMG(Smash/Energy), Foe -DEF, Knockback",
     "Melee, Heavy DMG(Energy/Smash), Foe -DEF, -Fly, Disorient",
     "PBAoE Melee, High DMG(Energy), Foe -DEF, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

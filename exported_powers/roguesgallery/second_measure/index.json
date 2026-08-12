@@ -47,5 +47,9 @@
     "Self, Stealth, +DEF(Melee, Ranged, AoE)",
     "PBAoE Minor DMG(Negative), Self +HP",
     "PBAoE, Terrorize (Foe), -ToHit (Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -39,7 +39,7 @@ export const NeutronBomb: Power = {
     "Accurate Defense Debuff",
     "Corruptor Archetype Sets",
     "Defense Debuff",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

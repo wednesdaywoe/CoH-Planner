@@ -31,5 +31,9 @@
     "Melee, High DMG(Smash), Minor DoT(Toxic), Foe Disorient",
     "Ranged, Moderate DMG(Energy), Foe Knockback",
     "Ranged, Foe Immobilize, -Recharge, -Fly, -SPD, -Jump"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

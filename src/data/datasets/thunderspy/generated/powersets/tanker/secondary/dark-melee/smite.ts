@@ -21,6 +21,7 @@ export const Smite: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -42,7 +43,7 @@ export const Smite: Power = {
     "Accurate To-Hit Debuff",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

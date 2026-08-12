@@ -44,7 +44,7 @@
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
     "Defense Debuff",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets",
     "Universal Debuff"
@@ -68,6 +68,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -118,6 +120,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {

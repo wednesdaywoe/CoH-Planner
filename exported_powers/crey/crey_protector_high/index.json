@@ -35,5 +35,9 @@
     "Melee, Moderate DMG(Smash), Foe Disorient",
     "Melee, Heavy DMG(Smash), Foe Knockback",
     "Toggle: PBAoE, Team +DEF(Smash, Lethal, Fire, Cold, Energy, Negative), +Res(Hold, Immobilize, Disorient)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

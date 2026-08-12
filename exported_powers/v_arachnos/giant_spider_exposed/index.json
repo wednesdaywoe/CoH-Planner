@@ -39,5 +39,9 @@
     "Ranged, High DMG(Psionic), Foe Hold",
     "PBAoE, Team +ToHit, +DEF(Melee, Ranged, AoE), +Res(Psionic)",
     "PBAoE, Moderate DMG(Psionic), Foe -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

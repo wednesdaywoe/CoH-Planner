@@ -47,5 +47,9 @@
     "Click: Self +Regeneration",
     "Self Rez",
     "Self +Res(All DMG but Psionics, Knock Back, Repel, Stun, Hold, Sleep, Immobilize), +DEF(All DMG but Psionics), +Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

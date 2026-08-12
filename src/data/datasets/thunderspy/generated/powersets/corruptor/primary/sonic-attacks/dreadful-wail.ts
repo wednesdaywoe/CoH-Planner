@@ -35,7 +35,7 @@ export const DreadfulWail: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

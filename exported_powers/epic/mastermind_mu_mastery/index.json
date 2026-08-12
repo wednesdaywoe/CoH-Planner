@@ -31,5 +31,9 @@
     "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
     "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
     "Ranged, DMG(Energy), Foe Hold, -End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

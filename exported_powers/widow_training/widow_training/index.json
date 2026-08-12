@@ -43,5 +43,9 @@
     "PBAoE Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
     "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
     "Ranged, Foe Taunt"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -101,15 +101,6 @@ def _expand_powers(rec: EntityRecord, ps_index: dict[str, list[tuple[str, str]]]
 def entity_to_dict(rec: EntityRecord, ps_index, msgs=None) -> dict:
     full_names, display_names, levels = _expand_powers(rec, ps_index)
 
-    # Resolve the level display name (P-hash → real string) when we have a
-    # message table available. Falls back to a name-derived label so the
-    # planner UI shows something sensible even when nothing resolves.
-    primary_display = ""
-    if rec.levels and rec.levels[0].display_names:
-        primary_display = rec.levels[0].display_names[0]
-        if msgs:
-            primary_display = msgs.resolve(primary_display)
-
     return {
         "name": rec.name,
         "group_name": rec.name.split("_")[0] if "_" in rec.name else "",
@@ -137,25 +128,21 @@ def entity_to_dict(rec: EntityRecord, ps_index, msgs=None) -> dict:
                 for p in rec.powers
             ],
         },
+        # `max_level` is null wherever the record states no upper bound: only
+        # Homecoming widened `Level` into a range. No synthesized entry stands in
+        # for an empty list — every record on all three forks carries real ones,
+        # and inventing a 1-50 band was how Rebirth's unparsed levels block
+        # looked like data (ENT-1).
         "levels": [
             {
-                "min_level": L.min_level,
+                "level": L.level,
                 "max_level": L.max_level,
                 "experience": L.experience,
                 "display_names": [msgs.resolve(d) if msgs else d for d in L.display_names],
                 "costumes": L.costumes,
             }
             for L in rec.levels
-        ] if rec.levels else [{
-            # Synthesize a single-level entry when the bin's levels list was
-            # empty / unparseable (Parse6 path) so downstream tooling can
-            # still pull a display name without null-checking the array.
-            "min_level": 1,
-            "max_level": 50,
-            "experience": 0,
-            "display_names": [primary_display or rec.name.split("_", 1)[-1].replace("_", " ")],
-            "costumes": [],
-        }],
+        ],
         "source_file": rec.source_file,
     }
 

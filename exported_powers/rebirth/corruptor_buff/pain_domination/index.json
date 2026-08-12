@@ -47,5 +47,9 @@
     "PBAoE Team +To Hit, +DMG, +RES(All DMG, Placate)",
     "PBAoE, Foe -RES(All), -DEF(All)",
     "Ally, +Regeneration, +Recovery, +DMG"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

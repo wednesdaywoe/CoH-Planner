@@ -37,8 +37,8 @@ export const Flashfire: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Ranged AoE Damage",
     "Stuns",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

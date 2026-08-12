@@ -2,11 +2,14 @@
   "name": "Pets_I24_RogueSummon_SecondMeasure",
   "group_name": "Pets",
   "commandable_pet": 0,
-  "power_tags": [],
+  "power_tags": [
+    "HumanSkeleton",
+    "Human"
+  ],
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "boss_elite",
     "description": "As a hired assassin, few could match Second Measure's efficacy. He usually works for the highest bidder, which of late has been the Tsoo. Recent events have him reevaluating his links to the Tsoo, however, so he is working with the Hammers of Justice to use his position within the organization to bring down some of their more vicious elements.",
@@ -56,14 +59,599 @@
   },
   "levels": [
     {
-      "min_level": 1,
-      "max_level": 50,
+      "level": 1,
+      "max_level": null,
       "experience": 0,
       "display_names": [
-        "I24 RogueSummon SecondMeasure"
+        "Second Measure"
       ],
-      "costumes": []
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 2,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 3,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 4,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 5,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 6,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 7,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 8,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 9,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 10,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 11,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 12,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 13,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 14,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 15,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 16,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 17,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 18,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 19,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 20,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 21,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 22,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 23,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 24,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 25,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 26,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 27,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 28,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 29,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 30,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 31,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 32,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 33,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 34,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 35,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 36,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 37,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 38,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 39,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 40,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 41,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 42,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 43,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 44,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 45,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 46,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 47,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 48,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 49,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 50,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 51,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 52,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 53,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
+    },
+    {
+      "level": 54,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Second Measure"
+      ],
+      "costumes": [
+        "Model_SecondMeasure"
+      ]
     }
   ],
-  "source_file": ""
+  "source_file": "DEFS/VILLAINS/PETS.VILLAIN"
 }

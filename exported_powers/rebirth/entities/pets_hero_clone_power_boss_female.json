@@ -2,11 +2,14 @@
   "name": "Pets_Hero_Clone_Power_Boss_Female",
   "group_name": "Pets",
   "commandable_pet": 0,
-  "power_tags": [],
+  "power_tags": [
+    "HumanSkeleton",
+    "Human"
+  ],
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Default_Ranged",
     "character_class_name": "minion_pets",
     "description": "No one knows who these helmet clad heroes are,or where they come from. The only thing that's certain is their loyalty to Crey. The Power Paragon Protectors can generate powerful blasts of energy in both melee and ranged combat situations.",
@@ -71,14 +74,599 @@
   },
   "levels": [
     {
-      "min_level": 1,
-      "max_level": 50,
+      "level": 1,
+      "max_level": null,
       "experience": 0,
       "display_names": [
-        "Hero Clone Power Boss Female"
+        "Paragon Protector"
       ],
-      "costumes": []
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 2,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 3,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 4,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 5,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 6,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 7,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 8,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 9,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 10,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 11,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 12,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 13,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 14,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 15,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 16,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 17,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 18,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 19,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 20,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 21,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 22,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 23,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 24,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 25,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 26,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 27,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 28,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 29,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 30,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 31,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 32,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 33,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 34,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 35,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 36,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 37,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 38,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 39,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 40,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 41,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 42,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 43,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 44,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 45,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 46,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 47,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 48,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 49,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 50,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 51,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 52,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 53,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
+    },
+    {
+      "level": 54,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Paragon Protector"
+      ],
+      "costumes": [
+        "CFR"
+      ]
     }
   ],
-  "source_file": ""
+  "source_file": "DEFS/VILLAINS/PETS.VILLAIN"
 }

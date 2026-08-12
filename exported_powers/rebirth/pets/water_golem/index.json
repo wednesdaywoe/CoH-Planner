@@ -35,5 +35,9 @@
     "Resistance",
     "Ranged, High DMG(Cold/Smash), Foe -Speed, Knockdown, Self +Tidal Power",
     "Ranged (Targeted AoE), Moderate DMG(Cold/Smash), Foe -Speed, Knockdown, Self -Tidal Power"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

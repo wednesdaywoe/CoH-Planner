@@ -42,7 +42,7 @@ export const Crush: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Ranged Damage",
     "Slow Movement",
     "Universal Damage Sets"

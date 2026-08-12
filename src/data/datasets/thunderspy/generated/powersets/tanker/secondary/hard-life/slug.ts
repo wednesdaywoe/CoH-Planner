@@ -21,6 +21,7 @@ export const Slug: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.05,
     "range": 40,
@@ -42,7 +43,7 @@ export const Slug: Power = {
     "Knockback",
     "Ranged Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

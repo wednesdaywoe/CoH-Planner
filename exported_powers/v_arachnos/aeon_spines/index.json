@@ -39,5 +39,9 @@
     "DoT(Toxic), -SPD, -Recharge",
     "Toggle: Self +Res(Smash, Lethal)",
     "Self +DEF, +Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

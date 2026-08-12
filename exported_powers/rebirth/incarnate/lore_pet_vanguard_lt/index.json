@@ -23,5 +23,9 @@
     "Melee, Moderate DMG(Lethal/Energy), -Resist (Lethal/Energy)",
     "-Def",
     "Targeted AoE Lethal/Smashing, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -9,7 +9,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Default_Ranged",
     "character_class_name": "minion_pets",
     "description": "Sergeants are high ranking officers who have worked their way to the top through loyalty and diligence and have been equipped with top of the line 'non-lethal' force weaponry.",
@@ -47,7 +47,7 @@
   },
   "levels": [
     {
-      "min_level": 10,
+      "level": 10,
       "max_level": 50,
       "experience": 0,
       "display_names": [

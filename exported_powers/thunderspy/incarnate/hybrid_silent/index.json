@@ -259,5 +259,9 @@
     "Assault Genome",
     "Toggle: Chance for Psionic damage (Special)",
     "Hybrid: Lockout"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

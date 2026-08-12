@@ -21,6 +21,7 @@ export const Flay: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 9,
@@ -40,7 +41,7 @@ export const Flay: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

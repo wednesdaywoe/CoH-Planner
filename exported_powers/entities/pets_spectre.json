@@ -9,7 +9,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 2,
     "ai_config": "CircleOfThorns_Spectres",
     "character_class_name": "minion_grunt",
     "description": "This spectral creature may have once been the soul of a powerful wizard, but now it's long imprisonment has left it little more than a tool for destruction.",
@@ -65,7 +65,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

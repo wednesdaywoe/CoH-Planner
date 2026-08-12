@@ -41,7 +41,7 @@ export const GuardedSpin: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Defense Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

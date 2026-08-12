@@ -47,5 +47,9 @@
     "Self, +HP, +Health over Time, -Blood Frenzy",
     "Melee, Light DMG(Lethal), Foe Special DoT(Lethal), -Blood Frenzy",
     "PBAoE, Superior DMG(Lethal), Foe Minor DoT(Lethal), +3 Blood Frenzy, Self Teleport"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

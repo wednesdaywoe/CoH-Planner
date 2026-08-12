@@ -23,5 +23,9 @@
     "Ranged, Minor DMG(Lethal)",
     "Ranged, Hold, -Recharge (Foe), -Speed(Foe,All)",
     "Ranged, High DMG(Smashing/Energy), +DMG(All), -Res(Foe,All), Stun"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

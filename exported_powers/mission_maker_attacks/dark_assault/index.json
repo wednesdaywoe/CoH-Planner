@@ -47,5 +47,9 @@
     "Ranged, High DMG(Negative), Target -To Hit, Self +HP",
     "Toggle: PBAoE Minor DoT(Negative)",
     "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

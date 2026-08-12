@@ -35,5 +35,9 @@
     "PBAoE Melee, Moderate DMG(Energy/Smash), Foe Disorient",
     "Melee (Cone), Moderate DMG(Energy/Smash), Foe Disorient",
     "Melee, Moderate DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

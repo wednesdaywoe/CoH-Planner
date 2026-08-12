@@ -27,5 +27,9 @@
     "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
     "Auto: Self +Res(All DMG, Status Effects), +HP",
     "Auto: Self +Recharge, +SPD, Res (Slow/Confuse)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

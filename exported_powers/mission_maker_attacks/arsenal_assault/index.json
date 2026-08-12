@@ -47,5 +47,9 @@
     "Toggle: Self +To Hit, +Perception, Res(DeBuff To Hit)",
     "Sniper, High DMG(Lethal), Foe Knockback",
     "Ranged, DoT(Fire)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

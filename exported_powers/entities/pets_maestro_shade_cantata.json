@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 3,
     "ai_config": "Pets_Melee",
     "character_class_name": "lt_grunt",
     "description": "A choral work that uses solo voices with an instrumental (usually orchestral) accompaniment. A cantata is generally a choral work of some length that also uses solo voices, usually with instrumental accompaniment. In this case, it's a haunting melody that's also tearing you apart.",
@@ -50,7 +50,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 60,
       "experience": 0,
       "display_names": [

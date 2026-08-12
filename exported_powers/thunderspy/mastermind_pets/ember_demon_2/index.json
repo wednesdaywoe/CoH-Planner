@@ -23,5 +23,9 @@
     "Close (Cone), Moderate DoT(Fire)",
     "Demon Ally Heal",
     "Enchant Demon"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

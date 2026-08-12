@@ -47,5 +47,9 @@
     "Ranged (Cone), Foe -SPD, -Recharge",
     "Melee, High DMG(Cold), Foe Hold",
     "PBAoE Melee, Moderate DMG(Smashing), Foe Sleep"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

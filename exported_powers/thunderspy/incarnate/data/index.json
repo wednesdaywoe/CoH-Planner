@@ -47,5 +47,9 @@
     "Summon Vanguard LT & Support Essences",
     "Summon Longbow Boss & LT Essences",
     "Summon Arachnos Boss & Support Essences"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

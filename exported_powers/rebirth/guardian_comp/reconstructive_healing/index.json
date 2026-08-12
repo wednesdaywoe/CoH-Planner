@@ -47,5 +47,9 @@
     "PBAoE, Ally +Regeneration",
     "Self Rez, +Regeneration, +Recovery",
     "PBAoE, Ally +DEF(All), +DMG, +To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

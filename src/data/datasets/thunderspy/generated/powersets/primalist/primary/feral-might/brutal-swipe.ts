@@ -44,7 +44,7 @@ export const BrutalSwipe: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Healing",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Primalist Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

@@ -35,7 +35,7 @@ export const SaltCrystals: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Sleep",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

@@ -39,5 +39,9 @@
     "Immobilize, -Fly, -Recharge",
     "Self Destruct",
     "Auto Res(Smash, Lethal, Toxic, Psionic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -70,6 +70,8 @@
         "PVEOnly"
       ],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -119,6 +121,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -179,6 +183,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "UNSATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -230,6 +236,8 @@
         "PVPOnly"
       ],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -277,6 +285,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -365,6 +375,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "UNSATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -441,6 +453,8 @@
       ],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 1,
       "templates": [
         {
@@ -462,7 +476,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "Redirects.Storm_Blast.StormCell_Tempest target.ownPower?",
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -520,6 +534,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -573,6 +589,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [],
           "child_effects": [
@@ -588,6 +606,8 @@
               ],
               "flags": [],
               "is_pvp": "EITHER",
+              "requires_pv": "EITHER",
+              "requires_default": "SATISFIED",
               "eval_flags": 1,
               "templates": [
                 {
@@ -609,7 +629,7 @@
                   "tick_chance": 1.0,
                   "tick_mag_multiplier": 1.0,
                   "tick_mag_additive": 0.0,
-                  "jit_requires": "",
+                  "jit_requires": "Redirects.Storm_Blast.StormCell_Tempest target.ownPower?",
                   "caster_stack": "Individual",
                   "stack": "Replace",
                   "stack_limit": 2,

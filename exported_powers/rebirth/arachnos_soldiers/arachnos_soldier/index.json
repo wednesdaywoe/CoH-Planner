@@ -43,5 +43,9 @@
     "Melee, Moderate DMG(Lethal), DoT(Lethal)",
     "Ranged(Targeted AoE), DoT(Toxic), -Res(All)",
     "Ranged(Targeted AoE), Moderate DMG (Lethal/Smash), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -41,7 +41,7 @@ export const Liquefy: Power = {
     "Defense Debuff",
     "Holds",
     "Knockback",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

@@ -21,6 +21,7 @@ export const GravityWell: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -43,7 +44,7 @@ export const GravityWell: Power = {
     "Holds",
     "Melee Damage",
     "Slow Movement",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

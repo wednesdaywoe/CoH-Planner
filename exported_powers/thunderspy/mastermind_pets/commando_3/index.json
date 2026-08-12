@@ -31,5 +31,9 @@
     "Sniper (Targeted AoE), Superior DMG(Lethal/Smash), Foe Knockback",
     "Build Turret: Ranged, Moderate DMG(Lethal)",
     "Tactical Upgrade"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -23,5 +23,9 @@
     "Ranged, High DMG(Smash), Knockback, -Fly",
     "Melee, Moderate DMG(Smash), Knockback",
     "Melee, High DMG(Smash), Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

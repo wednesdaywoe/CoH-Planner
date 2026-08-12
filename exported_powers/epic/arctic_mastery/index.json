@@ -31,5 +31,9 @@
     "Ranged, DMG(Cold), Foe -Recharge, -SPD",
     "Ranged (Cone), Foe -SPD, -Recharge",
     "Ranged (Location AoE), DoT(Cold), Foe -Recharge, -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

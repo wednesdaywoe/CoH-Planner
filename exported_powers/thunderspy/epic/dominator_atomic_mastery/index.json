@@ -31,5 +31,9 @@
     "Self, +Absorb, +Regeneration",
     "Toggle: PBAoE, Foe Hold",
     "Close, Moderate Cone DMG(Energy/Toxic), Foe -DEF, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

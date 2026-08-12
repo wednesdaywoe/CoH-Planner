@@ -43,5 +43,9 @@
     "Ranged (Location AoE), Minor DoT(Cold, Lethal), Foe -Recharge, -SPD",
     "Ranged, Superior DMG(Cold/Smash), Foe -Recharge, -SPD, -To-hit",
     "Ranged (Location AoE), Extreme DoT(Cold), Foe -To-hit, -SPD, -Recharge, Knockback, Self -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Ranged",
     "character_class_name": "boss_elite",
     "description": "The Master of Evil, the Count of Cruel, the Archvillain of Anarchy. Lord Recluse has been called many things. But the people of the Rogue Isles know him as their lord and ruler. Lord Recluse has a mysterious tie with Paragon City's own Statesman - some even claim they were once close companions. Their hatred for one another certainly belies a secret perhaps best left buried.",
@@ -53,7 +53,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

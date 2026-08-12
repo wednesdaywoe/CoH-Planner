@@ -59,5 +59,9 @@
     "Ranged, Teleport Foe",
     "Ranged (Location), Self Teleport",
     "Auto Res Knockback, Sleep, Disorient, Hold, Teleport, Smashing, Lethal, Energy"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

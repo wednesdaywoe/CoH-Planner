@@ -35,5 +35,9 @@
     "Ranged, Minor DMG(Lethal), Minor DoT(Lethal)",
     "Toggle: Self +DEF(Smashing, Lethal, Energy), Res(Defense Debuff)",
     "Toggle: Self +DEF(Fire, Cold, Energy, Negative), Res(Defense Debuff)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

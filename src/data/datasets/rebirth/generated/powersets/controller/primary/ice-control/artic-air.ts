@@ -37,7 +37,7 @@ export const ArticAir: Power = {
     "Confuse",
     "Controller Archetype Sets",
     "Slow Movement",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "maxSlots": 6,

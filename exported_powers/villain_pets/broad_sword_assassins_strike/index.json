@@ -23,5 +23,9 @@
     "Melee, Extreme DMG(Lethal)",
     "Melee, Superior DMG(Lethal)",
     "Melee, Extreme DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

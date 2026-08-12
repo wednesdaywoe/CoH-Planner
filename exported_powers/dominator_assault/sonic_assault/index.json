@@ -47,5 +47,9 @@
     "Toggle: PBAoE, Foe -Res(All)",
     "Ranged, DMG(Energy/Smash), Foe -Res(All)",
     "Melee, DMG(Energy/Smash), Foe Chance for Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

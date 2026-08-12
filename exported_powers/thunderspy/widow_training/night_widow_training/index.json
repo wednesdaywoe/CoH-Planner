@@ -35,5 +35,22 @@
     "Extreme DMG (Lethal/Toxic), DoT(Toxic), -Regeneration, -Recharge, -SPD.",
     "Superior DMG (Lethal/Toxic), DoT(Toxic), -Regeneration, -Recharge, -SPD.",
     "Ranged (Cone), Moderate DMG(Psionic), Foe -Recharge"
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 23,
+  "specialize_requires": [
+    "Widow_Training.Tarantula_Training",
+    "powerset?",
+    "Teamwork.Tarantula_Teamwork",
+    "powerset?",
+    "||",
+    "Widow_Training.Fortunata_Training",
+    "powerset?",
+    "Teamwork.Fortunata_Teamwork",
+    "powerset?",
+    "||",
+    "||",
+    "!"
   ]
 }

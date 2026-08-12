@@ -21,6 +21,7 @@ export const TouchofFear: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.2,
     "range": 7,
@@ -41,9 +42,9 @@ export const TouchofFear: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Fear",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "maxSlots": 6,

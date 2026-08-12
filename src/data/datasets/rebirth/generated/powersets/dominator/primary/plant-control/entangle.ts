@@ -37,7 +37,7 @@ export const Entangle: Power = {
     "Dominator Archetype Sets",
     "Immobilize",
     "Ranged Damage",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

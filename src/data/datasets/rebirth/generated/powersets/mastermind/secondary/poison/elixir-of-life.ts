@@ -35,7 +35,7 @@ export const ElixirofLife: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Resist Damage",
-    "Resurrection"
+    "Rez Sets"
   ],
   "maxSlots": 6,
   "damage": {

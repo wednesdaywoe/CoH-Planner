@@ -47,5 +47,9 @@
     "Melee (Targeted AoE), Ally Rez, Foe Sleep, -End, -Recovery",
     "Ranged (Chain), Ally +Absorb, Self +Static",
     "Ranged, Ally +Special, +Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "Ranged (Targeted AoE), Foe -Perception, -To Hit",
     "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
     "PBAoE, Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -23,5 +23,9 @@
     "Melee, Minor DMG(Lethal/Toxic)",
     "Melee, Moderate DMG(Lethal/Toxic), Foe Knockdown",
     "Enchant"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

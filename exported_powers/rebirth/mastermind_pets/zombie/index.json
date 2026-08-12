@@ -23,5 +23,9 @@
     "Auto Res Sleep, Fear, Disorient, Slow, Smashing, Cold, Negative, Toxic, Psionic",
     "Melee Smash",
     "Self Leap"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

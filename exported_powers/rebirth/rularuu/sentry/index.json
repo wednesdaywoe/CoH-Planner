@@ -27,5 +27,9 @@
     "Self Travel",
     "Cone Lethal, Med Damage, Knockback",
     "Melee Heavy Lethal"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

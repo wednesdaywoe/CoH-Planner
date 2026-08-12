@@ -23,5 +23,9 @@
     "Damping Bubble",
     "Damping Bubble",
     "Damping Bubble"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

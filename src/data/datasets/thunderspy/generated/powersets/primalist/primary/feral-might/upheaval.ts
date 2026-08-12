@@ -41,7 +41,7 @@ export const Upheaval: Power = {
   "allowedSetCategories": [
     "Healing",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Primalist Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

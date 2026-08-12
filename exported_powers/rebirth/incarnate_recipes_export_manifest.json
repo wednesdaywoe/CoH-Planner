@@ -1,0 +1,17 @@
+{
+  "schema": "bin-crawler-export-manifest/2",
+  "incarnate_recipes_fingerprint": "ba7ae2a19a746bceee95c7c9ca197d9c40da4b23f16df8cd96d0334efc24473b",
+  "source": {
+    "assets_dir": "/home/jiiwii/Games/coh-sweettea/drive_c/users/jiiwii/AppData/Local/Thunderspy Gaming/Sweet Tea/rebirth",
+    "shard": "rebirth",
+    "sources": [
+      {
+        "name": "z_rebirth_bin.pigg",
+        "bytes": 40646543,
+        "modified": "2026-07-21T02:33:13Z",
+        "sha256": "bc7e8ee6b787b8c5b9ab1c5c19652156db81b4a0a58687bef40d5c97d28cfaf4"
+      }
+    ]
+  },
+  "incarnate_recipes_records": 2014
+}

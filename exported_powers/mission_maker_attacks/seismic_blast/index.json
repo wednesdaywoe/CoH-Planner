@@ -47,5 +47,9 @@
     "Sniper, DMG(Smash), Foe -Jump, -Fly",
     "Ranged, DMG(Smash), Foe Disorient, Special",
     "Ranged (Location AoE), DMG(Smash/Fire), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

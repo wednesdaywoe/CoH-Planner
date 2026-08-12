@@ -41,7 +41,7 @@ export const Thundergust: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Knockback",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets",
     "Universal Debuff"

@@ -41,8 +41,8 @@ export const Intrusion: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Healing",
-    "Leaping & Sprints",
-    "Running & Sprints",
+    "Leaping",
+    "Running",
     "Universal Travel"
   ],
   "maxSlots": 6,

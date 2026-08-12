@@ -41,8 +41,8 @@
   "allowed_set_categories": [
     "Blaster Archetype Sets",
     "Confuse",
-    "Melee AoE Damage",
-    "Universal Control Duration",
+    "PBAoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "cast_through": [],
@@ -66,6 +66,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 2,
       "templates": [
         {
@@ -112,6 +114,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {

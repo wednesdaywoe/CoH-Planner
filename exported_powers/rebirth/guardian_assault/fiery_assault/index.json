@@ -47,5 +47,9 @@
     "Melee, High DoT(Fire)",
     "Sniper, Extreme DMG(Fire)",
     "High DMG(Fire)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

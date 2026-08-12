@@ -47,5 +47,9 @@
     "Ranged, DMG(Cold), Foe -Recharge, -SPD, -To Hit",
     "Ranged, DMG(Cold), Foe Hold",
     "Ranged (Location AoE), DoT(Cold), Foe -To Hit, -SPD, -Recharge, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

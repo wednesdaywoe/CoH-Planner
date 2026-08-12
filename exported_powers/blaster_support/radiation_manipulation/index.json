@@ -47,5 +47,9 @@
     "PBAoE, DMG(Toxic/Energy), Foe Disorient, -DEF, Special",
     "PBAoE, Foe Hold, Immobilize",
     "Melee, DMG(Energy/Smash), Foe Disorient, -DEF, +Positrons"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

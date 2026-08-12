@@ -47,5 +47,9 @@
     "Ranged Hold",
     "Place Trap: PBAoE Foe Hold, -END, -Recovery, Chance to Hold, Minor DoT(Toxic)",
     "Ranged (Infect Henchman); Foe -RES, -DEF, -To Hit, -Res, +Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

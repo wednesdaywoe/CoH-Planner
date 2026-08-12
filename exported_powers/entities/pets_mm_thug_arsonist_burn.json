@@ -1,12 +1,12 @@
 {
   "name": "Pets_MM_Thug_Arsonist_Burn",
   "group_name": "Pets",
-  "commandable_pet": 1,
+  "commandable_pet": 0,
   "power_tags": [],
   "copy_creator_mods": false,
-  "can_zone": true,
+  "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Ignore",
     "character_class_name": "henchman_minion_small",
     "description": "The Arsonist has set this fire with his Fire Bomb. You should stay away!",
@@ -44,7 +44,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

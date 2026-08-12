@@ -31,5 +31,9 @@
     "Ranged (Cone), Moderate DoT(Toxic)",
     "Summon Water Spout: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
     "Summon Hybrid: Ranged Moderate DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

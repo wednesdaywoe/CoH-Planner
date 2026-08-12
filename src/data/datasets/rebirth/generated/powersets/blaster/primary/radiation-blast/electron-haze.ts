@@ -42,7 +42,7 @@ export const ElectronHaze: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

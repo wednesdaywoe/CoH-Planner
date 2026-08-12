@@ -47,5 +47,9 @@
     "Toggle: PBAoE, Minor DoT(Cold), Foe -Recharge, -Speed",
     "Melee, Superior DMG(Cold/Lethal), Foe -Recharge, -SPD",
     "Ranged, High DMG(Cold/Smash), Foe -Recharge, -SPD, -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

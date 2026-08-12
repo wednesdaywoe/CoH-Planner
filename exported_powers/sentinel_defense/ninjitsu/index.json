@@ -47,5 +47,9 @@
     "Auto: Self +Res(Knockback, Knockup, All DMG)",
     "Ranged (Cone), Foe Placate, -To Hit, Sleep, Confuse, -Perception, +Special",
     "Self +DEF, +SPD, +Recovery, Res(DeBuff DEF), +Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

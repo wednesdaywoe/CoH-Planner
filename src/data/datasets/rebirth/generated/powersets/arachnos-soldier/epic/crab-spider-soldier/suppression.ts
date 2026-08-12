@@ -39,8 +39,8 @@ export const Suppression: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
+    "Targeted AoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

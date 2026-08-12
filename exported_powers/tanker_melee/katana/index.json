@@ -47,5 +47,9 @@
     "PBAoE Melee, DMG(Lethal), Foe -Def",
     "Melee, DMG(Lethal), Foe Knockup, -DEF",
     "Melee, DMG(Lethal), Foe Knockback, -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

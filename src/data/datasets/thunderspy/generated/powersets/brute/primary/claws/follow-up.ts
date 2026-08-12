@@ -26,7 +26,7 @@ export const FollowUp: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Threat Duration",
+    "Taunt",
     "To Hit Buff"
   ],
   "maxSlots": 6,

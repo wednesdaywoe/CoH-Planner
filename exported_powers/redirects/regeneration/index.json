@@ -31,5 +31,9 @@
     "Self +Max HP, Rez(Special)",
     "Self +Max HP, Rez(Special)",
     "Toggle: Self +Regeneration, +Res(-Regeneration, -End, -Recovery)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

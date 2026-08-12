@@ -45,7 +45,7 @@ export const ElectricFence: Power = {
     "Endurance Modification",
     "Immobilize",
     "Ranged Damage",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -23,5 +23,9 @@
     "Ranged, Moderate DMG(Energy)",
     "Ranged, Moderate DMG(Energy)",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "Melee (Targeted AoE), Light DMG(Negative), Fear, Foe -To Hit",
     "Melee (Targeted AoE), Light DMG(Negative), Fear, Foe -To Hit",
     "Melee (Targeted AoE), Light DMG(Negative), Fear, Foe -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

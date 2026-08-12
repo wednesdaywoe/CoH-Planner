@@ -47,5 +47,9 @@
     "Ranged (Cone), Superior DMG (Energy/Smashing), Chance for Knockback (Foe)",
     "Melee, Moderate DMG (Smashing/Energy), Chance for Stun (Foe)",
     "Melee (Targeted AoE), Extreme DMG(Energy/Smashing), Stun (Foe), Chance to Taunt (Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -34,7 +34,7 @@ export const Aim: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "To Hit Buff",
     "Universal Damage Sets"
   ],

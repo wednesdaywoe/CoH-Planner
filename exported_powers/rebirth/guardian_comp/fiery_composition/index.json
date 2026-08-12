@@ -47,5 +47,9 @@
     "Ranged Foe -DMG, -END, -Recovery, -Regeneration",
     "Ranged (Targeted AoE), Foe -Res, -DEF",
     "PBAoE, Team Rez, Healing over Time, Foe Extreme DMG(Fire), Knockback, Stun"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

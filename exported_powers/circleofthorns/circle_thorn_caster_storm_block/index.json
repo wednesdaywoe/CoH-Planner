@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "Ranged, Moderate DMG(Cold), Foe Hold, -SPD, -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

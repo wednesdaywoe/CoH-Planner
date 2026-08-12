@@ -41,7 +41,7 @@
   "allowed_set_categories": [
     "Controller Archetype Sets",
     "Fear",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [],
@@ -62,6 +62,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {

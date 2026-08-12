@@ -39,7 +39,7 @@ export const TeslaCage: Power = {
     "Endurance Modification",
     "Holds",
     "Ranged Damage",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

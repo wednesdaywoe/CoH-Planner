@@ -47,5 +47,9 @@
     "Ranged Chain, DoT(Energy), Foe -End",
     "Ranged, DoT(Cold), +Wet, Special",
     "Ranged (Location AoE), DoT(Energy), +Wet"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

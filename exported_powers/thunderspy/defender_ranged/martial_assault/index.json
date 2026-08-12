@@ -47,5 +47,9 @@
     "Melee, Superior DMG(Smash), Foe Disorient",
     "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
     "Ranged, High DMG(Lethal), Chance for DoT (Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

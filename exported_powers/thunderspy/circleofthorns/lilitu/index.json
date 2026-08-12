@@ -47,5 +47,9 @@
     "DoT(Fire)",
     "Ranged (Targeted AoE), Minor DoT(Fire), Foe Immobilize",
     "Close, High DMG(Fire)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

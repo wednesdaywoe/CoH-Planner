@@ -52,6 +52,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -73,8 +75,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "arch source> Class_Minion_Grunt eq kHeld source> 0 <= kStun source> 0 <= && kSleep source> 0 <= && kTerrorize source> 0 <= && &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
@@ -103,6 +105,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -124,8 +128,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "arch source> Class_Lt_Grunt eq kHeld source> 0 <= kStun source> 0 <= && kSleep source> 0 <= && kTerrorize source> 0 <= && &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
@@ -154,6 +158,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -175,8 +181,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "combatlevel source> 5 > arch source> Class_Lt_Grunt eq && kHeld source> 0 <= kStun source> 0 <= && kSleep source> 0 <= && kTerrorize source> 0 <= && &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
@@ -205,6 +211,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -226,8 +234,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "arch source> Class_Boss_Grunt eq arch source> Class_Boss_Elite eq || arch source> Class_Boss_Archvillain eq || kHeld source> 0 <= kStun source> 0 <= && kSleep source> 0 <= && kTerrorize source> 0 <= && &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
@@ -256,6 +264,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -277,8 +287,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "combatlevel source> 5 > arch source> Class_Boss_Grunt eq arch source> Class_Boss_Elite eq || arch source> Class_Boss_Archvillain eq || && kHeld source> 0 <= kStun source> 0 <= && kSleep source> 0 <= && kTerrorize source> 0 <= && &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
@@ -307,6 +317,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -328,8 +340,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "combatlevel source> 17 > arch source> Class_Boss_Grunt eq arch source> Class_Boss_Elite eq || arch source> Class_Boss_Archvillain eq || && kHeld source> 0 <= kStun source> 0 <= && kSleep source> 0 <= && kTerrorize source> 0 <= && &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,

@@ -23,5 +23,9 @@
     "Melee, Moderate DMG (Cold/Negative Energy), -RES(Foe, Cold/Negative Energy)",
     "Melee (Cone), Moderate DMG (Cold/Negative Energy), -RES(Foe, Cold/Negative Energy), Fear(Foe)",
     "Targeted AoE (Secondary Targeted), Superior DMG(Cold/Negative Energy), -DEF(Foe, All), -Regen(Foe), -Rec(Foe), Chance for EndDrain(Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

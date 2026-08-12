@@ -21,6 +21,7 @@ export const ModerateBridge: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -43,7 +44,7 @@ export const ModerateBridge: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

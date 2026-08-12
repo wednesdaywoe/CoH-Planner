@@ -43,5 +43,9 @@
     "Toggle: Self +DEF(All), Res(Immobilize)",
     "Melee (Cone), Moderate DMG (Smashing), Foe Knockdown, Stun",
     "Melee (Cone), Moderate DMG (Smashing), Foe Knockdown, Stun"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

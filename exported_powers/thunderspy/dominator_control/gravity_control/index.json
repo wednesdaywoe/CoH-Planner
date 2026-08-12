@@ -47,5 +47,9 @@
     "Toggle: PBAoE, Moderate DoT(Smash), Foe Knock up, Movement slow, -Fly",
     "Toggle, Ranged (Location AoE), Foe Intangible",
     "Ranged (Targeted AoE), Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

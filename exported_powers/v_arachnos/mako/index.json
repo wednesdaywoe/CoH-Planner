@@ -63,5 +63,9 @@
     "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
     "Melee, Foe Placate, Self Stealth/Hide",
     "Self Auto, +Jump, +Speed"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

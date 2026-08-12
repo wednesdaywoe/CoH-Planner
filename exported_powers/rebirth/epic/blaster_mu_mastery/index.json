@@ -31,5 +31,9 @@
     "Summon Mu Adept: Ranged Moderate DMG(Energy)",
     "Ranged (Targeted AoE), Minor DoT(Energy), Foe Immobilize, -END",
     "Ranged, Minor DMG(Energy), Foe Hold, -End"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

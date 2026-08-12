@@ -47,5 +47,9 @@
     "Cone, DoT (Psionic), Foe Disorient",
     "Targeted AoE, Hold",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

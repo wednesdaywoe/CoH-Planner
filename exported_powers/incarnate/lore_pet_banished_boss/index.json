@@ -27,5 +27,9 @@
     "Ranged (Cone), High DMG(Cold), Moderate DoT(Negative Energy), -RES(Foe, All), -End(Foe), Chance for +EndCost(Foe)",
     "Ranged, Light DMG(Cold), Minor DoT(Negative Energy), -ToHit(Foe), -Rech(Foe), -Speed(Foe, All), Chance for +EndCost(Foe)",
     "Targeted AoE (Secondary Target), Moderate DMG(Cold), Moderate(Negative Energy), +EndCost(Foe), -Regen(Foe), -Rec(Foe)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

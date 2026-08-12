@@ -411,5 +411,9 @@
     "Enhances To Hit Buffs",
     "Increases Attack Rate",
     "Enhances Disorient Duration"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

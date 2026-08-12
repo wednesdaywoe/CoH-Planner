@@ -23,5 +23,9 @@
     "Sniper, Extreme DMG(Energy), Foe -End",
     "Sniper, Extreme DMG(Energy), Foe -End",
     "Melee (AoE), Minor DMG(Smash, Energy), Foe Disorient, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

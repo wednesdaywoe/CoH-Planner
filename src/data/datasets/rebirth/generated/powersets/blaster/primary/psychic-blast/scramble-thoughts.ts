@@ -37,7 +37,7 @@ export const ScrambleThoughts: Power = {
     "Blaster Archetype Sets",
     "Ranged Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

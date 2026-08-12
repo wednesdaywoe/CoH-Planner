@@ -23,5 +23,9 @@
     "Melee Energy, Knockback",
     "Melee, Minor DMG(Energy), Foe Stun, Knockback",
     "Ranged, Moderate DMG(Smash)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

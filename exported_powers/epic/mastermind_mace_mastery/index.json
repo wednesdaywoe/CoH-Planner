@@ -31,5 +31,9 @@
     "Ranged (Cone), DMG(Energy), Foe Knockback",
     "Self +Special",
     "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

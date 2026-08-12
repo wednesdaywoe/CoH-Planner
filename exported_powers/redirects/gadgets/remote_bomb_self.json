@@ -71,6 +71,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -160,6 +162,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -206,6 +210,9 @@
           "flags2_raw": 4
         }
       ],
+      "requires_archetypes": [
+        "Class_Blaster"
+      ],
       "child_effects": [
         {
           "chance": 1.0,
@@ -219,6 +226,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -273,6 +282,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -318,6 +329,9 @@
           "flags_raw": 17664,
           "flags2_raw": 4
         }
+      ],
+      "requires_archetypes": [
+        "Class_Controller"
       ]
     },
     {
@@ -330,6 +344,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -368,6 +384,10 @@
           "flags_raw": 17664,
           "flags2_raw": 4
         }
+      ],
+      "requires_archetypes": [
+        "Class_Controller",
+        "Class_Defender"
       ]
     },
     {
@@ -380,6 +400,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -461,6 +483,9 @@
           "flags_raw": 17664,
           "flags2_raw": 4
         }
+      ],
+      "requires_archetypes": [
+        "Class_Corruptor"
       ]
     },
     {
@@ -473,6 +498,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -518,6 +545,9 @@
           "flags_raw": 17664,
           "flags2_raw": 4
         }
+      ],
+      "requires_archetypes": [
+        "Class_Defender"
       ]
     }
   ],

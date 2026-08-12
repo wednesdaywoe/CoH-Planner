@@ -40,7 +40,7 @@ export const ChainFences: Power = {
     "Controller Archetype Sets",
     "Endurance Modification",
     "Immobilize",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

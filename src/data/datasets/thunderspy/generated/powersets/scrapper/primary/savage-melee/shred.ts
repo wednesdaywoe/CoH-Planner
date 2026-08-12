@@ -41,7 +41,7 @@ export const Shred: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

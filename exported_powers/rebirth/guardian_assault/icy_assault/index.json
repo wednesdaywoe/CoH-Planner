@@ -47,5 +47,9 @@
     "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
     "Ranged, Superior DMG(Cold/Smash), Foe -Recharge, -SPD, -To Hit",
     "Ranged, Extreme DMG(Cold), Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

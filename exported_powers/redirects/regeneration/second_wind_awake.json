@@ -61,6 +61,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [],
       "child_effects": [
@@ -74,6 +76,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -126,6 +130,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [],
           "child_effects": [
@@ -139,6 +145,8 @@
               "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
+              "requires_pv": "EITHER",
+              "requires_default": "SATISFIED",
               "eval_flags": 0,
               "templates": [
                 {
@@ -228,6 +236,8 @@
               "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
+              "requires_pv": "EITHER",
+              "requires_default": "UNSATISFIED",
               "eval_flags": 0,
               "templates": [
                 {
@@ -362,6 +372,8 @@
                   "tags": [],
                   "flags": [],
                   "is_pvp": "EITHER",
+                  "requires_pv": "EITHER",
+                  "requires_default": "SATISFIED",
                   "eval_flags": 1,
                   "templates": [
                     {
@@ -383,7 +395,7 @@
                       "tick_chance": 1.0,
                       "tick_mag_multiplier": 1.0,
                       "tick_mag_additive": 0.0,
-                      "jit_requires": "",
+                      "jit_requires": "Cur.kHitPoints source> 0 ==",
                       "caster_stack": "Individual",
                       "stack": "Stack",
                       "stack_limit": 2,

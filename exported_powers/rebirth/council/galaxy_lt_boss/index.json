@@ -23,5 +23,9 @@
     "Immobilize, -Recharge, -SPD",
     "-Recharge, -SPD",
     "Disorient, -Recharge, -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

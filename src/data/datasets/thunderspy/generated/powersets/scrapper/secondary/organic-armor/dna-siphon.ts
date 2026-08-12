@@ -40,7 +40,7 @@ export const DNASiphon: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

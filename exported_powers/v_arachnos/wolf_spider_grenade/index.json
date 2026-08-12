@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged (Targeted AoE), Moderate DMG(Fire/Lethal, Foe Knockback",
     "Ranged, Foe Immobilize, -Fly, -Recharge, -SPD, -Jump"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

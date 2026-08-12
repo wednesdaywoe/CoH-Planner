@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Melee, Moderate DMG(Lethal), Foe -DEF",
     "Melee (Cone), High DMG(Lethal), Foe -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -40,7 +40,7 @@ export const Buckshot: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Tanker Archetype Sets",
     "Universal Damage Sets"
   ],

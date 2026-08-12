@@ -47,5 +47,9 @@
     "Ranged (Cone), Light DMG(Cold/Smash), Foe Knockback, Disorient, -Speed",
     "Ranged (Targeted AoE), Foe Hold, -Def",
     "Summon Water Golem"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

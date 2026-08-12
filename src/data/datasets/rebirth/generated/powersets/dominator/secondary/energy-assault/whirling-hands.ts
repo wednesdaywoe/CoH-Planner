@@ -38,9 +38,9 @@ export const WhirlingHands: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

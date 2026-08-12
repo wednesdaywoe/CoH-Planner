@@ -47,5 +47,9 @@
     "Toggle: Ranged (Targeted AoE), Team +DMG, +ToHit, +Recharge, Special Damage",
     "Summon Barrier Reef: Team +Absorb, +DEF(All)",
     "PBAoE, Team +MaxHP, +MaxEnd, +Regen, +Range"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

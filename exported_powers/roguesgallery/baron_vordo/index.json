@@ -35,5 +35,9 @@
     "Melee, Moderate DMG(Psionic), Target -Recharge",
     "Ranged, High DMG(Psionic), Foe Stun, -Rech",
     "PBAoE Foe -Regen, -Recovery; Self +Regen, +Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

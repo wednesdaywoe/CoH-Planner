@@ -23,5 +23,9 @@
     "Ranged, DoT (Fire), Foe Hold",
     "Ranged (Location AoE), DoT (Fire), -SPD",
     "Enlighten"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

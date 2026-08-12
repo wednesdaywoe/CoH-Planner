@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "Increases Attack Rate and Global Chance for Minor DMG(Toxic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -34,8 +34,8 @@ export const OilSlickArrow: Power = {
   ],
   "allowedSetCategories": [
     "Defense Debuff",
-    "Ranged AoE Damage",
     "Slow Movement",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

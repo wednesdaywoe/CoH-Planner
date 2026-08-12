@@ -35,5 +35,9 @@
     "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
     "Zone-Range: Teleport Teammate",
     "Ranged, Teleport Foe"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

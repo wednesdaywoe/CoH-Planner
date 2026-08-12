@@ -19,5 +19,9 @@
   "power_short_helps": [
     "-Fly, -Run Speed, Chance for Knockback",
     "-Fly, -Run Speed, Chance for Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

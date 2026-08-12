@@ -42,10 +42,10 @@ export const JacobsLadder: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Sleep",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

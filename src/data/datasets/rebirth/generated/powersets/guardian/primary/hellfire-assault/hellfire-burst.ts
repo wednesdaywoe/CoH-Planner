@@ -37,7 +37,7 @@ export const HellfireBurst: Power = {
   ],
   "allowedSetCategories": [
     "Guardian Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

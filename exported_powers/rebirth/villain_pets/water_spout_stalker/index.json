@@ -31,5 +31,9 @@
     "DoT(Smashin), -DEF, Disorient",
     "Self Destruct",
     "DoT(Smashin), -DEF, Disorient"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

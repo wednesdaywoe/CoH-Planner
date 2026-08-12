@@ -39,5 +39,9 @@
     "PBAoE, Special DMG, Foe Knockdown, -All Primal Energy",
     "Melee, Extreme DMG(Special), Special",
     "PBAoE Special, Requires Primal or Hunter Form"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "Melee, Extreme DMG(Energy/Smash), Foe Disorient, +Energy Focus",
     "Sniper, Extreme DMG(Energy/Smash), Foe Knockback",
     "Ranged, Superior DMG(Energy/Smash), Foe Knockback, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

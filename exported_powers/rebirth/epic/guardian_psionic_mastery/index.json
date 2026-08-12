@@ -31,5 +31,9 @@
     "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
     "PBAoE, High DMG(Smash), Foe Knock Up",
     "Ranged (Targeted AoE), Foe Sleep"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

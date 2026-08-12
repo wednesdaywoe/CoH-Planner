@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Default_PassiveFollower",
     "character_class_name": "minion_unkillablenpc",
     "description": "It seems this piece of the Hamidon is tired of being a threat, and decided to be a loyal companion pet instead. It's very cute!",
@@ -41,7 +41,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

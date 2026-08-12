@@ -21,6 +21,7 @@ export const FollowUp: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -41,7 +42,7 @@ export const FollowUp: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "To Hit Buff",
     "Universal Damage Sets"
   ],

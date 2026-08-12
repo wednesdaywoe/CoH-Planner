@@ -31,5 +31,9 @@
     "Ranged, DMG(Energy), Foe Stun, -End",
     "Toggle: PBAoE, DoT(Energy), Foe -End",
     "Chain, Team +Heal"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

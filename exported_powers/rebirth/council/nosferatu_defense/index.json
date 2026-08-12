@@ -31,5 +31,9 @@
     "Self Auto, +Regen",
     "Self Heal",
     "Self +HP"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

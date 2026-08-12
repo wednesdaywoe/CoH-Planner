@@ -36,7 +36,7 @@ export const BlazingAura: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

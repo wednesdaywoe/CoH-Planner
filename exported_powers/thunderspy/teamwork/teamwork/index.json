@@ -31,5 +31,9 @@
     "PBAoE, Team +DEF(All) Res(Confuse, Fear, Taunt, Placate)",
     "Toggle: Self Res (Psionics, Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback).",
     "Auto: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Psionics, Special), +Def (all)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

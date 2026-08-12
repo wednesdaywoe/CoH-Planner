@@ -8,7 +8,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "boss_grunt",
     "description": "Defeating the Clockwork Paladin seems to have bound this Knight-Errant to your will! This powerful creature can be summoned to your aid five times before your mental link will be overwritten by the Clockwork King's control.",
@@ -49,7 +49,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

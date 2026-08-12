@@ -6,7 +6,7 @@
   "copy_creator_mods": true,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Ignore",
     "character_class_name": "minion_pets",
     "description": "",
@@ -41,7 +41,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 60,
       "experience": 0,
       "display_names": [

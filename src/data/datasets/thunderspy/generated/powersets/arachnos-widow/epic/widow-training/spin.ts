@@ -36,7 +36,7 @@ export const Spin: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],

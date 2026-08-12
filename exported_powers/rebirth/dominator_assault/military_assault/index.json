@@ -47,5 +47,9 @@
     "Melee (Targeted AoE), Heavy DMG (Smash), Foe Knockdown",
     "Sniper, Extreme DMG(Lethal), Foe Knockback",
     "Ranged, High DMG (Lethal/Fire), Minor Splash DMG (Fire DoT)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

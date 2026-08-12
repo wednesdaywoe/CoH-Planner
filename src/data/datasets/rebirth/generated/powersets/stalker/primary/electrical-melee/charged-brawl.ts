@@ -41,7 +41,7 @@ export const ChargedBrawl: Power = {
     "Melee Damage",
     "Sleep",
     "Stalker Archetype Sets",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -27,5 +27,9 @@
     "Moderate Lethal DMG",
     "Auto Res Lethal Smash Energy Fire Cold",
     "Self Auto, +Jump, +Speed"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -21,6 +21,7 @@ export const SerpentsReach: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.05,
     "range": 40,
@@ -43,7 +44,7 @@ export const SerpentsReach: Power = {
     "Knockback",
     "Ranged Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

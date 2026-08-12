@@ -23,5 +23,9 @@
     "PBAoE, Team +ToHit, +DEF, +Perception",
     "Ranged (Targeted AoE), Superior DMG(Psionic), Foe Hold",
     "Toggle: Self +Res(Smash, Lethal, Psionics)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

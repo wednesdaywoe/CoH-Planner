@@ -37,7 +37,7 @@ export const Wrath: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -36,7 +36,7 @@ export const RisetotheChallenge: Power = {
   ],
   "allowedSetCategories": [
     "Healing",
-    "Threat Duration",
+    "Taunt",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

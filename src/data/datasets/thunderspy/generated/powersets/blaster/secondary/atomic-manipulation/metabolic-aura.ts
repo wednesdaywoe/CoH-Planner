@@ -45,7 +45,7 @@ export const MetabolicAura: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
-    "Running & Sprints"
+    "Running"
   ],
   "maxSlots": 6,
   "effects": {

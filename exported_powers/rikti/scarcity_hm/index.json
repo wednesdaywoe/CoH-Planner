@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged, Heavy DMG(Cold), Foe Fear, -SPD, -Recharge, -End, -Recovery",
     "Auto: PBAoE, Minor DoT(Cold), Foe Fear, -SPD, -Recharge, -End, -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

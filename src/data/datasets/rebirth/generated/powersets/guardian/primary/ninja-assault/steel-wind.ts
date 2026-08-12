@@ -37,7 +37,7 @@ export const SteelWind: Power = {
   ],
   "allowedSetCategories": [
     "Guardian Archetype Sets",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

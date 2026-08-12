@@ -59,6 +59,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -87,8 +89,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -111,6 +113,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -132,8 +136,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -161,6 +165,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -182,8 +188,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> || entref source> entref target> eq || temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? ! &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,

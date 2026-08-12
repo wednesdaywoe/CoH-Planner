@@ -47,5 +47,9 @@
     "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
     "Ranged, Moderate DoT(Fire), Foe Immobilize",
     "PBAoE, Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

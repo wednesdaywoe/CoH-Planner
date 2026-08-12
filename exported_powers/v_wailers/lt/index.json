@@ -23,5 +23,9 @@
     "Ranged, Moderate DoT(Smashing/Energy), -Resist",
     "Ranged (Cone), Minor DMG(Smashing/Energy), Foe Sleep",
     "Ally Heal"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

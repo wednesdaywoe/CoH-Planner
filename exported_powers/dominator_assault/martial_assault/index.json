@@ -47,5 +47,9 @@
     "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
     "Sniper, Extreme DMG(Lethal), Foe -To Hit",
     "Ranged, Superior DMG(Fire), Minor Splash Damage (Fire DoT)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -47,5 +47,9 @@
     "PBAoE, DMG(Smash), Knockback",
     "Ranged, DMG(Smash), Foe Knockback, -Fly",
     "Melee, DMG(Smash), Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

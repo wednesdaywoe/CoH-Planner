@@ -43,9 +43,9 @@
   "allowed_set_categories": [
     "Defense Debuff",
     "Knockback",
-    "Ranged AoE Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],
@@ -68,6 +68,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {

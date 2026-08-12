@@ -27,5 +27,9 @@
     "Melee, Light DMG(Lethal), Minor DoT(Toxic), Foe -SPD, -Recharge",
     "Melee, High DMG(Lethal), Minor DoT(Toxic), Foe -SPD, -Recharge",
     "Auto: Self +DEF(Melee), +ACC, +Res(Debuff ToHit), Scaling DMG Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

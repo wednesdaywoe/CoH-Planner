@@ -35,7 +35,7 @@ export const WebGrenade: Power = {
   ],
   "allowedSetCategories": [
     "Immobilize",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

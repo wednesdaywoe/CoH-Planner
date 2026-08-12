@@ -19,5 +19,9 @@
   "power_short_helps": [
     "High-Accuracy: Ranged (Targeted AoE), Moderate DMG(Fire/Smash), DoT(Fire)",
     "PBAoE, Team +Resist(All DMG), +Heal Over Time"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

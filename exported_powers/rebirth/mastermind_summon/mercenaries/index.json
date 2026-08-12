@@ -47,5 +47,9 @@
     "Buff Mercenary +DMG, +RES(All except Psionic), +To Hit, +Recovery",
     "Summon Commando",
     "Ranged, Upgrade Mercenary Henchman"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

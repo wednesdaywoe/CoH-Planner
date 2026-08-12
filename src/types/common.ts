@@ -190,8 +190,9 @@ export type IOSetCategory =
   // Slow / Defense-debuff / ToHit-debuff power (e.g. Tar Patch via Slow)
   | 'Universal Debuff'
   // Rebirth resurrection event set (Return From The Grave) — slottable only
-  // in resurrection powers (Revive, Rise of the Phoenix, Howling Twilight, …)
-  | 'Resurrection';
+  // in resurrection powers (Revive, Rise of the Phoenix, Howling Twilight, …).
+  // "Rez Sets" is the game's own GroupName, read straight from the binary.
+  | 'Rez Sets';
 
 // ============================================
 // IO SET RARITY

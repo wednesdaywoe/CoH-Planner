@@ -51,5 +51,16 @@
     "Ranged(Targeted AoE), DMG(Lethal/Fire), Foe Knockback",
     "Melee PBAoE, DMG(Energy), Foe -DEF",
     "Summon Omega Bomb: Ranged (Location Targeted AoE), Superior DMG(Smashing/Energy), Foe Disorient"
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 23,
+  "specialize_requires": [
+    "Arachnos_Soldiers.Bane_Spider_Soldier",
+    "powerset?",
+    "Training_Gadgets.Bane_Spider_Training",
+    "powerset?",
+    "||",
+    "!"
   ]
 }

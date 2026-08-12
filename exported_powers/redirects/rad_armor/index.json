@@ -23,5 +23,9 @@
     "PBAoE, Foe DMG(Energy), DoT (Toxic), -DEF(All)",
     "PBAoE, Ally +HP, +Heal over time",
     "PBAoE, DMG(Energy), Minor DoT(Toxic), Foe -Regen, Self +HP, +End, Res(-Regen)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

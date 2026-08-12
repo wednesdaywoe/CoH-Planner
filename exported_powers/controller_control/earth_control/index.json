@@ -47,5 +47,9 @@
     "Ranged (Location AoE), Foe Knockback, -To Hit, -Def",
     "Ranged (Location AoE), Foe Hold, DoT(Fire), Special",
     "Summon Golem: Melee DMG(Smashing)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

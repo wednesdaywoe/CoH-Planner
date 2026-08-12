@@ -31,5 +31,9 @@
     "Ranged, DoT(Negative), Foe Hold",
     "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
     "Summon Fortunata Mistress: Ranged DMG(Psionic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

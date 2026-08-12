@@ -27,5 +27,9 @@
     "Ranged, Moderate DMG(Smash/Psionic), Foe Knockback",
     "Sleep",
     "+ACC, Res(Confuse), +Perception"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

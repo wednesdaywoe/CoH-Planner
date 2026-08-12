@@ -47,5 +47,9 @@
     "Melee, Extreme DMG(Energy/Smash), Foe -Def, Disorient, Special",
     "Sniper, Superior DMG(Energy), Foe -DEF, Special",
     "PBAoE, High DMG(Energy/Toxic), Foe -Def, Disorient, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

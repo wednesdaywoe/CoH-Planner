@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged, High DMG(Cold/Smash), Foe -Speed, Self +/-Tidal Power",
     "Ranged, High DMG(Cold/Smash), Foe -Speed, Self +/-Tidal Power"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

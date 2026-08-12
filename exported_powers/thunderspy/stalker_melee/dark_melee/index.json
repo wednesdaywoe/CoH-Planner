@@ -47,5 +47,9 @@
     "Melee, Superior DMG(Negative), Foe -To Hit, Self +HP",
     "Melee Fear, Foe -To Hit",
     "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

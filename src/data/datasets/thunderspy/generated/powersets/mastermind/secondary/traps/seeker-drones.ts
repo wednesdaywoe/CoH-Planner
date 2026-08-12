@@ -36,8 +36,8 @@ export const SeekerDrones: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Ranged AoE Damage",
     "Stuns",
+    "Targeted AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

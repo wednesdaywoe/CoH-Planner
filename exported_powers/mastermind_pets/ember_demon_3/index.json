@@ -27,5 +27,9 @@
     "Demon Ally Heal",
     "PBAoE, Demon Ally +Heal",
     "Empower"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

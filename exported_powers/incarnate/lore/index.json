@@ -767,5 +767,9 @@
     "Summon WarWorks LT & Support Essences",
     "Summon WarWorks Boss & LT Essences",
     "Summon WarWorks Boss & Support Essences"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

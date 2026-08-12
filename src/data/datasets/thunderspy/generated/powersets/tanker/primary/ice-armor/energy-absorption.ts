@@ -37,7 +37,7 @@ export const EnergyAbsorption: Power = {
     "Defense Sets",
     "Endurance Modification",
     "Slow Movement",
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

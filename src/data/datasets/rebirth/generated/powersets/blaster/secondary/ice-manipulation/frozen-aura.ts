@@ -38,9 +38,9 @@ export const FrozenAura: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Sleep",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

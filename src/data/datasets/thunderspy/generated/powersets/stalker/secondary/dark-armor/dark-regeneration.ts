@@ -36,7 +36,7 @@ export const DarkRegeneration: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Healing",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

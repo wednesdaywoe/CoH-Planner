@@ -37,7 +37,7 @@ export const EMPPulse: Power = {
     "Controller Archetype Sets",
     "Endurance Modification",
     "Holds",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Post-Defeat: PBAoE, Extreme DMG(Energy), Debuff",
     "Avoid"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

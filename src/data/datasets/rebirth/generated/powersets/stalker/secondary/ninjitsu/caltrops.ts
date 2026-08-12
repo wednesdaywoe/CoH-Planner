@@ -33,8 +33,8 @@ export const Caltrops: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
     "Slow Movement",
+    "Targeted AoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

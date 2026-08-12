@@ -31,5 +31,9 @@
     "Ranged, Moderate DMG(Lethal)",
     "Self Stealth, +DMG, Self Teleport",
     "Self +Regen, +Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

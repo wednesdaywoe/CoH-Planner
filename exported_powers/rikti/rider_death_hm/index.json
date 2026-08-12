@@ -39,5 +39,9 @@
     "Ranged (Targeted AoE), Moderate DMG(Negative/Energy), Minor DoT(Negative), Foe -Resist(All), -Regen, -ToHit",
     "Post Death Special: PBAoE, High DMG(Negative/Energy), Minor DoT(Negative), Foe -Resist(All), -Regen, -ToHit",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

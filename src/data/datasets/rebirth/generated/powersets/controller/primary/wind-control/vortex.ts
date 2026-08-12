@@ -42,7 +42,7 @@ export const Vortex: Power = {
     "Slow Movement",
     "Stuns",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

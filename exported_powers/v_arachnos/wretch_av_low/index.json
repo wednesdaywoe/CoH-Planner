@@ -27,5 +27,9 @@
     "PBAoE Melee, Moderate DMG(Smash), Knockback",
     "PBAoE, Extreme DMG(Energy/Smash), Foe Disorient, Self -Recovery",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

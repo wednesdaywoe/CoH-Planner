@@ -37,7 +37,7 @@ export const TotalDomination: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Holds",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

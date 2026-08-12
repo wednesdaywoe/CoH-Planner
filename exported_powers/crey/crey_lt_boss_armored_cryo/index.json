@@ -23,5 +23,9 @@
     "Ranged, Moderate DMG(Cold), Foe Sleep, -Recharge, -SPD",
     "Melee, Moderate DMG(Smash)",
     "Melee, Light DMG(Smash), Foe Knockdown"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

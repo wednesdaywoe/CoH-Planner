@@ -47,5 +47,9 @@
     "Ranged, Minor DMG(Lethal/Special), Foe Disorient/Special",
     "Narrow Ranged (Cone), Superior DMG(Lethal/Special), Foes -Res(All)/Special",
     "PBAoE, Superior DMG(Lethal/Special), Self +Def(Melee, Ranged, AoE), Foe Knockdown/Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

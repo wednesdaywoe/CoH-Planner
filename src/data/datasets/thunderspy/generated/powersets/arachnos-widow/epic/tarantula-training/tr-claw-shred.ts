@@ -40,7 +40,7 @@ export const TRClawShred: Power = {
   ],
   "allowedSetCategories": [
     "Defense Debuff",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],

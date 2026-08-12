@@ -43,8 +43,8 @@ export const EmptyClips: Power = {
     "Defender Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Ranged AoE Damage",
     "Slow Movement",
+    "Targeted AoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

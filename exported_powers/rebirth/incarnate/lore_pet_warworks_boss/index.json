@@ -23,5 +23,9 @@
     "Melee, Minor DMG(Lethal/Energy), Foe -Def",
     "Melee, Moderate DMG(Lethal/Energy), Foe -Def",
     "Ranged, Moderate DMG(Energy), Foe -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

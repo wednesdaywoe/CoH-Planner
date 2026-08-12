@@ -31,5 +31,9 @@
     "Ranged, Minor DoT(Fire), Foe Hold",
     "Ranged (Location AoE), Minor DoT(Fire), -SPD",
     "Melee, Superior DMG(Fire/Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

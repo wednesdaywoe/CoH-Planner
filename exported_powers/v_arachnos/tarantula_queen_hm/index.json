@@ -27,5 +27,9 @@
     "Auto: Self +Recharge, +SPD, Res (Slow/Confuse)",
     "Auto: Self +DEF(Ranged), +KB Protection",
     "Toggle: PBAoE, Team +DEF(All)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

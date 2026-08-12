@@ -55,5 +55,9 @@
     "Auto: Self +Invincibility, -Regen",
     "Auto: Cleans Up Rikti Monkeys",
     "Ranged, Moderate DMG(Psionic), Foe -Recharge, -Fly"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

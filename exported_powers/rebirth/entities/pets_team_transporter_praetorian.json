@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Ignore",
     "character_class_name": "minion_unkillablenpc",
     "description": "",
@@ -53,14 +53,599 @@
   },
   "levels": [
     {
-      "min_level": 1,
-      "max_level": 50,
+      "level": 1,
+      "max_level": null,
       "experience": 0,
       "display_names": [
-        "Team Transporter Praetorian"
+        "Team Transporter"
       ],
-      "costumes": []
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 2,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 3,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 4,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 5,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 6,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 7,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 8,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 9,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 10,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 11,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 12,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 13,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 14,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 15,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 16,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 17,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 18,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 19,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 20,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 21,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 22,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 23,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 24,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 25,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 26,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 27,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 28,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 29,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 30,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 31,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 32,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 33,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 34,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 35,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 36,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 37,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 38,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 39,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 40,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 41,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 42,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 43,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 44,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 45,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 46,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 47,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 48,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 49,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 50,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 51,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 52,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 53,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
+    },
+    {
+      "level": 54,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Team Transporter"
+      ],
+      "costumes": [
+        "P_Chaser"
+      ]
     }
   ],
-  "source_file": ""
+  "source_file": "DEFS/VILLAINS/PETS.VILLAIN"
 }

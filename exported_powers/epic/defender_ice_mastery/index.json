@@ -31,5 +31,9 @@
     "Self Heal, +Max HP, Res(Toxic)",
     "Self +DMG, +To Hit",
     "Summon Ice Elemental: Melee DMG(Lethal/Cold)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

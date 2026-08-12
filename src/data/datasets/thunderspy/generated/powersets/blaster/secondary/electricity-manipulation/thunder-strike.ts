@@ -41,7 +41,7 @@ export const ThunderStrike: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

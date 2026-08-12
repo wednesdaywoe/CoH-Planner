@@ -17355,7 +17355,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Resurrection"
+    "type": "Rez Sets"
   },
   "rolling_barrage": {
     "bonuses": [
@@ -23557,7 +23557,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Resurrection"
+    "type": "Rez Sets"
   },
   "superior_scourging_blast": {
     "bonuses": [

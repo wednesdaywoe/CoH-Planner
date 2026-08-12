@@ -31,5 +31,9 @@
     "Toggle: Self +Res(Smash/Lethal)",
     "Toggle: Self +DEF(All), Res(Immobilize)",
     "Melee (Cone), DMG(Smash), Fighting Synergy, Foe Knockdown, Stun"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -1,12 +1,12 @@
 {
   "name": "Pets_Fly_Trap_Controller",
   "group_name": "Pets",
-  "commandable_pet": 0,
+  "commandable_pet": 1,
   "power_tags": [],
   "copy_creator_mods": false,
-  "can_zone": false,
+  "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Ranged",
     "character_class_name": "minion_controllerpets",
     "description": "This carnivorous plant is straight of out some prehistoric nightmare. It obviously has a taste for fresh meat.",
@@ -44,7 +44,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 54,
       "experience": 0,
       "display_names": [

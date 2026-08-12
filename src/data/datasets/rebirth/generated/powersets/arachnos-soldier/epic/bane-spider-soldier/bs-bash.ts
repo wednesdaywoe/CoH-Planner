@@ -39,7 +39,7 @@ export const BSBash: Power = {
     "Melee Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

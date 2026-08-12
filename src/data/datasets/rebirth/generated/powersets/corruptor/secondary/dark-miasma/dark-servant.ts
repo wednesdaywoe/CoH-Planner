@@ -41,7 +41,7 @@ export const DarkServant: Power = {
     "Holds",
     "Immobilize",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "maxSlots": 6,

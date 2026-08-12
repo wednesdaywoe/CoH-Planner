@@ -27,5 +27,9 @@
     "Ranged, Superior DMG(Psionic), Target -Recharge",
     "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
     "Ranged (Cone), Light DMG(Negative), Foe Immobilize, -To-hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

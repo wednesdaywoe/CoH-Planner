@@ -39,5 +39,9 @@
     "Melee, Extreme DMG(Smash), Foe Hold",
     "Ranged, High DMG(Smash), Foe Knockback, -Fly",
     "PBAoE, Moderate DMG(Smash), Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

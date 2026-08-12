@@ -39,7 +39,7 @@ export const SpeedSiphon: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],

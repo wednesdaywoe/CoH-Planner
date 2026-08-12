@@ -47,5 +47,9 @@
     "Ranged, Minor Damage (Smashing), Foe Disorient",
     "PBAoE, Extreme DMG(Energy/Smash), Foe Disorient, Self -Recovery",
     "Toggle: Self +Res(Smashing/Lethal/Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

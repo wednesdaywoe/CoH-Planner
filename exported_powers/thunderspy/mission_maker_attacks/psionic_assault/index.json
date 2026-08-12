@@ -47,5 +47,9 @@
     "Ranged, Moderate DMG(Psionic), Foe Immobilize",
     "Sniper, Superior DMG(Psionic), Target -Recharge",
     "Close (AoE), High DMG(Psionic), Foe Disorient -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -39,8 +39,8 @@ export const RepulsionBomb: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
     "Stuns",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -31,5 +31,9 @@
     "Toggle: PBAoE, Foe Disorient, Self -HP",
     "Ranged (Cone), DMG(Negative), Foe Immobilize",
     "Ranged, DoT(Negative), Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

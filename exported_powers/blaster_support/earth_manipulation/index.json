@@ -47,5 +47,9 @@
     "Toggle: Self Res(Confuse, Perception, ToHit), +Perception, Accuracy",
     "Ranged (Targeted AoE), Foe Disorient, -DEF",
     "Melee, Extreme DMG(Smashing), Foe Hold"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

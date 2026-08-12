@@ -40,9 +40,9 @@ export const Birdshot: Power = {
   ],
   "allowedSetCategories": [
     "Immobilize",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

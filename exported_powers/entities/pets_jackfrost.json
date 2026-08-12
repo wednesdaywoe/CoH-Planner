@@ -6,9 +6,9 @@
     "HumanSkeleton"
   ],
   "copy_creator_mods": false,
-  "can_zone": false,
+  "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "minion_pets",
     "description": "",
@@ -49,7 +49,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 54,
       "experience": 0,
       "display_names": [

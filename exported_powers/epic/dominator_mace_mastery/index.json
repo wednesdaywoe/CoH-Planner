@@ -31,5 +31,9 @@
     "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
     "Toggle: Self +Def, Res(All)",
     "Summon Tarantula: Ranged DMG(Toxic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -103,5 +103,9 @@
     "PBAoE, Self +End, +DEF(All but Toxic, Psionic), +RES(Slow), Foe -End",
     "Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery",
     "Self: HP Costume Change"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

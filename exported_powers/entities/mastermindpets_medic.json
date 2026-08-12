@@ -12,7 +12,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Medic",
     "character_class_name": "henchman_minion",
     "description": "The Medic is trained in battle triage. But make no mistake, he is still a trained and capable Soldier.",
@@ -59,7 +59,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

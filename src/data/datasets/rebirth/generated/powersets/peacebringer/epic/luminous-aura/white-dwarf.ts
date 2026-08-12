@@ -43,7 +43,7 @@ export const WhiteDwarf: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Leaping & Sprints",
+    "Leaping",
     "Resist Damage",
     "Universal Travel"
   ],

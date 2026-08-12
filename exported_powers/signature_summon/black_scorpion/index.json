@@ -43,5 +43,9 @@
     "PBAoE Melee, Moderate DMG(Smash), Knockback",
     "Self Auto, +Jump, +Speed",
     "Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

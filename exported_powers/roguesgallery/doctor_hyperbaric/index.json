@@ -43,5 +43,9 @@
     "Ranged, Heal (Team), -Regen (Foe), -End (Foe),",
     "Ranged, -DMG (Foe, All), +DMG (Self/Allies, All)",
     "Ranged (Targeted AoE), -DMG (Foe, All), +DMG (Self/Allies, All)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

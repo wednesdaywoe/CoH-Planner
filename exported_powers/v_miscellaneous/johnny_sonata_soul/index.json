@@ -55,5 +55,9 @@
     "Auto Res Sleep, Fear, Immobilize, Slow",
     "Resistance",
     "Self Travel"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

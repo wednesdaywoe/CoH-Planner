@@ -43,7 +43,7 @@ export const HavokPunch: Power = {
     "Knockback",
     "Melee Damage",
     "Sleep",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

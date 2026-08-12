@@ -91,5 +91,9 @@
     "Self +DMG, +To Hit, Delayed Self(Weaken, Special)",
     "Autohit, Ranged (Targeted AoE), Foe Taunt",
     "+DMG, Res(Taunt, Placate)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

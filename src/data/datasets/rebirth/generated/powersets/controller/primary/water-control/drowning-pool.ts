@@ -40,7 +40,7 @@ export const DrowningPool: Power = {
     "Controller Archetype Sets",
     "Defense Debuff",
     "Holds",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "maxSlots": 6,

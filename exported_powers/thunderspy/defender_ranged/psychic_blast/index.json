@@ -47,5 +47,9 @@
     "Ranged, Minor DMG(Psionic), Foe Disorient",
     "Sniper, Superior DMG(Psionic), Target -Recharge",
     "PBAoE, Extreme DMG(Psionic), Foe Disorient -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

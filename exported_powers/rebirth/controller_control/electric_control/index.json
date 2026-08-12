@@ -47,5 +47,9 @@
     "Ranged AoE, Foe Hold, -End",
     "Ranged Chain AoE, Foe Confuse, -End",
     "Summon Gremlins: Melee Minor DMG(Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

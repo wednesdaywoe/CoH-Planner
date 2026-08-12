@@ -23,5 +23,9 @@
     "Disorient",
     "Disorient",
     "Ranged Smash, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

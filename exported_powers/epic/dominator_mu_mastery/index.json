@@ -31,5 +31,9 @@
     "Ranged (Targeted AoE), DoT(Energy), Foe -End",
     "Self, +Res(Special)",
     "Summon Mu Guardian: Ranged DMG(Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

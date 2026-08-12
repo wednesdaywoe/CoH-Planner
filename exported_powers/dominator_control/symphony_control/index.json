@@ -47,5 +47,9 @@
     "Ranged (Cone), DoT(Psionic), Foe Disorient",
     "Ranged (Targeted AoE), Foe Hold",
     "Summon Reverberant: Ranged Control Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

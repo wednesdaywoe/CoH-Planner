@@ -67,6 +67,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -114,6 +116,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -163,6 +167,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -210,6 +216,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -269,8 +277,13 @@
       ],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [],
+      "requires_archetypes": [
+        "Class_Scrapper"
+      ],
       "child_effects": [
         {
           "chance": 0.05000000074505806,
@@ -285,6 +298,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "INDETERMINATE",
           "eval_flags": 0,
           "templates": [
             {
@@ -335,6 +350,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "PVE_ONLY",
+          "requires_default": "INDETERMINATE",
           "eval_flags": 0,
           "templates": [
             {
@@ -385,6 +402,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "PVP_ONLY",
+          "requires_default": "UNSATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -434,6 +453,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -491,8 +512,13 @@
       ],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [],
+      "requires_archetypes": [
+        "Class_Stalker"
+      ],
       "child_effects": [
         {
           "chance": 0.07000000029802322,
@@ -506,6 +532,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "PVE_ONLY",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -555,6 +583,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "PVE_ONLY",
+          "requires_default": "UNSATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -604,6 +634,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "PVP_ONLY",
+          "requires_default": "UNSATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -653,6 +685,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "PVP_ONLY",
+          "requires_default": "UNSATISFIED",
           "eval_flags": 0,
           "templates": [
             {

@@ -47,5 +47,9 @@
     "PBAoE, Foe Hold",
     "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
     "Summon Imps: Melee Minor DMG(Fire)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

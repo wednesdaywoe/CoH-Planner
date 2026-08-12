@@ -37,8 +37,8 @@ export const Stalagmites: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
-    "Ranged AoE Damage",
     "Stuns",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

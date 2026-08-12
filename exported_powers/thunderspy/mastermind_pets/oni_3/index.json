@@ -23,5 +23,9 @@
     "Ranged, Moderate DoT(Fire), Foe Hold",
     "Ranged (Location AoE), Minor DoT(Fire), -SPD",
     "Enlighten"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

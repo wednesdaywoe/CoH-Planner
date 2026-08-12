@@ -21,6 +21,7 @@ export const KnockoutBlow: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.2,
     "range": 13.199999809265137,
@@ -44,7 +45,7 @@ export const KnockoutBlow: Power = {
     "Knockback",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

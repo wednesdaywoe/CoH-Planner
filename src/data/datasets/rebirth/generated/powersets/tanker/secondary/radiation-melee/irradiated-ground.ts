@@ -35,7 +35,7 @@ export const IrradiatedGround: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Tanker Archetype Sets",
     "Universal Damage Sets",
     "Universal Debuff"

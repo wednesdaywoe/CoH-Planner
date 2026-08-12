@@ -38,7 +38,7 @@ export const StarlessStep: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Kheldian Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Teleport",
     "Universal Damage Sets",
     "Universal Travel"

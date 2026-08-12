@@ -23,5 +23,9 @@
     "Melee, Moderate DMG(Lethal), Minor DoT(Toxic), Foe -SPD, -Recharge",
     "Ranged (Cone), Light DMG(Lethal), Minor DoT(Toxic), Foe -Regeneration",
     "Auto: Self +Res(Confuse, Fear, Hold, Immobilize, Disorient, Sleep, Psionic), +DEF(Melee, Ranged, AoE), Scaling DMG Resistance"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

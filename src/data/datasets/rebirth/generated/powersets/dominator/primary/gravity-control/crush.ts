@@ -39,7 +39,7 @@ export const Crush: Power = {
     "Immobilize",
     "Ranged Damage",
     "Slow Movement",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

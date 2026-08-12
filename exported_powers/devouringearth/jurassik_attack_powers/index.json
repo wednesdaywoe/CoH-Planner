@@ -27,5 +27,9 @@
     "Melee (Cone), Heavy DMG(Smash), Foe Disorient, Knockback",
     "Ranged (Targeted AoE), High DMG(Smash), Foe Knockback, -Fly",
     "Ranged (Cone), Moderate DMG(Lethal), Minor DoT(Lethal), Foe Knockdown, -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

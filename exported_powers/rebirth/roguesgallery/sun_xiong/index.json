@@ -35,5 +35,9 @@
     "Ranged, Superior Dmg(Smash), Foe Knockdown",
     "Toggle: Self +DEF(Melee), Res(Confuse, Defense Debuff)",
     "Toggle: Self +DEF(Ranged), +Perception,  Res(Defense Debuff)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

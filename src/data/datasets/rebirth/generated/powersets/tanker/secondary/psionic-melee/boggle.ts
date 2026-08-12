@@ -37,7 +37,7 @@ export const Boggle: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

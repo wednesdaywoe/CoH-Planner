@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Ranged (Targeted AoE), Foe Immobilize, -Fly, -Recharge, -SPD, -Jump",
     "Ranged (Targeted AoE), Moderate DoT(Toxic), Foe -Resist(All)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

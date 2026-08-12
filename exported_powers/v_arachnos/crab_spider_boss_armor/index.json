@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "Toggle: Self +Res(Disorient, Hold, Immobilize, Sleep, All DMG but Psionics)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

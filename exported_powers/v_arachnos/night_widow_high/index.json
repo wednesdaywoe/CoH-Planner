@@ -31,5 +31,9 @@
     "Melee, Extreme DMG(Lethal), Minor DoT(Toxic), Foe -SPD, -Recharge",
     "Melee, Foe Placate, Self Stealth, +ToHit, +DMG",
     "Auto: Self +Recharge, +SPD, +Res(Slow)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

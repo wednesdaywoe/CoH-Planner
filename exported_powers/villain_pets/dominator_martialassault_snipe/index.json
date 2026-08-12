@@ -23,5 +23,9 @@
     "Sniper, Extreme DMG(Lethal), Chance for DoT (Lethal)",
     "Sniper, Extreme DMG(Lethal), Chance for DoT (Lethal)",
     "Ranged, Minor DMG(Fire), Minor Splash Damage (Fire DoT)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

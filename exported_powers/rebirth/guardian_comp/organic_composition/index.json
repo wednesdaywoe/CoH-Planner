@@ -47,5 +47,9 @@
     "PBAoE, Minor DMG(Lethal/Toxic), Foe -Regen; Self +HP, +End",
     "PBAoE, Team +Absorb, +Heal Over Time, +3 Bloom",
     "PBAoE, Team +Damage, +To Hit, +Endurance Discount, +5 Bloom"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

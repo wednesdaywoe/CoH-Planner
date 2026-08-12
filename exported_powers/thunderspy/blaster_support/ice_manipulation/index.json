@@ -47,5 +47,9 @@
     "Ranged (Cone), Foe -SPD, -Recharge",
     "Melee, Minor DMG(Cold), Foe Hold",
     "Melee (AoE), Foe Sleep"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

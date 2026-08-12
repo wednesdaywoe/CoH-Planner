@@ -19,5 +19,9 @@
   "power_short_helps": [
     "PBAoE, Moderate DMG(Lethal), Foe Minor DoT(Lethal), -Blood Frenzy",
     "PBAoE, Moderate DMG(Lethal), Foe Minor DoT(Lethal), -Blood Frenzy"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

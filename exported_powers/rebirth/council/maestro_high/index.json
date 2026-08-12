@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "Ranged (Location AoE), Minor Damage (Smashing/Energy), Foe Hold, Knockdown, -ACC, -DEF"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

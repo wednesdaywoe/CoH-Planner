@@ -47,5 +47,9 @@
     "Ranged (Targeted AoE), Foe DMG(Energy), Hold, -End, -Fly, -Jump, -Recharge",
     "Ranged Chain AoE, Foe Confuse, -End",
     "Summon Gremlins: Minor DMG(Energy)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

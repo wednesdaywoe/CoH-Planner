@@ -47,5 +47,9 @@
     "Auto: Self +DEF(vs. AoE), Res(DeBuff DEF), Res(DMG, Special)",
     "Toggle: Self +DEF(vs. AoE), Res(DeBuff DEF)",
     "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

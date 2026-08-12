@@ -35,5 +35,9 @@
     "Melee, Superior DMG(Special), Special",
     "PBAoE, Special DMG, Foe Knockdown, -All Primal Energy",
     "Melee, Extreme DMG(Special), Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

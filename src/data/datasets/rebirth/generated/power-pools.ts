@@ -242,7 +242,7 @@ export const POWER_POOLS_RAW = {
           "Run Speed"
         ],
         "allowedSetCategories": [
-          "Running & Sprints",
+          "Running",
           "Universal Travel"
         ],
         "atoms": [
@@ -315,7 +315,7 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets",
           "Universal Debuff"
         ],
@@ -362,7 +362,7 @@ export const POWER_POOLS_RAW = {
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running & Sprints",
+          "Running",
           "To Hit Buff",
           "Universal Travel"
         ],
@@ -509,7 +509,7 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -886,9 +886,9 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -1753,7 +1753,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -2162,7 +2162,7 @@ export const POWER_POOLS_RAW = {
           "Jump"
         ],
         "allowedSetCategories": [
-          "Leaping & Sprints",
+          "Leaping",
           "Universal Travel"
         ],
         "atoms": [
@@ -2243,7 +2243,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -2786,7 +2786,7 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -4074,7 +4074,7 @@ export const POWER_POOLS_RAW = {
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Minion_Small eq rank target> Class_Minion_Small_Agressive eq || rank target> Class_Minion_Turret eq || rank target> Class_Minion_Fire eq || rank target> Class_Minion_Swarm eq || rank target> Class_Minion_Henchman eq || rank target> Class_Minion_OilSlickTarget eq || rank target> Class_Minion_Monument eq || rank target> Class_Minion_UnkillableNPC eq || rank target> Class_Minion_PraetorianSmall eq || rank target> Class_Minion_Practice eq ||",true],
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Minion_Grunt eq ||",true],
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Lt_PraetorianGrunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Lt_Sniper eq || rank target> Class_Lt_Henchman eq || rank target> Class_Lt_LongRangeDrone eq || rank target> Class_Lt_Turret eq ||",true],
-          ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || enttype target> player eq ||",true],
+          ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || enttype target> player eq ||",true],
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Boss_PraetorianElite eq rank target> Class_Boss_Elite eq || rank target> Class_Boss_EliteTurret eq ||",true],
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Boss_PraetorianArchvillain eq rank target> Class_Boss_PraetorianAVLowPerception eq || rank target> Class_Boss_Archvillain eq || rank target> Class_Boss_Monster eq || rank target> Class_Boss_Rularuu eq || rank target> Class_Boss_RularuuCoP eq || rank target> Class_Boss_RularuuFM eq || rank target> Class_Boss_Hamidon eq || rank target> Class_Boss_Archvillain_Flying eq || rank target> Class_Boss_Monster_Flying eq || rank target> Class_Boss_Reichsman eq ||",true]
         ],
@@ -4133,7 +4133,7 @@ export const POWER_POOLS_RAW = {
           "Knockback",
           "Melee Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -4215,7 +4215,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Leaping & Sprints",
+          "Leaping",
           "Universal Travel"
         ],
         "atoms": [
@@ -4382,7 +4382,7 @@ export const POWER_POOLS_RAW = {
           "Jump"
         ],
         "allowedSetCategories": [
-          "Leaping & Sprints",
+          "Leaping",
           "Universal Travel"
         ],
         "atoms": [
@@ -4459,7 +4459,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Leaping & Sprints",
+          "Leaping",
           "Universal Travel"
         ],
         "atoms": [
@@ -4678,8 +4678,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Leaping & Sprints",
-          "Melee AoE Damage",
+          "Leaping",
+          "PBAoE Damage",
           "Universal Damage Sets",
           "Universal Travel"
         ],
@@ -4804,7 +4804,7 @@ export const POWER_POOLS_RAW = {
           "Taunt"
         ],
         "allowedSetCategories": [
-          "Threat Duration"
+          "Taunt"
         ],
         "atoms": [
           ["Mez","Taunt",8,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4854,7 +4854,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Fear",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Terrorized",7,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4907,7 +4907,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Fear",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Terrorized",7,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -4960,7 +4960,7 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Healing",
-          "Resurrection"
+          "Rez Sets"
         ],
         "atoms": [
           ["RechargeTime",null,0.2,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -5243,7 +5243,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Healing",
-          "Resurrection"
+          "Rez Sets"
         ],
         "atoms": [
           ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
@@ -5593,7 +5593,7 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -5870,7 +5870,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -5961,7 +5961,7 @@ export const POWER_POOLS_RAW = {
           "Run Speed"
         ],
         "allowedSetCategories": [
-          "Running & Sprints",
+          "Running",
           "Universal Travel"
         ],
         "atoms": [
@@ -6027,7 +6027,7 @@ export const POWER_POOLS_RAW = {
           "Run Speed"
         ],
         "allowedSetCategories": [
-          "Running & Sprints",
+          "Running",
           "Universal Travel"
         ],
         "atoms": [
@@ -6102,9 +6102,9 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Stuns",
-          "Universal Control Duration",
+          "Universal Control Duration Sets",
           "Universal Damage Sets"
         ],
         "atoms": [
@@ -6202,7 +6202,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Running & Sprints",
+          "Running",
           "Universal Travel"
         ],
         "atoms": [
@@ -6716,7 +6716,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Melee AoE Damage",
+          "PBAoE Damage",
           "Teleport",
           "Universal Damage Sets",
           "Universal Travel"
@@ -7051,7 +7051,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Universal Control Duration"
+          "Universal Control Duration Sets"
         ],
         "atoms": [
           ["Mez","Immobilized",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -7221,8 +7221,8 @@ export const POWER_POOLS_RAW = {
           "Run Speed"
         ],
         "allowedSetCategories": [
-          "Leaping & Sprints",
-          "Running & Sprints",
+          "Leaping",
+          "Running",
           "Universal Travel"
         ],
         "atoms": [
@@ -7310,7 +7310,7 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
         "atoms": [

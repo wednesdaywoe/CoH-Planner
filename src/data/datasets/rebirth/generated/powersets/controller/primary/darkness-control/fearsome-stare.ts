@@ -41,7 +41,7 @@ export const FearsomeStare: Power = {
     "Controller Archetype Sets",
     "Fear",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "maxSlots": 6,

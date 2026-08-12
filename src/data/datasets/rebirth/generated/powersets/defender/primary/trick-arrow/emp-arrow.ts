@@ -38,7 +38,7 @@ export const EMPArrow: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Holds",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

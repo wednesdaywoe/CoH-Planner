@@ -9,7 +9,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Default_Ranged",
     "character_class_name": "minion_pets",
     "description": "No one knows who these helmet clad heroes are, or where they come from. The only thing that's certain is their loyalty to Crey. The Power Paragon Protectors can generate powerful blasts of energy in both melee and ranged combat situations.",
@@ -77,7 +77,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

@@ -41,7 +41,7 @@ export const SpinningKick: Power = {
   "allowedSetCategories": [
     "Guardian Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -35,5 +35,9 @@
     "Melee, Heavy DMG(Negative/Smash), Foe -Recharge, -SPD, -Fly, Disorient",
     "Melee, Superior DMG(Negative), Foe -Recharge, -SPD; Self +HP",
     "PBAoE, Moderate DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

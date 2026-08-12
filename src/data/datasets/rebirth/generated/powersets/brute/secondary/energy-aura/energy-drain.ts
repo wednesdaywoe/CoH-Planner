@@ -36,7 +36,7 @@ export const EnergyDrain: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Endurance Modification",
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

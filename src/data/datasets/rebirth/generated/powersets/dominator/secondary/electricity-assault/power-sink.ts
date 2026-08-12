@@ -41,9 +41,9 @@ export const PowerSink: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -47,5 +47,9 @@
     "Toggle: PBAoE Foe -Perception, Slow, -Damage(Special), -Resistance(Special)",
     "Auto: Self +Recovery",
     "Self Untouchable, +Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

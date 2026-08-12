@@ -35,5 +35,9 @@
     "Melee, DMG(Smash), Foe Disorient, Combo Builder",
     "Melee (Targeted AoE), DMG(Smash), Foe Knockdown, Finisher",
     "Melee, DMG(Smash), Foe Knock Up, Disorient, Finisher"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

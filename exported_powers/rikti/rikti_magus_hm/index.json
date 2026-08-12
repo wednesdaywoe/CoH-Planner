@@ -39,5 +39,9 @@
     "Ranged, Moderate DMG(Cold), Foe Hold, -Recharge, -SPD",
     "Autohit, Ranged (Targeted AoE), Foe Sleep",
     "Ranged, Moderate DMG(Psionic), Foe -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

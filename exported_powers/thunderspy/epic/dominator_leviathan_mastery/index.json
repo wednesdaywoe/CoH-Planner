@@ -31,5 +31,9 @@
     "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
     "Toggle: Self +Res(Smash, Lethal, Cold, Fire)",
     "Summon Hybrid: Ranged Moderate DMG(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

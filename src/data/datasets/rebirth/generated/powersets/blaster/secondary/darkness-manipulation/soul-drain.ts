@@ -38,7 +38,7 @@ export const SoulDrain: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "To Hit Buff",
     "Universal Damage Sets"
   ],

@@ -59,5 +59,9 @@
     "Ranged, High Dmg(Smash), Foe Knockdown",
     "Melee Cone, High DMG(Smash), Foe Immobilize, -Speed",
     "Melee, Extreme DMG(Smash), Foe Knock Up, Disorient, -Fly, Consumes Perfection"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

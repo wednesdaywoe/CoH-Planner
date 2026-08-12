@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 3,
     "ai_config": "Pets_Melee",
     "character_class_name": "lt_grunt",
     "description": "A dynamic instruction meaning to gradually play quieter. In this instance, Diminuendo is gradually quieting your soul through a nonstop barrage of musical torment.",
@@ -50,7 +50,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 60,
       "experience": 0,
       "display_names": [

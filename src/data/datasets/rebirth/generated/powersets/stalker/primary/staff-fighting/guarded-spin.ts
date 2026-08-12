@@ -40,7 +40,7 @@ export const GuardedSpin: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

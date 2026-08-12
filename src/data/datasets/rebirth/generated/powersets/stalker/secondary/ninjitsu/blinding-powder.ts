@@ -39,7 +39,7 @@ export const BlindingPowder: Power = {
     "Accurate To-Hit Debuff",
     "Confuse",
     "To Hit Debuff",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "maxSlots": 6,

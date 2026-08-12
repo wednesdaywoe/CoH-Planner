@@ -51,5 +51,9 @@
     "-Speed",
     "Toggle: PBAoE, Minor DoT(Fire), Foe Immobilize, -SPD",
     "Self +HP, Res(Toxic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

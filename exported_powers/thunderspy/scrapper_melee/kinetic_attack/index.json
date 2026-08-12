@@ -47,5 +47,9 @@
     "PBAoE Melee, Moderate DMG(Smash/Energy), Foe Knockdown",
     "Ranged, High DMG(Smash/Energy), Foe Knockdown",
     "Melee, Extreme DMG(Energy/Smash), Foe Disorient, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

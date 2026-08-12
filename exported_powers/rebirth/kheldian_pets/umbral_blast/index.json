@@ -67,5 +67,9 @@
     "Zone-Range: Teleport Teammate",
     "Ranged, High DMG(Negative), Self Teleport, +DEF(All)",
     "Ranged, High DMG(Negative), Self Teleport, +DEF(All)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

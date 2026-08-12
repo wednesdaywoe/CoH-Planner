@@ -47,5 +47,9 @@
     "Close, High DMG(Lethal/Special), Foe Knockback/Special",
     "Narrow Ranged (Cone), High DMG(Lethal/Special), Foes -Res(All)/Special",
     "PBAoE, Superior DMG(Lethal/Special), Foe Knockback/Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

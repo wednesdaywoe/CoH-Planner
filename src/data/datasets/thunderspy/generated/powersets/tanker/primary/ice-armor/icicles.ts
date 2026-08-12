@@ -35,7 +35,7 @@ export const Icicles: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Slow Movement",
     "Tanker Archetype Sets",
     "Universal Damage Sets"

@@ -31,5 +31,9 @@
     "PBAoE Melee, Moderate DMG(Lethal/Energy),+DOT (Lethal),  -Resist (Lethal/Energy)",
     "Ranged, High DMG(Lethal/Energy),+DOT (Lethal), -Resist (Lethal/Energy), Knockback",
     "Melee (Cone), Moderate DMG(Lethal/Energy), +DOT (Lethal), -Resist (Lethal/Energy), Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

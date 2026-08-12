@@ -27,5 +27,9 @@
     "Ranged (Targeted AoE), Foe Hold, -DMG, -DoT(Toxic)",
     "Ranged (Targeted AoE), Foe Hold, -DMG, -DoT(Toxic)",
     "Self Destruct"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -31,5 +31,9 @@
     "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
     "Close (Cone), Moderate DoT(Cold), Foe -Recharge, -SPD",
     "Ranged (Location AoE), Minor DoT(Cold), Foe -Recharge, -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

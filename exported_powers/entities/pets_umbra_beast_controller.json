@@ -1,15 +1,15 @@
 {
   "name": "Pets_Umbra_Beast_Controller",
   "group_name": "Pets",
-  "commandable_pet": 0,
+  "commandable_pet": 1,
   "power_tags": [
     "HumanSkeleton",
     "Demon"
   ],
   "copy_creator_mods": false,
-  "can_zone": false,
+  "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "minion_controllerpets",
     "description": "The Umbral Beast is among the most horrific predators of the Netherworld. They tear their foes with their vicious claws and can manipulate the shadows of their victims to bind them in place.",
@@ -50,7 +50,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 54,
       "experience": 0,
       "display_names": [

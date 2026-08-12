@@ -31,5 +31,9 @@
     "Toggle: Self +Res(Smash, Lethal)",
     "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
     "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

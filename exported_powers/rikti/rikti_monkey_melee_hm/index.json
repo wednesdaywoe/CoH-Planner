@@ -27,5 +27,9 @@
     "Melee, Light DMG(Smash/Toxic), Foe -Recharge",
     "Ranged, Moderate DMG(Psionic), Foe -Recharge",
     "Post Death AoE Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

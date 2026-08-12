@@ -47,5 +47,9 @@
     "Toggle: PBAoE Foe Fear, -To Hit",
     "PBAoE Team +Regen, +Recovery, Foe -To Hit",
     "Ranged (AoE), Minor DMG(Negative), Target Slow, -Recharge, -Regen, Disorient, Ally Rez"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

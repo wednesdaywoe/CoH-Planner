@@ -47,5 +47,9 @@
     "Ranged, Ally Rez, +Heal Over Time, Special, +3 Bloom",
     "Toggle, Foe Hold",
     "PBAoE, Team +Damage, +To Hit, +Endurance Discount, +5 Bloom"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

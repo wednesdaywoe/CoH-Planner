@@ -38,7 +38,7 @@ export const EtherealElusion: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Leaping & Sprints",
+    "Leaping",
     "Resist Damage",
     "Universal Travel"
   ],

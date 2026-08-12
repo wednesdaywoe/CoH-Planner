@@ -39,7 +39,7 @@ export const SolarFlare: Power = {
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

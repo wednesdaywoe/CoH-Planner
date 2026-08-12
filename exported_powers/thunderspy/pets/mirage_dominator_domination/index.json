@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Target (Location AoE), Foe Confuse, -To Hit",
     "Target (Location AoE), Foe Confuse, -To Hit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

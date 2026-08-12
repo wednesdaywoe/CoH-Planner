@@ -23,5 +23,9 @@
     "Melee, Minor DMG(Lethal)",
     "-Recharge, -SPD",
     "DoT(Cold), -Recharge, -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -40,7 +40,7 @@ export const BrightNovaScatter: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Kheldian Archetype Sets",
-    "Ranged AoE Damage",
+    "Targeted AoE Damage",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

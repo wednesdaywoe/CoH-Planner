@@ -167,7 +167,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Arachnos_Boss",
     displayName: "Tarantula Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -222,7 +222,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Arachnos_Support_Protected",
     displayName: "Fortunata Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -265,7 +265,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Cimeroran_Boss",
     displayName: "Praefectus Castorum Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -343,7 +343,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Cimeroran_LT",
     displayName: "Centurion Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -408,7 +408,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Clockwork_LT",
     displayName: "Builder Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -459,7 +459,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Clockwork_Support_Attacks",
     displayName: "Mender Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -511,7 +511,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Drones_Boss",
     displayName: "Assault Drone Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -563,7 +563,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_IDF_Boss",
     displayName: "Commander Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -617,7 +617,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_IDF_Support",
     displayName: "Battle Orb Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -661,7 +661,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Lights_LT",
     displayName: "Australis Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -705,7 +705,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Lights_Support",
     displayName: "Borealis Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -749,7 +749,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Longbow_Boss_Buff",
     displayName: "Cataphract Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -806,7 +806,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Longbow_LT_Buff",
     displayName: "Nullifier Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -861,7 +861,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Rikti_LT",
     displayName: "Headman Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -914,7 +914,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Vanguard_LT",
     displayName: "Sergeant Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -966,7 +966,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Fate_Vanguard_Support_Protected",
     displayName: "Magician Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -1866,7 +1866,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Arachnos_Boss",
     displayName: "Tarantula Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -1921,7 +1921,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Arachnos_Boss_Buff",
     displayName: "Tarantula Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -1976,7 +1976,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Arachnos_LT",
     displayName: "Bane Spider Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2029,7 +2029,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Arachnos_LT_Buff",
     displayName: "Bane Spider Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2082,7 +2082,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Arachnos_Support",
     displayName: "Fortunata Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2125,7 +2125,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Arachnos_Support_Attacks",
     displayName: "Fortunata Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2179,7 +2179,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Arachnos_Support_Protected",
     displayName: "Fortunata Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2222,7 +2222,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Banished_Boss",
     displayName: "Ravager Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2290,7 +2290,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Banished_Boss_Buff",
     displayName: "Ravager Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2358,7 +2358,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Banished_LT",
     displayName: "Banespawn Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2414,7 +2414,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Banished_LT_Buff",
     displayName: "Banespawn Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2470,7 +2470,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Banished_Support",
     displayName: "Defiler Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2503,7 +2503,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Banished_Support_Attacks",
     displayName: "Defiler Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2549,7 +2549,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Banished_Support_Protected",
     displayName: "Defiler Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2582,7 +2582,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Carnival_Boss",
     displayName: "Dark Ring Mistress Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2650,7 +2650,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Carnival_Boss_Buff",
     displayName: "Dark Ring Mistress Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2718,7 +2718,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Carnival_LT",
     displayName: "Strongman Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2771,7 +2771,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Carnival_LT_Buff",
     displayName: "Strongman Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2824,7 +2824,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Carnival_Support",
     displayName: "Seneschal Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2866,7 +2866,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Carnival_Support_Attacks",
     displayName: "Seneschal Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2918,7 +2918,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Carnival_Support_Protected",
     displayName: "Seneschal Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -2960,7 +2960,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Cimeroran_Boss",
     displayName: "Praefectus Castorum Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3038,7 +3038,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Cimeroran_Boss_Buff",
     displayName: "Praefectus Castorum Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3116,7 +3116,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Cimeroran_LT",
     displayName: "Centurion Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3181,7 +3181,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Cimeroran_LT_Buff",
     displayName: "Centurion Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3246,7 +3246,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Cimeroran_Support",
     displayName: "Immunes Surgeon Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3289,7 +3289,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Cimeroran_Support_Attacks",
     displayName: "Immunes Surgeon Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3342,7 +3342,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Cimeroran_Support_Protected",
     displayName: "Immunes Surgeon Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3407,7 +3407,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Clockwork_Boss",
     displayName: "Dismantler Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3450,7 +3450,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Clockwork_Boss_Buff",
     displayName: "Dismantler Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3493,7 +3493,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Clockwork_LT",
     displayName: "Builder Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3544,7 +3544,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Clockwork_LT_Buff",
     displayName: "Builder Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3595,7 +3595,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Clockwork_Support",
     displayName: "Mender Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3637,7 +3637,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Clockwork_Support_Attacks",
     displayName: "Mender Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3689,7 +3689,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Clockwork_Support_Protected",
     displayName: "Mender Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3731,7 +3731,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Demons_Boss",
     displayName: "Succubus Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3796,7 +3796,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Demons_Boss_Buff",
     displayName: "Succubus Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3861,7 +3861,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Demons_LT",
     displayName: "Behemoth Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3912,7 +3912,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Demons_LT_Buff",
     displayName: "Behemoth Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -3963,7 +3963,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Demons_Support",
     displayName: "Nerva Spectral Demon Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4007,7 +4007,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Demons_Support_Attacks",
     displayName: "Nerva Spectral Demon Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4062,7 +4062,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Demons_Support_Protected",
     displayName: "Nerva Spectral Demon Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4106,7 +4106,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Drones_Boss",
     displayName: "Assault Drone Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4158,7 +4158,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Drones_Boss_Buff",
     displayName: "Assault Drone Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4210,7 +4210,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Drones_LT",
     displayName: "Laser Drone Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4252,7 +4252,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Drones_LT_Buff",
     displayName: "Laser Drone Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4294,7 +4294,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Drones_Support",
     displayName: "Shield Drone Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4338,7 +4338,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Drones_Support_Attacks",
     displayName: "Shield Drone Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4392,7 +4392,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Drones_Support_Protected",
     displayName: "Shield Drone Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4436,7 +4436,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Elementals_Boss",
     displayName: "Tempest Elemental Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4503,7 +4503,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Elementals_Boss_Buff",
     displayName: "Tempest Elemental Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4570,7 +4570,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Elementals_LT",
     displayName: "Storm Elemental Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4625,7 +4625,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Elementals_LT_Buff",
     displayName: "Storm Elemental Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4680,7 +4680,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Elementals_Support",
     displayName: "Monsoon Elemental Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4724,7 +4724,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Elementals_Support_Attacks",
     displayName: "Monsoon Elemental Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4779,7 +4779,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Elementals_Support_Protected",
     displayName: "Monsoon Elemental Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4823,7 +4823,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_IDF_Boss",
     displayName: "Commander Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4877,7 +4877,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_IDF_Boss_Buff",
     displayName: "Commander Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4931,7 +4931,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_IDF_LT",
     displayName: "Elite Ranger Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -4973,7 +4973,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_IDF_LT_Buff",
     displayName: "Elite Ranger Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5015,7 +5015,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_IDF_Support",
     displayName: "Battle Orb Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5059,7 +5059,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_IDF_Support_Attacks",
     displayName: "Battle Orb Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5114,7 +5114,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_IDF_Support_Protected",
     displayName: "Battle Orb Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5158,7 +5158,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Knives_Boss",
     displayName: "Assassin Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5221,7 +5221,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Knives_Boss_Buff",
     displayName: "Assassin Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5284,7 +5284,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Knives_LT",
     displayName: "Tempest Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5339,7 +5339,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Knives_LT_Buff",
     displayName: "Tempest Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5394,7 +5394,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Knives_Support",
     displayName: "Guardian Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5438,7 +5438,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Knives_Support_Attacks",
     displayName: "Guardian Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5494,7 +5494,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Knives_Support_Protected",
     displayName: "Guardian Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5538,7 +5538,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Lights_Boss",
     displayName: "Polaris Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5606,7 +5606,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Lights_Boss_Buff",
     displayName: "Polaris Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5674,7 +5674,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Lights_LT",
     displayName: "Australis Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5718,7 +5718,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Lights_LT_Buff",
     displayName: "Australis Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5762,7 +5762,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Lights_Support",
     displayName: "Borealis Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5806,7 +5806,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Lights_Support_Attacks",
     displayName: "Borealis Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5861,7 +5861,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Lights_Support_Protected",
     displayName: "Borealis Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5905,7 +5905,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Longbow_Boss",
     displayName: "Cataphract Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -5962,7 +5962,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Longbow_Boss_Buff",
     displayName: "Cataphract Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6019,7 +6019,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Longbow_LT",
     displayName: "Nullifier Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6074,7 +6074,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Longbow_LT_Buff",
     displayName: "Nullifier Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6129,7 +6129,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Longbow_Support",
     displayName: "Warden Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6172,7 +6172,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Longbow_Support_Attacks",
     displayName: "Warden Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6226,7 +6226,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Longbow_Support_Protected",
     displayName: "Warden Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6269,7 +6269,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Nemesis_Boss",
     displayName: "War Hulk Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6339,7 +6339,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Nemesis_Boss_Buff",
     displayName: "War Hulk Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6409,7 +6409,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Nemesis_LT",
     displayName: "Colonel Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6455,7 +6455,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Nemesis_LT_Buff",
     displayName: "Colonel Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6501,7 +6501,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Nemesis_Support",
     displayName: "Lancer Surgeon Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6544,7 +6544,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Nemesis_Support_Attacks",
     displayName: "Lancer Surgeon Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6597,7 +6597,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Nemesis_Support_Protected",
     displayName: "Lancer Surgeon Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6640,7 +6640,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Phantoms_Boss",
     displayName: "Spectre Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6692,7 +6692,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Phantoms_Boss_Buff",
     displayName: "Spectre Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6744,7 +6744,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Phantoms_LT",
     displayName: "Phantom Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6784,7 +6784,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Phantoms_LT_Buff",
     displayName: "Phantom Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6824,7 +6824,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Phantoms_Support",
     displayName: "Spirit Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6866,7 +6866,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Phantoms_Support_Attacks",
     displayName: "Spirit Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6918,7 +6918,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Phantoms_Support_Protected",
     displayName: "Spirit Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -6960,7 +6960,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rikti_Boss",
     displayName: "Chief Mentalist Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7026,7 +7026,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rikti_Boss_Buff",
     displayName: "Chief Mentalist Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7092,7 +7092,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rikti_LT",
     displayName: "Headman Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7145,7 +7145,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rikti_LT_Buff",
     displayName: "Headman Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7198,7 +7198,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rikti_Support",
     displayName: "Guardian Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7242,7 +7242,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rikti_Support_Attacks",
     displayName: "Guardian Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7297,7 +7297,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rikti_Support_Protected",
     displayName: "Guardian Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7341,7 +7341,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rularuu_Boss",
     displayName: "Overseer Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7406,7 +7406,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rularuu_Boss_Buff",
     displayName: "Overseer Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7471,7 +7471,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rularuu_LT",
     displayName: "Bull Natterling Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7522,7 +7522,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rularuu_LT_Buff",
     displayName: "Bull Natterling Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7573,7 +7573,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rularuu_Support",
     displayName: "Noble Brute Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7604,7 +7604,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rularuu_Support_Attacks",
     displayName: "Noble Brute Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7646,7 +7646,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Rularuu_Support_Protected",
     displayName: "Noble Brute Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7677,7 +7677,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Seers_Boss",
     displayName: "Augur Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7730,7 +7730,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Seers_Boss_Buff",
     displayName: "Augur Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7783,7 +7783,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Seers_LT",
     displayName: "Diviner Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7825,7 +7825,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Seers_LT_Buff",
     displayName: "Diviner Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7867,7 +7867,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Seers_Support",
     displayName: "Seeker Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7909,7 +7909,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Seers_Support_Attacks",
     displayName: "Seeker Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -7962,7 +7962,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Seers_Support_Protected",
     displayName: "Seeker Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8004,7 +8004,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Talons_Boss",
     displayName: "Diviner Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8073,7 +8073,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Talons_Boss_Buff",
     displayName: "Diviner Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8142,7 +8142,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Talons_LT",
     displayName: "Harpy Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8194,7 +8194,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Talons_LT_Buff",
     displayName: "Harpy Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8246,7 +8246,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Talons_Support",
     displayName: "Siren Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8289,7 +8289,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Talons_Support_Attacks",
     displayName: "Siren Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8342,7 +8342,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Talons_Support_Protected",
     displayName: "Siren Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8385,7 +8385,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Tsoo_Boss",
     displayName: "Ancestral Guardian Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8450,7 +8450,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Tsoo_Boss_Buff",
     displayName: "Ancestral Guardian Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8515,7 +8515,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Tsoo_LT",
     displayName: "Ancestor Spirit Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8568,7 +8568,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Tsoo_LT_Buff",
     displayName: "Ancestor Spirit Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8621,7 +8621,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Tsoo_Support",
     displayName: "Sorcerer Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8665,7 +8665,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Tsoo_Support_Attacks",
     displayName: "Sorcerer Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8720,7 +8720,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Tsoo_Support_Protected",
     displayName: "Sorcerer Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8764,7 +8764,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Vanguard_Boss",
     displayName: "Sorcerer Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8832,7 +8832,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Vanguard_Boss_Buff",
     displayName: "Sorcerer Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8900,7 +8900,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Vanguard_LT",
     displayName: "Sergeant Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -8952,7 +8952,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Vanguard_LT_Buff",
     displayName: "Sergeant Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -9004,7 +9004,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Vanguard_Support",
     displayName: "Magician Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -9048,7 +9048,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Vanguard_Support_Attacks",
     displayName: "Magician Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -9103,7 +9103,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Vanguard_Support_Protected",
     displayName: "Magician Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -9147,7 +9147,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Warworks_Boss",
     displayName: "Mk-VI 'Victoria' Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -9199,7 +9199,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Warworks_Boss_Buff",
     displayName: "Mk-VI 'Victoria' Essence",
     characterClass: "boss_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -9251,7 +9251,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Warworks_LT",
     displayName: "ACU Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -9293,7 +9293,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Warworks_LT_Buff",
     displayName: "ACU Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -9335,7 +9335,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Warworks_Support",
     displayName: "Battle Orb Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -9379,7 +9379,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Warworks_Support_Attacks",
     displayName: "Battle Orb Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -9434,7 +9434,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "IncarnatePets_Lore_Warworks_Support_Protected",
     displayName: "Battle Orb Essence",
     characterClass: "lt_praetoriangrunt_pet",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -10613,7 +10613,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "MastermindPets_Ghost_Boss",
     displayName: "Wraith",
     characterClass: "henchman_boss",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 300,
     abilities: [
@@ -10681,7 +10681,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "MastermindPets_Ghost_Lt",
     displayName: "Tortured Soul",
     characterClass: "henchman_lt",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 300,
     abilities: [
@@ -10749,7 +10749,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "MastermindPets_Ghost_Minion",
     displayName: "Spirit",
     characterClass: "henchman_minion",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 300,
     abilities: [
@@ -11714,7 +11714,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "MastermindPets_Maintenance_Bot",
     displayName: "Maintenance Drone",
     characterClass: "henchman_boss",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     abilities: [
       {
@@ -14317,7 +14317,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_CatherineWheel_Controller",
     displayName: "Catherine Wheel",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -16009,7 +16009,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Enslaved_Specter",
     displayName: "Specter",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     abilities: [
       {
@@ -16052,7 +16052,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Enslaved_Specter2",
     displayName: "Specter",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     abilities: [
       {
@@ -16095,7 +16095,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Enslaved_Specter3",
     displayName: "Specter",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     abilities: [
       {
@@ -16408,7 +16408,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_FireImp_Controller",
     displayName: "Imp",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -16573,7 +16573,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Fly_Trap_Controller",
     displayName: "Giant Fly Trap",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -16913,7 +16913,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Gremlin_Controller",
     displayName: "Gremlin",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -17039,7 +17039,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_GunDrone_Tri_Controller",
     displayName: "Tri-Cannon",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: true,
     abilities: [
       {
@@ -17965,7 +17965,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_JackFrost_Controller",
     displayName: "Jack Frost",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -18905,7 +18905,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_MM_Thug_Arsonist_Burn",
     displayName: "Burn",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     abilities: [
       {
@@ -20821,7 +20821,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Phantasm_Controller",
     displayName: "Phantasm",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -21511,7 +21511,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_PsychicAnomaly_Controller",
     displayName: "Psychic Anomaly",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -21903,7 +21903,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Reverberant_Controller",
     displayName: "Reverberant",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -23315,7 +23315,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Singularity_Controller",
     displayName: "Singularity",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -23749,7 +23749,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Stone_Controller",
     displayName: "Animated Stone",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -24816,7 +24816,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Thug_Pose_01",
     displayName: "Posse",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 120,
     abilities: [
@@ -24838,7 +24838,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Thug_Pose_02",
     displayName: "Posse",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 120,
     abilities: [
@@ -24860,7 +24860,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Thug_Pose_03",
     displayName: "Posse",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 120,
     abilities: [
@@ -24882,7 +24882,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Thug_Pose_04",
     displayName: "Posse",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 120,
     abilities: [
@@ -24904,7 +24904,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Thug_Pose_05",
     displayName: "Posse",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 120,
     abilities: [
@@ -24926,7 +24926,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Thug_Pose_06",
     displayName: "Posse",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 120,
     abilities: [
@@ -24948,7 +24948,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Thug_Pose_07",
     displayName: "Posse",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 120,
     abilities: [
@@ -24970,7 +24970,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Thug_Pose_08",
     displayName: "Posse",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 120,
     abilities: [
@@ -24992,7 +24992,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Thug_Pose_09",
     displayName: "Posse",
     characterClass: "henchman_minion_small",
-    commandable: true,
+    commandable: false,
     copyCreatorMods: false,
     lifespan: 120,
     abilities: [
@@ -26041,7 +26041,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_Umbra_Beast_Controller",
     displayName: "Umbra Beast",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {
@@ -27215,7 +27215,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     name: "Pets_WindControl_Vortex_Controller",
     displayName: "Vortex",
     characterClass: "minion_controllerpets",
-    commandable: false,
+    commandable: true,
     copyCreatorMods: false,
     abilities: [
       {

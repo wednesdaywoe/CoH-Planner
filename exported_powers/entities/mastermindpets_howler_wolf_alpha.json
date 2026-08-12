@@ -11,7 +11,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_BeastMastery",
     "character_class_name": "henchman_minion",
     "description": "Alpha Howler Wolves are the most dominant of their species. They support their pack with piercing howls and snarls to strengthen their pack and weaken their victims.",
@@ -58,7 +58,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

@@ -37,8 +37,8 @@ export const MaceBeamBlast: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

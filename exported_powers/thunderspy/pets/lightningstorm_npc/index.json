@@ -23,5 +23,9 @@
     "Lightning",
     "Moderate Damage (Negative)",
     "Self Hover"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

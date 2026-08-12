@@ -27,5 +27,9 @@
     "Ranged, Minor DMG(Cold/Smash), Foe -Recharge, -SPD",
     "Melee, Moderate DMG(Lethal/Cold)",
     "Self Leap"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

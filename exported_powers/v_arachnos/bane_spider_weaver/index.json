@@ -51,5 +51,9 @@
     "Ranged, Foe Hold, -Recharge, -Fly, -Jump, -SPD, Special vs. Arachnos Soldiers/Widows",
     "Toggle: Self Stealth, +DEF(All but Psionic, Toxic)",
     "Auto: Self +Res(All DMG, Confuse, Hold, Disorient, Sleep, Knockback, Defense, ToHit, Placate, Recharge Debuffs), +MaxHP, Vulnerable(Fear, Repel, Taunt, End Drain)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

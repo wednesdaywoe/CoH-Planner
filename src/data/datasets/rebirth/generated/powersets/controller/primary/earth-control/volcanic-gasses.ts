@@ -36,8 +36,8 @@ export const VolcanicGasses: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Holds",
-    "Ranged AoE Damage",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

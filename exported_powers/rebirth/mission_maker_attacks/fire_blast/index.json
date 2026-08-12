@@ -43,5 +43,9 @@
     "Self +To-hit, +DMG",
     "Close, High DMG(Fire)",
     "PBAoE, Extreme DMG(Fire/Smash), Self -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

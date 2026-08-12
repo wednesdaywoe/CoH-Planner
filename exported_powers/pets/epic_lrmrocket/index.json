@@ -19,5 +19,9 @@
   "power_short_helps": [
     "Interruptible (Targeted AoE), Superior DMG(Lethal/Smash), Foe Knockback",
     "Interruptible (Targeted AoE), Superior DMG(Lethal/Smash), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

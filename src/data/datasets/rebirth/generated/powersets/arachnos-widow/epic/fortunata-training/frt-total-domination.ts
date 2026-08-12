@@ -37,7 +37,7 @@ export const FRTTotalDomination: Power = {
   "allowedSetCategories": [
     "Holds",
     "Soldiers of Arachnos Archetype Sets",
-    "Universal Control Duration"
+    "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
   "effects": {

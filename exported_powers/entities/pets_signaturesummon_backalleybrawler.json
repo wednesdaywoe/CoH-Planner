@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "boss_elite",
     "description": "One of the most veteran heroes in Paragon City, the Brawler is in semi-retirement, training the next generation of heroes. Though he rarely goes into the field these days, his power and fighting skills are still as potent as ever.",
@@ -53,7 +53,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

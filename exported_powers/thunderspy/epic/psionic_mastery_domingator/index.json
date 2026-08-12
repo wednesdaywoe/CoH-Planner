@@ -31,5 +31,9 @@
     "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
     "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse",
     "Ranged (Cone), Moderate DMG(Psionic), Foe -Recharge"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

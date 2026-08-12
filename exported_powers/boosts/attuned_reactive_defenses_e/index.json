@@ -15,5 +15,9 @@
   ],
   "power_short_helps": [
     "Enhances Defense and reduces Endurance Cost and Recharge Time"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

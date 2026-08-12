@@ -47,5 +47,9 @@
     "Ranged, Foe Fear",
     "Close (AoE), Light DMG(Psionic), Foe Disorient -Recharge",
     "Melee, Superior DMG(Psionic/Smash), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

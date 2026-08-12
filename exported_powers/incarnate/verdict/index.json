@@ -47,5 +47,9 @@
     "Ranged Cone, High DMG(Cold), Foe -Speed, -Recharge, Chance for Hold",
     "Targeted Wide Ranged AoE, High DMG(Fire) + Superior DoT(Fire)",
     "Self-Targeted Wide Cone AoE, High DMG(Smashing), Self +Defense(All)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

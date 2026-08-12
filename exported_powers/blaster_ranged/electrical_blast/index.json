@@ -47,5 +47,9 @@
     "Ranged, DMG(Energy), Foe Hold, -End",
     "Summon Sentinel: Ranged, DMG(Energy), Foe -End",
     "Ranged (Targeted AoE), DMG(Energy), Foe -End, -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

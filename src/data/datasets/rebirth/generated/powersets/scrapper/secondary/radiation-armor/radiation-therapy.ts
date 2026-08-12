@@ -39,7 +39,7 @@ export const RadiationTherapy: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Healing",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

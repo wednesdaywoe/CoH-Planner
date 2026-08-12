@@ -47,5 +47,9 @@
     "Ranged, Superior DMG(Lethal), Minor DoT(Fire)",
     "Ranged, High DMG(Lethal)",
     "Ranged (Location AoE), Extreme DoT(Lethal)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

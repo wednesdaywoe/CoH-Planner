@@ -55,5 +55,9 @@
     "Self +DMG, Special",
     "Upgrade Equipment",
     "Upgrade Equipment 1"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

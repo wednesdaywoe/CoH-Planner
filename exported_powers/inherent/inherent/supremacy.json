@@ -52,6 +52,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -258,6 +260,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [],
       "child_effects": [
@@ -273,6 +277,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 1,
           "templates": [
             {
@@ -294,7 +300,7 @@
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
-              "jit_requires": "",
+              "jit_requires": "combatlevel target> 23 <= distance 60 <= || arch target> Class_Henchman_Lt eq && FullHenchman target.HasTag? &&",
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
@@ -320,6 +326,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 1,
           "templates": [
             {
@@ -341,7 +349,7 @@
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
-              "jit_requires": "",
+              "jit_requires": "combatlevel target> 17 <= distance 60 <= || arch target> Class_Henchman_Minion eq && FullHenchman target.HasTag? &&",
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
@@ -367,6 +375,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 1,
           "templates": [
             {
@@ -388,7 +398,7 @@
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
-              "jit_requires": "",
+              "jit_requires": "combatlevel target> 5 <= distance 60 <= || arch target> Class_Henchman_Minion eq && FullHenchman target.HasTag? &&",
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
@@ -416,6 +426,8 @@
         "PVEOnly"
       ],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 1,
       "templates": [
         {
@@ -437,7 +449,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "FullHenchman target.HasTag? distance 60 > &&",
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
@@ -486,7 +498,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "FullHenchman target.HasTag? distance 60 > &&",
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
@@ -536,7 +548,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "FullHenchman target.HasTag? distance 60 > &&",
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
@@ -585,7 +597,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "FullHenchman target.HasTag? distance 60 > &&",
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
@@ -634,7 +646,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "FullHenchman target.HasTag? distance 60 > &&",
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,

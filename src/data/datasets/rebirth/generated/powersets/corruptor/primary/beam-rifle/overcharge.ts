@@ -40,9 +40,9 @@ export const Overcharge: Power = {
     "Accurate Defense Debuff",
     "Corruptor Archetype Sets",
     "Defense Debuff",
-    "Ranged AoE Damage",
     "Stuns",
-    "Universal Control Duration",
+    "Targeted AoE Damage",
+    "Universal Control Duration Sets",
     "Universal Damage Sets",
     "Universal Debuff"
   ],

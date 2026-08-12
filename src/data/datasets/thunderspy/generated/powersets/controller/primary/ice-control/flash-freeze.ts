@@ -37,9 +37,9 @@ export const FlashFreeze: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Ranged AoE Damage",
     "Sleep",
     "Slow Movement",
+    "Targeted AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

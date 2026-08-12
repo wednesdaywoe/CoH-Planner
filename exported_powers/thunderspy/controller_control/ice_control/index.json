@@ -47,5 +47,9 @@
     "Target (Location AoE), Foe Knockdown, -SPD",
     "Ranged (Targeted AoE), Minor DMG(Cold/Lethal), Foe Sleep",
     "PBAoE, Foe Hold, -Recharge, -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

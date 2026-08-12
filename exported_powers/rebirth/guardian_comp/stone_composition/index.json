@@ -47,5 +47,9 @@
     "Auto: Self +Res(Lethal, smashing)",
     "Ranged (Location AoE), Foe Knockback, -To Hit, -Def",
     "Ranged (Location AoE), Extreme DoT(Fire), Foe -To Hit, -DEF, -DMG, -Res(All)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -39,7 +39,7 @@ export const ApparitionalAvoidance: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Resist Damage",
-    "Running & Sprints",
+    "Running",
     "Universal Travel"
   ],
   "maxSlots": 6,

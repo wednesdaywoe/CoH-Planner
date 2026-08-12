@@ -23,5 +23,9 @@
     "Ranged, High DMG(Energy) Foe -Regen",
     "Superior DoT(Energy), Foe -Def",
     "Ranged (Cone), Superior DMG(Energy), Foe -Def, Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

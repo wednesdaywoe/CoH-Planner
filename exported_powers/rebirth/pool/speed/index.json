@@ -31,5 +31,9 @@
     "Toggle: Self +Speed",
     "Toggle: PBAoE, Moderate DMG(Smash/Energy), Foe Attract, Knockback, Stun, (Special)",
     "Self +Recharge, +SPD, Res (Slow), +DEF(All), Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

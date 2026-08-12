@@ -59,5 +59,9 @@
     "Ranged, Moderate DMG(Negative), Foe -To-hit",
     "Ranged, High DoT(Negative), Foe -To-hit",
     "Close (AoE), Extreme DMG(Negative), Foe -To-hit, Self -Recovery"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

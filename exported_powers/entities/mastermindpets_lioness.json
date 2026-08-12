@@ -11,7 +11,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_BeastMastery",
     "character_class_name": "henchman_lt",
     "description": "Lionesses are fierce hunters that intimidate their foes with terrible roars before shredding them with deadly claw attacks.",
@@ -64,7 +64,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

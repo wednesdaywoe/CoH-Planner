@@ -31,5 +31,9 @@
     "Ranged Energy/Smash, Knockback",
     "Targeted AoE Smash/Energy, Knockback",
     "Close, High DMG(Energy/Smash), Foe Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

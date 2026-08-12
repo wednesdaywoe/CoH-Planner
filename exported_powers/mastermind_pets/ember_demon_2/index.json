@@ -31,5 +31,9 @@
     "Enchant Demon",
     "Auto PBAoE, Ally +Res(Fire, Lethal, Smash, Cold, Toxic)",
     "Auto PBAoE, Owner +Res(Fire, Lethal, Smash, Cold, Toxic)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

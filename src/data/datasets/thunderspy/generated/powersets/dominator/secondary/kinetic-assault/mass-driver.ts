@@ -91,9 +91,9 @@ export const MassDriver: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",39766,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"Key54527"],
-    ["Resistance","Lethal",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",39766,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"Key54527"],
-    ["Resistance","Energy",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",39766,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"Key54527"],
+    ["Resistance","Smashing",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Damage","Lethal",0.26,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","JumpHeight",0.15,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["RechargeTime",null,0.15,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

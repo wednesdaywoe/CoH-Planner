@@ -2175,5 +2175,9 @@
     "+Res (End Drain)",
     "Primal Energy Generation Bonus",
     "Primal Energy Generation Bonus"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

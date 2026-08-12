@@ -31,5 +31,9 @@
     "Ranged, Foe Hold, -SPD, -Recharge",
     "PBAoE, DMG(Cold), Foe Sleep",
     "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

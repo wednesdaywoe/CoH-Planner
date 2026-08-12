@@ -39,7 +39,7 @@ export const ArcticAir: Power = {
     "Dominator Archetype Sets",
     "Fear",
     "Slow Movement",
-    "Universal Control Duration",
+    "Universal Control Duration Sets",
     "Universal Debuff"
   ],
   "maxSlots": 6,

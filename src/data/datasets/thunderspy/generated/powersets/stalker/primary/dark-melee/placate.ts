@@ -37,7 +37,7 @@ export const Placate: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Melee AoE Damage",
+    "PBAoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

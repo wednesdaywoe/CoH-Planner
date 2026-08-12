@@ -47,5 +47,9 @@
     "Self +DMG, +To Hit, Delayed Self(Weaken, Special)",
     "Ranged, High DMG(Smash), Knockback, -Fly",
     "PBAoE Melee, Moderate DMG(Smash), Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

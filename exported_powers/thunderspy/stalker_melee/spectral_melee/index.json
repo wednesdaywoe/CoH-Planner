@@ -47,5 +47,9 @@
     "PBAoE, Moderate DMG(Negative/Psionic), Foe Fear",
     "Ranged, High DMG(Negative/Psionic), Foe Immobilize, Fear",
     "Melee, Extreme DMG(Negative/Psionic), Foe Fear, Self +HP, Summon Spirits"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

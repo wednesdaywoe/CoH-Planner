@@ -27,5 +27,9 @@
     "PBAoE, Moderate DMG(Negative), Foe -Recharge, -SPD, Self +DMG, +ToHit",
     "Ranged (Cone), Moderate DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
     "Melee, Extreme DoT(Negative), Foe Hold, -Recharge, -SPD"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

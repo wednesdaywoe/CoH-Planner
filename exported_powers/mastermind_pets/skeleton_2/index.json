@@ -39,5 +39,9 @@
     "Enchant",
     "Enchant",
     "Auto Res Sleep, Fear, Disorient, Immobilize, Hold, Slow, Cold, Negative, Toxic, Psionic"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

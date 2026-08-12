@@ -23,5 +23,9 @@
     "Auto Res Placate, Disorient, Terrorize, Smashing, Lethal, Fire, Cold, Toxic",
     "Ranged Cone, DMG(Fire/Toxic), Foe -Res",
     "Enchant Demon"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

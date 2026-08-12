@@ -47,5 +47,9 @@
     "Melee (Cone), DMG(Smash/Energy), Foe Disorient, Special",
     "Melee, DMG(Smash/Energy), Foe DisorientMelee, Extreme(Energy/Smash), Foe Disorient, +Energy Focus",
     "Melee, DMG(Energy), Foe Disorient, Self -HP, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

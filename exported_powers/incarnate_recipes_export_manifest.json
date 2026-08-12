@@ -1,0 +1,53 @@
+{
+  "schema": "bin-crawler-export-manifest/2",
+  "incarnate_recipes_fingerprint": "ba7ae2a19a746bceee95c7c9ca197d9c40da4b23f16df8cd96d0334efc24473b",
+  "source": {
+    "assets_dir": "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/live",
+    "shard": "live",
+    "sources": [
+      {
+        "name": "bin.pigg",
+        "bytes": 11168686,
+        "modified": "2026-07-07T12:53:32Z",
+        "sha256": "6ccb245c4a18d0811322427f03c838a26a618289854703eeaf11a1f698a0df9b"
+      },
+      {
+        "name": "bin_fxinfo.pigg",
+        "bytes": 3661959,
+        "modified": "2026-07-07T12:53:31Z",
+        "sha256": "d3d0d9dfd7465e3b62ed42526ae80c23e3c159c929a017df43d9afdb77bc97bc"
+      },
+      {
+        "name": "bin_minimap.pigg",
+        "bytes": 2606143,
+        "modified": "2026-01-16T23:19:57Z",
+        "sha256": "fe41db5a003c81d1cf1898237586c2ba0d75c027f1b0de5f0d037d036c5a82de"
+      },
+      {
+        "name": "bin_particles.pigg",
+        "bytes": 2197255,
+        "modified": "2026-01-22T16:54:28Z",
+        "sha256": "f64d30ca24353eb9b9803ff013c8f653db82cd5f6e85b2a837db7be9c2ac9b64"
+      },
+      {
+        "name": "bin_powers.pigg",
+        "bytes": 5251121,
+        "modified": "2026-07-07T12:53:32Z",
+        "sha256": "e719a7252297f3d3e21099ec6cc2f32d1e787fbb12d11dcf4bd40a722b7b6d1e"
+      },
+      {
+        "name": "bin_sequencers.pigg",
+        "bytes": 5167078,
+        "modified": "2026-01-16T23:19:56Z",
+        "sha256": "c9bc8c09a50264c2220d88d5bbe53b8276e90beee08e71a72f9c8219e9e77943"
+      },
+      {
+        "name": "bin_villaincostume.pigg",
+        "bytes": 1376092,
+        "modified": "2026-02-03T21:04:46Z",
+        "sha256": "c8c10fa0d6015f33bc1f5dcb1d67d3f76dec9e8c297679040c3cb726fca7e3f4"
+      }
+    ]
+  },
+  "incarnate_recipes_records": 1711
+}

@@ -12,7 +12,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "henchman_boss",
     "description": "This Thug is a massive Brute. The Bruiser has worked his way through the ranks and has nothing left to prove. He is strong, tough and has a mean temper.",
@@ -65,7 +65,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

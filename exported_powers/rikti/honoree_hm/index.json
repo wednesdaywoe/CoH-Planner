@@ -79,5 +79,9 @@
     "Melee, High DMG(Psionic/Smash), Foe Confuse, Repel, -Recharge",
     "Summon",
     "Summon"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

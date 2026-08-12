@@ -47,5 +47,9 @@
     "Melee, Extreme DMG(Energy/Smash), Foe -Def, Disorient, Special",
     "Ranged (Targeted AoE): Foe Hold",
     "Close, Ally Rez, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

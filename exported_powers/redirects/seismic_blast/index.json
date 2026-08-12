@@ -203,5 +203,9 @@
     "Ranged, DMG(Smash), Foe Disorient, Special",
     "Ranged, DMG(Smash), Foe Disorient, Special",
     "Ranged, DMG(Smash), Foe Disorient, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

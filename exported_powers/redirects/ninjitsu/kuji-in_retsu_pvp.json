@@ -71,6 +71,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [],
       "child_effects": [
@@ -84,6 +86,8 @@
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -369,6 +373,8 @@
             "PVPOnly"
           ],
           "is_pvp": "PVP_ONLY",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [],
           "child_effects": [
@@ -382,6 +388,8 @@
               "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
+              "requires_pv": "EITHER",
+              "requires_default": "SATISFIED",
               "eval_flags": 0,
               "templates": [
                 {
@@ -735,6 +743,8 @@
               ],
               "flags": [],
               "is_pvp": "EITHER",
+              "requires_pv": "EITHER",
+              "requires_default": "SATISFIED",
               "eval_flags": 0,
               "templates": [
                 {

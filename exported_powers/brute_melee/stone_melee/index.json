@@ -47,5 +47,9 @@
     "Melee, DMG(Smashing), Foe Hold",
     "Ranged, DMG(Smashing), Foe Knockback, -Fly",
     "PBAoE, DMG(Smashing), Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

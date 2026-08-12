@@ -38,10 +38,10 @@ export const Frost: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
     "Slow Movement",
     "Tanker Archetype Sets",
-    "Threat Duration",
+    "Targeted AoE Damage",
+    "Taunt",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

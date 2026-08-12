@@ -23,5 +23,9 @@
     "Ranged, Moderate DMG(Smash), Knockback, -Fly",
     "Melee, Light DMG(Smash), Knockback",
     "Melee, Moderate DMG(Smash), Knockback"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

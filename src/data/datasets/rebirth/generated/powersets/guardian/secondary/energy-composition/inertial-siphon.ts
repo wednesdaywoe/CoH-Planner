@@ -37,8 +37,8 @@ export const InertialSiphon: Power = {
   ],
   "allowedSetCategories": [
     "Flight",
-    "Leaping & Sprints",
-    "Running & Sprints",
+    "Leaping",
+    "Running",
     "Slow Movement",
     "Universal Debuff",
     "Universal Travel"

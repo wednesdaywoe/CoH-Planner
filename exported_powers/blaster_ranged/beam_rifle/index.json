@@ -47,5 +47,9 @@
     "Sniper, DMG(Energy), Self +Range, Foe Knockdown, Special",
     "Narrow Ranged (Cone), DMG(Energy), Foes -Res, Special",
     "Ranged (Targeted AoE), DMG(Energy), Foe Minor DoT (Energy), -Def(All), Disorient, Special"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

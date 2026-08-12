@@ -47,5 +47,9 @@
     "Ranged, High DMG(Negative), Foe Knockback, -Recharge, -SPD",
     "Melee, Superior DMG(Negative), Special Foe Hold, Attract, -Recharge, -SPD",
     "Summon Essence: Ranged Moderate DMG (Negative)"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

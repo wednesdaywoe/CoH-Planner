@@ -47,5 +47,9 @@
     "PBAoE, Pets +Defense, +Regeneration, consumes all charges of Pack Mentality",
     "Summon Dire Wolf",
     "Auto PBAoE: Upgrade Beast Henchmen"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

@@ -33,7 +33,7 @@ export const Taunt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Threat Duration"
+    "Taunt"
   ],
   "maxSlots": 6,
   "effects": {

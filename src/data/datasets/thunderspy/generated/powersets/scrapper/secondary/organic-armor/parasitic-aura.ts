@@ -35,8 +35,9 @@ export const ParasiticAura: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets"
+    "PBAoE Damage",
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

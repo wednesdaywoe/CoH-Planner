@@ -23,5 +23,9 @@
     "Melee, Heavy DMG(Smash), Foe Knockback",
     "Melee, Light DMG(Negative/Smash), Foe -ToHit",
     "Ranged, High DoT(Negative), -ToHit"
-  ]
+  ],
+  "buy_requires": [],
+  "buy_requires_failed": "",
+  "specialize_at": 0,
+  "specialize_requires": []
 }

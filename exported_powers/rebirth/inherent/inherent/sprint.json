@@ -37,8 +37,8 @@
     "Jump"
   ],
   "allowed_set_categories": [
-    "Leaping & Sprints",
-    "Running & Sprints"
+    "Leaping",
+    "Running"
   ],
   "cast_through": [],
   "toggle_ignore": [
@@ -63,6 +63,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -111,6 +113,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -160,6 +164,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
