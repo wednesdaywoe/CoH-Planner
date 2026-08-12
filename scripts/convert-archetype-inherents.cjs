@@ -30,12 +30,31 @@
  *      own class catalogue (`derivePlayerArchetypes`). This is what keeps out
  *      the NPC classes and the dead legacy variants (`Class_BlasterOLD`'s four
  *      Defiance copies) that also sit in this directory.
- *   3. `boosts_allowed` is non-empty. A power a build can slot is a power a
- *      build can see. This is the discriminator that drops the meter/dampen/
- *      mode machinery — `Domination_Meter`, `Rage_Dampen`,
- *      `Primal_Energy_Meter`, `Vigilance_PerTeamEndAdjustment` — which share
- *      their archetype inherent's display name and are engine bookkeeping, not
- *      picks. Every one of them carries an empty `boosts_allowed`.
+ *   3. It is either slottable (`boosts_allowed` non-empty) or a `Toggle`.
+ *
+ *      An unslottable `Auto` in this directory is one of two things, and the
+ *      planner already handles both. Either it is engine bookkeeping —
+ *      `Domination_Meter`, `Rage_Dampen`, `Primal_Energy_Meter`,
+ *      `Vigilance_PerTeamEndAdjustment` — which shares its archetype
+ *      inherent's display name and is not a pick at all. Or it IS the
+ *      archetype's headline inherent (Containment, Fury, Gauntlet, Scourge,
+ *      …), which reaches the build through the archetype record's own
+ *      hand-written `inherent:` field via `createArchetypeInherentPower`.
+ *      Emitting those here would double every one of them.
+ *
+ *      A `Toggle` is neither. It is something the player switches on, so it
+ *      has to be visible whether or not it takes slots. Across all three
+ *      forks exactly one power qualifies: Thunderspy's Mastermind
+ *      `Hold_Ground`, a 60ft toggle that immobilises your henchmen and gives
+ *      them knockback protection — the "stay put" pet command. Supremacy
+ *      already occupies the Mastermind's single `inherent:` field, so there is
+ *      nowhere else for it to go.
+ *
+ *      `Click` is deliberately NOT in this clause. It isn't a clean signal:
+ *      `Domination` is a Click and is already the Dominator's headline
+ *      inherent, and `Vigilance_PerTeamEndAdjustment` is a Click on
+ *      Thunderspy while being an Auto on Homecoming and Rebirth. Widening to
+ *      Click doubles the first and admits the second.
  *   4. No powerset in this dataset already displays that name. Note the key:
  *      DISPLAY name, not internal name. Thunderspy's powerset layer does carry
  *      `internalName: "Hide"` — pointing at Quick Recovery — so an
@@ -46,11 +65,12 @@
  *      `Inherent.Inherent` too and reach the build through their form toggle;
  *      emitting them here would double every one of them.
  *
- * On the three shipped datasets this keeps 10 powers, all Thunderspy:
- * Stalker Hide + Placate, four Peacebringer travel toggles, four Warshade
- * teleports. Homecoming and Rebirth keep zero — they grant these from
- * powersets, so rule 4 rejects them, which is the answer that makes this
- * emit safe to merge into the shared hand-written list unconditionally.
+ * On the three shipped datasets this keeps 11 powers, all Thunderspy:
+ * Stalker Hide + Placate, Mastermind Hold Ground, four Peacebringer travel
+ * toggles, four Warshade teleports. Homecoming and Rebirth keep zero — they
+ * grant these from powersets, so rule 4 rejects them, which is the answer that
+ * makes this emit safe to merge into the shared hand-written list
+ * unconditionally.
  *
  * ## Levels
  *
@@ -186,7 +206,8 @@ function selectPowers() {
       (m) => m[1].toLowerCase(),
     );
     if (!classes.length || !classes.every((c) => playerClasses.has(c))) continue; // 2
-    if (!Array.isArray(json.boosts_allowed) || !json.boosts_allowed.length) continue; // 3
+    const slottable = Array.isArray(json.boosts_allowed) && json.boosts_allowed.length > 0;
+    if (!slottable && json.type !== 'Toggle') continue; // 3
     if (alreadyShown.has(String(json.display_name).toLowerCase())) continue; // 4
     if (alreadyGranted.has(String(json.name).toLowerCase())) continue; // 5
 

@@ -3,7 +3,7 @@
 // drives a real build through the store, so `resetBuild` writes.
 import '@/test/localstorage-polyfill';
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { loadDataset } from '@/data/dataset';
+import { loadDataset, getActiveDataset } from '@/data/dataset';
 import { getArchetypeInherentPowers, getInherentPowerDef, getPowerset } from '@/data';
 import { useBuildStore } from '@/stores/buildStore';
 
@@ -132,11 +132,117 @@ describe('Homecoming and Rebirth Stalkers are untouched', () => {
     DATASET_LOAD_MS,
   );
 
+  it.each(['homecoming', 'rebirth'] as const)(
+    '%s derives no archetype inherents at all — no fork but Thunderspy needs this layer',
+    async (datasetId) => {
+      // The property that lets `levels.ts` merge the generated map into the
+      // shared hand-written list unconditionally. Checked on the dataset's own
+      // additions rather than through `getArchetypeInherentPowers`, which
+      // merges in the shared Kheldian list and so is non-empty on every fork.
+      await loadDataset(datasetId);
+      expect(Object.keys(getActiveDataset().inherentRules.archetypeInherents ?? {})).toHaveLength(0);
+    },
+    DATASET_LOAD_MS,
+  );
+
+  it('a homecoming Mastermind has no Hold Ground', async () => {
+    await loadDataset('homecoming');
+    expect(getArchetypeInherentPowers('mastermind')).toHaveLength(0);
+    expect(getInherentPowerDef('Hold_Ground')).toBeUndefined();
+  }, DATASET_LOAD_MS);
+
   it('homecoming still grants Hide from the Ninjitsu powerset', async () => {
     await loadDataset('homecoming');
     const hide = getPowerset('stalker/ninjitsu')?.powers.find((p) => p.internalName === 'Hide');
     expect(hide?.name).toBe('Hide');
   }, DATASET_LOAD_MS);
+});
+
+/**
+ * Thunderspy Mastermind Hold Ground — the second half of the same gap.
+ *
+ * `Hold_Ground` is an auto-issued, Mastermind-gated Toggle in
+ * `Inherent.Inherent`: a 60ft sphere on `MastermindPets` that immobilises them
+ * and gives them knockback protection — the "stay put" pet command, icon
+ * `petcommand_action_stay.png`. It carries an empty `boosts_allowed`, so the
+ * converter's original clause 3 ("slottable") rejected it along with the
+ * engine bookkeeping.
+ *
+ * It has nowhere else to go. The archetype's headline inherent reaches a build
+ * through the hand-written `inherent:` field on the archetype record
+ * (`createArchetypeInherentPower`), and that field holds exactly one power —
+ * Supremacy, on this fork as on Homecoming. So a Mastermind needs both paths.
+ *
+ * `Toggle` is the discriminator, and across all three forks it selects exactly
+ * this power: every other unslottable member of that directory is an `Auto`
+ * (bookkeeping, or a headline inherent already delivered) or a `Click` (which
+ * would double Domination). That is what keeps Homecoming and Rebirth deriving
+ * zero, which is what makes the emit safe to merge unconditionally.
+ */
+describe('Thunderspy Mastermind Hold Ground is reachable', () => {
+  beforeAll(async () => {
+    await loadDataset('thunderspy');
+    useBuildStore.getState().resetBuild();
+  }, DATASET_LOAD_MS);
+
+  afterAll(async () => {
+    await loadDataset('homecoming');
+  }, DATASET_LOAD_MS);
+
+  it('is an archetype inherent for a Mastermind', () => {
+    const [def] = getArchetypeInherentPowers('mastermind');
+
+    expect(def, 'Hold Ground is granted').toBeDefined();
+    expect(def.internalName).toBe('Hold_Ground');
+    expect(def.name).toBe('Hold Ground');
+    expect(def.powerType).toBe('Toggle');
+    expect(def.category).toBe('archetype');
+    expect(def.isLocked).toBe(true);
+  });
+
+  it('is unslottable, as the export states', () => {
+    const [def] = getArchetypeInherentPowers('mastermind');
+
+    // hold_ground.json states `max_boosts: 0` AND an empty `boosts_allowed`.
+    // Both agree, which is why this one doesn't depend on the `max_boosts || 6`
+    // question still open in `convert-powerset.cjs`.
+    expect(def.maxSlots).toBe(0);
+    expect(def.allowedEnhancements).toHaveLength(0);
+  });
+
+  it('a Thunderspy Mastermind build carries it once, alongside Supremacy', () => {
+    const s = () => useBuildStore.getState();
+    s().resetBuild();
+    s().setArchetype('mastermind');
+    s().setPrimary('mastermind/robotics');
+    s().setSecondary('mastermind/traps');
+
+    const inherents = s().build.inherents;
+    const holdGround = inherents.filter((p) => p.internalName === 'Hold_Ground');
+    expect(holdGround, 'Hold Ground appears exactly once').toHaveLength(1);
+    expect(holdGround[0].inherentCategory).toBe('archetype');
+
+    // The other path must still fire. If widening clause 3 had let the
+    // headline inherents through, Supremacy would be here twice.
+    const supremacy = inherents.filter((p) => p.name === 'Supremacy');
+    expect(supremacy, 'Supremacy appears exactly once').toHaveLength(1);
+  });
+
+  it('a saved build re-hydrates Hold Ground by name', () => {
+    const def = getInherentPowerDef('Hold_Ground');
+    expect(def?.name).toBe('Hold Ground');
+    expect(def?.maxSlots).toBe(0);
+  });
+
+  it('no headline archetype inherent is derived as well', () => {
+    // The load-bearing half of clause 3. Containment, Fury, Gauntlet, Scourge,
+    // Domination and the rest are auto-issued and archetype-gated in the same
+    // directory; every one of them already reaches a build through the
+    // archetype record. Deriving any of them here would show it twice.
+    for (const archetypeId of ['controller', 'brute', 'tanker', 'corruptor', 'dominator', 'defender']) {
+      expect(getArchetypeInherentPowers(archetypeId), `${archetypeId} derives none`).toHaveLength(0);
+    }
+  });
 });
 
 describe('Kheldian travel inherents are not doubled on Thunderspy', () => {

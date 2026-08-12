@@ -8,7 +8,8 @@
  * powerset, not from a granted-power group. See the converter's header for the
  * full selection rule and why each clause is there.
  *
- * 10 power(s):
+ * 11 power(s):
+ *   mastermind: Hold Ground
  *   peacebringer: Combat Flight, Energy Flight, Group Energy Flight, Quantum Acceleration
  *   stalker: Hide, Placate
  *   warshade: Shadow Recall, Shadow Slip, Shadow Step, Starless Step
@@ -17,6 +18,112 @@
 import type { InherentPowerDef } from '@/data/datasets/homecoming/levels';
 
 export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> = {
+  'mastermind': [
+    {
+      "name": "Hold Ground",
+      "internalName": "Hold_Ground",
+      "available": 0,
+      "description": "A good Mastermind knows how to manage his Henchmen. The Mastermind imparts a bonus to his Henchmen's Accuracy if he is nearby and not Phased or otherwise can only use Self Only powers.  Additionally, your Henchmen within range in Defensive mode and Follow mode will share damage with the Mastermind, with damage being divided evenly between the Mastermind and each one of his Henchmen in range.",
+      "shortHelp": "PBAoE, Henchman +ACC, +DMG",
+      "icon": "petcommand_action_stay.png",
+      "powerType": "Toggle",
+      "targetType": "Own Pet (Alive)",
+      "effectArea": "AoE",
+      "stats": {
+        "accuracy": 1,
+        "range": 50,
+        "radius": 60,
+        "activatePeriod": 0.5,
+        "maxTargets": 16
+      },
+      "allowedEnhancements": [],
+      "maxSlots": 0,
+      "atoms": [
+        [
+          "MezResist",
+          "Knockback",
+          100,
+          1,
+          0.75,
+          "Melee_Res_Boolean",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true,
+          null,
+          null,
+          null,
+          null,
+          "group target> MastermindPets eq",
+          true
+        ],
+        [
+          "Mez",
+          "Immobilized",
+          10000,
+          1,
+          0.75,
+          "Melee_Res_Boolean",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true,
+          null,
+          null,
+          null,
+          null,
+          "group target> MastermindPets eq",
+          true
+        ],
+        [
+          "Movement",
+          "JumpHeight",
+          -500,
+          1,
+          0.75,
+          "Melee_Res_Boolean",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "group target> MastermindPets eq",
+          true
+        ]
+      ],
+      "requires": "$archetype @Class_Mastermind ==",
+      "isLocked": true,
+      "category": "archetype",
+      "fullName": "Inherent.Inherent.Hold_Ground"
+    }
+  ],
   'peacebringer': [
     {
       "name": "Combat Flight",

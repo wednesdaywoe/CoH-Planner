@@ -58,10 +58,11 @@ merged in `src/data/levels.ts` (shared hand-written list wins on an `internalNam
 | archetype | restored |
 |---|---|
 | **Stalker** | **Hide, Placate** |
+| **Mastermind** | **Hold Ground** *(second pass — see below)* |
 | Peacebringer | Group Energy Flight, Quantum Acceleration |
 | Warshade | Shadow Slip, Starless Step |
 
-Ten powers match the rule; four of them (Energy/Combat Flight, Shadow Step/Recall) were
+Eleven powers match the rule; four of them (Energy/Combat Flight, Shadow Step/Recall) were
 already in the shared list and are deduped out. **Homecoming and Rebirth derive zero** —
 rule 4 rejects them — which is what makes the emit safe to merge unconditionally.
 
@@ -87,7 +88,7 @@ and Placate gets 0** — matching the bug report.
 | `src/data/levels.ts` | shadows `getArchetypeInherentPowers`; `getInherentPowerDef` falls through to dataset additions so saved builds re-hydrate |
 | `src/data/datasets/*/index.ts` | wire the generated map |
 | `src/data/datasets/*/generated/archetype-inherents.ts` | new — generated (HC/Rebirth are empty) |
-| `src/data/datasets/thunderspy/stalker-inherents.test.ts` | new — 10 tests |
+| `src/data/datasets/thunderspy/stalker-inherents.test.ts` | new — 10 tests (18 after the second pass) |
 | `.gitignore` | see below |
 
 ---
@@ -119,9 +120,9 @@ its own verification, not a side effect of this one.
 
 ---
 
-## Verification
+## Verification (first pass, commit `e277a5655a`)
 
-- New test file: **10/10 pass**.
+- New test file: **10/10 pass** (18/18 after the second pass below).
 - Full suite: **no regressions.** 14 failing files and 7 failing tests before *and* after;
   passing count 1674 → 1694. Every failure in both runs is a pre-existing `loadDataset`
   timeout (confirmed one fails 3/3 on a clean tree).
@@ -132,16 +133,72 @@ its own verification, not a side effect of this one.
 
 ---
 
+---
+
+## Second pass — 2026-08-12
+
+### Mastermind `Hold_Ground` — closed
+
+`Hold_Ground` is a real power, not bookkeeping: an auto-issued Mastermind-gated **Toggle**,
+60ft sphere on `MastermindPets`, applying Immobilize and knockback resistance to them. Icon
+`petcommand_action_stay.png` — it's the "henchmen stay put" command. Its `display_short_help`
+is copy-pasted from Supremacy's, which is what made it look like a duplicate.
+
+It had nowhere to go. Clause 3 rejected it, and clause 3 also rejects every *headline*
+archetype inherent (Containment, Fury, Gauntlet, Scourge, …) — but those reach a build by a
+different path: the hand-written `inherent:` field on each archetype record, rendered by
+`createArchetypeInherentPower` in `datasets/homecoming/levels.ts`. That field holds exactly
+one power. Thunderspy's Mastermind holds Supremacy, so Hold Ground fell through both.
+
+**Clause 3 is now "slottable OR `type === 'Toggle'`."** The census that justifies it — every
+auto-issued, archetype-gated, unslottable member of `Inherent.Inherent`, by power type:
+
+| type | Thunderspy | Homecoming | Rebirth |
+|---|---|---|---|
+| Auto | 31 | 35 | 33 |
+| Click | 3 | 3 | 2 |
+| **Toggle** | **1 — `Hold_Ground`** | **0** | **0** |
+
+Toggle selects exactly one power across all three forks, so **HC and Rebirth still derive
+zero** and the unconditional merge stays safe.
+
+`Click` was rejected deliberately: `Domination` is a Click and is already the Dominator's
+headline inherent, and `Vigilance_PerTeamEndAdjustment` is a Click on Thunderspy while being
+an Auto on HC and Rebirth — the field is not a reliable player-power marker on its own.
+
+Slots: `hold_ground.json` states `max_boosts: 0` *and* an empty `boosts_allowed`. Both agree,
+so this power doesn't depend on the `max_boosts || 6` question below.
+
+Verified: 18/18 in the test file (was 10). Mutation-tested both ways — reverting to
+"slottable only" reds 4 tests; widening to `Click` reds the test that guards against doubling
+Domination and Vigilance. Converter output byte-identical on re-run; `npx tsc --noEmit` clean.
+
+### Side-finding 2 revisited — the `max_boosts || 6` scope was overstated
+
+The "554 Thunderspy powers" above is real but misleading. They break down as **516 incarnate,
+23 inherent, 9 temporary_powers, 6 set_bonus — and zero player powerset powers.**
+`convert-powerset.cjs` only walks powerset categories, so its `|| 6` currently mis-slots
+nothing a player picks through the powerset UI.
+
+And the fix is riskier than "read the 0." Thunderspy writes `max_boosts: 0` on the Kheldian
+form attacks (`Dark_Nova_Blast`, `White_Dwarf_Flare`, …) where HC and Rebirth **omit** the
+field. Those are slottable in game, so on Thunderspy a literal `0` is sometimes just "the
+field got written as zero," not "unslottable." Before changing `convert-powerset.cjs`,
+establish what Thunderspy means by `0` — the two readings disagree on hundreds of powers.
+
+---
+
 ## Still open
 
-1. **Mastermind `Hold_Ground`** is still missing on Thunderspy. The rule correctly skips
-   it — a Toggle with an empty `boosts_allowed`, so it fails clause 3. Likely a real but
-   unslottable power. Needs a call on whether unslottable toggles should qualify.
-2. **The rebuild** (`coh-sidekick-1.0-1`) has the same gap, and it drops more: 62 of 97
+1. **The rebuild** (`coh-sidekick-1.0-1`) has the same gap, and it drops more: 62 of 97
    Thunderspy auto-issue inherent members, 46 of them archetype-gated.
    `scripts/convert-inherents.cjs`'s grant closure keeps a member only if its `requires`
    names a power token, and `$archetype @Class_Stalker ==` names none. The fix there is a
    third closure rule — *auto-issued + gate names a player archetype in the dataset's own
-   catalogue* — using the existing `derivePlayerArchetypes`. Not yet written.
+   catalogue* — using the existing `derivePlayerArchetypes`. Not yet written. Port the
+   Toggle half of clause 3 with it.
+2. **`max_boosts: 0` on Thunderspy means what?** See the revisit above. Blocks any change to
+   `convert-powerset.cjs:6999`.
 3. **`GENERATED_ARCHETYPE_INHERENTS` is only consulted for archetype inherents.** If a
-   fork ever moves a *pool* or *epic* power the same way, this converter won't see it.
+   fork ever moves a *pool* or *epic* power the same way, this converter won't see it. Still
+   hypothetical — no known case.
