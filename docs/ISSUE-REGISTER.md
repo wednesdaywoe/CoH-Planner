@@ -20,13 +20,19 @@ from this point forward are recorded here.
 
 ## Current frontier
 
-First entries. Both found the same way: PR #16 (the thunderspy-archetype-inherents merge) turned
-up two pre-existing failures in `powerProjectionParity.test.ts` (`PROD6B-1` suite). Confirmed via
-`gh run view` against `main`'s last CI run (`46cd6c368e`, 2026-08-11) that both failures are
-byte-identical to before any of that branch's work — not a regression, just newly surfaced.
-Root-caused by reading `resolveEffectivePower.ts` and `quick-snipe.ts` directly against canonical's
-`coh_math/src/effective.rs` and the closed SNIPE-2 gap: in both cases the WASM engine is right,
-and beta's own JS mirror of it has fallen behind. Neither is fixed yet.
+Both entries closed the same day they were filed. Fix: a new scoped RPN evaluator
+(`src/utils/conditionExpr.ts`, NOT a full port of `coh_math::expr` — just the source-relative
+subset `quickSnipe`/`formVariants` conditions actually use) plugged into `resolveEffectivePower.ts`
+so it evaluates `power.formVariants[].condition` and `power.quickSnipe.condition` for real instead
+of trusting the raw `combatMode` toggle. Getting the two failing assertions green surfaced two
+more bugs past the ones originally filed, both fixed alongside: `Source.Mode?` tokens are
+`k`-prefixed (`kBoostPower`) while `setsModes`/`activeModes` publish the bare mode (`BoostPower`)
+— canonical's `collect_source_modes` inserts both spellings and `toConditionContext` now does too
+— and the test's own `strengthCandidates` fixture built a raw `Build` by hand, bypassing the store
+logic that normally keeps `activeModes` synced with active `setsModes`-carrying powers, so it had
+to gain that sync itself. Full suite green (the only remaining red is 11 pre-existing
+`storage.setItem is not a function` / dataset-load-timeout failures, confirmed byte-identical on a
+clean `git stash` baseline — unrelated, not touched).
 
 ---
 
@@ -34,17 +40,17 @@ and beta's own JS mirror of it has fallen behind. Neither is fixed yet.
 
 `resolveEffectivePower.ts`'s own docstring calls itself "single-sourced so the panel, the picker
 tooltip, and the engine gate all resolve the same power" and claims "the engine mirrors every
-rule here in `coh_math/src/effective.rs`." That claim now runs one direction only — canonical
-added a rule to `effective.rs` that beta's JS side never got.
+rule here in `coh_math/src/effective.rs`." That claim ran one direction only for a while —
+canonical added a rule to `effective.rs` that beta's JS side hadn't picked up yet.
 
-[Full detail](gaps/engine-beta-parity.md) — 0 of 2 closed
+[Full detail](gaps/engine-beta-parity.md) — 2 of 2 closed
 
-- [ ] **PARITY-1** — `resolveEffectivePower.ts` never implements `formVariants` (condition-gated
-      power-record redirects, e.g. Energy Manipulation's Stun under Power Boost); every real
-      display surface that resolves through it shows the wrong numbers while the condition is live
-- [ ] **PARITY-2** — `applyQuickSnipe()` ignores `power.quickSnipe.condition` and gates the fast
-      snipe form on the UI's combat-mode toggle for every fork; correct-ish for Homecoming, wrong
-      for Rebirth/Thunderspy (gated on ToHit ≥ 97%, not combat engagement)
+- [x] **PARITY-1** — `resolveEffectivePower.ts` never implemented `formVariants`; fixed via
+      `conditionExpr.ts` + `applyFormVariant`, guarded by `powerProjectionParity.test.ts`'s
+      `+Strength self-buffs reach the granted magnitudes` (PROD6C)
+- [x] **PARITY-2** — `applyQuickSnipe()` ignored `power.quickSnipe.condition`; `resolveEffectivePower`
+      now evaluates it for real per fork, guarded by the same suite's
+      `the shown power drives the projection under every combat state` (PROD6C-3k)
 
 ---
 

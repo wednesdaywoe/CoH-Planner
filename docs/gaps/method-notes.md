@@ -44,3 +44,17 @@ production importers" conclusion here — the truth (several real importers) onl
 rerunning the same grep with an explicit `cd` back to beta first. Prefer absolute paths for
 anything that has to be right the first time; if using relative paths after a repo switch, `pwd`
 before trusting the result.
+
+## Port the formula, not a guess at the formula
+
+Fixing PARITY-2 needed the caster's "current ToHit" as a real number, and the naive derivation
+(archetype base + global ToHit bonus, clamped 5–95% the way the display layer clamps hit chance)
+would have been quietly wrong — the actual gate reads the UNCLAMPED value. The right number only
+surfaced by finding the ONE place canonical computes it for this exact purpose
+(`crates/coh_math/src/projection.rs`'s `gate_context`: `caps.to_hit_base + g.to_hit / 100.0`, no
+clamp) rather than reasoning from the display formula in `calc-debug.ts`, which answers a
+different question. Same pattern for the `k`-prefix mode duality (`gather.rs`'s
+`collect_source_modes`) and the exact operator semantics of `==` vs `eq` (`expr.rs`'s
+`apply_operator`/`comparison` — `==` is numeric-only, `eq` is the case-insensitive one, easy to
+get backwards by name alone). When porting a JS mirror of engine behavior, grep canonical for the
+literal mechanism name first; its own doc comments usually state the formula outright.

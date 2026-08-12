@@ -44,10 +44,19 @@ active Power Boost: engine correctly reports recharge 90 / accuracy 60% / mag 2 
 only while their condition is live. Not a totals/parser issue; the export is correct and the
 engine reads it correctly.
 
-**What it's waiting on.** A decision on how `resolveEffectivePower.ts` should evaluate an
-arbitrary condition string (`kBoostPower Source.Mode?`-shaped expressions) — either a small JS
-expression evaluator mirroring `coh_math::expr`'s subset, or some other bridge — scoped before
-starting.
+**Closed 2026-08-12.** `src/utils/conditionExpr.ts` — a small stack-machine evaluator scoped to
+exactly the operator/reader vocabulary that appears in `quickSnipe.condition` /
+`formVariants[].condition` across all three forks today (`&&`/`||`/`!`/`==`/`eq`/`>`/`<`/`>=`,
+`Source.Mode?`, `source.ownPower?`/`ownPowerNum?`, `cur.kToHit source>`), NOT a full port of
+`coh_math::expr` (~1200 lines, 47 readers, probabilistic Die/Range values — most of it unused by
+these two fields). A token it can't resolve (`target.isFriend?`, `enttype target>`, `distance`,
+`@CustomFX`, …) aborts evaluation and the caller reads that as `false` — the same conservative
+"the redirect doesn't fire, the base record stands" outcome canonical's own `Indeterminate`
+reaches for the identical case. `resolveEffectivePower.ts` gained `applyFormVariant` (first
+matching variant wins, base `internalName`/`condition` excluded from the merge so slots and
+enhancements stay on the base power — same reason `applyModeRedirect` already does this) and now
+evaluates `quickSnipe.condition` instead of trusting `state.combatMode` directly. Guarded by
+`powerProjectionParity.test.ts`'s `+Strength self-buffs reach the granted magnitudes`.
 
 ## PARITY-2 — `applyQuickSnipe()` ignores `power.quickSnipe.condition`
 
@@ -75,7 +84,35 @@ slow form can show with the toggle off even at capped ToHit.
 **Severity.** Real, fork-specific. Every Rebirth/Thunderspy snipe is affected; Homecoming's is
 incidentally close to correct.
 
-**What it's waiting on.** Same as PARITY-1 — both need the same condition-string evaluation, so
-they're likely one piece of work: read `power.quickSnipe.condition` /
-`power.formVariants[].condition` against real build state instead of trusting a single UI
-boolean. Worth scoping together rather than separately.
+**Closed 2026-08-12,** alongside PARITY-1 — one piece of work, per the note above.
+`resolveEffectivePower.ts` now evaluates `power.quickSnipe.condition` through the same
+`conditionExpr.ts` evaluator before calling `applyQuickSnipe`, so Rebirth/Thunderspy correctly
+require `currentToHit >= .97` and Homecoming correctly requires the synthetic `kEngaged` mode
+(bound from `state.combatMode`, mirroring `gather::live_modes`'s `ENGAGED_MODES`/
+`OUT_OF_COMBAT_MODES`). `applyQuickSnipe()` itself is UNCHANGED — still a plain
+`(power, fastFormActive: boolean)` merge with no condition awareness of its own, on purpose:
+`attack-chain-powers.ts` and `useBuildMaxAttackDamage.ts` call it with their own deliberately
+simplified booleans for a different question ("what does this chain look like once the fast form
+is reachable" vs. "what does the build show right now"), and widening its signature would have
+forced both to either take on real ToHit context they don't need or fake one. Guarded by the same
+suite's `the shown power drives the projection under every combat state`.
+
+## Fix notes — two more bugs the fix surfaced
+
+Getting the two assertions above to actually go green (rather than just stop citing base-record
+numbers) surfaced two further bugs, both fixed in the same pass:
+
+**`Source.Mode?` tokens are `k`-prefixed; `setsModes`/`activeModes` are not.** The condition text
+says `kBoostPower Source.Mode?`, but Power Boost's own `setsModes: ["BoostPower"]` — no `k` — and
+`build.activeModes` mirrors that bare spelling. Canonical's `gather.rs` `collect_source_modes`
+already documents this exact split and inserts BOTH spellings for every live mode; missing that
+was why the redirect never fired even once `formVariants` was implemented.
+`toConditionContext` now does the same.
+
+**The test's own `strengthCandidates` fixture never populated `activeModes`.** In the real app,
+`buildStore.ts`'s power-toggle handler keeps `build.activeModes` in sync with every active power's
+`setsModes` the moment it's switched on. `strengthCandidates` builds a `Build` by hand (to reach
+every fork's `specialBuff` carrier without going through the store), so Power Boost could be
+marked `isActive: true` on the power object without ever reaching `activeModes` — a form-variant
+condition gated on a mode nothing ever declared live. The fixture now derives `activeModes` from
+its own selected powers' `setsModes` the same way the store does.
