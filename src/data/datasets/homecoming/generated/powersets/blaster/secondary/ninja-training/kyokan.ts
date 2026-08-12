@@ -12,6 +12,8 @@ export const Kyokan: Power = {
   "name": "Shinobi",
   "internalName": "Kyokan",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "A shinobi is a master of stealth and assassination. While this power is active you will be very hard to detect, and your first strike out of the shadows will deal extra damage. Even while detected, a shinobi is a deadly foe and able to deal lethal critical strikes.",
   "shortHelp": "Toggle: Self Stealth, +DEF(All), +Special",
   "icon": "ninjatools_assassin.png",
@@ -22,6 +24,9 @@ export const Kyokan: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const Kyokan: Power = {
   "effects": {
     "buffDuration": 0.75,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_Buff_Dmg"
     },
@@ -156,6 +162,7 @@ export const Kyokan: Power = {
         "table": "Melee_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       }
@@ -179,17 +186,17 @@ export const Kyokan: Power = {
     ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
     ["ToHit",null,0.5,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Smashing",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Lethal",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Fire",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Cold",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Energy",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Negative",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Psionic",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["DamageBuff","Toxic",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["DamageBuff","Smashing",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Lethal",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Fire",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Cold",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Energy",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Negative",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Psionic",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
+    ["DamageBuff","Toxic",2,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"StealthCrit"],
     ["Stealth","RadiusPvE",35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
     ["Stealth","RadiusPvP",390,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
     ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],

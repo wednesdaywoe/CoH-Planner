@@ -12,12 +12,17 @@ export const Evolution: Power = {
   "name": "Resurgence",
   "internalName": "Evolution",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Should you fall in battle, you can Revive yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds.  Additionally, for 90 seconds, your damage and chance to hit will be improved, then for another 45 seconds, your damage and chance to hit will be diminished.  You will also have 15 seconds of immunity to most damage. Recharge: Very Long",
   "shortHelp": "Self Rez, Special",
   "icon": "willpower_resurgence.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,
@@ -39,6 +44,7 @@ export const Evolution: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Buff_Dmg"
     },
@@ -57,10 +63,12 @@ export const Evolution: Power = {
       "table": "Ranged_Ones"
     },
     "tohitBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
     },
     "untouchable": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Ranged_Ones"
     }
@@ -71,7 +79,7 @@ export const Evolution: Power = {
     ["Mez","Untouchable",10,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,2,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["RechargeTime",null,1,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
     ["DamageBuff","Smashing",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
@@ -81,9 +89,9 @@ export const Evolution: Power = {
     ["DamageBuff","Toxic",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["ToHit",null,3,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ]
 };

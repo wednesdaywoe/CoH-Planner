@@ -12,12 +12,17 @@ export const TrainNinjas: Power = {
   "name": "Train Ninjas",
   "internalName": "Train_Ninjas",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Train your Ninja Henchmen with more advanced techniques and weaponry.  This power permanently bestows new powers and abilities to all of your Ninja Henchman. The powers gained are unique and dependent upon the type of Ninja Henchman.  This power only works on your Ninja Henchmen and you can only Train your Ninja Henchmen once with this power. Recharge: Fast",
   "shortHelp": "Ranged, Train Ninja Henchman",
   "icon": "ninjas_trainninjas.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -45,6 +50,6 @@ export const TrainNinjas: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
-    ["Mez","Evade",100,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true]
+    ["Mez","Evade",100,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true,null,null,null,null,null,null,0]
   ]
 };

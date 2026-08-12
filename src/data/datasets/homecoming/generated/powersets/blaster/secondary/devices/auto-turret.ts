@@ -12,6 +12,8 @@ export const AutoTurret: Power = {
   "name": "Gun Drone",
   "internalName": "Auto_Turret",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You can summon a Gun Drone. The Drone has an extremely fast fire rate and is equipped with a customized tracking system. Once locked on, the Drone will continue to unload a volley of lead into the target until it is destroyed. Enemies hit by the drone, as well as those near it, will prioritize attacking it over it's owner. The Drone is armored, but can be destroyed.Damage: Moderate.Recharge: Long.",
   "shortHelp": "Build Turret: Ranged, Moderate DMG(Lethal)",
   "icon": "gadgets_turret.png",
@@ -19,6 +21,9 @@ export const AutoTurret: Power = {
   "targetType": "Self",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 180,
@@ -50,13 +55,13 @@ export const AutoTurret: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,90,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Fire",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Cold",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Energy",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Negative",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Psionic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Toxic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"]
+    ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Fire",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Cold",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Energy",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Negative",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Psionic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Toxic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"]
   ]
 };

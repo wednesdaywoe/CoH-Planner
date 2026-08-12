@@ -12,6 +12,8 @@ export const Thundergust: Power = {
   "name": "Thundergust",
   "internalName": "Thundergust",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You unleash a powerful gust of wind in the direction of your foes. This gust has enough force to deal minor smashing damage to your foes and knock them to the ground. The debris blown at your opponent temporarily blinds them, reducing their chance to hit. This power builds Pressure.Damage: Minor.Recharge: Slow.",
   "shortHelp": "Ranged (Cone), Minor DMG(Smashing), Knockdown(Foe), -ToHit(Foe), Pressure Builder (Self)",
   "icon": "windcontrol_thundergust.png",
@@ -20,6 +22,9 @@ export const Thundergust: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

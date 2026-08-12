@@ -12,11 +12,16 @@ export const PressOn: Power = {
   "name": "Press On",
   "internalName": "Press_On",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You demand your fallen allies and henchmen Press On, forcing them back on their feet through sheer force of will and they fight even harder in your name. After a minute, however, even your charisma cannot force them to continue any further and they breath their last. Note: This power grants XP Debt protection if used on players.",
   "shortHelp": "Ally And Pet Temp Resurrect",
   "icon": "obediencetraining_presson.png",
   "powerType": "Click",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 20,
@@ -44,6 +49,7 @@ export const PressOn: Power = {
   "effects": {
     "buffDuration": 59,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4.5,
       "table": "Ranged_Buff_Dmg"
     },
@@ -52,6 +58,7 @@ export const PressOn: Power = {
       "tohitBuff": 59
     },
     "enduranceGain": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     },
@@ -63,8 +70,8 @@ export const PressOn: Power = {
   "atoms": [
     ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,65,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,65,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,null,null,"silent_kill"],
     ["DamageBuff","Smashing",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Lethal",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Fire",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],

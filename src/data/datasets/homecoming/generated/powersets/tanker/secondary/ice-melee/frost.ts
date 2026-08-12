@@ -12,12 +12,17 @@ export const Frost: Power = {
   "name": "Frost",
   "internalName": "Frost",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a short cone of Frost in front of you that can deal some damage and Slow a foe's speed, due to their uncontrollable shivering.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
   "icon": "icyonslaught_frost.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "maxTargetsExpression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
   "stats": {
     "accuracy": 1,
@@ -60,6 +65,7 @@ export const Frost: Power = {
       "slow": 8
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -69,6 +75,7 @@ export const Frost: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -89,8 +96,8 @@ export const Frost: Power = {
     ["Movement","Run",0.2,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Jump",0.2,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.1215,1,1.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,0],
+    ["Damage","Fire",0.1215,1,1.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Cold",0.2875,1,1.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Cold",0.176,1,1.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,null,true]
+    ["Damage","Cold",0.176,1,1.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"]
   ]
 };

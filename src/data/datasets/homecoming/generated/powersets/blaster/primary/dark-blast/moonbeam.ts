@@ -12,12 +12,17 @@ export const Moonbeam: Power = {
   "name": "Moonbeam",
   "internalName": "Moonbeam",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit. This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
   "shortHelp": "Sniper, DMG(Negative), Target -To Hit, Self +Range",
   "icon": "darkcast_moonbeam.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 150,
@@ -57,6 +62,7 @@ export const Moonbeam: Power = {
       "tohitDebuff": 10
     },
     "rangeBuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
@@ -69,16 +75,17 @@ export const Moonbeam: Power = {
     ["Damage","Negative",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Fire",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Cold",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Energy",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Negative",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Psionic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Toxic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"]
+    ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Fire",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Cold",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Energy",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Negative",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Psionic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Toxic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"]
   ],
   "quickSnipe": {
+    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
     "stats": {
       "castTime": 1.33,
       "range": 80
@@ -89,6 +96,19 @@ export const Moonbeam: Power = {
         "scale": 2.28,
         "table": "Ranged_Damage"
       }
+    ],
+    "atoms": [
+      ["Damage","Negative",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *"],
+      ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+      ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+      ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+      ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+      ["DamageBuff","Fire",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+      ["DamageBuff","Cold",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+      ["DamageBuff","Energy",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+      ["DamageBuff","Negative",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+      ["DamageBuff","Psionic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+      ["DamageBuff","Toxic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"]
     ]
   }
 };

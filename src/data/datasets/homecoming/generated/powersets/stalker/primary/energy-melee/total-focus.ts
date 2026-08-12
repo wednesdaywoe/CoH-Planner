@@ -12,6 +12,8 @@ export const TotalFocus: Power = {
   "name": "Total Focus",
   "internalName": "Total_Focus",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Total Focus is complete mastery over Energy Melee. This melee attack is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. This power will enter Energy Focus mode. Total Focus Criticals do not result in double damage, instead it grants double Energy Focus.",
   "shortHelp": "Melee, DMG(Smash/Energy), Foe DisorientMelee, Extreme(Energy/Smash), Foe Disorient, +Energy Focus",
   "icon": "powerpunch_totalfocus.png",
@@ -20,6 +22,9 @@ export const TotalFocus: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -52,6 +57,11 @@ export const TotalFocus: Power = {
       "type": "Energy",
       "scale": 2.56,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
@@ -66,17 +76,17 @@ export const TotalFocus: Power = {
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",2.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 >",true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kMeter source> 0 >",true],
-    ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"kMeter source> .9 <",true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.07000000029802322,null,true,null,null,null,null,"kMeter source> .9 <",true],
+    ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.07000000029802322,null,true,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
+    ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
     ["Damage","Smashing",0.8319,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",2.139,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Energy",0.8344,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 >",true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kMeter source> 0 >",true],
-    ["Damage","Energy",0.8344,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || &&",true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.20000000298023224,null,true,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || &&",true]
+    ["Damage","Energy",0.8344,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kMeter source> 0 > &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["Damage","Energy",0.8344,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && &&",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.20000000298023224,null,true,null,null,null,null,"enttype target> player eq kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && &&",true]
   ],
   "specialEffects": [
     {

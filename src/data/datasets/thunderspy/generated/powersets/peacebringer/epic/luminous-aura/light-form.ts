@@ -12,12 +12,17 @@ export const LightForm: Power = {
   "name": "Light Form",
   "internalName": "Light_Form",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate Light Form, you become pure Kheldian energy and are extremely resistant to most damage. You are also partially protected from some Disorient, Immobilization, Hold, Sleep, Knockback and Repel effects. Endurance recovery is also increased. Light Form costs little Endurance to activate, but when it wears off you are left exhausted, and drained of Hit Points and Endurance. Unrelenting from the Presence pool can be used to prevent this crash from occurring. Recharge: Very Long",
   "shortHelp": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Knockback, Repel, All DMG but Psionics)",
   "icon": "luminousaura_lightform.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,
@@ -61,23 +66,28 @@ export const LightForm: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       }
@@ -87,6 +97,7 @@ export const LightForm: Power = {
       "table": "Melee_Ones"
     },
     "repel": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
@@ -151,8 +162,8 @@ export const LightForm: Power = {
     ["Mez","Knockup",-100,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Repel",10,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Repel",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,3,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,130,1,null,true],
-    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wispy eq @CustomFX WispyTintable eq ||"],
+    ["Meta",null,1,3,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,130,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wispy eq @CustomFX WispyTintable eq ||",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Mez","Stunned",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Mez","Held",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Mez","Sleep",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],

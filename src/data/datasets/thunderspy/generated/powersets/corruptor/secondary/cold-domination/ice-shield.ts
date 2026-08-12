@@ -12,12 +12,18 @@ export const IceShield: Power = {
   "name": "Ice Shield",
   "internalName": "Ice_Shield",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Casts a rock hard Ice Shield on narby allies and grants them Defense to Melee, Ranged, AoE, Smash, Lethal, Energy, and Negative Energy attacks You cannot stack multiple Ice Shields on the same target, however the shield can be improved by another ally using the same power. You recive half the benefits of this power.  Recharge: Very Fast",
   "shortHelp": "Wide Area PBAoE, Ally +DEF(Melee, Ranged, AoE, Smash, Lethal, Energy, Negative)",
   "icon": "colddomination_iceshield.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 80,

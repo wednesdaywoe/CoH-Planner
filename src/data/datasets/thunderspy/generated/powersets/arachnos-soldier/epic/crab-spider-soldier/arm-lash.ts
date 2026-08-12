@@ -12,6 +12,8 @@ export const ArmLash: Power = {
   "name": "Arm Lash",
   "internalName": "Arm_Lash",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "The Crab Spider's backpack is capable of making rapid attacks with its many arms dealing heavy damage to foes within a short cone in front of the user.  Damage: Heavy Recharge: Medium",
   "shortHelp": "Melee Cone, Heavy DMG(Lethal/Toxic), Foe -DEF",
   "icon": "crabspider_armlash.png",
@@ -20,6 +22,9 @@ export const ArmLash: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

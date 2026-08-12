@@ -12,6 +12,8 @@ export const GreaterFireSword: Power = {
   "name": "Greater Fire Sword",
   "internalName": "Greater_Fire_Sword",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze and cut through their defenses. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time.",
   "shortHelp": "Melee, DMG(Fire)",
   "icon": "fieryfray_greaterfiresword.png",
@@ -22,6 +24,9 @@ export const GreaterFireSword: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 7,
@@ -51,6 +56,11 @@ export const GreaterFireSword: Power = {
     },
     {
       "type": "Fire",
+      "scale": 2.44,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
       "scale": 0.2,
       "table": "Melee_Damage",
       "duration": 2.1,
@@ -61,13 +71,13 @@ export const GreaterFireSword: Power = {
   ],
   "atoms": [
     ["Damage","Fire",2.44,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.2,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Damage","Fire",2.44,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-    ["Damage","Fire",2.44,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+    ["Damage","Fire",2.44,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
+    ["Damage","Fire",0.2,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"Scorching Heat"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Scorching Heat"],
+    ["Damage","Fire",2.44,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
     ["Damage","Fire",1.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Fire",1.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Fire",1.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true]
+    ["Damage","Fire",1.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["Damage","Fire",1.879,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true]
   ],
   "specialEffects": [
     {

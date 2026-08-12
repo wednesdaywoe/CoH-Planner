@@ -12,6 +12,8 @@ export const KnockoutBlow: Power = {
   "name": "Knockout Blow",
   "internalName": "Knockout_Blow",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a Knockout Blow on your opponent. This punch does Superior damage, and has a great chance of Holding your target.",
   "shortHelp": "Melee, DMG(Smashing), Foe Hold",
   "icon": "superstrength_knockoutblow.png",
@@ -20,6 +22,9 @@ export const KnockoutBlow: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -66,7 +71,7 @@ export const KnockoutBlow: Power = {
     ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Held",10,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",1.602,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",1.602,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Smashing",2.9609,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

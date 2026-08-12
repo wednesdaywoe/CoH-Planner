@@ -12,12 +12,17 @@ export const TemperatureProtection: Power = {
   "name": "Temperature Protection",
   "internalName": "Temperature_Protection",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Temperature Protection gives you strong resistance to Fire damage, some resistance to Cold, Toxic and Psionic damage. It also grants resistance against slow effects, and grants minor regeneration, maximum hit point increases, and Knockback Protection. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res(Fire, Cold, Toxic, Psionic, Slow, Fear, Knock), +Regen, +Max HP",
   "icon": "flamingshield_temperatureprotection.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -35,10 +40,12 @@ export const TemperatureProtection: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       }
@@ -55,15 +62,18 @@ export const TemperatureProtection: Power = {
     },
     "effectDuration": 10.25,
     "fear": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 8,
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Melee_Ones"
     },
@@ -73,14 +83,17 @@ export const TemperatureProtection: Power = {
     },
     "mezResistance": {
       "fear": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
       "knockback": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       }

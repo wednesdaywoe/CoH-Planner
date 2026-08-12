@@ -32,10 +32,12 @@ export interface InherentDamageInfo {
   /** Column header text ("w/ Scourge", "w/ Fury", etc.) */
   header: string;
   /**
-   * Apply the AT-bonus to a given final damage value. `exempt` is the slice of
-   * `value` the mechanic must not multiply (Gravity Control's Impact — Containment
-   * doubles Propel's base damage but leaves Impact alone), so the result is
-   * `(value - exempt) × multiplier + exempt`.
+   * Apply the AT-bonus to a given final damage value. For the multiplier
+   * mechanics `exempt` is the slice of `value` the mechanic must not multiply
+   * (Gravity Control's Impact — Containment doubles Propel's base damage but
+   * leaves Impact alone), so the result is `(value - exempt) × multiplier +
+   * exempt`. The Scrapper crit is instead ADDITIVE — the power's own crit rows
+   * on top of `value` — and ignores `exempt` (nothing is being multiplied).
    */
   applyBonus: (value: number, exempt?: number) => number;
 }
@@ -493,6 +495,8 @@ function computeProcDamagePerActivation(props: DamageBlockProps): number {
       buildLevel,
       procsOnlyOnMainTarget: selectedPower.procsOnlyOnMainTarget,
       procsAllowed: selectedPower.procsAllowed,
+      // The kNone powers whose executed children roll in their place.
+      procRollSites: selectedPower.procRollSites,
       powerType: selectedPower.powerType,
       // A rain's procs roll on the patch's 10s clock, several times per cast —
       // not once against the parent's recharge. resolveProcRollSchedule owns it.

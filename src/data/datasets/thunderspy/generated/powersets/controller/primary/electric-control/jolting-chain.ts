@@ -12,12 +12,17 @@ export const JoltingChain: Power = {
   "name": "Jolting Chain",
   "internalName": "Jolting_Chain",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can send a bolt of electricity through multiple opponents, causing a muscle spasm and dealing minor damage.  Each foe is knocked down, and the electric charge can fork several times, jumping to several opponents rapidly.  Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged Chain AoE, Minor DMG(Energy), Foe Knockdown, -End",
   "icon": "electriccontrol_joltingchain.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -75,7 +80,7 @@ export const JoltingChain: Power = {
     ["Mez","Knockback",0.66,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,54,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.25,1,null,true],
+    ["Meta",null,1,54,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.25,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1,1,8,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],

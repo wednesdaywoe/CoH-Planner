@@ -12,12 +12,17 @@ export const SkeletalWarriors: Power = {
   "name": "Grave Knight",
   "internalName": "Skeletal_Warriors",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can summon one to two powerful Grave Knights (depending on your level) to do your bidding.  Grave Knights come well equipped with strong melee attack powers and can taunt their enemies. The can be empowered with even more. You may only have 2 Grave Knights under your control at any given time.  If you attempt to summon more Grave Knights, you can only replace the ones you have lost in battle.  If you already have two, the power will fail. Recharge: Very Long",
   "shortHelp": "Summon Grave Knight",
   "icon": "necromancy_summonskeletonwarrior.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

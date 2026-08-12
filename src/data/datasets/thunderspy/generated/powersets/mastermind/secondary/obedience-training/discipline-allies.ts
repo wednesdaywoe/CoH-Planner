@@ -12,12 +12,17 @@ export const DisciplineAllies: Power = {
   "name": "Discipline Allies",
   "internalName": "Discipline_Allies",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You enhance the discipline of your allies to keep them in the fight longer. Their maximum hit points are increased for a long time. Additionally, allies in a pinch will gain considerable regeneration for a moderate duration.",
   "shortHelp": "Ally +Max HP, Emergency Regen",
   "icon": "obediencetraining_disciplineallies.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

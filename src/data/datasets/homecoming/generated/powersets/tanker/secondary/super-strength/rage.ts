@@ -12,12 +12,17 @@ export const Rage: Power = {
   "name": "Rage",
   "internalName": "Rage",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "A Rage comes over you, sending you into a berserker fury. While Raging, your damage and chance to hit is dramatically increased. However, when your Rage subsides, you are left with reduced Defense, drained of some of your Endurance, and your attacks are substantially weakened.",
   "shortHelp": "Self +DMG, +To Hit, Delayed Self(Weaken, Special)",
   "icon": "superstrength_rage.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 1,
@@ -37,15 +42,18 @@ export const Rage: Power = {
   "effects": {
     "buffDuration": 120,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 999,
       "table": "Melee_Buff_Dmg",
       "toWho": "Self"
     },
     "defenseDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones",
       "toWho": "Self"
@@ -57,6 +65,7 @@ export const Rage: Power = {
       "tohitBuff": 120
     },
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 0.25,
       "table": "Melee_Ones"
     },

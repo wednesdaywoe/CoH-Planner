@@ -12,12 +12,17 @@ export const PsiWhipCoil: Power = {
   "name": "Psi-Whip Coil",
   "internalName": "PsiWhip_Coil",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You coil your manifested whip around your target dealing high damage and holding them. Damage: High(DoT), Recharge: Slow",
   "shortHelp": "Ranged, Superior DMG(Psionic/Energy), Foe Hold,",
   "icon": "awakened_psioniccut.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -82,7 +87,7 @@ export const PsiWhipCoil: Power = {
     ["Mez","Held",4,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Held",9,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
     ["Mez","Held",4,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "conditionalEffects": [
     {

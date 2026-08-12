@@ -21,7 +21,12 @@ import { ThunderousBlast as ThunderousBlast } from './thunderous-blast';
 
 export const powerset: Powerset = {
   id: 'blaster/electrical-blast',
+  setPath: 'Blaster_Ranged.Electrical_Blast',
   name: 'Electrical Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Electrical Blast endows you with ranged electrical attack powers. Electrical powers can drain foes\' Endurance and can often temporarily halt their Endurance recovery. This can be quite effective against higher level foes and Bosses. Some Electrical Blast powers can even sometimes transfer this Endurance back to you.',
   icon: 'electrical_blast_set.ico',
   archetype: 'blaster',

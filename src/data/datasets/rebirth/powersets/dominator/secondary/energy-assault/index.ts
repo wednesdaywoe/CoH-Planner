@@ -21,7 +21,12 @@ import { PowerBurst as PowerBurst } from './power-burst';
 
 export const powerset: Powerset = {
   id: 'dominator/energy-assault',
+  setPath: 'Dominator_Assault.Energy_Assault',
   name: 'Energy Assault',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Focus pure energy into deadly melee attacks and powerful projectiles. The impact of the melee powers can often Disorient opponents, while the velocity of the ranged projectiles can send your enemies flying.',
   icon: 'energy_assault_set.ico',
   archetype: 'dominator',

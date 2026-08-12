@@ -12,12 +12,17 @@ export const FireCages: Power = {
   "name": "Fire Cages",
   "internalName": "Fire_Cages",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Immobilizes a group of foes in Fire Cages, dealing Fire damage over time. More resilient foes may require multiple Fire Cages to Immobilize. Fire Cages is slower and less damaging than Ring of Fire, but can capture multiple targets. Damage: Minor(DoT), Recharge: Moderate",
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Fire), Foe Immobilize",
   "icon": "firetrap_firecage.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 80,
@@ -70,7 +75,7 @@ export const FireCages: Power = {
   "atoms": [
     ["Damage","Fire",0.11,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.5],
     ["MezResist","Knockback",100,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockup",100,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Knockback",-100,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],

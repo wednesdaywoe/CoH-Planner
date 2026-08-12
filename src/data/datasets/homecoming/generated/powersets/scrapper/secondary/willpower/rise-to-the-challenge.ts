@@ -12,6 +12,8 @@ export const RisetotheChallenge: Power = {
   "name": "Rise to the Challenge",
   "internalName": "Rise_to_the_Challenge",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "The more the odds are against you, the more determined you become. When surrounded by foes, your ability to regenerate health increases greatly. Additionally, your resolve and the look in your eye is enough to leave most foes shaken, so their attacks are less accurate. The first foe you engage in melee grants the highest regeneration bonus, and up to 10 foes can contribute to this effect.",
   "shortHelp": "Toggle: Self +Regen, Foe -To Hit",
   "icon": "willpower_risetothechallenge.png",
@@ -22,6 +24,9 @@ export const RisetotheChallenge: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -49,6 +54,7 @@ export const RisetotheChallenge: Power = {
     "buffDuration": 1,
     "debuffResistance": {
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 0.0225,
         "table": "Melee_Ones"
       }
@@ -76,13 +82,13 @@ export const RisetotheChallenge: Power = {
     ["ToHit",null,0.5,1,1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Regeneration",null,1,1,1.125,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Regeneration",null,0.075,1,1.125,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
-    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,0.25],
-    ["Regeneration",null,0.0225,1,1,"Melee_Ones","Res","Magnitude","Self","PvE",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.0225],
+    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.25],
+    ["Regeneration",null,0.0225,1,1,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.0225],
     ["Mez","Taunt",1.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Regeneration",null,1,1,1.125,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Regeneration",null,0.075,1,1.125,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"No",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Regeneration",null,0.0225,1,1,"Melee_Ones","Res","Magnitude","Self","PvP",false,"No",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Regeneration",null,0.0225,1,1,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Mez","Taunt",1.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ]
 };

@@ -12,6 +12,8 @@ export const NWEviscerate: Power = {
   "name": "Eviscerate",
   "internalName": "NW_Eviscerate",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Eviscerate does superior lethal damage to your foe, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.Notes: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.",
   "shortHelp": "Melee (Cone), DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "nightwidowtraining_eviscerate.png",
@@ -20,6 +22,9 @@ export const NWEviscerate: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -66,6 +71,7 @@ export const NWEviscerate: Power = {
       "slow": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -75,6 +81,7 @@ export const NWEviscerate: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Slow"
       },
@@ -95,10 +102,10 @@ export const NWEviscerate: Power = {
     ["Movement","Jump",0.4,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.4,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["RechargeTime",null,0.4,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Damage","Lethal",2.076,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
     ["Damage","Lethal",2.0008,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",0.5102,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Damage","Lethal",0.5102,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"],
     ["Damage","Lethal",2.0008,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
   ],
   "specialEffects": [

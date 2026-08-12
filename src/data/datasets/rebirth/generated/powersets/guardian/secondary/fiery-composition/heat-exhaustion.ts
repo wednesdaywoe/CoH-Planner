@@ -12,12 +12,17 @@ export const HeatExhaustion: Power = {
   "name": "Heat Exhaustion",
   "internalName": "Heat_Exhaustion",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Overwhelm a single foe with waves of exhausting heat. The initial effect will drain the target of some Endurance, but the heat is so overwhelming that the affected target will be weakened.  His Damage output, Endurance Recovery and Hit Point Regeneration will all be reduced. Recharge: Long",
   "shortHelp": "Ranged Foe -DMG, -END, -Recovery, -Regeneration",
   "icon": "fierycomp_heatexhaustion.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -35,6 +40,7 @@ export const HeatExhaustion: Power = {
   "effects": {
     "buffDuration": 40,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Debuff_Dam"
     },
@@ -48,10 +54,12 @@ export const HeatExhaustion: Power = {
       "table": "Ranged_EndDrain"
     },
     "recoveryDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Ones"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Ones"
     }

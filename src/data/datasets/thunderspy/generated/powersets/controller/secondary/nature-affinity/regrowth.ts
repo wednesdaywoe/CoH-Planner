@@ -12,12 +12,18 @@ export const Regrowth: Power = {
   "name": "Regrowth",
   "internalName": "Regrowth",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "By channeling the energies present in nature you are able to immediately heal yourself and allies in front of you for a small amount of health and cause them to recover a small amount of health over time. Regrowth places a stack of Bloom on its target.  NOTE: When used in a PvP zone Regrowth will apply a moderate regeneration effect instead of a heal over time.  Recharge: Moderate",
   "shortHelp": "Ranged Facing Cone, Minor Ally Heal, Ally Moderate Healing Over Time, +1 Bloom",
   "icon": "natureaffinity_regrowth.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 45,

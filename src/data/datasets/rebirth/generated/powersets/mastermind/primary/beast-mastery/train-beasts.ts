@@ -12,12 +12,17 @@ export const TrainBeasts: Power = {
   "name": "Train Beasts",
   "internalName": "Train_Beasts",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Train your Beast Henchmen to more effectively attack your foes. This power permanently bestows new powers and abilities to all of your Beast Henchmen. The powers gained are unique and dependent upon the type of Beast Henchman. This power only works on your Beast Henchmen and you can only Train your Beast Henchmen once with this power. Recharge: Fast",
   "shortHelp": "Ranged, Train Beast Henchmen",
   "icon": "beastmastery_trainbeasts.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,

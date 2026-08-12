@@ -12,12 +12,17 @@ export const NeurotoxicBreath: Power = {
   "name": "Neurotoxic Breath",
   "internalName": "Neurotoxic_Breath",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You can breath a cone of Neurotoxin gas that quickly start to anesthetize any nearby foes.  Affected targets may choke on the gas as their movement and attack rate are severely reduced. Choosing this power locks out Hallucinogenic Spray Recharge: Slow",
   "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
   "icon": "poison_neurotoxicbreath.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -42,6 +47,7 @@ export const NeurotoxicBreath: Power = {
   "effects": {
     "buffDuration": 20,
     "durations": {
+      "movementCapDebuff": 20,
       "rechargeDebuff": 20,
       "slow": 20
     },
@@ -50,7 +56,15 @@ export const NeurotoxicBreath: Power = {
       "scale": 3,
       "table": "Ranged_Immobilize"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1.5,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.65,
       "table": "Ranged_Slow"
     },
@@ -60,6 +74,7 @@ export const NeurotoxicBreath: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
@@ -68,8 +83,8 @@ export const NeurotoxicBreath: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1.5,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.65,
+        "table": "Ranged_Slow"
       }
     }
   },

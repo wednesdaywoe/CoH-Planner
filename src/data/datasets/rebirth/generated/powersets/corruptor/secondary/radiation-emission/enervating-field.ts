@@ -12,12 +12,17 @@ export const EnervatingField: Power = {
   "name": "Enervating Field",
   "internalName": "Enervating_Field",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you irradiate a targeted foe, and all foes nearby, with a deadly dose of radiation. This radiation weakens exposed targets, decreasing the damage of their attacks.  It also significantly weakens their resistance, so they will take much more damage from other attacks. Recharge: Moderate",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG, -Res",
   "icon": "radiationpoisoning_enervatingfield.png",
   "powerType": "Toggle",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -37,6 +42,7 @@ export const EnervatingField: Power = {
   "effects": {
     "buffDuration": 0.75,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Debuff_Dam"
     },
@@ -46,34 +52,42 @@ export const EnervatingField: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }

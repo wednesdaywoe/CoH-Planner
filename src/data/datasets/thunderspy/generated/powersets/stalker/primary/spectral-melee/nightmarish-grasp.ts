@@ -12,6 +12,8 @@ export const NightmarishGrasp: Power = {
   "name": "Nightmarish Grasp",
   "internalName": "Nightmarish_Grasp",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You unleash ravenous spirits upon your foe, dealing negative energy damage as the spirits immobilize and fear them.  Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Negative/Psionic), Foe Immobilize, Fear",
   "icon": "spectralmelee8.png",
@@ -20,6 +22,9 @@ export const NightmarishGrasp: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -54,6 +59,11 @@ export const NightmarishGrasp: Power = {
       "type": "Psionic",
       "scale": 0.98,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.96,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -73,10 +83,10 @@ export const NightmarishGrasp: Power = {
     ["Damage","Psionic",0.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Terrorized",20,0.75,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Negative",1.96,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Negative",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
     ["Damage","Negative",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-    ["Damage","Negative",1.96,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Damage","Negative",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
   ],
   "damageTypes": [

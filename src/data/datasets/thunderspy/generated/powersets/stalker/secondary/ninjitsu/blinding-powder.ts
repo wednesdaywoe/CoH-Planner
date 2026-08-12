@@ -12,12 +12,17 @@ export const BlindingPowder: Power = {
   "name": "Blinding Powder",
   "internalName": "Blinding_Powder",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You throw a handful of Blinding powder in a wide arc at your foes. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.  Recharge: Very Long",
   "shortHelp": "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
   "icon": "ninjitsu_blindingpowder.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 30,

@@ -12,12 +12,17 @@ export const Overload: Power = {
   "name": "Overload",
   "internalName": "Overload",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Overload your Energy Aura and dramatically improve your defense to all attack types except Psionic Attacks. Overload also grants you high resistance to Defense Debuffs. This Energy Aura is so powerful, that it can even absorb some damage, effectively increasing your Max Hit Points. However, when Overload wears off, you are left drained of all Endurance and unable to recover Endurance for a while, unless you have trained Unrelenting from the Presence pool, which protects against this crash. Overload also adds a moderate Elusivity defense bonus to all attacks in PVP zones.  Recharge: Very Long",
   "shortHelp": "Self +DEF(All but Psionics), +Recovery, +Max HP, Res(DeBuff DEF), +Special",
   "icon": "energyaura_overload.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 540,
@@ -42,6 +47,7 @@ export const Overload: Power = {
     "buffDuration": 90,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }

@@ -12,6 +12,8 @@ export const AtomSmasher: Power = {
   "name": "Atom Smasher",
   "internalName": "Atom_Smasher",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You charge up a dangerously unstable amount of radioactive energy into a single fist before driving it into the ground and causing a small explosion. Foes caught in the blast will suffer Energy and Toxic damage and have their defense reduced.",
   "shortHelp": "PBAoE, DMG(Toxic/Energy), Foe Disorient, -DEF, Special",
   "icon": "atomicmanipulation_atomsmasher.png",
@@ -20,6 +22,9 @@ export const AtomSmasher: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -74,21 +79,21 @@ export const AtomSmasher: Power = {
     }
   },
   "atoms": [
-    ["Damage","Energy",0.388,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Toxic",1.164,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Stunned",6,2,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25],
+    ["Damage","Energy",0.388,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",1.164,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",6,2,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1.2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Fire",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Cold",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Energy",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Negative",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Psionic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /"],
-    ["DamageBuff","Toxic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /"],
-    ["Damage","Energy",0.3331,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Toxic",0.9992,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,null,true]
+    ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Fire",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Cold",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Energy",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Negative",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Psionic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["DamageBuff","Toxic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"0.066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
+    ["Damage","Energy",0.3331,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",0.9992,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

@@ -12,6 +12,8 @@ export const PracticedBrawler: Power = {
   "name": "Practiced Brawler",
   "internalName": "Practiced_Brawler",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Your training has allowed you to become a Practiced Brawler, tuning you into a perfect fighting machine. You increase your regeneration rate, in addition You gain a resistance to Knockback, Disorient, Hold, Sleep, and Immobilization powers for a moderate duration. Recharge: Very Long",
   "shortHelp": "Click: Self +Regen, +Res(Knockback, Disorient, Hold, Sleep, Immobilize)",
   "icon": "superreflexes_practicedbrawler.png",
@@ -23,6 +25,9 @@ export const PracticedBrawler: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -63,10 +68,12 @@ export const PracticedBrawler: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 12,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 12,
       "table": "Melee_Ones"
     },
@@ -75,6 +82,7 @@ export const PracticedBrawler: Power = {
       "table": "Melee_Ones"
     },
     "regenBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },

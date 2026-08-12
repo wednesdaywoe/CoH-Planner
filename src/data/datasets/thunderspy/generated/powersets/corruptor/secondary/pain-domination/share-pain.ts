@@ -12,12 +12,17 @@ export const SharePain: Power = {
   "name": "Share Pain",
   "internalName": "Share_Pain",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Share Pain links you with your target causing damage over time to both you and your target, ally or foe, in either case the user gains a damage and To Hit Buff. Foes suffer from a damage debuff. Allies gain a damage and To Hit buff as long as they are taking damage, if an ally goes under half of their total health the damage and buffs pause. This power can kill the user and foes. Powerful foes will not take damage from this power.",
   "shortHelp": "Self DoT(Special), +DMG, +To Hit, Ally DoT(Special), +DMG, +To Hit, Foe DoT(Special), -DMG",
   "icon": "paindomination_sharepain.png",
   "powerType": "Toggle",
   "targetType": "Any",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Any"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -44,10 +49,12 @@ export const SharePain: Power = {
   "effects": {
     "buffDuration": 2,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Buff_Dmg"
     },
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },
@@ -62,7 +69,7 @@ export const SharePain: Power = {
     }
   },
   "atoms": [
-    ["Damage","Psionic",0.025,1,0,"Melee_Ones","Abs","Expression","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"@Scale Max.kHitPoints source> * negate"],
+    ["Damage","Psionic",0.025,1,0,"Melee_Ones","Abs","Expression","Self","Any",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"@Scale Max.kHitPoints source> * negate"],
     ["DamageBuff","Smashing",5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -80,8 +87,8 @@ export const SharePain: Power = {
     ["DamageBuff","Negative",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
     ["DamageBuff","Psionic",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
     ["DamageBuff","Toxic",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
-    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","PvE",false,"No",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || enttype target> player eq || ! target.isFriend? ! &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
-    ["Damage","Psionic",0.025,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
+    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","PvE",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || enttype target> player eq || ! target.isFriend? ! &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
+    ["Damage","Psionic",0.025,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
     ["DamageBuff","Smashing",10,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
     ["DamageBuff","Lethal",10,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
     ["DamageBuff","Fire",10,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],

@@ -25,7 +25,12 @@ import { Inferno as Inferno } from './inferno';
 
 export const powerset: Powerset = {
   id: 'defender/fiery-combat',
+  setPath: 'Defender_Ranged.Fire_Blast',
   name: 'Fiery Combat',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Fiery Combat allows you to attack with fire, and even conjure up flaming melee weapons. with a tendency to set them ablaze for added damage over time.',
   icon: 'fire_blast_set.ico',
   archetype: 'defender',

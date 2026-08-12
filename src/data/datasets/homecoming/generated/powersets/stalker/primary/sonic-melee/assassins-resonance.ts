@@ -12,6 +12,8 @@ export const AssassinsResonance: Power = {
   "name": "Assassin's Whisper",
   "internalName": "Assassins_Resonance",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "A signature Stalker attack. This attack does superior energy and smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you whisper at your unsuspecting foe. Affected target is likely to fall asleep and have their damage resistances lowered. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.",
   "shortHelp": "Melee, DMG(Energy/Smashing), Sleep, -Res(DMG)",
   "icon": "sonicmanipulation_assassins.png",
@@ -20,6 +22,9 @@ export const AssassinsResonance: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -64,44 +69,54 @@ export const AssassinsResonance: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       }
     },
     "stealth": {
       "stealthPvE": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "stealthPvP": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       }

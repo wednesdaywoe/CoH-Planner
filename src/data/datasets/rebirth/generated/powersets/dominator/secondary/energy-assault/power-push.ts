@@ -12,12 +12,17 @@ export const PowerPush: Power = {
   "name": "Power Push",
   "internalName": "Power_Push",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Power Push deals a high amount of Energy and Smashing damage and sends the target flying for a great distance. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged High DMG(Energy/Smash), Foe High Knockback",
   "icon": "energyassault_powerpush.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 70,
@@ -64,6 +69,6 @@ export const PowerPush: Power = {
     ["Damage","Smashing",1.27246,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.81354,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",8,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

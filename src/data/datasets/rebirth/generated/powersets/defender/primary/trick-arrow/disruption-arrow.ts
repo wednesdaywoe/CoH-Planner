@@ -12,12 +12,17 @@ export const DisruptionArrow: Power = {
   "name": "Disruption Arrow",
   "internalName": "Disruption_Arrow",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow plants a sonic resonator at a target location. The vibrations of the resonator reduce the Damage Resistance of all nearby foes. These vibrations also weaken enemies' resistance against controlling effects. Against Disrupted targets control effects will last longer, and Entangling Arrow, Ice Arrow, Poison Gas Arrow, and EMP Arrow will more easily affect stronger foes.  Recharge: Long",
   "shortHelp": "Ranged (Location AoE), -Res(All), Special",
   "icon": "trickarrow_debuffdamres.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

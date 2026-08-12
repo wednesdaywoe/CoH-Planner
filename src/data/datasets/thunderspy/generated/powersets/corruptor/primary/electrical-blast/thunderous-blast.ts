@@ -12,12 +12,17 @@ export const ThunderousBlast: Power = {
   "name": "Thunderous Blast",
   "internalName": "Thunderous_Blast",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You hurl a tremendously powerful bolt of lightning at a target, devastating all nearby foes. Thunderous Blast deals extreme Energy and Smashing damage and drains a lot of Endurance from nearby foes. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Extreme DMG(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_thunderouseblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 60,

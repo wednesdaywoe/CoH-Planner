@@ -12,12 +12,19 @@ export const OneWithAll: Power = {
   "name": "One With All",
   "internalName": "One_With_All",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "By drawing in lifeforce surrounding you, you are able to withstand tremendous amounts of harm. Nearby enemies are subjected to a blast of heat and are horribly burned, while allies in the area are healed. Power increases for each entity in the blast zone.",
   "shortHelp": "Self +Res (All), PBAoE Fire DMG, PBAoE Team Heal",
   "icon": "natureaffinity_wildbastion.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Self",
+    "Foe",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 20,
@@ -91,7 +98,7 @@ export const OneWithAll: Power = {
   },
   "atoms": [
     ["Damage","Fire",3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
-    ["Meta",null,0,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,0,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Resistance","Smashing",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
     ["Resistance","Lethal",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
     ["Resistance","Fire",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],

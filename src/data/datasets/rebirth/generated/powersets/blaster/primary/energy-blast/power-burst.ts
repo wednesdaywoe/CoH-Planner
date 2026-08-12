@@ -12,12 +12,17 @@ export const PowerBurst: Power = {
   "name": "Power Burst",
   "internalName": "Power_Burst",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "A devastating attack, Power Burst unleashes a massive amount of energy dealing very high damage at short distances.  The impact from this burst often knocks back most foes. Damage: High, Recharge: Slow",
   "shortHelp": "High DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_powerburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -55,6 +60,7 @@ export const PowerBurst: Power = {
   "effects": {
     "buffDuration": 9.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.132,
       "table": "Ranged_Ones"
     },
@@ -73,7 +79,7 @@ export const PowerBurst: Power = {
   "atoms": [
     ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",1.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.6],
     ["DamageBuff","Smashing",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -82,7 +88,7 @@ export const PowerBurst: Power = {
     ["DamageBuff","Negative",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.6],
     ["Damage","Energy",2.705041,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

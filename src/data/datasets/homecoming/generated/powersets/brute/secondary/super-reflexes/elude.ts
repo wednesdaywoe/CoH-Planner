@@ -12,6 +12,8 @@ export const Elude: Power = {
   "name": "Elude",
   "internalName": "Elude",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You can improve your reflexes, making yourself so quick you can Elude almost any attack, be it ranged, melee, or area effect. Your running speed, jumping height, and Endurance Recovery are also increased. Elude also grants you high resistance to Defense DeBuffs. When Elude wears off, you are left drained of all Endurance and unable to recover Endurance for a while.Recharge: Extremely Long.",
   "shortHelp": "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special",
   "icon": "superreflexes_elude.png",
@@ -23,6 +25,9 @@ export const Elude: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -76,6 +81,7 @@ export const Elude: Power = {
       "recoveryDebuff": 20
     },
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
@@ -94,6 +100,7 @@ export const Elude: Power = {
       "table": "Melee_Ones"
     },
     "recoveryDebuff": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     }
@@ -108,9 +115,9 @@ export const Elude: Power = {
     ["Defense","All",1,1,180,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Recovery",null,-100,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,-1,1,10,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Meta",null,-1,1,10,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"designer_status"],
+    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Elusivity","Ranged",0.2,1,180,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Elusivity","Melee",0.2,1,180,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Elusivity","AoE",0.2,1,180,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]

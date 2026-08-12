@@ -12,6 +12,8 @@ export const PsiBladeSweep: Power = {
   "name": "Psi Blade Sweep",
   "internalName": "Psi_Blade_Sweep",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You project a Psi Blade and swing it in a broad arc hitting all foes within a wide cone in front of you for high Psionic and Lethal damage. Foes struck by this power have their recharge reduced and have chance to become disoriented for a short time. Psi Blade Sweep has a high chance of granting you Insight. While you have Insight, Psi Blade Sweep will deal additional minor psionic damage over time and has a greater chance to disorient foes. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee (Cone), High DMG(Psionic/Lethal), Foe Disorient, -Rech; Self +Insight",
   "icon": "psionicmelee_psibladesweep.png",
@@ -20,6 +22,9 @@ export const PsiBladeSweep: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -63,6 +68,7 @@ export const PsiBladeSweep: Power = {
       "rechargeDebuff": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.15,
       "table": "Melee_Slow"
     },
@@ -82,7 +88,7 @@ export const PsiBladeSweep: Power = {
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.3808966875076294,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&",true],
     ["Damage","Lethal",0.496798,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1.490393,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Psionic",0.236,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?",true],
+    ["Damage","Psionic",0.236,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?",true,null,null,null,null,null,null,0.8,true],
     ["Damage","Psionic",1.987191,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1.44,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
     ["Damage","Psionic",1.44,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
@@ -97,6 +103,10 @@ export const PsiBladeSweep: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight",
+        "count": 1
+      },
       "damage": {
         "type": "Psionic",
         "scale": 0.236,

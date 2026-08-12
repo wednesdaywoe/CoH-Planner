@@ -12,6 +12,8 @@ export const FireSword: Power = {
   "name": "Fire Sword",
   "internalName": "Fire_Sword",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Through concentration, you can create a Sword of Fire that sets foes ablaze. Successful attacks from the Fire Sword will ignite your target, dealing damage over time. Choosing this power locks out Blaze Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee, Moderate DMG(Fire/Lethal)",
   "icon": "fieryfray_firesword.png",
@@ -20,6 +22,9 @@ export const FireSword: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

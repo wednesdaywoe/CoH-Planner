@@ -12,12 +12,17 @@ export const ElectronHaze: Power = {
   "name": "Neutron Bomb",
   "internalName": "Electron_Haze",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "This devastating attack lobs an explosive sphere of deadly radiation, damaging the target and all nearby foes. Neutron Bomb can bypass some of a target's defenses and reduce the target's Defense. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Energy), Foe -DEF",
   "icon": "radiationburst_radiationblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 60,
@@ -72,7 +77,7 @@ export const ElectronHaze: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.20999999344348907,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Toxic",0.35,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

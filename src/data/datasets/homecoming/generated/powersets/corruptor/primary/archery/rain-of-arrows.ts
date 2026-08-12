@@ -12,12 +12,17 @@ export const RainofArrows: Power = {
   "name": "Rain of Arrows",
   "internalName": "Rain_of_Arrows",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You unleash a Rain of Arrows on a targeted location, damaging foes within a large area.",
   "shortHelp": "Ranged (Location AoE), DoT(Lethal)",
   "icon": "archery_rainofarrows.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 90,

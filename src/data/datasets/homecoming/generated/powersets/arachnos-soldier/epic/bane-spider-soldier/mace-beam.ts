@@ -12,12 +12,17 @@ export const MaceBeam: Power = {
   "name": "Mace Beam",
   "internalName": "Mace_Beam",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "The Nullifier Mace has several different ranged attack modes. The Mace Beam is a moderate damage single target attack with a chance to knock a foe off their feet.",
   "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
   "icon": "banespider_macebeam.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 70,
@@ -53,9 +58,9 @@ export const MaceBeam: Power = {
   },
   "atoms": [
     ["Damage","Energy",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
+    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",1.809,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,true]
+    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

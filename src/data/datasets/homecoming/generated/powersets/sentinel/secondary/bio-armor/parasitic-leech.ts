@@ -12,12 +12,17 @@ export const ParasiticLeech: Power = {
   "name": "Parasitic Leech",
   "internalName": "Parasitic_Leech",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You release a wave of parasites around you that draw out your enemies' genetic material. These parasites dramatically increase your survivability by gaining damage absorption while boosting your regeneration and recovery rate for a short time. Affected foes will be infected and have reduced regeneration for a short while.*While Offensive Adaptation is active, this power will apply a stronger regeneration debuff.*While Defensive Adaptation is active, this power will grant a small amount of additional damage absorption and inflict a damage debuff.*While Efficient Adaptation is active, this power will grant additional regeneration and recovery per target hit.",
   "shortHelp": "PBAoE, Self +Absorb, +Regeneration, +Recovery, Foe -DMG",
   "icon": "bioorganicarmor_parasiticleech.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.5,
     "range": 40,
@@ -65,6 +70,7 @@ export const ParasiticLeech: Power = {
       "perTarget": 0.714
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     }
@@ -101,6 +107,7 @@ export const ParasiticLeech: Power = {
           "regenDebuff": 30
         },
         "regenDebuff": {
+          "ignoreStrength": true,
           "scale": 1.3,
           "table": "Melee_Ones"
         }
@@ -144,6 +151,7 @@ export const ParasiticLeech: Power = {
         },
         "buffDuration": 45,
         "damageDebuff": {
+          "ignoreStrength": true,
           "scale": 2.66,
           "table": "Melee_Debuff_Dam"
         },

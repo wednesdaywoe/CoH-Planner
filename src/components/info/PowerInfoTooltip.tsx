@@ -8,7 +8,8 @@ import { useEffect, useLayoutEffect, useRef, useState, useCallback, useMemo } fr
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useSentinelCritActive, useGlobalAdjuster } from '@/stores';
 import { getBaseToHit } from '@/data/purple-patch';
-import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
+import { useGlobalBonuses, usePowerDamageVsRank } from '@/hooks/useCalculatedStats';
+import { critBranchSummary, critComponents, VS_HIGHER_RANK_SEGMENT, VS_MINION_RANK_SEGMENT } from '@/utils/calculations/power-at-mechanics';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
 import { lookupPower, getIOSet, getPowerset } from '@/data';
 import type { Power } from '@/types';
@@ -31,8 +32,6 @@ import {
   getVigilanceInfo,
   calculateVigilanceDamageBonus,
   isDefenderPower,
-  getCriticalHitInfo,
-  calculateCriticalHitDamage,
   isScrapperAttackPower,
   getAssassinationInfo,
   calculateAssassinationDamageBonus,
@@ -95,6 +94,13 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const effectiveHidden = isCasterHidden(build, stalkerHidden);
   const containmentActive = useContainmentActive();
   const sentinelCritActive = useSentinelCritActive();
+
+  // The Scrapper crit read from the power's OWN rows, engine-resolved against the rank
+  // each surface names (see InfoPanel — same source, same gating: the projection is a
+  // full engine pass, so it only runs for the one case that reads it).
+  const wantEngineCrit = archetypeId === 'scrapper' && isScrapperAttackPower(powerSet) && criticalHitsActive;
+  const damageVsHigher = usePowerDamageVsRank(wantEngineCrit ? powerSet : undefined, powerName, VS_HIGHER_RANK_SEGMENT);
+  const damageVsMinion = usePowerDamageVsRank(wantEngineCrit ? powerSet : undefined, powerName, VS_MINION_RANK_SEGMENT);
 
   // Check if Fiery Embrace is active in the build
   const isFieryEmbraceActive = useMemo(() => {
@@ -312,7 +318,11 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
     const isScrapper = archetypeId === 'scrapper';
     const isScrapperPower = isScrapperAttackPower(powerSet);
-    const showCriticalHits = isScrapper && isScrapperPower && criticalHitsActive;
+    // The crit is the power's own rows added on top of the final — no rows against the
+    // vs-higher target (or engine still loading) means no crit column, never a flat
+    // archetype constant (the ×1.10 average this replaced).
+    const critFinalAdd = critComponents(damageVsHigher).reduce((sum, c) => sum + c.total.final, 0);
+    const showCriticalHits = isScrapper && isScrapperPower && criticalHitsActive && critFinalAdd > 0;
 
     const isStalker = archetypeId === 'stalker';
     const isStalkerPower = isStalkerAttackPower(powerSet);
@@ -355,10 +365,12 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       : showOpportunityCrit ? 'text-sk-magenta'
       : 'text-amber-400';
 
-    // Function to apply inherent bonus (hit-time multipliers only)
+    // Function to apply inherent bonus (hit-time mechanics only). The Scrapper crit is
+    // ADDITIVE — the power's own crit rows, what a critical actually deals — while the
+    // other mechanics still apply their multiplier model.
     const applyInherentBonus = (damage: number) => {
       if (showScourge) return calculateScourgeDamage(damage);
-      if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
+      if (showCriticalHits) return damage + critFinalAdd;
       if (showAssassination) return calculateAssassinationDamage(damage, effectiveHidden, stalkerTeamSize, basePower?.fromHideBonus);
       if (showContainment) return calculateContainmentDamage(damage, true);
       if (showOpportunityCrit) return calculateOpportunityCritDamage(damage);
@@ -383,7 +395,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     };
   }, [calculatedDamage, archetypeId, powerSet, scourgeActive, furyLevel, vigilanceTeamSize,
       criticalHitsActive, effectiveHidden, stalkerTeamSize, stalkerCritActive, containmentActive,
-      sentinelCritActive, build.level]);
+      sentinelCritActive, build.level, damageVsHigher]);
 
   // All hooks are above this point — safe to early return
   if (!basePower) {
@@ -617,11 +629,15 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
               +{(damageDisplayInfo.vigilanceBonus * 100).toFixed(0)}% from Vigilance ({vigilanceTeamSize === 0 ? 'Solo' : `${vigilanceTeamSize} teammates`})
             </div>
           )}
-          {damageDisplayInfo.showCriticalHits && (
-            <div className="text-[10px] text-sk-magenta">
-              +{(getCriticalHitInfo().averageBonusVsHigher * 100).toFixed(0)}% avg from Critical Hits (vs Lt+)
-            </div>
-          )}
+          {damageDisplayInfo.showCriticalHits && (() => {
+            // showCriticalHits already proved the vs-higher branch has rows.
+            const crit = critBranchSummary(damageVsHigher)!;
+            return (
+              <div className="text-[10px] text-sk-magenta">
+                +{crit.finalTotal.toFixed(2)} from Critical Hits ({crit.chanceLabel} chance vs Lt+)
+              </div>
+            );
+          })()}
           {damageDisplayInfo.showAssassination && (
             <div className="text-[10px] text-sk-magenta">
               +{(damageDisplayInfo.assassinationBonus * 100).toFixed(0)}% avg from Assassination ({effectiveHidden ? 'Alpha Strike' : 'Sustained'})
@@ -877,13 +893,15 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       })()}
 
 
-      {/* Scrapper Critical Hits - show when viewing Scrapper attack powers */}
+      {/* Scrapper Critical Hits — the power's OWN crit rows per rank branch (the export
+          states the chance and the crit's own damage, and both vary by power). */}
       {(() => {
         // Only show for Scrapper archetype and scrapper powersets with damage
         if (archetypeId !== 'scrapper' || !isScrapperAttackPower(powerSet)) return null;
         if (!calculatedDamage) return null;
 
-        const criticalHitInfo = getCriticalHitInfo();
+        const minion = critBranchSummary(damageVsMinion);
+        const higher = critBranchSummary(damageVsHigher);
 
         return (
           <div className={`text-xs mt-1 rounded px-1.5 py-1 border ${
@@ -900,7 +918,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                   ? 'bg-sk-magenta/20 text-sk-magenta'
                   : 'bg-slate-700 text-slate-300'
               }`}>
-                {criticalHitsActive ? 'SHOWING AVG' : 'Hidden'}
+                {criticalHitsActive ? 'IN FINAL (vs Lt+)' : 'Hidden'}
               </span>
             </div>
             {criticalHitsActive && (
@@ -908,23 +926,20 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                 <div className="flex justify-between">
                   <span className="text-slate-300">vs Minions:</span>
                   <span className="text-sk-magenta/70">
-                    {(criticalHitInfo.chanceVsMinions * 100).toFixed(0)}% chance → +{(criticalHitInfo.averageBonusVsMinions * 100).toFixed(0)}% avg
+                    {minion ? `${minion.chanceLabel} chance → +${minion.finalTotal.toFixed(2)}` : 'no crit'}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-300">vs Lt/Boss+:</span>
                   <span className="text-sk-magenta/70">
-                    {(criticalHitInfo.chanceVsHigher * 100).toFixed(0)}% chance → +{(criticalHitInfo.averageBonusVsHigher * 100).toFixed(0)}% avg
+                    {higher ? `${higher.chanceLabel} chance → +${higher.finalTotal.toFixed(2)}` : 'no crit'}
                   </span>
-                </div>
-                <div className="text-[10px] text-slate-400 mt-0.5">
-                  Critical hits deal ×{criticalHitInfo.damageMultiplier.toFixed(0)} damage
                 </div>
               </div>
             )}
             {!criticalHitsActive && (
               <div className="text-[10px] text-slate-400 mt-0.5">
-                5% crit vs minions, 10% vs higher ranks
+                Crit chance and damage are per power — toggle on to see this power&apos;s rows
               </div>
             )}
           </div>

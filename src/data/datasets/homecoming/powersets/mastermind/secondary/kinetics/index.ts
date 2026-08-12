@@ -21,7 +21,12 @@ import { FulcrumShift as FulcrumShift } from './fulcrum-shift';
 
 export const powerset: Powerset = {
   id: 'mastermind/kinetics',
+  setPath: 'Mastermind_Buff.Kinetics',
   name: 'Kinetics',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You are a master at manipulating and transferring Kinetic energy. You can manipulate the potential energy found in objects to aid your allies or weaken your foes.',
   icon: 'kinetics_set.ico',
   archetype: 'mastermind',

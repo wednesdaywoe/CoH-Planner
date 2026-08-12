@@ -12,6 +12,8 @@ export const ShiftingTides: Power = {
   "name": "Shifting Tides",
   "internalName": "Shifting_Tides",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "Select either a friend or foe to create a field of shifting tides around them.When attacked, foes within the shifting tides will provide you and your allies a stacking Rising Tide buff that increases ToHit, Damage, and Recharge. Enemies may also take bonus damage, with the odds increasing per stack.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Team +DMG, +ToHit, +Recharge, Special Damage",
   "icon": "marineaffinity_shiftingtides.png",
@@ -22,6 +24,9 @@ export const ShiftingTides: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "DeadOrAliveAny"
   ],
   "stats": {
     "accuracy": 1,
@@ -53,10 +58,12 @@ export const ShiftingTides: Power = {
   },
   "effects": {
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.24,
       "table": "Ranged_Buff_Dmg"
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.02,
       "table": "Melee_Ones"
     },
@@ -67,23 +74,23 @@ export const ShiftingTides: Power = {
   },
   "atoms": [
     ["GrantPower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! && Redirects.Marine_Affinity.Shifting_Tides target.ownPower? ! &&"],
-    ["Meta",null,1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["DamageBuff","Smashing",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["DamageBuff","Lethal",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["DamageBuff","Fire",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["DamageBuff","Cold",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["DamageBuff","Energy",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["DamageBuff","Negative",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["DamageBuff","Psionic",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["DamageBuff","Toxic",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["ToHit",null,0.08,1,0,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1],
-    ["RechargeTime",null,0.02,1,0,"Melee_Ones","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Meta",null,1,1,0.2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower?",true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",false,"No",10,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! && kShiftingTides target.mode? &&",true],
-    ["Meta",null,1,188,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true,null,null,null,null,"kWet target.mode? !",true],
-    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower? !",true],
-    ["GrantPower",null,0,0,0.24,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,"Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower? !",true]
+    ["Meta",null,1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Smashing",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Lethal",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Fire",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Cold",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Energy",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Negative",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Psionic",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Toxic",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["ToHit",null,0.08,1,0,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["RechargeTime",null,0.02,1,0,"Melee_Ones","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["Meta",null,1,1,0.2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! && kShiftingTides target.mode? &&",true],
+    ["Meta",null,1,188,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! && kShiftingTides target.mode? && kWet target.mode? ! &&",true,null,null,null,null,null,null,null,null,"WetStatus",null,"set_mode"],
+    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! && kShiftingTides target.mode? && Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower? ! &&",true,null,null,null,null,null,null,null,null,"RisingTide"],
+    ["GrantPower",null,0,0,0.24,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! && kShiftingTides target.mode? && Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower? ! &&",true,null,null,null,null,null,null,null,null,"RisingTide"]
   ],
   "specialEffects": [
     {

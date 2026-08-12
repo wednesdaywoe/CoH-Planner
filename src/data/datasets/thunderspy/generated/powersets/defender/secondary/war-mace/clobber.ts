@@ -12,6 +12,8 @@ export const Clobber: Power = {
   "name": "Clobber",
   "internalName": "Clobber",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You Clobber your foe with a massive swing of your mace.  This attack deals exceptional damage and can leave most opponents disoriented for a period of time. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Smashing), Disorient",
   "icon": "mace_clobber.png",
@@ -22,6 +24,9 @@ export const Clobber: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,

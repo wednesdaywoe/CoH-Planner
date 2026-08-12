@@ -12,6 +12,8 @@ export const TelekineticThrust: Power = {
   "name": "Telekinetic Thrust",
   "internalName": "Telekinetic_Thrust",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "A focused attack of intense mental power that violently sends a nearby foe flying. Deals minimal damage, but can be very effective. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Melee, Minor DMG(Psionic/Smash), Foe Knockback",
   "icon": "psionicassault_telekineticthrust.png",
@@ -20,6 +22,9 @@ export const TelekineticThrust: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,7 @@ export const TelekineticThrust: Power = {
   "effects": {
     "buffDuration": 9.57,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.137,
       "table": "Melee_Ones"
     },

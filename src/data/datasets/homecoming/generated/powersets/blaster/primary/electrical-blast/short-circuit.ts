@@ -12,12 +12,17 @@ export const ShortCircuit: Power = {
   "name": "Short Circuit",
   "internalName": "Short_Circuit",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Releases a burst of electrical energy around you, shocking all nearby foes. This highly accurate discharge deals Moderate damage over time, drains a lot of Endurance from the targets and renders them unable to recover Endurance for quite a while. Additionally, Short Circuit deals extra damage to most robots and mechanical foes. Short Circuit is very effective when used with your other Endurance draining powers.",
   "shortHelp": "PBAoE, DoT(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_shortcircuit.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.3,
     "radius": 20,
@@ -65,16 +70,16 @@ export const ShortCircuit: Power = {
     ["Damage","Energy",0.18,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.35,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1,1,10,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Electronic target.HasTag?",true],
-    ["Damage","Energy",0.18,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
-    ["Endurance",null,3.9,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
-    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
+    ["Damage","Energy",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Electronic target.HasTag? &&",true],
+    ["Damage","Energy",0.18,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Endurance",null,3.9,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
     ["Damage","Energy",0.1573,1,1.5,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-10,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Energy",0.1573,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
-    ["Endurance",null,3.9,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
-    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Blaster_Ranged.Electrical_Blast.Tesla_Cage source.ownPower?",true]
+    ["Damage","Energy",0.1573,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Endurance",null,3.9,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Blaster_Ranged.Electrical_Blast.Tesla_Cage source.ownPower?",true,null,null,null,null,null,null,null,null,"BuildStatic"]
   ],
   "conditionalEffects": [
     {

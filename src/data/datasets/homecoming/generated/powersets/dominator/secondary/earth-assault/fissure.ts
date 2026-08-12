@@ -12,12 +12,17 @@ export const Fissure: Power = {
   "name": "Fissure",
   "internalName": "Fissure",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "This powerful stomp can crack the earth itself, damaging a nearby targeted foe and any foes around it. This Fissure can only affect foes on the ground, dealing moderate smashing damage and possibly throwing them into the air or disorienting them.Damage: Light.Recharge: Slow.",
   "shortHelp": "Close (Targeted AoE), Light DMG(Smash), Foe Knockback, Disorient",
   "icon": "earthassault_fissure.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 20,
@@ -66,10 +71,10 @@ export const Fissure: Power = {
     ["Mez","Stunned",8,2,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",12,1,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> critter eq",true],
-    ["Mez","Stunned",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",12,1,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Stunned",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"],
     ["Damage","Smashing",0.8606,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "conditionalEffects": [
     {

@@ -12,6 +12,8 @@ export const Cremate: Power = {
   "name": "Cremate",
   "internalName": "Cremate",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A slow but devastating attack.  Cremate clobbers your foe with a massive 2 handed fiery smash that leaves your foe set on fire. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash/Fire)",
   "icon": "fireassault_cremate.png",
@@ -20,6 +22,9 @@ export const Cremate: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,7 +65,7 @@ export const Cremate: Power = {
     }
   ],
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Smashing",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.82,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],

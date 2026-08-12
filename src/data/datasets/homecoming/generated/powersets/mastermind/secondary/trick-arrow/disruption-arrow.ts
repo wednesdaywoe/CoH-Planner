@@ -12,12 +12,17 @@ export const DisruptionArrow: Power = {
   "name": "Disruption Arrow",
   "internalName": "Disruption_Arrow",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow plants a sonic resonator at a target location. The vibrations of the resonator weaken the Damage Resistance and Recovery rate of all nearby foes.Recharge: Slow.",
   "shortHelp": "Ranged (Location AoE), -Res(All), -MaxEnd",
   "icon": "trickarrow_debuffdamres.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -73,6 +78,9 @@ export const DisruptionArrow: Power = {
               "castTime": 0,
               "activatePeriod": 1,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 25,
               "maxTargets": 16
             }

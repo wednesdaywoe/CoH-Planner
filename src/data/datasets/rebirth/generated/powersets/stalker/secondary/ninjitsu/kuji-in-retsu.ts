@@ -12,12 +12,17 @@ export const KujiInRetsu: Power = {
   "name": "Kuji-In Retsu",
   "internalName": "Kuji-In_Retsu",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Kuji-In Retsu is the mastery of space and time. Focusing your power on Retsu enables you to control your own time to easily defeat your foes. Mastery of this power enables you to avoid almost any attack, be it ranged, melee, or area effect. Your running speed, jumping height and Endurance Recovery are also increased. Retsu also grants you high resistance to Defense DeBuffs. When Retsu wears off, you are left drained of all Endurance and unable to recover Endurance for a while. This crash is avoidable, however, if you have trained Unrelenting in the Presence pool. Recharge: Very Long",
   "shortHelp": "Self +DEF, +SPD, +Recovery, Res(DeBuff DEF), +Special",
   "icon": "ninjitsu_kujinzen.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 1000,
@@ -43,6 +48,7 @@ export const KujiInRetsu: Power = {
     "buffDuration": 180,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
@@ -69,6 +75,7 @@ export const KujiInRetsu: Power = {
       "recoveryDebuff": 20
     },
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
@@ -87,6 +94,7 @@ export const KujiInRetsu: Power = {
       "table": "Melee_Ones"
     },
     "recoveryDebuff": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
@@ -106,9 +114,9 @@ export const KujiInRetsu: Power = {
     ["Defense","All",1,1,180,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,-100,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Pool.Manipulation.Unrelenting source.ownPower? !"],
     ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Pool.Manipulation.Unrelenting source.ownPower? !"],
-    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ]
 };

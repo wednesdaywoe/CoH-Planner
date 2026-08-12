@@ -12,12 +12,17 @@ export const DarkBlast: Power = {
   "name": "Dark Blast",
   "internalName": "Dark_Blast",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's chance to hit.  Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe -To Hit",
   "icon": "necromancy_darkblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

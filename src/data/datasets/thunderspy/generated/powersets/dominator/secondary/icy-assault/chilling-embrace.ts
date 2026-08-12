@@ -12,6 +12,8 @@ export const ChillingEmbrace: Power = {
   "name": "Chilling Embrace",
   "internalName": "Chilling_Embrace",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their movement speed. Recharge: Very Fast",
   "shortHelp": "Toggle: PBAoE, Foe -Recharge, -Speed",
   "icon": "iceassault_chillingembrace.png",
@@ -22,6 +24,9 @@ export const ChillingEmbrace: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -48,6 +53,7 @@ export const ChillingEmbrace: Power = {
       "slow": 5
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Slow"
     },
@@ -57,6 +63,7 @@ export const ChillingEmbrace: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Slow"
       },

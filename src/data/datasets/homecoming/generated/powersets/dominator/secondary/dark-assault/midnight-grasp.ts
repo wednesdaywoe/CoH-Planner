@@ -12,6 +12,8 @@ export const MidnightGrasp: Power = {
   "name": "Midnight Grasp",
   "internalName": "Midnight_Grasp",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.Damage: Superior.Recharge: Slow.",
   "shortHelp": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "darknessassault_midnightgrasp.png",
@@ -20,6 +22,9 @@ export const MidnightGrasp: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -81,6 +86,6 @@ export const MidnightGrasp: Power = {
     ["Damage","Negative",0.11,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1],
     ["Damage","Negative",2.0918,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Immobilized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

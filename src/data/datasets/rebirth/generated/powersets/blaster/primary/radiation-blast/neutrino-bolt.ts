@@ -12,6 +12,8 @@ export const NeutrinoBolt: Power = {
   "name": "Neutrino Bolt",
   "internalName": "Neutrino_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A very quick, but low damage attack. Neutrino Bolt can reduce the target's Defense. Damage: Minor, Recharge: Very Fast",
   "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
   "icon": "radiationburst_neutrinoblast.png",
@@ -23,6 +25,9 @@ export const NeutrinoBolt: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -56,6 +61,7 @@ export const NeutrinoBolt: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Ranged_Ones"
     },

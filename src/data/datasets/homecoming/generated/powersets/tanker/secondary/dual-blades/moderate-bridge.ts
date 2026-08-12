@@ -12,6 +12,8 @@ export const ModerateBridge: Power = {
   "name": "Ablating Strike",
   "internalName": "Moderate_Bridge",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You Slash at your foe with your blades, dealing a good amount of lethal damage. This attack can reduce a target's Defense, making him easier to hit. This power is needed for the Empower and Weaken combination attacks, and is the beginning of the Attack Vitals combination attack.Empower: Nimble Slash > Ablating Strike > Blinding Feint.Weaken: Nimble Slash > Ablating Strike > Typhoon's Edge.Attack Vitals: Ablating Strike > Vengeful Slice > Sweeping Strike.",
   "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
   "icon": "dualblades_moderatebridge.png",
@@ -20,6 +22,9 @@ export const ModerateBridge: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -64,13 +69,13 @@ export const ModerateBridge: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.66,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.297,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,0],
+    ["Damage","Fire",0.297,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_1 Source.Mode? ! kDD_DebuffMode_1 Source.Mode? ! ||"],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_1 Source.Mode? ! kDD_DebuffMode_1 Source.Mode? ! ||"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_1 Source.Mode? ! kDD_DebuffMode_1 Source.Mode? ! ||",null,null,null,null,null,null,null,null,null,"DB_BonusDoT1",null,"cancel_mods"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_1 Source.Mode? ! kDD_DebuffMode_1 Source.Mode? ! ||",null,null,null,null,null,null,null,null,null,"DB_BonusDoT1",null,"cancel_mods"],
     ["Damage","Lethal",0.6805,1,0.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

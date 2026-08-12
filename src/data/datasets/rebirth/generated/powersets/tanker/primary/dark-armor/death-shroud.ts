@@ -12,12 +12,17 @@ export const DeathShroud: Power = {
   "name": "Death Shroud",
   "internalName": "Death_Shroud",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You become a focus point for the Netherworld, allowing its Negative Energy to seep from your body. This will continuously damage all foes in melee range. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Toggle: PBAoE Minor DoT(Negative)",
   "icon": "darkarmor_touchofdeath.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -54,7 +59,7 @@ export const DeathShroud: Power = {
   "atoms": [
     ["Damage","Negative",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
-    ["Damage","Fire",0.09,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.09,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ]
 };

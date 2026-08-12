@@ -12,6 +12,8 @@ export const FrozenArmor: Power = {
   "name": "Frozen Armor",
   "internalName": "Frozen_Armor",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage.This power is mutually exclusive from Rime",
   "shortHelp": "Self, +Def(Smash, Lethal), +Res(Cold, Fire, DeBuff DEF)",
   "icon": "icearmor_icearmor.png",
@@ -22,6 +24,9 @@ export const FrozenArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const FrozenArmor: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }

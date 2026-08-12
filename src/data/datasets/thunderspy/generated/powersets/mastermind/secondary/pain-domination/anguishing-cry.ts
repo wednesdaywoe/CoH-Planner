@@ -12,12 +12,18 @@ export const AnguishingCry: Power = {
   "name": "Anguishing Cry",
   "internalName": "Anguishing_Cry",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You let out an Anguishing Cry causing a small amount of damage to yourself and and all nearby targets, ally or foe, foes also have their resistance to damage and defense reduced for a short time.",
   "shortHelp": "PBAoE Damage(self, friend, foe), Foe -RES(All), -DEF(All)",
   "icon": "paindomination_anguishingcry.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Any",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -37,11 +43,6 @@ export const AnguishingCry: Power = {
     "Defense Debuff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.05,
-    "table": "Melee_Ones"
-  },
   "effects": {
     "buffDuration": 30,
     "defenseDebuff": {
@@ -54,41 +55,48 @@ export const AnguishingCry: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
     }
   },
   "atoms": [
-    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! target.isFriend? ! &&",null,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
     ["Defense","All",3,1,30,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
     ["Resistance","Smashing",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
     ["Resistance","Lethal",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
@@ -98,6 +106,7 @@ export const AnguishingCry: Power = {
     ["Resistance","Negative",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
     ["Resistance","Psionic",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
     ["Resistance","Toxic",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
-    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"Max.kHitPoints target> 0.5 * Cur.kHitPoints target> > ! target.isFriend? &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"]
+    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! target.isFriend? ! &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
+    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,"Max.kHitPoints target> 0.5 * Cur.kHitPoints target> > ! target.isFriend? &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"]
   ]
 };

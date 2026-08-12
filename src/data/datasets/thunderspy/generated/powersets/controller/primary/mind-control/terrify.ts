@@ -12,12 +12,17 @@ export const Terrify: Power = {
   "name": "Terrify",
   "internalName": "Terrify",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "This power Terrifies foes within a cone area in front of you, causing them to tremble in Fear uncontrollably. The affect is so frightening and overwhelming, that the target takes real damage from the physiological response to this Psionic attack. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Minor DMG(Psionic), Foe Fear(Special)",
   "icon": "mentalcontrol_terrify.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

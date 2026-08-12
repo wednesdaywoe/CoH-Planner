@@ -12,6 +12,8 @@ export const AoEBridge: Power = {
   "name": "Typhoon's Edge",
   "internalName": "AoE_Bridge",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You spin around in a circle, attacking everyone within melee range with a striking attack. This attack is the finishing move in both the Weaken and Sweep combination attacks.Weaken: Nimble Slash > Ablating Strike > Typhoon's Edge.Sweep: One Thousand Cuts > Power Slice > Typhoon's Edge.",
   "shortHelp": "PBAoE Melee, DMG(Lethal)",
   "icon": "dualblades_aoebridge.png",
@@ -20,6 +22,9 @@ export const AoEBridge: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -50,25 +55,25 @@ export const AoEBridge: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.57,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.2565,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,0],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
+    ["Damage","Fire",0.2565,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
     ["Damage","Lethal",0.7054,1,0.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",1.4108,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",1.14,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Lethal",1.14,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
+    ["Damage","Lethal",1.4108,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE"],
+    ["Damage","Lethal",1.14,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE"],
+    ["Damage","Lethal",1.14,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE"],
     ["Defense","All",1,1,20,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_DebuffMode_2 Source.Mode?",true],
     ["ToHit",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_DebuffMode_2 Source.Mode?",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_DebuffMode_2 Source.Mode?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_DebuffMode_2 Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
     ["Damage","Lethal",0.57,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode?",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode? enttype target> player eq &&",true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode? enttype target> critter eq &&",true],
-    ["Damage","Fire",0.2565,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode?",true]
+    ["Damage","Fire",0.2565,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode?",true,null,null,null,null,null,null,null,null,"FieryEmbrace"]
   ],
   "conditionalEffects": [
     {

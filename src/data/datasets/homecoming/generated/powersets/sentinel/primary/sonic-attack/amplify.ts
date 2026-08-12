@@ -12,12 +12,17 @@ export const Amplify: Power = {
   "name": "Amplify",
   "internalName": "Amplify",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly increases your chance to hit with attacks for a few seconds. Slightly increases damage.",
   "shortHelp": "Self +To Hit, +DMG, +Range",
   "icon": "sonicblast_aim.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -37,6 +42,7 @@ export const Amplify: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -46,6 +52,7 @@ export const Amplify: Power = {
       "tohitBuff": 10
     },
     "rangeBuff": {
+      "ignoreStrength": true,
       "scale": 0.333,
       "table": "Melee_Ones"
     },

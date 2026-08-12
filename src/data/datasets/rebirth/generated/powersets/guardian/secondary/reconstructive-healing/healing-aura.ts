@@ -12,12 +12,18 @@ export const HealingAura: Power = {
   "name": "Healing Aura",
   "internalName": "Healing_Aura",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Healing Aura restores some Hit Points to you and all nearby heroes. Healing Aura is not as potent as Heal Other, but can heal multiple targets at once. Recharge: Moderate",
   "shortHelp": "PBAoE, Team +Heal",
   "icon": "reconhealing_healingaura.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

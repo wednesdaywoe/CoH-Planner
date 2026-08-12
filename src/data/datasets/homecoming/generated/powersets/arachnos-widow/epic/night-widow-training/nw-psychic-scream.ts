@@ -12,12 +12,17 @@ export const NWPsychicScream: Power = {
   "name": "Psychic Scream",
   "internalName": "NW_Psychic_Scream",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.",
   "shortHelp": "Ranged (Cone), DMG(Psionic), Foe -Recharge",
   "icon": "nightwidowtraining_psychicscream.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -52,6 +57,7 @@ export const NWPsychicScream: Power = {
       "rechargeDebuff": 20
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     }
@@ -60,6 +66,6 @@ export const NWPsychicScream: Power = {
     ["Damage","Psionic",1.4931,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.5,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Damage","Psionic",0.9541,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Psionic",1.6459,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Damage","Psionic",1.6459,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"]
   ]
 };

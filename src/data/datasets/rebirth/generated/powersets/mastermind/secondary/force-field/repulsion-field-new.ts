@@ -12,12 +12,18 @@ export const RepulsionFieldNew: Power = {
   "name": "Repulsion Field",
   "internalName": "Repulsion_Field_New",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "This Toggle power creates a field that repels nearby foes. If Force Bubble is also active, then when Repulsion Field is active it grants a Repel effect to Force Bubble, but has no effects itself. If used on its own, Repulsion Field violently flings away any foes that get too close, at the cost of some Endurance for each foe repelled. Repulsion Field's knockback can still affect a target that has been captured by Barrier Field. Repulsion Field costs no endurance to run, and is automatically granted by purchasing the Force Bubble power. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE Knockback OR Repel (Special)",
   "icon": "forcefield_repulsionfield.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 9,
@@ -34,6 +40,7 @@ export const RepulsionFieldNew: Power = {
       "knockback": 0.75
     },
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 1.25,
       "table": "Ranged_Ones"
     },
@@ -46,8 +53,8 @@ export const RepulsionFieldNew: Power = {
     ["Mez","Knockback",3,1,0.75,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&"],
     ["Endurance",null,-1.25,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&"],
     ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",true,null,null,null,null,null,null,0,true,null,null,"drop_toggles"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",true,null,null,null,null,null,null,0,null,null,null,"drop_toggles"],
     ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq",true]
   ],
   "requires": "Mastermind_Buff.Force_Field.Force_Bubble"

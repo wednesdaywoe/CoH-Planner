@@ -12,12 +12,17 @@ export const NeurotoxicBreath: Power = {
   "name": "Neurotoxic Breath",
   "internalName": "Neurotoxic_Breath",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You can breath a cone of Neurotoxin gas that quickly start to anesthetize any nearby foes.  Affected targets may choke on the gas as their movement and attack rate are severely reduced. Recharge: Slow",
   "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
   "icon": "poison_neurotoxicbreath.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -43,6 +48,7 @@ export const NeurotoxicBreath: Power = {
   "effects": {
     "buffDuration": 20,
     "durations": {
+      "movementCapDebuff": 20,
       "rechargeDebuff": 20,
       "slow": 20
     },
@@ -51,7 +57,15 @@ export const NeurotoxicBreath: Power = {
       "scale": 3,
       "table": "Ranged_Immobilize"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1.5,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.65,
       "table": "Ranged_Slow"
     },
@@ -61,6 +75,7 @@ export const NeurotoxicBreath: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
@@ -78,8 +93,8 @@ export const NeurotoxicBreath: Power = {
     ["RechargeTime",null,0.65,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","JumpHeight",0.65,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","Jump",0.65,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Mez","Held",3,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",2,2,0,"Ranged_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",3,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.25,true],
+    ["Mez","Held",2,2,0,"Ranged_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.25,true],
     ["Movement","Run",-1.5,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Movement","Run",0.65,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Fly",0.65,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]

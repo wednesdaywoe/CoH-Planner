@@ -12,12 +12,17 @@ export const Mutation: Power = {
   "name": "Mutation",
   "internalName": "Mutation",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Using a concentrated burst of radiation, you can revive a fallen hero and Mutate them into a killing machine. The Mutated hero has increased damage, chance to hit, Endurance recovery, and attack speed and is protected from XP Debt for 90 seconds. The entire experience is very taxing on the Mutated hero, and they will soon be severely weakened. All effects of the Mutation will eventually wear off. Recharge: Very Long",
   "shortHelp": "Close, Ally Rez, Special",
   "icon": "radiationpoisoning_mutation.png",
   "powerType": "Click",
   "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadPlayerFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 15,
@@ -45,6 +50,7 @@ export const Mutation: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Buff_Dmg"
     },
@@ -62,6 +68,7 @@ export const Mutation: Power = {
       "table": "Ranged_Ones"
     },
     "tohitBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
     }
@@ -71,7 +78,7 @@ export const Mutation: Power = {
     ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Recovery",null,2,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["RechargeTime",null,1,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
     ["DamageBuff","Smashing",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],

@@ -12,12 +12,17 @@ export const StoneSpears: Power = {
   "name": "Stone Spears",
   "internalName": "Stone_Spears",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Stone Spears erupt from the ground at the feet of your target.  This attack can only be used against targets on the ground, and does moderate lethal damage. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Lethal), Foe Knock Up",
   "icon": "earthassault_stonespears.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -55,7 +60,7 @@ export const StoneSpears: Power = {
     ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",2.842,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "damageTypes": [
     "Lethal"

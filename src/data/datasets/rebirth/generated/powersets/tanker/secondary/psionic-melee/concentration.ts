@@ -12,12 +12,17 @@ export const Concentration: Power = {
   "name": "Concentration",
   "internalName": "Concentration",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit. Recharge: Long",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "psionicmelee_concentration.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const Concentration: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },

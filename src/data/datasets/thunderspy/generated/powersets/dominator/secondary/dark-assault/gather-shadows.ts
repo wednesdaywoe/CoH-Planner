@@ -12,12 +12,17 @@ export const GatherShadows: Power = {
   "name": "Gather Shadows",
   "internalName": "Gather_Shadows",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "By collecting shadows from your surroundings you boost your damage and the secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved. The effects of Gather Shadows last a short while, and only the next couple of attacks will be boosted. Recharge: Long",
   "shortHelp": "Self +Special, +Dmg(All)",
   "icon": "darknessassault_gathershadows.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,
@@ -36,6 +41,7 @@ export const GatherShadows: Power = {
   "effects": {
     "buffDuration": 15,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -46,90 +52,112 @@ export const GatherShadows: Power = {
     },
     "specialBuff": {
       "absorb": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "aoe": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "cold": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "confuse": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "heal": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "melee": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "ranged": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       }

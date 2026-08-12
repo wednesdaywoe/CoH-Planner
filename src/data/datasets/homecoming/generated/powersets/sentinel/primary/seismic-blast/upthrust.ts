@@ -12,12 +12,17 @@ export const Upthrust: Power = {
   "name": "Upthrust",
   "internalName": "Upthrust",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You channel seismic energy into the earth, causing a micro-fault to erupt under your target. This causes a shard of rock to thrust upward out of the ground, dealing smashing damage and lowering their defense. Affected foes will become heavy, limiting their ability to jump and fly for a short time. The force of the eruption can knockback enemies.Upthrust grants two stacks of Seismic Pressure.",
   "shortHelp": "Targeted AoE, DMG(Smash), -Fly, -Defense, Chance to Knockback",
   "icon": "seismicblast_upthrust.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -65,24 +70,29 @@ export const Upthrust: Power = {
     },
     "durations": {
       "defenseDebuff": 16,
+      "movementCapDebuff": 16,
       "slow": 16
     },
     "knockback": {
       "scale": 0.33,
       "table": "Ranged_Ones"
     },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
+    "movementCapDebuff": {
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Slow"
       },
       "jumpSpeed": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Slow"
+      }
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
       }
     }
   },
@@ -91,14 +101,21 @@ export const Upthrust: Power = {
     ["Movement","FlyMode",-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Jump",1,1,16,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelDebuff"],
     ["Movement","JumpHeight",1,1,16,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelDebuff"],
-    ["Mez","Knockback",0.33,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645],
-    ["Damage","Smashing",0.8985,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Smashing",0.8985,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Knockback",0.33,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,null,true],
-    ["Damage","Smashing",0.5785,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Smashing",0.5785,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Smashing",1.3015,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Smashing",1.3015,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Mez","Knockback",0.33,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",0.8985,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",0.8985,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+    ["RechargePower",null,-1,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >=",null,null,null,null,null,null,null,null,null,"Seismic"],
+    ["Meta",null,1,1,45,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >=",null,null,null,null,null,null,null,null,null,"SeismicShockwaves",null,"cancel_mods"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >=",null,null,null,null,null,null,null,null,null,"SeismicShockwaves"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >= arch source> Class_Blaster eq &&",null,null,null,null,null,null,null,null,null,null,"Class_Blaster"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >= arch source> Class_Corruptor eq &&",null,null,null,null,null,null,null,null,null,null,"Class_Corruptor"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >= arch source> Class_Defender eq &&",null,null,null,null,null,null,null,null,null,null,"Class_Defender"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >= arch source> Class_Sentinel eq &&",null,null,null,null,null,null,null,null,null,null,"Class_Sentinel"],
+    ["Mez","Knockback",0.33,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",0.5785,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",0.5785,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+    ["Damage","Smashing",1.3015,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",1.3015,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
   ],
   "specialEffects": [
     {

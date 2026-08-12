@@ -12,12 +12,17 @@ export const Blind: Power = {
   "name": "Blind",
   "internalName": "Blind",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Painfully Blinds a single targeted foe so severely that they are rendered helpless. Blind is so bright that additional foes may also be blinded, though they will not take any damage, and attacking them will free them from the effects. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Psionic), Foe Hold/Sleep",
   "icon": "illusions_blind.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,
@@ -62,7 +67,7 @@ export const Blind: Power = {
   },
   "atoms": [
     ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",7.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",7.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

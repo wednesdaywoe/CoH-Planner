@@ -12,12 +12,17 @@ export const SniperRifle: Power = {
   "name": "Sniper Rifle",
   "internalName": "Sniper_Rifle",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Sniper Rifle is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. Like most sniper attacks, you must take your time to aim, so this attack can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
   "shortHelp": "Sniper, DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_sniperrifle.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 150,
@@ -57,9 +62,10 @@ export const SniperRifle: Power = {
   },
   "atoms": [
     ["Damage","Lethal",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5]
+    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"]
   ],
   "quickSnipe": {
+    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
     "stats": {
       "castTime": 1.17,
       "range": 80
@@ -70,6 +76,10 @@ export const SniperRifle: Power = {
         "scale": 2.28,
         "table": "Ranged_Damage"
       }
+    ],
+    "atoms": [
+      ["Damage","Lethal",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *"],
+      ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"]
     ]
   }
 };

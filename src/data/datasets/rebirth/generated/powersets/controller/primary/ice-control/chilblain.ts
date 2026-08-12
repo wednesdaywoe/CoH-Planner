@@ -12,12 +12,17 @@ export const Chilblain: Power = {
   "name": "Chilblain",
   "internalName": "Chilblain",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Immobilizes your target in an icy trap, dealing some Cold damage over time as well as slightly slowing the target's attack and movement speed. Damage: Moderate(DoT), Recharge: Fast",
   "shortHelp": "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "iceformation_chillblains.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -63,6 +68,7 @@ export const Chilblain: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -76,6 +82,7 @@ export const Chilblain: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
@@ -92,7 +99,7 @@ export const Chilblain: Power = {
   "atoms": [
     ["Damage","Cold",0.2,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Movement","Run",0.3,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.3,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.3,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

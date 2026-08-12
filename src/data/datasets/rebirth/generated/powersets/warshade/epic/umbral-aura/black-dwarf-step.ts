@@ -12,12 +12,17 @@ export const BlackDwarfStep: Power = {
   "name": "Black Dwarf Step",
   "internalName": "Black_Dwarf_Step",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Black Dwarfs can Teleport long distances. Black Dwarf Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
   "shortHelp": "Ranged (Location), Self Teleport",
   "icon": "umbralaura_teleportself.png",
   "powerType": "Click",
   "targetType": "Teleport",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 300,
@@ -42,6 +47,7 @@ export const BlackDwarfStep: Power = {
     },
     "movement": {
       "fly": {
+        "ignoreStrength": true,
         "scale": 1,
         "suppressible": true,
         "table": "Ranged_Ones"
@@ -49,16 +55,19 @@ export const BlackDwarfStep: Power = {
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones",
         "toWho": "Self"
       },
       "movementControl": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones",
         "toWho": "Self"
       },
       "movementFriction": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones",
         "toWho": "Self"

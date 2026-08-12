@@ -21,7 +21,12 @@ import { EaglesClaw as EaglesClaw } from './eagles-claw';
 
 export const powerset: Powerset = {
   id: 'blaster/martial-combat',
+  setPath: 'Blaster_Support.Martial_Manipulation',
   name: 'Martial Combat',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Your mastery of Martial Combat allows you to draw on the physical energy stored within your body to perform remarkable feats. You deliver damage to your enemies via withering kicks and punches, while your preternatural senses keep you moving faster and striking harder than any who oppose you.',
   icon: 'martial_manipulation_set.ico',
   archetype: 'blaster',

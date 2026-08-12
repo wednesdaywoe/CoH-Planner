@@ -12,12 +12,17 @@ export const SynapticOverload: Power = {
   "name": "Synaptic Overload",
   "internalName": "Synaptic_Overload",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "This power can subtly scramble the synapses of any target affected, causing hallucinations and confusion amongst foes.  The electric charge lasts for some time, and will jump slowly to other opponents causing wide spread confusion.  Foes may not be aware that this has happened, and will not be alerted to your presence.  You will also not receive experience for any damage dealt by confused opponents. Recharge: Slow",
   "shortHelp": "Ranged Chain AoE, Foe Confuse, -End",
   "icon": "electriccontrol_synapticoverload.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -67,10 +72,10 @@ export const SynapticOverload: Power = {
   "atoms": [
     ["Mez","Confused",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["EntCreate",null,-1,1,2.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,4.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,62,8,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.25,1,null,true],
+    ["Meta",null,1,62,8,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.25,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Recovery",null,-1,1,8,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Endurance",null,-2,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Confused",4,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

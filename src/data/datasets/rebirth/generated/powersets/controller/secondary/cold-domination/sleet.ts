@@ -12,12 +12,17 @@ export const Sleet: Power = {
   "name": "Sleet",
   "internalName": "Sleet",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons a Sleet Storm at a targeted location. Sleet deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm. Damage: Minor(DoT), Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
   "icon": "colddomination_sleet.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,

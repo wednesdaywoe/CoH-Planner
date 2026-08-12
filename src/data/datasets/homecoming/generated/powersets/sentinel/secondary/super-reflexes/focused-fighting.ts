@@ -12,6 +12,8 @@ export const FocusedFighting: Power = {
   "name": "Focused Fighting",
   "internalName": "Focused_Fighting",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You become more evasive to melee attacks while you have Focused Fighting activated. This will increase your Defense versus melee as long as it is active. Your Focus also offers you resistance to Confuse effects and DeBuffs to Defense. If you own Master Brawler you will also gain resistance to Knockback and Immobilization powers. Focused Fighting also adds an Elusivity defense bonus to Melee Attacks in PVP zones.Recharge: Fast.",
   "shortHelp": "Toggle: Self +DEF(Melee), Res(Confuse, DeBuff DEF)",
   "icon": "superreflexes_focusedfighting.png",
@@ -22,6 +24,9 @@ export const FocusedFighting: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -85,6 +90,10 @@ export const FocusedFighting: Power = {
       "label": "Master Brawler",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Sentinel_Defense.Super_Reflexes.Master_Brawler",
+        "count": 1
+      },
       "effects": {
         "buffDuration": 0.75,
         "durations": {
@@ -102,10 +111,12 @@ export const FocusedFighting: Power = {
         },
         "mezResistance": {
           "knockback": {
+            "ignoreStrength": true,
             "scale": 100,
             "table": "Melee_Ones"
           },
           "knockup": {
+            "ignoreStrength": true,
             "scale": 100,
             "table": "Melee_Ones"
           }

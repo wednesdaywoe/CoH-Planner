@@ -12,12 +12,17 @@ export const Shriek: Power = {
   "name": "Shriek",
   "internalName": "Shriek",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You let forth a quick Shriek, damaging your target and weakening their Damage Resistance. Damage: Minor, Recharge: Fast",
   "shortHelp": "Ranged, Minor DMG(Smash/Energy), Foe -Resist",
   "icon": "sonicblast_quick.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -57,34 +62,42 @@ export const Shriek: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }

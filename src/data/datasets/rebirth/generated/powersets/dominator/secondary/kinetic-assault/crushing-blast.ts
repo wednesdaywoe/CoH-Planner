@@ -12,12 +12,17 @@ export const CrushingBlast: Power = {
   "name": "Crushing Blast",
   "internalName": "Crushing_Blast",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You form the potential energies around you into a concentrated blast of surging energy aimed at a single target. This causes high smashing and energy damage on contact and reduces the target's movement and recharge speed slightly. The force of the impact can cause some lethal damage over time.  Crushing Blast awards 1 stack of Impulse.  Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG (Smashing/Energy), Foe Minor DoT (Lethal), -Speed, -Recharge, Self +Impulse",
   "icon": "kineticassault_crushingblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -68,6 +73,7 @@ export const CrushingBlast: Power = {
       "slow": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.15,
       "table": "Ranged_Slow"
     },
@@ -77,6 +83,7 @@ export const CrushingBlast: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.15,
         "table": "Ranged_Slow"
       },
@@ -93,17 +100,17 @@ export const CrushingBlast: Power = {
   "atoms": [
     ["Damage","Smashing",1.066,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",0.574,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",0.164,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.164,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true],
     ["Movement","JumpHeight",0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Jump",0.15,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Run",0.15,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.15,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <"],
     ["Damage","Smashing",1.0934,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.5964,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",0.1491,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",0.1491,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.8,true],
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

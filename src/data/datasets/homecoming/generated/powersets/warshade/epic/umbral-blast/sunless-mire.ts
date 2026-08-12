@@ -12,12 +12,17 @@ export const SunlessMire: Power = {
   "name": "Sunless Mire",
   "internalName": "Sunless_Mire",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Sunless Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit.Damage: Light.Recharge: Long.",
   "shortHelp": "PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +To Hit",
   "icon": "umbralblast_sunlessmire.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "radius": 15,
@@ -61,6 +66,7 @@ export const SunlessMire: Power = {
       "tohitBuff": 30
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -70,6 +76,7 @@ export const SunlessMire: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },

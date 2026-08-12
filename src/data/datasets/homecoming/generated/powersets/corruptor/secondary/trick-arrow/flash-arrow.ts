@@ -12,12 +12,17 @@ export const FlashArrow: Power = {
   "name": "Flash Arrow",
   "internalName": "Flash_Arrow",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow explodes in a dazzling flash of light and sound. The targets are so blinded that they can hardly see a thing. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to chance to hit.Recharge: Slow.",
   "shortHelp": "Ranged (Targeted AoE), Foe -Visibility, -To Hit",
   "icon": "trickarrow_blind.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

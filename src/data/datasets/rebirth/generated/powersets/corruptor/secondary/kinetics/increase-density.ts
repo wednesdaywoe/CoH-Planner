@@ -12,12 +12,17 @@ export const IncreaseDensity: Power = {
   "name": "Increase Density",
   "internalName": "Increase_Density",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Increases an ally's mass, freeing him from any Disorient, Immobilization, or Hold effects and leaving him resistant to such effects for a while. Increase Density also protects the target from Knockback, Repel and enemy Teleportation, as well as Smashing and Energy damage. Because the target grows more dense, their movement speed is Slowed. Although the Damage Resistance and slowing effect will not stack with multiple applications, the rest of the effects of Increase Density will. You cannot use this power on yourself. Recharge: Fast",
   "shortHelp": "Ranged, Ally Special",
   "icon": "kineticboost_increasedensity.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -76,18 +81,22 @@ export const IncreaseDensity: Power = {
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Ranged_Slow"
       },
       "jumpSpeed": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Ranged_Slow"
       },
       "runSpeed": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Ranged_Slow"
       }

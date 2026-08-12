@@ -12,12 +12,17 @@ export const FearsomeStare: Power = {
   "name": "Fearsome Stare",
   "internalName": "Fearsome_Stare",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Instills tremendous Fear within a cone area in front of you, causing all affected targets to tremble in Terror uncontrollably. Recharge: Slow",
   "shortHelp": "Ranged (Cone), Foe Fear, -To Hit",
   "icon": "darkmiasma_fearsomeaura.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

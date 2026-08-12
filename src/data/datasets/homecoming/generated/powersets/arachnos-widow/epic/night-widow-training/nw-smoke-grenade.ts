@@ -12,12 +12,17 @@ export const NWSmokeGrenade: Power = {
   "name": "Smoke Grenade",
   "internalName": "NW_Smoke_Grenade",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "The Smoke Grenade envelops all those in the affected area in a cloud of smoke. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit.",
   "shortHelp": "Ranged (Target AoE), Foe -Perception, -To Hit",
   "icon": "nightwidowtraining_smokegrenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 110,

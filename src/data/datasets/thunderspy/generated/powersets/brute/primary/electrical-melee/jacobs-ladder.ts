@@ -12,6 +12,8 @@ export const JacobsLadder: Power = {
   "name": "Jacobs Ladder",
   "internalName": "Jacobs_Ladder",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You are able to generate a strong current between your arms and snap a powerful bolt of electricity in an arc in front of you.  This melee attack can electrocute all foes within the arc dealing High energy damage.  Jacobs Ladder can drain some Endurance from your target and may overload their synapses, leaving him writhing for a moment. Disturbing an overloaded target will disperse the electrical charge and release him. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee (Cone), High DMG(Energy), Foe Sleep, -End",
   "icon": "electricmelee_conemoderatedmg.png",
@@ -20,6 +22,9 @@ export const JacobsLadder: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -87,7 +92,7 @@ export const JacobsLadder: Power = {
     ["Damage","Fire",0.675,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Damage","Energy",2.554912,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-1.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true],
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
   "specialEffects": [

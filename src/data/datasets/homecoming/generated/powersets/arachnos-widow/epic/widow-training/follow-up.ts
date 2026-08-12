@@ -12,6 +12,8 @@ export const FollowUp: Power = {
   "name": "Follow Up",
   "internalName": "Follow_Up",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a feint attack that deals moderate damage. After this attack hits, it gives you a large bonus to your chance to hit and damage for a brief time.Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power, additionally if you select this power, you may not also select Build Up.",
   "shortHelp": "Melee, DMG(Lethal), Self +DMG",
   "icon": "widowtraining_followup.png",
@@ -20,6 +22,9 @@ export const FollowUp: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -50,6 +55,7 @@ export const FollowUp: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Melee_Buff_Dmg"
     },

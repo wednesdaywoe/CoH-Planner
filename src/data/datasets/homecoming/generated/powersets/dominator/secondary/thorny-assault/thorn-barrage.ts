@@ -12,12 +12,17 @@ export const ThornBarrage: Power = {
   "name": "Thorn Barrage",
   "internalName": "Thorn_Barrage",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "A devastating attack, Thorn Barrage unleashes your Thorns at high velocity causing severe damage at range. The impact of this attack can knock most foes on their back. Thorn poison deals additional Toxic damage and can reduce your foes Defense.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Ranged, Extreme DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_thornbarrage.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -78,10 +83,10 @@ export const ThornBarrage: Power = {
   "atoms": [
     ["Damage","Lethal",0.81,1,1.75,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",1,1,1.75,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Toxic",0.1529,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Toxic",0.1529,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Lethal",0.6301,1,1.75,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",1,1,1.75,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

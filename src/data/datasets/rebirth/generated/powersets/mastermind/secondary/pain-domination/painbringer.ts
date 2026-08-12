@@ -12,12 +12,17 @@ export const Painbringer: Power = {
   "name": "Painbringer",
   "internalName": "Painbringer",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You transform an ally to pain incarnate turning them into an inexhaustible killing machine. While the character is imbued with this power they will benefit from incredible health regeneration, endurance recovery and improved damage potential for a short time.",
   "shortHelp": "Ally, +Regeneration, +Recovery, +DMG",
   "icon": "paindomination_painbringer.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -40,6 +45,7 @@ export const Painbringer: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Buff_Dmg"
     },
@@ -68,6 +74,6 @@ export const Painbringer: Power = {
     ["DamageBuff","Negative",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.01]
   ]
 };

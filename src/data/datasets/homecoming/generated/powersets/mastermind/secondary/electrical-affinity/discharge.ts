@@ -12,12 +12,17 @@ export const Discharge: Power = {
   "name": "Discharge",
   "internalName": "Discharge",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Unleash a blast of electrical energy around your target, draining them and all nearby enemies of some endurance. This will also reduce their regeneration, recovery, and damage dealt for a short period of time.",
   "shortHelp": "Ranged (Targeted AoE), Foe -DMG, -End, -Recovery, -Regen",
   "icon": "shocktherapy_discharge.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "maxTargetsExpression": "16",
   "stats": {
     "accuracy": 1,
@@ -40,6 +45,7 @@ export const Discharge: Power = {
   "effects": {
     "buffDuration": 25,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Ranged_Debuff_Dam"
     },

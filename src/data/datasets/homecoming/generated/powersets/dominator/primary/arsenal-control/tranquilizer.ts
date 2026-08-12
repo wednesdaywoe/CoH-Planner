@@ -12,12 +12,17 @@ export const Tranquilizer: Power = {
   "name": "Tranquilizer",
   "internalName": "Tranquilizer",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "The Tranquilizing Dart is the perfect tool to sideline a single foe. It deals some toxic damage and can render the target unconscious, allowing you to focus on more important targets. The target remains asleep for some time, but will awaken if attacked.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.",
   "shortHelp": "Ranged, DMG(Toxic), Foe Sleep, -SPD",
   "icon": "arsenalcontrol_tranquilizer.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.15,
     "range": 80,
@@ -63,6 +68,7 @@ export const Tranquilizer: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Ranged_Slow"
       },
@@ -77,19 +83,19 @@ export const Tranquilizer: Power = {
     }
   },
   "atoms": [
-    ["Mez","Sleep",30,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Toxic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Sleep",30,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","Run",0.1,1,5,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.1,1,5,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Jump",0.1,1,5,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.1,1,5,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Mez","Sleep",45,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Mez","Sleep",30,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
-    ["Mez","Sleep",45,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Toxic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Mez","Sleep",45,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Sleep",30,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
+    ["Mez","Sleep",45,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Damage","Toxic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
     ["Mez","Sleep",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Toxic",1.54,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Sleep",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Mez","Sleep",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

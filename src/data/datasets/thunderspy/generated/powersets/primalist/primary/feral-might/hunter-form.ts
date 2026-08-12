@@ -12,6 +12,8 @@ export const HunterForm: Power = {
   "name": "Hunter Form",
   "internalName": "Hunter_Form",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "By activating this toggle, you will shapeshift into the mighty Hunter. This wolf-like creature attacks its foes with tooth and nail. While in this form you will be focused on delivering powerful debuff effects onto foes you strike with your melee attacks as well as area of effect debuffs that affect all nearby foes. You'll also benefit from an increase to movement and jumping speed. Hunter Form costs no endurance and cannot be slotted. However, it grants the user the Hunter's Howl power. This powerful debuff consumes the user's Primal Energy to deliver a powerful debuff to nearby foes. It can be slotted as normal. While shapeshifted you will have limited access to Pool Powers. Recharge: Fast",
   "shortHelp": "Toggle, Hunter Form",
   "icon": "feralmight_hunterform.png",
@@ -28,6 +30,9 @@ export const HunterForm: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -69,11 +74,11 @@ export const HunterForm: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,9,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,101,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wodan eq ! @CustomFX ShadowHound eq ! &&"],
-    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wodan eq @CustomFX ShadowHound eq ! &&"],
-    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX ShadowHound eq @CustomFX Wodan eq ! &&"],
+    ["Meta",null,1,9,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,101,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wodan eq ! @CustomFX ShadowHound eq ! &&",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
+    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wodan eq @CustomFX ShadowHound eq ! &&",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
+    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX ShadowHound eq @CustomFX Wodan eq ! &&",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Movement","JumpHeight",0.25,1,2.25,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
     ["Movement","Jump",0.55,1,2.25,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
     ["Movement","Control",10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],

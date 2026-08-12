@@ -72,6 +72,7 @@ export {
 // IO Set data and accessors
 export {
   getAllIOSets,
+  getMostCommonSetSize,
   getIOSet,
   getIOSetsByRarity,
   getIOSetsForCategory,
@@ -311,6 +312,7 @@ export {
   isProcAlwaysOn,
   resolveProcRollGeometry,
   powerFiresProcs,
+  resolveProcRollSite,
   interpolateProcDamage,
   // PPM calculation functions
   getPPMAreaFactor,

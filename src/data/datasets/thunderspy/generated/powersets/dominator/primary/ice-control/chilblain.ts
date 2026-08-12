@@ -12,12 +12,17 @@ export const Chilblain: Power = {
   "name": "Snow Storm",
   "internalName": "Chilblain",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes, some may be Immobilized. The torrent winds of the Snow Storm are enough to bring down flying foes.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe Immmobilize (Chance), -Recharge, -SPD, -Fly",
   "icon": "stormsummoning_snowstorm.png",
   "powerType": "Toggle",
   "targetType": "Any",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -45,6 +50,7 @@ export const Chilblain: Power = {
   "effects": {
     "buffDuration": 5,
     "durations": {
+      "movementCapDebuff": 5,
       "rechargeDebuff": 5,
       "slow": 5
     },
@@ -53,7 +59,15 @@ export const Chilblain: Power = {
       "scale": 2,
       "table": "Ranged_Immobilize"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
@@ -67,6 +81,7 @@ export const Chilblain: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -75,8 +90,8 @@ export const Chilblain: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.5,
+        "table": "Ranged_Slow"
       }
     }
   },

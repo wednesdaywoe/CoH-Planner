@@ -12,6 +12,8 @@ export const WhiteDwarf: Power = {
   "name": "White Dwarf",
   "internalName": "White_Dwarf",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Kheldians are masters of energy and matter. A Peacebringer can transform into a massive unstoppable energy beast known as a White Dwarf. When you choose this power, you will have access to 6 other powers that can only be used while in this form. You will not be able to use any other powers while in White Dwarf form. White Dwarf has awesome resistance to all damage except Psionics, as well as controlling effects. White Dwarf also has improved HP and Endurance Recovery, but is limited to melee attacks.Recharge: Very Fast.",
   "shortHelp": "Toggle: Shapeshift, Special",
   "icon": "luminousaura_whitedwarf.png",
@@ -28,6 +30,9 @@ export const WhiteDwarf: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -97,15 +102,18 @@ export const WhiteDwarf: Power = {
       "table": "Melee_Ones"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 7.5,
       "table": "Melee_HealSelf"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }
@@ -173,6 +181,7 @@ export const WhiteDwarf: Power = {
       "table": "Melee_Res_Boolean"
     },
     "threatBuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     }
@@ -210,10 +219,10 @@ export const WhiteDwarf: Power = {
     ["Mez","Knockback",-100,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Mez","Knockup",-100,1,2.03,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Mez","Knockback",-100,1,2.03,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,39,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,3,null,true],
-    ["Meta",null,1,25,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,3,null,true],
-    ["Meta",null,1,2,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,3,null,true],
-    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,3,null,true],
+    ["Meta",null,1,39,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,3,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,25,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,3,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,2,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,3,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,3,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Resistance","Smashing",5,1,2,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Resistance","Lethal",5,1,2,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Resistance","Fire",5,1,2,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],

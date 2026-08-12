@@ -12,12 +12,18 @@ export const Burn: Power = {
   "name": "Burn",
   "internalName": "Burn",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Location (PBAoE), Moderate DoT(Fire), Self Res(Immobilize)",
   "icon": "flamingshield_burn.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -57,6 +63,7 @@ export const Burn: Power = {
     },
     "effectDuration": 100,
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -71,7 +78,7 @@ export const Burn: Power = {
     ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Mez","Immobilized",-30,1,100,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
     ["Damage","Fire",1.44,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || Entref source> Entref target> == ! &&"],
-    ["Damage","Fire",0.891,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || Entref source> Entref target> == ! &&"],
+    ["Damage","Fire",0.891,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || Entref source> Entref target> == ! &&",null,null,null,null,null,null,null,0],
     ["MezResist","Immobilized",3,1,100,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

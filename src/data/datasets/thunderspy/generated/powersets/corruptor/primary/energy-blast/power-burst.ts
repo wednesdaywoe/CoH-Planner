@@ -12,12 +12,17 @@ export const PowerBurst: Power = {
   "name": "Power Burst",
   "internalName": "Power_Burst",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "A devastating attack, Power Burst unleashes a massive amount of energy dealing very high damage at short distances.  The impact from this burst often knocks back most foes. Damage: High, Recharge: Slow",
   "shortHelp": "High DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_powerburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

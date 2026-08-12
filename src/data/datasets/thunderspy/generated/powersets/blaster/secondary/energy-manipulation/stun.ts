@@ -12,6 +12,8 @@ export const Stun: Power = {
   "name": "Stun",
   "internalName": "Stun",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. Damage: Minor, Recharge: Slow",
   "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
   "icon": "energymanipulation_stun.png",
@@ -20,6 +22,9 @@ export const Stun: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,7 @@ export const Stun: Power = {
   "effects": {
     "buffDuration": 9.3,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.119,
       "table": "Melee_Ones"
     },

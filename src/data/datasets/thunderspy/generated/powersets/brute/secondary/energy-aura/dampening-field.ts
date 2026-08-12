@@ -12,6 +12,8 @@ export const DampeningField: Power = {
   "name": "Kinetic Dampening",
   "internalName": "Dampening_Field",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your ability to channel energy makes you naturally resistant to Energy, Negative Energy, Lethal, Smashing and Toxic damage.  Additionally, the user gains a moderate level of resistance to slow effects.  This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (Energy, Negative, Toxic, Lethal, Smashing, Slow)",
   "icon": "energyaura_powershield.png",
@@ -22,6 +24,9 @@ export const DampeningField: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -39,18 +44,22 @@ export const DampeningField: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       }

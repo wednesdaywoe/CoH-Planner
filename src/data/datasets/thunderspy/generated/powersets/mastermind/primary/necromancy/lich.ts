@@ -12,12 +12,17 @@ export const Lich: Power = {
   "name": "Lich",
   "internalName": "Lich",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons a dark and powerful Lich.  The lich is an undead entity that, when alive, possessed many dark powers of his own.  Perhaps it was a dark wizard, or powerful arch villain.  Perhaps it was even a Necromancer.  Now it only hungers for the souls of the living, and is quite good at feeding itself. The Lich specializes in dark control and draining powers. The lich being from the realm of darkness is able to extract a part of it own soul and summon a temporary lich ally. You may only have 1 Lich under your control at any given time.  If you attempt to summon another Lich, the power will fail. Recharge: Very Long",
   "shortHelp": "Summon Lich",
   "icon": "necromancy_summonlitch.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

@@ -12,12 +12,17 @@ export const CrushingField: Power = {
   "name": "Crushing Field",
   "internalName": "Crushing_Field",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a large gravitational field strong enough to Immobilize multiple foes. Crushing Field can also bring down flying entities. Slower and less damaging than Crush, but can capture multiple targets. Crushing Field deals Smashing damage over time and can Slow the movement of targets that escape its grasp.",
   "shortHelp": "Ranged (Targeted AoE), DoT(Smash), Foe Immobilize, -Fly",
   "icon": "gravitycontrol_crushingfield.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 80,
@@ -71,6 +76,7 @@ export const CrushingField: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -94,8 +100,8 @@ export const CrushingField: Power = {
     ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Damage","Smashing",0.0991,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Immobilized",1,5,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",22.5,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true],
-    ["Mez","Immobilized",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Immobilized",22.5,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Immobilized",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

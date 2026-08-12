@@ -12,6 +12,8 @@ export const MentalStrike: Power = {
   "name": "Mental Strike",
   "internalName": "Mental_Strike",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You project psionic energy around your fist and strike at your foe dealing light Psionic and Smashing damage. Affected foes will have their recharge rate reduced. Mental Strike has a small chance to grant you Insight. While you have Insight, Mental Strike will deal additional minor psionic damage over time. Damage: Light, Recharge: Very Fast",
   "shortHelp": "Melee, Light DMG(Psionic/Smash), Foe -Rech; Self +Insight",
   "icon": "psionicmelee_mentalstrike.png",
@@ -20,6 +22,9 @@ export const MentalStrike: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -58,6 +63,7 @@ export const MentalStrike: Power = {
       "rechargeDebuff": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Melee_Slow"
     }
@@ -71,7 +77,7 @@ export const MentalStrike: Power = {
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.17777778208255768,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&",true],
     ["Damage","Smashing",0.386736,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1.160209,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Psionic",0.084,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?",true],
+    ["Damage","Psionic",0.084,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?",true,null,null,null,null,null,null,0.8,true],
     ["Damage","Psionic",1.546946,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
     ["Damage","Psionic",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
@@ -83,6 +89,10 @@ export const MentalStrike: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight",
+        "count": 1
+      },
       "damage": {
         "type": "Psionic",
         "scale": 0.084,

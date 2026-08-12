@@ -12,12 +12,17 @@ export const Frostbite: Power = {
   "name": "Frostbite",
   "internalName": "Frostbite",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Immobilizes a group of foes in icy traps. Deals minimal Cold damage over time and slightly Slows the targets. Slower and less damaging than Chilblain, but can capture multiple targets. More resilient foes may only be Slowed. Damage: Minor(DoT), Recharge: Moderate",
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "iceformation_frostbite.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 80,
@@ -65,6 +70,7 @@ export const Frostbite: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -78,6 +84,7 @@ export const Frostbite: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Ranged_Slow"
       },

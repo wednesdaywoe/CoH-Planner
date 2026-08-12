@@ -12,6 +12,8 @@ export const ViciousStrike: Power = {
   "name": "Vicious Strike",
   "internalName": "Vicious_Strike",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You strike a foe dealing Moderate damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a small amount of health. In Hunter form you'll deal lethal damage and reduce the target's damage resistance. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a fair chance to stun. This power builds 1 primal energy. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Special), Special",
   "icon": "feralmight_viciousstrike.png",
@@ -20,6 +22,9 @@ export const ViciousStrike: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -64,7 +69,7 @@ export const ViciousStrike: Power = {
   ],
   "atoms": [
     ["Damage","Smashing",1.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Heal",null,0.15,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Heal",null,0.3,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0]
   ],
@@ -94,34 +99,42 @@ export const ViciousStrike: Power = {
         },
         "resistanceDebuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 1.5,
             "table": "Melee_Res_DMG"
           }
@@ -131,7 +144,27 @@ export const ViciousStrike: Power = {
       "description": "You strike a foe dealing Moderate damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a small amount of health. In Hunter form you'll deal lethal damage and reduce the target's damage resistance. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a fair chance to stun. This power builds 1 primal energy. Damage: Moderate, Recharge: Fast",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Lethal",1.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["Resistance","Smashing",-1,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Lethal",-1,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Fire",-1,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Cold",-1,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Energy",-1,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Negative",-1,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Psionic",-1,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Toxic",-1,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Smashing",-1.5,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Lethal",-1.5,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Fire",-1.5,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Cold",-1.5,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Energy",-1.5,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Negative",-1.5,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Psionic",-1.5,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Toxic",-1.5,1,6,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true]
+      ]
     },
     "ProwlerMode": {
       "internalName": "Vicious_Strike_Prowler",
@@ -176,7 +209,14 @@ export const ViciousStrike: Power = {
       "description": "You strike a foe dealing Moderate damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a small amount of health. In Hunter form you'll deal lethal damage and reduce the target's damage resistance. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a fair chance to stun. This power builds 1 primal energy. Damage: Moderate, Recharge: Fast",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Lethal",1.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Damage","Lethal",0.75,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
+        ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true]
+      ]
     }
   },
   "damageTypes": [

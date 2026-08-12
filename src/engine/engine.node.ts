@@ -30,6 +30,7 @@ const BUNDLE_DIR = join(here, '..', '..', 'public', 'engine', 'contract');
 interface EngineHandle {
   recalculate: (buildJson: string) => string;
   project_power: (buildJson: string, powerSet: string, internalName: string, targetsHit?: number) => string;
+  target_ranks: () => string;
 }
 
 const handles = new Map<ServerId, EngineHandle>();
@@ -93,4 +94,9 @@ export function projectPowerJson(
   targetsHit?: number,
 ): string | null {
   return handleFor(server).project_power(buildJson, powerSet, internalName, targetsHit);
+}
+
+/** The target-rank vocabulary — see the browser twin's `targetRanksJson`. */
+export function targetRanksJson(server: ServerId): string | null {
+  return handleFor(server).target_ranks();
 }

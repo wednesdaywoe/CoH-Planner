@@ -12,12 +12,17 @@ export const Flamethrower: Power = {
   "name": "Flamethrower",
   "internalName": "Flamethrower",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Spews forth a cone of flames from underneath the barrel of your assault rifle, setting foes on fire. Very accurate and very deadly at medium range. Damage: Extreme(DoT) Recharge: Slow",
   "shortHelp": "Ranged (Cone), Extreme DoT(Fire)",
   "icon": "assaultweapons_arflamethrower.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.3,
     "range": 40,

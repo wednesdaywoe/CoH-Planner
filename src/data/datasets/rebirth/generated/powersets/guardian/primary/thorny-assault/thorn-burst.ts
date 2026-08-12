@@ -12,12 +12,17 @@ export const ThornBurst: Power = {
   "name": "Thorn Burst",
   "internalName": "Thorn_Burst",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can explode dozens of Thorns in all directions around you. These Thorns only travel a short distance, but they can deal moderate damage and poison any target close to you. Toxic damage from the thorns can reduce the Defense of affected foes. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_thornburst.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,
@@ -69,9 +74,9 @@ export const ThornBurst: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Lethal",0.95,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929],
+    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Defense","All",3,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Lethal",2.544,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

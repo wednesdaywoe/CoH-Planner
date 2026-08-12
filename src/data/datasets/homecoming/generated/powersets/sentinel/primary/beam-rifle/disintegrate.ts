@@ -12,12 +12,17 @@ export const Disintegrate: Power = {
   "name": "Disintegrate",
   "internalName": "Disintegrate",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a stream of energy at your foe which causes them to slowly disintegrate and suffer High Energy damage over time. Even after the damage over time effect wears off the target will have their regeneration rate reduced and suffer from the Disintegration effect for an additional period of time. Using Beam Rifle powers on targets affected by Disintegrate will inflict additional effects. Additionally if Single Shot, Charged Shot, Lancer Shot and Penetrating Ray are used on a target suffering from Disintegrating, they have a chance to cause this effect to spread to up 3 nearby targets that aren't already suffering from Disintegrating. Targets affected by this Disintegrate Spread will also suffer some Energy damage over time.",
   "shortHelp": "Ranged, DoT(Energy), Foe -Regen, Special",
   "icon": "beamrifle_disintegrate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 60,
@@ -57,6 +62,7 @@ export const Disintegrate: Power = {
   "effects": {
     "buffDuration": 15,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.125,
       "table": "Ranged_Ones"
     },
@@ -65,6 +71,7 @@ export const Disintegrate: Power = {
       "regenDebuff": 15
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Ranged_Ones"
     },
@@ -75,8 +82,8 @@ export const Disintegrate: Power = {
   },
   "atoms": [
     ["Regeneration",null,-1.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Energy",0.216,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.1100000143051147,1],
-    ["Damage","Energy",0.216,1,10.5,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.1100000143051147,1],
+    ["Damage","Energy",0.216,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.216,1,10.5,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
     ["DamageBuff","Smashing",0.125,1,9.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.125,1,9.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.125,1,9.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -85,10 +92,10 @@ export const Disintegrate: Power = {
     ["DamageBuff","Negative",0.125,1,9.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.125,1,9.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.125,1,9.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,1,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,-6,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Energy",0.213,1,10.5,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.213,1,10.5,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,null,true]
+    ["Damage","Energy",0.213,1,10.5,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.213,1,10.5,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
   ]
 };

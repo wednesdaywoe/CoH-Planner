@@ -21,7 +21,12 @@ import { DreadfulWail as DreadfulWail } from './dreadful-wail';
 
 export const powerset: Powerset = {
   id: 'sentinel/sonic-attack',
+  setPath: 'Sentinel_Ranged.Sonic_Attack',
   name: 'Sonic Attack',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Sonic Attack lets you use the power of sound waves to damage and weaken your foes.',
   icon: 'sonic_attack_set.ico',
   archetype: 'sentinel',

@@ -12,12 +12,17 @@ export const AimedShot: Power = {
   "name": "Aimed Shot",
   "internalName": "Aimed_Shot",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Lethal)",
   "icon": "ninjas_standardshot.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 80,

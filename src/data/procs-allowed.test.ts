@@ -21,7 +21,7 @@ import type { IOSetEnhancement } from '@/types';
  * converter carried it, so nothing downstream could see it. That is a silent
  * failure by construction: the PPM formula happily computes a chance from any
  * recharge, and the flagged powers are disproportionately LONG-recharge ones
- * (Paralyzing Blast 240s, Spring Attack 120s, the pet summons 60–240s), where
+ * (Paralyzing Blast 240s, the pet summons 60–240s), where
  * every proc in the pool pins to the 90% ceiling. The proc-potential badge was
  * therefore loudest exactly where the game fires nothing.
  *
@@ -97,18 +97,22 @@ describe('ProcAllowed kNone', () => {
       expect(procPotentialTier(p)).toBe(0);
     });
 
-    it('MUTANT: an unflagged Fault scores a top-tier badge', () => {
-      // The gate is worthless unless it can go red. Fault is a 20s PBAoE
-      // knockdown/stun taking Stuns ∪ Melee AoE Damage ∪ Universal Damage:
-      // unflagged it caps 18 of 21 against a 6-slot ceiling and reads as an
-      // exceptional proc bomb, which is exactly the badge users were shown.
+    it('MUTANT: a Fault scored on its own window is a top-tier badge', () => {
+      // The gate is worthless unless it can go red. Fault has no window of its
+      // own — it delegates to two children — but scored as if it did (20s
+      // recharge, radius 0, no AoE penalty) it caps against a 6-slot ceiling
+      // and reads as an exceptional proc bomb. That is the badge users were
+      // shown before the flag landed, and it is what routing to the children
+      // must not reproduce.
       //
       // Paralyzing Blast is deliberately NOT the subject here even though it is
       // the loudest example. It is also a 60s pulsing pseudo-pet, so the patch
       // roll schedule zeroes its cap count independently — belt and braces on
       // the power, but a mutation target where the mutation proves nothing.
-      const unflagged = { ...HC(Fault), procsAllowed: undefined } as Power;
-      const p = getProcPotential(unflagged)!;
+      const ownWindow = {
+        ...HC(Fault), procsAllowed: undefined, procRollSites: undefined,
+      } as Power;
+      const p = getProcPotential(ownWindow)!;
       expect(p.procsDisallowed).toBe(false);
       expect(p.rolls).toBe(1);
       expect(p.atCap).toBeGreaterThanOrEqual(p.maxSlots);
@@ -146,10 +150,12 @@ describe('ProcAllowed kNone', () => {
       }
       // The `badged: 0` half passes trivially if the sweep matched nothing, so
       // the flagged count is asserted too. 91 generated HC powers carry the
-      // flag today; the floor is loose enough to survive an HC patch and tight
-      // enough to catch a converter that quietly stopped writing it.
+      // flag today, of which the ten with `procRollSites` DO fire and are
+      // excluded by powerFiresProcs; the floor is loose enough to survive an HC
+      // patch and tight enough to catch a converter that quietly stopped
+      // writing it.
       expect(badged).toBe(0);
-      expect(flagged).toBeGreaterThanOrEqual(80);
+      expect(flagged).toBeGreaterThanOrEqual(70);
     });
   });
 

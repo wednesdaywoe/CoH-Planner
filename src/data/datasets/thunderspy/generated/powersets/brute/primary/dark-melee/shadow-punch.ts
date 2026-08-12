@@ -12,6 +12,8 @@ export const ShadowPunch: Power = {
   "name": "Shadow Punch",
   "internalName": "Shadow_Punch",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You wrap your fists with Negative Energy channeled from the Netherworlds, then perform a quick punch that deals minor damage. Shadow Punches cloud the target's vision, lowering their chance to hit for a short time. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG (Smash/Negative), Foe -To Hit",
   "icon": "shadowfighting_shadowpunch.png",
@@ -20,6 +22,9 @@ export const ShadowPunch: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -80,7 +85,7 @@ export const ShadowPunch: Power = {
     ["Damage","Smashing",0.44,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",1.04,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true]
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "damageTypes": [
     "Negative",

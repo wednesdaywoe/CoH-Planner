@@ -12,12 +12,17 @@ export const CategoryFive: Power = {
   "name": "Category Five",
   "internalName": "Category_Five",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons a severe storm that begins light, but grows in power until it becomes a raging engine of destruction. Left on its own, the Category Five storm is capable of delivering moderate damage. As it grows in power, foes may begin to fling through the air.",
   "shortHelp": "Ranged (Location AoE), DoT(Energy), +Wet",
   "icon": "stormblast_categoryfive.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 40,
@@ -82,7 +87,29 @@ export const CategoryFive: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "flySpeed",
                   "scale": 0.84,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "runSpeed",
+                  "scale": 0.7,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
+                  "scale": 0.7,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 0.7,
                   "table": "Melee_Slow",
                   "ignoreStrength": true
                 },
@@ -91,12 +118,22 @@ export const CategoryFive: Power = {
                   "scale": 0.42,
                   "table": "Melee_Slow",
                   "ignoreStrength": true
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Melee_SpeedRunning",
+                  "ignoreStrength": true
                 }
               ],
               "recharge": 0,
               "castTime": 0,
               "activatePeriod": 0.33,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 35,
               "maxTargets": 10
             }
@@ -120,6 +157,12 @@ export const CategoryFive: Power = {
                   "table": "Ranged_Knockback"
                 },
                 {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 1,
+                  "table": "Ranged_Ones"
+                },
+                {
                   "type": "Fear",
                   "magnitude": 50,
                   "scale": 1,
@@ -131,6 +174,9 @@ export const CategoryFive: Power = {
               "castTime": 0,
               "activatePeriod": 0.33,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 10
             },
@@ -172,6 +218,9 @@ export const CategoryFive: Power = {
               "castTime": 0,
               "activatePeriod": 0.67,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 35,
               "maxTargets": 3
             }

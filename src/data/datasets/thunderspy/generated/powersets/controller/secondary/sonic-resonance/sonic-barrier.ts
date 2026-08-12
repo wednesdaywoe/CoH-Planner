@@ -12,12 +12,18 @@ export const SonicBarrier: Power = {
   "name": "Sonic Barrier",
   "internalName": "Sonic_Barrier",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This shield dramatically reduces the damage an ally takes from all attacks other than psionic for a limited time. You cannot stack multiple Sonic Barriers on the same target; however, the shield can be improved by another ally using the same power. The caster recives half the resistance benefits that allies do.  Recharge: Very Fast",
   "shortHelp": "Ranged, Ally Res(All except Psionic)",
   "icon": "sonicdebuff_protectphysical.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 80,

@@ -12,12 +12,17 @@ export const ThunderClap: Power = {
   "name": "Thunder Clap",
   "internalName": "Thunder_Clap",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can call forth a tremendous Thunder Clap that will Disorient most foes in a large area around you.Recharge: Slow.",
   "shortHelp": "PBAoE, Foe Disorient",
   "icon": "stormsummoning_thunderclap.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "radius": 25,

@@ -21,7 +21,12 @@ import { LightningClap as LightningClap } from './lightning-clap';
 
 export const powerset: Powerset = {
   id: 'dominator/electricity-assault',
+  setPath: 'Dominator_Assault.Electricity_Manipulation',
   name: 'Electricity Assault',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Electrical Assault grants you several electrical ranged and melee powers. Electrical powers can drain foes\' Endurance and can often temporarily halt their Endurance recovery. This can be quite effective against higher level foes and Bosses. Some Electrical Assault powers can even sometimes transfer this Endurance back to you.',
   icon: 'electricity_manipulation_set.ico',
   archetype: 'dominator',

@@ -12,12 +12,17 @@ export const CallSwarm: Power = {
   "name": "Call Swarm",
   "internalName": "Call_Swarm",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You summon a swarm of stinging insects to harass your foe causing Light Lethal damage over time and reducing both their movement speed and defense.  This power has a moderate chance at granting your pets a stack of Pack Mentality.  Damage: Light DoT, Recharge: Very Fast",
   "shortHelp": "Ranged, Light DoT(Lethal), Foe -Defense, -Speed",
   "icon": "beastmastery_callswarm.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -65,6 +70,7 @@ export const CallSwarm: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

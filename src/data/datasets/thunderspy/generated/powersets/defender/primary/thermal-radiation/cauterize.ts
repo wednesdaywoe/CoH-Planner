@@ -12,12 +12,17 @@ export const Cauterize: Power = {
   "name": "Cauterize",
   "internalName": "Cauterize",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Heals a single targeted ally by cauterizing their wounds. You cannot use this power to heal yourself. Recharge: Fast",
   "shortHelp": "Ally Heal",
   "icon": "thermalradiation_cauterize.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

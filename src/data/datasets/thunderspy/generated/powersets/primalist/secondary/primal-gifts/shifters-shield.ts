@@ -12,12 +12,18 @@ export const ShiftersShield: Power = {
   "name": "Shifter's Shield",
   "internalName": "Shifters_Shield",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Shifter's Shield may only be active while in Primal Form. When activated the caster and nearby allies will receive an absorption shield that will protect affected allies from a large amount of damage. Shifter's Shield requires 10 Primal Energy. Recharge: Very Long",
   "shortHelp": "PBAoE, +Absorb",
   "icon": "primalgifts_shiftersshield.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -48,7 +54,7 @@ export const ShiftersShield: Power = {
   "atoms": [
     ["Absorb",null,0.25,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Absorb",null,1,1,60,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> 0.25 * @Strength *"],
-    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "modesDisallowed": [
     "ProwlerMode",

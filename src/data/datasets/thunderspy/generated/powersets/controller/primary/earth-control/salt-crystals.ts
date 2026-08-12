@@ -12,12 +12,17 @@ export const SaltCrystals: Power = {
   "name": "Salt Crystals",
   "internalName": "Salt_Crystals",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free. Recharge: Slow",
   "shortHelp": "PBAoE, Foe Sleep, -DEF",
   "icon": "earthgrasp_saltpillars.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,

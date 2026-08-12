@@ -12,12 +12,17 @@ export const PsychicScream: Power = {
   "name": "Psychic Scream",
   "internalName": "Psychic_Scream",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.Damage: Light.Recharge: Slow.",
   "shortHelp": "Ranged (Cone), Light DMG(Psionic), Foe -Recharge",
   "icon": "psychicblast_psychicscream.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -59,15 +64,16 @@ export const PsychicScream: Power = {
       "rechargeDebuff": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     }
   },
   "atoms": [
-    ["Damage","Psionic",1.04,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Psionic",1.04,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Psionic",1.04,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",1.04,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
     ["RechargeTime",null,0.5,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Damage","Psionic",0.6877,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Psionic",0.6877,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Damage","Psionic",0.6877,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Psionic",0.6877,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
   ]
 };

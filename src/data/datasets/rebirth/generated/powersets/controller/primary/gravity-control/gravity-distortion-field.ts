@@ -12,12 +12,17 @@ export const GravityDistortionField: Power = {
   "name": "Gravity Distortion Field",
   "internalName": "Gravity_Distortion_Field",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a large, intensely misshapen Gravity Distortion Field that encompasses several foes, rendering them unable to take any action. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "gravitycontrol_gravitydistortionfield.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,
@@ -59,6 +64,7 @@ export const GravityDistortionField: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -74,7 +80,7 @@ export const GravityDistortionField: Power = {
   },
   "atoms": [
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Movement","Run",0.5,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.5,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.5,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

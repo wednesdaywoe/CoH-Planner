@@ -12,12 +12,17 @@ export const FullAuto: Power = {
   "name": "Full Auto",
   "internalName": "Full_Auto",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Opens up your assault rifle on Full Auto to lay down a massive spray of bullets at your target. Although very slow to reload, damage from this attack is massive, shredding all targets within the narrow cone of effect. There's a chance you may land a lucky shot for extra damage. Damage: Superior(DoT), Recharge: Slow",
   "shortHelp": "Ranged (Cone), Superior DMG(Lethal), +Special",
   "icon": "assaultweapons_arfullauto.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.35,
     "range": 80,
@@ -57,7 +62,7 @@ export const FullAuto: Power = {
   ],
   "atoms": [
     ["Damage","Lethal",0.162,1,3.3,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,0.10000000149011612],
+    ["Damage","Lethal",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.1],
     ["Damage","Lethal",0.170225,1,3.3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

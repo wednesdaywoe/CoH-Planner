@@ -12,12 +12,17 @@ export const Zapp: Power = {
   "name": "Zapp",
   "internalName": "Zapp",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "A focused electrical blast that can travel great distances with high Accuracy. Zapp drains Endurance, and is best fired from a distance, as it can be interrupted. Some of the Endurance you drain may transfer back to you. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Energy), Foe -End",
   "icon": "electricalbolt_zapp.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 150,
@@ -73,14 +78,14 @@ export const Zapp: Power = {
   "atoms": [
     ["Damage","Energy",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
-    ["Endurance",null,7.2,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1"],
+    ["Recovery",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
+    ["Endurance",null,7.2,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Energy",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
     ["Damage","Energy",4.679721,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",4.679721,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
     ["Endurance",null,-3,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kToHit source> .97 >=",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kToHit source> .97 >=",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"]
   ],
   "specialEffects": [
     {
@@ -93,5 +98,25 @@ export const Zapp: Power = {
       "chance": 0.30000001192092896,
       "label": "Endurance"
     }
-  ]
+  ],
+  "quickSnipe": {
+    "condition": "cur.kToHit source> .97 >=",
+    "stats": {
+      "castTime": 1.33,
+      "range": 150
+    },
+    "damage": [
+      {
+        "type": "Energy",
+        "scale": 2.76,
+        "table": "Ranged_Damage"
+      }
+    ],
+    "atoms": [
+      ["Damage","Energy",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["Endurance",null,-0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["Recovery",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
+      ["Endurance",null,7.2,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3]
+    ]
+  }
 };

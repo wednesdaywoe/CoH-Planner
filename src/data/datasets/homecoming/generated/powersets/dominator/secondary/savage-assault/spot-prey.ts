@@ -12,12 +12,17 @@ export const SpotPrey: Power = {
   "name": "Spot Prey",
   "internalName": "Spot_Prey",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly boosts your attacks for a few seconds. Slightly increases perception and chance to hit.Recharge: Long.",
   "shortHelp": "Self +DMG, +To Hit, +Perception",
   "icon": "savagemelee_aim.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const SpotPrey: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },

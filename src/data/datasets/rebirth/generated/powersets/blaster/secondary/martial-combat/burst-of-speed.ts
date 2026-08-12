@@ -12,12 +12,17 @@ export const BurstofSpeed: Power = {
   "name": "Burst of Speed",
   "internalName": "Burst_of_Speed",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Channeling physical Ki inwards, you move more quickly than can be seen for an instant, allowing you to move instantly to a targeted location and strike at targets within melee range.  You can use this Burst of Speed up to 3 times before it needs to recharge.",
   "shortHelp": "Location AoE Moderate DMG (Smash), Self Teleport",
   "icon": "martialmanipulation_burstofspeed.png",
   "powerType": "Click",
   "targetType": "Teleport",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 200,
@@ -43,6 +48,7 @@ export const BurstofSpeed: Power = {
   "effects": {
     "buffDuration": 7.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.026,
       "table": "Ranged_Ones"
     },

@@ -12,12 +12,17 @@ export const DarkMatterDetonation: Power = {
   "name": "Dark Detonation",
   "internalName": "Dark_Matter_Detonation",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You hurl a blast of Dark Matter that violently explodes on impact, damaging all foes near the target. All affected targets' have their attack rate and movement speed slowed.  Some foes may be knocked down. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_darkmatterdetonation.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -60,6 +65,7 @@ export const DarkMatterDetonation: Power = {
       "table": "Ranged_Knockback"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -69,6 +75,7 @@ export const DarkMatterDetonation: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

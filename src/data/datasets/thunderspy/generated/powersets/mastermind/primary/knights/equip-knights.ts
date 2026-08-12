@@ -12,12 +12,17 @@ export const EquipKnights: Power = {
   "name": "Equip Knights",
   "internalName": "Equip_Knights",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Equip your knight Henchmen with better arms and armor This power permanently bestows new weapons and abilities to all of your Henchman. The powers gained are unique and dependent upon the type of Henchman.  This power only works on your Henchmen and you can only Equip your Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Equip Knight Henchman",
   "icon": "knights_equip_knights.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,
@@ -45,13 +50,13 @@ export const EquipKnights: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Minion target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq group target> MastermindPets eq &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq group target> MastermindPets eq &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq group target> MastermindPets eq &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Lt target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Lt target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Lt target.VillainName>",true],
@@ -68,7 +73,7 @@ export const EquipKnights: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Boss target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Boss target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Boss_01_01 eq",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Boss_01_01 eq kMastermind_Upgrade_2 target.mode? &&",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Boss_01_01 eq kMastermind_Upgrade_2 target.mode? &&",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ],
   "mechanicType": "parentMechanic"
 };

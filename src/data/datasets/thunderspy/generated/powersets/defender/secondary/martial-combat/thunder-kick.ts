@@ -12,6 +12,8 @@ export const ThunderKick: Power = {
   "name": "Thunder Kick",
   "internalName": "Thunder_Kick",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a strong Thunder Kick that hits so hard it can Disorient your target. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Smash), Minor Disorient",
   "icon": "martialassault_thunderkick.png",
@@ -20,6 +22,9 @@ export const ThunderKick: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

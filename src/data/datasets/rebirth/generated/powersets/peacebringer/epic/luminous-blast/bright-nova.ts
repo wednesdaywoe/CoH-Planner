@@ -12,6 +12,8 @@ export const BrightNova: Power = {
   "name": "Bright Nova",
   "internalName": "Bright_Nova",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Kheldians are masters of energy and matter.  A Peacebringer can transform into a flying energy beast known as a Bright Nova.  When you choose this power, you will gain access to very powerful ranged attacks while in this form.  Additionally, 2 ranged attacks will be granted to your human and Nova form arsenals, Proton Scatter immediatley and Luminous Detonation at level 12. You will only be able use your Kheldian ranged powers and specific Kheldian sustain powers while in Bright Nova form. Bright Nova can fly, has increased Accuracy, and improved Endurance Recovery, but has no defense.  Recharge: Fast",
   "shortHelp": "Toggle: Shapeshift, Special",
   "icon": "luminousblast_brightnova.png",
@@ -22,6 +24,9 @@ export const BrightNova: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -45,6 +50,7 @@ export const BrightNova: Power = {
   "effects": {
     "buffDuration": 2,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -79,10 +85,12 @@ export const BrightNova: Power = {
     },
     "resistance": {
       "energy": {
+        "ignoreStrength": true,
         "scale": 0.15,
         "table": "Melee_Ones"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0.15,
         "table": "Melee_Ones"
       }
@@ -103,10 +111,10 @@ export const BrightNova: Power = {
     ["DamageBuff","Energy",5,1,2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Energy",0.15,1,2,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Negative",0.15,1,2,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,15,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-    ["Meta",null,1,4,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true],
+    ["Meta",null,1,15,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,4,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["GlobalChanceMod",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
     ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true]
   ],

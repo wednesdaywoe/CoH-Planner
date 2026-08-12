@@ -12,6 +12,8 @@ export const ThunderKick: Power = {
   "name": "Thunder Kick",
   "internalName": "Thunder_Kick",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a strong Thunder Kick that hits so hard it can Disorient your target. This power can bruise an enemy, making them more vulnerable to damage. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG(Smash), Minor Disorient, -Res(All)",
   "icon": "martialarts_thunderkick.png",
@@ -22,6 +24,9 @@ export const ThunderKick: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,

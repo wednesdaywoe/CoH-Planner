@@ -12,6 +12,8 @@ export const HavokPunch: Power = {
   "name": "Havoc Punch",
   "internalName": "Havok_Punch",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with greater damage and a chance to knock the target off their feet. Havoc Punch can drain some Endurance from your target and may overload its synapses, leaving them writhing for a moment. A portion of the drained Endurance may be given back to you. Disturbing an overloaded target will disperse the electrical charge and release him.Damage: High.Recharge: Moderate.",
   "shortHelp": "Melee, High DMG(Smash/Energy), Foe Sleep, -End, Knock Back",
   "icon": "electricalassault_havocpunch.png",
@@ -20,6 +22,9 @@ export const HavokPunch: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -87,13 +92,13 @@ export const HavokPunch: Power = {
     ["Mez","Sleep",15,3,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.75,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Damage","Smashing",1.406,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.444,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-4,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Sleep",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Sleep",22.5,3,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",true],
-    ["Mez","Sleep",1,1,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Sleep",22.5,3,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Sleep",1,1,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"],
     ["Mez","Knockback",0.75,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [

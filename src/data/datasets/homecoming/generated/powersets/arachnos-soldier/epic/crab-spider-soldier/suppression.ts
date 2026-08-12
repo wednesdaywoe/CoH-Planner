@@ -12,12 +12,17 @@ export const Suppression: Power = {
   "name": "Suppression",
   "internalName": "Suppression",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Longfang Channelgun may also fire long bursts of energy, causing moderate damage in an large cone in front of you.",
   "shortHelp": "Ranged Cone, DoT (Energy), Foe -DEF",
   "icon": "crabspider_suppression.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -65,6 +70,6 @@ export const Suppression: Power = {
     ["Damage","Energy",0.1854,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",0.1744,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Energy",0.3489,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,null,true]
+    ["Damage","Energy",0.3489,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"]
   ]
 };

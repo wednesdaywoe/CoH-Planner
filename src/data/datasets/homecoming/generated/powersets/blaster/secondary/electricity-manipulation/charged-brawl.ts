@@ -12,6 +12,8 @@ export const ChargedBrawl: Power = {
   "name": "Charged Brawl",
   "internalName": "Charged_Brawl",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your fists become electrically charged and deliver a powerful punch. Charged Brawl can drain some Endurance from the target and may overload their synapses, leaving them writhing for a moment. A portion of drained Endurance may be returned to you. Disturbing an overloaded target will disperse the electrical charge and release them.",
   "shortHelp": "Melee, DMG(Smash/Energy), Target Sleep, -End",
   "icon": "electricitymanipulation_chargedbrawl.png",
@@ -20,6 +22,9 @@ export const ChargedBrawl: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -59,6 +64,7 @@ export const ChargedBrawl: Power = {
   "effects": {
     "buffDuration": 8.33,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.055,
       "table": "Melee_Ones"
     },
@@ -96,18 +102,18 @@ export const ChargedBrawl: Power = {
     ["Mez","Sleep",10,3,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
     ["Endurance",null,5.095,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
-    ["DamageBuff","Smashing",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Lethal",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Fire",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Cold",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Energy",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Negative",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Psionic",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Toxic",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Lethal",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Fire",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Cold",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Energy",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Negative",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Psionic",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Toxic",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
     ["Damage","Energy",1.381,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-2.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Sleep",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Blaster_Ranged.Electrical_Blast.Tesla_Cage source.ownPower?",true]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Blaster_Ranged.Electrical_Blast.Tesla_Cage source.ownPower?",true,null,null,null,null,null,null,null,null,"BuildStatic"]
   ],
   "specialEffects": [
     {

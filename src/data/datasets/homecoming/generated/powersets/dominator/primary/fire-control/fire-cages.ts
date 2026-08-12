@@ -12,12 +12,17 @@ export const FireCages: Power = {
   "name": "Fire Cages",
   "internalName": "Fire_Cages",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Immobilizes a group of foes in Fire Cages, dealing Fire damage over time. More resilient foes may require multiple Fire Cages to Immobilize. Fire Cages is slower and less damaging than Ring of Fire, but can capture multiple targets.",
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Fire), Foe Immobilize",
   "icon": "firetrap_firecage.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 80,
@@ -74,8 +79,8 @@ export const FireCages: Power = {
     ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Damage","Fire",0.0865,1,5.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Immobilized",1,5,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",22.5,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true],
-    ["Mez","Immobilized",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Immobilized",22.5,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Immobilized",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

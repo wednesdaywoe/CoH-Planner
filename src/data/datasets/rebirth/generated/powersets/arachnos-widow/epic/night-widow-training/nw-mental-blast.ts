@@ -12,12 +12,17 @@ export const NWMentalBlast: Power = {
   "name": "Mental Blast",
   "internalName": "NW_Mental_Blast",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Target -Recharge",
   "icon": "nightwidowtraining_mentalblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -49,6 +54,7 @@ export const NWMentalBlast: Power = {
       "rechargeDebuff": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Slow"
     }

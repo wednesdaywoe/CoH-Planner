@@ -12,12 +12,17 @@ export const GlintingEye: Power = {
   "name": "Glinting Eye",
   "internalName": "Glinting_Eye",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Energy/Toxic), Foe -DEF",
   "icon": "luminousblast_glintingeye.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -12,6 +12,8 @@ export const SoothingAura: Power = {
   "name": "Suppress Pain",
   "internalName": "Soothing_Aura",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active all nearby allies will have their regeneration rate increased dramatically.  Recharge: Fast.",
   "shortHelp": "Toggle: PBAoE, Ally +Regeneration",
   "icon": "paindomination_soothingaura.png",
@@ -22,6 +24,10 @@ export const SoothingAura: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Friend",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

@@ -12,12 +12,18 @@ export const Rejuvenate: Power = {
   "name": "Rejuvenate",
   "internalName": "Rejuvenate",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "This power will heal the caster, however its special effects vary depending on form. While in Primal Form the caster will heal nearby allies for a small amount and cause them to recover additional health over time. While in Hunter or Prowler form the user will only heal themselves, but for a larger amount. They'll also receive a boost to recovery for a short time. Rejuvenate builds 3 Primal Energy. Recharge: Long",
   "shortHelp": "Self, Special Heal",
   "icon": "primalgifts_rejuvenate.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,
@@ -54,7 +60,7 @@ export const Rejuvenate: Power = {
   "atoms": [
     ["Heal",null,2,1,0,"Melee_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
     ["Heal",null,0.15,1,9.1,"Melee_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["Meta",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? kHunterMode Source.Mode? ||",true],
     ["Recovery",null,0.5,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? kHunterMode Source.Mode? ||",true]
   ],

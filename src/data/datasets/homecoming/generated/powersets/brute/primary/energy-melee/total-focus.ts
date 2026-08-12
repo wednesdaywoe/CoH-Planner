@@ -12,6 +12,8 @@ export const TotalFocus: Power = {
   "name": "Total Focus",
   "internalName": "Total_Focus",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Total Focus is complete mastery over Energy Melee. This melee attack is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. This power will enter Energy Focus mode.",
   "shortHelp": "Melee, DMG(Smash/Energy), Foe Disorient, +Energy Focus",
   "icon": "powerpunch_totalfocus.png",
@@ -20,6 +22,9 @@ export const TotalFocus: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,

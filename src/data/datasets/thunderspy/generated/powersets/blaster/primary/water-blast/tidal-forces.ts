@@ -12,12 +12,17 @@ export const TidalForces: Power = {
   "name": "Tidal Forces",
   "internalName": "Tidal_Forces",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You draw tidal energies into yourself thus boosting your chance to hit significantly, slightly boosting your damage and granting yourself +3 Tidal Power. Recharge: Very Long",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "waterblast_tidalforces.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const TidalForces: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Melee_Buff_Dmg"
     },

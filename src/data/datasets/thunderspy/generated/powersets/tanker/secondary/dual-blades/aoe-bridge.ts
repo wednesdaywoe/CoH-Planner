@@ -12,6 +12,8 @@ export const AoEBridge: Power = {
   "name": "Typhoon's Edge",
   "internalName": "AoE_Bridge",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You spin around in a circle, attacking everyone within melee range with a striking attack. This attack is the finishing move in both the Weaken and Sweep combination attacks. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal)",
   "icon": "dualblades_aoebridge.png",
@@ -20,6 +22,9 @@ export const AoEBridge: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -59,8 +64,8 @@ export const AoEBridge: Power = {
   "atoms": [
     ["Damage","Lethal",0.57,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Damage","Fire",0.2565,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Damage","Fire",0.2565,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.14399999380111694,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.894475,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -77,6 +82,10 @@ export const AoEBridge: Power = {
       "label": "ComboBlade3",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.ComboBlade3",
+        "count": 1
+      },
       "damage": {
         "type": "Lethal",
         "scale": 0.57,

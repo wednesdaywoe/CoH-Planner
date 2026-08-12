@@ -12,12 +12,17 @@ export const PulseRifleBurst: Power = {
   "name": "Pulse Rifle Burst",
   "internalName": "Pulse_Rifle_Burst",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "This high powered laser pulse from your Pulse Rifle takes more energy to fire, but causes much more damage than a standard pulse and has a very good chance to send your foes flying.Laser Burn:Targets struck by this attack will have their Regeneration debuffed for 30 seconds.",
   "shortHelp": "Ranged, DMG(Energy), Foe Knockback, -Regen",
   "icon": "robotics_laserrifleblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -55,6 +60,7 @@ export const PulseRifleBurst: Power = {
       "table": "Ranged_Knockback"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Ones"
     }
@@ -62,11 +68,11 @@ export const PulseRifleBurst: Power = {
   "atoms": [
     ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-2,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",1.5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645],
-    ["Meta",null,1,180,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockback",1.5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,180,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"RefreshReminder",null,"set_mode"],
     ["Damage","Energy",1.49,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",1.5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,null,true],
-    ["Regeneration",null,-4,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"@ToHitRoll @ToHit / 0.3 <=",true]
+    ["Mez","Knockback",1.5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Regeneration",null,-4,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit / 0.3 <= &&",true]
   ],
   "specialEffects": [
     {

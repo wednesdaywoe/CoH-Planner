@@ -12,12 +12,17 @@ export const ShadowBlast: Power = {
   "name": "Shadow Blast",
   "internalName": "Shadow_Blast",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "A much more powerful, yet slower version of Shadow Bolt. Shadow Blast sends focused negative Nictus energy at a foe.  This attack can knock down foes and will leave the target's attack rate and movement speed slowed. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_shadowblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -58,6 +63,7 @@ export const ShadowBlast: Power = {
       "table": "Ranged_Knockback"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -67,6 +73,7 @@ export const ShadowBlast: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

@@ -12,12 +12,17 @@ export const DarkBlast: Power = {
   "name": "Dark Blast",
   "internalName": "Dark_Blast",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's chance to hit.  Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe -To Hit",
   "icon": "darknessassault_darkblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -58,7 +63,7 @@ export const DarkBlast: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,6,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Negative",1.764,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

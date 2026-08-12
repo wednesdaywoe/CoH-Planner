@@ -12,12 +12,17 @@ export const SaltCrystals: Power = {
   "name": "Salt Crystals",
   "internalName": "Salt_Crystals",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required against AVs and players, as well as to make secondary effects apply.Recharge: Slow.",
   "shortHelp": "PBAoE, Foe Sleep, -DEF",
   "icon": "earthmanip_saltcrystals.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,
@@ -55,9 +60,9 @@ export const SaltCrystals: Power = {
     }
   },
   "atoms": [
-    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true],
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? &&",true],
     ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

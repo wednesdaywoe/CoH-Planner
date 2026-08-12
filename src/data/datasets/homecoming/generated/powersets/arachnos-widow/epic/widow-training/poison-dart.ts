@@ -12,12 +12,17 @@ export const PoisonDart: Power = {
   "name": "Poison Dart",
   "internalName": "Poison_Dart",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Poison Dart does moderate damage to your foe, then poisons them. The poison does toxic damage over time and reduces their regeneration rate.",
   "shortHelp": "Ranged, DMG(Lethal), DoT(Toxic), -Regeneration",
   "icon": "widowtraining_poisondart.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,

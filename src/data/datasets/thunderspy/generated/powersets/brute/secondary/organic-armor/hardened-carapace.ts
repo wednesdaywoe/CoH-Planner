@@ -12,6 +12,8 @@ export const HardenedCarapace: Power = {
   "name": "Hardened Carapace",
   "internalName": "Hardened_Carapace",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Hardened Carapace increases your resistance to Lethal and Smashing damage. It also grants you bonus Regeneration and some protection from Disorient and Sleep effects. While Efficient Adaptation is active, this power grants a small Endurance discount. While Defensive Adaptation is active, this power grants additional damage resistance. While Offensive Adaptation is active, this power grants slightly less damage resistance.",
   "shortHelp": "Self Toggle, +Res(Lethal, Smash, Toxic, Disorient, Sleep), +Special",
   "icon": "bioorganicarmor_hardenedskin.png",
@@ -22,6 +24,9 @@ export const HardenedCarapace: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -62,11 +67,13 @@ export const HardenedCarapace: Power = {
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -109,14 +116,17 @@ export const HardenedCarapace: Power = {
         },
         "resistance": {
           "lethal": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Res_DMG"
           }
@@ -132,6 +142,7 @@ export const HardenedCarapace: Power = {
       "effects": {
         "buffDuration": 0.75,
         "damageBuff": {
+          "ignoreStrength": true,
           "scale": 2.5,
           "table": "Melee_Buff_Dmg"
         },
@@ -170,6 +181,7 @@ export const HardenedCarapace: Power = {
           "enduranceDiscount": 0.75
         },
         "enduranceDiscount": {
+          "ignoreStrength": true,
           "scale": 0.25,
           "table": "Melee_Stun"
         }

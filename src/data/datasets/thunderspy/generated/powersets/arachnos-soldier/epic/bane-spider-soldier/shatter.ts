@@ -12,6 +12,8 @@ export const Shatter: Power = {
   "name": "Shatter",
   "internalName": "Shatter",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You attempt to Shatter the bones of your opponent by striking them with all your might. This attack will deal great damage and can knock foes back a great ways. NOTE: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.  Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Smash/Toxic), Minor DoT(Toxic), High Knockback",
   "icon": "banespider_shatter.png",
@@ -20,6 +22,9 @@ export const Shatter: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

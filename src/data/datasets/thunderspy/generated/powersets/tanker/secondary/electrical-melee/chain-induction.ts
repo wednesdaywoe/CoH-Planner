@@ -12,6 +12,8 @@ export const ChainInduction: Power = {
   "name": "Chain Induction",
   "internalName": "Chain_Induction",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "This Electric Melee attack deals moderate Smashing and Energy damage and may drain some of the targets Endurance. However, this attack also induces an unstable electric charge that may jump to another enemy target.  The charge will jump to the closest enemy in range that has not been previously hit, until it inevitably dissipates. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Melee, Moderate DMG(Smash/Energy), Foe -End +Special",
   "icon": "electricmelee_targetedchaininduction.png",
@@ -22,6 +24,9 @@ export const ChainInduction: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -86,9 +91,9 @@ export const ChainInduction: Power = {
   "atoms": [
     ["Damage","Smashing",0.396,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",0.924,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["EntCreate",null,-1,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,52,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.300000190734863,1,null,true],
+    ["Meta",null,1,52,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.300000190734863,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Endurance",null,-0.15,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],

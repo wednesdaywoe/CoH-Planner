@@ -12,12 +12,17 @@ export const Agile: Power = {
   "name": "Agile",
   "internalName": "Agile",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You become innately more Agile, and are able to naturally avoid some ranged attacks and resist Defense DeBuffs. Your Agility also grants you minor Damage Resistance to all damage except Toxic and Psionic.  This Damage Resistance is only available as you lose Health but it improves as your HP declines. This power is always on, and will permanently increase your Defense versus ranged attacks.",
   "shortHelp": "Auto: Self +DEF(Ranged), Res(DeBuff DEF), Res(All DMG, Special)",
   "icon": "superreflexes_agile.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 2

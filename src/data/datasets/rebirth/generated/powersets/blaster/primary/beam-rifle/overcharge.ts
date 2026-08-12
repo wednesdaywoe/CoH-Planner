@@ -12,12 +12,17 @@ export const Overcharge: Power = {
   "name": "Overcharge",
   "internalName": "Overcharge",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You overcharge your Beam Rifle and release a massive blast of energy at a group of distant foes causing Extreme Energy damage, causing Minor Energy damage over time, reducing the defense of all affected foes and potentially stunning affected foes. If Overcharge strikes a target suffering from the Disintegrating effect they will be affected by a longer stun. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Extreme DMG(Energy), Foe Minor DoT (Energy), -Def(All), Disorient, Special",
   "icon": "beamrifle_overcharge.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 80,
@@ -64,6 +69,7 @@ export const Overcharge: Power = {
   "effects": {
     "buffDuration": 15,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.04,
       "table": "Ranged_Ones"
     },
@@ -92,10 +98,10 @@ export const Overcharge: Power = {
     ["DamageBuff","Negative",0.04,1,10.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.04,1,10.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.04,1,10.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Mez","Stunned",4,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? ! &&"],
+    ["Mez","Stunned",4,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? ! &&",null,null,null,null,null,null,null,0.6],
     ["Defense","All",1.5,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",1.522071,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? ! &&",true],
+    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? ! &&",true,null,null,null,null,null,null,0.6],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? &&",true],
     ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? &&",true]
   ],

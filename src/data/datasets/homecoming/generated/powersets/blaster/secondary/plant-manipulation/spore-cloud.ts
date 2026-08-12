@@ -12,6 +12,8 @@ export const SporeCloud: Power = {
   "name": "Spore Cloud",
   "internalName": "Spore_Cloud",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a large cloud of toxic spores around your targeted foe. The target and all nearby foes will have their damage output, chance to hit and regeneration rate reduced.Recharge: Moderate.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG, -ToHit, -Regen",
   "icon": "natureaffinity_sporecloud.png",
@@ -22,6 +24,9 @@ export const SporeCloud: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -46,6 +51,7 @@ export const SporeCloud: Power = {
   "effects": {
     "buffDuration": 0.75,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.125,
       "table": "Ranged_Debuff_Dam"
     },
@@ -55,6 +61,7 @@ export const SporeCloud: Power = {
       "tohitDebuff": 0.75
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 3.75,
       "table": "Ranged_Res_Boolean"
     },

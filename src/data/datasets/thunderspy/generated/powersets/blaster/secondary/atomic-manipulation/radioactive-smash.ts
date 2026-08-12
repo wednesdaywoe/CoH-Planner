@@ -12,6 +12,8 @@ export const RadioactiveSmash: Power = {
   "name": "Radioactive Smash",
   "internalName": "Radioactive_Smash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You channel a greater amount of radiation into your fists and deliver a hard hitting blow that deals Moderate Energy and Smashing damage to the target as well as reducing their Defense for a short time. Affected targets also have a chance to be knocked down and have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, High DMG(Energy/Smash), Foe -Def, Knockdown, Special",
   "icon": "radiationmelee_radioactivesmash.png",
@@ -20,6 +22,9 @@ export const RadioactiveSmash: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,6 +65,7 @@ export const RadioactiveSmash: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
@@ -98,7 +104,7 @@ export const RadioactiveSmash: Power = {
     ["Damage","Smashing",0.496334,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",1.489002,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"token_add"]
   ],
   "specialEffects": [
     {

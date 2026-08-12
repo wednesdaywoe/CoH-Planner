@@ -12,12 +12,17 @@ export const FullAuto: Power = {
   "name": "Full Auto",
   "internalName": "Full_Auto",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Opens up your assault rifle on Full Auto to lay down a massive spray of bullets at your target. Although very slow to reload, damage from this attack is massive, shredding all targets within the cone of effect. There's a chance you may land a lucky shot for extra damage.Damage: Superior.Recharge: Long.",
   "shortHelp": "Ranged (Cone), DoT(Lethal), +Special",
   "icon": "assaultweapons_arfullauto.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.35,
     "range": 40,
@@ -65,9 +70,9 @@ export const FullAuto: Power = {
     }
   ],
   "atoms": [
-    ["Damage","Lethal",0.2261,1,2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1],
+    ["Damage","Lethal",0.2261,1,2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.0935,1,2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,0.1599999964237213,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",0.0935,1,2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.0935,1,2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SentCrit,SentCritAoE"],
     ["Damage","Lethal",0.1891,1,2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

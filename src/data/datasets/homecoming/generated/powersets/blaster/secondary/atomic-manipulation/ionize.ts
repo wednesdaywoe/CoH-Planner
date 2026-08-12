@@ -12,12 +12,17 @@ export const Ionize: Power = {
   "name": "Ionize",
   "internalName": "Ionize",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.",
   "shortHelp": "Self +DMG, +ToHit",
   "icon": "atomicmanipulation_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const Ionize: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },

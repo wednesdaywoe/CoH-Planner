@@ -12,12 +12,17 @@ export const SingleShot: Power = {
   "name": "Single Shot",
   "internalName": "Single_Shot",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick single shot from the Arachnos Sub-machinegun. Extremely accurate.",
   "shortHelp": "Ranged, DMG(Lethal), Foe -DEF",
   "icon": "arachnossoldier_singleshot.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,

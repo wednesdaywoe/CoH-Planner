@@ -12,12 +12,17 @@ export const SiphonSpeed: Power = {
   "name": "Siphon Speed",
   "internalName": "Siphon_Speed",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Siphon the speed from foes, Slowing their movement and attack rate while boosting your own. Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Foe -Speed, -Recharge, Self +Speed, +Recharge",
   "icon": "kineticboost_siphonspeed.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -42,6 +47,7 @@ export const SiphonSpeed: Power = {
     "buffDuration": 60,
     "durations": {
       "movement": 60,
+      "movementCapDebuff": 60,
       "rechargeBuff": 60,
       "rechargeDebuff": 60,
       "slow": 60
@@ -56,11 +62,20 @@ export const SiphonSpeed: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     },
@@ -70,6 +85,7 @@ export const SiphonSpeed: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },
@@ -78,8 +94,8 @@ export const SiphonSpeed: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.5,
+        "table": "Melee_Slow"
       }
     }
   },
@@ -89,9 +105,9 @@ export const SiphonSpeed: Power = {
     ["Movement","Jump",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.5,1,60,"Melee_Slow","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["RechargeTime",null,-0.2,1,60,"Melee_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["RechargeTime",null,0.2,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Movement","Run",-1,1,60,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Movement","Run",0.85,1,60,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"No",3,null,null,1],
-    ["Movement","Fly",0.85,1,60,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"No",3,null,null,1]
+    ["Movement","Run",0.85,1,60,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1],
+    ["Movement","Fly",0.85,1,60,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1]
   ]
 };

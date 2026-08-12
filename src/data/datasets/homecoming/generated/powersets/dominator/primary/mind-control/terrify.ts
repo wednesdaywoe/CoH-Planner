@@ -12,12 +12,17 @@ export const Terrify: Power = {
   "name": "Terrify",
   "internalName": "Terrify",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "This power Terrifies foes within a cone area in front of you, causing them to tremble in Fear uncontrollably. The effect is so frightening and overwhelming, that the target takes real damage from the physiological response to this Psionic attack.",
   "shortHelp": "Ranged (Cone), Light DMG(Psionic), Foe Fear(Special)",
   "icon": "mentalcontrol_terrify.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -58,10 +63,10 @@ export const Terrify: Power = {
   "atoms": [
     ["Mez","Terrorized",15,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Terrorized",22.5,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Mez","Terrorized",22.5,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
     ["Damage","Psionic",0.8426,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Terrorized",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Terrorized",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Mez","Terrorized",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

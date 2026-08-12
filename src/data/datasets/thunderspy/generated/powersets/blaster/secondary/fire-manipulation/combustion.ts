@@ -12,12 +12,17 @@ export const Combustion: Power = {
   "name": "Combustion",
   "internalName": "Combustion",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mastery of fire allows you to violently raise the temperature around yourself in an attempt to spontaneously combust any nearby foes and set them ablaze, dealing damage over time. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Melee (AoE), Moderate DoT(Fire)",
   "icon": "firemanipulation_combustion.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,
@@ -55,6 +60,7 @@ export const Combustion: Power = {
   "effects": {
     "buffDuration": 10.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.061,
       "table": "Melee_Ones"
     },

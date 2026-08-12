@@ -12,6 +12,8 @@ export const Gash: Power = {
   "name": "Beheader",
   "internalName": "Gash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This is an attempt to remove your opponent's head from his neck with your Battle Axe. This attack is fairly quick for such a large weapon, and can knock down foes. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_chop.png",
@@ -22,6 +24,9 @@ export const Gash: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,
@@ -68,7 +73,7 @@ export const Gash: Power = {
     ["Damage","Lethal",2.016608,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true]
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

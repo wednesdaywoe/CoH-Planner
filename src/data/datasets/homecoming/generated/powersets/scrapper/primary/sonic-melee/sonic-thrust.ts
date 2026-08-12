@@ -12,6 +12,8 @@ export const SonicThrust: Power = {
   "name": "Sonic Thrust",
   "internalName": "Sonic_Thrust",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A focused attack of intense sonic power with high chance to violently knock a nearby foe off their feet. Deals minimal damage, but can be very effective. This power will inflict a strong additional damage over time effect against Attuned targets.",
   "shortHelp": "Melee, DMG(Energy/Smash), Foe Knockdown, -Res(Debuffs)",
   "icon": "sonicmanipulation_sonicthrust.png",
@@ -20,6 +22,9 @@ export const SonicThrust: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -58,30 +63,37 @@ export const SonicThrust: Power = {
     "buffDuration": 15,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       }
@@ -95,40 +107,40 @@ export const SonicThrust: Power = {
     }
   },
   "atoms": [
-    ["Damage","Smashing",0.38,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",0.38,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Defense","All",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Endurance",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["ToHit",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","Run",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","Fly",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","Jump",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Regeneration",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Recovery",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["RechargeTime",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
-    ["Damage","Fire",0.342,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Meta",null,1,202,26,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,207,24.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Damage","Energy",0.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Energy",0.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-    ["Damage","Smashing",0.6,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.6,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",1.2,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Defense","All",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Endurance",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["ToHit",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Movement","Run",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Movement","Fly",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Movement","Jump",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Regeneration",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Recovery",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["RechargeTime",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.2,1,25.8,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.2,1,25.8,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Energy",0.2,1,25.8,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-    ["Damage","Energy",0.2,1,25.8,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.38,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.38,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Fly",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Jump",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SoundBoost"],
+    ["Damage","Fire",0.342,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Meta",null,1,202,26,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"AttuneBonus",null,"set_mode"],
+    ["Meta",null,1,207,24.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"AttuneBonus",null,"set_mode"],
+    ["Damage","Energy",0.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> critter eq arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST"],
+    ["Damage","Energy",0.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST"],
+    ["Damage","Smashing",0.6,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.6,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",1.2,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST"],
+    ["Defense","All",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["ToHit",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Movement","Run",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Movement","Fly",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Movement","Jump",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Regeneration",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Recovery",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["RechargeTime",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"SoundBoost"],
+    ["Damage","Energy",0.2,1,25.8,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,"kSonicAtuneSelf Source.Mode? kSonicAtuneFoe target.mode? &&",true],
+    ["Damage","Energy",0.2,1,25.8,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,"kSonicAtuneSelf Source.Mode? kSonicAtuneFoe target.mode? && arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,-0.95,null,"SMAttune"],
+    ["Damage","Energy",0.2,1,25.8,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,"kSonicAtuneSelf Source.Mode? kSonicAtuneFoe target.mode? && arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,-0.9,null,"SMAttune"],
+    ["Damage","Energy",0.2,1,25.8,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,"kSonicAtuneSelf Source.Mode? kSonicAtuneFoe target.mode? && enttype target> player eq &&",true,null,null,null,null,null,null,-0.95,null,"SMAttune"]
   ],
   "specialEffects": [
     {

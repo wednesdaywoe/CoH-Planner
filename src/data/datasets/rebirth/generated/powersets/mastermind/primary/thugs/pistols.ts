@@ -12,12 +12,17 @@ export const Pistols: Power = {
   "name": "Pistols",
   "internalName": "Pistols",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Quickly fires a round from one of your heavy automatic pistols. Damage is average, but the fire rate is very fast.  Damage: Minor, Recharge: Very Fast",
   "shortHelp": "Ranged, Minor DMG(Lethal)",
   "icon": "thugs_targetedrangedminordmg.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,

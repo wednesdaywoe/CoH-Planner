@@ -12,6 +12,8 @@ export const PenumbralGrasp: Power = {
   "name": "Penumbral Grasp",
   "internalName": "Penumbral_Grasp",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Penumbral Grasp deals moderate Negative Energy damage, reduces their chance to hit and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DOT(Negative), Foe Immobilize, -To Hit",
   "icon": "darknessmanipulation_penumbralgrasp.png",
@@ -23,6 +25,9 @@ export const PenumbralGrasp: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -61,6 +66,7 @@ export const PenumbralGrasp: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },

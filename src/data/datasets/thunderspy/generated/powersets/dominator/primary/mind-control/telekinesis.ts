@@ -12,12 +12,17 @@ export const Telekinesis: Power = {
   "name": "Telekinesis",
   "internalName": "Telekinesis",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Lifts a foe, and any nearby foes, off the ground and repels them.  The targets are helpless, unable to take action, and will continue to hover away, picking up any passing targets, as long as you keep this power active. Keeping up this level of concentration costs a lot of Endurance. Recharge: Slow",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe Hold, Repel",
   "icon": "mentalcontrol_telekinesis.png",
   "powerType": "Toggle",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,

@@ -12,6 +12,8 @@ export const HeadSplitter: Power = {
   "name": "Golden Dragonfly",
   "internalName": "Head_Splitter",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a devastating Golden Dragonfly attack that deals a massive amount of damage and can even knock a foe down to the ground and reduce their Defense. This attack has an exceptionally good critical hit capability, better than other Katana attacks, that can sometimes deal double damage. The power of this attack can actually extend a short distance through multiple foes.",
   "shortHelp": "Melee, DMG(Lethal), Foe Knockback, -DEF",
   "icon": "katana_headsplitter.png",
@@ -20,6 +22,9 @@ export const HeadSplitter: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -76,13 +81,13 @@ export const HeadSplitter: Power = {
   },
   "atoms": [
     ["Damage","Lethal",2.28,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",2.28,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",1.026,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Lethal",2.28,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE"],
+    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+    ["Damage","Fire",1.026,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",2.1609,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",2.1609,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",2.1609,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE"]
   ],
   "specialEffects": [
     {

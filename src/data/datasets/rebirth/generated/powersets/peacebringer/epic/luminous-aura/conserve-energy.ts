@@ -12,12 +12,17 @@ export const ConserveEnergy: Power = {
   "name": "Renew Energy",
   "internalName": "Conserve_Energy",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You can focus for a moment to Renew your Energy. Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time. Recharge: Very Long",
   "shortHelp": "Self Endurance Discount",
   "icon": "luminousaura_renewenergy.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,
@@ -45,6 +50,7 @@ export const ConserveEnergy: Power = {
       "regenBuff": 30
     },
     "enduranceDiscount": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Stun"
     },

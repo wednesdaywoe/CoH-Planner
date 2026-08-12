@@ -12,6 +12,8 @@ export const LightningClap: Power = {
   "name": "Force of Thunder",
   "internalName": "Lightning_Clap",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You can channel the raw force of a thunderbolt through you knocking enemies back and potentially disorienting them.  This electrical energy also causes you to regenerate health and recover endurance very quickly for a short time.  Recharge: Long",
   "shortHelp": "PBAoE, Foe Disorient, Knockback, Self +Regeneration, +Recovery",
   "icon": "electricitymanipulation_lightningclap.png",
@@ -20,6 +22,10 @@ export const LightningClap: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -46,6 +52,7 @@ export const LightningClap: Power = {
   "effects": {
     "buffDuration": 8.73,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.025,
       "table": "Melee_Ones"
     },

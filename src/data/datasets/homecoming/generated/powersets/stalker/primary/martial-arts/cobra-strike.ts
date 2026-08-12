@@ -12,6 +12,8 @@ export const CobraStrike: Power = {
   "name": "Cobra Strike",
   "internalName": "Cobra_Strike",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Using intense martial arts focus, you can perform a Cobra Strike that deals minor damage, but has a great chance of Disorienting your target.",
   "shortHelp": "Melee, DMG(Smashing), Foe Disorient",
   "icon": "martialarts_cobrastrike.png",
@@ -20,6 +22,9 @@ export const CobraStrike: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -42,11 +47,18 @@ export const CobraStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.96,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.96,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 3,
@@ -57,12 +69,12 @@ export const CobraStrike: Power = {
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Smashing",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",1.96,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
     ["Mez","Stunned",10,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Smashing",1.96,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-    ["Damage","Smashing",1.96,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+    ["Damage","Smashing",1.96,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
     ["Damage","Smashing",1.969,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Smashing",1.969,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Smashing",1.969,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
+    ["Damage","Smashing",1.969,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["Damage","Smashing",1.969,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true],
     ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

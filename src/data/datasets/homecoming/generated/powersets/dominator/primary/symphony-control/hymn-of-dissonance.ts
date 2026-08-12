@@ -12,12 +12,17 @@ export const HymnofDissonance: Power = {
   "name": "Hymn of Dissonance",
   "internalName": "Hymn_of_Dissonance",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Hymn of Dissonance causes pain on its listener, disruptive enough to hold them in place. Stronger foes might persist, but will still attack at a reduced speed.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Hold, -Recharge",
   "icon": "symphonycontrol_holdst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -56,6 +61,7 @@ export const HymnofDissonance: Power = {
       "table": "Melee_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     }
@@ -64,11 +70,11 @@ export const HymnofDissonance: Power = {
     ["RechargeTime",null,0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Mez","Held",12,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ReverbHymnOfDissonance"],
     ["Mez","Held",1,4,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Held",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Mez","Held",18,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Mez","Held",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Held",18,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

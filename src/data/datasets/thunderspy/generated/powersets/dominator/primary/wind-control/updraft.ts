@@ -12,12 +12,17 @@ export const Updraft: Power = {
   "name": "Updraft",
   "internalName": "Updraft",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You gather air at the feet of your target before forcefully pressurizing it into an upward flowing vortex. The force of the updraft pulls your target into the sky. When the updraft dissipates, your target falls to the ground and suffers moderate smashing damage. The affected target is also unable to fly for a short time. This power builds Pressure. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG (Smashing), Knockup(Foe), -Fly(Foe), Pressure Builder (Self)",
   "icon": "windcontrol_updraft.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

@@ -12,6 +12,8 @@ export const Thundergust: Power = {
   "name": "Thundergust",
   "internalName": "Thundergust",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You unleash a powerful gust of wind in the direction of your foes. This gust has enough force to deal minor smashing damage to your foes and knock them to the ground. The debris blown at your opponent temporarily blinds them, reducing their chance to hit. This power builds Pressure.Damage: Minor.Recharge: Slow.",
   "shortHelp": "Ranged (Cone), Minor DMG(Smashing), Knockdown(Foe), -ToHit(Foe), Pressure Builder (Self)",
   "icon": "windcontrol_thundergust.png",
@@ -20,6 +22,9 @@ export const Thundergust: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -78,9 +83,9 @@ export const Thundergust: Power = {
     ["ToHit",null,1.5,1,12,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","FlyMode",-3,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Damage","Smashing",0.24,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Smashing",0.24,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true],
+    ["Damage","Smashing",0.24,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"],
     ["Damage","Smashing",0.4867,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Smashing",0.2433,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true],
+    ["Damage","Smashing",0.2433,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true,null,null,null,null,null,null,null,null,"Containment"],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

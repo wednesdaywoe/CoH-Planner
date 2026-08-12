@@ -12,12 +12,17 @@ export const RainofFire: Power = {
   "name": "Rain of Fire",
   "internalName": "Rain_of_Fire",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area. Damage: Minor(DoT), Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Fire), -SPD",
   "icon": "fireblast_rainoffire.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,
@@ -41,6 +46,7 @@ export const RainofFire: Power = {
   "effects": {
     "buffDuration": 9.53,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.028,
       "table": "Ranged_Ones"
     },

@@ -12,12 +12,17 @@ export const ChilloftheNight: Power = {
   "name": "Dark Servant",
   "internalName": "Chill_of_the_Night",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons a Dark Servant to your aid. The Dark Servant possesses an assortment of dark powers to weaken your foes. The summoned entity is not a willing servant, and it is only your power that binds it in this realm.  The Dark Servant can be buffed and healed. Recharge: Very Long",
   "shortHelp": "Summon Dark Servant: Ranged Debuff Special",
   "icon": "darkmiasma_darkservant.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,

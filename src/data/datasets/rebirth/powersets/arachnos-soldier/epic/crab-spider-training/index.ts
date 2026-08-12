@@ -16,7 +16,12 @@ import { SummonSpiderlings as SummonSpiderlings } from './summon-spiderlings';
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/crab-spider-training',
+  setPath: 'Training_Gadgets.Crab_Spider_Training',
   name: 'Crab Spider Training',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 23,
+  specializeRequires: ["Arachnos_Soldiers.Bane_Spider_Soldier","powerset?","Training_Gadgets.Bane_Spider_Training","Powerset?","||","!"],
   description: 'Crab Spiders are heavy infantry in the Arachnos Organization, with a wide array of ranged and melee combat skills.',
   icon: 'crab_spider_training_set.ico',
   archetype: 'arachnos-soldier',

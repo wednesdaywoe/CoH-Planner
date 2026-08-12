@@ -12,6 +12,8 @@ export const ShadowCloak: Power = {
   "name": "Shadow Cloak",
   "internalName": "Shadow_Cloak",
   "available": 13,
+  "autoIssue": false,
+  "free": false,
   "description": "You surround yourself with shadowy particles that bend the light around you, making you difficult to spot at a distance. You can be seen only at close range, or if you attack a target. Even if seen, the Shadow Cloak grants you a bonus to Defense and some protection from Immobilization. Shadow Cloak also allows you to see things in a new light, allowing you to better see stealthy foes. Unlike some stealth powers, Shadow Cloak has no movement penalty. Shadow Cloak will not work with any other form of Concealment power such as Shadow Fall or Steamy Mist.  While in Bright Nova or White Dwarf form, this power's effects are suppressed and cost no endurance.  Recharge: Slow",
   "shortHelp": "Toggle: Self Stealth, +DEF, +Perception, Res (Immobilize)",
   "icon": "umbralaura_shadowcloak.png",
@@ -22,6 +24,9 @@ export const ShadowCloak: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -118,7 +123,7 @@ export const ShadowCloak: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>"],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>",null,0],
     ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

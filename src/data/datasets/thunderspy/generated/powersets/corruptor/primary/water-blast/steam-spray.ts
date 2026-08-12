@@ -12,12 +12,17 @@ export const SteamSpray: Power = {
   "name": "Steam Spray",
   "internalName": "Steam_Spray",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You spray scalding hot steam in a cone in front of you badly burning affected targets. Steam Spray causes Moderate Fire damage, Minor Fire damage over time and reduces the target's Defense slightly. Steam Spray grants 1 stack of Tidal Power. Damage: High, Recharge: Long",
   "shortHelp": "Ranged (Cone), High DMG(Fire), Foe -Defense, Minor DoT(Fire), Self +Tidal Power",
   "icon": "waterblast_steamspray.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 40,
@@ -74,7 +79,7 @@ export const SteamSpray: Power = {
   },
   "atoms": [
     ["Damage","Fire",0.835,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.85,true],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Fire",0.941504,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],

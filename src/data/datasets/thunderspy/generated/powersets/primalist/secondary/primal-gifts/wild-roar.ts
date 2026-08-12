@@ -12,6 +12,8 @@ export const WildRoar: Power = {
   "name": "Wild Roar",
   "internalName": "Wild_Roar",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "This power requires the user to have Hunter or Prowler Form active. When used the Primalist will let out a deafening roar that terrifies nearby foes and reduces their defenses greatly. In Hunter Form the defense debuff effect will be more powerful. While in Prowler form the Terrorize effect will be more powerful. Wild Roar requires 10 Primal Energy. Recharge: Very Long",
   "shortHelp": "PBAoE Special, Requires Hunter Form or Prowler Form",
   "icon": "primalgifts_wildroar.png",
@@ -20,6 +22,9 @@ export const WildRoar: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,10 +48,10 @@ export const WildRoar: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Defense","All",1.5,1,30,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode?",true],
     ["Defense","All",2.25,1,30,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode?",true],
-    ["Defense","All",3.375,1,30,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode?",true],
+    ["Defense","All",3.375,1,30,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode?",true,null,null,null,null,null,null,0,true],
     ["Mez","Terrorized",12,4,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kProwlerMode Source.Mode? &&",true],
     ["Mez","Terrorized",3,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kProwlerMode Source.Mode? &&",true],
     ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kHunterMode Source.Mode? &&",true],

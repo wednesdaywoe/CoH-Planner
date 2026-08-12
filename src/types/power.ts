@@ -24,6 +24,21 @@ export interface ScaledEffect {
   scale: number;
   /** AT table name (e.g., "Ranged_Debuff_ToHit") */
   table: string;
+  /** The pet character class this value's table resolves against, written by
+   *  `synthesizePseudoPetEffects` on every row a summoned entity supplies.
+   *
+   *  A value without it resolves against the build's archetype, which is what the power's
+   *  own rows do. A pseudo-pet's rows are a SECOND character's: the client resolves them
+   *  against `pDef->characterClassName` and passes the summoner alongside only for the
+   *  `Requires` evaluation (`uiPowerInfo.c` `power_AddPetEffects`). The mark travels ON the
+   *  value rather than being decided by the reader, because one bag holds both kinds — and
+   *  after the ENT-8 split one KEY can hold rows from two pets of different classes
+   *  (ENT-10). */
+  petClass?: string;
+  /** The template's IgnoreStrength flag, carried on the VALUE rather than only in a
+   *  `<key>Unenhanced` slot name (ENT-4). A marked value takes no enhancement and no
+   *  global: it renders flat and is tagged in the Info panel. */
+  ignoreStrength?: boolean;
   /** Per-stack scale increment for stacking buffs (per-target AoE or damage-triggered).
    *  At N stacks: effective_scale = scale + perTarget × (N - 1)
    *  For AoE powers, N = targets hit. For non-AoE, N = stack count (see maxStacks). */
@@ -198,6 +213,8 @@ export interface MezEffect {
   scale: number;
   /** AT table for duration calculation */
   table: string;
+  /** See {@link ScaledEffect.ignoreStrength} — a mez whose duration takes no enhancement. */
+  ignoreStrength?: boolean;
 }
 
 /** Helper type for mez that can be number (magnitude only) OR full MezEffect */
@@ -364,6 +381,14 @@ export interface ResolvedPseudoPetEffect {
   /** Mode-gated: only applies while the power is in its empowered/triggered state
    *  (Storm Cell's lightning effects — "while High Winds is active"). */
   conditional?: boolean;
+  /** Which movement axis a `Slow` / `MovementCapDebuff` row names (`runSpeed`,
+   *  `flySpeed`, `jumpSpeed`, `jumpHeight`). A pet row belongs in the same key as its
+   *  parent-power twin, and the parent's rows are per axis (ENT-5), so the axis has to
+   *  travel with the row rather than collapse into one ambiguous "Slow". */
+  axis?: string;
+  /** The damage types a `ResistanceBuff` row names, lower-cased. One modifier moves every
+   *  type it names at one scale; a row naming none folds into no total at all (ENT-9). */
+  resistanceTypes?: string[];
 }
 
 /** One redirect power resolved into a pseudo-pet ability (PetAbility-shaped). */
@@ -394,6 +419,9 @@ export interface ResolvedPseudoPetAbility {
   effectArea?: string;
   radius?: number;
   maxTargets?: number;
+  /** EntsAffected — who the ability's effects can land on, which is what an atom
+   *  targeting `AnyAffected` means by "the target". */
+  targetsAffected?: string[];
 }
 
 /** A pseudo-pet synthesized from one EntCreate's redirect list. */
@@ -618,6 +646,13 @@ export interface PowerEffects {
    *  `suppressible` (cap raise drops in combat — Super Jump's does, Super
    *  Speed's and Fly's persist). Consumed by getEffectiveMovementCaps. */
   movementCapBump?: MovementByType;
+  /** The debuff direction of the same aspect=Maximum split: a movement CAP
+   *  reduction, keyed like `movement`. Chilling Embrace states both faces of
+   *  `runSpeed` from one template (0.7×Melee_Slow at Current, −1.0×
+   *  Melee_SpeedRunning at Maximum), and while both wrote `slow` the later one
+   *  replaced the earlier (ENT-5). Self-directed entries carry `toWho: 'Self'`
+   *  and reach the movement globals the way `slow`'s do. */
+  movementCapDebuff?: MovementByType;
   /** Stealth effects */
   stealth?: StealthEffects;
   /** Debuff resistance */
@@ -761,6 +796,28 @@ export interface ScaledDamageEntry {
   excludeFromAtMechanic?: boolean;
 }
 
+/**
+ * One executed child that rolls a parent's procs in the parent's place — the
+ * PPM inputs `CalculateModChance` would read off that child, plus the set
+ * categories that decide which slotted procs reach it. See
+ * `Power.procRollSites`.
+ */
+export interface ProcRollSite {
+  /** Full name of the child power, for provenance in the Info panel. */
+  power: string;
+  /**
+   * The child's own `BoostsAllowed` — the routing key `CopyBoosts` filters by.
+   * A proc piece rolls here when its own `boostsAllowed` intersects this list.
+   */
+  boostsAllowed: string[];
+  /** The child's own AoE radius (ft). */
+  radius: number;
+  /** The child's own arc in RAW radians, as `stats.arc` carries it. */
+  arc: number;
+  /** The child's own `ProcMainTargetOnly`, when it sets one. */
+  procsOnlyOnMainTarget?: boolean;
+}
+
 // ============================================
 // POWER DEFINITION
 // ============================================
@@ -788,6 +845,30 @@ export interface Power {
   description: string;
   /** Short help text shown in UI */
   shortHelp?: string;
+  /**
+   * The binary's AutoIssue flag. `character_GrantAutoIssuePowers`
+   * (`character_base.c:1952`) grants a power instead of offering it as a pick when
+   * AutoIssue is set AND its BuyRequires passes AND `available <= level` — so this is
+   * only half the gate and never means "granted" on its own.
+   */
+  autoIssue?: boolean;
+  /** The separate "costs no power pick" flag. `powers_load.c:950` forces AutoIssue ⟹ Free. */
+  free?: boolean;
+  /**
+   * `EntsAffected` — the entity categories this power's effects can land on
+   * (`['Self']`, `['Foe']`, `['Friend', 'Self']`, …), straight from the export.
+   *
+   * This is what resolves the pronoun in an atom targeting `AnyAffected`, which
+   * says "whoever this power affects" rather than naming anybody: Static Shield
+   * and Wormhole both author a `Teleport` resistance that way, and only this
+   * field distinguishes the caster's own protection from the immunity the yanked
+   * foe gets (DATA-GAP-REGISTER MEZRES-3). The power's `targetType` cannot — a
+   * PBAoE that teleports foes is `targetType: 'Self'` too (Shadow Slip).
+   *
+   * Omitted when the export states nothing, so absent stays distinguishable from
+   * an authored empty list.
+   */
+  targetsAffected?: string[];
   /**
    * The power's damage-type SET, emitted only where the per-template element is
    * genuinely absent from the export (Thunderspy, whose damage atoms arrive
@@ -883,11 +964,17 @@ export interface Power {
    *    PET's attacks (this is how Soulbound Allegiance's Build Up proc works in
    *    henchmen). The proc is not dead — its chance simply has nothing to do
    *    with the summon's recharge, which is the number we were reporting.
-   *  - **Ordinary attacks and controls** — Fault, Spring Attack, Whitecap,
-   *    Paralyzing Blast, Shocking Grasp, Shockwaves. Here nothing fires at all.
-   *    These are exactly the long-recharge powers a PPM formula scores as
-   *    perfect proc vehicles (Paralyzing Blast is 240s), which reads as HC
-   *    closing that door deliberately.
+   *  - **Ordinary attacks and controls** — Paralyzing Blast, Shocking Grasp,
+   *    Shockwaves. Here nothing fires at all. These are exactly the
+   *    long-recharge powers a PPM formula scores as perfect proc vehicles
+   *    (Paralyzing Blast is 240s), which reads as HC closing that door
+   *    deliberately.
+   *
+   * A third group looks like the second and is not: eleven powers (Fault,
+   * Whitecap, Hypnotizing Lights, Spring Attack) hand their slotting to a
+   * `CopyBoosts` executed child that rolls in the parent's place. They carry
+   * `procRollSites`, and `powerFiresProcs` reports them as firing — read that
+   * field's doc before treating this one as the last word.
    *
    * Note the contrast with the rains: HC sets this on Burn's patch power
    * (`Pets.Burn.Burn`) and NOT on `Pets.Corruptor_IceStorm.IceStorm` and its
@@ -896,6 +983,30 @@ export interface Power {
    * often that pulse rolls — see `resolveProcContext`.
    */
   procsAllowed?: boolean;
+  /**
+   * Where this power's PPM procs roll when the power itself cannot — present
+   * on the powers that pair `ProcAllowed kNone` with a `CopyBoosts` executed
+   * child (Fault ×4 archetypes, Whitecap ×4, Hypnotizing Lights ×2, Spring
+   * Attack). Stamped by `collectProcRollSites`.
+   *
+   * A site MOVES the one roll; it never adds one. Fault executes both of its
+   * children every cast and no cast has ever paid two procs (37 firings over
+   * 48 measured casts, never a double).
+   *
+   * A proc rolls in the ONE site whose `boostsAllowed` intersects the piece's
+   * own — `CopyBoosts` filters by the destination's boost types. Fault logs a
+   * to-hit per child and the proc tracked the cone's exactly: the cone missed
+   * 3× and paid nothing, the sphere missed 2× and it still fired. A piece no
+   * child can hold is handed to no one and fires nothing (Hypnotizing Lights'
+   * Sleep procs, by contrast, DO fire — its wide child's `BoostsAllowed`
+   * takes `Sleep` even though it accepts no IO sets); a piece two children
+   * could hold has no single roll, and the routing throws.
+   *
+   * The WINDOW stays this power's own recharge and cast — only the geometry
+   * comes from the site, which is why a site carries no schedule of its own.
+   * See `collectProcRollSites` for the measurements.
+   */
+  procRollSites?: ProcRollSite[];
   /** Prerequisite power(s) - logical expression */
   requires?: string;
   /**
@@ -969,11 +1080,35 @@ export interface Power {
   damage?: ScaledDamageEntry[] | ScaledDamageEntry;
   /** All effects of this power */
   effects?: PowerEffects;
-  /** Quick-cast sniper form stats (used when in combat / Experienced Marksman) */
+  /**
+   * The fast (uninterruptible) redirect form of an interruptible power, and the gate that
+   * selects it. `condition` is the redirect's own expression VERBATIM — Homecoming's
+   * `kEngaged … Experienced_Marksman …`, the forks' `cur.kToHit source> .97 >=` — evaluated
+   * by the engine against the build. No threshold is re-derived anywhere in the pipeline;
+   * matching one fork's gate text is what left two forks with no fast form (SNIPE-2).
+   */
   quickSnipe?: {
+    condition: string;
     stats: Partial<PowerStats>;
     damage: ScaledDamageEntry | ScaledDamageEntry[];
+    /**
+     * The fast form's own `atoms`, in the same compact wire form as `Power.atoms`. The engine
+     * resolves projected damage from the atom list and reads `damage` only for display, so a
+     * form that carried only `damage` swapped the cast and left the slow form's charged hit
+     * standing — about twice the fast form's, on Homecoming (SNIPE-3).
+     */
+    atoms?: EncodedAtom[];
   };
+  /**
+   * Alternate records the power's redirect table selects by conditions the ENGINE
+   * evaluates, in first-match order. The general case beside `quickSnipe` (keyed on an
+   * interrupt) and `modeVariants` (keyed on a caster mode): these tables have neither
+   * shape, so each branch is carried with its condition verbatim and `coh_math::expr`
+   * decides. A condition a build cannot answer evaluates Indeterminate and the base
+   * record stands — filtering those out in the converter would leave the same powers
+   * unserved while looking served.
+   */
+  formVariants?: ({ condition: string; internalName: string; atoms?: EncodedAtom[] } & Partial<Power>)[];
   /**
    * Assassin's Strike from-Hide damage multiplier, expressed as a bonus over the
    * displayed (not-hidden) base — e.g. 2.174 = +217%. Replaces the generic
@@ -1128,6 +1263,13 @@ export interface ConditionalEffect {
   /** Whether the toggle starts on. Defaults to false; mechanics that fire
    *  automatically (e.g. snipe Quick variant when in combat) may default true. */
   defaultActive?: boolean;
+  /**
+   * The power this caster-side toggle asserts the build HOLDS, and how many copies
+   * satisfy its gate. A build without that power is never offered the toggle — the gate
+   * reads `<path> source.ownPower(Num)? [N <op>]`, so the claim is the smallest count
+   * that satisfies every constraint in the group.
+   */
+  ownedPower?: { path: string; count: number };
   /** Damage entries that apply on top of base damage when active. */
   damage?: ScaledDamageEntry[] | ScaledDamageEntry;
   /** Effect deltas that apply on top of base effects when active. */
@@ -1141,6 +1283,44 @@ export interface ConditionalEffect {
 export interface Powerset {
   /** Internal ID (e.g., "blaster/fire-blast") */
   id?: string;
+  /**
+   * The set's own name in the binary, fully qualified (`"Brute_Defense.Bio_Organic_Armor"`,
+   * `"Pool.Manipulation"`) — the export index's `key`.
+   *
+   * `id` slugs the DISPLAY name, and the two diverge on six sets across the three forks
+   * (Bio Armor is `Bio_Organic_Armor`, Presence is `Manipulation`, Spines is `Quills`).
+   * A `requires` gate names the set the binary way, so this is the only field a set path
+   * can be matched against; matching `id` reads six sets as unheld by any build.
+   */
+  setPath?: string;
+  /**
+   * `SetBuyRequires` — the SET-level gate, in the same postfix language a power's
+   * `requires` uses, with `buyRequiresFailed` the message the game shows when it
+   * refuses. A power's own gate says whether the game would sell that power; this
+   * says whether the set may be taken at all.
+   *
+   * The one rule it carries is "you can only have one Specialized power pool"
+   * (Sorcery / Experimentation / Force of Will / Gadgetry / Utility Belt each list
+   * the others' powers). Empty on every other set.
+   */
+  buyRequires?: string[];
+  buyRequiresFailed?: string;
+  /**
+   * `SpecializeAt` / `SpecializeRequires` — the level a set branches at, and the gate
+   * on taking THIS branch. The VEAT branch choices are written here at 23 (Bane vs
+   * Crab, and the widow branches), Pool.Fitness at 6. The gate uses a `powerset?`
+   * reader, which asks whether the build holds a set rather than a power.
+   */
+  specializeAt?: number;
+  specializeRequires?: string[];
+  /**
+   * The set's name in the game's own data (e.g. `quills` for the set that ships as
+   * "Spines", `ninja_sword` for "Ninja Blade"). `id` is built from the DISPLAY name and
+   * the two diverge for a dozen renamed sets per fork, so an expression that names a
+   * powerset — `requires`, which speaks internal names — can only be resolved through
+   * this field. Emitted by scripts/convert-powerset.cjs from the export's own directory.
+   */
+  internalName?: string;
   /** Display name (e.g., "Fire Blast") */
   name: string;
   /** Display name (alternative) */

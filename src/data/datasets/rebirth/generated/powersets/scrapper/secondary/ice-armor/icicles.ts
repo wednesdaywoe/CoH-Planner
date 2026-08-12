@@ -12,12 +12,17 @@ export const Icicles: Power = {
   "name": "Icicles",
   "internalName": "Icicles",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you form sharp icicles on your body that continuously cut all foes that attempt to enter melee range. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Lethal)",
   "icon": "icearmor_icicles.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -46,6 +51,6 @@ export const Icicles: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.09,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+    ["Damage","Fire",0.09,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]
   ]
 };

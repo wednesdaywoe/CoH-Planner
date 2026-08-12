@@ -12,12 +12,17 @@ export const StoneSkin: Power = {
   "name": "Stone Skin",
   "internalName": "Stone_Skin",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your tough skin is naturally resistant to most types of damage. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res(All but Psionics), +DEF(All but Psionics)",
   "icon": "stonearmor_stoneskin.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10

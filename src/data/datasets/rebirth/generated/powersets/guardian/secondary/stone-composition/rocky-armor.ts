@@ -12,6 +12,8 @@ export const RockyArmor: Power = {
   "name": "Rocky Armor",
   "internalName": "Rocky_Armor",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your skin becomes stone while this power is active. Rocky Armor protects you from Smashing, Lethal and Psionic attacks. They are less likely to land and affect you. Rocky Armor also grants you protection from knockdown, immobilize, confuse, Defense DeBuffs, and Repel effects. Rocky Armor also adds an Elusivity defense bonus to Smashing, Lethal and Psionic Attacks in PVP zones. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Smashing, Lethal, Psionic), Res(Knockdown, Immobilize, Confuse, DeBuff DEF, Repel)",
   "icon": "stonecomp_rockyarmor.png",
@@ -22,6 +24,9 @@ export const RockyArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -48,6 +53,7 @@ export const RockyArmor: Power = {
     },
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Res_Boolean"
       }
@@ -96,14 +102,17 @@ export const RockyArmor: Power = {
         "table": "Melee_Res_Boolean"
       },
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       }

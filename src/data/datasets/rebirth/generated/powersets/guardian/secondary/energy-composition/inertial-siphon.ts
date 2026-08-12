@@ -12,12 +12,17 @@ export const InertialSiphon: Power = {
   "name": "Inertial Siphon",
   "internalName": "Inertial_Siphon",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Inertial Siphon drains the momentum of all foes nearby, transferring it to you and those near you. Affected foes will have their attack rate and movement speed slowed, while your affected allies will receive a temporary boost to both. The more foes that are affected, the more inertia you and your allies receive.  Recharge: Long",
   "shortHelp": "PBAoE, Foe -SPD, -Recharge; Team +Recharge, +SPD, +Jump",
   "icon": "energycomp_inertialsiphon.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 20,
@@ -47,10 +52,19 @@ export const InertialSiphon: Power = {
   "effects": {
     "buffDuration": 45,
     "durations": {
+      "movementCapDebuff": 45,
       "rechargeDebuff": 45,
       "slow": 45
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     },
@@ -60,6 +74,7 @@ export const InertialSiphon: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },
@@ -68,8 +83,8 @@ export const InertialSiphon: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.5,
+        "table": "Melee_Slow"
       }
     },
     "summon": {

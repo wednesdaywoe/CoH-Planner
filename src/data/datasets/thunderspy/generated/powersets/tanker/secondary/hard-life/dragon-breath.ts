@@ -12,6 +12,8 @@ export const DragonBreath: Power = {
   "name": "Dragon's Breath",
   "internalName": "Dragon_Breath",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Fire a special concoction of Incendiary ammunition at your foes. Enemies afflicted with Dragon's Breath will take Fire damage over time. Using Cryo Shell on a foe afflicted with Dragon's Breath will deal bonus damage. Using Venom Shell on a foe afflicted with Dragon's Breath will deal additional Toxic damage over time.",
   "shortHelp": "Ranged, Lethal DMG, Fire DoT",
   "icon": "dualpistols_incendiaryammo.png",
@@ -20,6 +22,9 @@ export const DragonBreath: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,7 +65,7 @@ export const DragonBreath: Power = {
   "atoms": [
     ["Damage","Lethal",0.22,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Fire",0.22,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1],
+    ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ],

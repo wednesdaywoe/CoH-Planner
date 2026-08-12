@@ -12,6 +12,8 @@ export const CatherineWheel: Power = {
   "name": "Catherine Wheel",
   "internalName": "Catherine_Wheel",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You can craft a wheel of pure pyrotechnic energy to assist you in battle. The Catherine Wheel employs a variety of pyrotechnic powers to damage and distract enemies. If an enemy becomes affected by the Blast Off effect from one of your powers, the Catherine Wheel may Intercept the enemy with an attack, dealing additional damage.",
   "shortHelp": "Summon Catherine Wheel: Ranged DMG (Fire, Energy), Special",
   "icon": "pyrotechnic_catherinewheel.png",
@@ -19,6 +21,9 @@ export const CatherineWheel: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 60,

@@ -12,6 +12,8 @@ export const MidnightGrasp: Power = {
   "name": "Midnight Grasp",
   "internalName": "Midnight_Grasp",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe and continuously drain his life force. Damage: Superior(DoT), Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "darknessmanipulation_midnightgrasp.png",
@@ -20,6 +22,9 @@ export const MidnightGrasp: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -64,6 +69,7 @@ export const MidnightGrasp: Power = {
   "effects": {
     "buffDuration": 20,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.137,
       "table": "Melee_Ones"
     },

@@ -12,6 +12,8 @@ export const Invisibility: Power = {
   "name": "Superior Invisibility",
   "internalName": "Invisibility",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "You can bend light around yourself to become completely Invisible. While this power is active, you are all but impossible to detect. Recharge: Fast",
   "shortHelp": "Toggle: Self Stealth",
   "icon": "illusions_invisibility.png",
@@ -22,6 +24,9 @@ export const Invisibility: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -59,6 +64,7 @@ export const Invisibility: Power = {
       }
     },
     "threatDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     }

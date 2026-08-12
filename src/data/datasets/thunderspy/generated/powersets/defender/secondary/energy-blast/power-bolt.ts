@@ -12,12 +12,17 @@ export const PowerBolt: Power = {
   "name": "Power Bolt",
   "internalName": "Power_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick attack that rapidly hurls small bolts of energy at foes, sometimes knocking them down. Fast, but little damage. Damage: Minor, Recharge: Fast",
   "shortHelp": "Ranged, Minor DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_powerbolts.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

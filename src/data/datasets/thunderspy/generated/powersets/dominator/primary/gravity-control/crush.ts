@@ -12,6 +12,8 @@ export const Crush: Power = {
   "name": "Gravity Field",
   "internalName": "Crush",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a localized gravitational field that slows movement, prevents flight, and has a chance to knock up affected targets. Damage: Moderate(DoT), Recharge: Fast",
   "shortHelp": "Toggle: PBAoE, Moderate DoT(Smash), Foe Knock up, Movement slow, -Fly",
   "icon": "icyonslaught_icepatch.png",
@@ -22,6 +24,9 @@ export const Crush: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

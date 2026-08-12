@@ -12,6 +12,8 @@ export const OffensiveAdaptation: Power = {
   "name": "Offensive Adaptation",
   "internalName": "Offensive_Adaptation",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to sprout spines and become much lighter. While active Hardened Carapace increases your damage slightly, Environmental Modification grants you a moderate to hit buff, and debuff effects from DNA Siphon and Parasitic Aura are increased moderately.  Genetic Corruption will have its chance to put enemies to sleep increased.  Additionally, many of your damaging powers will inflict a minor amount of additional Toxic damage.  While Offensive Adaptation is active your Defense and Damage Resistance is reduced slightly.  Offensive Adaptation costs no endurance.",
   "shortHelp": "Toggle: Bio Armor Offensive Mode",
   "icon": "bioorganicarmor_offensiveadaptation.png",
@@ -22,6 +24,9 @@ export const OffensiveAdaptation: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -38,41 +43,49 @@ export const OffensiveAdaptation: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 0.075,
         "table": "Melee_Ones",
         "toWho": "Self"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 0.075,
         "table": "Melee_Ones",
         "toWho": "Self"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 0.075,
         "table": "Melee_Ones",
         "toWho": "Self"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 0.075,
         "table": "Melee_Ones",
         "toWho": "Self"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0.075,
         "table": "Melee_Ones",
         "toWho": "Self"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 0.075,
         "table": "Melee_Ones",
         "toWho": "Self"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 0.075,
         "table": "Melee_Ones",
         "toWho": "Self"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 0.075,
         "table": "Melee_Ones",
         "toWho": "Self"
@@ -80,9 +93,9 @@ export const OffensiveAdaptation: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,114,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,114,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["Resistance","Smashing",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Lethal",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Fire",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],

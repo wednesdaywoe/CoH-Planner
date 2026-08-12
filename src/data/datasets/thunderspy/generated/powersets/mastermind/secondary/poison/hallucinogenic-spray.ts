@@ -12,12 +12,17 @@ export const HallucinogenicSpray: Power = {
   "name": "Hallucinogenic Spray",
   "internalName": "Hallucinogenic_Spray",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You can spray a cone of hallucinogenic gas that induces fear into any nearby foes.  Affected targets may choke on the gas as their movement and attack rate are severely reduced. Choosing this power locks out Neurotoxic Breath Recharge: Slow",
   "shortHelp": "Ranged (Cone), Foe Fear, -SPD, -Recharge",
   "icon": "poison_neurotoxicbreath.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -44,6 +49,7 @@ export const HallucinogenicSpray: Power = {
   "effects": {
     "buffDuration": 20,
     "durations": {
+      "movementCapDebuff": 20,
       "rechargeDebuff": 20,
       "slow": 20
     },
@@ -52,7 +58,15 @@ export const HallucinogenicSpray: Power = {
       "scale": 15,
       "table": "Ranged_Fear"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1.5,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.65,
       "table": "Ranged_Slow"
     },
@@ -62,6 +76,7 @@ export const HallucinogenicSpray: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
@@ -70,8 +85,8 @@ export const HallucinogenicSpray: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1.5,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.65,
+        "table": "Ranged_Slow"
       }
     }
   },

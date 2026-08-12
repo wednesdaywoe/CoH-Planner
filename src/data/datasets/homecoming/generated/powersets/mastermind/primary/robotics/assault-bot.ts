@@ -12,6 +12,8 @@ export const AssaultBot: Power = {
   "name": "Assault Bot",
   "internalName": "Assault_Bot",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Builds one massive Assault Bot. Simply put, the Assault Bot is a killing machine. There is nothing subtle about its weaponry.",
   "shortHelp": "Summon Assault Bot",
   "icon": "robotics_assembleassaultmech.png",
@@ -19,6 +21,9 @@ export const AssaultBot: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

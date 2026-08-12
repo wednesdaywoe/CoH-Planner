@@ -12,12 +12,17 @@ export const Zapp: Power = {
   "name": "Zapp",
   "internalName": "Zapp",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "A focused electrical blast that deals high damage and drains Endurance, Some of the Endurance you drain may transfer back to you.",
   "shortHelp": "Ranged, High DMG(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_zapp.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

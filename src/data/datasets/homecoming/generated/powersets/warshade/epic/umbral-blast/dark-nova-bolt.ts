@@ -12,12 +12,17 @@ export const DarkNovaBolt: Power = {
   "name": "Dark Nova Bolt",
   "internalName": "Dark_Nova_Bolt",
   "available": 3,
+  "autoIssue": true,
+  "free": true,
   "description": "A very quick, but low damage attack that lowers your target's attack and movement speed. This power is only available while in Dark Nova Form.Damage: Minor.Recharge: Very Fast.",
   "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_shadowbolt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,
@@ -52,6 +57,7 @@ export const DarkNovaBolt: Power = {
       "slow": 3
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -61,6 +67,7 @@ export const DarkNovaBolt: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -75,13 +82,13 @@ export const DarkNovaBolt: Power = {
     }
   },
   "atoms": [
-    ["Damage","Negative",0.6,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Negative",0.6,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SSDamage"],
     ["Movement","JumpHeight",0.2,1,3,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["RechargeTime",null,0.2,1,3,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Run",0.2,1,3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Jump",0.2,1,3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Negative",1.812,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Negative",1.812,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"SSDamage"]
   ],
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Bolt ! &&",
   "modesRequired": [

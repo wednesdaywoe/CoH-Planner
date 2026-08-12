@@ -12,12 +12,17 @@ export const Liquefy: Power = {
   "name": "Liquefy",
   "internalName": "Liquefy",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You unleash a barrage of sonic waves on the Earth itself, generating a powerful, localized earthquake. Most foes that pass through the location will fall down. The violent shaking also reduces their chance to hit and Defense. Recharge: Slow",
   "shortHelp": "Ranged (Location AoE), Foe Knockback, Hold, -To Hit, -DEF",
   "icon": "sonicdebuff_dropknockback.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

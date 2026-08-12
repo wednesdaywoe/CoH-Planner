@@ -12,6 +12,8 @@ export const GeneticContamination: Power = {
   "name": "Genetic Contamination",
   "internalName": "Genetic_Contamination",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You're capable of breaking down the genetic material of your foes with a powerful toxin that is produced by your Bio Armor. Nearby foes affected by this poison will suffer toxic damage over time as well as dealing reduced damage. While Defensive Adaptation is active this power's damage debuff is increased in effectiveness.Damage: Minor.Recharge: Fast.",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Toxic), -Damage(All)",
   "icon": "bioorganicarmor_geneticcontamination.png",
@@ -22,6 +24,9 @@ export const GeneticContamination: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -54,6 +59,7 @@ export const GeneticContamination: Power = {
   "effects": {
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Melee_Debuff_Dam"
     },
@@ -84,7 +90,7 @@ export const GeneticContamination: Power = {
     ["DamageBuff","Negative",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["DamageBuff","Psionic",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["DamageBuff","Toxic",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ],
   "conditionalEffects": [
     {
@@ -95,6 +101,7 @@ export const GeneticContamination: Power = {
       "effects": {
         "buffDuration": 5,
         "damageDebuff": {
+          "ignoreStrength": true,
           "scale": 1.995,
           "table": "Melee_Debuff_Dam"
         },

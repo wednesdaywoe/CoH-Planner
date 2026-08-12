@@ -12,12 +12,17 @@ export const ChronologicalSelection: Power = {
   "name": "Chronos",
   "internalName": "Chronological_Selection",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You distort time around you, selecting a period of time where your abilities are at your highest. Your damage and chance to hit are dramatically increased for a brief period.  This power places the Accelerated effect on you. Recharge: Very Long",
   "shortHelp": "Self +Damage, +ToHit",
   "icon": "timemanipulation_chronologicalselection.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const ChronologicalSelection: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },
@@ -58,9 +64,9 @@ export const ChronologicalSelection: Power = {
     ["DamageBuff","Negative",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? !"]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? !",null,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ]
 };

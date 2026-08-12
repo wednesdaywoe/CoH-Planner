@@ -12,12 +12,17 @@ export const ElectronHaze: Power = {
   "name": "Electron Haze",
   "internalName": "Electron_Haze",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "A short range conical blast of free electrons. This attack can bypass some of a target's defenses and reduce the target's Defense. It can also knock some targets down. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: Moderate.Recharge: Slow.",
   "shortHelp": "Close, Moderate Moderate DMG(Energy), Foe -DEF, Knockback",
   "icon": "radioactiveassault_electronhaze.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -68,7 +73,7 @@ export const ElectronHaze: Power = {
     ["Damage","Energy",1.35,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",2,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.3400000035762787,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? ! Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated_Imunity target.ownPower? ! &&"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.3400000035762787,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? ! Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated_Imunity target.ownPower? ! &&",null,null,null,null,null,null,null,null,null,"Contaminated"],
     ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",1.25,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

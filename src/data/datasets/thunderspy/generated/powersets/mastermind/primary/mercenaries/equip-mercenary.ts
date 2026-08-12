@@ -12,12 +12,17 @@ export const EquipMercenary: Power = {
   "name": "Equip Mercenary",
   "internalName": "Equip_Mercenary",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Equiping your Mercenary Henchmen with more advanced munitions and weaponry has become easier than ever as advanced training in logistics shows that your Henchmen arrive to the scene already equiped to handle the threat.  This auto-power permanently bestows new weapons and abilities to all Mercenary Henchman. The powers gained are unique and dependent upon the type of Mercenary Henchman.  This power only works on your Mercenary Henchmen and you can only Equip your Mercenary Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Equip Mercenary Henchman",
   "icon": "paramilitary_equipsoldier.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,
@@ -40,10 +45,10 @@ export const EquipMercenary: Power = {
   "effects": {},
   "atoms": [
     ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Soldier target.VillainName> Mastermind_Summon.Mercenaries.Tactical_Upgrade source.ownPower? ! &&"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Soldier target.VillainName> Mastermind_Summon.Mercenaries.Tactical_Upgrade source.ownPower? ! &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Soldier target.VillainName> Mastermind_Summon.Mercenaries.Tactical_Upgrade source.ownPower? &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Soldier target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Medic target.VillainName>",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Medic target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Medic target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Medic target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Spec_Ops target.VillainName>",true],

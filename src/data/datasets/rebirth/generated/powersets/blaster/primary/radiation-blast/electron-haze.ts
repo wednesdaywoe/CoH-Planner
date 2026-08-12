@@ -12,12 +12,17 @@ export const ElectronHaze: Power = {
   "name": "Electron Haze",
   "internalName": "Electron_Haze",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "A short range conical blast of free electrons. This attack can bypass some of a target's defenses and reduce the target's Defense. It can also knock some targets down. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Close, Moderate Cone DMG(Energy), Foe -DEF, Knockback",
   "icon": "radiationburst_electronhaze.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 40,
@@ -55,6 +60,7 @@ export const ElectronHaze: Power = {
   "effects": {
     "buffDuration": 9.87,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.072,
       "table": "Ranged_Ones"
     },
@@ -74,7 +80,7 @@ export const ElectronHaze: Power = {
   "atoms": [
     ["Damage","Energy",1.35,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",2,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.25],
     ["DamageBuff","Smashing",0.072,1,9.87,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.072,1,9.87,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.072,1,9.87,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -83,7 +89,7 @@ export const ElectronHaze: Power = {
     ["DamageBuff","Negative",0.072,1,9.87,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.072,1,9.87,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.072,1,9.87,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.25],
     ["Damage","Energy",1.172071,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

@@ -12,12 +12,17 @@ export const PsychicWail: Power = {
   "name": "Psychic Wail",
   "internalName": "Psychic_Wail",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes which deals Extreme Psionic damage. Those that survive will have a severely reduced attack rate and may be left Disoriented.Damage: Superior.Recharge: Long.",
   "shortHelp": "PBAoE, Superior DMG(Psionic), Foe Disorient -Recharge",
   "icon": "psychicblast_psychicwail.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.5,
     "radius": 20,
@@ -63,6 +68,7 @@ export const PsychicWail: Power = {
       "rechargeDebuff": 20
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.7,
       "table": "Ranged_Slow"
     },
@@ -73,10 +79,10 @@ export const PsychicWail: Power = {
     }
   },
   "atoms": [
-    ["Damage","Psionic",2.253,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Psionic",0.928,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Psionic",0.928,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Psionic",2.253,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",0.928,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",0.928,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SentCrit,SentCritAoE"],
+    ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.7,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Damage","Psionic",1.345,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

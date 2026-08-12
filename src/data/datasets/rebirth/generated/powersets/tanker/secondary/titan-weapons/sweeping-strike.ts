@@ -12,6 +12,8 @@ export const SweepingStrike: Power = {
   "name": "Titan Sweep",
   "internalName": "Sweeping_Strike",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down. Damage: High, Recharge: Long",
   "shortHelp": "Melee (Cone), High DMG(Smashing), Foe Knockdown",
   "icon": "titanweapons_sweepingstrike.png",
@@ -20,6 +22,9 @@ export const SweepingStrike: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -63,18 +68,18 @@ export const SweepingStrike: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1"],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Smashing",1.429,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.64305,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.66],
+    ["Damage","Fire",0.64305,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Meta",null,1,98,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,-1,1,5,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kFastMode source.Mode?",true],
+    ["Meta",null,1,98,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,-1,1,5,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"designer_status"],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kFastMode source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Smashing",2.26517,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.66],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.15]
   ],
   "specialEffects": [
     {
@@ -115,7 +120,13 @@ export const SweepingStrike: Power = {
       "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down. Damage: High, Recharge: Long",
       "effectArea": "Cone",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Smashing",1.429,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.66],
+        ["Damage","Fire",0.64305,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
+        ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+      ]
     }
   },
   "setsModes": [

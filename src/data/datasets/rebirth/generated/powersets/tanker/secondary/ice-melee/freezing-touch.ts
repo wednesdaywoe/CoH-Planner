@@ -12,6 +12,8 @@ export const FreezingTouch: Power = {
   "name": "Freezing Touch",
   "internalName": "Freezing_Touch",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "This Freezing Touch will encase a single foe in a block of ice. This will deal high damage over time, as well as freezing him in his tracks, leaving him cold and helpless. Damage:High(DoT), Recharge: Slow",
   "shortHelp": "Melee, High DoT(Cold), Foe Hold",
   "icon": "icyonslaught_freezingtouch.png",
@@ -22,6 +24,9 @@ export const FreezingTouch: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -82,11 +87,11 @@ export const FreezingTouch: Power = {
     ["Mez","Knockback",-100,1,6,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Knockup",-100,1,6,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.126,1,2.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0],
+    ["Damage","Fire",0.126,1,2.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Damage","Cold",1.10315,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",0.183858,1,2.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Held",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.2919999957084656,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.2919999957084656,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.29]
   ]
 };

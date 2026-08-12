@@ -12,12 +12,17 @@ export const DarkEmpowerment: Power = {
   "name": "Dark Empowerment",
   "internalName": "Dark_Empowerment",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Complete understanding of Dark Magics and the Ley lines of this world have enhanced your summoning prowess beyond imgained. Dark Empowerment will now automatically and permanently bestow the most powerful and darkest new powers and abilities to all of your Undead Henchman. The Empowered Undead will gain new abilities and powers. The powers gained are unique and dependent upon the type of Undead Henchman that is Empowered. Dark Empowerment only works on your Undead Henchmen and you can only Empower your Undead Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Empower Undead Henchman",
   "icon": "necromancy_darkempowerment.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,
@@ -46,22 +51,22 @@ export const DarkEmpowerment: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName> kRage target> .5 > &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Lich target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Lich target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Lich target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Lich target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Lich target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Lich target.VillainName>",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Lich target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ],
   "mechanicType": "parentMechanic"
 };

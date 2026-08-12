@@ -12,6 +12,8 @@ export const SonicThrust: Power = {
   "name": "Sonic Thrust",
   "internalName": "Sonic_Thrust",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A focused attack of intense sonic power that violently sends a nearby foe flying. Deals minimal damage, but can be very effective.Damage: Minor.Recharge: Fast.",
   "shortHelp": "Melee, DMG(Energy/Smash), Foe Knockback/Repel",
   "icon": "sonicmanipulation_sonicthrust.png",
@@ -26,6 +28,9 @@ export const SonicThrust: Power = {
   ],
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

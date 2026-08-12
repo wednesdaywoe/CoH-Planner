@@ -12,12 +12,17 @@ export const Fallout: Power = {
   "name": "Fallout",
   "internalName": "Fallout",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You can activate this power on a Henchman sacrifice them and extract the energy from their body to deal a massive amount of Energy damage to any nearby foes. All affected foes are extremely weakened by the Fallout, and their Accuracy, Defense, Damage and Damage Resistance is severely reduced.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Sacrifice Henchman, PBAoE, Extreme DMG(Energy), Foe -To Hit, -DEF, -DMG, -Res(All)",
   "icon": "radiationpoisoning_fallout.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -45,7 +50,7 @@ export const Fallout: Power = {
   "maxSlots": 6,
   "atoms": [
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq",true]
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq",true,null,null,null,null,null,null,null,null,null,null,"silent_kill"]
   ],
   "damageTypes": [
     "Energy"

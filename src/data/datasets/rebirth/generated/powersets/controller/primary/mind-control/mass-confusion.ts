@@ -12,12 +12,17 @@ export const MassConfusion: Power = {
   "name": "Mass Confusion",
   "internalName": "Mass_Confusion",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You can cause Mass Confusion within a group of foes, creating chaos. All affected foes within the area will turn and attack each other, ignoring all heroes. If you Confuse villains before they noticed you, your presence will continue to go unnoticed. You will not receive any Experience Points for foes defeated by Confused enemies. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Confuse",
   "icon": "mentalcontrol_confuse.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,
@@ -49,7 +54,7 @@ export const MassConfusion: Power = {
   },
   "atoms": [
     ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Mez","Confused",4,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

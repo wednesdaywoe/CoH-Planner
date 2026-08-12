@@ -12,12 +12,17 @@ export const Aim: Power = {
   "name": "Charge Up",
   "internalName": "Aim",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and endurance modification.",
   "shortHelp": "Self +To Hit, +DMG, +End Mod",
   "icon": "electricalbolt_aim.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const Aim: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Melee_Buff_Dmg"
     },
@@ -46,6 +52,7 @@ export const Aim: Power = {
     },
     "specialBuff": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Ranged_EndDrain"
       }

@@ -12,12 +12,18 @@ export const SoothingFlames: Power = {
   "name": "Soothing Flames",
   "internalName": "Soothing_Flames",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can use your Warmth to heal some of your wounds, and the wounds of your group. The heat from Warmth can also protect your group and yourself from Toxic Damage for a while. This power has a small radius, so your allies need to be near you if they wish to be affected. Recharge: Moderate",
   "shortHelp": "PBAoE, Team +Heal, +Res(Toxic)",
   "icon": "fierycomp_soothingflames.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

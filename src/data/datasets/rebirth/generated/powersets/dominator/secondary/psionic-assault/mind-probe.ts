@@ -12,12 +12,17 @@ export const MindProbe: Power = {
   "name": "Mind Probe",
   "internalName": "Mind_Probe",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wrecks havoc on your foes synapses, dealing high Psionic Damage while reducing their attack speed. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mindprobe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -47,6 +52,7 @@ export const MindProbe: Power = {
       "rechargeDebuff": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     }
@@ -55,7 +61,7 @@ export const MindProbe: Power = {
     ["Damage","Psionic",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.4,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Damage","Psionic",2.2666,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,null,null,"drop_toggles"],
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

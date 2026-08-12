@@ -12,6 +12,8 @@ export const FuturePain: Power = {
   "name": "Future Pain",
   "internalName": "Future_Pain",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You lay your hands on your foe dig into his future timeline for the most painful experience the foe will ever go through and plant those memories on his present mind inflicting great psionic damage. The visions of this pain may be enough to make your foe cower in fear. Targets affected by the Delayed effect will suffer a more terrifying experience.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Melee, DMG(Psionic), Foe Fear",
   "icon": "timemanipulation_futurepain.png",
@@ -20,6 +22,9 @@ export const FuturePain: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -50,6 +55,7 @@ export const FuturePain: Power = {
   "effects": {
     "buffDuration": 9.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Melee_Ones"
     },
@@ -69,14 +75,14 @@ export const FuturePain: Power = {
   "atoms": [
     ["Damage","Psionic",3.24,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Terrorized",5,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["DamageBuff","Smashing",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Lethal",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Fire",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Cold",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Energy",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Negative",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Psionic",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Toxic",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Lethal",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Fire",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Cold",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Energy",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Negative",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Psionic",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Toxic",0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
     ["Damage","Psionic",2.2862,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Terrorized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Terrorized",5,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? &&",true],

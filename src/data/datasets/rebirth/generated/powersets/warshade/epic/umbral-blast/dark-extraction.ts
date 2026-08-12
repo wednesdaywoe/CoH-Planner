@@ -12,12 +12,17 @@ export const DarkExtraction: Power = {
   "name": "Dark Extraction",
   "internalName": "Dark_Extraction",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Defeated foes are ripe for the picking.  A Warshade can extract the essence from a defeated villain and infuse it with Nictus energy.  The extracted energy is an echo of the target's life force, and although it is not sentient, the infused Nictus energy does give it a rudimentary spark of life. Eventually, the extracted entity will fade away into nothingness. Recharge: Very Long",
   "shortHelp": "Summon Essence: Ranged Moderate DMG (Negative)",
   "icon": "umbralblast_darkextraction.png",
   "powerType": "Click",
   "targetType": "DeadFoe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

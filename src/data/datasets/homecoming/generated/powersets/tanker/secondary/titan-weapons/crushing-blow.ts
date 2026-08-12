@@ -12,6 +12,8 @@ export const CrushingBlow: Power = {
   "name": "Crushing Blow",
   "internalName": "Crushing_Blow",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.",
   "shortHelp": "Melee, DMG(Smashing), -DEF",
   "icon": "titanweapons_crushingblow.png",
@@ -22,6 +24,9 @@ export const CrushingBlow: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 9,
@@ -64,7 +69,7 @@ export const CrushingBlow: Power = {
   "atoms": [
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.738,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+    ["Damage","Fire",0.738,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"]
   ],
   "modeVariants": {
     "FastMode": {
@@ -95,7 +100,12 @@ export const CrushingBlow: Power = {
       "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"]
+      ]
     }
   },
   "requires": "Tanker_Defense.Shield_Defense !"

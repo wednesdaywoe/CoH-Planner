@@ -84,7 +84,10 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
     // specialBuff.stun. With the aspect now read from the binary, it routes correctly to
     // specialBuff.stun (matching HC) and is STILL not an applied `effects.stun` mez.
     expect(PowerBoost.effects?.stun).toBeUndefined(); // no applied Stun mez
-    expect(PowerBoost.effects?.specialBuff?.stun).toEqual({ scale: 0.75, table: 'Melee_Ones' });
+    // A +Strength buff does not itself take Strength — every Power Boost template carries
+    // `IgnoreStrength`, which the emitted effect now records (ENT-4).
+    expect(PowerBoost.effects?.specialBuff?.stun)
+      .toEqual({ scale: 0.75, table: 'Melee_Ones', ignoreStrength: true });
   });
 
   // --- Sign rule: a negative-scale mez on a duration table is not applied --------

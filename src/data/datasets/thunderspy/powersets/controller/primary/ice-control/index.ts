@@ -21,7 +21,12 @@ import { Glacier as Glacier } from './glacier';
 
 export const powerset: Powerset = {
   id: 'controller/ice-control',
+  setPath: 'Controller_Control.Ice_Control',
   name: 'Ice Control',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can draw moisture from the air to create Icy formations. With these abilities, you can control ice with remarkable precision to dominate your foes.',
   icon: 'ice_control_set.ico',
   archetype: 'controller',

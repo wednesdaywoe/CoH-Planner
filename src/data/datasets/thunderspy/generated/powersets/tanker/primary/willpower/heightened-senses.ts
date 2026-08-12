@@ -12,6 +12,8 @@ export const HeightenedSenses: Power = {
   "name": "Heightened Senses",
   "internalName": "Heightened_Senses",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You become more aware of your environment and its hazards while this power is activated. This will increase your Defense versus environmental damage as long as it is active. Your Heightened Senses also allow you to perceive stealthy foes and resist Defense DeBuffs. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative Energy), +Per",
   "icon": "willpower_heightenedsenses.png",
@@ -22,6 +24,9 @@ export const HeightenedSenses: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const HeightenedSenses: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       },

@@ -12,12 +12,17 @@ export const ViciousMockery: Power = {
   "name": "Vicious Mockery",
   "internalName": "Vicious_Mockery",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You berate your foes and your Vicious Mockery sweeps them off their feet.",
   "shortHelp": "Melee Cone Foe Knockdown",
   "icon": "obediencetraining_viciousmockery.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

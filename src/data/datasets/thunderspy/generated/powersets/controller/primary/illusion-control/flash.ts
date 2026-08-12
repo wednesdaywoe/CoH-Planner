@@ -12,12 +12,17 @@ export const Flash: Power = {
   "name": "Flash",
   "internalName": "Flash",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Generates a brilliant flash of light around you that blinds nearby foes. Flashed foes are rendered helpless and unable to defend themselves. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Hold",
   "icon": "illusions_flash.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,

@@ -12,12 +12,17 @@ export const SiphonSpeed: Power = {
   "name": "Siphon Speed",
   "internalName": "Siphon_Speed",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Siphon the speed from a targeted foe, Slowing their movement and attack rate while boosting your own. Recharge: Long",
   "shortHelp": "Ranged, Foe -Speed, -Recharge, Self +Speed, +Recharge",
   "icon": "kineticboost_siphonspeed.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -41,6 +46,7 @@ export const SiphonSpeed: Power = {
     "buffDuration": 60,
     "durations": {
       "movement": 60,
+      "movementCapDebuff": 60,
       "rechargeBuff": 60,
       "rechargeDebuff": 60,
       "slow": 60
@@ -55,11 +61,20 @@ export const SiphonSpeed: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     },
@@ -69,6 +84,7 @@ export const SiphonSpeed: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },
@@ -77,8 +93,8 @@ export const SiphonSpeed: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.5,
+        "table": "Melee_Slow"
       }
     },
     "maxStacks": 2,

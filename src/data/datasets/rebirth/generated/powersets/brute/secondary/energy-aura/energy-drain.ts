@@ -12,12 +12,17 @@ export const EnergyDrain: Power = {
   "name": "Energy Drain",
   "internalName": "Energy_Drain",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Energy Drain leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance and Defense. If there are no foes within range, you will not gain any Endurance or Defense. Recharge: Long",
   "shortHelp": "PBAoE, Self +End, +Def, Foe -End",
   "icon": "energyaura_drain.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 12,
@@ -97,7 +102,7 @@ export const EnergyDrain: Power = {
   },
   "atoms": [
     ["Endurance",null,-0.33,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
+    ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
     ["Defense","Smashing",0.05,1,45,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
     ["Defense","Lethal",0.05,1,45,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
     ["Defense","Fire",0.05,1,45,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05],

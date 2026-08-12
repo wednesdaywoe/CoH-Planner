@@ -12,6 +12,8 @@ export const AssassinsFrenzy: Power = {
   "name": "Assassin's Frenzy",
   "internalName": "Assassins_Frenzy",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "A signature Stalker attack. This attack does superior lethal damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Frenzy will grant 2 stacks of Blood Frenzy if used while not hidden and will grant 3 stacks if hidden. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not. Damage: Special, Recharge: Slow",
   "shortHelp": "Melee, Special DMG(Lethal), +Blood Frenzy",
   "icon": "savagemelee_assassinstrike.png",
@@ -20,6 +22,9 @@ export const AssassinsFrenzy: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -41,11 +46,18 @@ export const AssassinsFrenzy: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 2.5,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 2.5,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.5,
+      "table": "Melee_Damage"
+    }
+  ],
   "fromHideBonus": 0.33333333333333326,
   "midCombatCast": 1,
   "effects": {
@@ -55,10 +67,12 @@ export const AssassinsFrenzy: Power = {
     },
     "stealth": {
       "stealthPvE": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "stealthPvP": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       }
@@ -66,6 +80,7 @@ export const AssassinsFrenzy: Power = {
   },
   "atoms": [
     ["Damage","Lethal",2.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",2.5,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
     ["Stealth","RadiusPvE",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

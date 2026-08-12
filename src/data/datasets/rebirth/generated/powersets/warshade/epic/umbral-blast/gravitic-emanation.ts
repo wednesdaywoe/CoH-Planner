@@ -12,12 +12,17 @@ export const GraviticEmanation: Power = {
   "name": "Gravitic Emanation",
   "internalName": "Gravitic_Emanation",
   "available": 10,
+  "autoIssue": true,
+  "free": true,
   "description": "Gravitic Emanation sends bolts of dark Nictus energy to multiple targets within a cone area in front of the caster.  Gravitic Emanation deals only minor Negative Energy damage to each affected foe, but pulls then towards you while also leaving them Disoriented and with reduced attack rate and movement speed. This power can be used while in Dark Nova form at an increased range, higher damage and fast recharge. Damage: Minor. Recharge: Slow",
   "shortHelp": "Ranged (Cone), Minor DMG(Negative), Foe Disorient, Attract, -Recharge, -SPD",
   "icon": "umbralblast_graviticemanation.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -64,6 +69,7 @@ export const GraviticEmanation: Power = {
       "slow": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -73,6 +79,7 @@ export const GraviticEmanation: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -92,7 +99,7 @@ export const GraviticEmanation: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode source.Mode? !"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode source.Mode? !",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Negative",0.4,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Accuracy",null,1,1,8,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -101,7 +108,7 @@ export const GraviticEmanation: Power = {
     ["Movement","Run",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["RechargeTime",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode source.Mode?",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Negative",1.462185,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Accuracy",null,2,1,2,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -131,6 +138,7 @@ export const GraviticEmanation: Power = {
           "slow": 8
         },
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.2,
           "table": "Ranged_Slow"
         },
@@ -140,6 +148,7 @@ export const GraviticEmanation: Power = {
             "table": "Ranged_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -157,7 +166,15 @@ export const GraviticEmanation: Power = {
       "description": "Sends bolts of Nictus dark energy to multiple targets at once within a cone area in front of the caster.  Deals moderate negative energy damage to each affected foe and reduces their attack rate and movement speed. This power is only available while in Dark Nova Form. Damage: Moderate. Recharge: Slow",
       "effectArea": "Cone",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Negative",0.99,1,0,"Ranged_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Movement","JumpHeight",0.2,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["Movement","Jump",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Movement","Run",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Movement","Fly",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["RechargeTime",null,0.2,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+      ]
     }
   },
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Emanation ! && Inherent.Inherent.Dark_Nova_Emanation ! &&",

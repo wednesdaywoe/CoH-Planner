@@ -12,6 +12,8 @@ export const QuantumShield: Power = {
   "name": "Quantum Shield",
   "internalName": "Quantum_Shield",
   "available": 13,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on Quantum Shield, you become highly resistant to Energy and Negative damage. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Energy, Negative)",
   "icon": "luminousaura_quantumshield.png",
@@ -22,6 +24,9 @@ export const QuantumShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

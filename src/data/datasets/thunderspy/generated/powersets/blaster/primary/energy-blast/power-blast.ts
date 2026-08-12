@@ -12,6 +12,8 @@ export const PowerBlast: Power = {
   "name": "Power Blast",
   "internalName": "Power_Blast",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock them back. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_powerblast.png",
@@ -23,6 +25,9 @@ export const PowerBlast: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -61,6 +66,7 @@ export const PowerBlast: Power = {
   "effects": {
     "buffDuration": 9.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },

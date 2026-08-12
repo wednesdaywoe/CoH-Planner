@@ -12,6 +12,8 @@ export const EntropyShield: Power = {
   "name": "Entropy Shield",
   "internalName": "Entropy_Shield",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Entropy Shield diminishes and dampens the energy of controlling type effects.  The shield makes you resistant to Knockback, Repel, Disorient, Hold, Sleep, Immobilization, and enemy Teleportation for as long as you can keep this toggle power active. Entropy Shield also grants you good resistance to Defense Debuffs.  Additionally, this power grants the user a moderate recharge bonus while active and resistance to endurance drain effects. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Knockback, Repel, Disorient, Hold, Sleep, Immobilize, Teleport, DeBuff DEF), +Rech",
   "icon": "energyaura_entropy.png",
@@ -22,6 +24,9 @@ export const EntropyShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -39,14 +44,17 @@ export const EntropyShield: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       }
@@ -84,10 +92,12 @@ export const EntropyShield: Power = {
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
@@ -101,6 +111,7 @@ export const EntropyShield: Power = {
       }
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     },

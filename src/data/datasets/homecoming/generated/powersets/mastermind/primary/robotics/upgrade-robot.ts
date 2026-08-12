@@ -12,6 +12,8 @@ export const UpgradeRobot: Power = {
   "name": "Upgrade Robot",
   "internalName": "Upgrade_Robot",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Upgrade Robot will permanently bestow the most powerful and high-tech gear and weaponry to all of your Robot Henchman. The Upgraded Robot will gain new abilities, powers and weapons. The powers gained are unique and dependent upon the type of Robot Henchmen that is Upgraded.Your Protector Bot Henchmen will also gain the ability to Repair other Robot Henchmen. This power only works on your Robot Henchmen and you can only Upgrade your Robot Henchman once with this power.",
   "shortHelp": "Ranged, Upgrade Robot Henchman",
   "icon": "robotics_upgraderobot.png",
@@ -22,6 +24,9 @@ export const UpgradeRobot: Power = {
     "RechargeTime"
   ],
   "procsAllowed": false,
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -47,7 +52,7 @@ export const UpgradeRobot: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Protector_Bot target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Protector_Bot target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Protector_Bot target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Protector_Bot target.VillainName>",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Protector_Bot target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Protector_Bot target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Assault_Bot target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Assault_Bot target.VillainName>",true],

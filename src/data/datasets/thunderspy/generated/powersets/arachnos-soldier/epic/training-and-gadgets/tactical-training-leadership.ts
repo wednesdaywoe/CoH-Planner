@@ -12,6 +12,8 @@ export const TacticalTrainingLeadership: Power = {
   "name": "Tactical Training: Offensive",
   "internalName": "Tactical_Training:_Leadership",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you and your nearby teammates deal more damage and have an increased chance to hit. Your advanced Tactics also increase your Perception so you can detect Stealthy foes.",
   "shortHelp": "Toggle: PBAoE, Team +DMG, +To Hit, +Perception",
   "icon": "trainingandgadgets_tacticaltrainingleadership.png",
@@ -22,6 +24,10 @@ export const TacticalTrainingLeadership: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Teammate",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -44,6 +50,7 @@ export const TacticalTrainingLeadership: Power = {
   "effects": {
     "buffDuration": 2.25,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Ranged_Buff_Dmg"
     },

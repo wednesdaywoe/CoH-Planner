@@ -12,6 +12,8 @@ export const CobraStrike: Power = {
   "name": "Cobra Strike",
   "internalName": "Cobra_Strike",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Using intense martial arts focus, you can perform a Cobra Strike that deals high damage, but has a great chance of Disorienting your target. Damage: High, Recharge: Medium",
   "shortHelp": "Melee, High DMG(Smash), Foe Disorient",
   "icon": "martialarts_cobrastrike.png",
@@ -20,6 +22,9 @@ export const CobraStrike: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

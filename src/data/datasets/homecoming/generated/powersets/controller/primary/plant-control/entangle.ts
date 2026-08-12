@@ -12,12 +12,17 @@ export const Entangle: Power = {
   "name": "Entangle",
   "internalName": "Entangle",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Immobilizes your target by Entangling their feet in a twisted mass of thorny roots. The roots do smashing and lethal damage to the target over time. More resilient foes may require multiple applications to Immobilize. Entangle can immobilize flying targets, if they are near the ground when attacked.",
   "shortHelp": "Ranged, DoT(Smashing, Lethal), Foe Immobilize",
   "icon": "plantcontrol_entangle.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -77,16 +82,16 @@ export const Entangle: Power = {
     ["Damage","Smashing",0.1,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.1,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",7.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",7.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"],
     ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Movement","FlyMode",-1.6,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Damage","Lethal",0.2,1,9.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true],
+    ["Damage","Lethal",0.2,1,9.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"],
     ["Damage","Smashing",0.14,1,9.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.14,1,9.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Immobilized",1,5,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Smashing",0.07,1,9.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true],
-    ["Damage","Lethal",0.07,1,9.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true]
+    ["Damage","Smashing",0.07,1,9.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true,null,null,null,null,null,null,null,null,"Containment"],
+    ["Damage","Lethal",0.07,1,9.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true,null,null,null,null,null,null,null,null,"Containment"]
   ],
   "specialEffects": [
     {

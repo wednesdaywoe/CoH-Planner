@@ -12,12 +12,17 @@ export const Inexhaustible: Power = {
   "name": "Inexhaustible",
   "internalName": "Inexhaustible",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Inexhaustable boosts your maximum hit points and grants increased Regeneration and Recovery. It also provides some resistance to Slow and Endurance Drain effects. While Efficient Adaptation is active, this power grants a small bonus to Regeneration and Recovery. While Defensive Adaptation is active, this power grants additional maximum hit points and negates your defense, instead applying a constant 1 percent absorb shield.",
   "shortHelp": "Auto: +Max HP, +Regen, +Recovery, +Res(Slow, End Drain), +Special",
   "icon": "bioorganicarmor_inexhaustible.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 5
@@ -35,14 +40,17 @@ export const Inexhaustible: Power = {
     "buffDuration": 5.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       }
@@ -59,6 +67,7 @@ export const Inexhaustible: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_HealSelf"
     },
@@ -150,6 +159,7 @@ export const Inexhaustible: Power = {
           "maxHPBuffUnenhanced": 5.25
         },
         "maxHPBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.45,
           "table": "Melee_HealSelf"
         }
@@ -168,10 +178,12 @@ export const Inexhaustible: Power = {
           "regenBuffUnenhanced": 5.25
         },
         "recoveryBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.1,
           "table": "Melee_Ones"
         },
         "regenBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 0.15,
           "table": "Melee_Ones"
         }

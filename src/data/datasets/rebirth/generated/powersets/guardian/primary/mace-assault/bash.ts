@@ -12,6 +12,8 @@ export const Bash: Power = {
   "name": "Bash",
   "internalName": "Bash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You bash with your mace dealing moderate smashing damage and minor toxic damage over time.  Damage: Moderate Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Smash), Minor DoT(Toxic), Foe Disorient",
   "icon": "banespider_bash.png",
@@ -20,6 +22,9 @@ export const Bash: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -65,12 +70,12 @@ export const Bash: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.1],
     ["Damage","Toxic",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
     ["Damage","Smashing",1.992,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.1]
   ],
   "specialEffects": [
     {

@@ -12,12 +12,17 @@ export const ConservePower: Power = {
   "name": "Energize",
   "internalName": "Conserve_Power",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You can channel a tremendous amount of energy through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers, boost your regeneration dramatically, and make you resistant to Stuns for a short time.Recharge: Long.",
   "shortHelp": "Self Endurance Discount, Heal, +Regen, Res(Stun)",
   "icon": "energymanipulation_conservepower.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,
@@ -48,6 +53,7 @@ export const ConservePower: Power = {
     },
     "effectDuration": 60,
     "enduranceDiscount": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Stun"
     },
@@ -56,10 +62,12 @@ export const ConservePower: Power = {
       "table": "Melee_Ones"
     },
     "regenBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1.125,
       "table": "Melee_Ones"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

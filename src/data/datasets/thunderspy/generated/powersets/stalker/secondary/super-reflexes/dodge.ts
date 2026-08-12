@@ -12,12 +12,17 @@ export const Dodge: Power = {
   "name": "Dodge",
   "internalName": "Dodge",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You have the ability to innately Dodge some attacks and you resist Defense DeBuffs. Dodge also grants you  Damage Resistance to all damage except Toxic and Psionic.  This Damage Resistance is only available as you lose Health but it improves as your HP declines. This power is always on, and will permanently increase your Defense versus melee, ranged, and area of effect attacks.",
   "shortHelp": "Auto: Self +DEF(Melee, Ranged, AoE), Res(DeBuff DEF), Res(DMG, Special)",
   "icon": "superreflexes_lucky.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 2

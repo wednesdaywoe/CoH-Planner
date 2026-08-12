@@ -12,6 +12,8 @@ export const WhirlingSword: Power = {
   "name": "The Lotus Drops",
   "internalName": "Whirling_Sword",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), Foe -Def",
   "icon": "katana_whirlingsword.png",
@@ -20,6 +22,9 @@ export const WhirlingSword: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -71,7 +76,7 @@ export const WhirlingSword: Power = {
   "atoms": [
     ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.12,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
     ["Damage","Fire",0.5319,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.10000000149011612,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !"],
     ["Damage","Lethal",1.623749,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -87,10 +92,15 @@ export const WhirlingSword: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.BulletCut",
+        "count": 1
+      },
       "effects": {
         "buffDuration": 5,
         "defenseBuff": {
           "ranged": {
+            "ignoreStrength": true,
             "scale": 2,
             "table": "Melee_Buff_Def"
           }

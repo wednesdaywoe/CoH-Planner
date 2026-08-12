@@ -12,12 +12,17 @@ export const Gravestone: Power = {
   "name": "Gravestone",
   "internalName": "Gravestone",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Create a giant pillar of stone, creating a Gravestone around your target, dealing extreme damage and limiting their ability to jump and fly for a short time.Gravestone grants two stacks of Seismic Pressure.",
   "shortHelp": "Ranged, DMG(Smash), Foe -Jump, -Fly",
   "icon": "seismicblast_gravestone.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 60,
@@ -53,31 +58,43 @@ export const Gravestone: Power = {
   "effects": {
     "buffDuration": 16,
     "durations": {
+      "movementCapDebuff": 16,
       "slow": 16
+    },
+    "movementCapDebuff": {
+      "jumpHeight": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_Slow"
+      }
     },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
-      },
-      "jumpHeight": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
       }
     }
   },
   "atoms": [
     ["Movement","FlyMode",-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Meta",null,-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Meta",null,-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"jump pack"],
     ["Movement","Jump",1,1,16,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelDebuff"],
     ["Movement","JumpHeight",1,1,16,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelDebuff"],
-    ["Damage","Smashing",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Smashing",2.28,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Smashing",2.049,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Smashing",2.049,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Damage","Smashing",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",2.28,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+    ["RechargePower",null,-1,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >=",null,null,null,null,null,null,null,null,null,"Seismic"],
+    ["Meta",null,1,1,45,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >=",null,null,null,null,null,null,null,null,null,"SeismicShockwaves",null,"cancel_mods"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >=",null,null,null,null,null,null,null,null,null,"SeismicShockwaves"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >= arch source> Class_Blaster eq &&",null,null,null,null,null,null,null,null,null,null,"Class_Blaster"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >= arch source> Class_Corruptor eq &&",null,null,null,null,null,null,null,null,null,null,"Class_Corruptor"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >= arch source> Class_Defender eq &&",null,null,null,null,null,null,null,null,null,null,"Class_Defender"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >= arch source> Class_Sentinel eq &&",null,null,null,null,null,null,null,null,null,null,"Class_Sentinel"],
+    ["Damage","Smashing",2.049,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",2.049,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
   ]
 };

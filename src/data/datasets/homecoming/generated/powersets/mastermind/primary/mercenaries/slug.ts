@@ -12,12 +12,17 @@ export const Slug: Power = {
   "name": "Slug",
   "internalName": "Slug",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Fires a single Slug at a targeted foe. Firing a single Slug is slower than firing a Burst, but deals more damage, is longer range, and can knock down foes.Focus Fire:The target struck by this attack will take 3.33% increased damage from any Mercenary Henchmen regardless of their owners for 30 seconds. This does effect does not stack from the same power or from multiple Masterminds.",
   "shortHelp": "Ranged, DMG(Lethal), Foe Knockback",
   "icon": "paramilitary_assaultrifleslug.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 100,
@@ -54,8 +59,8 @@ export const Slug: Power = {
   "atoms": [
     ["Damage","Lethal",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,177,30,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,180,30,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,177,30,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"RefreshReminder",null,"set_mode"],
+    ["Meta",null,1,180,30,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"RefreshReminder",null,"set_mode"],
     ["Damage","Lethal",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

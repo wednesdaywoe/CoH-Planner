@@ -12,12 +12,18 @@ export const Judgement: Power = {
   "name": "Judgement",
   "internalName": "Judgement",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You release a tremendous wave of Radiant light dealing massive damage to all nearby foes and healing friends. Unholy foes such as demons, undead, and ghosts take additional damage. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Ranged, Extreme DMG(Fire), High Heal",
   "icon": "luminousblast_dawnstrike.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 25,
@@ -38,23 +44,16 @@ export const Judgement: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 3,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.5,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 3,
+    "table": "Ranged_Damage"
+  },
   "atoms": [
     ["Damage","Fire",3,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
-    ["Damage","Fire",1.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&"],
     ["Damage","Fire",2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
-    ["Heal",null,3,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+    ["Heal",null,3,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
+    ["Damage","Fire",1.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&",true]
   ],
   "damageTypes": [
     "Fire"

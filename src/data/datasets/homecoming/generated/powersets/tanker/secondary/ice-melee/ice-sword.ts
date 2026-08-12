@@ -12,6 +12,8 @@ export const IceSword: Power = {
   "name": "Ice Sword",
   "internalName": "Ice_Sword",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a blade of solid ice that deals good damage. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.",
   "shortHelp": "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "icyonslaught_icesword.png",
@@ -20,6 +22,9 @@ export const IceSword: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -63,6 +68,7 @@ export const IceSword: Power = {
       "slow": 8
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Melee_Slow"
     },
@@ -72,6 +78,7 @@ export const IceSword: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Melee_Slow"
       },
@@ -93,7 +100,7 @@ export const IceSword: Power = {
     ["Movement","Jump",0.1,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.1,1,8,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["RechargeTime",null,0.1,1,8,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Lethal",0.597,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",0.974,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]

@@ -12,6 +12,8 @@ export const SonicRepulsion: Power = {
   "name": "Sonic Soothe",
   "internalName": "Sonic_Repulsion",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active all nearby allies will have their regeneration rate increased dramatically.  Recharge: Fast.",
   "shortHelp": "Toggle PBAoE: Ally +Regeneration",
   "icon": "sonicdebuff_teamdebuffdamres.png",
@@ -22,6 +24,10 @@ export const SonicRepulsion: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Friend",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

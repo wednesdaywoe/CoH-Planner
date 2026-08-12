@@ -12,12 +12,17 @@ export const Caltrops: Power = {
   "name": "Caltrops",
   "internalName": "Caltrops",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You toss a handful of Caltrops at a targeted location and spread the tiny metal spikes over a large area. Any enemy that pass over the Caltrops will be forced to move at a slower rate. They will also take some trivial Lethal damage over time. Damage: Minor(DoT), Recharge: Slow",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
   "icon": "traps_droppedaoedebuffrunspeed.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 25,

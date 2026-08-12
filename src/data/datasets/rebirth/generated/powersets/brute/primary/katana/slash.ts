@@ -12,6 +12,8 @@ export const Slash: Power = {
   "name": "Gambler's Cut",
   "internalName": "Slash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a quick slash with your katana. This attack is very fast, but deals only minor damage. This attack can reduce a target's Defense, making them easier to hit. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG(Lethal), Foe -Def",
   "icon": "katana_slash.png",
@@ -20,6 +22,9 @@ export const Slash: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -71,9 +76,9 @@ export const Slash: Power = {
     ["Damage","Lethal",0.42,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.189,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,0],
+    ["Damage","Fire",0.189,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Damage","Lethal",0.668821,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 70 < &&",true],
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 70 < &&",true,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
   "requires": "Brute_Defense.Shield_Defense !"

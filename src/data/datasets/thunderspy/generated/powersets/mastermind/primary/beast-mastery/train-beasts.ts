@@ -12,12 +12,17 @@ export const TrainBeasts: Power = {
   "name": "Train Beasts",
   "internalName": "Train_Beasts",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Train your Beast Henchmen to more effectively attack your foes. This power permanently bestows new powers and abilities to all of your Beast Henchmen. The powers gained are unique and dependent upon the type of Beast Henchman. This power only works on your Beast Henchmen and you can only Train your Beast Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Train Beast Henchmen",
   "icon": "beastmastery_trainbeasts.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,

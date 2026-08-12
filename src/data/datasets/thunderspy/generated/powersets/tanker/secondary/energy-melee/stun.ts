@@ -12,6 +12,8 @@ export const Stun: Power = {
   "name": "Stun",
   "internalName": "Stun",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "By focusing your internal energy on your fists, you can turn them into personal tasers. This Stun attack deals minor damage, but has the best chance to Disorient a target. Damage: Minor, Recharge: Slow",
   "shortHelp": "Melee Disorient",
   "icon": "powerpunch_stun.png",
@@ -22,6 +24,9 @@ export const Stun: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

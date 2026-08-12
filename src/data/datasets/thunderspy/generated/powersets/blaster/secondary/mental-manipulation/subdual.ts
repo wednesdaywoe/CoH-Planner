@@ -12,6 +12,8 @@ export const Subdual: Power = {
   "name": "Subdual",
   "internalName": "Subdual",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Subdual deals moderate Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DOT(Psionic), Foe Immobilize",
   "icon": "mentalcontrol_subdue.png",
@@ -23,6 +25,9 @@ export const Subdual: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -56,6 +61,7 @@ export const Subdual: Power = {
   "effects": {
     "buffDuration": 9.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },

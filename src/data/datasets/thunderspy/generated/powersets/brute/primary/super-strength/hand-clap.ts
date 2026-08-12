@@ -12,6 +12,8 @@ export const HandClap: Power = {
   "name": "Hand Clap",
   "internalName": "Hand_Clap",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can clap your hands together with such force that you create a deafening shockwave. This shockwave can knock back nearby foes, and they have a chance to become Disoriented due to the shock to the inner ear. Hand Clap deals no damage. Recharge: Slow",
   "shortHelp": "PBAoE, Foe Disorient, Knockback",
   "icon": "superstrength_handclap.png",
@@ -20,6 +22,9 @@ export const HandClap: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 0.8,
@@ -66,7 +71,7 @@ export const HandClap: Power = {
     ["Damage","Fire",0.48708,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true],
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
   "specialEffects": [

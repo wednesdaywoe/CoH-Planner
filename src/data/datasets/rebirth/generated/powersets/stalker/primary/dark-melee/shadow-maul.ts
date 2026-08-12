@@ -12,6 +12,8 @@ export const ShadowMaul: Power = {
   "name": "Shadow Maul",
   "internalName": "Shadow_Maul",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You wrap your entire arms with Negative Energy channeled from the Netherworlds, then perform a series of blows that deal a lot of damage over a short period of time to multiple targets in front of you. These blows cloud your target's vision, lowering their chance to hit for a short time. Damage: High(DoT), Recharge: Moderate",
   "shortHelp": "Melee (Cone), High DoT(Smash/Negative), Foe -To Hit",
   "icon": "shadowfighting_shadowmaul.png",
@@ -20,6 +22,9 @@ export const ShadowMaul: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -61,6 +66,11 @@ export const ShadowMaul: Power = {
       "table": "Melee_Damage",
       "duration": 2,
       "tickRate": 0.625
+    },
+    {
+      "type": "Negative",
+      "scale": 2.156,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -77,13 +87,13 @@ export const ShadowMaul: Power = {
     ["Damage","Smashing",0.2695,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Negative",0.2695,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true],
+    ["Damage","Negative",2.156,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.9],
     ["Damage","Smashing",0.363786,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",0.349234,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",2.910286,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Negative",2.910286,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-    ["Damage","Negative",2.156,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
-    ["Damage","Negative",2.156,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
+    ["Damage","Negative",2.910286,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true,null,null,null,null,null,null,0.1],
+    ["Damage","Negative",2.156,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true,null,null,null,null,null,null,0.5]
   ],
   "specialEffects": [
     {

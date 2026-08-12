@@ -12,12 +12,17 @@ export const MassConfusion: Power = {
   "name": "Mass Confusion",
   "internalName": "Mass_Confusion",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You can cause Mass Confusion within a group of foes, creating chaos. All affected foes within the area will turn and attack each other, ignoring all your allies. If you Confuse your foes before they noticed you, your presence will continue to go unnoticed.Notes: You will receive diminishedany Experience Points for foes defeated entirely by Confused enemies. This power has adaptive recharge. It has a base recharge of 8 seconds and each affected foe will increase the recharge by 14.5 seconds for a maximum total of 240 seconds.",
   "shortHelp": "Ranged (Targeted AoE), Foe Confuse",
   "icon": "mentalcontrol_confuse.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -48,7 +53,7 @@ export const MassConfusion: Power = {
   },
   "atoms": [
     ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
+    ["Mez","Confused",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"],
     ["RechargePower",null,14.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Mez","Confused",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

@@ -12,12 +12,17 @@ export const Inexhaustible: Power = {
   "name": "Inexhaustible",
   "internalName": "Inexhaustible",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Your body is constantly evolving and adapting based on your surroundings. As a result you receive a moderate bonus to maximum hit points, regeneration, recovery as well as gaining a measure of Slow and Endurance Drain Resistance. Half of this power's maximum hit point increase is unenhanceable. Inexhaustible is always active.",
   "shortHelp": "Auto: +Max HP, +Regen, +Recovery, +Res(Slow, End Drain)",
   "icon": "organiccomp_inexhaustible.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 5
@@ -35,14 +40,17 @@ export const Inexhaustible: Power = {
     "buffDuration": 5.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       }
@@ -59,6 +67,7 @@ export const Inexhaustible: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_HealSelf"
     },

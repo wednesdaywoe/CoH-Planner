@@ -12,12 +12,17 @@ export const GravityDistortion: Power = {
   "name": "Gravity Distortion",
   "internalName": "Gravity_Distortion",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Causes a single foe to be trapped in a misshapen gravity field, rendering him unable to take action. Gravity Distortion applies the Gravity Distortion effect and deals Smashing damage to the target.",
   "shortHelp": "Ranged, DoT(Smash), Foe Hold, -Fly, +Gravity Distortion",
   "icon": "gravitycontrol_gravitydistortion.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -69,6 +74,7 @@ export const GravityDistortion: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -85,7 +91,7 @@ export const GravityDistortion: Power = {
   "atoms": [
     ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"token_add"],
     ["Movement","Run",0.5,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.5,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Jump",0.5,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -95,8 +101,8 @@ export const GravityDistortion: Power = {
     ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Held",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",0.4002,1,4.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Held",18,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true],
-    ["Mez","Held",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Held",18,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Held",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

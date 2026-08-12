@@ -6,9 +6,11 @@ import { PROC_GLOBAL_EFFECTS } from './generated/proc-globals.generated';
 import { PROC_DAMAGE_EFFECTS } from './generated/proc-damage.generated';
 import { PROC_OTHER_EFFECTS } from './generated/proc-effects.generated';
 import { PROC_PPM } from './generated/proc-ppm.generated';
+import { PROC_BOOSTS_ALLOWED } from './generated/proc-boosts-allowed.generated';
 import { PROC_RESIDUAL_EFFECTS } from './proc-residual-effects';
 import { PROC_VARIABLE_CONTROLS } from './proc-variable-controls';
 import type { ProcOverride } from '../types/build';
+import type { ProcRollSite } from '../types/power';
 
 export type ProcType = 'Proc' | 'Proc120s' | 'Global';
 
@@ -111,6 +113,14 @@ export interface ProcData {
   ioName: string;
   /** Procs Per Minute value (null for Globals and some Proc120s) */
   ppm: number | null;
+  /**
+   * The PIECE's own `BoostsAllowed`, verbatim: one real boost type plus the
+   * five origins. The routing key for `procRollSites` — `CopyBoosts` filters
+   * by the destination's boost types, and no power's list names an origin, so
+   * the origins ride along harmlessly. Absent where the extractor resolved no
+   * piece.
+   */
+  boostsAllowed?: string[];
   /** Detailed mechanics description */
   mechanics: string;
   /** PvP-specific notes */
@@ -2430,6 +2440,13 @@ for (const [key, ppm] of Object.entries(PROC_PPM)) {
   const entry = PROC_DATABASE[key];
   if (entry) entry.ppm = ppm;
 }
+// Binary-sourced per-piece BoostsAllowed: the routing key for `procRollSites`
+// (the executed children a `ProcAllowed kNone` shell hands its slotting to).
+// See resolveProcRollSite.
+for (const [key, boosts] of Object.entries(PROC_BOOSTS_ALLOWED)) {
+  const entry = PROC_DATABASE[key];
+  if (entry) entry.boostsAllowed = boosts;
+}
 // Hand-curated residual (P4/P5): the genuinely underivable procs the generator
 // can't reach — Rebirth-only sets, Create_Entity pet summons, PBAoE ally buffs,
 // self-meter/conditional stacks. Faithful structured transcriptions so EVERY
@@ -2798,15 +2815,20 @@ export function resolveProcRollGeometry(
 }
 
 /**
- * Whether a PPM proc slotted in this power rolls against it at all — the single
- * place HC's `ProcAllowed kNone` flag is applied, sharing `resolveProcRollGeometry`'s
+ * Whether a PPM proc slotted in this power rolls anywhere — the single place
+ * HC's `ProcAllowed kNone` flag is applied, sharing `resolveProcRollGeometry`'s
  * job of keeping every PPM surface on the same rule.
  *
- * `false` means no PPM chance exists here: the power's recharge window is not a
- * proc window, so any chance computed from it is fiction. See the field doc on
- * `Power.procsAllowed` for the two very different player-facing cases (pet
- * summons, where the proc still rides `CopyBoosts` into the pet's own attacks,
- * versus ordinary powers like Fault where nothing fires).
+ * `kNone` means the power's OWN recharge window is not a proc window, so any
+ * chance computed from it is fiction. On most of the flagged powers that ends
+ * the matter: see the field doc on `Power.procsAllowed` for the pet summons
+ * (where the proc still rides `CopyBoosts` into the pet's own attacks) and the
+ * ordinary attacks where nothing fires.
+ *
+ * On the powers that also carry `procRollSites` it does not: the flag sits on
+ * a shell that hands its slotting to an executed child, and the child rolls in
+ * its place — in this power's window, against the child's geometry.
+ * `resolveProcRollSite` picks which child a given proc reaches.
  *
  * Deliberately says nothing about GLOBAL IOs. LotG +Recharge, Call to Arms
  * +Def and the rest are not rolled — they are always-on auras granted by the
@@ -2814,9 +2836,43 @@ export function resolveProcRollGeometry(
  * `getProcPotential` still counts them.
  */
 export function powerFiresProcs(
-  power: { procsAllowed?: boolean } | null | undefined,
+  power: { procsAllowed?: boolean; procRollSites?: ProcRollSite[] } | null | undefined,
 ): boolean {
-  return power?.procsAllowed !== false;
+  if (power?.procsAllowed !== false) return true;
+  return (power.procRollSites?.length ?? 0) > 0;
+}
+
+/**
+ * The roll site a proc piece reaches: the one child whose `boostsAllowed`
+ * intersects the piece's own, or null when none does — either because the
+ * power rolls in its own window (no sites) or because no child can hold the
+ * piece's boost type, in which case `CopyBoosts` hands it to no one and it
+ * fires nothing.
+ *
+ * A piece's `boostsAllowed` is one real boost type plus the five origins, and
+ * no power's list names an origin, so the origins never route. Sibling sites
+ * may share types no proc carries (Fault's children both list Range and
+ * Accuracy), which is why the collision check is per PIECE and lives here
+ * rather than in the converter. Two matches would be two geometries for one
+ * roll — a shape the model cannot express — and a piece with no
+ * `boostsAllowed` at all is an extractor gap the routing cannot answer
+ * around; both throw rather than pick.
+ */
+export function resolveProcRollSite(
+  sites: ProcRollSite[] | undefined,
+  procBoostsAllowed: string[] | undefined,
+): ProcRollSite | null {
+  if (!sites?.length) return null;
+  if (!procBoostsAllowed?.length) {
+    throw new Error('proc piece has no boostsAllowed to route by');
+  }
+  const hits = sites.filter(s => s.boostsAllowed.some(b => procBoostsAllowed.includes(b)));
+  if (hits.length > 1) {
+    throw new Error(
+      `sites ${hits[0].power} and ${hits[1].power} both accept [${procBoostsAllowed.join(', ')}] `
+      + '— a proc slotted here has no single roll');
+  }
+  return hits[0] ?? null;
 }
 
 // ============================================================================
@@ -2846,7 +2902,11 @@ export function isVariableProc(procData: ProcData): boolean {
 
 export const DEFAULT_PROC_OVERRIDE: ProcOverride = { enabled: true, mode: 'auto' };
 
-/** The Build.procOverrides map key for a slotted proc. */
+/** The Build.procOverrides map key for a slotted proc — the power's DISPLAY name, which is
+ *  what a saved build carries. Two picks can share a display name, so an override set on one
+ *  lands on both; the engine addresses the pick instead (`<powerset>:<internalName>:<slot>`)
+ *  and the adapter re-addresses on the way in, carrying that collision over rather than
+ *  resolving it on a guess. Fixing it properly means migrating the save format. */
 export function procOverrideKey(powerName: string, slotIndex: number): string {
   return `${powerName}:${slotIndex}`;
 }
@@ -3106,19 +3166,37 @@ export interface ProcRollSchedule {
  *    That is the opposite of how a click attack behaves and it is the most
  *    build-relevant consequence.
  *
- * Sleet is the member that was measured; the schedule is applied to the whole
- * class because it is one code path in the game — every patch is an Auto with
- * recharge 0, and the 10 is the period every PPM IO carries (`activate_period:
- * 10.0` on all 189 HC proc IOs). Mids does not model this at all: `Effect.cs`
+ * The 10 is the period every PPM IO carries (`activate_period: 10.0` on all 189
+ * HC proc IOs), and every patch is an Auto with recharge 0, so the same code
+ * path serves the whole class. Mids does not model this at all: `Effect.cs`
  * `ActualProbability` reads whichever power the proc is slotted in, so it
  * reports the parent's recharge and lands on the 90% this measurement rules out.
  *
- * The extrapolation worth checking in game is **Lightning Rod / Shield Charge**,
- * where it costs the most: a 90s parent whose 1s patch buys a single roll, so
- * they fall from the 90% ceiling to ~18% and stop being the proc vehicles the
- * community treats them as. Their pet power carries `recharge: 10` outright
- * rather than 0, so the same number arrives by the plain PPM formula instead of
- * by the period fallback — which is reassuring, not decisive.
+ * CONFIRMED ACROSS FOUR POWERS spanning 1s to 15s patches (2026-08-05/07),
+ * 637 trials, 99 firings — 15.5% observed against 17.7% predicted:
+ *
+ * | power                    | patch | observed        | predicted |   z   |
+ * |--------------------------|-------|-----------------|-----------|-------|
+ * | Lightning Rod  (20ft)    |   1s  |  19/85  = 22.4% |   19.0%   | +0.80 |
+ * | Shield Charge  (20ft)    |   1s  |  12/68  = 17.6% |   17.9%   | −0.06 |
+ * | Rain of Arrows (25ft)    |   3s  |  31/224 = 13.8% |   16.9%   | −1.24 |
+ * | Sleet, 2 rolls (20ft)    |  15s  |  37/260 = 14.2% |   17.9%   | −1.56 |
+ *
+ * Stouffer z = −1.04 (p = 0.30); chi-square 4.62 on 4 df (p = 0.33). The model
+ * runs a shade low overall and no single power deviates. Lightning Rod and
+ * Shield Charge were the extrapolation most worth doubting — a 90s parent whose
+ * 1s patch buys ONE roll, dropping them off the 90% ceiling — and they are the
+ * two that fit best.
+ *
+ * TWO DEAD MODELS, recorded so they are not re-proposed:
+ *  - **Parent recharge.** Rejected on every power, z = −20 to −41.
+ *  - **Window = the patch's actual uptime** (so a 3s patch would be worth 3/60
+ *    of a PPM rather than 10/60). It was a tempting post-hoc fit — "PPM means
+ *    procs per minute of uptime" — after a first Rain of Arrows run came in at
+ *    6.7%. Lightning Rod and Shield Charge killed it at z = +4.0: a ONE-second
+ *    patch fires at the full 10s-period rate. A second Rain of Arrows run with
+ *    identical slotting then returned 20.0% (z = +0.90), so the first run was a
+ *    cold streak, not a signal. Do not fit a model to a single power's rate.
  *
  * @param patchDuration lifetime (s) of the summoned patch that owns the rolls,
  *   from `resolveProcPatchDuration`; omit for an ordinary power.

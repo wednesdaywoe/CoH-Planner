@@ -12,6 +12,8 @@ export const PowerSurge: Power = {
   "name": "Power Surge",
   "internalName": "Power_Surge",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics, as well as Disorient, Sleep, Hold, Immobilize, Knockback, End Drain, Recovery DeBuff, and enemy Teleportation. Your Regeneration rate and Endurance recovery are also increased. As Power Surge wears off, the charge in your body explodes in a massive EMP pulse.",
   "shortHelp": "Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery, +Special",
   "icon": "electricarmor_selfbuffdefense.png",
@@ -23,6 +25,9 @@ export const PowerSurge: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -50,10 +55,12 @@ export const PowerSurge: Power = {
     "buffDuration": 30,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Boolean"
       }
@@ -90,32 +97,39 @@ export const PowerSurge: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "teleport": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       }
     },
     "recoveryBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
@@ -124,10 +138,12 @@ export const PowerSurge: Power = {
       "table": "Melee_Ones"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Ranged_Ones"
     },
     "repel": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
@@ -168,6 +184,7 @@ export const PowerSurge: Power = {
     },
     "stealth": {
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       }
@@ -206,12 +223,12 @@ export const PowerSurge: Power = {
     ["Endurance",null,-0.55,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Held",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,-1,1,10,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,-1,1,10,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash",null,"designer_status"],
+    ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash",null,"null"],
     ["MezResist","Held",5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["MezResist","Immobilized",5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["MezResist","Stunned",5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["MezResist","Sleep",5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"Crash"]
   ]
 };

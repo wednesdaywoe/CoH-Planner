@@ -12,12 +12,17 @@ export const Entangle: Power = {
   "name": "Vine Eruption",
   "internalName": "Entangle",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You cause an eruption of vines that thrash about, dealing damage and stunning targets. Damage: High(DoT), Recharge: Fast",
   "shortHelp": "Melee AoE, High DoT (Smashing, Lethal), Stun, Knock up",
   "icon": "natureaffinity_overgrowth.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 30,

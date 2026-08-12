@@ -12,6 +12,8 @@ export const ChillingEmbrace: Power = {
   "name": "Chilling Embrace",
   "internalName": "Chilling_Embrace",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their movement speed and damage.",
   "shortHelp": "Toggle: PBAoE, Foe -Recharge, -Speed, -DMG",
   "icon": "icearmor_chillingembrace.png",
@@ -22,6 +24,9 @@ export const ChillingEmbrace: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -46,15 +51,25 @@ export const ChillingEmbrace: Power = {
   "effects": {
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_Debuff_Dam"
     },
     "durations": {
       "damageDebuff": 5,
+      "movementCapDebuff": 5,
       "rechargeDebuff": 5,
       "slow": 5
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -64,6 +79,7 @@ export const ChillingEmbrace: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -72,11 +88,12 @@ export const ChillingEmbrace: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.7,
+        "table": "Melee_Slow"
       }
     },
     "taunt": {
+      "ignoreStrength": true,
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     }
@@ -96,7 +113,7 @@ export const ChillingEmbrace: Power = {
     ["DamageBuff","Psionic",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !",null,null,null,null,null,null,null,null,null,"Mez"],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

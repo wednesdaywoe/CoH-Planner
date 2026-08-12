@@ -12,12 +12,17 @@ export const SmokeGrenade: Power = {
   "name": "Smoke Grenade",
   "internalName": "Smoke_Grenade",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "The Smoke Grenade envelops all those in the affected area in a cloud of smoke. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit. Recharge: Slow",
   "shortHelp": "Ranged (Target AoE), Foe -Perception, -To Hit",
   "icon": "gadgets_smokegrenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -41,20 +46,27 @@ export const SmokeGrenade: Power = {
   "effects": {
     "buffDuration": 60,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.014,
       "table": "Melee_Ones"
     },
     "durations": {
       "damageBuff": 8.87,
-      "perceptionDebuff": 60
+      "perceptionDebuff": 60,
+      "tohitDebuff": 60
     },
     "perceptionDebuff": {
       "scale": 0.9,
       "table": "Melee_Ones"
+    },
+    "tohitDebuff": {
+      "scale": 0.7,
+      "table": "Melee_DeBuff_ToHit"
     }
   },
   "atoms": [
     ["Perception",null,-0.9,1,60,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.7,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @ToHitRoll @ToHit < @ForceHit || &&"],
     ["DamageBuff","Smashing",0.014,1,8.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.014,1,8.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.014,1,8.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -63,7 +75,6 @@ export const SmokeGrenade: Power = {
     ["DamageBuff","Negative",0.014,1,8.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.014,1,8.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.014,1,8.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["ToHit",null,0.7,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @ToHitRoll @ToHit < @ForceHit || &&",true],
     ["ToHit",null,0.7,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
     ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
   ]

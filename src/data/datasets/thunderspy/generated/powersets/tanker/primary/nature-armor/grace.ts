@@ -12,12 +12,17 @@ export const Grace: Power = {
   "name": "Grace",
   "internalName": "Grace",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You understand the grace of nature; the simplicity of its rules and the beauty found therein. This knowledge eases your mind, allowing you to make your own luck. Increases your maximum health by a small amount. This power is always on and costs no endurance to use.",
   "shortHelp": "Self +Def (Psi), +Res (Def, ToHit, Rech, Movement), +Max HP",
   "icon": "natureaffinity_rebirth.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -47,6 +52,7 @@ export const Grace: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_HealSelf"
     }

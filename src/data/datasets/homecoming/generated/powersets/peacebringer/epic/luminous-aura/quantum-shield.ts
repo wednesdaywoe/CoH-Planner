@@ -12,6 +12,8 @@ export const QuantumShield: Power = {
   "name": "Quantum Shield",
   "internalName": "Quantum_Shield",
   "available": 13,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on Quantum Shield, you become highly resistant to Energy and Negative damage.Recharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Energy, Negative)",
   "icon": "luminousaura_quantumshield.png",
@@ -22,6 +24,9 @@ export const QuantumShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -58,8 +63,8 @@ export const QuantumShield: Power = {
   "atoms": [
     ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShieldFX",null,"null"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"EyesFX",null,"null"],
     ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Resistance","Psionic",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]

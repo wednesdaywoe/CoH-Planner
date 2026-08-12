@@ -12,6 +12,8 @@ export const IndomitableWill: Power = {
   "name": "Indomitable Will",
   "internalName": "Indomitable_Will",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusions, Repel, Knockback and Hold effects. Indomitable Will also grants moderate resistance to Psionic based attacks.",
   "shortHelp": "Toggle: Self Res (Psionics, Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback).",
   "icon": "teamwork_indomitablewill.png",
@@ -22,6 +24,9 @@ export const IndomitableWill: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,6 +47,7 @@ export const IndomitableWill: Power = {
   "effects": {
     "buffDuration": 0.75,
     "confuse": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -61,11 +67,13 @@ export const IndomitableWill: Power = {
     },
     "effectDuration": 0.75,
     "fear": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -85,14 +93,17 @@ export const IndomitableWill: Power = {
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }
@@ -108,11 +119,13 @@ export const IndomitableWill: Power = {
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

@@ -12,12 +12,17 @@ export const MoistureAbsorption: Power = {
   "name": "Moisture Absorption",
   "internalName": "Moisture_Absorption",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power draws moisture directly from your target and nearby foes, draining their endurance. The moisture adds to your own Endurance as well as Defense to all types of attacks.",
   "shortHelp": "Close AoE, Self +End, +DEF(All but Psionics), Res (Slow), Foe -End",
   "icon": "icearmor_energyabsorption.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 10,

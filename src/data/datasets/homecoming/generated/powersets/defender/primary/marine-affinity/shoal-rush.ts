@@ -12,12 +12,17 @@ export const ShoalRush: Power = {
   "name": "Shoal Rush",
   "internalName": "Shoal_Rush",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "By sensing the water in an area, you can direct a shoal of marine life to harass your foes. This lowers the defense and movement speed of all enemies struck.If you direct a Shoal Rush on targets inside a Tide Pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
   "shortHelp": "Ranged (Targeted AoE), Foe -DEF, -SPD, Special",
   "icon": "marineaffinity_shoalrush.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -50,7 +55,15 @@ export const ShoalRush: Power = {
     },
     "durations": {
       "defenseDebuff": 20,
+      "movementCapDebuff": 20,
       "slow": 20
+    },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
     },
     "slow": {
       "flySpeed": {
@@ -66,8 +79,8 @@ export const ShoalRush: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.448,
+        "table": "Ranged_Slow"
       }
     }
   },

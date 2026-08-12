@@ -12,12 +12,17 @@ export const SoulTransfer: Power = {
   "name": "Soul Transfer",
   "internalName": "Soul_Transfer",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Should you fall in battle, you can perform a Soul Transfer, sucking the life force of all foes around you to bring yourself back from the brink of death. The more foes nearby, the more life is restored to you. Drained foes are left Disoriented. The dark effects of this Soul Transfer will actually leave you invulnerable for a brief time, and protected from XP Debt for 60 seconds. There must be at least one foe nearby to fuel the Transfer and revive yourself. Damage: Moderate, Recharge: Very Long",
   "shortHelp": "Self Rez, Special",
   "icon": "darkarmor_soultransfer.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -66,6 +71,7 @@ export const SoulTransfer: Power = {
       "perTarget": 30
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
@@ -76,6 +82,7 @@ export const SoulTransfer: Power = {
       "table": "Melee_Stun"
     },
     "untouchable": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     }
@@ -87,7 +94,7 @@ export const SoulTransfer: Power = {
     ["Mez","Untouchable",10,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Endurance",null,30,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,30],
     ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
     ["Mez","Stunned",2,30,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [

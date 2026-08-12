@@ -12,12 +12,17 @@ export const Resurgence: Power = {
   "name": "Resurgence",
   "internalName": "Resurgence",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You heal yourself through pure perseverance. The effects of Resurgence also leave you resistant to Toxic Damage for a while. Should you fall in battle within 35 seconds of using this power, you can stand up and fight again.If used after defeat, this power can Revive yourself from the brink of death, although it will incur a 300 second cooldown. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 20 seconds. Additionally, for 90 seconds, attack rate and endurance recovery will be improved. You will also have 15 seconds of immunity to most damage.",
   "shortHelp": "Self Heal, Res(Fire, Cold, Energy, Negative, Toxic, Psionic), Self Rez, Special",
   "icon": "willpower_reconstruction.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,
@@ -36,13 +41,20 @@ export const Resurgence: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 0.8,
-    "table": "Ranged_Ones",
-    "duration": 0.5,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 2.5,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.8,
+      "table": "Ranged_Ones",
+      "duration": 0.5,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "buffDuration": 90,
     "durations": {
@@ -57,6 +69,7 @@ export const Resurgence: Power = {
       "table": "Ranged_Ones"
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     },
@@ -97,11 +110,26 @@ export const Resurgence: Power = {
       }
     },
     "untouchable": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     }
   },
   "atoms": [
+    ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Fire",0.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Cold",0.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Energy",0.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Negative",0.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Psionic",0.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Toxic",0.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Fire",0.5,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Cold",0.5,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Energy",0.5,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Negative",0.5,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Psionic",0.5,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Resistance","Toxic",0.5,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >"],
+    ["Meta",null,0,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 0 >",null,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
     ["Heal",null,0.8,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Recovery",null,2,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
@@ -114,8 +142,8 @@ export const Resurgence: Power = {
     ["Resistance","Toxic",1,1,90,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Mez","Untouchable",10,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Stealth","RadiusPvE",300,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
   ]
 };

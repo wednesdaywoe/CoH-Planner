@@ -12,6 +12,8 @@ export const DarkNova: Power = {
   "name": "Dark Nova",
   "internalName": "Dark_Nova",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Kheldians are masters of energy and matter. A Warshade can transform into a flying energy beast known as a Dark Nova. When you choose this power, you will have access to 4 very powerful ranged attacks that can only be used while in this form. You will not be able to use any other powers while in Dark Nova form. Dark Nova can fly, has an increased chance to hit and improved Endurance Recovery but has no defense.Recharge: Very Fast.",
   "shortHelp": "Toggle: Shapeshift, Special",
   "icon": "umbralblast_darknova.png",
@@ -22,6 +24,9 @@ export const DarkNova: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -46,6 +51,7 @@ export const DarkNova: Power = {
   "effects": {
     "buffDuration": 2,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -80,10 +86,12 @@ export const DarkNova: Power = {
     },
     "resistance": {
       "energy": {
+        "ignoreStrength": true,
         "scale": 0.15,
         "table": "Melee_Ones"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0.15,
         "table": "Melee_Ones"
       }
@@ -104,12 +112,12 @@ export const DarkNova: Power = {
     ["DamageBuff","Negative",5,1,2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Energy",0.15,1,2,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Negative",0.15,1,2,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,39,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,25,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,4,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true],
-    ["Movement","FlyMode",2,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0],
-    ["Meta",null,1.5,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kWarshade_Blaster_Mode Source.Mode?",true]
+    ["Meta",null,1,39,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,25,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,4,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
+    ["Movement","FlyMode",2,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"],
+    ["Meta",null,1.5,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kWarshade_Blaster_Mode Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "setsModes": [
     "Suppress_PoolToggles",

@@ -12,12 +12,17 @@ export const FulcrumShift: Power = {
   "name": "Fulcrum Shift",
   "internalName": "Fulcrum_Shift",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Fulcrum Shift drains the power of a targeted foe and all foes nearby, transferring it to all adjacent allies, you, and those near you. Affected foes will deal less damage, while your affected allies will deal more. The more foes that are affected, the more power you and your allies receive. Fulcrum Shift can dramatically turn the tide of a battle. Recharge: Long",
   "shortHelp": "Ranged (Foe AoE), Foe -DMG, Team +DMG",
   "icon": "kineticboost_kinetictransfer.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

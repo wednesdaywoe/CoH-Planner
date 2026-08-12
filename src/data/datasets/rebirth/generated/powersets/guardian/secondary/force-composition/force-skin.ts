@@ -12,12 +12,17 @@ export const ForceSkin: Power = {
   "name": "Force Shielding",
   "internalName": "Force_Skin",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Your abilities allow you to surround your body with a protective layer of force, causing some attacks to deflect away from you. This grants you Defense to all types of attacks except Psionics, as well as resistance to Defense Debuff effects. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +DEF(All but Psionics), +RES (Debuff DEF)",
   "icon": "forcecomp_forceskin.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -33,6 +38,7 @@ export const ForceSkin: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       }

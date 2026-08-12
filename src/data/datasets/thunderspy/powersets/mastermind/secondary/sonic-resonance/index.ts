@@ -22,7 +22,12 @@ import { Liquefy as Liquefy } from './liquefy';
 
 export const powerset: Powerset = {
   id: 'mastermind/sonic-resonance',
+  setPath: 'Mastermind_Buff.Sonic_Resonance',
   name: 'Sonic Resonance',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You have the ability to control sound in several fashions.  You can create semi-solid barriers, set up waves which weaken or strengthen a target, as well as creating soothing sounds which act to counteract any negative effects which may exist on your friends.',
   icon: 'sonic_resonance_set.ico',
   archetype: 'mastermind',

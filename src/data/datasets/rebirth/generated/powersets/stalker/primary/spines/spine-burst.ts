@@ -12,6 +12,8 @@ export const SpineBurst: Power = {
   "name": "Spine Burst",
   "internalName": "Spine_Burst",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can fling dozens of Spines in all directions. These Spines only travel a short distance, but they can deal moderate lethal damage and poison any target close to you. Spine poison deals additional Toxic damage and Slows affected foes. If executed while hidden, all affected targets have a chance to be hit with a Critical Hit for extra damage. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_flingquills.png",
@@ -20,6 +22,9 @@ export const SpineBurst: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -51,6 +56,11 @@ export const SpineBurst: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Lethal",
+      "scale": 0.9,
+      "table": "Melee_Damage"
+    },
+    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
@@ -72,6 +82,7 @@ export const SpineBurst: Power = {
       "table": "Melee_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Melee_Slow"
     },
@@ -81,6 +92,7 @@ export const SpineBurst: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -96,19 +108,19 @@ export const SpineBurst: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.9,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Movement","Run",0.2,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["RechargeTime",null,0.1,1,8,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","JumpHeight",0.2,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Jump",0.2,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true],
     ["Mez","Immobilized",10,0.33000001311302185,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Damage","Lethal",0.967573,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05999999865889549,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
+    ["Damage","Lethal",0.967573,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05999999865889549,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true,null,null,null,null,null,null,0.06],
     ["Damage","Lethal",0.967573,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.967573,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Lethal",0.9,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
-    ["Damage","Lethal",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
+    ["Damage","Lethal",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true,null,null,null,null,null,null,0.3],
     ["Mez","Immobilized",2,0.33000001311302185,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

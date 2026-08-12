@@ -12,6 +12,8 @@ export const StarlessStep: Power = {
   "name": "Starless Step",
   "internalName": "Starless_Step",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Teleport moderate distances extremely quickly. These quick teleports surprise foes, giving your next attack a small ToHit advantage. This power can be used up to 3 times in a row before it starts recharging. Note that Starless is unaffected by Range changes.Notes: Starless Step is unaffected by Range changes.Recharge: Fast.",
   "shortHelp": "Ranged (Location), Self Teleport, ToHit",
   "icon": "umbralblast_starlessstep.png",
@@ -20,6 +22,9 @@ export const StarlessStep: Power = {
   "effectArea": "Location",
   "globalStrengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -61,8 +66,8 @@ export const StarlessStep: Power = {
   "atoms": [
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["ToHit",null,1,1,5,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true],
-    ["GlobalChanceMod",null,-1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true]
+    ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"QuickCombatTeleport"],
+    ["GlobalChanceMod",null,-1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"QuickCombatTeleport"]
   ],
   "modesDisallowed": [
     "Disable_Teleport",

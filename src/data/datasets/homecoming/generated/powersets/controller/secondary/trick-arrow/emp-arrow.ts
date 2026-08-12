@@ -12,12 +12,17 @@ export const EMPArrow: Power = {
   "name": "EMP Arrow",
   "internalName": "EMP_Arrow",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "EMP Arrow unleashes a massive pulse of electromagnetic energy on impact. Allies that enter the field will see an increase to their damage resistances against all damage except Toxic. They are also protected from status effects, knockbacks, endurance drain, recovery debuffs and recharge debuffs. Only one EMP Field can be sustained at once. This EMP will affect enemy machines adversively, and is even powerful enough to affect synaptic brain patterns. It will incapacitate all foes in its radius. Machines and robots are more likely to take high damage.Recharge: Very Long.",
   "shortHelp": "AoE, Foe Hold, Special",
   "icon": "trickarrow_stun.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -65,107 +70,132 @@ export const EMPArrow: Power = {
           "scale": 5
         }
       ],
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Ones"
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "runSpeed": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       }
     },
     "specialBuff": {
       "absorb": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "confuse": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "heal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       }
     },
     "specialDebuff": {
       "aoe": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "cold": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "defense": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "melee": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "ranged": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Res_Boolean"
       }
@@ -193,6 +223,15 @@ export const EMPArrow: Power = {
               "effects": [
                 {
                   "type": "ResistanceBuff",
+                  "resistanceTypes": [
+                    "smashing",
+                    "lethal",
+                    "fire",
+                    "cold",
+                    "energy",
+                    "negative",
+                    "psionic"
+                  ],
                   "scale": 1.5,
                   "table": "Ranged_Res_Dmg",
                   "ignoreStrength": true
@@ -250,6 +289,9 @@ export const EMPArrow: Power = {
               "castTime": 0,
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Friend"
+              ],
               "radius": 25,
               "maxTargets": 16
             }
@@ -288,8 +330,8 @@ export const EMPArrow: Power = {
     ["Endurance",null,-0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-5,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-5,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",7,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Electronic target.HasTag? !"],
-    ["Mez","Held",7,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5],
+    ["Mez","Held",7,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Electronic target.HasTag? ! &&"],
+    ["Mez","Held",7,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq Electronic target.HasTag? ! &&"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

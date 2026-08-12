@@ -445,7 +445,10 @@ function permaEvidence(power: BundlePower | undefined, betaDuration: number): { 
  * that never emit them, while the engine reads the same powers from `contract/`
  * WITH atoms. Two powers currently differ because of it, both a foe-side
  * `mezResistance` window the engine removes: Rebirth Long Range Teleport and
- * Thunderspy Teleport Foe.
+ * Thunderspy Teleport Foe. With `specialBuff` in SELF_BUFF_KEYS (2026-08-11),
+ * Homecoming's epic Possess joined the class at the null boundary — its
+ * `specialBuff` 30s is the foe's -Special debuff clock, so the engine computes
+ * no perma at all while the atom-less beta copy keeps the bag window.
  */
 function betaCannotRunTheWindowVeto(power: Power | SelectedPower | undefined): boolean {
   return power !== undefined && atomsOf(power).length === 0;
@@ -460,6 +463,13 @@ function permaDelta(
   if (engine === null && beta === null) return { real: [], adjudicated: [] };
   if (engine !== null && beta === null) {
     return { real: [], adjudicated: [`perma: engine computes (recharge ${engine.baseRecharge}s / dur ${engine.duration}s) but beta dropped the duration → null`] };
+  }
+  if (engine === null && beta !== null && betaCannotRunTheWindowVeto(betaPower)) {
+    // The window-veto blindness (below) at the null boundary: with no atoms beta-side a
+    // foe-owned bag duration stands as the whole window, so the beta computes a perma the
+    // engine — atoms in hand — removes entirely (epic Possess's specialBuff 30s is the
+    // foe's -Special debuff clock, not the caster's).
+    return { real: [], adjudicated: [`perma: beta ships no atoms so the window veto cannot run; its ${beta.duration}s bag window stands while the engine removes the window → engine null`] };
   }
   if (engine === null || beta === null) return { real: [`perma: engine ${engine ? 'set' : 'null'} vs beta ${beta ? 'set' : 'null'}`], adjudicated: [] };
   const real: string[] = [];
@@ -548,7 +558,7 @@ function betaReference(
   archetypeId: string,
   rawGlobal: ReturnType<typeof mapGlobal>,
   state: ReferenceState = {},
-): { projection: Omit<PowerProjection, 'grantedMagnitudes'>; magnitudes: Map<string, ResolvedMagnitude>; bag: Record<string, unknown> } {
+): { projection: Omit<PowerProjection, 'grantedMagnitudes' | 'damage'>; magnitudes: Map<string, ResolvedMagnitude>; bag: Record<string, unknown> } {
   const enh = betaEnhancement(power, build, state);
   const global = convertGlobalBonusesToAspects(rawGlobal);
 

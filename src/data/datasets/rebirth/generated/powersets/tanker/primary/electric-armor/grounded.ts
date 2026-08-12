@@ -12,12 +12,17 @@ export const Grounded: Power = {
   "name": "Grounded",
   "internalName": "Grounded",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You are Grounded and naturally very resistant to Energy and Negative Energy damage. You also have added resistance to Endurance Drain effects. Additionally, Grounded provides Immobilize and Knockback protection, but only applies when you are near the ground. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (Energy, Negative, End Drain, Immobilize, KB)",
   "icon": "electricarmor_selfresistenergies.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "castTime": 0.5,
@@ -34,6 +39,7 @@ export const Grounded: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }

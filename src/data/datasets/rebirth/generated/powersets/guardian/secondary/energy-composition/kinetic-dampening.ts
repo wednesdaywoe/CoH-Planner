@@ -12,12 +12,17 @@ export const KineticDampening: Power = {
   "name": "Kinetic Dampening",
   "internalName": "Kinetic_Dampening",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Your ability to channel energy makes you naturally resistant to Energy, Negative Energy, Lethal, Smashing and Toxic damage.  Additionally, the user gains a moderate level of resistance to slow effects.  This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (Energy, Negative, Toxic, Lethal, Smashing, Slow)",
   "icon": "energycomp_kineticdampening.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "castTime": 0.5,
@@ -34,10 +39,12 @@ export const KineticDampening: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       }

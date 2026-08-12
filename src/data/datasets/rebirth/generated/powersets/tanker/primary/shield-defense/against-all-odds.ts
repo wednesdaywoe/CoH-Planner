@@ -12,12 +12,17 @@ export const AgainstallOdds: Power = {
   "name": "Against All Odds",
   "internalName": "Against_all_Odds",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "The harder pressed you are in combat the greater your offensive abilities become.  Each enemy that stands toe-to-toe with you in combat will grant you a damage bonus.  The first foe you engage in melee grants the highest damage bonus, and up to 10 foes can contribute to this effect. Each foe in melee range also suffers from reduced damage as your shield deflects a portion of their damage. Recharge: Slow",
   "shortHelp": "Toggle: Self +DMG, Foe -DMG",
   "icon": "shielddefense_againstallodds.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -34,18 +39,19 @@ export const AgainstallOdds: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 1,
+    "buffDuration": 1.25,
     "damageBuff": {
       "scale": 1.55,
       "table": "Melee_Buff_Dmg",
       "perTarget": 0.55
     },
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Debuff_Dam"
     },
     "durations": {
-      "damageBuff": 1,
+      "damageBuff": 1.25,
       "damageDebuff": 1
     },
     "taunt": {
@@ -79,7 +85,7 @@ export const AgainstallOdds: Power = {
     ["DamageBuff","Toxic",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Energy",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Negative",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Fire",0.045,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.045,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Mez","Taunt",1.25,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ]
 };

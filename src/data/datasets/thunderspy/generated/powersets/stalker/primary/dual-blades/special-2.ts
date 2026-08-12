@@ -12,6 +12,8 @@ export const Special2: Power = {
   "name": "Sweeping Strike",
   "internalName": "Special_2",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You make a sweeping strike with your blades, hitting all foes in a cone in front of you and dealing moderate lethal damage to each. This power is the opening move for the Weaken combination attack. Damage: Superior Recharge: Moderate",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal)",
   "icon": "dualblades_special2.png",
@@ -20,6 +22,9 @@ export const Special2: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,19 +48,26 @@ export const Special2: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.7,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.7,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.7,
+      "table": "Melee_Damage"
+    }
+  ],
   "atoms": [
     ["Damage","Lethal",1.7,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Lethal",1.7,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Lethal",1.725478,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",1.725478,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
     ["Damage","Lethal",1.725478,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Lethal",1.7,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Damage","Lethal",1.7,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
     ["Resistance","Lethal",-1.34,1,35,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
     ["ToHit",null,1.34,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
@@ -69,6 +81,10 @@ export const Special2: Power = {
       "label": "ComboBlade3",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.ComboBlade3",
+        "count": 1
+      },
       "damage": {
         "type": "Lethal",
         "scale": 0.57,

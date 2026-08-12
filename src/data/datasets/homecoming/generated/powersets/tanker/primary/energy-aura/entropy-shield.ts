@@ -12,6 +12,8 @@ export const EntropyShield: Power = {
   "name": "Entropic Aura",
   "internalName": "Entropy_Shield",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Entropic Aura diminishes and dampens the energy of controlling type effects. The shield makes you resistant to Knockback, Repel, Disorient, Hold, Sleep, Immobilization, and enemy Teleportation for as long as you can keep this toggle power active. Entropic Aura also grants you good resistance to Defense Debuffs as well as providing you a recharge bonus for each foe in melee, up to the first 10 foes. Foes that get close to the user will have their own recharge rate reduced.",
   "shortHelp": "Toggle: Self +Res(Knockback, Repel, Disorient, Hold, Sleep, Immobilize, Teleport, DeBuff DEF), Self +Recharge, Foe -Recharge",
   "icon": "energyaura_entropy.png",
@@ -22,6 +24,9 @@ export const EntropyShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -49,6 +54,8 @@ export const EntropyShield: Power = {
       "knockback": 2.25,
       "knockup": 2.25,
       "mezResistance": 2.25,
+      "rechargeBuff": 2.25,
+      "rechargeDebuff": 2.25,
       "repel": 2.25,
       "sleep": 2.25,
       "stun": 2.25
@@ -82,6 +89,16 @@ export const EntropyShield: Power = {
         "table": "Melee_Ones"
       }
     },
+    "rechargeBuff": {
+      "scale": 0.085,
+      "table": "Melee_Ones",
+      "perTarget": 0.035
+    },
+    "rechargeDebuff": {
+      "ignoreStrength": true,
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
     "repel": {
       "scale": 10,
       "table": "Melee_Ones"
@@ -96,13 +113,18 @@ export const EntropyShield: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "rechargeBuff": {
-      "scale": 0.085,
-      "table": "Melee_Ones",
-      "perTarget": 0.035
+    "taunt": {
+      "ignoreStrength": true,
+      "scale": 1.1,
+      "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
+    ["RechargeTime",null,0.035,1,2,"Melee_Ones","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",null,0.035],
+    ["RechargeTime",null,0.05,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&"],
+    ["RechargeTime",null,0.2,1,2.25,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&"],
+    ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > && Raid target.HasTag? ! enttype target> critter eq && &&"],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > && Raid target.HasTag? ! &&",null,null,null,null,null,null,null,null,null,"Mez"],
     ["MezResist","Teleport",1,1,2.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Mez","Knockup",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Mez","Knockback",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -112,11 +134,7 @@ export const EntropyShield: Power = {
     ["Mez","Stunned",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Mez","Sleep",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Mez","Immobilized",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["RechargeTime",null,0.035,1,2,"Melee_Ones","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",true,0.035],
-    ["RechargeTime",null,0.05,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",true],
-    ["RechargeTime",null,0.2,1,2.25,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",true],
-    ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&",true],
-    ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > && Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && &&",true],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

@@ -12,6 +12,8 @@ export const FireSwordCircle: Power = {
   "name": "Fire Sword Circle",
   "internalName": "Fire_Sword_Circle",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Mastery of your Fire Sword has enabled you to make an attack on every foe within melee distance. This will slash and burn your enemies, dealing moderate damage and setting them ablaze. Choosing this power locks out Rain of Fire Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Fire/Lethal)",
   "icon": "fieryfray_fireswordcircle.png",
@@ -20,6 +22,9 @@ export const FireSwordCircle: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -65,7 +70,7 @@ export const FireSwordCircle: Power = {
   "atoms": [
     ["Damage","Lethal",0.465,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",1.085,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.15,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.15,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Damage","Lethal",1.185967,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Fire",1.185967,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

@@ -12,12 +12,17 @@ export const SniperRound: Power = {
   "name": "Sniper Round",
   "internalName": "Sniper_Round",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You load and fire a high-velocity Sniper Round from your Assault rifle. This round is very accurate and has a very long range, and deals Extreme Lethal damage and can knock down its target. Like most sniper attacks, you must take your time to aim, so this attack can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Lethal), Foe Knockback",
   "icon": "militaryassault_sniperround.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.25,
     "range": 150,
@@ -55,12 +60,12 @@ export const SniperRound: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Lethal",3.56,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kToHit source> .97 >=",true],
-    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.5],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kToHit source> .97 >=",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.5],
     ["Damage","Lethal",5.2766,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
@@ -69,5 +74,23 @@ export const SniperRound: Power = {
       "chance": 0.5,
       "label": "Knockback"
     }
-  ]
+  ],
+  "quickSnipe": {
+    "condition": "cur.kToHit source> .97 >=",
+    "stats": {
+      "castTime": 1.33,
+      "range": 150
+    },
+    "damage": [
+      {
+        "type": "Lethal",
+        "scale": 3.56,
+        "table": "Ranged_Damage"
+      }
+    ],
+    "atoms": [
+      ["Damage","Lethal",3.56,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.5]
+    ]
+  }
 };

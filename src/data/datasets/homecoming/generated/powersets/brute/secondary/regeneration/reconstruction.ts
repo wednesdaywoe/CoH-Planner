@@ -12,12 +12,17 @@ export const Reconstruction: Power = {
   "name": "Reconstruction",
   "internalName": "Reconstruction",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Through perfect control of your body, you can concentrate for a few moments and heal yourself. The effects of Reconstruction also leaves you resistant to Toxic damage for a while.",
   "shortHelp": "Self Heal, Res(Toxic)",
   "icon": "regeneration_reconstruction.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 60,

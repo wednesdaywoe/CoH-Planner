@@ -12,12 +12,17 @@ export const GlowingTouch: Power = {
   "name": "Glowing Touch",
   "internalName": "Glowing_Touch",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Heals a single targeted ally at moderate range. You cannot use this power to heal yourself. Recharge: Fast",
   "shortHelp": "Ally Heal",
   "icon": "luminousblast_glowingtouch.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

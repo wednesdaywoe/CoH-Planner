@@ -12,6 +12,8 @@ export const BoomerangSlice: Power = {
   "name": "Boomerang Slice",
   "internalName": "Boomerang_Slice",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You toss your sword outward in a Boomerang Slice, attacking all enemies in front of you. This attack wounds your opponents, causing them to take minor damage over time and reduces their defense and damage resistance.Every 15 seconds, you can perform a more powerful, Rending Slice on your main target.This power is mutually exclusive from Slice.",
   "shortHelp": "Melee (Cone), DMG(Lethal), Foe -DEF, -RES",
   "icon": "broadsword_boomerangslice.png",
@@ -20,6 +22,9 @@ export const BoomerangSlice: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "maxTargetsExpression": "10 kDisable_GauntletTargetCap Source.Mode? 5 * -",
   "stats": {
@@ -61,6 +66,11 @@ export const BoomerangSlice: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.6148,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -75,72 +85,67 @@ export const BoomerangSlice: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       }
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.877,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Lethal",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Damage","Fire",0.3932,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Defense","All",0.5,1,15,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Resistance","Smashing",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Lethal",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Fire",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Cold",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Energy",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Negative",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Psionic",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Toxic",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Lethal",0.6148,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 ==",true],
-    ["Meta",null,1,64,14,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 ==",true],
-    ["Damage","Lethal",0.3513,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Lethal",1.0701,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Lethal",0.1,1,2.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-    ["Damage","Lethal",0.4509,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 ==",true],
-    ["Meta",null,1,64,14,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 ==",true]
-  ],
-  "conditionalEffects": [
-    {
-      "id": "rendingslicecooldown",
-      "label": "Rending Slice Cooldown",
-      "scope": "global",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.6148,
-        "table": "Melee_Damage"
-      }
-    }
+    ["Damage","Lethal",0.877,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.3932,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Damage","Lethal",0.6148,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kRendingSliceCooldown Source.Mode? 0 == &&"],
+    ["Meta",null,1,64,14,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kRendingSliceCooldown Source.Mode? 0 == &&",null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Defense","All",0.5,1,15,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+    ["Resistance","Smashing",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+    ["Resistance","Lethal",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+    ["Resistance","Fire",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+    ["Resistance","Cold",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+    ["Resistance","Energy",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+    ["Resistance","Negative",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+    ["Resistance","Psionic",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+    ["Resistance","Toxic",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
+    ["Damage","Lethal",0.3513,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"],
+    ["Damage","Lethal",1.0701,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.1,1,2.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.4509,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kRendingSliceCooldown Source.Mode? 0 == &&",true],
+    ["Meta",null,1,64,14,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kRendingSliceCooldown Source.Mode? 0 == &&",true,null,null,null,null,null,null,null,null,null,null,"set_mode"]
   ],
   "requires": "Tanker_Melee.Broad_Sword.Slice !"
 };

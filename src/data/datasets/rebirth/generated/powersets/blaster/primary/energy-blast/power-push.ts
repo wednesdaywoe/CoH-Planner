@@ -12,12 +12,17 @@ export const PowerPush: Power = {
   "name": "Power Push",
   "internalName": "Power_Push",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "This ranged attack deals little damage, but sends the target flying for a great distance. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged Minor DMG(Energy/Smash), Foe High Knockback",
   "icon": "powerblast_powerpush.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 70,
@@ -55,6 +60,7 @@ export const PowerPush: Power = {
   "effects": {
     "buffDuration": 8.6,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.073,
       "table": "Ranged_Ones"
     },

@@ -12,12 +12,17 @@ export const SoundCannon: Power = {
   "name": "Sound Cannon",
   "internalName": "Sound_Cannon",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You generate a powerful sonic wave that will knock back and disorient foes in front of you for a short time.Recharge: Long.",
   "shortHelp": "Ranged (Cone), Foe Disorient, Knockback",
   "icon": "sonicmanipulation_soundcannon.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 45,
@@ -53,10 +58,10 @@ export const SoundCannon: Power = {
     }
   },
   "atoms": [
-    ["Mez","Stunned",8,2,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",5,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.65,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.65,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Stunned",8,2,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SoundBoost"],
+    ["Mez","Stunned",5,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SoundBoost"],
+    ["Mez","Knockback",0.65,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.33,null,"SoundBoost"],
+    ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"SoundBoost"],
+    ["Mez","Knockback",0.65,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.33,null,"SoundBoost"]
   ]
 };

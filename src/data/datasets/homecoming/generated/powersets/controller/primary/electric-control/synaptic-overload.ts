@@ -12,12 +12,17 @@ export const SynapticOverload: Power = {
   "name": "Synaptic Overload",
   "internalName": "Synaptic_Overload",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "This power can subtly scramble the synapses of any target affected, causing hallucinations and confusion amongst foes. The electric charge lasts for some time, and will jump slowly to other opponents causing wide spread confusion. Foes may not be aware that this has happened, and will not be alerted to your presence. You will also not receive experience for any damage dealt by confused opponents.Notes: This power has adaptive recharge. It has a base recharge of 6 seconds and each affected foe will increase the recharge by 6.5 seconds for a maximum total of 110 seconds.",
   "shortHelp": "Ranged Chain AoE, Foe Confuse, -End",
   "icon": "electriccontrol_synapticoverload.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Chain",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -62,7 +67,7 @@ export const SynapticOverload: Power = {
   "atoms": [
     ["Mez","Confused",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",5,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",5,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"],
     ["Recovery",null,-1,1,8,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["RechargePower",null,6.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Mez","Confused",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

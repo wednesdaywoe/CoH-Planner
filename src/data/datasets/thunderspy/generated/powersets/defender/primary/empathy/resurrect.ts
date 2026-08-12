@@ -12,12 +12,17 @@ export const Resurrect: Power = {
   "name": "Resurrect",
   "internalName": "Resurrect",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Resurrects a fallen ally with full Hit Points and Endurance.  The Resurrected target is left protected from XP Debt for 90 seconds.  Recharge: Very Long",
   "shortHelp": "Ally Rez",
   "icon": "empathy_resurrect.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "DeadPlayerFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -39,6 +44,7 @@ export const Resurrect: Power = {
   },
   "effects": {
     "enduranceGain": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     }
@@ -46,6 +52,6 @@ export const Resurrect: Power = {
   "atoms": [
     ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
   ]
 };

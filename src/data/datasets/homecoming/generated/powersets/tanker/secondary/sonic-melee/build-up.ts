@@ -12,12 +12,17 @@ export const BuildUp: Power = {
   "name": "Sound Booster",
   "internalName": "Build_Up",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit. Moderately increases the duration of mez effects. Moderately increases the chance for Sound Manipulation powers to induce migraines.",
   "shortHelp": "Self +DMG, +To Hit, +Special",
   "icon": "sonicmanipulation_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const BuildUp: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 6,
       "table": "Melee_Buff_Dmg"
     },
@@ -46,26 +52,32 @@ export const BuildUp: Power = {
     },
     "specialBuff": {
       "confuse": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones"
       }

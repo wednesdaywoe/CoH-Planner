@@ -12,12 +12,17 @@ export const Levitate: Power = {
   "name": "Levitate",
   "internalName": "Levitate",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can send a single target violently into the air, then slam them to the ground for Smashing damage. This power can bring flying foes to the ground. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Smash), Foe Knock Up",
   "icon": "mentalcontrol_levitate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

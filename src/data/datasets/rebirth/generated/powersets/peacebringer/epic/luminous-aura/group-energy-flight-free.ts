@@ -12,6 +12,8 @@ export const GroupEnergyFlightFree: Power = {
   "name": "Group Energy Flight",
   "internalName": "Group_Energy_Flight_Free",
   "available": 15,
+  "autoIssue": true,
+  "free": true,
   "description": "You can endow your nearby teammates with Flight. Be mindful! Your friends will fall if you run out of Endurance or if they travel too far away from you. Group Energy Flight travel speed is slower than Energy Flight. This power can be used while in Bright Nova or White Dwarf form. However, activating it while in either Bright Nova or White Dwarf will transform you back into your original form.",
   "shortHelp": "Toggle: Team Fly",
   "icon": "luminousaura_groupenergyflight.png",
@@ -22,6 +24,10 @@ export const GroupEnergyFlightFree: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Teammate",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

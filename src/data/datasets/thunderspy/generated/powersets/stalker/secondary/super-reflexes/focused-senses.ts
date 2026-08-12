@@ -12,6 +12,8 @@ export const FocusedSenses: Power = {
   "name": "Focused Senses",
   "internalName": "Focused_Senses",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You become more evasive against ranged and AoE attacks while you have Focused Senses activated. This will increase your Defense versus ranged and area of effect attacks as long as it is active. Your Improved Senses also allow you to perceive stealthy foes as well as resist Defense and to hit Debuffs. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Ranged, AoE), +Perception,  Res(DeBuff DEF, Debuff To Hit)",
   "icon": "superreflexes_focusedsenses.png",
@@ -22,6 +24,9 @@ export const FocusedSenses: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -51,6 +56,7 @@ export const FocusedSenses: Power = {
         "table": "Melee_Ones"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Ones"
       }

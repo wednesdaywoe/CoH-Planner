@@ -12,6 +12,8 @@ export const ProwlerForm: Power = {
   "name": "Prowler Form",
   "internalName": "Prowler_Form",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "By activating this toggle, you will shapeshift into the deadly Prowler. This panther-like creature attacks its foes vicious claw and bite attacks. While in this form you will be focused on dealing tremendous damage, stunning and terrorizing foes. Hunter Form costs no endurance and cannot be slotted. However, it grants the user the Pounce power. Pounce is an attack power that benefits from stealth granted by Primalist's Cloak. This power can be slotted as normal. While shapeshifted you will have limited access to Pool Powers. Recharge: Fast",
   "shortHelp": "Toggle, Prowler Form",
   "icon": "feralmight_prowlerform.png",
@@ -28,6 +30,9 @@ export const ProwlerForm: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -70,10 +75,10 @@ export const ProwlerForm: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,9,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,102,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX SpiritPanther eq !"],
-    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX SpiritPanther eq"],
+    ["Meta",null,1,9,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,102,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX SpiritPanther eq !",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
+    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX SpiritPanther eq",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Movement","JumpHeight",0.125,1,2.25,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
     ["Movement","Jump",0.275,1,2.25,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
     ["Movement","Control",10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],

@@ -21,7 +21,12 @@ import { Cinders as Cinders } from './cinders';
 
 export const powerset: Powerset = {
   id: 'dominator/fire-control',
+  setPath: 'Dominator_Control.Fire_Control',
   name: 'Fire Control',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can control the essence of fire to entrap, scorch, and manipulate your foes with smoke and flame.',
   icon: 'fire_control_set.ico',
   archetype: 'dominator',

@@ -12,12 +12,17 @@ export const WaterJet: Power = {
   "name": "Water Jet",
   "internalName": "Water_Jet",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You spray a concentrated torrent of water toward your target that causes Cold and Smashing damage as well as reducing your target's movement speed. If you have 2 or less Tidal Power, you will gain a stack of Tidal Power. If you have 3 Tidal Power and you activate this power, it will have an enhanced effect causing Water Jet to cast slightly faster and immediately reset the recharge of Water Jet. Water Jet's enhanced effect can be used once every 8 seconds.",
   "shortHelp": "Ranged, DMG(Cold/Smash), Foe -Speed, +Wet, Self +/-Tidal Power",
   "icon": "waterblast_waterjet.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -63,6 +68,7 @@ export const WaterJet: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -83,6 +89,256 @@ export const WaterJet: Power = {
     ["Movement","Run",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Jump",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,188,8,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,188,8,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"WetStatus",null,"set_mode"]
+  ],
+  "formVariants": [
+    {
+      "condition": "temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 == temporary_powers.temporary_powers.enhanced_water_jet_lock source.ownPower? ! &&",
+      "internalName": "Water_Jet_Fast",
+      "stats": {
+        "accuracy": 1.2,
+        "range": 80,
+        "recharge": 10,
+        "endurance": 5.096,
+        "castTime": 1
+      },
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.49,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Cold",
+          "scale": 1.47,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Cold",
+          "scale": 0.4433,
+          "table": "Ranged_Damage",
+          "duration": 4.5,
+          "tickRate": 2
+        }
+      ],
+      "effects": {
+        "buffDuration": 8,
+        "durations": {
+          "slow": 8
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "ignoreStrength": true,
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          }
+        }
+      },
+      "shortHelp": "Ranged, DMG(Cold/Smash), Foe -Speed, +Wet, Self +/-Tidal Power",
+      "description": "You spray a concentrated torrent of water toward your target that causes Cold and Smashing damage as well as reducing your target's movement speed. If you have 2 or less Tidal Power, you will gain a stack of Tidal Power. If you have 3 Tidal Power and you activate this power, it will have an enhanced effect causing Water Jet to cast slightly faster and immediately reset the recharge of Water Jet. Water Jet's enhanced effect can be used once every 15 seconds.",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Movement",
+          "JumpHeight",
+          0.2,
+          1,
+          8,
+          "Ranged_Slow",
+          "Str",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Movement",
+          "Run",
+          0.2,
+          1,
+          8,
+          "Ranged_Slow",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Movement",
+          "Fly",
+          0.2,
+          1,
+          8,
+          "Ranged_Slow",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Movement",
+          "Jump",
+          0.2,
+          1,
+          8,
+          "Ranged_Slow",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1
+        ],
+        [
+          "Meta",
+          null,
+          1,
+          188,
+          8,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Target",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "WetStatus",
+          null,
+          "set_mode"
+        ],
+        [
+          "Damage",
+          "Smashing",
+          0.49,
+          1,
+          0,
+          "Ranged_Damage",
+          "Abs",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ],
+        [
+          "Damage",
+          "Cold",
+          1.47,
+          1,
+          0,
+          "Ranged_Damage",
+          "Abs",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ],
+        [
+          "Damage",
+          "Cold",
+          0.4433,
+          1,
+          4.5,
+          "Ranged_Damage",
+          "Abs",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          2,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ]
+      ]
+    }
   ]
 };

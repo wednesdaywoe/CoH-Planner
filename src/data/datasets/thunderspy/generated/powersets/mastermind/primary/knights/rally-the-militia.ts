@@ -12,12 +12,17 @@ export const RallyTheMilitia: Power = {
   "name": "Rally The Militia",
   "internalName": "Rally_The_Militia",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You rally the militia calling forth the local town militia and inspiring those around you.  Increasing both you and your henchmen defenses and regeneration.  Recharge: Very Long",
   "shortHelp": "PBAoE,Self, Pets +Defense, +Regeneration",
   "icon": "knights_rallythemilitia.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -48,6 +53,7 @@ export const RallyTheMilitia: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Buff_Dmg"
     },

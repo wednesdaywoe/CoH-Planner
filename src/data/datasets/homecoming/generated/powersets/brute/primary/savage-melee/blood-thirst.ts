@@ -12,12 +12,17 @@ export const BloodThirst: Power = {
   "name": "Blood Thirst",
   "internalName": "Blood_Thirst",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You unleash your frenzy, increasing your chance to inflict Bleed to 100% as well as increasing your damage and chance to hit moderately. Blood Thirst also grants 5 stacks of Frenzy Fury.",
   "shortHelp": "Self +DMG, +To Hit, +Special, +5 Blood Frenzy",
   "icon": "savagemelee_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const BloodThirst: Power = {
   "effects": {
     "buffDuration": 15,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 3.333,
       "table": "Melee_Buff_Dmg"
     },
@@ -64,7 +70,7 @@ export const BloodThirst: Power = {
     ["DamageBuff","Psionic",3.333,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",3.333,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["GlobalChanceMod",null,1,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
   ]
 };

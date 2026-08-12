@@ -12,12 +12,17 @@ export const BetaDecay: Power = {
   "name": "Beta Decay",
   "internalName": "Beta_Decay",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "While Beta Decay is active, nearby foes will have their chance to hit and defense decreased slightly and will be taunted. You will gain a recharge bonus per nearby target up to 10 targets. The first target grants the largest benefit. Recharge: Moderate",
   "shortHelp": "Toggle: Foe, Taunt, -To Hit, -Defense, Self +Recharge",
   "icon": "radiationarmor_betadecay.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,

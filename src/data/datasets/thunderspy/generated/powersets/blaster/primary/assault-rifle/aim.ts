@@ -12,12 +12,17 @@ export const Aim: Power = {
   "name": "Ignite",
   "internalName": "Aim",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Sprays a targeted location with accelerant from your flamethrower, igniting the location. Any foes that pass through the flames will be burned. Great for blocking doorways and small passages. Damage: Moderate(DoT), Recharge: Fast",
   "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Fire)",
   "icon": "assaultweapons_arflamethrowerignite.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 40,
@@ -42,6 +47,7 @@ export const Aim: Power = {
   "effects": {
     "buffDuration": 11.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.151,
       "table": "Ranged_Ones"
     },

@@ -12,12 +12,17 @@ export const RepellingForce: Power = {
   "name": "Repelling Force",
   "internalName": "Repelling_Force",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "Your innate power over energies manifest itself naturally as a repelling force, increasing your defense against all types. This power is always on and costs no endurance.",
   "shortHelp": "Auto: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative, Psionic, Toxic)",
   "icon": "energyaura_repellingforce.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10

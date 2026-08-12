@@ -12,12 +12,17 @@ export const WrathOfHell: Power = {
   "name": "Wrath of Hell",
   "internalName": "Wrath_Of_Hell",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You can unleash the wrath of hell onto your foe ensnaring them in your whip, leaving them helpless.  You then channel hellfire into your whip and use it to bombard your foe with waves of extreme fire damage. The burns they leave are so powerful that the foe will suffer more damage from attacks for a short time. Damage: Extreme(DoT), Recharge: Long",
   "shortHelp": "Ranged, Extreme DoT(Fire), Short Foe Hold, Foe -Res",
   "icon": "hellfireassault_wrathofhell.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -60,41 +65,49 @@ export const WrathOfHell: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       }
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Fire",0.872,1,3.26,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.6499999761581421,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Resistance","Smashing",-1.25,1,7,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Resistance","Lethal",-1.25,1,7,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

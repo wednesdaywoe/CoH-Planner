@@ -12,12 +12,17 @@ export const FireShield: Power = {
   "name": "Fire Shield",
   "internalName": "Fire_Shield",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Casts a Fire Shield on one of your allies and grants him damage resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage. You cannot stack multiple Fire Shields on the same target, however the shield can be improved by another ally using the same power. Can also be used in conjunction with your Plasma Shield. You cannot use this power on yourself.  Recharge: Very Fast",
   "shortHelp": "Ranged, Ally +Res(Fire, Lethal, Smash, Cold)",
   "icon": "thermalradiation_fireshield.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

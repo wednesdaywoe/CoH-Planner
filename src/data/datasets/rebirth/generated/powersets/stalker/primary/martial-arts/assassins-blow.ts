@@ -12,6 +12,8 @@ export const AssassinsBlow: Power = {
   "name": "Assassin's Blow",
   "internalName": "Assassins_Blow",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "A signature Stalker attack.  This attack does superior smashing damage on its own as a frontal attack and cannot be interrupted.  However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden.  Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.  Damage: Special, Recharge: Slow",
   "shortHelp": "Melee, Special DMG(Smashing)",
   "icon": "martialarts_assassinstrike.png",
@@ -20,6 +22,9 @@ export const AssassinsBlow: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -55,21 +60,23 @@ export const AssassinsBlow: Power = {
     },
     "stealth": {
       "stealthPvE": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "stealthPvP": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       }
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1"],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter source> .9 <",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Smashing",2.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Stealth","RadiusPvE",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Stealth","RadiusPvP",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter source> .9 <",true],
     ["Damage","Smashing",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true],
     ["Damage","Smashing",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > &&",true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvE",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true]

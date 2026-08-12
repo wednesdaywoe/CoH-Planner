@@ -12,6 +12,8 @@ export const Consume: Power = {
   "name": "Consume",
   "internalName": "Consume",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.Damage: Minor.Recharge: Long.",
   "shortHelp": "PBAoE DMG(Fire), Self +End",
   "icon": "fireassault_consume.png",
@@ -20,6 +22,9 @@ export const Consume: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -75,6 +80,6 @@ export const Consume: Power = {
     ["Recovery",null,0.05,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
     ["Damage","Fire",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Endurance",null,0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

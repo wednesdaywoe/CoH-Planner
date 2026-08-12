@@ -12,12 +12,17 @@ export const ShadowStep: Power = {
   "name": "Shadow Step",
   "internalName": "Shadow_Step",
   "available": 0,
+  "autoIssue": true,
+  "free": true,
   "description": "You can Teleport long distances. Once at your destination, you will be stuck in between dimensions for up to 15s. While in this state, you will not be affected by gravity, and be able to execute additional teleportation jumps at a discounted endurance cost.Moving or taking any non-teleport action, though, will snap you back into reality, and you will once more be affected by gravity. Shadow Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
   "shortHelp": "Ranged (Location), Self Teleport",
   "icon": "umbralaura_teleportself.png",
   "powerType": "Click",
   "targetType": "Teleport",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 350,
@@ -42,18 +47,22 @@ export const ShadowStep: Power = {
     },
     "movement": {
       "fly": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones"
       },
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 500,
         "table": "Melee_SpeedFlying"
       },
       "movementControl": {
+        "ignoreStrength": true,
         "scale": 8,
         "table": "Melee_Ones"
       },
       "movementFriction": {
+        "ignoreStrength": true,
         "scale": 8,
         "table": "Melee_Ones"
       }
@@ -69,6 +78,7 @@ export const ShadowStep: Power = {
       "table": "Ranged_Ones"
     },
     "untouchable": {
+      "ignoreStrength": true,
       "scale": 1000,
       "table": "Ranged_Ones"
     }
@@ -76,25 +86,25 @@ export const ShadowStep: Power = {
   "atoms": [
     ["Stealth","Translucency",0,1,0.6,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Movement","FlyMode",1,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Fly",500,0,1.5,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Control",8,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Friction",8,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Mez","Intangible",8,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,66,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","FlyMode",1,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
+    ["Movement","Fly",500,0,1.5,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
+    ["Movement","Control",8,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
+    ["Movement","Friction",8,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
+    ["Mez","Intangible",8,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
+    ["Meta",null,1,66,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover",null,"set_mode"],
     ["Movement","FlyMode",1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Fly",500,1,15,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Control",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Friction",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Intangible",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,66,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,66,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Mez","Untouchable",1000,1000,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
-    ["Stealth","Translucency",0.25,1,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
-    ["Meta",null,-1,1,3,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
+    ["Stealth","Translucency",0.25,1,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true,null,null,null,null,0],
+    ["Meta",null,-1,1,3,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true,null,null,null,null,null,null,null,null,"designer_status"],
     ["Mez","Untouchable",1000,1000,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
     ["GlobalChanceMod",null,1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !"],
-    ["Stealth","Translucency",0.25,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
-    ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true]
+    ["Stealth","Translucency",0.25,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true,null,null,null,null,0],
+    ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true,null,null,null,null,null,null,null,null,"designer_status"]
   ],
   "modeVariants": {
     "ChainTeleport": {
@@ -114,18 +124,22 @@ export const ShadowStep: Power = {
         },
         "movement": {
           "fly": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Ranged_Ones"
           },
           "flySpeed": {
+            "ignoreStrength": true,
             "scale": 500,
             "table": "Melee_SpeedFlying"
           },
           "movementControl": {
+            "ignoreStrength": true,
             "scale": 8,
             "table": "Melee_Ones"
           },
           "movementFriction": {
+            "ignoreStrength": true,
             "scale": 8,
             "table": "Melee_Ones"
           }
@@ -141,6 +155,7 @@ export const ShadowStep: Power = {
           "table": "Ranged_Ones"
         },
         "untouchable": {
+          "ignoreStrength": true,
           "scale": 1000,
           "table": "Ranged_Ones"
         }
@@ -149,7 +164,34 @@ export const ShadowStep: Power = {
       "description": "You can Teleport long distances. Shadow Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
       "effectArea": "Location",
       "targetType": "Teleport",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Stealth","Translucency",0,1,0.6,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+        ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+        ["Mez","Untouchable",1000,1000,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
+        ["GlobalChanceMod",null,1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !"],
+        ["Stealth","Translucency",0.25,1,2.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
+        ["Meta",null,-1,1,4,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true,null,null,null,null,null,null,null,null,"designer_status"],
+        ["Movement","FlyMode",1,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
+        ["Movement","Fly",500,0,1.5,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
+        ["Movement","Control",8,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
+        ["Movement","Friction",8,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
+        ["Mez","Intangible",8,0,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
+        ["Meta",null,1,66,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover",null,"set_mode"],
+        ["Movement","FlyMode",1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+        ["Movement","Fly",500,1,15,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+        ["Movement","Control",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+        ["Movement","Friction",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+        ["Mez","Intangible",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+        ["Meta",null,1,66,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+        ["Mez","Untouchable",1000,1000,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
+        ["Stealth","Translucency",0.25,1,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true,null,null,null,null,0],
+        ["Meta",null,-1,1,3,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true,null,null,null,null,null,null,null,null,"designer_status"],
+        ["Mez","Untouchable",1000,1000,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
+        ["GlobalChanceMod",null,1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !"],
+        ["Stealth","Translucency",0.25,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true,null,null,null,null,0],
+        ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true,null,null,null,null,null,null,null,null,"designer_status"]
+      ]
     }
   },
   "requires": "Inherent.Inherent.Shadow_Step !",

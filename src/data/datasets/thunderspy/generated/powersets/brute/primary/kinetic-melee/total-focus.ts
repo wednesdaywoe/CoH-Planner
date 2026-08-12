@@ -12,6 +12,8 @@ export const TotalFocus: Power = {
   "name": "Concentrated Strike",
   "internalName": "Total_Focus",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Concentrated Strike is a slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Concentrated Strike, its recharge time is very long.  Damage: Extreme, Recharge: Long",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient",
   "icon": "kineticattack_totalfocus.png",
@@ -22,6 +24,9 @@ export const TotalFocus: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 7,
@@ -60,6 +65,7 @@ export const TotalFocus: Power = {
   "effects": {
     "buffDuration": 8,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 0.85,
       "table": "Melee_Debuff_Dam"
     },
@@ -93,7 +99,7 @@ export const TotalFocus: Power = {
     ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kSiphonMode Source.Mode?",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true]
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

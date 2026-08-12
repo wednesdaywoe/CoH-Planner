@@ -12,12 +12,18 @@ export const ForceBarrier: Power = {
   "name": "Force Barrier",
   "internalName": "Force_Barrier",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Projects a strong protective Force Barrier over yourself and nearby allies. This grants you and all nearby allies a significant amount of damage absorption for a short time. Recharge: Very Long",
   "shortHelp": "PBAoE, Team +Absorb",
   "icon": "forcecomp_forcebarrier.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

@@ -12,12 +12,17 @@ export const TRPlasmaCannon: Power = {
   "name": "Plasma Cannon",
   "internalName": "TR_Plasma_Cannon",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Launch an orb of plasma from a cannon installed in your exoskeleton. Deals Fire damage over time and weakens the Resistance of affected targets. Requires Tarantula form to use. Recharge: Moderate",
   "shortHelp": "Ranged(Targeted AoE), DoT(Fire), -Res(All)",
   "icon": "tarantulatraining_plasmacannon.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -54,34 +59,42 @@ export const TRPlasmaCannon: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }

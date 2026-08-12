@@ -12,11 +12,16 @@ export const ConduitofPain: Power = {
   "name": "Conduit of Pain",
   "internalName": "Conduit_of_Pain",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You revive a fallen ally and briefly empower both them and yourself, increasing damage output, recovery rate, attack rate and chance to hit. This power will not heal or revive pets. Recharge: Very Long.",
   "shortHelp": "Ally Rez, +DMG, +Recharge, +To Hit. Self +DMG, +Recharge, +To Hit",
   "icon": "paindomination_conduitofpain.png",
   "powerType": "Click",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadOrAliveFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 15,
@@ -37,6 +42,7 @@ export const ConduitofPain: Power = {
   "effects": {
     "buffDuration": 60,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Buff_Dmg"
     },
@@ -46,10 +52,12 @@ export const ConduitofPain: Power = {
       "tohitBuff": 60
     },
     "enduranceGain": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Ones"
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
@@ -66,11 +74,11 @@ export const ConduitofPain: Power = {
   },
   "atoms": [
     ["Endurance",null,4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,60,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,60,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
     ["RechargeTime",null,0.5,1,60,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["RechargeTime",null,0.5,1,60,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["ToHit",null,1.5,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["ToHit",null,1.5,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["DamageBuff","Smashing",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],

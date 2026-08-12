@@ -12,12 +12,17 @@ export const ForceBolt: Power = {
   "name": "Repulsion Bolt",
   "internalName": "Force_Bolt",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Discharges a bolt of force that knocks down foes and deals some Smashing Damage. Foes struck will have their armor shattered by the force of the impact, leaving them with lowered damage resistance.",
   "shortHelp": "Ranged, DMG(Smash), Foe Knockback",
   "icon": "forcefield_forcebolt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 80,
@@ -55,34 +60,42 @@ export const ForceBolt: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       }
@@ -99,7 +112,7 @@ export const ForceBolt: Power = {
     ["Resistance","Negative",-2,1,30,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Resistance","Psionic",-2,1,30,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Resistance","Toxic",-2,1,30,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Smashing",0.2,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= ||",true],
+    ["Damage","Smashing",0.2,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= ||",true,null,null,null,null,null,null,null,null,"Containment"],
     ["Mez","Knockback",9,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Resistance","Smashing",-2,1,30,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
     ["Resistance","Lethal",-2,1,30,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],

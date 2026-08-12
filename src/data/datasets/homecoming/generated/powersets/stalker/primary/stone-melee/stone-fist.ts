@@ -12,6 +12,8 @@ export const StoneFist: Power = {
   "name": "Stone Fist",
   "internalName": "Stone_Fist",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your stone covered fists attack swiftly for moderate damage, and may Disorient your opponent.Damage: Light.Recharge: Fast.",
   "shortHelp": "Melee Light DMG(Smashing), Foe Minor Disorient",
   "icon": "stonemelee_stonefist.png",
@@ -20,6 +22,9 @@ export const StoneFist: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,11 +47,18 @@ export const StoneFist: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 2,
@@ -57,13 +69,13 @@ export const StoneFist: Power = {
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.699999988079071,null,true],
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
-    ["Damage","Smashing",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-    ["Damage","Smashing",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+    ["Damage","Smashing",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
+    ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
     ["Damage","Smashing",1.141,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Smashing",1.141,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Smashing",1.141,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-    ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,true]
+    ["Damage","Smashing",1.141,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["Damage","Smashing",1.141,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true],
+    ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

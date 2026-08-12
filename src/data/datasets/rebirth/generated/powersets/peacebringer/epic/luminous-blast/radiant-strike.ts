@@ -12,6 +12,8 @@ export const RadiantStrike: Power = {
   "name": "Radiant Strike",
   "internalName": "Radiant_Strike",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "The Radiant Strike is a slow melee attack, but makes up for it with superior damage. Radiant Strike releases Kheldian light on impact, which can Knock Back foes, bring down fliers, and reduce a target's Defense. This power can be used while in White Dwarf form at a faster recharge rate but lower damage. While in White Dwarf form, this power taunts its target. Damage: Superior, Recharge: Moderate",
   "shortHelp": "Melee, Superior DMG(Smash/Energy), Foe -DEF, Knockback, -Fly",
   "icon": "luminousblast_radiantstrike.png",
@@ -20,6 +22,9 @@ export const RadiantStrike: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -80,16 +85,16 @@ export const RadiantStrike: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode? !"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode? !",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",0.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","FlyMode",-1,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Defense","All",1,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Knockback",2,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode?",true],
+    ["Mez","Knockback",2,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.6],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Smashing",1.040928,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.817872,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",2,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Knockback",2,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.6]
   ],
   "specialEffects": [
     {
@@ -142,7 +147,14 @@ export const RadiantStrike: Power = {
       "description": "The White Dwarf Strike is a moderate melee attack that releases Kheldian light on impact, which can Knock Down foes, and reduce a target's Defense. This power is only available while in White Dwarf Form. Damage: Moderate, Recharge: Fast",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Smashing",0.4,1,0,"Melee_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Damage","Energy",0.6,1,0,"Melee_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Defense","All",1,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
+        ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+      ]
     }
   },
   "modesDisallowed": [

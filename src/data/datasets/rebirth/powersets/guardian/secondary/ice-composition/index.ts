@@ -21,7 +21,12 @@ import { HeatLoss as HeatLoss } from './heat-loss';
 
 export const powerset: Powerset = {
   id: 'guardian/ice-composition',
+  setPath: 'Guardian_Comp.Ice_Composition',
   name: 'Ice Composition',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Ice Composition users have mastered chilling themselves and the air around them to protect their allies, protect themselves, and weaken adversaries.',
   icon: 'ice_armor_set.ico',
   archetype: 'guardian',

@@ -12,6 +12,8 @@ export const ThroatStrike: Power = {
   "name": "Rib Cracker",
   "internalName": "Throat_Strike",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You deftly strike your foe in a very vulnerable location. Rib Cracker deals Moderate Damage but reduces your foe's Damage and Resistance moderately for a short time. Rib Cracker is a Combo Builder and adds 1 Combo Level. Damage: Moderate, Recharge: Fast.",
   "shortHelp": "Melee, Moderate DMG (Smash), Foe -Res (All), -Dmg, Combo Builder",
   "icon": "brawling_throatstrike.png",
@@ -22,6 +24,9 @@ export const ThroatStrike: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -53,6 +58,7 @@ export const ThroatStrike: Power = {
   "effects": {
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Melee_Debuff_Dam"
     },
@@ -62,34 +68,42 @@ export const ThroatStrike: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_DMG"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_DMG"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_DMG"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_DMG"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_DMG"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_DMG"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_DMG"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_DMG"
       }
@@ -140,9 +154,9 @@ export const ThroatStrike: Power = {
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ||",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower?",true]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ],
   "damageTypes": [
     "Smashing"

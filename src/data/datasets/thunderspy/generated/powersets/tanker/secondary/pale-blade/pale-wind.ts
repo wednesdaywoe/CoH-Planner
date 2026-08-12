@@ -12,12 +12,17 @@ export const PaleWind: Power = {
   "name": "Pale Wind",
   "internalName": "Pale_Wind",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You call upon the Pale Wind to punish your foes. Enemies caught in the wake of Pale Wind will always be inflicted with Fester. If an enemy is already Festering, he will instead take Toxic damage over time. Pale Wind deals additional Toxic damage over time while Plaguebearer is active.",
   "shortHelp": "Repel, Fester",
   "icon": "paleblade_palewind.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.5,
     "range": 40,
@@ -98,6 +103,10 @@ export const PaleWind: Power = {
       "label": "Pale Self Buff Plaguebearer",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer",
+        "count": 1
+      },
       "damage": [
         {
           "type": "Toxic",

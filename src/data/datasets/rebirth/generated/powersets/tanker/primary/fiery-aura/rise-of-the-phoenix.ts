@@ -12,12 +12,17 @@ export const RiseofthePhoenix: Power = {
   "name": "Rise of the Phoenix",
   "internalName": "Rise_of_the_Phoenix",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance and your damage will be greatly increased for a short time. Rise of the Phoenix will actually leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.  Recharge: Very Long",
   "shortHelp": "Self Rez, Special",
   "icon": "flamingshield_riseofthephoenix.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,
@@ -51,6 +56,7 @@ export const RiseofthePhoenix: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -62,6 +68,7 @@ export const RiseofthePhoenix: Power = {
       "table": "Melee_Ones"
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
@@ -72,6 +79,7 @@ export const RiseofthePhoenix: Power = {
       "isPseudoPet": false
     },
     "untouchable": {
+      "ignoreStrength": true,
       "scale": 15,
       "table": "Melee_Ones"
     },
@@ -95,6 +103,6 @@ export const RiseofthePhoenix: Power = {
     ["DamageBuff","Toxic",5,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",5,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
   ]
 };

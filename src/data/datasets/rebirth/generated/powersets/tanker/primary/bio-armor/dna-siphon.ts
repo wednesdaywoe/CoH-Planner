@@ -12,6 +12,8 @@ export const DNASiphon: Power = {
   "name": "DNA Siphon",
   "internalName": "DNA_Siphon",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can siphon genetic material from nearby enemies, causing a minor amount of Lethal damage and a minor amount of Toxic damage over time. Living enemies will provide the user with a small boost to health and endurance. These foes will have their regeneration rate reduced for a short period of time. Defeated enemies provide a weaker sample of material and thus will boost recovery and regeneration for a short while. While Efficient Adaptation is active, this power will grant bonus regeneration and recovery per defeated target hit.  While Defensive Adaptation is active, this power will grant bonus health per living target hit.  While Offensive Adaptation is active this power's regeneration debuff is increased in effectiveness. Damage: Minor, Recharge: Very Long",
   "shortHelp": "Click, PBAoE Minor DMG(Lethal/Toxic) Foe -Regen, Taunt, Self +HP, +End, +Special",
   "icon": "bioorganicarmor_dnasiphon.png",
@@ -20,6 +22,10 @@ export const DNASiphon: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "DeadFoe"
   ],
   "stats": {
     "accuracy": 1,
@@ -92,6 +98,7 @@ export const DNASiphon: Power = {
       "perTarget": 0.2
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
@@ -102,7 +109,7 @@ export const DNASiphon: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
-    ["Damage","Toxic",0.1,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Damage","Toxic",0.1,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >",null,null,null,null,null,null,null,0.8,true],
     ["Heal",null,1.25,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
     ["Endurance",null,5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >",null,5],
     ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 ==",null,0.2],
@@ -166,6 +173,7 @@ export const DNASiphon: Power = {
           "regenDebuff": 30
         },
         "regenDebuff": {
+          "ignoreStrength": true,
           "scale": 1.33,
           "table": "Melee_Ones"
         }

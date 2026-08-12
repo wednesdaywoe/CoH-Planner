@@ -12,12 +12,17 @@ export const FieryEmbrace: Power = {
   "name": "Embrace of Fire",
   "internalName": "Fiery_Embrace",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Significantly boosts the damage of all your Fire attacks for quite a while. Also increases the damage of all your other non-fire based attacks for a short while.Recharge: Long.",
   "shortHelp": "Self +DMG",
   "icon": "fireassault_fieryembrace.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 180,
@@ -32,6 +37,7 @@ export const FieryEmbrace: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },

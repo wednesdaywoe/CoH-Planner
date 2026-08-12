@@ -12,12 +12,17 @@ export const Transfusion: Power = {
   "name": "Transfusion",
   "internalName": "Transfusion",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Transfusion drains an enemy of some Endurance and reduces the target's Regeneration rate, and transfers that energy, in the form of Hit Points, to all allies near the affected foe. You can use Transfusion to heal yourself as well as your allies. Recharge: Moderate",
   "shortHelp": "Ranged, Foe -End, -Regen, Team Heal",
   "icon": "kineticboost_transfusion.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 60,
@@ -49,6 +54,7 @@ export const Transfusion: Power = {
       "table": "Ranged_Ones"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Ones"
     },

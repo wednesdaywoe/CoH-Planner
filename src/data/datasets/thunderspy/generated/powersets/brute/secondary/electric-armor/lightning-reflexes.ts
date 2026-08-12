@@ -12,12 +12,17 @@ export const LightningReflexes: Power = {
   "name": "Lightning Reflexes",
   "internalName": "Lightning_Reflexes",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Lightning Reflexes allow you to move faster than normal, as well as resist slow effects. This power is always on and permanently increases your attack rate and movement speed.",
   "shortHelp": "Auto: Self +Recharge, +SPD, Res (Slow)",
   "icon": "electricarmor_selfbuffrunspeed.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -31,10 +36,12 @@ export const LightningReflexes: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       }
@@ -55,6 +62,7 @@ export const LightningReflexes: Power = {
       }
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     }

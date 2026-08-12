@@ -12,12 +12,18 @@ export const RejuvenatingCircuit: Power = {
   "name": "Rejuvenating Circuit",
   "internalName": "Rejuvenating_Circuit",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Create a circuit of healing energy between several nearby allies, healing them for a small amount. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Rejuvenating Circuit grants 1 stack of Static.",
   "shortHelp": "Ranged (Chain), Ally Heal, Self +Static",
   "icon": "shocktherapy_rejuvenatingcircuit.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "Chain",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "chainTargetExpression": "101 kHitPoints% target> - enttype maintarget> enttype target> eq 99 * 1 + * 1 prevdistance / +",
   "maxTargetsExpression": "4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +",
   "stats": {
@@ -46,7 +52,7 @@ export const RejuvenatingCircuit: Power = {
   },
   "atoms": [
     ["Heal",null,1.55,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"BuildStatic"],
     ["Heal",null,0.41,1,0,"Ranged_Heal","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

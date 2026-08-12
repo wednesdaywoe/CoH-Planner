@@ -12,6 +12,8 @@ export const BSBash: Power = {
   "name": "Bash",
   "internalName": "BS_Bash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You Bash with your mace dealing moderate Smashing damage and minor Toxic damage over time.Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.",
   "shortHelp": "Melee, DMG(Smash), Minor DoT(Toxic), Foe Disorient",
   "icon": "banespider_bash.png",
@@ -20,6 +22,9 @@ export const BSBash: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -66,12 +71,12 @@ export const BSBash: Power = {
   "atoms": [
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Toxic",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
-    ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 >",true],
+    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true],
     ["Damage","Smashing",1.491,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Toxic",0.1491,1,2.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Smashing",1.491,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 >",true],
-    ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,true]
+    ["Damage","Smashing",1.491,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > &&",true],
+    ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

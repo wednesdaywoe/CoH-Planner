@@ -12,12 +12,17 @@ export const FlingThorns: Power = {
   "name": "Fling Thorns",
   "internalName": "Fling_Thorns",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You can throw dozens of Thorns in a wide cone in front of you, impaling foes caught within the area. These Thorns deals moderate damage, and poisons any targets it hits. Thorn poison deals additional Toxic damage and can reduce your foes' Defense.Damage: Light.Recharge: Moderate.",
   "shortHelp": "Ranged (Cone), Light DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_flingthorns.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 30,
@@ -71,9 +76,9 @@ export const FlingThorns: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.7747,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Toxic",0.086,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Toxic",0.086,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Defense","All",2,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Lethal",1.9411,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

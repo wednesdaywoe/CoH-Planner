@@ -12,12 +12,17 @@ export const LancerShot: Power = {
   "name": "Lancer Shot",
   "internalName": "Lancer_Shot",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You charge up your Beam Rifle and deliver an incredibly focused ray of energy at a nearby foe that deals Superior Energy damage and will briefly stun the target. Lancer Shot will cause additional damage if the target is suffering from the Disintegrating effect. In addition, targets already affected by the Disintegrating effect have a chance to spread to 3 nearby targets. This Disintegrate Spread effect can only hit targets that aren't already affected by the Disintegration effect. Disintegrate Spread causes Minor Energy damage over time. Damage: Superior, Recharge: Slow",
   "shortHelp": "Superior DMG(Energy), Foe Stun, Special",
   "icon": "beamrifle_lancershot.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,
@@ -49,6 +54,7 @@ export const LancerShot: Power = {
   "effects": {
     "buffDuration": 9.4,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.125,
       "table": "Ranged_Ones"
     },
@@ -80,7 +86,7 @@ export const LancerShot: Power = {
     ["Damage","Energy",2.668154,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.424,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? &&",true],
     ["Damage","Energy",0.533631,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? &&",true],
-    ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,6.25,0.5199999809265137,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower?",true]
+    ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,6.25,0.5199999809265137,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower?",true,null,null,null,null,null,null,0.52]
   ],
   "conditionalEffects": [
     {

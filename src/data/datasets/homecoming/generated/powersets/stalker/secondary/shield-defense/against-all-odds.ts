@@ -12,6 +12,8 @@ export const AgainstallOdds: Power = {
   "name": "Against All Odds",
   "internalName": "Against_all_Odds",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "The harder pressed you are in combat the greater your offensive abilities become. Each enemy that stands toe-to-toe with you in combat will grant you a damage bonus. The first foe you engage in melee grants the highest damage bonus, and up to 10 foes can contribute to this effect. Each foe in melee range also suffers from reduced damage as your shield deflects a portion of their damage.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +DMG, Foe -DMG",
   "icon": "shielddefense_againstallodds.png",
@@ -22,6 +24,9 @@ export const AgainstallOdds: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -38,18 +43,19 @@ export const AgainstallOdds: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 1,
+    "buffDuration": 1.25,
     "damageBuff": {
       "scale": 1.55,
       "table": "Melee_Buff_Dmg",
       "perTarget": 0.55
     },
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Debuff_Dam"
     },
     "durations": {
-      "damageBuff": 1,
+      "damageBuff": 1.25,
       "damageDebuff": 1
     }
   },
@@ -67,19 +73,19 @@ export const AgainstallOdds: Power = {
     ["DamageBuff","Sonic",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Quantum",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Special",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Smashing",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Lethal",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Fire",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Cold",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Energy",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Negative",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Psionic",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Toxic",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Radiation",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Electrical",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Sonic",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Quantum",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
-    ["DamageBuff","Special",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Smashing",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Lethal",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Fire",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Cold",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Energy",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Negative",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Psionic",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Toxic",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Radiation",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Electrical",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Sonic",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Quantum",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
+    ["DamageBuff","Special",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.55],
     ["DamageBuff","Smashing",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

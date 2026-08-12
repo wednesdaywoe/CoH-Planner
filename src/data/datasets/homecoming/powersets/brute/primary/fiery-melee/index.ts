@@ -21,7 +21,12 @@ import { GreaterFireSword as GreaterFireSword } from './greater-fire-sword';
 
 export const powerset: Powerset = {
   id: 'brute/fiery-melee',
+  setPath: 'Brute_Melee.Fiery_Melee',
   name: 'Fiery Melee',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Fiery Melee allows you to attack with fire, and even conjure up flaming melee weapons. Fiery Melee powers tend to set foes ablaze for added Damage Over Time.',
   icon: 'fiery_melee_set.ico',
   archetype: 'brute',

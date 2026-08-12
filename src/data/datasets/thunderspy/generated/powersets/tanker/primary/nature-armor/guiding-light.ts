@@ -12,12 +12,18 @@ export const GuidingLight: Power = {
   "name": "Radiating Light",
   "internalName": "Guiding_Light",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Stored sunlight surges through you, mending your wounds and those of your friends.",
   "shortHelp": "PBAoE Team Heal",
   "icon": "natureaffinity_lifegivingspores.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 20,

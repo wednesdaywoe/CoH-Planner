@@ -12,12 +12,17 @@ export const TotalDomination: Power = {
   "name": "Total Domination",
   "internalName": "Total_Domination",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Tears at the mind of a target foe and those near them. Dominate renders all affected foes helpless, lost in their own minds and unable to defend themselves. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "mentalcontrol_freeze.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,
@@ -49,7 +54,7 @@ export const TotalDomination: Power = {
   },
   "atoms": [
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

@@ -12,6 +12,8 @@ export const CryoAmmunition: Power = {
   "name": "Cryo Ammunition",
   "internalName": "Cryo_Ammunition",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "While this toggle is active you will be equipped with 'Cryo Rounds'. Most of your Dual Pistol attacks will have their secondary damage converted to cold damage and inflict a minor slow effect on the target.Cryo Rounds are more aerodynamic, being able to travel a greater distance.In order to earn this power, you must purchase the Swap Ammo power.",
   "shortHelp": "Toggle: Ammo Change (Cold), Special",
   "icon": "dualpistols_cryoammo.png",
@@ -22,6 +24,9 @@ export const CryoAmmunition: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -37,6 +42,7 @@ export const CryoAmmunition: Power = {
       "rangeBuff": 0.75
     },
     "rangeBuff": {
+      "ignoreStrength": true,
       "scale": 0.333,
       "table": "Ranged_Ones"
     }
@@ -56,7 +62,7 @@ export const CryoAmmunition: Power = {
     ["GlobalChanceMod",null,-0.5,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["GlobalChanceMod",null,-0.7,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["GlobalChanceMod",null,-0.05,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,90,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,90,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"]
   ],
   "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo",
   "setsModes": [

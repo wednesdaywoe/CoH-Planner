@@ -12,12 +12,17 @@ export const Stalagmites: Power = {
   "name": "Stalagmites",
   "internalName": "Stalagmites",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can cause Stalagmites to erupt all around an enemy, damaging all nearby foes. The Stalagmites deal minimal Lethal damage, and can Disorient all affected targets for a good while, as well as reduce their Defense. You must be on the ground  to activate this power.  Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Minor DMG(Lethal), Foe Disorient, -DEF",
   "icon": "earthgrasp_stalagmites.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 70,
@@ -66,7 +71,7 @@ export const Stalagmites: Power = {
   "atoms": [
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Defense","All",2,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Damage","Lethal",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.hasTag? || &&",true],
     ["Damage","Lethal",0.125,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true],

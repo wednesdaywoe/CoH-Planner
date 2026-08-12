@@ -12,12 +12,17 @@ export const HotFeet: Power = {
   "name": "Hot Feet",
   "internalName": "Hot_Feet",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you heat the earth in a large area around yourself. Enemy movement is Slowed as they attempt to flee the immediate area. All foes in the affected area may suffer some damage over time.  You cannot fly and must be near the ground to use this power. Damage: Minor(DoT), Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Fire), Foe -SPD",
   "icon": "firetrap_hotfeet.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 20,
@@ -41,12 +46,18 @@ export const HotFeet: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 0.25,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "buffDuration": 2.25,
     "durations": {
       "slow": 2.25
     },
     "fear": {
+      "ignoreStrength": true,
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Ones"
@@ -57,6 +68,7 @@ export const HotFeet: Power = {
         "table": "Ranged_Ones"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Ranged_Slow"
       },
@@ -71,11 +83,11 @@ export const HotFeet: Power = {
     }
   },
   "atoms": [
+    ["Damage","Fire",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||"],
     ["Mez","Afraid",4,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.7,1,2.25,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","Jump",0.7,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Movement","Run",0.7,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Damage","Fire",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true]
+    ["Movement","Run",0.7,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ]
 };

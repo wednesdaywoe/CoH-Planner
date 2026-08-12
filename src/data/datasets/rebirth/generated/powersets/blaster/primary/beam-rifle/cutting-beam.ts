@@ -12,12 +12,17 @@ export const CuttingBeam: Power = {
   "name": "Cutting Beam",
   "internalName": "Cutting_Beam",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a constant stream of energy from your weapon and sweep it in a broad arc blasting all foes in a wide cone in front of you. Cutting beam deals Moderate Energy damage and reduces the targets' Defense. This power will cause Minor Energy damage over time if the target is suffering from the Disintegrating effect. Damage: Moderate, Recharge: Long",
   "shortHelp": "Ranged (Cone), Moderate DMG(Energy), Foe -Def(All), Special",
   "icon": "beamrifle_cuttingbeam.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 50,
@@ -53,6 +58,7 @@ export const CuttingBeam: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.051,
       "table": "Ranged_Ones"
     },

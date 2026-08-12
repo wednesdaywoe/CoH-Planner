@@ -12,6 +12,8 @@ export const EnergyTransfer: Power = {
   "name": "Energy Transfer",
   "internalName": "Energy_Transfer",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient, Self -HP",
   "icon": "powerpunch_energytransfer.png",
@@ -22,6 +24,9 @@ export const EnergyTransfer: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 7,

@@ -12,6 +12,8 @@ export const TrainedMind: Power = {
   "name": "Trained Mind",
   "internalName": "Trained_Mind",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Your intense training in mental discipline allows you to keep your head in dangerous situations. You gain a resistance to Disorient, Hold, Sleep, Immobilization, Confusion, and Fear effects, as well as resistance to Psionic damage as long as this power is active. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Psionics)",
   "icon": "infiltratortraining_trainedmind.png",
@@ -22,6 +24,9 @@ export const TrainedMind: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

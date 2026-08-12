@@ -12,6 +12,8 @@ export const PrimalistsCloak: Power = {
   "name": "Primalist's Cloak",
   "internalName": "Primalists_Cloak",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "While active Primalist's Cloak significantly boosts your defense to area of effect attacks allowing the Primalist to be less likely to be struck by stray splash damage.  Half of this large area of effective defense boost is suppressed when you exit stealth.  Additionally, you will gain a measure of stealth and a moderate amount of resistance to defense debuffs. While in Prowler Form you will have significantly improved stealth and have a 50% chance to land a critical hit while concealed by Primalist's Cloak. Recharge: Long",
   "shortHelp": "Toggle, Stealth, +Def(AoE), +Res(Defense Debuffs)",
   "icon": "primalgifts_primalistscloak.png",
@@ -22,6 +24,9 @@ export const PrimalistsCloak: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -75,6 +80,7 @@ export const PrimalistsCloak: Power = {
         "table": "Melee_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.15,
         "table": "Melee_Ones"
       }
@@ -85,7 +91,7 @@ export const PrimalistsCloak: Power = {
     ["Stealth","RadiusPvP",350,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? !",null,null,true],
     ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
     ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Meta",null,1,103,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Meta",null,1,103,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"set_mode"],
     ["Stealth","Translucency",0.15,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
     ["Defense","All",0.3,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Stealth","RadiusPvE",45,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode?",true,null,true],

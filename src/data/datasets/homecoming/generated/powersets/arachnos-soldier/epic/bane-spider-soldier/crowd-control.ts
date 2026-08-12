@@ -12,6 +12,8 @@ export const CrowdControl: Power = {
   "name": "Crowd Control",
   "internalName": "Crowd_Control",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You swing your mace in a wide arc in front of you. This attack strikes all foes within melee range, deals them serious damage and minor Toxic damage over time, and knocks them down.Notes: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.",
   "shortHelp": "Melee (Cone), DMG(Smash), Minor DoT(Toxic), Foe Knockback",
   "icon": "banespider_crowdcontrol.png",
@@ -20,6 +22,9 @@ export const CrowdControl: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -69,12 +74,12 @@ export const CrowdControl: Power = {
     ["Damage","Smashing",1.61,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Toxic",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Smashing",1.61,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 >",true],
+    ["Damage","Smashing",1.61,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true],
     ["Damage","Smashing",1.7183,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Toxic",0.0836,1,4.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Smashing",1.7183,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 >",true],
-    ["Damage","Smashing",0.7217,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Damage","Smashing",1.7183,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > &&",true],
+    ["Damage","Smashing",0.7217,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"]
   ],
   "specialEffects": [
     {

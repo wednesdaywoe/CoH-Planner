@@ -12,12 +12,17 @@ export const Roots: Power = {
   "name": "Roots",
   "internalName": "Roots",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Immobilizes a group of foes by entangling their feet in a twisted mass of thorny Roots.  Roots is slower and does less damage than Entangle, but it can capture multiple foes in one attack. Like Entangle, Roots can immobilize flying targets, if they are near the ground when attacked. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Smashing, Lethal), Foe Immobilize",
   "icon": "plantcontrol_roots.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 80,
@@ -80,7 +85,7 @@ export const Roots: Power = {
     ["Damage","Smashing",0.1,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.1,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",7.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",7.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.5],
     ["MezResist","Knockback",100,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockup",100,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Knockback",-100,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],

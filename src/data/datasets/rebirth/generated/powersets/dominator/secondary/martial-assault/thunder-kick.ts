@@ -12,6 +12,8 @@ export const ThunderKick: Power = {
   "name": "Thunder Kick",
   "internalName": "Thunder_Kick",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a strong Thunder Kick that hits so hard it can Disorient your target. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Smash), Minor Disorient",
   "icon": "martialassault_thunderkick.png",
@@ -20,6 +22,9 @@ export const ThunderKick: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -57,10 +62,10 @@ export const ThunderKick: Power = {
   },
   "atoms": [
     ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",4,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.6],
+    ["Mez","Stunned",4,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.6],
     ["Damage","Smashing",1.649653,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

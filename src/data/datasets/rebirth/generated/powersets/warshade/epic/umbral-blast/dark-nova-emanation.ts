@@ -12,12 +12,17 @@ export const DarkNovaEmanation: Power = {
   "name": "Dark Nova Emanation",
   "internalName": "Dark_Nova_Emanation",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Sends bolts of Nictus dark energy to multiple targets at once within a cone area in front of the caster.  Deals moderate negative energy damage to each affected foe and reduces their attack rate and movement speed. This power is only available while in Dark Nova Form. Damage: Moderate. Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe -Recharge, -SPD, Knockback",
   "icon": "umbralblast_graviticemanation.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -56,6 +61,7 @@ export const DarkNovaEmanation: Power = {
       "slow": 8
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -65,6 +71,7 @@ export const DarkNovaEmanation: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

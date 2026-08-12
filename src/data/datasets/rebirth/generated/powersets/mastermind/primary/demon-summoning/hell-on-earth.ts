@@ -12,12 +12,17 @@ export const HellonEarth: Power = {
   "name": "Hell on Earth",
   "internalName": "Hell_on_Earth",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "A dark blessing is placed upon a selected Demon henchman which will increase its damage and chance to hit for 90 seconds. While this is in effect living hellfire may spawn every 15 seconds at the affected Demon henchman's location. The creatures summoned will have a very weak tie to the material plane and will return to Abyss after a short time. Recharge: Very Long",
   "shortHelp": "Ranged, Pet +Dmg, +To Hit, Summon Living Hellfire",
   "icon": "demonsummoning_hellonearth.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -43,6 +48,7 @@ export const HellonEarth: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Buff_Dmg"
     },
@@ -75,12 +81,12 @@ export const HellonEarth: Power = {
     ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.949999988079071,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.8500000238418579,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.800000011920929,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.75,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.699999988079071,null,true]
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.949999988079071,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.95],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.9],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.8500000238418579,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.85],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.800000011920929,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.8],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.75,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.75],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.699999988079071,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.7]
   ],
   "specialEffects": [
     {

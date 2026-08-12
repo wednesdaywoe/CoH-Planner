@@ -21,7 +21,12 @@ import { MeltArmor as MeltArmor } from './melt-armor';
 
 export const powerset: Powerset = {
   id: 'defender/thermal-radiation',
+  setPath: 'Defender_Buff.Thermal_Radiation',
   name: 'Thermal Radiation',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You have the ability to control heat and Thermal Radiation. This allows you to protect allies from harm, heal them or increase their abilities. You can also weaken your enemies.',
   icon: 'thermal_radiation_set.ico',
   archetype: 'defender',

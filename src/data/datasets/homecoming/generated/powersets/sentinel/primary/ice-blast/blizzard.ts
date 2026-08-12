@@ -12,12 +12,17 @@ export const Blizzard: Power = {
   "name": "Blizzard",
   "internalName": "Blizzard",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You can conjure a Blizzard that inflicts Extreme Cold and Lethal damage over time and can Slow the attack rate of all your opponents in a large area, reducing their chance to hit and possibly knocking them back.",
   "shortHelp": "Ranged (Location AoE), Extreme DoT(Cold), Foe -To Hit, -SPD, -Recharge, Knockback",
   "icon": "iceblast_blizzard.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 40,

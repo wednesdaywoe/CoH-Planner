@@ -12,6 +12,8 @@ export const HavocPunch: Power = {
   "name": "Havoc Punch",
   "internalName": "Havoc_Punch",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with a greater damage. Havoc Punch can drain some Endurance from your target and may overload their synapses, leaving him writhing for a moment.  A portion of the drained Endurance may be given back to you.  Disturbing an overloaded target will disperse the electrical charge and release him. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee, Moderate DMG(Smash/Energy), Foe Sleep, -End",
   "icon": "electricmelee_targetedmoderatedmg.png",
@@ -20,6 +22,9 @@ export const HavocPunch: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

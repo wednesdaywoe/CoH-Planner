@@ -12,12 +12,17 @@ export const FRTPsionicLance: Power = {
   "name": "Psionic Tornado",
   "internalName": "FRT_Psionic_Lance",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
   "icon": "fortunatatraining_psionictornado.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -59,6 +64,7 @@ export const FRTPsionicLance: Power = {
       "table": "Ranged_Ones"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Slow"
     }

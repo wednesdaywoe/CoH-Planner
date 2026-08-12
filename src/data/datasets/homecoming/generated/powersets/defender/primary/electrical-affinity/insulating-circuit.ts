@@ -12,12 +12,18 @@ export const InsulatingCircuit: Power = {
   "name": "Insulating Circuit",
   "internalName": "Insulating_Circuit",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Create a circuit of protective energy between several nearby allies, granting them a small protective shield. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Insulating Circuit grants 1 stack of Static.",
   "shortHelp": "Ranged (Chain), Ally +Absorb, Self +Static",
   "icon": "shocktherapy_insulatingcircuit.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "Chain",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "chainTargetExpression": "101 kHitPoints% target> - enttype maintarget> enttype target> eq 99 * 1 + * 1 prevdistance / +",
   "maxTargetsExpression": "4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +",
   "stats": {
@@ -51,6 +57,6 @@ export const InsulatingCircuit: Power = {
   },
   "atoms": [
     ["Absorb",null,2,1,30,"Ranged_Heal","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"BuildStatic"]
   ]
 };

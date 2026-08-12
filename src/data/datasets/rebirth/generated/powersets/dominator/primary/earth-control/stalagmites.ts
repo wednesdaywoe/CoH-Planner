@@ -12,12 +12,17 @@ export const Stalagmites: Power = {
   "name": "Stalagmites",
   "internalName": "Stalagmites",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can cause Stalagmites to erupt all around an enemy, damaging all nearby foes. The Stalagmites deal minimal Lethal damage, and can Disorient all affected targets for a good while, as well as reduce their Defense. You must be on the ground  to activate this power.  Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Minor DMG(Lethal), Foe Disorient, -DEF",
   "icon": "earthgrasp_stalagmites.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 70,

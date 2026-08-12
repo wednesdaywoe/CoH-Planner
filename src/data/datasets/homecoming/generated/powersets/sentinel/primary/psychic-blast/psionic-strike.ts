@@ -12,12 +12,17 @@ export const PsionicStrike: Power = {
   "name": "Psionic Strike",
   "internalName": "Psionic_Strike",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "This extremely accurate attack does moderate Psionic damage and can Slow a target's attack rate.Damage: Superior.Recharge: Slow.",
   "shortHelp": "Ranged, Superior DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_heavy.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 75,
@@ -56,15 +61,16 @@ export const PsionicStrike: Power = {
       "rechargeDebuff": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.15,
       "table": "Ranged_Slow"
     }
   },
   "atoms": [
-    ["Damage","Psionic",2.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Psionic",2.6,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Psionic",2.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",2.6,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
     ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Damage","Psionic",2.829,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Psionic",2.829,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Damage","Psionic",2.829,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Psionic",2.829,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
   ]
 };

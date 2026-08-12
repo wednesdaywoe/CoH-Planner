@@ -12,12 +12,17 @@ export const ProtonVolley: Power = {
   "name": "Proton Volley",
   "internalName": "Proton_Volley",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Hurls a volley of alpha particles over an extremely long range. Proton Volley can bypass some of a target's defenses and reduce the target's Defense. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Superior, Recharge: Slow",
   "shortHelp": "Sniper, Superior DMG(Energy), Foe -DEF",
   "icon": "radiationburst_protonvolley.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 150,
@@ -65,8 +70,28 @@ export const ProtonVolley: Power = {
   "atoms": [
     ["Damage","Energy",0.7,1,1.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kToHit source> .97 >=",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kToHit source> .97 >=",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Energy",1.34992,1,1.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
-  ]
+  ],
+  "quickSnipe": {
+    "condition": "cur.kToHit source> .97 >=",
+    "stats": {
+      "castTime": 1.33,
+      "range": 150
+    },
+    "damage": [
+      {
+        "type": "Energy",
+        "scale": 0.7,
+        "table": "Ranged_Damage",
+        "duration": 1.6,
+        "tickRate": 0.5
+      }
+    ],
+    "atoms": [
+      ["Damage","Energy",0.7,1,1.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ]
+  }
 };

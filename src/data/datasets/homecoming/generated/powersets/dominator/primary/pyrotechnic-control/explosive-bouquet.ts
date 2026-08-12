@@ -12,12 +12,17 @@ export const ExplosiveBouquet: Power = {
   "name": "Explosive Bouquet",
   "internalName": "Explosive_Bouquet",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You create an explosion of light and sound in a flower formation. Foes inside the blast radius will be Held and Blasted Off into the air.Notes: This power has adaptive recharge. It has a base recharge of 8 seconds and each affected foe will increase the recharge by 14.5 seconds for a maximum total of 240 seconds.",
   "shortHelp": "Ranged (AoE), Foe Hold, Blast Off",
   "icon": "pyrotechnic_explosivebouquet.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,
@@ -55,34 +60,42 @@ export const ExplosiveBouquet: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       }
@@ -98,14 +111,14 @@ export const ExplosiveBouquet: Power = {
     ["Resistance","Negative",-1.2,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Psionic",-1.2,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-1.2,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Meta",null,0,0,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,211,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,3.25,1,null,true],
+    ["Meta",null,0,0,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,211,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,3.25,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"PyrotechnicInterceptable",null,"set_mode"],
     ["RechargePower",null,14.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Mez","Held",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true],
-    ["Mez","Held",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Held",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

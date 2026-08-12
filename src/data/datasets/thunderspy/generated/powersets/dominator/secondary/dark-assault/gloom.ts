@@ -12,12 +12,17 @@ export const Gloom: Power = {
   "name": "Gloom",
   "internalName": "Gloom",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Gloom slowly drains a target of life, while reducing their chance to hit.  Slower than Dark Blast, but deals more damage over time. Damage: High(DoT), Recharge: Moderate",
   "shortHelp": "Ranged, High DoT(Negative), Foe -To Hit",
   "icon": "darknessassault_gloom.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -61,7 +66,7 @@ export const Gloom: Power = {
     ["Damage","Negative",0.22,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Negative",0.26075,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "damageTypes": [
     "Negative"

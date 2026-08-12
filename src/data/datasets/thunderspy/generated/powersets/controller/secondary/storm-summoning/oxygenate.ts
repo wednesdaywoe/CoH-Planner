@@ -12,12 +12,18 @@ export const Oxygenate: Power = {
   "name": "Oxygenate",
   "internalName": "Oxygenate",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Saturates the air around you with rich oxygen, healing the wounds of you and your allies. Affected allies are resistant to Sleep, Stun and Endurance Drain effects. Recharge: Fast Choosing this power locks out O2 Boost",
   "shortHelp": "PBAoE Ally +Heal, +Res(Disorient, Sleep, End Drain)",
   "icon": "stormsummoning_o2boost.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -45,10 +51,12 @@ export const Oxygenate: Power = {
     "buffDuration": 60,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       }
@@ -59,10 +67,12 @@ export const Oxygenate: Power = {
     },
     "mezResistance": {
       "sleep": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Boolean"
       }

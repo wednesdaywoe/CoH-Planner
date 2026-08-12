@@ -12,12 +12,17 @@ export const LuminousDetonation: Power = {
   "name": "Luminous Detonation",
   "internalName": "Luminous_Detonation",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You hurl a large blast of Kheldian energy that violently explodes on impact, damaging all foes near the target, and reducing their Defense. Some affected targets may get knocked back.Damage: Light.Recharge: Slow.",
   "shortHelp": "Ranged (Targeted AoE), Light DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_luminousdetonation.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -66,10 +71,10 @@ export const LuminousDetonation: Power = {
   },
   "atoms": [
     ["Damage","Energy",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
+    ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",0.6797,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true]
+    ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

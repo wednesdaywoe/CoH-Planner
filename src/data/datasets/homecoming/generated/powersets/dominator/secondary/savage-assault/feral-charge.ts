@@ -12,12 +12,17 @@ export const FeralCharge: Power = {
   "name": "Feral Charge",
   "internalName": "Feral_Charge",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You throw yourself at your target while slashing and tearing wildly dealing moderate lethal damage and causing it to suffer from additional minor lethal damage over time. The damage of this power can increase based on how far away you charge from, with up to double damage dealt at its strongest. Feral Charge builds 1 stacks of Blood Frenzy for every 20 ft in between your target and you, up to 3 stacks.Damage: Light.Recharge: Moderate.",
   "shortHelp": "Melee, DMG(Lethal), Foe DoT (Lethal), +3 Blood Frenzy, Self Teleport",
   "icon": "savagemelee_feralcharge.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -59,12 +64,12 @@ export const FeralCharge: Power = {
   ],
   "atoms": [
     ["Damage","Lethal",0.845,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"distance 25 - 0 40 minmax 40 / 1 + @StdResult *"],
-    ["Damage","Lethal",0.068,1,3.1,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"distance 25 - 0 40 minmax 40 / 1 + @StdResult *"],
+    ["Damage","Lethal",0.068,1,3.1,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"distance 25 - 0 40 minmax 40 / 1 + @StdResult *",null,0.8,true],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"distance 7 >",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! distance 0 >= && distance 20 < &&",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! distance 20 >= && distance 40 < &&",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! distance 40 >= &&",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! distance 0 >= && distance 20 < &&",true,null,null,null,null,null,null,null,null,"BuildFrenzy"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! distance 20 >= && distance 40 < &&",true,null,null,null,null,null,null,null,null,"BuildFrenzy"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! distance 40 >= &&",true,null,null,null,null,null,null,null,null,"BuildFrenzy"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

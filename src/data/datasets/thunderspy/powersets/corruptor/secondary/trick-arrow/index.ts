@@ -21,7 +21,12 @@ import { EMPArrow as EMPArrow } from './emp-arrow';
 
 export const powerset: Powerset = {
   id: 'corruptor/trick-arrow',
+  setPath: 'Corruptor_Buff.Trick_Arrow',
   name: 'Trick Arrow',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Trick Arrows are tipped with an odd variety of payloads, which if used strategically, can dramatically alter a battle site.',
   icon: 'trick_arrow_set.ico',
   archetype: 'corruptor',

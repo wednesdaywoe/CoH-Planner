@@ -12,12 +12,17 @@ export const Screech: Power = {
   "name": "Screech",
   "internalName": "Screech",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "By bursting forth with this hypersonic Screech, you can disorient a target. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged, Minor DMG(Smashing/Energy), Foe Disorient, -Res(All)",
   "icon": "sonicblast_stun.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -55,6 +60,7 @@ export const Screech: Power = {
   "effects": {
     "buffDuration": 12,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.099,
       "table": "Ranged_Ones"
     },
@@ -64,34 +70,42 @@ export const Screech: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }

@@ -12,12 +12,17 @@ export const NightFall: Power = {
   "name": "Night Fall",
   "internalName": "Night_Fall",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit.",
   "shortHelp": "Ranged (Cone), DMG(Negative), Foe -To Hit",
   "icon": "darkcast_nightfall.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -64,8 +69,8 @@ export const NightFall: Power = {
   "atoms": [
     ["Damage","Negative",0.11,1,2.8,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Negative",0.11,1,2.8,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
+    ["Damage","Negative",0.11,1,2.8,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true],
     ["Damage","Negative",0.0873,1,2.8,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Negative",0.0873,1,2.8,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true]
+    ["Damage","Negative",0.0873,1,2.8,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true]
   ]
 };

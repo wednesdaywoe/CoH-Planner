@@ -12,6 +12,8 @@ export const AlphaBarrier: Power = {
   "name": "Alpha Barrier",
   "internalName": "Alpha_Barrier",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You cloak yourself in a field of protective radiation that grants you a good deal of resistance to Lethal, Smashing and Toxic damage.",
   "shortHelp": "Toggle: Self +Res(Lethal, Smash, Toxic)",
   "icon": "radiationarmor_alphabarrier.png",
@@ -22,6 +24,9 @@ export const AlphaBarrier: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

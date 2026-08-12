@@ -12,12 +12,17 @@ export const Foresight: Power = {
   "name": "Foresight",
   "internalName": "Foresight",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Widows who possess Foresight are resistant to Psionic Damage, as well as Sleep, Hold, Immobilization, Disorient, Confuse and Fear effects. Their precognition becomes clearer in times of duress, providing resistance to all damage types based on their current health, as well. They also have improved Defense, due to being able to see attacks slightly before they actually occur.",
   "shortHelp": "Auto: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Psionics, Special), +Def (all)",
   "icon": "teamwork_foresight.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 0.5
@@ -87,22 +92,27 @@ export const Foresight: Power = {
     },
     "resistance": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
@@ -111,6 +121,7 @@ export const Foresight: Power = {
         "table": "Melee_Ones"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       }

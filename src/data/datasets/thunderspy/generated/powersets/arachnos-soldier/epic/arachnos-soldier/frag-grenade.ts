@@ -12,12 +12,17 @@ export const FragGrenade: Power = {
   "name": "Frag Grenade",
   "internalName": "Frag_Grenade",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Launches a Frag Grenade at long range from under the barrel of your rifle. The explosion from this grenade affects all within the blast and can knock them back. Note: If you take this power, you cannot take the Crab Spider version. Damage: Moderate Recharge: Medium",
   "shortHelp": "Ranged(Targeted AoE), Moderate DMG (Toxic/Smash), Foe Knockback",
   "icon": "arachnossoldier_fraggrenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

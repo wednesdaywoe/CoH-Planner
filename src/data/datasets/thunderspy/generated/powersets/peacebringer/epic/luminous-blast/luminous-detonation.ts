@@ -12,12 +12,17 @@ export const LuminousDetonation: Power = {
   "name": "Luminous Detonation",
   "internalName": "Luminous_Detonation",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You hurl a large blast of Kheldian energy that violently explodes on impact, damaging all foes near the target, and reducing their Defense. Some affected targets may get knocked back. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_luminousdetonation.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

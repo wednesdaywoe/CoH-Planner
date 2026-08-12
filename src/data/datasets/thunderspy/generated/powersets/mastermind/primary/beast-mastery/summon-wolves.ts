@@ -12,12 +12,17 @@ export const SummonWolves: Power = {
   "name": "Summon Wolves",
   "internalName": "Summon_Wolves",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Calls forth one to three Wolves to do your bidding. The third one summoned will be an Alpha Wolf, which grants some leadership bonuses to the pack. Wolves have no ranged attacks, but can quickly close in on their prey. You may only have 3 Wolves under your control at any given time. If you attempt to call more Wolves, you can only replace the ones you have lost in battle. If you already have three, the power will fail. Wolf attacks have a chance to build a charge of Pack Mentality.  Pack Mentality is a Damage buff aura that radiates from the Mastermind and can stack up to 10 times.  Recharge: Very Long",
   "shortHelp": "Summon Wolves",
   "icon": "beastmastery_summonwolves.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

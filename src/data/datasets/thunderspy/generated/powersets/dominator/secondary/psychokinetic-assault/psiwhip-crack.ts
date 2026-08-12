@@ -12,12 +12,17 @@ export const PsiWhipCrack: Power = {
   "name": "Psi-Whip Crack",
   "internalName": "PsiWhip_Crack",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You manifest your whip and Lash out at your foe dealing moderate damage and also manifesting a Psychokinetic sword. Lash has has a chance to knockdown your target. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Psionic/energy)",
   "icon": "awakened_mentalblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -71,7 +76,7 @@ export const PsiWhipCrack: Power = {
     ["Damage","Energy",1.3223,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1.3223,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",0.3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

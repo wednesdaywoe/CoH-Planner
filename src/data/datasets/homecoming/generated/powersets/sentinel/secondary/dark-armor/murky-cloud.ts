@@ -12,6 +12,8 @@ export const MurkyCloud: Power = {
   "name": "Murky Cloud",
   "internalName": "Murky_Cloud",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks, as well as Endurance Drain effects.",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative, End Drain)",
   "icon": "darkarmor_defractingcloud.png",
@@ -22,6 +24,9 @@ export const MurkyCloud: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,10 +48,12 @@ export const MurkyCloud: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }

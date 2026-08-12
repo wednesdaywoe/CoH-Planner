@@ -12,12 +12,17 @@ export const PoisonDart: Power = {
   "name": "Poison Dart",
   "internalName": "Poison_Dart",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Poison Dart does moderate damage to your foe, then poisons them.  The poison does toxic damage over time and reduces their regeneration rate.  Damage: Moderate Recharge: Fast",
   "shortHelp": "Moderate DMG (Lethal/Toxic), DoT(Toxic), -Regeneration, -Recharge, -SPD",
   "icon": "widowtraining_poisondart.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,
@@ -65,6 +70,7 @@ export const PoisonDart: Power = {
       "slow": 4
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -78,6 +84,7 @@ export const PoisonDart: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },

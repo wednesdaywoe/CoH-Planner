@@ -12,12 +12,17 @@ export const CombatTrainingDefensive: Power = {
   "name": "Combat Training: Defensive",
   "internalName": "Combat_Training:_Defensive",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You are more evasive to melee attacks.",
   "shortHelp": "Auto: Self +DEF(Melee)",
   "icon": "teamwork_combattrainingdefensive.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 4,
@@ -45,26 +50,32 @@ export const CombatTrainingDefensive: Power = {
     },
     "resistance": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       }

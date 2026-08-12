@@ -12,12 +12,17 @@ export const MaceBeamVolley: Power = {
   "name": "Mace Beam Volley",
   "internalName": "Mace_Beam_Volley",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "The Nullifier Mace can fire a volley of energy at all foes in front of the user. The Mace Beam Volley is a Moderate damage area of effect cone attack with a chance to knock foes off their feet.  Damage: Moderate Recharge: Medium",
   "shortHelp": "Ranged Cone, Moderate DMG(Energy/Smash), Foe Knockback",
   "icon": "banespider_macebeamvolley.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 40,

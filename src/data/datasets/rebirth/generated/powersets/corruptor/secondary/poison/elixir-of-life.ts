@@ -12,12 +12,17 @@ export const ElixirofLife: Power = {
   "name": "Elixir of Life",
   "internalName": "Elixir_of_Life",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "With this Elixir, you can revive a fallen ally and turn him into a killing machine. The revived target has increased damage, chance to hit, Endurance recovery, and attack speed, and gains a resistance to Toxic damage. A brew of this sort is not without its side effects. The revived target will soon become very sick and severely weak after about 90 seconds. All effects of the Elixir will eventually wear off. Elixir of Life can only be used on Players.  Recharge: Very Long",
   "shortHelp": "Close, Ally Rez, Special",
   "icon": "poison_elixiroflife.png",
   "powerType": "Click",
   "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadPlayerFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 15,
@@ -48,10 +53,12 @@ export const ElixirofLife: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Buff_Dmg"
     },
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Debuff_Dam"
     },
@@ -71,11 +78,13 @@ export const ElixirofLife: Power = {
       "table": "Ranged_Ones"
     },
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 1000,
       "table": "Ranged_Ones"
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     },
@@ -90,10 +99,12 @@ export const ElixirofLife: Power = {
       }
     },
     "tohitBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
     },
     "tohitDebuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Debuff_ToHit"
     }
@@ -113,8 +124,8 @@ export const ElixirofLife: Power = {
     ["DamageBuff","Psionic",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["ToHit",null,3,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Resistance","Toxic",2,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Mez","Held",1000,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Smashing",4,1,45,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",4,1,45,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

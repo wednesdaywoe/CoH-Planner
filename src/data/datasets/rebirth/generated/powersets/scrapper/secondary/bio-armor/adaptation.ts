@@ -12,12 +12,17 @@ export const Adaptation: Power = {
   "name": "Evolving Armor",
   "internalName": "Adaptation",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "When faced with danger, your Bio Armor reacts by becoming incredibly durable as well as infecting nearby enemies, lowering their resistance to damage. While active, Evolving Armor will grant you small amount of damage resistance, plus an additional amount for each nearby target. Nearby foes will also be taunted and have their damage resistance reduced. While Efficient Adaptation is active, this power grants a moderate bonus to Regeneration and Recovery plus a tiny amount of both for each nearby foe up to 10 foes. While Defensive Adaptation is active you gain a very minor amount of defense and damage resistance for each nearby foe, however you lose the benefit of this power's resistance debuff. If Offensive Adaptation is active this power's damage resistance debuff is increased. These special bonuses are unenhanceable. Recharge: Slow",
   "shortHelp": "Self Toggle, +Res(All), Foe -Res(All), Taunt, +Special",
   "icon": "bioorganicarmor_evolution.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -87,34 +92,42 @@ export const Adaptation: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       }
@@ -231,34 +244,42 @@ export const Adaptation: Power = {
         },
         "resistanceDebuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           }

@@ -12,12 +12,17 @@ export const QuickRecovery: Power = {
   "name": "Quick Recovery",
   "internalName": "Quick_Recovery",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You recover Endurance at a faster rate than normal. This power is always on.",
   "shortHelp": "Auto: Self +Recovery",
   "icon": "willpower_quickrecovery.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -33,6 +38,7 @@ export const QuickRecovery: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "recovery": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       }

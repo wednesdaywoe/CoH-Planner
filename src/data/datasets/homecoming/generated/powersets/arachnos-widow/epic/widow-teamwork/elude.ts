@@ -12,12 +12,17 @@ export const Elude: Power = {
   "name": "Elude",
   "internalName": "Elude",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "You can improve your reflexes, making yourself so quick you can Elude almost any attack, be it ranged, melee, or area effect. Your running speed and jumping height and Endurance Recovery are also increased. Elude also grants you high resistance to Defense DeBuffs. When Elude wears off, you are left drained of all Endurance and unable to recover Endurance for a while.",
   "shortHelp": "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special",
   "icon": "widowteamwork_elude.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 1000,
@@ -44,6 +49,7 @@ export const Elude: Power = {
     "buffDuration": 180,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
@@ -70,6 +76,7 @@ export const Elude: Power = {
       "recoveryDebuff": 20
     },
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
@@ -88,6 +95,7 @@ export const Elude: Power = {
       "table": "Melee_Ones"
     },
     "recoveryDebuff": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     }

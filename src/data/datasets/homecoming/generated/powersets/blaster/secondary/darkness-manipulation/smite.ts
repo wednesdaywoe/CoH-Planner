@@ -12,6 +12,8 @@ export const Smite: Power = {
   "name": "Smite",
   "internalName": "Smite",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You wrap your fists with Negative Energy channeled from the Netherworlds, then perform a Smite that deals High negative energy damage. Smite clouds the target's vision, lowering its chance to hit for a short time.",
   "shortHelp": "Melee, High DMG(Smash/Negative), Foe -To Hit",
   "icon": "darknessmanipulation_smite.png",
@@ -20,6 +22,9 @@ export const Smite: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -58,6 +63,7 @@ export const Smite: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.064,
       "table": "Melee_Ones"
     },
@@ -78,14 +84,14 @@ export const Smite: Power = {
     ["Damage","Smashing",0.49,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Negative",1.47,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["DamageBuff","Smashing",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Lethal",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Fire",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Cold",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Energy",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Negative",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Psionic",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Toxic",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Lethal",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Fire",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Cold",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Energy",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Negative",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Psionic",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Toxic",0.064,1,8.47,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
     ["Damage","Smashing",0.3697,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",1.1091,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]

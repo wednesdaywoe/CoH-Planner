@@ -12,12 +12,17 @@ export const GravityWell: Power = {
   "name": "Gravity Well",
   "internalName": "Gravity_Well",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Mastery over the forces of gravity and dark matter allows you to capture a single foe and crush them in a Gravity Well. The target is Held helpless, while he is crushed by the massive gravimetric forces. The target's attack rate and movement speed are also slowed, even if they resists the Hold effect.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Melee, Extreme DMG(Negative), Foe Hold -Recharge, -SPD",
   "icon": "umbralblast_gravitywell.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -67,6 +72,7 @@ export const GravityWell: Power = {
       "table": "Melee_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Melee_Slow"
     },
@@ -76,6 +82,7 @@ export const GravityWell: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Slow"
       },

@@ -12,12 +12,17 @@ export const FrozenAura: Power = {
   "name": "Frozen Aura",
   "internalName": "Frozen_Aura",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mastery of cold enables you to dramatically lower the temperature immediately around you. Foes near you when you perform a Frozen Aura will be caught in a fragile casing of ice. Frozen foes will break free if attacked. Frozen Aura deals no significant damage. Recharge: Slow",
   "shortHelp": "Melee (AoE), Foe Sleep",
   "icon": "icemanipulation_frozenaura.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 10,
@@ -39,6 +44,7 @@ export const FrozenAura: Power = {
   "effects": {
     "buffDuration": 9.6,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.055,
       "table": "Ranged_Ones"
     },

@@ -12,6 +12,8 @@ export const Rooted: Power = {
   "name": "Rooted",
   "internalName": "Rooted",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you merge with the Earth and draw forth its power to become resistant to Knockback, Sleep, Hold, Disorient and Endurance Drain effects, and increase your Hit Point Regeneration rate. Rooted also grants you resistance to Defense DeBuffs.Recharge: Fast.",
   "shortHelp": "Toggle: Self +Res(Knockback, Sleep, Disorient, Hold, End Drain, DeBuff DEF), +Regeneration",
   "icon": "stonearmor_rooted.png",
@@ -22,6 +24,9 @@ export const Rooted: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,14 +48,17 @@ export const Rooted: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }
@@ -88,14 +96,17 @@ export const Rooted: Power = {
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       }

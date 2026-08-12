@@ -12,12 +12,17 @@ export const BuildUp: Power = {
   "name": "Build Momentum",
   "internalName": "Build_Up",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Grants you momentum, moderately increases the amount of damage you deal for a few seconds and slightly increases your chance to hit. Build Momentum grants you Momentum for 10 seconds and it replaces any remaining Momentum you may still have.",
   "shortHelp": "Self +DMG, +To Hit, +Momentum",
   "icon": "titanweapons_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const BuildUp: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -63,8 +69,8 @@ export const BuildUp: Power = {
     ["DamageBuff","Negative",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,119,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,-1,1,10,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,119,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,-1,1,10,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"designer_status"]
   ],
   "setsModes": [
     "FastMode"

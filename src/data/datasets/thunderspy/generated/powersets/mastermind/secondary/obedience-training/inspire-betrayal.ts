@@ -12,12 +12,17 @@ export const InspireBetrayal: Power = {
   "name": "Inspire Betrayal",
   "internalName": "Inspire_Betrayal",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You can inspire betrayal in your enemies, by conniving word, threat, promise, or something more, and make them fight for you. Of course, it won't be long before they come to regret their betrayal...",
   "shortHelp": "Foe Confuse",
   "icon": "obediencetraining_inspirebetrayal.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

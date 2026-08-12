@@ -12,12 +12,17 @@ export const ShurikenThrow: Power = {
   "name": "Shuriken Throw",
   "internalName": "Shuriken_Throw",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You impale your foe with a thrown shuriken, dealing moderate Lethal damage.Damage: Light.Recharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Lethal)",
   "icon": "martialassault_shurikenthrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -45,6 +50,6 @@ export const ShurikenThrow: Power = {
   "atoms": [
     ["Damage","Lethal",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",1.26,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

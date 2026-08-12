@@ -12,12 +12,17 @@ export const ProtonVolley: Power = {
   "name": "Proton Volley",
   "internalName": "Proton_Volley",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Hurls a volley of alpha particles over an extremely long range. Proton Volley can bypass some of a target's defenses and reduce the target's Defense. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Sniper, Extreme DMG(Energy), Foe -DEF",
   "icon": "radioactiveassault_protonvolley.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 150,
@@ -64,9 +69,10 @@ export const ProtonVolley: Power = {
   "atoms": [
     ["Damage","Energy",1.125,1,1.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.30000001192092896,null,true]
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.30000001192092896,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Contaminated"]
   ],
   "quickSnipe": {
+    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
     "stats": {
       "castTime": 1.33,
       "range": 80
@@ -79,6 +85,11 @@ export const ProtonVolley: Power = {
         "duration": 1.6,
         "tickRate": 0.5
       }
+    ],
+    "atoms": [
+      ["Damage","Energy",0.89,1,1.6,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.25 * .75 + @StdResult *"],
+      ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+      ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.30000001192092896,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Contaminated"]
     ]
   }
 };

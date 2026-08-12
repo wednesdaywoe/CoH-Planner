@@ -12,12 +12,17 @@ export const PrimalGuile: Power = {
   "name": "Primal Guile",
   "internalName": "Primal_Guile",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "This power allows you to become less of a threat for a moment by placating nearby foes preventing them from being able to attack you for a short time. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Placate",
   "icon": "feralmight_primalguile.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 20,

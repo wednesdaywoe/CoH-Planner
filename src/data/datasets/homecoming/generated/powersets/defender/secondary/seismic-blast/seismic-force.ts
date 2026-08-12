@@ -12,12 +12,17 @@ export const SeismicForce: Power = {
   "name": "Seismic Force",
   "internalName": "Seismic_Force",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly increases your attacks' chance to hit for a few seconds. Slightly increases damage.If affected by Seismic Shockwaves, this power will halt the shockwaves and will decrease the cooldown of all recharging Seismic Blast attacks by a moderate amount.",
   "shortHelp": "Self +To Hit, +DMG, +Special",
   "icon": "seismicblast_aim.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const SeismicForce: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -66,8 +72,8 @@ export const SeismicForce: Power = {
     ["RechargePower",null,-3,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
     ["RechargePower",null,-2,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
     ["RechargePower",null,-25,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true]
+    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"]
   ]
 };

@@ -12,12 +12,17 @@ export const TarPatch: Power = {
   "name": "Tar Patch",
   "internalName": "Tar_Patch",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Drops a large patch of viscous Negative Energy which dramatically slows down enemies that run through it and reduces their damage resistance. Affected targets stuck in the Tar Patch cannot jump or fly.",
   "shortHelp": "Ranged (Location AoE), Target -Speed, -Res, -Fly",
   "icon": "darkmiasma_tarpatch.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 90,
@@ -58,13 +63,28 @@ export const TarPatch: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "runSpeed",
                   "scale": 0.72,
                   "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 500,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true
                 },
                 {
                   "type": "ResistanceDebuff",
                   "scale": 3,
                   "table": "Ranged_Debuff_Res_Dmg",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Ranged_SpeedRunning",
                   "ignoreStrength": true
                 }
               ],
@@ -72,6 +92,9 @@ export const TarPatch: Power = {
               "castTime": 0,
               "activatePeriod": 0.5,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 25,
               "maxTargets": 16
             }

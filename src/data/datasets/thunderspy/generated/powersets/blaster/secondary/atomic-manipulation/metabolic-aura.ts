@@ -12,6 +12,8 @@ export const MetabolicAura: Power = {
   "name": "Particle Acceleration",
   "internalName": "Metabolic_Aura",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power shields you in radioactive particles that allow you to absorb small amounts of damage every 2 seconds while also increasing your Endurance Recovery, running speed, Flying speed. Recharge: Moderate",
   "shortHelp": "Toggle: Self Absorb over Time, +Recovery, +SPD",
   "icon": "radiationpoisoning_acceleratemetabolism.png",
@@ -28,6 +30,9 @@ export const MetabolicAura: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

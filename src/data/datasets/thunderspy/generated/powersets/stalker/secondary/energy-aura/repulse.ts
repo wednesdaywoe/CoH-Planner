@@ -12,12 +12,17 @@ export const Repulse: Power = {
   "name": "Disrupt",
   "internalName": "Repulse",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "This Toggle power creates a field that periodically sends out waves of intense energy that overload nearby enemy senses leaving them briefly stunned.  Disrupt drains a small amount of endurance for each foe it attempts to stun.  Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Foe Disorient",
   "icon": "energyaura_disrupt.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -42,7 +47,15 @@ export const Repulse: Power = {
   "effects": {
     "buffDuration": 5,
     "durations": {
+      "movementCapDebuff": 5,
       "slow": 5
+    },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
     },
     "slow": {
       "flySpeed": {
@@ -50,6 +63,7 @@ export const Repulse: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -58,8 +72,8 @@ export const Repulse: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.7,
+        "table": "Melee_Slow"
       }
     },
     "stun": {

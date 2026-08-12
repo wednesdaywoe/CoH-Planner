@@ -12,12 +12,17 @@ export const Forge: Power = {
   "name": "Forge",
   "internalName": "Forge",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Forge a single ally target into a killing machine.  Forge immensely enhances a single ally's Damage and chance to hit. Recharge: Long",
   "shortHelp": "Ally +DMG, +To Hit",
   "icon": "thermalradiation_forge.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -38,6 +43,7 @@ export const Forge: Power = {
   "effects": {
     "buffDuration": 120,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Buff_Dmg"
     },

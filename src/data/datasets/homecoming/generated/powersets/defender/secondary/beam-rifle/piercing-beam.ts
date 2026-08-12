@@ -12,12 +12,17 @@ export const PiercingBeam: Power = {
   "name": "Piercing Beam",
   "internalName": "Piercing_Beam",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You release a supercharged beam in a narrow cone of energy that pierces through up to 3 enemies. Piercing Beam deals High Energy damage and briefly reduces their damage resistance. If a target struck by Piercing Beam is suffering from the Disintegrating effect it will immediately suffer additional damage.",
   "shortHelp": "Narrow Ranged (Cone), DMG(Energy), Foes -Res, Special",
   "icon": "beamrifle_piercingbeam.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,
@@ -53,34 +58,42 @@ export const PiercingBeam: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }

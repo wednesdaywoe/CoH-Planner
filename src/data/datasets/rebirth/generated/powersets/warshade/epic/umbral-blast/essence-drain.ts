@@ -12,12 +12,17 @@ export const EssenceDrain: Power = {
   "name": "Essence Drain",
   "internalName": "Essence_Drain",
   "available": 19,
+  "autoIssue": true,
+  "free": true,
   "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to you. Foes drained in this manner have their attack rate and movement speed reduced. This power can be used while in Dark Nova or Black Dwarf form. While in Dark Nova, this power becomes a ranged attack with a quicker recharge and higher damage. While in Black Dwarf form, this power remains a melee attack, but taunts its target and deals lower damage. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Negative), Foe -Recharge, -SPD; Self +HP",
   "icon": "umbralblast_essencedrain.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -64,6 +69,7 @@ export const EssenceDrain: Power = {
       "slow": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -73,6 +79,7 @@ export const EssenceDrain: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -87,7 +94,7 @@ export const EssenceDrain: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode source.Mode? ! kWarshade_Tanker_Mode source.Mode? ! &&"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode source.Mode? ! kWarshade_Tanker_Mode source.Mode? ! &&",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Negative",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -95,8 +102,8 @@ export const EssenceDrain: Power = {
     ["Movement","Run",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["RechargeTime",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode source.Mode?",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode?",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Negative",2.5812,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "modeVariants": {
@@ -128,6 +135,7 @@ export const EssenceDrain: Power = {
           "slow": 6
         },
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.2,
           "table": "Melee_Slow"
         },
@@ -137,6 +145,7 @@ export const EssenceDrain: Power = {
             "table": "Melee_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Slow"
           },
@@ -154,7 +163,16 @@ export const EssenceDrain: Power = {
       "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to you. Foes drained in this manner have their attack rate and movement speed reduced. This power can be used while in Dark Nova or Black Dwarf form. While in Dark Nova, this power becomes a ranged attack with a quicker recharge and higher damage. While in Black Dwarf form, this power remains a melee attack, but taunts its target and deals lower damage. Damage: Superior, Recharge: Slow",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Negative",1.64,1,0,"Ranged_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Heal",null,1,1,0,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+        ["Movement","JumpHeight",0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["Movement","Jump",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Movement","Run",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Movement","Fly",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["RechargeTime",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+      ]
     },
     "Warshade_Tanker_Mode": {
       "internalName": "Black_Dwarf_Drain",
@@ -184,6 +202,7 @@ export const EssenceDrain: Power = {
           "slow": 6
         },
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.2,
           "table": "Melee_Slow"
         },
@@ -193,6 +212,7 @@ export const EssenceDrain: Power = {
             "table": "Melee_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Slow"
           },
@@ -214,7 +234,17 @@ export const EssenceDrain: Power = {
       "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes drained in this manner have their attack and movement speed reduced. This power is only available while in Black Dwarf Form. Damage: Superior, Recharge: Slow",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Negative",1.96,1,0,"Melee_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Heal",null,1,1,0,"Melee_SSHealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+        ["Movement","JumpHeight",0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["Movement","Jump",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Movement","Run",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Movement","Fly",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["RechargeTime",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+      ]
     }
   },
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Warshade_Defensive.Umbral_Aura.Black_Dwarf_Drain ! && Inherent.Inherent.Black_Dwarf_Drain ! &&"

@@ -18,8 +18,8 @@ import { isUnresolvedMessageKey } from '../../scripts/_display-text.cjs';
  * predicate the converters apply and sweeps the whole generated corpus, so a
  * text field nobody thought to guard fails here instead of on screen.
  *
- * This gates the SYMPTOM. The real fix is a message-store resolver in the
- * parser — which lives in the canonical repo and is not vendored here.
+ * This gates the SYMPTOM. The real fix is a message-store resolver in
+ * `tools/bin-crawler`, so the export carries text rather than a hash.
  */
 
 const GENERATED_ROOT = path.join(__dirname, 'datasets');

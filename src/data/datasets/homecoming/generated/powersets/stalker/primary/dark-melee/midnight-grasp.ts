@@ -12,6 +12,8 @@ export const MidnightGrasp: Power = {
   "name": "Midnight Grasp",
   "internalName": "Midnight_Grasp",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe and continuously drain their life force as well as reducing their chance to hit.",
   "shortHelp": "Melee, DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "shadowfighting_midnightgrasp.png",
@@ -20,6 +22,9 @@ export const MidnightGrasp: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -53,6 +58,11 @@ export const MidnightGrasp: Power = {
     },
     {
       "type": "Negative",
+      "scale": 2.76,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Negative",
       "scale": 0.11,
       "table": "Melee_Damage",
       "duration": 3.1,
@@ -77,15 +87,15 @@ export const MidnightGrasp: Power = {
   "atoms": [
     ["Damage","Negative",2.21,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Negative",2.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
     ["ToHit",null,0.75,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Negative",0.11,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Damage","Negative",2.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 >",true],
-    ["Damage","Negative",2.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"kMeter source> .9 <",true],
+    ["Damage","Negative",2.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
     ["Damage","Negative",1.9067,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Immobilized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Negative",2.4489,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 >",true],
-    ["Damage","Negative",2.4489,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || &&",true]
+    ["Damage","Negative",2.4489,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["Damage","Negative",2.4489,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && &&",true]
   ],
   "specialEffects": [
     {

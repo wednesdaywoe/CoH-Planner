@@ -12,12 +12,17 @@ export const Temperatureprotection: Power = {
   "name": "Temperature Protection",
   "internalName": "Temperature_protection",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Temperature Protection gives you strong resistance to Fire damage, some resistance to Cold damage as well as some resistance to slow effects.  This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res(Fire, Cold, Slow)",
   "icon": "flamingshield_temperatureprotection.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -33,10 +38,12 @@ export const Temperatureprotection: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       }

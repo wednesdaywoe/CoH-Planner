@@ -85,6 +85,31 @@ export class DatasetHandle {
             wasm.__wbindgen_free(deferred3_0, deferred3_1, 1);
         }
     }
+    /**
+     * The target ranks this dataset's gates distinguish, as JSON `[{segment, classes}]`
+     * — the vocabulary a caller picks a `combat.target_class` token from before asking
+     * [`Self::project_power`] for target-resolved damage. Throws when the archetype
+     * catalogue will not parse rather than offering a guessed list (Rule 1).
+     * @returns {string}
+     */
+    target_ranks() {
+        let deferred2_0;
+        let deferred2_1;
+        try {
+            const ret = wasm.datasethandle_target_ranks(this.__wbg_ptr);
+            var ptr1 = ret[0];
+            var len1 = ret[1];
+            if (ret[3]) {
+                ptr1 = 0; len1 = 0;
+                throw takeFromExternrefTable0(ret[2]);
+            }
+            deferred2_0 = ptr1;
+            deferred2_1 = len1;
+            return getStringFromWasm0(ptr1, len1);
+        } finally {
+            wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
+        }
+    }
 }
 if (Symbol.dispose) DatasetHandle.prototype[Symbol.dispose] = DatasetHandle.prototype.free;
 

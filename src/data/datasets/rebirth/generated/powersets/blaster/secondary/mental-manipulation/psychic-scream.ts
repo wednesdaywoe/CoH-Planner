@@ -12,12 +12,17 @@ export const PsychicScream: Power = {
   "name": "Psychic Scream",
   "internalName": "Psychic_Scream",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Psionic), Foe -Recharge",
   "icon": "psionicassault_psychicscream.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -49,6 +54,7 @@ export const PsychicScream: Power = {
   "effects": {
     "buffDuration": 10.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.064,
       "table": "Ranged_Ones"
     },
@@ -57,6 +63,7 @@ export const PsychicScream: Power = {
       "rechargeDebuff": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     }

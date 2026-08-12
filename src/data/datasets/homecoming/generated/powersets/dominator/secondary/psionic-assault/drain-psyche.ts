@@ -12,12 +12,17 @@ export const DrainPsyche: Power = {
   "name": "Drain Psyche",
   "internalName": "Drain_Psyche",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You Drain the Psyche of nearby foes, thus weakening their Hit Point Regeneration and Endurance Recovery and boosting your own.Recharge: Long.",
   "shortHelp": "PBAoE Foe -Regen, -Recovery; Self +Regen, +Recovery",
   "icon": "psionicassault_psychicsiphon.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 10,
@@ -62,6 +67,7 @@ export const DrainPsyche: Power = {
       "perTarget": 1
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Ones"
     }
@@ -73,6 +79,6 @@ export const DrainPsyche: Power = {
     ["Recovery",null,-5,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-5,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
     ["Recovery",null,-0.8,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

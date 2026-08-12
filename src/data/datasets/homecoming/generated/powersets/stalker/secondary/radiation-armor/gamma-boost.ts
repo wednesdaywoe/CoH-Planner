@@ -12,12 +12,17 @@ export const GammaBoost: Power = {
   "name": "Gamma Boost",
   "internalName": "Gamma_Boost",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Gamma Boost grants you a passive boost to both regeneration and recovery. The lower your current health is, the greater the regeneration bonus you'll receive from Gamma Boost. The higher your current health is, the greater the recovery bonus you'll receive from Gamma Boost. This power is always active.",
   "shortHelp": "Auto: Self +Regen, +Recovery, Special",
   "icon": "radiationarmor_gammaboost.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 1
@@ -35,14 +40,17 @@ export const GammaBoost: Power = {
     "buffDuration": 1.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       }

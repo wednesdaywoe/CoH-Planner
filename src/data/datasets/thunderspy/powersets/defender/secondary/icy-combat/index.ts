@@ -25,7 +25,12 @@ import { Blizzard as Blizzard } from './blizzard';
 
 export const powerset: Powerset = {
   id: 'defender/icy-combat',
+  setPath: 'Defender_Ranged.Ice_Blast',
   name: 'Icy Combat',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Icy Combat allows you to use the power of ice against your foes, with a tendency to Slow their attacks and movement.',
   icon: 'ice_blast_set.ico',
   archetype: 'defender',

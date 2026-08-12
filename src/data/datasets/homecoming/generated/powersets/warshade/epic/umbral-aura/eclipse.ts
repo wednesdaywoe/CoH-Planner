@@ -12,12 +12,17 @@ export const Eclipse: Power = {
   "name": "Eclipse",
   "internalName": "Eclipse",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "The dark Nictus power allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Endurance of all nearby enemies and add to your own. It will also increase your resistance to all damage. The more foes affected, the more Endurance and Damage Resistance you will gain. Affected foes are unable to recover Endurance for a short while.Recharge: Very Long.",
   "shortHelp": "Melee (AoE), Foe -END, - Recovery; Self +End, + Res (All DMG)",
   "icon": "umbralaura_eclipse.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

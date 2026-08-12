@@ -12,12 +12,17 @@ export const AnguishingCry: Power = {
   "name": "Anguishing Cry",
   "internalName": "Anguishing_Cry",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You let out an Anguishing Cry causing a great deal of pain in your foes reducing their resistance and defense to damage for a short time.",
   "shortHelp": "PBAoE, Foe -RES(All), -DEF(All)",
   "icon": "painfocusing_anguishingcry.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -50,34 +55,42 @@ export const AnguishingCry: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }

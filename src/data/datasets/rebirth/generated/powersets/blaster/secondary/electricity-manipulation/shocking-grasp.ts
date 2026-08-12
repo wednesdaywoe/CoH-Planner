@@ -12,6 +12,8 @@ export const ShockingGrasp: Power = {
   "name": "Shocking Grasp",
   "internalName": "Shocking_Grasp",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Shocking Grasp causes the target to be overcome with a violent electrical charge. The seized target is left writhing in agony and is unable to defend themselves. Shocking Grasp also drains a significant amount of Endurance from the target and may return a portion of it to you. Damage: High(DoT), Recharge: Slow",
   "shortHelp": "Melee, High DoT(Energy), Target Hold, -End",
   "icon": "electricitymanipulation_shockinggrasp.png",
@@ -20,6 +22,9 @@ export const ShockingGrasp: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -55,6 +60,7 @@ export const ShockingGrasp: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Melee_Ones"
     },
@@ -90,8 +96,8 @@ export const ShockingGrasp: Power = {
     ["Damage","Energy",0.3,1,5.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Held",8,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.07,1,8.1,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
-    ["Endurance",null,9.1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
+    ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
+    ["Endurance",null,9.1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
     ["DamageBuff","Smashing",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

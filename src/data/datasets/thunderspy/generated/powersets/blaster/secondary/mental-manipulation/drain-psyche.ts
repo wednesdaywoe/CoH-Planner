@@ -12,12 +12,17 @@ export const DrainPsyche: Power = {
   "name": "Drain Psyche",
   "internalName": "Drain_Psyche",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You Drain the Psyche of nearby foes, thus weakening their Hit Point Regeneration and Endurance Recovery and boosting your own. Recharge: Very Long",
   "shortHelp": "PBAoE Foe -Regen, -Recovery; Self +Regen, +Recovery",
   "icon": "psionicassault_psychicsiphon.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 10,
@@ -42,6 +47,7 @@ export const DrainPsyche: Power = {
   "effects": {
     "buffDuration": 30,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.035,
       "table": "Melee_Ones"
     },
@@ -67,6 +73,7 @@ export const DrainPsyche: Power = {
       "perTarget": 0.75
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Melee_Ones"
     }

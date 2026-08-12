@@ -12,6 +12,8 @@ export const PowerSink: Power = {
   "name": "Thunder Strike",
   "internalName": "Power_Sink",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave.Damage: Superior.Recharge: Slow.",
   "shortHelp": "Melee (AoE), Superior DMG(Smash, Energy), Foe Disorient, Knockback",
   "icon": "electricalassault_thunderstrike.png",
@@ -20,6 +22,9 @@ export const PowerSink: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -84,8 +89,8 @@ export const PowerSink: Power = {
     ["Damage","Smashing",1.953,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.837,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",7.5,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",true],
-    ["Mez","Stunned",1,1,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",7.5,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Stunned",1,1,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ],

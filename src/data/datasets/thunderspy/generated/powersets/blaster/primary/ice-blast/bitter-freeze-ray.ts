@@ -12,12 +12,17 @@ export const BitterFreezeRay: Power = {
   "name": "Bitter Freeze Ray",
   "internalName": "Bitter_Freeze_Ray",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "This power can Hold your opponent frozen solid in a block of ice. The victim can be attacked and will remain frozen and helpless. After the ice thaws, the victim emerges chilled and Slowed.  Bitter Freeze Ray deals medium damage. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged, Moderate DMG(Cold), Foe Hold",
   "icon": "iceblast_bitterfreezeray.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -68,6 +73,7 @@ export const BitterFreezeRay: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -82,6 +88,7 @@ export const BitterFreezeRay: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

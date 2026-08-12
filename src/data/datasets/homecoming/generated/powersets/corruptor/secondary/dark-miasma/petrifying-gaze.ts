@@ -12,12 +12,17 @@ export const PetrifyingGaze: Power = {
   "name": "Petrifying Gaze",
   "internalName": "Petrifying_Gaze",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless.",
   "shortHelp": "Ranged Hold",
   "icon": "darkmiasma_petrifyinggaze.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

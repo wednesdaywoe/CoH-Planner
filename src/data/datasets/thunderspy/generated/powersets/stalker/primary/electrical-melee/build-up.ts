@@ -12,12 +12,17 @@ export const BuildUp: Power = {
   "name": "Build Up",
   "internalName": "Build_Up",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.  Recharge: Long",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "electricmelee_selfbuffdmg.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const BuildUp: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },

@@ -12,6 +12,8 @@ export const CrushingBlow: Power = {
   "name": "Crushing Blow",
   "internalName": "Crushing_Blow",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.  Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smashing), -DEF",
   "icon": "titanweapons_crushingblow.png",
@@ -22,6 +24,9 @@ export const CrushingBlow: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 9,
@@ -112,7 +117,14 @@ export const CrushingBlow: Power = {
       "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.  Damage: High, Recharge: Moderate",
       "effectArea": "AoE",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Smashing",1.7548,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Damage","Fire",0.78966,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+        ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+        ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
+      ]
     }
   },
   "requires": "Tanker_Defense.Shield_Defense !",

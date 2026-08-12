@@ -12,6 +12,8 @@ export const DangerSense: Power = {
   "name": "Danger Sense",
   "internalName": "Danger_Sense",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You become more evasive against ranged and area attacks while you have Danger Sense activated. This will increase your Defense versus ranged and Area of Effect attacks as long as it is active. Your Danger Sense also allow you to perceive stealthy foes and resist Defense DeBuffs.",
   "shortHelp": "Toggle: Self +DEF(Ranged, AoE), +Perception, Res(DeBuff DEF)",
   "icon": "ninjitsu_dangersense.png",
@@ -22,6 +24,9 @@ export const DangerSense: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const DangerSense: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       },

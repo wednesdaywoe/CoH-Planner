@@ -12,12 +12,17 @@ export const Flash: Power = {
   "name": "Flash",
   "internalName": "Flash",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Generates a brilliant flash of light around you that blinds nearby foes. Flashed foes are rendered helpless and unable to defend themselves. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Hold",
   "icon": "illusions_flash.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "radius": 30,
@@ -47,7 +52,7 @@ export const Flash: Power = {
   },
   "atoms": [
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

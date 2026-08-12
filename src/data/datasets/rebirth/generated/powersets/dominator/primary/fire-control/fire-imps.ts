@@ -12,12 +12,17 @@ export const FireImps: Power = {
   "name": "Fire Imps",
   "internalName": "Fire_Imps",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You can craft 3 small Fire Imps out of pure flame in a targeted location. Fire Imps will viciously attack any nearby foes, but they only possess the most basic instincts. Fire Imps can be healed and buffed like any teammate. Recharge: Very Long",
   "shortHelp": "Summon Imps: Melee Minor DMG(Fire)",
   "icon": "firetrap_fireimps.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,
@@ -49,7 +54,7 @@ export const FireImps: Power = {
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
     ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,0.6000000238418579]
+    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,0.6000000238418579,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.6]
   ],
   "specialEffects": [
     {

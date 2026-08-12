@@ -12,6 +12,8 @@ export const Pummel: Power = {
   "name": "Pummel",
   "internalName": "Pummel",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can smash your opponents in close combat with the butt of your Assault Rifle to deal moderate smashing damage. Pummel has a high chance to disorient your foe for a brief time. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Smash), Foe Disorient",
   "icon": "militaryassault_pummel.png",
@@ -20,6 +22,9 @@ export const Pummel: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -56,11 +61,11 @@ export const Pummel: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.66],
     ["Damage","Smashing",2.5326,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.66]
   ],
   "specialEffects": [
     {

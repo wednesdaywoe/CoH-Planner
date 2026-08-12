@@ -12,12 +12,17 @@ export const Soot: Power = {
   "name": "Char",
   "internalName": "Soot",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Incapacitates a distant foe by Charring them with smoldering soot and cinders. The target is left helpless, choking on the soot. Damage: Moderate(DoT), Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DoT(Fire), Foe Hold",
   "icon": "firetrap_soot.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

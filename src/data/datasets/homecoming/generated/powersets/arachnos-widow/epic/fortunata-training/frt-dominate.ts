@@ -12,12 +12,17 @@ export const FRTDominate: Power = {
   "name": "Dominate",
   "internalName": "FRT_Dominate",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in his own mind and unable to defend himself.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Hold",
   "icon": "fortunatatraining_dominate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

@@ -12,6 +12,8 @@ export const ArticAir: Power = {
   "name": "Arctic Air",
   "internalName": "Artic_Air",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you are surrounded in a fog of Arctic Air that dramatically slows the attack and movement speed of nearby foes. The chill of Arctic Air is so bitter that many foes are forced to flee, albeit very slowly, from the immediate area. Others may attack their own allies, as the fog from the Arctic Air is thick and can cause much confusion. The cold air can also reduced the stealth capability of affected foes.",
   "shortHelp": "Toggle: PBAoE, Foe Confuse(Special), -SPD, -Recharge, -Stealth",
   "icon": "iceformation_articair.png",
@@ -22,6 +24,9 @@ export const ArticAir: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -53,6 +58,7 @@ export const ArticAir: Power = {
     },
     "durations": {
       "fear": 2,
+      "movementCapDebuff": 2.25,
       "rechargeDebuff": 2.25,
       "slow": 2.25,
       "stealth": 2.25
@@ -63,7 +69,15 @@ export const ArticAir: Power = {
       "scale": 3,
       "table": "Ranged_Ones"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
@@ -73,6 +87,7 @@ export const ArticAir: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
@@ -81,8 +96,8 @@ export const ArticAir: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.65,
+        "table": "Ranged_Slow"
       }
     },
     "stealth": {
@@ -105,8 +120,8 @@ export const ArticAir: Power = {
     ["Stealth","RadiusPvE",-35,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Stealth","RadiusPvP",-389,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Movement","Run",-1,1,2.25,"Ranged_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",2,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.30000001192092896],
-    ["Mez","Confused",1.3333,1,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.20000000298023224],
+    ["Mez","Confused",2,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",1.3333,1,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"],
     ["Mez","Afraid",3,0,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,0.5],
     ["Mez","Confused",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

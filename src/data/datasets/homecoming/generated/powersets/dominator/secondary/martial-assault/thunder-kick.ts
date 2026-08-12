@@ -12,6 +12,8 @@ export const ThunderKick: Power = {
   "name": "Thunder Kick",
   "internalName": "Thunder_Kick",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a strong Thunder Kick that hits so hard it can Disorient your target.Damage: Moderate.Recharge: Moderate.",
   "shortHelp": "Melee, Moderate DMG(Smash), Minor Disorient",
   "icon": "martialassault_thunderkick.png",
@@ -20,6 +22,9 @@ export const ThunderKick: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -59,7 +64,7 @@ export const ThunderKick: Power = {
     ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",1.1421,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "specialEffects": [
     {

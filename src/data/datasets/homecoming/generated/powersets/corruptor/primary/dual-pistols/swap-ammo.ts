@@ -12,12 +12,17 @@ export const SwapAmmo: Power = {
   "name": "Swap Ammo",
   "internalName": "Swap_Ammo",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "By purchasing this power, you will be granted the Cryo Ammunition, Incendiary Ammunition and Chemical Ammunition toggles. Activating these toggles will change your secondary damage type on most Dual Pistols attacks from lethal (Standard Rounds) to cold (Cryo Rounds), fire (Incendiary Rounds) or toxic (Chemical Rounds).These toggles are mutually exclusive and only one can be active at a time. If no Swap Ammo toggles are active, the player will revert to Standard Ammunition.Different ammo types also have different secondary effects. Examine your Dual Pistols powers for more information.",
   "shortHelp": "Change Secondary Damage/Effects",
   "icon": "dualpistols_swapammo.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 2
@@ -25,7 +30,7 @@ export const SwapAmmo: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Meta",null,1,89,2.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,89,2.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"]
   ],
   "setsModes": [
     "LethalAmmo"

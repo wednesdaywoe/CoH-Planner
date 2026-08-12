@@ -25,19 +25,27 @@ describe('snipe base timing (Normal-variant cast, not the redirect shell)', () =
 
   it('detects snipes by the redirect pattern, not the (recycled) internal name', () => {
     // internalName "lightning_clap" is the Electricity Assault snipe "Zapp" —
-    // recycled name; classified as a snipe via its Experienced-Marksman gate.
+    // recycled name; classified as a snipe by the STRUCTURE of its redirect pair
+    // (the branch that drops the default form's interrupt), not by its gate text.
     expect(LightningClap.name).toBe('Zapp');
     expect(LightningClap.stats?.castTime).toBe(3.33);
     expect(LightningClap.stats?.interruptTime).toBe(2);
     expect(LightningClap.quickSnipe).toBeTruthy();
   });
 
-  it('Rebirth snipe is single-form (no redirect) — slow cast + interrupt baked on the base', () => {
-    // Rebirth bakes the slow timing onto the base power (no Quick/Normal
-    // redirect), so castTime is already the full slow cast and interruptTime
-    // is captured by the base stats builder — kept consistent with HC snipes.
+  it('Rebirth snipes carry a fast form too, gated on the build ToHit', () => {
+    // This case used to assert `quickSnipe` was UNDEFINED here, on the premise that
+    // "Rebirth bakes the slow timing onto the base power (no Quick/Normal redirect)".
+    // The premise was false and the assertion pinned a defect: Rebirth ships the same
+    // redirect pair, gated on `cur.kToHit source> .97 >=` rather than Homecoming's
+    // `kEngaged`/`Experienced_Marksman`, and the old detector matched only the latter —
+    // so all 47 Rebirth and 8 Thunderspy snipes showed no fast form at all
+    // (DATA-GAP-REGISTER SNIPE-2). The base timing assertions below were always right
+    // and still come from the default (slow) branch.
     expect(RebirthRangedShot.stats?.castTime).toBe(4.67);
     expect(RebirthRangedShot.stats?.interruptTime).toBe(3);
-    expect(RebirthRangedShot.quickSnipe).toBeUndefined();
+    expect(RebirthRangedShot.quickSnipe?.stats.castTime).toBe(1.67);
+    // The gate travels VERBATIM: nothing in the pipeline re-derives the threshold.
+    expect(RebirthRangedShot.quickSnipe?.condition).toBe('cur.kToHit source> .97 >=');
   });
 });

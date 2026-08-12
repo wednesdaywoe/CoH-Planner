@@ -42,6 +42,9 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   'Melee Damage': 'Melee Damage',
   'Ranged AoE Damage': 'Ranged AoE Damage',
   'Melee AoE Damage': 'Melee AoE Damage',
+  // Rebirth/Thunderspy's own GroupName for the same two concepts.
+  'Targeted AoE Damage': 'Targeted AoE Damage',
+  'PBAoE Damage': 'PBAoE Damage',
   'Universal Damage Sets': 'Universal Damage Sets',
   'Sniper Attacks': 'Sniper Attacks',
   'Pet Damage': 'Pet Damage',
@@ -68,6 +71,8 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   'Defense Debuff': 'Defense Debuff',
   'Slow Movement': 'Slow Movement',
   'Threat Duration': 'Threat Duration',
+  // Rebirth/Thunderspy's own GroupName for the same Threat Duration concept.
+  Taunt: 'Taunt',
   'Accurate Defense Debuff': 'Accurate Defense Debuff',
   'Accurate Healing': 'Accurate Healing',
   'Accurate To-Hit Debuff': 'Accurate To-Hit Debuff',
@@ -102,7 +107,7 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   // Indoctrination) + the single-piece Rest enhancement (Inexhaustibility).
   // Without these identity entries the picker silently drops the sets even
   // though the per-power `allowedSetCategories` already lists the category.
-  'Universal Control Duration': 'Universal Control Duration',
+  'Universal Control Duration Sets': 'Universal Control Duration Sets',
   'Rest Buff': 'Rest Buff',
   'Universal Debuff': 'Universal Debuff',
   'Rez Sets': 'Rez Sets',
@@ -255,6 +260,39 @@ function _activeRegistry(): IOSetRegistry {
  */
 export function getAllIOSets(): IOSetRegistry {
   return _activeRegistry();
+}
+
+const _commonSizeCache = new Map<string, number>();
+
+/**
+ * The piece count most of this dataset's sets have (Homecoming: 6, at 169 of 227).
+ *
+ * Derived rather than assumed, because the picker marks the sets that DIFFER
+ * from it — writing `!== 6` would bake a game constant into UI logic and would
+ * silently mark the wrong rows on a fork whose catalogue is shaped differently.
+ * Computed over the whole catalogue, not a per-power slice, so a given set
+ * carries the same mark in every power's picker.
+ */
+export function getMostCommonSetSize(): number {
+  const ds = getActiveDataset();
+  const cached = _commonSizeCache.get(ds.id);
+  if (cached !== undefined) return cached;
+
+  const tally = new Map<number, number>();
+  for (const set of Object.values(_activeRegistry())) {
+    const n = set.pieces.length;
+    tally.set(n, (tally.get(n) ?? 0) + 1);
+  }
+  let commonest = 0;
+  let best = -1;
+  for (const [size, count] of tally) {
+    if (count > best) {
+      best = count;
+      commonest = size;
+    }
+  }
+  _commonSizeCache.set(ds.id, commonest);
+  return commonest;
 }
 
 // ============================================

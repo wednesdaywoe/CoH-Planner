@@ -12,12 +12,17 @@ export const ThrowSand: Power = {
   "name": "Throw Sand",
   "internalName": "Throw_Sand",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You grab some nearby debris and fling it towards a nearby foe, obstructing their vision and dazing them. Recharge: Long",
   "shortHelp": "Ranged (Cone), Foe Stun, -Perception",
   "icon": "martialmanipulations_throwsand.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -47,6 +52,7 @@ export const ThrowSand: Power = {
   "effects": {
     "buffDuration": 20,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.029,
       "table": "Ranged_Ones"
     },

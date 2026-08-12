@@ -12,12 +12,17 @@ export const CallArcher: Power = {
   "name": "Call Archer",
   "internalName": "Call_Archer",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Calls forth one to three Archers (depending on your level) to do your bidding. You may only have 3 Archers under your control at any given time.  If you attempt to call more Archers, you can only replace the ones you have lost in battle.  If you already have three, the power will fail. Recharge: Very Long",
   "shortHelp": "Summon Archer",
   "icon": "knights_callarcher.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

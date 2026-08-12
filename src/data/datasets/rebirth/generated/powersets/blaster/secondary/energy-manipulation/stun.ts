@@ -12,6 +12,8 @@ export const Stun: Power = {
   "name": "Staggering Burst",
   "internalName": "Stun",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You focus an unstable shot of energy in your hands, dealing a hefty amount of damage to your target.  The unstable nature of the attack causes it to burst out, hitting enemies around the target.  While the initial target has a high chance to stun your target, the burst only has a moderate chance to stun ancillary targets.  Damage: High, Recharge: Slow.",
   "shortHelp": "Melee(AoE), High DMG(Smash/Energy), Foe Disorient",
   "icon": "energymanipulation_stun.png",
@@ -20,6 +22,9 @@ export const Stun: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -77,7 +82,7 @@ export const Stun: Power = {
     ["Damage","Smashing",1.15,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",0.81,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.3],
     ["DamageBuff","Smashing",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.119],
     ["DamageBuff","Lethal",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.119],
     ["DamageBuff","Fire",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.119],

@@ -12,12 +12,17 @@ export const TelekineticBlast: Power = {
   "name": "Telekinetic Blast",
   "internalName": "Telekinetic_Blast",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can use Telekinesis to Blast a targeted foe with the power of your mind. This attack deals Smashing and Psionic damage, and can knock your opponent back. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Smash/Psionic), Foe Knockback",
   "icon": "psychicblast_telekineticblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -55,6 +60,7 @@ export const TelekineticBlast: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Ranged_Ones"
     },

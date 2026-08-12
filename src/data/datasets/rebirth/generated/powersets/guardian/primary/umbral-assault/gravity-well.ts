@@ -12,6 +12,8 @@ export const GravityWell: Power = {
   "name": "Gravity Well",
   "internalName": "Gravity_Well",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Mastery over the forces of gravity and dark matter allows you to capture a single foe and crush them in a Gravity Well.  Up to five nearyby target will be Held helpless, while pulled towards the original target by the crushing massive of gravimetric forces. Those target's attack rate and movement speed are also slowed, even if they resists the Hold effect. This power can be used while in Black Dwarf form at a quicker cast time and a faster recharge rate but lower damage. While in Black Dwarf form, this power may stun the foe rather than leave them held, and gravity will only affect the original target, in addition to taunting its target. Damage: Superior(DoT), Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Negative), Special Foe Hold, Attract, -Recharge, -SPD",
   "icon": "umbralassault_gravitywell.png",
@@ -22,6 +24,9 @@ export const GravityWell: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -75,6 +80,7 @@ export const GravityWell: Power = {
       "table": "Melee_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Melee_Slow"
     },
@@ -84,6 +90,7 @@ export const GravityWell: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Slow"
       },
@@ -98,7 +105,7 @@ export const GravityWell: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Negative",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",0.33,1,2.75,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],

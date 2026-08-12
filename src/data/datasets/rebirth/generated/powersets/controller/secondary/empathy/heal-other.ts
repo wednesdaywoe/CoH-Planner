@@ -12,12 +12,17 @@ export const HealOther: Power = {
   "name": "Heal Other",
   "internalName": "Heal_Other",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Heals a single targeted ally. You cannot use this power to heal yourself. Recharge: Fast",
   "shortHelp": "Ally Heal",
   "icon": "empathy_healother.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

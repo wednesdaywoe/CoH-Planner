@@ -12,6 +12,8 @@ export const TotalFocus: Power = {
   "name": "Concentrated Strike",
   "internalName": "Total_Focus",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Concentrated Strike is a slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Concentrated Strike, recharge time is very long.  Concentrated Strike Criticals do not result in extra damage, instead it instantly recharges the Power Siphon power. Damage: Extreme, Recharge: Long",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient, Special",
   "icon": "kineticattack_totalfocus.png",
@@ -22,6 +24,9 @@ export const TotalFocus: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 7,
@@ -58,6 +63,7 @@ export const TotalFocus: Power = {
   "effects": {
     "buffDuration": 8,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 0.75,
       "table": "Melee_Debuff_Dam"
     },

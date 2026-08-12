@@ -21,7 +21,12 @@ import { Clobber as Clobber } from './clobber';
 
 export const powerset: Powerset = {
   id: 'defender/war-mace',
+  setPath: 'Defender_Ranged.War_Mace',
   name: 'War Mace',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can wield a Medieval Mace and master a variety of powerful Smashing attacks. Attack speeds are good, and the weight of the Mace has good Disorienting capabilities. The sheer weight of this weapon gives it a bonus to hit.',
   icon: 'war_mace_set.ico',
   archetype: 'defender',

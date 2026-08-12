@@ -12,6 +12,8 @@ export const PersonalForceField: Power = {
   "name": "Personal Force Field",
   "internalName": "Personal_Force_Field",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through.  The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest. Recharge: Slow",
   "shortHelp": "Toggle: Self +Def, Res(All except Toxic)",
   "icon": "forcefield_personalforcefield.png",
@@ -22,6 +24,9 @@ export const PersonalForceField: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -59,6 +64,7 @@ export const PersonalForceField: Power = {
       }
     },
     "onlyAffectsSelf": {
+      "ignoreStrength": true,
       "scale": 0.75,
       "table": "Melee_Ones"
     },

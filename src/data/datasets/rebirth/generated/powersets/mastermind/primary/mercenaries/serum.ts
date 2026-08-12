@@ -12,12 +12,17 @@ export const Serum: Power = {
   "name": "Serum",
   "internalName": "Serum",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can use a special Serum to turn one Mercenary into a virtually Unstoppable killing machine for a short time.  Once the Mercenary is injected with this Serum, his Damage, chance to hit, Endurance Recovery, and Damage Resistance to all damage except Psionics, will be greatly increased.  The target Mercenary will also be virtually immune to controlling effects including Disorient, Sleep, Hold, Immobilize and Knockback.  After the Serum wears off, the Mercenary will be exhausted and drained of all Endurance and be unable to recover endurance for a short while. Recharge: Very Long",
   "shortHelp": "Buff Mercenary +DMG, +RES(All except Psionic), +To Hit, +Recovery",
   "icon": "paramilitary_serum.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,

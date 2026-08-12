@@ -29,10 +29,78 @@ export interface ManualEntry {
   message: string;
   type: 'feat' | 'fix' | 'update' | 'known-issue';
 }
+/* template
+{
+    date: '2026-00-00',
+
+    items: [
+      { id: 'x-x-x', message: 'y', type: 'fix' },
+    ]
+  },
+*/
+
+
+
 /*When ready, npm run changelog:push -- --dry-run
 */
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-11',
+
+    items: [
+      { id: 'heal-filter-bug', message: 'Fixed a bug that was discarding the calculated heal row when it arrived at the infopanel', type: 'fix' },
+      { id: 'perma-tracking-adj', message: 'Fix for perma-tracking logic', type: 'fix' },
+      { id: 'enh-piece-display', message: 'Hovering a slotted enhancement now shows more info, like which set piece you have slotted', type: 'feat' },
+      { id: 'stacking-flag-indicator', message: 'Buffs should now also show flags that indicate whether it stacks with itself, or overwrites', type: 'fix' },
+    ]
+  },
+  {
+    date: '2026-08-10',
+
+    items: [
+      { id: 'blaster-defiance-not-permanent', message: 'Blasters: Defiance was being counted as a permanent damage buff. The few-seconds ramp every Blaster attack grants were added to totals as if it were always on', type: 'fix' },
+      { id: 'proc-roll-in-executed-child', message: 'Walking back part of a proc change that affected Fault, Whitecap, Hypnotizing Lights and Spring Attack. The powers don\'t trigger procs, but they do through a child power that can', type: 'fix' },
+      { id: 'pseudopet-resolves-on-pet-tables', message: 'Rain and patch debuffs were reading off archetype\'s tables instead of the summon\'s', type: 'fix' },
+      { id: 'slow-movement-axes-shown', message: 'Slows now say what they slow.', type: 'fix' },
+      { id: 'unenhanceable-values-were-enhanced', message: 'Values the game flags un-enhanceable were being enhanced anyway wherever a power\'s effect collapsed into one row', type: 'fix' },
+      { id: 'pet-multi-table-cancellation', message: 'A pet effect that resolves against more than one of the game\'s tables was cancelling itself out instead of adding up', type: 'fix' },
+      { id: 'mode-gated-rows-read-as-zero-chance', message: 'Pet and pseudo-pet effects gated by mode were being read as "0% chance" and dropped off the cards entirely', type: 'fix' },
+      { id: 'hunter-mode-damage-always-on', message: 'Thunderspy: Pack Master\'s damage buff only applies in Hunter Mode, and was being counted as always-on.', type: 'fix' },
+      { id: 'level-one-is-two-picks', message: 'Fixed a regression: choosing a secondary set force-added its first power at level 1 and then refused to let you remove or move it', type: 'fix' },
+      { id: 'setbonus-knockback-endurance-stats', message: 'Knockback Strength and Endurance Drain Resistance set bonuses now resolve to real tracked stats instead of nothing, so they should highlight and total like every other bonus. -Speed Cap is a recognised effect now too', type: 'fix' },
+    ]
+  },
+  {
+    date: '2026-08-09',
+
+    items: [
+      { id: 'scrapper-crit-own-rows', message: 'The "w/ Crit" column now shows what a critical hit actually deals: the power\'s own crit damage added to the final, and the Critical Hits card lists the real chance and damage for both the vs-minion and vs-lieutenant-and-up branches', type: 'fix' },
+      { id: 'pool-powers-wrong-pool-on-reload', message: 'Fix for a nasty issue causing builds losing set bonuses after a reload while still looking completely intact. Pool powers could be filed into the wrong pool container, which left every power, slot and enhancement on screen exactly as you left them but quietly dropped their contribution from totals. If a build looks weaker than you remember, try reloading it now and check.', type: 'fix' },
+      { id: 'calc-error-banner', message: 'As a response to the error above: When part of a build cannot be calculated, the planner now shows a warning instead of only writing it to the browser console.', type: 'feat' },
+      { id: 'specialized-pool-exclusion-five', message: 'The game allows only one Specialized power pool per build, and the planner was only enforcing that across three of the five. All five are mutually exclusive now.', type: 'fix' },
+      { id: 'incompatible-powerset-pairs', message: 'Some primary/secondary combinations are impossible in game. Illegal combinations are now greyed out in the Primary and Secondary dropdowns. Users who made illegal builds have been reported to the PPD 🚨', type: 'fix' },
+      { id: 'renamed-set-exclusions', message: 'Related: exclusions naming a powerset the game renamed were being missed entirely, so Shield Defense did not know it clashes with Scrapper Spines or Stalker Ninja Blade. Those now register.', type: 'fix' },
+      { id: 'veat-branch-switch-strips', message: 'An Arachnos Soldier or Widow: Changing branch now removes the powers that branch owned, tells you which went, and offers an Undo.', type: 'fix' },
+      { id: 'enh-compare-modal', message: 'Fix for the slotting comparisonal tool failing to allow multi-selection', type: 'fix'},
+    ]
+  },
+  {
+    date: '2026-08-05',
+
+    items: [
+      { id: 'proc-potential-badges', message: 'New "proc potential" badges indicate powers that are unusually good for slotting procs. This feature is OFF by default, but you can turn it on through Settings > Proc potential badges, or from the menu on mobile', type: 'feat' },
+      { id: 'chain-form-switch', message: 'The attack chain builder can now support change form mid-rotation. Please note that Kheldian forms on HC have no activation time, which allows players to cancel the animation; if you want to simulate the intended animation time, "Play shift animations in full" used the full 2.244s', type: 'feat' },
+      { id: 'procs-allowed-ppm', message: 'The game marks 165 Homecoming powers as never rolling a PPM proc, and that should now be reflected in the planner. Pet summons (Mastermind henchmen, Fire Imps, Phantasm, Singularity, Gang War, Voltaic Sentinel, Auto Turret) were the biggest group. A proc slotted there still reaches the pet and fires off the pet\'s attacks, it just has nothing to do with the summon\'s recharge. The rest fire nothing at all: Fault, Spring Attack, Whitecap, Paralyzing Blast, Shocking Grasp and Shockwaves.', type: 'fix' },
+      { id: 'rain-proc-patch-rolls', message: 'Rains and patches roll their procs on the patch itself, once every 10 seconds, and are not helped by the parent power\'s recharge.', type: 'fix' },
+      { id: 'quick-snipe-damage', message: 'Quick snipe damage was overstated: Proton Volley read 4x its real damage and Energy Sniper Blast 2x.', type: 'fix' },
+      { id: 'chain-palette-form-values', message: 'The attack chain palette showed each power\'s numbers for the form it will not actually fire in, for example a fast snipe showed the slow charged cast, and Assassin\'s Strike undervalued its from-Hide damage by 3.17x.', type: 'fix' },
+      { id: 'chain-pool-epic-form-gates', message: 'Pool and epic powers reached the chain builder with no form restrictions at all, so Boxing and Hasten could be placed in a Nova form rotation.', type: 'fix' },
+      { id: 'chain-saved-in-form-empty', message: 'A chain saved while you were in a form reopened empty, then overwrote itself the next time you saved.', type: 'fix' },
+      { id: 'set-bonus-tracked-highlight', message: 'Set bonus highlighting for your tracked stats only ever matched a fraction of the stats you can track. Max HP matched none of the 107 sets that grant it. The full tracked-stat vocabulary is mapped now.', type: 'fix' },
+      { id: 'build-visibility-remount', message: 'Switching a build between public and private no longer remounts and refetches your whole My Builds grid mid-write, and a visibility change that fails now tells you why instead of silently reverting.', type: 'fix' },
+    ]
+  },
   {
     date: '2026-08-04',
 
@@ -48,7 +116,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { id: 'rule-of-5-proc-pool-ring', message: 'Rule of 5: Fixed a capped LotG +Recharge global highlighting powers whose 7.5% Recharge came from a set bonus instead', type: 'fix' },
       
-      { id: 'dashboard-power-contrib', message: 'Fxed power contributors not appearing in Dashboard totals', type: 'fix' },    
+      { id: 'dashboard-power-contrib', message: 'Fxed power contributors not appearing in Dashboard totals', type: 'fix' },
+      { id: 'importer-enhancement-vocab', message: 'Importing a build silently dropped Defense Debuff, ToHit Debuff, Intangible and Snare/Slow enhancements, and read ToHit Debuff as a ToHit buff. All 26 enhancement types the game actually authors are recognised now, for both in-game and Mids imports.', type: 'fix' },
     ]
   },
   {

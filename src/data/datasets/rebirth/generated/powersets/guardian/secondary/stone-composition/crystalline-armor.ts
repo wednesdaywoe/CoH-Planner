@@ -12,6 +12,8 @@ export const CrystallineArmor: Power = {
   "name": "Crystalline Armor",
   "internalName": "Crystalline_Armor",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, your skin becomes encrusted in various quartz crystals. Crystalline Armor makes Energy and Negative Energy attacks less likely to hit. This power also grants you resistance to Endurance Drain, Defense DeBuffs and increases your perception. Crystalline Armor also adds an Elusivity defense bonus to Energy and Negative Energy Attacks in PVP zones. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Energy, Negative), Res(End Drain, DeBuff DEF), +Perception",
   "icon": "stonecomp_crystallinearmor.png",
@@ -22,6 +24,9 @@ export const CrystallineArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,10 +48,12 @@ export const CrystallineArmor: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Res_Boolean"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
@@ -55,6 +62,7 @@ export const CrystallineArmor: Power = {
         "table": "Melee_Ones"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }

@@ -12,12 +12,17 @@ export const EbonEye: Power = {
   "name": "Ebon Eye",
   "internalName": "Ebon_Eye",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can emit a beam of dark energy from your eyes, dealing moderate Negative Energy damage. Ebon Eye can also slow your target's attack rate and movement speed. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_eboneye.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,
@@ -52,6 +57,7 @@ export const EbonEye: Power = {
       "slow": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -61,6 +67,7 @@ export const EbonEye: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

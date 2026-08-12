@@ -12,12 +12,17 @@ export const Shiver: Power = {
   "name": "Shiver",
   "internalName": "Shiver",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes. Recharge: Slow",
   "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
   "icon": "icemanipulation_shiver.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -42,15 +47,25 @@ export const Shiver: Power = {
   "effects": {
     "buffDuration": 18,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.028,
       "table": "Melee_Ones"
     },
     "durations": {
       "damageBuff": 9.67,
+      "movementCapDebuff": 18,
       "rechargeDebuff": 18,
       "slow": 18
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.65,
       "table": "Melee_Slow"
     },
@@ -60,6 +75,7 @@ export const Shiver: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.65,
         "table": "Melee_Slow"
       },
@@ -68,8 +84,8 @@ export const Shiver: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.65,
+        "table": "Melee_Slow"
       }
     }
   },

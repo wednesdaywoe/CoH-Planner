@@ -12,12 +12,17 @@ export const TenebrousTentacles: Power = {
   "name": "Tenebrous Tentacles",
   "internalName": "Tenebrous_Tentacles",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their chance to hit.",
   "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "darkcast_tenebroustentacles.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -80,17 +85,17 @@ export const TenebrousTentacles: Power = {
     ["Damage","Negative",0.135,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,8,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Negative",0.1,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
-    ["Damage","Negative",0.135,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
+    ["Damage","Negative",0.1,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true],
+    ["Damage","Negative",0.135,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true],
     ["Damage","Negative",0.0447,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",0.0618,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Negative",0.0447,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
-    ["Damage","Negative",0.0618,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
+    ["Damage","Negative",0.0447,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true],
+    ["Damage","Negative",0.0618,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true],
     ["Damage","Negative",0.125,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",0.969,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Negative",0.0447,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
-    ["Damage","Negative",0.0618,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true]
+    ["Damage","Negative",0.0447,1,7.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true],
+    ["Damage","Negative",0.0618,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true]
   ]
 };

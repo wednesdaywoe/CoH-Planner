@@ -12,6 +12,8 @@ export const ShadowFall: Power = {
   "name": "Shadow Fall",
   "internalName": "Shadow_Fall",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Envelops you and your nearby teammates in a shroud of darkness. Shadow Fall does not grant Invisibility, but it does make you harder to detect. Even if you are discovered, Shadow Fall grants a bonus to Defense bonus to all attacks and Resistance to Fear, while reducing Energy, Negative Energy, and Psionic Damage. You cannot use any other Concealment type power while using Shadow Fall. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Team Stealth, +DEF(All), +Res(Energy, Negative, Psionics, Fear)",
   "icon": "darkmiasma_shadowfall.png",
@@ -22,6 +24,10 @@ export const ShadowFall: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Friend",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -130,6 +136,7 @@ export const ShadowFall: Power = {
         "table": "Ranged_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Ranged_Ones"
       }

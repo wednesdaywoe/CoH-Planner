@@ -12,12 +12,18 @@ export const MassEnergize: Power = {
   "name": "Mass Energize",
   "internalName": "Mass_Energize",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You can channel a tremendous amount of electricity through the air around your body for a short period of time.  Doing so strengthens yourself and your allies by healing some hit points, reduce the endurance cost of powers and boost regeneration for a short time.  Recharge: Long",
   "shortHelp": "PBAoE, Team +Endurance Discount, +Heal, +Regen",
   "icon": "atmosphericcomp_massenergize.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -47,6 +53,7 @@ export const MassEnergize: Power = {
       "regenBuff": 30
     },
     "enduranceDiscount": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Stun"
     },

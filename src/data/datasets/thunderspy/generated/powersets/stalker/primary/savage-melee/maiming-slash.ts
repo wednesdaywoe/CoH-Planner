@@ -12,6 +12,8 @@ export const MaimingSlash: Power = {
   "name": "Maiming Slash",
   "internalName": "Maiming_Slash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You execute a savage slash at your foe's lower body causing moderate lethal damage and minor damage over time. The foe will also have their movement speed reduced moderately. Maiming Slash grants 1 stack of Blood Frenzy. Damage: Moderate, Minor DoT, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Lethal), Minor DoT(Lethal), Foe -Speed, +1 Blood Frenzy",
   "icon": "savagemelee_maimingslash.png",
@@ -20,6 +22,9 @@ export const MaimingSlash: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -56,6 +61,11 @@ export const MaimingSlash: Power = {
       "tickRate": 1,
       "chance": 0.8,
       "cancelOnMiss": true
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.16,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -65,6 +75,7 @@ export const MaimingSlash: Power = {
     },
     "slow": {
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -80,7 +91,8 @@ export const MaimingSlash: Power = {
   },
   "atoms": [
     ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",0.223,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.223,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true],
+    ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
     ["Movement","Run",0.7,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
@@ -88,10 +100,9 @@ export const MaimingSlash: Power = {
     ["Movement","JumpHeight",0.7,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.75,null,true],
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BloodDrink source.ownPower?",true],
-    ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
     ["Damage","Lethal",1.43942,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",0.115154,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.115154,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.8,true],
     ["Damage","Lethal",1.43942,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
     ["Damage","Lethal",1.43942,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true]
   ],
@@ -101,6 +112,10 @@ export const MaimingSlash: Power = {
       "label": "BloodDrink",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.BloodDrink",
+        "count": 1
+      },
       "damage": {
         "type": "Heal",
         "scale": 1,

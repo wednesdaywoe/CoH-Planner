@@ -12,6 +12,8 @@ export const ShadowyBinds: Power = {
   "name": "Spirit Host",
   "internalName": "Shadowy_Binds",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You periodically summon Shades from the Netherworld to harass nearby foes. Shades deal moderate damage and terrorize their victims. Recharge: Long",
   "shortHelp": "Toggle: Summon Shades",
   "icon": "darknesscontrol_spirithost.png",
@@ -22,6 +24,9 @@ export const ShadowyBinds: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -56,6 +61,7 @@ export const ShadowyBinds: Power = {
     },
     "mezResistance": {
       "fear": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Melee_Res_Boolean"
       }

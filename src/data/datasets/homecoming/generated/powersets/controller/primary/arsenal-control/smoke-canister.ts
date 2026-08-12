@@ -12,12 +12,17 @@ export const SmokeCanister: Power = {
   "name": "Smoke Canister",
   "internalName": "Smoke_Canister",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "The Smoke Canister is a powerful infiltration tool. Fling it at a target location and it will quickly cover the area in smoke. While engulfed within this smoke, most enemies will not be able to see past normal melee range, although some may have better perception. If the foes are attacked, they will become confused and might attack their allies.",
   "shortHelp": "Ranged (Location AoE), Foe -Perception, -To Hit, Confuse",
   "icon": "arsenalcontrol_smokegrenade.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,
@@ -64,13 +69,6 @@ export const SmokeCanister: Power = {
               "damage": [],
               "effects": [
                 {
-                  "type": "Knockup",
-                  "scale": 1000,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true,
-                  "conditional": true
-                },
-                {
                   "type": "Confuse",
                   "magnitude": 3,
                   "scale": 2,
@@ -79,14 +77,18 @@ export const SmokeCanister: Power = {
                 },
                 {
                   "type": "ToHitDebuff",
-                  "scale": 0.7,
-                  "table": "Ranged_Debuff_ToHit"
+                  "scale": 1.5,
+                  "table": "Ranged_Debuff_ToHit",
+                  "conditional": true
                 }
               ],
               "recharge": 0,
               "castTime": 0,
               "activatePeriod": 2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 25,
               "maxTargets": 10
             }

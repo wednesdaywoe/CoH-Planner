@@ -12,6 +12,8 @@ export const Quills: Power = {
   "name": "Quills",
   "internalName": "Quills",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, you will constantly fire dozens of Spines in all directions. These Spines do minor damage, but can poison all foes in close range. Spine poison Slows affected foes.",
   "shortHelp": "Toggle: PBAoE, DoT(Lethal), Foe -Speed, -Recharge",
   "icon": "quills_quills.png",
@@ -25,6 +27,9 @@ export const Quills: Power = {
   ],
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -67,6 +72,7 @@ export const Quills: Power = {
       "table": "Melee_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Melee_Slow"
     },
@@ -76,6 +82,7 @@ export const Quills: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -89,6 +96,7 @@ export const Quills: Power = {
       }
     },
     "taunt": {
+      "ignoreStrength": true,
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     }
@@ -100,11 +108,11 @@ export const Quills: Power = {
     ["Movement","Fly",0.2,1,3,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Jump",0.2,1,3,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","JumpHeight",0.2,1,3,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Meta",null,0,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,0,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Mez","Immobilized",3,0.33000001311302185,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.0675,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !"],
+    ["Damage","Fire",0.0675,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !",null,null,null,null,null,null,null,null,null,"Mez"],
     ["Mez","Immobilized",1,0.33000001311302185,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

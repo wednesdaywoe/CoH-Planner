@@ -21,7 +21,12 @@ import { AnimateStone as AnimateStone } from './animate-stone';
 
 export const powerset: Powerset = {
   id: 'controller/earth-control',
+  setPath: 'Controller_Control.Earth_Control',
   name: 'Earth Control',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can control the forces of the Earth. You can manipulate earth and stone to defeat your foes. The crushing force of many Earth Powers can reduce a target\'s Defense. Being of the Earth, many of these powers need to be performed while on the ground.',
   icon: 'earth_control_set.ico',
   archetype: 'controller',

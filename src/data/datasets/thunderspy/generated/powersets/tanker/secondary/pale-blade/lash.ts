@@ -12,6 +12,8 @@ export const Lash: Power = {
   "name": "Lash",
   "internalName": "Lash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick lash from your foul blades that becomes empowered while bearing the plague. Normally deals low Lethal damage, but gains Toxic damage while Plaguebearer is active. Grants the user Lash, an effect used by other powers.",
   "shortHelp": "Lethal dmg, Toxic dmg",
   "icon": "paleblade_lash.png",
@@ -22,6 +24,9 @@ export const Lash: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 9,
@@ -74,10 +79,10 @@ export const Lash: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,-0.2,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.189,1,0.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.33000001311302185,1],
+    ["Damage","Fire",0.189,1,0.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Damage","Toxic",0.3,1,0.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
     ["Damage","Cold",0.1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
-    ["Meta",null,0,1,3,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["Meta",null,0,1,3,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
     ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
@@ -90,6 +95,10 @@ export const Lash: Power = {
       "label": "Pale Self Buff Plaguebearer",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer",
+        "count": 1
+      },
       "damage": [
         {
           "type": "Toxic",

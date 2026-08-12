@@ -12,6 +12,8 @@ export const EndofTime: Power = {
   "name": "End of Time",
   "internalName": "End_of_Time",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You open a gate in time that can suck in enemies and send them into a distant unknown future. The affected enemies will be quickly returned to the present time, but not before being temporarily exposed to radiation and the bitter cold of an empty void, reducing their regeneration rate. Targets affected by the Delayed effect will suffer bonus damage.Damage: Moderate.Recharge: Slow.",
   "shortHelp": "PBAoE, DMG(Cold/Energy), Foe -Regen",
   "icon": "timemanipulation_endoftime.png",
@@ -20,6 +22,9 @@ export const EndofTime: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,7 @@ export const EndofTime: Power = {
   "effects": {
     "buffDuration": 20,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.054,
       "table": "Melee_Ones"
     },
@@ -65,6 +71,7 @@ export const EndofTime: Power = {
       "regenDebuff": 20
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Ones"
     }
@@ -73,14 +80,14 @@ export const EndofTime: Power = {
     ["Damage","Cold",0.924,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",0.308,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-0.5,1,20,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["DamageBuff","Smashing",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Lethal",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Fire",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Cold",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Energy",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Negative",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Psionic",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Toxic",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Lethal",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Fire",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Cold",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Energy",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Negative",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Psionic",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
+    ["DamageBuff","Toxic",0.054,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
     ["Damage","Energy",0.308,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? &&",true],
     ["Damage","Cold",0.7502,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.2501,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

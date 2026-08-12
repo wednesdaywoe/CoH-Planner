@@ -12,6 +12,8 @@ export const EnvironmentalModification: Power = {
   "name": "Environmental Modification",
   "internalName": "Environmental_Modification",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Your body can spontaneously adapt to its surroundings and your mind has learned to shield itself from harmful effects by constant exposure to these dangers. While active you gain moderate defense to Fire, Cold, Energy and Negative Energy damage, and a small amount of defense to Psionic damage. Additionally you are protected against hold, knockdown and immobilize effects.   Recharge: Fast",
   "shortHelp": "Self Toggle, +Res(Hold, Knockdown, Immobilize), +Def(Energy, Negative, Fire, Cold, Psionic)",
   "icon": "organiccomp_environmentalmodification.png",
@@ -22,6 +24,9 @@ export const EnvironmentalModification: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -73,6 +78,7 @@ export const EnvironmentalModification: Power = {
     },
     "effectDuration": 0.75,
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -92,10 +98,12 @@ export const EnvironmentalModification: Power = {
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }

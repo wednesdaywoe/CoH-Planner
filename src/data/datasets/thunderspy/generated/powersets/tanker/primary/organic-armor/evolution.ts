@@ -12,12 +12,17 @@ export const Evolution: Power = {
   "name": "Adaptation",
   "internalName": "Evolution",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Adaptation grants access to three Adaptation styles; Efficient, Defensive, and Offensive.",
   "shortHelp": "Gain Efficient, Defensive and Offensive Adaptations",
   "icon": "bioorganicarmor_adaptation.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 99999
@@ -25,7 +30,7 @@ export const Evolution: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Meta",null,1,1,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,1,1,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "mechanicType": "parentMechanic"
 };

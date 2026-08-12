@@ -12,6 +12,8 @@ export const Singularity: Power = {
   "name": "Singularity",
   "internalName": "Singularity",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You can create a very powerful Gravitational Singularity. The Singularity will engage your foes, assaulting them with various gravity powers. Any foes that attempt to approach the Singularity will be violently hurled away. The Singularity cannot be healed, but is highly resistant to all forms of damage and nearly impervious to Controlling type powers.",
   "shortHelp": "Summon Singularity: Ranged Control Special",
   "icon": "gravitycontrol_singularity.png",
@@ -19,6 +21,9 @@ export const Singularity: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

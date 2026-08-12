@@ -12,12 +12,17 @@ export const RefractionShield: Power = {
   "name": "Detention Field",
   "internalName": "Refraction_Shield",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Encases a targeted foe in a Detention Force Field. The captured target cannot be harmed, is Immobilized, and cannot attack or aid their allies. The target can, however, use powers on themselves. Recharge: Slow",
   "shortHelp": "Ranged, Foe Capture (Special)",
   "icon": "forcefield_refractionshield.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 80,

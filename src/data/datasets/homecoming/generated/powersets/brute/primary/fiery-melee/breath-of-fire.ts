@@ -12,12 +12,17 @@ export const BreathofFire: Power = {
   "name": "Breath of Fire",
   "internalName": "Breath_of_Fire",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "This allows you to spew forth fire from your mouth, burning all foes within its narrow cone. This is a very accurate attack that can deal good damage at a close range.",
   "shortHelp": "Close (Cone) DoT (Fire)",
   "icon": "fieryfray_breathingfire.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 15,
@@ -76,12 +81,12 @@ export const BreathofFire: Power = {
     }
   ],
   "atoms": [
-    ["Damage","Fire",0.5426,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
-    ["Damage","Fire",0.071,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Damage","Fire",0.2173,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0],
-    ["Damage","Fire",0.032,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
-    ["Damage","Fire",1.3732,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Fire",0.3381,1,0.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,true],
-    ["Damage","Fire",0.0899,1,3.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true]
+    ["Damage","Fire",0.5426,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.071,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true,"Scorching Heat"],
+    ["Damage","Fire",0.2173,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Damage","Fire",0.032,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,-0.2,true,"FieryEmbrace"],
+    ["Damage","Fire",1.3732,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",0.3381,1,0.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"],
+    ["Damage","Fire",0.0899,1,3.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.8,true,"Scorching Heat"]
   ]
 };

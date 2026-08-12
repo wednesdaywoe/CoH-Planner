@@ -12,12 +12,17 @@ export const ShieldCharge: Power = {
   "name": "Shield Charge",
   "internalName": "Shield_Charge",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You can throw all of your might behind your shield and charge through ranks of foes in the blink of an eye. Using this power allows you to teleport to a selected area to deal significant smashing damage to all foes near the location you teleport to, most foes that are struck by your Shield Charge will be knocked down.Damage: Superior.Recharge: Long.",
   "shortHelp": "PBAoE Superior DMG(Smashing), Foe Knockdown; Self Teleport",
   "icon": "shielddefense_shieldcharge.png",
   "powerType": "Click",
   "targetType": "Teleport",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -86,6 +91,9 @@ export const ShieldCharge: Power = {
               "castTime": 0,
               "activatePeriod": 20,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 16
             }

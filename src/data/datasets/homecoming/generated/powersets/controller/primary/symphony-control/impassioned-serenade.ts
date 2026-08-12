@@ -12,12 +12,17 @@ export const ImpassionedSerenade: Power = {
   "name": "Impassioned Serenade",
   "internalName": "Impassioned_Serenade",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You serenade your target with an impassioned song, charming them into fighting for you.Note: this power inflicts damage over time for up to 30 seconds as long as the target is confused.",
   "shortHelp": "Ranged, DoT(Psionic), Foe Confuse",
   "icon": "symphonycontrol_confusest.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -55,11 +60,11 @@ export const ImpassionedSerenade: Power = {
   "atoms": [
     ["Damage","Psionic",0.65,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1],
+    ["Mez","Confused",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ReverbImpassionedSerenade"],
     ["Damage","Psionic",0.04,1,30,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,null,true,null,null,null,null,null,"Confused"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Psionic",0.65,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true],
-    ["Damage","Psionic",0.04,1,30,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true,null,null,null,null,null,"Confused"]
+    ["Damage","Psionic",0.65,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true,null,null,null,null,null,null,null,null,"Containment"],
+    ["Damage","Psionic",0.04,1,30,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true,null,null,null,null,null,"Confused",null,null,"Containment"]
   ]
 };

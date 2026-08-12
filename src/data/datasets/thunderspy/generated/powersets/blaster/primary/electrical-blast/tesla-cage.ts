@@ -12,12 +12,17 @@ export const TeslaCage: Power = {
   "name": "Tesla Cage",
   "internalName": "Tesla_Cage",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Tesla Cage confines the target in an electrical prison. The target is overwhelmed by the electrical charge and is left helpless and can be attacked. The target is drained of some Endurance and some of that Endurance may be transferred back to you. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
   "icon": "electricalbolt_telsacage.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -50,6 +55,7 @@ export const TeslaCage: Power = {
   "effects": {
     "buffDuration": 9.67,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.143,
       "table": "Ranged_Ones"
     },

@@ -21,7 +21,12 @@ import { Blizzard as Blizzard } from './blizzard';
 
 export const powerset: Powerset = {
   id: 'defender/ice-blast',
+  setPath: 'Defender_Ranged.Ice_Blast',
   name: 'Ice Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Ice Blast allows you to use the power of ice against your foes, with a tendency to Slow their attacks and movement.',
   icon: 'ice_blast_set.ico',
   archetype: 'defender',

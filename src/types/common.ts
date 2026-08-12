@@ -102,7 +102,12 @@ export type EffectArea =
   | 'AoE'
   | 'Cone'
   | 'Location'
-  | 'Chain';
+  | 'Chain'
+  // Whole-map reach, which the export states outright. Rare on a player power and
+  // absent from `EFFECT_AREA_MAP`, so the converter passes it through unmapped —
+  // Time Bomb's remote-detonation branch is the case. Carried rather than dropped:
+  // the alternative is a form whose area silently reads as its base record's.
+  | 'Map';
 
 // ============================================
 // CHARACTER ORIGIN
@@ -131,6 +136,12 @@ export type IOSetCategory =
   | 'Melee Damage'
   | 'Ranged AoE Damage'
   | 'Melee AoE Damage'
+  // Rebirth/Thunderspy read straight off the binary and name these two
+  // "Targeted AoE Damage" / "PBAoE Damage" — Homecoming's own GroupName is
+  // "Ranged AoE Damage" / "Melee AoE Damage" for the equivalent sets. Two
+  // real category names for the same concept, not a converter inference.
+  | 'Targeted AoE Damage'
+  | 'PBAoE Damage'
   | 'Universal Damage Sets'
   | 'Sniper Attacks'
   | 'Pet Damage'
@@ -154,6 +165,8 @@ export type IOSetCategory =
   | 'Defense Debuff'
   | 'Slow Movement'
   | 'Threat Duration'
+  // Rebirth/Thunderspy's own GroupName for the same Threat Duration concept.
+  | 'Taunt'
   | 'Accurate Defense Debuff'
   | 'Accurate Healing'
   | 'Accurate To-Hit Debuff'
@@ -184,7 +197,7 @@ export type IOSetCategory =
   | 'Primalist Archetype Sets'
   // Rebirth Challenge Enhancement categories — universal mez set (Forced
   // Indoctrination) and the single-piece Rest enhancement (Inexhaustibility)
-  | 'Universal Control Duration'
+  | 'Universal Control Duration Sets'
   | 'Rest Buff'
   // Rebirth multi-aspect debuff event sets (Witchcraft) — slottable in any
   // Slow / Defense-debuff / ToHit-debuff power (e.g. Tar Patch via Slow)

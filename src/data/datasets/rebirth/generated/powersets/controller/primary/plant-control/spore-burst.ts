@@ -12,12 +12,17 @@ export const SporeBurst: Power = {
   "name": "Spore Burst",
   "internalName": "Spore_Burst",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You hurl a large fungi pod at your foes.  This pod is full of Spores that burst on impact, engulfing the target and all those around them.  All affected targets may succumb to the narcotic effect of the Spores and will fall asleep. The targets will remain asleep for some time, but will awaken if attacked. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
   "icon": "plantcontrol_sporeburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -49,7 +54,7 @@ export const SporeBurst: Power = {
   },
   "atoms": [
     ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Sleep",6,1,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Sleep",6,1,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Mez","Sleep",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

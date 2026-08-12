@@ -21,7 +21,12 @@ import { ChilloftheNight as ChilloftheNight } from './chill-of-the-night';
 
 export const powerset: Powerset = {
   id: 'defender/dark-miasma',
+  setPath: 'Defender_Buff.Dark_Miasma',
   name: 'Dark Miasma',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Focus the dark power of the Netherworld to weaken your foes.  Dark Miasma focuses on draining your opponent.',
   icon: 'dark_miasma_set.ico',
   archetype: 'defender',

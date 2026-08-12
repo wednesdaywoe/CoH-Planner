@@ -12,12 +12,17 @@ export const ShadowyBinds: Power = {
   "name": "Shadowy Binds",
   "internalName": "Shadowy_Binds",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You take control of your victim's shadow causing it to entangle and bind its owner thus leaving them immobilized and suffering from negative energy damage over time and reducing their chance to hit.  Immobilized foes cannot move but can still attack. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DoT(Negative), Foe Immobilize, -To Hit, -Fly",
   "icon": "darknesscontrol_shadowybinds.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

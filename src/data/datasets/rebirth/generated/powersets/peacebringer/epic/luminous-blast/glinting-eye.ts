@@ -12,12 +12,17 @@ export const GlintingEye: Power = {
   "name": "Glinting Eye",
   "internalName": "Glinting_Eye",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. This power can be used while in Bright Nova or White Dwarf form. While in Bright Nova, this power has increased range and higher damage. While in White Dwarf form, this power taunts its target but has shorter range and deals slightly more damage. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
   "icon": "luminousblast_glintingeye.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -58,11 +63,11 @@ export const GlintingEye: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode? ! kPeacebringer_Tanker_Mode source.Mode? ! &&"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode? ! kPeacebringer_Tanker_Mode source.Mode? ! &&",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Energy",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",2,1,6,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode?",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode?",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Energy",2.1708,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "modeVariants": {
@@ -94,7 +99,11 @@ export const GlintingEye: Power = {
       "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. This power can be used while in Bright Nova or White Dwarf form. While in Bright Nova, this power has increased range and higher damage. While in White Dwarf form, this power taunts its target but has shorter range and deals slightly more damage. Damage: Moderate, Recharge: Fast",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Energy",1.32,1,0,"Ranged_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Defense","All",2,1,6,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+      ]
     },
     "Peacebringer_Tanker_Mode": {
       "internalName": "White_Dwarf_Glinting_Eye",
@@ -128,7 +137,12 @@ export const GlintingEye: Power = {
       "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. This power can be used while in Bright Nova or White Dwarf form. While in Bright Nova, this power has increased range and higher damage. While in White Dwarf form, this power taunts its target but has shorter range and deals slightly more damage. Damage: Moderate, Recharge: Fast",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Energy",1.32,1,0,"Melee_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Defense","All",2,1,6,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+      ]
     }
   }
 };

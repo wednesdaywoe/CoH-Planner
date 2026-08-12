@@ -12,12 +12,17 @@ export const Taunt: Power = {
   "name": "Taunt",
   "internalName": "Taunt",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Taunts a foe, and some nearby foes, to attack you. Useful for pulling villains off an ally who find themselves in over their head. Taunted foes tend to ignore other Heroes and focus on you for quite a while, so use this power cautiously. A To Hit check is required to Taunt enemy players, but is not needed against critter targets.",
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "psionicmelee_taunt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -46,6 +51,6 @@ export const Taunt: Power = {
     ["Mez","Taunt",20,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Range",null,-1,1,20,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Mez","Taunt",5,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit >= @ForceHit || &&",true]
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit >= @ForceHit || &&",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ]
 };

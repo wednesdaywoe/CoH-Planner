@@ -12,12 +12,17 @@ export const ParasiticAura: Power = {
   "name": "Parasitic Aura",
   "internalName": "Parasitic_Aura",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "By soaking in cellular material from enemies nearby, you reduce their offense and drastically improve your own resilience. You gain an Absorption shield and an increase to Regeneration and Recovery for each nearby foe, and reduce the damage of enemies in the area. While Efficient Adaptation is active, this power grants additional Regeneration and Recovery. While Defensive Adaptation is active, you receive additional Absorbtion and enemy damage is lowered further. While Offensive Adaptation is active, enemies nearby are inflicted with a long lasting minor Toxic damage over time effect.",
   "shortHelp": "PBAoE, Self +Absorb, +Regeneration, +Recovery, Foe -DMG",
   "icon": "bioorganicarmor_parasiticaura.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.5,
     "radius": 20,
@@ -48,6 +53,7 @@ export const ParasiticAura: Power = {
     },
     "buffDuration": 45,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_Debuff_Dam"
     },
@@ -133,6 +139,7 @@ export const ParasiticAura: Power = {
         },
         "buffDuration": 45,
         "damageDebuff": {
+          "ignoreStrength": true,
           "scale": 2.6,
           "table": "Melee_Debuff_Dam"
         },

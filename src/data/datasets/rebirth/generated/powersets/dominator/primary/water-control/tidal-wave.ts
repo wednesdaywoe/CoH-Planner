@@ -12,12 +12,17 @@ export const TidalWave: Power = {
   "name": "Tidal Wave",
   "internalName": "Tidal_Wave",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You blast foes in front of you with a violent torrent of water knocking them back, disorienting them and dealing Light Cold and Smashing damage to them. This power has a small chance to place the Drowning effect on its targets. Tidal Wave deals additional damage and has improved disorient duration and movement slow potency on foes suffering from Drowning.  Damage: Light, Recharge: Very Long",
   "shortHelp": "Ranged (Cone), Light DMG(Cold/Smash), Foe Knockback, Disorient, -Speed",
   "icon": "watercontrol_tidalwave.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 60,
@@ -66,6 +71,7 @@ export const TidalWave: Power = {
       "slow": 15
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Ones"
     },
@@ -75,6 +81,7 @@ export const TidalWave: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.35,
         "table": "Ranged_Slow"
       },
@@ -97,13 +104,13 @@ export const TidalWave: Power = {
     ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Cold",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
-    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Movement","Run",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","Fly",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","JumpHeight",0.35,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","Jump",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Mez","Knockback",3,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.27067646384239197,null,true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.27067646384239197,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.27],
     ["Damage","Cold",0.066667,1,1.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
     ["Damage","Smashing",0.558044,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",1.674132,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -153,6 +160,7 @@ export const TidalWave: Power = {
             "table": "Ranged_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.4375,
             "table": "Ranged_Slow"
           },

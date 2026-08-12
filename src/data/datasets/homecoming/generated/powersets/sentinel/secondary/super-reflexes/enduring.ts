@@ -12,12 +12,17 @@ export const Enduring: Power = {
   "name": "Enduring",
   "internalName": "Enduring",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You become innately more Enduring, and are able to make your endurance last longer in battle. You also manage to avoid some psionic attacks and resist Defense DeBuffs. Your Enduring determination also grants you minor Damage Resistance to all damage except Toxic and Psionic. This Damage Resistance is only available as you lose Health but it improves as your HP declines. This power is always on, and will permanently increase your endurance recovery and Defense versus psionic attacks.",
   "shortHelp": "Auto: Self +Recovery, +DEF(Psionic), Res(DeBuff DEF), Res(DMG, Special)",
   "icon": "superreflexes_endure.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 0.5
@@ -57,26 +62,32 @@ export const Enduring: Power = {
     },
     "resistance": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       }

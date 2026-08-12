@@ -12,6 +12,8 @@ export const MomentofGlory: Power = {
   "name": "Moment of Glory",
   "internalName": "Moment_of_Glory",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate this power, you deal increased damage, recover Endurance more quickly, gain Resistance and Defense to all damage types, and are highly resistant to Knock Back, Sleep, Disorient, Immobilization, and Hold effects.",
   "shortHelp": "Self +DMG, +Res(All DMG, Knock Back, Repel, Stun, Hold, Sleep, Immobilize), +DEF(All DMG), +Recovery",
   "icon": "regeneration_momentofglory.png",
@@ -23,6 +25,9 @@ export const MomentofGlory: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -56,6 +61,7 @@ export const MomentofGlory: Power = {
           "scale": 1
         }
       ],
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Buff_Dmg"
     },
@@ -109,33 +115,40 @@ export const MomentofGlory: Power = {
     },
     "effectDuration": 15,
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 60,
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       }
@@ -145,6 +158,7 @@ export const MomentofGlory: Power = {
       "table": "Melee_Ones"
     },
     "repel": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
@@ -183,11 +197,13 @@ export const MomentofGlory: Power = {
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"

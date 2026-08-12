@@ -12,6 +12,8 @@ export const Ripper: Power = {
   "name": "Ripper",
   "internalName": "Ripper",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You can unleash a spectacular slashing maneuver that attacks all foes in a wide arc in front of you. Ripper deals massive lethal damage and poisons multiple targets. It can even knock foes down. Spine poison Slows affected targets and deals additional Toxic damage. If executed while hidden, all affected targets have a chance to be hit with a Critical Hit for extra damage.  Damage: High, Recharge: Slow",
   "shortHelp": "Melee (Cone), High DMG(Lethal), DoT(Toxic), Knockback, -SPD, -Recharge",
   "icon": "quills_bonesword.png",
@@ -20,6 +22,9 @@ export const Ripper: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -61,6 +66,11 @@ export const Ripper: Power = {
       "tickRate": 1,
       "chance": 0.8,
       "cancelOnMiss": true
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.7,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -79,6 +89,7 @@ export const Ripper: Power = {
       "table": "Melee_Ones"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Melee_Slow"
     },
@@ -88,6 +99,7 @@ export const Ripper: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -103,7 +115,8 @@ export const Ripper: Power = {
   },
   "atoms": [
     ["Damage","Lethal",1.7,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Toxic",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true],
+    ["Damage","Lethal",1.7,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579],
     ["RechargeTime",null,0.1,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Run",0.2,1,15,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -115,7 +128,6 @@ export const Ripper: Power = {
     ["Damage","Lethal",1.914358,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
     ["Damage","Lethal",1.914358,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",1.914358,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Lethal",1.7,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Damage","Lethal",1.7,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
     ["Mez","Immobilized",2,0.6700000166893005,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

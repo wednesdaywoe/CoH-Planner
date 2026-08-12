@@ -12,12 +12,17 @@ export const HeavyBurst: Power = {
   "name": "Heavy Burst",
   "internalName": "Heavy_Burst",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Fires a Heavy Burst of rounds at foes in a long cone in front of the user. Can also reduce the targets' defense. Damage: Moderate(DoT) Recharge: Medium",
   "shortHelp": "Ranged Cone, Moderate DMG(Lethal), Foe -DEF",
   "icon": "militaryassault_heavyburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -63,7 +68,7 @@ export const HeavyBurst: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Lethal",0.1958,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Lethal",0.2375,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true]

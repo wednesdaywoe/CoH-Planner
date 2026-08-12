@@ -12,12 +12,17 @@ export const HellfireFlares: Power = {
   "name": "Hellfire Flares",
   "internalName": "Hellfire_Flares",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick attack that throws demonic flares at the target. Damage: Moderate, Recharge: Very Fast",
   "shortHelp": "Ranged, Minor DMG(Fire)",
   "icon": "hellfireassault_hellfireflares.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -51,7 +56,7 @@ export const HellfireFlares: Power = {
     }
   ],
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Fire",0.588,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.2898,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Fire",1.708,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

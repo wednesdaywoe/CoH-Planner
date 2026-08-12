@@ -12,12 +12,18 @@ export const Rebuke: Power = {
   "name": "Rebuke",
   "internalName": "Rebuke",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick bolt of Radiant light that can be used to heal friends or damage your enemies. Unholy foes such as demons, undead, and ghosts take additional damage. Damage: Minor, Recharge: Fast",
   "shortHelp": "Ranged, Minor DMG(Fire) or minor heal",
   "icon": "luminousblast_gleamingbolt.png",
   "powerType": "Click",
   "targetType": "Any",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend",
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -38,23 +44,16 @@ export const Rebuke: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "atoms": [
     ["Damage","Fire",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
-    ["Damage","Fire",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&"],
     ["Damage","Fire",1.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
-    ["Heal",null,-1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+    ["Heal",null,-1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
+    ["Damage","Fire",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&",true]
   ],
   "damageTypes": [
     "Fire"

@@ -12,12 +12,17 @@ export const EvolvingArmor: Power = {
   "name": "Evolving Armor",
   "internalName": "Evolving_Armor",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "When faced with danger, you react by becoming incredibly durable as well as infecting nearby enemies, lowering their resistance to damage. While active, Evolving Armor will grant you small amount of damage resistance, plus an additional amount for each nearby target. Nearby foes will also have their damage resistance reduced.  Recharge: Slow",
   "shortHelp": "Self Toggle, +Res(All), Foe -Res(All)",
   "icon": "organiccomp_evolvingarmor.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -86,34 +91,42 @@ export const EvolvingArmor: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Dmg"
       }

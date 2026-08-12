@@ -12,12 +12,17 @@ export const FreezeRay: Power = {
   "name": "Freeze Ray",
   "internalName": "Freeze_Ray",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Although this power deals very little damage, the Freeze Ray encases your foe in a block of ice, holding them helpless in place for a while. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged, Minor DMG(Cold), Foe Hold",
   "icon": "iceblast_freezeray.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -49,6 +54,7 @@ export const FreezeRay: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Ranged_Ones"
     },

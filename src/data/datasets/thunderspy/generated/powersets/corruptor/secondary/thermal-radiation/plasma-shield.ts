@@ -12,12 +12,18 @@ export const PlasmaShield: Power = {
   "name": "Plasma Shield",
   "internalName": "Plasma_Shield",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Envelope an ally in pure plasma. The Plasma Shield gives your ally resistance to Energy, Negative Energy, and Fire damage. You cannot stack multiple Plasma Shields on the same target, however the shield can be improved by another ally using the same power. Can also be used in conjunction with your Fire Shield. You cannot use this power on yourself. Recharge: Very Fast",
   "shortHelp": "Ranged, Ally +Res(Energy, Negative, Fire)",
   "icon": "thermalradiation_plasmashield.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 80,

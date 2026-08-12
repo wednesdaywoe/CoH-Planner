@@ -12,12 +12,17 @@ export const SiphonPower: Power = {
   "name": "Siphon Power",
   "internalName": "Siphon_Power",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Siphon the Power from a targeted foe, reducing their damage potential. The power is transferred back to you, increasing your own damage potential and that of all nearby allies.Recharge: Slow.",
   "shortHelp": "Ranged, Foe -DMG, Team +DMG",
   "icon": "kineticboost_siphonpower.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -40,6 +45,7 @@ export const SiphonPower: Power = {
       "perTarget": 0
     },
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Debuff_Dam"
     },

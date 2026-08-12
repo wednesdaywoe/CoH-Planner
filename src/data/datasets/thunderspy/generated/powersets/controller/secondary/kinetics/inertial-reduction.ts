@@ -12,12 +12,18 @@ export const InertialReduction: Power = {
   "name": "Inertial Reduction",
   "internalName": "Inertial_Reduction",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You can reduce your Inertia, along with that of all nearby allies. The affected heroes can then jump incredible distances for a while. Recharge: Long",
   "shortHelp": "PBAoE, Allies +Jump",
   "icon": "kineticboost_initialreductions.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

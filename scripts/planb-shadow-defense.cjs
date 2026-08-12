@@ -33,12 +33,17 @@
  *   node scripts/planb-shadow-defense.cjs
  *   node scripts/planb-shadow-defense.cjs --dataset homecoming
  *   node scripts/planb-shadow-defense.cjs --power "Hide"
+ *
+ * ARCHETYPE FORK: a slot the converter resolved across the whole roster reads as
+ * `undefined` from the build-agnostic atom readers and populated in the bag. That is
+ * not a divergence — it is checked, per archetype, through
+ * `planb-shadow-sweep.forkResolvedViews`, and counted separately in the summary.
  */
 
 require('tsx/cjs');
 const fs = require('fs');
 const path = require('path');
-const { sweepDataset } = require('./planb-shadow-sweep.cjs');
+const { sweepDataset, forkResolvedAgrees } = require('./planb-shadow-sweep.cjs');
 const { defenseBuffValue, defenseBuffSuppressibleValue } = require('../src/data/core/atom-query.ts');
 
 const REPO = path.resolve(__dirname, '..');
@@ -83,7 +88,7 @@ const eq = (a, b) => (!a && !b) || (a && b && a.scale === b.scale && a.perTarget
 
 const stats = {
   powers: 0,
-  buffTypes: 0, buffAgree: 0, buffPerTarget: 0,
+  buffTypes: 0, buffAgree: 0, buffPerTarget: 0, buffForkResolved: 0,
   suppTypes: 0, suppAgree: 0, suppPerTarget: 0,
 };
 const findings = [];
@@ -104,8 +109,14 @@ function checkPower(dataset, power, genPath) {
     if (bag || atom) {
       stats.buffTypes++;
       if ((bag && bag.perTarget) || (atom && atom.perTarget)) stats.buffPerTarget++;
+      // The build-agnostic reader abstains on an archetype-forked slot; ask each
+      // archetype's resolved view instead (see `forkResolvedAgrees`).
       if (eq(bag, atom)) stats.buffAgree++;
-      else findings.push({ kind: 'buff', dataset, name, type: t, bag, atom });
+      else if (!atom && bag && forkResolvedAgrees(dataset, power, bag,
+        (src) => atomVal((defenseBuffValue(src) || {})[t]), eq)) {
+        stats.buffAgree++;
+        stats.buffForkResolved++;
+      } else findings.push({ kind: 'buff', dataset, name, type: t, bag, atom });
     }
     const bagS = bagVal(bagSupp[t]);
     const atomS = atomVal(atomSupp[t]);
@@ -129,7 +140,7 @@ for (const ds of DATASETS) sweep(ds);
 console.log(`\nPlan B Slice 4 — defense reconstruction (buff + suppressible)`);
 console.log(`  powers swept:        ${stats.powers}`);
 console.log(`  buff type-slots:     ${stats.buffTypes}  (of which per-target: ${stats.buffPerTarget})`);
-console.log(`  buff agree:          ${stats.buffAgree}`);
+console.log(`  buff agree:          ${stats.buffAgree}  (of which archetype-fork resolved: ${stats.buffForkResolved})`);
 console.log(`  suppress type-slots: ${stats.suppTypes}  (of which per-target: ${stats.suppPerTarget})`);
 console.log(`  suppress agree:      ${stats.suppAgree}`);
 console.log(`  diverge:             ${findings.length}`);

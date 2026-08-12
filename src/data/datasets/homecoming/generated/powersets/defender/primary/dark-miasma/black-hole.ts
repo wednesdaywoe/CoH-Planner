@@ -12,12 +12,17 @@ export const BlackHole: Power = {
   "name": "Black Hole",
   "internalName": "Black_Hole",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Opens up a Black Hole to the Netherworld that temporarily pulls in all foes within its grasp. If the main target is immune to the pull, it will become phase shifted and are completely intangible. They are hard to see, and cannot affect or be affected by those in normal space.",
   "shortHelp": "Ranged (Targeted AoE), Foe Intangible",
   "icon": "darkmiasma_blackhole.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -54,6 +59,7 @@ export const BlackHole: Power = {
     },
     "stealth": {
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Melee_Ones"
       }

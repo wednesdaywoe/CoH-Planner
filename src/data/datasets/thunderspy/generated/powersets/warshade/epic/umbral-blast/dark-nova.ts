@@ -12,6 +12,8 @@ export const DarkNova: Power = {
   "name": "Dark Nova",
   "internalName": "Dark_Nova",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Kheldians are masters of energy and matter.  A Warshade can transform into a flying energy beast known as a Dark Nova.  When you choose this power, you will have access to 4 very powerful ranged attacks that can only be used while in this form, These powers cannot be enhanced but have values as if they were enhanced. Dark Nova can fly, has an increased chance to hit and improved Endurance Recovery but has no defense.  Recharge: Fast",
   "shortHelp": "Toggle: Shapeshift, Special",
   "icon": "umbralblast_darknova.png",
@@ -22,6 +24,9 @@ export const DarkNova: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -44,6 +49,7 @@ export const DarkNova: Power = {
   "effects": {
     "buffDuration": 2,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -78,10 +84,12 @@ export const DarkNova: Power = {
     },
     "resistance": {
       "energy": {
+        "ignoreStrength": true,
         "scale": 0.15,
         "table": "Melee_Ones"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0.15,
         "table": "Melee_Ones"
       }
@@ -96,9 +104,9 @@ export const DarkNova: Power = {
     ["Recovery",null,0.15,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Energy",0.15,1,2,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Negative",0.15,1,2,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,9,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-    ["Meta",null,1,4,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Refresh",2,null,null,1,null,true],
-    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true],
+    ["Meta",null,1,9,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,4,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Refresh",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Movement","Fly",1.5,1,2,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Control",2,1,2,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Friction",2,1,2,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

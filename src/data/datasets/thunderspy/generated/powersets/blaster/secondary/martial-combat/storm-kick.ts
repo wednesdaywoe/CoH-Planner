@@ -12,6 +12,8 @@ export const StormKick: Power = {
   "name": "Storm Kick",
   "internalName": "Storm_Kick",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can unleash a roundhouse kick that pummels your foe for moderate damage, knocking them back. Storm Kick has an additional chance to cause your target to bleed for Lethal damage over time. Damage: Moderate, Recharge: Medium",
   "shortHelp": "Melee, Moderate DMG(Smash), DoT(Lethal), Foe Knockback",
   "icon": "martialmanipulation_stormkick.png",
@@ -20,6 +22,9 @@ export const StormKick: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -60,6 +65,7 @@ export const StormKick: Power = {
   "effects": {
     "buffDuration": 8.57,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Melee_Ones"
     },
@@ -77,7 +83,7 @@ export const StormKick: Power = {
   },
   "atoms": [
     ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",0.1,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.1,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.6],
     ["Mez","Knockback",4,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Smashing",0.11,1,8.57,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.11,1,8.57,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -88,7 +94,7 @@ export const StormKick: Power = {
     ["DamageBuff","Toxic",0.11,1,8.57,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.11,1,8.57,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Damage","Smashing",1.408988,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",0.117416,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.117416,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.6],
     ["Mez","Knockback",4,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [

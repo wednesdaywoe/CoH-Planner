@@ -12,12 +12,17 @@ export const Microburst: Power = {
   "name": "Microburst",
   "internalName": "Microburst",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You release all available Pressure to create an extremely powerful blast of air that descends from the skies and spreads out over a large radius. Any foes caught within the burst are immediately stunned by the force of the wind and suffer smashing damage.Flying foes are knocked out of the sky, while all foes suffer reduced movement speed that lingers for some time. The damage done increases in proportion to the amount of Pressure released when using this power. Also, Microburst can reduce your target's defenses at the when the highest levels of Pressure are released.Damage: Minor.Recharge: Long.",
   "shortHelp": "Ranged (Targeted AoE), Minor DMG(Smashing), Stun(Foe), -Speed(Foe, All), -Fly(Foe), -Rech(Foe), Chance for -DEF(Foe, All), Consumes Pressure",
   "icon": "windcontrol_microburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -59,6 +64,7 @@ export const Microburst: Power = {
       "slow": 12
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
@@ -72,6 +78,7 @@ export const Microburst: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
@@ -93,21 +100,21 @@ export const Microburst: Power = {
   "atoms": [
     ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"@Scale 0.02 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"],
     ["Movement","Run",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Fly",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Jump",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","JumpHeight",0.3,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,0.3,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","FlyMode",-2,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Damage","Smashing",0.2,1,0,"Ranged_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,"@Scale 0.02 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
+    ["Damage","Smashing",0.2,1,0,"Ranged_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,"@Scale 0.02 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *",null,null,null,"Containment"],
     ["Damage","Smashing",0.1193,1,0,"Ranged_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"@Scale 0.02 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
     ["Mez","Stunned",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Smashing",0.0596,1,0,"Ranged_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true,null,null,null,null,"@Scale 0.01 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
+    ["Damage","Smashing",0.0596,1,0,"Ranged_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true,null,null,null,null,"@Scale 0.01 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *",null,null,null,"Containment"],
     ["Defense","All",2,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 5 ==",true],
     ["Defense","All",2.5,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 ==",true],
-    ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true]
+    ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "conditionalEffects": [
     {
@@ -115,6 +122,10 @@ export const Microburst: Power = {
       "label": "Pressure (5 stacks)",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure",
+        "count": 5
+      },
       "effects": {
         "buffDuration": 12,
         "defenseDebuff": {
@@ -132,6 +143,10 @@ export const Microburst: Power = {
       "label": "Pressure (6 stacks)",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure",
+        "count": 6
+      },
       "effects": {
         "buffDuration": 12,
         "defenseDebuff": {

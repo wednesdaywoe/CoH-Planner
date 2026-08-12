@@ -21,7 +21,12 @@ import { DarkEmpowerment as DarkEmpowerment } from './dark-empowerment';
 
 export const powerset: Powerset = {
   id: 'mastermind/necromancy',
+  setPath: 'Mastermind_Summon.Necromancy',
   name: 'Necromancy',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Command the forces of Death. Necromancy allows you to summon undead henchmen to do your bidding. Some Necromancy powers can even grant your undead henchmen additional powers. Most Undead Henchmen generally have good resistances to Cold, Negative Energy, and Psionic damage as well as Sleep, Fear and Disorient. Undead Henchman cannot be resurrected.',
   icon: 'necromancy_set.ico',
   archetype: 'mastermind',

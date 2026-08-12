@@ -12,6 +12,8 @@ export const Shred: Power = {
   "name": "Shred",
   "internalName": "Shred",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You rapidly slash at your foes several times causing a moderate amount of damage to all enemies in front of you and reduce their defense. Shred also causes minor lethal damage over time. This power grants 1 stack of Blood Frenzy.",
   "shortHelp": "Melee (Cone), DMG(Lethal), Foe DoT (Lethal), -Def(All), Self +1 Blood Frenzy",
   "icon": "savagemelee_shred.png",
@@ -20,6 +22,9 @@ export const Shred: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -76,16 +81,16 @@ export const Shred: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.21,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",0.211,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.211,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.75,true,"Bleed"],
     ["Defense","All",1.2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
-    ["Damage","Fire",0.0946,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,0],
-    ["Damage","Lethal",1.2615,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Lethal",1.2615,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !",null,null,null,null,null,null,null,null,null,"BuildFrenzy"],
+    ["Damage","Fire",0.0946,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Damage","Lethal",1.2615,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> critter eq arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || &&",true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE"],
+    ["Damage","Lethal",1.2615,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! &&",true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE"],
     ["Damage","Lethal",0.2991,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",1.7943,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",0.1435,1,3.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",0.1061,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,null,true]
+    ["Damage","Lethal",1.7943,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE"],
+    ["Damage","Lethal",0.1435,1,3.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.75,true,"Bleed"],
+    ["Damage","Lethal",0.1061,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"]
   ],
   "specialEffects": [
     {

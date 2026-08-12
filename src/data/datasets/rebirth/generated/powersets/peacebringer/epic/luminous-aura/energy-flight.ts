@@ -12,6 +12,8 @@ export const EnergyFlight: Power = {
   "name": "Energy Flight",
   "internalName": "Energy_Flight",
   "available": 0,
+  "autoIssue": true,
+  "free": true,
   "description": "Energy Flight allows you to travel large distances quickly.  If you attack a target while this power is on, your flight speed will be temporarily reduced.  Your Energy Flight speed increases with your Level. This power can be used while in Bright Nova or White Dwarf form. However, activating it while in either Bright Nova or White Dwarf will transform you back into your original form.",
   "shortHelp": "Toggle: Self Fly",
   "icon": "luminousaura_energyflight.png",
@@ -22,6 +24,9 @@ export const EnergyFlight: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -49,6 +54,7 @@ export const EnergyFlight: Power = {
         "table": "Melee_Ones"
       },
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 0.83,
         "table": "Melee_Ones"
       },
@@ -63,6 +69,7 @@ export const EnergyFlight: Power = {
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 1.01,
         "table": "Melee_Ones",
         "toWho": "Self"
@@ -70,19 +77,19 @@ export const EnergyFlight: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,126,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Meta",null,1,126,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Fly",0.83,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
-    ["Movement","Fly",-1,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0],
+    ["Movement","Fly",-1,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Movement","Fly",0.66,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,true],
-    ["Movement","Fly",-0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true],
+    ["Movement","Fly",-0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Movement","Fly",0.83,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Fly",-1.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
-    ["Meta",null,1,133,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,133,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Movement","Fly",0.83,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
     ["Movement","Fly",0.66,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ],

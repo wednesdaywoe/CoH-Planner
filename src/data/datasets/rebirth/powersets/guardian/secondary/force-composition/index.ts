@@ -21,7 +21,12 @@ import { SuppressionField as SuppressionField } from './suppression-field';
 
 export const powerset: Powerset = {
   id: 'guardian/force-composition',
+  setPath: 'Guardian_Comp.Force_Composition',
   name: 'Force Composition',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Mastery of Force Composition allows you to manipulate potent force fields and throw concussive blasts, shielding yourself and your allies while hampering your foes.',
   icon: 'fiery_aura_set.ico',
   archetype: 'guardian',

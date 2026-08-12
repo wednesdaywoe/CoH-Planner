@@ -12,6 +12,8 @@ export const CombatFlight: Power = {
   "name": "Combat Flight",
   "internalName": "Combat_Flight",
   "available": 8,
+  "autoIssue": true,
+  "free": true,
   "description": "For hovering and aerial combat. This power is much slower than Energy Flight, but provides some Defense, offers good air control, costs little Endurance, and has none of the penalties associated with Energy Flight. Switch to this mode when fighting other flying foes. While Combat Flight is active, Combat Jumping will suppress. This power can be used while in Bright Nova or White Dwarf form. However, activating it while in either Bright Nova or White Dwarf will transform you back into your original form.",
   "shortHelp": "Toggle: Self Fly, +DEF",
   "icon": "luminousaura_combatflight.png",
@@ -22,6 +24,9 @@ export const CombatFlight: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -94,6 +99,7 @@ export const CombatFlight: Power = {
         "table": "Melee_Ones"
       },
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
@@ -108,6 +114,7 @@ export const CombatFlight: Power = {
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 1.01,
         "table": "Melee_Ones",
         "toWho": "Self"
@@ -115,8 +122,8 @@ export const CombatFlight: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,126,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Meta",null,1,126,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

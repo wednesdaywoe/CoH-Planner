@@ -21,7 +21,12 @@ import { Phantasm as Phantasm } from './phantasm';
 
 export const powerset: Powerset = {
   id: 'controller/illusion-control',
+  setPath: 'Controller_Control.Illusion_Control',
   name: 'Illusion Control',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can manipulate light and sound to manifest all sorts of Illusions, aiding your allies as well as deceiving your foes.',
   icon: 'illusion_control_set.ico',
   archetype: 'controller',

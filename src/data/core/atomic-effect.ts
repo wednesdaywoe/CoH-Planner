@@ -62,10 +62,11 @@ export type AttribType = 'Magnitude' | 'Duration' | 'Expression';
 export type ToWho = 'Unspecified' | 'Target' | 'Self' | 'All';
 
 /** How repeated applications combine. Superset of Mids eStacking (No|Yes) plus the
- *  bin/converter stacking flavors already modeled (RefreshToCount et al.). */
+ *  eleven members of the game's own `StackTypeEnum` (`Common/entity/attribmod.h`). */
 export type Stacking =
   | 'No' | 'Yes' | 'Stack' | 'Replace' | 'Extend' | 'Refresh'
-  | 'RefreshToCount' | 'Overlap' | 'Maximize' | 'Ignore' | 'Suppress';
+  | 'RefreshToCount' | 'Overlap' | 'Maximize' | 'Ignore' | 'Suppress'
+  | 'StackThenIgnore' | 'Continuous';
 
 /**
  * The primary effect classification. Mids stores `EffectType` (eEffectType) and a
@@ -168,6 +169,47 @@ export interface AtomicEffect {
   requiredEvents?: string;
   baseProbability: number;
   procsPerMinute?: number;
+  /**
+   * Raw template-level `tick_chance` — the roll this ONE template makes, distinct
+   * from {@link baseProbability}, which is the enclosing effect group's. Carried
+   * only when it is not 1, so the overwhelming majority of atoms encode unchanged.
+   *
+   * On a periodic template ({@link applicationPeriod} > 0) it is the per-tick apply
+   * chance, and {@link cancelOnMiss} says how the misses compound.
+   *
+   * Whether it is a SECOND roll depends on the fork's schema, which the value itself
+   * says: Parse6 has no effect group, so its one `Chance` reaches both this field and
+   * {@link baseProbability} — a carrier repeating its group's own chance is one field
+   * seen twice, not two rolls to compound. Homecoming and Thunderspy have both fields
+   * and every carrier of theirs differs from its group (88 of Homecoming's are the
+   * 0.998 to-hit roll the old bag comment named, the rest genuine per-template rolls
+   * like Sound Cannon's 0.33 Knockback). It carries here as data so a consumer can
+   * decide in the open; the damage calc folds the duplicate case and reports the rest.
+   */
+  tickChance?: number;
+  /**
+   * The template's `CancelOnMiss` flag — a periodic effect whose chain STOPS at the
+   * first missed tick, so tick k needs k consecutive hits and the expected tick count
+   * is the geometric sum Σ chance^k rather than n·chance. Carried only alongside a
+   * {@link tickChance}, which is the only thing that makes it readable: with every
+   * tick certain there is no miss to cancel on.
+   */
+  cancelOnMiss?: boolean;
+  /**
+   * The enclosing effect group's authored `Tag` list, comma-joined in source order
+   * (`'CritLarge,ScrapperCrit_ST'`). This is where the game NAMES a mechanic: the
+   * archetype hit-time forks tag themselves (`ScrapperCrit_ST` / `ScrapperCrit_AoE`,
+   * `SentCrit`, `StealthCrit`, `ASTeamCrit`, `Containment`, `PvPCrit`), and
+   * `FieryEmbrace` names the buff that wakes a dormant component — the thing an atom
+   * with `baseProbability: 0` otherwise leaves unsaid.
+   *
+   * A parser field, NOT a converter verdict. HOMECOMING ONLY, and that is a schema
+   * fact rather than a parse gap: Parse6 (Rebirth, Thunderspy) stores AttribMods flat
+   * with no EffectGroup wrapper to hang a Tag on, so both forks carry none at all
+   * (0 of 135k groups). A consumer that cannot name a mechanic on those forks must
+   * say so rather than infer one from an archetype.
+   */
+  tags?: string;
 
   // --- enhancement / calc flags ---
   buffable?: boolean;
@@ -209,10 +251,13 @@ export interface AtomicEffect {
    * STAMPED BY THE CONVERTER, not re-derivable at runtime — the bag's
    * `{ scale, perTarget }` comes from `computeAoePerTargetPatches`, which reads
    * AoE geometry (`max_targets_hit`, `targets_affected`), redirect-chain
-   * `number_allowed`, Defiance tags, and the raw `Continuous` stack flavor. None
-   * survive to the runtime: `targets_affected` is not emitted, redirect/Defiance
-   * provenance is not on the atom, and `mapStacking` folds `Continuous`→`No`. So,
-   * exactly like {@link gated}, the converter decides and stamps the verdict.
+   * `number_allowed`, Defiance tags, and the raw `Continuous` stack flavor. The
+   * geometry does not survive to the runtime — `targets_affected` is not emitted
+   * and redirect/Defiance provenance is not on the atom — so, exactly like
+   * {@link gated}, the converter decides and stamps the verdict. (`Continuous`
+   * itself now reaches the atom; it stopped folding to `No` with STACK-3. It is
+   * still not sufficient on its own — see `computeAoePerTargetPatches`, where the
+   * stack flavor is one of several terms.)
    *
    * Reconstruct the bag value with `perTargetValueOf` in `atom-query.ts`:
    * `perTarget = Σ atom.perTarget`, `scale (at N=1) = Σ |atom.scale|` over the
@@ -268,6 +313,70 @@ export interface AtomicEffect {
    * `templatesToAtoms(allTemplates)`, and a trapped template IS in `allTemplates`.
    */
   notOnCaster?: boolean;
+
+  /**
+   * The archetypes this atom is base FOR, comma-joined in the export's own
+   * `Class_*` spelling. Absent means every archetype — the ordinary case.
+   *
+   * An effect group gated `arch source> Class_Scrapper eq` is genuinely part of
+   * a Scrapper's base and genuinely absent from everyone else's, and one
+   * base/conditional boolean cannot say that. Rebirth spells the fork out as a
+   * pair: Tough carries a Kheldian arm and a thirteen-archetype arm, and while
+   * both sat in base every Rebirth build read 3.0 S/L resistance where
+   * Homecoming and Thunderspy read 1.5 (DATA-GAP-REGISTER AT-FORK-1).
+   *
+   * The parser resolves the fork by evaluating the gate once per archetype the
+   * dataset defines and exporting the satisfied side (`requires_archetypes`);
+   * the converter carries it here, and the gather drops the atom when the build
+   * is not one of them. Kept as BASE rather than {@link gated} on purpose: the
+   * conditional path re-admits gated atoms as slot-less synthetics with empty
+   * strength, which is right for the `ignoreStrength` mode atoms it exists for
+   * and would silently un-enhance Tough's resistance.
+   *
+   * Not re-derivable at runtime from {@link requiresExpression}: deciding it
+   * needs the dataset's archetype roster and a three-valued walk that keeps a
+   * definite `false` under an indeterminate sibling, which the engine's eager
+   * evaluator does not do.
+   */
+  casterArchetypes?: string;
+
+  /**
+   * The export attrib this atom came from, lowercased — carried ONLY where
+   * {@link effectType} + {@link subType} cannot name it, which today is exactly
+   * `Meta`.
+   *
+   * Every other effect type names its own attrib: `Defense`/`Ranged` IS
+   * `Ranged`, `Damage`/`Fire` IS `Fire_Dmg`. `Meta` is the one bucket — the
+   * ~44 non-stat engine markers in {@link META_EFFECT} (`meter`, `rage`,
+   * `set_mode`, `set_token`, `designer_status`, the travel stances…) all
+   * collapse onto `Meta` with NO subType, so which marker an atom is was
+   * unrecoverable at runtime. That is a many-to-one map, not a coverage gap:
+   * these are markers rather than numeric stats, so no applier wants a subType
+   * for them — but a GATE can name one, and then the collapse bites.
+   *
+   * CHAIN-1 is where it bit. `kMeter` is a single character attribute that ten
+   * different mechanics publish (Hide, Placate, Domination, Defiance,
+   * Opportunity, Fury/Rage, Primal Energy, Battle Euphoria, Pack Mentality) —
+   * the game reuses one slot because a character has exactly one meter
+   * mechanic, its archetype's. So "is my meter the HIDE meter" is a question
+   * about which marker the build's own powers publish, and without this field
+   * the shape that comes closest (Self-targeted + combat-suppressed `Meta`)
+   * also matches `rage` on Rage_Dampen, `designer_status` on the Teleport
+   * family, and `set_mode` on **Engagement** — which is auto-issued to every
+   * character, so every build in the game would have matched.
+   *
+   * Scoped to `Meta` on the trailing-null economics every field past
+   * `requiresExpression` is placed by: ~1.6k of Homecoming's atoms are `Meta`,
+   * so every other atom's encoding stays byte-identical. `Unmapped` is the
+   * other many-to-one collapse and deliberately does NOT carry this — it is a
+   * tracked coverage gap (ATOMIC-STATE-AUDIT), its members feed no gate, and it
+   * is a far larger population. If one ever needs naming, widen here.
+   *
+   * The value is the key that SELECTED `Meta` — `META_EFFECT[metaAttrib] ===
+   * 'Meta'` holds for every carrier, which is what lets a gate assert coverage
+   * rather than trust the spelling.
+   */
+  metaAttrib?: string;
 
   // --- provenance (debugging + DSH6 migration) ---
   sourceAttrib?: string;
@@ -328,6 +437,24 @@ export const ATOM_TUPLE_FIELDS = [
   'stackKey',
   'magnitudeExpression',
   'requiredEvents',
+  // `tickChance` and `cancelOnMiss` append last on the same economics: only a few
+  // hundred templates per fork carry a non-1 tick chance, so
+  // every other atom's encoding stays byte-identical and the periodic few pay the
+  // interior nulls. `cancelOnMiss` follows `tickChance` because it is only ever
+  // emitted beside one.
+  'tickChance',
+  'cancelOnMiss',
+  // `tags` appends last on the same trailing-null economics: only ~a third of
+  // Homecoming groups carry one and neither Parse6 fork carries any, so every
+  // untagged atom's encoding stays byte-identical.
+  'tags',
+  // `casterArchetypes` appends after `tags` for the same reason: a few hundred
+  // atoms per fork are archetype-forked and every other atom's encoding stays
+  // byte-identical (a trailing null trims away).
+  'casterArchetypes',
+  // `metaAttrib` appends last on the same economics: only `Meta` atoms carry one
+  // (~1.6k of Homecoming's), so every other atom's encoding stays byte-identical.
+  'metaAttrib',
 ] as const satisfies ReadonlyArray<keyof AtomicEffect>;
 
 /** One atom, positionally encoded. A `null` at position `i` means the field
@@ -682,6 +809,7 @@ export interface ExportGroup {
   chance?: number;
   ppm?: number;
   requires_expression?: string;
+  tags?: string[];
   templates?: ExportTemplate[];
 }
 export interface ExportTemplate {
@@ -695,6 +823,7 @@ export interface ExportTemplate {
   magnitude_expression?: string;
   duration?: string | number;
   application_period?: number;
+  tick_chance?: number;
   stack?: string;
   stack_key?: string;
   stack_limit?: number;
@@ -737,14 +866,48 @@ function mapRequiredEvents(evs?: ExportTemplate['required_events']): string | un
   return evs.map((e) => e.event).join(',');
 }
 
+/**
+ * Template `stack` → {@link AtomicEffect.stacking}, one member of the game's
+ * `StackTypeEnum` per `Common/entity/attribmod.h`.
+ *
+ * An unrecognized value THROWS. It used to fall back to `'No'`, and that default
+ * did two kinds of damage at once (STACK-3). It mislabelled: `StackThenIgnore`
+ * and `Continuous` were absent from the table below though the parser decodes
+ * both, so 744 templates across the three forks landed on a sentinel meaning the
+ * OPPOSITE of what they say. And it laundered: Thunderspy's stack field was being
+ * read from a shifted offset on 63 sub-records, and the string offsets that came
+ * out — `Unknown(784601)` and friends, values an eleven-member enum cannot
+ * produce — arrived here and were quietly turned into a plausible answer, so no
+ * census downstream of the converter could see the parse defect. Absent is still
+ * `'No'`; only an unrecognized *present* value is a fault.
+ */
 function mapStacking(s?: string): Stacking {
   const known: Record<string, Stacking> = {
     Stack: 'Stack', Replace: 'Replace', Extend: 'Extend', Refresh: 'Refresh',
     RefreshToCount: 'RefreshToCount', Overlap: 'Overlap', Maximize: 'Maximize',
     Ignore: 'Ignore', Suppress: 'Suppress', Yes: 'Yes', No: 'No',
+    StackThenIgnore: 'StackThenIgnore', Continuous: 'Continuous',
   };
-  return (s && known[s]) || 'No';
+  if (!s) return 'No';
+  const mapped = known[s];
+  if (!mapped) throw new Error(`unrecognized stack type ${JSON.stringify(s)}`);
+  return mapped;
 }
+/**
+ * Template `tick_chance` → the atom's {@link AtomicEffect.tickChance}. A chance of 1
+ * (or an absent field) is every application landing, which is the default reading, so
+ * it is left off the wire.
+ *
+ * Rounded to two decimals because the field is a float32 and reaches the export as
+ * noise (`0.800000011920929` for an authored 0.8). The damage bag has always read it
+ * this way; rounding here keeps the atom and the bag reporting the same DoT rather
+ * than two numbers that differ in the eighth decimal.
+ */
+export function mapTickChance(chance?: number): number | undefined {
+  if (typeof chance !== 'number' || chance >= 1) return undefined;
+  return Math.round(chance * 100) / 100;
+}
+
 export function parseDuration(d?: string | number): number {
   if (typeof d === 'number') return d;
   if (!d) return 0;
@@ -765,6 +928,13 @@ export interface IngestContext {
   requiresExpression?: string;
   /** e.g. 'OutOfCombat' for combat-gated (suppressible) templates. */
   specialCase?: string;
+  /** The group's `Tag` list, comma-joined — see {@link AtomicEffect.tags}. */
+  tags?: string;
+}
+
+/** Effect-group `Tag` array → the atom's {@link AtomicEffect.tags}. */
+export function mapGroupTags(tags?: readonly string[]): string | undefined {
+  return tags && tags.length > 0 ? tags.join(',') : undefined;
 }
 
 /** Raw export `is_pvp` string → PvMode ('EITHER'/undefined ⇒ 'Any'). */
@@ -783,6 +953,9 @@ export function mapPvMode(isPvp?: string): PvMode {
 export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEffect[] {
   const resistible = !(t.flags ?? []).includes('IgnoreResistance');
   const ignoreStrength = (t.flags ?? []).includes('IgnoreStrength');
+  const tickChance = mapTickChance(t.tick_chance);
+  const cancelOnMiss =
+    tickChance !== undefined && (t.flags ?? []).includes('CancelOnMiss') ? true : undefined;
   // NOT `?? 'Cur'` — an unstated aspect stays `Unspecified`. See the Aspect type.
   const aspect = ASPECT_MAP[t.aspect ?? ''] ?? 'Unspecified';
   const attribType = mapAttribType(t.type);
@@ -811,11 +984,18 @@ export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEff
       stackCap: t.stack_limit && t.stack_limit > 0 ? t.stack_limit : undefined,
       stackKey: mapStackKey(t.stack_key),
       requiredEvents: mapRequiredEvents(t.required_events),
+      tickChance,
+      cancelOnMiss,
       baseProbability: ctx.baseProbability,
       procsPerMinute: ctx.procsPerMinute,
       ignoreStrength: ignoreStrength || undefined,
       specialCase: ctx.specialCase,
       requiresExpression: ctx.requiresExpression,
+      tags: ctx.tags,
+      // Only `Meta` carries it — every other effectType names its own attrib, and
+      // `Meta` is the ~44-marker bucket where the name is otherwise lost. Lowercased
+      // so the value IS the `META_EFFECT` key that selected `Meta`.
+      metaAttrib: bridged.effectType === 'Meta' ? attrib.toLowerCase() : undefined,
       sourceAttrib: attrib,
     });
   }
@@ -834,6 +1014,7 @@ export function ingestExportGroup(group: ExportGroup): AtomicEffect[] {
     baseProbability: group.chance ?? 1,
     procsPerMinute: group.ppm && group.ppm > 0 ? group.ppm : undefined,
     requiresExpression: group.requires_expression || undefined,
+    tags: mapGroupTags(group.tags),
   };
   return (group.templates ?? []).flatMap((t) => ingestTemplate(t, ctx));
 }

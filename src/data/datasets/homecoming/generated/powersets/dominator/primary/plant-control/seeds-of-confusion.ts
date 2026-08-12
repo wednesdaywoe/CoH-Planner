@@ -12,12 +12,17 @@ export const SeedsofConfusion: Power = {
   "name": "Seeds of Confusion",
   "internalName": "Seeds_of_Confusion",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You throw a handful of seeds from a rare Baffle plant at your foes. The seeds spread out in a wide cone and release a dusty chaff that contain a number of alkaloids and hallucinogenic compounds. Foes that come into contact with these seeds become violently confused and will turn and attack each other, ignoring you and all your allies. You will not receive any Experience Points for foes defeated entirely by Confused enemies.Notes: This power has adaptive recharge. It has a base recharge of 6 seconds and each affected foe will increase the recharge by 6.5 seconds for a maximum total of 110 seconds.",
   "shortHelp": "Ranged (Cone), Foe Confuse",
   "icon": "plantcontrol_seedsconfusion.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -50,9 +55,9 @@ export const SeedsofConfusion: Power = {
   "atoms": [
     ["RechargePower",null,6.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Mez","Confused",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true],
+    ["Mez","Confused",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
     ["Mez","Confused",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Confused",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Confused",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

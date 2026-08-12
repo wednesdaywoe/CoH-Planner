@@ -12,6 +12,8 @@ export const ChargedShot: Power = {
   "name": "Charged Shot",
   "internalName": "Charged_Shot",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "By charging a beam, you're able to launch a concentrated blast of energy at your foe to cause High Energy damage. The impact strikes with such force that it can knock your target off of their feet. Charge Shot causes additional damage if the target is suffering from the Disintegrating effect. In addition, targets already affected by the Disintegrating effect have a chance to spread to 3 nearby targets. This Disintegrate Spread effect can only hit targets that aren't already affected by the Disintegrating effect. Disintegrate Spread causes Minor Energy damage over time. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged: High DMG(Energy), Foe Knockdown, Special",
   "icon": "beamrifle_chargedshot.png",
@@ -23,6 +25,9 @@ export const ChargedShot: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -54,6 +59,7 @@ export const ChargedShot: Power = {
   "effects": {
     "buffDuration": 9.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },

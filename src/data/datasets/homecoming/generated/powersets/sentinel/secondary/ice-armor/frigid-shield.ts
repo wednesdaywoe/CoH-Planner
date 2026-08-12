@@ -12,6 +12,8 @@ export const FrigidShield: Power = {
   "name": "Frigid Shield",
   "internalName": "Frigid_Shield",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you dramatically lower the temperature around yourself. The air around your body becomes so cold that attacks deflect off of it, granting you absorption.",
   "shortHelp": "Toggle: +Absorb over time, Res(Slow)",
   "icon": "icearmor_absorb.png",
@@ -22,6 +24,9 @@ export const FrigidShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -47,10 +52,12 @@ export const FrigidShield: Power = {
     "buffDuration": 20,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Melee_Ones"
       }

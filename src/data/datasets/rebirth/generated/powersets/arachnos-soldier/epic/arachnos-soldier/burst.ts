@@ -12,12 +12,17 @@ export const Burst: Power = {
   "name": "Burst",
   "internalName": "Burst",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Quickly fires a Burst of rounds at a single target at long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense. Damage: Moderate(DoT), Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Lethal), Foe -DEF",
   "icon": "arachnossoldier_burst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

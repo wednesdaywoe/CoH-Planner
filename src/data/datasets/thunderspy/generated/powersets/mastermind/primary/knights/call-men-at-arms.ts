@@ -12,12 +12,17 @@ export const CallMenAtArms: Power = {
   "name": "Call Men At Arms",
   "internalName": "Call_Men_At_Arms",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Calls forth one to two Men at Arms(depending on your level) to do your biddingMen at Arms carry War mace, and possess good defensive skills.  They can be equipped to wear a shield and heavy armor. You may only have 2 Men at Arms under your control at any given time.  If you attempt to call more Men at Arms, you can only replace the ones you have lost in battle.  If you already have two, the power will fail. Recharge: Very Long",
   "shortHelp": "Summon Men At Arms",
   "icon": "knights_menatarms.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

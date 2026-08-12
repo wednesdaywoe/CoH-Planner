@@ -12,12 +12,17 @@ export const Fusion: Power = {
   "name": "Fusion",
   "internalName": "Fusion",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Fusion boosts your damage and chance to hit moderately and also causes your next few attacks to have a 100% chance to inflict Contaminated on your enemies. Recharge: Very Long",
   "shortHelp": "Self +DMG, +To Hit, Special",
   "icon": "radioactiveassault_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const Fusion: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },

@@ -12,12 +12,18 @@ export const PhoenixAwakening: Power = {
   "name": "Phoenix Awakening",
   "internalName": "Phoenix_Awakening",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Unleashes the power of the immortal Phoenix to restore you and your allies and blast your foes. This fiery restoration blasts nearby foes with an explosion and knocks them down and Disorients them. All nearby fallen allies will be revived with all of their Hit Points and Endurance, and nearby living allies will be healed over time for a large portion of their health. Revived allies will be protected from XP Debt for 90 seconds. This power can even be used while you are defeated to allow you to revive yourself as well and you'll be briefly untouchable! Recharge: Very Long",
   "shortHelp": "PBAoE, Team Rez, Healing over Time, Foe Extreme DMG(Fire), Knockback, Stun",
   "icon": "fierycomp_phoenixawakening.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -51,6 +57,7 @@ export const PhoenixAwakening: Power = {
   },
   "effects": {
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 24,
       "table": "Melee_Ones"
     },
@@ -77,7 +84,7 @@ export const PhoenixAwakening: Power = {
     ["Mez","Untouchable",10,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kHitPoints target> 1 <",true],
     ["Heal",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,1.5,1,null,null,null,null,null,null,"cur.kHitPoints target> 1 <",true],
     ["Endurance",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,1.5,1,null,null,null,null,null,null,"cur.kHitPoints target> 1 <",true],
-    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kHitPoints target> 1 <",true]
+    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kHitPoints target> 1 <",true,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
   ],
   "conditionalEffects": [
     {
@@ -104,6 +111,7 @@ export const PhoenixAwakening: Power = {
           "perTarget": 1
         },
         "untouchable": {
+          "ignoreStrength": true,
           "scale": 10,
           "table": "Ranged_Ones"
         }

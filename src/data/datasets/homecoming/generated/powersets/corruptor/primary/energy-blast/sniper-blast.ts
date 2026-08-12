@@ -12,12 +12,17 @@ export const SniperBlast: Power = {
   "name": "Sniper Blast",
   "internalName": "Sniper_Blast",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "A focused blast that can travel great distances with high Accuracy. This is a sniper attack, and is best fired from a distance, as it can be interrupted. Sniper Blast may knock targets backwards. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
   "shortHelp": "Sniper, DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_sniperblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 150,
@@ -65,9 +70,10 @@ export const SniperBlast: Power = {
   "atoms": [
     ["Damage","Smashing",1.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",3,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5]
+    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"]
   ],
   "quickSnipe": {
+    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
     "stats": {
       "castTime": 1.33,
       "range": 80
@@ -83,6 +89,11 @@ export const SniperBlast: Power = {
         "scale": 1.596,
         "table": "Ranged_Damage"
       }
+    ],
+    "atoms": [
+      ["Damage","Smashing",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult * 0.3 *"],
+      ["Damage","Energy",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult * 0.7 *"],
+      ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"]
     ]
   }
 };

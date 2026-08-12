@@ -12,6 +12,8 @@ export const LightningField: Power = {
   "name": "Lightning Field",
   "internalName": "Lightning_Field",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you emit a storm of electricity that constantly damages all nearby foes.",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Energy), Foe -End",
   "icon": "electricarmor_pbaoeminordamage.png",
@@ -22,6 +24,9 @@ export const LightningField: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -59,6 +64,7 @@ export const LightningField: Power = {
       "table": "Melee_Ones"
     },
     "taunt": {
+      "ignoreStrength": true,
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     }
@@ -66,8 +72,8 @@ export const LightningField: Power = {
   "atoms": [
     ["Damage","Energy",0.1571,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Endurance",null,-0.03,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !"],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !",null,null,null,null,null,null,null,null,null,"Mez"],
     ["Endurance",null,-0.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

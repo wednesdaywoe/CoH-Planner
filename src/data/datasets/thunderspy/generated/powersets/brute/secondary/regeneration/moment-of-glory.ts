@@ -12,12 +12,17 @@ export const MomentofGlory: Power = {
   "name": "Moment of Glory",
   "internalName": "Moment_of_Glory",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate this power, you gain Resistance and Defense to all damage types except Psionics, recover Endurance more quickly, and are highly resistant to Knock Back, Sleep, Disorient, Immobilization, and Hold effects. Recharge: Very Long",
   "shortHelp": "Self +Res(All DMG but Psionics, Knock Back, Repel, Stun, Hold, Sleep, Immobilize), +DEF(All DMG but Psionics), +Recovery",
   "icon": "regeneration_momentofglory.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 240,
@@ -90,23 +95,28 @@ export const MomentofGlory: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       }
@@ -116,6 +126,7 @@ export const MomentofGlory: Power = {
       "table": "Melee_Ones"
     },
     "repel": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },

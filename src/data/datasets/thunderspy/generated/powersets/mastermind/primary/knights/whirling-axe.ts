@@ -12,6 +12,8 @@ export const WhirlingAxe: Power = {
   "name": "Whirling Axe",
   "internalName": "Whirling_Axe",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You spin your Battle Axe in a huge arc, attacking all nearby foes. This attack deals moderate damage to any foe it hits, and can knock them down. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), Foe Knockdown",
   "icon": "knights_whirlingaxe.png",
@@ -20,6 +22,9 @@ export const WhirlingAxe: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

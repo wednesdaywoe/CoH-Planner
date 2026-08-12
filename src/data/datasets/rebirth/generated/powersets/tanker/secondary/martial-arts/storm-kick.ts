@@ -12,6 +12,8 @@ export const StormKick: Power = {
   "name": "Storm Kick",
   "internalName": "Storm_Kick",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can unleash a roundhouse kick that pummels your foe for moderate damage.  Storm Kick boosts the Tanker's defense against melee, ranged and area of effect damage slightly for a short period of time after hitting their foe.  This bonus defense doesn't stack with itself and is unenhanceable.  This power can bruise an enemy, making them more vulnerable to damage.  Damage: Moderate, Recharge: Medium",
   "shortHelp": "Melee, Moderate DMG(Smash), Self +Defense(Melee, Ranged, AoE), -Res(All)",
   "icon": "martialarts_stormkick.png",
@@ -22,6 +24,9 @@ export const StormKick: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,
@@ -54,38 +59,47 @@ export const StormKick: Power = {
     "buffDuration": 10,
     "defenseBuff": {
       "aoe": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "cold": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "melee": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "ranged": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Buff_Def"
       }
@@ -100,7 +114,7 @@ export const StormKick: Power = {
   },
   "atoms": [
     ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Defense","Melee",1,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","Ranged",1,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","AoE",1,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -113,6 +127,6 @@ export const StormKick: Power = {
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Smashing",1.548213,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.1]
   ]
 };

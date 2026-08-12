@@ -12,12 +12,17 @@ export const InkyAspect: Power = {
   "name": "Inky Aspect",
   "internalName": "Inky_Aspect",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Inky Aspect allows you to sacrifice some of your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use. This power can be used while in Dark Nova or Black Dwarf form. While in Dark Nova, this power's effects are suppressed and cost no endurance. Recharge: Moderate",
   "shortHelp": "PBAoE, Foe Disorient, Self -HP",
   "icon": "umbralaura_inkyaspect.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -69,6 +74,7 @@ export const InkyAspect: Power = {
           "recoveryBuffUnenhanced": 2
         },
         "recoveryBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 1,
           "table": "Melee_Ones"
         }

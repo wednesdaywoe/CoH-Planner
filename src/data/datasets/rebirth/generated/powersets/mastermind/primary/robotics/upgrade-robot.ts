@@ -12,12 +12,17 @@ export const UpgradeRobot: Power = {
   "name": "Upgrade Robot",
   "internalName": "Upgrade_Robot",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "Upgrade Robot will permanently bestow the most powerful and high-tech gear and weaponry to all of your Robot Henchman. The Upgraded Robot will gain new abilities, powers and weapons. The powers gained are unique and dependent upon the type of Robot Henchmen that is Upgraded. This power only works on your Robot Henchmen and you can only Upgrade your Robot Henchman once with this power. Recharge: Medium",
   "shortHelp": "Ranged, Upgrade Robot Henchman",
   "icon": "robotics_upgraderobot.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 30,
@@ -42,6 +47,6 @@ export const UpgradeRobot: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Assault_Bot target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Assault_Bot target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Assault_Bot target.VillainName>",true],
-    ["Mez","Evade",100,1,11.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,"MastermindPets_Droid target.VillainName> MastermindPets_Protector_Bot target.VillainName> || MastermindPets_Assault_Bot target.VillainName> ||",true]
+    ["Mez","Evade",100,1,11.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,"MastermindPets_Droid target.VillainName> MastermindPets_Protector_Bot target.VillainName> || MastermindPets_Assault_Bot target.VillainName> ||",true,null,null,null,null,null,null,0]
   ]
 };

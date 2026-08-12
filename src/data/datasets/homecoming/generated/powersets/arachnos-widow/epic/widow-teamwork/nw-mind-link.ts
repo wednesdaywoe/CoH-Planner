@@ -12,12 +12,18 @@ export const NWMindLink: Power = {
   "name": "Mind Link",
   "internalName": "NW_Mind_Link",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Mind Link Power will enable you to link the minds of all your teammates who are near you for the next 90 seconds. This shared link improves your team's chance to hit foes, your defensive abilities and dramatically reduces psionic damage.",
   "shortHelp": "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
   "icon": "widowteamwork_mindlink.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Teammate",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 35,

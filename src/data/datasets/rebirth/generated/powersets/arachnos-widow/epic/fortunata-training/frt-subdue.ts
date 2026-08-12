@@ -12,12 +12,17 @@ export const FRTSubdue: Power = {
   "name": "Subdue",
   "internalName": "FRT_Subdue",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Subdue deals moderate Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Immobilize",
   "icon": "fortunatatraining_subdue.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -55,9 +60,9 @@ export const FRTSubdue: Power = {
   },
   "atoms": [
     ["Damage","Psionic",1.72795,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",6,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",6,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true],
     ["Damage","Psionic",1.916184,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.8,true]
   ],
   "specialEffects": [
     {

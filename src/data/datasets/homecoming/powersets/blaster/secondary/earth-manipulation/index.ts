@@ -21,7 +21,12 @@ import { SeismicSmash as SeismicSmash } from './seismic-smash';
 
 export const powerset: Powerset = {
   id: 'blaster/earth-manipulation',
+  setPath: 'Blaster_Support.Earth_Manipulation',
   name: 'Earth Manipulation',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can control the forces of the Earth. You can manipulate earth and stone to defeat your foes. The crushing force of many Earth Powers can reduce a target\'s Defense, while most Stone attacks will knock foes off their feet.',
   icon: 'electricity_manipulation_set.ico',
   archetype: 'blaster',

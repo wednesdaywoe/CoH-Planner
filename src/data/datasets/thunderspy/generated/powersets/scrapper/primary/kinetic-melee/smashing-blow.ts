@@ -12,6 +12,8 @@ export const SmashingBlow: Power = {
   "name": "Smashing Blow",
   "internalName": "Smashing_Blow",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Smashing Blow is a slow attack, but makes up for it with a good amount of damage. Has a greater chance to stun than body blow. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash/Energy), Foe Disorient",
   "icon": "kineticattack_smashingblow.png",
@@ -20,6 +22,9 @@ export const SmashingBlow: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,7 @@ export const SmashingBlow: Power = {
   "effects": {
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 0.75,
       "table": "Melee_Debuff_Dam"
     },

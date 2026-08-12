@@ -12,6 +12,8 @@ export const WilloftheWild: Power = {
   "name": "Will of the Wild",
   "internalName": "Will_of_the_Wild",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You can channel the raw power of nature into your body for a brief time making you nearly indestructible. When activated you will gain a substantial increase to your damage resistance and a large increase to your regeneration rate. If in Primal Form you will receive a bonus to any healing you cause for the duration. In Hunter and Primal Form you will receive a bonus to damage. Note that Will of the Wild is unaffected by Attack Rate changes. Recharge: Very Long",
   "shortHelp": "Self, +Res(All), +Regen, +Special",
   "icon": "primalgifts_willofthewild.png",
@@ -26,6 +28,9 @@ export const WilloftheWild: Power = {
   ],
   "strengthsDisallowed": [
     "RechargeTime"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -105,7 +110,7 @@ export const WilloftheWild: Power = {
     ["Resistance","Psionic",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Toxic",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Regeneration",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Heal",null,0.5,1,120,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
     ["DamageBuff","Smashing",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
     ["DamageBuff","Lethal",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
@@ -125,6 +130,7 @@ export const WilloftheWild: Power = {
       "effects": {
         "buffDuration": 120,
         "damageBuff": {
+          "ignoreStrength": true,
           "scale": 0.5,
           "table": "Melee_Ones"
         },

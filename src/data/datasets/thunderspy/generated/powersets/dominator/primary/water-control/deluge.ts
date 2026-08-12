@@ -12,12 +12,17 @@ export const Deluge: Power = {
   "name": "Deluge",
   "internalName": "Deluge",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You cause a torrent of water to crush your foe causing High Cold and Smashing damage knocking them off their feet and reducing their movement speed. This power has a small chance to place the Drowning effect on its target. Deluge deals additional damage over time and has improved movement speed reduction against foes suffering from Drowning. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Cold/Smash), Foe Knockdown, -Speed",
   "icon": "watercontrol_deluge.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -61,6 +66,7 @@ export const Deluge: Power = {
       "slow": 15
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 0.67,
       "table": "Ranged_Ones"
     },
@@ -70,6 +76,7 @@ export const Deluge: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.35,
         "table": "Ranged_Slow"
       },
@@ -127,6 +134,7 @@ export const Deluge: Power = {
             "table": "Ranged_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.4375,
             "table": "Ranged_Slow"
           },

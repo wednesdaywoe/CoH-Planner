@@ -12,6 +12,8 @@ export const CallEnforcer: Power = {
   "name": "Call Enforcer",
   "internalName": "Call_Enforcer",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Calls forth one to two Thug Enforcers (depending on your level) to do your bidding. Thug Enforcers carry a Sub-machine Gun, and possess good leadership skills. Their weapon of choice is an UZI, and can be equipped to carry up to 2 at once.You may only have 2 Thug Enforcers under your control at any given time. If you attempt to call more Enforcers, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
   "shortHelp": "Summon Enforcer",
   "icon": "thugs_enlistlieutenant.png",
@@ -19,6 +21,9 @@ export const CallEnforcer: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

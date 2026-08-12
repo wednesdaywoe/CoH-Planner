@@ -12,12 +12,17 @@ export const FireBreath: Power = {
   "name": "Fire Breath",
   "internalName": "Fire_Breath",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can breathe forth a torrent of fire that burns all foes within its narrow cone. Very accurate and very deadly at medium range. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Close (Cone), Moderate DoT(Fire)",
   "icon": "fireassault_breathoffire.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 40,
@@ -49,7 +54,7 @@ export const FireBreath: Power = {
     "tickRate": 1
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Fire",0.585,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.942731,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]

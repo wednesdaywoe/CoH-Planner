@@ -12,6 +12,8 @@ export const DisruptionAura: Power = {
   "name": "Disruption Aura",
   "internalName": "Disruption_Aura",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You emit a constant wave of sonic energy around yourself, weakening the Damage Resistance of all nearby foes.Recharge: Moderate.",
   "shortHelp": "Toggle: PBAoE, Foe -Res(All)",
   "icon": "sonicmanipulation_disruptionaura.png",
@@ -22,6 +24,9 @@ export const DisruptionAura: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -44,34 +49,42 @@ export const DisruptionAura: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       }

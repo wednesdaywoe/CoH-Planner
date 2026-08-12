@@ -12,12 +12,18 @@ export const EnforcedMorale: Power = {
   "name": "Enforced Morale",
   "internalName": "Enforced_Morale",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Enforced Morale frees allies from any Disorient, Hold, Sleep, Fear, Confuse, Immobilize and effects and leaves them resistant to such effects and knockback for a good while. Enforced Morale also grants the target clearer Perception to see hidden foes, and a minor recharge and movement speed boost. Enforced Morale will cause some pain to all targets, friend or foe. Recharge: Moderate",
   "shortHelp": "PBAoE Damage(self, friend, foe), Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse, Knockback), +Perception, +Recharge, +Speed",
   "icon": "paindomination_enforcedmorale.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Any",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 50,
@@ -37,14 +43,9 @@ export const EnforcedMorale: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.05,
-    "table": "Melee_Ones"
-  },
   "atoms": [
-    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! target.isFriend? ! &&",null,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
-    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"Max.kHitPoints target> 0.5 * Cur.kHitPoints target> > ! target.isFriend? &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
+    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! target.isFriend? ! &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
+    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,"Max.kHitPoints target> 0.5 * Cur.kHitPoints target> > ! target.isFriend? &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
     ["Mez","Stunned",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
     ["Mez","Sleep",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
     ["Mez","Immobilized",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],

@@ -12,12 +12,17 @@ export const WillOfArachnae: Power = {
   "name": "Intravenous Serum",
   "internalName": "Will_Of_Arachnae",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You inject a serum directly into your bloodstream, boosting your maximum health and healing you. Requires Tarantula form to use. Recharge: Long",
   "shortHelp": "Self Heal, Self +Max HP",
   "icon": "crabspidertraining_serum.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,
@@ -49,6 +54,7 @@ export const WillOfArachnae: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_HealSelf"
     }

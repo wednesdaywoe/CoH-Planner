@@ -12,12 +12,17 @@ export const StoneCages: Power = {
   "name": "Stone Cages",
   "internalName": "Stone_Cages",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Immobilizes a group of foes within earthy formations and deals some Smashing damage over time. Slower and less damaging than Stone Prison, but can capture multiple targets. Stone Cages can also reduce a target's Defense. Damage: Minor(DoT), Recharge: Moderate",
   "shortHelp": "Ranged AoE, Minor DMG(Smash), Foe Immobilize, -Fly, -DEF",
   "icon": "earthgrasp_stonecages.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 80,

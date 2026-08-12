@@ -12,12 +12,17 @@ export const ElectronHaze: Power = {
   "name": "Electron Haze",
   "internalName": "Electron_Haze",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "A short range conical blast of free electrons. This attack can bypass some of a target's defenses and reduce the target's Defense. It can also knock some targets down. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Close, Moderate Cone DMG(Energy/Toxic), Foe -DEF, Knockback",
   "icon": "radiationburst_electronhaze.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 40,

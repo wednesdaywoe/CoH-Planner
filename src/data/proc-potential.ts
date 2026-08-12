@@ -31,7 +31,7 @@
  * That is what makes it a property of the power rather than of a build.
  */
 
-import type { Power } from '@/types/power';
+import type { Power, ProcRollSite } from '@/types/power';
 import type { IOSetCategory, IOSetRarity } from '@/types';
 import { getIOSetsForPower, IO_SET_TYPE_TO_CATEGORY } from './io-sets';
 import {
@@ -42,6 +42,7 @@ import {
   resolveProcRollSchedule,
   calculateScheduledProcChance,
   powerFiresProcs,
+  resolveProcRollSite,
   getPPMAreaDenominator,
   type ProcData,
 } from './proc-data';
@@ -72,6 +73,11 @@ export interface ProcPotentialEntry {
   effectType?: string;
   /** Which of the power's allowed categories admits this proc. */
   viaCategory: IOSetCategory;
+  /**
+   * The executed child this proc rolls in, when the power itself does not —
+   * see `Power.procRollSites`. Absent on every power that rolls its own.
+   */
+  viaPower?: string;
 }
 
 /** One row of the composition table: an effect category and how it fares here. */
@@ -124,11 +130,20 @@ export interface ProcPotential {
   /** True when ProcMainTargetOnly forced an AoE to roll single-target. */
   mainTargetOnly: boolean;
   /**
-   * True when HC's `ProcAllowed kNone` says no PPM proc rolls against this
+   * True when HC's `ProcAllowed kNone` says no PPM proc rolls anywhere for this
    * power. `entries` is then empty by construction and the recharge/geometry
    * fields describe a window nothing rolls in; `globalCount` still stands.
    */
   procsDisallowed: boolean;
+  /**
+   * True on the powers whose `kNone` shell hands its slotting to executed
+   * children: procs DO fire, but each entry was scored against the geometry of
+   * the child that can hold it (over this power's own window), so the flat
+   * radius/areaDenominator fields above describe the shell and not any roll.
+   * Read `entries[].viaPower` for the one that scored each row, and do not
+   * print the flat geometry when this is set.
+   */
+  rollsInExecutedChildren: boolean;
 }
 
 /** Effect category + sub-type a proc reads as in the composition table. */
@@ -208,7 +223,21 @@ function resolveProcContext(power: Power) {
     fromPseudoPet: directRadius <= 0 && area.radius > 0,
     mainTargetOnly: !!power.procsOnlyOnMainTarget,
     procsDisallowed: !powerFiresProcs(power),
+    rollsInExecutedChildren: power.procsAllowed === false
+      && (power.procRollSites?.length ?? 0) > 0,
   };
+}
+
+/**
+ * The roll geometry of one `procRollSites` child, over the shell's schedule.
+ * A site moves WHERE a proc rolls, not when — the window stays the recharge of
+ * the power the player presses. See `collectProcRollSites` for the pylon
+ * measurements that separate the two.
+ */
+function resolveSiteContext(ctx: ReturnType<typeof resolveProcContext>, site: ProcRollSite) {
+  const roll = resolveProcRollGeometry(
+    site.procsOnlyOnMainTarget, site.radius, arcToDegrees(site.arc) || undefined);
+  return { schedule: ctx.schedule, radius: roll.radius, arcDegrees: roll.arcDegrees };
 }
 
 /**
@@ -235,6 +264,13 @@ const _cache = new WeakMap<Power, ProcPotential>();
  * That drops it to tier 0, which is the whole point: the loudest false badges
  * were long-recharge flagged powers (Paralyzing Blast at 240s, Spring Attack at
  * 120s) where every proc in the pool pinned to the 90% cap.
+ *
+ * The powers carrying `procRollSites` are the exception and keep a badge:
+ * their kNone shell hands its slotting to executed children, so each entry is
+ * scored against the child that can hold it — the child's geometry over this
+ * power's own window — and names it in `viaPower`. `rollsInExecutedChildren`
+ * marks them, and the flat radius/areaDenominator fields describe the shell
+ * rather than any roll — do not print them for those powers.
  */
 export function getProcPotential(power: Power): ProcPotential | null {
   const categories = power.allowedSetCategories ?? [];
@@ -285,11 +321,26 @@ export function getProcPotential(power: Power): ProcPotential | null {
     // Proc120s and any PPM-less entry can't use the PPM formula.
     if (data.type !== 'Proc' || data.ppm == null) continue;
 
+    // On a kNone shell that delegates, the child whose `BoostsAllowed` can
+    // hold this piece is what rolls it — and a piece no child can hold rolls
+    // nowhere, which is why an unrouted proc drops out rather than falling
+    // back to the shell's geometry. A piece TWO children could hold has no
+    // single roll and drops out the same way; the slotted surfaces carry the
+    // loud marker (DATA-GAP-REGISTER HC-4).
+    let site: ProcRollSite | null;
+    try {
+      site = resolveProcRollSite(power.procRollSites, data.boostsAllowed);
+    } catch {
+      continue;
+    }
+    if (ctx.rollsInExecutedChildren && !site) continue;
+    const roll = site ? resolveSiteContext(ctx, site) : ctx;
+
     const chance = calculateScheduledProcChance(
       data.ppm,
-      ctx.schedule,
-      ctx.radius,
-      ctx.arcDegrees,
+      roll.schedule,
+      roll.radius,
+      roll.arcDegrees,
     );
     const { category, effectType } = classifyProc(data);
     if (set.category === 'purple') purpleSets.add(set.name);
@@ -309,6 +360,7 @@ export function getProcPotential(power: Power): ProcPotential | null {
       // Which of the power's categories admitted this set — the union is the
       // whole point, so the UI can name where an unusual proc came from.
       viaCategory: categories.find((c) => setMatchesCategory(set.type, c)) ?? categories[0],
+      ...(site ? { viaPower: site.power } : {}),
     });
   }
 

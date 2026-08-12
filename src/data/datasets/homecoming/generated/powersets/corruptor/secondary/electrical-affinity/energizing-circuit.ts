@@ -12,12 +12,18 @@ export const EnergizingCircuit: Power = {
   "name": "Energizing Circuit",
   "internalName": "Energizing_Circuit",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Create a circuit of pure energy between several nearby allies, restoring a small amount of their endurance and significantly increasing their attack rate for a short time. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Energizing Circuit grants 1 stack of Static.",
   "shortHelp": "Ranged (Chain), Ally +End, +Recharge, Self +Static",
   "icon": "shocktherapy_energizingcircuit.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "Chain",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "chainTargetExpression": "101 kEndurance% target> - enttype maintarget> enttype target> eq 99 * 1 + * 1 prevdistance / +",
   "maxTargetsExpression": "4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +",
   "stats": {
@@ -49,6 +55,7 @@ export const EnergizingCircuit: Power = {
       "table": "Melee_Ones"
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 1.25,
       "table": "Melee_Ones"
     }
@@ -56,6 +63,6 @@ export const EnergizingCircuit: Power = {
   "atoms": [
     ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["RechargeTime",null,1.25,1,5,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"BuildStatic"]
   ]
 };

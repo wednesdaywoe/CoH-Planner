@@ -12,6 +12,8 @@ export const FocusedFighter: Power = {
   "name": "Focused Fighter",
   "internalName": "Focused_Fighter",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You become more evasive to melee attacks while you have Focused Fighter activated. This will increase your Defense versus melee as long as it is active. Your Focus also offers you resistance to Confuse effects and DeBuffs to Defense. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Melee), Res(Confuse, DeBuff DEF)",
   "icon": "temporalreaction_focusedfighter.png",
@@ -22,6 +24,9 @@ export const FocusedFighter: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

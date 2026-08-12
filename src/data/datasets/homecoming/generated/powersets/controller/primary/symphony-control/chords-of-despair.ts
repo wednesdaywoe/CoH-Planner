@@ -12,12 +12,17 @@ export const ChordsofDespair: Power = {
   "name": "Chords of Despair",
   "internalName": "Chords_of_Despair",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Your audience falls into deep despair, incapacitating them.Notes: This power has adaptive recharge. It has a base recharge of 8 seconds and each affected foe will increase the recharge by 14.5 seconds for a maximum total of 240 seconds.",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "symphonycontrol_holdaoe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,
@@ -48,9 +53,9 @@ export const ChordsofDespair: Power = {
   },
   "atoms": [
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
+    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"],
     ["RechargePower",null,14.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ReverbChordsOfDespair"],
     ["Mez","Held",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

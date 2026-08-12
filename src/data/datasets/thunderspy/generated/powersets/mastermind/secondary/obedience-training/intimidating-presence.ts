@@ -12,12 +12,17 @@ export const IntimidatingPresence: Power = {
   "name": "Intimidating Presence",
   "internalName": "Intimidating_Presence",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Intimidating Presence petrifies your enemies. Foes closest to you will be stricken with terror, while those further away will merely be unable to flee.",
   "shortHelp": "Melee Cone Foe Fear, Immobilize",
   "icon": "obediencetraining_intimidatingpresence.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 9,

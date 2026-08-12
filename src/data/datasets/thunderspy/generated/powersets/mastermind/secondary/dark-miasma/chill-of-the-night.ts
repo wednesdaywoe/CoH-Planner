@@ -12,6 +12,8 @@ export const Chillofthenight: Power = {
   "name": "Chill of the Night",
   "internalName": "Chill_of_the_night",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you channel Negative Energy in an area around you which decreases the damage potential and chance to hit of all foes nearby, as long as you keep the power active. Choosing this Power locks out Darkest Night. Recharge: Moderate",
   "shortHelp": "Toggle: PBAoE, Foe -DMG -To Hit",
   "icon": "darkmiasma_chillofthenight.png",
@@ -22,6 +24,9 @@ export const Chillofthenight: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -44,6 +49,7 @@ export const Chillofthenight: Power = {
   "effects": {
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Debuff_Dam"
     },

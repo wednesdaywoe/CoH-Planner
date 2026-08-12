@@ -12,12 +12,18 @@ export const ForceBubble: Power = {
   "name": "Force Bubble",
   "internalName": "Force_Bubble",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a large Force Bubble which protects all allies inside by weakening and possibly pushing away foes. All enemies within the bubble will have their motions greatly hampered by the force, Slowing their movement and reducing the damage of their attacks, and some will even slip and fall down. If Repulsion Field is also active, enemies that enter the bubble will be Repelled away from its center, forcing them back. This Repel effect can still affect a target that has been captured by Barrier Field. Purchasing Force Bubble also grants the Repulsion Field power. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE Foe -Speed, -DMG(All), Knockdown, Repel (Special)",
   "icon": "forcefield_forcebubble.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 50,
@@ -40,6 +46,7 @@ export const ForceBubble: Power = {
   "effects": {
     "buffDuration": 0.3,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Debuff_Dam"
     },
@@ -49,6 +56,7 @@ export const ForceBubble: Power = {
       "slow": 0.3
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Ranged_Ones"
     },
@@ -62,6 +70,7 @@ export const ForceBubble: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Ranged_Slow"
       },
@@ -76,8 +85,8 @@ export const ForceBubble: Power = {
     }
   },
   "atoms": [
-    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&"],
-    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&"],
+    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&",null,null,null,null,null,null,null,0],
+    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&",null,null,null,null,null,null,null,0.01],
     ["Movement","Run",0.4,1,0.3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&"],
     ["Movement","Fly",0.4,1,0.3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&"],
     ["Movement","JumpHeight",0.4,1,0.3,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&"],
@@ -90,9 +99,9 @@ export const ForceBubble: Power = {
     ["DamageBuff","Negative",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"],
     ["DamageBuff","Toxic",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"],
     ["DamageBuff","Psionic",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"],
-    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && @ToHitRoll .10 + @ToHit < && entref target> entref source> eq ! &&",true],
-    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && @ToHitRoll .10 + @ToHit >= && entref target> entref source> eq ! &&",true],
+    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && @ToHitRoll .10 + @ToHit < && entref target> entref source> eq ! &&",true,null,null,null,null,null,null,0],
+    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",true,null,null,null,null,null,null,0.01],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && @ToHitRoll .10 + @ToHit >= && entref target> entref source> eq ! &&",true,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GlobalChanceMod",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq",true]
   ],
   "specialEffects": [

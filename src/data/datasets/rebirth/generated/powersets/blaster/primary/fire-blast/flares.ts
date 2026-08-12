@@ -12,6 +12,8 @@ export const Flares: Power = {
   "name": "Flares",
   "internalName": "Flares",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick attack that throws Flares at the target. Little damage, but very fast. Damage: Minor, Recharge: Very Fast",
   "shortHelp": "Ranged, Minor DMG(Fire)",
   "icon": "fireblast_flare.png",
@@ -23,6 +25,9 @@ export const Flares: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -59,6 +64,7 @@ export const Flares: Power = {
   "effects": {
     "buffDuration": 8.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.066,
       "table": "Ranged_Ones"
     },

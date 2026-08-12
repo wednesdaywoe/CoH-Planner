@@ -12,6 +12,8 @@ export const PrimalWard: Power = {
   "name": "Primal Ward",
   "internalName": "Primal_Ward",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "While this power is active, the user will gain good resistance to Energy, Negative Energy and Fire damage, minor resistance to Cold as well as gaining some protection from Endurance Drain effects. Recharge: Fast",
   "shortHelp": "Toggle: +Res(Energy, Negative, Fire, Cold, Endurance Drain)",
   "icon": "primalgifts_primalward.png",
@@ -22,6 +24,9 @@ export const PrimalWard: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,10 +48,12 @@ export const PrimalWard: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }

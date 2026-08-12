@@ -12,12 +12,17 @@ export const MightyShockwave: Power = {
   "name": "Mighty Shockwave",
   "internalName": "Mighty_Shockwave",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can clap your hands together with such force that you create a shockwave. This shockwave can damage foes in a short wide cone in front of you, dealing moderate smashing damage and potentially knocking targets down. Choosing this power locks out Hand clap. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged Cone, Moderate DMG(Psionic/Smash), Foe Knockdown",
   "icon": "mightyshockwave.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

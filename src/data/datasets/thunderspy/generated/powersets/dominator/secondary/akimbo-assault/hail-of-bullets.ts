@@ -12,12 +12,17 @@ export const HailofBullets: Power = {
   "name": "Bullet Storm",
   "internalName": "Hail_of_Bullets",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a storm of bullets at all enemies around you dealing lethal damage.  Enemies that are struck have a chance to be knocked down.  Having Standard Rounds will dramatically increase this chance to knockdown your foes.  If you hit at least one target you will gain a minor melee, ranged and AoE Defense bonus for a brief period.  Damage: Moderate, Recharge: Long  NOTE: Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.  Additionally, changing your ammunition type will also change the secondary effect of this attack from a guaranteed knockdown effect to a minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded, a minor damage over time effect if 'Incendiary Ammo' is loaded, or a -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "PBAoE, Moderate DMG(Lethal/Special), Self +Def(Melee, Ranged, AoE), Foe Knockdown/Special",
   "icon": "domdphailofbullets.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "radius": 15,
@@ -75,14 +80,17 @@ export const HailofBullets: Power = {
     "buffDuration": 10,
     "defenseBuff": {
       "aoe": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
       "melee": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
       "ranged": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Buff_Def"
       }
@@ -104,18 +112,18 @@ export const HailofBullets: Power = {
   "atoms": [
     ["Damage","Lethal",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.1],
     ["Mez","Knockback",0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.113,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Damage","Cold",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0],
+    ["Damage","Fire",0.113,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true],
+    ["Damage","Cold",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0],
     ["Movement","Run",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Movement","Fly",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true],
     ["Movement","Jump",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["RechargeTime",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true],
     ["Mez","Immobilized",10.1,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Toxic",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0],
     ["DamageBuff","Lethal",1,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true],
     ["DamageBuff","Smashing",1,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true],
     ["DamageBuff","Fire",1,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true],
@@ -129,13 +137,13 @@ export const HailofBullets: Power = {
     ["Defense","AoE",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Damage","Lethal",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.1],
     ["Mez","Knockback",0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Fire",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Cold",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0],
+    ["Damage","Cold",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0],
     ["Mez","Immobilized",2,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Toxic",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Toxic",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0],
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "conditionalEffects": [
     {
@@ -146,6 +154,7 @@ export const HailofBullets: Power = {
       "group": "swap-ammo",
       "effects": {
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.2,
           "table": "Ranged_Slow"
         },
@@ -155,6 +164,7 @@ export const HailofBullets: Power = {
             "table": "Ranged_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -182,6 +192,7 @@ export const HailofBullets: Power = {
       "group": "swap-ammo",
       "effects": {
         "damageDebuff": {
+          "ignoreStrength": true,
           "scale": 1,
           "table": "Ranged_Debuff_Dam"
         },

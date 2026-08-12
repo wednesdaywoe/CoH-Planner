@@ -12,12 +12,17 @@ export const EbonEye: Power = {
   "name": "Ebon Eye",
   "internalName": "Ebon_Eye",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can emit a beam of dark energy from your eyes, dealing moderate Negative Energy damage. Ebon Eye can also slow your target's attack rate and movement speed. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.Damage: Moderate.Recharge: Fast.",
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_eboneye.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,
@@ -52,6 +57,7 @@ export const EbonEye: Power = {
       "slow": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -61,6 +67,7 @@ export const EbonEye: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -104,15 +111,18 @@ export const EbonEye: Power = {
           "slow": 4
         },
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.2,
           "table": "Ranged_Slow"
         },
         "slow": {
           "flySpeed": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
           "runSpeed": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Ranged_Slow"
           }
@@ -122,7 +132,13 @@ export const EbonEye: Power = {
       "description": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. Damage: Minor",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Negative",1.16,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SSDamage"],
+        ["Movement","Run",0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["Movement","Fly",0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["RechargeTime",null,0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+      ]
     }
   },
   "modesDisallowed": [

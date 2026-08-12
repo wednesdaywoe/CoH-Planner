@@ -12,6 +12,8 @@ export const ArcticFog: Power = {
   "name": "Arctic Fog",
   "internalName": "Arctic_Fog",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mastery of Cold allows you to hide yourself and all nearby allies within thick Arctic Fog. Arctic Fog makes you and your allies harder to see and increases your Defense to area effect, melee and ranged attacks, as well as your resistance to Slow, Fire, Cold, and Energy damage.",
   "shortHelp": "Toggle: PBAoE, Team Stealth, +DEF, +Res(Fire, Cold, Energy, Slow)",
   "icon": "colddomination_arcticfog.png",
@@ -22,6 +24,10 @@ export const ArcticFog: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Leaguemate",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -47,10 +53,12 @@ export const ArcticFog: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Ranged_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Ranged_Ones"
       }
@@ -132,6 +140,7 @@ export const ArcticFog: Power = {
         "table": "Melee_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Ones"
       }
@@ -160,7 +169,7 @@ export const ArcticFog: Power = {
     ["Resistance","Energy",2,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Stealth","RadiusPvP",390,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked target.EventTimeSince> 10 > HitByFoe target.EventTimeSince> 10 > && MissionObjectClick target.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
     ["Stealth","RadiusPvE",35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","MissionObjectClick target.EventTimeSince> 10 >",null,null,true,null,"StealthToggle"],
-    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle"]
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"]
   ],
   "setsModes": [
     "Hidden_Attack"

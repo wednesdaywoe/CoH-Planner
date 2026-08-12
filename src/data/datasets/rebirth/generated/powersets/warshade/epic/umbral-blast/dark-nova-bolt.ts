@@ -12,12 +12,17 @@ export const DarkNovaBolt: Power = {
   "name": "Dark Nova Bolt",
   "internalName": "Dark_Nova_Bolt",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "A very quick, but low damage attack that lowers your target's attack and movement speed. This power is only available while in Dark Nova Form. Damage: Minor, Recharge: Very Fast",
   "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_shadowbolt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,
@@ -53,6 +58,7 @@ export const DarkNovaBolt: Power = {
       "slow": 3
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -62,6 +68,7 @@ export const DarkNovaBolt: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

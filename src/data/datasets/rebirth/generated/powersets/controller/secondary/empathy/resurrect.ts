@@ -12,12 +12,17 @@ export const Resurrect: Power = {
   "name": "Resurrect",
   "internalName": "Resurrect",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Resurrects a fallen ally and grants them increased strength. The Resurrected target will have full Hit Points and Endurance, will have their chance to hit, Damage, and Defense to all attacks greatly increased for a period of time, and also will be protected from XP Debt for 90 seconds.  Recharge: Very Long",
   "shortHelp": "Ally Rez, +DEF(All), +DMG, +To Hit",
   "icon": "empathy_resurrect.png",
   "powerType": "Click",
   "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadPlayerFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 15,
@@ -48,6 +53,7 @@ export const Resurrect: Power = {
   "effects": {
     "buffDuration": 120,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },
@@ -99,6 +105,7 @@ export const Resurrect: Power = {
       "tohitBuff": 120
     },
     "enduranceGain": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     },
@@ -110,7 +117,7 @@ export const Resurrect: Power = {
   "atoms": [
     ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
     ["ToHit",null,1.5,1,120,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["DamageBuff","Smashing",2.5,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",2.5,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],

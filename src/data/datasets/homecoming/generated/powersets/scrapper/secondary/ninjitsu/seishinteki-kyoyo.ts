@@ -12,12 +12,17 @@ export const SeishintekiKyoyo: Power = {
   "name": "Seishinteki Kyoyo",
   "internalName": "Seishinteki_Kyoyo",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Seishinteki Kyoyo is the spiritual education in Ninjitsu. Your mastery of these spiritual techniques allow you to become resistant to endurance drain and recover endurance over time.",
   "shortHelp": "Self +Endurance, Res(-Endurance)",
   "icon": "ninjitsu_recovery.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -35,10 +40,12 @@ export const SeishintekiKyoyo: Power = {
     "buffDuration": 30,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       }

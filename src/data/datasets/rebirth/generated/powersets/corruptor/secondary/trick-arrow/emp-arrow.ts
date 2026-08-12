@@ -12,12 +12,17 @@ export const EMPArrow: Power = {
   "name": "EMP Arrow",
   "internalName": "EMP_Arrow",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow can unleash a massive pulse of electromagnetic energy on impact. This EMP can affect machines, and is even powerful enough to affect synaptic brain patterns. It will incapacitate all foes in its radius. Additionally, most machines and robots will take moderate high damage. However, this power uses a lot of Endurance and reduces your endurance Recovery for a while. The electrical pulse of this arrow can also ignite flammable substances such as an Oil Slick. Recharge: Very Long",
   "shortHelp": "AoE, Foe Hold, Special vs. Robots, Self -Recovery",
   "icon": "trickarrow_stun.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -57,10 +62,12 @@ export const EMPArrow: Power = {
       "table": "Ranged_Immobilize"
     },
     "recoveryDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Ranged_Ones"
     },
@@ -72,12 +79,12 @@ export const EMPArrow: Power = {
   },
   "atoms": [
     ["Mez","Held",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.DisruptionArrow_Disrupted target.ownPower? ! &&"],
-    ["Mez","Held",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.DisruptionArrow_Disrupted target.ownPower? && Pets_OilSlickTarget target.VillainName> ! &&"],
+    ["Mez","Held",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.DisruptionArrow_Disrupted target.ownPower? ! &&",null,null,null,null,null,null,null,0.5,true],
     ["Endurance",null,-0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Held",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.DisruptionArrow_Disrupted target.ownPower? && Pets_OilSlickTarget target.VillainName> ! &&",true],
     ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Held",2,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.DisruptionArrow_Disrupted target.ownPower? &&",true],
     ["Endurance",null,-0.08,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn target.ownPower? &&",true],
@@ -104,6 +111,7 @@ export const EMPArrow: Power = {
           "table": "Ranged_Ones"
         },
         "regenDebuff": {
+          "ignoreStrength": true,
           "scale": 2,
           "table": "Ranged_Ones"
         }

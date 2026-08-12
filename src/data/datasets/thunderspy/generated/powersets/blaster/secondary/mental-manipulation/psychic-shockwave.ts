@@ -12,6 +12,8 @@ export const PsychicShockwave: Power = {
   "name": "Psychic Shockwave",
   "internalName": "Psychic_Shockwave",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Psychic Shockwave is a devastating Psionic attack that wracks the minds of all nearby foes. Affected foes may have a reduced attack rate and may be left Disoriented. Damage: High Recharge: Slow",
   "shortHelp": "Close (AoE), High DMG(Psionic), Foe Disorient -Recharge",
   "icon": "psionicassault_psionicshockwave.png",
@@ -20,6 +22,9 @@ export const PsychicShockwave: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -51,6 +56,7 @@ export const PsychicShockwave: Power = {
   "effects": {
     "buffDuration": 20,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.04,
       "table": "Ranged_Ones"
     },
@@ -59,6 +65,7 @@ export const PsychicShockwave: Power = {
       "rechargeDebuff": 20
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },

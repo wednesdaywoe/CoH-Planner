@@ -12,6 +12,8 @@ export const CloakofFear: Power = {
   "name": "Cloak of Fear",
   "internalName": "Cloak_of_Fear",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can wrap yourself in a nightmarish Cloak of Fear. Foes close to you are treated to visions most horrific, forcing them to tremble in terror, only attacking if attacked, and even then, with a reduced chance to hit. Recharge: Fast",
   "shortHelp": "Toggle: PBAoE Foe Fear, -ACC",
   "icon": "darkarmor_fearfulaura.png",
@@ -20,6 +22,9 @@ export const CloakofFear: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

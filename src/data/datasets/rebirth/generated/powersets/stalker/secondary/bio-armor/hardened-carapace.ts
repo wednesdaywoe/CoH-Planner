@@ -12,6 +12,8 @@ export const HardenedCarapace: Power = {
   "name": "Hardened Carapace",
   "internalName": "Hardened_Carapace",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "With a little concentration you can cause your skin to become hard as stone, boosting your constitution to reject toxins and recovering from wounds more quickly. While active, this power will boost your resistance to Lethal, Smashing and Toxic damage, grant a minor amount of regeneration, and protection from Disorient and Sleep effects. If Efficient Adaptation is active, Hardened Carapace will grant an Endurance Discount. If Defensive Adaptation is active, Hardened Carapace will grant additional resistance to Lethal, Smashing and Toxic damage. While Offensive Adaptation is active, this power will grant a minor boost to damage. Bonuses granted from Adaptations are unenhanceable. Recharge: Fast",
   "shortHelp": "Self Toggle, +Res(Lethal, Smash, Toxic, Disorient, Sleep), +Special",
   "icon": "bioorganicarmor_hardenedskin.png",
@@ -22,6 +24,9 @@ export const HardenedCarapace: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -62,11 +67,13 @@ export const HardenedCarapace: Power = {
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -106,14 +113,17 @@ export const HardenedCarapace: Power = {
         },
         "resistance": {
           "lethal": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Res_Dmg"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Res_Dmg"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Res_Dmg"
           }
@@ -129,6 +139,7 @@ export const HardenedCarapace: Power = {
       "effects": {
         "buffDuration": 0.75,
         "damageBuff": {
+          "ignoreStrength": true,
           "scale": 2.5,
           "table": "Melee_Buff_Dmg"
         },
@@ -149,6 +160,7 @@ export const HardenedCarapace: Power = {
           "enduranceDiscount": 0.75
         },
         "enduranceDiscount": {
+          "ignoreStrength": true,
           "scale": 0.25,
           "table": "Melee_Stun"
         }

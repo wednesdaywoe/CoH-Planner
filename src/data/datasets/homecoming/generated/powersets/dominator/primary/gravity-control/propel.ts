@@ -12,6 +12,8 @@ export const Propel: Power = {
   "name": "Propel",
   "internalName": "Propel",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can open a gravitational rift and retrieve a heavy object, then Propel it at your foes for Smashing Damage. This power can deal bonus damage when used against targets under the effects of Gravity Distortion. This attack's force is so strong that it can knockback additional nearby enemies.",
   "shortHelp": "Ranged, DMG(Smash), Foe Knockback",
   "icon": "gravitycontrol_propel.png",
@@ -19,6 +21,9 @@ export const Propel: Power = {
   "targetType": "Foe",
   "effectArea": "AoE",
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -49,6 +54,7 @@ export const Propel: Power = {
   },
   "effects": {
     "knockback": {
+      "ignoreStrength": true,
       "scale": 0.67,
       "table": "Ranged_Ones"
     }

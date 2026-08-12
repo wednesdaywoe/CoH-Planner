@@ -21,7 +21,12 @@ import { Nova as Nova } from './nova';
 
 export const powerset: Powerset = {
   id: 'corruptor/energy-blast',
+  setPath: 'Corruptor_Ranged.Energy_Blast',
   name: 'Energy Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Energy Blast allows you to hurl bolts of energy at your foes, and can often send them flying with Knockback.',
   icon: 'energy_blast_set.ico',
   archetype: 'corruptor',

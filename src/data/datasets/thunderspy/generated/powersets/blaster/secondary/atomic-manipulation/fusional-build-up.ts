@@ -12,12 +12,17 @@ export const FusionalBuildUp: Power = {
   "name": "Fission",
   "internalName": "Fusional_Build_Up",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Fission Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit. And also causes your next few attacks to have a 100% chance to inflict Contaminated on your enemies. Recharge: Very Long",
   "shortHelp": "Self +DMG, +To Hit, Special",
   "icon": "radiationmelee_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 70,
@@ -36,6 +41,7 @@ export const FusionalBuildUp: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },

@@ -12,12 +12,17 @@ export const ProtonScatter: Power = {
   "name": "Proton Scatter",
   "internalName": "Proton_Scatter",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Proton Scatter sends a cone of luminous energy bolts striking multiple targets in front of the caster.  Proton Scatter deals moderate energy damage to each affected target and reduces their defense.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Energy), Foe -DEF",
   "icon": "luminousblast_protonscatter.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -61,7 +66,7 @@ export const ProtonScatter: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Energy",0.99,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",1.20958,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

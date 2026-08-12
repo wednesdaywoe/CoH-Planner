@@ -12,6 +12,8 @@ export const SteamyMist: Power = {
   "name": "Steamy Mist",
   "internalName": "Steamy_Mist",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mastery of the elements allows you to hide yourself and all nearby allies within a Steamy Mist. Steamy Mist makes you and your allies harder to see and increases your Defense bonus to all attacks, while reducing Fire, Cold, and Energy damage, as well as your Foes ability to Confuse you.",
   "shortHelp": "Toggle: PBAoE, Team Stealth, +DEF(All), +Res(Fire, Cold, Energy, Confuse)",
   "icon": "stormsummoning_fog.png",
@@ -22,6 +24,10 @@ export const SteamyMist: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Leaguemate",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -135,6 +141,7 @@ export const SteamyMist: Power = {
         "table": "Melee_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Ranged_Ones"
       }
@@ -160,7 +167,7 @@ export const SteamyMist: Power = {
     ["Mez","Confused",-20,1,0.75,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
     ["Stealth","RadiusPvP",390,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked target.EventTimeSince> 10 > HitByFoe target.EventTimeSince> 10 > && MissionObjectClick target.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
     ["Stealth","RadiusPvE",35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","MissionObjectClick target.EventTimeSince> 10 >",null,null,true,null,"StealthToggle"],
-    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle"],
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"],
     ["MezResist","Confused",7,1,0.75,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
   "setsModes": [

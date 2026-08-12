@@ -12,6 +12,8 @@ export const Pulverize: Power = {
   "name": "Pulverize",
   "internalName": "Pulverize",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You are capable of Pulverizing a foe with your Nullifier Mace dealing high damage and causing toxic damage over time.  Pulverize will occasionally disorient foes as well.  NOTE: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.  Damage: High Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash/Toxic), Minor DoT(Toxic), Foe Disorient",
   "icon": "banespider_pulverize.png",
@@ -20,6 +22,9 @@ export const Pulverize: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

@@ -12,12 +12,17 @@ export const Fault: Power = {
   "name": "Fault",
   "internalName": "Fault",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "This powerful stomp can cause a seismic disturbance. This will crack the Earth itself and send a Fault towards a targeted foe, throwing him and nearby enemies into the air and possibly Disorienting them. Fault deals no damage on its own. Recharge: Slow",
   "shortHelp": "Close (Targeted AoE), Foe Knockback, Disorient",
   "icon": "stonemelee_fault.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 20,

@@ -12,12 +12,17 @@ export const LightningBolt: Power = {
   "name": "Lightning Bolt",
   "internalName": "Lightning_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can send a large blast of electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you. Lightning Bolt deals more damage than Charged Bolts, but recharges more slowly.",
   "shortHelp": "Ranged, DMG(Energy), Foe -End",
   "icon": "electricalbolt_lightningbolt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -58,14 +63,14 @@ export const LightningBolt: Power = {
   "atoms": [
     ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.1,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Energy",0.328,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
-    ["Endurance",null,4.265,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
-    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
+    ["Damage","Energy",0.328,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Endurance",null,4.265,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
     ["Damage","Energy",1.8889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-2,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Energy",0.3778,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
-    ["Endurance",null,4.265,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
-    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Defender_Ranged.Electrical_Blast.Tesla_Cage source.ownPower? Defender_Buff.Shock_Therapy source.ownPower? ||",true]
+    ["Damage","Energy",0.3778,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Endurance",null,4.265,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Defender_Ranged.Electrical_Blast.Tesla_Cage source.ownPower? Defender_Buff.Shock_Therapy source.ownPower? ||",true,null,null,null,null,null,null,null,null,"BuildStatic"]
   ]
 };

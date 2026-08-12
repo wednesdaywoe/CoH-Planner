@@ -12,6 +12,8 @@ export const Beheader: Power = {
   "name": "Gash",
   "internalName": "Beheader",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Gashes your opponent with your Battle Axe dealing superior damage. This attack is very slow, but can deal a lot damage and knock the target down. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_beheader.png",
@@ -22,6 +24,9 @@ export const Beheader: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,

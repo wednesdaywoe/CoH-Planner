@@ -12,12 +12,17 @@ export const GlintingEye: Power = {
   "name": "Glinting Eye",
   "internalName": "Glinting_Eye",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.Damage: Moderate.Recharge: Fast.",
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
   "icon": "luminousblast_glintingeye.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -89,7 +94,11 @@ export const GlintingEye: Power = {
       "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. Damage: Moderate",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Energy",1.16,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SSDamage"],
+        ["Defense","All",2,1,6,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+      ]
     }
   },
   "modesDisallowed": [

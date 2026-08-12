@@ -12,12 +12,17 @@ export const PulseRifleBurst: Power = {
   "name": "Pulse Rifle Burst",
   "internalName": "Pulse_Rifle_Burst",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "This high powered laser pulse from your Pulse Rifle takes more energy to fire, but causes much more damage than a standard pulse and has a very good chance to send your foes flying. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, High DMG(Energy), Foe Knockback",
   "icon": "robotics_laserrifleblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -52,9 +57,9 @@ export const PulseRifleBurst: Power = {
   },
   "atoms": [
     ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",1.5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",1.5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.4],
     ["Damage","Energy",3.061783,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",1.5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Knockback",1.5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.4]
   ],
   "specialEffects": [
     {

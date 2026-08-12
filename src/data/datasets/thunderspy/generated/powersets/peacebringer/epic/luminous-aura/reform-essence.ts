@@ -12,12 +12,18 @@ export const ReformEssence: Power = {
   "name": "Reform Essence",
   "internalName": "Reform_Essence",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself. Recharge: Long",
   "shortHelp": "Self Heal",
   "icon": "luminousaura_reformessence.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 15,

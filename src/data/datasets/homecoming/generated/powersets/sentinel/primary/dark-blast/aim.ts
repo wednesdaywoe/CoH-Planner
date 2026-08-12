@@ -12,12 +12,17 @@ export const Aim: Power = {
   "name": "Aim",
   "internalName": "Aim",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and range.Recharge: Long.",
   "shortHelp": "Self +To Hit, +DMG, +Range",
   "icon": "darkcast_aim.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const Aim: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -45,6 +51,7 @@ export const Aim: Power = {
       "tohitBuff": 10
     },
     "rangeBuff": {
+      "ignoreStrength": true,
       "scale": 0.333,
       "table": "Melee_Ones"
     },

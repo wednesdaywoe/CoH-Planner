@@ -12,12 +12,17 @@ export const SharePain: Power = {
   "name": "Share Pain",
   "internalName": "Share_Pain",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Share Pain draws away some of an ally's anguish caused by their wounds, but damages the user. The pain caused by this power causes the user to go into a frenzy, briefly increasing their damage output, however the user cannot be healed and will have their regeneration rate greatly diminished for a short time.",
   "shortHelp": "Ally Strong Heal, Self Moderate DMG(Special), +DMG",
   "icon": "paindomination_sharepain.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -50,6 +55,7 @@ export const SharePain: Power = {
   "effects": {
     "buffDuration": 15,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },
@@ -59,11 +65,13 @@ export const SharePain: Power = {
       "resistance": 15
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Ranged_Ones"
     },
     "resistance": {
       "heal": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Ones"
       }

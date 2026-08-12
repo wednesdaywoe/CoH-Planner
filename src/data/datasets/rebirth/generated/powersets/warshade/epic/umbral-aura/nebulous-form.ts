@@ -12,6 +12,8 @@ export const NebulousForm: Power = {
   "name": "Nebulous Form",
   "internalName": "Nebulous_Form",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You can Phase Shift to become out of sync with normal space. Although you do not become completely Invisible, you are translucent and hard to see. You are intangible, and cannot affect or be affected by those in normal space. Even gravity has a weak hold on you. You can jump great distances while in Nebulous Form. However, after 30 seconds the phase out effect will wear off.  30 seconds later, if this power is still active the user will become phased out once again.  Cannot be used with Rest.  This power can be used while in Dark Nova or Black Dwarf form.  However, activating it while in either Dark Nova or Black Dwarf will transform you back into your original form.",
   "shortHelp": "Toggle: Self Intangible, +Jump",
   "icon": "umbralaura_nebulousform.png",
@@ -22,6 +24,9 @@ export const NebulousForm: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -79,13 +84,14 @@ export const NebulousForm: Power = {
       }
     },
     "threatDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-    ["Meta",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Stealth","Translucency",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle source.Mode? !"],
     ["Stealth","RadiusPvE",20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle source.Mode? !",null,null,true],
     ["Stealth","RadiusPvP",222,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle source.Mode? !",null,null,true],

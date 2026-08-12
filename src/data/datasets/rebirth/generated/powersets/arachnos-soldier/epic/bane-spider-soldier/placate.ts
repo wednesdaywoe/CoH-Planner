@@ -12,12 +12,17 @@ export const Placate: Power = {
   "name": "Placate",
   "internalName": "Placate",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Allow you to trick a foe to no longer attack you.  A successful Placate will also Hide you.  This Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit. However, if you attack a Placated Foe, they will be able to attack you back. Recharge: Long",
   "shortHelp": "Melee, Foe Placate, Self Stealth/Hide",
   "icon": "banespider_placate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -51,6 +56,7 @@ export const Placate: Power = {
         "table": "Melee_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Ones"
       }
@@ -64,7 +70,7 @@ export const Placate: Power = {
     ["Mez","Placate",10,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1],
     ["Stealth","RadiusPvE",54,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Stealth","RadiusPvP",500,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"meter"],
     ["Stealth","Translucency",0.2,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
   ]

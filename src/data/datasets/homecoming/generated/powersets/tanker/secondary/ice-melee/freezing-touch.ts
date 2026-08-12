@@ -12,6 +12,8 @@ export const FreezingTouch: Power = {
   "name": "Freezing Touch",
   "internalName": "Freezing_Touch",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "This Freezing Touch will encase a single foe in a block of ice. This will deal high damage over time, as well as freezing him in his tracks, leaving him cold and helpless.",
   "shortHelp": "Melee, DoT(Cold), Foe Hold",
   "icon": "icyonslaught_freezingtouch.png",
@@ -20,6 +22,9 @@ export const FreezingTouch: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -65,7 +70,7 @@ export const FreezingTouch: Power = {
     ["MezResist","Knockback",100,1,6,"Melee_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Knockup",-100,1,6,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Knockback",-100,1,6,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Damage","Fire",0.1193,1,2.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,0],
+    ["Damage","Fire",0.1193,1,2.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Cold",0.1582,1,2.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]

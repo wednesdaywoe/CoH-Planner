@@ -12,12 +12,17 @@ export const SniperRifle: Power = {
   "name": "Sniper Rifle",
   "internalName": "Sniper_Rifle",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Sniper Rifle is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. Like most sniper attacks, you must take your time to aim, so this attack can be interrupted. If used in conjunction with a targeting drone, the Sniper Rifle will do additional damage. If you have more than 97% To-Hit, this attack becomes instant-cast.  Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_sniperrifle.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.25,
     "range": 150,
@@ -51,6 +56,7 @@ export const SniperRifle: Power = {
   "effects": {
     "buffDuration": 8.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.044,
       "table": "Ranged_Ones"
     },
@@ -68,8 +74,8 @@ export const SniperRifle: Power = {
   },
   "atoms": [
     ["Damage","Lethal",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1"],
+    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.5],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["DamageBuff","Smashing",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -78,8 +84,8 @@ export const SniperRifle: Power = {
     ["DamageBuff","Negative",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kToHit source> .97 >=",true],
-    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kToHit source> .97 >=",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.5],
     ["Damage","Lethal",4.254292,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.313,1,0,"Ranged_TempDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kRange_Finder_Mode source.Mode?",true]
   ],
@@ -102,5 +108,31 @@ export const SniperRifle: Power = {
       "chance": 0.5,
       "label": "Knockback"
     }
-  ]
+  ],
+  "quickSnipe": {
+    "condition": "cur.kToHit source> .97 >=",
+    "stats": {
+      "castTime": 1.33,
+      "range": 150
+    },
+    "damage": [
+      {
+        "type": "Lethal",
+        "scale": 2.76,
+        "table": "Ranged_Damage"
+      }
+    ],
+    "atoms": [
+      ["Damage","Lethal",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.5],
+      ["DamageBuff","Smashing",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Lethal",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Fire",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Cold",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Energy",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Negative",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Toxic",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Psionic",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ]
+  }
 };

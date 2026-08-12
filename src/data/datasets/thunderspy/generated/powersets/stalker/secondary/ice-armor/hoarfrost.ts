@@ -12,12 +12,17 @@ export const Hoarfrost: Power = {
   "name": "Hoarfrost",
   "internalName": "Hoarfrost",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, For a short time you will gain a small absorption shield every few seconds and gain a powerful regeneration buff. Recharge: Very Long",
   "shortHelp": "Click: Self +Absorb, +Regeneration",
   "icon": "icearmor_hoarfrost.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,

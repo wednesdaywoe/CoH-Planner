@@ -12,12 +12,17 @@ export const Scare: Power = {
   "name": "Scare",
   "internalName": "Scare",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You entwine a single foe within their deepest fears and cause them to helplessly tremble for a brief while.",
   "shortHelp": "Ranged, Foe Fear",
   "icon": "mentalcontrol_scare.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -40,6 +45,7 @@ export const Scare: Power = {
   "effects": {
     "buffDuration": 10.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.176,
       "table": "Melee_Ones"
     },
@@ -58,7 +64,7 @@ export const Scare: Power = {
   },
   "atoms": [
     ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.3],
     ["DamageBuff","Smashing",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

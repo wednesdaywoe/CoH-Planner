@@ -12,6 +12,8 @@ export const BSBash: Power = {
   "name": "Bash",
   "internalName": "BS_Bash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You Bash with your mace dealing moderate damage and minor damage over time. NOTE: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.  Damage: Moderate Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Smash/Toxic), Minor DoT(Toxic), Foe Disorient",
   "icon": "banespider_bash.png",
@@ -20,6 +22,9 @@ export const BSBash: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,

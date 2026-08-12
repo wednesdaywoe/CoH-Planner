@@ -12,12 +12,17 @@ export const Glacier: Power = {
   "name": "Glacier",
   "internalName": "Glacier",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You can freeze all foes around yourself in blocks of Glacial ice. The targets are frozen solid, helpless, and can be attacked. Even after the victims emerge, they remain chilled and their attack and movement speed is Slowed for a while. This power can only be cast near the ground.Notes: This power has adaptive recharge. It has a base recharge of 8 seconds and each affected foe will increase the recharge by 14.5 seconds for a maximum total of 240 seconds.",
   "shortHelp": "PBAoE, Foe Hold, -Recharge, -SPD",
   "icon": "iceformation_glacier.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "radius": 30,
@@ -51,6 +56,7 @@ export const Glacier: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
@@ -60,6 +66,7 @@ export const Glacier: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -75,7 +82,7 @@ export const Glacier: Power = {
   },
   "atoms": [
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
+    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"],
     ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Movement","JumpHeight",0.5,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

@@ -21,7 +21,12 @@ import { AtomicBlast as AtomicBlast } from './atomic-blast';
 
 export const powerset: Powerset = {
   id: 'blaster/radiation-blast',
+  setPath: 'Blaster_Ranged.Radiation_Blast',
   name: 'Radiation Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Blast your foes with lethal radiation. Radiation Blast powers can bypass normal defenses, and lower your targets\' overall Defense.',
   icon: 'radiation_blast_set.ico',
   archetype: 'blaster',

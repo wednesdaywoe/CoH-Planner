@@ -12,12 +12,17 @@ export const Stalagmite: Power = {
   "name": "Stalagmite",
   "internalName": "Stalagmite",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You can cause a Stalagmite to erupt under an enemy dealing minimal Lethal damage, and Disorienting them for a good while. You must be on the ground to activate this power.If affected by Seismic Shockwaves, this power will halt the shockwaves and deal extreme damage.Stalagmite grants two stacks of Seismic Pressure.",
   "shortHelp": "Ranged, DMG(Smash), Foe Disorient, Special",
   "icon": "seismicblast_stalagmite.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -82,7 +87,12 @@ export const Stalagmite: Power = {
       "description": "You can cause a Stalagmite to erupt under an enemy dealing minimal Lethal damage, and Disorienting them for a good while. You must be on the ground to activate this power.If affected by Seismic Shockwaves, this power will halt the shockwaves and deal extreme damage.Stalagmite grants one stack of Seismic Pressure.",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Mez","Stunned",6,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Damage","Smashing",2.92,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["RechargePower",null,-1,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >=",null,null,null,null,null,null,null,null,null,"Seismic"]
+      ]
     }
   }
 };

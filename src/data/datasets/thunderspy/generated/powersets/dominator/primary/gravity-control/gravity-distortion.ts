@@ -12,12 +12,17 @@ export const GravityDistortion: Power = {
   "name": "Gravity Distortion",
   "internalName": "Gravity_Distortion",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Causes a single foe to be trapped in a misshapen gravity field, rendering him unable to take action. Gravity Distortion deals Smashing damage to the target. Damage: Moderate(DoT), Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DoT(Smash), Foe Hold, -Fly",
   "icon": "gravitycontrol_gravitydistortion.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -69,6 +74,7 @@ export const GravityDistortion: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -85,7 +91,7 @@ export const GravityDistortion: Power = {
   "atoms": [
     ["Damage","Smashing",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"magic_carpet"],
     ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],

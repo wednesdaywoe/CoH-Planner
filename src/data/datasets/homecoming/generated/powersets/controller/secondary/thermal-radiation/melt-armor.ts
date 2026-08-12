@@ -12,12 +12,17 @@ export const MeltArmor: Power = {
   "name": "Melt Armor",
   "internalName": "Melt_Armor",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets.",
   "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
   "icon": "thermalradiation_meltarmor.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -51,34 +56,42 @@ export const MeltArmor: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       }

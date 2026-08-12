@@ -12,12 +12,17 @@ export const DeafeningWave: Power = {
   "name": "Deafening Wave",
   "internalName": "Deafening_Wave",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a large field of sonic waves, causing damage to all foes around you. It has a moderate chance of causing migraines, leaving them shaking in pain and helpless. This power will inflict 10% bonus damage against Attuned targets as well as trigger a dot effect on enemies around that target.",
   "shortHelp": "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
   "icon": "sonicmanipulation_deafeningcry.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,
@@ -50,6 +55,11 @@ export const DeafeningWave: Power = {
       "type": "Energy",
       "scale": 0.4246,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8492,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
@@ -60,23 +70,23 @@ export const DeafeningWave: Power = {
     }
   },
   "atoms": [
-    ["Damage","Smashing",0.4246,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",0.4246,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Held",5,2,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,null,null,null,true],
-    ["Mez","Held",5,2,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Damage","Energy",0.8492,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 >",true],
-    ["Damage","Energy",0.8492,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"kMeter source> .9 <",true],
-    ["Damage","Smashing",0.4671,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.4671,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.9342,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 >",true],
-    ["Damage","Energy",0.9342,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"kMeter source> .9 <",true],
-    ["Damage","Smashing",0.3724,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.3724,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.745,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 >",true],
-    ["Damage","Energy",0.745,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || &&",true],
-    ["Mez","Held",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,null,true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kSonicAtuneSelf Source.Mode? kSonicAtuneFoe target.mode? &&",true]
+    ["Damage","Smashing",0.4246,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.4246,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.8492,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
+    ["Mez","Held",5,2,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,true,null,null,null,null,null,null,"SoundBoost"],
+    ["Mez","Held",5,2,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SoundBoost"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"AssassinsFocus"],
+    ["Damage","Energy",0.8492,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["Damage","Smashing",0.4671,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kSonicAtuneSelf Source.Mode? kSonicAtuneFoe target.mode? && &&",true],
+    ["Damage","Energy",0.4671,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kSonicAtuneSelf Source.Mode? kSonicAtuneFoe target.mode? && &&",true],
+    ["Damage","Energy",0.9342,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq kSonicAtuneSelf Source.Mode? kSonicAtuneFoe target.mode? && && kMeter source> 0 > &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["Damage","Energy",0.9342,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kSonicAtuneSelf Source.Mode? kSonicAtuneFoe target.mode? && && kMeter source> .9 < &&",true,null,null,null,null,null,null,null,null,"ASTeamCrit"],
+    ["Damage","Smashing",0.3724,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.3724,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.745,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["Damage","Energy",0.745,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && &&",true],
+    ["Mez","Held",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"SoundBoost"],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kSonicAtuneSelf Source.Mode? kSonicAtuneFoe target.mode? &&",true,null,null,null,null,null,null,null,null,"SMAttune"]
   ],
   "specialEffects": [
     {

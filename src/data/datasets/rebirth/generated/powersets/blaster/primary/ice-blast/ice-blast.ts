@@ -12,6 +12,8 @@ export const IceBlast: Power = {
   "name": "Ice Blast",
   "internalName": "Ice_Blast",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "iceblast_iceblast.png",
@@ -23,6 +25,9 @@ export const IceBlast: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -62,6 +67,7 @@ export const IceBlast: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
@@ -71,6 +77,7 @@ export const IceBlast: Power = {
       "slow": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -80,6 +87,7 @@ export const IceBlast: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

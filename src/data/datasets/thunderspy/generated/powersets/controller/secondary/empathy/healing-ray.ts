@@ -12,12 +12,17 @@ export const HealingRay: Power = {
   "name": "Empathize",
   "internalName": "Healing_Ray",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Form a bond with a target ally to share a fourth of damage. Your shared bond makes your ally more receptive to your aid, increasing the effectiveness of healing and slightly buffing resistance to all damage.",
   "shortHelp": "Share Damage +Res +Heal",
   "icon": "empathy_empathize.png",
   "powerType": "Toggle",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -74,6 +79,7 @@ export const HealingRay: Power = {
     },
     "resistanceDebuff": {
       "heal": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Ranged_Ones"
       }

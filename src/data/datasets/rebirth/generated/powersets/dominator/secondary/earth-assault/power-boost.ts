@@ -12,12 +12,17 @@ export const PowerBoost: Power = {
   "name": "Power Boost",
   "internalName": "Power_Boost",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly boosts the secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. Recharge: Long",
   "shortHelp": "Self +Special",
   "icon": "earthassault_powerboost.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,

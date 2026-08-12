@@ -12,6 +12,8 @@ export const Invisibility: Power = {
   "name": "Superior Invisibility",
   "internalName": "Invisibility",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You can bend light around yourself to become completely Invisible. While this power is active, you are all but impossible to detect, and have an extremely high Defense bonus to all attacks. Superior Invisibility is the only toggle invisibility power that allows you to attack while it is active, although you will lose some of your defense bonus if you do so.",
   "shortHelp": "Toggle: Self Stealth, +DEF(All)",
   "icon": "illusions_invisibility.png",
@@ -22,6 +24,9 @@ export const Invisibility: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -155,6 +160,7 @@ export const Invisibility: Power = {
       }
     },
     "threatDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     }
@@ -172,8 +178,8 @@ export const Invisibility: Power = {
     ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
     ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
     ["Stealth","Translucency",0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
     ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
     ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],

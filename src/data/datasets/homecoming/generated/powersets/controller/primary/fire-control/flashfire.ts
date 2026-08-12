@@ -12,12 +12,17 @@ export const Flashfire: Power = {
   "name": "Flashfire",
   "internalName": "Flashfire",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can bring forth a Flashfire to Disorient a group of foes and deal some damage over time. Target must be on the ground to activate Flashfire.",
   "shortHelp": "Ranged (Targeted AoE), Minor DMG(Fire), Foe Disorient",
   "icon": "firetrap_flashfire.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 70,
@@ -59,9 +64,9 @@ export const Flashfire: Power = {
   "atoms": [
     ["Damage","Fire",0.06,1,4,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.06,1,4,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true],
-    ["Damage","Fire",0.0179,1,4,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true],
+    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"],
+    ["Damage","Fire",0.06,1,4,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"],
+    ["Damage","Fire",0.0179,1,4,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true,null,null,null,null,null,null,null,null,"Containment"],
     ["Mez","Stunned",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

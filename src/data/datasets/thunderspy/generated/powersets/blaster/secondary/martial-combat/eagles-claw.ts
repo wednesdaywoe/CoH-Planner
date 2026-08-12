@@ -12,6 +12,8 @@ export const EaglesClaw: Power = {
   "name": "Eagles Claw",
   "internalName": "Eagles_Claw",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You can perform a devastating kick that can severely Disorient most opponents. Eagle's Claw strikes so powerfully that it weakens your target's resolve, reducing their Range and Recharge for several seconds after attacking. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Smash), Foe Minor Disorient, +Special",
   "icon": "martialmanipulation_eaglesclaw.png",
@@ -20,6 +22,9 @@ export const EaglesClaw: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -50,6 +55,7 @@ export const EaglesClaw: Power = {
   "effects": {
     "buffDuration": 10.03,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Melee_Ones"
     },
@@ -58,6 +64,7 @@ export const EaglesClaw: Power = {
       "rechargeDebuff": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.25,
       "table": "Melee_Ones"
     },

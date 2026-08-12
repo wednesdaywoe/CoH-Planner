@@ -21,7 +21,12 @@ import { PsychicShockwave as PsychicShockwave } from './psychic-shockwave';
 
 export const powerset: Powerset = {
   id: 'dominator/psionic-assault',
+  setPath: 'Dominator_Assault.Psionic_Assault',
   name: 'Psionic Assault',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Blast your enemies with an array of offensive Psionic powers. Few living beings can resist their effects. Creatures without minds, however, like machines and robots, are much more resistant.',
   icon: 'psionic_assault_set.ico',
   archetype: 'dominator',

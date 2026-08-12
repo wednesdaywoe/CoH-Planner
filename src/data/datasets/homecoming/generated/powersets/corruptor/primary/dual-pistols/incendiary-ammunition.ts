@@ -12,6 +12,8 @@ export const IncendiaryAmmunition: Power = {
   "name": "Incendiary Ammunition",
   "internalName": "Incendiary_Ammunition",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "While this toggle is active you will be equipped with 'Incendiary Rounds.' Most of your Dual Pistol attacks will have their secondary damage converted to fire damage and inflict a minor damage over time effect.In order to earn this power, you must purchase the Swap Ammo power.",
   "shortHelp": "Toggle: Ammo Change (Fire), Special",
   "icon": "dualpistols_incendiaryammo.png",
@@ -22,6 +24,9 @@ export const IncendiaryAmmunition: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -45,7 +50,7 @@ export const IncendiaryAmmunition: Power = {
     ["GlobalChanceMod",null,-0.5,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["GlobalChanceMod",null,-0.7,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["GlobalChanceMod",null,-0.05,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,91,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,91,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"]
   ],
   "requires": "Corruptor_Ranged.Dual_Pistols.Swap_Ammo",
   "setsModes": [

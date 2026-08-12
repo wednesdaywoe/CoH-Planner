@@ -17,7 +17,7 @@
   "summary": {
     "highConfidenceCollapses": 1,
     "distinctCollapseGroups": 1,
-    "classAbsent": 22,
+    "classAbsent": 20,
     "scalarCollapses": 0,
     "scalarDistinctGroups": 0,
     "scalarClassAbsent": 87,
@@ -59,16 +59,6 @@
         "tanker_melee/dual_blades/aoe_bridge.json",
         "scrapper_melee/dual_blades/aoe_bridge.json",
         "brute_melee/dual_blades/aoe_bridge.json"
-      ]
-    },
-    {
-      "et": "Mez",
-      "sub": "immobilize",
-      "sign": null,
-      "count": 2,
-      "powers": [
-        "dominator_control/mind_control/telekinesis.json",
-        "controller_control/mind_control/telekinesis.json"
       ]
     },
     {

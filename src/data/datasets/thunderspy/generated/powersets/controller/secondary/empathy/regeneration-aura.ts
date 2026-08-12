@@ -12,12 +12,18 @@ export const RegenerationAura: Power = {
   "name": "Revitalization Aura",
   "internalName": "Regeneration_Aura",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "The Revitalization Aura dramatically increases the healing and recovery rate of all nearby allies for a limited time.",
   "shortHelp": "PBAoE, Ally +Regeneration +Recovery",
   "icon": "empathy_revitalizationaura.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

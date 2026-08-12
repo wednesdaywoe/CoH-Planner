@@ -12,6 +12,8 @@ export const DarkEmbrace: Power = {
   "name": "Dark Embrace",
   "internalName": "Dark_Embrace",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage.",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
   "icon": "darkarmor_darkembrace.png",
@@ -22,6 +24,9 @@ export const DarkEmbrace: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

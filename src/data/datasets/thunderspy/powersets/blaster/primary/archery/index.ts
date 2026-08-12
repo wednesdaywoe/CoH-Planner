@@ -21,7 +21,12 @@ import { RainofArrows as RainofArrows } from './rain-of-arrows';
 
 export const powerset: Powerset = {
   id: 'blaster/archery',
+  setPath: 'Blaster_Ranged.Archery',
   name: 'Archery',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'The ancient art of Archery allows you to use a Bow and Arrow to great effect.  This power set has an inherent bonus to Accuracy.',
   icon: 'archery_set.ico',
   archetype: 'blaster',

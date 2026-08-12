@@ -12,12 +12,17 @@ export const ReachfortheLimit: Power = {
   "name": "Reach for the Limit",
   "internalName": "Reach_for_the_Limit",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You are constantly looking for vulnerabilities in your foes' stances and positioning.  Whenever you attack, you have a chance to gain a moderate +ToHit and +Damage bonus for a short duration.",
   "shortHelp": "All Attacks: Chance for +ToHit, +DMG(All)",
   "icon": "martialmanipulation_reachforthelimit.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -25,7 +30,7 @@ export const ReachfortheLimit: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Meta",null,1,1,10.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,10.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "mechanicType": "parentMechanic"
 };

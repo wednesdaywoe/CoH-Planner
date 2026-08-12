@@ -12,12 +12,17 @@ export const ShurikenThrow: Power = {
   "name": "Shuriken Throw",
   "internalName": "Shuriken_Throw",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You impale your foe with a thrown shuriken, dealing moderate Lethal damage.  Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Minor DMG(Lethal)",
   "icon": "martialassault_shurikenthrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -12,12 +12,17 @@ export const WhirlingSlice: Power = {
   "name": "Whirling Smash",
   "internalName": "Whirling_Slice",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a powerful Whirling Smash that deals Moderate Smashing damage, and can knock an opponent down.Notes: Whirling Smash requires Momentum in order to be activated.Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "PBAoE Melee, DMG(Smashing), Knockdown, Requires Momentum",
   "icon": "titanweapons_whirlingslice.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "maxTargetsExpression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
   "stats": {
     "accuracy": 1,
@@ -57,7 +62,7 @@ export const WhirlingSlice: Power = {
   "atoms": [
     ["Damage","Smashing",1.04,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.6727,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.6727,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Smashing",0.664,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

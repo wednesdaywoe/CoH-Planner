@@ -12,12 +12,17 @@ export const BlindingPowder: Power = {
   "name": "Blinding Powder",
   "internalName": "Blinding_Powder",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Blinding powder can be thrown in a wide arc that can briefly distract your foes and Placate them so they can no longer find or target you. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.During the chaos, your chances to critically hit are improved.",
   "shortHelp": "Ranged (Cone), Foe Placate, -To Hit, Sleep, Confuse, -Perception, +Special",
   "icon": "ninjitsu_blindingpowder.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -77,9 +82,9 @@ export const BlindingPowder: Power = {
   },
   "atoms": [
     ["Mez","Sleep",10,3,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Placate",8,3,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1],
-    ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["ToHit",null,1,1,15,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Placate",8,3,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,1,1,15,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Confused",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Sleep",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Placate",6,3,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

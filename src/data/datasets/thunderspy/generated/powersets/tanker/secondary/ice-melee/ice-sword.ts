@@ -12,6 +12,8 @@ export const IceSword: Power = {
   "name": "Ice Sword",
   "internalName": "Ice_Sword",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a blade of solid ice that deals good damage. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee, Moderate DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "icyonslaught_icesword.png",
@@ -22,6 +24,9 @@ export const IceSword: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -66,6 +71,7 @@ export const IceSword: Power = {
       "slow": 8
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Melee_Slow"
     },
@@ -75,6 +81,7 @@ export const IceSword: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Melee_Slow"
       },

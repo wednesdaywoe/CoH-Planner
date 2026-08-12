@@ -12,6 +12,8 @@ export const Icicles: Power = {
   "name": "Icicles",
   "internalName": "Icicles",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you form sharp icicles on your body that continuously cut all foes that attempt to enter melee range.",
   "shortHelp": "Toggle: PBAoE, DoT(Cold)",
   "icon": "icearmor_icicles.png",
@@ -22,6 +24,9 @@ export const Icicles: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,6 +65,6 @@ export const Icicles: Power = {
   "atoms": [
     ["Damage","Cold",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? !"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

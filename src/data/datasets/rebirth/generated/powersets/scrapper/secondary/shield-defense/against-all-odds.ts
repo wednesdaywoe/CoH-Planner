@@ -12,12 +12,17 @@ export const AgainstallOdds: Power = {
   "name": "Against All Odds",
   "internalName": "Against_all_Odds",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "The harder pressed you are in combat the greater your offensive abilities become.  Each enemy that stands toe-to-toe with you in combat will grant you a damage bonus.  The first foe you engage in melee grants the highest damage bonus, and up to 10 foes can contribute to this effect. Each foe in melee range also suffers from reduced damage as your shield deflects a portion of their damage. Recharge: Slow",
   "shortHelp": "Toggle: Self +DMG, Foe -DMG",
   "icon": "shielddefense_againstallodds.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -34,18 +39,19 @@ export const AgainstallOdds: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 1,
+    "buffDuration": 1.25,
     "damageBuff": {
       "scale": 1.55,
       "table": "Melee_Buff_Dmg",
       "perTarget": 0.55
     },
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Debuff_Dam"
     },
     "durations": {
-      "damageBuff": 1,
+      "damageBuff": 1.25,
       "damageDebuff": 1
     },
     "taunt": {

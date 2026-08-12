@@ -12,12 +12,17 @@ export const IceStorm: Power = {
   "name": "Ice Storm",
   "internalName": "Ice_Storm",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets' movement and attack speed. Damage: Minor(DoT), Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Cold, Lethal), Foe -Recharge, -SPD",
   "icon": "iceblast_freezingrain.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,

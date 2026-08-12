@@ -12,6 +12,8 @@ export const DualWield: Power = {
   "name": "Dual Wield",
   "internalName": "Dual_Wield",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Dual Wield fires both pistols in rapid succession at its desired target.  This power is slower than Pistols, but deals more damage, and the target may get knocked back by the force of the impact. Damage: Moderate, Recharge: Fast  NOTE: Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.  Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to a minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded, a minor damage over time effect if 'Incendiary Ammo' is loaded, or a -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "Ranged, Moderate DMG(Lethal/Special), Foe Knockback/Special",
   "icon": "dualpistols_dualwield.png",
@@ -23,6 +25,9 @@ export const DualWield: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.1,
@@ -86,6 +91,7 @@ export const DualWield: Power = {
   "effects": {
     "buffDuration": 8,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
@@ -104,24 +110,24 @@ export const DualWield: Power = {
   "atoms": [
     ["Damage","Lethal",0.924,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.396,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.396,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.113,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
-    ["Damage","Cold",0.396,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Movement","Run",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Movement","Fly",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Movement","JumpHeight",0.15,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true],
-    ["Movement","Jump",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["RechargeTime",null,0.15,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true],
-    ["Damage","Toxic",0.396,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["DamageBuff","Smashing",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-    ["DamageBuff","Lethal",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-    ["DamageBuff","Fire",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-    ["DamageBuff","Cold",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-    ["DamageBuff","Energy",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-    ["DamageBuff","Negative",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-    ["DamageBuff","Toxic",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-    ["DamageBuff","Psionic",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+    ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.25],
+    ["Damage","Fire",0.396,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0],
+    ["Damage","Fire",0.113,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true],
+    ["Damage","Cold",0.396,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0],
+    ["Movement","Run",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["Movement","Fly",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["Movement","JumpHeight",0.15,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["Movement","Jump",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["RechargeTime",null,0.15,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["Damage","Toxic",0.396,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0],
+    ["DamageBuff","Smashing",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Lethal",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Fire",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Cold",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Energy",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Negative",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Toxic",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["DamageBuff","Psionic",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["DamageBuff","Smashing",0.11,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.11,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.11,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -132,10 +138,10 @@ export const DualWield: Power = {
     ["DamageBuff","Psionic",0.11,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Damage","Lethal",1.556997,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.667285,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Fire",0.667285,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Cold",0.667285,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Toxic",0.667285,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.25],
+    ["Damage","Fire",0.667285,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0],
+    ["Damage","Cold",0.667285,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0],
+    ["Damage","Toxic",0.667285,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0]
   ],
   "specialEffects": [
     {
@@ -153,6 +159,7 @@ export const DualWield: Power = {
       "group": "swap-ammo",
       "effects": {
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.15,
           "table": "Ranged_Slow"
         },
@@ -162,6 +169,7 @@ export const DualWield: Power = {
             "table": "Ranged_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.15,
             "table": "Ranged_Slow"
           },
@@ -189,6 +197,7 @@ export const DualWield: Power = {
       "group": "swap-ammo",
       "effects": {
         "damageDebuff": {
+          "ignoreStrength": true,
           "scale": 1,
           "table": "Ranged_Debuff_Dam"
         },

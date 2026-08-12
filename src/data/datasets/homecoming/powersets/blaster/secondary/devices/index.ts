@@ -21,7 +21,12 @@ import { AutoTurret as AutoTurret } from './auto-turret';
 
 export const powerset: Powerset = {
   id: 'blaster/devices',
+  setPath: 'Blaster_Support.Gadgets',
   name: 'Devices',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Devices are equipment you have constructed for use in combat. By using them strategically, you can gain a great tactical advantage. Traps, non-lethal munitions, and demolitions are available in this power set.',
   icon: 'gadgets_set.ico',
   archetype: 'blaster',

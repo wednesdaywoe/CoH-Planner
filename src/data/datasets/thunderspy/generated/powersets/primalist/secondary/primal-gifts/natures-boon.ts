@@ -12,6 +12,8 @@ export const NaturesBoon: Power = {
   "name": "Nature's Embrace",
   "internalName": "Natures_Boon",
   "available": 13,
+  "autoIssue": false,
+  "free": false,
   "description": "Nature's Embrace protects the Primalist's mind from the harmful effects of Sleep, Hold, Disorient, Knockback and Immobilize. Additionally, while active this power grants the user a measure of protection against Toxic, Psionic and Cold damage. Recharge: Fast",
   "shortHelp": "Toggle: +Res(Sleep, Hold, Disorient, Knockback, Immobilize, Toxic, Psionic, Cold)",
   "icon": "primalgifts_naturesboon.png",
@@ -22,6 +24,9 @@ export const NaturesBoon: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -53,6 +58,7 @@ export const NaturesBoon: Power = {
     },
     "effectDuration": 0.75,
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -63,19 +69,23 @@ export const NaturesBoon: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }
@@ -95,11 +105,13 @@ export const NaturesBoon: Power = {
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

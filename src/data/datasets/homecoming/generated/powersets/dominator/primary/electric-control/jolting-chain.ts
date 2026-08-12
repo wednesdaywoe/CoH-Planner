@@ -12,12 +12,17 @@ export const JoltingChain: Power = {
   "name": "Jolting Chain",
   "internalName": "Jolting_Chain",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can send a bolt of electricity through multiple opponents, causing a muscle spasm and dealing minor damage. Each foe is knocked down, and the electric charge can fork several times, jumping to several opponents rapidly.",
   "shortHelp": "Ranged Chain AoE, DMG(Energy), Foe Knockdown, -End",
   "icon": "electriccontrol_joltingchain.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Chain",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -12,12 +12,18 @@ export const Warmth: Power = {
   "name": "Warmth",
   "internalName": "Warmth",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You can use your Warmth to heal some of your wounds, and the wounds of your group. This power has a small radius, so your allies need to be near you if they wish to be affected. Recharge: Moderate",
   "shortHelp": "PBAoE, Team +Heal",
   "icon": "thermalradiation_warmth.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

@@ -21,7 +21,12 @@ import { SeismicSmash as SeismicSmash } from './seismic-smash';
 
 export const powerset: Powerset = {
   id: 'guardian/earth-assault',
+  setPath: 'Guardian_Assault.Earth_Assault',
   name: 'Earth Assault',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'With Earth Assault, you can damage foes with the very ground they walk upon.  You can conjure stone weapons, hurl boulders, and even cause magma to erupt from the ground.',
   icon: 'earth_assault_set.ico',
   archetype: 'guardian',

@@ -12,12 +12,17 @@ export const DawnStrike: Power = {
   "name": "Dawn Strike",
   "internalName": "Dawn_Strike",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You can explode in a tremendous blast of Kheldian energy, sending nearby foes flying and reducing their defense. Dawn Strike deals massive damage to all nearby foes, although the damage does vary. Activating this power leaves you drained of Endurance, and unable to recover any Endurance for a while. Unrelenting from the Presence pool can be used to prevent this crash from occurring. This power can be used in Nova Form. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Energy), Foe -DEF, Knockback; Self -Recovery",
   "icon": "luminousblast_dawnstrike.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 25,

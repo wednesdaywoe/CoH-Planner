@@ -21,7 +21,12 @@ import { Judgement as Judgement } from './judgement';
 
 export const powerset: Powerset = {
   id: 'defender/radiant-blast',
+  setPath: 'Defender_Ranged.Holy_Light',
   name: 'Radiant Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You Channel radiant light to smite your enemies or heal your friends. Unholy creatures such as undead, ghosts and demons take aditional damage from the purity of your powers.',
   icon: 'luminous_blast_set.ico',
   archetype: 'defender',

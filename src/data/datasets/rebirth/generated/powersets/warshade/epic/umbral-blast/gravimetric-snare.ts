@@ -12,12 +12,17 @@ export const GravimetricSnare: Power = {
   "name": "Gravimetric Snare",
   "internalName": "Gravimetric_Snare",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can hurl Gravimetric fibers to Snare your foes.  Gravimetric Snare can Immobilize a single target and crush them.  The target's attack rate and movement speed are also slowed, even if they resist the Immobilization effect. This power can be used while in Black Dwarf form and becomes a melee attack with a quicker cast time and higher damage. While in Black Dwarf form, this power may Knock Down the foe rather than leave them immobilized, in addition to taunting its target. Damage: Moderate Damage over time, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DOT(Negative/Smash), Foe Immobilize, -Recharge, -SPD",
   "icon": "umbralblast_gravimetricsnare.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -78,6 +83,7 @@ export const GravimetricSnare: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -87,6 +93,7 @@ export const GravimetricSnare: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -101,7 +108,7 @@ export const GravimetricSnare: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode? !"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode? !",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Negative",0.1,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",0.1,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Accuracy",null,4,1,15,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
@@ -111,7 +118,7 @@ export const GravimetricSnare: Power = {
     ["Movement","Run",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["RechargeTime",null,0.2,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode?",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Negative",0.20748,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",0.20748,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Accuracy",null,2,1,2,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -150,6 +157,7 @@ export const GravimetricSnare: Power = {
           "table": "Melee_Ones"
         },
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.2,
           "table": "Melee_Slow"
         },
@@ -159,6 +167,7 @@ export const GravimetricSnare: Power = {
             "table": "Melee_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Slow"
           },
@@ -180,7 +189,18 @@ export const GravimetricSnare: Power = {
       "description": "The Black Dwarf Strike is a moderate melee attack that releases Nictus Dark Energy on impact, which can Knock Down foes, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form. Damage: Moderate, Recharge: Fast",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Smashing",0.4,1,0,"Melee_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Damage","Negative",0.6,1,0,"Melee_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Movement","JumpHeight",0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["Movement","Jump",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Movement","Run",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Movement","Fly",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["RechargeTime",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+        ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
+        ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+      ]
     }
   },
   "modesDisallowed": [

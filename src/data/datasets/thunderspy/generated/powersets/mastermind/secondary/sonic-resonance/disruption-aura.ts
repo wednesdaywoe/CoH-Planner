@@ -12,6 +12,8 @@ export const DisruptionAura: Power = {
   "name": "Disruption Aura",
   "internalName": "Disruption_Aura",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a powerful sonic resonance around yourself, repelling and weakening the Damage Resistance of all nearby foes. Choosing this power locks out Disruption Field Recharge: Moderate",
   "shortHelp": "Toggle PBAoE: Foe Knockdown, Foe -Res",
   "icon": "sonicdebuff_teamknockback.png",
@@ -22,6 +24,9 @@ export const DisruptionAura: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -52,34 +57,42 @@ export const DisruptionAura: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
@@ -95,7 +108,7 @@ export const DisruptionAura: Power = {
     ["Resistance","Negative",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Resistance","Psionic",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Resistance","Toxic",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Replace",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Resistance","Smashing",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
     ["Resistance","Lethal",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],

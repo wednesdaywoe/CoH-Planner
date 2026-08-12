@@ -12,12 +12,17 @@ export const JoltingChain: Power = {
   "name": "Jolting Chain",
   "internalName": "Jolting_Chain",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You can send a bolt of electricity through multiple opponents, causing a muscle spasm and dealing minor damage. Each foe is knocked down, and the electric charge can fork several times, jumping to several opponents rapidly.",
   "shortHelp": "Ranged Chain AoE, DMG(Energy), Foe Knockdown, -End",
   "icon": "electriccontrol_joltingchain.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Chain",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -74,7 +79,7 @@ export const JoltingChain: Power = {
     ["Mez","Knockback",0.66,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.7272,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-2,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Energy",1.2,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true],
-    ["Damage","Energy",0.7272,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true]
+    ["Damage","Energy",1.2,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,null,null,null,null,"Containment"],
+    ["Damage","Energy",0.7272,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true,null,null,null,null,null,null,null,null,"Containment"]
   ]
 };

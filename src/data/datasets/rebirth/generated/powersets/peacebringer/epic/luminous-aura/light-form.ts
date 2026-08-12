@@ -12,6 +12,8 @@ export const LightForm: Power = {
   "name": "Light Form",
   "internalName": "Light_Form",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate Light Form, you become pure Kheldian energy and are extremely resistant to most damage. You are also partially protected from some Disorient, Immobilization, Hold, Sleep, Knockback and Repel effects. Endurance recovery is also increased. Light Form costs little Endurance to activate, but when it wears off you are left exhausted, and drained of Hit Points and Endurance. Unrelenting from the Presence pool can be used to prevent this crash from occurring. This power can be used while in White Dwarf form. Recharge: Very Long",
   "shortHelp": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Knockback, Repel, All DMG but Psionics)",
   "icon": "luminousaura_lightform.png",
@@ -23,6 +25,9 @@ export const LightForm: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -69,6 +74,7 @@ export const LightForm: Power = {
     },
     "effectDuration": 90,
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Ones"
     },
@@ -83,23 +89,28 @@ export const LightForm: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       }
@@ -109,6 +120,7 @@ export const LightForm: Power = {
       "table": "Melee_Ones"
     },
     "repel": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
@@ -167,7 +179,7 @@ export const LightForm: Power = {
     ["Resistance","Negative",7,1,90,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Resistance","Toxic",7,1,90,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Recovery",null,0.3,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wispy eq @CustomFX WispyTintable eq ||"],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wispy eq @CustomFX WispyTintable eq ||",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["MezResist","Knockback",10,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockup",10,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Knockback",-100,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -178,7 +190,7 @@ export const LightForm: Power = {
     ["Mez","Held",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Mez","Sleep",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Mez","Immobilized",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Meta",null,1,5,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,130,1,null,true],
+    ["Meta",null,1,5,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,130,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Endurance",null,-0.5,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Damage","Special",-0.5,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Damage","Special",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

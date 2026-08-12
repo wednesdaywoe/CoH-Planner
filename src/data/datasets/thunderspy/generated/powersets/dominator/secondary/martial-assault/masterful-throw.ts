@@ -12,12 +12,17 @@ export const MasterfulThrow: Power = {
   "name": "Masterful Throw",
   "internalName": "Masterful_Throw",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You take careful aim and let loose an extremely accurate, extremely forceful blade. Damage: High, Recharge: Slow",
   "shortHelp": "Ranged, High DMG(Lethal), Chance for DoT (Lethal)",
   "icon": "martialassault_masterfulthrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -57,9 +62,9 @@ export const MasterfulThrow: Power = {
   ],
   "atoms": [
     ["Damage","Lethal",2.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",0.1,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
+    ["Damage","Lethal",0.1,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Damage","Lethal",2.814,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "damageTypes": [
     "Lethal"

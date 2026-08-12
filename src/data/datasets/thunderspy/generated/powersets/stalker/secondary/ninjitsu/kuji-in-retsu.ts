@@ -12,12 +12,17 @@ export const KujiInRetsu: Power = {
   "name": "Kuji-In Retsu",
   "internalName": "Kuji-In_Retsu",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Kuji-In Retsu is the mastery of space and time. Focusing your power on Retsu enables you to control your own time to easily defeat your foes. Mastery of this power enables you to avoid almost any attack, be it ranged, melee, or area effect. Your running speed, jumping height and Endurance Recovery are also increased. Retsu also grants you high resistance to Defense DeBuffs. In addition you will gain a very large amount of damage absorption, effectively turning attacks that do manage to connect to become glancing blows. Recharge: Very Long",
   "shortHelp": "Self +DEF, +SPD, +Recovery, Res(DeBuff DEF), +Absorb",
   "icon": "ninjitsu_kujinzen.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 540,
@@ -49,6 +54,7 @@ export const KujiInRetsu: Power = {
     "buffDuration": 90,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }

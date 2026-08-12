@@ -12,6 +12,8 @@ export const NWMaskPresence: Power = {
   "name": "Mask Presence",
   "internalName": "NW_Mask_Presence",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Mask Presence makes you almost impossible to detect. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. Like most stealth powers, Mask Presence cannot be used at the same time as other Concealment powers.",
   "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
   "icon": "widowteamwork_maskpresence.png",
@@ -22,6 +24,9 @@ export const NWMaskPresence: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -132,6 +137,7 @@ export const NWMaskPresence: Power = {
         "table": "Melee_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.8,
         "table": "Melee_Ones"
       }
@@ -140,7 +146,7 @@ export const NWMaskPresence: Power = {
   "atoms": [
     ["Stealth","RadiusPvE",40,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Stealth","RadiusPvP",400,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"meter"],
     ["Stealth","Translucency",0.8,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
     ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

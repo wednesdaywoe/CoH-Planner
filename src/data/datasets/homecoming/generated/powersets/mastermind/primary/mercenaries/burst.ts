@@ -12,12 +12,17 @@ export const Burst: Power = {
   "name": "Burst",
   "internalName": "Burst",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Quickly fires a Burst of rounds at a single target at very long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense.Focus Fire:The target struck by this attack will take 3.33% increased damage from any Mercenary Henchmen regardless of their owners for 30 seconds. This does effect does not stack from the same power or from multiple Masterminds.",
   "shortHelp": "Ranged, DoT (Lethal) Foe -DEF",
   "icon": "paramilitary_assaultrifleburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 90,
@@ -61,8 +66,8 @@ export const Burst: Power = {
   "atoms": [
     ["Damage","Lethal",0.27,1,0.91,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,176,30,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,179,30,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,176,30,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"RefreshReminder",null,"set_mode"],
+    ["Meta",null,1,179,30,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"RefreshReminder",null,"set_mode"],
     ["Damage","Lethal",0.315,1,0.91,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "setsModes": [

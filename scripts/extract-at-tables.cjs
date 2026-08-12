@@ -1,17 +1,24 @@
 /**
- * Extract AT Modifier Tables from Raw Homecoming Data
+ * Extract AT Modifier Tables from the class export
  *
- * Extracts the named_tables from each archetype's JSON file
- * and creates a TypeScript file with the relevant tables for calculations.
+ * Reads one JSON file per character class and emits the dataset's
+ * `at-tables.ts`: the `named_tables` a scaled effect resolves against, for the
+ * player archetypes (`AT_TABLES`) and, separately, for the pet classes
+ * (`PET_TABLES`) — a summon is a second character and resolves against its OWN
+ * class row.
+ *
+ * A class file carries more than tables, and the rest is emitted alongside
+ * rather than discarded: each archetype's RechargeTime `ClampStrength` interval
+ * (`rechargeBounds`), and each pet class's own character stats (`attribs` —
+ * hit points and the caps the summon lives against).
+ *
+ * Both rosters are derived from the export, never hand-listed; see
+ * `_player-classes.cjs` for which signal names each one.
  */
 
 const fs = require('fs');
 const path = require('path');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
-// Pet character classes: the hand list as a floor, unioned with every class the
-// dataset's own villain defs declare. See `discoverPetClasses` for why the floor
-// alone was not enough.
-const { discoverPetClasses } = require('./_player-classes.cjs');
 
 const datasetId = parseDatasetArg();
 
@@ -28,39 +35,22 @@ const RAW_DATA_PATH = (datasetId === 'homecoming' && !fs.existsSync(path.join(RA
 // directly so we don't clobber the runtime facade at `src/data/at-tables.ts`.
 const OUTPUT_PATH = datasetPath(datasetId, 'at-tables.ts');
 
-// Archetypes we care about for player characters
-const PLAYER_ARCHETYPES = [
-  'blaster',
-  'brute',
-  'controller',
-  'corruptor',
-  'defender',
-  'dominator',
-  'mastermind',
-  'scrapper',
-  'sentinel',
-  'stalker',
-  'tanker',
-  'peacebringer',
-  'warshade',
-  'arachnos_soldier',
-  'arachnos_widow',
-  'primalist', // Thunderspy-only custom AT (warn+skip on HC/Rebirth)
-  'guardian', // Rebirth-only custom AT (warn+skip on HC/Thunderspy)
-];
+// The pet entities live beside the tables, one directory up: HC's flat layout
+// puts them at `exported_powers/entities/`, the namespaced ones at
+// `exported_powers/<id>/entities/`.
+const ENTITIES_PATH = path.join(RAW_DATA_PATH, '..', 'entities');
 
-// Villain defs, same per-dataset layout rule as the class tables. Each carries
-// `defaults.character_class_name` — the class its stats resolve against.
-const ENTITIES_PATH = (datasetId === 'homecoming' && !fs.existsSync(path.join(RAW_DATA_BASE, datasetId, 'entities')))
-  ? path.join(RAW_DATA_BASE, 'entities')
-  : path.join(RAW_DATA_BASE, datasetId, 'entities');
+const { derivePlayerArchetypes, derivePetClasses } = require('./_player-classes.cjs');
+
+const PLAYER_ARCHETYPES = derivePlayerArchetypes(RAW_DATA_PATH);
+const PET_CLASSES = derivePetClasses(ENTITIES_PATH, RAW_DATA_PATH);
 
 /**
  * The pet class's own character stats — the numbers that make a summon a second
- * character rather than an effect (COH-DATA-MODEL §6). `hit_points`, `hp_cap`
- * and `absorb_cap` are per-level arrays (index = level − 1); the caps and
- * clamps are scalars. Returns null when the export doesn't carry the block, so
- * a consumer can show nothing rather than invent a hit point total.
+ * character rather than an effect. `hit_points`, `hp_cap` and `absorb_cap` are
+ * per-level arrays (index = level − 1); the caps and clamps are scalars.
+ * Returns null when the export doesn't carry the block, so a consumer can show
+ * nothing rather than invent a hit point total.
  */
 function petAttribs(data, petClass) {
   const a = data.attribs;
@@ -108,19 +98,6 @@ function petAttribs(data, petClass) {
   };
 }
 
-// Principled filter: include every binary named table exposed on player AT/pet
-// class exports. This avoids hand-maintained allowlists that silently miss real
-// tables until a power references one in a fatal slot.
-function normalizeNamedTableEntry(tableName, tableValues) {
-  if (typeof tableName !== 'string' || tableName.length === 0) return null;
-  if (!Array.isArray(tableValues) || tableValues.length === 0) return null;
-  if (!tableValues.every((v) => typeof v === 'number' && Number.isFinite(v))) return null;
-  return {
-    key: tableName.toLowerCase(),
-    values: tableValues,
-  };
-}
-
 /**
  * The class's RechargeTime `ClampStrength` interval — the floor and cap the
  * server bounds NET recharge strength to, exported per class in `attribs`
@@ -129,7 +106,7 @@ function normalizeNamedTableEntry(tableName, tableValues) {
  * Unlike most clamps this one is REACHABLE — a perma build stacking Hasten, set
  * bonuses and Ageless lives against it — so the perma tracker needs it both to
  * stop selling recharge past the ceiling and to decide whether a power's cycle
- * can ever fit inside its own window (`perma.ts`).
+ * can ever fit inside its own window.
  *
  * Returns null when the export doesn't carry the pair, so a consumer can stand
  * aside rather than invent a ceiling. That is the failure mode a hardcoded 5
@@ -147,6 +124,19 @@ function rechargeBounds(data, at) {
     return null;
   }
   return { floor, cap };
+}
+
+// Principled filter: include every binary named table exposed on player AT/pet
+// class exports. This avoids hand-maintained allowlists that silently miss real
+// tables until a power references one in a fatal slot.
+function normalizeNamedTableEntry(tableName, tableValues) {
+  if (typeof tableName !== 'string' || tableName.length === 0) return null;
+  if (!Array.isArray(tableValues) || tableValues.length === 0) return null;
+  if (!tableValues.every((v) => typeof v === 'number' && Number.isFinite(v))) return null;
+  return {
+    key: tableName.toLowerCase(),
+    values: tableValues,
+  };
 }
 
 function extractTables() {
@@ -186,13 +176,10 @@ function extractTables() {
 function extractPetTables() {
   const petTables = {};
 
-  for (const petClass of discoverPetClasses(ENTITIES_PATH)) {
+  // Every entry has a table file: `derivePetClasses` refuses to return a class
+  // whose file is absent, so there is no missing-file case to skip here.
+  for (const petClass of PET_CLASSES) {
     const filePath = path.join(RAW_DATA_PATH, `${petClass}.json`);
-
-    if (!fs.existsSync(filePath)) {
-      console.warn(`Warning: ${petClass}.json not found`);
-      continue;
-    }
 
     console.log(`Processing pet class ${petClass}...`);
     const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
@@ -211,10 +198,15 @@ function extractPetTables() {
       }
     }
 
-    const tableCount = Object.keys(petTables[petClass].tables).length;
-    if (tableCount === 0 && !petTables[petClass].attribs) {
-      delete petTables[petClass];
-      console.warn(`  No usable named tables or attribs found, skipping`);
+    // A class an entity NAMES but that carries no usable table resolves nothing
+    // for that pet, so dropping it here would hand the consumer a silent miss
+    // instead of a gap it can see (ENT-10).
+    if (Object.keys(petTables[petClass].tables).length === 0) {
+      throw new Error(
+        `extract-at-tables: pet class '${petClass}' is named by a pet entity but its class file `
+          + 'carries no usable named tables — every scaled effect on that pet would resolve '
+          + 'against nothing.',
+      );
     }
   }
 
@@ -238,7 +230,7 @@ function generateTypeScript(tables, petTables) {
   lines.push(`  /** RechargeTime ClampStrength interval — the bounds on NET recharge`);
   lines.push(`   *  strength (floor 0.25 = the −75% debuff floor, cap 5 = +400%). Absent`);
   lines.push(`   *  when the export didn't carry it; consumers stand aside rather than`);
-  lines.push(`   *  invent a ceiling. See perma.ts. */`);
+  lines.push(`   *  invent a ceiling. */`);
   lines.push(`  rechargeBounds?: { floor: number; cap: number };`);
   lines.push(`  tables: Record<string, number[]>;`);
   lines.push(`}`);

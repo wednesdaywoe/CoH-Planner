@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
 import { getPowerPool } from '@/data';
-import { isPermaEligible } from '@/utils/calculations/perma';
 import { getRechargeBounds } from '@/data/at-tables';
+import { isPermaEligible } from '@/utils/calculations/perma';
 import { SpeedBoost } from './datasets/thunderspy/generated/powersets/controller/secondary/kinetics/speed-boost';
 import { SiphonSpeed } from './datasets/thunderspy/generated/powersets/controller/secondary/kinetics/siphon-speed';
 import { Absorption } from './datasets/thunderspy/generated/powersets/warshade/epic/umbral-aura/absorption';
@@ -47,7 +47,10 @@ describe('Thunderspy Ones-attrib buff recovery (data-driven)', () => {
   it('Hasten recovers its +70% recharge buff and 120s duration from the binary', () => {
     const hasten = getPowerPool('speed')?.powers.find((p) => p.internalName === 'Hasten');
     expect(hasten).toBeDefined();
-    expect(hasten!.effects?.rechargeBuff).toEqual({ scale: 0.7, table: 'Melee_Ones' });
+    // `ignoreStrength` is the template's own `Flags IgnoreStrength` (ENT-4) — Hasten's +70%
+    // is fixed, which the authored Homecoming def states on this same AttribMod.
+    expect(hasten!.effects?.rechargeBuff)
+      .toEqual({ scale: 0.7, table: 'Melee_Ones', ignoreStrength: true });
     expect(hasten!.effects?.buffDuration).toBe(120);
   });
 
@@ -58,24 +61,30 @@ describe('Thunderspy Ones-attrib buff recovery (data-driven)', () => {
   });
 
   it('Speed Boost recovers BOTH +recharge and +recovery (multi-stat ally buff the shortHelp hack could not)', () => {
-    expect(SpeedBoost.effects?.rechargeBuff).toEqual({ scale: 0.5, table: 'Melee_Ones' });
+    expect(SpeedBoost.effects?.rechargeBuff)
+      .toEqual({ scale: 0.5, table: 'Melee_Ones', ignoreStrength: true });
     // 0.75 = 0.5 + 0.25. Thunderspy authors a SECOND, smaller tier of the same
     // stats in its own ungated effect group; nothing in the data separates the two,
     // so the resource slot's documented same-table SUM applies (HC and Rebirth carry
     // only the 0.5 tier — a fork rebalance, not a misread). The 0.25 half became
     // visible when the parser started reading every AttribMod in an element (TSPY-4).
+    //
+    // The recovery halves carry no `ignoreStrength` where the recharge ones do: the flag is
+    // per template, and Speed Boost's is on the recharge AttribMods alone (ENT-4).
     expect(SpeedBoost.effects?.recoveryBuff).toEqual({ scale: 0.75, table: 'Melee_Ones' });
     expect(SpeedBoost.effects?.buffDuration).toBe(240);
   });
 
   it('Siphon Speed routes its negative-scale Ones template to a recharge DEBUFF', () => {
     // -0.2 RechargeTime → rechargeDebuff (sign discriminates buff vs debuff).
-    expect(SiphonSpeed.effects?.rechargeDebuff).toEqual({ scale: 0.2, table: 'Melee_Ones' });
+    expect(SiphonSpeed.effects?.rechargeDebuff)
+      .toEqual({ scale: 0.2, table: 'Melee_Ones', ignoreStrength: true });
     // Siphon Speed STEALS recharge: the same +0.2 self-buff its HC and Rebirth twins
     // both carry rides alongside the debuff. tspy shipped without it until TSPY-4 —
     // its absence was the parser reading one AttribMod per element, not a fork
     // difference, so this is no longer a bogus-buff guard.
-    expect(SiphonSpeed.effects?.rechargeBuff).toEqual({ scale: 0.2, table: 'Melee_Ones' });
+    expect(SiphonSpeed.effects?.rechargeBuff)
+      .toEqual({ scale: 0.2, table: 'Melee_Ones', ignoreStrength: true });
   });
 
   it('Burnout (instant power-reset, not a +recharge buff) stays ineligible', () => {

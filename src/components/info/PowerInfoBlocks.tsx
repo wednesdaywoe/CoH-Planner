@@ -18,6 +18,7 @@
 import { useState } from 'react';
 import { useUIStore } from '@/stores';
 import type { Power, TargetType, EffectArea, SelectedPower, IOSetEnhancement, ResolvedPseudoPetAbility } from '@/types';
+import type { ProcRollSite } from '@/types/power';
 import type { PowerDamageResult } from '@/utils/calculations';
 import type { PowerProjection } from '@/engine/engineTotalsMap';
 import { abbreviateDamageType } from '@/utils/calculations';
@@ -27,8 +28,10 @@ import { Chip, type TagKind } from './TagsRow';
 import {
   findProcData,
   isProcAlwaysOn,
+  arcToDegrees,
   resolveProcRollGeometry,
   resolveProcRollSchedule,
+  resolveProcRollSite,
   calculateScheduledProcChance,
   powerFiresProcs,
   getPPMAreaDenominator,
@@ -256,6 +259,9 @@ export function GeneralStatsBlock({
         // ProcAllowed kNone: nothing rolls against this power's recharge, so the
         // row prints why instead of a chance the game will never honour.
         procsAllowed={power.procsAllowed}
+        // …except on the powers whose kNone shell hands its slotting to executed
+        // children that roll in its place, each against its own geometry.
+        procRollSites={power.procRollSites}
         // A rain/patch hands its rolls to the summon, which is an Auto: they are
         // scored against the proc's own 10s period, once every 10s the patch
         // lives. The parent's recharge — 60s on Sleet — never enters.
@@ -317,9 +323,12 @@ interface ProcChanceRowProps {
   /** The power's `ProcMainTargetOnly` flag — resolveProcRollGeometry scores its
    *  procs single-target despite the power's AoE radius. */
   procsOnlyOnMainTarget?: boolean;
-  /** The power's `ProcAllowed` flag. `false` means no PPM chance exists here —
-   *  see powerFiresProcs. */
+  /** The power's `ProcAllowed` flag. `false` means its own recharge is not a
+   *  proc window — see powerFiresProcs. */
   procsAllowed?: boolean;
+  /** The executed children that roll in a kNone power's place, each with its
+   *  own window; see `Power.procRollSites`. */
+  procRollSites?: ProcRollSite[];
   /** Lifetime (s) of the summoned patch that owns the rolls, when there is one.
    *  Its procs roll on the patch's 10s clock, not the parent's recharge, and
    *  they roll once per 10s of patch life — see resolveProcRollSchedule. */
@@ -333,6 +342,34 @@ interface ProcEntry {
   ppm: number | null;
   /** undefined when always-on (no PPM); otherwise the computed chance 0–1 */
   chance?: number;
+  /**
+   * The window this entry's chance came from, and the numbers its breakdown
+   * prints. Per-entry rather than per-power because a `procRollSites` shell
+   * hands different procs to different children: Fault's damage procs roll in
+   * its 6s cone, its stun procs in its 20s sphere.
+   */
+  roll?: ProcRollWindow;
+  /**
+   * Set on a kNone shell no child of which can hold this piece's boost type,
+   * so nothing rolls it anywhere — distinct from always-on, which fires.
+   */
+  unrouted?: boolean;
+  /**
+   * Set on a kNone shell where TWO children could hold this piece (the
+   * multi-mez ATO procs in Hypnotizing Lights) — no single roll exists, and
+   * the routing refuses to pick a geometry. DATA-GAP-REGISTER HC-4.
+   */
+  unroutable?: boolean;
+}
+
+interface ProcRollWindow {
+  schedule: ProcRollSchedule;
+  modifiedRecharge: number;
+  castTime: number;
+  baseRecharge: number;
+  areaDenom: number;
+  /** Full name of the child rolling it, when it is not this power. */
+  via?: string;
 }
 
 function ProcChanceRow({
@@ -346,6 +383,7 @@ function ProcChanceRow({
   globalRechargeBonus,
   procsOnlyOnMainTarget,
   procsAllowed,
+  procRollSites,
   patchDuration,
 }: ProcChanceRowProps) {
   // Per-view local expansion plus a persisted "pin" toggle. The pin
@@ -363,19 +401,42 @@ function ProcChanceRow({
   // For non-attack passives there's nothing to compute.
   if (!isToggleOrAuto && baseRecharge <= 0 && castTime <= 0) return null;
 
-  // Propel & co.: the power's radius is a secondary knockback splash, so every
-  // proc in it — damage or Force Feedback alike — rolls the single-target
-  // area-factor. resolveProcRollGeometry owns that rule for all PPM surfaces.
-  const { radius: procRadius, arcDegrees: arcDeg } =
-    resolveProcRollGeometry(procsOnlyOnMainTarget, radius, arcDegrees);
-  const schedule = resolveProcRollSchedule({ powerType, baseRecharge, castTime, patchDuration });
-  // The window the breakdown row prints, kept identical to what the chance below
-  // is computed from — a formula the user can reproduce by hand has to be the
-  // formula that ran. On a fixed-period schedule the recharge terms are inert.
-  const modifiedRecharge = schedule.fixedPeriod
-    ? schedule.window
-    : (baseRecharge * (1 + globalRechargeBonus)) / (1 + globalRechargeBonus + slottedRechargeBonus);
-  const areaDenom = getPPMAreaDenominator(procRadius, arcDeg);
+  // The window a proc rolls against, given the child it was routed to (or none,
+  // meaning this power's own). Everything the chance is computed from and
+  // everything the breakdown prints comes out of here together — a formula the
+  // user can reproduce by hand has to be the formula that ran.
+  const buildWindow = (
+    site: ProcRollSite | null,
+  ): { window: ProcRollWindow; geometry: { radius: number; arcDegrees: number } } => {
+    // Propel & co.: the power's radius is a secondary knockback splash, so every
+    // proc in it — damage or Force Feedback alike — rolls the single-target
+    // area-factor. resolveProcRollGeometry owns that rule for all PPM surfaces.
+    const geometry = site
+      ? resolveProcRollGeometry(
+        site.procsOnlyOnMainTarget, site.radius, arcToDegrees(site.arc) || undefined)
+      : resolveProcRollGeometry(procsOnlyOnMainTarget, radius, arcDegrees);
+    // The schedule is this power's whether the proc was routed or not: a site
+    // changes the area factor, never the window. See collectProcRollSites.
+    const schedule = resolveProcRollSchedule({
+      powerType, baseRecharge, castTime, patchDuration,
+    });
+    return {
+      geometry,
+      window: {
+        schedule,
+        // On a fixed-period schedule the recharge terms are inert.
+        modifiedRecharge: schedule.fixedPeriod
+          ? schedule.window
+          : (baseRecharge * (1 + globalRechargeBonus))
+            / (1 + globalRechargeBonus + slottedRechargeBonus),
+        castTime,
+        baseRecharge,
+        areaDenom: getPPMAreaDenominator(geometry.radius, geometry.arcDegrees),
+        ...(site ? { via: site.power } : {}),
+      },
+    };
+  };
+  const own = buildWindow(null);
 
   const entries: ProcEntry[] = [];
   const procDataByKey: Record<string, ProcData> = {};
@@ -400,8 +461,29 @@ function ProcChanceRow({
       continue;
     }
 
+    // Routed by the piece's own `boostsAllowed` — the key `CopyBoosts` filters
+    // by when the shell hands its slotting to a child. A piece two children
+    // could hold has no single roll; the throw becomes this entry's visible
+    // marker rather than a crashed panel.
+    let site: ProcRollSite | null;
+    try {
+      site = resolveProcRollSite(procRollSites, procData.boostsAllowed);
+    } catch {
+      entries.push({
+        key, name: ioSlot.name, setName: ioSlot.setName, ppm: procData.ppm, unroutable: true,
+      });
+      continue;
+    }
+    if (!site && procsAllowed === false) {
+      entries.push({
+        key, name: ioSlot.name, setName: ioSlot.setName, ppm: procData.ppm, unrouted: true,
+      });
+      continue;
+    }
+    const { window, geometry } = site ? buildWindow(site) : own;
     const chance = calculateScheduledProcChance(
-      procData.ppm, schedule, procRadius, arcDeg, slottedRechargeBonus, globalRechargeBonus);
+      procData.ppm, window.schedule, geometry.radius, geometry.arcDegrees,
+      slottedRechargeBonus, globalRechargeBonus);
 
     entries.push({
       key,
@@ -409,6 +491,7 @@ function ProcChanceRow({
       setName: ioSlot.setName,
       ppm: procData.ppm,
       chance,
+      roll: window,
     });
   }
 
@@ -420,7 +503,7 @@ function ProcChanceRow({
   // Always-on globals in the same power are untouched; they aren't rolled, so
   // when only globals are slotted the normal row still applies.
   const rollingEntries = entries.filter((e) => e.ppm != null);
-  if (!powerFiresProcs({ procsAllowed }) && rollingEntries.length > 0) {
+  if (!powerFiresProcs({ procsAllowed, procRollSites }) && rollingEntries.length > 0) {
     // With CopyBoosts the proc still reaches the summon and fires off the PET's
     // attacks (Soulbound's Build Up in henchmen) — a real effect on a schedule
     // this power's recharge says nothing about. Without one, nothing fires.
@@ -443,8 +526,9 @@ function ProcChanceRow({
     ? ppmEntries.map((e) => `${Math.round((e.chance ?? 0) * 100)}%`).join(' / ')
       // Each roll is what the percentage describes; a patch gets several per
       // cast, so the count has to ride alongside or the number reads as the
-      // whole story and understates the power by exactly that factor.
-      + (schedule.rolls > 1 ? ` × ${schedule.rolls} rolls` : '')
+      // whole story and understates the power by exactly that factor. Only this
+      // power's own window can be a patch, so the shell's count is the one.
+      + (own.window.schedule.rolls > 1 ? ` × ${own.window.schedule.rolls} rolls` : '')
     : 'always-on';
 
   return (
@@ -508,19 +592,14 @@ function ProcChanceRow({
             <ProcDetailLine
               key={entry.key}
               entry={entry}
-              schedule={schedule}
-              modifiedRecharge={modifiedRecharge}
-              castTime={castTime}
-              areaDenom={areaDenom}
               hasRechargeMod={slottedRechargeBonus > 0}
-              baseRecharge={baseRecharge}
             />
           ))}
           <div className="text-[11px] text-slate-400 italic mt-1">
-            {schedule.rolls > 1 ? (
+            {own.window.schedule.rolls > 1 ? (
               <>
                 Rolls happen on the summoned patch, not on your cast: one every 10s for as long as
-                the patch lives ({schedule.rolls} per cast). Each is scored against the proc's own
+                the patch lives ({own.window.schedule.rolls} per cast). Each is scored against the proc's own
                 10s period, so recharge — slotted or global — does not change the chance, only how
                 often you re-cast. Measured in game 2026-08-05.
               </>
@@ -541,22 +620,35 @@ function ProcChanceRow({
 
 function ProcDetailLine({
   entry,
-  schedule,
-  modifiedRecharge,
-  castTime,
-  areaDenom,
   hasRechargeMod,
-  baseRecharge,
 }: {
   entry: ProcEntry;
-  schedule: ProcRollSchedule;
-  modifiedRecharge: number;
-  castTime: number;
-  areaDenom: number;
   hasRechargeMod: boolean;
-  baseRecharge: number;
 }) {
-  if (entry.ppm == null || entry.chance === undefined) {
+  if (entry.unrouted) {
+    return (
+      <div className="text-xs">
+        <span className="text-slate-300">{entry.name}</span>
+        <span className="text-amber-400"> — never rolls here</span>
+        <span className="text-slate-500">
+          {' '}— this power rolls in its executed children, and none of them can hold this piece
+        </span>
+      </div>
+    );
+  }
+  if (entry.unroutable) {
+    return (
+      <div className="text-xs">
+        <span className="text-slate-300">{entry.name}</span>
+        <span className="text-amber-400"> — no single roll</span>
+        <span className="text-slate-500">
+          {' '}— two of this power's executed children could roll this piece, and which one the
+          game runs is unmeasured; no chance is shown rather than a guessed one
+        </span>
+      </div>
+    );
+  }
+  if (entry.ppm == null || entry.chance === undefined || !entry.roll) {
     return (
       <div className="text-xs">
         <span className="text-slate-300">{entry.name}</span>
@@ -565,6 +657,7 @@ function ProcDetailLine({
     );
   }
 
+  const { schedule, modifiedRecharge, castTime, areaDenom, baseRecharge, via } = entry.roll;
   const ppm = entry.ppm;
   const chancePct = entry.chance * 100;
 
@@ -596,6 +689,11 @@ function ProcDetailLine({
         )}
       </div>
       <div className="text-[11px] text-slate-400 font-mono pl-1">{formula}</div>
+      {via && (
+        // The numbers above are not this power's — say whose, or the formula
+        // reads as arithmetic nobody can reproduce from the power's own stats.
+        <div className="text-[11px] text-slate-500 pl-1">rolls in {via}</div>
+      )}
     </div>
   );
 }

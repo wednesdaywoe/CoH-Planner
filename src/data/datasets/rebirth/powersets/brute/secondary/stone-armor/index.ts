@@ -21,7 +21,12 @@ import { GraniteArmor as GraniteArmor } from './granite-armor';
 
 export const powerset: Powerset = {
   id: 'brute/stone-armor',
+  setPath: 'Brute_Defense.Stone_Armor',
   name: 'Stone Armor',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can transform your skin into various forms of rock and stone. Stone Armor is one of the only Brute Defensive Power Sets that offers defense to Psionics. Stone Armor offers amazing Defense, but a few Stone Armors are mutually exclusive to each other. Some Armors, although offering superior defense, also slow you down due to its enormous bulk.',
   icon: 'stone_armor_set.ico',
   archetype: 'brute',

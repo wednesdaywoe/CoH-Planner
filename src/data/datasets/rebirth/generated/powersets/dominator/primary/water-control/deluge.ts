@@ -12,12 +12,17 @@ export const Deluge: Power = {
   "name": "Deluge",
   "internalName": "Deluge",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You cause a torrent of water to crush your foe causing High Cold and Smashing damage knocking them off their feet and reducing their movement speed. This power has a small chance to place the Drowning effect on its target. Deluge deals additional damage over time and has improved movement speed reduction against foes suffering from Drowning. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Cold/Smash), Foe Knockdown, -Speed",
   "icon": "watercontrol_deluge.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -60,6 +65,7 @@ export const Deluge: Power = {
       "slow": 15
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 0.67,
       "table": "Ranged_Ones"
     },
@@ -69,6 +75,7 @@ export const Deluge: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.35,
         "table": "Ranged_Slow"
       },
@@ -90,7 +97,7 @@ export const Deluge: Power = {
     ["Movement","JumpHeight",0.35,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","Jump",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.24518999457359314,null,true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.24518999457359314,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
     ["Damage","Cold",0.11,1,1.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
     ["Damage","Smashing",0.57435,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",1.72305,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -126,6 +133,7 @@ export const Deluge: Power = {
             "table": "Ranged_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.4375,
             "table": "Ranged_Slow"
           },

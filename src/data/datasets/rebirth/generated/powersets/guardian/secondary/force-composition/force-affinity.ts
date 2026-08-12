@@ -12,12 +12,17 @@ export const ForceAffinity: Power = {
   "name": "Force Affinity",
   "internalName": "Force_Affinity",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Your affinity for manipulating force enables you to redirect and streamline the forces in and around your body, allowing you to weaken the impact of attacks and make your own motions more efficient. This gives you a small amount of Resistance to all damage except Psionics and reduces the endurance cost of your powers. This power is always on and costs no endurance.",
   "shortHelp": "Auto: Self +Res(All DMG but Psionics), Endurance Discount",
   "icon": "forcecomp_forceaffinity.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -36,6 +41,7 @@ export const ForceAffinity: Power = {
       "resistance": 10.25
     },
     "enduranceDiscount": {
+      "ignoreStrength": true,
       "scale": 0.35,
       "table": "Melee_Ones"
     },

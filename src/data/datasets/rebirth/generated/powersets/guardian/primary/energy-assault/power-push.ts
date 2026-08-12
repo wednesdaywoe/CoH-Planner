@@ -12,12 +12,17 @@ export const PowerPush: Power = {
   "name": "Power Push",
   "internalName": "Power_Push",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Power Push deals a high amount of Energy and Smashing damage and sends the target flying for a great distance. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged High DMG(Energy/Smash), Foe High Knockback",
   "icon": "energyassault_powerpush.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 70,
@@ -59,7 +64,7 @@ export const PowerPush: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Smashing",0.82,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",0.82,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",8,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],

@@ -12,6 +12,8 @@ export const QuantumAcceleration: Power = {
   "name": "Quantum Maneuvers",
   "internalName": "Quantum_Acceleration",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "While Energy Flight, Combat Flight or Group Energy Flight are active, Quantum Maneuvers increases fly speed and movement control. It will also grant resistance against knockback and protection against -Fly and Immobilization.Quantum Maneuvers' flight speed buff stacks with other flight powers, and isn't suppressed by combat.Notes: Quantum Maneuvers provides a moderate amount of Defense even while on the ground, but this defense is lost if you attack, buff allies, give an order to pets or interact with a mission objective.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +FlySpeed, Res(-Fly, Immobilize), +Def(All), +Flight Control",
   "icon": "luminousaura_lightofreason.png",
@@ -22,6 +24,9 @@ export const QuantumAcceleration: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -97,15 +102,18 @@ export const QuantumAcceleration: Power = {
     },
     "effectDuration": 0.2,
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 1.75,
       "table": "Melee_Res_Boolean"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 1.75,
       "table": "Melee_Res_Boolean"
     },
@@ -129,30 +137,30 @@ export const QuantumAcceleration: Power = {
     }
   },
   "atoms": [
-    ["Defense","Ranged",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Melee",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","AoE",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Smashing",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Lethal",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Fire",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Cold",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Energy",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Negative",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Psionic",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Toxic",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Meta",null,1,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
-    ["Meta",null,1,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
-    ["Movement","FlyMode",4,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,0],
-    ["Movement","Control",15,1,0.2,"Melee_Control","Cur","Magnitude","Self","Any",false,"No",2,null,null,0],
-    ["Movement","Friction",15,1,0.2,"Melee_Friction","Cur","Magnitude","Self","Any",false,"No",2,null,null,0],
-    ["Movement","Fly",0.4,1,0.2,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"No",2,null,null,0],
-    ["Mez","Immobilized",-30,1,0.2,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"No",2,null,null,1,null,true],
-    ["MezResist","Knockup",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"No",2,null,null,1,null,true],
-    ["MezResist","Knockback",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"No",2,null,null,1,null,true],
-    ["Movement","FlyMode",2,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,0],
-    ["MezResist","Immobilized",3,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"No",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["MezResist","Knockup",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"No",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["MezResist","Knockback",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"No",2,null,null,1,null,true,null,null,null,null,null,true]
+    ["Defense","Ranged",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Melee",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","AoE",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Smashing",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Lethal",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Fire",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Cold",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Energy",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Negative",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Psionic",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Toxic",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Meta",null,1,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
+    ["Meta",null,1,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
+    ["Movement","FlyMode",4,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FlightActive"],
+    ["Movement","Control",15,1,0.2,"Melee_Control","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FlightActive"],
+    ["Movement","Friction",15,1,0.2,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FlightActive"],
+    ["Movement","Fly",0.4,1,0.2,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FlightActive"],
+    ["Mez","Immobilized",-30,1,0.2,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Continuous",2,null,null,1,null,true],
+    ["MezResist","Knockup",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Continuous",2,null,null,1,null,true],
+    ["MezResist","Knockback",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Continuous",2,null,null,1,null,true],
+    ["Movement","FlyMode",2,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"],
+    ["MezResist","Immobilized",3,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Knockup",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Knockback",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
   "modesSuspended": [
     "Peacebringer_Blaster_Mode",

@@ -12,12 +12,17 @@ export const FieryEmbrace: Power = {
   "name": "Fiery Embrace",
   "internalName": "Fiery_Embrace",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Fiery Embrace causes all your damaging powers to do bonus fire damage.In PvP, this power significantly boosts the damage of all your Fire attacks for quite a while. Also increases the damage of all your other non-fire based attacks for a short while.",
   "shortHelp": "Self +DMG",
   "icon": "flamingshield_fieryembrace.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 180,

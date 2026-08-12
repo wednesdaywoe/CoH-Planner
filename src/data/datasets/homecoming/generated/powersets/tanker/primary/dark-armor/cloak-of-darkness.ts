@@ -12,6 +12,8 @@ export const CloakofDarkness: Power = {
   "name": "Cloak of Darkness",
   "internalName": "Cloak_of_Darkness",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "A shroud of Netherworld darkness envelops you, making you difficult to spot at a distance. You can be seen only at close range, or if you attack a target. Even if seen, the Cloak of Darkness grants you a bonus to Defense to all attacks and some protection from Immobilization. This Netherworld Cloak also allows you to see things in a new light, allowing you to better see stealthy foes.",
   "shortHelp": "Toggle: Self Stealth, +DEF(All), +Perception, Res (Immobilize)",
   "icon": "darkarmor_cloakofdarkness.png",
@@ -22,6 +24,9 @@ export const CloakofDarkness: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const CloakofDarkness: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "perception": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Melee_Ones"
       }
@@ -125,7 +131,7 @@ export const CloakofDarkness: Power = {
   "atoms": [
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle"],
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"],
     ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
     ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
     ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],

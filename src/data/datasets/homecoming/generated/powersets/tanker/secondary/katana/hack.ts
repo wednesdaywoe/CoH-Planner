@@ -12,6 +12,8 @@ export const Hack: Power = {
   "name": "Sting of the Wasp",
   "internalName": "Hack",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a standard attack with your katana. This attack is slower than Gambler's Cut, but deals more damage. Sting of the Wasp can reduce a target's Defense, making them easier to hit.",
   "shortHelp": "Melee, DMG(Lethal), Foe -Def",
   "icon": "katana_hack.png",
@@ -20,6 +22,9 @@ export const Hack: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -63,7 +68,7 @@ export const Hack: Power = {
   "atoms": [
     ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.522,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.522,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Lethal",1.419,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Tanker_Defense.Shield_Defense !"

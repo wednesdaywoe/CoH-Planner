@@ -12,6 +12,8 @@ export const FrozenAura: Power = {
   "name": "Frozen Aura",
   "internalName": "Frozen_Aura",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mastery of cold enables you to dramatically lower the temperature immediately around you. When you perform a Frozen Aura, nearby foes will be frozen within a fragile casing of ice and suffer a moderate amount of cold damage. These frozen foes will break free if attacked. Frozen Aura deals moderate damage. Damage: Moderate Recharge: Slow",
   "shortHelp": "PBAoE, Moderate DMG(Cold), Foe Sleep",
   "icon": "icyonslaught_frozenaura.png",
@@ -20,6 +22,9 @@ export const FrozenAura: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

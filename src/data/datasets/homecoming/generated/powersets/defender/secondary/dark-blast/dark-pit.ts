@@ -12,12 +12,17 @@ export const DarkPit: Power = {
   "name": "Dark Pit",
   "internalName": "Dark_Pit",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Envelops a targeted foe and any nearby enemies in a pit of Negative Energy. The attack deals no damage, but Disorients all affected foes for a good while.",
   "shortHelp": "Ranged (Targeted AoE), Foe Disorient",
   "icon": "darkcast_darkpit.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 70,

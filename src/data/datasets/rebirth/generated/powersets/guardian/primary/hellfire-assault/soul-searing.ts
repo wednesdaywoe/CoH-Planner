@@ -12,12 +12,17 @@ export const SoulSearing: Power = {
   "name": "Soul Searing",
   "internalName": "Soul_Searing",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Using this power causes your attacks to twist the essence of your foes' souls adding toxic damage to all of your attacks for a moderate duration.  All damaging powers gain bonus Toxic damage. You also gain a moderate bonus to your chance to hit.  Recharge: Long",
   "shortHelp": "Self +Toxic Damage on all attacks, +ToHit",
   "icon": "hellfireassault_soulsearing.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 160,
@@ -50,7 +55,7 @@ export const SoulSearing: Power = {
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["ToHit",null,0.12,1,40,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Meta",null,1,1,40,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+    ["Meta",null,1,1,40,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "grantedDamageProcs": [
     {

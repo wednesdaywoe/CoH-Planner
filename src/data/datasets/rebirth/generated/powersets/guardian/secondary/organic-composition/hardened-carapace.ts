@@ -12,6 +12,8 @@ export const HardenedCarapace: Power = {
   "name": "Hardened Carapace",
   "internalName": "Hardened_Carapace",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "With a little concentration you can cause your skin to become hard as stone, boosting your constitution to reject toxins and recovering from wounds more quickly. While active, this power will boost your resistance to Lethal, Smashing and Toxic damage, grant a minor amount of regeneration, and protection from Disorient and Sleep effects. Recharge: Fast",
   "shortHelp": "Self Toggle, +Res(Lethal, Smash, Toxic, Disorient, Sleep)",
   "icon": "organiccomp_hardenedcarapace.png",
@@ -22,6 +24,9 @@ export const HardenedCarapace: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -62,11 +67,13 @@ export const HardenedCarapace: Power = {
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

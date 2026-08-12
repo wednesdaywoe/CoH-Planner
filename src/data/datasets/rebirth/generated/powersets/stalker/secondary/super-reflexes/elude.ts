@@ -12,12 +12,17 @@ export const Elude: Power = {
   "name": "Elude",
   "internalName": "Elude",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You can improve your reflexes, making yourself so quick you can Elude almost any attack, be it ranged, melee, or area effect. Your running speed, jumping height, and Endurance Recovery are also increased. Elude also grants you high resistance to Defense DeBuffs. In addition you will gain a very large amount of damage absorption, effectively turning attacks that do manage to connect to become glancing blows.  Recharge: Very Long",
   "shortHelp": "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Absorb",
   "icon": "superreflexes_elude.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 540,
@@ -102,8 +107,8 @@ export const Elude: Power = {
     ["Movement","JumpHeight",2,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Movement","Run",0.5,1,90,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Defense","All",1,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Absorb",null,4,1,90,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ]
 };

@@ -12,6 +12,8 @@ export const ArmLash: Power = {
   "name": "Arm Lash",
   "internalName": "Arm_Lash",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "The Crab Spider's backpack is capable of making rapid attacks with its many arms dealing heavy damage to foes within a short cone in front of the user.",
   "shortHelp": "Melee Cone, DMG(Lethal), Foe -DEF",
   "icon": "crabspider_armlash.png",
@@ -20,6 +22,9 @@ export const ArmLash: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -65,6 +70,6 @@ export const ArmLash: Power = {
     ["Damage","Lethal",1.7,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Lethal",1.5982,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",0.3708,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Damage","Lethal",0.3708,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"]
   ]
 };

@@ -12,6 +12,8 @@ export const TwilightShield: Power = {
   "name": "Twilight Shield",
   "internalName": "Twilight_Shield",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on Twilight Shield, you become highly resistant to Energy and Negative Energy damage.Recharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Energy, Negative)",
   "icon": "umbralaura_twilightshield.png",
@@ -22,6 +24,9 @@ export const TwilightShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

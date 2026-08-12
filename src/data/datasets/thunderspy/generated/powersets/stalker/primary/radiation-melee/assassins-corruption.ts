@@ -12,6 +12,8 @@ export const AssassinsCorruption: Power = {
   "name": "Assassin's Corruption",
   "internalName": "Assassins_Corruption",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "A signature Stalker attack.  This attack does superior energy and smashing damage on its own as a frontal attack and cannot be interrupted.  However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden.  Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.  Assassin's Corruption also has a very high chance to inflict Contaminated while hidden and a high chance while unhidden.  Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.  Damage: Special, Recharge: Slow",
   "shortHelp": "Melee, Special DMG(Smashing, Energy)",
   "icon": "radiationmelee_assassinsstrike.png",
@@ -20,6 +22,9 @@ export const AssassinsCorruption: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -53,6 +58,11 @@ export const AssassinsCorruption: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Energy",
+      "scale": 2.5,
+      "table": "Melee_Damage"
+    },
+    {
       "type": "Toxic",
       "scale": 1.4,
       "table": "Melee_Damage"
@@ -72,10 +82,12 @@ export const AssassinsCorruption: Power = {
     },
     "stealth": {
       "stealthPvE": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       },
       "stealthPvP": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       }
@@ -84,6 +96,7 @@ export const AssassinsCorruption: Power = {
   "atoms": [
     ["Damage","Smashing",0.625,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",1.875,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",2.5,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.8600000143051147,null,true],
     ["Damage","Toxic",1.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Toxic",1.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],

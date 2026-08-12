@@ -4,7 +4,8 @@
  */
 
 import { useBuildStore, useUIStore } from '@/stores';
-import { useBonusTracking } from '@/hooks';
+import { useBonusTracking, useSlotLevels } from '@/hooks';
+import { powerKey, type PowerCategory } from '@/utils/power-key';
 import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, resolveProcRollGeometry, procRollsInPatch, powerFiresProcs, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
 import { resolveProcAreaGeometry, resolveProcPatchDuration } from '@/utils/calculations/pet-damage';
 import {
@@ -57,12 +58,32 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
   const exemplarLevelSetting = useUIStore((s) => s.exemplarLevel);
   const exemplarLevel = exemplarMode ? exemplarLevelSetting : undefined;
   const bonusTracking = useBonusTracking();
+  const slotLevelsMap = useSlotLevels();
 
   // The power this panel describes. Resolved ONCE via the shared, powerset-aware
   // lookup — this file previously hand-rolled the same primary→secondary→pools→
   // epic→inherent search three times, each matching on bare `internalName`, so
   // each was independently wrong for a collided name.
   const power = findSelectedPowerInBuild(powerName, powerSet, build);
+
+  // Which bucket the power came from, for the slot-levels key. Identity comparison is
+  // sound: `findSelectedPowerInBuild` returns the build's own object.
+  const powerCategory: PowerCategory | null = !power
+    ? null
+    : build.primary.powers.includes(power)
+      ? 'primary'
+      : build.secondary.powers.includes(power)
+        ? 'secondary'
+        : build.pools.some((pool) => pool.powers.includes(power))
+          ? 'pool'
+          : build.epicPool?.powers.includes(power)
+            ? 'epic'
+            : 'inherent';
+  // The level this slot was placed at — same derivation the power list's slot-level
+  // chips use (respec vs leveling mode aware).
+  const slotLevel = powerCategory
+    ? slotLevelsMap.get(powerKey(powerCategory, powerName))?.[slotIndex]
+    : undefined;
 
   const findEnhancement = (): Enhancement | null => power?.slots[slotIndex] ?? null;
 
@@ -545,7 +566,7 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
         )}
 
         {/* Level and flags */}
-        <div className="text-xs flex gap-3">
+        <div className="text-xs flex flex-wrap gap-x-3 gap-y-0.5">
           <span className="text-slate-300">
             {ioEnh.attuned ? (
               <span className="text-purple-400">Attuned (scales to Lvl {build.level})</span>
@@ -553,6 +574,11 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
               <>Level: <span className="text-slate-200">{enhancement.level}</span></>
             )}
           </span>
+          {slotLevel !== undefined && (
+            <span className="text-slate-300">
+              Slotted at Lvl <span className="text-slate-200">{slotLevel}</span>
+            </span>
+          )}
           {ioEnh.isUnique && (
             <span className="text-red-400">Unique</span>
           )}
@@ -560,6 +586,40 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
             <span className={levelOffsetClass(enhancement.boost)}>{levelOffsetLabel(enhancement.boost)}</span>
           ) : null}
         </div>
+
+        {/* Set pieces — the whole set's piece list, the ones slotted in this power lit
+            (the Mids presentation: what you have and what's left to slot, at a glance) */}
+        {ioSet && (() => {
+          const slottedPieceNums = new Set(
+            (power?.slots ?? [])
+              .filter((s): s is IOSetEnhancement =>
+                !!s && s.type === 'io-set' && (s as IOSetEnhancement).setId === ioEnh.setId)
+              .map((s) => s.pieceNum)
+          );
+          return (
+            <div className="border-t border-slate-700 pt-2">
+              <div className="text-xs text-slate-300 uppercase mb-1 font-medium">
+                Set Pieces ({piecesSlotted}/{ioSet.pieces.length} slotted)
+              </div>
+              <div className="space-y-0.5">
+                {ioSet.pieces.map((p) => {
+                  const slotted = slottedPieceNums.has(p.num);
+                  return (
+                    <div
+                      key={p.num}
+                      className={`text-xs flex items-center gap-1.5 ${slotted ? 'text-cyan-300' : 'text-slate-500'}`}
+                    >
+                      <span
+                        className={`inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${slotted ? 'bg-cyan-300' : 'border border-slate-500'}`}
+                      />
+                      {p.name || `Piece ${p.num}`}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Set Bonuses */}
         {ioSet && ioSet.bonuses.length > 0 && (() => {
@@ -667,6 +727,11 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
           {enhancement.level && (
             <span className="text-slate-300">
               Level: <span className="text-slate-200">{enhancement.level}</span>
+            </span>
+          )}
+          {slotLevel !== undefined && (
+            <span className="text-slate-300">
+              Slotted at Lvl <span className="text-slate-200">{slotLevel}</span>
             </span>
           )}
           {enhancement.boost ? (

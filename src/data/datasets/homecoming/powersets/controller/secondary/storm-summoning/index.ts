@@ -21,7 +21,12 @@ import { LightningStorm as LightningStorm } from './lightning-storm';
 
 export const powerset: Powerset = {
   id: 'controller/storm-summoning',
+  setPath: 'Controller_Buff.Storm_Summoning',
   name: 'Storm Summoning',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can command the forces of nature! Storm Summoning allows you to control wind and weather to aid your allies and wreak havoc on your foes.',
   icon: 'storm_summoning_set.ico',
   archetype: 'controller',

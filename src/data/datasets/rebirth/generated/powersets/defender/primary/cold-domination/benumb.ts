@@ -12,12 +12,17 @@ export const Benumb: Power = {
   "name": "Benumb",
   "internalName": "Benumb",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Numbs a single target to its very core.  Benumb reduces the target's core body temperature, dramatically weakening them.  A Benumbed target's Damage and Regeneration Rate are greatly reduced.  Additionally, the affected target's secondary power effects are all weakened. The target's powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all weakened.  Recharge: Long",
   "shortHelp": "Ranged Foe -DMG, -END, -Regeneration, -Special",
   "icon": "colddomination_benumb.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -35,6 +40,7 @@ export const Benumb: Power = {
   "effects": {
     "buffDuration": 30,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Debuff_Dam"
     },
@@ -50,6 +56,7 @@ export const Benumb: Power = {
       "table": "Ranged_Ones"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Ranged_Ones"
     },

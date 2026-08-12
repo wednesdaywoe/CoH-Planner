@@ -12,12 +12,17 @@ export const TimeStop: Power = {
   "name": "Time Stop",
   "internalName": "Time_Stop",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You trap your target within the flow of time causing them to be held helpless.  Even those resistant to the effects of Time Stop's hold will still have their regeneration rate and healing effects reduced for a brief period.  Targets affected by the Delayed effect will suffer from a more powerful hold, however its benefits are brief. Like most Temporal Manipulation attacks, manipulating time like this increases your movement speed and attack rate briefly.  Recharge: Long",
   "shortHelp": "Ranged Hold, Foe -Regen, -Heal",
   "icon": "timemanipulation_timestop.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -39,6 +44,7 @@ export const TimeStop: Power = {
   "effects": {
     "buffDuration": 20,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.143,
       "table": "Ranged_Ones"
     },
@@ -68,6 +74,7 @@ export const TimeStop: Power = {
       }
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Ones"
     },

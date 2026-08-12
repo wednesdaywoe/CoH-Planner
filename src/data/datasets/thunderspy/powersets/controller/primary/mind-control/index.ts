@@ -21,7 +21,12 @@ import { TotalDomination as TotalDomination } from './total-domination';
 
 export const powerset: Powerset = {
   id: 'controller/mind-control',
+  setPath: 'Controller_Control.Mind_Control',
   name: 'Mind Control',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You can manipulate and control your opponent\'s mind. Since Mental powers directly affect the mind, most tend to be very accurate, and thus very useful against higher level foes. Few foes can resist Psionic powers, but creatures without minds, like machines and robots, are resistant to many of the effects.',
   icon: 'mind_control_set.ico',
   archetype: 'controller',

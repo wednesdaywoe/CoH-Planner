@@ -12,12 +12,17 @@ export const CallLocusts: Power = {
   "name": "Call Ravens",
   "internalName": "Call_Locusts",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You command an unkindness of ravens to quickly assault and harass your foes. Your foes will suffer Moderate Lethal damage over time and have their speed and defense reduced. This power has a high chance at granting your pets a stack of Pack Mentality.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DoT(Lethal), Foe -Speed, -Defense, -Fly",
   "icon": "beastmastery_calllocusts.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 40,
@@ -73,6 +78,7 @@ export const CallLocusts: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -94,7 +100,7 @@ export const CallLocusts: Power = {
     ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Jump",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.6883780360221863,null,true,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.6883780360221863,null,true,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !",null,null,null,null,null,null,null,0.69],
     ["Damage","Lethal",0.398131,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

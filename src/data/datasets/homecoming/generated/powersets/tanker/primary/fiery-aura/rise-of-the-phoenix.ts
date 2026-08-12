@@ -12,12 +12,17 @@ export const RiseofthePhoenix: Power = {
   "name": "Phoenix Rising",
   "internalName": "Rise_of_the_Phoenix",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Phoenix Rising will leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.You can also use this power even if you have not been defeated, with weakend effects. The closer you are to being defeated, the stronger the effects will be.",
   "shortHelp": "Self Heal, MaxHP, Rez, Special",
   "icon": "flamingshield_riseofthephoenix.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,
@@ -74,6 +79,6 @@ export const RiseofthePhoenix: Power = {
     ["MaxHP",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Heal",null,5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
   ]
 };

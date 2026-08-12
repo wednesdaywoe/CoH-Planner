@@ -12,12 +12,17 @@ export const NaturesBoon: Power = {
   "name": "Nature's Boon",
   "internalName": "Natures_Boon",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power will dramatically increase the benefits offered by Pack Master and the secondary effects of your melee attacks for a short while.  Nature's Boon will double the healing granted by Primal Form's melee attacks, it will increase the debuff effects while in Hunter form by 50% and it will double your critical hit chance while in Prowler form in and out of hide as well as increasing the potency of your bleeds.  Additionally you will gain a large endurance cost discount for the duration of this power's effect. Recharge: Very Long",
   "shortHelp": "Self, +Special, +End Discount, -All Primal Energy",
   "icon": "feralmight_naturesboon.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,
@@ -35,6 +40,7 @@ export const NaturesBoon: Power = {
       "enduranceDiscount": 30
     },
     "enduranceDiscount": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Stun"
     }

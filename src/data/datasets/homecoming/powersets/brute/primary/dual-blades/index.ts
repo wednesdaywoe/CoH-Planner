@@ -21,7 +21,12 @@ import { HighLow as HighLow } from './high-low';
 
 export const powerset: Powerset = {
   id: 'brute/dual-blades',
+  setPath: 'Brute_Melee.Dual_Blades',
   name: 'Dual Blades',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You are a master of fighting with a blade in each hand. Your precision and skill with the blades enable you to strike in numerous combinations, each of which has unique secondary effects on a target which withstands your onslaught.',
   icon: 'dual_blades_set.ico',
   archetype: 'brute',

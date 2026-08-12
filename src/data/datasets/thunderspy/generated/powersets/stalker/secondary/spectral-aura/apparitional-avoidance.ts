@@ -12,6 +12,8 @@ export const ApparitionalAvoidance: Power = {
   "name": "Spectral Shift",
   "internalName": "Apparitional_Avoidance",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You partially shift yourself out of the living world to avoid the strikes of your foes. While active Melee attacks may harmlessly pass through you, you also gain resistance to negative energy damage and increased movement speed. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Melee), Res(Negative Energy, DeBuff DEF), Run Speed",
   "icon": "spectralaura2.png",
@@ -22,6 +24,9 @@ export const ApparitionalAvoidance: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -47,6 +52,7 @@ export const ApparitionalAvoidance: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       }

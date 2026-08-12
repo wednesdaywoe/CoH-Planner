@@ -12,12 +12,17 @@ export const BoostRange: Power = {
   "name": "Boost Range",
   "internalName": "Boost_Range",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You can boost your powers to increase the range of your next few attacks. Recharge: Long",
   "shortHelp": "Self Range Increase",
   "icon": "timemanipulation_chronoshift.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 60,
@@ -32,6 +37,7 @@ export const BoostRange: Power = {
   "effects": {
     "buffDuration": 30,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Melee_Ones"
     },
@@ -55,6 +61,7 @@ export const BoostRange: Power = {
       }
     },
     "rangeBuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Stun"
     },

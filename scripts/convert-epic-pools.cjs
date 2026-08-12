@@ -22,18 +22,23 @@ const {
   SET_CATEGORY_MAP,
   extractEffects,
   extractDamage,
+  extractFormVariants,
+  extractQuickSnipeData,
+  extractSnipeBaseTiming,
   assignModes,
   resolveThunderspyMovementTargets,
   collectTemplatesDeep,
   collectAtomTemplates,
   collectBaseTemplates,
   encodeAtomsForEmit,
+  extractConditionalEffects,
   detectStackingEffects,
   mergeStackingPatches,
   RAW_DATA_PATH,
   EFFECT_AREA_MAP,
   BIN_BOOST_MAP,
   inferAllowedSetCategories,
+  collectProcRollSites,
   normalizeIconPath,
   TARGET_TYPE_MAP,
   getStrengthsDisallowedIndex,
@@ -48,8 +53,6 @@ const RAW_POWERS_PATH = (() => {
   return oldLayout;
 })();
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
-// Text fields that didn't resolve to text (message-store keys like
-// `P2937209522`) must not reach the UI as if they had.
 const { displayText } = require('./_display-text.cjs');
 const datasetId = parseDatasetArg();
 
@@ -135,17 +138,37 @@ function convertEpicPower(rawJson, rank, availableLevel) {
       && getStrengthsDisallowedIndex().get(rawJson.full_name.toLowerCase());
     if (sd && sd.global.length) power.globalStrengthsDisallowed = sd.global;
   }
-  // ProcMainTargetOnly — procs roll single-target here regardless of the power's
-  // radius. See the field doc on `Power.procsOnlyOnMainTarget`.
+
+  // ProcMainTargetOnly — procs roll single-target here regardless of radius.
+  // See the field doc on `Power.procsOnlyOnMainTarget`.
   if (rawJson.procs_only_on_main_target) power.procsOnlyOnMainTarget = true;
-  // ProcAllowed kNone — no PPM proc rolls here at all (Ice Elemental). See the
-  // field doc on `Power.procsAllowed`.
+
+  // ProcAllowed kNone — the game fires no proc in this power. Sparse-false, mirroring
+  // the export: absent means procs fire. See the field doc on `Power.procsAllowed`.
   if (rawJson.procs_allowed === false) power.procsAllowed = false;
+  // …unless an executed child rolls in its place. No epic power has one today;
+  // the call is here so an epic that grows one is not a silent gap.
+  const procRollSites = collectProcRollSites(rawJson);
+  if (procRollSites) power.procRollSites = procRollSites;
+
+  // EntsAffected — who this power's effects can land on, which is what an atom
+  // targeting `AnyAffected` means by "the target". See the field doc on
+  // `Power.targetsAffected` (DATA-GAP-REGISTER MEZRES-3).
+  if (Array.isArray(rawJson.targets_affected) && rawJson.targets_affected.length) {
+    power.targetsAffected = rawJson.targets_affected;
+  }
+
   power.rank = rank;
   power.available = availableLevel;
+  // See the field doc on the archetype converter's `autoIssue`/`free`: the game
+  // grants rather than offers a power when AutoIssue passes together with
+  // BuyRequires and available <= level (character_base.c:1952).
+  power.autoIssue = rawJson.auto_issue === true;
+  power.free = rawJson.free === true;
 
   // Description & help
   power.description = displayText(rawJson.display_help) || '';
+  // An unresolved message-store key is not text — see `_display-text.cjs`.
   if (displayText(rawJson.display_short_help)) {
     power.shortHelp = rawJson.display_short_help.replace(/\u00a0/g, ' ');
   }
@@ -272,6 +295,29 @@ function convertEpicPower(rawJson, rank, availableLevel) {
 
   }
 
+  // The fast (uninterruptible) redirect form, and the slow form's real timing. This converter
+  // never called either extractor, so the six epic snipes shipped a MIX of the two forms: the
+  // redirect shell's `activation_time` mirrors the fast anim, while `collectBaseTemplates`
+  // resolves the slow branch's damage. Epic Moonbeam read 1.33s cast against the 4.5-scale
+  // charged hit — a cast that belongs to neither form as displayed. Same fix as
+  // convert-powerset.cjs, into this partition's bag keys (`normalize_legacy_power` renames
+  // `activationTime` → `castTime` at load).
+  const quickSnipe = extractQuickSnipeData(rawJson);
+  if (quickSnipe) {
+    power.quickSnipe = quickSnipe;
+    const base = extractSnipeBaseTiming(rawJson);
+    if (base?.castTime != null) effects.activationTime = base.castTime;
+    if (base?.interruptTime != null) effects.interruptTime = base.interruptTime;
+  }
+
+  // Alternate records the redirect table selects by an evaluated condition — the same transform
+  // archetype and pool powers get. Rebirth's Attack Munitions is this partition's carrier: it
+  // fires as a rifle, as pistols, or plain, by which Guardian assault picks the build holds.
+  const formVariants = extractFormVariants(rawJson);
+  if (formVariants) {
+    power.formVariants = formVariants;
+  }
+
   // Plan B — emit the pre-projection atom list alongside the bag, exactly as
   // convert-powerset.cjs and convert-pool-powers.cjs do. Epic-pool powers went
   // without it until 2026-07-15, so every atom-native applier silently fell back to
@@ -291,6 +337,19 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   }
 
   power.effects = effects;
+
+  // Conditional bonus effects (Mechanic Adjusters) — the same emit convert-powerset.cjs and
+  // convert-pool-powers.cjs run, and for the same reason placed AFTER the atom block: the
+  // extractor stamps `_perTargetIncrement` on the templates it patches and `encodeAtomsForEmit`
+  // copies that stamp, so the order decides whose increment lands on the base atoms.
+  //
+  // This partition's carriers are the three Leviathan Mastery Spirit Sharks (whose Leviathan
+  // Hunger gate is an ownership claim), EM Pulse's vs-Machines bonus and, on Thunderspy, Dark
+  // Obliteration's hide bonus. See COND-2.
+  if (rawJson.effects?.length) {
+    const conditional = extractConditionalEffects(rawJson.effects, rawJson);
+    if (conditional) power.conditionalEffects = conditional;
+  }
 
   return power;
 }
@@ -410,8 +469,18 @@ function convertEpicPool(poolId, existingPool) {
     || (FALLBACK_POOLS[poolId] && FALLBACK_POOLS[poolId].archetype)
     || inferArchetypeFromPoolPowers(poolPath)
     || '';
+  // The set's binary name — the only spelling a `requires` set path uses.
+  if (!poolIndex.key) {
+    throw new Error(`${indexPath}: missing key (the binary set path)`);
+  }
+
   const pool = {
     id: poolId,
+    setPath: poolIndex.key,
+    buyRequires: poolIndex.buy_requires || [],
+    buyRequiresFailed: poolIndex.buy_requires_failed || '',
+    specializeAt: poolIndex.specialize_at || 0,
+    specializeRequires: poolIndex.specialize_requires || [],
     name: poolIndex.display_name || (existingPool ? existingPool.name : poolId),
     displayName: poolIndex.display_name || (existingPool ? existingPool.displayName : poolId),
     archetype: fallbackArchetype,
@@ -448,11 +517,7 @@ function convertEpicPool(poolId, existingPool) {
         `No available_level entry for ${fullName} in ${poolPath} index.json — `
         + `malformed export, refusing to fabricate an unlock level`);
     }
-    let availableLevel = availableLevels[i];
-    // Normalize the unsigned "-1 = auto-granted" sentinel (0xFFFFFFFF) back to
-    // a signed negative, matching the pool/powerset converters, so granted
-    // sub-powers stay out of the picker.
-    if (availableLevel >= 0x80000000) availableLevel -= 0x100000000;
+    const availableLevel = availableLevels[i];
     collected.push({ rawJson, availableLevel, originalIndex: i });
   }
 

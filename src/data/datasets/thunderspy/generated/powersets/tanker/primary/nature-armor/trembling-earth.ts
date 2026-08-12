@@ -12,12 +12,17 @@ export const TremblingEarth: Power = {
   "name": "Trembling Earth",
   "internalName": "Trembling_Earth",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You control the ground beneath your feet, drawing up heat and causing foes to lose their balance. Deals medium fire damage to all in its wake and lowers their resistance. Can only be cast while on the ground.",
   "shortHelp": "PBAoE Fire DMG, Foe -Res (All)",
   "icon": "natureaffinity_overgrowth.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,
@@ -45,34 +50,42 @@ export const TremblingEarth: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       }
@@ -88,7 +101,7 @@ export const TremblingEarth: Power = {
     ["Resistance","Negative",-1.5,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Psionic",-1.5,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-1.5,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Meta",null,0,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,0,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "damageTypes": [
     "Fire"

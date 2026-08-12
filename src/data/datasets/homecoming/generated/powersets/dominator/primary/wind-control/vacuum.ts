@@ -12,12 +12,17 @@ export const Vacuum: Power = {
   "name": "Vacuum",
   "internalName": "Vacuum",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You release all Pressure to create a vacuum space around a target. With a foe target, the foe is held. Nearby foes may also be held. Foes in the field suffer lethal damage and persistent movement, attack speed, and chance to hit debuffs that grow stronger the longer they are in the field. If centered on an ally, the main target is not held, but foes are affected as normal. For each Pressure released, the Vacuum field persists for 2 seconds more. At your highest Pressure level, the main target will take extra damage and the field will persist long enough to reapply its hold. If Vacuum is targeted on your Vortex, you will gain the Clear Skies boon, but at the expense of using the power to harm foes. The boon lasts 5 seconds more for each Pressure released. Both Vacuum and Vortex are required to unlock Clear Skies.Damage: Minor.Recharge: Long.",
   "shortHelp": "Ranged (Targeted AoE), Hold (Foe), Moderate DoT (Lethal), -Movement(Foe), -Rech(Foe), -ToHit(Foe), Special(Pet), Pressure Consumer (Self)",
   "icon": "windcontrol_vacuum.png",
   "powerType": "Click",
   "targetType": "Any",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Any"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -62,14 +67,14 @@ export const Vacuum: Power = {
     ["EntCreate",null,-1,1,8,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target.owner> entref source> eq !"],
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&"],
     ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&",true],
-    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&",true],
-    ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&",true],
+    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&",true,null,null,null,null,null,null,null,null,"Domination"],
     ["Damage","Lethal",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",true],
     ["Damage","Lethal",0.1929,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",true],
-    ["Meta",null,1,159,0,"Ranged_Ones","Cur","Expression","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kCloudedSkies Source.Mode? ! entref target.owner> entref source> eq &&",true],
-    ["Meta",null,1,160,239,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"entref target.owner> entref source> eq",true],
-    ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true]
+    ["Meta",null,1,159,0,"Ranged_Ones","Cur","Expression","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kCloudedSkies Source.Mode? ! entref target.owner> entref source> eq &&",true,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,160,239,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"entref target.owner> entref source> eq",true,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "conditionalEffects": [
     {

@@ -12,6 +12,8 @@ export const PsiBladeSlash: Power = {
   "name": "Psi-Blade Slash",
   "internalName": "PsiBlade_Slash",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You manifest your sword and slash for high damage and manifesting a Psychokinetic sword. Damage: High Recharge: Moderate",
   "shortHelp": "Melee, High DMG (Psionic/Energy)",
   "icon": "awakened_psioniclash.png",
@@ -20,6 +22,9 @@ export const PsiBladeSlash: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -66,8 +71,8 @@ export const PsiBladeSlash: Power = {
     ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"drop_toggles"]
   ],
   "damageTypes": [
     "Energy",

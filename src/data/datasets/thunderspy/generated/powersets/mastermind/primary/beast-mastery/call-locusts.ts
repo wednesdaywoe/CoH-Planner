@@ -12,12 +12,17 @@ export const CallLocusts: Power = {
   "name": "Call Ravens",
   "internalName": "Call_Locusts",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You command an unkindness of ravens to quickly assault and harass your foes. Your foes will suffer Moderate Lethal damage over time and have their speed and defense reduced. This power has a high chance at granting your pets a stack of Pack Mentality.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DoT(Lethal), Foe -Speed, -Defense, -Fly",
   "icon": "beastmastery_calllocusts.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 40,
@@ -72,6 +77,7 @@ export const CallLocusts: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

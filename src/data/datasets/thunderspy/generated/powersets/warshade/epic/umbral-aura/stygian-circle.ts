@@ -12,12 +12,17 @@ export const StygianCircle: Power = {
   "name": "Stygian Circle",
   "internalName": "Stygian_Circle",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You can tap into your Nictus power to drain the remaining essence of all nearby defeated foes to heal yourself, and recover Endurance.  The more defeated foes affected, the more you will be healed. Additionally, the more powerful the defeated foes you drain, the more health you will recover. Recharge: Slow",
   "shortHelp": "PBAoE Self +HP (Special), +End",
   "icon": "umbralaura_stygiancircle.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 20,
@@ -45,7 +50,7 @@ export const StygianCircle: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,20],
     ["Heal",null,2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Lt_Grunt eq ! arch target> Class_Lt_Sniper eq ! && arch target> Class_Boss_Grunt eq ! && arch target> Class_Boss_Elite eq ! && arch target> Class_Boss_Archvillain eq ! && arch target> Class_Boss_Monster eq ! && enttype target> player eq ! &&",true],
     ["Heal",null,3,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Lt_Grunt eq arch target> Class_Lt_Sniper eq ||",true],

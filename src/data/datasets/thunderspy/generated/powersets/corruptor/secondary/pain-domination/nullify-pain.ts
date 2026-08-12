@@ -12,12 +12,18 @@ export const NullifyPain: Power = {
   "name": "Nullify Pain",
   "internalName": "Nullify_Pain",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Nullify Pain will heal nearby allies for some hit points by numbing the pain caused by their wounds. Nullify Pain also grants you a damage buff when healing allies that have been harmed. Recharge: Moderate",
   "shortHelp": "PBAoE, Team +Heal, Self +DMG(Special) ",
   "icon": "paindomination_nullifypain.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -42,14 +48,14 @@ export const NullifyPain: Power = {
   },
   "atoms": [
     ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["DamageBuff","Smashing",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Lethal",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Fire",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Cold",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Energy",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Negative",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Psionic",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Toxic",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true]
+    ["DamageBuff","Smashing",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
+    ["DamageBuff","Lethal",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
+    ["DamageBuff","Fire",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
+    ["DamageBuff","Cold",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
+    ["DamageBuff","Energy",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
+    ["DamageBuff","Negative",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
+    ["DamageBuff","Psionic",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
+    ["DamageBuff","Toxic",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true]
   ],
   "conditionalEffects": [
     {
@@ -60,6 +66,7 @@ export const NullifyPain: Power = {
       "effects": {
         "buffDuration": 10,
         "damageBuff": {
+          "ignoreStrength": true,
           "scale": 1,
           "table": "Ranged_Buff_Dmg"
         },

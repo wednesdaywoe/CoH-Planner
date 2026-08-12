@@ -12,6 +12,8 @@ export const FocusedBurst: Power = {
   "name": "Focused Burst",
   "internalName": "Focused_Burst",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Projects a burst of focused power over a short distance.  Focused Burst deals high damage and can possibly knock down your foe. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Smash/Energy), Foe Knockdown",
   "icon": "kineticattack_focusedburst.png",
@@ -19,6 +21,9 @@ export const FocusedBurst: Power = {
   "targetType": "Foe",
   "effectArea": "AoE",
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -60,6 +65,7 @@ export const FocusedBurst: Power = {
   "effects": {
     "buffDuration": 7,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Debuff_Dam"
     },

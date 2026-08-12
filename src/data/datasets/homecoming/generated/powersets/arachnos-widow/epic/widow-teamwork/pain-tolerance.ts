@@ -12,12 +12,17 @@ export const PainTolerance: Power = {
   "name": "Pain Tolerance",
   "internalName": "Pain_Tolerance",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Night Widows who possess Pain Tolerance are resistant to most damage types, and gain additional hit points. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self Res (All DMG but Psi), +MaxHealth",
   "icon": "widowteamwork_paintolerance.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 0.5

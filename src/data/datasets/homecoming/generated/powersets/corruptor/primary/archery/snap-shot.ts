@@ -12,12 +12,17 @@ export const SnapShot: Power = {
   "name": "Snap Shot",
   "internalName": "Snap_Shot",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.Damage: Moderate.Recharge: Very Fast.",
   "shortHelp": "Ranged, Moderate DMG(Lethal)",
   "icon": "archery_quickarrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 80,

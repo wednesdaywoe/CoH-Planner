@@ -12,12 +12,17 @@ export const WaterGolem: Power = {
   "name": "Water Golem",
   "internalName": "Water_Golem",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a watery entity to aid you in battle. The Water Golem is primarily a melee attacker, but it also has a moderate amount of control abilities as well. Recharge: Very Long",
   "shortHelp": "Summon Water Golem",
   "icon": "watercontrol_watergolem.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

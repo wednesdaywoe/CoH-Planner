@@ -12,12 +12,17 @@ export const WebGrenade: Power = {
   "name": "Web Grenade",
   "internalName": "Web_Grenade",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping. Recharge: Fast",
   "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
   "icon": "traps_targetedimmoblize.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -51,6 +56,7 @@ export const WebGrenade: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },

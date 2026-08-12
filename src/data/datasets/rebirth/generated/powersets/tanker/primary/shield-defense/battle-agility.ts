@@ -12,6 +12,8 @@ export const BattleAgility: Power = {
   "name": "Active Defense",
   "internalName": "Battle_Agility",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Repel, Knockback, Hold and Defense Debuff effects for a short duration.  Recharge: Very Long",
   "shortHelp": "Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback, Defense Debuff)",
   "icon": "shielddefense_battleagility.png",
@@ -23,6 +25,9 @@ export const BattleAgility: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -38,6 +43,7 @@ export const BattleAgility: Power = {
   "effects": {
     "buffDuration": 120,
     "confuse": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -63,11 +69,13 @@ export const BattleAgility: Power = {
     },
     "effectDuration": 120,
     "fear": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -87,14 +95,17 @@ export const BattleAgility: Power = {
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }
@@ -104,11 +115,13 @@ export const BattleAgility: Power = {
       "table": "Melee_Ones"
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

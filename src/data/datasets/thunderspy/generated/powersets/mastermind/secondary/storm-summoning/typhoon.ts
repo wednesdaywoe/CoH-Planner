@@ -12,6 +12,8 @@ export const Typhoon: Power = {
   "name": "Typhoon",
   "internalName": "Typhoon",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You can summon a Typhoon. The wind and rain from this massive storm reduce the range and chance to hit of nearby foes. While not as strong as Hurricane Typhoon has a higher knock down chance and does not repel. Choosing this power locks out Hurricane Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Foe -Range, -To Hit, Knockback",
   "icon": "stormsummoning_hurricane.png",
@@ -22,6 +24,9 @@ export const Typhoon: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,9 +65,9 @@ export const Typhoon: Power = {
   "atoms": [
     ["Range",null,-0.3,1,5,"Ranged_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["ToHit",null,1.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Mez","Knockback",0.02,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.02,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.1],
     ["Mez","Knockback",4,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit >= &&",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit >= &&",true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "requires": "Mastermind_Buff.Storm_Summoning.Hurricane !"
 };

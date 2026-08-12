@@ -12,12 +12,17 @@ export const Confront: Power = {
   "name": "Confront",
   "internalName": "Confront",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Challenges a foe to attack you. Useful to pull a villain off an ally who finds themselves in over their head. A To-Hit check required to Taunt enemy players, but is not needed against critter targets.",
   "shortHelp": "Ranged, Foe Taunt",
   "icon": "electricmelee_targetedtaunt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

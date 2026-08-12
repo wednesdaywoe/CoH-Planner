@@ -12,12 +12,17 @@ export const Subdue: Power = {
   "name": "Subdue",
   "internalName": "Subdue",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Subdue deals high Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Psionic), Foe Immobilize",
   "icon": "psionicassault_subdue.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,
@@ -55,12 +60,12 @@ export const Subdue: Power = {
   },
   "atoms": [
     ["Damage","Psionic",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",6,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",6,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true],
     ["Damage","Psionic",2.6446,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",4,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",9,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
-    ["Mez","Immobilized",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Immobilized",4,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.8,true],
+    ["Mez","Immobilized",9,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true,null,null,null,null,null,null,0.8,true],
+    ["Mez","Immobilized",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true,null,null,null,null,null,null,0.8,true],
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "conditionalEffects": [
     {

@@ -12,6 +12,8 @@ export const TouchofFear: Power = {
   "name": "Touch of Fear",
   "internalName": "Touch_of_Fear",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have their chance to hit reduced.",
   "shortHelp": "Melee (Targeted AoE), DMG(Negative), Fear, Foe -To Hit",
   "icon": "shadowfighting_touchoffearaoe.png",
@@ -22,6 +24,9 @@ export const TouchofFear: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -48,13 +53,20 @@ export const TouchofFear: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.1726,
-    "table": "Melee_Damage",
-    "duration": 3.1,
-    "tickRate": 0.75
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.1726,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    },
+    {
+      "type": "Negative",
+      "scale": 0.8632,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "effects": {
     "buffDuration": 20,
     "durations": {
@@ -72,6 +84,7 @@ export const TouchofFear: Power = {
   },
   "atoms": [
     ["Damage","Negative",0.1726,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Negative",0.8632,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true],
     ["ToHit",null,1.5,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Terrorized",7,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],

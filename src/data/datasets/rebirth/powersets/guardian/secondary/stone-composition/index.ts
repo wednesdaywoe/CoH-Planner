@@ -21,7 +21,12 @@ import { Eruption as Eruption } from './eruption';
 
 export const powerset: Powerset = {
   id: 'guardian/stone-composition',
+  setPath: 'Guardian_Comp.Stone_Composition',
   name: 'Stone Composition',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Stone Composition users can transform themselves into various forms of rock and stone to avoid hard. You are also able to harness the crushing force of earth to weaken your foes and protect your allies.  Many of these powers need to be performed while on the ground.',
   icon: 'stone_armor_set.ico',
   archetype: 'guardian',

@@ -12,12 +12,17 @@ export const SoulExtraction: Power = {
   "name": "Soul Extraction",
   "internalName": "Soul_Extraction",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You can extract the soul from one of your defeated Undead Henchmen and summon its spectral essence to do your bidding.  The power of the soul is dependent upon the type of undead Henchman you extract it from, however it will always be one level lower than you. Unlike your other Henchman, the extracted Soul is only loosely bound to your control and will eventually move on to the next world. The Soul cannot gain new powers with Enchanted Undead or Dark Empowerment. Recharge: Very Long",
   "shortHelp": "Summon Ghost (Special)",
   "icon": "necromancy_soulextraction.png",
   "powerType": "Click",
   "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadMyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

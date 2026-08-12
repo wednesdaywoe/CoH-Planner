@@ -12,6 +12,8 @@ export const TimeWall: Power = {
   "name": "Time Wall",
   "internalName": "Time_Wall",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a time barrier to immobilize a single enemy and reduce their regeneration rate. Enemies behind this barrier will have time slow down around them, reducing their attack rate. Enemies that are strong enough to cross the barrier will still have their movement speed reduced. Time Wall applies the Delayed effect on its target.  Damage, debuff and control effects from other Time Manipulation powers are increased on targets affected by Delayed. Like most Temporal Manipulation attacks, manipulating time like this increases your movement speed and attack rate briefly. Recharge: Long.",
   "shortHelp": "Ranged Foe, -Speed, -Recharge, -Regen, Special",
   "icon": "timemanipulation_timecrawl.png",
@@ -23,6 +25,9 @@ export const TimeWall: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -47,12 +52,14 @@ export const TimeWall: Power = {
   "effects": {
     "buffDuration": 20,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.106,
       "table": "Ranged_Ones"
     },
     "durations": {
       "damageBuff": 9.1,
       "movement": 10,
+      "movementCapDebuff": 20,
       "rechargeDebuff": 20,
       "regenDebuff": 20,
       "slow": 20
@@ -76,11 +83,20 @@ export const TimeWall: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.6,
       "table": "Ranged_Slow"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 0.25,
       "table": "Ranged_Ones"
     },
@@ -90,6 +106,7 @@ export const TimeWall: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -98,8 +115,8 @@ export const TimeWall: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.5,
+        "table": "Ranged_Slow"
       }
     },
     "maxStacks": 2,
@@ -115,7 +132,7 @@ export const TimeWall: Power = {
     ["Movement","Jump",0.5,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Fly",0.5,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["GrantPower",null,1,1,10,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Run",-1,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],

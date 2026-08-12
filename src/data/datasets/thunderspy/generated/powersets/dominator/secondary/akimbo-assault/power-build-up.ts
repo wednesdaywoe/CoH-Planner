@@ -12,12 +12,17 @@ export const PowerBuildUp: Power = {
   "name": "Power Build Up",
   "internalName": "Power_Build_Up",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly boosts the secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. Recharge: Long",
   "shortHelp": "Self +Special",
   "icon": "domdppowerboost.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,
@@ -36,6 +41,7 @@ export const PowerBuildUp: Power = {
   "effects": {
     "buffDuration": 15,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -46,90 +52,112 @@ export const PowerBuildUp: Power = {
     },
     "specialBuff": {
       "absorb": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "aoe": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "cold": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "confuse": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "heal": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "melee": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "ranged": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Ones"
       }

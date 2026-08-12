@@ -12,12 +12,17 @@ export const MentalTraining: Power = {
   "name": "Mental Training",
   "internalName": "Mental_Training",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mental training allows you to focus your will, allowing you to move faster than normal, as well as resist slow effects. This power is always on and permanently increases your attack rate and movement speed.",
   "shortHelp": "Auto: Self +Recharge, +SPD, Res (Slow)",
   "icon": "trainingandgadgets_mentaltraining.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -31,10 +36,12 @@ export const MentalTraining: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Ones"
       }
@@ -55,6 +62,7 @@ export const MentalTraining: Power = {
       }
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Ones"
     }

@@ -12,6 +12,8 @@ export const BlazingAura: Power = {
   "name": "Blazing Aura",
   "internalName": "Blazing_Aura",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you are surrounded by flames that burn all foes that attempt to enter melee range.",
   "shortHelp": "Toggle: PBAoE, DoT (Fire)",
   "icon": "flamingshield_fieryaura.png",
@@ -22,6 +24,9 @@ export const BlazingAura: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,14 +65,15 @@ export const BlazingAura: Power = {
   ],
   "effects": {
     "taunt": {
+      "ignoreStrength": true,
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
     ["Damage","Fire",0.1729,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.0778,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Damage","Fire",0.0778,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !",null,null,null,null,null,null,null,null,null,"Mez"],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

@@ -12,6 +12,8 @@ export const Spin: Power = {
   "name": "Spin",
   "internalName": "Spin",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Spin does moderate lethal damage to all foes within an 8' radius of you, then poisons them.  The poison does toxic damage over time and slows their recovery rate and movement speed.  NOTE: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.  Damage: Moderate Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "widowtraining_spin.png",
@@ -20,6 +22,9 @@ export const Spin: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -62,6 +67,7 @@ export const Spin: Power = {
       "slow": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -71,6 +77,7 @@ export const Spin: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -92,9 +99,9 @@ export const Spin: Power = {
     ["Movement","JumpHeight",0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Jump",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Damage","Lethal",0.880423,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
+    ["Damage","Lethal",0.880423,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true,null,null,null,null,null,null,0.5],
     ["Damage","Lethal",1.570856,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",1.047761,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+    ["Damage","Lethal",1.047761,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true,null,null,null,null,null,null,0.5]
   ],
   "specialEffects": [
     {

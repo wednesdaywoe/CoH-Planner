@@ -21,7 +21,12 @@ import { Geyser as Geyser } from './geyser';
 
 export const powerset: Powerset = {
   id: 'defender/water-blast',
+  setPath: 'Defender_Ranged.Water_Blast',
   name: 'Water Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Water Blast grants you command over the power of water. This can be used to weaken and crush your foes with all the power of a tidal wave. Some Water Blast powers allow the user to build Tidal Power, while others consume Tidal Power. You can have 3 stacks of Tidal Power on yourself at a time. Your Tidal Power can be released to strengthen your Water Burst, Water Jet, Dehydrate and Geyser powers. Using these powers will remove all of your Tidal Power.',
   icon: 'water_blast_set.ico',
   archetype: 'defender',

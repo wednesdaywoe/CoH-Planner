@@ -12,6 +12,8 @@ export const Whitecap: Power = {
   "name": "Whitecap",
   "internalName": "Whitecap",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You summon a burst of water underfoot that hurls from your present location to a location of your choosing. When you splash down, any enemies in the surrounding area will be swept off their feet, and will experience a damage resistance debuff for a period of time. Enemies close to where you splash down will receive harsher debuffs for a brief time.If you direct a Whitecap on targets inside a Tide Pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Cold), Foe Knockdown, -Resist(All), Self Teleport, Special",
   "icon": "marineaffinity_whitecap.png",
@@ -19,6 +21,21 @@ export const Whitecap: Power = {
   "targetType": "Teleport",
   "effectArea": "Location",
   "procsAllowed": false,
+  "procRollSites": [
+    {
+      "power": "Redirects.Marine_Affinity.Whitecap_Arrive",
+      "boostsAllowed": [
+        "Knockback",
+        "Damage",
+        "Accuracy"
+      ],
+      "radius": 20,
+      "arc": 0
+    }
+  ],
+  "targetsAffected": [
+    "Location"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -65,34 +82,42 @@ export const Whitecap: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       }
@@ -117,7 +142,7 @@ export const Whitecap: Power = {
     ["Resistance","Toxic",-1.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Damage","Cold",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Ignore",2,null,null,1],
-    ["Meta",null,1,188,30,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true],
+    ["Meta",null,1,188,30,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"WetStatus",null,"set_mode"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Resistance","Smashing",-1.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Lethal",-1.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

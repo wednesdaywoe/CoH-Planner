@@ -12,12 +12,17 @@ export const CuttingBeam: Power = {
   "name": "Cutting Beam",
   "internalName": "Cutting_Beam",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a constant stream of energy and sweep it in a broad arc blasting all foes in a wide cone in front of you. Cutting beam deals Moderate Energy damage and reduces the targets' Defense. This power will cause Minor Energy damage over time if the target is suffering from the Disintegrating effect. Damage: Moderate, Recharge: Long",
   "shortHelp": "Ranged (Cone): Moderate DMG(Energy), Foe -Def(All), Special",
   "icon": "beamrifle_cuttingbeam.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 60,
@@ -63,7 +68,7 @@ export const CuttingBeam: Power = {
     ["Damage","Energy",0.919,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",1.356767,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,6.25,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower?",true]
+    ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,6.25,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower?",true,null,null,null,null,null,null,0.5]
   ],
   "conditionalEffects": [
     {

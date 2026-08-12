@@ -12,6 +12,8 @@ export const Hemorrhage: Power = {
   "name": "Hemorrhage",
   "internalName": "Hemorrhage",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You viciously tear at your foe causing a light amount of lethal damage. Additionally, the target will suffer from lethal damage over time. Hemorrhage consumes all stacks of Blood Frenzy. This power's damage over time effect will scale with the number of stacks of Blood Frenzy. Using this power with 5 stacks of Blood Frenzy causes you to become Exhausted for a short time, but the duration of Hemorrhage's damage over time effect is increased. While exhausted you cannot gain Blood Frenzy.",
   "shortHelp": "Melee, DMG(Lethal), Foe Special DoT (Lethal), -Blood Frenzy",
   "icon": "savagemelee_hemorrhage.png",
@@ -20,6 +22,9 @@ export const Hemorrhage: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -40,48 +45,57 @@ export const Hemorrhage: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.76,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.76,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.326,
+      "table": "Melee_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.6,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "atoms": [
     ["Damage","Lethal",0.76,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Lethal",0.326,1,4.1,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 < && &&",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
+    ["Damage","Lethal",2.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Damage","Lethal",0.343,1,5.1,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
-    ["Damage","Lethal",0.326,1,4.1,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 < &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
-    ["Damage","Lethal",2.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-    ["Damage","Lethal",2.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+    ["Damage","Lethal",0.343,1,5.1,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > && &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
+    ["Damage","Lethal",2.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
     ["Damage","Lethal",0.6898,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
-    ["Damage","Lethal",0.3113,1,5.1,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
-    ["Damage","Lethal",0.2959,1,4.1,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 < &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
-    ["Damage","Lethal",2.36,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
-    ["Damage","Lethal",2.36,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
+    ["Damage","Lethal",0.3113,1,5.1,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq enttype target> player eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > && &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
+    ["Damage","Lethal",0.2959,1,4.1,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq enttype target> player eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 < && &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
+    ["Damage","Lethal",2.36,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *",null,null,null,"StealthCrit"],
+    ["Damage","Lethal",2.36,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&",true]
   ],
   "conditionalEffects": [
     {
-      "id": "savage_melee_blood_frenzy_stalker",
-      "label": "Blood Frenzy Stalker",
+      "id": "savage_melee_blood_frenzy_stalker-5plus",
+      "label": "Blood Frenzy Stalker (5+ stacks)",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Lethal",
-          "scale": 0.343,
-          "table": "Melee_Damage",
-          "duration": 5.1,
-          "tickRate": 1
-        },
-        {
-          "type": "Lethal",
-          "scale": 0.326,
-          "table": "Melee_Damage",
-          "duration": 4.1,
-          "tickRate": 1
-        }
-      ]
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker",
+        "count": 5
+      },
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.343,
+        "table": "Melee_Damage",
+        "duration": 5.1,
+        "tickRate": 1
+      }
     }
   ],
   "specialEffects": [

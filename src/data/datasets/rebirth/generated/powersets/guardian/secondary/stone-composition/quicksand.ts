@@ -12,12 +12,17 @@ export const Quicksand: Power = {
   "name": "Quicksand",
   "internalName": "Quicksand",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You can cause the ground to liquefy like Quicksand at a targeted location. Any foes that pass through the Quicksand will become snared and pulled towards the center of Quicksand. Their movement will be dramatically Slowed and their Defense reduced. Foes trapped in the Quicksand cannot jump or Fly. Recharge: Slow",
   "shortHelp": "Ranged (Location AoE), Foe Attract, -Speed, -Jump, -Fly, -DEF",
   "icon": "stonecomp_quicksand.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 90,

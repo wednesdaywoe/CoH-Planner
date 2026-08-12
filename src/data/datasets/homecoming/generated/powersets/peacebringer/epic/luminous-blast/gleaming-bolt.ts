@@ -12,12 +12,17 @@ export const GleamingBolt: Power = {
   "name": "Gleaming Bolt",
   "internalName": "Gleaming_Bolt",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's Defense. This power can be used while in Dwarf form, although only at a reduced range. While in dwarf form, this power will inflict a stronger Defense debuff, in addition to taunt its target.Damage: Minor.Recharge: Very Fast.",
   "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
   "icon": "luminousblast_gleamingbolt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -94,7 +99,12 @@ export const GleamingBolt: Power = {
       "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's Defense. Note that Dwarf Gleaming Bolt is unaffected by Range changes. Damage: Minor",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Energy",0.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"SSDamage"],
+        ["Defense","All",1.5,1,3,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Mez","Taunt",1,1,4,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+      ]
     }
   },
   "modesDisallowed": [

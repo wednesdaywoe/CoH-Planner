@@ -12,12 +12,17 @@ export const InnerUmbra: Power = {
   "name": "Inner Umbra",
   "internalName": "Inner_Umbra",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly increases the amount of damage you deal for a few seconds, as well as increasing your chance to hit.  Umbral power continues to burn from within you for 30 seconds, giving you a lingering damage and ToHit buff after the initial burst fades. Recharge: Slow",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "umbralassault_innerumbra.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -42,6 +47,7 @@ export const InnerUmbra: Power = {
           "scale": 8
         }
       ],
+      "ignoreStrength": true,
       "scale": 3.2,
       "table": "Melee_Buff_Dmg"
     },

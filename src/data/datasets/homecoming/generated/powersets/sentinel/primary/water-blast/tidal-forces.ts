@@ -12,12 +12,17 @@ export const TidalForces: Power = {
   "name": "Tidal Forces",
   "internalName": "Tidal_Forces",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You draw tidal energies into yourself thus boosting your chance to hit significantly, slightly boosting your damage, range and granting yourself +3 Tidal Power.",
   "shortHelp": "Self +To Hit, +DMG, +Range, +Special",
   "icon": "waterblast_tidalforces.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const TidalForces: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Melee_Buff_Dmg"
     },
@@ -45,6 +51,7 @@ export const TidalForces: Power = {
       "tohitBuff": 10
     },
     "rangeBuff": {
+      "ignoreStrength": true,
       "scale": 0.333,
       "table": "Melee_Ones"
     },
@@ -70,7 +77,7 @@ export const TidalForces: Power = {
     ["DamageBuff","Negative",2.5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",2.5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",2.5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
   ]
 };

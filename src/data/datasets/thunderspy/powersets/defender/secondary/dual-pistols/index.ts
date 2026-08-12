@@ -21,7 +21,12 @@ import { HailofBullets as HailofBullets } from './hail-of-bullets';
 
 export const powerset: Powerset = {
   id: 'defender/dual-pistols',
+  setPath: 'Defender_Ranged.Dual_Pistols',
   name: 'Dual Pistols',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You\'re a master of akimbo pistols, wielding a high caliber firearm in each hand.  Your attacks primarily deal lethal damage and you have a wide variety of attacks, however your strength lies within your ability to use your "Swap Ammo" power to change out your ammo mid-battle.  Doing so can change your secondary damage type and effects making you an incredibly versatile ranged combatant.',
   icon: 'dual_pistols_set.ico',
   archetype: 'defender',

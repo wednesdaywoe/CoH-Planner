@@ -12,12 +12,17 @@ export const PulseRifleBurst: Power = {
   "name": "Pulse Rifle Burst",
   "internalName": "Pulse_Rifle_Burst",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "This high powered laser pulse from your Pulse Rifle takes more energy to fire, but causes much more damage than a standard pulse and has a very good chance to send your foes flying. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, High DMG(Energy), Foe Knockdown",
   "icon": "robotics_laserrifleblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -12,12 +12,17 @@ export const Whirlpool: Power = {
   "name": "Whirlpool",
   "internalName": "Whirlpool",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a violent whirlpool at the target location causing Cold damage over time, reducing the targets' speed and defense for a short time. Whirlpool grants 1 stack of Tidal Power. Damage: High(DoT), Recharge: Long",
   "shortHelp": "Ranged (Location AoE), High DoT(Cold), -Speed, -Defense, Self +Tidal Power",
   "icon": "waterblast_whirlpool.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,

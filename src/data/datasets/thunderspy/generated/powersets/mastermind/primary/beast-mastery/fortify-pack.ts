@@ -12,12 +12,17 @@ export const FortifyPack: Power = {
   "name": "Fortify Pack",
   "internalName": "Fortify_Pack",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You command your beasts to fight more defensively.  Using Fortify Pack will prevent your pets from benefiting from Pack Mentality for 60 seconds.  The number of charges of Pack Mentality you own when activating this power will determine the potency of the Defense and Regeneration buff that will be granted to your pack.  Additionally, simply owning this power grants your beast pets attacks a chance to critically hit that scales with the amount of Pack Mentality owned by the Mastermind.  Recharge: Very Long",
   "shortHelp": "PBAoE, Pets +Defense, +Regeneration, consumes all charges of Pack Mentality",
   "icon": "beastmastery_fortifypack.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,
@@ -50,8 +55,8 @@ export const FortifyPack: Power = {
     ["Defense","Negative",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
     ["Defense","Psionic",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
     ["Regeneration",null,0,1,60,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,true,null,"cur.kMeter source> 2 * 1 + @Strength *"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
   ]
 };

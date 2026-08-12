@@ -12,12 +12,17 @@ export const RepulsingTorrent: Power = {
   "name": "Repulsing Torrent",
   "internalName": "Repulsing_Torrent",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Repulsing Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
   "icon": "kineticattack_repulsingtorrent.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

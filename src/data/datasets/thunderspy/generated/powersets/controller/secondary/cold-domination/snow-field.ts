@@ -12,6 +12,8 @@ export const SnowField: Power = {
   "name": "Snow Field",
   "internalName": "Snow_Field",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of all nearby foes. The torrent winds of the Snow Storm are enough to bring down flying foes. Recharge: Slow. Choosing this power locks out Snow Storm",
   "shortHelp": "Toggle: PBAoE, Foe -Speed, -Recharge, -Fly",
   "icon": "colddomination_snowstorm.png",
@@ -22,6 +24,9 @@ export const SnowField: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -44,15 +49,25 @@ export const SnowField: Power = {
   "effects": {
     "buffDuration": 0.75,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Debuff_Dam"
     },
     "durations": {
       "damageDebuff": 0.75,
+      "movementCapDebuff": 0.75,
       "rechargeDebuff": 0.75,
       "slow": 0.75
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
@@ -66,6 +81,7 @@ export const SnowField: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -74,8 +90,8 @@ export const SnowField: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.5,
+        "table": "Ranged_Slow"
       }
     }
   },

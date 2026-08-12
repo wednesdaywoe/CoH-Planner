@@ -12,12 +12,17 @@ export const Rage: Power = {
   "name": "Rage",
   "internalName": "Rage",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "A Rage comes over you, sending you into a berserker fury. While Raging, your damage and chance to hit is dramatically increased. However, while your Rage lasts you tire more easily. Recharge: Very Long",
   "shortHelp": "Self +DMG, +To Hit, -Max End.",
   "icon": "superstrength_rage.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 1,
@@ -37,6 +42,7 @@ export const Rage: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },
@@ -46,6 +52,7 @@ export const Rage: Power = {
       "tohitBuff": 90
     },
     "maxEndBuff": {
+      "ignoreStrength": true,
       "scale": 15,
       "table": "Melee_Ones"
     },

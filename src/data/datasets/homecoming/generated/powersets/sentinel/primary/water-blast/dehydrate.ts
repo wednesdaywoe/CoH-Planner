@@ -12,12 +12,17 @@ export const Dehydrate: Power = {
   "name": "Dehydrate",
   "internalName": "Dehydrate",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You rapidly dehydrate your target, causing Cold and Smashing damage, reducing their movement speed and defense as well as causing a measure of Cold damage over time. You are then healed over time for a moderate amount of health. Dehydrate grants 1 stack of Tidal Power if you have 2 or less. Dehydrate will consume all stacks of Tidal Power if you have 3, but the power's heal over time effect is increased by 50%.",
   "shortHelp": "Ranged, DMG(Cold/Smash), Foe -Speed, -Defense, DoT(Cold), Self +Heal Over Time, +/- Tidal Power",
   "icon": "waterblast_dehydrate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -80,6 +85,13 @@ export const Dehydrate: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 4.1,
       "tickRate": 1
+    },
+    {
+      "type": "Heal",
+      "scale": 0.275,
+      "table": "Ranged_HealSelf",
+      "duration": 3.1,
+      "tickRate": 1
     }
   ],
   "effects": {
@@ -98,6 +110,7 @@ export const Dehydrate: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -112,46 +125,37 @@ export const Dehydrate: Power = {
     }
   },
   "atoms": [
-    ["Damage","Smashing",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Cold",0.75,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Cold",0.1488,1,4.1,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,"@StdResult"],
-    ["Damage","Smashing",0.25,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Cold",0.75,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Cold",0.1488,1,4.1,"Ranged_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,"@StdResult"],
+    ["Damage","Smashing",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Cold",0.75,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Cold",0.1488,1,4.1,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"@StdResult"],
+    ["Damage","Smashing",0.25,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+    ["Damage","Cold",0.75,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+    ["Damage","Cold",0.1488,1,4.1,"Ranged_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"@StdResult",null,0,null,"SentCrit,SentCritST"],
     ["Movement","JumpHeight",0.2,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Run",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Jump",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Smashing",0.5072,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Cold",1.5218,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Cold",0.1331,1,4.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-    ["Damage","Smashing",0.5072,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Cold",1.5218,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Cold",0.1331,1,4.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
-    ["Heal",null,0.275,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <=",true],
+    ["Heal",null,0.275,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <="],
+    ["Damage","Smashing",0.5072,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",1.5218,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",0.1331,1,4.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",0.5072,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+    ["Damage","Cold",1.5218,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+    ["Damage","Cold",0.1331,1,4.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
     ["Heal",null,0.413,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ],
   "conditionalEffects": [
-    {
-      "id": "tidal_power",
-      "label": "Tidal Power",
-      "scope": "global",
-      "defaultActive": false,
-      "damage": {
-        "type": "Heal",
-        "scale": 0.275,
-        "table": "Ranged_HealSelf",
-        "duration": 3.1,
-        "tickRate": 1
-      }
-    },
     {
       "id": "tidal_power-3",
       "label": "Tidal Power (3 stacks)",
       "scope": "global",
       "defaultActive": false,
+      "ownedPower": {
+        "path": "temporary_powers.temporary_powers.tidal_power",
+        "count": 3
+      },
       "damage": {
         "type": "Heal",
         "scale": 0.413,

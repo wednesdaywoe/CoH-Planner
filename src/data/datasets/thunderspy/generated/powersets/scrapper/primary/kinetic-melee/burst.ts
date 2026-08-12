@@ -12,6 +12,8 @@ export const Burst: Power = {
   "name": "Burst",
   "internalName": "Burst",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "By focusing your energy into the muscles in your arms, you can launch a dizzying flurry of attacks against every foe in melee range. Some foes may be hit hard enough to be knocked down as well. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smash/Energy), Foe Knockdown",
   "icon": "kineticattack_burst.png",
@@ -20,6 +22,9 @@ export const Burst: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,7 @@ export const Burst: Power = {
   "effects": {
     "buffDuration": 7,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Melee_Debuff_Dam"
     },

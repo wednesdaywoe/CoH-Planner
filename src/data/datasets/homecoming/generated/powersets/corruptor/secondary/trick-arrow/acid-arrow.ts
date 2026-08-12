@@ -12,12 +12,17 @@ export const AcidArrow: Power = {
   "name": "Acid Arrow",
   "internalName": "Acid_Arrow",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "This arrow explodes in a small shower of acid on impact. This acid eats through armor, causing damage over time, reducing target's Defense as well as their resistance to debuffs, while making it harder for them to be healed.Damage: Minor.Recharge: Slow.",
   "shortHelp": "Ranged AoE Minor DoT(Toxic), Foe -Res(Special), Res(Heal), -DEF",
   "icon": "trickarrow_debuffdefense.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -54,22 +59,27 @@ export const AcidArrow: Power = {
     "buffDuration": 45,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }
@@ -85,11 +95,13 @@ export const AcidArrow: Power = {
       "resistance": 45
     },
     "enduranceDiscount": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Res_Dmg"
     },
     "resistance": {
       "heal": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }

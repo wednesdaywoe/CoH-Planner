@@ -12,6 +12,8 @@ export const Allseer: Power = {
   "name": "Allseer",
   "internalName": "Allseer",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Being in touch with the land has honed your senses to a preternatural degree. You gain some defense to all forms of attack, resistance to status effects, and have greatly improved perception. While grounded, your perception is increased further.",
   "shortHelp": "Toggle Self +Def (All), +Res (Confuse, Fear, Hold, Sleep) +Perception",
   "icon": "natureaffinity_sporecloud.png",
@@ -22,6 +24,9 @@ export const Allseer: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,6 +47,7 @@ export const Allseer: Power = {
   "effects": {
     "buffDuration": 1.25,
     "confuse": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -107,16 +113,19 @@ export const Allseer: Power = {
     },
     "effectDuration": 1.25,
     "fear": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -126,11 +135,13 @@ export const Allseer: Power = {
       "table": "Melee_Ones"
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

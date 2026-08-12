@@ -12,12 +12,17 @@ export const PenetratingRay: Power = {
   "name": "Penetrating Ray",
   "internalName": "Penetrating_Ray",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You take careful aim at your target and deliver a punishing supercharged shot. This causes Extreme Energy damage and may knock the target off their feet. If the target is also suffering from the Disintegrating effect it will also suffer additional damage over time. Like all Sniper attacks it will be interrupted if you're attacked. In addition, targets already affected by the Disintegrating effect will cause this effect to spread to 3 nearby targets. This Disintegrate Spread effect can only hit targets that aren't already affected by the Disintegrating effect. Disintegrate Spread causes Minor Energy damage over time. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Very Slow",
   "shortHelp": "Sniper: Extreme Dmg(Energy), Foe Knockdown, Special",
   "icon": "beamrifle_penetratingray.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.25,
     "range": 150,
@@ -51,6 +56,7 @@ export const PenetratingRay: Power = {
   "effects": {
     "buffDuration": 8.9,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.044,
       "table": "Ranged_Ones"
     },
@@ -74,6 +80,32 @@ export const PenetratingRay: Power = {
     ["DamageBuff","Toxic",0.044,1,8.9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.044,1,8.9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
+  "quickSnipe": {
+    "condition": "cur.kToHit source> .97 >=",
+    "stats": {
+      "castTime": 1.67,
+      "range": 150
+    },
+    "damage": [
+      {
+        "type": "Energy",
+        "scale": 2.76,
+        "table": "Ranged_Damage"
+      }
+    ],
+    "atoms": [
+      ["Damage","Energy",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.44999998807907104,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["DamageBuff","Smashing",0.044,1,8.9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Lethal",0.044,1,8.9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Fire",0.044,1,8.9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Cold",0.044,1,8.9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Energy",0.044,1,8.9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Negative",0.044,1,8.9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Toxic",0.044,1,8.9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Psionic",0.044,1,8.9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ]
+  },
   "damageTypes": [
     "Energy"
   ]

@@ -12,6 +12,8 @@ export const ChillingEmbrace: Power = {
   "name": "Chilling Embrace",
   "internalName": "Chilling_Embrace",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their damage and movement speed. The low air temperatures may also deal some damage over time to the snared foes.Recharge: Very Fast.",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Cold), Foe -Recharge, -Speed",
   "icon": "iceassault_chillingembrace.png",
@@ -22,6 +24,9 @@ export const ChillingEmbrace: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -45,9 +50,15 @@ export const ChillingEmbrace: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Cold",
+    "scale": 0.14,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Debuff_Dam"
     },
@@ -57,6 +68,7 @@ export const ChillingEmbrace: Power = {
       "slow": 5
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -66,6 +78,7 @@ export const ChillingEmbrace: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Slow"
       },
@@ -93,6 +106,6 @@ export const ChillingEmbrace: Power = {
     ["DamageBuff","Negative",1,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",1,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",1,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Cold",0.14,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSleep target> 0 <=",true]
+    ["Damage","Cold",0.14,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSleep target> 0 <="]
   ]
 };

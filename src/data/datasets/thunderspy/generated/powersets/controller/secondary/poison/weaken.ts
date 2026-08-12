@@ -12,12 +12,17 @@ export const Weaken: Power = {
   "name": "Weaken",
   "internalName": "Weaken",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You poison a single foe with a venom that significantly Weakens their strength and and that of nearby foes.   The affected primary target's chance to hit and Damage output is severely reduced Additionally, the affected targets secondary power effects are all weakened. The targets power effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all weakened.  Secondary foes struck by this power will have a lesser effect placed on them while the primary target receives the full effectiveness of the power.  Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE) Foe -DMG -To Hit, -Special",
   "icon": "poison_weakenaoe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -42,6 +47,7 @@ export const Weaken: Power = {
   "effects": {
     "buffDuration": 30,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Debuff_Dam"
     },
@@ -54,94 +60,116 @@ export const Weaken: Power = {
     },
     "slow": {
       "flySpeed": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "runSpeed": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       }
     },
     "specialBuff": {
       "confuse": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "endurance": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "heal": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "tohit": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       }
     },
     "specialDebuff": {
       "aoe": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "cold": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "melee": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "ranged": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Ones"
       }

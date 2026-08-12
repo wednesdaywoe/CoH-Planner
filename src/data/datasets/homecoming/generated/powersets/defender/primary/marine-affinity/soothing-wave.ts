@@ -12,12 +12,18 @@ export const SoothingWave: Power = {
   "name": "Soothing Wave",
   "internalName": "Soothing_Wave",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Send forth a calming wave of water, washing over friend and foe alike. Allies will be healed by this power, while enemies will have their offensive power watered down.",
   "shortHelp": "Ranged (Facing Cone), Foe -DMG, Team Heal",
   "icon": "marineaffinity_soothingwave.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 45,
@@ -46,6 +52,7 @@ export const SoothingWave: Power = {
   "effects": {
     "buffDuration": 10,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 0.85,
       "table": "Ranged_Buff_Dmg"
     },
@@ -67,7 +74,7 @@ export const SoothingWave: Power = {
     ["DamageBuff","Negative",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,188,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true],
+    ["Meta",null,1,188,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"WetStatus",null,"set_mode"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

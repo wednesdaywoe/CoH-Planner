@@ -12,12 +12,17 @@ export const LifeDrain: Power = {
   "name": "Life Drain",
   "internalName": "Life_Drain",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You can tap the power of the Netherworld to steal some life from a target foe and reduce their chance to hit.  Some of that stolen life is transferred to you in the form of Hit Points. Damage: High Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Negative), Target -To Hit, Self +HP",
   "icon": "darknessassault_lifedrain.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -70,7 +75,7 @@ export const LifeDrain: Power = {
     ["Heal",null,1,1,0,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Negative",2.8994,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "damageTypes": [
     "Negative"

@@ -12,12 +12,17 @@ export const TranquilizerDart: Power = {
   "name": "Slug",
   "internalName": "Tranquilizer_Dart",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Fires a single Slug at a targeted foe. Firing a single Slug is slower than firing a Burst, but deals more damage, is longer range, will knock down and disorient foes. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Lethal), Foe Knockback, Disorient",
   "icon": "assaultweapons_shotgunbeanbag.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 100,
@@ -50,6 +55,7 @@ export const TranquilizerDart: Power = {
   "effects": {
     "buffDuration": 9.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },

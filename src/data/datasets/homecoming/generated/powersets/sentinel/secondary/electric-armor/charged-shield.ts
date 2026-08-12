@@ -12,6 +12,8 @@ export const ChargedShield: Power = {
   "name": "Charged Shield",
   "internalName": "Charged_Shield",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on this power, you charge up every particle in your body increasing your regeneration rate and increasing your max endurance. Recharge: Moderate.",
   "shortHelp": "Toggle: Self +Regen, +MaxEnd",
   "icon": "electricarmor_chargedshield.png",
@@ -22,6 +24,9 @@ export const ChargedShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -55,6 +60,7 @@ export const ChargedShield: Power = {
       "table": "Melee_Ones"
     },
     "regenBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Ones"
     }

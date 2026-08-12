@@ -12,12 +12,17 @@ export const StaticField: Power = {
   "name": "Static Field",
   "internalName": "Static_Field",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can build up a Static Field at a nearby location. Any foes in the field may lose control of their muscles due to the static charge, and will shake violently.  Foes may also be drained of some endurance, and some of that endurance may be transferred to nearby allies. Any attack will interrupt the effect temporarily and foes will re-gain control, although their movement and attack rates will be reduced.  This effect can last for some time, and will continue to paralyze foes in the field.  Recharge: Slow",
   "shortHelp": "Target (Location AoE), Foe Sleep, -End, -Speed, -Recharge",
   "icon": "electriccontrol_staticfield.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

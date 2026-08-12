@@ -12,12 +12,17 @@ export const Grounded: Power = {
   "name": "Grounded",
   "internalName": "Grounded",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You are Grounded and naturally very resistant to Energy and Negative Energy damage. You also have added resistance to Endurance Drain effects. Additionally, Grounded provides Immobilize, Knockback protection and the Grounded status, but only for up to 5 seconds after being near the ground. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (All DMG but Toxic and Psionics, End Drain, Immobilize, KB)",
   "icon": "electricarmor_selfresistenergies.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1
   },
@@ -32,6 +37,7 @@ export const Grounded: Power = {
     "buffDuration": 1,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }
@@ -39,6 +45,8 @@ export const Grounded: Power = {
     "durations": {
       "debuffResistance": 1,
       "immobilize": 1,
+      "knockback": 5,
+      "knockup": 5,
       "resistance": 1
     },
     "effectDuration": 1,
@@ -46,6 +54,14 @@ export const Grounded: Power = {
       "mag": 1,
       "scale": 6,
       "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 6,
+      "table": "Melee_Knockback"
+    },
+    "knockup": {
+      "scale": 6,
+      "table": "Melee_Knockback"
     },
     "resistance": {
       "cold": {
@@ -82,9 +98,9 @@ export const Grounded: Power = {
     ["Resistance","Energy",1.25,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Negative",1,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Endurance",null,2,1,1,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockup",-6,1,5,"Melee_Knockback","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 0.1 >"],
+    ["Mez","Knockback",-6,1,5,"Melee_Knockback","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 0.1 >"],
     ["Mez","Immobilized",-6,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["Mez","Knockup",-6,1,5,"Melee_Knockback","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 0.1 >",true],
-    ["Mez","Knockback",-6,1,5,"Melee_Knockback","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 0.1 >",true],
     ["MezResist","Immobilized",6,1,1,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
   "mechanicType": "parentMechanic"

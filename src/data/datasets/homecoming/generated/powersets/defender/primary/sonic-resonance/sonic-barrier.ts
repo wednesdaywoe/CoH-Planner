@@ -12,12 +12,17 @@ export const SonicBarrier: Power = {
   "name": "Sonic Barrier",
   "internalName": "Sonic_Barrier",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "This shield dramatically reduces the damage an ally takes from Smashing, Lethal, and Toxic attacks for a limited time. You cannot stack multiple Sonic Barriers on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Sonic Haven. You cannot use this power on yourself.Recharge: Very Fast.",
   "shortHelp": "Ranged, Ally +Res(Smash, Lethal, Toxic)",
   "icon": "sonicdebuff_protectphysical.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -12,6 +12,8 @@ export const CauterizingBlaze: Power = {
   "name": "Cauterizing Blaze",
   "internalName": "Cauterizing_Blaze",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you are surrounded by flames cauterize your wounds healing you a small amount every few seconds.These flames also moderately boost the damage of all your Fire attacks, as well as slightly boost the damage of all your other non-fire based attacks.",
   "shortHelp": "Toggle: Self +Heal Over Time, +DMG",
   "icon": "flamingshield_cauterizing.png",
@@ -22,6 +24,9 @@ export const CauterizingBlaze: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -47,6 +52,7 @@ export const CauterizingBlaze: Power = {
   "effects": {
     "buffDuration": 2.2,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Buff_Dmg"
     },

@@ -12,6 +12,8 @@ export const RadiationTherapy: Power = {
   "name": "Radiation Therapy",
   "internalName": "Radiation_Therapy",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You concentrate your energies to harness the healing powers of radiation to mend your wounds and rebuild your endurance. Each nearby foe will increase the health and endurance you recover, with the first one yielding full strength and all seconday ones yielding 30% of the effect. Affected foes will have their regeneration rates substantially reduced for a short time.Notes: This power has adaptive recharge. It has a base recharge of 25 seconds, the first target hit will increase its recharge by 9.5 with additional targets adding 2.8 seconds for a maximum total of 60 seconds.",
   "shortHelp": "PBAoE, Minor DMG(Energy), Minor DoT(Toxic), Foe -Regen, Self +HP, +End, Res(-Regen)",
   "icon": "radiationarmor_radiationtherapy.png",
@@ -20,6 +22,9 @@ export const RadiationTherapy: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -77,13 +82,14 @@ export const RadiationTherapy: Power = {
       "table": "Melee_Ones"
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",10,null,null,1],
-    ["Endurance",null,7.75,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"No",10,null,null,1],
+    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"StackThenIgnore",10,null,null,1],
+    ["Endurance",null,7.75,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1],
     ["Damage","Energy",0.9696,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Toxic",0.2425,0,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
     ["RechargePower",null,9.46,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],

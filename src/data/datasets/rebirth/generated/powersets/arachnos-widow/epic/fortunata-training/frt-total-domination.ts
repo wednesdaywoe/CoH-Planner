@@ -12,12 +12,17 @@ export const FRTTotalDomination: Power = {
   "name": "Total Domination",
   "internalName": "FRT_Total_Domination",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Tears at the mind of a target foe and those near him. Total Domination renders all affected foes helpless, lost in their own minds and unable to defend themselves. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "fortunatatraining_totaldomination.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,

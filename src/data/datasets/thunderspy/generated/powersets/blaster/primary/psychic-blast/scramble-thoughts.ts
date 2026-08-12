@@ -12,12 +12,17 @@ export const ScrambleThoughts: Power = {
   "name": "Scramble Thoughts",
   "internalName": "Scramble_Thoughts",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Painfully scrambles the synapses of a targeted foe, leaving them dramatically Disoriented for a short duration. Deals a little Psionic Damage. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged, Minor DMG(Psionic), Foe Disorient",
   "icon": "psychicblast_scramblethoughts.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -48,6 +53,7 @@ export const ScrambleThoughts: Power = {
   "effects": {
     "buffDuration": 10.5,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.198,
       "table": "Ranged_Ones"
     },

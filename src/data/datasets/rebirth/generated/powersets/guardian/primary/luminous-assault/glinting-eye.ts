@@ -12,12 +12,17 @@ export const GlintingEye: Power = {
   "name": "Glinting Eye",
   "internalName": "Glinting_Eye",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can emit a beam of luminous energy from your eyes, dealing moderate energy damage and reducing a target's defense. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
   "icon": "luminousblast_glintingeye.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -58,7 +63,7 @@ export const GlintingEye: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",2,1,6,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",2.6446,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

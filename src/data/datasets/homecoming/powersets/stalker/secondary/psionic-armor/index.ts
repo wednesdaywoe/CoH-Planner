@@ -21,7 +21,12 @@ import { MementoMori as MementoMori } from './memento-mori';
 
 export const powerset: Powerset = {
   id: 'stalker/psionic-armor',
+  setPath: 'Stalker_Defense.Psionic_Armor',
   name: 'Psionic Armor',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You use your psionic powers to shield yourself reducing incoming damage, as well as steal your foes own psyche and use it against them, be it by empowering your own regenerative powers, weakening their defenses or completely subduing their will.',
   icon: 'dark_armor_set.ico',
   archetype: 'stalker',

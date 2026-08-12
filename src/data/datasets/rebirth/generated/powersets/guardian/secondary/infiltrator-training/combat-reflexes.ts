@@ -12,6 +12,8 @@ export const CombatReflexes: Power = {
   "name": "Combat Reflexes",
   "internalName": "Combat_Reflexes",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating your Combat Reflexes enables you to be more evasive to melee attacks. This will increase your Defense versus melee as long as it is active. Combat Reflexes also grants you resistance to Defense DeBuffs. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Melee), Res(DeBuff DEF)",
   "icon": "infiltratortraining_combatreflexes.png",
@@ -22,6 +24,9 @@ export const CombatReflexes: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const CombatReflexes: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       }

@@ -12,6 +12,8 @@ export const PenumbralShield: Power = {
   "name": "Penumbral Shield",
   "internalName": "Penumbral_Shield",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on Penumbral Shield, you become highly resistant to Fire, Cold, and Toxic damage. While in Dark Nova or Black Dwarf form, this power's effects are suppressed and cost no endurance. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Toxic)",
   "icon": "umbralaura_penumbralshield.png",
@@ -22,6 +24,9 @@ export const PenumbralShield: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -60,7 +65,7 @@ export const PenumbralShield: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>"],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>",null,0],
     ["Resistance","Fire",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Resistance","Cold",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Resistance","Toxic",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],

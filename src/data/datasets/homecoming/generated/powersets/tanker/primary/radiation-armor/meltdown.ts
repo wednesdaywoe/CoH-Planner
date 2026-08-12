@@ -12,12 +12,17 @@ export const Meltdown: Power = {
   "name": "Meltdown",
   "internalName": "Meltdown",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "After building up a dangerous amount of radiation you release it to both shield and empower yourself. While active you will gain a good amount of damage resistance to all types of damage, recover endurance more quickly and deal more damage for a short time. When this power wears off you will lose a small amount endurance.",
   "shortHelp": "Self, +Res(All), +Recovery, +DMG(All)",
   "icon": "radiationarmor_meltdown.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 480,
@@ -38,11 +43,13 @@ export const Meltdown: Power = {
   "effects": {
     "buffDuration": 60,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 3.3,
       "table": "Melee_Buff_Dmg"
     },
     "debuffResistance": {
       "recovery": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       }
@@ -55,14 +62,17 @@ export const Meltdown: Power = {
       "resistance": 60
     },
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Melee_Ones"
     },
     "recoveryBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Melee_Ones"
     },
     "recoveryDebuff": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
@@ -119,9 +129,9 @@ export const Meltdown: Power = {
     ["DamageBuff","Negative",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,-1,1,10,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Endurance",null,-0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Recovery",null,-100,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Recovery",null,1,1,10,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,-1,1,10,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash",null,"designer_status"],
+    ["Endurance",null,-0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"],
+    ["Recovery",null,-100,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"],
+    ["Recovery",null,1,1,10,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"]
   ]
 };

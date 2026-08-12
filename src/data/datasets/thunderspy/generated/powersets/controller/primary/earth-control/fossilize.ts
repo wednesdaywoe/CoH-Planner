@@ -12,12 +12,17 @@ export const Fossilize: Power = {
   "name": "Fossilize",
   "internalName": "Fossilize",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Encases a single target within solid stone. The stone slowly crushes the victim, dealing Smashing damage. The Fossilized victim is held helpless and unable to defend themselves. Damage, Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Smash), Foe Hold, -DEF",
   "icon": "earthgrasp_fossilize.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

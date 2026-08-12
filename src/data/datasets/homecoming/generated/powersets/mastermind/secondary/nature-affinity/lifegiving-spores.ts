@@ -12,12 +12,17 @@ export const LifegivingSpores: Power = {
   "name": "Lifegiving Spores",
   "internalName": "Lifegiving_Spores",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "When activating this power you cause all allies at a selected location to recover a small amount of health and endurance every few seconds as long as they remain within the Lifegiving Spores.",
   "shortHelp": "Toggle (Location AoE), PBAoE +Minor Heal Over Time, +Endurance",
   "icon": "natureaffinity_lifegivingspores.png",
   "powerType": "Toggle",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -69,6 +74,9 @@ export const LifegivingSpores: Power = {
               "castTime": 0,
               "activatePeriod": 4,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Friend"
+              ],
               "radius": 15,
               "maxTargets": 255
             }

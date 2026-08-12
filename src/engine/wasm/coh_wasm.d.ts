@@ -24,6 +24,13 @@ export class DatasetHandle {
      * `Error` on a parse failure rather than returning garbage.
      */
     recalculate(build_json: string): string;
+    /**
+     * The target ranks this dataset's gates distinguish, as JSON `[{segment, classes}]`
+     * — the vocabulary a caller picks a `combat.target_class` token from before asking
+     * [`Self::project_power`] for target-resolved damage. Throws when the archetype
+     * catalogue will not parse rather than offering a guessed list (Rule 1).
+     */
+    target_ranks(): string;
 }
 
 /**
@@ -51,6 +58,7 @@ export interface InitOutput {
     readonly __wbg_datasethandle_free: (a: number, b: number) => void;
     readonly datasethandle_project_power: (a: number, b: number, c: number, d: number, e: number, f: number, g: number, h: number) => [number, number, number, number];
     readonly datasethandle_recalculate: (a: number, b: number, c: number) => [number, number, number, number];
+    readonly datasethandle_target_ranks: (a: number) => [number, number, number, number];
     readonly load_dataset: (a: number, b: number) => [number, number, number];
     readonly what_if_vocabulary: () => [number, number];
     readonly __wbindgen_externrefs: WebAssembly.Table;

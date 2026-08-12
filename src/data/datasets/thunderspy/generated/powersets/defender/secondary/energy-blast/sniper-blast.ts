@@ -12,12 +12,17 @@ export const SniperBlast: Power = {
   "name": "Sniper Blast",
   "internalName": "Sniper_Blast",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "A focused blast that can travel great distances with high Accuracy. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Superior, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_sniperblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 150,

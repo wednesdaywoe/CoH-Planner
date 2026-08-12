@@ -12,12 +12,17 @@ export const RangedShot: Power = {
   "name": "Ranged Shot",
   "internalName": "Ranged_Shot",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "A long range shot that blasts your foes. Like most sniper attacks, this power has a bonus to Accuracy, but is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Sniper, Extreme DMG(Lethal)",
   "icon": "archery_sniperarrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 150,
@@ -51,6 +56,7 @@ export const RangedShot: Power = {
     ["Damage","Lethal",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
   ],
   "quickSnipe": {
+    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
     "stats": {
       "castTime": 1.67,
       "range": 80
@@ -61,6 +67,9 @@ export const RangedShot: Power = {
         "scale": 2.28,
         "table": "Ranged_Damage"
       }
+    ],
+    "atoms": [
+      ["Damage","Lethal",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *"]
     ]
   }
 };

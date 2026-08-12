@@ -12,12 +12,17 @@ export const SiphonPower: Power = {
   "name": "Siphon Power",
   "internalName": "Siphon_Power",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "All Attacks: Chance for Foe -DMG, Team +DMG",
   "shortHelp": "All Attacks: Chance for Foe -DMG, Team +DMG",
   "icon": "kineticboost_siphonpower.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -25,7 +30,7 @@ export const SiphonPower: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Meta",null,1,1,10.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,10.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "mechanicType": "parentMechanic"
 };

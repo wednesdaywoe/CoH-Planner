@@ -12,12 +12,17 @@ export const SpectralTerror: Power = {
   "name": "Spectral Terror",
   "internalName": "Spectral_Terror",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You can create an illusion of unspeakable Terror. The manifestation is so horrible that it caused most foes to tremble helplessly in terror. The Spectral Terror may also Terrify individual foes, causing them to run away in panic.",
   "shortHelp": "Summon Terror: Ranged Fear, -ToHit",
   "icon": "illusions_spectralterror.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

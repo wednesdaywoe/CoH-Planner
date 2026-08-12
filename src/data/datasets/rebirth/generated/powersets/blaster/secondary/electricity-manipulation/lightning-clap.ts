@@ -12,6 +12,8 @@ export const LightningClap: Power = {
   "name": "Force of Thunder",
   "internalName": "Lightning_Clap",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You can channel the raw force of a thunderbolt through you knocking enemies back and potentially disorienting them.  This electrical energy also causes you to regenerate health and recover endurance very quickly for a short time.  Recharge: Long",
   "shortHelp": "PBAoE, Foe Disorient, Knockback, Self +Regeneration, +Recovery",
   "icon": "electricitymanipulation_lightningclap.png",
@@ -20,6 +22,10 @@ export const LightningClap: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -49,6 +55,7 @@ export const LightningClap: Power = {
   "effects": {
     "buffDuration": 8.73,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.025,
       "table": "Melee_Ones"
     },
@@ -66,7 +73,7 @@ export const LightningClap: Power = {
     }
   },
   "atoms": [
-    ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! &&"],
+    ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! &&",null,null,null,null,null,null,null,0.5],
     ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! &&"],
     ["DamageBuff","Smashing",0.025,1,8.73,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.025,1,8.73,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -76,8 +83,8 @@ export const LightningClap: Power = {
     ["DamageBuff","Negative",0.025,1,8.73,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.025,1,8.73,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.025,1,8.73,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq entref source> entref target> eq ! &&",true],
-    ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq entref source> entref target> eq ! &&",true],
+    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq entref source> entref target> eq ! &&",true,null,null,null,null,null,null,0.5],
+    ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq entref source> entref target> eq ! &&",true,null,null,null,null,null,null,0.3],
     ["Regeneration",null,1.125,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"entref source> entref target> eq",true],
     ["Regeneration",null,1.125,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq",true],
     ["Recovery",null,0.5,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq",true]

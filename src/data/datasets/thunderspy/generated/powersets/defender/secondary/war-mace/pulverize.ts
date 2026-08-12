@@ -12,6 +12,8 @@ export const Pulverize: Power = {
   "name": "Pulverize",
   "internalName": "Pulverize",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You attempt to Pulverize your opponent. This attack is slower than Bash but causes more damage. It also has a chance of Disorienting your opponent for a brief time. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smashing), Minor Disorient",
   "icon": "mace_pulverize.png",
@@ -22,6 +24,9 @@ export const Pulverize: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,

@@ -12,12 +12,17 @@ export const MementoMori: Power = {
   "name": "Memento Mori",
   "internalName": "Memento_Mori",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "Terrify your foes projecting images of their own impending demise into their minds. Memento Mori inflicts fear on targets while healing you even if you have been defeated. Each affected foe will increase your maximum hit points and heal you. Using this power while conscious will give you one opportunity to get back up should you be defeated while its effects are active.Notes: This power recharges in 10 seconds if no foes are hit. Otherwise, it recharges in 300 seconds.",
   "shortHelp": "Self Rez, +Max HP, Special",
   "icon": "psionicarmor_mementomori.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "radius": 25,
@@ -39,7 +44,40 @@ export const MementoMori: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 4,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.2,
+      "table": "Melee_HealSelf"
+    }
+  ],
+  "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "maxHPBuff": 30
+    },
+    "fear": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Stun"
+    },
+    "maxHPBuff": {
+      "scale": 3.15,
+      "table": "Melee_HealSelf"
+    }
+  },
   "atoms": [
-    ["RechargePower",null,290,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1]
+    ["RechargePower",null,290,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1],
+    ["MaxHP",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHitPoints% source> 0 >",null,null,null,null,"MementoMori"],
+    ["MaxHP",null,0.15,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% source> 0 >",null,null,null,null,"MementoMori"],
+    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"kHitPoints% source> 0 >"],
+    ["Heal",null,0.2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% source> 0 >"],
+    ["Meta",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"kHitPoints% source> 0 >",null,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
+    ["Mez","Terrorized",5,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% source> 0 > enttype target> critter eq &&"]
   ]
 };

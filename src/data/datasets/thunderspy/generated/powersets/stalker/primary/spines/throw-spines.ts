@@ -12,12 +12,17 @@ export const ThrowSpines: Power = {
   "name": "Throw Spines",
   "internalName": "Throw_Spines",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You can throw dozens of Spines in a wide cone in front of you, impaling foes caught within the range. Spine throwing deals moderate lethal damage, and poisons any targets it hits. Spine poison deals additional Toxic damage and Slows affected foes. If executed while hidden, all affected targets have a chance to be hit with a Critical Hit for extra damage. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_quillthrowing.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 30,
@@ -57,6 +62,11 @@ export const ThrowSpines: Power = {
       "tickRate": 1,
       "chance": 0.8,
       "cancelOnMiss": true
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.09,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -71,6 +81,7 @@ export const ThrowSpines: Power = {
       "table": "Melee_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Melee_Slow"
     },
@@ -80,6 +91,7 @@ export const ThrowSpines: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },
@@ -95,7 +107,8 @@ export const ThrowSpines: Power = {
   },
   "atoms": [
     ["Damage","Lethal",1.09,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Toxic",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true],
+    ["Damage","Lethal",1.09,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Movement","Run",0.5,1,15,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.5,1,15,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Jump",0.5,1,15,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -106,7 +119,6 @@ export const ThrowSpines: Power = {
     ["Damage","Lethal",0.81031,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
     ["Damage","Lethal",0.81031,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.81031,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Lethal",1.09,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
     ["Damage","Lethal",1.09,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
     ["Mez","Immobilized",2,0.6700000166893005,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

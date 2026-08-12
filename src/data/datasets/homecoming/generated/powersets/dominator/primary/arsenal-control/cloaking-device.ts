@@ -12,6 +12,8 @@ export const CloakingDevice: Power = {
   "name": "Cloaking Device",
   "internalName": "Cloaking_Device",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "This Cloaking Device is the ultimate in infiltration technology. It uses an LCD body coating to become all but impossible to detect. While concealed you can only be seen at very close range. If you attack while concealed, you will be discovered. Even if discovered, you are hard to see but will retain some of your Defense bonus to all attacks.",
   "shortHelp": "Toggle: Self Stealth, +DEF(All)",
   "icon": "arsenalcontrol_cloakingdevice.png",
@@ -22,6 +24,9 @@ export const CloakingDevice: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -155,6 +160,7 @@ export const CloakingDevice: Power = {
       }
     },
     "threatDebuff": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     }
@@ -171,8 +177,8 @@ export const CloakingDevice: Power = {
     ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
     ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
     ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Stealth","Translucency",0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"@CustomFX NoFade eq !"],
     ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
     ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
@@ -186,7 +192,7 @@ export const CloakingDevice: Power = {
     ["Defense","Psionic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
     ["Defense","Toxic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
     ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
-    ["Stealth","Translucency",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,"OutOfCombat","@CustomFX NoFade eq !",null,null,true],
+    ["Stealth","Translucency",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > MissionObjectClick source.EventTimeSince> 10 > && @CustomFX NoFade eq ! &&",null,null,true],
     ["Stealth","RadiusPvP",1000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 6 > HitByFoe source.EventTimeSince> 6 > && MissionObjectClick source.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
     ["Stealth","RadiusPvE",200,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","MissionObjectClick source.EventTimeSince> 10 >",null,null,true,null,"StealthToggle"]
   ],

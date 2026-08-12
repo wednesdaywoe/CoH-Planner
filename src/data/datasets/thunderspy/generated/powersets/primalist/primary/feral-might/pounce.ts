@@ -12,6 +12,8 @@ export const Pounce: Power = {
   "name": "Pounce",
   "internalName": "Pounce",
   "available": -1,
+  "autoIssue": true,
+  "free": true,
   "description": "While in Prowler form you can use Pounce to land a devastating attack to deal Superior Lethal damage and stunning even the toughest foe very briefly. The target will also bleed for a short time causing damage over time. If you are hidden with Primalist's Cloak when you execute this attack you have a 100% chance to deal additional damage, inflict a longer duration stun and a more powerful damage over time effect.  Pounce builds 1 Primal Energy, but will build 2 if the user attacks while concealed from Primalist's Cloak. Damage: Special, Recharge: Long",
   "shortHelp": "Melee, Special DMG(Lethal), Foe Stun, Moderate DoT(Lethal), Requires Prowler Form",
   "icon": "feralmight_pounce.png",
@@ -20,6 +22,9 @@ export const Pounce: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -73,16 +78,16 @@ export const Pounce: Power = {
   "atoms": [
     ["Damage","Lethal",2.76,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",1.38,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
-    ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
-    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
+    ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !",null,null,null,null,null,null,null,0.85,true],
+    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kProwlerCloakMode Source.Mode? !",null,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
     ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
     ["Damage","Lethal",1.38,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? &&",true],
     ["Damage","Lethal",2.1468,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",1.0734,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kProwlerMode Source.Mode? &&",true],
     ["Damage","Lethal",1.0734,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq kProwlerCloakMode Source.Mode? ! &&",true],
-    ["Damage","Lethal",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode?",true],
-    ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kProwlerCloakMode Source.Mode?",true],
+    ["Damage","Lethal",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode?",true,null,null,null,null,null,null,0.85,true],
+    ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kProwlerCloakMode Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Mez","Stunned",6,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? enttype target> critter eq &&",true],
     ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

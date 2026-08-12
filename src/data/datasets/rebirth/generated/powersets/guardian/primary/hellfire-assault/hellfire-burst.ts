@@ -12,6 +12,8 @@ export const HellfireBurst: Power = {
   "name": "Hellfire Burst",
   "internalName": "Hellfire_Burst",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mastery of hellfire allows you to conjure up this unholy flame at will blasting any nearby foes and set them ablaze, dealing damage over time. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "PBAoE, Moderate DoT(Toxic)",
   "icon": "hellfireassault_hellfireburst.png",
@@ -20,6 +22,9 @@ export const HellfireBurst: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -56,7 +61,7 @@ export const HellfireBurst: Power = {
     }
   ],
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Toxic",0.1,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
     ["Damage","Toxic",1.344,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

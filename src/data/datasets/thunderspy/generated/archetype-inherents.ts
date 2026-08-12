@@ -23,12 +23,17 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Hold Ground",
       "internalName": "Hold_Ground",
       "available": 0,
+      "autoIssue": true,
+      "free": true,
       "description": "A good Mastermind knows how to manage his Henchmen. The Mastermind imparts a bonus to his Henchmen's Accuracy if he is nearby and not Phased or otherwise can only use Self Only powers.  Additionally, your Henchmen within range in Defensive mode and Follow mode will share damage with the Mastermind, with damage being divided evenly between the Mastermind and each one of his Henchmen in range.",
       "shortHelp": "PBAoE, Henchman +ACC, +DMG",
       "icon": "petcommand_action_stay.png",
       "powerType": "Toggle",
       "targetType": "Own Pet (Alive)",
       "effectArea": "AoE",
+      "targetsAffected": [
+        "MyPet"
+      ],
       "stats": {
         "accuracy": 1,
         "range": 50,
@@ -129,6 +134,8 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Energy Flight",
       "internalName": "Energy_Flight",
       "available": 0,
+      "autoIssue": true,
+      "free": true,
       "description": "Energy Flight allows you to travel large distances quickly.  If you attack a target while this power is on, your flight speed will be temporarily reduced.  Your Energy Flight speed increases with your Level.",
       "shortHelp": "Toggle: Self Fly",
       "icon": "inherentpeacebringer_energyflight.png",
@@ -139,6 +146,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "hold",
         "sleep",
         "stun"
+      ],
+      "targetsAffected": [
+        "Self"
       ],
       "stats": {
         "accuracy": 1,
@@ -166,6 +176,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
             "table": "Melee_Ones"
           },
           "flySpeed": {
+            "ignoreStrength": true,
             "scale": 0.8,
             "suppressible": true,
             "table": "Melee_Ones"
@@ -181,6 +192,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         },
         "slow": {
           "flySpeed": {
+            "ignoreStrength": true,
             "scale": 1.01,
             "table": "Melee_Ones",
             "toWho": "Self"
@@ -427,6 +439,8 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Combat Flight",
       "internalName": "Combat_Flight",
       "available": 9,
+      "autoIssue": true,
+      "free": true,
       "description": "For hovering and aerial combat. This power is much slower than Energy Flight, but provides some Defense, offers good air control, costs little Endurance, and has none of the penalties associated with Energy Flight. Switch to this mode when fighting other flying foes.",
       "shortHelp": "Toggle: Self Fly, +DEF",
       "icon": "inherentpeacebringer_combatflight.png",
@@ -437,6 +451,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "hold",
         "sleep",
         "stun"
+      ],
+      "targetsAffected": [
+        "Self"
       ],
       "stats": {
         "accuracy": 1,
@@ -509,6 +526,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
             "table": "Melee_Ones"
           },
           "flySpeed": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Ones"
           },
@@ -523,6 +541,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         },
         "slow": {
           "flySpeed": {
+            "ignoreStrength": true,
             "scale": 1.01,
             "table": "Melee_Ones",
             "toWho": "Self"
@@ -858,6 +877,8 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Group Energy Flight",
       "internalName": "Group_Energy_Flight",
       "available": 13,
+      "autoIssue": true,
+      "free": true,
       "description": "You can endow your nearby teammates with Flight. Be mindful! Your friends will fall if you run out of Endurance or if they travel too far away from you. Group Energy Flight travel speed is slower than Energy Flight.",
       "shortHelp": "Toggle: Team Fly",
       "icon": "luminousaura_groupenergyflight.png",
@@ -868,6 +889,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "hold",
         "sleep",
         "stun"
+      ],
+      "targetsAffected": [
+        "Teammate",
+        "Self"
       ],
       "stats": {
         "accuracy": 1,
@@ -1025,6 +1050,8 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Quantum Acceleration",
       "internalName": "Quantum_Acceleration",
       "available": 19,
+      "autoIssue": true,
+      "free": true,
       "description": "Quantum Acceleration greatly increases your maximum fly speed, provides a high amount of defense, flight protection and additional flight control, however while active you can only use powers that target yourself.  This flight protection is only active while Energy Flight, Combat Fight, Group Energy Flight or Quantum Flight is active.  Recharge: Long",
       "shortHelp": "Toggle: Self +FlySpeed, Res(-Fly), +Def(All), +Flight Control",
       "icon": "luminousaura_quantumacceleration.png",
@@ -1035,6 +1062,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "hold",
         "sleep",
         "stun"
+      ],
+      "targetsAffected": [
+        "Self"
       ],
       "stats": {
         "accuracy": 1,
@@ -1745,6 +1775,8 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Hide",
       "internalName": "Hide",
       "available": 0,
+      "autoIssue": true,
+      "free": true,
       "description": "Hide makes you almost impossible to detect. When properly 'Hidden', a Stalker can pull off Critical hits with his attacks, and even land a massive 'Assassins Strike' with an Assassins power. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. Unlike most stealth powers, Hide can be used at the same time as other Concealment powers, giving you even greater stealth capability.  No Endurance cost.",
       "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
       "icon": "inherenthide.png",
@@ -1755,6 +1787,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "hold",
         "sleep",
         "stun"
+      ],
+      "targetsAffected": [
+        "Self"
       ],
       "stats": {
         "accuracy": 1,
@@ -1863,6 +1898,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
             "table": "Melee_Ones"
           },
           "translucency": {
+            "ignoreStrength": true,
             "scale": 0.8,
             "table": "Melee_Ones"
           }
@@ -1951,7 +1987,16 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          true
+          true,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "meter"
         ],
         [
           "Defense",
@@ -2433,12 +2478,17 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Placate",
       "internalName": "Placate",
       "available": 0,
+      "autoIssue": true,
+      "free": true,
       "description": "Allows you to trick a foe to no longer attack you.  A successful Placate will also Hide you and increase your recovery.  This Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit or an Assassin's Strike However, if you attack a Placated Foe, he will be able to attack you back. Recharge: Long",
       "shortHelp": "Ranged, Foe Placate, Self Stealth/Hide, Self +Recovery",
       "icon": "inherentplacate.png",
       "powerType": "Click",
       "targetType": "Foe",
       "effectArea": "SingleTarget",
+      "targetsAffected": [
+        "Foe"
+      ],
       "stats": {
         "accuracy": 1,
         "range": 50,
@@ -2474,6 +2524,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
             "table": "Melee_Ones"
           },
           "translucency": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Ones"
           }
@@ -2552,7 +2603,24 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           1,
           null,
-          true
+          true,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "meter"
         ],
         [
           "Stealth",
@@ -2637,12 +2705,17 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Shadow Step",
       "internalName": "Shadow_Step",
       "available": 0,
+      "autoIssue": true,
+      "free": true,
       "description": "You can Teleport long distances. Shadow Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
       "shortHelp": "Ranged (Location), Self Teleport",
       "icon": "inherentwarshade_shadowstep.png",
       "powerType": "Click",
       "targetType": "Teleport",
       "effectArea": "Location",
+      "targetsAffected": [
+        "Self"
+      ],
       "stats": {
         "accuracy": 1,
         "range": 300,
@@ -2667,12 +2740,14 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         },
         "movement": {
           "fly": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Ranged_Ones"
           }
         },
         "slow": {
           "movementFriction": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Ranged_Ones",
             "toWho": "Self"
@@ -2788,12 +2863,17 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Starless Step",
       "internalName": "Starless_Step",
       "available": 7,
+      "autoIssue": true,
+      "free": true,
       "description": "You can Teleport a single foe through a dark matter wormhole directly next to you. A successful hit must be made in order to Teleport the target, and some powerful foes cannot be Teleported. This power can be interrupted.",
       "shortHelp": "Ranged, Teleport Foe",
       "icon": "umbralblast_starlessstep.png",
       "powerType": "Click",
       "targetType": "Foe",
       "effectArea": "SingleTarget",
+      "targetsAffected": [
+        "Foe"
+      ],
       "stats": {
         "accuracy": 1,
         "range": 200,
@@ -3104,12 +3184,17 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Shadow Recall",
       "internalName": "Shadow_Recall",
       "available": 9,
+      "autoIssue": true,
+      "free": true,
       "description": "You can Teleport one of your teammates to yourself. The target must be a teammate or leaguemate and can be selected from the Team Window. You can also rescue a fallen teammate who may be in a hostile location, as long as he is on the same map. Range is not infinite, but extremely long and can be enhanced. This power can be interrupted.",
       "shortHelp": "Zone-Range: Teleport Teammate",
       "icon": "inherentwarshade_shadowrecall.png",
       "powerType": "Click",
       "targetType": "Teammate",
       "effectArea": "SingleTarget",
+      "targetsAffected": [
+        "DeadOrAliveLeaguemate"
+      ],
       "stats": {
         "accuracy": 1,
         "range": 10000,
@@ -3199,12 +3284,17 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "name": "Shadow Slip",
       "internalName": "Shadow_Slip",
       "available": 19,
+      "autoIssue": true,
+      "free": true,
       "description": "Shadow Slip allows you to teleport very long distances, even across city zones.  Activating this power will bring up a menu that allows the user to choose which zone they'll teleport to.  Recharge: Very Long",
       "shortHelp": "Long Range Teleport",
       "icon": "umbralaura_shadowslip.png",
       "powerType": "Click",
       "targetType": "Self",
       "effectArea": "SingleTarget",
+      "targetsAffected": [
+        "Self"
+      ],
       "stats": {
         "accuracy": 1,
         "recharge": 300,
@@ -3227,10 +3317,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
             "scale": 0,
             "table": "Melee_Ones"
           }
-        },
-        "teleport": {
-          "scale": 1,
-          "table": "Melee_Ones"
         }
       },
       "atoms": [
@@ -3275,7 +3361,8 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "AllyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&"
+          "AllyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&",
+          true
         ],
         [
           "Mez",
@@ -3300,7 +3387,8 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "AllyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&"
+          "AllyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&",
+          true
         ],
         [
           "Mez",

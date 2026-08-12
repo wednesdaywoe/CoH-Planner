@@ -12,6 +12,8 @@ export const EnergyPunch: Power = {
   "name": "Energy Punch",
   "internalName": "Energy_Punch",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Powerful focused punch that may Disorient your opponent! Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee, Moderate DMG(Smash/Energy), Foe Disorient",
   "icon": "energymanipulation_energypunch.png",
@@ -20,6 +22,9 @@ export const EnergyPunch: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,7 @@ export const EnergyPunch: Power = {
   "effects": {
     "buffDuration": 8.33,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.055,
       "table": "Melee_Ones"
     },
@@ -88,8 +94,8 @@ export const EnergyPunch: Power = {
     ["Damage","Energy",0.509,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",1.189,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"drop_toggles"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"drop_toggles"]
   ],
   "specialEffects": [
     {

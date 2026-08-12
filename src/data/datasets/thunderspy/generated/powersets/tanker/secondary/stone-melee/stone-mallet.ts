@@ -12,6 +12,8 @@ export const StoneMallet: Power = {
   "name": "Stone Mallet",
   "internalName": "Stone_Mallet",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your control over the earth allows you to form a mallet of solid stone. This Stone Mallet deals heavy damage, and can knock down weak foes. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash), Knockback",
   "icon": "stonemelee_stonemallet.png",
@@ -22,6 +24,9 @@ export const StoneMallet: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

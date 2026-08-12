@@ -12,12 +12,17 @@ export const FastHealing: Power = {
   "name": "Fast Healing",
   "internalName": "Fast_Healing",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You heal Hit Points at a faster rate than normal. This power is always on.",
   "shortHelp": "Auto: Self +Regeneration",
   "icon": "willpower_fasthealing.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -33,6 +38,7 @@ export const FastHealing: Power = {
     "buffDuration": 10,
     "debuffResistance": {
       "regeneration": {
+        "ignoreStrength": true,
         "scale": 0.75,
         "table": "Melee_Res_Boolean"
       }
@@ -47,8 +53,8 @@ export const FastHealing: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,0.75,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
-    ["Regeneration",null,0.75,1,10,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"No",2,null,null,1,null,true]
+    ["Regeneration",null,0.75,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1],
+    ["Regeneration",null,0.75,1,10,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

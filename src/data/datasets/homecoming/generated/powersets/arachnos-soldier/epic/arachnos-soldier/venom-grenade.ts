@@ -12,12 +12,17 @@ export const VenomGrenade: Power = {
   "name": "Venom Grenade",
   "internalName": "Venom_Grenade",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.Notes: If you take this power you cannot also take the Crab Spider version.",
   "shortHelp": "Ranged (Targeted AoE), DoT(Toxic), Foe -Res(All)",
   "icon": "arachnossoldier_venomgrenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -54,34 +59,42 @@ export const VenomGrenade: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }
@@ -98,6 +111,568 @@ export const VenomGrenade: Power = {
     ["Resistance","Psionic",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-4,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+  ],
+  "formVariants": [
+    {
+      "condition": "@CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&",
+      "internalName": "Crab_Venom_Grenade",
+      "stats": {
+        "accuracy": 1,
+        "range": 80,
+        "radius": 20,
+        "recharge": 24,
+        "endurance": 11.856,
+        "castTime": 1.67,
+        "maxTargets": 10
+      },
+      "damage": {
+        "type": "Toxic",
+        "scale": 0.1964,
+        "table": "Ranged_Damage",
+        "duration": 4.125,
+        "tickRate": 1
+      },
+      "effects": {
+        "buffDuration": 16,
+        "durations": {
+          "resistanceDebuff": 16
+        },
+        "resistanceDebuff": {
+          "cold": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "energy": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "fire": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "lethal": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "negative": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "psionic": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "smashing": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "toxic": {
+            "ignoreStrength": true,
+            "scale": 4,
+            "table": "Ranged_Res_Dmg"
+          }
+        }
+      },
+      "shortHelp": "Ranged (Targeted AoE), DoT(Toxic), Foe -Res(All)",
+      "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.Notes: If you take this power you cannot also take the Wolf Spider version.Damage: Light.Recharge: Slow.",
+      "effectArea": "AoE",
+      "targetType": "Foe",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Damage",
+          "Toxic",
+          0.1964,
+          1,
+          4.125,
+          "Ranged_Damage",
+          "Abs",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ],
+        [
+          "Resistance",
+          "Smashing",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Lethal",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Fire",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Cold",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Energy",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Negative",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Psionic",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Toxic",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Toxic",
+          -4,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ]
+      ]
+    },
+    {
+      "condition": "@CustomFX NullifierMace eq @CustomFX NullifierMaceTintable eq || Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor source.ownPower? &&",
+      "internalName": "Bane_Venom_Grenade",
+      "stats": {
+        "accuracy": 1,
+        "range": 80,
+        "radius": 20,
+        "recharge": 24,
+        "endurance": 11.856,
+        "castTime": 1.67,
+        "maxTargets": 10
+      },
+      "damage": {
+        "type": "Toxic",
+        "scale": 0.1964,
+        "table": "Ranged_Damage",
+        "duration": 4.125,
+        "tickRate": 1
+      },
+      "effects": {
+        "buffDuration": 16,
+        "durations": {
+          "resistanceDebuff": 16
+        },
+        "resistanceDebuff": {
+          "cold": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "energy": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "fire": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "lethal": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "negative": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "psionic": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "smashing": {
+            "ignoreStrength": true,
+            "scale": 2,
+            "table": "Ranged_Res_Dmg"
+          },
+          "toxic": {
+            "ignoreStrength": true,
+            "scale": 4,
+            "table": "Ranged_Res_Dmg"
+          }
+        }
+      },
+      "shortHelp": "Ranged (Targeted AoE), DoT(Toxic), Foe -Res(All)",
+      "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.Notes: If you take this power you cannot also take the Crab Spider version.Damage: Light.Recharge: Slow.",
+      "effectArea": "AoE",
+      "targetType": "Foe",
+      "powerType": "Click",
+      "atoms": [
+        [
+          "Damage",
+          "Toxic",
+          0.1964,
+          1,
+          4.125,
+          "Ranged_Damage",
+          "Abs",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Stack",
+          2,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "enttype target> critter eq"
+        ],
+        [
+          "Resistance",
+          "Smashing",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Lethal",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Fire",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Cold",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Energy",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Negative",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Psionic",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Toxic",
+          -2,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ],
+        [
+          "Resistance",
+          "Toxic",
+          -4,
+          1,
+          16,
+          "Ranged_Res_Dmg",
+          "Res",
+          "Magnitude",
+          "Target",
+          "Any",
+          true,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true
+        ]
+      ]
+    }
   ],
   "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade !"
 };

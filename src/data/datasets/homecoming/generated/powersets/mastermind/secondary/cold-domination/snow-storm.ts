@@ -12,6 +12,8 @@ export const SnowStorm: Power = {
   "name": "Snow Storm",
   "internalName": "Snow_Storm",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes. The torrent winds of the Snow Storm are enough to bring down flying foes.Recharge: Moderate.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly",
   "icon": "colddomination_snowstorm.png",
@@ -22,6 +24,9 @@ export const SnowStorm: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -46,10 +51,19 @@ export const SnowStorm: Power = {
   "effects": {
     "buffDuration": 0.75,
     "durations": {
+      "movementCapDebuff": 0.75,
       "rechargeDebuff": 0.75,
       "slow": 0.75
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
@@ -63,6 +77,7 @@ export const SnowStorm: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -71,8 +86,8 @@ export const SnowStorm: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.5,
+        "table": "Ranged_Slow"
       }
     }
   },

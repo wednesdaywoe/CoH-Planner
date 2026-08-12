@@ -12,6 +12,8 @@ export const IncendiaryAura: Power = {
   "name": "Incendiary Aura",
   "internalName": "Incendiary_Aura",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You create an aura of pyrotechnic energy around yourself that has combustible properties. Enemies within range of the power have a persistent chance of Blasting Off into the air, as well as suffer from reduced ToHit and Defense.",
   "shortHelp": "Toggle: PBAoE, Chance for Blast Off. -ToHit, -Defense",
   "icon": "pyrotechnic_incendiaryaura.png",
@@ -22,6 +24,9 @@ export const IncendiaryAura: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -61,40 +66,49 @@ export const IncendiaryAura: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
     "slow": {
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 500,
         "table": "Melee_Ones"
       }
@@ -114,8 +128,8 @@ export const IncendiaryAura: Power = {
     ["Resistance","Negative",-1.2,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Psionic",-1.2,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-1.2,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Meta",null,0,0,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,211,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,3.25,1,null,true],
+    ["Meta",null,0,0,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,1,211,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,3.25,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"PyrotechnicInterceptable",null,"set_mode"],
     ["ToHit",null,1.25,1,0.45,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","JumpHeight",-500,1,0.45,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","All",0.75,1,0.45,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],

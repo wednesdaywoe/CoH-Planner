@@ -12,6 +12,8 @@ export const Boggle: Power = {
   "name": "Boggle",
   "internalName": "Boggle",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You flood your foe's mind with doubt causing them to become confused for a brief time. Confused foes will attack their allies. Boggle will also place the \"Boggled\" effect on your target for a short time. Attacking a Boggled target will increase your chance of gaining Insight.This power will have a highlight ring if you currently have no targets under the \"Boggled\" effect.Notes: Boggle is unaffected by Range changes.",
   "shortHelp": "Short Ranged, Target Confuse, +Special",
   "icon": "psionicmelee_boggle.png",
@@ -20,6 +22,9 @@ export const Boggle: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -48,7 +53,7 @@ export const Boggle: Power = {
   },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,56,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,56,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Mez","Confused",15,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Confused",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

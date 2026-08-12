@@ -12,6 +12,8 @@ export const GamblersCut: Power = {
   "name": "Gambler's Cut",
   "internalName": "Gamblers_Cut",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a quick slash with your katana. This attack is very fast and deals moderate damage, with a chance of dealing additional Toxic damage over time. This attack can reduce a target's Defense, making them easier to hit. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee, Moderate DMG (Lethal), DoT(Toxic), Foe -Defense",
   "icon": "ninjaassault_gamblerscut.png",
@@ -20,6 +22,9 @@ export const GamblersCut: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -87,15 +92,15 @@ export const GamblersCut: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Lethal",0.66,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",0.6,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Toxic",0.06,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929],
-    ["Damage","Lethal",0.33,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Energy",0.363,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.06,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
+    ["Damage","Lethal",0.33,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0],
+    ["Damage","Energy",0.363,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0],
     ["Damage","Lethal",0.7763,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",0.3882,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Energy",0.427,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",0.3882,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0],
+    ["Damage","Energy",0.427,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0]
   ],
   "specialEffects": [
     {

@@ -12,12 +12,17 @@ export const Shiver: Power = {
   "name": "Cold Snap",
   "internalName": "Shiver",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You blast forth a wide cone of chilling air that dramatically slows the enemies' movement and attack rate and might leave nearby foes trembling.Notes: The Fear component applies only to enemies in the center area of effect.",
   "shortHelp": "Ranged (Cone), Foe Fear, -SPD, -Recharge",
   "icon": "iceformation_shiver.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -45,6 +50,7 @@ export const Shiver: Power = {
   "effects": {
     "buffDuration": 18,
     "durations": {
+      "movementCapDebuff": 18,
       "rechargeDebuff": 18,
       "slow": 18
     },
@@ -53,7 +59,15 @@ export const Shiver: Power = {
       "scale": 10,
       "table": "Ranged_Fear"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.65,
       "table": "Ranged_Slow"
     },
@@ -63,6 +77,7 @@ export const Shiver: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
@@ -71,8 +86,8 @@ export const Shiver: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.65,
+        "table": "Ranged_Slow"
       }
     }
   },
@@ -85,6 +100,6 @@ export const Shiver: Power = {
     ["Movement","Run",-1,1,18,"Ranged_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Mez","Terrorized",10,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Terrorized",6.67,1,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224]
+    ["Mez","Terrorized",6.67,1,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"]
   ]
 };

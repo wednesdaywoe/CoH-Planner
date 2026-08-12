@@ -12,6 +12,8 @@ export const KujiInZen: Power = {
   "name": "Kuji-In Zen",
   "internalName": "Kuji_In_Zen",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Kuji-In Zen will permanently bestow the most advanced techniques and powers to all of your Ninja Henchman. The Enlightened Ninja will gain new abilities, powers, and weapons. The powers gained are unique and dependent upon the type of Ninja Henchman that is Enlightened. Your Ninja Henchman also gain 3% more Critical Hit chance and the ability to heal themselves periodically with Kuji-In Sha. This power only works on your Ninja Henchmen and you can only Enlighten your Ninja Henchmen once with this power.",
   "shortHelp": "Ranged, Enlighten Ninja Henchman",
   "icon": "ninjas_upgradeequipment.png",
@@ -22,6 +24,9 @@ export const KujiInZen: Power = {
     "RechargeTime"
   ],
   "procsAllowed": false,
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -45,16 +50,16 @@ export const KujiInZen: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName>",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Jonin target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Jonin target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Jonin target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Jonin target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Jonin target.VillainName>",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Jonin target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Oni target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
     ["Mez","Evade",100,1,7,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jonin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true]
   ]
 };

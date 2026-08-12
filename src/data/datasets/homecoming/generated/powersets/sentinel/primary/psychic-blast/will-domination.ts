@@ -12,12 +12,17 @@ export const WillDomination: Power = {
   "name": "Will Domination",
   "internalName": "Will_Domination",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "This powerful attack deals Psionic damage, and is so painful it usually renders its target unconscious. The victim is asleep, and will wake if disturbed.Damage: High.Recharge: Moderate.",
   "shortHelp": "Ranged, High DMG(Psionic), Foe Sleep",
   "icon": "psychicblast_willdomination.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 75,
@@ -60,12 +65,12 @@ export const WillDomination: Power = {
     }
   },
   "atoms": [
-    ["Mez","Sleep",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929],
-    ["Damage","Psionic",1.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Psionic",1.96,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,null,true],
-    ["Damage","Psionic",1.57,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Psionic",1.57,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["Mez","Sleep",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",1.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",1.96,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+    ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Psionic",1.57,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Psionic",1.57,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
   ],
   "specialEffects": [
     {

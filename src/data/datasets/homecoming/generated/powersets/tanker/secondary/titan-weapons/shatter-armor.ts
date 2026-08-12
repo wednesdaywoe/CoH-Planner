@@ -12,6 +12,8 @@ export const ShatterArmor: Power = {
   "name": "Rend Armor",
   "internalName": "Shatter_Armor",
   "available": 23,
+  "autoIssue": false,
+  "free": false,
   "description": "You batter your enemy with your mighty weapon dealing Extreme Smashing damage and reducing their resistance to damage as well as their defense to all types of attacks for a short time.",
   "shortHelp": "Melee, DMG(Smashing), Foe -Def(All), -Res(All)",
   "icon": "titanweapons_shatterarmor.png",
@@ -22,6 +24,9 @@ export const ShatterArmor: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 9,
@@ -63,34 +68,42 @@ export const ShatterArmor: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       }
@@ -107,7 +120,7 @@ export const ShatterArmor: Power = {
     ["Resistance","Psionic",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Damage","Smashing",2.92,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",1.314,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+    ["Damage","Fire",1.314,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"]
   ],
   "modeVariants": {
     "FastMode": {
@@ -136,34 +149,42 @@ export const ShatterArmor: Power = {
         },
         "resistanceDebuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Debuff_Res_Dmg"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_Debuff_Res_Dmg"
           }
@@ -173,7 +194,20 @@ export const ShatterArmor: Power = {
       "description": "You batter your enemy with your mighty weapon dealing Extreme Smashing damage and reducing their resistance to damage as well as their defense to all types of attacks for a short time.",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Smashing",2.28,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+        ["Resistance","Smashing",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Lethal",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Fire",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Cold",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Energy",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Negative",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Psionic",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Toxic",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Damage","Fire",1.026,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"]
+      ]
     }
   }
 };

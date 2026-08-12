@@ -12,12 +12,17 @@ export const DarkGrasp: Power = {
   "name": "Dark Grasp",
   "internalName": "Dark_Grasp",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You cause your target's shadow to wholly envelop them, leaving them held and rendered helpless while suffering from moderate negative energy damage. Even if the target is powerful enough to resist the power's hold effect they will have their chance to hit reduced. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe Hold, -To Hit",
   "icon": "darknesscontrol_darkgrasp.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -67,7 +72,7 @@ export const DarkGrasp: Power = {
   },
   "atoms": [
     ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
     ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Held",4,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

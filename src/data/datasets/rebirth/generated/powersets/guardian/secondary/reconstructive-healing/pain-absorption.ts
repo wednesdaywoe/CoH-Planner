@@ -12,12 +12,17 @@ export const PainAbsorption: Power = {
   "name": "Pain Absorption",
   "internalName": "Pain_Absorption",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "When in danger, you are able to concentrate to Absorb a large amount of damage, and gain Toxic damage resistance.  You will also gain a burst of Regeneration and your Heals will be more potent, but it comes at the cost of some Endurance.  You can use this power up to 3 times before it needs to recharge.  The strength of the Absorption, Regeneration and Healing Bonus will get significantly stronger on the second and third click, and to a lesser degree the Endurance cost will get stronger as well.  Recharge: Slow",
   "shortHelp": "Self, +Absorption, +Regeneration, +Heal Bonus, Res(Toxic)",
   "icon": "reconhealing_painabsorption.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -48,10 +53,12 @@ export const PainAbsorption: Power = {
       "resistanceDebuff": 20
     },
     "enduranceDrain": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Ones"
     },
     "regenBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
@@ -63,6 +70,7 @@ export const PainAbsorption: Power = {
     },
     "resistanceDebuff": {
       "heal": {
+        "ignoreStrength": true,
         "scale": 0.25,
         "table": "Melee_Ones",
         "toWho": "Self"
@@ -92,9 +100,9 @@ export const PainAbsorption: Power = {
     ["HealResistance",null,-0.75,1,20,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower?",true,null,null,null,"PainAbsorptionHeal"],
     ["Endurance",null,-15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower?",true,null,null,null,"PainAbsorptionHeal"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower?",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_3 source.ownPower? ||",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower?",true]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ],
   "conditionalEffects": [
     {
@@ -103,6 +111,10 @@ export const PainAbsorption: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1",
+        "count": 1
+      },
       "effects": {
         "absorb": {
           "scale": 3,
@@ -115,15 +127,18 @@ export const PainAbsorption: Power = {
           "resistanceDebuff": 20
         },
         "enduranceDrain": {
+          "ignoreStrength": true,
           "scale": 10,
           "table": "Melee_Ones"
         },
         "regenBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 2,
           "table": "Melee_Ones"
         },
         "resistanceDebuff": {
           "heal": {
+            "ignoreStrength": true,
             "scale": 0.5,
             "table": "Melee_Ones",
             "toWho": "Self"
@@ -138,6 +153,10 @@ export const PainAbsorption: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
+      "ownedPower": {
+        "path": "Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2",
+        "count": 1
+      },
       "effects": {
         "absorb": {
           "scale": 4,
@@ -150,15 +169,18 @@ export const PainAbsorption: Power = {
           "resistanceDebuff": 20
         },
         "enduranceDrain": {
+          "ignoreStrength": true,
           "scale": 15,
           "table": "Melee_Ones"
         },
         "regenBuffUnenhanced": {
+          "ignoreStrength": true,
           "scale": 3,
           "table": "Melee_Ones"
         },
         "resistanceDebuff": {
           "heal": {
+            "ignoreStrength": true,
             "scale": 0.75,
             "table": "Melee_Ones",
             "toWho": "Self"

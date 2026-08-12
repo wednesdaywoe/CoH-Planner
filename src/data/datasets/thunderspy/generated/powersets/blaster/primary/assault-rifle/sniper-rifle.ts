@@ -12,12 +12,17 @@ export const SniperRifle: Power = {
   "name": "Sniper Rifle",
   "internalName": "Sniper_Rifle",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Sniper Rifle is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. Like most sniper attacks, you must take your time to aim, so this attack can be interrupted. If used in conjunction with a targeting drone, the Sniper Rifle will do additional damage. If you have more than 97% To-Hit, this attack becomes instant-cast.  Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_sniperrifle.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.25,
     "range": 150,
@@ -51,6 +56,7 @@ export const SniperRifle: Power = {
   "effects": {
     "buffDuration": 8.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.044,
       "table": "Ranged_Ones"
     },
@@ -74,6 +80,32 @@ export const SniperRifle: Power = {
     ["DamageBuff","Toxic",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
+  "quickSnipe": {
+    "condition": "cur.kToHit source> .97 >=",
+    "stats": {
+      "castTime": 0.67,
+      "range": 150
+    },
+    "damage": [
+      {
+        "type": "Lethal",
+        "scale": 2.76,
+        "table": "Ranged_Damage"
+      }
+    ],
+    "atoms": [
+      ["Damage","Lethal",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+      ["DamageBuff","Smashing",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Lethal",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Fire",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Cold",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Energy",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Negative",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Toxic",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+      ["DamageBuff","Psionic",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ]
+  },
   "damageTypes": [
     "Lethal"
   ]

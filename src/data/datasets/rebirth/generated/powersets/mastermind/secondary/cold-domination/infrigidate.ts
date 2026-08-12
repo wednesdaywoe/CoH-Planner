@@ -12,12 +12,17 @@ export const Infrigidate: Power = {
   "name": "Infrigidate",
   "internalName": "Infrigidate",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Fires a frigid beam of cold at a single target.  This beam dramatically reduces the target's attack rate, movement speed and Defense.  Infrigidate draws so much heat out of the target that the damage of any of its Fire attacks will be reduced. Recharge: Slow",
   "shortHelp": "Ranged Foe -Speed, -Recharge, -DEF, -DMG (Fire)",
   "icon": "colddomination_infrigidate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -43,6 +48,7 @@ export const Infrigidate: Power = {
   "effects": {
     "buffDuration": 20,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Debuff_Dam"
     },
@@ -53,10 +59,19 @@ export const Infrigidate: Power = {
     "durations": {
       "damageDebuff": 20,
       "defenseDebuff": 20,
+      "movementCapDebuff": 20,
       "rechargeDebuff": 20,
       "slow": 20
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.7,
       "table": "Ranged_Slow"
     },
@@ -66,6 +81,7 @@ export const Infrigidate: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Ranged_Slow"
       },
@@ -74,8 +90,8 @@ export const Infrigidate: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.7,
+        "table": "Ranged_Slow"
       }
     }
   },

@@ -709,6 +709,11 @@ interface UIActions {
   setSentinelCritActive: (active: boolean) => void;
 
   // Arachnos Branch Selection (Epic ATs)
+  /**
+   * Point the picker at a branch WITHOUT touching the build — for the paths that follow the
+   * build rather than change it (import, rehydrate, undo). Changing branch is a build edit
+   * that drops the old branch's picks: use `buildStore.switchBranch`.
+   */
   setSelectedBranch: (branch: ArchetypeBranchId | null) => void;
   clearSelectedBranch: () => void;
 
@@ -716,8 +721,14 @@ interface UIActions {
   openCompareSlotting: (powerName?: string, powerSet?: string) => void;
   closeCompareSlotting: () => void;
   /** Replace a power's saved comparison copies. An empty list drops the entry
-   *  entirely, so powers the user has stopped comparing don't accumulate. */
-  setCompareSlottingCopies: (key: string, copies: ComparisonCopy[]) => void;
+   *  entirely, so powers the user has stopped comparing don't accumulate.
+   *  Takes an updater as well as a list: a multi-slot pick writes once per
+   *  piece in one tick, and a caller passing a list computed from its own
+   *  render snapshot would have every write but the last overwritten. */
+  setCompareSlottingCopies: (
+    key: string,
+    copies: ComparisonCopy[] | ((prev: ComparisonCopy[]) => ComparisonCopy[])
+  ) => void;
   clearCompareSlottingCopies: () => void;
 
   // Power View Mode
@@ -1750,9 +1761,13 @@ export const useUIStore = create<UIStore>()(
 
       setCompareSlottingCopies: (key, copies) =>
         set((state) => {
+          const resolved =
+            typeof copies === 'function'
+              ? copies(state.compareSlottingCopies[key] ?? [])
+              : copies;
           const next = { ...state.compareSlottingCopies };
-          if (copies.length === 0) delete next[key];
-          else next[key] = copies;
+          if (resolved.length === 0) delete next[key];
+          else next[key] = resolved;
           return { compareSlottingCopies: next };
         }),
 

@@ -12,12 +12,17 @@ export const GleamingBlast: Power = {
   "name": "Gleaming Blast",
   "internalName": "Gleaming_Blast",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "A much more powerful, yet slower version of Gleaming Bolt. Gleaming Blast sends a focused blast of Kheldian energy at a foe that can knock them back and reduce their Defense. This power can be used in Nova Form. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_gleamingblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

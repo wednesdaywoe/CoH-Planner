@@ -12,6 +12,8 @@ export const ShinBreaker: Power = {
   "name": "Shin Breaker",
   "internalName": "Shin_Breaker",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You execute a quick but powerful kick targeting your foe's leg in an attempt to cripple their movement. Shin Breaker deals Superior Smashing damage and moderately reduces your target's movement speed and defense for a short time. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG (Smash), Foe -Speed, -Defense",
   "icon": "militaryassault_shinbreaker.png",
@@ -20,6 +22,9 @@ export const ShinBreaker: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -66,6 +71,7 @@ export const ShinBreaker: Power = {
         "table": "Melee_Ones"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Slow"
       },
@@ -87,6 +93,6 @@ export const ShinBreaker: Power = {
     ["Movement","Jump",0.5,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Smashing",2.3114,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ]
 };

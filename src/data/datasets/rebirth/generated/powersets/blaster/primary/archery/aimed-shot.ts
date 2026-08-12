@@ -12,6 +12,8 @@ export const AimedShot: Power = {
   "name": "Aimed Shot",
   "internalName": "Aimed_Shot",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Lethal)",
   "icon": "archery_mediumarrow.png",
@@ -23,6 +25,9 @@ export const AimedShot: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.155,
@@ -52,6 +57,7 @@ export const AimedShot: Power = {
   "effects": {
     "buffDuration": 9.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.11,
       "table": "Ranged_Ones"
     },

@@ -12,12 +12,17 @@ export const CSFragGrenade: Power = {
   "name": "Frag Grenade",
   "internalName": "CS_Frag_Grenade",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Launches an M30 Grenade at long range from an arm of your backpack. The explosion from this grenade affects all within the blast and can knock them back.Notes: If you take this power, you cannot take the Wolf Spider version.",
   "shortHelp": "Ranged(Targeted AoE), DMG(Lethal/Fire), Foe Knockback",
   "icon": "crabspider_fraggrenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -66,7 +71,7 @@ export const CSFragGrenade: Power = {
     ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.3711,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Fire",0.5125,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Fire",1.3254,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Damage","Fire",1.3254,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"],
     ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

@@ -22,7 +22,12 @@ import { Overgrowth as Overgrowth } from './overgrowth';
 
 export const powerset: Powerset = {
   id: 'controller/nature-affinity',
+  setPath: 'Controller_Buff.Nature_Affinity',
   name: 'Nature Affinity',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You have command over the forces of nature and are able to call forth primal energies to aid your allies and hinder your foes.  Many of your powers place a Bloom effect on you and your allies.  Each stack of Bloom boosts healing effects on the affected targets by a 4% for 30 seconds.  Bloom can stack up to 5 times.',
   icon: 'nature_affinity_set.ico',
   archetype: 'controller',

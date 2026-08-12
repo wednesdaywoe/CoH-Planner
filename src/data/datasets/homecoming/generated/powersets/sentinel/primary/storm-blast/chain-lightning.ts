@@ -12,12 +12,17 @@ export const ChainLightning: Power = {
   "name": "Chain Lightning",
   "internalName": "Chain_Lightning",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Calls a bolt of lightning from the clouds to strike your target, which then chains outward to additional enemies. Creatures unfortunate enough to be struck will be dealt Energy damage and be sapped of some endurance.While in a Storm Cell, the main target of Chain Lightning will experience additional endurance drain over time.",
   "shortHelp": "Ranged Chain, DoT(Energy), Foe -End",
   "icon": "stormblast_chainlightning.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Chain",
+  "targetsAffected": [
+    "Foe"
+  ],
   "chainTargetExpression": "enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +",
   "stats": {
     "accuracy": 1.15,
@@ -62,21 +67,21 @@ export const ChainLightning: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,2.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Meta",null,1,1,2.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Endurance",null,-0.07,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25],
+    ["Damage","Energy",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !",null,null,null,null,null,null,null,null,null,"IncreaseStormStrength"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"StormBrewing"],
     ["Endurance",null,-0.035,1,4.4,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
     ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",1.3527,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",1.3527,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Endurance",null,-0.625,1,4.4,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,null,true],
+    ["Damage","Energy",1.3527,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
+    ["Damage","Energy",1.3527,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+    ["Endurance",null,-0.625,1,4.4,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
     ["Damage","Energy",0.324,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Damage","Energy",0.04,1,2.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.324,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Damage","Energy",0.04,1,2.2,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,null,true]
+    ["Damage","Energy",0.324,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
+    ["Damage","Energy",0.04,1,2.2,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"]
   ],
   "conditionalEffects": [
     {

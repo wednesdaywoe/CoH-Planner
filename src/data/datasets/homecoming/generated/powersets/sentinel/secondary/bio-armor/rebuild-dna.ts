@@ -12,12 +12,17 @@ export const RebuildDNA: Power = {
   "name": "Rebuild DNA",
   "internalName": "Rebuild_DNA",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "You rebuild your genetic makeup to restore some of your health and endurance.*While Offensive Adaptation is active, this power's will increase your perception.*While Defensive Adaptation is active, this power will grant bonus health.*While Efficient Adaptation is active, this power will grant bonus endurance.Bonuses granted from Adaptations are unenhanceable.",
   "shortHelp": "Self +HP, +End, +Special",
   "icon": "bioorganicarmor_rebuilddna.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -94,6 +99,7 @@ export const RebuildDNA: Power = {
         "buffDuration": 30,
         "debuffResistance": {
           "perception": {
+            "ignoreStrength": true,
             "scale": 0.6,
             "table": "Melee_Ones"
           }
@@ -103,6 +109,7 @@ export const RebuildDNA: Power = {
           "perceptionBuff": 30
         },
         "perceptionBuff": {
+          "ignoreStrength": true,
           "scale": 0.6,
           "table": "Melee_Ones"
         }

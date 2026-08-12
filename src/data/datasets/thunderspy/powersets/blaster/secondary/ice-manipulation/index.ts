@@ -21,7 +21,12 @@ import { FrozenAura as FrozenAura } from './frozen-aura';
 
 export const powerset: Powerset = {
   id: 'blaster/ice-manipulation',
+  setPath: 'Blaster_Support.Ice_Manipulation',
   name: 'Ice Manipulation',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Ice Manipulation lets you surround yourself with various manifestations of ice and cold, assaulting and freezing nearby foes. Ice Manipulation powers are known to Slow opponents.',
   icon: 'ice_manipulation_set.ico',
   archetype: 'blaster',

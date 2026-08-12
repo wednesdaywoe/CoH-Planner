@@ -6,8 +6,7 @@
  */
 
 import { useEffect } from 'react';
-import { useBuildStore } from '@/stores/buildStore';
-import { useHistoryStore } from '@/stores/historyStore';
+import { undoBuild, redoBuild } from '@/utils/undo-redo';
 
 export function useUndoRedoKeyboard() {
   useEffect(() => {
@@ -27,17 +26,8 @@ export function useUndoRedoKeyboard() {
 
       e.preventDefault();
 
-      const history = useHistoryStore.getState();
-      const currentBuild = useBuildStore.getState().build;
-
-      history.setRestoring(true);
-      const restored = isUndo
-        ? history.undo(currentBuild)
-        : history.redo(currentBuild);
-      if (restored) {
-        useBuildStore.getState()._restoreBuild(restored);
-      }
-      history.setRestoring(false);
+      if (isUndo) undoBuild();
+      else redoBuild();
     };
 
     document.addEventListener('keydown', handler);

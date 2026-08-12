@@ -12,12 +12,17 @@ export const Meteor: Power = {
   "name": "Meteor",
   "internalName": "Meteor",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You call down a meteor strike from the sky at a specified location. All targets within 30' are caught in the blast radius, taking extreme damage and being knocked back.",
   "shortHelp": "Ranged (Location AoE), DMG(Smash/Fire), Foe Knockback",
   "icon": "seismicblast_meteor.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 90,
@@ -83,7 +88,10 @@ export const Meteor: Power = {
               "recharge": 0,
               "castTime": 0,
               "activatePeriod": 999,
-              "effectArea": "SingleTarget"
+              "effectArea": "SingleTarget",
+              "targetsAffected": [
+                "Self"
+              ]
             }
           ]
         }

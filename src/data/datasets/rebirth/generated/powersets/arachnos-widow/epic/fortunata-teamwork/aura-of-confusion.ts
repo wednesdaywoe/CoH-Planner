@@ -12,12 +12,17 @@ export const AuraofConfusion: Power = {
   "name": "Aura of Confusion",
   "internalName": "Aura_of_Confusion",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Aura of Confusion can cause chaos within a group of foes. All affected foes within the area will turn and attack each other, ignoring the user and their allies. If you confuse a foe before they noticed you, your presence will continue to go unnoticed. You will not receive any Experience Points for foes defeated entirely by confused enemies. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Confuse",
   "icon": "fortunatateamwork_auraofconfusion.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

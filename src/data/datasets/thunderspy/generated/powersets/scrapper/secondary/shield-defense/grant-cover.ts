@@ -12,6 +12,8 @@ export const GrantCover: Power = {
   "name": "Grant Cover",
   "internalName": "Grant_Cover",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "You are able to use your shield to defend nearby allies.  Any teammates who remain nearby gain a bonus to their defense.  (NOTE: The defense bonus from this power is only applied to nearby team mates, but not yourself.)  Additionally, while this power is active, the user and his team mates  will gain some resistance to defense and recharge rate debuffs. Recharge: Slow",
   "shortHelp": "PBAoE, Team (but not self) +DEF(All but Psionic), Team +RES(Defense Debuff, Recharge Debuff)",
   "icon": "shielddefense_grantcover.png",
@@ -22,6 +24,10 @@ export const GrantCover: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Teammate",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -45,10 +51,12 @@ export const GrantCover: Power = {
     "buffDuration": 2.25,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       }

@@ -12,12 +12,17 @@ export const BitterIceBlast: Power = {
   "name": "Bitter Ice Blast",
   "internalName": "Bitter_Ice_Blast",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "A slower yet more powerful version of Ice Blast, Bitter Ice Blast deals much more damage and can also reduce your enemy's chance to hit. Like other Ice Blast powers, Bitter Ice Blast can Slow a target's movement and attack speed. Damage: Superior, Recharge: Slow",
   "shortHelp": "Ranged, Superior DMG(Cold/Smash), Foe -Recharge, -SPD, -To Hit",
   "icon": "iceblast_bitterfrostblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -58,6 +63,7 @@ export const BitterIceBlast: Power = {
   "effects": {
     "buffDuration": 12,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.071,
       "table": "Ranged_Ones"
     },
@@ -68,6 +74,7 @@ export const BitterIceBlast: Power = {
       "tohitDebuff": 6
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
@@ -77,6 +84,7 @@ export const BitterIceBlast: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },

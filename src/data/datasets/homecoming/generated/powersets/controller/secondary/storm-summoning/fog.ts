@@ -12,12 +12,17 @@ export const Fog: Power = {
   "name": "Freezing Rain",
   "internalName": "Fog",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons Freezing Rain at a targeted location. Freezing Rain deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm.Damage: Minor(DoT).Recharge: Slow.",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
   "icon": "stormsummoning_freezingrain.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -72,6 +77,13 @@ export const Fog: Power = {
               "effects": [
                 {
                   "type": "Slow",
+                  "axis": "runSpeed",
+                  "scale": 0.56,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
                   "scale": 0.56,
                   "table": "Ranged_Slow"
                 },
@@ -82,9 +94,60 @@ export const Fog: Power = {
                   "ignoreStrength": true
                 },
                 {
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 0.48,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 0.56,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "axis": "runSpeed",
+                  "scale": 0.24,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 0.24,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
+                  "scale": 0.24,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 0.24,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.24,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
+                },
+                {
                   "type": "DefenseDebuff",
                   "scale": 2.4,
                   "table": "Ranged_Debuff_Def"
+                },
+                {
+                  "type": "MovementCapDebuff",
+                  "axis": "runSpeed",
+                  "scale": 1,
+                  "table": "Ranged_SpeedRunning",
+                  "ignoreStrength": true
                 },
                 {
                   "type": "ResistanceDebuff",
@@ -105,6 +168,9 @@ export const Fog: Power = {
               "castTime": 0,
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 16
             }

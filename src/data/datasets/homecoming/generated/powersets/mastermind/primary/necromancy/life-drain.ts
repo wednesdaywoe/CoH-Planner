@@ -12,12 +12,17 @@ export const LifeDrain: Power = {
   "name": "Life Drain",
   "internalName": "Life_Drain",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "You can tap the power of the Netherworld to steal some life from a target foe and reduce their chance to hit. Some of that stolen life is transferred to you in the form of Hit Points.Spectral Forces:Activating this power has a chance to summon a Specter to your side! Specters fade away over 30 seconds. They cannot be healed, regenerate, upgraded, or commanded, but provide a good distraction. Enhancements in this power will also enhance the stats of summoned Specters. You may only have 1 Specter active per Necromancy attack.",
   "shortHelp": "Ranged, DMG(Negative), Target -To Hit, Self +HP",
   "icon": "necromancy_lifedrain.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

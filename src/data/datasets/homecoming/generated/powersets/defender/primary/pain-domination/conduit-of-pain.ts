@@ -12,12 +12,17 @@ export const ConduitofPain: Power = {
   "name": "Conduit of Pain",
   "internalName": "Conduit_of_Pain",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "You revive a fallen ally by becoming a Conduit of Pain and transferring the pain that was inflicted upon them back upon your enemies. This will briefly empower you increasing your damage output, recovery rate, attack rate and chance to hit. After a minute the effect will wear off leaving you weakened for 30 seconds. Your damage, attack rate and chance to hit will all be reduced during this period.",
   "shortHelp": "Ally Rez, Self +DMG, +Recharge, +Recovery, +To Hit, +Special",
   "icon": "paindomination_conduitofpain.png",
   "powerType": "Click",
   "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "DeadPlayerFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -45,10 +50,12 @@ export const ConduitofPain: Power = {
   "effects": {
     "buffDuration": 60,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Buff_Dmg"
     },
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 3,
       "table": "Ranged_Debuff_Dam",
       "toWho": "Self"
@@ -63,10 +70,12 @@ export const ConduitofPain: Power = {
       "tohitDebuff": 30
     },
     "enduranceGain": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Ones"
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.75,
       "table": "Ranged_Ones"
     },
@@ -81,10 +90,12 @@ export const ConduitofPain: Power = {
       }
     },
     "tohitBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Buff_ToHit"
     },
     "tohitDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Debuff_ToHit",
       "toWho": "Self"
@@ -100,7 +111,7 @@ export const ConduitofPain: Power = {
   "atoms": [
     ["Heal",null,4,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["Endurance",null,4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,60,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,60,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
     ["Recovery",null,1.75,1,60,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["RechargeTime",null,0.75,1,60,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Smashing",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -113,15 +124,15 @@ export const ConduitofPain: Power = {
     ["DamageBuff","Toxic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["ToHit",null,2,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Stealth","RadiusPvE",300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Smashing",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Lethal",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Fire",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Cold",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Energy",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Negative",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Psionic",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Toxic",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["ToHit",null,2,1,30,"Ranged_Debuff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash",null,"null"],
+    ["DamageBuff","Smashing",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"],
+    ["DamageBuff","Lethal",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"],
+    ["DamageBuff","Fire",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"],
+    ["DamageBuff","Cold",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"],
+    ["DamageBuff","Energy",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"],
+    ["DamageBuff","Negative",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"],
+    ["DamageBuff","Psionic",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"],
+    ["DamageBuff","Toxic",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"],
+    ["ToHit",null,2,1,30,"Ranged_Debuff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Crash"]
   ]
 };

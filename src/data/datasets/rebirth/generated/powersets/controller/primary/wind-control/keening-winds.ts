@@ -12,12 +12,17 @@ export const KeeningWinds: Power = {
   "name": "Keening Winds",
   "internalName": "Keening_Winds",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "You create a sphere of variable speed winds that generate strong friction within the turbulence of the air. This creates odd echoes and sounds that confuse foes caught within the burst. The loss of confidence your foes suffer due their confusion causes them to lose endurance over a few seconds, while you gain endurance due to a boost in confidence you enjoy from seeing your foes struggle. This power builds Pressure. Damage: None, Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Confuse(Foe), EndDrain(Foe), +End(Self)",
   "icon": "windcontrol_keeningwinds.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,
@@ -64,7 +69,7 @@ export const KeeningWinds: Power = {
   },
   "atoms": [
     ["Mez","Confused",15,3,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",8,1,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",8,1,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.5],
     ["Endurance",null,-0.04,1,2.1,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,10,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,10],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],

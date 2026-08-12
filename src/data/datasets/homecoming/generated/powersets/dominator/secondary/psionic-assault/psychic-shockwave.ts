@@ -12,6 +12,8 @@ export const PsychicShockwave: Power = {
   "name": "Psychic Shockwave",
   "internalName": "Psychic_Shockwave",
   "available": 29,
+  "autoIssue": false,
+  "free": false,
   "description": "Psychic Shockwave is a devastating Psionic attack that wracks the minds of all nearby foes. Affected foes may have a reduced attack rate and may be left Disoriented.Damage: Light.Recharge: Slow.",
   "shortHelp": "PBAoE, Light DMG(Psionic), Foe Disorient -Recharge",
   "icon": "psionicassault_psionicshockwave.png",
@@ -20,6 +22,9 @@ export const PsychicShockwave: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -54,6 +59,7 @@ export const PsychicShockwave: Power = {
       "rechargeDebuff": 20
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Slow"
     },
@@ -68,10 +74,10 @@ export const PsychicShockwave: Power = {
     ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.5,1,20,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Damage","Psionic",1.4737,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",9,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq",true],
-    ["Mez","Stunned",1,1,0,"Melee_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Stunned",9,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Stunned",1,1,0,"Melee_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

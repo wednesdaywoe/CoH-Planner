@@ -12,6 +12,8 @@ export const Disintegrate: Power = {
   "name": "Disintegrate",
   "internalName": "Disintegrate",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a stream of energy at your foe which causes them to slowly disintegrate and suffer High Energy damage over time. Secondary foes near the primary target will also suffer from disintegration for less damage. Even after the damage over time effect wears off the target will have their regeneration rate reduced and suffer from the Disintegration effect for an additional period of time. Using Beam Blast powers on targets affected by Disintegrate will inflict additional effects. Additionally if Single Shot, Charged Shot, Lancer Shot and Penetrating Ray are used on a target suffering from Disintegrating, they have a chance to cause this effect to spread to up 3 nearby targets that aren't already suffering from Disintegrating. Targets affected by this Disintegrate Spread will also suffer some Minor Energy damage over time. Damage: High, Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE): High DoT(Energy), Foe -Regen, Special",
   "icon": "beamrifle_disintegrate.png",
@@ -19,6 +21,9 @@ export const Disintegrate: Power = {
   "targetType": "Foe",
   "effectArea": "AoE",
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,
@@ -63,6 +68,7 @@ export const Disintegrate: Power = {
       "regenDebuff": 15
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 1.5,
       "table": "Ranged_Ones"
     }
@@ -70,9 +76,9 @@ export const Disintegrate: Power = {
   "atoms": [
     ["Damage","Energy",0.216,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",0.108,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,15,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,1,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,-1.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",0.365649,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],

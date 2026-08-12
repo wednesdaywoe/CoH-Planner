@@ -12,12 +12,17 @@ export const JackFrost: Power = {
   "name": "Jack Frost",
   "internalName": "Jack_Frost",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You can create a very powerful entity of animated ice at a targeted location. Jack Frost possesses several ice powers to attack any nearby foes and can be healed and buffed like any teammate. Recharge: Very Long",
   "shortHelp": "Summon Jack Frost: Melee Moderate DMG(Cold)",
   "icon": "iceformation_jackfrost.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

@@ -12,12 +12,18 @@ export const ChronoShift: Power = {
   "name": "Chrono Shift",
   "internalName": "Chrono_Shift",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You cause nearby allies to act more quickly by allowing them to slip through the time stream seamlessly. When Chrono Shift is activated, you and nearby allies will immediately recover a portion of your health and endurance. Chrono Shift will greatly increase the Recharge Speed of nearby allies for the duration of the power, additionally for a short while the flow of time will constantly undo a portion of your allies' wounds causing them to periodically recover health and recover endurance. An ally affected by Temporal Selection will recover additional health from Chrono Shift.Recharge: Very Long.",
   "shortHelp": "PBAoE, Team +Recharge, Heal, +End, Moderate Healing over Time, +Recovery",
   "icon": "timemanipulation_chronoshift.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -58,10 +64,12 @@ export const ChronoShift: Power = {
       "recoveryBuff": 30
     },
     "enduranceGain": {
+      "ignoreStrength": true,
       "scale": 0.15,
       "table": "Ranged_Ones"
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
@@ -75,7 +83,7 @@ export const ChronoShift: Power = {
     ["Heal",null,0.2,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? !"],
     ["Endurance",null,0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Recovery",null,0.3,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["RechargeTime",null,0.5,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Heal",null,1.8,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
     ["Heal",null,0.3,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true]

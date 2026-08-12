@@ -12,12 +12,17 @@ export const FullAuto: Power = {
   "name": "Full Auto",
   "internalName": "Full_Auto",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "Opens up your assault rifle on Full Auto to lay down a massive spray of bullets at your target. Although very slow to reload, damage from this attack is massive, shredding all targets within the cone of effect. There's a chance you may land a lucky shot for extra damage.",
   "shortHelp": "Ranged (Cone), DMG(Lethal), +Special",
   "icon": "assaultweapons_arfullauto.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.35,
     "range": 80,

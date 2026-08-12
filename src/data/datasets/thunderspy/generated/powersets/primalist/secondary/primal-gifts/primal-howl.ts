@@ -12,6 +12,8 @@ export const PrimalHowl: Power = {
   "name": "Primal Howl",
   "internalName": "Primal_Howl",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "The Primalist lets out a Primal Howl with varying effects depending on their current form. In Primal Form, you will boost their recovery and regeneration significantly for a good while. In Hunter Form you will reduce the damage and damage resistance of nearby foes. Primal Howl builds 3 Primal Energy. Primal Howl may not be used in Prowler Form. Recharge: Very Long",
   "shortHelp": "PBAoE Special, Requires Primal or Hunter Form",
   "icon": "primalgifts_primalhowl.png",
@@ -20,6 +22,10 @@ export const PrimalHowl: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Self",
+    "Friend"
   ],
   "stats": {
     "accuracy": 1,
@@ -58,7 +64,7 @@ export const PrimalHowl: Power = {
   "atoms": [
     ["Regeneration",null,1,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
     ["Recovery",null,0.5,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["Meta",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true]
+    ["Meta",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "modeVariants": {
     "HunterMode": {
@@ -74,6 +80,7 @@ export const PrimalHowl: Power = {
       "effects": {
         "buffDuration": 30,
         "damageDebuff": {
+          "ignoreStrength": true,
           "scale": 3.75,
           "table": "Melee_Debuff_Dam"
         },
@@ -83,34 +90,42 @@ export const PrimalHowl: Power = {
         },
         "resistanceDebuff": {
           "cold": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Melee_Res_DMG"
           },
           "energy": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Melee_Res_DMG"
           },
           "fire": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Melee_Res_DMG"
           },
           "lethal": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Melee_Res_DMG"
           },
           "negative": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Melee_Res_DMG"
           },
           "psionic": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Melee_Res_DMG"
           },
           "smashing": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Melee_Res_DMG"
           },
           "toxic": {
+            "ignoreStrength": true,
             "scale": 3,
             "table": "Melee_Res_DMG"
           }
@@ -120,7 +135,42 @@ export const PrimalHowl: Power = {
       "description": "The Primalist lets out a Primal Howl with varying effects depending on their current form. In Primal Form, you will boost their recovery and regeneration significantly for a good while. In Hunter Form you will reduce the damage and damage resistance of nearby foes. Primal Howl builds 3 Primal Energy. Primal Howl may not be used in Prowler Form. Recharge: Very Long",
       "effectArea": "AoE",
       "targetType": "Self",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["DamageBuff","Smashing",2.5,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Lethal",2.5,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Fire",2.5,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Cold",2.5,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Energy",2.5,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Negative",2.5,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Toxic",2.5,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Psionic",2.5,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Smashing",-2,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Lethal",-2,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Fire",-2,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Cold",-2,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Energy",-2,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Negative",-2,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Psionic",-2,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["Resistance","Toxic",-2,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+        ["DamageBuff","Smashing",3.75,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Lethal",3.75,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Fire",3.75,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Cold",3.75,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Energy",3.75,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Negative",3.75,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Toxic",3.75,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["DamageBuff","Psionic",3.75,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Smashing",-3,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Lethal",-3,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Fire",-3,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Cold",-3,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Energy",-3,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Negative",-3,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Psionic",-3,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Resistance","Toxic",-3,1,30,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+        ["Meta",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"]
+      ]
     }
   },
   "modesDisallowed": [

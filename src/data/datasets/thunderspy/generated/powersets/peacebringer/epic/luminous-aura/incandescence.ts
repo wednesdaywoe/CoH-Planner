@@ -12,12 +12,17 @@ export const Incandescence: Power = {
   "name": "Incandescence",
   "internalName": "Incandescence",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Kheldians have a natural mild resistance to Energy and Negative Energy damage. This Auto power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (Energy, Negative)",
   "icon": "luminousaura_incandescence.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -33,6 +38,7 @@ export const Incandescence: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "recharge": {
+        "ignoreStrength": true,
         "scale": 0.3,
         "table": "Melee_Ones"
       }

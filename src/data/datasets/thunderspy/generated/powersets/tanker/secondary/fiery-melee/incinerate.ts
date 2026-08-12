@@ -12,6 +12,8 @@ export const Incinerate: Power = {
   "name": "Incinerate",
   "internalName": "Incinerate",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Intense concentration can allow you to Incinerate an opponent. This will set your foe ablaze, dealing damage over time. Damage: High(DoT), Recharge: Slow",
   "shortHelp": "Melee, High DoT(Fire)",
   "icon": "fieryfray_incinerate.png",
@@ -22,6 +24,9 @@ export const Incinerate: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -70,7 +75,7 @@ export const Incinerate: Power = {
   "atoms": [
     ["Damage","Fire",0.25,1,2.25,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.1125,1,4.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
+    ["Damage","Fire",0.1125,1,4.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.19599999487400055,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Fire",0.25,1,2.25,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true]

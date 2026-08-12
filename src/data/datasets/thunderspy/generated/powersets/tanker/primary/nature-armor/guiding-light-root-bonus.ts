@@ -12,12 +12,17 @@ export const GuidingLightRootBonus: Power = {
   "name": "In Touch",
   "internalName": "Guiding_Light_Root_Bonus",
   "available": 0,
+  "autoIssue": true,
+  "free": true,
   "description": "",
   "shortHelp": "",
   "icon": "widowteamwork_mentaltraining.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10
@@ -36,10 +41,12 @@ export const GuidingLightRootBonus: Power = {
     "buffDuration": 10.25,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Melee_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Melee_Res_Boolean"
       }

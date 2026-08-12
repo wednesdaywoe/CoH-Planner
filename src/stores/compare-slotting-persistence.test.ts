@@ -3,7 +3,7 @@
 import '@/test/localstorage-polyfill';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { useUIStore } from '@/stores/uiStore';
-import { reconcileLength } from '@/components/modals/CompareSlottingModal';
+import { reconcileLength, applySlotEditToStoredCopies } from '@/components/modals/CompareSlottingModal';
 import type { Enhancement } from '@/types';
 
 const enh = (name: string) => ({ name, type: 'io' }) as unknown as Enhancement;
@@ -50,6 +50,70 @@ describe('compareSlottingCopies store', () => {
     const raw = localStorage.getItem('coh-planner-ui') ?? '';
     expect(raw).not.toContain('persist-me-not');
     expect(raw).not.toContain('compareSlottingCopies');
+  });
+});
+
+// Slotting a multi-piece selection writes one slot at a time, all within a
+// single tick — nothing re-reads the store between pieces. A writer that built
+// its next value from a render snapshot therefore kept only the last piece,
+// which is what the compare modal did: drag-select or "Select multiple" put one
+// enhancement in the row instead of the whole range.
+describe('a multi-piece pick writes every piece', () => {
+  const KEY = 'Fire_Blast::Blaze';
+  const COPY_ID = 1;
+  const SLOT_COUNT = 6;
+
+  // Mirrors CompareSlottingModal's per-slot write, with no read in between.
+  const slotOne = (slotIndex: number, e: Enhancement) =>
+    useUIStore.getState().setCompareSlottingCopies(KEY, (prev) =>
+      applySlotEditToStoredCopies(prev, COPY_ID, SLOT_COUNT, (slots) =>
+        slots.map((s, i) => (i === slotIndex ? e : s))
+      )
+    );
+
+  beforeEach(() => {
+    useUIStore.setState({
+      compareSlottingCopies: { [KEY]: [{ id: COPY_ID, slots: new Array(SLOT_COUNT).fill(null) }] },
+    });
+  });
+
+  it('lands all three pieces of a dragged range, not just the last', () => {
+    slotOne(0, enh('piece-a'));
+    slotOne(1, enh('piece-b'));
+    slotOne(2, enh('piece-c'));
+
+    const slots = useUIStore.getState().compareSlottingCopies[KEY][0].slots;
+    expect(slots.map((s) => s?.name ?? null)).toEqual([
+      'piece-a', 'piece-b', 'piece-c', null, null, null,
+    ]);
+  });
+
+  it('leaves other saved rows untouched', () => {
+    useUIStore.setState({
+      compareSlottingCopies: {
+        [KEY]: [
+          { id: COPY_ID, slots: new Array(SLOT_COUNT).fill(null) },
+          { id: 2, slots: [enh('other'), ...new Array(SLOT_COUNT - 1).fill(null)] },
+        ],
+      },
+    });
+    slotOne(0, enh('piece-a'));
+    slotOne(1, enh('piece-b'));
+
+    const rows = useUIStore.getState().compareSlottingCopies[KEY];
+    expect(rows[0].slots.map((s) => s?.name ?? null).slice(0, 2)).toEqual(['piece-a', 'piece-b']);
+    expect(rows[1].slots[0]?.name).toBe('other');
+  });
+
+  // The repair that used to ride along with the snapshot write has to survive
+  // the move onto the store: a row saved before the power gained or lost slots
+  // is still brought to length the first time it is touched.
+  it('reconciles a stale-length row on the same write', () => {
+    useUIStore.setState({
+      compareSlottingCopies: { [KEY]: [{ id: COPY_ID, slots: [null, null] }] },
+    });
+    slotOne(0, enh('piece-a'));
+    expect(useUIStore.getState().compareSlottingCopies[KEY][0].slots).toHaveLength(SLOT_COUNT);
   });
 });
 

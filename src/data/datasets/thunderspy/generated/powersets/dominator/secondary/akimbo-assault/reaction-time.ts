@@ -12,6 +12,8 @@ export const Reactiontime: Power = {
   "name": "Reaction Time",
   "internalName": "Reaction_time",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You attune yourself to the world around you, moving with preternatural speed.  All enemies nearby move slowly and have reduced recharge. When Reaction Time is deactivated, you gain a burst of speed for a short duration, increasing your own move speed.",
   "shortHelp": "Toggle (PBAoE), Foe –Rech, - Move, Special",
   "icon": "domdpreactiontime.png",
@@ -31,6 +33,10 @@ export const Reactiontime: Power = {
   ],
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -73,6 +79,7 @@ export const Reactiontime: Power = {
       "group": "swap-ammo",
       "effects": {
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.4,
           "table": "Melee_Slow"
         },
@@ -82,6 +89,7 @@ export const Reactiontime: Power = {
             "table": "Melee_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.7,
             "table": "Melee_Slow"
           },
@@ -90,13 +98,21 @@ export const Reactiontime: Power = {
             "table": "Melee_Slow"
           },
           "runSpeed": {
+            "scale": 0.7,
+            "table": "Melee_Slow"
+          }
+        },
+        "movementCapDebuff": {
+          "runSpeed": {
+            "ignoreStrength": true,
             "scale": 1,
             "table": "Melee_SpeedRunning"
           }
         },
         "durations": {
           "rechargeDebuff": 5,
-          "slow": 5
+          "slow": 5,
+          "movementCapDebuff": 5
         },
         "buffDuration": 5
       }

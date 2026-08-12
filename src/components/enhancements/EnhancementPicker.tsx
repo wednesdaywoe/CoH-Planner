@@ -10,7 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import {
-  getIOSetsForPower, getIOSet, lookupPower,
+  getIOSetsForPower, getIOSet, getMostCommonSetSize, lookupPower,
   ORIGIN_TIERS,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement, isInherentlyAttuned,
@@ -67,6 +67,9 @@ export function EnhancementPicker() {
   // Local filter state
   const [typeFilter, setTypeFilter] = useState<EnhancementTypeFilter>('io-sets');
   const [sidebarFilter, setSidebarFilter] = useState<SidebarFilter>('all');
+  // Set size (piece count) facet; null = any size. Cuts across the category
+  // filter rather than replacing it — "3-piece Holds" is the useful question.
+  const [sizeFilter, setSizeFilter] = useState<number | null>(null);
 
   // The header spinner feeds every slotting path, but the two enhancement
   // families sit on DIFFERENT axes: IOs take booster combines (0..+5), while
@@ -253,8 +256,10 @@ export function EnhancementPicker() {
 
   const levelUpMode = useUIStore((s) => s.levelUpMode);
 
-  // Filter sets based on sidebar selection, then sort
-  const filteredSets = useMemo(() => {
+  // Sets for the chosen sidebar category, BEFORE the set-size facet. Split out
+  // so the facet's counts are taken from what it would actually filter — a
+  // "3 pieces (12)" button that lands on an empty list is worse than no button.
+  const categorySets = useMemo(() => {
     let sets: IOSet[];
     switch (sidebarFilter) {
       case 'all':
@@ -291,6 +296,29 @@ export function EnhancementPicker() {
     if (levelUpMode) {
       sets = sets.filter((set) => set.minLevel <= build.level);
     }
+    return sets;
+  }, [availableSets, sidebarFilter, levelUpMode, build.level]);
+
+  // Distinct set sizes present in the current category, ascending, with counts.
+  const sizeCounts = useMemo(() => {
+    const tally = new Map<number, number>();
+    for (const set of categorySets) {
+      tally.set(set.pieces.length, (tally.get(set.pieces.length) ?? 0) + 1);
+    }
+    return Array.from(tally.entries()).sort((a, b) => a[0] - b[0]);
+  }, [categorySets]);
+
+  // A size the player picked in one category may not exist in the next. Resolve
+  // it rather than clearing it, so switching categories can't strand them on an
+  // empty list, and coming BACK to a category restores the size they chose.
+  const effectiveSizeFilter =
+    sizeFilter !== null && sizeCounts.some(([size]) => size === sizeFilter) ? sizeFilter : null;
+
+  // Apply the size facet, then sort
+  const filteredSets = useMemo(() => {
+    let sets: IOSet[] = effectiveSizeFilter === null
+      ? [...categorySets]
+      : categorySets.filter((set) => set.pieces.length === effectiveSizeFilter);
     if (sidebarFilter === 'all') {
       // In 'all' view, group standard sets first, then special sets at bottom
       if (ioSortBy === 'level') {
@@ -304,7 +332,7 @@ export function EnhancementPicker() {
       sets = [...sets].sort((a, b) => a.name.localeCompare(b.name));
     }
     return sets;
-  }, [availableSets, sidebarFilter, ioSortBy, levelUpMode, build.level]);
+  }, [categorySets, effectiveSizeFilter, sidebarFilter, ioSortBy]);
 
   // Flat list of individual proc pieces for the Procs filter
   const procPieces = useMemo(() => {
@@ -838,7 +866,7 @@ export function EnhancementPicker() {
               <MobileCategoryButton
                 key={cat}
                 label={cat.replace(' Damage', '').replace(' Sets', '')}
-                count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration' || cat === 'Rest Buff' || cat === 'Universal Debuff' || cat === 'Rez Sets' || !isSpecialSet(s))).length}
+                count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration Sets' || cat === 'Rest Buff' || cat === 'Universal Debuff' || cat === 'Rez Sets' || !isSpecialSet(s))).length}
                 isActive={sidebarFilter === cat}
                 onClick={() => setSidebarFilter(cat)}
                 textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}
@@ -894,6 +922,31 @@ export function EnhancementPicker() {
                 title="All proc enhancements (chance-for-X effects) across every set"
               />
             )}
+            {/* Set size — a second axis, so it sits after a divider rather than
+                joining the category run. Hidden when every set here is the same
+                size (nothing to choose) or in Procs, which lists loose pieces. */}
+            {sidebarFilter !== 'procs' && sizeCounts.length > 1 && (
+              <>
+                <span className="self-stretch w-px bg-gray-700 mx-0.5" aria-hidden="true" />
+                <MobileCategoryButton
+                  label="Any size"
+                  count={categorySets.length}
+                  isActive={effectiveSizeFilter === null}
+                  onClick={() => setSizeFilter(null)}
+                  title="Sets of every size"
+                />
+                {sizeCounts.map(([size, count]) => (
+                  <MobileCategoryButton
+                    key={size}
+                    label={`${size}pc`}
+                    count={count}
+                    isActive={effectiveSizeFilter === size}
+                    onClick={() => setSizeFilter(size)}
+                    title={`Only ${size}-piece sets — the full set fits in ${size} slots`}
+                  />
+                ))}
+              </>
+            )}
           </div>
         )}
 
@@ -915,7 +968,7 @@ export function EnhancementPicker() {
                 <SidebarButton
                   key={cat}
                   label={cat}
-                  count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration' || cat === 'Rest Buff' || cat === 'Universal Debuff' || cat === 'Rez Sets' || !isSpecialSet(s))).length}
+                  count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration Sets' || cat === 'Rest Buff' || cat === 'Universal Debuff' || cat === 'Rez Sets' || !isSpecialSet(s))).length}
                   isActive={sidebarFilter === cat}
                   onClick={() => setSidebarFilter(cat)}
                   textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}
@@ -980,6 +1033,36 @@ export function EnhancementPicker() {
                   textColor="text-amber-400"
                   title="All proc enhancements (chance-for-X effects) across every set"
                 />
+              )}
+
+              {/* Set size — a second axis that cuts ACROSS the categories above,
+                  so it gets its own headed section instead of extending the
+                  category run. Hidden when every set in the current category is
+                  the same size (nothing to choose), and in Procs, which lists
+                  loose pieces rather than sets. */}
+              {sidebarFilter !== 'procs' && sizeCounts.length > 1 && (
+                <div className="mt-1 border-t border-gray-700 pt-1">
+                  <div className="px-3 pt-1 pb-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-500">
+                    Set size
+                  </div>
+                  <SidebarButton
+                    label="Any size"
+                    count={categorySets.length}
+                    isActive={effectiveSizeFilter === null}
+                    onClick={() => setSizeFilter(null)}
+                    title="Sets of every size"
+                  />
+                  {sizeCounts.map(([size, count]) => (
+                    <SidebarButton
+                      key={size}
+                      label={`${size} pieces`}
+                      count={count}
+                      isActive={effectiveSizeFilter === size}
+                      onClick={() => setSizeFilter(size)}
+                      title={`Only ${size}-piece sets — the full set fits in ${size} slots`}
+                    />
+                  ))}
+                </div>
               )}
             </div>
           )}
@@ -1486,10 +1569,15 @@ function TrackedBonusChips({ bonuses }: { bonuses: TrackedBonusMatch[] }) {
               formatBonusDesc(b.desc, b.stat, b.value) +
               (capped ? ' — already at the Rule of 5 cap; a 6th copy grants nothing' : '')
             }
+            /* Chip text is the neutral ramp, never the accent: the row this sits
+               in is ALREADY tinted --color-selected, so accent-colored text at
+               10px lands accent-on-accent (blue on blue at ~2:1). The accent
+               identity is carried by the border and tint; readability by the
+               ramp, which reverses under [data-mode='light']. */
             className={`inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] leading-none border ${
               capped
-                ? 'border-warning-fg/40 bg-warning-fg/10 text-warning-fg'
-                : 'border-[var(--color-primary)]/40 bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
+                ? 'border-warning-fg/50 bg-warning-fg/15 text-warning-fg'
+                : 'border-[var(--color-primary)]/60 bg-[var(--color-primary)]/15 text-gray-100'
             }`}
           >
             <span className="opacity-70 font-medium">{b.pieces}pc</span>
@@ -1497,7 +1585,7 @@ function TrackedBonusChips({ bonuses }: { bonuses: TrackedBonusMatch[] }) {
               {formatTrackedBonusAmount(b.normalizedStat, b.value)}
             </span>
             <span className="opacity-80">{statKeyToChipLabel(b.normalizedStat)}</span>
-            {count > 0 && <span className="opacity-60">({count}/5)</span>}
+            {count > 0 && <span className="opacity-70">({count}/5)</span>}
           </span>
         );
       })}
@@ -1561,6 +1649,10 @@ function IOSetRow({
   );
   const hasTrackedMatch = trackedBonuses.length > 0;
 
+  // Sets that are not the catalogue's usual size get a badge; the usual size is
+  // left unmarked so the list stays quiet and the odd ones out are the ink.
+  const isOffSize = set.pieces.length !== getMostCommonSetSize();
+
   // Compute proc/unique outlines for all pieces
   const pieceOutlines = useMemo(() =>
     set.pieces.map((piece) =>
@@ -1613,11 +1705,27 @@ function IOSetRow({
     >
       {/* Set header */}
       <div className="flex items-center gap-1 sm:gap-2 mb-2 flex-wrap">
+        {isOffSize && (
+          <span
+            title={`${set.pieces.length}-piece set — the full set fits in ${set.pieces.length} slots`}
+            /* Marks the MINORITY size only, so a short set is found by scanning
+               ink instead of reading every label (Homecoming: 58 marked rows,
+               169 quiet ones). Inverted neutral rather than a hue: every rarity
+               already owns a text color in this header, and luminance contrast
+               survives colorblindness and the light-mode ramp flip. */
+            className="inline-flex items-center rounded-sm bg-gray-200 px-1 py-px text-[10px] font-bold leading-none tabular-nums text-gray-900"
+          >
+            {set.pieces.length}pc
+          </span>
+        )}
         <span className={`text-xs sm:text-sm font-medium ${getRarityColor(set.category)}`}>
           {set.name}
         </span>
         <span className="text-[10px] sm:text-xs text-gray-500">
-          Lv {set.minLevel}-{set.maxLevel} • {set.pieces.length}pc
+          Lv {set.minLevel}-{set.maxLevel}
+          {/* The badge already states an off-size count; repeating it here would
+              put the same number on the row twice, in two weights. */}
+          {!isOffSize && ` • ${set.pieces.length}pc`}
         </span>
         {isLevelGated && (
           <span className="text-[10px] text-orange-400">

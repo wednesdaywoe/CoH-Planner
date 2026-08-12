@@ -12,6 +12,8 @@ export const CrowdControl: Power = {
   "name": "Crowd Control",
   "internalName": "Crowd_Control",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You swing your mace in a wide arc in front of you striking all foes within melee range.  Crowd Control deals serious damage to foes, as well as knocking them down, and causing minor toxic damage over time.  Damage: High Recharge: Moderate",
   "shortHelp": "Melee (Cone), High DMG(Smash), Minor DoT(Toxic), Foe Knockback",
   "icon": "banespider_crowdcontrol.png",
@@ -20,6 +22,9 @@ export const CrowdControl: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -66,7 +71,7 @@ export const CrowdControl: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Smashing",1.61,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Toxic",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],

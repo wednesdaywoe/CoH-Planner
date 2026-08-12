@@ -12,12 +12,17 @@ export const SpectralWounds: Power = {
   "name": "Spectral Wounds",
   "internalName": "Spectral_Wounds",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Spectral Wounds convinces the target that they have taken severe damage. The illusion is so convincing that the victim can fall from the Spectral Wounds. However, the damage is not real, and if the victim survives long enough, the illusion will fade and some of the wounds will heal. Damage: High(Illusionary), Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Psionic), +Special",
   "icon": "illusions_spectralwounds.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,

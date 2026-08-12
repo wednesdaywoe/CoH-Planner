@@ -12,12 +12,17 @@ export const CorrosiveSap: Power = {
   "name": "Corrosive Sap",
   "internalName": "Corrosive_Sap",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You spray a target with sticky, toxic, corrosive sap slowing them and reducing the damage they deal as well as their damage resistance. Additional foes near the main target will also be slowed. Recharge: Slow",
   "shortHelp": "Ranged, Foe Slow, -Res(All), -DMG(All)",
   "icon": "natureaffinity_corrosivesap.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -40,49 +45,67 @@ export const CorrosiveSap: Power = {
   "effects": {
     "buffDuration": 30,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Debuff_Dam"
     },
     "durations": {
       "damageDebuff": 30,
+      "movementCapDebuff": 30,
       "rechargeDebuff": 30,
       "resistanceDebuff": 30,
       "slow": 30
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.6,
       "table": "Ranged_Slow"
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       }
@@ -93,6 +116,7 @@ export const CorrosiveSap: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.6,
         "table": "Ranged_Slow"
       },
@@ -101,8 +125,8 @@ export const CorrosiveSap: Power = {
         "table": "Ranged_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.6,
+        "table": "Ranged_Slow"
       }
     }
   },

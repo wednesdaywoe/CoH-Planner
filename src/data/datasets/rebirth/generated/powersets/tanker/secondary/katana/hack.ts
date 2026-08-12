@@ -12,6 +12,8 @@ export const Hack: Power = {
   "name": "Sting of the Wasp",
   "internalName": "Hack",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You perform a standard attack with your katana. This attack is slower than Gambler's Cut, but deals more damage. Sting of the Wasp can reduce a target's Defense, making them easier to hit. This power can bruise an enemy, making them more vulnerable to damage. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Lethal), Foe -Def, -Res (all)",
   "icon": "katana_hack.png",
@@ -20,6 +22,9 @@ export const Hack: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.05,
@@ -71,11 +76,11 @@ export const Hack: Power = {
     ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.522,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.522,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Lethal",1.799275,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.164000004529953,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.164000004529953,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.16]
   ],
   "requires": "Tanker_Defense.Shield_Defense !"
 };

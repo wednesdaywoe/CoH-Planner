@@ -12,12 +12,17 @@ export const CallSwarm: Power = {
   "name": "Call Swarm",
   "internalName": "Call_Swarm",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You summon a swarm of stinging insects to harass your foe causing Light Lethal damage over time and reducing both their movement speed and defense. This power has a moderate chance at granting your pets a stack of Pack Mentality.Apex Predator:Using this power will grant you and your summoned beasts an Accuracy and HP buff for 30 seconds. This does not stack from the same power.",
   "shortHelp": "Ranged, Light DoT(Lethal), Foe -Defense, -Speed",
   "icon": "beastmastery_callswarm.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -71,6 +76,7 @@ export const CallSwarm: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -92,7 +98,7 @@ export const CallSwarm: Power = {
     ["Movement","Jump",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.2,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.3199999928474426,null,true,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !"],
-    ["MaxHP",null,0.4,1,30,"Melee_HealSelf","Max","Magnitude","All","Any",false,"Replace",2,null,null,1],
+    ["MaxHP",null,0.4,1,30,"Melee_HealSelf","Max","Magnitude","All","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Apex Predator"],
     ["Damage","Lethal",0.244,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

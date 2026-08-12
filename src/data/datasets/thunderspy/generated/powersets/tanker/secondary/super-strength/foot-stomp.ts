@@ -12,6 +12,8 @@ export const FootStomp: Power = {
   "name": "Foot Stomp",
   "internalName": "Foot_Stomp",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Using your superior leg strength, you can Stomp your foot to the ground, quaking the earth itself. This is a localized attack against everything in melee range. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smash), Knockback",
   "icon": "superstrength_footstomp.png",
@@ -20,6 +22,9 @@ export const FootStomp: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

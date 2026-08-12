@@ -12,12 +12,17 @@ export const IcyBastion: Power = {
   "name": "Icy Bastion",
   "internalName": "Icy_Bastion",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "You channel an intense cold through yourself, doing so will significantly boost your resistance to all types of damage (except psionics), your resistance to status effects, and your regeneration and recovery rates for a very brief period.  Recharge: Very Long",
   "shortHelp": "Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery",
   "icon": "icearmor_hybernate.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,
@@ -64,23 +69,28 @@ export const IcyBastion: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       }
@@ -94,6 +104,7 @@ export const IcyBastion: Power = {
       "table": "Melee_Ones"
     },
     "repel": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },

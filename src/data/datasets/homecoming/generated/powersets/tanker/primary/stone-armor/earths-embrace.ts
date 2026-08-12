@@ -12,12 +12,17 @@ export const EarthsEmbrace: Power = {
   "name": "Earth's Embrace",
   "internalName": "Earths_Embrace",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "You are so connected to the Earth, you can draw upon its power to add to your health. Activating this power increases your maximum Hit Points, and grants you resistance to Toxic Damage.Recharge: Long.",
   "shortHelp": "Self +HP, Res(Toxic)",
   "icon": "stonearmor_earthsembrace.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,
@@ -52,6 +57,7 @@ export const EarthsEmbrace: Power = {
       "table": "Melee_HealSelf"
     },
     "maxHPBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_HealSelf"
     },

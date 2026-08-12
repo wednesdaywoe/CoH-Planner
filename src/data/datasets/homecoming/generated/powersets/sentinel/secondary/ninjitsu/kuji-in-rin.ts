@@ -12,6 +12,8 @@ export const KujiInRin: Power = {
   "name": "Kuji-In Rin",
   "internalName": "Kuji-In_Rin",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Kuji-In Rin is the strength of mind and body. By focusing your power on this exercise, you gain a resistance to Disorient, Hold, Sleep, Immobilization, Confusion, and fear, as well as resistance to Psionic damage for a few minutes. Your running speed and jumping height are also increased.",
   "shortHelp": "Self +SPD, +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Psionics)",
   "icon": "ninjitsu_kujinrin.png",
@@ -26,6 +28,9 @@ export const KujiInRin: Power = {
   ],
   "globalStrengthsDisallowed": [
     "Psionic"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -125,9 +130,9 @@ export const KujiInRin: Power = {
     ["Mez","Stunned",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
     ["Mez","Sleep",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
     ["Resistance","Psionic",3,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Movement","Run",0.1,1,120,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Jump",0.1,1,120,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","JumpHeight",0.1,1,120,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.1,1,120,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Speed"],
+    ["Movement","Jump",0.1,1,120,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Speed"],
+    ["Movement","JumpHeight",0.1,1,120,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Speed"],
     ["MezResist","Confused",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["MezResist","Terrorized",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["MezResist","Held",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],

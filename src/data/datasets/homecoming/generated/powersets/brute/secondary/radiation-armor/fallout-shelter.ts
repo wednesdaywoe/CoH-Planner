@@ -12,6 +12,8 @@ export const FalloutShelter: Power = {
   "name": "Fallout Shelter",
   "internalName": "Fallout_Shelter",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "While active you are protected from recharge, movement, hold, sleep, immobilize, stun and knockdown effects. Additionally Fallout Shelter grants you minor resistance to toxic and psionic damage as well as a measure of resistance against slow effects.",
   "shortHelp": "Toggle: Self +Res(Hold, Sleep, Immobilize, Stun, Knockdown, Toxic, Psi, Slow)",
   "icon": "radiationarmor_falloutshelter.png",
@@ -22,6 +24,9 @@ export const FalloutShelter: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,10 +48,12 @@ export const FalloutShelter: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "movement": {
+        "ignoreStrength": true,
         "scale": 1.05,
         "table": "Melee_Res_Boolean"
       },
       "recharge": {
+        "ignoreStrength": true,
         "scale": 1.05,
         "table": "Melee_Res_Boolean"
       }
@@ -64,11 +71,13 @@ export const FalloutShelter: Power = {
     },
     "effectDuration": 0.75,
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -83,10 +92,12 @@ export const FalloutShelter: Power = {
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 100,
         "table": "Melee_Ones"
       }
@@ -114,11 +125,13 @@ export const FalloutShelter: Power = {
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

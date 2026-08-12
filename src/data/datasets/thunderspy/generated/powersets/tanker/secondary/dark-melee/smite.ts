@@ -12,6 +12,8 @@ export const Smite: Power = {
   "name": "Smite",
   "internalName": "Smite",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You wrap your fists with Negative Energy channeled from the Netherworlds, then perform a Smite that deals more damage than Shadow Punch, but has a longer recharge time. Smite clouds the target's vision, lowering his chance to hit for a short time. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee, Moderate DMG (Smash/Negative), Foe -To Hit",
   "icon": "shadowfighting_smite.png",
@@ -22,6 +24,9 @@ export const Smite: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

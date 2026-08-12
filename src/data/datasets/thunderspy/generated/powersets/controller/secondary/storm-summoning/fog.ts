@@ -12,12 +12,17 @@ export const Fog: Power = {
   "name": "Freezing Rain",
   "internalName": "Fog",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Summons Freezing Rain at a targeted location. Freezing Rain deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm. Damage: Minor(DoT), Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
   "icon": "stormsummoning_freezingrain.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,

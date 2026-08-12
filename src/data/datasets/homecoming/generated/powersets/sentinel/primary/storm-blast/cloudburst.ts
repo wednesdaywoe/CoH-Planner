@@ -12,12 +12,17 @@ export const Cloudburst: Power = {
   "name": "Cloudburst",
   "internalName": "Cloudburst",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Unleashes a cloud that drops a torrent of freezing rain on your target, causing Cold damage. While in a Storm Cell, targets experience Recharge, ToHit, and Movement speed debuffs.",
   "shortHelp": "Ranged, DoT(Cold), +Wet, Special",
   "icon": "stormblast_cloudburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -60,11 +65,11 @@ export const Cloudburst: Power = {
     }
   ],
   "atoms": [
-    ["Meta",null,1,188,8,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,188,8,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"WetStatus",null,"set_mode"],
     ["Damage","Cold",0.2275,1,2.9,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1],
-    ["Damage","Cold",0.2275,1,2.9,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25],
+    ["Damage","Cold",0.2275,1,2.9,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !",null,null,null,null,null,null,null,null,null,"IncreaseStormStrength"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"StormBrewing"],
     ["RechargeTime",null,0.1,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
     ["Movement","JumpHeight",0.2,1,8,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
     ["Movement","Run",0.2,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
@@ -78,7 +83,7 @@ export const Cloudburst: Power = {
     ["Movement","Jump",0.2,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
     ["ToHit",null,1,1,8,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
     ["Damage","Cold",0.201,1,2.9,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,null,true],
-    ["Damage","Cold",0.201,1,2.9,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,null,true]
+    ["Damage","Cold",0.201,1,2.9,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
   ],
   "conditionalEffects": [
     {
@@ -94,6 +99,7 @@ export const Cloudburst: Power = {
           "tohitDebuff": 8
         },
         "rechargeDebuff": {
+          "ignoreStrength": true,
           "scale": 0.1,
           "table": "Melee_Slow"
         },
@@ -103,6 +109,7 @@ export const Cloudburst: Power = {
             "table": "Melee_Slow"
           },
           "jumpHeight": {
+            "ignoreStrength": true,
             "scale": 0.2,
             "table": "Melee_Slow"
           },

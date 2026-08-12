@@ -12,6 +12,8 @@ export const Jab: Power = {
   "name": "Jab",
   "internalName": "Jab",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick jab that deals minor damage, but has a chance of Disorienting the target, especially if coupled with other attacks.",
   "shortHelp": "Melee, DMG(Smashing), Minor Disorient",
   "icon": "superstrength_jab.png",
@@ -20,6 +22,9 @@ export const Jab: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -59,7 +64,7 @@ export const Jab: Power = {
   "atoms": [
     ["Damage","Smashing",0.68,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.306,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.306,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Smashing",1.229,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

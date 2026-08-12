@@ -12,6 +12,8 @@ export const IceSwordCircle: Power = {
   "name": "Ice Sword Circle",
   "internalName": "Ice_Sword_Circle",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Mastery of your Ice Sword has enabled you to make an attack on every foe within melee distance. This will slash and chill your enemies, dealing moderate damage and slowing all affected targets' movement and attack speed. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "iceassault_iceswordcircle.png",
@@ -20,6 +22,9 @@ export const IceSwordCircle: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -61,6 +66,7 @@ export const IceSwordCircle: Power = {
       "slow": 8
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.1,
       "table": "Melee_Slow"
     },
@@ -70,6 +76,7 @@ export const IceSwordCircle: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.1,
         "table": "Melee_Slow"
       },
@@ -93,7 +100,7 @@ export const IceSwordCircle: Power = {
     ["RechargeTime",null,0.1,1,8,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Damage","Lethal",1.2596,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",1.2596,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "damageTypes": [
     "Cold",

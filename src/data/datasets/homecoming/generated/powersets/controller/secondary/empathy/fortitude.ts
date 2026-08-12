@@ -12,12 +12,17 @@ export const Fortitude: Power = {
   "name": "Fortitude",
   "internalName": "Fortitude",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Fortitude immensely enhances a single ally's chance to hit, Damage, and Defense to all attacks.",
   "shortHelp": "Ally +DEF(All), +DMG, +To Hit",
   "icon": "empathy_fortitude.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -40,6 +45,7 @@ export const Fortitude: Power = {
   "effects": {
     "buffDuration": 120,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },

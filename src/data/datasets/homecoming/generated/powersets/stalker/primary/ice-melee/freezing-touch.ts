@@ -12,6 +12,8 @@ export const FreezingTouch: Power = {
   "name": "Freezing Touch",
   "internalName": "Freezing_Touch",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "This Freezing Touch will encase a single foe in a block of ice. This will deal high damage over time, as well as freezing him in his tracks, leaving him cold and helpless.",
   "shortHelp": "Melee, DoT(Cold), Foe Hold",
   "icon": "icyonslaught_freezingtouch.png",
@@ -20,6 +22,9 @@ export const FreezingTouch: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,13 +47,20 @@ export const FreezingTouch: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.265,
-    "table": "Melee_Damage",
-    "duration": 2.6,
-    "tickRate": 0.25
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 0.265,
+      "table": "Melee_Damage",
+      "duration": 2.6,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Cold",
+      "scale": 2.92,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "effects": {
     "hold": {
       "mag": 3,
@@ -59,17 +71,17 @@ export const FreezingTouch: Power = {
   "atoms": [
     ["Damage","Cold",0.265,1,2.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Cold",2.92,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq enttype target> critter eq kMeter source> .9 < && &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["MezResist","Knockup",100,1,6,"Melee_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockback",100,1,6,"Melee_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Knockup",-100,1,6,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Knockback",-100,1,6,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Damage","Cold",2.92,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-    ["Damage","Cold",2.92,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+    ["Damage","Cold",2.92,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > enttype target> critter eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
     ["Damage","Cold",0.1577,1,2.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Cold",1.74,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Cold",1.74,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true]
+    ["Damage","Cold",1.74,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > enttype target> player eq && &&",true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["Damage","Cold",1.74,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && &&",true]
   ],
   "specialEffects": [
     {

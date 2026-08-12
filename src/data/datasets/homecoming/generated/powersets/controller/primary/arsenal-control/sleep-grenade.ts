@@ -12,12 +12,17 @@ export const SleepGrenade: Power = {
   "name": "Sleep Grenade",
   "internalName": "Sleep_Grenade",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "The Sleep Grenade can be launched at long range from beneath the barrel of your Assault Rifle. It releases a cloud of gas that will make enemies drowsy, slow, and fall asleep.",
   "shortHelp": "Ranged (Location AoE), DMG(Toxic), Foe Sleep, -SPD, -Recharge, -Fly",
   "icon": "arsenalcontrol_sleepgrenade.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,
@@ -73,8 +78,28 @@ export const SleepGrenade: Power = {
                 },
                 {
                   "type": "Slow",
+                  "axis": "runSpeed",
                   "scale": 0.4,
                   "table": "Melee_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "flySpeed",
+                  "scale": 0.4,
+                  "table": "Melee_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpSpeed",
+                  "scale": 0.4,
+                  "table": "Melee_Slow"
+                },
+                {
+                  "type": "Slow",
+                  "axis": "jumpHeight",
+                  "scale": 0.4,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
                 },
                 {
                   "type": "RechargeDebuff",
@@ -87,6 +112,9 @@ export const SleepGrenade: Power = {
               "castTime": 0,
               "activatePeriod": 3,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 16
             },
@@ -105,6 +133,9 @@ export const SleepGrenade: Power = {
               "castTime": 0,
               "activatePeriod": 100,
               "effectArea": "Sphere",
+              "targetsAffected": [
+                "Foe"
+              ],
               "radius": 20,
               "maxTargets": 16
             }

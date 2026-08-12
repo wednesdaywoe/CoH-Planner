@@ -12,12 +12,17 @@ export const Envenom: Power = {
   "name": "Envenom",
   "internalName": "Envenom",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You Envenom your foe with a nasty poison, the poison then spreads to nearby foes.  The toxin directly attacks the immune system, reducing the affected target's Defense, Damage Resistance and Hit Point Regeneration Rate.  The poison is so potent, that the target actually responds less to Healing while affected by the poison.   Secondary foes struck by this power will have a lesser effect placed on them while the primary target receives the full effectiveness of the power.  Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe -RES, -DEF, -Regen, -Heal",
   "icon": "poison_envenomaoe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,
@@ -63,34 +68,42 @@ export const Envenom: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }

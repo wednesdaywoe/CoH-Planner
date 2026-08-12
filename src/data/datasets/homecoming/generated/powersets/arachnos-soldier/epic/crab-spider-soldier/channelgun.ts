@@ -12,12 +12,17 @@ export const Channelgun: Power = {
   "name": "Channelgun",
   "internalName": "Channelgun",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your backpack has a built in energy Longfang Channelgun which fires bolts of energy.",
   "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
   "icon": "crabspider_channelgun.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

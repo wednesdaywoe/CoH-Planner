@@ -12,6 +12,8 @@ export const EtherealElusion: Power = {
   "name": "Phantasmal Phase",
   "internalName": "Ethereal_Elusion",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You futher phase out of the physical realm, while active enemy ranged and area of effect attacks may harmlessly pass through you. you also gain increased resistance to negative energy damage and increased jump height and control. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Ranged, AoE), Res(Negative Energy, DeBuff DEF), Jump",
   "icon": "spectralaura3.png",
@@ -22,6 +24,9 @@ export const EtherealElusion: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -47,6 +52,7 @@ export const EtherealElusion: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       }

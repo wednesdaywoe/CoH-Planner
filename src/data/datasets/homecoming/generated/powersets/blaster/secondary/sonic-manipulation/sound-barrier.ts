@@ -12,6 +12,8 @@ export const SoundBarrier: Power = {
   "name": "Sound Barrier",
   "internalName": "Sound_Barrier",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a barrier around the caster which reduces incoming energy and smashing damage, provides protection against sleep effects and grants an absorption shield. Recovery is also increased.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +Absorb, +Recovery, +Res(Smashing, Energy, Sleep)",
   "icon": "sonicmanipulation_soundbarrier.png",
@@ -22,6 +24,9 @@ export const SoundBarrier: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -69,6 +74,7 @@ export const SoundBarrier: Power = {
       }
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

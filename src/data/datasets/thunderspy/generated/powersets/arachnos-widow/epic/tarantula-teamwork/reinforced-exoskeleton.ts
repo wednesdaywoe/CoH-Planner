@@ -12,6 +12,8 @@ export const ReinforcedExoskeleton: Power = {
   "name": "Reinforced Exoskeleton",
   "internalName": "Reinforced_Exoskeleton",
   "available": 27,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Tarantula exoskeleton has been reinforced. Your Resistance to all damage but Psionics is increased while active. Requires Tarantula form to use.",
   "shortHelp": "Toggle: Self +Res All But Psionics",
   "icon": "tarantulateamwork_reinforcedexoskeleton.png",
@@ -22,6 +24,9 @@ export const ReinforcedExoskeleton: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

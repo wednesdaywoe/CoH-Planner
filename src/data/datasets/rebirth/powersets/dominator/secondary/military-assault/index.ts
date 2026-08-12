@@ -21,7 +21,12 @@ import { IncendiaryRound as IncendiaryRound } from './incendiary-round';
 
 export const powerset: Powerset = {
   id: 'dominator/military-assault',
+  setPath: 'Dominator_Assault.Military_Assault',
   name: 'Military Assault',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Your mastery of Military Assault allows you to destroy your enemies with brutal precision. Blast your foes with powerful attacks from your military grade Assault Rifle and pummel them with brutal close quarters combat techniques. Your attacks can also inflict a variety of debilitating effects on your foes, including stunning them, reducing their defense, knocking them down, or slowing their movement.',
   icon: 'assault_rifle_set.ico',
   archetype: 'dominator',

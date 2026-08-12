@@ -12,12 +12,17 @@ export const Energize: Power = {
   "name": "Energize",
   "internalName": "Energize",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "You can channel a tremendous amount of energy through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time.",
   "shortHelp": "Self Endurance Discount, Heal, +Regen",
   "icon": "energyaura_energize.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -45,6 +50,7 @@ export const Energize: Power = {
       "regenBuff": 30
     },
     "enduranceDiscount": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Melee_Stun"
     },

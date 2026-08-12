@@ -74,6 +74,26 @@ export const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = 
   RecoveryDebuffResist: { label: '-Recovery Resist', color: 'text-sky-400' },
   RegenDebuffResist: { label: '-Regen Resist', color: 'text-sky-400' },
   RechargeDebuffResist: { label: '-Recharge Resist', color: 'text-sky-400' },
+  // The mez RESISTANCE faces — a shorter mez, as against the PROTECTION faces above,
+  // which are a magnitude the mez has to exceed at all. Two different mechanics that a
+  // shared label would run together.
+  HoldResist: { label: 'Hold Resist', color: 'text-sky-400' },
+  StunResist: { label: 'Stun Resist', color: 'text-sky-400' },
+  SleepResist: { label: 'Sleep Resist', color: 'text-sky-400' },
+  ImmobilizeResist: { label: 'Immob Resist', color: 'text-sky-400' },
+  FearResist: { label: 'Fear Resist', color: 'text-sky-400' },
+  ConfuseResist: { label: 'Confuse Resist', color: 'text-sky-400' },
+  KnockbackResist: { label: 'KB Resist', color: 'text-sky-400' },
+  KnockupResist: { label: 'KB Resist', color: 'text-sky-400' },
+  TauntResist: { label: 'Taunt Resist', color: 'text-sky-400' },
+  ToHitDebuffResist: { label: '-ToHit Resist', color: 'text-sky-400' },
+  DefenseDebuffResist: { label: '-Defense Resist', color: 'text-sky-400' },
+  HealResist: { label: 'Heal Resist', color: 'text-sky-400' },
+  // The three the ENT-3/ENT-9 vocabulary added on the applied side.
+  RegenDebuff: { label: '-Regen', color: 'text-orange-400' },
+  MovementCapDebuff: { label: '-Speed Cap', color: 'text-teal-400' },
+  DamageBuff: { label: '+Damage', color: 'text-green-400' },
+  EnduranceGain: { label: '+End', color: 'text-blue-400' },
   // The pet's OWN defensive profile (target: Self templates). These describe the
   // summon's stat sheet, not anything it applies to a target — see SELF_EFFECTS.
   SelfResistance: { label: 'Resist', color: 'text-orange-300' },

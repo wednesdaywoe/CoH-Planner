@@ -12,6 +12,8 @@ export const Strike: Power = {
   "name": "Strike",
   "internalName": "Strike",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick Strike with your claws. Does minor lethal damage, but has a quick recharge rate. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG(Lethal)",
   "icon": "claws_clawsstrike.png",
@@ -20,6 +22,9 @@ export const Strike: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

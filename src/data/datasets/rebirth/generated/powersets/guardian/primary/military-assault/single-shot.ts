@@ -12,12 +12,17 @@ export const SingleShot: Power = {
   "name": "Single Shot",
   "internalName": "Single_Shot",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "A quick single shot from your Assault Rifle. Quite accurate and can also reduce the target's defense. Damage: Minor, Recharge: Fast",
   "shortHelp": "Ranged, Minor DMG(Lethal), Foe -DEF",
   "icon": "militaryassault_singleshot.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,
@@ -58,7 +63,7 @@ export const SingleShot: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true],
     ["Damage","Lethal",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,5,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Lethal",1.666,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

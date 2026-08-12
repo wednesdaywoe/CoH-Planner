@@ -12,12 +12,17 @@ export const DartBurst: Power = {
   "name": "Dart Burst",
   "internalName": "Dart_Burst",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Dart Burst does light lethal damage to foes in a 30 degree arc cone, then poisons them.  The poison does toxic damage over time and reduces their regeneration rate.  Damage: Light Recharge: Medium",
   "shortHelp": "Light Cone DMG (Lethal), DoT(Toxic), -Regeneration",
   "icon": "widowtraining_dartburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 50,
@@ -72,7 +77,7 @@ export const DartBurst: Power = {
   "atoms": [
     ["Damage","Lethal",0.255005,1,0.8,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Toxic",0.11,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929],
+    ["Damage","Toxic",0.11,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Damage","Lethal",0.877758,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [

@@ -12,6 +12,8 @@ export const Eviscerate: Power = {
   "name": "Eviscerate",
   "internalName": "Eviscerate",
   "available": 25,
+  "autoIssue": false,
+  "free": false,
   "description": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you. This attack has an exceptionally good critical hit capability, better than other Claw attacks, that can sometimes deal double damage. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), +Special",
   "icon": "claws_evicerate.png",
@@ -20,6 +22,9 @@ export const Eviscerate: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,10 +62,10 @@ export const Eviscerate: Power = {
   ],
   "atoms": [
     ["Damage","Lethal",1.99,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",1.99,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.8955,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Lethal",1.99,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.15],
+    ["Damage","Fire",0.8955,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Damage","Lethal",2.420011,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",2.420011,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",2.420011,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.15]
   ],
   "specialEffects": [
     {

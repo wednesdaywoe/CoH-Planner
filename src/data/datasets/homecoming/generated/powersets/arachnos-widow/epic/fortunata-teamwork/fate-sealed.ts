@@ -12,12 +12,17 @@ export const FateSealed: Power = {
   "name": "Fate Sealed",
   "internalName": "Fate_Sealed",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Fortunatas who possess Fate Sealed gain resistance to all control effects, empowers their own control attacks, and guarantees their psychic power's secondary effects. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Str(Mez), +Res(Mez), +Special",
   "icon": "fortunatateamwork_fatesealed.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 0.5
@@ -32,52 +37,64 @@ export const FateSealed: Power = {
     },
     "mezResistance": {
       "confuse": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
     },
     "specialBuff": {
       "confuse": {
+        "ignoreStrength": true,
         "scale": 0.33,
         "table": "Melee_Ones"
       },
       "fear": {
+        "ignoreStrength": true,
         "scale": 0.33,
         "table": "Melee_Ones"
       },
       "hold": {
+        "ignoreStrength": true,
         "scale": 0.33,
         "table": "Melee_Ones"
       },
       "immobilize": {
+        "ignoreStrength": true,
         "scale": 0.33,
         "table": "Melee_Ones"
       },
       "sleep": {
+        "ignoreStrength": true,
         "scale": 0.33,
         "table": "Melee_Ones"
       },
       "stun": {
+        "ignoreStrength": true,
         "scale": 0.33,
         "table": "Melee_Ones"
       }

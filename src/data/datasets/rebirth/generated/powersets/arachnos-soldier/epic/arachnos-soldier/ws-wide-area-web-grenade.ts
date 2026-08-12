@@ -12,12 +12,17 @@ export const WSWideAreaWebGrenade: Power = {
   "name": "Wide Area Web Grenade",
   "internalName": "WS_Wide_Area_Web_Grenade",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "Launches a Grenade at long range from under the barrel of your Assault rifle. It explodes into a field of sticky webs which slow and can immobilize all foes within its radius. Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Immobilize, -Fly, -Recharge",
   "icon": "arachnossoldier_wideareawebgrenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -54,6 +59,7 @@ export const WSWideAreaWebGrenade: Power = {
       "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Slow"
     },

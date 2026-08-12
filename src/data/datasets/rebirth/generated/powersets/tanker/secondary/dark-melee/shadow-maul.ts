@@ -12,6 +12,8 @@ export const ShadowMaul: Power = {
   "name": "Shadow Maul",
   "internalName": "Shadow_Maul",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You wrap your entire arms with Negative Energy channeled from the Netherworlds, then perform a series of blows that deal a lot of damage over a short period of time to multiple targets in front of you. These blows cloud your target's vision, lowering his chance to hit for a short time. Damage: High(DoT), Recharge: Moderate",
   "shortHelp": "Melee (Cone), High DoT(Smash/Negative), Foe -To Hit",
   "icon": "shadowfighting_shadowmaul.png",
@@ -20,6 +22,9 @@ export const ShadowMaul: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -84,10 +89,10 @@ export const ShadowMaul: Power = {
     ["Damage","Negative",0.2695,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.24255,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,6.25,0],
+    ["Damage","Fire",0.24255,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,6.25,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["Damage","Smashing",0.454732,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",0.454732,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.2150000035762787,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.2150000035762787,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0.22]
   ]
 };

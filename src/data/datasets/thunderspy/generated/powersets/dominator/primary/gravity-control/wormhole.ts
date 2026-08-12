@@ -12,12 +12,17 @@ export const Wormhole: Power = {
   "name": "Wormhole",
   "internalName": "Wormhole",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You can open a gravitational Wormhole behind a targeted foe and violently push him, and all nearby foes, through it. The victims are sent flying out the other end of the Wormhole and are left Disoriented. You determine the location of the Wormhole's end, and can place it high in the air if desired. More powerful foes may be resistant to the Wormhole effects. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe Teleport, Disorient, Knockback",
   "icon": "gravitycontrol_wormhole.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

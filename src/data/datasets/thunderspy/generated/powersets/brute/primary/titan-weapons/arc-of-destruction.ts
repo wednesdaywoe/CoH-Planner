@@ -12,6 +12,8 @@ export const ArcofDestruction: Power = {
   "name": "Arc of Destruction",
   "internalName": "Arc_of_Destruction",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down.  Arc of Destruction may only be used while on the ground.  Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Smashing), Foe Knockback",
   "icon": "titanweapons_arcofdestruction.png",
@@ -20,6 +22,9 @@ export const ArcofDestruction: Power = {
   "effectArea": "Cone",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -103,7 +108,13 @@ export const ArcofDestruction: Power = {
       "description": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down.  Arc of Destruction may only be used while on the ground.  Damage: Superior, Recharge: Slow",
       "effectArea": "Cone",
       "targetType": "Foe",
-      "powerType": "Click"
+      "powerType": "Click",
+      "atoms": [
+        ["Damage","Smashing",2.41728,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq"],
+        ["Damage","Fire",1.087776,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+        ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+      ]
     }
   },
   "damageTypes": [

@@ -12,6 +12,8 @@ export const VoltaicSentinel: Power = {
   "name": "Voltaic Sentinel",
   "internalName": "Voltaic_Sentinel",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "You can manifest a polarized electricity field that hovers above the ground and hurls bolts of electricity at nearby foes. Any enemy that passes near this Sentinel risks serious injury. The Sentinel is not alive and cannot be targeted or attacked by enemies. The Sentinel can fly and will follow you.",
   "shortHelp": "Summon Sentinel: Ranged, DMG(Energy), Foe -End",
   "icon": "electricalbolt_voltaicsentinal.png",
@@ -19,6 +21,9 @@ export const VoltaicSentinel: Power = {
   "targetType": "Location",
   "effectArea": "Location",
   "procsAllowed": false,
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,
@@ -80,7 +85,10 @@ export const VoltaicSentinel: Power = {
               ],
               "recharge": 1.25,
               "castTime": 1,
-              "effectArea": "SingleTarget"
+              "effectArea": "SingleTarget",
+              "targetsAffected": [
+                "Foe"
+              ]
             }
           ]
         }

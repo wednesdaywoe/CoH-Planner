@@ -12,12 +12,17 @@ export const Convalesce: Power = {
   "name": "Convalesce",
   "internalName": "Convalesce",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Your weakened link to the world of the living allows you to instantly recover from wounds. Activing this power near a feared target drains their energy while restoring yours. Recharge: Long",
   "shortHelp": "Click: Self Heal, +End(Special) Foe -End(Special)",
   "icon": "spectralaura6.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 60,
@@ -42,7 +47,7 @@ export const Convalesce: Power = {
   },
   "atoms": [
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1],
-    ["Meta",null,1,122,6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,122,6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ],
   "setsModes": [

@@ -12,12 +12,17 @@ export const FistfulofArrows: Power = {
   "name": "Fistful of Arrows",
   "internalName": "Fistful_of_Arrows",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "You fire a fistful of arrows at foes in a cone in front of you. Good at close range.Damage: Light.Recharge: Moderate.",
   "shortHelp": "Ranged (Cone), Light DMG(Lethal)",
   "icon": "archery_conearrow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 40,

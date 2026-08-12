@@ -12,12 +12,17 @@ export const PhotonGrenade: Power = {
   "name": "Photon Grenade",
   "internalName": "Photon_Grenade",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "Launches an Energy Grenade at long range from your Pulse Rifle. The energy from this explosion can Disorient some targets in the affected area and debuffs their regeneration.Laser Burn:Targets struck by this attack will have their Regeneration debuffed for 30 seconds.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Disorient, -Regen",
   "icon": "robotics_laserriflestungrenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -53,6 +58,7 @@ export const PhotonGrenade: Power = {
       "regenDebuff": 30
     },
     "regenDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Ones"
     },
@@ -65,11 +71,11 @@ export const PhotonGrenade: Power = {
   "atoms": [
     ["Damage","Energy",0.8985,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-2,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",4,2,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
-    ["Meta",null,1,181,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Stunned",4,2,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,181,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"RefreshReminder",null,"set_mode"],
     ["Damage","Energy",0.7228,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,true],
-    ["Regeneration",null,-4,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"@ToHitRoll @ToHit / 0.3 <=",true]
+    ["Mez","Stunned",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Regeneration",null,-4,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit / 0.3 <= &&",true]
   ],
   "specialEffects": [
     {

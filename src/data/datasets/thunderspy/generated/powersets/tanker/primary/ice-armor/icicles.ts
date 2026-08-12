@@ -12,12 +12,17 @@ export const Icicles: Power = {
   "name": "Icicles",
   "internalName": "Icicles",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you form sharp icicles on your body that continuously cut all foes that attempt to enter melee range while also Slowing the attack rate of all nearby foes, as well as their movement speed and damage. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Toggle: Foe PBAoE, Minor DoT(Lethal), -Recharge, -Speed, -DMG",
   "icon": "icearmor_icicles.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 10,
@@ -49,15 +54,25 @@ export const Icicles: Power = {
   "effects": {
     "buffDuration": 5,
     "damageDebuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Melee_Debuff_Dam"
     },
     "durations": {
       "damageDebuff": 5,
+      "movementCapDebuff": 5,
       "rechargeDebuff": 5,
       "slow": 5
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -67,6 +82,7 @@ export const Icicles: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -75,8 +91,8 @@ export const Icicles: Power = {
         "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+        "scale": 0.7,
+        "table": "Melee_Slow"
       }
     },
     "taunt": {

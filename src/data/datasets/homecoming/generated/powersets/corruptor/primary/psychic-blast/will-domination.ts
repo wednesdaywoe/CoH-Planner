@@ -12,12 +12,17 @@ export const WillDomination: Power = {
   "name": "Will Domination",
   "internalName": "Will_Domination",
   "available": 7,
+  "autoIssue": false,
+  "free": false,
   "description": "This powerful attack deals Psionic damage, and is so painful it usually renders its target unconscious. The victim is asleep, and will wake if disturbed.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Sleep",
   "icon": "psychicblast_willdomination.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,
@@ -54,11 +59,11 @@ export const WillDomination: Power = {
   },
   "atoms": [
     ["Damage","Psionic",1.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Sleep",16,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929],
-    ["Damage","Psionic",1.96,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
+    ["Mez","Sleep",16,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",1.96,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true],
     ["Damage","Psionic",1.57,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Psionic",1.57,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
-    ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,null,true]
+    ["Damage","Psionic",1.57,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true],
+    ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

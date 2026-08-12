@@ -12,12 +12,17 @@ export const ExplosiveBlast: Power = {
   "name": "Explosive Blast",
   "internalName": "Explosive_Blast",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), High DMG(Smash/Energy), Foe Knockback",
   "icon": "powerblast_explosion.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

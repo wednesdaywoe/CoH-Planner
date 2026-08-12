@@ -9,8 +9,9 @@
  *           resolved through the AT table into a run/fly/jump percent.
  *   ATOMS — `movementBuffValue(power)`: base Movement atoms, with the bag's routing
  *           chain (Res → debuffResistance, self+Str → specialBuff, self+Max+scale>0 →
- *           movementCapBump, slow → slow, else self / current) reproduced from
- *           `aspect` / `toWho` / `scale` / `modifierTable`, which are all on the wire.
+ *           movementCapBump, Max+slow → movementCapDebuff, slow → slow, else self /
+ *           current) reproduced from `aspect` / `toWho` / `scale` / `modifierTable`,
+ *           which are all on the wire.
  *
  * Checked in BOTH directions, per slot, so an over-production (an atom minting a
  * movement entry the bag never had — the failure mode a fallback CANNOT protect
@@ -24,19 +25,16 @@
  *     member of a group applies, so a dropped key silently stacks CJ + SJ + SS;
  *   - `suppressible` — combat suppression (Super Speed's run buff, Fly's speed).
  *
- * SCOPE — WHAT THIS GATE CANNOT SEE (state it before citing green, per the plan's
- * "a gate's SWEEP is part of its claim"): Thunderspy. Not because it is excluded —
- * it is swept — but because Thunderspy has NO movement data on either side. It spells
- * the attrib `SpeedRunning`/`SpeedJumping`/`SpeedFlying` (280/137/107 templates) where
- * HC spells it `RunningSpeed`, and neither the bag's `MOVEMENT_TYPES` nor the bridge's
- * `MOVEMENT_AXIS` maps that spelling, so every Thunderspy travel power (Super Speed,
- * Fly, Super Jump, Hover, Combat Jumping) yields +0 movement in the planner today.
- * Bag and atoms are equally empty, so this gate agrees vacuously on all of it. That is
- * a real user-facing bug with a parser-side fix (the vocabulary AND the aspect: tspy
- * exports `aspect: ''` on 29,981 of 30,519 templates, so Current-vs-Maximum — speed
- * buff vs travel-cap raise — is not recoverable either) tracked in
- * CONVERTER-ATOM-ARRAY-PLAN.md. Coverage below prints per dataset so a Thunderspy zero
- * stays visible rather than hiding inside a corpus-wide total.
+ * SCOPE — Thunderspy movement is now COVERED (this note previously claimed the opposite
+ * — "tspy has NO movement data, +0 everywhere, aspect always empty"; corrected 2026-07-19,
+ * all three claims are now false). `MOVEMENT_TYPES` (bag) and `MOVEMENT_AXIS` (bridge) both
+ * map tspy's `SpeedRunning`/`SpeedJumping`/`SpeedFlying` spelling onto the Run/Fly/Jump axes,
+ * and the TSPY-3 step-1 typing recovery filled in `aspect` (tspy is now ~4.8% aspect-empty,
+ * was ~98%), so the speed-buff-vs-travel-cap distinction IS recoverable. This gate reports
+ * ~95 tspy movement axis slots (bag == atoms, 0 divergence) — real data on both sides, not a
+ * vacuous agree. (TSPY-3 step 2 also mapped the bare `Friction`/`Control` respellings, but
+ * `movement.rs` excludes those axes from every total by design.) Coverage still prints per
+ * dataset so any genuine zero stays visible rather than hiding in a corpus-wide total.
  *
  * Exit code is nonzero on any divergence — this GATES.
  *
@@ -44,10 +42,15 @@
  *   node scripts/planb-shadow-movement.cjs
  *   node scripts/planb-shadow-movement.cjs --dataset homecoming
  *   node scripts/planb-shadow-movement.cjs --power "Super Speed"
+ *
+ * ARCHETYPE FORK: a slot the converter resolved across the whole roster reads as
+ * `undefined` from the build-agnostic atom readers and populated in the bag. That is
+ * not a divergence — it is checked, per archetype, through
+ * `planb-shadow-sweep.forkResolvedViews`, and counted separately in the summary.
  */
 
 require('tsx/cjs');
-const { sweepDataset } = require('./planb-shadow-sweep.cjs');
+const { sweepDataset, forkResolvedAgrees } = require('./planb-shadow-sweep.cjs');
 const { movementBuffValue } = require('../src/data/core/atom-query.ts');
 
 const argv = process.argv.slice(2);
@@ -86,7 +89,7 @@ const eq = (a, b) =>
   (!!a && !!b && a.scale === b.scale && a.table === b.table &&
    a.stackKey === b.stackKey && a.suppressible === b.suppressible);
 
-const stats = { powers: 0, slots: 0, agree: 0 };
+const stats = { powers: 0, slots: 0, agree: 0, forkResolved: 0 };
 const perDataset = {};
 const findings = [];
 
@@ -107,8 +110,14 @@ function checkPower(dataset, power, genPath) {
     if (!bag && !atom) continue;
     stats.slots++;
     perDataset[dataset].slots++;
+    // The build-agnostic reader abstains on an archetype-forked slot; ask each
+    // archetype's resolved view instead (see `forkResolvedAgrees`).
     if (eq(bag, atom)) stats.agree++;
-    else {
+    else if (!atom && bag && forkResolvedAgrees(dataset, power, bag,
+      (src) => norm(movementBuffValue(src)?.[axis]), eq)) {
+      stats.agree++;
+      stats.forkResolved++;
+    } else {
       findings.push({ dataset, name, axis, bag, atom });
       if (POWER_FILTER) {
         console.log(`  [DIVERGE] ${name} ${axis}  bag=${JSON.stringify(bag)} atom=${JSON.stringify(atom)}`);
@@ -122,7 +131,7 @@ for (const ds of DATASETS) sweepDataset(ds, (power, rel) => checkPower(ds, power
 console.log('\nPlan B Slice 7 — movement-buff reconstruction (effects.movement)');
 console.log(`  powers swept:  ${stats.powers}`);
 console.log(`  axis slots:    ${stats.slots}`);
-console.log(`  agree:         ${stats.agree}`);
+console.log(`  agree:         ${stats.agree}  (of which archetype-fork resolved: ${stats.forkResolved})`);
 console.log(`  diverge:       ${findings.length}`);
 console.log('  coverage by dataset (a zero here means the DATASET has no movement data,');
 console.log('  not that the gate skipped it — see the Thunderspy note in the header):');

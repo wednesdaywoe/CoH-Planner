@@ -12,6 +12,8 @@ export const ShadowFall: Power = {
   "name": "Shadow Fall",
   "internalName": "Shadow_Fall",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Envelops you and your nearby teammates in a shroud of darkness. Shadow Fall does not grant Invisibility, but it does make you harder to detect. Even if you are discovered, Shadow Fall grants a bonus to Defense bonus to all attacks and Resistance to Fear, while reducing Energy, Negative Energy, and Psionic Damage.",
   "shortHelp": "Toggle: PBAoE, Team Stealth, +DEF(All), +Res(Energy, Negative, Psionics, Fear)",
   "icon": "darkmiasma_shadowfall.png",
@@ -22,6 +24,10 @@ export const ShadowFall: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Leaguemate",
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -135,6 +141,7 @@ export const ShadowFall: Power = {
         "table": "Melee_Ones"
       },
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0.7,
         "table": "Ranged_Ones"
       }
@@ -158,9 +165,9 @@ export const ShadowFall: Power = {
     ["Resistance","Psionic",2,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["MezResist","Terrorized",5,1,0.75,"Ranged_Res_Boolean","Res","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
     ["Mez","Terrorized",-20,1,0.75,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Stealth","RadiusPvP",390,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked target.EventTimeSince> 10 > HitByFoe target.EventTimeSince> 10 > && MissionObjectClick target.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
-    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle"],
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"],
     ["Stealth","RadiusPvE",35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","MissionObjectClick target.EventTimeSince> 10 >",null,null,true,null,"StealthToggle"],
     ["MezResist","Terrorized",7,1,0.75,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ],

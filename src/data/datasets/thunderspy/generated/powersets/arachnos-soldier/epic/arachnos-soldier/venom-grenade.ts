@@ -12,12 +12,17 @@ export const VenomGrenade: Power = {
   "name": "Venom Grenade",
   "internalName": "Venom_Grenade",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.  NOTE: If you take this power you cannot also take the Crab Spider version.  Damage: Moderate Recharge: Long",
   "shortHelp": "Ranged(Targeted AoE), DoT(Toxic), -Res(All)",
   "icon": "arachnossoldier_venomgrenade.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -54,34 +59,42 @@ export const VenomGrenade: Power = {
     },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }

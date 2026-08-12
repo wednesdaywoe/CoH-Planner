@@ -21,7 +21,12 @@ import { Liquefy as Liquefy } from './liquefy';
 
 export const powerset: Powerset = {
   id: 'defender/sonic-resonance',
+  setPath: 'Defender_Buff.Sonic_Debuff',
   name: 'Sonic Resonance',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'You have the ability to control sound in several fashions.  You can create semi-solid barriers, set up waves which weaken or strengthen a target, as well as creating soothing sounds which act to counteract any negative effects which may exist on your friends.',
   icon: 'sonic_debuff_set.ico',
   archetype: 'defender',

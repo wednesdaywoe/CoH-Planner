@@ -12,6 +12,8 @@ export const Minerals: Power = {
   "name": "Minerals",
   "internalName": "Minerals",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power summons several rare earth rock Minerals to orbit around you.  These Minerals can disperse thought patterns and make Psionic attacks less likely to hit. They also bring clarity of the mind and increase your Perception to see hidden foes, and grant resistance to Confusion. Minerals also add an Elusivity defense bonus to Psionic Attacks in PVP zones.  Cannot be active at the same time as Granite Armor. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Psionic), Res(Confuse), +Perception",
   "icon": "stonearmor_mineralcrust.png",
@@ -22,6 +24,9 @@ export const Minerals: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

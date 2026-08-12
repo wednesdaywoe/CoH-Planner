@@ -12,6 +12,8 @@ export const Birdshot: Power = {
   "name": "Cryoshot",
   "internalName": "Birdshot",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Fire a special concoction of Cryo ammunition at your foes. Enemies afflicted with Cryo Shell will have reduced movement and multiple applications may immobilize them. Using Dragon's Breath on a foe afflicted with Cryo Shell will deal bonus damage. Using Venom Shell on a foe afflicted with Cryo Shell will deal additional Toxic damage over time.",
   "shortHelp": "Ranged Taunt(cone), Slow, Immobilize",
   "icon": "dualpistols_cryoammo.png",
@@ -20,6 +22,9 @@ export const Birdshot: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -57,6 +62,7 @@ export const Birdshot: Power = {
       "table": "Melee_Immobilize"
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -66,6 +72,7 @@ export const Birdshot: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Slow"
       },

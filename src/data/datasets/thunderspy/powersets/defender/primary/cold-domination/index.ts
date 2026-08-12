@@ -22,7 +22,12 @@ import { HeatLoss as HeatLoss } from './heat-loss';
 
 export const powerset: Powerset = {
   id: 'defender/cold-domination',
+  setPath: 'Defender_Buff.Cold_Domination',
   name: 'Cold Domination',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Cold Domination powers allow you to manipulate cold and ice to protect your allies and weaken your enemies.',
   icon: 'cold_domination_set.ico',
   archetype: 'defender',

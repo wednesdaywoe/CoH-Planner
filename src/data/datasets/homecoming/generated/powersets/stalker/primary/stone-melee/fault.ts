@@ -12,6 +12,8 @@ export const Fault: Power = {
   "name": "Fault",
   "internalName": "Fault",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "This powerful stomp can cause a seismic disturbance. This will crack the Earth itself and send a Fault towards a targeted foe, throwing him and nearby enemies into the air and possibly Disorienting them. Fault has a chance of dealing damage to foes in between you and your target.Damage: Minor.Recharge: Slow.",
   "shortHelp": "Close (Targeted AoE), Minor DMG(Smashing), Foe Knockback, Disorient",
   "icon": "stonemelee_fault.png",
@@ -19,6 +21,34 @@ export const Fault: Power = {
   "targetType": "Foe",
   "effectArea": "SingleTarget",
   "procsAllowed": false,
+  "procRollSites": [
+    {
+      "power": "Redirects.Stone_Melee.Fault_Stalker",
+      "boostsAllowed": [
+        "EnduranceDiscount",
+        "Range",
+        "Stun",
+        "Recharge",
+        "Knockback",
+        "Accuracy"
+      ],
+      "radius": 15,
+      "arc": 0
+    },
+    {
+      "power": "Redirects.Stone_Melee.Fault_Cone_Stalker",
+      "boostsAllowed": [
+        "Range",
+        "Damage",
+        "Accuracy"
+      ],
+      "radius": 20,
+      "arc": 0.9599311351776123
+    }
+  ],
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 20,
@@ -43,11 +73,18 @@ export const Fault: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.7825,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.7825,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.7825,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 0.67,
@@ -64,6 +101,7 @@ export const Fault: Power = {
     ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",8,1,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",0.7825,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",0.7825,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]

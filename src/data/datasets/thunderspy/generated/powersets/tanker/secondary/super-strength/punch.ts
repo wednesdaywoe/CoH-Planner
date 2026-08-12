@@ -12,6 +12,8 @@ export const Punch: Power = {
   "name": "Punch",
   "internalName": "Punch",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Your Super Strength Punch can deal a moderate amount of damage, but most of all can knock your opponent off his feet, unable to attack again until he stands up. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Smash), Knockback",
   "icon": "superstrength_punch.png",
@@ -22,6 +24,9 @@ export const Punch: Power = {
     "Range"
   ],
   "procsOnlyOnMainTarget": true,
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

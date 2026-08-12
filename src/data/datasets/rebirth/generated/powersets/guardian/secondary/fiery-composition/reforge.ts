@@ -12,12 +12,18 @@ export const Reforge: Power = {
   "name": "Reforge",
   "internalName": "Reforge",
   "available": 19,
+  "autoIssue": false,
+  "free": false,
   "description": "Reforge transforms affected teammates and yourself into killing machines.  Reforge immensely enhances Damage and chance to hit.  Recharge: Very Long",
   "shortHelp": "PBAoE Team +DMG, +To Hit",
   "icon": "fierycomp_reforge.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -39,6 +45,7 @@ export const Reforge: Power = {
   "effects": {
     "buffDuration": 90,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 4,
       "table": "Ranged_Buff_Dmg"
     },

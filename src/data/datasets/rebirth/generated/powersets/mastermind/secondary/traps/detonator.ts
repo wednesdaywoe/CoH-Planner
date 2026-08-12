@@ -12,12 +12,17 @@ export const Detonator: Power = {
   "name": "Detonator",
   "internalName": "Detonator",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "A good Mastermind  always plans ahead, but a great one knows when to make a strategic sacrifice.  You have equipped all your Henchmen with explosives.  When the time is right, select a Henchman and set off the Detonator. Undead and Robots are easily rigged and will blow up instantly, devastating nearby enemies.  Ninjas, Soldiers and other free thinking Henchmen will try to place the explosive on the ground and get away.  But you know... the fuse is short.  Recharge: Very Long",
   "shortHelp": "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_aoemassivedamage.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,
@@ -40,7 +45,7 @@ export const Detonator: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq Human target.HasTag? ! &&"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq Human target.HasTag? ! &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq Human target.HasTag? &&",true]
   ]
 };

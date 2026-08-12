@@ -16,7 +16,8 @@
  * `incarnateLevelShiftActive` warns (the engine derives level-shift from the equipped incarnate
  * and can't suppress it independently). Conditional adjusters (`globalAdjusters` /
  * `mechanicAdjusters`) reach the engine two ways: for the per-power DISPLAY projection they are
- * forwarded verbatim as `combat.global_conditionals` / `per_power_conditionals` (PROD6C-3k), and for
+ * forwarded as `combat.global_conditionals` / `per_power_conditionals` / `power_state` — the last
+ * two a partition of the beta's one mechanic map, re-addressed per pick (PROD6C-3k), and for
  * the TOTALS they ride build state the engine already reads — stances via `active_sub_power`,
  * out-of-combat via `combatMode`→`in_combat`. Only the totals half can silently drop a toggle, so
  * that is where this still fails loud: a global toggle carrying an unmodeled caster dashboard buff
@@ -32,6 +33,7 @@ import { getPowerset } from '@/data/powersets';
 import { getPowerPool } from '@/data/power-pools';
 import { getEpicPool } from '@/data/epic-pools';
 import { effectiveGlobalAdjusters, isCasterHidden } from '@/components/info/resolveEffectivePower';
+import { BUFF_PET_TOGGLE_ID } from '@/utils/calculations/buff-pet-auras';
 
 // ============================================
 // OUTPUT WIRE SHAPE (mirrors crates/coh_data/src/character.rs serde)
@@ -117,6 +119,11 @@ export interface CharacterStateCombatContext {
   hidden: boolean;
   global_conditionals: Record<string, boolean>;
   per_power_conditionals: Record<string, boolean>;
+  /** Per-power switches the player threw on their own character, keyed by the pick's ADDRESS
+   *  (`"<powerset>:<internalName>:<id>"`). The engine keeps these apart from the target-state
+   *  map above because the two answer to opposite rules at the file boundary; see
+   *  `partitionMechanicAdjusters`. */
+  power_state: Record<string, boolean>;
   active_modes: string[];
   /** The what-if TEAM-BUFF layer, keyed by the `GlobalBonuses` field each entry lands in. The
    *  engine injects it into the accumulators before projection — the one live input here that
@@ -136,9 +143,11 @@ export interface CharacterState {
   inherents: CharacterStateSelectedPower[];
   accolades: string[];
   incarnates: CharacterStateIncarnateLoadout;
-  /** Per-slotted-proc control overrides, keyed `"<power display name>:<slot index>"` — the
-   *  build's own `procOverrides`, passed through so the engine's proc pass honours the
-   *  "Slotted Procs" enable / stacks / %HP controls instead of always running the defaults. */
+  /** Per-slotted-proc control overrides, keyed by the pick's ADDRESS plus the slot index
+   *  (`"<powerset>:<internalName>:<slot index>"`), so the engine's proc pass honours the
+   *  "Slotted Procs" enable / stacks / %HP controls instead of always running the defaults.
+   *  The build stores them under the power's DISPLAY name; `procOverridesFrom` re-addresses
+   *  them here. */
   proc_overrides: Record<string, ProcOverride>;
   slot_order: CharacterStateSlotOrderEntry[];
   combat: CharacterStateCombatContext;
@@ -244,6 +253,105 @@ function mapIncarnates(build: Build, active: IncarnateActiveState): CharacterSta
   for (const slot of INCARNATE_SLOTS) {
     const sel = build.incarnates[slot];
     out[slot] = sel ? { power_name: sel.powerName, active: active[slot] ?? false } : null;
+  }
+  return out;
+}
+
+// ============================================
+// PER-PICK ADDRESSING
+// ============================================
+
+/**
+ * The engine addresses one pick as `<powerset>:<internalName>` (`coh_data::power_address`),
+ * because an internal name alone cannot tell an epic pick from its secondary twin — an
+ * override set on one would land on both. Two of the maps below travel to the engine under
+ * that address while the beta still stores them under a name, so they are re-addressed here.
+ *
+ * This is the whole reason a mismatch is dangerous rather than noisy: a key the engine cannot
+ * find reads as ABSENT, and absent means "the player never threw this switch". A stale key
+ * shape does not fail, it silently reverts every one of these controls to its default.
+ */
+function powerAddress(powerSet: string, internalName: string): string {
+  return `${powerSet}:${internalName}`;
+}
+
+/** Every pick the engine's own `all_selected()` walks, in the same order. */
+function allPicks(build: Build): SelectedPower[] {
+  return [
+    ...build.primary.powers,
+    ...build.secondary.powers,
+    ...build.pools.flatMap((pool) => pool.powers),
+    ...(build.epicPool?.powers ?? []),
+    ...build.inherents,
+  ];
+}
+
+/**
+ * Caster-side toggle ids that belong in `power_state` rather than `per_power_conditionals`.
+ *
+ * The engine splits the beta's one flat `mechanicAdjusters` map in two, and the split is not
+ * cosmetic: a switch on your own character travels with a shared build, while a foe's state
+ * (drowning, contaminated) is world state that must open at the planner's default. One map
+ * cannot say which a key is. The beta writes both halves into `mechanicAdjusters`, so the
+ * partition happens here — and a caster toggle added later must be listed here too, or it
+ * lands in the target-state map and does nothing.
+ */
+const CASTER_POWER_STATE_TOGGLE_IDS: ReadonlySet<string> = new Set([BUFF_PET_TOGGLE_ID]);
+
+/** Split `mechanicAdjusters` into the target-state half and the caster half, re-addressing
+ *  the caster half onto the picks it names. An entry naming no pick in this build is dropped:
+ *  the engine has no power to hang it on either. */
+function partitionMechanicAdjusters(
+  build: Build,
+  mechanicAdjusters: Record<string, boolean>,
+): { perPower: Record<string, boolean>; powerState: Record<string, boolean> } {
+  const perPower: Record<string, boolean> = {};
+  const powerState: Record<string, boolean> = {};
+  const picksByInternalName = new Map<string, SelectedPower[]>();
+  for (const pick of allPicks(build)) {
+    const list = picksByInternalName.get(pick.internalName);
+    if (list) list.push(pick);
+    else picksByInternalName.set(pick.internalName, [pick]);
+  }
+
+  for (const [key, on] of Object.entries(mechanicAdjusters)) {
+    const split = key.lastIndexOf(':');
+    const id = split === -1 ? '' : key.slice(split + 1);
+    if (!CASTER_POWER_STATE_TOGGLE_IDS.has(id)) {
+      perPower[key] = on;
+      continue;
+    }
+    // The beta keys on the internal name alone, so a name held twice sets both picks —
+    // the same within-build collision the address exists to fix, carried over faithfully
+    // rather than resolved here on a guess about which pick the player meant.
+    for (const pick of picksByInternalName.get(key.slice(0, split)) ?? []) {
+      powerState[`${powerAddress(pick.powerSet, pick.internalName)}:${id}`] = on;
+    }
+  }
+  return { perPower, powerState };
+}
+
+/** Re-address the build's `procOverrides` (stored `"<display name>:<slot index>"`) onto the
+ *  picks they name. Same faithful-collision rule as above: a display name held by two picks
+ *  sets both, which is what the beta's own controls already do. */
+function procOverridesFrom(build: Build): Record<string, ProcOverride> {
+  const stored = build.procOverrides;
+  if (!stored) return {};
+  const picksByName = new Map<string, SelectedPower[]>();
+  for (const pick of allPicks(build)) {
+    const list = picksByName.get(pick.name);
+    if (list) list.push(pick);
+    else picksByName.set(pick.name, [pick]);
+  }
+
+  const out: Record<string, ProcOverride> = {};
+  for (const [key, override] of Object.entries(stored)) {
+    const split = key.lastIndexOf(':');
+    if (split === -1) continue;
+    const slotIndex = key.slice(split + 1);
+    for (const pick of picksByName.get(key.slice(0, split)) ?? []) {
+      out[`${powerAddress(pick.powerSet, pick.internalName)}:${slotIndex}`] = override;
+    }
   }
   return out;
 }
@@ -375,6 +483,8 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
     console.warn('characterStateAdapter: incarnateLevelShiftActive=false is not honored — the engine applies level-shift whenever a shift-granting incarnate is equipped');
   }
 
+  const mechanics = partitionMechanicAdjusters(build, ctx.mechanicAdjusters);
+
   return {
     name: build.name,
     dataset: build.serverId,
@@ -387,7 +497,7 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
     inherents: build.inherents.map((p) => mapPower(p, ctx.targetsHitValues)),
     accolades: build.accolades.map((a) => a.id.toLowerCase()),
     incarnates: mapIncarnates(build, ctx.incarnateActive),
-    proc_overrides: build.procOverrides ?? {},
+    proc_overrides: procOverridesFrom(build),
     slot_order: build.slotOrder.map((s) => ({
       power_name: s.powerName,
       slot_index: s.slotIndex,
@@ -417,7 +527,9 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
       // and the one AT-inherent id the beta routes to the Header's own state is resolved into
       // the map here — the engine reads the data's `scope`, not a curated list of mechanic names.
       global_conditionals: { ...effectiveGlobalAdjusters(build, ctx.globalAdjusters), domination: ctx.dominationActive },
-      per_power_conditionals: ctx.mechanicAdjusters,
+      per_power_conditionals: mechanics.perPower,
+      // The caster half of the same map, addressed per pick — the buff-pet aura opt-ins.
+      power_state: mechanics.powerState,
       // The caster modes the player switched on. Display only: the engine swaps the redirected
       // record into the projection, and the TOTALS pass reads the same states through the
       // powers' own `setsModes` gates, so no total moves (PROD6C-3l).

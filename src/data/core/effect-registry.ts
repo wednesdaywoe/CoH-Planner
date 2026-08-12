@@ -395,6 +395,18 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     enhancementAspect: 'slow',
     priority: 8,
   },
+  movementCapDebuff: {
+    // The other half of a slow: `slow` lowers how fast you move, this lowers how fast you are
+    // ALLOWED to move. Same attrib, different face of it (aspect Max vs Cur), so a power can
+    // carry both and they must not collapse into one row.
+    label: '-Speed Cap',
+    category: 'debuff',
+    colorClass: STAT_COLORS.slow,
+    format: 'percent',
+    canBeByType: true,
+    enhancementAspect: 'slow',
+    priority: 8,
+  },
   enduranceDrain: {
     label: '-End Drain',
     category: 'debuff',
@@ -866,7 +878,11 @@ export function getByTypeFirstValue(obj: Record<string, unknown>): NumberOrScale
   if (values.length === 0) return undefined;
   const first = values[0];
   if (typeof first === 'number') return first;
-  if (typeof first === 'object' && first !== null && 'scale' in first) {
+  // `scaleTerms` counts as well as `scale`: a pet's `slow` holds one value per movement
+  // axis and an axis can state two rows off two tables, so the entry inside a by-type
+  // object is exactly the shape a top-level value can be (ENT-8). Rejecting it collapsed
+  // the whole key to nothing and the row vanished.
+  if (typeof first === 'object' && first !== null && ('scale' in first || 'scaleTerms' in first)) {
     return first as NumberOrScaled;
   }
   return undefined;
@@ -897,8 +913,14 @@ export function getByTypeAbbreviations(obj: Record<string, unknown>): string {
 
 export interface GroupedEffect {
   key: string;
+  /** The registry key this entry resolved through — `key` itself, or the base key
+   *  of a `<base>Unenhanced` split slot. */
+  effectKey: string;
   value: unknown;
   config: EffectDisplayConfig;
+  /** True when `key` is a `<base>Unenhanced` split slot. Such a row is flat: the
+   *  slot NAME is the IgnoreStrength mark. */
+  fromSplitSlot?: boolean;
 }
 
 export interface GroupedEffects {
@@ -919,15 +941,26 @@ export function groupEffectsByCategory(
     // Skip null/undefined values
     if (value == null) continue;
 
-    // Skip non-effect properties (stats, flags, etc.)
-    const config = EFFECT_REGISTRY[key];
+    // Skip non-effect properties (stats, flags, etc.) — but a `<base>Unenhanced`
+    // slot IS an effect: it is the converter's IgnoreStrength verdict expressed as
+    // a key, so it resolves through its base key's registration and renders flat.
+    // A power carrying both halves shows both rows, the way the game's own monitor
+    // does (ENT-6). Mirrors `granted.rs::resolve_granted_magnitudes`.
+    let effectKey = key;
+    let fromSplitSlot = false;
+    let config = EFFECT_REGISTRY[key];
+    if (!config && key.endsWith('Unenhanced')) {
+      effectKey = key.slice(0, -'Unenhanced'.length);
+      config = EFFECT_REGISTRY[effectKey];
+      fromSplitSlot = config !== undefined;
+    }
     if (!config) continue;
 
     const category = config.category;
     if (!groups.has(category)) {
       groups.set(category, []);
     }
-    groups.get(category)!.push({ key, value, config });
+    groups.get(category)!.push({ key, effectKey, value, config, fromSplitSlot });
   }
 
   // Sort effects within each group by priority

@@ -12,12 +12,17 @@ export const Blackstar: Power = {
   "name": "Blackstar",
   "internalName": "Blackstar",
   "available": 31,
+  "autoIssue": false,
+  "free": false,
   "description": "You can unleash a devastating blast of Negative Energy around yourself, dealing massive Negative Energy and Smashing damage and severely reducing affected foes' chance to hit.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Negative/Smash), Foe -To Hit",
   "icon": "darkcast_blackstar.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 25,
@@ -57,6 +62,7 @@ export const Blackstar: Power = {
   "effects": {
     "buffDuration": 20,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.042,
       "table": "Ranged_Ones"
     },

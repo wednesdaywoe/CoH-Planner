@@ -12,12 +12,17 @@ export const FulcrumFlip: Power = {
   "name": "Fulcrum Flip",
   "internalName": "Fulcrum_Flip",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "Fulcrum Flip drains the power of a targeted foe and all foes nearby, transferring it to all adjacent allies, you, and those near you. Affected foes will deal less damage, while your affected allies will deal more. The more foes that are affected, the more power you and your allies receive. Fulcrum Flip can dramatically turn the tide of a battle. Recharge: Very Long",
   "shortHelp": "Ranged (Foe AoE), Foe -DMG, Team +DMG",
   "icon": "energycomp_fulcrumflip.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

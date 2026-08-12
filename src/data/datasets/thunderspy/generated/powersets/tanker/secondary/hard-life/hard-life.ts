@@ -12,12 +12,17 @@ export const HardLife: Power = {
   "name": "It's A Hard Life",
   "internalName": "Hard_Life",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Sometimes you just need a little pick-me-up. Whatever's in these needles you're carrying around really gives you an edge. Increases damage by 50 percent for a time, also increases ToHit by 10 percent, and recharge speed by 30 percent.",
   "shortHelp": "Self, +To Hit, +Recharge, +Damage",
   "icon": "dualpistols_swapammo.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 120,
@@ -36,6 +41,7 @@ export const HardLife: Power = {
   "effects": {
     "buffDuration": 30,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
@@ -45,6 +51,7 @@ export const HardLife: Power = {
       "tohitBuff": 30
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Melee_Ones"
     },
@@ -69,7 +76,7 @@ export const HardLife: Power = {
     ["DamageBuff","Toxic",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["RechargeTime",null,0.3,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"reward"]
   ],
   "modesDisallowed": [
     "Disable_Pool"

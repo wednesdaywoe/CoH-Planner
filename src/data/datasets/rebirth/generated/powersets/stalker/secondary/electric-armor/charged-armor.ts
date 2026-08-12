@@ -12,6 +12,8 @@ export const ChargedArmor: Power = {
   "name": "Charged Armor",
   "internalName": "Charged_Armor",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
   "icon": "electricarmor_selfbuffdefensephysical.png",
@@ -22,6 +24,9 @@ export const ChargedArmor: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

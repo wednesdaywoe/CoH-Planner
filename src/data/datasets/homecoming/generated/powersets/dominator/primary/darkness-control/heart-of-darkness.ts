@@ -12,12 +12,17 @@ export const HeartofDarkness: Power = {
   "name": "Heart of Darkness",
   "internalName": "Heart_of_Darkness",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "In a burst of negative energy you overwhelm the minds of those around you causing them to be disoriented and suffer minor negative energy damage over a short time. Affected targets will also have their chance to hit reduced.Damage: Minor.Recharge: Long.",
   "shortHelp": "PBAoE, Foe Disorient, -To Hit, Minor DoT(Negative)",
   "icon": "darknesscontrol_heartofdarkness.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "radius": 25,
@@ -71,8 +76,8 @@ export const HeartofDarkness: Power = {
     ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Negative",0.188,1,4.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true],
-    ["Mez","Stunned",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Stunned",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"Domination"]
   ],
   "conditionalEffects": [
     {

@@ -12,12 +12,17 @@ export const EnvenomedBlades: Power = {
   "name": "Envenomed Blades",
   "internalName": "Envenomed_Blades",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "You add a toxic venom to all of your attacks for a moderate duration.  All damaging powers gain bonus Toxic damage. You also gain a moderate bonus to your chance to hit.  Recharge: Long",
   "shortHelp": "Self +Toxic Damage on all attacks, +ToHit",
   "icon": "martialassault_envenomedblades.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 160,
@@ -49,7 +54,7 @@ export const EnvenomedBlades: Power = {
   },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Meta",null,1,1,40,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Meta",null,1,1,40,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["ToHit",null,2,1,40,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ],
   "grantedDamageProcs": [

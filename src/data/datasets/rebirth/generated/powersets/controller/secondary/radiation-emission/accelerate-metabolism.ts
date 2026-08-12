@@ -12,12 +12,18 @@ export const AccelerateMetabolism: Power = {
   "name": "Accelerate Metabolism",
   "internalName": "Accelerate_Metabolism",
   "available": 3,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating this power emits radiation that increases the running speed, attack speed, Endurance recovery, and damage potential of all nearby allies. Affected heroes' metabolisms are increased so much that they become resistant to effects such as Sleep, Hold, Disorient, Immobilization and Endurance Drain. Recharge: Very Long",
   "shortHelp": "Close (AoE), Ally +SPD, +Recharge, +Recovery, +DMG +Res(Effects)",
   "icon": "radiationpoisoning_acceleratemetabolism.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,
@@ -41,15 +47,18 @@ export const AccelerateMetabolism: Power = {
   "effects": {
     "buffDuration": 120,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 2,
       "table": "Ranged_Buff_Dmg"
     },
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 1.5,
         "table": "Ranged_Res_Boolean"
       }
@@ -91,6 +100,7 @@ export const AccelerateMetabolism: Power = {
       }
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.3,
       "table": "Ranged_Ones"
     },

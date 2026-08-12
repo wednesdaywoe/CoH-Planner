@@ -12,6 +12,8 @@ export const BetaDecay: Power = {
   "name": "Beta Decay",
   "internalName": "Beta_Decay",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "While Beta Decay is active, nearby foes will have their chance to hit and defense decreased slightly and will be taunted. You will gain a recharge bonus per nearby target up to 10 targets. The first target grants the largest benefit.",
   "shortHelp": "Toggle: Foe, Taunt, -To Hit, -Defense, Self +Recharge",
   "icon": "radiationarmor_betadecay.png",
@@ -22,6 +24,9 @@ export const BetaDecay: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -62,6 +67,7 @@ export const BetaDecay: Power = {
       "perTarget": 0.025
     },
     "taunt": {
+      "ignoreStrength": true,
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     },
@@ -74,10 +80,10 @@ export const BetaDecay: Power = {
     ["ToHit",null,0.75,1,1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Defense","All",1.5,1,1,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["RechargeTime",null,0.1,1,1.125,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["RechargeTime",null,0.025,1,1,"Melee_Ones","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,0.025],
-    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&"],
-    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&"],
-    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["RechargeTime",null,0.025,1,1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.025],
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&",null,null,null,null,null,null,null,null,null,"StealthOn"],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !",null,null,null,null,null,null,null,null,null,"Mez"],
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&",true,null,null,null,null,null,null,null,null,"StealthOn"],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

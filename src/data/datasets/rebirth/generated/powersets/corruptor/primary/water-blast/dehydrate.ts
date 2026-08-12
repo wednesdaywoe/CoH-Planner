@@ -12,12 +12,17 @@ export const Dehydrate: Power = {
   "name": "Dehydrate",
   "internalName": "Dehydrate",
   "available": 11,
+  "autoIssue": false,
+  "free": false,
   "description": "You rapidly dehydrate your target, causing Moderate Cold and Smashing damage, reducing their movement speed and defense as well as causing a measure of Cold damage over time. You are then healed over time for a moderate amount of health.  Dehydrate grants 1 stack of Tidal Power if you have 2 or less.  Dehydrate will consume all stacks of Tidal Power if you have 3, but the power's heal over time effect is increased by 50%.  NOTE: This power will grant a regeneration buff in PvP zones instead of a heal over time.  Damage: Moderate, Light DoT, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Cold/Smash), Foe -Speed, -Defense, Light DoT(Cold), Self +Heal Over Time, +/- Tidal Power",
   "icon": "waterblast_dehydrate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,
@@ -71,13 +76,6 @@ export const Dehydrate: Power = {
       "table": "Ranged_HealSelf",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Heal",
-      "scale": 0.4125,
-      "table": "Ranged_HealSelf",
-      "duration": 3.1,
-      "tickRate": 1
     }
   ],
   "effects": {
@@ -96,6 +94,7 @@ export const Dehydrate: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -119,14 +118,14 @@ export const Dehydrate: Power = {
     ["Movement","Fly",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Heal",null,0.275,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <= isPVPMap? ! &&"],
-    ["Heal",null,0.4125,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 == isPVPMap? ! &&"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <="],
     ["Damage","Smashing",0.686066,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",2.058198,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
     ["Damage","Cold",2.744264,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
+    ["Heal",null,0.4125,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 == isPVPMap? ! &&",true],
     ["Regeneration",null,0.6,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <= isPVPMap? &&",true],
     ["Regeneration",null,0.9,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 == isPVPMap? &&",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <=",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ]
 };

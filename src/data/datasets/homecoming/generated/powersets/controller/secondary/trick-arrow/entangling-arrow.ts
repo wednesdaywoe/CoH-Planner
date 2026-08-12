@@ -12,12 +12,17 @@ export const EntanglingArrow: Power = {
   "name": "Entangling Arrow",
   "internalName": "Entangling_Arrow",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "You entangle a targeted foe causing their reflexes to become slowed and sluggish. This grounds them and causes them to have decreased movement speed and damage resistance. Weaker foes will also be immobilized.Recharge: Fast.",
   "shortHelp": "Ranged, Target Immobilize, -Res(All), -Fly, Slow",
   "icon": "trickarrow_immobilize.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,
@@ -42,6 +47,7 @@ export const EntanglingArrow: Power = {
   "effects": {
     "buffDuration": 30,
     "durations": {
+      "movementCapDebuff": 30,
       "resistanceDebuff": 30,
       "slow": 30
     },
@@ -50,36 +56,51 @@ export const EntanglingArrow: Power = {
       "scale": 7,
       "table": "Ranged_Immobilize"
     },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "resistanceDebuff": {
       "cold": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
+        "ignoreStrength": true,
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
@@ -98,8 +119,8 @@ export const EntanglingArrow: Power = {
         "table": "Ranged_Ones"
       },
       "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+        "scale": 0.5,
+        "table": "Ranged_Slow"
       }
     }
   },

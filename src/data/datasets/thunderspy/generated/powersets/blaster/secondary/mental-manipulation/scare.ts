@@ -12,12 +12,17 @@ export const Scare: Power = {
   "name": "Scare",
   "internalName": "Scare",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "You entwine a single foe within their deepest fears and cause them to helplessly tremble for a brief while.",
   "shortHelp": "Ranged, Foe Fear",
   "icon": "mentalcontrol_scare.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -39,6 +44,7 @@ export const Scare: Power = {
   "effects": {
     "buffDuration": 10.17,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.176,
       "table": "Melee_Ones"
     },

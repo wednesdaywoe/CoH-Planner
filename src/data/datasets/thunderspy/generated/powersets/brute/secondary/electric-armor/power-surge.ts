@@ -12,12 +12,17 @@ export const PowerSurge: Power = {
   "name": "Power Surge",
   "internalName": "Power_Surge",
   "available": 37,
+  "autoIssue": false,
+  "free": false,
   "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics, as well as Disorient, Sleep, Hold, Immobilize, Knockback, End Drain, Recovery DeBuff, and enemy Teleportation. Your Endurance recovery is also increased.  As Power Surge wears off, the charge in your body explodes in a massive EMP pulse.  However, expending all this energy will leave you exhausted, and drained of almost all Health and Endurance. Recharge: Very Long",
   "shortHelp": "Self, +Res(Special)",
   "icon": "electricarmor_selfbuffdefense.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 540,
@@ -42,10 +47,12 @@ export const PowerSurge: Power = {
     "buffDuration": 90,
     "debuffResistance": {
       "endurance": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Boolean"
       },
       "recovery": {
+        "ignoreStrength": true,
         "scale": 4,
         "table": "Melee_Res_Boolean"
       }
@@ -77,40 +84,49 @@ export const PowerSurge: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 100,
       "table": "Melee_Ones"
     },
     "maxEndBuff": {
+      "ignoreStrength": true,
       "scale": 15,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "knockup": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "repel": {
+        "ignoreStrength": true,
         "scale": 10,
         "table": "Melee_Ones"
       },
       "teleport": {
+        "ignoreStrength": true,
         "scale": 1,
         "table": "Melee_Ones"
       }
     },
     "recoveryBuffUnenhanced": {
+      "ignoreStrength": true,
       "scale": 1,
       "table": "Melee_Ones"
     },
     "repel": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
@@ -155,6 +171,7 @@ export const PowerSurge: Power = {
     },
     "stealth": {
       "translucency": {
+        "ignoreStrength": true,
         "scale": 0,
         "table": "Melee_Ones"
       }

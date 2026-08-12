@@ -14,12 +14,15 @@
  */
 
 import type { Enhancement, IOSetEnhancement } from '@/types';
+import type { ProcRollSite } from '@/types/power';
 import {
   findProcData,
   getProcEffects,
   interpolateProcDamage,
+  arcToDegrees,
   resolveProcRollGeometry,
   resolveProcRollSchedule,
+  resolveProcRollSite,
   calculateScheduledProcChance,
   powerFiresProcs,
 } from '@/data';
@@ -44,9 +47,13 @@ export interface SlottedProcDamageInput {
   /** The power's `ProcMainTargetOnly` flag — when set, its procs roll
    *  single-target despite an AoE radius; see resolveProcRollGeometry. */
   procsOnlyOnMainTarget?: boolean;
-  /** The power's `ProcAllowed` flag. `false` means no PPM proc rolls here at
-   *  all, so the power adds no proc damage; see powerFiresProcs. */
+  /** The power's `ProcAllowed` flag. `false` means the power's own recharge is
+   *  not a proc window; see powerFiresProcs. */
   procsAllowed?: boolean;
+  /** The executed children that roll in a `ProcAllowed kNone` power's place,
+   *  each with its own geometry; see `Power.procRollSites`. The WINDOW stays
+   *  this power's own `baseRecharge`/`castTime` — measured, not assumed. */
+  procRollSites?: ProcRollSite[];
   /** Click / Toggle / Auto. Auto and Toggle roll on the proc's own 10s period
    *  rather than a recharge window; see resolveProcRollSchedule. */
   powerType?: string;
@@ -69,17 +76,28 @@ export interface SlottedProcDamageInput {
  */
 export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput): number {
   const { slots, baseRecharge, castTime, radius, arcDegrees, rechargeEnh, buildLevel } = input;
-  // ProcAllowed kNone (Fault, Spring Attack, every pet summon): the power's
-  // recharge window is not a proc window, so a damage proc slotted here adds
-  // nothing to this cast. Pet summons are the subtle case — the proc does reach
-  // the pet via CopyBoosts, but what it deals there is pet damage fired on the
-  // pet's schedule, not damage on this activation.
+  // ProcAllowed kNone (Spring Attack, every pet summon): the power's recharge
+  // window is not a proc window, so a damage proc slotted here adds nothing to
+  // this cast. Pet summons are the subtle case — the proc does reach the pet
+  // via CopyBoosts, but what it deals there is pet damage fired on the pet's
+  // schedule, not damage on this activation. Fault and its kin are the other
+  // subtle case, and they survive this check: their `procRollSites` children
+  // roll in the shell's place.
   if (!powerFiresProcs(input)) return 0;
+  // A kNone shell is not a proc window of its own, so a proc slotted here must
+  // find a site or pay nothing.
+  const shellRollsNothing = input.procsAllowed === false;
   // In a main-target-only power every proc — damage or not — rolls
   // single-target: the AoE radius belongs to a secondary effect (the knockback
   // splash) that the proc never rolls against.
-  const { radius: areaRadius, arcDegrees: areaArc } =
+  const shellGeometry =
     resolveProcRollGeometry(input.procsOnlyOnMainTarget, radius, arcDegrees);
+  // ONE schedule for every piece, sites or not. A site changes where the proc
+  // rolls, never when: the window is the recharge of the power the player
+  // pressed. Measured 2026-08-09 on two delegating powers whose children have
+  // very different recharges from their parents — Fault paid 37/45 where the
+  // parent's window predicts 0.820 and the child's 0.301, Spring Attack 26/28
+  // where the parent's caps at 0.9 and the child's predicts 0.434.
   const schedule = resolveProcRollSchedule({
     powerType: input.powerType,
     baseRecharge,
@@ -107,6 +125,25 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
     // levelRange. (@Redlynne report, 2026-06-12 — was using io.level for
     // non-attuned, so Global-IO-Level builds under-counted 10×.)
     const procDmg = interpolateProcDamage(dmg.value, dmg.valueMax, procData.levelRange, buildLevel);
+    // Which geometry this piece rolls against: routed by the piece's own
+    // `boostsAllowed` — the key `CopyBoosts` filters by when the shell hands
+    // its slotting to a child. A piece TWO children could hold (the multi-mez
+    // ATO procs in Hypnotizing Lights) has no single roll: it pays nothing
+    // here, and the Info panel carries the loud marker (DATA-GAP-REGISTER
+    // HC-4).
+    let site: ProcRollSite | null;
+    try {
+      site = resolveProcRollSite(input.procRollSites, procData.boostsAllowed);
+    } catch {
+      continue;
+    }
+    // A kNone shell with no site for this piece rolls it nowhere: no child's
+    // `BoostsAllowed` can hold it, so `CopyBoosts` hands it to no one.
+    if (!site && shellRollsNothing) continue;
+    const { radius: areaRadius, arcDegrees: areaArc } = site
+      ? resolveProcRollGeometry(
+        site.procsOnlyOnMainTarget, site.radius, arcToDegrees(site.arc) || undefined)
+      : shellGeometry;
     const procChance = calculateScheduledProcChance(
       procData.ppm, schedule, areaRadius, areaArc, rechargeEnh, input.globalRechargeEnh ?? 0,
     );

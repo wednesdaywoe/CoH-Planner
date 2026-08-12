@@ -12,12 +12,17 @@ export const Upshot: Power = {
   "name": "Upshot",
   "internalName": "Upshot",
   "available": 9,
+  "autoIssue": false,
+  "free": false,
   "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit and recharge time of all your powers for 10 seconds.Recharge: Long.",
   "shortHelp": "Self +DMG, +ToHit, +Recharge",
   "icon": "tacticalarrow_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,
@@ -36,6 +41,7 @@ export const Upshot: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 6.5,
       "table": "Melee_Buff_Dmg"
     },
@@ -45,6 +51,7 @@ export const Upshot: Power = {
       "tohitBuff": 10
     },
     "rechargeBuff": {
+      "ignoreStrength": true,
       "scale": 0.15,
       "table": "Melee_Ones"
     },

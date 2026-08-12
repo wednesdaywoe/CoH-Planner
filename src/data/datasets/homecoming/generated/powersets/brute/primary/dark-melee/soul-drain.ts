@@ -12,6 +12,8 @@ export const SoulDrain: Power = {
   "name": "Soul Drain",
   "internalName": "Soul_Drain",
   "available": 21,
+  "autoIssue": false,
+  "free": false,
   "description": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit.",
   "shortHelp": "PBAoE DMG(Negative), Self +DMG, +To Hit",
   "icon": "shadowfighting_stealpower.png",
@@ -20,6 +22,9 @@ export const SoulDrain: Power = {
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -87,6 +92,6 @@ export const SoulDrain: Power = {
     ["DamageBuff","Negative",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+    ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"]
   ]
 };

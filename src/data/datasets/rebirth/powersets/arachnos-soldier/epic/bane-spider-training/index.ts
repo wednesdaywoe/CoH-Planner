@@ -16,7 +16,12 @@ import { WebCocoon as WebCocoon } from './web-cocoon';
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/bane-spider-training',
+  setPath: 'Training_Gadgets.Bane_Spider_Training',
   name: 'Bane Spider Training',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 23,
+  specializeRequires: ["Arachnos_Soldiers.Crab_Spider_Soldier","powerset?","Training_Gadgets.Crab_Spider_Training","Powerset?","||","!"],
   description: 'Bane Spiders are the commandos of the Arachnos organization, providing excellent stealth and offensive capabilities.',
   icon: 'bane_spider_training_set.ico',
   archetype: 'arachnos-soldier',

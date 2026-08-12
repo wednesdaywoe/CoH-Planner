@@ -12,6 +12,8 @@ export const Fortification: Power = {
   "name": "Fortification",
   "internalName": "Fortification",
   "available": 15,
+  "autoIssue": false,
+  "free": false,
   "description": "Crab Spiders armor may be reinforced to become far more resistant to all types of damage except Psionics, as well as increasing protection to Sleep, Hold, Immobilization and Disorient effects. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Disorient, Hold, Immobilize, Sleep, All DMG but Psionics)",
   "icon": "crabspidertraining_fortification.png",
@@ -22,6 +24,9 @@ export const Fortification: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -62,10 +67,12 @@ export const Fortification: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },

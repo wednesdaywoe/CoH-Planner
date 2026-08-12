@@ -12,12 +12,17 @@ export const MaceBeam: Power = {
   "name": "Mace Beam",
   "internalName": "Mace_Beam",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "The Nullifier Mace has several different ranged attack modes. The Mace Beam is a moderate damage single target attack with a chance to knock a foe off their feet.  Damage: Moderate Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Energy/Smash), Foe Knockback",
   "icon": "banespider_macebeam.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 70,

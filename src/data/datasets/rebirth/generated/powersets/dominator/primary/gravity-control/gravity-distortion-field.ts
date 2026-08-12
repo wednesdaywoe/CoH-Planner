@@ -12,12 +12,17 @@ export const GravityDistortionField: Power = {
   "name": "Gravity Distortion Field",
   "internalName": "Gravity_Distortion_Field",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Creates a large, intensely misshapen Gravity Distortion Field that encompasses several foes, rendering them unable to take any action. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "gravitycontrol_gravitydistortionfield.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "targetsAffected": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,
@@ -59,6 +64,7 @@ export const GravityDistortionField: Power = {
         "table": "Ranged_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Ranged_Slow"
       },

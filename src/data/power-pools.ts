@@ -474,12 +474,31 @@ export const POOL_CATEGORIES: PoolCategoryInfo[] = [
 ];
 
 /**
- * Mutually exclusive pool groups.
- * Only one pool from each group can be selected per build.
- * On Homecoming, Sorcery / Experimentation / Force of Will are "Specialized" pools.
+ * Mutually exclusive pool groups. Only one pool from each group can be taken.
+ *
+ * The one group is the Specialized pools, and the game states the rule itself — each of
+ * these five sets carries a `SetBuyRequires` listing the other four's powers, failing with
+ * "You can only have one Specialized power pool in your build." All three forks agree on
+ * the same five.
+ *
+ * This table is a HARDCODE RESTATING THAT EXPORTED RULE, which is a Rule 0 violation and is
+ * here only because the converter does not emit `buyRequires` yet — see
+ * `scripts/convert-pool-powers.cjs`. It named three for as long as it was hand-written, and
+ * missed Gadgetry and Utility Belt. Homecoming was spared because both are dormant there, so
+ * the live registry never offered them; Rebirth (Gadgetry live) and Thunderspy (both live)
+ * were not, and could hold two or three Specialized pools the game refuses by name.
+ *
+ * Names all five regardless of dormancy: dormancy is a release state and the gate is on the
+ * powerset record either way, so a pool that goes live later must arrive already excluded
+ * rather than needing this table edited a third time.
+ *
+ * Widening it closes the hole; it does not stop the table drifting again. Retire it by
+ * emitting `buyRequires` onto the pool record and evaluating that in `getExcludedPools`,
+ * which also reaches the VEAT branch gate (`SpecializeAt`) that no group of pool ids can
+ * express.
  */
 export const POOL_EXCLUSION_GROUPS: string[][] = [
-  ['sorcery', 'experimentation', 'force_of_will'],
+  ['sorcery', 'experimentation', 'force_of_will', 'gadgetry', 'utility_belt'],
 ];
 
 /**

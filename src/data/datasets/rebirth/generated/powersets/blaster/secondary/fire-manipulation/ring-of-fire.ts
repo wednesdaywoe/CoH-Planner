@@ -12,6 +12,8 @@ export const RingofFire: Power = {
   "name": "Ring of Fire",
   "internalName": "Ring_of_Fire",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay. Damage: Moderate(DoT), Recharge: Medium",
   "shortHelp": "Ranged, Moderate DoT(Fire), Foe Immobilize",
   "icon": "firemanipulation_ringoffire.png",
@@ -23,6 +25,9 @@ export const RingofFire: Power = {
     "sleep",
     "stun",
     "terror"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -57,6 +62,7 @@ export const RingofFire: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
+      "ignoreStrength": true,
       "scale": 0.077,
       "table": "Ranged_Ones"
     },

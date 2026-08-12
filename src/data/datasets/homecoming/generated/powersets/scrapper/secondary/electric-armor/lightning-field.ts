@@ -12,6 +12,8 @@ export const LightningField: Power = {
   "name": "Lightning Field",
   "internalName": "Lightning_Field",
   "available": 0,
+  "autoIssue": false,
+  "free": false,
   "description": "While active, you emit a storm of electricity that constantly damages all nearby foes.",
   "shortHelp": "Toggle: PBAoE, DoT(Energy), Foe -End",
   "icon": "electricarmor_pbaoeminordamage.png",
@@ -22,6 +24,9 @@ export const LightningField: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,

@@ -12,6 +12,8 @@ export const IndomitableWill: Power = {
   "name": "Indomitable Will",
   "internalName": "Indomitable_Will",
   "available": 5,
+  "autoIssue": false,
+  "free": false,
   "description": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusions, Knockback and Hold effects. Indomitable Will also grants a moderate defense to Psionic based attacks. Recharge: Fast",
   "shortHelp": "Toggle: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Knockback). DEF(Psionics)",
   "icon": "willpower_indomitablewill.png",
@@ -22,6 +24,9 @@ export const IndomitableWill: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -42,6 +47,7 @@ export const IndomitableWill: Power = {
   "effects": {
     "buffDuration": 0.75,
     "confuse": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -65,34 +71,41 @@ export const IndomitableWill: Power = {
     },
     "effectDuration": 0.75,
     "fear": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "hold": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
+      "ignoreStrength": true,
       "scale": 10,
       "table": "Melee_Ones"
     },
     "sleep": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

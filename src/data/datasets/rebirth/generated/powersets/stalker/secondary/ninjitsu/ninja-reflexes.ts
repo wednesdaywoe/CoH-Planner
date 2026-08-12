@@ -12,6 +12,8 @@ export const NinjaReflexes: Power = {
   "name": "Ninja Reflexes",
   "internalName": "Ninja_Reflexes",
   "available": 1,
+  "autoIssue": false,
+  "free": false,
   "description": "Activating your Ninja Reflexes enables you to be more evasive to melee attacks. This will increase your Defense versus melee as long as it is active. Ninja Reflexes also grants you resistance to Defense DeBuffs. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Melee), Res(DeBuff DEF)",
   "icon": "ninjitsu_ninjareflexes.png",
@@ -22,6 +24,9 @@ export const NinjaReflexes: Power = {
     "hold",
     "sleep",
     "stun"
+  ],
+  "targetsAffected": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,
@@ -43,6 +48,7 @@ export const NinjaReflexes: Power = {
     "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
+        "ignoreStrength": true,
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       }

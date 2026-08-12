@@ -12,6 +12,8 @@ export const GreaterFireSword: Power = {
   "name": "Greater Fire Sword",
   "internalName": "Greater_Fire_Sword",
   "available": 34,
+  "autoIssue": false,
+  "free": false,
   "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. Choosing this power locks out Blazing Bolt Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Fire/Lethal)",
   "icon": "fieryfray_greaterfiresword.png",
@@ -20,6 +22,9 @@ export const GreaterFireSword: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1.2,
@@ -65,7 +70,7 @@ export const GreaterFireSword: Power = {
   "atoms": [
     ["Damage","Lethal",0.78,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",1.82,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.39,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.39,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Damage","Lethal",0.985,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Fire",2.2995,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],

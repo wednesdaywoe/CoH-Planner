@@ -12,6 +12,8 @@ export const NWSlash: Power = {
   "name": "Slash",
   "internalName": "NW_Slash",
   "available": 17,
+  "autoIssue": false,
+  "free": false,
   "description": "Slash does extreme lethal damage to your foe, then poisons them.  The poison does toxic damage over time and slows their recovery rate and movement speed.  NOTE: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.  Damage: Extreme Recharge: Slow",
   "shortHelp": "Extreme DMG (Lethal/Toxic), DoT(Toxic), -Regeneration, -Recharge, -SPD.",
   "icon": "nightwidowtraining_slash.png",
@@ -20,6 +22,9 @@ export const NWSlash: Power = {
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"
+  ],
+  "targetsAffected": [
+    "Foe"
   ],
   "stats": {
     "accuracy": 1,
@@ -73,6 +78,7 @@ export const NWSlash: Power = {
       "slow": 10
     },
     "rechargeDebuff": {
+      "ignoreStrength": true,
       "scale": 0.4,
       "table": "Melee_Slow"
     },
@@ -86,6 +92,7 @@ export const NWSlash: Power = {
         "table": "Melee_Slow"
       },
       "jumpHeight": {
+        "ignoreStrength": true,
         "scale": 0.4,
         "table": "Melee_Slow"
       },
@@ -102,7 +109,7 @@ export const NWSlash: Power = {
   "atoms": [
     ["Damage","Lethal",0.96,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Toxic",0.411689,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true],
     ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Run",0.4,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.4,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

@@ -21,7 +21,12 @@ import { UpgradeEquipment as UpgradeEquipment } from './upgrade-equipment';
 
 export const powerset: Powerset = {
   id: 'mastermind/knights',
+  setPath: 'Mastermind_Summon.Knights',
   name: 'Knights',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
   description: 'Knights are quick to pledge their loyalty to a just cause  and a honorable leader. The Knights have been scattered for centuries but have begun to reunite under a single banner. Unlike other Masterminds this one leads the charge inspiring the knights around him.',
   icon: 'knights_set.ico',
   archetype: 'mastermind',
