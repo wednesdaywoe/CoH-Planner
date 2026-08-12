@@ -28,7 +28,6 @@ const {
   assignModes,
   guardThunderspyOnesBuffs,
   resolveThunderspyMovementTargets,
-  inferAllowedSetCategories,
   collectProcRollSites,
   normalizeIconPath,
   collectTemplatesDeep,
@@ -248,27 +247,14 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     .filter(Boolean);
   power.allowedEnhancements = [...new Set(enhancements)].sort();
 
-  // Allowed IO set categories. Prefer the exporter's authoritative
-  // `allowed_set_categories` (reversed from boostsets.bin). Fall back to
-  // inference only when the field is absent (old export). Strict mode: an
-  // empty array means "game says no IO sets slot here" — the field stays
-  // unset and only single IOs (allowedEnhancements) work.
-  if (Array.isArray(rawJson.allowed_set_categories)) {
-    if (rawJson.allowed_set_categories.length > 0) {
-      power.allowedSetCategories = [...rawJson.allowed_set_categories].sort();
-    }
-    // else: leave unset.
-  } else {
-    const hasTeleportAttrib = (rawJson.effects || []).some(eff =>
-      (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
-    );
-    power.allowedSetCategories = inferAllowedSetCategories(
-      rawJson.boosts_allowed || [],
-      EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
-      rawJson.range,
-      rawJson.powerset || rawJson.full_name,
-      hasTeleportAttrib,
-    );
+  // Allowed IO set categories: the exporter's `allowed_set_categories`,
+  // reversed from boostsets.bin's per-set power lists. null and [] both mean
+  // the game lists this power in no set — the field stays unset and only
+  // single IOs (allowedEnhancements) work. No inference fallback: it invented
+  // slottability the game refuses (SETCAT-1 — Teleport sets in Jaunt).
+  if (Array.isArray(rawJson.allowed_set_categories)
+      && rawJson.allowed_set_categories.length > 0) {
+    power.allowedSetCategories = [...rawJson.allowed_set_categories].sort();
   }
 
   // Thunderspy movement target-trap: resolve empty movement-template targets from

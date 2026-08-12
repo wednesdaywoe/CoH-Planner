@@ -500,10 +500,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Experimentation.Speed_of_Sound",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [
-          "Teleport",
-          "Universal Travel"
-        ],
         "atoms": [
           ["Stealth","Translucency",0,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -1193,11 +1189,6 @@ export const POWER_POOLS_RAW = {
           "Fly",
           "Run Speed"
         ],
-        "allowedSetCategories": [
-          "Flight",
-          "Running",
-          "Universal Travel"
-        ],
         "atoms": [
           ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
@@ -1244,10 +1235,6 @@ export const POWER_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Jump"
-        ],
-        "allowedSetCategories": [
-          "Leaping",
-          "Universal Travel"
         ],
         "atoms": [
           ["Movement","JumpHeight",0.06,1,10.25,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -2007,7 +1994,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Flight.Group_Fly",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "atoms": [
           ["Movement","FlyMode",1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
           ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
@@ -2079,7 +2065,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Flight.Afterburner",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "atoms": [
           ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
           ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -2752,7 +2737,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Force_of_Will.Mighty_Leap",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "atoms": [
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -3315,7 +3299,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Gadgetry.Jetpack",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "atoms": [
           ["Movement","Fly",1,1,30,"Ranged_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -3884,7 +3867,6 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
           ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
@@ -3962,7 +3944,6 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Mez","Placate",15,4,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Resistance","Smashing",-1.5,1,15,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
@@ -4176,7 +4157,6 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Recovery",null,0.234,1,6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"arch source> Class_Peacebringer eq arch source> Class_Warshade eq ||",null,null,null,null,null,null,null,0,null,null,"Class_Peacebringer,Class_Warshade"],
           ["DamageBuff","Smashing",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -5257,7 +5237,6 @@ export const POWER_POOLS_RAW = {
           "Range",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Mez","Placate",8,3,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Placate",4,3,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -5898,7 +5877,6 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "atoms": [
           ["Heal",null,0.25,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["HealResistance",null,-0.25,1,60,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
@@ -6473,10 +6451,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Sorcery.Mystic_Flight",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [
-          "Teleport",
-          "Universal Travel"
-        ],
         "atoms": [
           ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
@@ -8074,10 +8048,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Teleportation.Long_Range_Teleport",
         "maxSlots": 0,
         "allowedEnhancements": [],
-        "allowedSetCategories": [
-          "Teleport",
-          "Universal Travel"
-        ],
         "atoms": [
           ["Stealth","Translucency",0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"allyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> earth eq || && praetoria source.MapTeamArea> eq ! &&",true],
@@ -8135,10 +8105,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Teleportation.Team_Teleport Pool.Teleportation.Teleport &&",
         "maxSlots": 0,
         "allowedEnhancements": [],
-        "allowedSetCategories": [
-          "Teleport",
-          "Universal Travel"
-        ],
         "atoms": [
           ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
           ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
@@ -8663,7 +8629,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Utility_Belt.Freerunning",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "atoms": [
           ["Movement","JumpHeight",0.3,1,30,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
           ["Movement","Jump",0.66,1,30,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
