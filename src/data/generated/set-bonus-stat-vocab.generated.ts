@@ -98,6 +98,7 @@ export const SET_BONUS_STAT_NAME_MAP: Record<string, string | null> =
     "terror_duration": "terrorDuration",
     "knockback_protection": "kbprotection",
     "knockback_resistance": "kbresistance",
+    "repel_resistance": "mezResistRepel",
     "healing_strength": "healOther",
     "range": "range",
     "Range": "range",

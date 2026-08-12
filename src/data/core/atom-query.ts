@@ -588,6 +588,46 @@ function isDebuffAtom(a: AtomicEffect): boolean {
 }
 
 /**
+ * The RPN clause `target ≠ source` — the game's way of saying "everyone the power
+ * reaches EXCEPT the one who cast it". Both operand orders and both equality tokens
+ * appear in the export.
+ *
+ * The `.owner` variants (`entref target.owner> entref source> eq !`) are deliberately
+ * not matched: those compare the target's OWNER, which is a question about pets, and
+ * no oracle here settles what the caster should get from one.
+ */
+function requiresExcludesSelf(req: string): boolean {
+  const squashed = req.split(/\s+/).join(' ');
+  return [
+    'entref target> entref source> eq !',
+    'entref source> entref target> eq !',
+    'entref target> entref source> == !',
+    'entref source> entref target> == !',
+  ].some((clause) => squashed.includes(clause));
+}
+
+/**
+ * Does this atom reach everyone the power hits EXCEPT the caster?
+ *
+ * Two fields have to agree, and reading either alone gets it wrong. Shield Defense's
+ * Grant Cover and Shield Defense's Phalanx Fighting both carry the `target ≠ source`
+ * clause, but Grant Cover's defense rows are aimed at `Target` (the ally standing in
+ * the sphere) while Phalanx's are aimed at `Self` — Phalanx counts nearby allies to
+ * size a buff it then hands to the caster. So the clause alone would delete Phalanx,
+ * and the recipient alone would keep Grant Cover.
+ *
+ * `Unspecified` is not treated as `Target`: an unstated recipient is unstated, and
+ * guessing one here would fabricate the very discriminator this function reads.
+ */
+export function excludesCaster(a: AtomicEffect): boolean {
+  return (
+    (a.toWho === 'Target' || a.toWho === 'All') &&
+    !!a.requiresExpression &&
+    requiresExcludesSelf(a.requiresExpression)
+  );
+}
+
+/**
  * The atom-native `effects.resistance` — the per-damage-type +resistance BUFF the
  * calc reads today (line ~1258 of character-totals.ts), reconstructed from atoms.
  * Returns an object keyed by lowercase damage type (`{ smashing: { scale, table,
@@ -740,6 +780,7 @@ function defenseBuffByType(
     (a) =>
       DEFENSE_STD_SUBTYPES.has(a.subType ?? '') &&
       !isDebuffAtom(a) &&
+      !excludesCaster(a) &&
       !!a.suppressible === wantSuppressible,
   );
   if (!atoms.length) return undefined;
@@ -782,6 +823,25 @@ export function defenseBuffSuppressibleValue(
   power: AtomSource,
 ): Record<string, { scale: number; table: string; perTarget?: number }> | undefined {
   return defenseBuffByType(power, true);
+}
+
+/**
+ * Does this power buff defense for everyone it reaches EXCEPT the caster?
+ *
+ * The caller needs this because silence from {@link defenseBuffValue} is ambiguous at
+ * the `?? effects.defenseBuff` seam. A power with no defense atoms at all is silent
+ * and wants the bag; Grant Cover, whose every defense row is caster-excluded, is
+ * silent and must NOT get the bag — its bag slot is real, it is just aimed at the
+ * team. Without this the fallback would hand the caster back the number the applier
+ * just declined to give.
+ *
+ * The bag keeps that slot on purpose: the power card shows what allies receive.
+ */
+export function defenseBuffIsTeamOnly(power: AtomSource): boolean {
+  const defense = atomsOfType(power, 'Defense').filter(
+    (a) => DEFENSE_STD_SUBTYPES.has(a.subType ?? '') && !isDebuffAtom(a),
+  );
+  return defense.length > 0 && defense.every(excludesCaster);
 }
 
 /**

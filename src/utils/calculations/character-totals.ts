@@ -412,7 +412,6 @@ export interface ActivePowerEffect {
   rechargeBuff?: ScalarOrScaled;
   defense?: Record<string, ScalarOrScaled>;
   defenseBuff?: Record<string, ScalarOrScaled>;
-  defenseBuffExcludesSelf?: boolean;
   defenseBuffSuppressible?: Record<string, ScalarOrScaled>;
   resistance?: Record<string, ScalarOrScaled>;
   // -Resistance debuff. Enemy-facing by default; entries tagged toWho:'Self'

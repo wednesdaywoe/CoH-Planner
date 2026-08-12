@@ -46,6 +46,13 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-08-12',
+
+    items: [
+      { id: 'grant-cover-team-only', message: 'Shield Defense: Grant Cover was adding its defense to your own totals on every server. The power covers your teammates and not you — its own in-game description says so — so that defense is gone from your numbers. Every Shield Defense build will read lower defense than it did yesterday; the build did not change, the number was wrong. Thanks to the player who reported it', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-08-11',
 
     items: [

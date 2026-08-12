@@ -38,13 +38,21 @@
  * `undefined` from the build-agnostic atom readers and populated in the bag. That is
  * not a divergence — it is checked, per archetype, through
  * `planb-shadow-sweep.forkResolvedViews`, and counted separately in the summary.
+ *
+ * TEAM-ONLY: the other deliberate silence, and the one place this shadow's premise
+ * stops holding. Grant Cover's defense rows are aimed at the team and carry the
+ * `target != source` clause, so the atom reader declines them for the caster while the
+ * bag keeps the slot — the power card still shows allies what they receive. That is
+ * atoms saying MORE than the bag, not less, and equality would be the bug. Counted
+ * separately, and narrowed by `defenseBuffIsTeamOnly` so it can only excuse a power
+ * whose every defense row says so. See TEAMBUFF-1.
  */
 
 require('tsx/cjs');
 const fs = require('fs');
 const path = require('path');
 const { sweepDataset, forkResolvedAgrees } = require('./planb-shadow-sweep.cjs');
-const { defenseBuffValue, defenseBuffSuppressibleValue } = require('../src/data/core/atom-query.ts');
+const { defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly } = require('../src/data/core/atom-query.ts');
 
 const REPO = path.resolve(__dirname, '..');
 const argv = process.argv.slice(2);
@@ -88,7 +96,7 @@ const eq = (a, b) => (!a && !b) || (a && b && a.scale === b.scale && a.perTarget
 
 const stats = {
   powers: 0,
-  buffTypes: 0, buffAgree: 0, buffPerTarget: 0, buffForkResolved: 0,
+  buffTypes: 0, buffAgree: 0, buffPerTarget: 0, buffForkResolved: 0, buffTeamOnly: 0,
   suppTypes: 0, suppAgree: 0, suppPerTarget: 0,
 };
 const findings = [];
@@ -112,7 +120,10 @@ function checkPower(dataset, power, genPath) {
       // The build-agnostic reader abstains on an archetype-forked slot; ask each
       // archetype's resolved view instead (see `forkResolvedAgrees`).
       if (eq(bag, atom)) stats.buffAgree++;
-      else if (!atom && bag && forkResolvedAgrees(dataset, power, bag,
+      else if (!atom && bag && defenseBuffIsTeamOnly(power)) {
+        stats.buffAgree++;
+        stats.buffTeamOnly++;
+      } else if (!atom && bag && forkResolvedAgrees(dataset, power, bag,
         (src) => atomVal((defenseBuffValue(src) || {})[t]), eq)) {
         stats.buffAgree++;
         stats.buffForkResolved++;
@@ -140,7 +151,7 @@ for (const ds of DATASETS) sweep(ds);
 console.log(`\nPlan B Slice 4 — defense reconstruction (buff + suppressible)`);
 console.log(`  powers swept:        ${stats.powers}`);
 console.log(`  buff type-slots:     ${stats.buffTypes}  (of which per-target: ${stats.buffPerTarget})`);
-console.log(`  buff agree:          ${stats.buffAgree}  (of which archetype-fork resolved: ${stats.buffForkResolved})`);
+console.log(`  buff agree:          ${stats.buffAgree}  (archetype-fork resolved: ${stats.buffForkResolved}; team-only abstentions: ${stats.buffTeamOnly})`);
 console.log(`  suppress type-slots: ${stats.suppTypes}  (of which per-target: ${stats.suppPerTarget})`);
 console.log(`  suppress agree:      ${stats.suppAgree}`);
 console.log(`  diverge:             ${findings.length}`);

@@ -29,7 +29,7 @@ import { getPowerset } from '@/data/powersets';
 import { calculateSetBonuses, getStatBreakdown, trackBonus, createBonusTracking, type AggregatedBonuses, type StatBreakdownItem, type BuildPowers } from './set-bonuses';
 import { createEmptyStats, getBaselineHealth, type CharacterStats } from './stats';
 import { combineWithAlphaED, filterAlphaByAllowedEnhancements, BASE_RECOVERY_RATE, BASE_REGEN_RATE, type EnhancementBonuses } from './enhancement-values';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
 import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
@@ -629,16 +629,20 @@ function applyActivePowerBonuses(
     // Defense from active powers
     // Enhanced by Defense enhancements
     // Power data uses either "defense" or "defenseBuff" key for defense effects
-    // Skip defenseBuff when defenseBuffExcludesSelf is set (e.g., Grant Cover — team only)
     // Plan B Slice 4: the "defenseBuff" half is sourced from atoms
     // (`defenseBuffValue` — always-on Defense atoms, `suppressible:false`, restricted
     // to the 11 standard globals; Invincibility's per-foe +Def via the shared perTarget
     // stamp); `?? effects.defenseBuff` keeps an atom-less legacy power on the bag. The
-    // pet-aura/override `effects.defense` still takes precedence, and the
-    // `defenseBuffExcludesSelf` skip (an override-only flag, never on the atom) is
-    // unchanged. Verified bag-equal by scripts/planb-shadow-defense.cjs.
+    // pet-aura/override `effects.defense` still takes precedence.
+    // Verified bag-equal by scripts/planb-shadow-defense.cjs.
+    //
+    // A team-only power (Grant Cover) has to skip the bag fallback as well as the atom
+    // half, or the fallback hands back the number the applier just declined to give.
+    // This reads the `target ≠ source` clause off the atoms; it used to read a
+    // hand-written `defenseBuffExcludesSelf` override flag, which existed on two of the
+    // three forks and so answered wrong on the third (TEAMBUFF-1).
     const defenseEffects = effects.defense
-      || (!effects.defenseBuffExcludesSelf ? (defenseBuffValue(power) ?? effects.defenseBuff) : undefined);
+      || (defenseBuffIsTeamOnly(power) ? undefined : (defenseBuffValue(power) ?? effects.defenseBuff));
     if (defenseEffects && typeof defenseEffects === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0) + strengthBuffs.defense;
       for (const [type, value] of Object.entries(defenseEffects)) {
