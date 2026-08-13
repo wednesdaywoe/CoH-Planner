@@ -88,7 +88,7 @@ So, the corrected rules:
   generated is correct. When generated matches the oracle, drop the pin.
 - **Keep only genuine enrichments** the parser doesn't emit yet (planner-only
   fields like `maxStacks`/`stacksLinear`; data gaps like `summon.copyBoosts`).
-  When you find such a gap, log it in `streams/HOMECOMING_PARSER.md` (gitignored)
+  When you find such a gap, log it in [streams/HOMECOMING_PARSER.md](../../streams/HOMECOMING_PARSER.md)
   and prefer fixing the parser/converter over keeping the override.
 - See **[GAME-DATA-PRINCIPLES.md §13](../../.claude/GAME-DATA-PRINCIPLES.md)** for the
   full audit method and the traps (unit/representation differences, silent

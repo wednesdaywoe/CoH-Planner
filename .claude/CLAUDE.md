@@ -12,10 +12,11 @@ gotchas. For the structural *why* behind them — how CoH models a power as a fl
 effects, the discriminators that distinguish them, and why any name-bucketed representation
 collapses — read [COH-DATA-MODEL.md](../COH-DATA-MODEL.md) first.
 
-The running issue log is `streams/HOMECOMING_PARSER.md`, cited from ~30 places in the source
-(`See HOMECOMING_PARSER`). It is **gitignored in both this repo and canonical**, so it does not
-travel between machines or clones — if it is missing, that is why, and the comments pointing at
-it are not stale.
+The running issue log is `streams/HOMECOMING_PARSER.md`, cited from 17 files in the source
+(`See HOMECOMING_PARSER`); the DSH harness log is `streams/DEDUCTIVE_SCHEMA_HARNESS.md`, cited
+from 11. Both are tracked and travel with the repo. **They are still gitignored in canonical**,
+which cites HOMECOMING_PARSER from its own vendored parser — so over there the comments point at
+nothing, and this repo now holds the only copy.
 
 ## Source Data
 

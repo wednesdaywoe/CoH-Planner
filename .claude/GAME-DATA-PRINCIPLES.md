@@ -3,8 +3,9 @@
 Rules for working with City of Heroes game data across every binary-sourced domain
 (powers, archetypes, enhancements, IO sets, AT tables, pet entities, incarnates).
 
-Issue log: `streams/HOMECOMING_PARSER.md` (gitignored — local-only, does not travel between
-machines). Structural model: [COH-DATA-MODEL.md](../COH-DATA-MODEL.md). Setup: CLAUDE.md.
+Issue log: [streams/HOMECOMING_PARSER.md](../streams/HOMECOMING_PARSER.md); DSH harness log:
+[streams/DEDUCTIVE_SCHEMA_HARNESS.md](../streams/DEDUCTIVE_SCHEMA_HARNESS.md). Both tracked.
+Structural model: [COH-DATA-MODEL.md](../COH-DATA-MODEL.md). Setup: CLAUDE.md.
 Parser usage, accuracy, binary layout: [docs/bin-crawler.md](../docs/bin-crawler.md).
 
 ---
@@ -25,9 +26,10 @@ The incidents themselves live in three places, and only two of them travel:
   from 2026-08-12; it does not backfill.
 - `docs/DATA-GAP-REGISTER.md` **in canonical** — the parser and export lineage, which this repo
   vendors rather than owns. Most of what produced §§1–9 is recorded there.
-- `streams/HOMECOMING_PARSER.md` — the running log the source comments cite (~30 `See
-  HOMECOMING_PARSER` sites). Gitignored in both repos, so on a fresh clone the evidence behind a
-  rule is simply absent. That is a weakness of this section, not a reason to discount the rule.
+- [streams/HOMECOMING_PARSER.md](../streams/HOMECOMING_PARSER.md) — the running log the source
+  comments cite, now tracked. It is the only place most of §§1–14 can be traced to, and the rules
+  here do not carry the incident id inline the way canonical's do, so getting from a rule to its
+  cause still means searching the log by symptom.
 
 **This file has itself been wrong**, which is the sharpest reason to check it against an oracle
 rather than quote it. Its override guidance was *inverted* until 2026-06: it held that
