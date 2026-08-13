@@ -9,10 +9,12 @@
     "Temporary_Powers.SilentPowers.Limitless_Radial_Freeeem",
     "Temporary_Powers.SilentPowers.Divine_Core_Oscillation",
     "Temporary_Powers.SilentPowers.Divine_Core_Oscillation_Icon",
+    "Temporary_Powers.SilentPowers.Inner_Inspiration_Lock",
     "Temporary_Powers.SilentPowers.Long_Range_Teleport",
     "Temporary_Powers.SilentPowers.prestige_Base_Teleport"
   ],
   "available_level": [
+    0,
     0,
     0,
     0,
@@ -25,6 +27,7 @@
     "Limitless Radial Freeeem",
     "Divine Core Oscillation",
     "Divine Core Oscillation",
+    "Inner Inspiration Lock",
     "LRT Zone Check",
     "BT Zone Check"
   ],
@@ -33,6 +36,7 @@
     "Self +Everything (Special)",
     "Add Proc: +Unresistable Damage",
     "Add Proc: +Unresistable Damage",
+    "Inner Inspiration Lock",
     "Second Chance",
     "Second Chance"
   ],

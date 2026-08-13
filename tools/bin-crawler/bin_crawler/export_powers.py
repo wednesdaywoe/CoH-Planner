@@ -97,6 +97,14 @@ PLAYER_CATEGORIES = {
     'Training_Gadgets',
     # Pools, Epic, Inherent
     'Pool', 'Epic', 'Inherent',
+    # Prestige — where the free travel toggles actually live. The `Inherent`
+    # copies of Ninja Run / Beast Run are Auto granters whose only templates are
+    # Revoke_Power + Grant_Power aimed at `Prestige.Prestige_Travel.*`; the real
+    # toggle, with the movement it grants and its endurance drain, is here.
+    # Athletic Run has no Inherent granter at all. Without this category the
+    # planner had to hand-author all three, and the hand copy was missing their
+    # MovementControl +10 / MovementFriction +2 (ATOM-BAG-6).
+    'Prestige',
     # Incarnate
     'Incarnate',
     # Redirects (pseudo-pet damage sources)
