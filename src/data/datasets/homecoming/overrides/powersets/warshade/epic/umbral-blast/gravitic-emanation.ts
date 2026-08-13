@@ -15,24 +15,6 @@ export const overrides: Partial<Power> = {
   "description": "Gravitic Emanation sends bolts of dark Nictus energy to multiple targets within a cone area in front of the caster. Gravitic Emanation deals only minor Negative Energy damage to each affected foe, but knocks them back, leaving them Disoriented and with reduced attack rate and movement speed.  Damage: Minor. Recharge: Slow.",
   "targetType": "Foe (Alive)",
   "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"

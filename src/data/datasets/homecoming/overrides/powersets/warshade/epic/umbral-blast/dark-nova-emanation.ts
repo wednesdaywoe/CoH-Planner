@@ -15,24 +15,6 @@ export const overrides: Partial<Power> = {
   "description": "Sends bolts of Nictus dark energy to multiple targets at once within a cone area in front of the caster. Deals moderate negative energy damage to each affected foe and reduces their attack rate and movement speed. This power is only available while in Dark Nova Form.  Damage: Light. Recharge: Slow.",
   "targetType": "Foe (Alive)",
   "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"

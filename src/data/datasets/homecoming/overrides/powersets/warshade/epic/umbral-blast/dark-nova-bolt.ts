@@ -15,24 +15,6 @@ export const overrides: Partial<Power> = {
   "description": "A very quick, but low damage attack that lowers your target's attack and movement speed. This power is only available while in Dark Nova Form.  Damage: Minor. Recharge: Very Fast.",
   "targetType": "Foe (Alive)",
   "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"

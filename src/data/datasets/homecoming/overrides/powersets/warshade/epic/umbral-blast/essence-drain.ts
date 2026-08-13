@@ -15,24 +15,6 @@ export const overrides: Partial<Power> = {
   "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to you. Foes drained in this manner have their attack rate and movement speed reduced.  Damage: Light. Recharge: Slow.",
   "targetType": "Foe (Alive)",
   "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"

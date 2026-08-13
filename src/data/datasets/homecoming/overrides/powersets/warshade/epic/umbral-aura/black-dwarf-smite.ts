@@ -15,24 +15,6 @@ export const overrides: Partial<Power> = {
   "description": "Black Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. Black Dwarf Smite can also bring down fliers, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.  Damage: Light. Recharge: Fast.",
   "targetType": "Foe (Alive)",
   "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"

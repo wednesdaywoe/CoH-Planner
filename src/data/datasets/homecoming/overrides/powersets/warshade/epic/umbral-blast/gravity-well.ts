@@ -15,24 +15,6 @@ export const overrides: Partial<Power> = {
   "description": "Mastery over the forces of gravity and dark matter allows you to capture a single foe and crush them in a Gravity Well. The target is Held helpless, while he is crushed by the massive gravimetric forces. The target's attack rate and movement speed are also slowed, even if they resists the Hold effect.  Damage: Extreme. Recharge: Slow.",
   "targetType": "Foe (Alive)",
   "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      }
-    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Melee_Slow"

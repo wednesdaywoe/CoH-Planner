@@ -15,24 +15,6 @@ export const overrides: Partial<Power> = {
   "description": "The Warshade can release the energy of a defeated foe and cause a massive Negative Energy explosion that can devastate any remaining foes. This power can only be activated by targeting a defeated foe.  Damage: Superior. Recharge: Long.",
   "targetType": "Foe (Dead)",
   "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"

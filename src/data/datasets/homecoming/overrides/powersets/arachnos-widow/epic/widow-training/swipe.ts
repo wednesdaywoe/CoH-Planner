@@ -15,24 +15,6 @@ export const overrides: Partial<Power> = {
   "description": "Swipe does light lethal damage to your foe, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.  Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.",
   "targetType": "Foe (Alive)",
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"

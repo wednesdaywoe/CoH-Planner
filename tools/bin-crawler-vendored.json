@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "e92ad065265b72d9194b73c6b28ac8c379a3b114",
-  "synced_from_subject": "AUTOISSUE-2: grant the inherents a fork gates on the archetype alone",
-  "synced_from_date": "2026-08-12T11:44:39-04:00",
-  "tree_fingerprint": "ea49a9c83383150166f6f56e050a17a434c3fbff273ab1d864bbbf06c56f9050",
-  "export_manifest_digest": "a17dbabba88d102837b829c83b943260736b85b868e504e3720e08a427ef3618",
+  "synced_from_commit": "f995bd9a1b5e79410aba9b8b62dca14799bb27ed",
+  "synced_from_subject": "Deleted the movement key from the 24 Homecoming override files in both repos. Web Cocoon's was its only effects entry so that file keeps just targetType; Group Energy Flight's is untouched. Regen done: contract, oracle fixtures, and the movement-gate fixtures. That last one went red first — its sampler is data-driven and had been picking up the 24 as movement powers. Full Rust workspace green, beta suite 204 files / 1987 tests green, rebuild TS 156 / 1400 green.",
+  "synced_from_date": "2026-08-13T08:33:51-04:00",
+  "tree_fingerprint": "dd05fde566ee0f55e46e7417290d5486c588ae6919b573215b25b81d13586841",
+  "export_manifest_digest": "9a7455fb01b90467ea3cb7c25a7f2ae151281fed5dfa7785b1e7e558817f2dc2",
   "export_manifest_count": 10
 }

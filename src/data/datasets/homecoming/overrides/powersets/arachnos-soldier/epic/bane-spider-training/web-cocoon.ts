@@ -12,17 +12,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "targetType": "Foe (Alive)",
-  "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    }
-  }
+  "targetType": "Foe (Alive)"
 };

@@ -15,24 +15,6 @@ export const overrides: Partial<Power> = {
   "description": "A much more powerful, yet slower version of Shadow Bolt. Shadow Blast sends focused negative Nictus energy at a foe. This attack can knock down foes and will leave the target's attack rate and movement speed slowed.  Damage: Moderate. Recharge: Moderate.",
   "targetType": "Foe (Alive)",
   "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"

@@ -14,24 +14,6 @@ import type { Power } from '@/types';
 export const overrides: Partial<Power> = {
   "description": "You can explode in a tremendous blast of Negative Energy, sending nearby foes flying. The Quasar deals massive damage to all nearby foes. Affected foes will be knocked down and their attack rate and movement speed will be slowed.  Damage: Extreme. Recharge: Long.",
   "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
