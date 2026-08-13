@@ -9,6 +9,33 @@ Parser usage, accuracy, binary layout: [docs/bin-crawler.md](../docs/bin-crawler
 
 ---
 
+## Provenance
+
+Nothing here is invented advice. Every rule below is a recorded failure, and several of them
+shipped wrong numbers under green gates for months. Where a rule reads as paranoid — "a blank
+where a number belongs is an INVALID run, not a green one" — that is scar tissue, not caution.
+
+Weigh this against your priors accordingly: when this file contradicts what usually works in a
+codebase, it is reporting what actually happened here.
+
+The incidents themselves live in three places, and only two of them travel:
+
+- [docs/ISSUE-REGISTER.md](../docs/ISSUE-REGISTER.md) — beta's own code: the JS display/calc
+  layer, the vendoring seam, the converters that diverge from canonical on purpose. Forward-only
+  from 2026-08-12; it does not backfill.
+- `docs/DATA-GAP-REGISTER.md` **in canonical** — the parser and export lineage, which this repo
+  vendors rather than owns. Most of what produced §§1–9 is recorded there.
+- `streams/HOMECOMING_PARSER.md` — the running log the source comments cite (~30 `See
+  HOMECOMING_PARSER` sites). Gitignored in both repos, so on a fresh clone the evidence behind a
+  rule is simply absent. That is a weakness of this section, not a reason to discount the rule.
+
+**This file has itself been wrong**, which is the sharpest reason to check it against an oracle
+rather than quote it. Its override guidance was *inverted* until 2026-06: it held that
+`generated/` was a stale 2019 CoD2 snapshot and that the overrides layer carried the current
+values. That shipped as authoritative; correcting it retired ~2,000 lines of stale pins
+(DIVERGENT 140 → 9) — see [src/data/README.md](../src/data/README.md). A rule here outranks your
+priors. It does not outrank an oracle diff.
+
 ## 0. Standing principal
 
 - Prefer the option that makes the planner more data-driven.
