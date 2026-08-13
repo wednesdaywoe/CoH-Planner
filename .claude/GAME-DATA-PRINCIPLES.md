@@ -27,9 +27,9 @@ The incidents themselves live in three places, and only two of them travel:
 - `docs/DATA-GAP-REGISTER.md` **in canonical** — the parser and export lineage, which this repo
   vendors rather than owns. Most of what produced §§1–9 is recorded there.
 - [streams/HOMECOMING_PARSER.md](../streams/HOMECOMING_PARSER.md) — the running log the source
-  comments cite, now tracked. It is the only place most of §§1–14 can be traced to, and the rules
-  here do not carry the incident id inline the way canonical's do, so getting from a rule to its
-  cause still means searching the log by symptom.
+  comments cite; canonical-owned, vendored here, tracked. It is the only place most of §§1–14 can
+  be traced to, and the rules here do not carry the incident id inline the way canonical's do, so
+  getting from a rule to its cause still means searching the log by symptom.
 
 **This file has itself been wrong**, which is the sharpest reason to check it against an oracle
 rather than quote it. Its override guidance was *inverted* until 2026-06: it held that

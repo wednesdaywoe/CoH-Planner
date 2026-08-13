@@ -10,6 +10,23 @@ relates:
 
 # Homecoming Parser
 
+> **Canonical (`coh-sidekick-1.0`) is authoritative for this log**, at
+> `docs/streams/HOMECOMING_PARSER.md`. CoH-Sidekick (beta) carries a synced copy at
+> `streams/HOMECOMING_PARSER.md`, because 15 beta-owned files cite it and a beta-only clone must
+> still resolve them. The flow is one-way, the same as `tools/bin-crawler`: edit it in canonical,
+> then run beta's `scripts/sync-bin-crawler.sh`. The file is mirrored byte-for-byte, which is why
+> this header names the repos instead of saying "this one".
+>
+> Paths below are written **relative to the repo root**, so they read as paths rather than
+> resolving as markdown links from the directory this file sits in. Leave them that way — the two
+> copies sit at different depths, so any `../` prefix correct in one repo is wrong in the other.
+> 59 of the 68 link targets exist in both repos from the root.
+>
+> These entries predate canonical's `docs/DATA-GAP-REGISTER.md`, which starts 2026-07-16 and does
+> not backfill. For anything before that date this log is the only record — `cast_through` and
+> `toggle_ignore` appear nowhere else in canonical. New findings belong in the register, with its
+> ids and severities; this log is closed history, kept because the code still points at it.
+
 Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 (`tools/bin-crawler/` + `scripts/convert-powerset.cjs` + `scripts/convert-epic-pools.cjs`), with diagnoses and recommended fixes. Newest entries at top as `- [ ]` items under `## Active`. When completed, move the entry into `## Resolved` (checkbox `- [x]`) with the fix details.
 

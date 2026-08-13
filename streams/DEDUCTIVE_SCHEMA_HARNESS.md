@@ -12,6 +12,23 @@ relates:
 
 # Deductive Effect Schema + Differential Harness
 
+> **Canonical (`coh-sidekick-1.0`) is authoritative for this log**, at
+> `docs/streams/DEDUCTIVE_SCHEMA_HARNESS.md`. CoH-Sidekick (beta) carries a synced copy at
+> `streams/DEDUCTIVE_SCHEMA_HARNESS.md`, cited from 11 files there (`tools/mids-oracle/read_i12.py`,
+> `diff_harness.py`, `dsh8-incarnate-collapse.test.ts`, the mids-oracle README). One-way flow: edit
+> it in canonical, then run beta's `scripts/sync-bin-crawler.sh`. Mirrored byte-for-byte, which is
+> why this header names the repos instead of saying "this one".
+>
+> Paths below are written **relative to the repo root**, so they read as paths rather than
+> resolving as markdown links from the directory this file sits in. Leave them that way — the two
+> copies sit at different depths, so any `../` prefix correct in one repo is wrong in the other.
+> 59 of the 68 link targets exist in both repos from the root.
+>
+> Canonical's copy is the newer of the two. Beta's had been deleted from disk outright and was
+> recovered from its own history at 663 lines, 28 short — still carrying the pre-2026-07-08 wording
+> that called the `PowerEffects`-becomes-a-list rewrite deferred, after the Phase 1 flip had landed.
+> That is the divergence this authority rule exists to prevent.
+
 Source of truth for the effort to stop rediscovering effect-schema bugs
 bin-by-bin. The recurring "collapse" bug family (PvP-clobber, resistable/
 unresistable pair-collapse, multi-damage-type merge, duration-variant loss,
@@ -247,9 +264,37 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
       and `durationVariants` are NOT independently retireable — each *is* the projection of
       multiple atomic records into one single-value `PowerEffects` slot (an unresistable-twin
       flag / a `[{scale,duration}]` mini-list), with no second representation to converge onto;
-      "retiring" them requires the full `PowerEffects`-becomes-a-list rewrite, which fixes no
-      observable bug (detector is green) — deferred until a new collapse site actually surfaces.
-      `selfPenalty` is now DONE (above); the remaining two stay deferred.
+      "retiring" them requires the full `PowerEffects`-becomes-a-list rewrite. That rewrite
+      landed (Phase 1 flip, 2026-07-08: `extractEffects` = `templatesToAtoms` →
+      `projectAtomsToEffects`), unblocking both:
+      - [x] **`durationVariants` retired as a bolt-on (Phase 2R, 2026-07-08).** The RESOURCES
+        accumulate slots (healing, regenDebuff, absorb, …) are no longer built by an
+        `addOrAccumulate` closure mutating the live bag per atom; the loop only classifies
+        atoms into per-slot queues and `foldResourceSlot` computes each slot — variants
+        included — as a pure fold over its queued atom list (durations, last-table-wins,
+        duration-distinct-debuff grouping all in one documented function). The emitted
+        `PowerEffects.durationVariants` field is unchanged (it IS the projection's output
+        shape); byte-identical regen + armed shadow compare were the gate.
+        verify: fn:foldResourceSlot, tests:src>=901
+      - [x] **`unresistable` + twin pre-scan retired (Phase 3, 2026-07-08).** The pre-scan
+        no longer drops the IgnoreResistance sibling nor mutates the atom list with a `_twin`
+        stamp. The atom list stays IMMUTABLE — the `resistible:false` sibling is kept — and
+        `unresistable` is derived at projection time from the atom's own `resistible`: a
+        `twinRole` map marks each twin template's atoms `res` (route it, stamp `unresistable`)
+        or `unres` (skip at routing — its resistable sibling already represents it).
+        Skip-at-routing ≡ the old drop (a twin's only difference is the flag, so it routes to
+        the same slot). Byte-identical regen + 0 shadow-compare divergences were the gate.
+        verify: fn:projectAtomsToEffects, tests:src>=901
+      `selfPenalty` is DONE (above). With Phase 2R + Phase 3 done, `projectAtomsToEffects`
+      has no remaining mutate-in-place bolt-ons.
+      - [x] **Legacy deletion (2026-07-09).** `extractEffectsLegacy` (~1,030 lines), the
+        `DSH6_SHADOW_COMPARE` hook, the dead `__DSH6_ATOM_SINK__` hook, and the obsolete
+        comparator `scripts/dsh6-shadow-project.cjs` are all removed now that the projection
+        is the sole routing path and the shadow compare has no audience. `extractEffects` is
+        now just `templatesToAtoms → projectAtomsToEffects → extractSummon`. The atom-ingest
+        cross-check `scripts/dsh6-shadow-atoms.cjs` survives (it validates `templatesToAtoms`
+        against the reference encoder — independent of the deleted legacy). Regen
+        byte-identical; 901 tests; gates ×3 green.
     needs: DEDUCTIVE_SCHEMA_HARNESS#DSH6
 - [x] **DSH7 — DESCOPED (decision 2026-07-06, review follow-up).** The two halves
   split cleanly and only one survives:
