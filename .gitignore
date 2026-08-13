@@ -33,8 +33,13 @@ import-output/
 # TypeScript cache
 *.tsbuildinfo
 
-# Local config
-.claude/
+# Local config. Note `.claude/*`, not `.claude/` — an ignored *directory* is never
+# descended into, so the negations below would not take effect against `.claude/`.
+# The two doctrine files are project knowledge and travel with the repo; everything
+# else in here (settings, local state) stays local.
+.claude/*
+!.claude/CLAUDE.md
+!.claude/GAME-DATA-PRINCIPLES.md
 .env
 nul
 
