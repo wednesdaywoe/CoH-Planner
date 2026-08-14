@@ -829,6 +829,16 @@ export interface Power {
   internalName: string;
   /** Full internal name (e.g., "Pool.Speed.Hasten") */
   fullName?: string;
+  /**
+   * The `Auto` record that hands this power over, where the game grants rather
+   * than offers it. Homecoming files its free travel toggles this way: the
+   * `Inherent.Inherent.Prestige_Ninja_Run` record carries no mechanic at all,
+   * only a `Grant_Power` aimed at the toggle in the `Prestige` category, and
+   * this power IS that toggle. Provenance — nothing reads it — but it is what
+   * tells a walked grant apart from a power a fork authored inline (Rebirth
+   * does the latter with the same two powers). See INHERENT-6.
+   */
+  grantedBy?: string;
   /** Level available (0 = level 1, -1 = unlocked by prerequisite) */
   available: number;
   /** Tier within the powerset */

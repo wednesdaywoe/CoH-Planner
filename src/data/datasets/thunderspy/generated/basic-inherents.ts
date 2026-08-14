@@ -1,0 +1,344 @@
+/**
+ * Universal inherent powers — AUTO-GENERATED, DO NOT EDIT.
+ *
+ * Sprint, Rest, the free travel toggles and the prestige sprints, read from
+ * THIS fork's own export. A power missing here is one thunderspy does not
+ * have; see scripts/convert-basic-inherents.cjs for how each is addressed.
+ * Regenerate: node scripts/convert-basic-inherents.cjs --dataset thunderspy
+ *
+ * Powers: 3, atoms: 34
+ */
+
+import type { Power } from '@/types';
+
+/** A universal inherent: an ordinary Power plus the two planner-side facts. */
+export type BasicInherentDef = Power & {
+  isLocked?: boolean;
+  category?: 'basic' | 'prestige';
+};
+
+export const BASIC_INHERENTS: BasicInherentDef[] = [
+  {
+    "name": "Brawl",
+    "internalName": "Brawl",
+    "fullName": "Inherent.Inherent.Brawl",
+    "available": -1,
+    "autoIssue": true,
+    "free": true,
+    "isLocked": true,
+    "category": "basic",
+    "description": "When all else fails, you have only your two fists to depend on, and will cause smashing damage to your target. Brawl also features a synergy with the Fighting pool. If you have trained Boxing or Kick, Brawl will also reduce the target's attack speed and chance to hit. The strength of this effect increases if both Boxing and Kick are owned. If you have trained Cross Punch, Brawl will also reduce the target's regeneration and recovery.",
+    "shortHelp": "Melee, Minor DMG (Smashing), Fighting Synergy",
+    "icon": "inherent_brawl.png",
+    "powerType": "Click",
+    "targetType": "Foe",
+    "requires": "",
+    "maxSlots": 6,
+    "allowedEnhancements": [
+      "Accuracy",
+      "Damage"
+    ],
+    "allowedSetCategories": [
+      "Melee Damage",
+      "Universal Damage Sets"
+    ],
+    "stats": {
+      "accuracy": 1,
+      "castTime": 0.83
+    },
+    "atoms": [
+      ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+      ["Regeneration",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,true],
+      ["Recovery",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,true],
+      ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,null,null,"drop_toggles"],
+      ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Controller eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true]
+    ],
+    "effects": {
+      "effectArea": "SingleTarget",
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.36,
+        "table": "Melee_Damage"
+      },
+      "buffDuration": 10,
+      "durations": {
+        "recoveryDebuff": 10,
+        "regenDebuff": 10
+      },
+      "recoveryDebuff": {
+        "ignoreStrength": true,
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
+      "regenDebuff": {
+        "ignoreStrength": true,
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      }
+    },
+    "targetsAffected": [
+      "Foe"
+    ]
+  },
+  {
+    "name": "Sprint",
+    "internalName": "Sprint",
+    "fullName": "Inherent.Inherent.Sprint",
+    "available": -1,
+    "autoIssue": true,
+    "free": true,
+    "isLocked": true,
+    "category": "basic",
+    "description": "Sprint allows you to travel, or run away, slightly faster than normal, while slightly draining your Endurance.",
+    "shortHelp": "Boost Run SPD",
+    "icon": "inherent_sprint.png",
+    "powerType": "Toggle",
+    "targetType": "Self",
+    "requires": "",
+    "maxSlots": 4,
+    "allowedEnhancements": [
+      "EnduranceReduction",
+      "Jump",
+      "Run Speed"
+    ],
+    "allowedSetCategories": [
+      "Leaping",
+      "Running"
+    ],
+    "stats": {
+      "accuracy": 1,
+      "endurance": 0.1462,
+      "activatePeriod": 0.5
+    },
+    "atoms": [
+      ["Movement","Run",0.5,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+      ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+      ["Movement","JumpHeight",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,true],
+      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,true],
+      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,true],
+      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,true],
+      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,true]
+    ],
+    "effects": {
+      "effectArea": "SingleTarget",
+      "buffDuration": 0.75,
+      "durations": {
+        "movement": 0.75
+      },
+      "movement": {
+        "jumpHeight": {
+          "ignoreStrength": true,
+          "scale": 0.25,
+          "suppressible": true,
+          "table": "Melee_Leap"
+        },
+        "jumpSpeed": {
+          "ignoreStrength": true,
+          "scale": 0.55,
+          "suppressible": true,
+          "table": "Melee_SpeedJumping"
+        },
+        "movementControl": {
+          "ignoreStrength": true,
+          "scale": 10,
+          "suppressible": true,
+          "table": "Melee_Ones"
+        },
+        "movementFriction": {
+          "ignoreStrength": true,
+          "scale": 2,
+          "suppressible": true,
+          "table": "Melee_Ones"
+        },
+        "runSpeed": {
+          "ignoreStrength": true,
+          "scale": 0.4,
+          "suppressible": true,
+          "table": "Melee_SpeedRunning"
+        }
+      }
+    },
+    "targetsAffected": [
+      "Self"
+    ]
+  },
+  {
+    "name": "Rest",
+    "internalName": "Rest",
+    "fullName": "Inherent.Inherent.Rest",
+    "available": -1,
+    "autoIssue": true,
+    "free": true,
+    "isLocked": true,
+    "category": "basic",
+    "description": "Activate Rest to heal Hit Points and recover Endurance. While Resting you cannot attack, and you are extremely vulnerable to attack and damage. Activation of Rest can be interrupted, and the power must be active for a few seconds before you start to recuperate.",
+    "shortHelp": "Self Heal Recover, -DEF",
+    "icon": "inherent_rest.png",
+    "powerType": "Toggle",
+    "targetType": "Self",
+    "requires": "",
+    "maxSlots": 4,
+    "allowedEnhancements": [
+      "EnduranceModification",
+      "Healing",
+      "Interrupt",
+      "Recharge"
+    ],
+    "stats": {
+      "accuracy": 1,
+      "recharge": 60,
+      "castTime": 6,
+      "interruptTime": 6,
+      "activatePeriod": 0.2
+    },
+    "atoms": [
+      ["Regeneration",null,19,1,0.55,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+      ["Recovery",null,4.25,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,1,1],
+      ["Mez","Immobilized",0.3,100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Mez","OnlyAffectsSelf",0.55,100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Mez","Untouchable",0.55,-100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Movement","FlyMode",0.55,-100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Resistance","Smashing",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Resistance","Lethal",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Resistance","Fire",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Resistance","Cold",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Resistance","Energy",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Resistance","Negative",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Resistance","Toxic",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Resistance","Psionic",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Resistance","Special",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Defense","All",-1000,1,0.55,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Mez","Teleport",-100,1,0.55,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+      ["Mez","Stunned",0.55,1,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["Mez","Sleep",0.55,1,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["MezResist","Stunned",-1,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+      ["MezResist","Sleep",-1,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+    ],
+    "effects": {
+      "effectArea": "SingleTarget",
+      "buffDuration": 0.55,
+      "defenseDebuff": {
+        "ignoreStrength": true,
+        "scale": 1000,
+        "table": "Melee_Ones"
+      },
+      "durations": {
+        "defenseDebuff": 0.55,
+        "mezResistance": 0.55,
+        "regenBuff": 0.55,
+        "resistanceDebuff": 0.55,
+        "teleport": 0.55
+      },
+      "immobilize": {
+        "ignoreStrength": true,
+        "mag": 100,
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "mezResistance": {
+        "sleep": {
+          "ignoreStrength": true,
+          "scale": 1,
+          "table": "Melee_Ones"
+        },
+        "stun": {
+          "ignoreStrength": true,
+          "scale": 1,
+          "table": "Melee_Ones"
+        }
+      },
+      "movement": {
+        "fly": {
+          "ignoreStrength": true,
+          "scale": 0.55,
+          "table": "Melee_Ones"
+        }
+      },
+      "onlyAffectsSelf": {
+        "ignoreStrength": true,
+        "scale": 0.55,
+        "table": "Melee_Ones"
+      },
+      "recoveryBuff": {
+        "scale": 4.25,
+        "table": "Melee_Ones"
+      },
+      "regenBuff": {
+        "scale": 19,
+        "table": "Melee_Ones"
+      },
+      "resistanceDebuff": {
+        "cold": {
+          "ignoreStrength": true,
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "energy": {
+          "ignoreStrength": true,
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "fire": {
+          "ignoreStrength": true,
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "lethal": {
+          "ignoreStrength": true,
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "negative": {
+          "ignoreStrength": true,
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "psionic": {
+          "ignoreStrength": true,
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "smashing": {
+          "ignoreStrength": true,
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "special": {
+          "ignoreStrength": true,
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "toxic": {
+          "ignoreStrength": true,
+          "scale": 10,
+          "table": "Melee_Ones"
+        }
+      },
+      "sleep": {
+        "ignoreStrength": true,
+        "mag": 1,
+        "scale": 0.55,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "ignoreStrength": true,
+        "mag": 1,
+        "scale": 0.55,
+        "table": "Melee_Ones"
+      },
+      "teleport": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "untouchable": {
+        "ignoreStrength": true,
+        "scale": 0.55,
+        "table": "Melee_Ones"
+      }
+    },
+    "targetsAffected": [
+      "Self"
+    ]
+  }
+];

@@ -30,6 +30,7 @@ import { calculateSetBonuses, getStatBreakdown, trackBonus, createBonusTracking,
 import { createEmptyStats, getBaselineHealth, type CharacterStats } from './stats';
 import { combineWithAlphaED, filterAlphaByAllowedEnhancements, BASE_RECOVERY_RATE, BASE_REGEN_RATE, type EnhancementBonuses } from './enhancement-values';
 import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue } from '@/data/core/atom-query';
+import type { MovementBuffEntry } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
 import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
@@ -889,8 +890,18 @@ function applyActivePowerBonuses(
     // scalar `effects.runSpeed` path above, not this map. The tohitDebuff/damageDebuff
     // guard stays a BAG read on purpose: it is a power-level heuristic about sibling
     // slots, not a property of a movement atom, so it is not this slice's to move.
-    const movementMap = movementBuffValue(power) ?? effects.movement;
-    if (movementMap && typeof movementMap === 'object' &&
+    // An axis can hold MORE than one entry (`movementBuffValue` keys by axis +
+    // ignoreStrength + suppressible), so this is a list, not a map. The bag
+    // fallback is still one value per axis and normalizes into the same shape.
+    const movementEntries: MovementBuffEntry[] | undefined =
+      movementBuffValue(power) ??
+      (effects.movement
+        ? Object.entries(effects.movement).map(([axis, val]) => ({
+            axis,
+            ...(typeof val === 'number' ? { scale: val, table: '' } : (val as object)),
+          }) as MovementBuffEntry)
+        : undefined);
+    if (movementEntries &&
         effects.tohitDebuff === undefined && effects.damageDebuff === undefined) {
       // NOTE: the `fly` entry (the kFly attrib) is deliberately NOT mapped.
       // It's the flight-mode grant (magnitude > 0 = "can fly"), not a speed
@@ -911,15 +922,25 @@ function applyActivePowerBonuses(
         jumpHeight: 'jump',
         jumpSpeed: 'jump',
       };
-      for (const [type, val] of Object.entries(movementMap)) {
-        const key = movementKeyMap[type];
+      for (const entry of movementEntries) {
+        const key = movementKeyMap[entry.axis];
         if (key && key in global) {
           // Stack-aware: stacksLinear uses the bare effect key (e.g. 'runSpeed'),
           // matching what classifyTemplateForStacking produces.
-          const enhMultiplier = 1 + (enhBonuses[movementAspectMap[key]] || 0);
-          const adjusted = adjustForStacking(val as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, type, effects.maxStacks, effects.stackCaps);
+          //
+          // An `ignoreStrength` entry is the half of a two-template axis the
+          // caster's Run/Fly/Jump enhancements do not touch — the same rule the
+          // `runSpeedUnenhanced` scalar slot above encodes by skipping this
+          // multiplier outright. Only where the axis actually HOLDS a pair: a
+          // lone `ignoreStrength` entry has been multiplied by the aspect since
+          // the map existed, and 26 / 20 / 10 of them ship across the three
+          // forks. Reading the flag for them too is a different change. MOVEMAP-1.
+          const paired = movementEntries.filter((e) => e.axis === entry.axis).length > 1;
+          const enhMultiplier = entry.ignoreStrength && paired ? 1 : 1 + (enhBonuses[movementAspectMap[key]] || 0);
+          const val = entry as unknown as ScalarOrScaled;
+          const adjusted = adjustForStacking(val, targetsHitValues[power.internalName], effects.stacksLinear, entry.axis, effects.maxStacks, effects.stackCaps);
           const value = resolveMovementPercent(adjusted, key, archetypeId, buildLevel) * enhMultiplier;
-          movementContribs.push({ stat: key, value, sourceName: power.name, type: 'active-power', ...movementMeta(val as ScalarOrScaled) });
+          movementContribs.push({ stat: key, value, sourceName: power.name, type: 'active-power', ...movementMeta(val) });
         }
       }
     }

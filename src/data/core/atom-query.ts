@@ -1036,6 +1036,21 @@ const MOVEMENT_AXIS_TO_KEY: Record<string, string> = {
   Run: 'runSpeed', Fly: 'flySpeed', Jump: 'jumpSpeed', JumpHeight: 'jumpHeight',
 };
 
+/**
+ * One movement-buff contribution. More than one can share an `axis` — a power
+ * can buff an axis twice and mean it, and `ignoreStrength` / `suppressible` are
+ * what tell the copies apart. `ignoreStrength` marks the half the caster's
+ * Run/Fly/Jump enhancements do not multiply.
+ */
+export interface MovementBuffEntry {
+  axis: string;
+  scale: number;
+  table: string;
+  stackKey?: string;
+  suppressible?: boolean;
+  ignoreStrength?: boolean;
+}
+
 /** A movement atom the bag routes to `slow` rather than `movement`. */
 function isSlowAtom(a: AtomicEffect): boolean {
   return isDebuffAtom(a) || (a.modifierTable || '').toLowerCase().includes('slow');
@@ -1075,9 +1090,7 @@ function isSlowAtom(a: AtomicEffect): boolean {
  * shadow is silent about it by construction — a parser-side fix, tracked separately.
  * Verified bag-equal across HC+Rebirth by `scripts/planb-shadow-movement.cjs`.
  */
-export function movementBuffValue(
-  power: AtomSource,
-): Record<string, { scale: number; table: string; stackKey?: string; suppressible?: boolean }> | undefined {
+export function movementBuffValue(power: AtomSource): MovementBuffEntry[] | undefined {
   const atoms = baseAtomsOfType(power, 'Movement').filter((a) => {
     if (!MOVEMENT_AXIS_TO_KEY[a.subType ?? '']) return false;
     const self = a.toWho === 'Self';
@@ -1088,16 +1101,61 @@ export function movementBuffValue(
     return self || a.aspect === 'Cur';
   });
   if (!atoms.length) return undefined;
-  const out: Record<string, { scale: number; table: string; stackKey?: string; suppressible?: boolean }> = {};
+  const out: MovementBuffEntry[] = [];
   for (const a of atoms) {
-    out[MOVEMENT_AXIS_TO_KEY[a.subType!]] = {
+    const axis = MOVEMENT_AXIS_TO_KEY[a.subType!];
+    const value: MovementBuffEntry = {
+      axis,
       scale: Math.abs(a.scale),
       table: a.modifierTable,
       ...(a.stacking === 'Suppress' && a.stackKey ? { stackKey: a.stackKey } : {}),
       ...(a.suppressible ? { suppressible: true } : {}),
+      ...(a.ignoreStrength ? { ignoreStrength: true } : {}),
     };
+    // Two atoms are the same entry when they agree on the axis AND on the two
+    // things that change how the axis reads them: whether the caster's
+    // enhancements multiply the value, and whether it drops in combat. Sprint's
+    // two `RunningSpeed 0.5 Melee_Ones` halves differ on the first and nothing
+    // else; Thunderspy folds a third, suppressible travel row onto the same
+    // axis. Keying on the axis alone made each of those the last one written,
+    // which is how Sprint came to report +50% run where the game gives +100%.
+    const at = out.findIndex(
+      (e) =>
+        e.axis === axis &&
+        (!axisSplits(axis) ||
+          (Boolean(e.ignoreStrength) === Boolean(value.ignoreStrength) &&
+            Boolean(e.suppressible) === Boolean(value.suppressible))),
+    );
+    // Replace, never merge: `suppressible` and `ignoreStrength` are absent rather
+    // than false, so `Object.assign` would leave a previous entry's `true` behind
+    // and report a flag the winning atom does not carry.
+    if (at >= 0) out[at] = value;
+    else out.push(value);
   }
   return out;
+}
+
+/**
+ * Whether an axis may hold more than one entry.
+ *
+ * `flySpeed` may not, and the reason is a parser gap rather than a preference:
+ * Parse6 (Rebirth, Thunderspy) has no `FlyMode` axis, so the flight-mode GRANT
+ * and the flight SPEED both decode to `Fly`. A key fine enough to separate two
+ * real fly buffs is also fine enough to let a mode magnitude through as a speed,
+ * which is the +200% Fly double-count noted on MOVEMENT_AXIS_TO_KEY — measured
+ * live on Thunderspy's Fly, Jetpack and Mystic Flight, where a `1.0 ×
+ * Melee_Ones` mode grant sits beside a `1.25 × Melee_SpeedFlying` buff.
+ *
+ * Held rather than split, so those forks keep the answer they have today. The
+ * cost is Rebirth's Combat Flight and Hover, whose `FlyingSpeed 0.5` and its
+ * `IgnoreStrength` twin are a genuine pair and still report half of what the
+ * game gives. That is MOVEMAP-1, and it wants the Fly/FlyMode split first.
+ *
+ * Run and jump carry no such conflation on any fork: `Run`, `Jump` and
+ * `JumpHeight` name a speed and nothing else.
+ */
+function axisSplits(axis: string): boolean {
+  return axis !== 'flySpeed';
 }
 
 /** Σ of `val(a)` over atoms with a DISTINCT `|val|` (dedup the type/duration copies). */
