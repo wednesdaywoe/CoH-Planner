@@ -207,5 +207,16 @@ export const Hide: Power = {
     ["Defense","Toxic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
     ["Defense","AoE",5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true]
   ],
-  "requires": "Stalker_Melee.Claws Stalker_Melee.Ninja_Sword || Stalker_Melee.Dual_Blades || Stalker_Melee.Spines || Stalker_Melee.Staff_Fighting || !"
+  "requires": [
+    "Stalker_Melee.Claws",
+    "Stalker_Melee.Ninja_Sword",
+    "||",
+    "Stalker_Melee.Dual_Blades",
+    "||",
+    "Stalker_Melee.Spines",
+    "||",
+    "Stalker_Melee.Staff_Fighting",
+    "||",
+    "!"
+  ]
 };

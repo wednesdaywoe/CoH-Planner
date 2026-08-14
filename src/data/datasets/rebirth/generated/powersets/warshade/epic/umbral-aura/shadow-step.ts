@@ -93,11 +93,11 @@ export const ShadowStep: Power = {
     ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Movement","FlyMode",1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
-    ["Movement","Fly",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
-    ["Movement","Control",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
-    ["Movement","Friction",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
-    ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Warshade_Defensive.Umbral_Aura.Shadow_Slipping source.ownPower?",true]
+    ["Movement","FlyMode",1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kTravelFlyOn","source.Mode?","!","kFlyOn","source.Mode?","!","&&","kHoverOn","source.Mode?","!","&&","kEnergyFlyOn","source.Mode?","!","&&","kJetpackOn","source.Mode?","!","&&","kMysticFlightOn","source.Mode?","!","&&","kSpeedofSoundOn","source.Mode?","!","&&","kSuperSpeedOn","source.Mode?","!","&&","kMightyLeapOn","source.Mode?","!","&&","kFreeRunningOn","source.Mode?","!","&&","kSuperJumpOn","source.Mode?","!","&&"]],
+    ["Movement","Fly",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kTravelFlyOn","source.Mode?","!","kFlyOn","source.Mode?","!","&&","kHoverOn","source.Mode?","!","&&","kEnergyFlyOn","source.Mode?","!","&&","kJetpackOn","source.Mode?","!","&&","kMysticFlightOn","source.Mode?","!","&&","kSpeedofSoundOn","source.Mode?","!","&&","kSuperSpeedOn","source.Mode?","!","&&","kMightyLeapOn","source.Mode?","!","&&","kFreeRunningOn","source.Mode?","!","&&","kSuperJumpOn","source.Mode?","!","&&"]],
+    ["Movement","Control",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kTravelFlyOn","source.Mode?","!","kFlyOn","source.Mode?","!","&&","kHoverOn","source.Mode?","!","&&","kEnergyFlyOn","source.Mode?","!","&&","kJetpackOn","source.Mode?","!","&&","kMysticFlightOn","source.Mode?","!","&&","kSpeedofSoundOn","source.Mode?","!","&&","kSuperSpeedOn","source.Mode?","!","&&","kMightyLeapOn","source.Mode?","!","&&","kFreeRunningOn","source.Mode?","!","&&","kSuperJumpOn","source.Mode?","!","&&"]],
+    ["Movement","Friction",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kTravelFlyOn","source.Mode?","!","kFlyOn","source.Mode?","!","&&","kHoverOn","source.Mode?","!","&&","kEnergyFlyOn","source.Mode?","!","&&","kJetpackOn","source.Mode?","!","&&","kMysticFlightOn","source.Mode?","!","&&","kSpeedofSoundOn","source.Mode?","!","&&","kSuperSpeedOn","source.Mode?","!","&&","kMightyLeapOn","source.Mode?","!","&&","kFreeRunningOn","source.Mode?","!","&&","kSuperJumpOn","source.Mode?","!","&&"]],
+    ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Warshade_Defensive.Umbral_Aura.Shadow_Slipping","source.ownPower?"],true]
   ],
   "conditionalEffects": [
     {
@@ -121,7 +121,10 @@ export const ShadowStep: Power = {
       }
     }
   ],
-  "requires": "Inherent.Inherent.Shadow_Step !",
+  "requires": [
+    "Inherent.Inherent.Shadow_Step",
+    "!"
+  ],
   "setsModes": [
     "Warshade_Human_Mode"
   ],

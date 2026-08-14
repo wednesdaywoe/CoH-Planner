@@ -51,6 +51,8 @@ export const GeomancyRootBonus: Power = {
     ["MezResist","Knockback",100,1,10.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["MezResist","Knockup",100,1,10.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "Tanker_Defense.Sacred_Armor.Geomancy",
+  "requires": [
+    "Tanker_Defense.Sacred_Armor.Geomancy"
+  ],
   "mechanicType": "parentMechanic"
 };

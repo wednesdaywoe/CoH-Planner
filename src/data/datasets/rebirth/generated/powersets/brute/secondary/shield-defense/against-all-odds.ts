@@ -60,7 +60,7 @@ export const AgainstallOdds: Power = {
     }
   },
   "atoms": [
-    ["Mez","Taunt",1.25,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Mez","Taunt",1.25,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"]],
     ["DamageBuff","Smashing",1,1,1.25,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",1,1,1.25,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",1,1,1.25,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -85,6 +85,6 @@ export const AgainstallOdds: Power = {
     ["DamageBuff","Cold",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Energy",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Negative",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Mez","Taunt",1.25,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+    ["Mez","Taunt",1.25,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true]
   ]
 };

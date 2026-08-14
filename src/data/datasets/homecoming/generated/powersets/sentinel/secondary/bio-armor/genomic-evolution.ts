@@ -83,16 +83,16 @@ export const GenomicEvolution: Power = {
     ["Resistance","Negative",0.5,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Psionic",0.6,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Toxic",1,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Range",null,0.15,1,5.25,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
-    ["MaxEndurance",null,5,1,5.25,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
-    ["Resistance","Smashing",0.225,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Lethal",0.225,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Fire",0.15,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Cold",0.15,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Energy",0.15,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Negative",0.15,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Psionic",0.18,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Toxic",0.3,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true]
+    ["Range",null,0.15,1,5.25,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kOffensiveAdaptation","Source.Mode?"],true],
+    ["MaxEndurance",null,5,1,5.25,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kRestedAdaptation","Source.Mode?"],true],
+    ["Resistance","Smashing",0.225,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true],
+    ["Resistance","Lethal",0.225,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true],
+    ["Resistance","Fire",0.15,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true],
+    ["Resistance","Cold",0.15,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true],
+    ["Resistance","Energy",0.15,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true],
+    ["Resistance","Negative",0.15,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true],
+    ["Resistance","Psionic",0.18,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true],
+    ["Resistance","Toxic",0.3,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true]
   ],
   "conditionalEffects": [
     {

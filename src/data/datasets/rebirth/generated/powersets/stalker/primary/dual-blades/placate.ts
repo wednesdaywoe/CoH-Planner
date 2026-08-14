@@ -60,7 +60,7 @@ export const Placate: Power = {
     }
   },
   "atoms": [
-    ["Mez","Placate",10,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Placate",10,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Stealth","RadiusPvE",150,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Stealth","RadiusPvP",380,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"meter"],
@@ -73,16 +73,16 @@ export const Placate: Power = {
     ["Meta",null,1,52,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unset_mode"],
     ["Meta",null,1,53,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unset_mode"],
     ["Meta",null,1,54,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unset_mode"],
-    ["Mez","Placate",6,4,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["ToHit",null,1,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_2 source.Mode?",true],
-    ["DamageBuff","Smashing",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 source.Mode?",true],
-    ["DamageBuff","Lethal",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 source.Mode?",true],
-    ["DamageBuff","Fire",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 source.Mode?",true],
-    ["DamageBuff","Cold",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 source.Mode?",true],
-    ["DamageBuff","Energy",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 source.Mode?",true],
-    ["DamageBuff","Negative",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 source.Mode?",true],
-    ["DamageBuff","Toxic",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 source.Mode?",true],
-    ["DamageBuff","Psionic",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 source.Mode?",true]
+    ["Mez","Placate",6,4,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["ToHit",null,1,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_StatusMode_2","source.Mode?"],true],
+    ["DamageBuff","Smashing",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDD_StatusMode_2","source.Mode?"],true],
+    ["DamageBuff","Lethal",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDD_StatusMode_2","source.Mode?"],true],
+    ["DamageBuff","Fire",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDD_StatusMode_2","source.Mode?"],true],
+    ["DamageBuff","Cold",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDD_StatusMode_2","source.Mode?"],true],
+    ["DamageBuff","Energy",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDD_StatusMode_2","source.Mode?"],true],
+    ["DamageBuff","Negative",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDD_StatusMode_2","source.Mode?"],true],
+    ["DamageBuff","Toxic",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDD_StatusMode_2","source.Mode?"],true],
+    ["DamageBuff","Psionic",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDD_StatusMode_2","source.Mode?"],true]
   ],
   "conditionalEffects": [
     {

@@ -26,7 +26,14 @@ export const Slice: Power = {
   "targetsAffected": [
     "Foe"
   ],
-  "maxTargetsExpression": "10 kDisable_GauntletTargetCap Source.Mode? 5 * -",
+  "maxTargetsExpression": [
+    "10",
+    "kDisable_GauntletTargetCap",
+    "Source.Mode?",
+    "5",
+    "*",
+    "-"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,
@@ -70,10 +77,10 @@ export const Slice: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.99,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.99,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
     ["Damage","Fire",0.4455,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Damage","Lethal",1.0984,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",0.3606,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"]
+    ["Damage","Lethal",1.0984,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Lethal",0.3606,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"]
   ]
 };

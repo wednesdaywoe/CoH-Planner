@@ -85,5 +85,8 @@ export const Oxygenate: Power = {
     ["Recovery",null,2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Endurance",null,2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
   ],
-  "requires": "Corruptor_Buff.Storm_Summoning.O2_Boost !"
+  "requires": [
+    "Corruptor_Buff.Storm_Summoning.O2_Boost",
+    "!"
+  ]
 };

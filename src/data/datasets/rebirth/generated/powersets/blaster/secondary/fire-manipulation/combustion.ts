@@ -70,7 +70,7 @@ export const Combustion: Power = {
   },
   "atoms": [
     ["Damage","Fire",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.1,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.1,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["DamageBuff","Smashing",0.061,1,10.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.061,1,10.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.061,1,10.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -79,6 +79,6 @@ export const Combustion: Power = {
     ["DamageBuff","Negative",0.061,1,10.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.061,1,10.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.061,1,10.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Damage","Fire",0.217809,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Fire",0.217809,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
   ]
 };

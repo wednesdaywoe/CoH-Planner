@@ -49,6 +49,7 @@ import {
   STANCE_GROUPS,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
+import { currentInherentName } from '@/data/inherent-aliases';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import {
   DEFAULT_PROC_OVERRIDE,
@@ -406,7 +407,10 @@ function syncBuildDefinitions(build: Build): void {
   const syncPowers = (powers: SelectedPower[], defPowers: readonly DefShape[]): SelectedPower[] => {
     let anyChanged = false;
     const synced = powers.map((power) => {
-      let currentDef = defPowers.find((p) => p.internalName === power.internalName);
+      // `currentInherentName` is a no-op for everything but the eight inherents
+      // renamed when they stopped being hand-authored (see inherent-aliases.ts).
+      const storedName = currentInherentName(power.internalName);
+      let currentDef = defPowers.find((p) => p.internalName === storedName);
       if (!currentDef) {
         currentDef = defPowers.find((p) => p.name === power.name);
       }
@@ -2596,7 +2600,7 @@ export const useBuildStore = create<BuildStore>()(
         // The group stacks with Sprint (the user can have both Sprint and an
         // alt-run active), so only the alt-run toggles are mutually exclusive
         // with each other.
-        const altRunPair = new Set(['Ninja_Run', 'Beast_Run', 'Athletic_Run']);
+        const altRunPair = new Set(['Prestige_Ninja_Run', 'Prestige_Beast_Run', 'Prestige_Athletic_Run']);
         const isAltRunToggle = altRunPair.has(powerName);
         // NOTE: Staff Fighting's forms (Body/Mind/Soul) are NOT toggle powers —
         // they're non-slottable stance sub-powers selected via the parent's

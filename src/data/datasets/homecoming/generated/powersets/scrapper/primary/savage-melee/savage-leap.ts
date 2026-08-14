@@ -62,13 +62,13 @@ export const SavageLeap: Power = {
     }
   ],
   "atoms": [
-    ["Damage","Lethal",0.845,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"distance 25 - 0 40 minmax 40 / 1 + @StdResult *"],
-    ["Damage","Lethal",0.068,1,3.1,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"distance 25 - 0 40 minmax 40 / 1 + @StdResult *",null,0.8,true],
-    ["Damage","Fire",0.38,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,"distance 25 - 0 40 minmax 40 / 1 + @StdResult *",null,null,null,"FieryEmbrace"],
-    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"distance 7 >",true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! distance 0 >= && distance 20 < &&",true,null,null,null,null,null,null,null,null,"BuildFrenzy"],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! distance 20 >= && distance 40 < &&",true,null,null,null,null,null,null,null,null,"BuildFrenzy"],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! distance 40 >= &&",true,null,null,null,null,null,null,null,null,"BuildFrenzy"],
+    ["Damage","Lethal",0.845,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["distance","25","-","0","40","minmax","40","/","1","+","@StdResult","*"],null,null,null,null,null,null,["Foe"]],
+    ["Damage","Lethal",0.068,1,3.1,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["distance","25","-","0","40","minmax","40","/","1","+","@StdResult","*"],null,0.8,true,null,null,null,["Foe"]],
+    ["Damage","Fire",0.38,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["distance","25","-","0","40","minmax","40","/","1","+","@StdResult","*"],null,null,null,"FieryEmbrace",null,null,["Foe"]],
+    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["distance","7",">"],true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted","source.ownPower?","!","distance","0",">=","&&","distance","20","<","&&"],true,null,null,null,null,null,null,null,null,"BuildFrenzy"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted","source.ownPower?","!","distance","20",">=","&&","distance","40","<","&&"],true,null,null,null,null,null,null,null,null,"BuildFrenzy"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted","source.ownPower?","!","distance","40",">=","&&"],true,null,null,null,null,null,null,null,null,"BuildFrenzy"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

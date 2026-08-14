@@ -48,10 +48,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     124
@@ -60,12 +60,17 @@
   "redirect": [
     {
       "name": "Pets.Blaster_Fire_Snipe.Blazing_Bolt_Quick",
-      "condition_expression": "cur.kToHit source> .97 >=",
+      "condition_expression": [
+        "cur.kToHit",
+        "source>",
+        ".97",
+        ">="
+      ],
       "show_in_info": false
     },
     {
       "name": "Pets.Blaster_Fire_Snipe.Blazing_Bolt_Normal",
-      "condition_expression": "Always",
+      "condition_expression": [],
       "show_in_info": true
     }
   ],

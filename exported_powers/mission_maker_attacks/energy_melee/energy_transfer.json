@@ -37,10 +37,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     108,
     132
@@ -49,12 +49,20 @@
   "redirect": [
     {
       "name": "Redirects.Energy_Melee.Energy_Transfer_Critter_Fast",
-      "condition_expression": "Redirects.Energy_Melee.Energy_Store source.ownPower? !",
+      "condition_expression": [
+        "Redirects.Energy_Melee.Energy_Store",
+        "source.ownPower?",
+        "!"
+      ],
       "show_in_info": true
     },
     {
       "name": "Redirects.Energy_Melee.Energy_Transfer_Critter_Slow",
-      "condition_expression": "Redirects.Energy_Melee.Energy_Store source.ownPower? !",
+      "condition_expression": [
+        "Redirects.Energy_Melee.Energy_Store",
+        "source.ownPower?",
+        "!"
+      ],
       "show_in_info": true
     }
   ],

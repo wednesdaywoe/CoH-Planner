@@ -72,8 +72,8 @@ export const AssassinsBlades: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter source> .9 <",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kMeter","source>",".9","<"],null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["1"],null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Damage","Lethal",2.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Stealth","RadiusPvE",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Stealth","RadiusPvP",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -83,11 +83,11 @@ export const AssassinsBlades: Power = {
     ["Meta",null,1,51,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unset_mode"],
     ["Meta",null,1,53,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unset_mode"],
     ["Meta",null,1,54,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unset_mode"],
-    ["Damage","Lethal",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true],
-    ["Damage","Lethal",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > &&",true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvE",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true],
-    ["Meta",null,1,48,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-    ["Meta",null,1,52,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_BonusAoEMode_1 source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"set_mode"]
+    ["Damage","Lethal",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>","0",">","&&"],true],
+    ["Damage","Lethal",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>","0",">","&&"],true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvE",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>","0",">","&&"],true],
+    ["Meta",null,1,48,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,["kDD_StatusMode_1","source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,52,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,["kDD_BonusAoEMode_1","source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"set_mode"]
   ],
   "setsModes": [
     "DD_StatusMode_2",

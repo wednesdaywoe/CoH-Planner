@@ -68,10 +68,13 @@ export const Slash: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.42,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.42,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Defense","All",1,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,true],
     ["Damage","Fire",0.189,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Damage","Lethal",0.4945,1,0.3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",0.4945,1,0.3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
   ],
-  "requires": "Brute_Defense.Shield_Defense !"
+  "requires": [
+    "Brute_Defense.Shield_Defense",
+    "!"
+  ]
 };

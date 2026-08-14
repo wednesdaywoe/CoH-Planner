@@ -62,6 +62,10 @@ const STEPS = [
   { script: 'convert-archetypes.cjs',         args: [],          generated: true },
   { script: 'convert-all-powersets.cjs',      args: ['--force'], generated: true },
   { script: 'generate-powerset-index.cjs',    args: [],          generated: false },
+  // The universal inherents — Brawl, Sprint, Rest, the free travel toggles, the
+  // prestige sprints → generated/basic-inherents.ts. Read by levels.ts, which
+  // used to spell them out by hand and hand every fork Homecoming's copy.
+  { script: 'convert-basic-inherents.cjs',    args: [],          generated: true },
   { script: 'convert-pool-powers.cjs',        args: ['--apply'], generated: true },
   { script: 'convert-epic-pools.cjs',         args: ['--apply'], generated: true },
   { script: 'convert-incarnate-effects.cjs',  args: [],          generated: true },

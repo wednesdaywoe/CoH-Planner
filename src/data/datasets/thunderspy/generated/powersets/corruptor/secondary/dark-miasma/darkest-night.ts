@@ -70,7 +70,10 @@ export const DarkestNight: Power = {
     ["DamageBuff","Toxic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["ToHit",null,1.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ],
-  "requires": "Corruptor_Buff.Dark_Miasma.Chill_of_the_night !",
+  "requires": [
+    "Corruptor_Buff.Dark_Miasma.Chill_of_the_night",
+    "!"
+  ],
   "damageTypes": [
     "Negative"
   ]

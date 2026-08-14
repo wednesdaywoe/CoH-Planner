@@ -70,9 +70,9 @@ export const GammaBoost: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,1,1,1.25,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 30 + 100 / @StdResult *"],
+    ["Regeneration",null,1,1,1.25,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["75","kHitPoints%","source>","-","30","+","100","/","@StdResult","*"]],
     ["Regeneration",null,0.5,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Recovery",null,1,1,1.25,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1.2 kHitPoints% source> * 100 / .3 * @StdResult *"],
+    ["Recovery",null,1,1,1.25,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["1.2","kHitPoints%","source>","*","100","/",".3","*","@StdResult","*"]],
     ["Endurance",null,2,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,2,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ],

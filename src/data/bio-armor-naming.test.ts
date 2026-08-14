@@ -46,7 +46,8 @@ for (const ds of ['homecoming', 'rebirth'] as const) {
         for (const stance of STANCES) {
           const p = powerBy(setId, stance);
           expect(p, `${setId} ${stance}`).toBeTruthy();
-          expect(p!.requires?.endsWith('.Evolution'), `${stance} requires=${p!.requires}`).toBe(true);
+          const req = p!.requires ?? [];
+          expect(req[req.length - 1]?.endsWith('.Evolution'), `${stance} requires=${req}`).toBe(true);
         }
       });
     }
@@ -60,7 +61,8 @@ for (const ds of ['homecoming', 'rebirth'] as const) {
       for (const stance of STANCES) {
         const p = powerBy('stalker/bio-armor', stance);
         expect(p, `stalker ${stance}`).toBeTruthy();
-        expect(p!.requires?.endsWith('.Adaptation'), `${stance} requires=${p!.requires}`).toBe(true);
+        const req = p!.requires ?? [];
+        expect(req[req.length - 1]?.endsWith('.Adaptation'), `${stance} requires=${req}`).toBe(true);
       }
     });
 

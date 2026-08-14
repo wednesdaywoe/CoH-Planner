@@ -113,7 +113,7 @@ export const ReactionTime: Power = {
     ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["RechargeTime",null,0.4,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Movement","Run",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Fly",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Jump",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -121,7 +121,7 @@ export const ReactionTime: Power = {
     ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","JumpHeight",-0.7,1,10,"Melee_Slow","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,0.5,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Sustain"],
-    ["Absorb",null,0.075,1,12,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq || !"],
-    ["Absorb",null,0.075,1,12,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq ||"]
+    ["Absorb",null,0.075,1,12,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["@CustomFX","ShowFloaters","eq","@CustomFX","ShowFloatersDark","eq","||","!"]],
+    ["Absorb",null,0.075,1,12,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["@CustomFX","ShowFloaters","eq","@CustomFX","ShowFloatersDark","eq","||"]]
   ]
 };

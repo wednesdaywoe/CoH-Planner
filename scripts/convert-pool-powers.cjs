@@ -54,6 +54,7 @@ const RAW_POWERS_PATH = (() => {
 })();
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
 const { displayText } = require('./_display-text.cjs');
+const { gateTokens } = require('./_gate-tokens.cjs');
 const datasetId = parseDatasetArg();
 
 // All datasets write under `src/data/datasets/<id>/`.
@@ -229,10 +230,10 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   assignModes(power, rawJson);
 
   // Requires
-  if (rawJson.requires && rawJson.requires !== '') {
-    power.requires = rawJson.requires;
+  if (gateTokens(rawJson.requires).length) {
+    power.requires = gateTokens(rawJson.requires);
   } else {
-    power.requires = '';
+    power.requires = [];
   }
 
   // Slots
@@ -458,7 +459,7 @@ function convertPool(poolId) {
     displayName: poolIndex.display_name,
     description: poolIndex.description || poolIndex.display_help || '',
     icon: poolIndex.icon || '',
-    requires: poolIndex.requires || '',
+    requires: poolIndex.requires || [],
     powers: [],
   };
 
@@ -499,8 +500,8 @@ function convertPool(poolId) {
     // This is what separates Tough (T3) from Cross Punch / Weave (T4):
     // both are available at level 14, but Tough only needs one prior
     // Fighting pick while Cross Punch needs two.
-    const requires = (rawJson.requires || '').trim();
-    const minPrereqs = requires === '' ? 0 : (requires.includes('&&') ? 2 : 1);
+    const requires = gateTokens(rawJson.requires);
+    const minPrereqs = requires.length === 0 ? 0 : (requires.includes('&&') ? 2 : 1);
     collected.push({ rawJson, availableLevel, minPrereqs, originalIndex: i });
   }
 

@@ -72,7 +72,9 @@ function atomSelf(v) {
   return v ? r4(Math.abs(v.scale)) : undefined;
 }
 
-const stats = { powers: 0, buffTypes: 0, buffAgree: 0, forkResolved: 0, perTargetTypes: 0, selfTypes: 0, selfAgree: 0 };
+const stats = { powers: 0, buffTypes: 0, buffAgree: 0, forkResolved: 0, perTargetTypes: 0, selfTypes: 0,
+  selfAgree: 0, selfRecovered: 0 };
+const selfRecoveriesSeen = {};
 const findings = [];
 
 function checkPower(dataset, power, genPath) {
@@ -109,6 +111,15 @@ function checkPower(dataset, power, genPath) {
     if (bagS !== undefined || atomS !== undefined) {
       stats.selfTypes++;
       if (bagS === atomS) stats.selfAgree++;
+      // Rest states its `-10 x Melee_Ones` resistance crash at `AnyAffected` on a `['Self']`
+      // power, so the row is the caster's and the bag's recipient test — which reads the atom
+      // alone — never wrote the slot. Resting leaves you with ~-1000% resistance, which is what
+      // the power is for. Pinned by name so a second power joining this class gets adjudicated
+      // rather than absorbed (TARGETS-3).
+      else if (bagS === undefined && atomS !== undefined && name === 'Rest') {
+        stats.selfRecovered++;
+        selfRecoveriesSeen[`${dataset}|${name}`] = true;
+      }
       else {
         findings.push({ kind: 'self', dataset, name, type: t, bag: bagS, atom: atomS });
         if (POWER_FILTER) console.log(`  [DIVERGE self] ${name} ${t}  bag=${bagS} atom=${atomS}`);
@@ -131,6 +142,17 @@ console.log(`  buff type-slots:     ${stats.buffTypes}  (of which per-target: ${
 console.log(`  buff agree:          ${stats.buffAgree}  (of which archetype-fork resolved: ${stats.forkResolved})`);
 console.log(`  self type-slots:     ${stats.selfTypes}`);
 console.log(`  self agree:          ${stats.selfAgree}`);
+console.log(`  self recovered:      ${stats.selfRecovered}  (Rest's AnyAffected crash, dropped by the bag's recipient test — TARGETS-3)`);
+// Both ways: a fork that stopped recovering Rest's crash is the join regressing, and this
+// gate would otherwise read the silence as agreement.
+const EXPECTED_SELF_RECOVERIES = ['homecoming|Rest', 'rebirth|Rest', 'thunderspy|Rest'];
+const recoveryPinFailures = [
+  ...Object.keys(selfRecoveriesSeen).filter((k) => !EXPECTED_SELF_RECOVERIES.includes(k))
+    .map((k) => `NEW self recovery, never read: ${k}`),
+  ...EXPECTED_SELF_RECOVERIES.filter((k) => !selfRecoveriesSeen[k])
+    .map((k) => `LOST self recovery: ${k} — the caster's crash is being dropped again`),
+];
+for (const line of recoveryPinFailures) console.log(`  [PIN] ${line}`);
 console.log(`  diverge:             ${findings.length}`);
 
 for (const f of findings.slice(0, 50)) {
@@ -140,7 +162,7 @@ for (const f of findings.slice(0, 50)) {
 }
 if (findings.length > 50) console.log(`\n  ... and ${findings.length - 50} more`);
 
-if (findings.length) {
+if (findings.length || recoveryPinFailures.length) {
   console.log('\nFAIL — atom-derived resistance diverges from the bag. Fix before migrating the applier.');
   process.exit(1);
 }

@@ -68,9 +68,9 @@ export const AssassinsEclipse: Power = {
   "fromHideBonus": 2.173913043478261,
   "midCombatCast": 1,
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["Damage","Smashing",1.76,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < enttype target> critter eq &&"],
-    ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < enttype target> critter eq &&"],
-    ["Damage","Negative",2.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kMeter source> .9 < enttype target> critter eq &&",null,null,null,null,null,null,null,null,null,"ASCrit"]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power",["Foe"]],
+    ["Damage","Smashing",1.76,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>",".9","<","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>",".9","<","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Negative",2.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["kMeter","source>",".9","<","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"ASCrit",null,null,["Foe"]]
   ]
 };

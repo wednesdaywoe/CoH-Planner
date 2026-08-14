@@ -266,14 +266,6 @@ export interface InherentRules {
    */
   autoGrantedSlotLevels: Record<string, readonly number[]>;
 
-  /**
-   * Inherent power `internalName`s that this server does NOT grant, so they
-   * are filtered out of the shared inherent list. The shared list is sourced
-   * from HC; servers that lack one of those powers (e.g. Rebirth has no
-   * Prestige Athletic Run — it ships `Pool.Utility_Belt.Athletics` instead)
-   * list it here. Absent/empty → nothing removed.
-   */
-  excludeInherents?: readonly string[];
 
   /**
    * Extra archetype-gated inherents this server grants that the shared

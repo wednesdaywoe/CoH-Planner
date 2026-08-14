@@ -114,9 +114,9 @@ export const TarantulaConversion: Power = {
     ["MaxHP",null,0.5,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Mez","Intangible",3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,115,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,10.25,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-    ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,10.25,1,null,true,null,null,null,null,"@CustomFX FemaleTarantula eq !",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
-    ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,10.25,1,null,true,null,null,null,null,"@CustomFX FemaleTarantula eq",null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
-    ["Defense","All",1.35,1,10.25,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,10.25,1,null,true,null,null,null,null,["@CustomFX","FemaleTarantula","eq"],null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
+    ["Defense","All",1.35,1,10.25,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,10.25,1,null,true,null,null,null,null,["@CustomFX","FemaleTarantula","eq","!"],true,null,null,null,null,null,null,null,null,null,null,"set_costume"]
   ],
   "setsModes": [
     "Widow_Tarantula_Mode"

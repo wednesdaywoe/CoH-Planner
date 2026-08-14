@@ -7,7 +7,7 @@ import { getInherentPowerDef } from '@/data';
  * contrast, is genuinely slottable and must keep its allowances.
  */
 describe('Prestige travel toggle slot eligibility', () => {
-  for (const name of ['Ninja_Run', 'Beast_Run']) {
+  for (const name of ['Prestige_Ninja_Run', 'Prestige_Beast_Run']) {
     it(`${name} is unslottable (maxSlots 0, no allowed enhancements)`, () => {
       const def = getInherentPowerDef(name);
       expect(def, name).toBeTruthy();

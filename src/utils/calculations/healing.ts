@@ -20,7 +20,9 @@ export interface HealingFromDamage {
   unenhancedScale?: number;
 }
 
-type DamageEntry = { type?: string; scale: number; table?: string; ignoreStrength?: boolean };
+import { dotTickCount } from './damage';
+
+type DamageEntry = { type?: string; scale: number; table?: string; ignoreStrength?: boolean; duration?: number; tickRate?: number };
 
 /**
  * Extract a power's heal from its `damage` field (a single `type: 'Heal'` object
@@ -45,8 +47,11 @@ export function extractHealingFromDamage(damage: unknown): HealingFromDamage | u
   let unenhancedScale = 0;
   for (const e of heals) {
     if (typeof e.scale !== 'number' || e.table !== table) continue;
-    scale += e.scale;
-    if (e.ignoreStrength) unenhancedScale += e.scale;
+    const ticks = (e.duration && e.tickRate && e.duration > 0 && e.tickRate > 0)
+      ? dotTickCount(e.duration, e.tickRate)
+      : 1;
+    scale += e.scale * ticks;
+    if (e.ignoreStrength) unenhancedScale += e.scale * ticks;
   }
   if (scale === 0 && unenhancedScale === 0) return undefined;
 

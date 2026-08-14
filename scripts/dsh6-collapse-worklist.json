@@ -11,13 +11,13 @@
     "powersChecked": 3359,
     "sourceMissing": 5,
     "requireFail": 0,
-    "atomsChecked": 5899,
+    "atomsChecked": 5865,
     "scalarChecked": 1231
   },
   "summary": {
-    "highConfidenceCollapses": 1,
-    "distinctCollapseGroups": 1,
-    "classAbsent": 20,
+    "highConfidenceCollapses": 0,
+    "distinctCollapseGroups": 0,
+    "classAbsent": 17,
     "scalarCollapses": 0,
     "scalarDistinctGroups": 0,
     "scalarClassAbsent": 87,
@@ -25,17 +25,7 @@
     "discriminatorGroups": 1,
     "discriminatorClassAbsent": 1
   },
-  "collapseGroups": [
-    {
-      "et": "Mez",
-      "sub": "immobilize",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Fighting"
-      ]
-    }
-  ],
+  "collapseGroups": [],
   "classAbsentGroups": [
     {
       "et": "Mez",
@@ -131,33 +121,6 @@
       "count": 1,
       "powers": [
         "Genetic Corruption"
-      ]
-    },
-    {
-      "et": "Mez",
-      "sub": "hold",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Senses"
-      ]
-    },
-    {
-      "et": "Mez",
-      "sub": "stun",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Senses"
-      ]
-    },
-    {
-      "et": "Mez",
-      "sub": "sleep",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Senses"
       ]
     },
     {

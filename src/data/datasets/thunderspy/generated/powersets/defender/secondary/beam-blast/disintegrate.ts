@@ -74,16 +74,16 @@ export const Disintegrate: Power = {
     }
   },
   "atoms": [
-    ["Damage","Energy",0.216,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Energy",0.108,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.216,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Energy",0.108,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,15,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,1,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Regeneration",null,-1.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Energy",0.365649,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Energy",0.1825,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Regeneration",null,-6,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Regeneration",null,-1.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Energy",0.365649,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Energy",0.1825,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Regeneration",null,-6,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true]
   ],
   "damageTypes": [
     "Energy"

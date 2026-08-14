@@ -75,11 +75,12 @@ function boolNum(b: boolean): number {
   return b ? 1 : 0;
 }
 
-/** Evaluate one whitespace-delimited postfix condition string against `ctx`. Returns `false`
- *  for a definite no AND for anything this evaluator can't resolve — see the module doc for
- *  why that collapse is the correct, conservative behavior here. */
-export function evaluateCondition(condition: string, ctx: ConditionContext): boolean {
-  const tokens = condition.trim().split(/\s+/).filter(Boolean);
+/** Evaluate one postfix condition against `ctx`, as the token list the wire holds (COND-8:
+ *  tokens arrive pre-split and are never re-split, so multi-word tokens survive intact).
+ *  Returns `false` for a definite no AND for anything this evaluator can't resolve — see the
+ *  module doc for why that collapse is the correct, conservative behavior here. */
+export function evaluateCondition(condition: readonly string[], ctx: ConditionContext): boolean {
+  const tokens = condition.filter(Boolean);
   const stack: (number | string)[] = [];
   try {
     for (const token of tokens) {

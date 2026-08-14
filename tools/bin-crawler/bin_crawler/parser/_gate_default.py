@@ -610,7 +610,7 @@ def _names_caster_archetype(node) -> bool:
     return any(_names_caster_archetype(k) for k in node.kids)
 
 
-def evaluate(expr: str, *, player_classes=()) -> GateVerdict:
+def evaluate(tokens: list[str], *, player_classes=()) -> GateVerdict:
     """Whether a group's `Requires` holds in the default situation.
 
     `UNPARSED` when the RPN does not reduce, `UNCLASSIFIED` when it reduces but
@@ -624,10 +624,10 @@ def evaluate(expr: str, *, player_classes=()) -> GateVerdict:
     leaves both unanswerable, so a gate that asks reports UNCLASSIFIED — an
     honest "this caller supplied no catalogue", not a guess that reads as data.
     """
-    if not expr or not expr.strip():
+    if not tokens:
         return GateVerdict(SATISFIED)
     try:
-        tree = parse(expr)
+        tree = parse(tokens)
     except RequiresParseError:
         return GateVerdict(UNPARSED)
 
@@ -653,6 +653,6 @@ def evaluate(expr: str, *, player_classes=()) -> GateVerdict:
     )
 
 
-def default_verdict(expr: str, *, player_classes=()) -> str:
+def default_verdict(tokens: list[str], *, player_classes=()) -> str:
     """[`evaluate`]'s verdict alone, for callers that do not resolve the fork."""
-    return evaluate(expr, player_classes=player_classes).verdict
+    return evaluate(tokens, player_classes=player_classes).verdict

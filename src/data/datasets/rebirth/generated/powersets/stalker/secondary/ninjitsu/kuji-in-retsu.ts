@@ -112,11 +112,11 @@ export const KujiInRetsu: Power = {
     ["Movement","JumpHeight",2,1,180,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Movement","Run",0.5,1,180,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Defense","All",1,1,180,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Recovery",null,-100,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Pool.Manipulation.Unrelenting source.ownPower? !"],
-    ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Pool.Manipulation.Unrelenting source.ownPower? !"],
-    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Recovery",null,-100,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"]],
+    ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"]],
+    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true,null,null,null,null,null,null,null,null,null,null,"null"]
+    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,null,null,"null"]
   ]
 };

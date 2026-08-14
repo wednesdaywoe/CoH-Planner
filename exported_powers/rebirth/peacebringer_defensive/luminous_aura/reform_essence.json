@@ -42,10 +42,18 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Sublimation ! && Inherent.Inherent.White_Dwarf_Sublimation ! &&",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [
+    "Peacebringer_Defensive.Luminous_Aura.White_Dwarf",
+    "Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Sublimation",
+    "!",
+    "&&",
+    "Inherent.Inherent.White_Dwarf_Sublimation",
+    "!",
+    "&&"
+  ],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [],
   "effects": [
     {
@@ -54,7 +62,11 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "kPeacebringer_Tanker_Mode source.Mode? !",
+      "requires_expression": [
+        "kPeacebringer_Tanker_Mode",
+        "source.Mode?",
+        "!"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -75,13 +87,17 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kPeacebringer_Tanker_Mode source.Mode? !",
+          "jit_requires": [
+            "kPeacebringer_Tanker_Mode",
+            "source.Mode?",
+            "!"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -105,7 +121,10 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "kPeacebringer_Tanker_Mode source.Mode?",
+      "requires_expression": [
+        "kPeacebringer_Tanker_Mode",
+        "source.Mode?"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -126,13 +145,16 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kPeacebringer_Tanker_Mode source.Mode?",
+          "jit_requires": [
+            "kPeacebringer_Tanker_Mode",
+            "source.Mode?"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,

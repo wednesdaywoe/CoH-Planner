@@ -26,7 +26,14 @@ export const Spin: Power = {
   "targetsAffected": [
     "Foe"
   ],
-  "maxTargetsExpression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
+  "maxTargetsExpression": [
+    "16",
+    "kDisable_GauntletTargetCap",
+    "Source.Mode?",
+    "6",
+    "*",
+    "-"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 12,
@@ -55,8 +62,8 @@ export const Spin: Power = {
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Damage","Lethal",1.89,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",1.89,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Fire",0.8505,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Damage","Lethal",1.3139,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",1.3139,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
   ]
 };

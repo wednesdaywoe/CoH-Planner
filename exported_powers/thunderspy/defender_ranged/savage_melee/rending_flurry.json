@@ -45,10 +45,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     108,
     120
@@ -57,12 +57,17 @@
   "redirect": [
     {
       "name": "Pets.Brute_Savage_Melee.Rending_Flurry_Large",
-      "condition_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 5 ==",
+      "condition_expression": [
+        "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy",
+        "source.ownPowerNum?",
+        "5",
+        "=="
+      ],
       "show_in_info": false
     },
     {
       "name": "Pets.Brute_Savage_Melee.Rending_Flurry_Normal",
-      "condition_expression": "Always",
+      "condition_expression": [],
       "show_in_info": true
     }
   ],

@@ -61,7 +61,9 @@ export const DefensiveAdaptation: Power = {
     ["DamageBuff","Toxic",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "Scrapper_Defense.Bio_Organic_Armor.Evolution",
+  "requires": [
+    "Scrapper_Defense.Bio_Organic_Armor.Evolution"
+  ],
   "setsModes": [
     "DefensiveAdaptation"
   ]

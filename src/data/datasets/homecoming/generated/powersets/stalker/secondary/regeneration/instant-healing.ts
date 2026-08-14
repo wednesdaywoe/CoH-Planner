@@ -62,5 +62,8 @@ export const InstantHealing: Power = {
     ["Regeneration",null,2,1,90,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
-  "requires": "Stalker_Defense.Regeneration.Instant_Regeneration !"
+  "requires": [
+    "Stalker_Defense.Regeneration.Instant_Regeneration",
+    "!"
+  ]
 };

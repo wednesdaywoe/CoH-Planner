@@ -24,8 +24,34 @@ export const InsulatingCircuit: Power = {
     "Friend",
     "Self"
   ],
-  "chainTargetExpression": "101 kHitPoints% target> - enttype maintarget> enttype target> eq 99 * 1 + * 1 prevdistance / +",
-  "maxTargetsExpression": "4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +",
+  "chainTargetExpression": [
+    "101",
+    "kHitPoints%",
+    "target>",
+    "-",
+    "enttype",
+    "maintarget>",
+    "enttype",
+    "target>",
+    "eq",
+    "99",
+    "*",
+    "1",
+    "+",
+    "*",
+    "1",
+    "prevdistance",
+    "/",
+    "+"
+  ],
+  "maxTargetsExpression": [
+    "4",
+    "Redirects.Shock_Therapy.Shock_Therapy_Static",
+    "source.ownPowerNum?",
+    "3",
+    "*",
+    "+"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

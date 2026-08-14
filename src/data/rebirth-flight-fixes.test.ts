@@ -77,10 +77,14 @@ describe('Rebirth Flight pool bonus-power fixes', () => {
   });
 
   // ---- Issue 2: Athletic Run is not granted on Rebirth -------------------
+  // Absence is DATA now, not a hand-written exclusion list: Rebirth's export has
+  // no Athletic Run record anywhere, so its generated inherent module has no
+  // entry to offer. The old `inherentRules.excludeInherents` was one name long
+  // and is what let Thunderspy go on being offered all three runs (INHERENT-4).
   it('Athletic Run is excluded from Rebirth inherents', () => {
-    expect(getInherentPowers().some((p) => p.internalName === 'Athletic_Run')).toBe(false);
-    expect(getInherentPowerDef('Athletic_Run')).toBeUndefined();
+    expect(getInherentPowers().some((p) => p.internalName === 'Prestige_Athletic_Run')).toBe(false);
+    expect(getInherentPowerDef('Prestige_Athletic_Run')).toBeUndefined();
     // Sibling prestige runs are unaffected.
-    expect(getInherentPowerDef('Ninja_Run')).toBeDefined();
+    expect(getInherentPowerDef('Prestige_Ninja_Run')).toBeDefined();
   });
 });

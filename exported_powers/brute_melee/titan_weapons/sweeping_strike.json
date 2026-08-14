@@ -50,10 +50,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     112,
     116
@@ -62,12 +62,17 @@
   "redirect": [
     {
       "name": "Villain_Pets.Titan_Weapons_Brute.Sweeping_Strike_Fast",
-      "condition_expression": "kFastMode Source.Mode?",
+      "condition_expression": [
+        "kFastMode",
+        "Source.Mode?"
+      ],
       "show_in_info": true
     },
     {
       "name": "Villain_Pets.Titan_Weapons_Brute.Sweeping_Strike_Slow",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

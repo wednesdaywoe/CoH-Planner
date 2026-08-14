@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
 const { isPvpOnlyGroup: isPvpOnlyByRequires } = require('./_pv-scope.cjs');
+const { gateText } = require('./_gate-tokens.cjs');
 
 const datasetId = parseDatasetArg();
 
@@ -815,7 +816,7 @@ function isPvpOnlyGroup(effectGroup) {
   if (!effectGroup) return false;
   if (effectGroup.is_pvp === 'PVP_ONLY') return true;
   if (isPvpOnlyByRequires(effectGroup)) return true;
-  return isPvpMapOnly(effectGroup.requires_expression || '');
+  return isPvpMapOnly(gateText(effectGroup.requires_expression));
 }
 
 /**
@@ -835,7 +836,7 @@ function isPvpOnlyGroup(effectGroup) {
  * Widening it needs its own audit of every pet damage number.
  */
 function isTargetTokenWindowGroup(effectGroup) {
-  const req = effectGroup?.requires_expression || '';
+  const req = gateText(effectGroup?.requires_expression);
   return /\btarget\.TokenTime>/.test(req);
 }
 
@@ -1326,7 +1327,7 @@ function buildPetUpgradeMap() {
             // tier-3 set when you also hold Tactical Upgrade; attributing that
             // to Equip would light tier 3 up for a build that never took the
             // second upgrade.
-            const requires = `${template.jit_requires || ''} ${group.requires_expression || ''}`;
+            const requires = `${gateText(template.jit_requires)} ${gateText(group.requires_expression)}`;
             if (/\bownPower\b/.test(requires)) continue;
             for (const name of names) {
               const target = splitPowerFullName(name);

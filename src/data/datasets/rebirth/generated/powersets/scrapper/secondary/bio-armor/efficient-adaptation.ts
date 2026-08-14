@@ -39,7 +39,9 @@ export const EfficientAdaptation: Power = {
   "atoms": [
     ["Meta",null,1,112,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"]
   ],
-  "requires": "Scrapper_Defense.Bio_Organic_Armor.Evolution",
+  "requires": [
+    "Scrapper_Defense.Bio_Organic_Armor.Evolution"
+  ],
   "setsModes": [
     "RestedAdaptation"
   ]

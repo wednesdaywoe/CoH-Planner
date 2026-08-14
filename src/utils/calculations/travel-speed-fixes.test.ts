@@ -130,7 +130,7 @@ describe('travel-speed fixes (HC)', () => {
   });
 
   it('Ninja Run + Super Speed: run speed is the strongest TravelBuff (350), not the sum (490)', () => {
-    const ninja = getInherentPowerDef('Ninja_Run')!;
+    const ninja = getInherentPowerDef('Prestige_Ninja_Run')!;
     const b = makeBuild({
       pools: [{ id: 'speed', powers: [poolPower('speed', 'Super_Speed')] }],
       inherents: [{ ...ninja, powerSet: 'Inherent', level: 1, isActive: true, slots: [] }],

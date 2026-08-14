@@ -18,7 +18,8 @@
 
 import type { SelectedPower, Power, PowerEffects } from '@/types';
 import { hasSelfDirectedPenalty } from '@/types';
-import { atomsOf } from '@/data/core/atom-query';
+import { atomsOf, reachesCaster } from '@/data/core/atom-query';
+import type { AtomicEffect } from '@/data/core/atomic-effect';
 import type { EnhancementBonuses } from './enhancement-values';
 
 /**
@@ -59,13 +60,12 @@ export type RecastBehavior = 'refreshes' | 'stacks';
  * the only place the export records *whose* clock the flavour governs.
  */
 export function recastVerdict(power: Power | SelectedPower, seconds: number): RecastBehavior | undefined {
-  const foeTargeting = targetsAFoe(power);
   let refreshes = false;
   let stacks = false;
   for (const atom of atomsOf(power)) {
     if (!atom.duration) continue;
     if (Math.abs(atom.duration - seconds) > DURATION_MATCH_TOLERANCE) continue;
-    if (!landsOnCaster(atom, foeTargeting)) continue;
+    if (!atomReachesCaster(atom, power)) continue;
     switch (atom.stacking) {
       case 'Replace':
       case 'Refresh':
@@ -207,28 +207,19 @@ const SELF_PENALTY_KEYS = ['damageDebuff', 'rechargeDebuff', 'tohitDebuff', 'acc
 const DURATION_MATCH_TOLERANCE = 1e-3;
 
 /**
- * Whether the power is aimed at an enemy, over the export's own `targetType`
- * vocabulary. This gates the whole veto, because `toWho: 'Target'` means
- * "whoever this power is aimed at" and NOT "an enemy": on a team buff the target
- * is a teammate and the caster is normally among them. Reading that value as
- * foe-directed silently deletes the ring from the archetypal perma powers —
- * Accelerate Metabolism, Chrono Shift and Farsight all carry `targetType: 'Self'`
- * with atoms aimed at `Target`.
+ * Whether an atom's effect reaches the caster. `notOnCaster` is explicit and
+ * decides on its own. An absent or `Unspecified` target proves nothing and reads
+ * as "reaches the caster", so missing evidence can never manufacture a veto.
+ * Every named recipient goes through `reachesCaster`: the anchored ones answer
+ * for themselves, and a `Target` atom resolves through the power's own
+ * `targetsAffected` (TARGETS-3). That join replaces the old `targetType`
+ * foe-guess, which read "whoever this power is aimed at" as "an enemy" and only
+ * survived because the archetypal perma powers carry `targetType: 'Self'`.
  */
-function targetsAFoe(power: Power | SelectedPower): boolean {
-  return power.targetType?.startsWith('Foe') ?? false;
-}
-
-/**
- * Whether an atom's effect reaches the caster. The two signals carry different
- * weight: `notOnCaster` is explicit and decides on its own, while `toWho:
- * 'Target'` excludes the caster only when the target is an enemy. An absent or
- * `Unspecified` target proves nothing and reads as "reaches the caster", so
- * missing evidence can never manufacture a veto.
- */
-function landsOnCaster(atom: { toWho?: string; notOnCaster?: boolean }, foeTargeting: boolean): boolean {
+function atomReachesCaster(atom: AtomicEffect, power: Power | SelectedPower): boolean {
   if (atom.notOnCaster === true) return false;
-  return atom.toWho === 'Target' ? !foeTargeting : true;
+  if (!atom.toWho || atom.toWho === 'Unspecified') return true;
+  return reachesCaster(atom, power);
 }
 
 /**
@@ -244,14 +235,13 @@ function landsOnCaster(atom: { toWho?: string; notOnCaster?: boolean }, foeTarge
  * caster's own.
  */
 function casterHoldsStateAt(power: Power | SelectedPower, seconds: number): boolean | undefined {
-  const foeTargeting = targetsAFoe(power);
   let accounted = false;
   let caster = false;
   for (const atom of atomsOf(power)) {
     if (!atom.duration) continue;
     if (Math.abs(atom.duration - seconds) > DURATION_MATCH_TOLERANCE) continue;
     accounted = true;
-    caster = caster || landsOnCaster(atom, foeTargeting);
+    caster = caster || atomReachesCaster(atom, power);
   }
   return accounted ? caster : undefined;
 }
@@ -358,8 +348,7 @@ function selfStateWindow(power: Power | SelectedPower, effects: PowerEffects): n
 function hasCasterState(power: Power | SelectedPower, effects: PowerEffects): boolean {
   if (!hasSelfStateSlot(effects)) return false;
   const atoms = atomsOf(power);
-  const foeTargeting = targetsAFoe(power);
-  return atoms.length === 0 || atoms.some((atom) => landsOnCaster(atom, foeTargeting));
+  return atoms.length === 0 || atoms.some((atom) => atomReachesCaster(atom, power));
 }
 
 /**

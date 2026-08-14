@@ -38,26 +38,25 @@ export const EquipMercenary: Power = {
     "Endurance Modification",
     "Mastermind Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
+    "Recharge Intensive Pets"
   ],
   "maxSlots": 6,
   "effects": {},
   "atoms": [
     ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Soldier target.VillainName> Mastermind_Summon.Mercenaries.Tactical_Upgrade source.ownPower? ! &&",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Soldier target.VillainName> Mastermind_Summon.Mercenaries.Tactical_Upgrade source.ownPower? &&",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Soldier target.VillainName>",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Medic target.VillainName>",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Medic target.VillainName>",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Medic target.VillainName>",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Spec_Ops target.VillainName>",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Spec_Ops target.VillainName>",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Spec_Ops target.VillainName>",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Commando target.VillainName>",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Commando target.VillainName>",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Commando target.VillainName>",true],
-    ["Mez","Evade",100,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,"MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||",true]
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Soldier","target.VillainName>","Mastermind_Summon.Mercenaries.Tactical_Upgrade","source.ownPower?","!","&&"],true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Soldier","target.VillainName>","Mastermind_Summon.Mercenaries.Tactical_Upgrade","source.ownPower?","&&"],true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Soldier","target.VillainName>"],true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Medic","target.VillainName>"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Medic","target.VillainName>"],true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Medic","target.VillainName>"],true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Spec_Ops","target.VillainName>"],true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Spec_Ops","target.VillainName>"],true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Spec_Ops","target.VillainName>"],true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Commando","target.VillainName>"],true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Commando","target.VillainName>"],true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Commando","target.VillainName>"],true],
+    ["Mez","Evade",100,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["MastermindPets_Soldier","target.VillainName>","MastermindPets_Medic","target.VillainName>","||","MastermindPets_Spec_Ops","target.VillainName>","||","MastermindPets_Commando","target.VillainName>","||"],true]
   ],
   "mechanicType": "parentMechanic"
 };

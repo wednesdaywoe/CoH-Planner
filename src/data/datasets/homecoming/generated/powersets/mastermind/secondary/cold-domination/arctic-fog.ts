@@ -167,8 +167,8 @@ export const ArcticFog: Power = {
     ["Movement","Jump",0.6,1,0.75,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","JumpHeight",0.6,1,0.75,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,0.6,1,0.75,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Stealth","RadiusPvP",390,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked target.EventTimeSince> 10 > HitByFoe target.EventTimeSince> 10 > && MissionObjectClick target.EventTimeSince> 10 > &&",null,null,true,null,"StealthToggle"],
-    ["Stealth","RadiusPvE",35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","MissionObjectClick target.EventTimeSince> 10 >",null,null,true,null,"StealthToggle"],
+    ["Stealth","RadiusPvP",390,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","target.EventTimeSince>","10",">","HitByFoe","target.EventTimeSince>","10",">","&&","MissionObjectClick","target.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
+    ["Stealth","RadiusPvE",35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["MissionObjectClick","target.EventTimeSince>","10",">"],null,null,true,null,"StealthToggle"],
     ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"]
   ],
   "setsModes": [

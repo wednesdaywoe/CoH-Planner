@@ -126,7 +126,8 @@ def test_every_group_carries_an_on_vocabulary_verdict():
                     offenders.append(f'{name}: field absent')
             elif pv not in VOCAB:
                 if len(offenders) < 5:
-                    offenders.append(f'{name}: {pv} — {g.get("requires_expression")}')
+                    offenders.append(
+                        f'{name}: {pv} — {" ".join(g.get("requires_expression") or ())}')
         assert total >= GROUP_FLOOR[fork], (
             f'{fork}: only {total} effect groups, floor {GROUP_FLOOR[fork]} — '
             f'this guard is reading less than it should')
@@ -149,7 +150,7 @@ def test_the_negated_clause_reads_pve_not_pvp():
     seen_large = seen_small = 0
     for fork in FORKS:
         for name, g in _walk(fork):
-            expr = g.get('requires_expression') or ''
+            expr = ' '.join(g.get('requires_expression') or ())
             if expr == _CRIT_LARGE:
                 seen_large += 1
                 assert g['requires_pv'] == 'PVE_ONLY', (
@@ -170,7 +171,7 @@ def test_the_bare_clause_still_reads_pvp():
     n = 0
     for fork in FORKS:
         for name, g in _walk(fork):
-            if (g.get('requires_expression') or '') == 'enttype target> player eq':
+            if (g.get('requires_expression') or []) == ['enttype', 'target>', 'player', 'eq']:
                 n += 1
                 assert g['requires_pv'] == 'PVP_ONLY', (
                     f'{fork} {name}: bare player clause read as {g["requires_pv"]}')
@@ -187,7 +188,7 @@ def test_a_disjunct_clause_constrains_nothing():
     n = 0
     for fork in FORKS:
         for name, g in _walk(fork):
-            expr = g.get('requires_expression') or ''
+            expr = ' '.join(g.get('requires_expression') or ())
             if expr.startswith('Raid target.HasTag? enttype target> player eq ||'):
                 n += 1
                 assert g['requires_pv'] == 'EITHER', (
@@ -204,7 +205,7 @@ def test_the_entity_type_test_is_case_insensitive():
     n = 0
     for fork in FORKS:
         for name, g in _walk(fork):
-            expr = g.get('requires_expression') or ''
+            expr = ' '.join(g.get('requires_expression') or ())
             if expr == 'enttype target> Critter eq':
                 n += 1
                 assert g['requires_pv'] == 'PVE_ONLY', (
@@ -223,7 +224,7 @@ def test_the_structural_read_still_disagrees_with_a_token_scan():
         flips = 0
         for name, g in _walk(fork):
             if g.get('requires_pv') != _substring_verdict(
-                    g.get('requires_expression') or ''):
+                    ' '.join(g.get('requires_expression') or ())):
                 flips += 1
         assert flips >= FLIP_FLOOR[fork], (
             f'{fork}: only {flips} groups where the structural verdict differs '
@@ -251,11 +252,11 @@ def test_fork_is_pvp_tracks_requires_pv_except_the_two_carve_outs():
             pv, is_pvp = g.get('requires_pv'), g.get('is_pvp')
             if pv == is_pvp:
                 continue
-            expr = (g.get('requires_expression') or '').lower()
+            expr = ' '.join(g.get('requires_expression') or ()).lower()
             tmpls = g.get('templates') or []
             self_excl = (_SELF_EXCLUSION in expr
                          and any(t.get('target') == 'Self' for t in tmpls))
-            map_gated = any('isPVPMap?' in (t.get('jit_requires') or '')
+            map_gated = any('isPVPMap?' in (t.get('jit_requires') or [])
                             for t in tmpls)
             if self_excl or map_gated:
                 carve_outs += 1

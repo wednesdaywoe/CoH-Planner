@@ -58,8 +58,8 @@ export const Stalagmite: Power = {
     }
   },
   "atoms": [
-    ["Mez","Stunned",6,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Smashing",0.75,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+    ["Mez","Stunned",6,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Smashing",0.75,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
   ],
   "modeVariants": {
     "SeismicPower": {
@@ -89,9 +89,9 @@ export const Stalagmite: Power = {
       "targetType": "Foe",
       "powerType": "Click",
       "atoms": [
-        ["Mez","Stunned",6,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-        ["Damage","Smashing",2.92,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-        ["RechargePower",null,-1,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 1 >=",null,null,null,null,null,null,null,null,null,"Seismic"]
+        ["Mez","Stunned",6,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+        ["Damage","Smashing",2.92,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+        ["RechargePower",null,-1,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["NearGround","source.EventTimeSince>","1",">="],null,null,null,null,null,null,null,null,null,"Seismic"]
       ]
     }
   }

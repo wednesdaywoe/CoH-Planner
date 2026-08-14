@@ -62,18 +62,25 @@ export const TouchofFear: Power = {
     }
   },
   "atoms": [
-    ["DamageBuff","Smashing",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
-    ["DamageBuff","Lethal",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
-    ["DamageBuff","Fire",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
-    ["DamageBuff","Cold",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
-    ["DamageBuff","Energy",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
-    ["DamageBuff","Negative",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
-    ["DamageBuff","Psionic",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"],
-    ["DamageBuff","Toxic",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance"]
+    ["DamageBuff","Smashing",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance",null,null,["Self"]],
+    ["DamageBuff","Lethal",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance",null,null,["Self"]],
+    ["DamageBuff","Fire",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance",null,null,["Self"]],
+    ["DamageBuff","Cold",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance",null,null,["Self"]],
+    ["DamageBuff","Energy",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance",null,null,["Self"]],
+    ["DamageBuff","Negative",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance",null,null,["Self"]],
+    ["DamageBuff","Psionic",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance",null,null,["Self"]],
+    ["DamageBuff","Toxic",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance",null,null,["Self"]]
   ],
   "formVariants": [
     {
-      "condition": "target.isFriend? ! distance 79 < &&",
+      "condition": [
+        "target.isFriend?",
+        "!",
+        "distance",
+        "79",
+        "<",
+        "&&"
+      ],
       "internalName": "Touch_of_the_Beyond_Foe",
       "stats": {
         "accuracy": 1.2,
@@ -439,7 +446,12 @@ export const TouchofFear: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Mez",
@@ -464,7 +476,12 @@ export const TouchofFear: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Mez",
@@ -489,7 +506,12 @@ export const TouchofFear: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Mez",
@@ -514,7 +536,12 @@ export const TouchofFear: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Mez",
@@ -539,7 +566,12 @@ export const TouchofFear: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ]
       ]
     }

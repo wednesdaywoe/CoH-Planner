@@ -45,7 +45,7 @@ export const Detonator: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq Human target.HasTag? ! &&",true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq Human target.HasTag? &&",true]
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["group","target>","MastermindPets","eq","Human","target.HasTag?","!","&&"],true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["group","target>","MastermindPets","eq","Human","target.HasTag?","&&"],true]
   ]
 };

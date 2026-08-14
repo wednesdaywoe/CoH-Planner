@@ -60,10 +60,10 @@ export const SmokeFlash: Power = {
     }
   },
   "atoms": [
-    ["Stealth","RadiusPvE",54,1,4,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Stealth","RadiusPvP",500,1,4,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Stealth","Translucency",0.2,1,4,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
-    ["GlobalChanceMod",null,1,1,4,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
+    ["Stealth","RadiusPvE",54,1,4,"Ranged_Ones","Cur","Magnitude","TargetAndPets","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Stealth","RadiusPvP",500,1,4,"Ranged_Ones","Cur","Magnitude","TargetAndPets","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Stealth","Translucency",0.2,1,4,"Ranged_Ones","Cur","Magnitude","TargetAndPets","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,1,1,4,"Melee_Ones","Cur","Magnitude","TargetAndPets","Any",false,"Replace",2,null,null,1,null,true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
   ]
 };

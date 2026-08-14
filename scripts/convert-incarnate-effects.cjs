@@ -20,6 +20,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const { gateText } = require('./_gate-tokens.cjs');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
 const { isPvpOnlyGroup: isPvpOnlyByRequires } = require('./_pv-scope.cjs');
 const datasetId = parseDatasetArg();
@@ -653,7 +654,7 @@ function extractDestiny() {
     let healScale = 0;
     let healTable = '';
     for (const eff of data.effects || []) {
-      const req = eff.requires_expression || '';
+      const req = gateText(eff.requires_expression);
       const pvpByMode = isExplicitPvpOnlyGroup(eff);
       const pvpByReq = isPvpMapOnlyRequires(req) || isPvpOnlyByRequires(eff);
       for (const t of eff.templates || []) {
@@ -883,7 +884,7 @@ function extractHybrid() {
     const seenContribs = new Set();
 
     for (const eff of data.effects || []) {
-      const req = eff.requires_expression || '';
+      const req = gateText(eff.requires_expression);
       const pvpByMode = isExplicitPvpOnlyGroup(eff);
       const pvpByReq = isPvpMapOnlyRequires(req) || isPvpOnlyByRequires(eff);
 

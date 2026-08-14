@@ -62,5 +62,10 @@ export const Vortex: Power = {
   "atoms": [
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "accesslevel char> 0 >="
+  "requires": [
+    "accesslevel",
+    "char>",
+    "0",
+    ">="
+  ]
 };

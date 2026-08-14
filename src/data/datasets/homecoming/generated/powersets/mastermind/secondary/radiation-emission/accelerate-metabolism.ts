@@ -127,7 +127,7 @@ export const AccelerateMetabolism: Power = {
     ["Endurance",null,1.5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,1.5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Movement","Run",0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Movement","Fly",0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"]
+    ["Movement","Run",0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],
+    ["Movement","Fly",0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]]
   ]
 };

@@ -46,21 +46,28 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [],
   "effects": [],
   "redirect": [
     {
       "name": "Redirects.Willpower.Resurgence_Concious",
-      "condition_expression": "Cur.kHitPoints source> 0 >",
+      "condition_expression": [
+        "Cur.kHitPoints",
+        "source>",
+        "0",
+        ">"
+      ],
       "show_in_info": true
     },
     {
       "name": "Redirects.Willpower.Resurgence",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

@@ -57,7 +57,7 @@ interface LegacyPoolPower {
    *  totals — must be carried through the transform or that filter sees
    *  undefined and the buff leaks into self stats. */
   targetType?: string;
-  requires?: string;
+  requires?: string[];
   maxSlots: number;
   allowedEnhancements: string[];
   allowedSetCategories: string[];
@@ -85,7 +85,7 @@ interface LegacyPowerPool {
   displayName?: string;
   description: string;
   icon: string;
-  requires?: string;
+  requires?: string[];
   powers: LegacyPoolPower[];
 }
 
@@ -314,7 +314,7 @@ export function getPoolPowersAvailableAtLevel(poolId: string, level: number): Po
 export function getPoolEntryPowers(poolId: string): Power[] {
   const pool = getPowerPool(poolId);
   if (!pool) return [];
-  return pool.powers.filter((p) => p.available === 0 && (!p.requires || p.requires === ''));
+  return pool.powers.filter((p) => p.available === 0 && !p.requires?.length);
 }
 
 /**
@@ -332,12 +332,12 @@ export function arePoolPrerequisitesMet(
   if (!power) return false;
 
   // No requires means no prerequisites
-  if (!power.requires || power.requires === '') return true;
+  if (!power.requires?.length) return true;
 
   // Parse the requires expression
   // Format: "Pool.Speed.Flurry && Pool.Speed.Hasten || Pool.Speed.Flurry && Pool.Speed.Super_Speed"
   // Or count: "Pool.Force_of_Will.Mighty_Leap + Pool.Force_of_Will.Project_Will + ... > 1"
-  const requiresExpr = power.requires;
+  const tokens = power.requires;
 
   // Helper: resolve a "Pool.X.Power_Name" atom to its internalName (last segment)
   const resolveAtom = (atom: string): string => {
@@ -352,8 +352,6 @@ export function arePoolPrerequisitesMet(
   //                                            (count of selected from set) > N.
   // Splitting on `||`/`&&`/`+` as infix mangles compound atoms like
   // "Pool.X.A Pool.X.B" into one token whose last segment is just B.
-  const trimmed = requiresExpr.trim();
-  const tokens = trimmed.split(/\s+/);
   const lastTok = tokens[tokens.length - 1];
   const isBoolRpn = lastTok === '!' || lastTok === '&&' || lastTok === '||';
   const isCountRpn = lastTok === '>' || lastTok === '>=' || lastTok === '<' || lastTok === '<=';
@@ -408,6 +406,12 @@ export function arePoolPrerequisitesMet(
     }
     return false;
   }
+
+  // Infix fallbacks below parse a LEGACY hand-edited grammar, not the game's RPN — its
+  // operators sit between their operands and its atoms are dotted power paths with no
+  // spaces, so joining and re-splitting is the format's own round trip rather than the
+  // token-boundary guess COND-8 was about.
+  const requiresExpr = tokens.join(' ');
 
   // Infix count expression fallback: "A + B + C > N"
   if (requiresExpr.includes('>') && requiresExpr.includes('+')) {

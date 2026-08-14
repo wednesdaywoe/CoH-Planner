@@ -55,7 +55,10 @@ export const Serum: Power = {
       "damageBuff": 60,
       "hold": 60,
       "immobilize": 60,
+      "knockback": 60,
+      "knockup": 60,
       "recoveryBuff": 60,
+      "repel": 60,
       "resistance": 60,
       "sleep": 60,
       "stun": 60,
@@ -74,9 +77,24 @@ export const Serum: Power = {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
+    "knockback": {
+      "ignoreStrength": true,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "knockup": {
+      "ignoreStrength": true,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
     "recoveryBuff": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "repel": {
+      "ignoreStrength": true,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
     },
     "resistance": {
       "cold": {
@@ -126,33 +144,33 @@ export const Serum: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Resistance","Lethal",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Resistance","Fire",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Resistance","Cold",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Resistance","Energy",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Resistance","Negative",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Resistance","Toxic",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Mez","Held",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Mez","Immobilized",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Mez","Stunned",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Mez","Sleep",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Mez","Knockup",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Mez","Knockback",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["Mez","Repel",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
-    ["DamageBuff","Smashing",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Lethal",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Fire",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Cold",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Energy",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Negative",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Psionic",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Toxic",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Radiation",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Electrical",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Sonic",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["DamageBuff","Quantum",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["ToHit",null,1,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
-    ["Recovery",null,1,1,60,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"]
+    ["Resistance","Smashing",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Resistance","Lethal",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Resistance","Fire",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Resistance","Cold",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Resistance","Energy",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Resistance","Negative",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Resistance","Toxic",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Mez","Held",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Mez","Immobilized",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Mez","Stunned",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Mez","Sleep",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Mez","Knockup",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Mez","Knockback",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["Mez","Repel",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Resistances"],
+    ["DamageBuff","Smashing",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Lethal",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Fire",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Cold",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Energy",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Negative",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Psionic",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Toxic",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Radiation",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Electrical",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Sonic",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["DamageBuff","Quantum",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["ToHit",null,1,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"],
+    ["Recovery",null,1,1,60,"Ranged_Ones","Cur","Magnitude","TargetAndPets","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Offensive"]
   ]
 };

@@ -58,7 +58,7 @@ export const PackFrenzy: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,0.1,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
+    ["ToHit",null,0.1,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"]],
     ["DamageBuff","Smashing",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -68,7 +68,7 @@ export const PackFrenzy: Power = {
     ["DamageBuff","Toxic",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
-    ["RechargeTime",null,0.25,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true]
+    ["RechargeTime",null,0.25,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true]
   ],
   "conditionalEffects": [
     {

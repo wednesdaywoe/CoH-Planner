@@ -80,5 +80,18 @@ export const ActiveDefense: Power = {
     ["Elusivity","Melee",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
-  "requires": "Scrapper_Melee.Claws Scrapper_Melee.Katana || Scrapper_Melee.Dual_Blades || Scrapper_Melee.Quills || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Titan_Weapons || !"
+  "requires": [
+    "Scrapper_Melee.Claws",
+    "Scrapper_Melee.Katana",
+    "||",
+    "Scrapper_Melee.Dual_Blades",
+    "||",
+    "Scrapper_Melee.Quills",
+    "||",
+    "Scrapper_Melee.Staff_Fighting",
+    "||",
+    "Scrapper_Melee.Titan_Weapons",
+    "||",
+    "!"
+  ]
 };

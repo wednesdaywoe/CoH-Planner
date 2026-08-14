@@ -70,5 +70,8 @@ export const BuildUp: Power = {
     ["DamageBuff","Negative",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
-  "requires": "Widow_Training.Widow_Training.Follow_Up !"
+  "requires": [
+    "Widow_Training.Widow_Training.Follow_Up",
+    "!"
+  ]
 };

@@ -77,7 +77,10 @@ export const RockArmor: Power = {
     ["Elusivity","Smashing",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Elusivity","Lethal",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
-  "requires": "Brute_Melee.Claws !",
+  "requires": [
+    "Brute_Melee.Claws",
+    "!"
+  ],
   "modesSuspended": [
     "Granite_Mode"
   ]

@@ -27,14 +27,22 @@
  */
 
 import type { Power } from '@/types/power';
-import { decodeAtoms, type AtomicEffect, type EffectType } from './atomic-effect';
+import { decodeAtoms, landsOnCaster, type AtomicEffect, type EffectType } from './atomic-effect';
 
 /**
  * The atom helpers only touch `power.atoms`, so they accept anything carrying it
  * — a full `Power`, a `PowerWithToggle` in the calc loop, a redirect variant.
  * Narrowing the parameter here avoids forcing callers to hold a complete `Power`.
  */
-type AtomSource = Pick<Power, 'atoms'>;
+/**
+ * What a reader here needs off a Power: its atom list, and the targets that resolve the
+ * pronoun in an `AnyAffected` atom ({@link reachesCaster}). `targetsAffected` is optional on
+ * `Power` and present on 100% of the generated corpus; a hand-built source that omits it
+ * reads as a power affecting nobody, so every `toWho: 'Target'` atom on it answers "does not
+ * reach the caster". That is the safe direction, and `scripts/planb-shadow-targets3.cjs`
+ * asserts the corpus never relies on it.
+ */
+type AtomSource = Pick<Power, 'atoms' | 'targetsAffected'>;
 
 // ============================================================================
 // Access
@@ -165,15 +173,16 @@ export function bySubType(atoms: readonly AtomicEffect[]): Map<string, AtomicEff
  * every routing site; miss one and a self-penalty silently becomes a foe debuff
  * (the Rage crash bug, found mechanically by the DSH6c gate — no user reported it).
  *
- * `'All'` (self *and* pets/allies) also lands on the caster and is included.
+ * Which recipients count is {@link landsOnCaster}'s call, not this one's — the reading
+ * used to be spelled out here and differently at a dozen other doors (TARGETS-2).
  */
 export function selfDirected(atoms: readonly AtomicEffect[]): AtomicEffect[] {
-  return atoms.filter((a) => a.toWho === 'Self' || a.toWho === 'All');
+  return atoms.filter(landsOnCaster);
 }
 
 /** The complement of {@link selfDirected} — values that land on the target only. */
 export function targetDirected(atoms: readonly AtomicEffect[]): AtomicEffect[] {
-  return atoms.filter((a) => a.toWho !== 'Self' && a.toWho !== 'All');
+  return atoms.filter((a) => !landsOnCaster(a));
 }
 
 /**
@@ -314,10 +323,11 @@ export function durationBuckets(atoms: readonly AtomicEffect[]): {
  */
 export function perTargetValueOf(
   atoms: readonly AtomicEffect[],
+  power: AtomSource,
 ): { scale: number; table: string; perTarget?: number } | undefined {
   if (!atoms.length) return undefined;
   const table = atoms.find((a) => a.modifierTable)?.modifierTable ?? '';
-  const pt = perTargetFromGroup(atoms, table);
+  const pt = perTargetFromGroup(atoms, table, power);
   if (pt) return pt;
   // No per-target increment: the sustained value is the longest-lived instance
   // (a burst+tail power's primary bucket), never the overlap sum.
@@ -382,12 +392,13 @@ export function perTargetValueOf(
 function perTargetFromGroup(
   atoms: readonly AtomicEffect[],
   table: string,
+  power: AtomSource,
 ): { scale: number; table: string; perTarget: number } | undefined {
   const increments = atoms.filter((a) => a.perTarget);
   if (!increments.length) return undefined;
   const perTarget = sumDistinctAbs(increments, (a) => a.perTarget ?? 0);
   const bases = atoms.filter((a) => !a.perTarget);
-  const selfIncrements = increments.filter((a) => a.toWho === 'Self' || a.toWho === 'All');
+  const selfIncrements = increments.filter((a) => reachesCaster(a, power));
   const scale = sumDistinctAbs(bases, (a) => a.scale) + sumDistinctAbs(selfIncrements, (a) => a.scale);
   return { scale, table, perTarget };
 }
@@ -418,7 +429,7 @@ export function toHitBuffValue(
       a.scale > 0 &&
       !(a.modifierTable || '').toLowerCase().includes('debuff'),
   );
-  return perTargetValueOf(atoms);
+  return perTargetValueOf(atoms, power);
 }
 
 /**
@@ -533,7 +544,7 @@ export function damageBuffValue(
   atoms = atoms.filter((a) => a.modifierTable === table);
 
   // per-target increments present → shared reconstruction (dedup + toWho N=1).
-  const pt = perTargetFromGroup(atoms, table);
+  const pt = perTargetFromGroup(atoms, table, power);
   if (pt) return pt;
 
   // No per-target increment: the headline is the value shared by the most damage
@@ -588,6 +599,102 @@ function isDebuffAtom(a: AtomicEffect): boolean {
 }
 
 /**
+ * The RPN clause `target ≠ source` — the game's way of saying "everyone the power
+ * reaches EXCEPT the one who cast it". Both operand orders and both equality tokens
+ * appear in the export.
+ *
+ * The `.owner` variants (`entref target.owner> entref source> eq !`) are deliberately
+ * not matched: those compare the target's OWNER, which is a question about pets, and
+ * no oracle here settles what the caster should get from one.
+ */
+function requiresExcludesSelf(req: string[]): boolean {
+  // Joined only to ask a question of it — a token boundary can neither create
+  // nor destroy this clause. Never split the result back apart (COND-8).
+  const squashed = req.join(' ');
+  return [
+    'entref target> entref source> eq !',
+    'entref source> entref target> eq !',
+    'entref target> entref source> == !',
+    'entref source> entref target> == !',
+  ].some((clause) => squashed.includes(clause));
+}
+
+/**
+ * Does this atom reach everyone the power hits EXCEPT the caster?
+ *
+ * Two fields have to agree, and reading either alone gets it wrong. Shield Defense's
+ * Grant Cover and Shield Defense's Phalanx Fighting both carry the `target ≠ source`
+ * clause, but Grant Cover's defense rows are aimed at `Target` (the ally standing in
+ * the sphere) while Phalanx's are aimed at `Self` — Phalanx counts nearby allies to
+ * size a buff it then hands to the caster. So the clause alone would delete Phalanx,
+ * and the recipient alone would keep Grant Cover.
+ *
+ * `Unspecified` is not treated as `Target`: an unstated recipient is unstated, and
+ * guessing one here would fabricate the very discriminator this function reads.
+ */
+export function excludesCaster(a: AtomicEffect): boolean {
+  return (
+    !landsOnCaster(a) && a.toWho !== 'Unspecified' &&
+    !!a.requiresExpression?.length &&
+    requiresExcludesSelf(a.requiresExpression)
+  );
+}
+
+/**
+ * Does this atom's gate say the target is somebody the caster is not?
+ *
+ * The power's `targetsAffected` is a union over the whole power, so it says the caster is
+ * somewhere in the target list, never that THIS mod lands on him. What narrows it is the mod's
+ * own `Requires`, and three clause families in the corpus do that. Measured over every gate
+ * carried by a `Target` atom of a power whose targets name `Self` (54 distinct gates across the
+ * three forks), these three are the whole vocabulary of clauses that speak about who the target
+ * IS:
+ *
+ *  - `target != source` — the caster by name, {@link requiresExcludesSelf}.
+ *  - `enttype target> critter eq` — the target is a critter, and a player caster is not. This is
+ *    how Homecoming writes Force of Thunder's knockdown and Reaction Time's `-1` run cap, both on
+ *    `['Foe', 'Self']` powers.
+ *  - `target.isFriend? !` — the target is not an ally, and you are your own ally. Thunderspy's
+ *    Anguishing Cry debuffs eight resistances this way on an `['Any', 'Self']` power, so without
+ *    this term the caster reads `-3` resistance to everything.
+ *
+ * Every other gate in that corpus is about WHEN the mod fires or about the caster's own state
+ * (`isPVPMap?`, `arch source>`, the mode and token gates, the event timers), which is a question
+ * no recipient test should be answering.
+ */
+function gateExcludesCaster(a: AtomicEffect): boolean {
+  const req = a.requiresExpression;
+  if (!req?.length) return false;
+  // Joined only to ask a question of it — never split back apart (COND-8).
+  const squashed = req.join(' ');
+  return (
+    requiresExcludesSelf(req) ||
+    squashed.includes('enttype target> critter eq') ||
+    squashed.includes('target.isFriend? !')
+  );
+}
+
+/**
+ * Does this atom land on the CASTER once the power resolves the pronoun in it?
+ *
+ * {@link landsOnCaster} can only answer for the recipients that name somebody. `AnyAffected`
+ * (the atom's `'Target'`) names nobody: it means "whoever this power affects", so the identical
+ * spelling is the caster on Maneuvers and the yanked foe on Wormhole. What settles it is the
+ * power's own `targetsAffected`, which no atom carries because it is a POWER-level field
+ * (TARGETS-3) — except when a collector pulled the atom out of another power's file, and then
+ * {@link AtomicEffect.ownerTargets} carries that power's list instead.
+ *
+ * Not every site wants this question. A reader rebuilding what a power GRANTS (the defense a
+ * team buff hands its targets, shown on the power card) is not asking about the caster, and the
+ * ally-buff powers are exactly where the two questions come apart.
+ */
+export function reachesCaster(a: AtomicEffect, power: AtomSource): boolean {
+  if (a.toWho !== 'Target' && a.toWho !== 'TargetOnly') return landsOnCaster(a);
+  const targets = a.ownerTargets ?? power.targetsAffected ?? [];
+  return targets.includes('Self') && !gateExcludesCaster(a);
+}
+
+/**
  * The atom-native `effects.resistance` — the per-damage-type +resistance BUFF the
  * calc reads today (line ~1258 of character-totals.ts), reconstructed from atoms.
  * Returns an object keyed by lowercase damage type (`{ smashing: { scale, table,
@@ -618,7 +725,7 @@ export function resistanceBuffValue(
   if (!atoms.length) return undefined;
   const out: Record<string, { scale: number; table: string; perTarget?: number }> = {};
   for (const [type, group] of bySubType(atoms)) {
-    const v = perTargetValueOf(group);
+    const v = perTargetValueOf(group, power);
     if (v) out[type.toLowerCase()] = v;
   }
   return Object.keys(out).length ? out : undefined;
@@ -648,7 +755,7 @@ export function resistanceSelfDebuffValue(
       a.aspect === 'Res' &&
       RESIST_STD_SUBTYPES.has(a.subType ?? '') &&
       isDebuffAtom(a) &&
-      (a.toWho === 'Self' || a.toWho === 'All'),
+      reachesCaster(a, power),
   );
   if (!atoms.length) return undefined;
   const out: Record<string, { scale: number; table: string; toWho: 'Self' }> = {};
@@ -698,6 +805,7 @@ const DEFENSE_STD_SUBTYPES = new Set([
  */
 function defensePerTypeValue(
   group: readonly AtomicEffect[],
+  power: AtomSource,
 ): { scale: number; table: string; perTarget?: number } | undefined {
   const base = group.filter(isBagBase);
   const gatedIncr = group.filter((a) => a.gated && a.perTarget);
@@ -708,7 +816,7 @@ function defensePerTypeValue(
   if (increments.length) {
     const perTarget = sumDistinctAbs(increments, (a) => a.perTarget ?? 0);
     const bases = base.filter((a) => !a.perTarget);
-    const selfIncr = baseIncr.filter((a) => a.toWho === 'Self' || a.toWho === 'All');
+    const selfIncr = baseIncr.filter((a) => reachesCaster(a, power));
     const scale = sumDistinctAbs(bases, (a) => a.scale) + sumDistinctAbs(selfIncr, (a) => a.scale);
     return { scale, table, perTarget };
   }
@@ -731,6 +839,10 @@ function defensePerTypeValue(
  * from ALL atoms of the type (not just the base set) so {@link defensePerTypeValue}
  * can recover Phalanx's gated firstTargetExcluded increment; it re-filters `gated`
  * itself.
+ *
+ * {@link excludesCaster} drops the rows the power hands to everyone but the caster
+ * (Grant Cover's team defense). Phalanx Fighting carries the same `target ≠ source`
+ * clause and survives, because its rows are aimed at `Self` — see that function.
  */
 function defenseBuffByType(
   power: AtomSource,
@@ -740,12 +852,13 @@ function defenseBuffByType(
     (a) =>
       DEFENSE_STD_SUBTYPES.has(a.subType ?? '') &&
       !isDebuffAtom(a) &&
+      !excludesCaster(a) &&
       !!a.suppressible === wantSuppressible,
   );
   if (!atoms.length) return undefined;
   const out: Record<string, { scale: number; table: string; perTarget?: number }> = {};
   for (const [type, group] of bySubType(atoms)) {
-    const v = defensePerTypeValue(group);
+    const v = defensePerTypeValue(group, power);
     // A reconstruction of exactly 0 with no per-target growth is not a real buff and
     // the bag surfaces nothing for it (Thunderspy Fortify Pack's pet-granted defense
     // resolves to a scale-0 placeholder whose whole `effects` bag is empty). Dropping
@@ -782,6 +895,25 @@ export function defenseBuffSuppressibleValue(
   power: AtomSource,
 ): Record<string, { scale: number; table: string; perTarget?: number }> | undefined {
   return defenseBuffByType(power, true);
+}
+
+/**
+ * Does this power buff defense for everyone it reaches EXCEPT the caster?
+ *
+ * The caller needs this because silence from {@link defenseBuffValue} is ambiguous at
+ * the `?? effects.defenseBuff` seam. A power with no defense atoms at all is silent
+ * and wants the bag; Grant Cover, whose every defense row is caster-excluded, is
+ * silent and must NOT get the bag — its bag slot is real, it is just aimed at the
+ * team. Without this the fallback would hand the caster back the number the applier
+ * just declined to give.
+ *
+ * The bag keeps that slot on purpose: the power card shows what allies receive.
+ */
+export function defenseBuffIsTeamOnly(power: AtomSource): boolean {
+  const defense = atomsOfType(power, 'Defense').filter(
+    (a) => DEFENSE_STD_SUBTYPES.has(a.subType ?? '') && !isDebuffAtom(a),
+  );
+  return defense.length > 0 && defense.every(excludesCaster);
 }
 
 /**
@@ -824,7 +956,7 @@ export function maxHPBuffValue(
       !!a.ignoreStrength === wantIgnoreStrength &&
       !isDebuffAtom(a),
   );
-  return perTargetValueOf(atoms);
+  return perTargetValueOf(atoms, power);
 }
 
 /**
@@ -916,8 +1048,7 @@ function resourceBuffValue(
     // its base and counts; so does Thunderspy Rise to the Challenge's, where base and
     // increment are BOTH IgnoreStrength.
     const selfIncrements = increments.filter(
-      (a) => (a.toWho === 'Self' || a.toWho === 'All')
-        && !!a.ignoreStrength === wantIgnoreStrength,
+      (a) => reachesCaster(a, power) && !!a.ignoreStrength === wantIgnoreStrength,
     );
     const scale =
       sumDistinctAbs(
@@ -953,7 +1084,7 @@ export function kbProtectionValue(
   for (const a of baseAtoms(power)) {
     if (a.effectType !== 'Mez' && a.effectType !== 'MezResist') continue;
     if (a.subType !== subType) continue;
-    if (a.toWho !== 'Self') continue; // branch 1 (foe) excluded → PASS2B-1
+    if (!reachesCaster(a, power)) continue; // branch 1 (foe) excluded → PASS2B-1
     if (a.pvMode === 'PvP') continue; // the converter drops the PvP twin upstream
     // branch 2b: a Self aspect=Res KB atom on a NON-Res_Boolean table is KB *resistance*, not protection
     if (a.aspect === 'Res' && !(a.modifierTable || '').toLowerCase().includes('res_boolean')) continue;
@@ -1036,16 +1167,75 @@ const MOVEMENT_AXIS_TO_KEY: Record<string, string> = {
   Run: 'runSpeed', Fly: 'flySpeed', Jump: 'jumpSpeed', JumpHeight: 'jumpHeight',
 };
 
+/**
+ * The same map for the PENALTY side — `effects.slow` → the movement global
+ * (`slowKeyMap`, character-totals.ts). Wider than the buff side by the two axes that
+ * carry a modelled global here and none there (MOVE-1).
+ *
+ * `fly` is absent here for the reason it is absent above, and that absence is a fix
+ * rather than a tidy-up: `slowKeyMap` sends both `flySpeed` and `fly` to `flySpeed`,
+ * so the kFly mode kill a grounding power states — Granite Armor and Rooted at
+ * `10 x Melee_Ones`, Hibernate, Icy Bastion and Geode at `10000` — was being spent as
+ * a flight-SPEED percentage. A Granite tanker's flySpeed total read -1000%, a
+ * Hibernating one -1,000,000%. It is the +200% Fly double-count in the debuff
+ * direction: a mode magnitude read as a speed.
+ */
+const SLOW_AXIS_TO_KEY: Record<string, string> = {
+  ...MOVEMENT_AXIS_TO_KEY,
+  Control: 'movementControl', Friction: 'movementFriction',
+};
+
+/**
+ * An atom from a `chance: 0` group that names no mode to be gated on.
+ *
+ * A chance-0 group is a mode-gate sentinel rather than a literal 0% (METHOD-1), and
+ * `collectTemplatesDeep` deliberately keeps one that carries a payload: dropping it
+ * wholesale would delete Evasive Maneuvers' fly speed and Rooted's run penalty, which
+ * are real effects that apply in their mode. So they arrive here unstamped, in the
+ * base list.
+ *
+ * The corpus splits them cleanly. Of the 24 that reach the caster's movement routing,
+ * 8 carry a group `Tag` naming the mode — `FlightActive` on Evasive Maneuvers and
+ * Quantum Maneuvers, `GraniteRoot` on Rooted, all Homecoming — and 16 carry no tag, no
+ * `Requires` and no special case at all. Those 16 are every Rebirth fly power, and a
+ * sentinel that names no mode cannot be a gate on one.
+ *
+ * Dropping them moves no total on its own: each was either overwritten by a later
+ * write into the same axis slot, or its whole slot goes empty and the bag fallback
+ * answers with the same numbers. It exists for the split, which is what exposes them —
+ * with the fly axis split and these left in, Rebirth's Fly reads -5.2% where the game
+ * gives +161%.
+ */
+function isUnmodedSentinel(a: AtomicEffect): boolean {
+  return a.baseProbability === 0
+    && !a.tags
+    && !(a.requiresExpression && a.requiresExpression.length)
+    && !a.specialCase;
+}
+
+/**
+ * One movement-buff contribution. More than one can share an `axis` — a power
+ * can buff an axis twice and mean it, and `ignoreStrength` / `suppressible` are
+ * what tell the copies apart. `ignoreStrength` marks the half the caster's
+ * Run/Fly/Jump enhancements do not multiply.
+ */
+export interface MovementBuffEntry {
+  axis: string;
+  scale: number;
+  table: string;
+  stackKey?: string;
+  suppressible?: boolean;
+  ignoreStrength?: boolean;
+}
+
 /** A movement atom the bag routes to `slow` rather than `movement`. */
 function isSlowAtom(a: AtomicEffect): boolean {
   return isDebuffAtom(a) || (a.modifierTable || '').toLowerCase().includes('slow');
 }
 
 /**
- * The atom-native `effects.movement` — the self/current movement BUFF map the calc
- * reads today (line ~1483 of character-totals.ts), keyed exactly as the applier
- * iterates it (`{ runSpeed: {scale,table,stackKey?,suppressible?}, … }`). Returns
- * `undefined` when the power has no contributing movement atom (→ bag fallback).
+ * Which of the two movement maps an atom belongs to, or `undefined` when an earlier
+ * branch of the routing chain claims it or nothing does.
  *
  * Mirrors the bag's MOVEMENT routing (`convert-powerset.cjs`), whose branches are a
  * chain of aspect tests peeling other slots off before `movement` gets the remainder:
@@ -1059,45 +1249,178 @@ function isSlowAtom(a: AtomicEffect): boolean {
  *   - slow (negative scale, or a `debuff`/`slow` table) → `slow`;
  *   - self → `movement`; non-self → `movement` ONLY via the trailing `aspect === 'current'`
  *     branch (a foe-targeted Absolute/Maximum movement effect is dropped entirely).
- * Last-write-wins per axis, matching the bag's direct assignment.
+ *
+ * One function because the chain is one chain: the branches are ordered, and a reader
+ * that reproduces only its own branch re-derives the ones above it and drifts from them.
+ */
+function routeMovementAtom(a: AtomicEffect, power: AtomSource): 'movement' | 'slow' | undefined {
+  if (isUnmodedSentinel(a)) return undefined;
+  const self = reachesCaster(a, power);
+  if (a.aspect === 'Res') return undefined;
+  if (self && a.aspect === 'Str') return undefined;
+  if (self && a.aspect === 'Max' && a.scale > 0) return undefined;
+  if (a.aspect === 'Max' && isSlowAtom(a)) return undefined;
+  // Only the caster's own penalty reaches a caster total; a foe slow shares the map
+  // (`isSelfDirectedEffect` filters it there) and is not ours.
+  if (isSlowAtom(a)) return self ? 'slow' : undefined;
+  return self ? 'movement' : undefined;
+}
+
+/**
+ * One entry per (axis, `ignoreStrength`, `suppressible`), in first-seen order.
+ *
+ * Two atoms are the same entry when they agree on the axis AND on the two things that
+ * change how the axis reads them: whether the caster's enhancements multiply the value,
+ * and whether it drops in combat. Sprint's two `RunningSpeed 0.5 Melee_Ones` halves
+ * differ on the first and nothing else; Thunderspy folds a third, suppressible travel
+ * row onto the same axis. Keying on the axis alone made each of those the last one
+ * written, which is how Sprint came to report +50% run where the game gives +100%.
+ *
+ * The key is deliberately no finer. Adding the modifier table separates nothing the
+ * corpus states — measured over both maps and all four axes, zero slots change — and
+ * dropping the dedup entirely splits twelve more that no oracle has been asked about
+ * (Homecoming's Group Fly and the Dwarf Steps, Thunderspy's Speed Boost).
+ */
+function keyedMovementEntries(
+  atoms: readonly AtomicEffect[],
+  axisMap: Record<string, string>,
+): MovementBuffEntry[] {
+  const out: MovementBuffEntry[] = [];
+  for (const a of atoms) {
+    const axis = axisMap[a.subType ?? ''];
+    if (!axis) continue;
+    const value: MovementBuffEntry = {
+      axis,
+      scale: Math.abs(a.scale),
+      table: a.modifierTable,
+      ...(a.stacking === 'Suppress' && a.stackKey ? { stackKey: a.stackKey } : {}),
+      ...(a.suppressible ? { suppressible: true } : {}),
+      ...(a.ignoreStrength ? { ignoreStrength: true } : {}),
+    };
+    const at = out.findIndex(
+      (e) =>
+        e.axis === axis &&
+        Boolean(e.ignoreStrength) === Boolean(value.ignoreStrength) &&
+        Boolean(e.suppressible) === Boolean(value.suppressible),
+    );
+    // Replace, never merge: `suppressible` and `ignoreStrength` are absent rather than
+    // false, so `Object.assign` would leave a previous entry's `true` behind and report
+    // a flag the winning atom does not carry.
+    if (at >= 0) out[at] = value;
+    else out.push(value);
+  }
+  return out;
+}
+
+/**
+ * The atom-native `effects.movement` — the self/current movement BUFF the calc reads
+ * (character-totals.ts ~1483). Returns `undefined` when the power has no contributing
+ * movement atom (→ bag fallback).
  *
  * `stackKey` and `suppressible` ride along per entry: both are travel-suppression
  * metadata the applier reads via `movementMeta` (mutual suppression within a
  * `TravelBuff` group; combat suppression of Super Speed / Fly / Super Jump). `stackKey`
  * is only meaningful with `stacking: 'Suppress'`, which is how the bag gates it too.
  *
- * KNOWN GAP, and it is a gap in the DATA not this helper: Thunderspy contributes
- * nothing here, because no Thunderspy movement template reaches an atom at all — it
- * spells the attrib `SpeedRunning`/`SpeedJumping`/`SpeedFlying` where HC spells it
- * `RunningSpeed`, and neither the bag's `MOVEMENT_TYPES` nor the bridge's
- * `MOVEMENT_AXIS` maps that spelling. Every Thunderspy travel power therefore yields
- * +0 movement, in the bag and in the atoms alike. Both sides are equally empty, so the
- * shadow is silent about it by construction — a parser-side fix, tracked separately.
- * Verified bag-equal across HC+Rebirth by `scripts/planb-shadow-movement.cjs`.
+ * Every axis splits, fly included. It was held back once, and both reasons on record
+ * for holding it turned out not to be reasons:
+ *
+ *   - A Parse6 `Fly`/`FlyMode` conflation — measured false. All three exports name the
+ *     flight-mode grant `Fly` and the speed buff `FlyingSpeed`, with no other spelling
+ *     in the corpus; the axis map has always sent them to `FlyMode` and `Fly`, and
+ *     `MOVEMENT_AXIS_TO_KEY` drops `FlyMode` before it reaches here.
+ *   - The ± pairs on Rebirth and Thunderspy — real, but they are held together by
+ *     {@link selfSlowValue} keying the minus exactly as this keys the plus, not by
+ *     refusing to split. Refusing cost Combat Flight -51% where the game gives -1%,
+ *     and Rebirth's Fly -18% where it gives +161%.
+ *
+ * Returns an array — possibly EMPTY — for any power carrying a base movement atom, and
+ * `undefined` only for one carrying none. The difference is the atom-vs-bag seam: "I
+ * looked and the answer is nothing" is not "I have nothing to look at", and collapsing
+ * the two hands the question back to the bag, which still holds the rows this reader
+ * exists to drop. Geode, Icy Bastion and Hibernate state a kFly mode kill and no other
+ * self slow, so an empty-means-absent reader fell straight back to the bag and spent the
+ * -1,000,000% again. Both maps take the verdict from the same side for the same reason
+ * they are keyed alike — they are two halves of one authored thing.
  */
-export function movementBuffValue(
-  power: AtomSource,
-): Record<string, { scale: number; table: string; stackKey?: string; suppressible?: boolean }> | undefined {
-  const atoms = baseAtomsOfType(power, 'Movement').filter((a) => {
-    if (!MOVEMENT_AXIS_TO_KEY[a.subType ?? '']) return false;
-    const self = a.toWho === 'Self';
-    if (a.aspect === 'Res') return false;
-    if (self && a.aspect === 'Str') return false;
-    if (self && a.aspect === 'Max' && a.scale > 0) return false;
-    if (isSlowAtom(a)) return false;
-    return self || a.aspect === 'Cur';
-  });
-  if (!atoms.length) return undefined;
-  const out: Record<string, { scale: number; table: string; stackKey?: string; suppressible?: boolean }> = {};
-  for (const a of atoms) {
-    out[MOVEMENT_AXIS_TO_KEY[a.subType!]] = {
-      scale: Math.abs(a.scale),
-      table: a.modifierTable,
-      ...(a.stacking === 'Suppress' && a.stackKey ? { stackKey: a.stackKey } : {}),
-      ...(a.suppressible ? { suppressible: true } : {}),
-    };
-  }
-  return out;
+export function movementBuffValue(power: AtomSource): MovementBuffEntry[] | undefined {
+  const movement = baseAtomsOfType(power, 'Movement');
+  if (!movement.length) return undefined;
+  return keyedMovementEntries(movement.filter((a) => routeMovementAtom(a, power) === 'movement'),
+    MOVEMENT_AXIS_TO_KEY);
+}
+
+/**
+ * The atom-native `effects.slow`, self-directed entries only — a movement penalty the
+ * caster inflicts on itself. Granite Armor's -70% run and Hibernate are the plain
+ * cases; on the Parse6 forks it is also the minus half of a travel power's ± pair.
+ *
+ * Keyed exactly as {@link movementBuffValue} keys the plus, because the pair is one
+ * authored thing split across two maps: Rebirth's Group Fly states `+0.5 / -0.5` and
+ * again `+0.5 / -0.5 IgnoreStrength`, and a map holding one value per axis kept one of
+ * each — which cancelled, by luck. Split the plus alone and the cancel breaks.
+ *
+ * `movementCapDebuff` is NOT read here. ENT-5 moved the Maximum-aspect rows into their
+ * own slot so a cap debuff would stop overwriting the speed debuff on the same axis,
+ * and the caller still spends that slot from the bag; re-aiming it is a different
+ * number and a separate question.
+ *
+ * Returns an array — possibly EMPTY — for any power carrying a base movement atom, and
+ * `undefined` only for one carrying none. The difference is the atom-vs-bag seam: "I
+ * looked and the answer is nothing" is not "I have nothing to look at", and collapsing
+ * the two hands the question back to the bag, which still holds the rows this reader
+ * exists to drop. Geode, Icy Bastion and Hibernate state a kFly mode kill and no other
+ * self slow, so an empty-means-absent reader fell straight back to the bag and spent the
+ * -1,000,000% again. Both maps take the verdict from the same side for the same reason
+ * they are keyed alike — they are two halves of one authored thing.
+ */
+export function selfSlowValue(power: AtomSource): MovementBuffEntry[] | undefined {
+  const movement = baseAtomsOfType(power, 'Movement');
+  if (!movement.length) return undefined;
+  return keyedMovementEntries(
+    movement.filter(
+      (a) => routeMovementAtom(a, power) === 'slow' && !isCancelledPair(a, movement),
+    ),
+    SLOW_AXIS_TO_KEY,
+  );
+}
+
+/**
+ * One half of an authored +/- pair on a single axis and table: two rows the game states
+ * together so they net zero for whoever receives both.
+ *
+ * Reaction Time is the shape and, with Thunderspy's Increase Density, one of only two powers in
+ * the corpus stating a self and a non-self slow on one axis. It slows
+ * `RunningSpeed`/`FlyingSpeed`/`JumpingSpeed` by `0.7 x Melee_Slow` at `AnyAffected` and then
+ * states `-0.7 x Melee_Slow` at `Self` to hand it back. The help text is explicit that only
+ * enemies are slowed.
+ *
+ * The bag arrived at that zero by accident: both rows land in one `slow[axis]` slot, the aura's
+ * copy happened to be written last, and `isSelfDirectedEffect` then rejected it. A keyed reader
+ * separates them, and it holds MAGNITUDES, so the pair cannot cancel by arithmetic here — it has
+ * to be recognised and dropped whole.
+ *
+ * The rule reads both rows and not their recipients, which is what TARGETS-3 changed. It used to
+ * test that the negating row was NOT the caster's, standing in for a question about the power;
+ * with the join in place that test flips per fork and gets the pair wrong on the fork it was
+ * written for. Homecoming's aura row has no gate, so it reaches the caster and the pair is two
+ * rows he gets; Rebirth and Thunderspy gate the same row `target != source`, so he gets only the
+ * minus. Both forks want the same answer, which is that neither row is his.
+ *
+ * Increase Density is deliberately NOT matched: its `0.05` self row is half its `0.1` aura row,
+ * not a negation, so it is a real self penalty. The bag already states it with `toWho: 'Self'`
+ * and it already reaches the total.
+ */
+function isCancelledPair(a: AtomicEffect, siblings: readonly AtomicEffect[]): boolean {
+  const axis = SLOW_AXIS_TO_KEY[a.subType ?? ''];
+  if (!axis || !a.scale) return false;
+  return siblings.some(
+    (o) =>
+      SLOW_AXIS_TO_KEY[o.subType ?? ''] === axis &&
+      o.modifierTable === a.modifierTable &&
+      o.scale === -a.scale &&
+      isSlowAtom(o),
+  );
 }
 
 /** Σ of `val(a)` over atoms with a DISTINCT `|val|` (dedup the type/duration copies). */

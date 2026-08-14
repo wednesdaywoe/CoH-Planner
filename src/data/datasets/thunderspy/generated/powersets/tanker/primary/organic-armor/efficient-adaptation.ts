@@ -39,7 +39,9 @@ export const EfficientAdaptation: Power = {
   "atoms": [
     ["Meta",null,1,105,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"]
   ],
-  "requires": "Tanker_Defense.Organic_Armor.Evolution",
+  "requires": [
+    "Tanker_Defense.Organic_Armor.Evolution"
+  ],
   "setsModes": [
     "RestedAdaptation"
   ]

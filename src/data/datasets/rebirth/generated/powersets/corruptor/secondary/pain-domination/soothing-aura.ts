@@ -53,7 +53,7 @@ export const SoothingAura: Power = {
     "table": "Ranged_Heal"
   },
   "atoms": [
-    ["Heal",null,0.375,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Regeneration",null,2,1,4.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Heal",null,0.375,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"]],
+    ["Regeneration",null,2,1,4.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true]
   ]
 };

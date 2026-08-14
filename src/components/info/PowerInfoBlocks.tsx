@@ -23,7 +23,7 @@ import type { PowerDamageResult } from '@/utils/calculations';
 import type { PowerProjection } from '@/engine/engineTotalsMap';
 import { abbreviateDamageType } from '@/utils/calculations';
 import { resolveProcAreaGeometry, resolveProcPatchDuration } from '@/utils/calculations/pet-damage';
-import { describeChainTarget, describeTargetCap } from '@/utils/chain-expressions';
+import { describeChainTarget, describeTargetCap, expressionText } from '@/utils/chain-expressions';
 import { Chip, type TagKind } from './TagsRow';
 import {
   findProcData,
@@ -231,14 +231,14 @@ export function GeneralStatsBlock({
         <KvRow
           label="Chain Target"
           value={describeChainTarget(power.chainTargetExpression)}
-          title={power.chainTargetExpression}
+          title={expressionText(power.chainTargetExpression)}
         />
       )}
       {power.maxTargetsExpression && (
         <KvRow
           label="Target Cap"
           value={describeTargetCap(power.maxTargetsExpression)}
-          title={power.maxTargetsExpression}
+          title={expressionText(power.maxTargetsExpression)}
         />
       )}
       <ProcChanceRow

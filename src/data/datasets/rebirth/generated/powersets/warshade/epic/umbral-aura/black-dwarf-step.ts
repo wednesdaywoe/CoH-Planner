@@ -96,7 +96,9 @@ export const BlackDwarfStep: Power = {
     ["Movement","Control",-1,1,14,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
     ["Movement","Friction",-1,1,14,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,true]
   ],
-  "requires": "0",
+  "requires": [
+    "0"
+  ],
   "modesRequired": [
     "Warshade_Tanker_Mode"
   ],

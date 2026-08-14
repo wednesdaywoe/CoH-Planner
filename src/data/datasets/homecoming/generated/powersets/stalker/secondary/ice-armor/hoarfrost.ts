@@ -78,5 +78,8 @@ export const Hoarfrost: Power = {
     ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ],
-  "requires": "Stalker_Defense.Ice_Armor.Rime_Ice !"
+  "requires": [
+    "Stalker_Defense.Ice_Armor.Rime_Ice",
+    "!"
+  ]
 };

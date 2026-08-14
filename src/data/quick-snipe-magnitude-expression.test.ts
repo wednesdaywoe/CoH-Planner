@@ -40,9 +40,19 @@ import { SniperBlast as DomSniperBlast } from './datasets/homecoming/generated/p
 const require = createRequire(import.meta.url);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const {
-  evalMagnitudeExpression, stdResultCoefficient, extractDamage, parseAbsorbMaxHPFraction,
+  evalMagnitudeExpression: evalMagnitudeExpressionRaw, stdResultCoefficient: stdResultCoefficientRaw,
+  extractDamage, parseAbsorbMaxHPFraction,
   extractQuickSnipeData, DAMAGE_TYPES,
 } = require('../../scripts/convert-powerset.cjs');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { tokensFromText } = require('../../scripts/_gate-tokens.cjs');
+
+// The wire carries expressions as token arrays (COND-8); the literals authored in
+// this file are text, so tokenize them here — never inside the converter.
+const stdResultCoefficient = (expr: string | readonly string[], ctx: object) =>
+  stdResultCoefficientRaw(Array.isArray(expr) ? expr : tokensFromText(expr), ctx);
+const evalMagnitudeExpression = (expr: string | readonly string[], ctx: object) =>
+  evalMagnitudeExpressionRaw(Array.isArray(expr) ? expr : tokensFromText(expr), ctx);
 
 const EXPORT_ROOT = fileURLToPath(new URL('../../exported_powers', import.meta.url));
 
@@ -168,7 +178,7 @@ describe('magnitude_expression evaluator — folds the constant, drops the ramp'
     const t = (expr: string) => ({
       attribs: ['Energy_Dmg'], aspect: 'Absolute', table: 'Ranged_Damage',
       scale: 2.28, duration: '1.6 seconds', application_period: 0.5,
-      magnitude_expression: expr,
+      magnitude_expression: tokensFromText(expr),
     });
     expect(extractDamage([t(`${RAMP_BCD} @StdResult * 4 /`)]))
       .toEqual({ type: 'Energy', scale: 0.57, table: 'Ranged_Damage', duration: 1.6, tickRate: 0.5 });
@@ -381,8 +391,8 @@ describe('corpus sweep — nothing outside the snipe programs folds', () => {
         if (/debuff|buff/i.test(t.table ?? '')) continue;
         gated++;
 
-        const expr = (t.magnitude_expression ?? '').trim();
-        if (!expr) continue;
+        const expr: string[] = t.magnitude_expression ?? [];
+        if (!expr.length) continue;
         withExpression++;
         const k = stdResultCoefficient(expr, ctx);
         if (k === null) continue;

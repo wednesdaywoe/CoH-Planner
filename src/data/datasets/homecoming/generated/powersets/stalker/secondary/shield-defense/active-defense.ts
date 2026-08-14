@@ -80,5 +80,16 @@ export const ActiveDefense: Power = {
     ["Elusivity","Melee",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
-  "requires": "Stalker_Melee.Claws Stalker_Melee.Ninja_Sword || Stalker_Melee.Dual_Blades || Stalker_Melee.Spines || Stalker_Melee.Staff_Fighting || !"
+  "requires": [
+    "Stalker_Melee.Claws",
+    "Stalker_Melee.Ninja_Sword",
+    "||",
+    "Stalker_Melee.Dual_Blades",
+    "||",
+    "Stalker_Melee.Spines",
+    "||",
+    "Stalker_Melee.Staff_Fighting",
+    "||",
+    "!"
+  ]
 };

@@ -41,7 +41,9 @@ export const DefensiveAdaptation: Power = {
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ],
-  "requires": "Scrapper_Defense.Organic_Armor.Evolution",
+  "requires": [
+    "Scrapper_Defense.Organic_Armor.Evolution"
+  ],
   "setsModes": [
     "DefensiveAdaptation"
   ]

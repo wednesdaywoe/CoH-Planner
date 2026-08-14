@@ -97,7 +97,7 @@ export const GraceofNature: Power = {
     }
   },
   "atoms": [
-    ["Heal",null,1,1,0,"Melee_Heal","Abs","Expression","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> 4 * 4 + @StdResult *"],
+    ["Heal",null,1,1,0,"Melee_Heal","Abs","Expression","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>","4","*","4","+","@StdResult","*"]],
     ["Defense","Melee",2,1,45,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Ranged",2,1,45,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","AoE",2,1,45,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],

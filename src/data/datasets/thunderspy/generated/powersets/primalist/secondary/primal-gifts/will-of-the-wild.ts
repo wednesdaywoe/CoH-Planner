@@ -111,15 +111,15 @@ export const WilloftheWild: Power = {
     ["Resistance","Toxic",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Regeneration",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
-    ["Heal",null,0.5,1,120,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["DamageBuff","Smashing",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
-    ["DamageBuff","Lethal",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
-    ["DamageBuff","Fire",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
-    ["DamageBuff","Cold",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
-    ["DamageBuff","Energy",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
-    ["DamageBuff","Negative",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
-    ["DamageBuff","Toxic",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
-    ["DamageBuff","Psionic",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true]
+    ["Heal",null,0.5,1,120,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"]],
+    ["DamageBuff","Smashing",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true],
+    ["DamageBuff","Lethal",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true],
+    ["DamageBuff","Fire",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true],
+    ["DamageBuff","Cold",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true],
+    ["DamageBuff","Energy",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true],
+    ["DamageBuff","Negative",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true],
+    ["DamageBuff","Toxic",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true],
+    ["DamageBuff","Psionic",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true]
   ],
   "conditionalEffects": [
     {

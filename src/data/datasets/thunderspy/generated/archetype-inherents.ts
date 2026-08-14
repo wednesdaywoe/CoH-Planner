@@ -67,7 +67,12 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "group target> MastermindPets eq",
+          [
+            "group",
+            "target>",
+            "MastermindPets",
+            "eq"
+          ],
           true
         ],
         [
@@ -93,7 +98,12 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "group target> MastermindPets eq",
+          [
+            "group",
+            "target>",
+            "MastermindPets",
+            "eq"
+          ],
           true
         ],
         [
@@ -119,11 +129,20 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "group target> MastermindPets eq",
+          [
+            "group",
+            "target>",
+            "MastermindPets",
+            "eq"
+          ],
           true
         ]
       ],
-      "requires": "$archetype @Class_Mastermind ==",
+      "requires": [
+        "$archetype",
+        "@Class_Mastermind",
+        "=="
+      ],
       "isLocked": true,
       "category": "archetype",
       "fullName": "Inherent.Inherent.Hold_Ground"
@@ -301,7 +320,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !",
+          [
+            "isPVPMap?",
+            "!"
+          ],
           null,
           null,
           true
@@ -329,7 +351,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !",
+          [
+            "isPVPMap?",
+            "!"
+          ],
           null,
           null,
           true
@@ -393,7 +418,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ],
         [
@@ -419,11 +446,17 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ]
       ],
-      "requires": "$archetype @Class_Peacebringer ==",
+      "requires": [
+        "$archetype",
+        "@Class_Peacebringer",
+        "=="
+      ],
       "modesDisallowed": [
         "Peacebringer_Blaster_Mode",
         "Peacebringer_Tanker_Mode",
@@ -862,7 +895,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           1
         ]
       ],
-      "requires": "$archetype @Class_Peacebringer ==",
+      "requires": [
+        "$archetype",
+        "@Class_Peacebringer",
+        "=="
+      ],
       "modesDisallowed": [
         "Peacebringer_Blaster_Mode",
         "Peacebringer_Tanker_Mode",
@@ -959,7 +996,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Power_DisallowGroupFly target.TokenOwned? !"
+          [
+            "Power_DisallowGroupFly",
+            "target.TokenOwned?",
+            "!"
+          ]
         ],
         [
           "Movement",
@@ -984,7 +1025,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Power_DisallowGroupFly target.TokenOwned? !"
+          [
+            "Power_DisallowGroupFly",
+            "target.TokenOwned?",
+            "!"
+          ]
         ],
         [
           "Movement",
@@ -1009,7 +1054,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Power_DisallowGroupFly target.TokenOwned? !"
+          [
+            "Power_DisallowGroupFly",
+            "target.TokenOwned?",
+            "!"
+          ]
         ],
         [
           "Movement",
@@ -1034,10 +1083,18 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Power_DisallowGroupFly target.TokenOwned? !"
+          [
+            "Power_DisallowGroupFly",
+            "target.TokenOwned?",
+            "!"
+          ]
         ]
       ],
-      "requires": "$archetype @Class_Peacebringer ==",
+      "requires": [
+        "$archetype",
+        "@Class_Peacebringer",
+        "=="
+      ],
       "modesDisallowed": [
         "Peacebringer_Blaster_Mode",
         "Peacebringer_Tanker_Mode"
@@ -1236,7 +1293,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !"
+          [
+            "isPVPMap?",
+            "!"
+          ]
         ],
         [
           "Defense",
@@ -1261,7 +1321,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !"
+          [
+            "isPVPMap?",
+            "!"
+          ]
         ],
         [
           "Defense",
@@ -1286,7 +1349,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !"
+          [
+            "isPVPMap?",
+            "!"
+          ]
         ],
         [
           "Defense",
@@ -1311,7 +1377,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !"
+          [
+            "isPVPMap?",
+            "!"
+          ]
         ],
         [
           "Defense",
@@ -1336,7 +1405,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !"
+          [
+            "isPVPMap?",
+            "!"
+          ]
         ],
         [
           "Defense",
@@ -1361,7 +1433,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !"
+          [
+            "isPVPMap?",
+            "!"
+          ]
         ],
         [
           "Defense",
@@ -1386,7 +1461,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !"
+          [
+            "isPVPMap?",
+            "!"
+          ]
         ],
         [
           "Defense",
@@ -1411,7 +1489,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !"
+          [
+            "isPVPMap?",
+            "!"
+          ]
         ],
         [
           "Defense",
@@ -1436,7 +1517,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !"
+          [
+            "isPVPMap?",
+            "!"
+          ]
         ],
         [
           "Defense",
@@ -1461,7 +1545,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap? !"
+          [
+            "isPVPMap?",
+            "!"
+          ]
         ],
         [
           "Movement",
@@ -1522,7 +1609,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ],
         [
@@ -1548,7 +1637,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ],
         [
@@ -1574,7 +1665,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ],
         [
@@ -1600,7 +1693,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ],
         [
@@ -1626,7 +1721,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ],
         [
@@ -1652,7 +1749,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ],
         [
@@ -1678,7 +1777,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ],
         [
@@ -1704,7 +1805,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ],
         [
@@ -1730,7 +1833,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ],
         [
@@ -1756,11 +1861,17 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "isPVPMap?",
+          [
+            "isPVPMap?"
+          ],
           true
         ]
       ],
-      "requires": "$archetype @Class_Peacebringer ==",
+      "requires": [
+        "$archetype",
+        "@Class_Peacebringer",
+        "=="
+      ],
       "modesDisallowed": [
         "Peacebringer_Blaster_Mode",
         "Peacebringer_Tanker_Mode"
@@ -2415,34 +2526,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         [
           "Stealth",
           "Translucency",
-          0.15,
-          1,
-          0.75,
-          "Melee_Ones",
-          "Cur",
-          "Magnitude",
-          "Self",
-          "Any",
-          false,
-          "Replace",
-          2,
-          null,
-          null,
-          1,
-          null,
-          true,
-          null,
-          null,
-          null,
-          null,
-          "@CustomFX BrightNoTransparency eq @CustomFX DarkNoTransparency eq || @CustomFX BrightNoTransparencyNoFX eq || @CustomFX DarkNoTransparencyNoFX eq || !",
-          null,
-          null,
-          true
-        ],
-        [
-          "Stealth",
-          "Translucency",
           0.8,
           1,
           0.75,
@@ -2463,13 +2546,78 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "@CustomFX BrightNoTransparency eq @CustomFX DarkNoTransparency eq || @CustomFX BrightNoTransparencyNoFX eq || @CustomFX DarkNoTransparencyNoFX eq ||",
+          [
+            "@CustomFX",
+            "BrightNoTransparency",
+            "eq",
+            "@CustomFX",
+            "DarkNoTransparency",
+            "eq",
+            "||",
+            "@CustomFX",
+            "BrightNoTransparencyNoFX",
+            "eq",
+            "||",
+            "@CustomFX",
+            "DarkNoTransparencyNoFX",
+            "eq",
+            "||"
+          ],
           null,
+          null,
+          true
+        ],
+        [
+          "Stealth",
+          "Translucency",
+          0.15,
+          1,
+          0.75,
+          "Melee_Ones",
+          "Cur",
+          "Magnitude",
+          "Self",
+          "Any",
+          false,
+          "Replace",
+          2,
+          null,
+          null,
+          1,
+          null,
+          true,
+          null,
+          null,
+          null,
+          null,
+          [
+            "@CustomFX",
+            "BrightNoTransparency",
+            "eq",
+            "@CustomFX",
+            "DarkNoTransparency",
+            "eq",
+            "||",
+            "@CustomFX",
+            "BrightNoTransparencyNoFX",
+            "eq",
+            "||",
+            "@CustomFX",
+            "DarkNoTransparencyNoFX",
+            "eq",
+            "||",
+            "!"
+          ],
+          true,
           null,
           true
         ]
       ],
-      "requires": "$archetype @Class_Stalker ==",
+      "requires": [
+        "$archetype",
+        "@Class_Stalker",
+        "=="
+      ],
       "isLocked": true,
       "category": "archetype",
       "fullName": "Inherent.Inherent.Hide"
@@ -2665,7 +2813,12 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Mez",
@@ -2690,11 +2843,20 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "enttype target> player eq",
+          [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           true
         ]
       ],
-      "requires": "$archetype @Class_Stalker ==",
+      "requires": [
+        "$archetype",
+        "@Class_Stalker",
+        "=="
+      ],
       "isLocked": true,
       "category": "archetype",
       "fullName": "Inherent.Inherent.Placate"
@@ -2846,7 +3008,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           true
         ]
       ],
-      "requires": "$archetype @Class_Warshade ==",
+      "requires": [
+        "$archetype",
+        "@Class_Warshade",
+        "=="
+      ],
       "modesDisallowed": [
         "Peacebringer_Blaster_Mode",
         "Peacebringer_Tanker_Mode",
@@ -2996,7 +3162,12 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "enttype target> player eq",
+          [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           true
         ],
         [
@@ -3022,7 +3193,12 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "enttype target> player eq",
+          [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           true,
           null,
           true
@@ -3050,7 +3226,12 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "enttype target> player eq",
+          [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           true,
           null,
           true
@@ -3078,7 +3259,12 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "enttype target> player eq",
+          [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           true,
           null,
           true
@@ -3106,7 +3292,12 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "enttype target> player eq",
+          [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           true,
           null,
           true
@@ -3134,7 +3325,12 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "enttype target> player eq",
+          [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           true,
           null,
           true
@@ -3162,13 +3358,22 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "enttype target> player eq",
+          [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           true,
           null,
           true
         ]
       ],
-      "requires": "$archetype @Class_Warshade ==",
+      "requires": [
+        "$archetype",
+        "@Class_Warshade",
+        "=="
+      ],
       "modesDisallowed": [
         "Warshade_Blaster_Mode",
         "Warshade_Tanker_Mode"
@@ -3268,7 +3473,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           1
         ]
       ],
-      "requires": "$archetype @Class_Warshade ==",
+      "requires": [
+        "$archetype",
+        "@Class_Warshade",
+        "=="
+      ],
       "modesDisallowed": [
         "Peacebringer_Blaster_Mode",
         "Peacebringer_Tanker_Mode",
@@ -3361,7 +3570,27 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "AllyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&",
+          [
+            "AllyID",
+            "source>",
+            "hero",
+            "eq",
+            "praetorianprogress",
+            "source>",
+            "normal",
+            "eq",
+            "praetorianprogress",
+            "source>",
+            "Earth",
+            "eq",
+            "||",
+            "&&",
+            "praetoria",
+            "source.MapTeamArea>",
+            "eq",
+            "!",
+            "&&"
+          ],
           true
         ],
         [
@@ -3387,7 +3616,27 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "AllyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&",
+          [
+            "AllyID",
+            "source>",
+            "villain",
+            "eq",
+            "praetorianprogress",
+            "source>",
+            "normal",
+            "eq",
+            "praetorianprogress",
+            "source>",
+            "Earth",
+            "eq",
+            "||",
+            "&&",
+            "praetoria",
+            "source.MapTeamArea>",
+            "eq",
+            "!",
+            "&&"
+          ],
           true
         ],
         [
@@ -3413,11 +3662,24 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "praetorianprogress source> praetoria eq praetoria source.MapTeamArea> eq ||",
+          [
+            "praetorianprogress",
+            "source>",
+            "praetoria",
+            "eq",
+            "praetoria",
+            "source.MapTeamArea>",
+            "eq",
+            "||"
+          ],
           true
         ]
       ],
-      "requires": "$archetype @Class_Warshade ==",
+      "requires": [
+        "$archetype",
+        "@Class_Warshade",
+        "=="
+      ],
       "modesDisallowed": [
         "Warshade_Blaster_Mode",
         "Warshade_Tanker_Mode"

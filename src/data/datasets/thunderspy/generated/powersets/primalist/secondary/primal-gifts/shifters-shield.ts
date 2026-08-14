@@ -53,7 +53,7 @@ export const ShiftersShield: Power = {
   },
   "atoms": [
     ["Absorb",null,0.25,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Absorb",null,1,1,60,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> 0.25 * @Strength *"],
+    ["Absorb",null,1,1,60,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","source>","0.25","*","@Strength","*"]],
     ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"]
   ],
   "modesDisallowed": [

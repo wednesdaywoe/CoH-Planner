@@ -107,7 +107,12 @@ export const BlackDwarfMire: Power = {
     ["DamageBuff","Smashing",1.25,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,1.25],
     ["DamageBuff","Negative",1.25,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,1.25]
   ],
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Mire ! &&",
+  "requires": [
+    "Warshade_Defensive.Umbral_Aura.Black_Dwarf",
+    "Inherent.Inherent.Black_Dwarf_Mire",
+    "!",
+    "&&"
+  ],
   "modesRequired": [
     "Warshade_Tanker_Mode"
   ],

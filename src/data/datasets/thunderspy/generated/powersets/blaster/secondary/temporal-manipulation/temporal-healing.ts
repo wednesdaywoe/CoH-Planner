@@ -99,8 +99,8 @@ export const TemporalHealing: Power = {
     ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Fly",0.1,1,10,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Recovery",null,0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
-    ["Absorb",null,0.3,1,3,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true]
+    ["Recovery",null,0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?"],true],
+    ["Absorb",null,0.3,1,3,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?"],true]
   ],
   "conditionalEffects": [
     {

@@ -64,9 +64,9 @@ export const CloakofFear: Power = {
     }
   },
   "atoms": [
-    ["Mez","Terrorized",5,2,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Terrorized",5,2,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["ToHit",null,-0.075,1,5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Mez","Terrorized",2,2,0,"Melee_Fear","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Terrorized",2,2,0,"Melee_Fear","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
   ],
   "damageTypes": [
     "Negative"

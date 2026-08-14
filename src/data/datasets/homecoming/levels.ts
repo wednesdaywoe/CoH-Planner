@@ -6,6 +6,9 @@
  */
 
 import type { Power } from '@/types';
+import { BASIC_INHERENTS, type BasicInherentDef } from './generated/basic-inherents';
+import { BASIC_INHERENTS as REBIRTH_BASIC_INHERENTS } from '../rebirth/generated/basic-inherents';
+import { BASIC_INHERENTS as THUNDERSPY_BASIC_INHERENTS } from '../thunderspy/generated/basic-inherents';
 
 // ============================================
 // CONSTANTS
@@ -499,332 +502,49 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
 ];
 
 /**
- * Basic inherent powers - Brawl, Rest, and Sprint
+ * The universal inherent powers, read from each fork's own export.
+ *
+ * Brawl, Sprint, Rest, the free travel toggles and the prestige sprints used to
+ * be spelled out here by hand — scales, tables, endurance, the lot — and because
+ * only Homecoming has a `levels.ts`, every fork got Homecoming's copy. The
+ * numbers disagreed with the export on nearly every axis and the membership was
+ * simply wrong off Homecoming (INHERENT-4, INHERENT-5). They now come from
+ * `generated/basic-inherents.ts`, one module per fork, built by
+ * `scripts/convert-basic-inherents.cjs`.
+ *
+ * A power absent from a fork's module is a power that fork does not grant, and
+ * the getters below say nothing about it rather than falling back to Homecoming.
+ * Thunderspy is the case that matters: it has no Ninja Run, Beast Run, Athletic
+ * Run or prestige sprint anywhere, and folds the travel band those carry into
+ * its own Sprint instead.
  */
-export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
-  {
-    name: 'Brawl',
-    internalName: 'Brawl',
-    fullName: 'Inherent.Brawl',
-    description: 'When all else fails, use your fists. Brawl attacks deal minor smashing damage but have a very fast recharge.',
-    shortHelp: 'Melee, DMG(Smashing)',
-    icon: 'inherent_brawl.png',
-    powerType: 'Click',
-    targetType: 'Foe',
-    effectArea: 'SingleTarget',
-    available: -1,
-    maxSlots: 6,
-    allowedEnhancements: ['Accuracy', 'Damage', 'Recharge', 'EnduranceReduction'],
-    allowedSetCategories: ['Melee Damage'],
-    isLocked: true,
-    category: 'basic',
-    stats: {
-      accuracy: 1,
-      range: 7,
-      recharge: 4,
-      endurance: 5.2,
-      castTime: 1.0,
-    },
-    damage: [
-      { type: 'Smashing', scale: 0.6267, table: 'Melee_Damage' },
-    ],
-  },
-  {
-    name: 'Rest',
-    internalName: 'Rest',
-    fullName: 'Inherent.Rest',
-    description: 'Rest to recover hit points and endurance. You are vulnerable while resting.',
-    shortHelp: 'Self +Regen, +Recovery',
-    icon: 'inherent_rest.png',
-    powerType: 'Click',
-    targetType: 'Self',
-    available: -1,
-    maxSlots: 4,
-    allowedEnhancements: ['Interrupt', 'Healing', 'EnduranceModification'],
-    allowedSetCategories: [],
-    isLocked: true,
-    category: 'basic',
-    stats: {
-      recharge: 300,
-      castTime: 2.0,
-    },
-    effects: {
-      recharge: 300,
-      castTime: 2.0,
-      regenBuff: { scale: 4.0, table: 'Melee_Ones' },
-      recoveryBuff: { scale: 4.0, table: 'Melee_Ones' },
-      buffDuration: 30,
-    },
-  },
-  {
-    name: 'Sprint',
-    internalName: 'Sprint',
-    fullName: 'Inherent.Sprint',
-    description: 'You can Sprint at a faster than normal rate, but you are not as quick as characters with Super Speed.',
-    shortHelp: 'Toggle: Self +Speed',
-    icon: 'inherent_sprint.png',
-    powerType: 'Toggle',
-    available: -1,
-    maxSlots: 4,
-    allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
-    isLocked: true,
-    category: 'basic',
-    // Per powers.bin (HC + Rebirth, verified 2026-06-24): the basic Sprint and
-    // the prestige sprints (PowerSlide/Rush/Surge/Dash/Quick) grant RunningSpeed
-    // as TWO Melee_Ones templates of scale 0.5 each — one enhanceable, one
-    // IgnoreStrength (unenhanceable) — for a +100% base run speed of which only
-    // the +50% enhanceable half responds to Run Speed enhancements. They use
-    // Melee_Ones (flat), NOT Melee_SpeedRunning — they are sprints, not travel
-    // powers — plus a small +0.1 JumpHeight (Melee_Ones).
-    effects: {
-      // Per-second drain. powers.bin Sprint is endurance_cost 0.1463 per tick at
-      // activate_period 0.5s → 0.1463 / 0.5 = 0.2926/s (verified 2026-06-19).
-      // The inherent display path renders effects.enduranceCost as-is (it does
-      // not divide by a period the way slotted toggles do), so this field holds
-      // the already-per-second value. EndRdx scales it linearly (correct).
-      enduranceCost: 0.2926,
-      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
-      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
-      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
-    },
-  },
-  // Ninja Run and Beast Run are P2W travel toggles available to every
-  // character on both HC and Rebirth. Mutually exclusive in-game (toggling
-  // one auto-deactivates the other); the togglePowerActive action in
-  // buildStore enforces that. Movement scales (0.40 run, 0.55 jump,
-  // 0.25 jump-height) sourced from powers.bin: Inherent.Inherent.
-  // Prestige_Ninja_Run / Prestige_Beast_Run, verified identical across
-  // HC live and Rebirth assets.
-  {
-    name: 'Ninja Run',
-    internalName: 'Ninja_Run',
-    fullName: 'Inherent.Inherent.Prestige_Ninja_Run',
-    description: 'You can run, leap, and land like a ninja. While active you gain a significant boost to running speed, jumping speed, and jumping height, and you take reduced damage from falling.',
-    shortHelp: 'Toggle: Self +Run, +Jump',
-    icon: 'inherent_ninjarun.png',
-    powerType: 'Toggle',
-    available: -1,
-    // Ninja Run is unslottable in-game (powers.bin boosts_allowed: []). It must
-    // get zero slots — no base slot, no auto slot. (Sprint, by contrast, IS
-    // slottable, so it keeps its allowances above.)
-    maxSlots: 0,
-    allowedEnhancements: [],
-    allowedSetCategories: [],
-    isLocked: true,
-    category: 'basic',
-    effects: {
-      // Per-second drain. In powers.bin the Prestige_Ninja_Run inherent is an
-      // Auto that grants the Prestige.Prestige_Travel.Prestige_Ninja_Run toggle;
-      // the actual endurance drain lives on that granted toggle, which is
-      // outside our 34-category player export, so this value is the in-game
-      // real-numbers rate (0.5688/s) rather than a re-derived bin figure.
-      // Stored already-per-second like Sprint above; EndRdx scales it linearly.
-      enduranceCost: 0.5688,
-      // All three movement buffs are in the kTravelBuff suppress group and
-      // carry `Suppress ActivateAttackClick` (bin-verified on the granted
-      // Prestige.Prestige_Travel toggle): they suppress against CJ/SJ/SS/Fly
-      // (strongest wins) and shut off in combat.
-      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning', stackKey: 'TravelBuff', suppressible: true },
-      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping', stackKey: 'TravelBuff', suppressible: true },
-      jumpHeight: { scale: 0.25, table: 'Melee_Leap', stackKey: 'TravelBuff', suppressible: true },
-    },
-  },
-  {
-    name: 'Beast Run',
-    internalName: 'Beast_Run',
-    fullName: 'Inherent.Inherent.Prestige_Beast_Run',
-    description: 'You can run, leap, and land like a beast. While active you gain a significant boost to running speed, jumping speed, and jumping height, and you take reduced damage from falling.',
-    shortHelp: 'Toggle: Self +Run, +Jump',
-    icon: 'inherent_beastrun.png',
-    powerType: 'Toggle',
-    available: -1,
-    // Beast Run is unslottable in-game (powers.bin boosts_allowed: []) — same as
-    // Ninja Run. Zero slots, no auto slot.
-    maxSlots: 0,
-    allowedEnhancements: [],
-    allowedSetCategories: [],
-    isLocked: true,
-    category: 'basic',
-    effects: {
-      // Beast Run mirrors Ninja Run exactly in-game (same granted-toggle drain);
-      // see the Ninja Run note above. 0.5688/s in-game real-numbers rate.
-      enduranceCost: 0.5688,
-      // All three movement buffs are in the kTravelBuff suppress group and
-      // carry `Suppress ActivateAttackClick` (bin-verified on the granted
-      // Prestige.Prestige_Travel toggle): they suppress against CJ/SJ/SS/Fly
-      // (strongest wins) and shut off in combat.
-      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning', stackKey: 'TravelBuff', suppressible: true },
-      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping', stackKey: 'TravelBuff', suppressible: true },
-      jumpHeight: { scale: 0.25, table: 'Melee_Leap', stackKey: 'TravelBuff', suppressible: true },
-    },
-  },
-  // Athletic Run — HC grants this free travel toggle at level 4 (per in-game
-  // description). Unlike the P2W Ninja/Beast Run it has no Auto granter; the
-  // toggle itself (Prestige.Prestige_Travel.Prestige_Athletic_Run) is granted
-  // directly. Modeled with available: -1 (auto-granted, hidden from the picker)
-  // like its siblings — the level-4 grant is cosmetic for the planner, which
-  // assumes a level-50 build. Movement is bin-verified IDENTICAL to Ninja/Beast
-  // (RunningSpeed 0.40 / JumpingSpeed 0.55 / JumpHeight 0.25). NOTE: the
-  // endurance/sec: HC-live powers.bin says 0.2844/0.5 = 0.5688/s (matching
-  // Ninja/Beast and the in-game read of 0.57); a wiki article quotes 0.46/s but
-  // that's stale — user confirmed the live-bin value (2026-06-19). Real
-  // exclusivity in-game is "detoggles Pool travel powers" (not modeled); the
-  // planner groups the three alt-runs (Ninja/Beast/Athletic) as mutually
-  // exclusive, an established simplification.
-  {
-    name: 'Athletic Run',
-    internalName: 'Athletic_Run',
-    fullName: 'Prestige.Prestige_Travel.Prestige_Athletic_Run',
-    description: 'Show off your extensive athletic training by using this power. This power is not as fast as Super Speed, nor will it allow you to jump as well as Super Leap; however, it is considerably better than the Fitness powers Swift and Hurdle.',
-    shortHelp: 'Toggle: Self +Run Speed, +Jump',
-    icon: 'inherent_athleticrun.png',
-    powerType: 'Toggle',
-    available: -1,
-    // Unslottable in-game (powers.bin boosts_allowed: []) — same as Ninja/Beast.
-    maxSlots: 0,
-    allowedEnhancements: [],
-    allowedSetCategories: [],
-    isLocked: true,
-    category: 'basic',
-    effects: {
-      enduranceCost: 0.5688,
-      // All three movement buffs are in the kTravelBuff suppress group and
-      // carry `Suppress ActivateAttackClick` (bin-verified on the granted
-      // Prestige.Prestige_Travel toggle): they suppress against CJ/SJ/SS/Fly
-      // (strongest wins) and shut off in combat.
-      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning', stackKey: 'TravelBuff', suppressible: true },
-      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping', stackKey: 'TravelBuff', suppressible: true },
-      jumpHeight: { scale: 0.25, table: 'Melee_Leap', stackKey: 'TravelBuff', suppressible: true },
-    },
-  },
-];
+const BASIC_INHERENTS_BY_SERVER: Record<string, readonly BasicInherentDef[]> = {
+  homecoming: BASIC_INHERENTS,
+  rebirth: REBIRTH_BASIC_INHERENTS,
+  thunderspy: THUNDERSPY_BASIC_INHERENTS,
+};
+
+function basicInherentsOf(serverId?: string): readonly BasicInherentDef[] {
+  return (serverId !== undefined ? BASIC_INHERENTS_BY_SERVER[serverId] : undefined) ?? BASIC_INHERENTS;
+}
+
+/** Brawl, Sprint, Rest and the free travel toggles this server grants. */
+export function getBasicInherentPowers(serverId?: string): InherentPowerDef[] {
+  return basicInherentsOf(serverId).filter((p) => p.category === 'basic');
+}
+
+/** The prestige sprints this server grants — none of them on Thunderspy. */
+export function getPrestigeSprintPowers(serverId?: string): InherentPowerDef[] {
+  return basicInherentsOf(serverId).filter((p) => p.category === 'prestige');
+}
 
 /**
- * Prestige Sprint powers - travel powers available to all characters
+ * The Homecoming lists, for the static importers that predate the per-server
+ * getters. Prefer `getBasicInherentPowers(build.serverId)` at any call site that
+ * has a server.
  */
-export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
-  {
-    name: 'Prestige Power Slide',
-    internalName: 'PowerSlide',
-    fullName: 'Inherent.Prestige.PowerSlide',
-    description: 'Activating this power will have your character slide across the ground, leaving behind a trail of sparks. This prestige power increases your run speed.',
-    shortHelp: 'Toggle: Self +Speed',
-    icon: 'inherent_athleticrun.png',
-    powerType: 'Toggle',
-    available: -1,
-    maxSlots: 4,
-    allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
-    isLocked: true,
-    category: 'prestige',
-    effects: {
-      // Cosmetic Sprint clone — same toggle drain as Sprint: 0.2926/s
-      // (powers.bin sprint family is endurance_cost 0.1463 / period 0.5s).
-      // Stored already-per-second (inherent display shows this value as-is).
-      enduranceCost: 0.2926,
-      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
-      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
-      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
-    },
-  },
-  {
-    name: 'Prestige Power Rush',
-    internalName: 'PowerRush',
-    fullName: 'Inherent.Prestige.PowerRush',
-    description: 'Activating this power will give your character a burst of speed, leaving behind a colored trail. This prestige power increases your run speed.',
-    shortHelp: 'Toggle: Self +Speed',
-    icon: 'inherent_athleticrun.png',
-    powerType: 'Toggle',
-    available: -1,
-    maxSlots: 4,
-    allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
-    isLocked: true,
-    category: 'prestige',
-    effects: {
-      // Cosmetic Sprint clone — same toggle drain as Sprint: 0.2926/s
-      // (powers.bin sprint family is endurance_cost 0.1463 / period 0.5s).
-      // Stored already-per-second (inherent display shows this value as-is).
-      enduranceCost: 0.2926,
-      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
-      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
-      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
-    },
-  },
-  {
-    name: 'Prestige Power Surge',
-    internalName: 'PowerSurge',
-    fullName: 'Inherent.Prestige.PowerSurge',
-    description: 'Activating this power will surround your character with an electric field as you run. This prestige power increases your run speed.',
-    shortHelp: 'Toggle: Self +Speed',
-    icon: 'inherent_athleticrun.png',
-    powerType: 'Toggle',
-    available: -1,
-    maxSlots: 4,
-    allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
-    isLocked: true,
-    category: 'prestige',
-    effects: {
-      // Cosmetic Sprint clone — same toggle drain as Sprint: 0.2926/s
-      // (powers.bin sprint family is endurance_cost 0.1463 / period 0.5s).
-      // Stored already-per-second (inherent display shows this value as-is).
-      enduranceCost: 0.2926,
-      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
-      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
-      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
-    },
-  },
-  {
-    name: 'Prestige Power Dash',
-    internalName: 'PowerDash',
-    fullName: 'Inherent.Prestige.PowerDash',
-    description: 'Activating this power will cause your character to dash forward leaving a colored afterimage trail. This prestige power increases your run speed.',
-    shortHelp: 'Toggle: Self +Speed',
-    icon: 'inherent_athleticrun.png',
-    powerType: 'Toggle',
-    available: -1,
-    maxSlots: 4,
-    allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
-    isLocked: true,
-    category: 'prestige',
-    effects: {
-      // Cosmetic Sprint clone — same toggle drain as Sprint: 0.2926/s
-      // (powers.bin sprint family is endurance_cost 0.1463 / period 0.5s).
-      // Stored already-per-second (inherent display shows this value as-is).
-      enduranceCost: 0.2926,
-      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
-      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
-      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
-    },
-  },
-  {
-    name: 'Prestige Power Quick',
-    internalName: 'PowerQuick',
-    fullName: 'Inherent.Prestige.PowerQuick',
-    description: 'Activating this power will cause your character to leave behind ghostly afterimages as you run. This prestige power increases your run speed.',
-    shortHelp: 'Toggle: Self +Speed',
-    icon: 'inherent_athleticrun.png',
-    powerType: 'Toggle',
-    available: -1,
-    maxSlots: 4,
-    allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
-    isLocked: true,
-    category: 'prestige',
-    effects: {
-      // Cosmetic Sprint clone — same toggle drain as Sprint: 0.2926/s
-      // (powers.bin sprint family is endurance_cost 0.1463 / period 0.5s).
-      // Stored already-per-second (inherent display shows this value as-is).
-      enduranceCost: 0.2926,
-      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
-      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
-      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
-    },
-  },
-];
+export const BASIC_INHERENT_POWERS: InherentPowerDef[] = getBasicInherentPowers();
+export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = getPrestigeSprintPowers();
 
 // ============================================
 // KHELDIAN INHERENT POWERS
@@ -980,15 +700,19 @@ export function getArchetypeInherentPowers(archetypeId?: string): InherentPowerD
  * Get all inherent powers that should be auto-granted
  * Note: Archetype inherent is added separately based on selected archetype
  */
-export function getInherentPowers(): InherentPowerDef[] {
-  return [...BASIC_INHERENT_POWERS, ...INHERENT_FITNESS_POWERS, ...PRESTIGE_SPRINT_POWERS];
+export function getInherentPowers(serverId?: string): InherentPowerDef[] {
+  return [
+    ...getBasicInherentPowers(serverId),
+    ...INHERENT_FITNESS_POWERS,
+    ...getPrestigeSprintPowers(serverId),
+  ];
 }
 
 /**
  * Get an inherent power definition by name
  */
-export function getInherentPowerDef(name: string): InherentPowerDef | undefined {
-  const allInherents = getInherentPowers();
+export function getInherentPowerDef(name: string, serverId?: string): InherentPowerDef | undefined {
+  const allInherents = getInherentPowers(serverId);
   const found = allInherents.find((p) => p.internalName === name);
   if (found) return found;
   // Also check archetype-specific inherent powers (e.g. Kheldian travel powers)

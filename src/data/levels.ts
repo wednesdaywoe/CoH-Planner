@@ -28,31 +28,30 @@ import {
 import { getActiveDataset } from './dataset';
 
 /**
- * Excluded-inherent list for the active server, or empty when no dataset is
- * loaded yet (the shared HC list applies until one is). Tolerant of the
- * not-loaded case so static lookups (and tests) work without booting a dataset.
+ * The active server's id, or `undefined` when no dataset is loaded yet (the
+ * Homecoming lists apply until one is). Tolerant of the not-loaded case so
+ * static lookups — and tests — work without booting a dataset.
  */
-function activeExcludedInherents(): readonly string[] {
+function activeServerId(): string | undefined {
   try {
-    return getActiveDataset().inherentRules.excludeInherents ?? [];
+    return getActiveDataset().id;
   } catch {
-    return [];
+    return undefined;
   }
 }
 
 /**
- * The shared inherent list is sourced from HC. Servers that don't grant one
- * of those powers declare it in `inherentRules.excludeInherents` (e.g. Rebirth
- * has no Prestige Athletic Run). These facade overrides apply that filter at
- * runtime so the rest of the app sees only the inherents the active server
- * actually grants. The explicit named exports shadow the ones from `export *`.
+ * Inherent membership is per-server, read from each fork's own export, so these
+ * facade overrides just thread the active server through. They used to filter a
+ * shared Homecoming list against a hand-written `inherentRules.excludeInherents`
+ * — one entry long, naming Rebirth's missing Athletic Run — which is exactly the
+ * shape that let Thunderspy go on being offered Ninja Run, Beast Run and five
+ * prestige sprints it has never had (INHERENT-4). Absence is now data.
+ *
+ * The explicit named exports shadow the ones from `export *`.
  */
 export function getInherentPowers(): InherentPowerDef[] {
-  const excluded = activeExcludedInherents();
-  const all = _getInherentPowersBase();
-  if (!excluded.length) return all;
-  const drop = new Set(excluded);
-  return all.filter((p) => !drop.has(p.internalName));
+  return _getInherentPowersBase(activeServerId());
 }
 
 /**
@@ -94,15 +93,13 @@ export function getArchetypeInherentPowers(archetypeId?: string): InherentPowerD
 }
 
 /**
- * Name lookup, with excluded inherents blocked for the active server. Delegates
+ * Name lookup against the active server's membership. Delegates
  * to the base resolver (which also covers archetype-specific inherents like
  * Kheldian travel powers), then falls back to the active server's own additions
  * so a saved build re-hydrates a power like Thunderspy's Hide by name.
  */
 export function getInherentPowerDef(name: string): InherentPowerDef | undefined {
-  const excluded = activeExcludedInherents();
-  if (excluded.length && new Set(excluded).has(name)) return undefined;
-  const shared = _getInherentPowerDefBase(name);
+  const shared = _getInherentPowerDefBase(name, activeServerId());
   if (shared) return shared;
   for (const powers of Object.values(activeArchetypeInherents())) {
     const match = powers.find((p) => p.internalName === name);

@@ -64,13 +64,15 @@ export const GroupEnergyFlightFree: Power = {
     }
   },
   "atoms": [
-    ["Movement","FlyMode",1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-    ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-    ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-    ["Movement","Friction",10,1,10,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
+    ["Movement","FlyMode",1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
+    ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
+    ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
+    ["Movement","Friction",10,1,10,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
     ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true]
   ],
-  "requires": "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight",
+  "requires": [
+    "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight"
+  ],
   "modesRequired": [
     "EnergyFlyOn"
   ],

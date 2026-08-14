@@ -129,9 +129,9 @@ export const Meltdown: Power = {
     ["DamageBuff","Negative",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Endurance",null,-0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Pool.Manipulation.Unrelenting source.ownPower? !"],
-    ["Recovery",null,-100,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Pool.Manipulation.Unrelenting source.ownPower? !"],
-    ["Recovery",null,1,1,10,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Pool.Manipulation.Unrelenting source.ownPower? !"],
+    ["Endurance",null,-0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"]],
+    ["Recovery",null,-100,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"]],
+    ["Recovery",null,1,1,10,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"]],
     ["GlobalChanceMod",null,-1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["GlobalChanceMod",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ]

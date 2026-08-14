@@ -51,10 +51,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     132
@@ -63,12 +63,20 @@
   "redirect": [
     {
       "name": "Villain_Pets.Corruptor_BeamRifle_Snipe.Penetrating_Ray_Quick",
-      "condition_expression": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+      "condition_expression": [
+        "kEngaged",
+        "Source.Mode?",
+        "Set_Bonus.Global_Bonus.Experienced_Marksman",
+        "source.ownPower?",
+        "||"
+      ],
       "show_in_info": true
     },
     {
       "name": "Villain_Pets.Corruptor_BeamRifle_Snipe.Penetrating_Ray_Normal",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

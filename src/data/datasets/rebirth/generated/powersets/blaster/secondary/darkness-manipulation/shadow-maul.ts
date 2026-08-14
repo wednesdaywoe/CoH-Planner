@@ -85,8 +85,8 @@ export const ShadowMaul: Power = {
     }
   },
   "atoms": [
-    ["Damage","Smashing",0.325,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Negative",0.325,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",0.325,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Negative",0.325,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["DamageBuff","Smashing",0.163,1,10.57,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.163],
     ["DamageBuff","Lethal",0.163,1,10.57,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.163],
@@ -96,7 +96,7 @@ export const ShadowMaul: Power = {
     ["DamageBuff","Negative",0.163,1,10.57,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.163],
     ["DamageBuff","Toxic",0.163,1,10.57,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.163],
     ["DamageBuff","Psionic",0.163,1,10.57,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.163],
-    ["Damage","Smashing",0.477839,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Negative",0.477839,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.477839,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Negative",0.477839,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
   ]
 };

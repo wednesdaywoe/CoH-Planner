@@ -52,10 +52,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     136
@@ -64,12 +64,20 @@
   "redirect": [
     {
       "name": "Pets.Blaster_Dark_Snipe.Moonbeam_Quick",
-      "condition_expression": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+      "condition_expression": [
+        "kEngaged",
+        "Source.Mode?",
+        "Set_Bonus.Global_Bonus.Experienced_Marksman",
+        "source.ownPower?",
+        "||"
+      ],
       "show_in_info": true
     },
     {
       "name": "Pets.Blaster_Dark_Snipe.Moonbeam_Normal",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

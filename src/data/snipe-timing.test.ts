@@ -45,7 +45,14 @@ describe('snipe base timing (Normal-variant cast, not the redirect shell)', () =
     expect(RebirthRangedShot.stats?.castTime).toBe(4.67);
     expect(RebirthRangedShot.stats?.interruptTime).toBe(3);
     expect(RebirthRangedShot.quickSnipe?.stats.castTime).toBe(1.67);
-    // The gate travels VERBATIM: nothing in the pipeline re-derives the threshold.
-    expect(RebirthRangedShot.quickSnipe?.condition).toBe('cur.kToHit source> .97 >=');
+    // The gate travels VERBATIM, token for token: nothing in the pipeline re-derives the
+    // threshold, and nothing joins the tokens into a string it would later have to split
+    // back apart (DATA-GAP-REGISTER COND-8).
+    expect(RebirthRangedShot.quickSnipe?.condition).toEqual([
+      'cur.kToHit',
+      'source>',
+      '.97',
+      '>=',
+    ]);
   });
 });

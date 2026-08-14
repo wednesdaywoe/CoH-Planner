@@ -61,7 +61,9 @@ export const QuantumBoost: Power = {
     ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelTurboMaxBuff"],
     ["Movement","Fly",0.35,1,0.75,"Ranged_SpeedFlying","Str","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelTurboBuff"]
   ],
-  "requires": "Peacebringer_Defensive.Luminous_Aura.Energy_Flight",
+  "requires": [
+    "Peacebringer_Defensive.Luminous_Aura.Energy_Flight"
+  ],
   "modesSuspended": [
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Tanker_Mode",

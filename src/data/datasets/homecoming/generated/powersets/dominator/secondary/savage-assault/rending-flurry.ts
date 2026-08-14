@@ -62,13 +62,18 @@ export const RendingFlurry: Power = {
     }
   ],
   "atoms": [
-    ["Damage","Lethal",1.182,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
-    ["Damage","Lethal",0.095,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.75,true,"Bleed"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
+    ["Damage","Lethal",1.182,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?",".04","*","1","+","@StdResult","*"],null,null,null,null,null,null,["Foe"]],
+    ["Damage","Lethal",0.095,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.75,true,"Bleed",null,null,["Foe"]],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power",["Foe"]]
   ],
   "formVariants": [
     {
-      "condition": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 ==",
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker",
+        "source.ownPowerNum?",
+        "5",
+        "=="
+      ],
       "internalName": "Rending_Flurry_Large",
       "stats": {
         "accuracy": 1,
@@ -123,13 +128,27 @@ export const RendingFlurry: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq",
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ],
           null,
           null,
           null,
           null,
           null,
-          "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"
+          [
+            "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker",
+            "source.ownPowerNum?",
+            ".04",
+            "*",
+            "1",
+            "+",
+            "@StdResult",
+            "*"
+          ]
         ],
         [
           "Damage",
@@ -154,7 +173,12 @@ export const RendingFlurry: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq",
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ],
           null,
           null,
           null,

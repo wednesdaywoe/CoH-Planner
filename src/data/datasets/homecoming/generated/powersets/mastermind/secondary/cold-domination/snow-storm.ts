@@ -98,6 +98,6 @@ export const SnowStorm: Power = {
     ["Movement","JumpHeight",0.5,1,0.75,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,0.5,1,0.75,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","FlyMode",-1.6,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Movement","Run",-1,1,0.75,"Ranged_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"]
+    ["Movement","Run",-1,1,0.75,"Ranged_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]]
   ]
 };

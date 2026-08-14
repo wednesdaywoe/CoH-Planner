@@ -80,5 +80,18 @@ export const ActiveDefense: Power = {
     ["Elusivity","Melee",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
-  "requires": "Tanker_Melee.Dual_Blades Tanker_Melee.Staff_Fighting || Tanker_Melee.Titan_Weapons || Tanker_Melee.Spines || Tanker_Melee.Katana || Tanker_Melee.Claws || !"
+  "requires": [
+    "Tanker_Melee.Dual_Blades",
+    "Tanker_Melee.Staff_Fighting",
+    "||",
+    "Tanker_Melee.Titan_Weapons",
+    "||",
+    "Tanker_Melee.Spines",
+    "||",
+    "Tanker_Melee.Katana",
+    "||",
+    "Tanker_Melee.Claws",
+    "||",
+    "!"
+  ]
 };

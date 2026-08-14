@@ -48,12 +48,17 @@ export const BlackDwarfAntagonize: Power = {
     }
   },
   "atoms": [
-    ["Mez","Taunt",8,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Taunt",8,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Range",null,-0.75,1,12,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Mez","Taunt",5,4,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit >= @ForceHit || &&",true,null,null,null,null,null,null,null,null,null,null,"null"]
+    ["Mez","Taunt",5,4,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit",">=","@ForceHit","||","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Antagonize ! &&",
+  "requires": [
+    "Warshade_Defensive.Umbral_Aura.Black_Dwarf",
+    "Inherent.Inherent.Black_Dwarf_Antagonize",
+    "!",
+    "&&"
+  ],
   "modesRequired": [
     "Warshade_Tanker_Mode"
   ],

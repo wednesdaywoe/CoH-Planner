@@ -53,10 +53,16 @@ export const RangedShot: Power = {
     "table": "Ranged_Damage"
   },
   "atoms": [
-    ["Damage","Lethal",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+    ["Damage","Lethal",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
   ],
   "quickSnipe": {
-    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+    "condition": [
+      "kEngaged",
+      "Source.Mode?",
+      "Set_Bonus.Global_Bonus.Experienced_Marksman",
+      "source.ownPower?",
+      "||"
+    ],
     "stats": {
       "castTime": 1.67,
       "range": 80
@@ -69,7 +75,7 @@ export const RangedShot: Power = {
       }
     ],
     "atoms": [
-      ["Damage","Lethal",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *"]
+      ["Damage","Lethal",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["cur.kToHit","source>","0.75","-","0.22","/","-1.0","1.0","minmax","0.210526316","*","1","+","@StdResult","*"],null,null,null,null,null,null,["Foe"]]
     ]
   }
 };

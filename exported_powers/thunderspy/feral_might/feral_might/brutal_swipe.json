@@ -52,10 +52,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     108,
     116
@@ -64,17 +64,23 @@
   "redirect": [
     {
       "name": "Primalist_Misc.Hunter_Form_Powers.Brutal_Swipe_Hunter",
-      "condition_expression": "kHunterMode Source.Mode?",
+      "condition_expression": [
+        "kHunterMode",
+        "Source.Mode?"
+      ],
       "show_in_info": false
     },
     {
       "name": "Primalist_Misc.Prowler_Form_Powers.Brutal_Swipe_Prowler",
-      "condition_expression": "kProwlerMode Source.Mode?",
+      "condition_expression": [
+        "kProwlerMode",
+        "Source.Mode?"
+      ],
       "show_in_info": false
     },
     {
       "name": "Primalist_Misc.Primal_Form_Powers.Brutal_Swipe_Primal",
-      "condition_expression": "Always",
+      "condition_expression": [],
       "show_in_info": true
     }
   ],

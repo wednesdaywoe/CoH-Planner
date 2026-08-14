@@ -45,10 +45,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     112
   ],
@@ -56,17 +56,41 @@
   "redirect": [
     {
       "name": "Redirects.Arachnos_Soldier.Crab_WAWG",
-      "condition_expression": "@CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&",
+      "condition_expression": [
+        "@CustomFX",
+        "Crabpack",
+        "eq",
+        "@CustomFX",
+        "CrabpackTintable",
+        "eq",
+        "||",
+        "Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor",
+        "source.ownPower?",
+        "&&"
+      ],
       "show_in_info": true
     },
     {
       "name": "Redirects.Arachnos_Soldier.Bane_WAWG",
-      "condition_expression": "@CustomFX NullifierMace eq @CustomFX NullifierMaceTintable eq || Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor source.ownPower? &&",
+      "condition_expression": [
+        "@CustomFX",
+        "NullifierMace",
+        "eq",
+        "@CustomFX",
+        "NullifierMaceTintable",
+        "eq",
+        "||",
+        "Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor",
+        "source.ownPower?",
+        "&&"
+      ],
       "show_in_info": true
     },
     {
       "name": "Redirects.Arachnos_Soldier.Wolf_WAWG",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

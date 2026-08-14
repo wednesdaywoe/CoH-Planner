@@ -64,5 +64,8 @@ export const Reconstruction: Power = {
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Resistance","Toxic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ],
-  "requires": "Stalker_Defense.Willpower.Rise_to_the_Challenge !"
+  "requires": [
+    "Stalker_Defense.Willpower.Rise_to_the_Challenge",
+    "!"
+  ]
 };

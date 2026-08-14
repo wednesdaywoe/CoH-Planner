@@ -114,5 +114,8 @@ export const PracticedBrawler: Power = {
     ["Movement","Jump",0.5,1,120,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Movement","JumpHeight",0.5,1,120,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
-  "requires": "Sentinel_Defense.Super_Reflexes.Master_Brawler !"
+  "requires": [
+    "Sentinel_Defense.Super_Reflexes.Master_Brawler",
+    "!"
+  ]
 };

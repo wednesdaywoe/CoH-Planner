@@ -76,10 +76,10 @@ export const GroundZero: Power = {
     }
   },
   "atoms": [
-    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
-    ["Damage","Toxic",0.1,1,9.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
-    ["Defense","All",2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
-    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? &&",true],
-    ["Heal",null,0.05,1,9.1,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? &&",true]
+    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"]],
+    ["Damage","Toxic",0.1,1,9.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"]],
+    ["Defense","All",2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"]],
+    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","&&"],true],
+    ["Heal",null,0.05,1,9.1,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","&&"],true]
   ]
 };

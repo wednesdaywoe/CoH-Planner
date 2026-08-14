@@ -94,7 +94,7 @@ export const HealingRay: Power = {
     ["Resistance","Energy",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Cold",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Fire",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Heal",null,0,1,0,"Ranged_Heal","Abs","Expression","Target","Any",false,"Replace",2,null,0.125,1,null,true,null,null,null,null,"target.TickDamage 0 >",true,null,null,null,null,"target.TickDamage 0.25 *"],
-    ["Damage","Special",0,1,0,"Ranged_Damage","Abs","Expression","Self","Any",false,"Replace",2,null,0.125,1,null,true,null,null,null,null,"target.TickDamage 0 >",true,null,null,null,null,"target.TickDamage -0.25 *"]
+    ["Heal",null,0,1,0,"Ranged_Heal","Abs","Expression","Target","Any",false,"Replace",2,null,0.125,1,null,true,null,null,null,null,["target.TickDamage","0",">"],true,null,null,null,null,["target.TickDamage","0.25","*"]],
+    ["Damage","Special",0,1,0,"Ranged_Damage","Abs","Expression","Self","Any",false,"Replace",2,null,0.125,1,null,true,null,null,null,null,["target.TickDamage","0",">"],true,null,null,null,null,["target.TickDamage","-0.25","*"]]
   ]
 };

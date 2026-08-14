@@ -45,10 +45,10 @@ export const Consecrate: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Damage","Fire",1.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
-    ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
-    ["Heal",null,1.42,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
-    ["Damage","Fire",0.71,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&",true]
+    ["Damage","Fire",1.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"]],
+    ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","target.isFriend?","!","&&"],true],
+    ["Heal",null,1.42,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["target.isFriend?"],true],
+    ["Damage","Fire",0.71,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Ghost","target.HasTag?","Demon","target.HasTag?","||","Undead","target.HasTag?","||","target.isFriend?","!","&&"],true]
   ],
   "damageTypes": [
     "Fire"

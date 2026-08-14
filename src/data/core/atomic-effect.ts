@@ -57,9 +57,39 @@ export type Aspect = 'Res' | 'Max' | 'Abs' | 'Str' | 'Cur' | 'Unspecified';
  *  application flavor folded onto Magnitude here.) */
 export type AttribType = 'Magnitude' | 'Duration' | 'Expression';
 
-/** eToWho — who the effect lands on. Replaces the ad-hoc `selfPenalty` flag:
- *  a foe-debuff is `toWho:'Target'`, a genuine self-penalty is `toWho:'Self'`. */
-export type ToWho = 'Unspecified' | 'Target' | 'Self' | 'All';
+/**
+ * eToWho — who the effect lands on. Replaces the ad-hoc `selfPenalty` flag: a foe-debuff
+ * is `toWho:'Target'`, a genuine self-penalty is `toWho:'Self'`.
+ *
+ * One member per `ModTarget` (`Common/entity/attribmod.h:69`), because the game's seven
+ * values are not four. `'All'` used to stand where two of them are now, and it was the
+ * collapse this file exists to prevent (TARGETS-2): `SelfAndPets` anchors on the CASTER
+ * and `AnyAffectedAndPets` anchors on whoever the power hit, and folding both onto one
+ * member left nothing to tell a self-buff from a foe-facing one. Half the appliers then
+ * read `'All'` as "lands on the caster" and half did not, so whether a Thunderspy Fly
+ * atom reached your totals depended on which applier happened to ask.
+ *
+ * Names are the export's spellings, except `'Target'` — the export writes that one
+ * `AnyAffected`, and the member predates this split by 25k atoms.
+ *
+ * | member              | export               | engine (`attribmod.h`)          |
+ * |---------------------|----------------------|---------------------------------|
+ * | `Self`              | `Self`               | `kModTarget_Caster`             |
+ * | `SelfAndPets`       | `SelfAndPets`        | `kCastersOwnerAndAllPets`       |
+ * | `TargetOnly`        | `TargetOnly`         | `kModTarget_Focus`              |
+ * | `TargetOnlyAndPets` | `TargetOnlyAndPets`  | `kFocusOwnerAndAllPets`         |
+ * | `Target`            | `AnyAffected`        | `kModTarget_Affected`           |
+ * | `TargetAndPets`     | `AnyAffectedAndPets` | `kAffectedsOwnerAndAllPets`     |
+ * | `Marker`            | `Marker`             | `kModTarget_Marker`             |
+ *
+ * The `…AndPets` members are not a recipient — they are an ANCHOR plus a pet copy. The
+ * engine resolves the anchor to its top-level owner, attaches there, and then recurses
+ * over that owner's pet list (`character_combat.c:749`). Use {@link landsOnCaster} rather
+ * than testing members directly; it is the one place that reading is written down.
+ */
+export type ToWho =
+  | 'Unspecified' | 'Self' | 'SelfAndPets'
+  | 'Target' | 'TargetOnly' | 'TargetOnlyAndPets' | 'TargetAndPets' | 'Marker';
 
 /** How repeated applications combine. Superset of Mids eStacking (No|Yes) plus the
  *  eleven members of the game's own `StackTypeEnum` (`Common/entity/attribmod.h`). */
@@ -220,7 +250,7 @@ export interface AtomicEffect {
   // --- conditional gate (replaces the `domination`/`selfPenalty` bolt-ons) ---
   specialCase?: string;
   /** raw gate expression (CoH stack-machine string) or Mids (key,value) pairs. */
-  requiresExpression?: string;
+  requiresExpression?: string[];
   /**
    * True when this atom is NOT part of the power's unconditional base — it
    * applies only under a gate (mode/stance, PvP, hidden-state, Containment,
@@ -313,6 +343,27 @@ export interface AtomicEffect {
    * `templatesToAtoms(allTemplates)`, and a trapped template IS in `allTemplates`.
    */
   notOnCaster?: boolean;
+
+  /**
+   * The `EntsAffected` of the power this atom LIVES on, when that is not the power
+   * carrying it. Absent means the carrier is also the owner, which is the ordinary case.
+   *
+   * A `toWho: 'Target'` atom names no recipient: `AnyAffected` means "whoever this power
+   * affects", so only `targetsAffected` says whether the caster is one of them. That is a
+   * power-level field, and a collector that follows a redirect or an `Execute_Power`
+   * attaches the child's AttribMods to the SHELL, whose list answers about the shell. The
+   * pool's Spring Attack is `['Self']` because the parent teleports you, while the foe
+   * knockback it pulls in belongs to a `['Foe']` power; Trick Arrow's EMP Arrow is a
+   * `['Self']` shell over a `['Friend']` field, so the field's buffs are the team's and not
+   * the caster's. Reading the shell's list credits the caster with both (TARGETS-3).
+   *
+   * STAMPED BY THE CONVERTER, not re-derivable at runtime — like {@link gated},
+   * {@link perTarget}, {@link suppressible} and {@link notOnCaster}. The redirect chain is
+   * only walkable at convert time, and nothing on the wire records that a walk happened.
+   * `reachesCaster` reads this in place of the power's own list; every other consumer of
+   * `targetsAffected` is asking about the power, not about one atom, and leaves it alone.
+   */
+  ownerTargets?: readonly string[];
 
   /**
    * The archetypes this atom is base FOR, comma-joined in the export's own
@@ -455,18 +506,28 @@ export const ATOM_TUPLE_FIELDS = [
   // `metaAttrib` appends last on the same economics: only `Meta` atoms carry one
   // (~1.6k of Homecoming's), so every other atom's encoding stays byte-identical.
   'metaAttrib',
+  // `ownerTargets` appends after it for the same reason: only an atom a collector pulled
+  // out of another power's file carries one, so every atom that lives on its own power
+  // stays byte-identical.
+  'ownerTargets',
 ] as const satisfies ReadonlyArray<keyof AtomicEffect>;
 
 /** One atom, positionally encoded. A `null` at position `i` means the field
  *  `ATOM_TUPLE_FIELDS[i]` is absent; trailing nulls are trimmed, so a short
  *  array leaves every field past its end absent. */
-export type EncodedAtom = ReadonlyArray<string | number | boolean | null>;
+export type EncodedAtom = ReadonlyArray<string | number | boolean | readonly string[] | null>;
 
 /** Encode one AtomicEffect to its positional tuple (trailing nulls trimmed). */
 export function encodeAtom(a: AtomicEffect): EncodedAtom {
-  const t: (string | number | boolean | null)[] = ATOM_TUPLE_FIELDS.map((f) => {
+  type Slot = string | number | boolean | readonly string[] | null;
+  const t: Slot[] = ATOM_TUPLE_FIELDS.map((f) => {
     const v = a[f];
-    return v === undefined ? null : (v as string | number | boolean);
+    // A gate expression is a token list, and a list with no tokens states nothing —
+    // the same fact as carrying no gate. Encoding it as `[]` would put a value where
+    // the field is absent, and every reader that asks "is there a gate here?" would
+    // start answering yes (COND-8).
+    if (Array.isArray(v) && v.length === 0) return null;
+    return v === undefined ? null : (v as Slot);
   });
   while (t.length > 0 && t[t.length - 1] === null) t.pop();
   return t;
@@ -808,7 +869,7 @@ export interface ExportGroup {
   is_pvp?: string;
   chance?: number;
   ppm?: number;
-  requires_expression?: string;
+  requires_expression?: string[];
   tags?: string[];
   templates?: ExportTemplate[];
 }
@@ -842,12 +903,76 @@ function mapAttribType(t?: string): AttribType {
   if (t === 'Expression') return 'Expression';
   return 'Magnitude'; // Magnitude, Constant, undefined
 }
+/**
+ * Template `target` → {@link AtomicEffect.toWho}, one member of the game's `ModTarget`
+ * per `Common/entity/attribmod.h`.
+ *
+ * An unrecognized value THROWS, on `mapStacking`'s reasoning and for the same reason it
+ * was needed there. This used to be four substring tests falling through to
+ * `'Unspecified'`, and both halves of that did damage. The `includes('Pets')` arm caught
+ * `SelfAndPets` and `AnyAffectedAndPets` alike and answered `'All'` for both, which is
+ * the fold TARGETS-2 measured. And the fall-through turned the one `TargetOnly` template
+ * in the corpus into "the source stated nothing" — the exact absent-vs-defaulted
+ * confusion {@link Aspect} documents, run backwards.
+ *
+ * Absent stays `'Unspecified'`: a template that states no target is not a template that
+ * states `Self`. (The parser defaults the field to `kModTarget_Affected` when the
+ * authored def omits it — `powers_load.c:2377` — so absence here means the exporter
+ * emitted no field at all, which is rarer still: one atom corpus-wide.)
+ */
 function mapToWho(target?: string): ToWho {
-  const t = target || '';
-  if (t === 'Self') return 'Self';
-  if (t.includes('Pets') || t === 'All') return 'All';
-  if (t.includes('AnyAffected') || t === 'Target') return 'Target';
-  return 'Unspecified';
+  const known: Record<string, ToWho> = {
+    Self: 'Self',
+    SelfAndPets: 'SelfAndPets',
+    TargetOnly: 'TargetOnly',
+    TargetOnlyAndPets: 'TargetOnlyAndPets',
+    AnyAffected: 'Target',
+    AnyAffectedAndPets: 'TargetAndPets',
+    Marker: 'Marker',
+  };
+  if (!target) return 'Unspecified';
+  const mapped = known[target];
+  if (!mapped) throw new Error(`unrecognized template target ${JSON.stringify(target)}`);
+  return mapped;
+}
+
+/**
+ * Does this atom land on the CASTER — the character whose totals we are computing?
+ *
+ * The one place that question is answered, because it used to be answered fourteen
+ * times: some appliers tested `toWho === 'Self'`, others `'Self' || 'All'`, and the two
+ * readings disagreed on every `SelfAndPets` atom in the corpus (TARGETS-2).
+ *
+ * - `Self` and `SelfAndPets` anchor on the caster by construction — the engine starts
+ *   the walk at `pSrc` and never consults the power's targets, so neither needs context.
+ * - `TargetAndPets` anchors on whoever the power hit, then walks UP to that entity's
+ *   top-level owner and fans out over the owner's pets. The caster is in that set
+ *   whenever the caster and the hit entity share an owner, which is every player power
+ *   in the corpus that carries it: Serum and Smoke Flash hit `MyPet`, Force Shield hits
+ *   `MyOwner`, and the Incarnate sockets hit `Self`. `scripts/planb-shadow-towho.cjs`
+ *   pins that premise, so a foe-facing one arriving in a future export fails loudly
+ *   rather than quietly crediting the caster with a debuff.
+ * - `Target` and `TargetOnly` are the open half. They land on the caster exactly when
+ *   the power's own `targetsAffected` names `Self` (Maneuvers buffs you; Wormhole's
+ *   teleport resistance is the victim's), and no atom carries that — it is a power-level
+ *   field. The bag route already reads it as `selfIsCountedTarget`; the atom route does
+ *   not, and every family whose atoms are `Target` still answers from the bag because of
+ *   it. Deliberately unchanged here: 2,082 / 1,948 / 2,208 base atoms would move at once.
+ *   See DATA-GAP-REGISTER TARGETS-3.
+ */
+export function landsOnCaster(a: Pick<AtomicEffect, 'toWho'>): boolean {
+  switch (a.toWho) {
+    case 'Self':
+    case 'SelfAndPets':
+    case 'TargetAndPets':
+      return true;
+    case 'Target':
+    case 'TargetOnly':
+    case 'TargetOnlyAndPets':
+    case 'Marker':
+    case 'Unspecified':
+      return false;
+  }
 }
 /**
  * `stack_key` unresolved-registry sentinel (0xFFFFFFFF). The exporter emits it
@@ -925,7 +1050,7 @@ export interface IngestContext {
   pvMode: PvMode;
   baseProbability: number;
   procsPerMinute?: number;
-  requiresExpression?: string;
+  requiresExpression?: string[];
   /** e.g. 'OutOfCombat' for combat-gated (suppressible) templates. */
   specialCase?: string;
   /** The group's `Tag` list, comma-joined — see {@link AtomicEffect.tags}. */
@@ -977,7 +1102,7 @@ export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEff
       magnitude: t.magnitude ?? 0,
       // A value expression (kRage-driven Fury etc.); empty string ⇒ absent, like the
       // other optional strings. Read by the calc's expr VM, not by the bag.
-      magnitudeExpression: t.magnitude_expression || undefined,
+      magnitudeExpression: t.magnitude_expression?.length ? t.magnitude_expression : undefined,
       duration: parseDuration(t.duration),
       applicationPeriod: t.application_period || undefined,
       stacking,
@@ -1013,7 +1138,7 @@ export function ingestExportGroup(group: ExportGroup): AtomicEffect[] {
     pvMode: mapPvMode(group.is_pvp),
     baseProbability: group.chance ?? 1,
     procsPerMinute: group.ppm && group.ppm > 0 ? group.ppm : undefined,
-    requiresExpression: group.requires_expression || undefined,
+    requiresExpression: group.requires_expression?.length ? group.requires_expression : undefined,
     tags: mapGroupTags(group.tags),
   };
   return (group.templates ?? []).flatMap((t) => ingestTemplate(t, ctx));

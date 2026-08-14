@@ -94,7 +94,10 @@ export const EnergyFlight: Power = {
     ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
     ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelMaxBuff"]
   ],
-  "requires": "Inherent.Inherent.Energy_Flight !",
+  "requires": [
+    "Inherent.Inherent.Energy_Flight",
+    "!"
+  ],
   "setsModes": [
     "FlyOn"
   ],

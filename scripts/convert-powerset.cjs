@@ -13,6 +13,9 @@ const { isPvpOnlyGroup } = require('./_pv-scope.cjs');
 const { isBaseCase, casterArchetypes } = require('./_gate-default.cjs');
 const { derivePlayerClassTokens } = require('./_player-classes.cjs');
 const { displayText } = require('./_display-text.cjs');
+const {
+  gateTokens, gateText, isAlwaysCondition, composeGates,
+} = require('./_gate-tokens.cjs');
 
 const datasetId = parseDatasetArg();
 
@@ -338,15 +341,6 @@ const BOOST_TO_CATEGORY = {
   Recovery: 'Endurance Modification',
   Endurance_Drain: 'Endurance Modification',
 };
-
-// Whether this dataset's boostsets.bin encodes ATO categories in the per-power
-// allowed_powers lists. Homecoming and Rebirth do (their export's
-// `allowed_set_categories` already carries e.g. "Controller Archetype Sets"),
-// so the preferred path below trusts them. Thunderspy's bin does NOT — ZERO of
-// its exported powers carry any "Archetype Sets" category — so for it the ATO
-// index below supplies each power's own ATO categories, or no Thunderspy
-// power would ever accept its ATOs (reported for Illusion Control's holds).
-const BINS_OMIT_PER_POWER_ATOS = datasetId === 'thunderspy';
 
 // AT ATO categories, derived from the dataset's own export (SOURCE-1 item 4;
 // replaces the hand DAMAGE_ATO_BY_AT/CONTROL_ATO_BY_AT tables): an ATO set is
@@ -799,6 +793,15 @@ function _tagGroupContext(template, effect, ancestorRequires = [], ancestorArche
  * Quick file's 1.67 gives 2.049, and ITS sibling is a literal 2.049. Reading the shell's
  * number instead would land on neither.
  *
+ * `targets_affected` rides along for the same reason one step further out: it is what
+ * resolves the pronoun in a `target: AnyAffected` template ("whoever this power affects"),
+ * and the shell's answer is about the shell. The pool's Spring Attack is `['Self']` because
+ * the parent teleports YOU; the foe knockback it pulls in from
+ * `Redirects.Pool_Leaping.Spring_Attack` belongs to a `['Foe']` power. Trick Arrow's EMP
+ * Arrow is the same shape one better: `['Self']` shell, `['Friend']` field, so the field's
+ * buffs are the team's and not the caster's. Reading the shell's list there hands the caster
+ * a foe's knockback and an ally's buff (TARGETS-3).
+ *
  * Same mutate-the-template, first-stamp-wins convention as `_tagGroupContext`: a template
  * object can be walked by more than one collector, but it only ever belongs to one power file.
  */
@@ -808,6 +811,9 @@ function _stampOwnerScalars(templates, ownerJson) {
     if (!t) continue;
     if (t._ownerActivationTime === undefined) t._ownerActivationTime = ownerJson.activation_time;
     if (t._ownerRechargeTime === undefined) t._ownerRechargeTime = ownerJson.recharge_time;
+    if (t._ownerTargetsAffected === undefined && ownerJson.targets_affected) {
+      t._ownerTargetsAffected = ownerJson.targets_affected;
+    }
   }
   return templates;
 }
@@ -823,26 +829,13 @@ function _stampOwnerScalars(templates, ownerJson) {
 // Opportunity component as part of every hit. Rebirth/Thunderspy are unaffected —
 // Parse6 stores AttribMods flat, with no group to nest (0 nested gates in either).
 function _composeRequires(ancestorRequires, ownRequires) {
-  const parts = [];
-  for (const raw of [...ancestorRequires, ownRequires]) {
-    const part = (raw || '').trim();
-    if (!part) continue;
-    // A group nested under one carrying the same gate repeats it (303 Homecoming
-    // atoms, all of them the PvE/PvP `enttype` fork). `X && X` is `X` for a pure
-    // predicate, so the repeat is noise — but NOT for a gate that rolls, where two
-    // conjuncts are two rolls. No `rand()` carrier repeats itself in the corpus;
-    // this keeps that true by construction rather than by luck.
-    if (parts.includes(part) && !part.includes('rand')) continue;
-    parts.push(part);
-  }
-  if (parts.length === 0) return '';
-  return parts.reduce((left, right) => `${left} ${right} &&`);
+  return composeGates(...ancestorRequires, ownRequires);
 }
 
 /** The gate chain a group hands to its children: its own on top of its inherited. */
 function _childRequires(ancestorRequires, effect) {
-  const own = (effect.requires_expression || '').trim();
-  return own ? [...ancestorRequires, own] : ancestorRequires;
+  const own = gateTokens(effect.requires_expression);
+  return own.length ? [...ancestorRequires, own] : ancestorRequires;
 }
 
 // The archetype restriction in force at a group: its own fork intersected with
@@ -908,6 +901,22 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
   const templates = [];
   const MAX_DEPTH = 3;
 
+  // ABSORB-2: detect complementary gate pairs (`X` / `X !`) that are both SATISFIED.
+  // These are partitions — exactly one branch fires at any moment — so collecting both
+  // doubles the value. Skip the negated arm; the positive arm carries the same data.
+  const complementSkip = new Set();
+  {
+    const baseReqs = new Set();
+    for (const effect of effects) {
+      const req = gateText(effect.requires_expression);
+      if (req && isBaseCase(effect)) baseReqs.add(req);
+    }
+    for (const req of baseReqs) {
+      const neg = req + ' !';
+      if (baseReqs.has(neg)) complementSkip.add(neg);
+    }
+  }
+
   for (const effect of effects) {
     if (effect.is_pvp === 'PVP_ONLY') continue;
     // Drop the PvP variant of a PvE/PvP `enttype` pair. HC splits many powers
@@ -943,8 +952,9 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
     // Skip conditional effects that represent archetype inherent mechanics
     // (these are handled separately by the planner's toggle system)
     let combatGated = parentCombatGated;
-    if (effect.requires_expression) {
-      const req = effect.requires_expression;
+    {
+      const req = gateText(effect.requires_expression);
+      if (complementSkip.has(req)) continue;
       // Dead-state conditionals (rez effects when HP == 0)
       if (req.includes('kHitPoints == 0')) continue;
       // Stalker hidden-state bonus damage (kMeter > 0 = in hide mode)
@@ -1054,14 +1064,14 @@ function findFastFormRedirect(powerJson) {
 
   // Exactly one default: a power with two unconditional branches has no single "slow form" for
   // the fast one to replace, so the pair is not this shape.
-  const defaults = redirects.filter((r) => (r.condition_expression || '').trim() === 'Always');
+  const defaults = redirects.filter((r) => isAlwaysCondition(r.condition_expression));
   if (defaults.length !== 1) return null;
   const baseJson = _loadRedirect(defaults[0].name);
   if (!baseJson || !(baseJson.interrupt_time > 0)) return null;
 
   for (const redirect of redirects) {
-    const condition = (redirect.condition_expression || '').trim();
-    if (!condition || condition === 'Always') continue;
+    if (isAlwaysCondition(redirect.condition_expression)) continue;
+    const condition = gateTokens(redirect.condition_expression);
     const fastJson = _loadRedirect(redirect.name);
     if (!fastJson || fastJson.interrupt_time > 0) continue;
     return { name: redirect.name, baseJson, fastJson, condition };
@@ -1138,8 +1148,8 @@ const NO_MODE_REDIRECT_CONDITION =
  * the no-mode branch, and `null` means this is not a mode-shaped condition at all.
  */
 function classifyModeRedirect(conditionExpression) {
-  const expression = (conditionExpression || '').trim();
-  if (expression === 'Always') return { kind: 'default' };
+  if (isAlwaysCondition(conditionExpression)) return { kind: 'default' };
+  const expression = gateText(conditionExpression);
   const positive = expression.match(MODE_REDIRECT_CONDITION);
   if (positive) return { kind: 'mode', mode: positive[1] };
   if (NO_MODE_REDIRECT_CONDITION.test(expression)) return { kind: 'default' };
@@ -1238,7 +1248,7 @@ function extractModeVariants(powerJson, archetypeId, powerType) {
   if (unreadable.length) {
     console.warn(
       `  [mode-variants] ${powerJson.name}: mode redirect skipped — unreadable condition(s): ` +
-        unreadable.map((c) => JSON.stringify(c.entry.condition_expression)).join(', '),
+        unreadable.map((c) => JSON.stringify(gateText(c.entry.condition_expression))).join(', '),
     );
     return null;
   }
@@ -1285,7 +1295,7 @@ function extractModeVariants(powerJson, archetypeId, powerType) {
  * `midCombatCast` and `fromHideBonus` rather than by either variant mechanism.
  */
 const hasMeterBranch = (powerJson) =>
-  (powerJson.redirect || []).some((r) => (r.condition_expression || '').includes('kMeter'));
+  (powerJson.redirect || []).some((r) => gateText(r.condition_expression).includes('kMeter'));
 
 /** The caster-mode reader token. Its operand — the mode name — is the token before it. */
 const MODE_READER = /^[Ss]ource\.Mode\?$/;
@@ -1302,7 +1312,7 @@ const MODE_READER = /^[Ss]ource\.Mode\?$/;
  * swapping the whole record would model it twice.
  */
 function selectsOnModesAlone(condition) {
-  const tokens = (condition || '').trim().split(/\s+/).filter(Boolean);
+  const tokens = gateTokens(condition);
   let sawMode = false;
   for (let i = 0; i < tokens.length; i++) {
     const token = tokens[i];
@@ -1356,14 +1366,11 @@ function extractFormVariants(powerJson, archetypeId, powerType) {
   // yet entirely the Swap-Ammo mechanic's. Rebirth's Teleport is the mirror: one named mode among
   // three ownership branches, which `extractModeVariants` declines as a mixed table, so claiming
   // it here is what serves it rather than what fights for it.
-  const isModal = (entry) => {
-    const condition = (entry.condition_expression || '').trim();
-    return (
-      condition === 'Always'
-      || isDeadStateBranch(condition)
-      || selectsOnModesAlone(condition)
-    );
-  };
+  const isModal = (entry) => (
+    isAlwaysCondition(entry.condition_expression)
+    || isDeadStateBranch(entry.condition_expression)
+    || selectsOnModesAlone(entry.condition_expression)
+  );
   if (entries.every(isModal)) return null;
   if (hasMeterBranch(powerJson)) return null;
   if (findFastFormRedirect(powerJson)) return null;
@@ -1372,10 +1379,11 @@ function extractFormVariants(powerJson, archetypeId, powerType) {
   const variants = [];
   for (const entry of entries) {
     if (entry === base) continue;
-    const condition = (entry.condition_expression || '').trim();
     // A branch with no condition cannot be selected, and the defeated-caster record is not a
     // form a build is ever shown.
-    if (!condition || condition === 'Always' || isDeadStateBranch(condition)) continue;
+    if (isAlwaysCondition(entry.condition_expression)) continue;
+    if (isDeadStateBranch(entry.condition_expression)) continue;
+    const condition = gateTokens(entry.condition_expression);
     const variantPath = resolveRedirectPath(entry.name);
     if (!fs.existsSync(variantPath)) {
       console.warn(`  [form-variants] ${powerJson.name}: ${entry.name} has no exported record`);
@@ -1449,9 +1457,9 @@ function extractAssassinStrikeDamage(powerJson) {
   // in shape 2.
   let sourceJson = powerJson;
   const hasKMeterRedirect = Array.isArray(powerJson.redirect) &&
-    powerJson.redirect.some(r => (r.condition_expression || '').includes('kMeter'));
+    powerJson.redirect.some(r => gateText(r.condition_expression).includes('kMeter'));
   if (hasKMeterRedirect) {
-    const stealth = powerJson.redirect.find(r => r.condition_expression === 'Always');
+    const stealth = powerJson.redirect.find(r => isAlwaysCondition(r.condition_expression));
     if (!stealth) return null;
     const stealthPath = resolveRedirectPath(stealth.name);
     if (!fs.existsSync(stealthPath)) return null;
@@ -1474,7 +1482,7 @@ function extractAssassinStrikeDamage(powerJson) {
     for (const e of effects || []) {
       if (e.is_pvp === 'PVP_ONLY') continue;
       let b = branch;
-      const req = e.requires_expression || '';
+      const req = gateText(e.requires_expression);
       if (req.includes('kMeter')) {
         if (req.includes('>=') || /> 0(\b|\s)/.test(req)) b = 'hidden';
         else if (req.includes('<')) b = 'nothidden';
@@ -1560,7 +1568,7 @@ function extractSnipeBaseTiming(powerJson) {
 function extractAssassinStrikeFastCast(powerJson) {
   if (!Array.isArray(powerJson.redirect)) return null;
   const quick = powerJson.redirect.find((r) => {
-    const cond = r.condition_expression || '';
+    const cond = gateText(r.condition_expression);
     return cond.includes('kMeter') && cond.includes('<');
   });
   if (!quick) return null;
@@ -1575,7 +1583,7 @@ function extractAssassinStrikeFastCast(powerJson) {
  * `kHitPoints == 0`, the bin-parser form the RPN tokens `kHitPoints 0 ==`; the bare token is
  * specific enough to match either.
  */
-const isDeadStateBranch = (condition) => (condition || '').includes('kHitPoints');
+const isDeadStateBranch = (condition) => gateText(condition).includes('kHitPoints');
 
 /**
  * The redirect branch a power's BASE record comes from: the unconditional `Always` one, else the
@@ -1589,7 +1597,7 @@ const isDeadStateBranch = (condition) => (condition || '').includes('kHitPoints'
 function defaultRedirectEntry(powerJson) {
   const entries = powerJson.redirect || [];
   return (
-    entries.find((r) => (r.condition_expression || '').trim() === 'Always')
+    entries.find((r) => isAlwaysCondition(r.condition_expression))
     || entries.find((r) => !isDeadStateBranch(r.condition_expression))
     || null
   );
@@ -1693,7 +1701,7 @@ function collectBaseTemplates(powerJson) {
 function collectInfoRedirectTemplates(powerJson) {
   if (!powerJson.redirect) return [];
   const infoRedirect = powerJson.redirect.find(
-    r => /_Info$/.test(r.name || '') && (r.condition_expression === '0' || r.show_in_info)
+    r => /_Info$/.test(r.name || '') && (gateText(r.condition_expression) === '0' || r.show_in_info)
   );
   if (!infoRedirect) return [];
   const p = resolveRedirectPath(infoRedirect.name);
@@ -1713,9 +1721,8 @@ function collectInfoRedirectTemplates(powerJson) {
     .filter(e => !isPvpEnttypeVariant(e))
     .map(e => {
       const c = { ...e };
-      if (typeof c.requires_expression === 'string'
-          && /\barch\s+source>\s+Class_\w+\s+eq/.test(c.requires_expression)) {
-        c.requires_expression = '';
+      if (/\barch\s+source>\s+Class_\w+\s+eq/.test(gateText(c.requires_expression))) {
+        c.requires_expression = [];
         // The gate is gone, so its resolution must go too — otherwise the atoms
         // would ship an archetype restriction for a gate that no longer exists
         // and the engine would drop them for every other AT's info power.
@@ -1966,8 +1973,8 @@ function collectTemplatesWithChance(effects, visited = new Set(), depth = 0, cum
       || (effect.child_effects && effect.child_effects.length > 0);
     if ((effect.chance === 0 || effect.chance === 0.0) && !hasPayload) continue;
     if (effect.tags && effect.tags.includes('Containment')) continue;
-    if (effect.requires_expression) {
-      const req = effect.requires_expression;
+    {
+      const req = gateText(effect.requires_expression);
       if (req.includes('kHitPoints == 0')) continue;
       if (req.includes('kMeter > 0') || req.includes('kMeter >=')) continue;
       if (req.includes('rand()')) continue;
@@ -2363,7 +2370,7 @@ function normalizeSummonEntities(powerJson, effects) {
     const visit = (g) => {
       if (g.is_pvp === 'PVP_ONLY') return;
       const chance = typeof g.chance === 'number' ? g.chance : 1;
-      const req = (g.requires_expression || '').trim();
+      const req = gateText(g.requires_expression);
       for (const t of (g.templates || [])) {
         if (!(t.attribs || []).includes('Create_Entity')) continue;
         if (!t.params || t.params.type !== 'EntCreate' || !t.params.entity_def) continue;
@@ -2553,7 +2560,7 @@ function rebuildTierConditionalSummon(powerJson, effects) {
   const insts = [];
   const collect = (groups) => {
     for (const g of groups || []) {
-      const req = (g.requires_expression || '').trim();
+      const req = gateText(g.requires_expression);
       for (const t of g.templates || []) {
         if (!(t.attribs || []).includes('Create_Entity')) continue;
         const p = t.params || {};
@@ -3208,7 +3215,7 @@ function _countState(req, dotted) {
 }
 
 function _classifyConditionalGate(effect, powersetKey) {
-  const req = (effect && effect.requires_expression) || '';
+  const req = gateText(effect && effect.requires_expression);
   if (!_isConditionalGate(effect)) return null;
   // Allowlisted target content-type tag (`<Tag> target.HasTag?`) → a "vs <type>"
   // bonus. Matched on the STRIPPED, anchored expression so it fires only when the
@@ -3524,7 +3531,7 @@ function _stripIgnoredClauses(req) {
  * (AT-FORK-1). Keeping them base is what preserves their slots.
  */
 function _isConditionalGate(effect) {
-  const req = (effect && effect.requires_expression) || '';
+  const req = gateText(effect && effect.requires_expression);
   if (!req.trim()) return false;
   return !isBaseCase(effect);
 }
@@ -3613,7 +3620,7 @@ function collectConditionalsGrouped(effects, powersetKey, ancestorArchetypes = n
     if (effect.chance === 0 || effect.chance === 0.0) return;
     if (effect.tags && effect.tags.includes('Containment')) return;
 
-    const req = effect.requires_expression;
+    const req = gateText(effect.requires_expression);
     if (req) {
       // Existing inherent-mechanic gates aren't conditionals to surface.
       if (req.includes('kHitPoints == 0')) return;
@@ -3694,13 +3701,12 @@ function _collectBaseNegatedPredicates(effects) {
   const negated = new Set();
   function visit(eff) {
     if (eff.is_pvp === 'PVP_ONLY') return;
-    const req = eff.requires_expression || '';
-    if (req) {
+    const tokens = gateTokens(eff.requires_expression);
+    if (tokens.length) {
       // Match `<dotted.power.name> <side>.ownPower? ... !` — the predicate
-      // followed (eventually) by a top-level `!`. Tokenize rather than
+      // followed (eventually) by a top-level `!`. Walk the tokens rather than
       // regex-greedy so we catch chained gates like
       // `enttype target> critter eq Drowning target.ownPower? ! &&`.
-      const tokens = req.trim().split(/\s+/);
       // Find the last token that's `!` and walk back to find the predicate
       // it negates (the nearest preceding `<X>.ownPower?` token).
       for (let i = tokens.length - 1; i > 0; i--) {
@@ -4318,8 +4324,8 @@ function collectAllTemplates(effects, parentCombatGated = false, ancestorRequire
     // Skip conditional inherent bonuses (crit damage from hide/placate, Scourge procs).
     // These are handled by the UI's inherent toggle system.
     let combatGated = parentCombatGated;
-    if (effect.requires_expression) {
-      const req = effect.requires_expression;
+    {
+      const req = gateText(effect.requires_expression);
       // Dead-state effects (self-rez conditions)
       if (req.includes('kHitPoints == 0')) continue;
       // Stalker/Widow hidden-state bonus damage (kMeter > 0 = in hide mode)
@@ -4423,7 +4429,7 @@ function collectAtomTemplates(effects, parentCombatGated = false, ancestorRequir
   const templates = [];
   for (const effect of effects || []) {
     let combatGated = parentCombatGated;
-    if (effect.requires_expression && _isOutOfCombatGate(effect.requires_expression)) {
+    if (_isOutOfCombatGate(gateText(effect.requires_expression))) {
       combatGated = true;
     }
     for (const t of effect.templates || []) {
@@ -4772,9 +4778,8 @@ function _exprMinmax(value, lo, hi) {
  *   operator, stack underflow, symbol arithmetic, leftover operands).
  */
 function evalMagnitudeExpression(expr, ctx = {}) {
-  const src = (expr || '').trim();
-  if (!src) return null;
-  const tokens = src.split(/\s+/);
+  const tokens = gateTokens(expr);
+  if (tokens.length === 0) return null;
   const stack = [];
 
   for (let i = 0; i < tokens.length; i++) {
@@ -4940,7 +4945,7 @@ function extractDamage(templates, powerJson) {
       // (≤ 7 significant digits), so 12 preserves every real digit while clearing the
       // ×k artifact (2.28 × 0.3 = 0.6839999999999999 → 0.684). Untouched scales are
       // passed through bit-identically.
-      const magFactor = template.magnitude_expression
+      const magFactor = gateTokens(template.magnitude_expression).length
         ? stdResultCoefficient(template.magnitude_expression, _exprCtxFor(template, powerJson))
         : null;
 
@@ -5031,7 +5036,7 @@ function templatesToAtoms(templates) {
       pvMode: mapPvMode(t._groupPv),
       baseProbability: t._groupChance ?? 1,
       procsPerMinute: t._groupPpm > 0 ? t._groupPpm : undefined,
-      requiresExpression: t._groupRequires || undefined,
+      requiresExpression: t._groupRequires?.length ? t._groupRequires : undefined,
       specialCase: t._combatGated ? 'OutOfCombat' : undefined,
       tags: mapGroupTags(t._groupTags),
     });
@@ -5156,6 +5161,14 @@ function encodeAtomsForEmit(templates, baseTemplates, powerName) {
     // archetype roster, which the engine's gate evaluator does not carry.
     if (src && src._casterArchetypes && src._casterArchetypes.length) {
       patch.casterArchetypes = src._casterArchetypes.join(',');
+    }
+    // The `EntsAffected` of the power this template LIVES on, when a collector pulled it
+    // out of another power's file. Only the redirect follows stamp `_ownerTargetsAffected`
+    // (`_stampOwnerScalars`), so its presence is the provenance: absent means the atom is
+    // its own power's. The runtime needs it to resolve a `toWho: Target` pronoun, and the
+    // shell it got attached to answers a different question (AtomicEffect.ownerTargets).
+    if (src && src._ownerTargetsAffected && src._ownerTargetsAffected.length) {
+      patch.ownerTargets = src._ownerTargetsAffected;
     }
     return encodeAtom(Object.keys(patch).length ? { ...a, ...patch } : a);
   });
@@ -5396,6 +5409,36 @@ function parseAbsorbMaxHPFraction(expr, scale, table, ignoresStrength) {
   return null;
 }
 
+/**
+ * Does a template addressed to `target` land on the CASTER? The bag-side twin of
+ * `landsOnCaster` in `src/data/core/atomic-effect.ts` — same reading, same three values,
+ * kept beside the routing it feeds because the bag stores a recipient per entry and every
+ * branch below has to agree with the atom the entry mirrors.
+ *
+ * `SelfAndPets` is the one this was missing (TARGETS-2). The game resolves it from the
+ * caster and never consults the power's targets (`character_combat.c:749`), so it is
+ * `Self` plus a copy for each pet — but the test here was a literal `=== 'Self'`, which
+ * sent Thunderspy's Fly, Hover and Mystic Flight down the foe branch. Their `-1.01`
+ * normalising row landed in `slow` with no recipient, the self filter dropped it, and the
+ * flight speed those three report kept the `+` half of an authored pair without its `-`.
+ *
+ * `AnyAffectedAndPets` anchors on whoever the power hit and then walks up to that
+ * entity's owner, which is the caster on every player power in the corpus that carries it
+ * (Serum and Smoke Flash hit `MyPet`, Force Shield hits `MyOwner`).
+ * `scripts/planb-shadow-towho.cjs` pins that premise.
+ *
+ * `AnyAffected` is NOT here, and this is the BAG's reading, which stays as it is. The atom
+ * route resolves that recipient against the power (`reachesCaster`, TARGETS-3), so it now
+ * credits the caster with rows the bag's slot never carried — Vengeance's knockback
+ * protection, Rest's resistance crash, Fulcrum Shift's own increment at one target. Each of
+ * those is a named atom-over-bag divergence in the per-family shadows rather than a rewrite
+ * of this function: it feeds ~20 routing branches and the fallback it serves is the beta's
+ * only source. The bag is the known-lossy side here, on purpose.
+ */
+function landsOnCaster(target) {
+  return target === 'Self' || target === 'SelfAndPets' || target === 'AnyAffectedAndPets';
+}
+
 function projectAtomsToEffects(atoms, powerName) {
   const effects = {};
 
@@ -5459,7 +5502,7 @@ function projectAtomsToEffects(atoms, powerName) {
       if ((a.sourceAttrib || '').toLowerCase() !== 'absorb') continue;
       if ((a._aspect || '').toLowerCase() !== 'maximum') continue;
       if (a._type !== 'Expression') continue;
-      const expr = (a._magExpr || '').trim();
+      const expr = gateText(a._magExpr);
       if (!expr) continue; // empty = placeholder/PvP variant — ignore
       const parsed = parseAbsorbMaxHPFraction(
         expr, a._scale, a._table, a._flags?.includes('IgnoreStrength')
@@ -5571,7 +5614,7 @@ function projectAtomsToEffects(atoms, powerName) {
     const table = a._table;
     const magnitude = a.magnitude || 1;
     const isDebuff = scale < 0 || table?.toLowerCase().includes('debuff');
-    const isSelfTargeting = a._target === 'Self';
+    const isSelfTargeting = landsOnCaster(a._target);
     const duration = bagDuration(a._duration);
 
     // AllowStrength off (`attribmod.c` `mod_Fill` skips the `f *= fStr` multiply, which the
@@ -6504,8 +6547,8 @@ function collectTemplatesWithMeta(effects) {
     if (effect.tags && effect.tags.includes('Containment')) continue;
 
     // Skip conditional effects (dead-state, hide, scourge)
-    if (effect.requires_expression) {
-      const req = effect.requires_expression;
+    {
+      const req = gateText(effect.requires_expression);
       if (req.includes('kHitPoints == 0')) continue;
       if (req.includes('kMeter > 0') || req.includes('kMeter >=')) continue;
       if (req.includes('rand()')) continue;
@@ -6513,7 +6556,7 @@ function collectTemplatesWithMeta(effects) {
 
     const tags = effect.tags || [];
 
-    const requires = effect.requires_expression || '';
+    const requires = gateText(effect.requires_expression);
 
     if (effect.templates && effect.templates.length > 0) {
       for (const t of effect.templates) {
@@ -6849,7 +6892,7 @@ function detectSelfStacking(allTemplatesWithMeta, excludeKeys = new Set()) {
  * Out-of-combat gates (combat-suppressed, kept in base) also stay.
  */
 function _isBaseExcludedGate(effect, powersetKey) {
-  const req = (effect && effect.requires_expression) || '';
+  const req = gateText(effect && effect.requires_expression);
   if (!req) return false;
   if (_isOutOfCombatGate(req)) return false; // combat-gated stays in base
   return _classifyConditionalGate(effect, powersetKey) !== null;
@@ -7004,7 +7047,7 @@ function computeAoePerTargetPatches(templatesWithMeta, aoeMeta) {
     if ((template.attribs?.[0] || '').toLowerCase() !== 'absorb') continue;
     if (template.aspect !== 'Maximum' || template.type !== 'Expression') continue;
     const parsed = parseAbsorbMaxHPFraction(
-      template.magnitude_expression,
+      gateText(template.magnitude_expression),
       template.scale,
       template.table,
       (template.flags || []).includes('IgnoreStrength'),
@@ -7646,8 +7689,11 @@ function getStrengthsDisallowedIndex() {
 }
 
 /**
- * Thunderspy drops the per-template `target` (the [[tspy-player-vocab-gap]] schema gap —
- * it also drops `aspect`), so a tspy movement template arrives with `target: ''`. The bag
+ * INERT since TSPY-3, and kept only as a tripwire — see the note at the end.
+ *
+ * Thunderspy USED TO drop the per-template `target` and `aspect` (the
+ * [[tspy-player-vocab-gap]] schema gap), so a tspy movement template arrived with
+ * `target: ''`. The bag
  * routes movement to the self `movement` slot only when `target === 'Self'`, and the atom
  * bridge's `toWho` comes from the same field — so an empty target means every Thunderspy
  * travel power (Super Speed, Combat Jumping, Hover, Sprint…) contributes +0 movement, in
@@ -7662,6 +7708,14 @@ function getStrengthsDisallowedIndex() {
  * power-level list and mislabeling a foe slow as a self buff would be worse than the status
  * quo. HC/Rebirth templates carry real targets, so the empty-target guard makes this a
  * no-op there — it needs no dataset flag.
+ *
+ * TSPY-3 recovered both fields from the pre-table typing block, and the committed export
+ * now carries a target and an aspect on all 51,684 tspy templates — zero empties (censused
+ * 2026-08-13, MOVEMAP-2). The empty-target guard therefore never fires on any fork, so this
+ * function is dead: removing it cannot move a number. It is left in place only because that
+ * is a converter change with its own regen, and it should go with one — a fallback that
+ * would silently answer for a future parse regression on the self-buff powers, and only
+ * those, is the soft-wrong shape Rule 1 exists to keep out.
  */
 function resolveThunderspyMovementTargets(powerJson) {
   const ta = powerJson.targets_affected;
@@ -7778,10 +7832,10 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
   //    jumps to next — e.g. the most-injured ally for Rejuvenating Circuit).
   //  - max_targets_expression: a computed target cap that overrides the static
   //    `stats.maxTargets` when a condition holds (Static stacks, Gauntlet mode).
-  if (powerJson.chain_target_expression) {
+  if (gateTokens(powerJson.chain_target_expression).length) {
     power.chainTargetExpression = powerJson.chain_target_expression;
   }
-  if (powerJson.max_targets_expression) {
+  if (gateTokens(powerJson.max_targets_expression).length) {
     power.maxTargetsExpression = powerJson.max_targets_expression;
   }
 
@@ -7860,23 +7914,6 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
         if (!allCategories.has(cat)) return true; // not an AT ATO at all — keep
         return ownAtos.has(cat); // keep only ATOs whose set actually slots here
       });
-      // Datasets whose bin omits per-power ATOs (Thunderspy): supply them from
-      // the ATO index. Without this, no Thunderspy power accepts its ATOs
-      // (reported for Illusion Control's holds). No-op for HC/Rebirth (flag
-      // off — their per-power lists already carry the categories).
-      if (BINS_OMIT_PER_POWER_ATOS) {
-        filtered.push(...ownAtos);
-        // Universal Damage sets slot into ANY damaging power. HC/Rebirth get
-        // this from boostsets.bin's ECUniversalDamage set (Overwhelming Force,
-        // 1627-power pool). Thunderspy's boostsets.bin ships that set as a
-        // broken 3-power placeholder stub (display "SumoBoostName", empty EC),
-        // so no Thunderspy power picks up "Universal Damage Sets" from the
-        // per-power index. Infer it here from the Damage boost — matching the
-        // legacy inference rule in inferAllowedSetCategories.
-        if ((powerJson.boosts_allowed || []).includes('Damage')) {
-          filtered.push('Universal Damage Sets');
-        }
-      }
       power.allowedSetCategories = [...new Set(filtered)].sort();
     }
     // else: leave allowedSetCategories unset — no IO sets slot here.
@@ -8244,7 +8281,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
   }
 
   // Requirements
-  if (powerJson.requires) {
+  if (gateTokens(powerJson.requires).length) {
     power.requires = powerJson.requires;
   }
 
@@ -8584,7 +8621,7 @@ const ACCESS_GATE_RE = /accesslevel char>/;
  */
 function deriveDormant(powers) {
   if (!powers || powers.length === 0) return false;
-  const gated = powers.filter((p) => ACCESS_GATE_RE.test(p.requires || '')).length;
+  const gated = powers.filter((p) => ACCESS_GATE_RE.test(gateText(p.requires))).length;
   return gated / powers.length > 0.5;
 }
 

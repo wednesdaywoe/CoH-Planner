@@ -53,6 +53,7 @@ const RAW_POWERS_PATH = (() => {
 })();
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
 const { displayText } = require('./_display-text.cjs');
+const { gateTokens } = require('./_gate-tokens.cjs');
 const datasetId = parseDatasetArg();
 
 // All datasets write under `src/data/datasets/<id>/`.
@@ -188,10 +189,10 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   assignModes(power, rawJson);
 
   // Requires
-  if (rawJson.requires && rawJson.requires !== '') {
-    power.requires = rawJson.requires;
+  if (gateTokens(rawJson.requires).length) {
+    power.requires = gateTokens(rawJson.requires);
   } else {
-    power.requires = '';
+    power.requires = [];
   }
 
   // Slots
@@ -472,7 +473,7 @@ function convertEpicPool(poolId, existingPool) {
     archetype: fallbackArchetype,
     description: poolIndex.display_help || (existingPool ? existingPool.description : ''),
     icon: poolIndex.icon || (existingPool ? existingPool.icon : ''),
-    requires: poolIndex.requires || '',
+    requires: poolIndex.requires || [],
     minLevel: existingPool ? existingPool.minLevel : 35,
     powers: [],
   };

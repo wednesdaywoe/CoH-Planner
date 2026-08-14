@@ -48,14 +48,14 @@ export const NullifyPain: Power = {
   },
   "atoms": [
     ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["DamageBuff","Smashing",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Lethal",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Fire",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Cold",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Energy",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Negative",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Psionic",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true],
-    ["DamageBuff","Toxic",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> Max.kHitPoints target> <",true]
+    ["DamageBuff","Smashing",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true],
+    ["DamageBuff","Lethal",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true],
+    ["DamageBuff","Fire",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true],
+    ["DamageBuff","Cold",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true],
+    ["DamageBuff","Energy",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true],
+    ["DamageBuff","Negative",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true],
+    ["DamageBuff","Psionic",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true],
+    ["DamageBuff","Toxic",1.5,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",8,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true]
   ],
   "conditionalEffects": [
     {

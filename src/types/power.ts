@@ -278,6 +278,8 @@ export interface ResistanceByType {
   negative?: NumberOrScaled;
   psionic?: NumberOrScaled;
   toxic?: NumberOrScaled;
+  /** The export's `Special` damage type (Thunderspy's generic damage atoms). */
+  special?: NumberOrScaled;
   /** Heal resistance (affects incoming healing) */
   heal?: NumberOrScaled;
 }
@@ -829,6 +831,16 @@ export interface Power {
   internalName: string;
   /** Full internal name (e.g., "Pool.Speed.Hasten") */
   fullName?: string;
+  /**
+   * The `Auto` record that hands this power over, where the game grants rather
+   * than offers it. Homecoming files its free travel toggles this way: the
+   * `Inherent.Inherent.Prestige_Ninja_Run` record carries no mechanic at all,
+   * only a `Grant_Power` aimed at the toggle in the `Prestige` category, and
+   * this power IS that toggle. Provenance — nothing reads it — but it is what
+   * tells a walked grant apart from a power a fork authored inline (Rebirth
+   * does the latter with the same two powers). See INHERENT-6.
+   */
+  grantedBy?: string;
   /** Level available (0 = level 1, -1 = unlocked by prerequisite) */
   available: number;
   /** Tier within the powerset */
@@ -909,14 +921,14 @@ export interface Power {
    * one (`prevdistance`). Carried verbatim from the binary; the Info panel
    * humanizes the known patterns. Absent on non-chain powers.
    */
-  chainTargetExpression?: string;
+  chainTargetExpression?: string[];
   /**
    * MaxTargetsExpr — a computed target-cap RPN (bin field 38) that overrides the
    * static `stats.maxTargets` when its condition holds (e.g. the circuits' cap
    * grows while the Static buff is stacked; a Tanker Gauntlet attack's cap).
    * Absent unless the cap is conditional.
    */
-  maxTargetsExpression?: string;
+  maxTargetsExpression?: string[];
   /**
    * Attributes of this power that NO strength applies to — neither slotted
    * enhancement nor global buffs (e.g. 'RechargeTime' on Rune of Protection /
@@ -1008,7 +1020,7 @@ export interface Power {
    */
   procRollSites?: ProcRollSite[];
   /** Prerequisite power(s) - logical expression */
-  requires?: string;
+  requires?: string[];
   /**
    * Game "modes" this power ACTIVATES — combat-state flags set by a `Set_Mode`
    * effect (e.g. Granite Armor sets `Granite_Mode`; Momentum sets `FastMode`;
@@ -1082,13 +1094,15 @@ export interface Power {
   effects?: PowerEffects;
   /**
    * The fast (uninterruptible) redirect form of an interruptible power, and the gate that
-   * selects it. `condition` is the redirect's own expression VERBATIM — Homecoming's
-   * `kEngaged … Experienced_Marksman …`, the forks' `cur.kToHit source> .97 >=` — evaluated
-   * by the engine against the build. No threshold is re-derived anywhere in the pipeline;
-   * matching one fork's gate text is what left two forks with no fast form (SNIPE-2).
+   * selects it. `condition` is the redirect's own expression VERBATIM, as the token list the
+   * wire holds — Homecoming's `kEngaged … Experienced_Marksman …`, the forks'
+   * `['cur.kToHit', 'source>', '.97', '>=']` — evaluated by the engine against the build. No
+   * threshold is re-derived anywhere in the pipeline; matching one fork's gate text is what
+   * left two forks with no fast form (SNIPE-2). Tokens rather than one joined string because
+   * a joined gate cannot be split back apart (COND-8).
    */
   quickSnipe?: {
-    condition: string;
+    condition: string[];
     stats: Partial<PowerStats>;
     damage: ScaledDamageEntry | ScaledDamageEntry[];
     /**
@@ -1108,7 +1122,7 @@ export interface Power {
    * record stands — filtering those out in the converter would leave the same powers
    * unserved while looking served.
    */
-  formVariants?: ({ condition: string; internalName: string; atoms?: EncodedAtom[] } & Partial<Power>)[];
+  formVariants?: ({ condition: string[]; internalName: string; atoms?: EncodedAtom[] } & Partial<Power>)[];
   /**
    * Assassin's Strike from-Hide damage multiplier, expressed as a bonus over the
    * displayed (not-hidden) base — e.g. 2.174 = +217%. Replaces the generic
@@ -1353,7 +1367,7 @@ export interface PowerPool extends Powerset {
   /** Pool ID (e.g., "speed") */
   id: string;
   /** Prerequisite expression */
-  requires?: string;
+  requires?: string[];
 }
 
 // ============================================

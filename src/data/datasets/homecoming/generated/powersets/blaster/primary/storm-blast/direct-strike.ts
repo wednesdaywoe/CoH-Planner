@@ -61,13 +61,19 @@ export const DirectStrike: Power = {
     }
   },
   "atoms": [
-    ["Endurance",null,-0.2,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",4.5,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Sentinel eq",null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST","Class_Sentinel"],
-    ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"arch source> Class_Blaster eq",null,null,null,null,null,null,null,null,null,null,"Class_Blaster"]
+    ["Endurance",null,-0.2,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Energy",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Energy",4.5,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Sentinel","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST","Class_Sentinel",null,["Foe"]],
+    ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["arch","source>","Class_Blaster","eq"],null,null,null,null,null,null,null,null,null,null,"Class_Blaster",null,["Foe"]]
   ],
   "quickSnipe": {
-    "condition": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+    "condition": [
+      "kEngaged",
+      "Source.Mode?",
+      "Set_Bonus.Global_Bonus.Experienced_Marksman",
+      "source.ownPower?",
+      "||"
+    ],
     "stats": {
       "castTime": 1.33,
       "range": 80
@@ -80,10 +86,10 @@ export const DirectStrike: Power = {
       }
     ],
     "atoms": [
-      ["Endurance",null,-0.1,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-      ["Damage","Energy",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *"],
-      ["Damage","Energy",2.28,1,0,"Ranged_InherentDamage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Sentinel eq",null,null,null,null,null,"cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult *",null,0,null,"SentCrit,SentCritST","Class_Sentinel"],
-      ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,"arch source> Class_Blaster eq",null,null,null,null,null,null,null,null,null,null,"Class_Blaster"]
+      ["Endurance",null,-0.1,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+      ["Damage","Energy",2.28,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kToHit","source>","0.75","-","0.22","/","-1.0","1.0","minmax","0.210526316","*","1","+","@StdResult","*"],null,null,null,null,null,null,["Foe"]],
+      ["Damage","Energy",2.28,1,0,"Ranged_InherentDamage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Sentinel","eq"],null,null,null,null,null,["cur.kToHit","source>","0.75","-","0.22","/","-1.0","1.0","minmax","0.210526316","*","1","+","@StdResult","*"],null,0,null,"SentCrit,SentCritST","Class_Sentinel",null,["Foe"]],
+      ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,["arch","source>","Class_Blaster","eq"],null,null,null,null,null,null,null,null,null,null,"Class_Blaster",null,["Foe"]]
     ]
   }
 };

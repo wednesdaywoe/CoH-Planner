@@ -74,21 +74,21 @@ export const GroupEnergyFlight: Power = {
     }
   },
   "atoms": [
-    ["Movement","FlyMode",2,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-    ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-    ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-    ["Movement","Friction",10,1,10,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !",null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
-    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !",null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
-    ["Movement","FlyMode",2,1,2.25,"Melee_Ones","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
-    ["Movement","Fly",0.5,1,2.25,"Melee_SpeedFlying","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
-    ["Movement","Control",10,1,2.25,"Melee_Control","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
-    ["Movement","Friction",10,1,2.25,"Melee_Friction","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
+    ["Movement","FlyMode",2,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
+    ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
+    ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
+    ["Movement","Friction",10,1,10,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
+    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
+    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
+    ["Movement","FlyMode",2,1,2.25,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
+    ["Movement","Fly",0.5,1,2.25,"Melee_SpeedFlying","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
+    ["Movement","Control",10,1,2.25,"Melee_Control","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
+    ["Movement","Friction",10,1,2.25,"Melee_Friction","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
     ["GlobalChanceMod",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SelfAndPets"],
     ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
     ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
     ["Movement","FlyMode",0.1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup"],
-    ["Movement","FlyMode",2,1,2.25,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"]
+    ["Movement","FlyMode",2,1,2.25,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"]
   ],
   "modesSuspended": [
     "Peacebringer_Blaster_Mode",

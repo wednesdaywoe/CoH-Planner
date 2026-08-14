@@ -94,14 +94,14 @@ export const WaterJet: Power = {
     ]
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
-    ["Damage","Smashing",0.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Cold",1.47,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["1"],null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Damage","Smashing",0.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Cold",1.47,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Movement","JumpHeight",0.2,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Jump",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Run",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <="],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","<="]],
     ["DamageBuff","Smashing",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -110,13 +110,22 @@ export const WaterJet: Power = {
     ["DamageBuff","Negative",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 == temporary_powers.temporary_powers.enhanced_water_jet_lock source.ownPower? ! &&",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
-    ["Damage","Smashing",0.553611,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Cold",1.660834,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","temporary_powers.temporary_powers.enhanced_water_jet_lock","source.ownPower?","!","&&"],true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Damage","Smashing",0.553611,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Cold",1.660834,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
   ],
   "formVariants": [
     {
-      "condition": "temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 == temporary_powers.temporary_powers.enhanced_water_jet_lock source.ownPower? ! &&",
+      "condition": [
+        "temporary_powers.temporary_powers.tidal_power",
+        "source.ownPowerNum?",
+        "3",
+        "==",
+        "temporary_powers.temporary_powers.enhanced_water_jet_lock",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
       "internalName": "Water_Jet_Fast",
       "stats": {
         "accuracy": 1.2,
@@ -201,7 +210,12 @@ export const WaterJet: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Damage",
@@ -226,7 +240,12 @@ export const WaterJet: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Movement",

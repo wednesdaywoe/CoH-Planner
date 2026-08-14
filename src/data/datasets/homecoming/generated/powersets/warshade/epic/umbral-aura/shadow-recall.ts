@@ -62,12 +62,15 @@ export const ShadowRecall: Power = {
     }
   },
   "atoms": [
-    ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+    ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadOrAliveLeaguemate"]],
+    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadOrAliveLeaguemate"]]
   ],
   "formVariants": [
     {
-      "condition": "target.isFriend? !",
+      "condition": [
+        "target.isFriend?",
+        "!"
+      ],
       "internalName": "Starless_Step",
       "stats": {
         "accuracy": 1,
@@ -165,7 +168,10 @@ export const ShadowRecall: Power = {
       ]
     }
   ],
-  "requires": "Inherent.Inherent.Shadow_Recall !",
+  "requires": [
+    "Inherent.Inherent.Shadow_Recall",
+    "!"
+  ],
   "modesDisallowed": [
     "Disable_Recall",
     "Peacebringer_Blaster_Mode",

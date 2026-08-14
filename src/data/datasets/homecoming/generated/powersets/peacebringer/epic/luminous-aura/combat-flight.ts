@@ -120,7 +120,7 @@ export const CombatFlight: Power = {
   },
   "atoms": [
     ["Movement","FlyMode",4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-    ["Movement","Fly",0,1,0.75,"Melee_Ones","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff","@Strength 1 - 0.47 *"],
+    ["Movement","Fly",0,1,0.75,"Melee_Ones","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",["@Strength","1","-","0.47","*"]],
     ["Movement","Control",25,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
     ["Movement","Friction",25,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
     ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true],
@@ -151,7 +151,10 @@ export const CombatFlight: Power = {
     ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
     ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"]
   ],
-  "requires": "Inherent.Inherent.Combat_Flight !",
+  "requires": [
+    "Inherent.Inherent.Combat_Flight",
+    "!"
+  ],
   "modesSuspended": [
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Tanker_Mode",

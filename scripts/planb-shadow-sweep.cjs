@@ -142,7 +142,12 @@ function forkResolvedViews(dataset, power) {
   const views = raw.some((t) => t[FORK_FIELD])
     ? rosterOf(dataset).map((archetype) => ({
       archetype,
+      // `targetsAffected` rides along because an atom reader needs it to resolve a
+      // `toWho: 'Target'` recipient (TARGETS-3), and a view that dropped it would answer
+      // "reaches nobody" for every such atom — a fork-resolved view silently reading a
+      // different code path than the power it stands for.
       source: {
+        targetsAffected: power.targetsAffected,
         atoms: decodeAtoms(raw)
           .filter((a) => !a.casterArchetypes || a.casterArchetypes.split(',').includes(archetype))
           .map((a) => encodeAtom({ ...a, casterArchetypes: undefined })),

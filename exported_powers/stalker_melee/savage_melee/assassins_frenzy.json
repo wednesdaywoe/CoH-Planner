@@ -47,10 +47,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     108,
     120
@@ -59,12 +59,19 @@
   "redirect": [
     {
       "name": "Villain_Pets.Savage_Melee_Assassins_Strike.Assassins_Frenzy_Quick",
-      "condition_expression": "kMeter source> .9 <",
+      "condition_expression": [
+        "kMeter",
+        "source>",
+        ".9",
+        "<"
+      ],
       "show_in_info": true
     },
     {
       "name": "Villain_Pets.Savage_Melee_Assassins_Strike.Assassins_Frenzy_Stealth",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

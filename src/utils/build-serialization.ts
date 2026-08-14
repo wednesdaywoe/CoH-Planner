@@ -41,6 +41,7 @@ import {
   getInherentAutoGrantedSlotCount,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
+import { currentInherentName } from '@/data/inherent-aliases';
 import { encodeImportFragment } from '@/utils/import-url';
 
 // ============================================
@@ -311,8 +312,14 @@ export function hydrateBuild(slim: Record<string, any>): Build {
   );
   const slimInherents: SlimPower[] = slim.inherents ?? [];
   for (const slimInh of slimInherents) {
-    let match = slimInh.internalName
-      ? inherents.find((inh) => inh.internalName === slimInh.internalName)
+    // Builds saved before the universal inherents were sourced from the export
+    // store names the game has never used; `currentInherentName` translates the
+    // eight that were retired.
+    const storedName = slimInh.internalName
+      ? currentInherentName(slimInh.internalName)
+      : undefined;
+    let match = storedName
+      ? inherents.find((inh) => inh.internalName === storedName)
       : undefined;
     if (!match) {
       match = inherents.find(

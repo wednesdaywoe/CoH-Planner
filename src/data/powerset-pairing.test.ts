@@ -134,8 +134,8 @@ describe.each(FORKS)('%s requires tokens resolve to a real powerset', (fork) => 
     const unresolved = new Set<string>();
     for (const set of Object.values(getAllPowersets())) {
       for (const power of set.powers) {
-        if (!power.requires) continue;
-        for (const tok of power.requires.replace(/,$/, '').trim().split(/\s+/)) {
+        if (!power.requires?.length) continue;
+        for (const tok of power.requires.map((t) => t.replace(/,$/, '')).filter(Boolean)) {
           const parts = tok.split('.');
           if (parts.length !== 2) continue;
           if (!live.has(setKey(parts[1]))) unresolved.add(`${tok} (named by ${set.id}/${power.internalName})`);

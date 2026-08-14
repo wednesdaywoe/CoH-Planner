@@ -116,7 +116,7 @@ export const BrightNova: Power = {
     ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Movement","FlyMode",2,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"],
-    ["Meta",null,1.5,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Light_Mode Source.Mode? ! kPeacebringer_Blaster_Mode Source.Mode? ||",null,null,null,null,null,null,null,null,null,null,null,"null"]
+    ["Meta",null,1.5,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Light_Mode","Source.Mode?","!","kPeacebringer_Blaster_Mode","Source.Mode?","||"],null,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "setsModes": [
     "Suppress_PoolToggles",

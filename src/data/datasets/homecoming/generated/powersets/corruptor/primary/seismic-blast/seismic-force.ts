@@ -64,16 +64,16 @@ export const SeismicForce: Power = {
     ["DamageBuff","Negative",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
     ["DamageBuff","Psionic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
     ["DamageBuff","Toxic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
-    ["RechargePower",null,-1,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["RechargePower",null,-1.75,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["RechargePower",null,-2,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["RechargePower",null,-2.75,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["RechargePower",null,-4,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["RechargePower",null,-3,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["RechargePower",null,-2,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["RechargePower",null,-25,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
-    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"]
+    ["RechargePower",null,-1,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
+    ["RechargePower",null,-1.75,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
+    ["RechargePower",null,-2,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
+    ["RechargePower",null,-2.75,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
+    ["RechargePower",null,-4,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
+    ["RechargePower",null,-3,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
+    ["RechargePower",null,-2,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
+    ["RechargePower",null,-25,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
+    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"]
   ]
 };

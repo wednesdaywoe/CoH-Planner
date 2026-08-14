@@ -86,16 +86,16 @@ export const Wormhole: Power = {
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",4.1,3,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",8,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.2],
+    ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Mez","Stunned",8,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.2],
     ["Mez","Knockback",7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Stunned",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Stealth","Translucency",0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,true],
-    ["Stealth","RadiusPvE",20,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,true],
-    ["Mez","Intangible",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,true],
-    ["Mez","Untouchable",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,true],
-    ["ThreatLevel",null,-1,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true,null,true],
-    ["Mez","OnlyAffectsSelf",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,true]
+    ["Mez","Stunned",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Stealth","Translucency",0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,true],
+    ["Stealth","RadiusPvE",20,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,true],
+    ["Mez","Intangible",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,true],
+    ["Mez","Untouchable",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,true],
+    ["ThreatLevel",null,-1,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,true],
+    ["Mez","OnlyAffectsSelf",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,true]
   ],
   "specialEffects": [
     {

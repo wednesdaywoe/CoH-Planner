@@ -89,13 +89,13 @@ export const Agile: Power = {
   "atoms": [
     ["Defense","Ranged",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","All",0.2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Smashing",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.2 *"],
-    ["Resistance","Lethal",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.2 *"],
-    ["Resistance","Fire",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.2 *"],
-    ["Resistance","Cold",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.2 *"],
-    ["Resistance","Energy",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.2 *"],
-    ["Resistance","Negative",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.2 *"],
-    ["Resistance","Toxic",0,1,0.75,"Melee_Ones","Res","Expression","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.2 *"]
+    ["Resistance","Smashing",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["60","kHitPoints%","source>","-","0","100","minmax","60","/","0.2","*"]],
+    ["Resistance","Lethal",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["60","kHitPoints%","source>","-","0","100","minmax","60","/","0.2","*"]],
+    ["Resistance","Fire",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["60","kHitPoints%","source>","-","0","100","minmax","60","/","0.2","*"]],
+    ["Resistance","Cold",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["60","kHitPoints%","source>","-","0","100","minmax","60","/","0.2","*"]],
+    ["Resistance","Energy",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["60","kHitPoints%","source>","-","0","100","minmax","60","/","0.2","*"]],
+    ["Resistance","Negative",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["60","kHitPoints%","source>","-","0","100","minmax","60","/","0.2","*"]],
+    ["Resistance","Toxic",0,1,0.75,"Melee_Ones","Res","Expression","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,["60","kHitPoints%","source>","-","0","100","minmax","60","/","0.2","*"]]
   ],
   "mechanicType": "parentMechanic"
 };

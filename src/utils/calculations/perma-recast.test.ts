@@ -16,12 +16,14 @@ const atomStacking = (duration: number, toWho: string, stacking: string, cap: nu
   toWho, 'Any', false, stacking, cap,
 ];
 
-const recastPower = (atoms: unknown[], targetType = 'Self'): Power =>
+// `targetsAffected` is what resolves a `Target` atom's pronoun (TARGETS-3) — the
+// real Farsight carries `['Teammate', 'Self']`, so its caster is among the affected.
+const recastPower = (atoms: unknown[], targetsAffected = ['Teammate', 'Self']): Power =>
   ({
     name: 'Sight',
     internalName: 'X.Y.Sight',
     powerType: 'Click',
-    targetType,
+    targetsAffected,
     atoms,
   }) as unknown as Power;
 
@@ -58,7 +60,7 @@ describe('recastVerdict', () => {
   });
 
   it("a foe-aimed power's Target atoms time the foe's clock, not the caster's", () => {
-    const power = recastPower([atomStacking(120, 'Target', 'Replace', 2)], 'Foe (Alive)');
+    const power = recastPower([atomStacking(120, 'Target', 'Replace', 2)], ['Foe']);
     expect(recastVerdict(power, 120)).toBeUndefined();
   });
 });

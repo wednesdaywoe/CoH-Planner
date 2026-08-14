@@ -48,10 +48,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     116,
@@ -61,12 +61,21 @@
   "redirect": [
     {
       "name": "Pets.Water_Blast_Corruptor.Water_Jet_Fast",
-      "condition_expression": "Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == temporary_powers.temporary_powers.enhanced_water_jet_lock source.ownPower? ! &&",
+      "condition_expression": [
+        "Temporary_Powers.Temporary_Powers.Tidal_Power",
+        "source.ownPowerNum?",
+        "3",
+        "==",
+        "temporary_powers.temporary_powers.enhanced_water_jet_lock",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
       "show_in_info": false
     },
     {
       "name": "Pets.Water_Blast_Corruptor.Water_Jet_Normal",
-      "condition_expression": "Always",
+      "condition_expression": [],
       "show_in_info": true
     }
   ],

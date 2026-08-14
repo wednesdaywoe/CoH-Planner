@@ -90,10 +90,10 @@ export const GroundingShield: Power = {
     ["Endurance",null,2,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Knockback",-6,1,10.25,"Melee_Knockback","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Mez","Knockup",-6,1,10.25,"Melee_Knockback","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Mez","Immobilized",-6,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-6,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"]],
     ["Resistance","Fire",1.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Cold",1.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["MezResist","Immobilized",6,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+    ["MezResist","Immobilized",6,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true]
   ],
   "mechanicType": "parentMechanic"
 };

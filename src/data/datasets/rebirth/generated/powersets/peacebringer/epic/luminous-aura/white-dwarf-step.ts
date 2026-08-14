@@ -95,7 +95,12 @@ export const WhiteDwarfStep: Power = {
     ["Movement","Control",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Movement","Friction",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Step ! &&",
+  "requires": [
+    "Peacebringer_Defensive.Luminous_Aura.White_Dwarf",
+    "Inherent.Inherent.White_Dwarf_Step",
+    "!",
+    "&&"
+  ],
   "modesRequired": [
     "Peacebringer_Tanker_Mode"
   ],

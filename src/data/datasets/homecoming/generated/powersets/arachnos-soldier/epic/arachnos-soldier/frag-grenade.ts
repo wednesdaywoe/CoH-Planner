@@ -66,13 +66,20 @@ export const FragGrenade: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.67,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"]
+    ["Damage","Lethal",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Fire",0.67,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
   ],
   "formVariants": [
     {
-      "condition": "@CustomFX Crabpack eq Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&",
+      "condition": [
+        "@CustomFX",
+        "Crabpack",
+        "eq",
+        "Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor",
+        "source.ownPower?",
+        "&&"
+      ],
       "internalName": "Crab_Frag_Grenade",
       "stats": {
         "accuracy": 1,
@@ -130,7 +137,12 @@ export const FragGrenade: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Damage",
@@ -155,7 +167,12 @@ export const FragGrenade: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Mez",
@@ -180,12 +197,24 @@ export const FragGrenade: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ]
       ]
     },
     {
-      "condition": "@CustomFX NullifierMace eq Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor source.ownPower? &&",
+      "condition": [
+        "@CustomFX",
+        "NullifierMace",
+        "eq",
+        "Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor",
+        "source.ownPower?",
+        "&&"
+      ],
       "internalName": "Bane_Frag_Grenade",
       "stats": {
         "accuracy": 1,
@@ -243,7 +272,12 @@ export const FragGrenade: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Damage",
@@ -268,7 +302,12 @@ export const FragGrenade: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Mez",
@@ -293,10 +332,18 @@ export const FragGrenade: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ]
       ]
     }
   ],
-  "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Frag_Grenade !"
+  "requires": [
+    "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Frag_Grenade",
+    "!"
+  ]
 };

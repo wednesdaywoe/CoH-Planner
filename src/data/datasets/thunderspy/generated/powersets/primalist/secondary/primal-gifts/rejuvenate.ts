@@ -58,11 +58,11 @@ export const Rejuvenate: Power = {
     }
   ],
   "atoms": [
-    ["Heal",null,2,1,0,"Melee_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["Heal",null,0.15,1,9.1,"Melee_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
+    ["Heal",null,2,1,0,"Melee_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"]],
+    ["Heal",null,0.15,1,9.1,"Melee_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"]],
     ["Meta",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
-    ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? kHunterMode Source.Mode? ||",true],
-    ["Recovery",null,0.5,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? kHunterMode Source.Mode? ||",true]
+    ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kProwlerMode","Source.Mode?","kHunterMode","Source.Mode?","||"],true],
+    ["Recovery",null,0.5,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kProwlerMode","Source.Mode?","kHunterMode","Source.Mode?","||"],true]
   ],
   "conditionalEffects": [
     {

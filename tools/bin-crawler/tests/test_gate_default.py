@@ -45,6 +45,16 @@ from bin_crawler.parser._gate_default import (  # noqa: E402
 )
 from bin_crawler.parser._requires import parse  # noqa: E402
 
+
+def _toks(text):
+    """Tokenize an expression WRITTEN as text in this file.
+
+    Export data arrives already tokenized — a `requires_expression` is the token
+    list the wire holds (COND-8). Only the literals authored below need this, and
+    naming it keeps the two apart.
+    """
+    return text.split()
+
 FORKS = {
     "homecoming": os.path.join(REPO, "exported_powers"),
     "rebirth": os.path.join(REPO, "exported_powers", "rebirth"),
@@ -84,7 +94,7 @@ def check(condition, message):
         _failures.append(message)
 
 
-def _last_token_shortcut(expr: str) -> bool:
+def _last_token_shortcut(expr: list[str]) -> bool:
     """The pre-COND-1 rule, reproduced for the anti-revert floor below.
 
     Deliberately NOT the converter's full function — only the part COND-1
@@ -92,7 +102,7 @@ def _last_token_shortcut(expr: str) -> bool:
     token is `!`. That is the proxy whose disagreement with the tree is the
     measurement this floor pins.
     """
-    tokens = [t for t in expr.split() if t not in ("&&", "||")]
+    tokens = [t for t in expr if t not in ("&&", "||")]
     return bool(tokens) and tokens[-1] == "!"
 
 
@@ -149,7 +159,8 @@ def test_every_group_carries_an_on_vocabulary_verdict():
             unreadable.append(f"{fork} {power}: {verdict!r}")
         elif verdict in ("UNPARSED", "UNCLASSIFIED"):
             unreadable.append(
-                f"{fork} {power}: {verdict} on {group.get('requires_expression')!r}")
+                f"{fork} {power}: {verdict} on "
+                f"{' '.join(group.get('requires_expression') or ())!r}")
     check(not missing,
           f"{len(missing)} groups missing requires_default (stale export?); "
           f"first: {missing[:3]}")
@@ -162,7 +173,7 @@ def test_an_absent_gate_is_the_base_case():
     ungated = [
         (fork, power, group)
         for fork, power, group in ALL_GROUPS
-        if not (group.get("requires_expression") or "").strip()
+        if not (group.get("requires_expression") or ())
     ]
     check(len(ungated) > 10_000, f"vacuous: only {len(ungated)} ungated groups")
     wrong = [f"{f} {p}" for f, p, g in ungated if g["requires_default"] != SATISFIED]
@@ -214,7 +225,7 @@ def test_the_shapes_cond1_was_filed_for():
         ("1", SATISFIED),
     ]
     for expr, want in cases:
-        got = default_verdict(expr)
+        got = default_verdict(_toks(expr))
         check(got == want, f"{expr!r} read as {got}, not {want}")
 
 
@@ -229,7 +240,7 @@ def test_the_verdict_disagrees_with_the_last_token_shortcut():
     disagreements = 0
     graded = 0
     for _fork, _power, group in ALL_GROUPS:
-        expr = (group.get("requires_expression") or "").strip()
+        expr = group.get("requires_expression") or []
         if not expr:
             continue
         graded += 1
@@ -256,7 +267,7 @@ def test_the_three_questions_arch_asks():
 
     # 1. The CASTER's archetype: resolvable, and resolved — the fork's SATISFIED
     #    side is named rather than shrugged at.
-    scrapper = evaluate("arch source> Class_Scrapper eq", player_classes=hc)
+    scrapper = evaluate(_toks("arch source> Class_Scrapper eq"), player_classes=hc)
     check(scrapper.verdict == INDETERMINATE_ARCHETYPE,
           f"caster fork read as {scrapper.verdict}")
     check(list(scrapper.archetypes) == ["Class_Scrapper"],
@@ -267,36 +278,37 @@ def test_the_three_questions_arch_asks():
     #    Cosmic Balance, the acceptance case — a solo build must not carry the
     #    teammate branch's mez protection in its base.
     cosmic = "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? ! &&"
-    check(default_verdict(cosmic, player_classes=hc) == UNSATISFIED,
-          f"Cosmic Balance's teammate gate read as {default_verdict(cosmic, player_classes=hc)}")
+    check(default_verdict(_toks(cosmic), player_classes=hc) == UNSATISFIED,
+          "Cosmic Balance's teammate gate read as "
+          f"{default_verdict(_toks(cosmic), player_classes=hc)}")
     # Its NEGATION is the base case for the same reason, which is what keeps
     # Rebirth Hurricane's -0.6 range debuff on a critter it does apply to.
     hurricane = ("arch target> Class_Scrapper eq arch target> Class_Tanker eq || "
                  "arch target> Class_Stalker eq || arch target> Class_Brute eq || !")
-    check(default_verdict(hurricane, player_classes=rb) == SATISFIED,
+    check(default_verdict(_toks(hurricane), player_classes=rb) == SATISFIED,
           "Hurricane's negated melee-archetype clause left base")
 
     # 3. A critter class on the TARGET is a RANK test wearing `arch`, and rank
     #    stays unknown in both directions (MAPGATE-1) — the same pair the `rank`
     #    spelling is held to above.
     for expr in ("arch target> Class_Minion_Grunt eq", "arch target> Class_Minion_Grunt eq !"):
-        got = default_verdict(expr, player_classes=hc)
+        got = default_verdict(_toks(expr), player_classes=hc)
         check(got == INDETERMINATE, f"{expr!r} read as {got}, not {INDETERMINATE}")
 
     # A critter class on the CASTER, by contrast, IS decidable: no build is an
     # Archvillain, so every archetype agrees and there is no fork to report.
-    check(default_verdict("arch source> Class_Boss_Archvillain eq", player_classes=hc)
+    check(default_verdict(_toks("arch source> Class_Boss_Archvillain eq"), player_classes=hc)
           == UNSATISFIED, "a build read as possibly being an Archvillain")
 
     # `source.owner>` asks about whoever SUMMONED the caster — a pet's master,
     # not the build — so binding the build there would answer a question the
     # selector exists to distinguish.
-    check(default_verdict("arch source.owner> Class_Controller eq", player_classes=hc)
+    check(default_verdict(_toks("arch source.owner> Class_Controller eq"), player_classes=hc)
           == INDETERMINATE, "the pet-owner archetype was answered as the build's")
 
     # Without a catalogue nothing above is decidable, and the module says so
     # rather than guessing — the loud failure a caller that forgot it deserves.
-    check(default_verdict("arch target> Class_Controller eq") == "UNCLASSIFIED",
+    check(default_verdict(_toks("arch target> Class_Controller eq")) == "UNCLASSIFIED",
           "an `arch` gate was decided with no player-class catalogue")
 
 
@@ -313,7 +325,7 @@ def test_a_reported_archetype_fork_carries_its_resolution():
     for fork, power, group in ALL_GROUPS:
         if group.get("requires_default") != INDETERMINATE_ARCHETYPE:
             continue
-        expr = (group.get("requires_expression") or "").lower()
+        expr = " ".join(group.get("requires_expression") or ()).lower()
         if "arch source>" not in expr:
             leaked.append(f"{fork} {power}: {expr!r}")
         named = group.get("requires_archetypes") or []
@@ -340,13 +352,13 @@ def test_the_caster_fork_is_always_resolved():
     with a caster-archetype clause means that pass did not happen.
     """
     unresolved = [
-        f"{fork} {power}: {group.get('requires_expression')!r}"
+        f"{fork} {power}: {' '.join(group.get('requires_expression') or ())!r}"
         for fork, power, group in ALL_GROUPS
-        if "arch source>" in (group.get("requires_expression") or "").lower()
+        if "arch source>" in " ".join(group.get("requires_expression") or ()).lower()
         and group.get("requires_default") == INDETERMINATE
     ]
     graded = sum(1 for _f, _p, g in ALL_GROUPS
-                 if "arch source>" in (g.get("requires_expression") or "").lower())
+                 if "arch source>" in " ".join(g.get("requires_expression") or ()).lower())
     check(graded > 1_000, f"vacuous: only {graded} caster-archetype gates in the corpus")
     check(not unresolved,
           f"{len(unresolved)} caster-archetype gates left unresolved; first: {unresolved[:3]}")
@@ -402,10 +414,11 @@ def test_every_committed_expression_parses():
     unparsed = []
     seen = set()
     for fork, power, group in ALL_GROUPS:
-        expr = (group.get("requires_expression") or "").strip()
-        if not expr or expr in seen:
+        expr = group.get("requires_expression") or []
+        key = tuple(expr)
+        if not expr or key in seen:
             continue
-        seen.add(expr)
+        seen.add(key)
         try:
             parse(expr)
         except Exception as err:
