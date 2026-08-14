@@ -120,5 +120,10 @@ export const Meltdown: Power = {
     ["DamageBuff","Toxic",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "accesslevel char> 0 >="
+  "requires": [
+    "accesslevel",
+    "char>",
+    "0",
+    ">="
+  ]
 };

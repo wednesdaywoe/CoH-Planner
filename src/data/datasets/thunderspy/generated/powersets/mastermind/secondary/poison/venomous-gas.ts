@@ -128,5 +128,8 @@ export const VenomousGas: Power = {
     ["Defense","All",1,1,0.75,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["ToHit",null,1.5,1,0.75,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ],
-  "requires": "Mastermind_Buff.Poison.Noxious_Gas !"
+  "requires": [
+    "Mastermind_Buff.Poison.Noxious_Gas",
+    "!"
+  ]
 };

@@ -115,7 +115,12 @@ export const WindShear: Power = {
     ["DamageBuff","Psionic",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","FlyMode",-2,1,2.1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Movement","Run",-1,1,2.1,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"]
+    ["Movement","Run",-1,1,2.1,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]]
   ],
-  "requires": "accesslevel char> 0 >="
+  "requires": [
+    "accesslevel",
+    "char>",
+    "0",
+    ">="
+  ]
 };

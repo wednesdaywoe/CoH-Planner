@@ -45,8 +45,7 @@ export const BackhandSlap: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "PBAoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "damage": [

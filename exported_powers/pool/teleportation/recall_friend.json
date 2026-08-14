@@ -47,21 +47,26 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [],
   "effects": [],
   "redirect": [
     {
       "name": "Redirects.Pool_Teleportation.Recall_Friend",
-      "condition_expression": "target.isFriend?",
+      "condition_expression": [
+        "target.isFriend?"
+      ],
       "show_in_info": true
     },
     {
       "name": "Redirects.Pool_Teleportation.Teleport_Foe",
-      "condition_expression": "target.isFriend? !",
+      "condition_expression": [
+        "target.isFriend?",
+        "!"
+      ],
       "show_in_info": true
     }
   ],

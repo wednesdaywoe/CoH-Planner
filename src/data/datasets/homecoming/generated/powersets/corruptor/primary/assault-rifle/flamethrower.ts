@@ -54,9 +54,9 @@ export const Flamethrower: Power = {
     "tickRate": 1
   },
   "atoms": [
-    ["Damage","Fire",0.3872,1,4.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.3872,1,4.7,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true],
-    ["Damage","Fire",0.2379,1,4.7,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Fire",0.2379,1,4.7,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < &&",true]
+    ["Damage","Fire",0.3872,1,4.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Fire",0.3872,1,4.7,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","&&"],true],
+    ["Damage","Fire",0.2379,1,4.7,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Fire",0.2379,1,4.7,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq","kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","&&"],true]
   ]
 };

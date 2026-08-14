@@ -128,8 +128,8 @@ export const Geode: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,2.5,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Recovery",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,2.5,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
+    ["Recovery",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
     ["Regeneration",null,7.5,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Recovery",null,3,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
@@ -152,8 +152,8 @@ export const Geode: Power = {
     ["Accuracy",null,-999,1,0.2,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GeodeRoot"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["EntCreate",null,-1,1,99999,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Sentinel_Defense.Stone_Armor.Brimstone_Armor source.ownPower?",true,null,null,null,null,null,null,null,null,"GrantThermalBoost"],
-    ["GlobalChanceMod",null,-100,0,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Sentinel_Defense.Stone_Armor.Brimstone_Armor source.ownPower?",true,null,null,null,null,null,null,null,null,"GrantThermalBoost"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Sentinel_Defense.Stone_Armor.Brimstone_Armor","source.ownPower?"],true,null,null,null,null,null,null,null,null,"GrantThermalBoost"],
+    ["GlobalChanceMod",null,-100,0,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Sentinel_Defense.Stone_Armor.Brimstone_Armor","source.ownPower?"],true,null,null,null,null,null,null,null,null,"GrantThermalBoost"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"RepositionGeode"]
   ]
 };

@@ -119,7 +119,9 @@ export const OffensiveAdaptation: Power = {
       "enhanceable": false
     }
   ],
-  "requires": "Scrapper_Defense.Organic_Armor.Evolution",
+  "requires": [
+    "Scrapper_Defense.Organic_Armor.Evolution"
+  ],
   "setsModes": [
     "OffensiveAdaptation"
   ]

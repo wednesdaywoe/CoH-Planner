@@ -101,20 +101,31 @@ export const VenomGrenade: Power = {
     }
   },
   "atoms": [
-    ["Damage","Toxic",0.1964,1,4.125,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Resistance","Smashing",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Lethal",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Fire",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Cold",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Energy",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Negative",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Psionic",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Toxic",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Toxic",-4,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+    ["Damage","Toxic",0.1964,1,4.125,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Resistance","Smashing",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Resistance","Lethal",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Resistance","Fire",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Resistance","Cold",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Resistance","Energy",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Resistance","Negative",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Resistance","Psionic",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Resistance","Toxic",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Resistance","Toxic",-4,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
   ],
   "formVariants": [
     {
-      "condition": "@CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&",
+      "condition": [
+        "@CustomFX",
+        "Crabpack",
+        "eq",
+        "@CustomFX",
+        "CrabpackTintable",
+        "eq",
+        "||",
+        "Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor",
+        "source.ownPower?",
+        "&&"
+      ],
       "internalName": "Crab_Venom_Grenade",
       "stats": {
         "accuracy": 1,
@@ -209,7 +220,12 @@ export const VenomGrenade: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Resistance",
@@ -394,7 +410,18 @@ export const VenomGrenade: Power = {
       ]
     },
     {
-      "condition": "@CustomFX NullifierMace eq @CustomFX NullifierMaceTintable eq || Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor source.ownPower? &&",
+      "condition": [
+        "@CustomFX",
+        "NullifierMace",
+        "eq",
+        "@CustomFX",
+        "NullifierMaceTintable",
+        "eq",
+        "||",
+        "Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor",
+        "source.ownPower?",
+        "&&"
+      ],
       "internalName": "Bane_Venom_Grenade",
       "stats": {
         "accuracy": 1,
@@ -489,7 +516,12 @@ export const VenomGrenade: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Resistance",
@@ -674,5 +706,8 @@ export const VenomGrenade: Power = {
       ]
     }
   ],
-  "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade !"
+  "requires": [
+    "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade",
+    "!"
+  ]
 };

@@ -303,7 +303,7 @@ export function getGrantedStanceSubPowers(parentPowerName: string, powersetId: s
     // "Adaptation" on Stalker/Sentinel — the requires check keeps the stance
     // chips on the real switcher in every archetype. Powers without a
     // `requires` (e.g. Boomerang Slice) keep their existing behavior.
-    (!p.requires || p.requires.endsWith(`.${parentPowerName}`))
+    (!p.requires?.length || p.requires[p.requires.length - 1].endsWith(`.${parentPowerName}`))
   );
 }
 

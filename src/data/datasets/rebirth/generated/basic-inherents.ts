@@ -32,7 +32,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "icon": "inherent_brawl.png",
     "powerType": "Click",
     "targetType": "Foe",
-    "requires": "",
+    "requires": [],
     "maxSlots": 6,
     "allowedEnhancements": [
       "Accuracy",
@@ -50,12 +50,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     },
     "atoms": [
       ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-      ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true,null,null,null,null,null,null,0,null,null,null,"drop_toggles"],
-      ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Controller eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true],
-      ["RechargeTime",null,-0.1,1,10,"Melee_Ones","Str","Expression","Target","Any",true,"Replace",2,null,67,0.10000000149011612,null,true,null,null,null,null,"Pool.Fighting.Boxing source.ownPower? Pool.Fighting.Kick source.ownPower? ||",true,null,null,null,null,"@StdResult Pool.Fighting.Kick source.ownPowerNum? Pool.Fighting.Boxing source.ownPowerNum? + *",null,0.1,true],
-      ["ToHit",null,-0.1,1,10,"Melee_Ones","Cur","Expression","Target","Any",true,"Replace",2,null,67,0.10000000149011612,null,true,null,null,null,null,"Pool.Fighting.Boxing source.ownPower? Pool.Fighting.Kick source.ownPower? ||",true,null,null,null,null,"@StdResult Pool.Fighting.Kick source.ownPowerNum? Pool.Fighting.Boxing source.ownPowerNum? + *",null,0.1,true],
-      ["Regeneration",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,0.10000000149011612,null,true,null,null,null,null,"Pool.Fighting.Cross_Punch source.ownPower?",true,null,null,null,null,null,null,0.1,true],
-      ["Recovery",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,0.10000000149011612,null,true,null,null,null,null,"Pool.Fighting.Cross_Punch source.ownPower?",true,null,null,null,null,null,null,0.1,true]
+      ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,null,null,"drop_toggles"],
+      ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Controller","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&"],true],
+      ["RechargeTime",null,-0.1,1,10,"Melee_Ones","Str","Expression","Target","Any",true,"Replace",2,null,67,0.10000000149011612,null,true,null,null,null,null,["Pool.Fighting.Boxing","source.ownPower?","Pool.Fighting.Kick","source.ownPower?","||"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?","Pool.Fighting.Boxing","source.ownPowerNum?","+","*"],null,0.1,true],
+      ["ToHit",null,-0.1,1,10,"Melee_Ones","Cur","Expression","Target","Any",true,"Replace",2,null,67,0.10000000149011612,null,true,null,null,null,null,["Pool.Fighting.Boxing","source.ownPower?","Pool.Fighting.Kick","source.ownPower?","||"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?","Pool.Fighting.Boxing","source.ownPowerNum?","+","*"],null,0.1,true],
+      ["Regeneration",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,0.10000000149011612,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,0.1,true],
+      ["Recovery",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,0.10000000149011612,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,0.1,true]
     ],
     "effects": {
       "effectArea": "SingleTarget",
@@ -83,7 +83,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
     "targetType": "Self",
-    "requires": "",
+    "requires": [],
     "maxSlots": 4,
     "allowedEnhancements": [
       "EnduranceReduction",
@@ -140,7 +140,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "icon": "inherent_rest.png",
     "powerType": "Toggle",
     "targetType": "Self",
-    "requires": "",
+    "requires": [],
     "maxSlots": 4,
     "allowedEnhancements": [
       "EnduranceModification",
@@ -321,7 +321,15 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "icon": "inherent_ninjarun.png",
     "powerType": "Toggle",
     "targetType": "Self",
-    "requires": "MartialArtsPack auth> cucpmanr productOwned? || Inherent.Inherent.Prestige_Ninja_Run ||",
+    "requires": [
+      "MartialArtsPack",
+      "auth>",
+      "cucpmanr",
+      "productOwned?",
+      "||",
+      "Inherent.Inherent.Prestige_Ninja_Run",
+      "||"
+    ],
     "maxSlots": 0,
     "allowedEnhancements": [],
     "stats": {
@@ -331,17 +339,17 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     },
     "atoms": [
       ["Meta",null,1,122,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
-      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
-      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
-      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
-      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true],
+      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true],
+      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true],
+      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true],
+      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true],
       ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ninja_run"],
-      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true]
+      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true],
+      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true],
+      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true],
+      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true],
+      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,true]
     ],
     "effects": {
       "effectArea": "SingleTarget",
@@ -395,7 +403,13 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "icon": "inherent_beastrun.png",
     "powerType": "Toggle",
     "targetType": "Self",
-    "requires": "AnimalPack auth> cucpapbr productOwned? ||",
+    "requires": [
+      "AnimalPack",
+      "auth>",
+      "cucpapbr",
+      "productOwned?",
+      "||"
+    ],
     "maxSlots": 0,
     "allowedEnhancements": [],
     "stats": {
@@ -405,17 +419,17 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     },
     "atoms": [
       ["Meta",null,1,122,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
-      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
-      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
-      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
-      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true],
+      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true],
+      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true],
+      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true],
+      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true],
       ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"beast_run"],
-      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true]
+      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true],
+      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true],
+      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true],
+      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true],
+      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,true]
     ],
     "effects": {
       "effectArea": "SingleTarget",
@@ -469,7 +483,13 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
     "targetType": "Self",
-    "requires": "DVDSpecialEdition auth> cucpccp1 productOwned? ||",
+    "requires": [
+      "DVDSpecialEdition",
+      "auth>",
+      "cucpccp1",
+      "productOwned?",
+      "||"
+    ],
     "maxSlots": 4,
     "allowedEnhancements": [
       "EnduranceReduction",
@@ -527,7 +547,13 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
     "targetType": "Self",
-    "requires": "Preorder:GameStop auth> VetSprints Owned? ||",
+    "requires": [
+      "Preorder:GameStop",
+      "auth>",
+      "VetSprints",
+      "Owned?",
+      "||"
+    ],
     "maxSlots": 4,
     "allowedEnhancements": [
       "EnduranceReduction",
@@ -584,7 +610,13 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
     "targetType": "Self",
-    "requires": "Preorder:Generic auth> VetSprints Owned? ||",
+    "requires": [
+      "Preorder:Generic",
+      "auth>",
+      "VetSprints",
+      "Owned?",
+      "||"
+    ],
     "maxSlots": 4,
     "allowedEnhancements": [
       "EnduranceReduction",
@@ -641,7 +673,13 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
     "targetType": "Self",
-    "requires": "Preorder:BestBuy auth> VetSprints Owned? ||",
+    "requires": [
+      "Preorder:BestBuy",
+      "auth>",
+      "VetSprints",
+      "Owned?",
+      "||"
+    ],
     "maxSlots": 4,
     "allowedEnhancements": [
       "EnduranceReduction",
@@ -698,7 +736,13 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
     "targetType": "Self",
-    "requires": "Preorder:EB auth> VetSprints Owned? ||",
+    "requires": [
+      "Preorder:EB",
+      "auth>",
+      "VetSprints",
+      "Owned?",
+      "||"
+    ],
     "maxSlots": 4,
     "allowedEnhancements": [
       "EnduranceReduction",

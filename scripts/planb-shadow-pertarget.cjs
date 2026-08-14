@@ -94,7 +94,8 @@ function isExpressionValued(power, slotKey) {
   return baseAtoms(power).some((a) => a.effectType === effectType && a.attribType === 'Expression');
 }
 
-const stats = { powers: 0, withToHit: 0, agree: 0, perTargetPowers: 0, defianceRejected: 0 };
+const stats = { powers: 0, withToHit: 0, agree: 0, perTargetPowers: 0, defianceRejected: 0, recoveredN1: 0 };
+const recoveredSeen = {};
 const findings = [];
 
 function checkPower(dataset, power, genPath) {
@@ -130,6 +131,27 @@ function checkPower(dataset, power, genPath) {
     const eq = bag && atomCmp && bag.scale === atomCmp.scale && bag.perTarget === atomCmp.perTarget;
     if (eq) { stats.agree++; continue; }
 
+    // Fulcrum Shift's N=1 value, where the bag is short by one increment (TARGETS-3).
+    //
+    // The power executes two redirects: `KineticTransfer` puts a +2 buff on every FRIEND
+    // near each foe it hits, and `KineticTransferBuffSelf` puts a flat +4 on the caster.
+    // Both leaves are `['Friend', 'Self']` powers, so at one foe the caster gets 4 + 2 = 6
+    // and each further foe adds another 2. The converter's `firstTargetExcluded` asked
+    // `selfIsCountedTarget` of the SHELL, which is `['Foe']`, and so counted the flat 4
+    // alone; the atom route reads each increment's own `ownerTargets` and gets 6.
+    //
+    // The bag is the loser here, and it stays wrong: rewriting `computeAoePerTargetPatches`
+    // is a separate change with its own blast radius. The runtime reads the atom side, and
+    // this pin is what keeps the difference deliberate.
+    const RECOVERED_N1 = { 'Fulcrum Shift': { bag: 4, atoms: 6 } };
+    const pin = slot.key === 'damageBuff' ? RECOVERED_N1[name] : undefined;
+    if (pin && bag && atomCmp && bag.scale === pin.bag && atomCmp.scale === pin.atoms
+        && bag.perTarget === atomCmp.perTarget) {
+      stats.recoveredN1++;
+      recoveredSeen[`${dataset}|${name}`] = true;
+      continue;
+    }
+
     findings.push({ dataset, name, slot: slot.key, bag, atoms: atomCmp });
     if (POWER_FILTER) {
       console.log(`\n=== ${name} [${dataset}] ${slot.key} ===`);
@@ -153,6 +175,18 @@ console.log(`  buff slots checked:  ${stats.withToHit}`);
 console.log(`  of which per-target: ${stats.perTargetPowers}`);
 console.log(`  agree:               ${stats.agree}`);
 console.log(`  defiance-rejected:   ${stats.defianceRejected} (graded as empty-atoms + bag-holds)`);
+console.log(`  N=1 recovered:       ${stats.recoveredN1} (Fulcrum Shift's redirect-delivered self increment — TARGETS-3)`);
+// Both ways: Fulcrum Shift is on all four Kinetics archetypes of Homecoming and nowhere else
+// (the Parse6 forks author it without the redirect chain), so a fork appearing or dropping
+// out here is the join moving, not the data.
+const EXPECTED_N1_RECOVERIES = ['homecoming|Fulcrum Shift'];
+const n1PinFailures = [
+  ...Object.keys(recoveredSeen).filter((k) => !EXPECTED_N1_RECOVERIES.includes(k))
+    .map((k) => `NEW N=1 recovery, never read: ${k}`),
+  ...EXPECTED_N1_RECOVERIES.filter((k) => !recoveredSeen[k])
+    .map((k) => `LOST N=1 recovery: ${k} — the caster's own increment is being dropped again`),
+];
+for (const line of n1PinFailures) console.log(`  [PIN] ${line}`);
 console.log(`  diverge:             ${findings.length}`);
 
 for (const f of findings.slice(0, 40)) {
@@ -162,7 +196,7 @@ for (const f of findings.slice(0, 40)) {
 }
 if (findings.length > 40) console.log(`\n  ... and ${findings.length - 40} more`);
 
-if (findings.length) {
+if (findings.length || n1PinFailures.length) {
   console.log('\nFAIL — atom-derived tohitBuff/damageBuff diverges from the bag. Fix before migrating the applier.');
   process.exit(1);
 }

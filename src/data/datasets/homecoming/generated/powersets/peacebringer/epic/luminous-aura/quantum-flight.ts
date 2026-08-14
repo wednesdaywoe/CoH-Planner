@@ -97,13 +97,13 @@ export const QuantumFlight: Power = {
     ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
     ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"VFX",null,"null"],
-    ["Stealth","Translucency",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !",null,null,true],
-    ["Stealth","RadiusPvE",20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !",null,null,true],
-    ["Stealth","RadiusPvP",222,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !",null,null,true],
-    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !",null,null,true],
-    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !",null,null,true],
-    ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !",null,null,true],
-    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !",null,null,true]
+    ["Stealth","Translucency",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
+    ["Stealth","RadiusPvE",20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
+    ["Stealth","RadiusPvP",222,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
+    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
+    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
+    ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
+    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true]
   ],
   "modesSuspended": [
     "Suppress_FlyToggles"

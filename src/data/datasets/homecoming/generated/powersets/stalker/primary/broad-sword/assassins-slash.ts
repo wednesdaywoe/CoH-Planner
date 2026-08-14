@@ -62,8 +62,8 @@ export const AssassinsSlash: Power = {
   "fromHideBonus": 2.0797101449275366,
   "midCombatCast": 1.67,
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["Damage","Lethal",2.76,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < enttype target> critter eq &&"],
-    ["Damage","Lethal",2.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kMeter source> .9 < enttype target> critter eq &&",null,null,null,null,null,null,null,null,null,"ASCrit"]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power",["Foe"]],
+    ["Damage","Lethal",2.76,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>",".9","<","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Lethal",2.76,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["kMeter","source>",".9","<","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"ASCrit",null,null,["Foe"]]
   ]
 };

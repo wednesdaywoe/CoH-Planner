@@ -50,10 +50,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     120
@@ -65,7 +65,12 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
+      "requires_expression": [
+        "enttype",
+        "target>",
+        "critter",
+        "eq"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
@@ -86,13 +91,18 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
+          "jit_requires": [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -107,7 +117,12 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
+      "requires_expression": [
+        "enttype",
+        "target>",
+        "critter",
+        "eq"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
@@ -128,13 +143,18 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 0.5,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
+          "jit_requires": [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -149,7 +169,12 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "cur.kToHit source> .97 >=",
+      "requires_expression": [
+        "cur.kToHit",
+        "source>",
+        ".97",
+        ">="
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -170,13 +195,18 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "cur.kToHit source> .97 >=",
+          "jit_requires": [
+            "cur.kToHit",
+            "source>",
+            ".97",
+            ">="
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -202,7 +232,9 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "1",
+      "requires_expression": [
+        "1"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -223,13 +255,15 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "1",
+          "jit_requires": [
+            "1"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -255,7 +289,12 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
+      "requires_expression": [
+        "enttype",
+        "target>",
+        "player",
+        "eq"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
@@ -276,13 +315,18 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
+          "jit_requires": [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -297,7 +341,12 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
+      "requires_expression": [
+        "enttype",
+        "target>",
+        "player",
+        "eq"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
@@ -318,13 +367,18 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 0.5,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
+          "jit_requires": [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -345,11 +399,18 @@
   "redirect": [
     {
       "name": "Pets.Defender_AR_Snipe.Sniper_Rifle_Quick",
-      "condition_expression": "cur.kToHit source> .97 >="
+      "condition_expression": [
+        "cur.kToHit",
+        "source>",
+        ".97",
+        ">="
+      ]
     },
     {
       "name": "Pets.Defender_AR_Snipe.Sniper_Rifle_Normal",
-      "condition_expression": "Always"
+      "condition_expression": [
+        "1"
+      ]
     }
   ],
   "modes_disallowed": [

@@ -58,10 +58,10 @@ export const RebuildDNA: Power = {
   "atoms": [
     ["Heal",null,3,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Heal",null,0.9,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",true],
-    ["Endurance",null,7.5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 > kRestedAdaptation Source.Mode? &&",true],
-    ["Perception",null,0.6,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 > kOffensiveAdaptation Source.Mode? &&",true],
-    ["Perception",null,0.6,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 > kOffensiveAdaptation Source.Mode? &&",true]
+    ["Heal",null,0.9,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","0",">","kDefensiveAdaptation","Source.Mode?","&&"],true],
+    ["Endurance",null,7.5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">","kRestedAdaptation","Source.Mode?","&&"],true],
+    ["Perception",null,0.6,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","0",">","kOffensiveAdaptation","Source.Mode?","&&"],true],
+    ["Perception",null,0.6,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","0",">","kOffensiveAdaptation","Source.Mode?","&&"],true]
   ],
   "conditionalEffects": [
     {

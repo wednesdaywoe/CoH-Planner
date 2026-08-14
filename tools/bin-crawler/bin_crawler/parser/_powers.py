@@ -1108,11 +1108,11 @@ def _read_params_payload(kind: str, r: BinReader, *,
     elif kind == "Behavior":
         out = {"behaviors": checked_string_array()}
     elif kind == "SZEValue":
-        # Both fields are RPN token lists; joined with spaces to match the
-        # requires_expression / magnitude_expression representation.
+        # Both fields are RPN token lists, kept as lists like every other
+        # expression field (see _dataclasses).
         out = {
-            "script_id": " ".join(checked_string_array()),
-            "script_value": " ".join(checked_string_array()),
+            "script_id": checked_string_array(),
+            "script_value": checked_string_array(),
         }
     elif kind == "Token":
         out = {"tokens": checked_string_array()}
@@ -1265,11 +1265,10 @@ def _parse_effect_template(r: BinReader, *, veracity: bool = False) -> EffectTem
     # ~99% of templates; non-empty on kExpression effects whose magnitude scales
     # with a runtime value (e.g. Blazing Bolt's damage scaling with the caster's
     # ToHit: "@StdResult * (0.211 * minmax(4.54 * source>cur.kToHit - 3.41, -1,
-    # 1) + 1)"). Joined with spaces to match the group-level requires_expression
-    # representation. Previously discarded, which left every Expression-type
+    # 1) + 1)"). Previously discarded, which left every Expression-type
     # effect with a blank magnitude_expression in the export.
-    dur_expr = " ".join(r.read_string_array())
-    mag_expr = " ".join(r.read_string_array())
+    dur_expr = r.read_string_array()
+    mag_expr = r.read_string_array()
     delay = r.read_f4()
 
     # Tick fields
@@ -1294,7 +1293,7 @@ def _parse_effect_template(r: BinReader, *, veracity: bool = False) -> EffectTem
     # but thrown away, which is the other half of the same lesson — Parse6 has
     # carried this field into `jit_requires` all along, so discarding it here
     # made one fork's gate vanish and the other's survive.
-    jit_requires = ' '.join(r.read_string_array())
+    jit_requires = r.read_string_array()
 
     # Stack info — preserve raw value when unmapped so the unknown is debuggable
     _caster_stack_raw = r.read_u4()
@@ -1449,8 +1448,7 @@ def _parse_effect_group(r: BinReader, *, veracity: bool = False,
     radius_outer = r.read_f4()
 
     # Requires expression
-    req_parts = r.read_string_array()
-    requires = " ".join(req_parts) if req_parts else ""
+    requires = r.read_string_array()
 
     # Flags and eval_flags
     flags_val = r.read_u4()
@@ -1549,14 +1547,12 @@ def _parse_redirects(r: BinReader, *, power_name: str = "") -> list[dict]:
     """Parse the Redirect struct_array from a power record.
 
     Each element: redirect target power name (string) + requires token list (string_array) +
-    show_in_info (u4). The condition_expression is:
-      - 'Always' when requires is empty or a tautology (`['1']`). This is the
-        CoD2 convention the downstream converter matches via `=== 'Always'`.
-      - Otherwise the space-joined RPN tokens (e.g.
-        'Redirects.X source.ownPower? !') — the downstream converter only
-        uses condition_expression for two sentinel checks ('Always' to prefer
-        the default, and 'kHitPoints' substring to skip dead-state
-        conditionals), so full infix normalization isn't required.
+    show_in_info (u4). `condition_expression` is that token list verbatim, so an
+    unconditional redirect reads as the empty list or as the tautology `['1']` —
+    whichever the record actually holds. This used to be flattened to the
+    sentinel string 'Always', which a token list cannot carry without inventing
+    a token; `_gate-default.cjs` applies the CoD2 'Always' convention instead,
+    where it can see both spellings.
 
     Guarded against wrong-position reads: count > 1000 or elem_len > remaining
     raises so the caller can fall back to skip_to_end().
@@ -1574,13 +1570,9 @@ def _parse_redirects(r: BinReader, *, power_name: str = "") -> list[dict]:
             redirect_name = er.read_string()
             req_tokens = er.read_string_array()
             show_raw = er.read_u4()
-            if not req_tokens or req_tokens == ['1']:
-                cond = 'Always'
-            else:
-                cond = ' '.join(req_tokens)
             out.append({
                 'name': redirect_name,
-                'condition_expression': cond,
+                'condition_expression': req_tokens,
                 'show_in_info': bool(show_raw & 0xff),
             })
         except Exception as e:
@@ -2001,19 +1993,15 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # 25. attack_types (attrib_array = u4 count + u4 values)
     attack_types = r.read_u4_array()
     # 26. buy_requires (string_array) — "requires"
-    requires_parts = r.read_string_array()
-    requires = " ".join(requires_parts) if requires_parts else ""
+    requires = r.read_string_array()
     # 27. activate_requires (string_array)
-    activate_requires_parts = r.read_string_array()
-    activate_requires = " ".join(activate_requires_parts) if activate_requires_parts else ""
+    activate_requires = r.read_string_array()
     # 28. slot_requires (string_array). Boost (IO piece) records carry
     # `BoostsSlotted>X <= 0` constraints here when the piece is unique
     # within a slot pool — used by the IO-set extractor to detect uniqueness.
-    slot_requires_parts = r.read_string_array()
-    slot_requires = " ".join(slot_requires_parts) if slot_requires_parts else ""
+    slot_requires = r.read_string_array()
     # 29. target_requires (string_array)
-    target_requires_parts = r.read_string_array()
-    target_requires = " ".join(target_requires_parts) if target_requires_parts else ""
+    target_requires = r.read_string_array()
     # 30. reward_requires (string_array)
     r.read_string_array()
     # 31. auction_requires (string_array)
@@ -2036,7 +2024,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # target-cap expression on Gauntlet attacks / the Electrical Affinity circuits.
     # VERIFIED 2026-07-01 against HC: `GauntletTargetCap` resolves here (59 powers),
     # matching the `.powers` oracle. Empty on non-capped powers.
-    max_targets_expr = " ".join(r.read_string_array())
+    max_targets_expr = r.read_string_array()
     # 38b-d. HC-added OverCap block (authored next to MaxTargetsHit in the
     # `.powers` defs): OverCapTrigger (u4) + OverCapMultiplier (f4, default 1.0)
     # + OverCapExponential (u4 bool). VERIFIED 2026-07-21 against the oracle:
@@ -2058,21 +2046,21 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         r.skip(8)
     # 42. ChainEff (string_array) — per-jump chain-continue chance expression.
     # VERIFIED on Veracity/Parse6: `@ChainJump`/`minmax` content resolves here.
-    chain_eff_expr = " ".join(r.read_string_array())
+    chain_eff_expr = r.read_string_array()
     # 43. HC string_array, previously mislabeled "chain_fork" (the real ChainFork
     # is a u4 int-array, not a string_array). On Parse6 the same slot resolves to
     # VisualFX/power refs (…NictusFX), NOT the ChainTarget selection expression
     # (`prevdistance`/`maintarget>`, which is absent from Veracity entirely). So
     # this is most likely an FX/ChainIntoPower array, and ChainTarget lives
     # elsewhere in Parse7. UNVERIFIED for HC — captured neutrally for the probe.
-    field43_str = " ".join(r.read_string_array())
+    field43_str = r.read_string_array()
     # 43b. ChainTarget — next-target selection weighting for the Electrical Affinity
     # circuits (`… kHitPoints% target> - … maintarget> … prevdistance / +`). Stored
     # as a u4_array of string-table offsets — byte-identical to a string_array, so we
     # read it as one to resolve the RPN tokens (no desync). VERIFIED 2026-07-01
     # against the HC `.powers` oracle (circuits match exactly; 55 powers). Empty
     # (count 0) on non-chain powers.
-    chain_target_expr = " ".join(r.read_string_array())
+    chain_target_expr = r.read_string_array()
     # 43c. HC extra: u4_array (boost indices for chain powers; empty for non-chain)
     r.read_u4_array()
     # 44. box_offset (f4 × 3)
@@ -2679,7 +2667,7 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     # DelayedRequires read further down, as it is on the other two forks.
     req_offs = r.read_u4_array()
     req_parts = [n for n in (_resolve_str(o) for o in req_offs) if n]
-    group_requires = ' '.join(req_parts) if req_parts else ''
+    group_requires = req_parts
 
     # This element's AttribMod sub-records; everything below reads the one
     # `sub_index` names. Falling back to the rest of the element keeps the
@@ -2768,9 +2756,9 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     # corpus-wide; such a record has no scale either. The dataclass default keeps
     # that degenerate case reading as it did before the tick block was decoded.
     tick_chance = 1.0
-    dur_expr = ''
-    mag_expr = ''
-    jit_requires = ''
+    dur_expr = []
+    mag_expr = []
+    jit_requires = []
     caster_stack = ''
     stack = ''
     stack_limit = 0
@@ -2839,21 +2827,21 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
 
         def _read_str_array(off: int) -> tuple[str, int]:
             """Read a [u4 count][count×u4 string-offset] block; return the RPN
-            tokens joined by spaces and the offset past the block.
+            token list and the offset past the block.
 
             Each u4 is a string-table offset (the same convention as the front
             attrib offsets), so an Expression template's magnitude/duration RPN
             survives — the Thunderspy analogue of HC/Parse6's
-            `" ".join(read_string_array())` (e.g. Fury's `kRage source> .02 *`).
+            `read_string_array()` (e.g. Fury's `kRage source> .02 *`).
             Empty for ~99% of templates (count=0 → +4). The `count*4` advance
             keeps the trailing delay/period offsets aligned."""
             if off + 4 > len(tail):
-                return '', off + 4
+                return [], off + 4
             count = struct.unpack_from('<I', tail, off)[0]
             # A bogus count means we're misreading; treat as empty so the fixed
             # post-table offsets still apply.
             if count > 64:
-                return '', off + 4
+                return [], off + 4
             tokens = []
             p = off + 4
             for _ in range(count):
@@ -2861,7 +2849,7 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
                 if token:
                     tokens.append(token)
                 p += 4
-            return ' '.join(tokens), p
+            return tokens, p
 
         scale = _f4(k + 4)
         duration = _f4(k + 8)
@@ -2909,9 +2897,9 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
             _misaligned_thunderspy_stack += 1
         else:
             if _dr_count:
-                jit_requires = ' '.join(
+                jit_requires = [
                     t for t in (_resolve_str(_stack_u4(pos + 16 + 4 * i) or 0)
-                                for i in range(_dr_count)) if t)
+                                for i in range(_dr_count)) if t]
             _caster_raw = _stack_u4(_stack_at)
             caster_stack = ATTRIB_MOD_CASTER_STACK.get(
                 _caster_raw, f"Unknown({_caster_raw})")
@@ -3431,7 +3419,7 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
     # Set_Script_Value script keys (server-side behavior with no player-calc
     # meaning — left unexported).
     requires_tokens = r.read_string_array()
-    jit_requires = ' '.join(requires_tokens) if requires_tokens else ''
+    jit_requires = requires_tokens
     primary_str_list = r.read_string_array()
     # SecondaryStringList: only Set_Script_Value templates carry one (script
     # arguments, e.g. "Cutscene-Skippable") — same no-calc-meaning class as
@@ -3462,9 +3450,7 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
     # the value is real. 900 Rebirth templates carry a magnitude_expression
     # (Brute Fury's `Rage_Buff` → `kRage source> .02 *`, i.e. 2%
     # damage-Strength per point of the kRage meter; DATA-GAP INHERENT-2) and
-    # 8 carry a duration_expression. Joined with spaces to match the
-    # group-level requires_expression representation, exactly as the Parse7
-    # path does.
+    # 8 carry a duration_expression.
     #
     # Hand-decoded against Suffocate (Dominator/Water_Control): mag=3
     # (Mag-3 hold) lives at the byte that the previous parser was
@@ -3478,9 +3464,9 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
     # multiplier with Magnitude=0 (typical). Downstream converters
     # already understand both conventions.
     duration = r.read_f4()
-    dur_expr = " ".join(r.read_string_array())  # DurationExpr (RPN tokens; usually empty)
+    dur_expr = r.read_string_array()  # DurationExpr (RPN tokens; usually empty)
     magnitude = r.read_f4()
-    mag_expr = " ".join(r.read_string_array())  # MagnitudeExpr (RPN tokens; usually empty)
+    mag_expr = r.read_string_array()  # MagnitudeExpr (RPN tokens; usually empty)
 
     # Post-magnitude tail — structural decode (see _read_parse6_template_tail
     # for the pinned layout). The inline-pascal scanner remains only as the
@@ -3645,7 +3631,7 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
             # Rebirth has no group to carry one, which is why its AttribMod gate
             # is what gets lifted here.
             req = (group_extras.pop('requires_expression') if thunderspy
-                   else (tmpl.jit_requires or ''))
+                   else list(tmpl.jit_requires))
             # A SELF-targeted AttribMod whose requires carries the self-exclusion
             # clause `entref target> entref source> eq !` ("target != self") is a
             # proximity / ally-counting self-buff — it applies +X to the caster
@@ -3669,7 +3655,10 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
             # reading of the expression alone could tell.
             requires_pv = entity_scope(req)
             gate = gate_evaluate(req, player_classes=player_classes)
-            self_exclusion = 'entref target> entref source> eq !' in req.lower()
+            # Joined only to ask a question of it. Re-splitting a joined gate is
+            # what COND-8 was about; a substring probe is safe, because a token
+            # boundary can neither create nor destroy this clause.
+            self_exclusion = 'entref target> entref source> eq !' in ' '.join(req).lower()
             if tmpl.target == 'Self' and self_exclusion:
                 is_pvp = 'EITHER'
             elif requires_pv in ('PVE_ONLY', 'PVP_ONLY'):
@@ -3705,10 +3694,11 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
                 DelayedRequires is a flat conjunction, so there is no structure
                 for a parse to recover.
                 """
-                delayed = (t.jit_requires or '') if thunderspy else ''
+                delayed = list(t.jit_requires) if thunderspy else []
                 if 'isPVPMap?' not in delayed:
                     return _element_verdict
-                return 'PVE_ONLY' if 'isPVPMap? !' in delayed else 'PVP_ONLY'
+                negated = delayed[delayed.index('isPVPMap?') + 1:][:1] == ['!']
+                return 'PVE_ONLY' if negated else 'PVP_ONLY'
             # Group-level fields Parse6 stores on the AttribMod (HC moved them
             # to the EffectGroup wrapper): radii, PPM, EvalFlags.
             # Thunderspy's element IS the group, so its chance is read from the
@@ -3810,17 +3800,13 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     power_type = r.read_u4()  # 23
     num_allowed = r.read_u4()  # 24
     attack_types = r.read_u4_array()  # 25
-    requires_parts = r.read_string_array()  # 26
-    requires = " ".join(requires_parts) if requires_parts else ""
-    activate_requires_parts = r.read_string_array()  # 27
-    activate_requires = " ".join(activate_requires_parts) if activate_requires_parts else ""
+    requires = r.read_string_array()  # 26
+    activate_requires = r.read_string_array()  # 27
     # 28. slot_requires (string_array). Boost (IO piece) records carry
     # `BoostsSlotted>X <= 0` constraints here when the piece is unique
     # within a slot pool — read by the IO-set extractor for per-piece uniqueness.
-    slot_requires_parts = r.read_string_array()  # 28
-    slot_requires = " ".join(slot_requires_parts) if slot_requires_parts else ""
-    target_requires_parts = r.read_string_array()  # 29
-    target_requires = " ".join(target_requires_parts) if target_requires_parts else ""
+    slot_requires = r.read_string_array()  # 28
+    target_requires = r.read_string_array()  # 29
     r.read_string_array()  # 30
     r.read_string_array()  # 31
     if veracity:
@@ -3836,7 +3822,7 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     radius = r.read_f4()  # 39
     arc = r.read_f4()  # 40
     chain_delay = r.read_f4()  # 41 (same i24 slot as the HC layout)
-    chain_eff_expr = " ".join(r.read_string_array())  # 42 ChainEff (verified:
+    chain_eff_expr = r.read_string_array()  # 42 ChainEff (verified:
     # `@ChainJump`/`minmax` content resolves here on Veracity/Parse6 data)
     # 43: string_array — NOT ChainTarget in Parse6. Verified against Veracity:
     # `prevdistance`/`maintarget>` (the ChainTarget tokens) are absent from the
@@ -4011,13 +3997,10 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
             for t in eg.templates:
                 if t.attribs != ["Power_Redirect"] or not t.params:
                     continue
-                condition = t.jit_requires
-                if not condition or condition == '1':
-                    condition = 'Always'
                 for target_name in t.params.get("power_names", []):
                     redirects.append({
                         'name': target_name,
-                        'condition_expression': condition,
+                        'condition_expression': list(t.jit_requires),
                     })
 
     # Post-effects tail — only positioned there when the effects parse

@@ -56,7 +56,7 @@ export const AoEBridge: Power = {
     "tickRate": 0.4000000059604645
   },
   "atoms": [
-    ["Damage","Lethal",0.57,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.57,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
@@ -64,15 +64,15 @@ export const AoEBridge: Power = {
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,"cancel_mods"],
     ["Damage","Fire",0.2565,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Damage","Lethal",0.7054,1,0.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Defense","All",1,1,20,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_DebuffMode_2 Source.Mode?",true],
-    ["ToHit",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_DebuffMode_2 Source.Mode?",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_DebuffMode_2 Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
-    ["Damage","Lethal",0.57,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode?",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode? enttype target> critter eq &&",true],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode? enttype target> player eq &&",true],
-    ["Damage","Fire",0.2565,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kDD_BonusAoEMode_2 Source.Mode?",true,null,null,null,null,null,null,null,null,"FieryEmbrace"]
+    ["Damage","Lethal",0.7054,1,0.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Defense","All",1,1,20,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_DebuffMode_2","Source.Mode?"],true],
+    ["ToHit",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_DebuffMode_2","Source.Mode?"],true],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_DebuffMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
+    ["Damage","Lethal",0.57,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?"],true],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?","enttype","target>","critter","eq","&&"],true],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?","enttype","target>","player","eq","&&"],true],
+    ["Damage","Fire",0.2565,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,"FieryEmbrace"]
   ],
   "conditionalEffects": [
     {

@@ -64,13 +64,13 @@ export const ConfoundingChant: Power = {
   },
   "atoms": [
     ["Damage","Psionic",0.125,1,19.75,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1],
-    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,null,null,"Overpower"],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ReverbChantOfRebut"],
-    ["Damage","Psionic",0.125,1,19.75,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true,null,null,null,null,null,null,null,null,"Containment"],
+    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Overpower"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ReverbChantOfRebut"],
+    ["Damage","Psionic",0.125,1,19.75,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,["kTerrorized","target>","0",">","kImmobilized","target>","0",">","||","kHeld","target>","0",">","||","kStunned","target>","0",">","||","Sleep","target.EventTimeSince>","3","<=","||","IncarnateBoss","target.HasTag?","||"],true,null,null,null,null,null,null,null,null,"Containment"],
     ["Damage","Psionic",0.125,1,34.75,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,null,true,null,null,null,null,null,"Stunned"],
-    ["Damage","Psionic",0.125,1,34.75,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true,null,null,null,null,null,"Stunned",null,null,"Containment"],
-    ["Mez","Stunned",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Psionic",0.125,1,34.75,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,["kTerrorized","target>","0",">","kImmobilized","target>","0",">","||","kHeld","target>","0",">","||","kStunned","target>","0",">","||","Sleep","target.EventTimeSince>","3","<=","||","IncarnateBoss","target.HasTag?","||"],true,null,null,null,null,null,"Stunned",null,null,"Containment"],
+    ["Mez","Stunned",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
   ],
   "specialEffects": [
     {

@@ -48,7 +48,7 @@ export const SoundBarrier: Power = {
   "maxSlots": 6,
   "effects": {
     "absorb": {
-      "scale": 0.3,
+      "scale": 0.15,
       "table": "Melee_HealSelf"
     },
     "buffDuration": 2.25,
@@ -60,7 +60,7 @@ export const SoundBarrier: Power = {
     },
     "effectDuration": 2.25,
     "recoveryBuff": {
-      "scale": 1,
+      "scale": 0.5,
       "table": "Melee_Ones"
     },
     "resistance": {
@@ -83,11 +83,11 @@ export const SoundBarrier: Power = {
   "atoms": [
     ["Resistance","Smashing",1,1,2.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Energy",1,1,2.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq !"],
-    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq !"],
     ["Mez","Sleep",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
-    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq"],
-    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq"],
+    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["@CustomFX","ShowFloaters","eq"]],
+    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["@CustomFX","ShowFloaters","eq"]],
+    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["@CustomFX","ShowFloaters","eq","!"],true],
+    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["@CustomFX","ShowFloaters","eq","!"],true],
     ["MezResist","Sleep",3,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

@@ -60,6 +60,8 @@ export const GuidingLightRootBonus: Power = {
     ["Recovery",null,1.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Endurance",null,1.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "Tanker_Defense.Sacred_Armor.Guiding_Light",
+  "requires": [
+    "Tanker_Defense.Sacred_Armor.Guiding_Light"
+  ],
   "mechanicType": "parentMechanic"
 };

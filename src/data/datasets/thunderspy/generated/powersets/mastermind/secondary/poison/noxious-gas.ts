@@ -37,7 +37,10 @@ export const NoxiousGas: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq",true]
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["group","target>","MastermindPets","eq"],true]
   ],
-  "requires": "Mastermind_Buff.Poison.Venomous_Gas !"
+  "requires": [
+    "Mastermind_Buff.Poison.Venomous_Gas",
+    "!"
+  ]
 };

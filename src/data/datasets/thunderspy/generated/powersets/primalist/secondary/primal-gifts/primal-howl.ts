@@ -62,9 +62,9 @@ export const PrimalHowl: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,1,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["Recovery",null,0.5,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["Meta",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"]
+    ["Regeneration",null,1,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Self","Friend"]],
+    ["Recovery",null,0.5,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Self","Friend"]],
+    ["Meta",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage",["Self","Friend"]]
   ],
   "modeVariants": {
     "HunterMode": {

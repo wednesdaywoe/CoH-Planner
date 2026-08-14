@@ -575,3 +575,31 @@ per-field evidence trail:
 - **HTTP/2-505 mitigation** [optional] — If a browser genuinely leads with an
   HTTP/2 preface, the durable fix (fresh port, or an `Alt-Svc: clear` header on
   Bin Crawler responses) is unimplemented.
+
+## 15. Engine vendor 2026-08-14 — parity display-twin residue
+
+The TARGETS-2/3 + COND-8 vendor campaign (parser sync, atom-query/atomic-effect
+port, converter port, regen, `build:engine`) closed the 16 known parity counts
+(Fulcrum Shift N=1/N=5, Radiation Siphon and Chrono Shift healing, Temporal
+Healing absorb). Four `powerProjectionParity` tests stay red on two residue
+classes the vendor exposed. Both are display-twin gaps against engine behaviour
+1.0 gated after the previous vendor; neither is TARGETS/COND drift, and neither
+number should be guessed here — [H] means it blocks a green suite, not that the
+engine is suspected wrong.
+
+- [ ] **PAR1** [H] **Pool fly rows (rebirth 15 deltas / thunderspy 12)** — the
+  engine splits fly into per-row entries (MOVEMAP-1 axis split, `flyUnenhanced`
+  rows, Group Fly and Fly Afterburner dropped as gated) while the display twin
+  resolves one bag slot. Beta pool/epic data ships NO atoms
+  (`convert-pool-powers.cjs` / `convert-epic-pools.cjs` are shortened pipelines,
+  measured 2026-07-29 in the parity test header), so the twin cannot derive the
+  split independently. Either extend the test's atoms-absent evidence class from
+  perma to movement rows, or (the real close, upstream in 1.0) make the pool and
+  epic converters emit atoms and retire the evidence class.
+- [ ] **PAR2** [H] **HoT tail under combat toggles (HC 48 deltas / tspy 24)** —
+  Temporal Mending and Chrono Shift `@engaged`/`@hidden`: the engine drops the
+  heal-over-time tail under an explicit combat state; the display bag's damage
+  array carries no suppression or gate flag on its heal entries, so the twin
+  folds the tail in (`extractHealingFromDamage` now tick-folds, matching the
+  engine on plain rows). Needs the flag stamped by the converter (1.0-owned),
+  then read in `extractHealingFromDamage`.

@@ -39,8 +39,7 @@ export const TremblingEarth: Power = {
   ],
   "allowedSetCategories": [
     "PBAoE Damage",
-    "Tanker Archetype Sets",
-    "Universal Damage Sets"
+    "Tanker Archetype Sets"
   ],
   "maxSlots": 6,
   "effects": {

@@ -113,5 +113,8 @@ export const O2Boost: Power = {
     ["Perception",null,2.5,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Perception",null,2.5,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
   ],
-  "requires": "Controller_Buff.Storm_Summoning.Oxygenate !"
+  "requires": [
+    "Controller_Buff.Storm_Summoning.Oxygenate",
+    "!"
+  ]
 };

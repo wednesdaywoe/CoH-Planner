@@ -73,7 +73,18 @@ export const ActiveDefense: Power = {
     ["Defense","Melee",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Smashing",1.65,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",1.65,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Elusivity","Melee",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+    ["Elusivity","Melee",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true]
   ],
-  "requires": "Scrapper_Melee.Dual_Blades Scrapper_Melee.Claws || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Katana || Scrapper_Melee.Titan_Weapons || !"
+  "requires": [
+    "Scrapper_Melee.Dual_Blades",
+    "Scrapper_Melee.Claws",
+    "||",
+    "Scrapper_Melee.Staff_Fighting",
+    "||",
+    "Scrapper_Melee.Katana",
+    "||",
+    "Scrapper_Melee.Titan_Weapons",
+    "||",
+    "!"
+  ]
 };

@@ -67,21 +67,27 @@ export const Stun: Power = {
     }
   },
   "atoms": [
-    ["Damage","Smashing",0.15,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",0.1,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Stunned",10,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["DamageBuff","Smashing",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
-    ["DamageBuff","Lethal",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
-    ["DamageBuff","Fire",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
-    ["DamageBuff","Cold",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
-    ["DamageBuff","Energy",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
-    ["DamageBuff","Negative",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
-    ["DamageBuff","Psionic",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"],
-    ["DamageBuff","Toxic",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /",null,null,null,"Defiance"]
+    ["Damage","Smashing",0.15,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Energy",0.1,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Mez","Stunned",10,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["DamageBuff","Smashing",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance",null,null,["Foe"]],
+    ["DamageBuff","Lethal",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance",null,null,["Foe"]],
+    ["DamageBuff","Fire",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance",null,null,["Foe"]],
+    ["DamageBuff","Cold",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance",null,null,["Foe"]],
+    ["DamageBuff","Energy",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance",null,null,["Foe"]],
+    ["DamageBuff","Negative",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance",null,null,["Foe"]],
+    ["DamageBuff","Psionic",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance",null,null,["Foe"]],
+    ["DamageBuff","Toxic",0,0,0,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance",null,null,["Foe"]]
   ],
   "formVariants": [
     {
-      "condition": "kBoostRange Source.Mode? kBoostPower Source.Mode? &&",
+      "condition": [
+        "kBoostRange",
+        "Source.Mode?",
+        "kBoostPower",
+        "Source.Mode?",
+        "&&"
+      ],
       "internalName": "Stun_Ranged_AoE",
       "stats": {
         "accuracy": 0.8,
@@ -176,7 +182,12 @@ export const Stun: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Mez",
@@ -201,7 +212,12 @@ export const Stun: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "DamageBuff",
@@ -232,7 +248,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -267,7 +291,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -302,7 +334,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -337,7 +377,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -372,7 +420,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -407,7 +463,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -442,7 +506,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -477,7 +549,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -486,7 +566,14 @@ export const Stun: Power = {
       ]
     },
     {
-      "condition": "kBoostRange Source.Mode? distance 7 > &&",
+      "condition": [
+        "kBoostRange",
+        "Source.Mode?",
+        "distance",
+        "7",
+        ">",
+        "&&"
+      ],
       "internalName": "Stun_Ranged",
       "stats": {
         "accuracy": 1,
@@ -579,7 +666,12 @@ export const Stun: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Mez",
@@ -604,7 +696,12 @@ export const Stun: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "DamageBuff",
@@ -635,7 +732,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -670,7 +775,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -705,7 +818,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -740,7 +861,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -775,7 +904,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -810,7 +947,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -845,7 +990,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -880,7 +1033,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -889,7 +1050,10 @@ export const Stun: Power = {
       ]
     },
     {
-      "condition": "kBoostPower Source.Mode?",
+      "condition": [
+        "kBoostPower",
+        "Source.Mode?"
+      ],
       "internalName": "Stun_Melee_AoE",
       "stats": {
         "accuracy": 0.8,
@@ -984,7 +1148,12 @@ export const Stun: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Mez",
@@ -1009,7 +1178,12 @@ export const Stun: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "DamageBuff",
@@ -1040,7 +1214,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -1075,7 +1257,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -1110,7 +1300,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -1145,7 +1343,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -1180,7 +1386,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -1215,7 +1429,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -1250,7 +1472,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,
@@ -1285,7 +1515,15 @@ export const Stun: Power = {
           null,
           null,
           null,
-          ".066 activatetime power.base> * areafactor power.base> /",
+          [
+            ".066",
+            "activatetime",
+            "power.base>",
+            "*",
+            "areafactor",
+            "power.base>",
+            "/"
+          ],
           null,
           null,
           null,

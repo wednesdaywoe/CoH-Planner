@@ -117,7 +117,7 @@ export const DarkNova: Power = {
     ["Meta",null,1,4,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Movement","FlyMode",2,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"],
-    ["Meta",null,1.5,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kWarshade_Blaster_Mode Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"null"]
+    ["Meta",null,1.5,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kWarshade_Blaster_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "setsModes": [
     "Suppress_PoolToggles",

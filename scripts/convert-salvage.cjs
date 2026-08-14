@@ -8,10 +8,12 @@
  * net-new data (the planner had no invention salvage registry) and is the
  * foundation for the planned auction-house build-cost feature.
  *
- * Incarnate salvage (binary category "Incarnate") stays in the hand-curated
- * incarnate-salvage.ts for now — it mixes current purchasable salvage with
- * legacy crafting components and carries thread/empyrean costs that aren't in
- * salvage.bin. See SALVAGE-RECIPE-BINARY-SOURCING.md.
+ * Incarnate salvage (binary category "Incarnate") is binary-sourced through the
+ * `incarnate-crafting` contract section instead (emit-contract.cjs
+ * buildIncarnateCrafting): identity/display/rarity from salvage.bin here, the
+ * thread/empyrean prices from baserecipes.bin's own Conversion-store recipes.
+ * The hand-curated incarnate-salvage.ts survives only as the oracle that
+ * decode is gated against (src/data/incarnate-crafting-oracle.test.ts).
  *
  * salvage.bin is HC-only (Rebirth has none), so this is not dataset-namespaced.
  *

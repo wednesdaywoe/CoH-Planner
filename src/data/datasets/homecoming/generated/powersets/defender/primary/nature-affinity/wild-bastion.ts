@@ -60,7 +60,7 @@ export const WildBastion: Power = {
     }
   },
   "atoms": [
-    ["Absorb",null,1,1,60,"Ranged_Ones","Max","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> 0.25 * @Strength *"],
+    ["Absorb",null,1,1,60,"Ranged_Ones","Max","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","source>","0.25","*","@Strength","*"]],
     ["Heal",null,0.2727,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
   ]

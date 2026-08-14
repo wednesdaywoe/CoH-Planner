@@ -37,10 +37,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     128
@@ -49,12 +49,23 @@
   "redirect": [
     {
       "name": "Mission_Maker_Pets.Water_Jet.Water_Jet_Fast",
-      "condition_expression": "temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 == temporary_powers.temporary_powers.enhanced_water_jet_lock source.ownPower? ! &&",
+      "condition_expression": [
+        "temporary_powers.temporary_powers.tidal_power",
+        "source.ownPowerNum?",
+        "3",
+        "==",
+        "temporary_powers.temporary_powers.enhanced_water_jet_lock",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
       "show_in_info": true
     },
     {
       "name": "Mission_Maker_Pets.Water_Jet.Water_Jet_Normal",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

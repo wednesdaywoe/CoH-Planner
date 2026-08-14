@@ -120,7 +120,9 @@ export const OffensiveAdaptation: Power = {
       "enhanceable": false
     }
   ],
-  "requires": "Tanker_Defense.Bio_Organic_Armor.Evolution",
+  "requires": [
+    "Tanker_Defense.Bio_Organic_Armor.Evolution"
+  ],
   "setsModes": [
     "OffensiveAdaptation"
   ]

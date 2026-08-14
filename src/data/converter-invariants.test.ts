@@ -134,7 +134,7 @@ describe('generated-data invariants (committed; CI-runnable, no raw data)', () =
           if (typeof atom[0] !== 'string') continue;
           scanned++;
           const requires = atom[I_REQUIRES];
-          if (typeof requires !== 'string' || !BARE_PVP.test(requires)) continue;
+          if (!Array.isArray(requires) || !BARE_PVP.test(requires.join(' '))) continue;
           pvp++;
           if (atom[I_GATED] !== true) offenders.push(`${rel(f)}: ${atom[0]}/${atom[1]} scale ${atom[2]} — ${requires}`);
         }

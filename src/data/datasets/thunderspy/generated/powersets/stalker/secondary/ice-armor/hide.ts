@@ -106,9 +106,12 @@ export const Hide: Power = {
     ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true]
   ],
-  "requires": "Epic.Stalker_Leviathan_Mastery.Hibernate !",
+  "requires": [
+    "Epic.Stalker_Leviathan_Mastery.Hibernate",
+    "!"
+  ],
   "modesDisallowed": [
     "Disable_Toggle"
   ]

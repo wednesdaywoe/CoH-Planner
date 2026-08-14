@@ -84,8 +84,8 @@ export const CloakofFear: Power = {
     }
   },
   "atoms": [
-    ["Mez","Terrorized",1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Terrorized",1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Terrorized",1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Mez","Terrorized",1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
     ["ToHit",null,-0.05,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1],
     ["DamageBuff","Smashing",2,1,3,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
     ["DamageBuff","Lethal",2,1,3,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
@@ -99,6 +99,6 @@ export const CloakofFear: Power = {
     ["Enhancement","Knockback",-0.25,1,3,"Melee_Ones","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
     ["Mez","Knockup",-1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1],
     ["Mez","Knockback",-1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1],
-    ["Mez","Terrorized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Terrorized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
   ]
 };

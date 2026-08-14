@@ -76,20 +76,20 @@ export const Pounce: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",2.76,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",1.38,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
-    ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !",null,null,null,null,null,null,null,0.85,true],
-    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kProwlerCloakMode Source.Mode? !",null,null,null,null,null,null,null,null,null,null,null,"rage"],
-    ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
-    ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
-    ["Damage","Lethal",1.38,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? &&",true],
-    ["Damage","Lethal",2.1468,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",1.0734,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kProwlerMode Source.Mode? &&",true],
-    ["Damage","Lethal",1.0734,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq kProwlerCloakMode Source.Mode? ! &&",true],
-    ["Damage","Lethal",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode?",true,null,null,null,null,null,null,0.85,true],
-    ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kProwlerCloakMode Source.Mode?",true,null,null,null,null,null,null,null,null,null,null,"rage"],
-    ["Mez","Stunned",6,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? enttype target> critter eq &&",true],
-    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",2.76,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Lethal",1.38,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kProwlerCloakMode","Source.Mode?","!","&&"]],
+    ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kProwlerCloakMode","Source.Mode?","!"],null,null,null,null,null,null,null,0.85,true],
+    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kProwlerCloakMode","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,null,null,"rage"],
+    ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,["kProwlerCloakMode","Source.Mode?","!","enttype","target>","critter","eq","&&"]],
+    ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kProwlerCloakMode","Source.Mode?","!","enttype","target>","critter","eq","&&"]],
+    ["Damage","Lethal",1.38,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kProwlerCloakMode","Source.Mode?","&&"],true],
+    ["Damage","Lethal",2.1468,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Lethal",1.0734,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kProwlerMode","Source.Mode?","&&"],true],
+    ["Damage","Lethal",1.0734,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq","kProwlerCloakMode","Source.Mode?","!","&&"],true],
+    ["Damage","Lethal",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kProwlerCloakMode","Source.Mode?"],true,null,null,null,null,null,null,0.85,true],
+    ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kProwlerCloakMode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"rage"],
+    ["Mez","Stunned",6,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kProwlerCloakMode","Source.Mode?","enttype","target>","critter","eq","&&"],true],
+    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
   ],
   "conditionalEffects": [
     {
@@ -134,7 +134,9 @@ export const Pounce: Power = {
       "label": "Stun"
     }
   ],
-  "requires": "Feral_Might.Feral_Might.Prowler_Form",
+  "requires": [
+    "Feral_Might.Feral_Might.Prowler_Form"
+  ],
   "modesRequired": [
     "ProwlerMode"
   ],

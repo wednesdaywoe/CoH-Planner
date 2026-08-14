@@ -43,21 +43,26 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [],
   "effects": [],
   "redirect": [
     {
       "name": "Redirects.Pool_Teleportation.Teleport_LowEnd",
-      "condition_expression": "kChainTeleport Source.Mode?",
+      "condition_expression": [
+        "kChainTeleport",
+        "Source.Mode?"
+      ],
       "show_in_info": true
     },
     {
       "name": "Redirects.Pool_Teleportation.Teleport",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

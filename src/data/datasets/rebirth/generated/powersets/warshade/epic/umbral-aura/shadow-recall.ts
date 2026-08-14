@@ -62,16 +62,23 @@ export const ShadowRecall: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? ! Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? ! &&",null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["target.isFriend?","!","Warshade_Offensive.Umbral_Blast.Starless_Step","source.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",true,null,null,null,null,null,null,null,null,null,null,"power_redirect"]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["target.isFriend?"],true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Warshade_Offensive.Umbral_Blast.Starless_Step","source.ownPower?","&&","target.isFriend?","!","&&"],true,null,null,null,null,null,null,null,null,null,null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","Warshade_Offensive.Umbral_Blast.Starless_Step","source.ownPower?","&&","target.isFriend?","!","&&"],true,null,null,null,null,null,null,null,null,null,null,"power_redirect"]
   ],
   "formVariants": [
     {
-      "condition": "target.isFriend? ! Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? ! &&",
+      "condition": [
+        "target.isFriend?",
+        "!",
+        "Warshade_Offensive.Umbral_Blast.Starless_Step",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
       "internalName": "Shadow_Recall_Enemy",
       "stats": {
         "accuracy": 1,
@@ -195,7 +202,18 @@ export const ShadowRecall: Power = {
       ]
     },
     {
-      "condition": "enttype target> critter eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",
+      "condition": [
+        "enttype",
+        "target>",
+        "critter",
+        "eq",
+        "Warshade_Offensive.Umbral_Blast.Starless_Step",
+        "source.ownPower?",
+        "&&",
+        "target.isFriend?",
+        "!",
+        "&&"
+      ],
       "internalName": "Shadow_Recall_NPC",
       "stats": {
         "accuracy": 1,
@@ -318,7 +336,18 @@ export const ShadowRecall: Power = {
       ]
     },
     {
-      "condition": "enttype target> player eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",
+      "condition": [
+        "enttype",
+        "target>",
+        "player",
+        "eq",
+        "Warshade_Offensive.Umbral_Blast.Starless_Step",
+        "source.ownPower?",
+        "&&",
+        "target.isFriend?",
+        "!",
+        "&&"
+      ],
       "internalName": "Shadow_Recall_Enemy",
       "stats": {
         "accuracy": 1,
@@ -442,7 +471,10 @@ export const ShadowRecall: Power = {
       ]
     }
   ],
-  "requires": "Inherent.Inherent.Shadow_Recall !",
+  "requires": [
+    "Inherent.Inherent.Shadow_Recall",
+    "!"
+  ],
   "modesDisallowed": [
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Tanker_Mode",

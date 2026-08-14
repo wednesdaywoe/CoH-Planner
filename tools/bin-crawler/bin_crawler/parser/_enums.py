@@ -764,10 +764,26 @@ ATTRIB_MOD_APPLICATION: dict[int, str] = {
     5: "OnDisable",
 }
 
+# ModTarget (`Common/entity/attribmod.h:69`). Seven contiguous members; ours
+# are the authored `.powers` spellings, which the same header aliases onto the
+# engine names at :509-520 (`kSelf`→kCaster, `kTarget`→kAffected,
+# `kTargetsOwnerAndAllPets`→kAffectedsOwnerAndAllPets).
+#
+# The pairs are not two flavours of one recipient: each `...OwnerAndAllPets`
+# member names a DIFFERENT anchor to walk up from, and the walk is what the
+# engine does with it (`character_combat.c:749` — resolve the anchor to its
+# top-level owner, attach there, then recurse over that owner's pet list). So
+# raw 1 is the caster plus a pet copy, raw 5 is each affected entity's owner
+# plus a pet copy — the same suffix over two different anchors.
 ATTRIB_MOD_TARGET: dict[int, str] = {
     0: "Self",
     1: "SelfAndPets",
     2: "TargetOnly",
+    # Raw 3 was missing until 2026-08-13 (TARGETS-2), so a template carrying it
+    # exported as `Unknown(3)` — visible, but nothing had ever looked. It is
+    # unobserved across all three exports; the label comes from the source
+    # enum's own ordering, which the six neighbours confirm exactly.
+    3: "TargetOnlyAndPets",
     4: "AnyAffected",
     5: "AnyAffectedAndPets",
     # Marker-targeted mods spawn/apply at named map markers laid down by a

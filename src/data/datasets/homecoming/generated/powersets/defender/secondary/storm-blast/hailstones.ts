@@ -68,12 +68,12 @@ export const Hailstones: Power = {
   "atoms": [
     ["Damage","Cold",0.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
     ["Damage","Cold",0.25,1,1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !"],
-    ["Meta",null,1,1,7.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !",null,null,null,null,null,null,null,null,null,null,null,"null"],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !",null,null,null,null,null,null,null,null,null,"IncreaseStormStrength"],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"StormBrewing"],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
-    ["Meta",null,1,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?","!"]],
+    ["Meta",null,1,1,7.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["kLightningCat5","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"IncreaseStormStrength"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"StormBrewing"],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?"],true],
+    ["Meta",null,1,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Damage","Cold",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Meta",null,1,1,7.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]

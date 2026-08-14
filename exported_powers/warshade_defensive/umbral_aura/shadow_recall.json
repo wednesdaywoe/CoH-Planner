@@ -47,10 +47,13 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "Inherent.Inherent.Shadow_Recall !",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [
+    "Inherent.Inherent.Shadow_Recall",
+    "!"
+  ],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     136
@@ -59,12 +62,17 @@
   "redirect": [
     {
       "name": "Kheldian_Pets.Umbral_Blast.Shadow_Recall",
-      "condition_expression": "target.isFriend?",
+      "condition_expression": [
+        "target.isFriend?"
+      ],
       "show_in_info": true
     },
     {
       "name": "Kheldian_Pets.Umbral_Blast.Starless_Step",
-      "condition_expression": "target.isFriend? !",
+      "condition_expression": [
+        "target.isFriend?",
+        "!"
+      ],
       "show_in_info": true
     }
   ],

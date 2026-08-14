@@ -62,7 +62,9 @@ export const DefensiveAdaptation: Power = {
     ["DamageBuff","Psionic",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "Sentinel_Defense.Bio_Organic_Armor.Adaptation",
+  "requires": [
+    "Sentinel_Defense.Bio_Organic_Armor.Adaptation"
+  ],
   "setsModes": [
     "DefensiveAdaptation"
   ]

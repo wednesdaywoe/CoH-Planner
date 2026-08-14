@@ -170,8 +170,8 @@ function carriesTransform(power: Power): boolean {
  *  reads no such pair, so the toggle IS its reach signal. Used to keep the anti-vacuity
  *  `castMoved` check from asserting a toggle can move a state it structurally cannot. */
 function quickSnipeReadsCasterToHit(power: Power): boolean {
-  const condition = (power as unknown as { quickSnipe?: { condition?: string } }).quickSnipe?.condition ?? '';
-  const tokens = condition.split(/\s+/);
+  // The wire carries the condition as a token array (COND-8) — read it as one.
+  const tokens = (power as unknown as { quickSnipe?: { condition?: string[] } }).quickSnipe?.condition ?? [];
   return tokens.some((t, i) => t.toLowerCase() === 'cur.ktohit' && tokens[i + 1]?.toLowerCase() === 'source>');
 }
 

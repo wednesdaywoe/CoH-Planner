@@ -47,5 +47,7 @@ export const FormoftheBody: Power = {
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
   ],
-  "requires": "Tanker_Melee.Staff_Fighting.Staff_Mastery"
+  "requires": [
+    "Tanker_Melee.Staff_Fighting.Staff_Mastery"
+  ]
 };

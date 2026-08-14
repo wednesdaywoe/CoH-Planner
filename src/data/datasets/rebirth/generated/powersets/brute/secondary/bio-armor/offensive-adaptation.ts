@@ -119,7 +119,9 @@ export const OffensiveAdaptation: Power = {
       "enhanceable": false
     }
   ],
-  "requires": "Brute_Defense.Bio_Organic_Armor.Evolution",
+  "requires": [
+    "Brute_Defense.Bio_Organic_Armor.Evolution"
+  ],
   "setsModes": [
     "OffensiveAdaptation"
   ]

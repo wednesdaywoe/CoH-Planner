@@ -36,21 +36,29 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "isTutorialMap? !",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [
+    "isTutorialMap?",
+    "!"
+  ],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [],
   "effects": [],
   "redirect": [
     {
       "name": "Redirects.Pool_Teleportation.prestige_Base_Teleport",
-      "condition_expression": "isPVPMap? !",
+      "condition_expression": [
+        "isPVPMap?",
+        "!"
+      ],
       "show_in_info": true
     },
     {
       "name": "Redirects.Pool_Teleportation.prestige_Base_Teleport_PVP",
-      "condition_expression": "isPVPMap?",
+      "condition_expression": [
+        "isPVPMap?"
+      ],
       "show_in_info": true
     }
   ],

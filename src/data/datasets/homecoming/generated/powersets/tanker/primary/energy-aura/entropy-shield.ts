@@ -120,11 +120,11 @@ export const EntropyShield: Power = {
     }
   },
   "atoms": [
-    ["RechargeTime",null,0.035,1,2,"Melee_Ones","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",null,0.035],
-    ["RechargeTime",null,0.05,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&"],
-    ["RechargeTime",null,0.2,1,2.25,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&"],
-    ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > && Raid target.HasTag? ! enttype target> critter eq && &&"],
-    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > && Raid target.HasTag? ! &&",null,null,null,null,null,null,null,null,null,"Mez"],
+    ["RechargeTime",null,0.035,1,2,"Melee_Ones","Str","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,["Held","source.EventTimeSince>","5",">","Stunned","source.EventTimeSince>","5",">","&&","Sleep","source.EventTimeSince>","5",">","&&"],null,0.035],
+    ["RechargeTime",null,0.05,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Held","source.EventTimeSince>","5",">","Stunned","source.EventTimeSince>","5",">","&&","Sleep","source.EventTimeSince>","5",">","&&"]],
+    ["RechargeTime",null,0.2,1,2.25,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Held","source.EventTimeSince>","5",">","Stunned","source.EventTimeSince>","5",">","&&","Sleep","source.EventTimeSince>","5",">","&&"]],
+    ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Held","source.EventTimeSince>","5",">","Stunned","source.EventTimeSince>","5",">","&&","Sleep","source.EventTimeSince>","5",">","&&","Raid","target.HasTag?","!","enttype","target>","critter","eq","&&","&&"]],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Held","source.EventTimeSince>","5",">","Stunned","source.EventTimeSince>","5",">","&&","Sleep","source.EventTimeSince>","5",">","&&","Raid","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,"Mez",null,null,["Foe"]],
     ["MezResist","Teleport",1,1,2.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Mez","Knockup",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Mez","Knockback",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -134,7 +134,7 @@ export const EntropyShield: Power = {
     ["Mez","Stunned",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Mez","Sleep",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Mez","Immobilized",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > && Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && &&",true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",true,null,null,null,null,null,null,null,null,"InherentTaunt"]
+    ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Held","source.EventTimeSince>","5",">","Stunned","source.EventTimeSince>","5",">","&&","Sleep","source.EventTimeSince>","5",">","&&","Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","&&"],true],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Held","source.EventTimeSince>","5",">","Stunned","source.EventTimeSince>","5",">","&&","Sleep","source.EventTimeSince>","5",">","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

@@ -50,10 +50,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     132
@@ -65,7 +65,15 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "kPeacebringer_Blaster_Mode source.Mode? ! kPeacebringer_Tanker_Mode source.Mode? ! &&",
+      "requires_expression": [
+        "kPeacebringer_Blaster_Mode",
+        "source.Mode?",
+        "!",
+        "kPeacebringer_Tanker_Mode",
+        "source.Mode?",
+        "!",
+        "&&"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -86,13 +94,21 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kPeacebringer_Blaster_Mode source.Mode? ! kPeacebringer_Tanker_Mode source.Mode? ! &&",
+          "jit_requires": [
+            "kPeacebringer_Blaster_Mode",
+            "source.Mode?",
+            "!",
+            "kPeacebringer_Tanker_Mode",
+            "source.Mode?",
+            "!",
+            "&&"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -118,7 +134,10 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "kPeacebringer_Blaster_Mode source.Mode?",
+      "requires_expression": [
+        "kPeacebringer_Blaster_Mode",
+        "source.Mode?"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -139,13 +158,16 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kPeacebringer_Blaster_Mode source.Mode?",
+          "jit_requires": [
+            "kPeacebringer_Blaster_Mode",
+            "source.Mode?"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -171,7 +193,10 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "kPeacebringer_Tanker_Mode source.Mode?",
+      "requires_expression": [
+        "kPeacebringer_Tanker_Mode",
+        "source.Mode?"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -192,13 +217,16 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kPeacebringer_Tanker_Mode source.Mode?",
+          "jit_requires": [
+            "kPeacebringer_Tanker_Mode",
+            "source.Mode?"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -224,7 +252,12 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
+      "requires_expression": [
+        "enttype",
+        "target>",
+        "critter",
+        "eq"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
@@ -245,13 +278,18 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
+          "jit_requires": [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -266,7 +304,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "",
+      "requires_expression": [],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -287,13 +325,13 @@
           "duration": "6 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": [],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -314,7 +352,12 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
+      "requires_expression": [
+        "enttype",
+        "target>",
+        "player",
+        "eq"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
@@ -335,13 +378,18 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
+          "jit_requires": [
+            "enttype",
+            "target>",
+            "player",
+            "eq"
+          ],
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -354,15 +402,29 @@
   "redirect": [
     {
       "name": "Kheldian_Pets.Luminous_Blast.Glinting_Eye",
-      "condition_expression": "kPeacebringer_Blaster_Mode source.Mode? ! kPeacebringer_Tanker_Mode source.Mode? ! &&"
+      "condition_expression": [
+        "kPeacebringer_Blaster_Mode",
+        "source.Mode?",
+        "!",
+        "kPeacebringer_Tanker_Mode",
+        "source.Mode?",
+        "!",
+        "&&"
+      ]
     },
     {
       "name": "Kheldian_Pets.Bright_Nova.Bright_Nova_Glinting_Eye",
-      "condition_expression": "kPeacebringer_Blaster_Mode source.Mode?"
+      "condition_expression": [
+        "kPeacebringer_Blaster_Mode",
+        "source.Mode?"
+      ]
     },
     {
       "name": "Kheldian_Pets.White_Dwarf.White_Dwarf_Glinting_Eye",
-      "condition_expression": "kPeacebringer_Tanker_Mode source.Mode?"
+      "condition_expression": [
+        "kPeacebringer_Tanker_Mode",
+        "source.Mode?"
+      ]
     }
   ],
   "modes_disallowed": [

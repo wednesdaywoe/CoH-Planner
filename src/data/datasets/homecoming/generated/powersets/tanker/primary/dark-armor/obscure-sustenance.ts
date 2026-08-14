@@ -84,5 +84,8 @@ export const ObscureSustenance: Power = {
     ["ToHit",null,0.75,1,60,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,0.75,1,60,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "Tanker_Defense.Dark_Armor.Dark_Regeneration !"
+  "requires": [
+    "Tanker_Defense.Dark_Armor.Dark_Regeneration",
+    "!"
+  ]
 };

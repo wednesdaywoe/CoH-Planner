@@ -49,10 +49,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     136
@@ -61,12 +61,19 @@
   "redirect": [
     {
       "name": "Kheldian_Pets.Umbral_Blast.Ebon_Eye",
-      "condition_expression": "kWarshade_Blaster_Mode Source.Mode? !",
+      "condition_expression": [
+        "kWarshade_Blaster_Mode",
+        "Source.Mode?",
+        "!"
+      ],
       "show_in_info": true
     },
     {
       "name": "Kheldian_Pets.Umbral_Blast.Nova_Ebon_Eye",
-      "condition_expression": "kWarshade_Blaster_Mode Source.Mode?",
+      "condition_expression": [
+        "kWarshade_Blaster_Mode",
+        "Source.Mode?"
+      ],
       "show_in_info": true
     }
   ],

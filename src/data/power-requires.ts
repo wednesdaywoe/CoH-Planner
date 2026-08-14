@@ -141,9 +141,11 @@ const RPN_COMPARISON_OPS = new Set(['>=', '<=', '>', '<', '==', '!=']);
  * modifiers like `char>` that prefix an attrib access) push `true` so the
  * surrounding comparison/logic doesn't underflow the stack.
  */
-function evaluateRpnRequires(expr: string, ctx: RequiresContext): boolean | null {
-  // Tokenize on whitespace; trailing comma is a terminator some powers carry.
-  const tokens = expr.replace(/,$/, '').trim().split(/\s+/);
+function evaluateRpnRequires(raw: readonly string[], ctx: RequiresContext): boolean | null {
+  // Trailing comma is a terminator some powers carry — strip it off the last token.
+  const tokens = raw
+    .map((t, i) => (i === raw.length - 1 ? t.replace(/,$/, '') : t))
+    .filter(Boolean);
   const stack: boolean[] = [];
   for (const tok of tokens) {
     if (tok === '!') {
@@ -200,11 +202,9 @@ function isRpnAttribQualifier(tok: string): boolean {
  * Comparison ops (`>=`, `<=`, etc.) also count — they appear at the end of
  * accesslevel-gated expressions like `accesslevel char> 0 >=`.
  */
-function looksLikeRpn(expr: string): boolean {
-  const trimmed = expr.replace(/,$/, '').trim();
-  const lastSpace = trimmed.lastIndexOf(' ');
-  if (lastSpace < 0) return false;
-  const lastTok = trimmed.slice(lastSpace + 1);
+function looksLikeRpn(tokens: readonly string[]): boolean {
+  if (tokens.length < 2) return false;
+  const lastTok = tokens[tokens.length - 1].replace(/,$/, '');
   return (
     lastTok === '!' || lastTok === '&&' || lastTok === '||' ||
     RPN_COMPARISON_OPS.has(lastTok)
@@ -231,8 +231,17 @@ function looksLikeRpn(expr: string): boolean {
  * Detection: if the trailing token is an operator (`!`, `&&`, `||`), parse as
  * RPN; otherwise fall through to the infix logic.
  */
-export function evaluateRequires(requires: string, ctx: RequiresContext): boolean {
-  const expr = requires.trim();
+export function evaluateRequires(requires: string | readonly string[], ctx: RequiresContext): boolean {
+  // The wire carries requires as a token array (COND-8); the infix fallbacks below
+  // parse a legacy hand-edited grammar whose atoms are space-free dotted paths, so
+  // joining for THAT path is the format's own round trip, not a token-boundary guess.
+  // The recursive calls this function makes on infix substrings arrive as strings.
+  const tokens = Array.isArray(requires)
+    ? (requires as readonly string[]).filter(Boolean)
+    : (requires as string).trim().split(/\s+/).filter(Boolean);
+  const expr = Array.isArray(requires)
+    ? tokens.join(' ')
+    : (requires as string).trim();
 
   // RPN form (raw .def expressions). Includes detection for comparison ops
   // (`>=`, `<=`, `>`, `<`, `==`, `!=`) so accesslevel-gated expressions like
@@ -240,8 +249,8 @@ export function evaluateRequires(requires: string, ctx: RequiresContext): boolea
   // (Tanker Radiation Melee Devastating Blow, Wind Control Clear Skies) are
   // recognized as RPN and handed to the evaluator that knows how to short-
   // circuit accesslevel.
-  if (looksLikeRpn(expr)) {
-    const result = evaluateRpnRequires(expr, ctx);
+  if (looksLikeRpn(tokens)) {
+    const result = evaluateRpnRequires(tokens, ctx);
     if (result !== null) return result;
     // Fall through to infix on RPN parse failure (defensive)
   }

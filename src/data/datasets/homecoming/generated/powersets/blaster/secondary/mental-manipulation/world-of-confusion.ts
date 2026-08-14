@@ -59,7 +59,7 @@ export const WorldofConfusion: Power = {
   },
   "atoms": [
     ["Damage","Psionic",0.0943,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
-    ["Mez","Confused",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit < enttype target> player eq &&",true],
-    ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"@ToHitRoll 0.25 + @ToHit < enttype target> critter eq &&",true]
+    ["Mez","Confused",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["@ToHitRoll","0.25","+","@ToHit","<","enttype","target>","player","eq","&&"],true],
+    ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["@ToHitRoll","0.25","+","@ToHit","<","enttype","target>","critter","eq","&&"],true]
   ]
 };

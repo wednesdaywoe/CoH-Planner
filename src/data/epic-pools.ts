@@ -62,7 +62,7 @@ interface LegacyEpicPower {
   shortHelp?: string;
   icon: string;
   powerType: string;
-  requires?: string;
+  requires?: string[];
   maxSlots: number;
   allowedEnhancements: string[];
   allowedSetCategories: string[];
@@ -97,7 +97,7 @@ interface LegacyEpicPool {
   archetype: string;
   description: string;
   icon: string;
-  requires?: string;
+  requires?: string[];
   minLevel: number;
   powers: LegacyEpicPower[];
 }
@@ -333,8 +333,9 @@ const CLASS_TOKEN_TO_AT: Record<string, string> = {
 function poolArchetypeGate(pool: EpicPool): Set<string> {
   const gate = new Set<string>();
   for (const power of pool.powers) {
-    const req = power.requires;
-    if (!req) continue;
+    if (!power.requires?.length) continue;
+    // Joined only to ask a question of it — never split back apart (COND-8).
+    const req = power.requires.join(' ');
     const re = /@Class_([A-Za-z_]+)/g;
     let m: RegExpExecArray | null;
     while ((m = re.exec(req)) !== null) {

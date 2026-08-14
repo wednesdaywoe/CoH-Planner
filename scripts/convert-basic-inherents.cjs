@@ -53,6 +53,7 @@ const {
 } = require('./convert-powerset.cjs');
 const { displayText } = require('./_display-text.cjs');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
+const { gateTokens } = require('./_gate-tokens.cjs');
 
 const datasetId = parseDatasetArg();
 const dryRun = process.argv.includes('--dry-run');
@@ -307,7 +308,7 @@ function convertBasicInherent(rawJson, entry, granter) {
   // Homecoming granters' bare `0`). Carried through unread: it asks about the
   // account, not the build, and the planner shows every character every one of
   // these. Kept so the question stays visible in the data.
-  power.requires = rawJson.requires && rawJson.requires !== '' ? rawJson.requires : '';
+  power.requires = gateTokens(rawJson.requires);
 
   power.maxSlots =
     rawJson.max_boosts === undefined || rawJson.max_boosts === null

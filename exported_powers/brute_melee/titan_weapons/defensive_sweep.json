@@ -50,10 +50,13 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "Brute_Defense.Shield_Defense !",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [
+    "Brute_Defense.Shield_Defense",
+    "!"
+  ],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     112,
     116
@@ -62,12 +65,17 @@
   "redirect": [
     {
       "name": "Villain_Pets.Titan_Weapons_Brute.Defensive_Sweep_Fast",
-      "condition_expression": "kFastMode Source.Mode?",
+      "condition_expression": [
+        "kFastMode",
+        "Source.Mode?"
+      ],
       "show_in_info": true
     },
     {
       "name": "Villain_Pets.Titan_Weapons_Brute.Defensive_Sweep_Slow",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

@@ -79,14 +79,14 @@ export const ChronoShift: Power = {
     }
   },
   "atoms": [
-    ["Heal",null,1.2,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? !"],
-    ["Heal",null,0.2,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? !"],
+    ["Heal",null,1.2,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?","!"]],
+    ["Heal",null,0.2,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?","!"]],
     ["Endurance",null,0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Recovery",null,0.3,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["RechargeTime",null,0.5,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Heal",null,1.8,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
-    ["Heal",null,0.3,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true]
+    ["Heal",null,1.8,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?"],true],
+    ["Heal",null,0.3,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?"],true]
   ],
   "conditionalEffects": [
     {

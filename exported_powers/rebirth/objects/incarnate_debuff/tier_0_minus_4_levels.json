@@ -36,10 +36,14 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "kIncarnate_Equipped target.Mode? !",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [
+    "kIncarnate_Equipped",
+    "target.Mode?",
+    "!"
+  ],
+  "slot_requires": [],
   "attack_types": [],
   "effects": [
     {
@@ -48,7 +52,11 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "kIncarnate_Equipped target.Mode? !",
+      "requires_expression": [
+        "kIncarnate_Equipped",
+        "target.Mode?",
+        "!"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -69,13 +77,17 @@
           "duration": "0.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
+          "duration_expression": [],
+          "magnitude_expression": [],
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kIncarnate_Equipped target.Mode? !",
+          "jit_requires": [
+            "kIncarnate_Equipped",
+            "target.Mode?",
+            "!"
+          ],
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,

@@ -139,25 +139,30 @@ describe('atom-native movement — Thunderspy travel powers (the blackout fix)',
     expect(only(mv, 'runSpeed')!.scale).toBeCloseTo(1.25);
     expect(only(mv, 'runSpeed')!.table).toBe('Melee_SpeedRunning');
   });
-  // Fly is the one travel power whose slot is CONTESTED. tspy pairs each of its two
+  // Fly's slot used to be CONTESTED, and is not any more. tspy pairs each of its two
   // `Melee_SpeedFlying` buffs with a `Melee_Ones` companion, and — unlike HC, which
   // types that companion aspect=Maximum so it routes to the cap-bump slot — tspy
-  // types it Current, so it lands in `flySpeed` too and wins last-write-wins. The
-  // 0.8 companion was invisible until the parser read every AttribMod in an element
-  // (TSPY-4); the aspect is not a misread (tspy's movement aspect distribution
-  // matches HC and Rebirth corpus-wide). Assert the recovery that this test exists
-  // for — a table-backed, non-zero fly speed — plus the presence of the 1.25
-  // `SpeedFlying` template, rather than pinning which of the two wins the slot.
-  // See DATA-GAP-REGISTER TSPY-4.
-  it('Fly resolves its fly-speed buff (was +0)', () => {
+  // types it Current, so it belongs in `flySpeed` too. The 0.8 companion was
+  // invisible until the parser read every AttribMod in an element (TSPY-4); the
+  // aspect is not a misread (tspy's movement aspect distribution matches HC and
+  // Rebirth corpus-wide).
+  //
+  // This test used to assert only "a table-backed, non-zero fly speed", deliberately
+  // declining to say which of the rows won last-write-wins — the honest claim while
+  // the axis held one slot. MOVEMAP-1 split it, so all three rows survive and the
+  // claim can be the whole recovery rather than the fact that some of it happened.
+  // See DATA-GAP-REGISTER TSPY-4 and MOVEMAP-1.
+  it('Fly resolves every one of its fly-speed buffs (was +0, then was one of three)', () => {
     const fly = tspyPool('flight', 'Fly');
     const mv = movementBuffValue(fly)!;
-    expect(only(mv, 'flySpeed')!.scale).toBeGreaterThan(0);
-    expect(only(mv, 'flySpeed')!.table).toMatch(/^Melee_(SpeedFlying|Ones)$/);
-    const speedFlying = (fly.atoms ?? []).filter(
-      (a) => a[0] === 'Movement' && a[5] === 'Melee_SpeedFlying',
-    );
-    expect(speedFlying.some((a) => Math.abs(Number(a[2]) - 1.25) < 1e-9)).toBe(true);
+    const hits = mv.filter((e) => e.axis === 'flySpeed');
+    expect(
+      hits.map((e) => [e.scale, e.table, Boolean(e.ignoreStrength), Boolean(e.suppressible)]),
+    ).toEqual([
+      [1, 'Melee_Ones', true, false],
+      [1.25, 'Melee_SpeedFlying', false, true],
+      [0.8, 'Melee_Ones', true, true],
+    ]);
   });
   it('Super Jump resolves its jump-speed buff (was +0)', () => {
     const mv = movementBuffValue(tspyPool('leaping', 'Super Jump'))!;

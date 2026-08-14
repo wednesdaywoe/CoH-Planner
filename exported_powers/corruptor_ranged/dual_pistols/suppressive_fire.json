@@ -51,10 +51,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     120
@@ -63,12 +63,24 @@
   "redirect": [
     {
       "name": "Redirects.Dual_Pistols.Suppressive_Fire_Lethal",
-      "condition_expression": "kIceAmmo Source.Mode? kFireAmmo Source.Mode? || kToxicAmmo Source.Mode? || !",
+      "condition_expression": [
+        "kIceAmmo",
+        "Source.Mode?",
+        "kFireAmmo",
+        "Source.Mode?",
+        "||",
+        "kToxicAmmo",
+        "Source.Mode?",
+        "||",
+        "!"
+      ],
       "show_in_info": true
     },
     {
       "name": "Redirects.Dual_Pistols.Suppressive_Fire",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

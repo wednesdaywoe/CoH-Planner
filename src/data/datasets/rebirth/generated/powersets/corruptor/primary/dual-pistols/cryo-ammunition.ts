@@ -51,7 +51,9 @@ export const CryoAmmunition: Power = {
     ["GlobalChanceMod",null,-0.7,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["GlobalChanceMod",null,-0.05,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "Corruptor_Ranged.Dual_Pistols.Swap_Ammo",
+  "requires": [
+    "Corruptor_Ranged.Dual_Pistols.Swap_Ammo"
+  ],
   "modesRequired": [
     "LethalAmmo"
   ]

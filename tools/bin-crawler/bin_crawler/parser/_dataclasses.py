@@ -1,4 +1,14 @@
-"""Data structures for parsed binary records."""
+"""Data structures for parsed binary records.
+
+Every `*_expression` / `*_requires` field below is a **token list**, because that
+is what the wire holds: a string-offset array, one offset per token. The parser
+used to join those tokens with spaces and let each consumer split them back
+apart, which is lossless only while no token contains a space. Homecoming's
+costume-FX values do — `Minimal FX`, `Color Tintable`, `Undefined Evil` and ten
+more each sit in `powers.bin` as one standalone entry, and the join erased the
+boundary the split then had to guess (DATA-GAP-REGISTER COND-8). Keeping the
+list means nothing has to guess.
+"""
 
 from dataclasses import dataclass, field
 from ._enums import EFFECT_AREA, POWER_TYPE, TARGET_TYPE_CLASSIC, TARGET_TYPE_HC
@@ -24,13 +34,13 @@ class EffectTemplate:
     duration: float = 0.0    # seconds
     magnitude: float = 0.0
     delay: float = 0.0
-    duration_expression: str = ""
-    magnitude_expression: str = ""
+    duration_expression: list[str] = field(default_factory=list)
+    magnitude_expression: list[str] = field(default_factory=list)
     application_period: float = 0.0
     tick_chance: float = 1.0
     tick_mag_multiplier: float = 1.0
     tick_mag_additive: float = 0.0
-    jit_requires: str = ""
+    jit_requires: list[str] = field(default_factory=list)
     caster_stack: str = ""   # "Individual" or "Collective"
     stack: str = ""          # "Stack", "Replace", "Suppress", etc.
     stack_limit: int = 0
@@ -85,7 +95,7 @@ class EffectGroup:
     delay: float = 0.0
     radius_inner: float = -1.0
     radius_outer: float = -1.0
-    requires_expression: str = ""
+    requires_expression: list[str] = field(default_factory=list)
     flags: list[str] = field(default_factory=list)
     is_pvp: str = "EITHER"   # "EITHER", "PVE_ONLY", "PVP_ONLY"
     # The combat scope `requires_expression` alone confines the group to, read
@@ -144,9 +154,9 @@ class PowerRecord:
     # records that are buyable-but-uncounted.
     free: bool
     attack_types: list[int]
-    requires: str
-    activate_requires: str
-    target_requires: str
+    requires: list[str]
+    activate_requires: list[str]
+    target_requires: list[str]
     effect_area: int
     max_targets_hit: int
     range: float
@@ -174,7 +184,7 @@ class PowerRecord:
     # purple-set / ATO / proc uniqueness. The Rebirth IO-set extractor
     # reads this to determine the per-piece `unique` flag instead of
     # guessing from `is_proc`.
-    slot_requires: str = ""
+    slot_requires: list[str] = field(default_factory=list)
 
     # TimeToRoot (Parse7 field 48b) — animation-lock/root duration. Usually
     # equals time_to_activate; differs on ~50 HC powers (Stalker Assassin's
@@ -182,10 +192,10 @@ class PowerRecord:
     # and always 0.0 on Parse6 datasets (the field isn't serialized there).
     time_to_root: float = 0.0
 
-    # `ChainEff` (space-joined RPN/infix token list) — per-jump chain-continue
-    # chance (e.g. `1 0.20 @ChainJump 1 - * - 0.20 1 minmax`). Previously read
-    # and dropped; VERIFIED against Veracity/Parse6 (`@ChainJump`/`minmax`).
-    chain_eff_expression: str = ""
+    # `ChainEff` — per-jump chain-continue chance (e.g. `1 0.20 @ChainJump 1 -
+    # * - 0.20 1 minmax`). Previously read and dropped; VERIFIED against
+    # Veracity/Parse6 (`@ChainJump`/`minmax`).
+    chain_eff_expression: list[str] = field(default_factory=list)
 
     # ChainTarget — next-target selection weighting for the Electrical Affinity
     # circuits (Rejuvenating/Energizing/Empowering/Insulating_Circuit, Chain_Lightning,
@@ -194,14 +204,14 @@ class PowerRecord:
     # read and discarded). VERIFIED 2026-07-01 against the HC `.powers` oracle — the
     # circuits match exactly (55 powers). Empty on non-chain powers and on Parse6
     # (which has no field 43b string content). Sparse → exported only when present.
-    chain_target_expression: str = ""
+    chain_target_expression: list[str] = field(default_factory=list)
 
     # MaxTargetsExpr — RPN target-cap (Parse7 field 38, HC-only), e.g. a Tanker
     # Gauntlet attack's `16 kDisable_GauntletTargetCap … -`, or the circuits'
     # `4 Redirects.… source.ownPowerNum? 3 * +`. VERIFIED 2026-07-01 against HC
     # (GauntletTargetCap resolves here, 59 powers). Empty on Parse6 (no field 38).
     # Sparse → exported only when present.
-    max_targets_expression: str = ""
+    max_targets_expression: list[str] = field(default_factory=list)
 
     # CastableAfterDeath (i24 eDeathCastableSetting, third word of the
     # cast_flags block; all layouts). Raw enum value — the export maps it via

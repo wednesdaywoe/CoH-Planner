@@ -90,19 +90,19 @@ export const ConsumePsyche: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,0.5,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Recovery",null,0.1,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Regeneration",null,0.35,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,null,null,null,null,null,null,null,0.35],
-    ["Recovery",null,0.05,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,null,null,null,null,null,null,null,0.05],
-    ["RechargePower",null,5.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["HealResistance",null,0.25,1,45,"Melee_Ones","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,-1,1,45,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-0.2,1,45,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-0.8,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["GlobalChanceMod",null,1,1,35,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Monitor"],
-    ["GlobalChanceMod",null,1,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Monitor"],
-    ["GlobalChanceMod",null,10,1,35,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,-9,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"MaxPsycheFullDuration"]
+    ["Regeneration",null,0.5,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Recovery",null,0.1,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Regeneration",null,0.35,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,null,null,null,null,null,null,null,0.35,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Recovery",null,0.05,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,null,null,null,null,null,null,null,0.05,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["RechargePower",null,5.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Meta",null,1,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null",["Foe"]],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["HealResistance",null,0.25,1,45,"Melee_Ones","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Regeneration",null,-1,1,45,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Recovery",null,-0.2,1,45,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Recovery",null,-0.8,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["GlobalChanceMod",null,1,1,35,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Monitor",null,null,["Self"]],
+    ["GlobalChanceMod",null,1,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Monitor",null,null,["Self"]],
+    ["GlobalChanceMod",null,10,1,35,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,-9,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"MaxPsycheFullDuration",null,null,["Self"]]
   ]
 };

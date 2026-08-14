@@ -84,14 +84,14 @@ export const Defibrillate: Power = {
     ]
   },
   "atoms": [
-    ["Heal",null,1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,3.5,1],
-    ["Endurance",null,100,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1],
-    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
-    ["Stealth","RadiusPvE",300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Mez","Sleep",30,3,0,"Ranged_Sleep","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-0.3,0,0,"Ranged_EndDrain","Cur","Expression","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 0 20 minmax 5 / 0.8 * 0.2 + @StdResult *"],
-    ["Recovery",null,30,-0.5,0,"Ranged_Ones","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Heal",null,1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,3.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadPlayerFriend"]],
+    ["Endurance",null,100,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadPlayerFriend"]],
+    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection",["DeadPlayerFriend"]],
+    ["Stealth","RadiusPvE",300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,["DeadPlayerFriend"]],
+    ["Mez","Sleep",30,3,0,"Ranged_Sleep","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Endurance",null,-0.3,0,0,"Ranged_EndDrain","Cur","Expression","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["Redirects.Shock_Therapy.Shock_Therapy_Static","source.ownPowerNum?","0","20","minmax","5","/","0.8","*","0.2","+","@StdResult","*"],null,null,null,null,null,null,["Foe"]],
+    ["Recovery",null,30,-0.5,0,"Ranged_Ones","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power",["Self"]],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]

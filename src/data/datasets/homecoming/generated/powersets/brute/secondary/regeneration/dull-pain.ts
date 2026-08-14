@@ -62,10 +62,10 @@ export const DullPain: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
-    ["MaxHP",null,1,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["MaxHP",null,1,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,0,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
-    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+    ["Meta",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null",["Self"]],
+    ["MaxHP",null,1,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
+    ["MaxHP",null,1,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
+    ["Meta",null,0,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power",["Self"]],
+    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]]
   ]
 };

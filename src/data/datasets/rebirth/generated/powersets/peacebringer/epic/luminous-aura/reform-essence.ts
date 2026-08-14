@@ -44,8 +44,8 @@ export const ReformEssence: Power = {
     "table": "Melee_HealSelf"
   },
   "atoms": [
-    ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode? !"],
-    ["Heal",null,2.5,1,0,"Melee_SSHealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode?",true]
+    ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?","!"]],
+    ["Heal",null,2.5,1,0,"Melee_SSHealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?"],true]
   ],
   "conditionalEffects": [
     {
@@ -60,5 +60,13 @@ export const ReformEssence: Power = {
       }
     }
   ],
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Sublimation ! && Inherent.Inherent.White_Dwarf_Sublimation ! &&"
+  "requires": [
+    "Peacebringer_Defensive.Luminous_Aura.White_Dwarf",
+    "Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Sublimation",
+    "!",
+    "&&",
+    "Inherent.Inherent.White_Dwarf_Sublimation",
+    "!",
+    "&&"
+  ]
 };

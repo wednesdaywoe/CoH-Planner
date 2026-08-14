@@ -64,18 +64,18 @@ export const Vacuum: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,8,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target.owner> entref source> eq !"],
-    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&"],
-    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&",null,null,null,null,null,null,null,null,null,"Overpower"],
-    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&",true],
-    ["Damage","Lethal",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",true],
-    ["Damage","Lethal",0.15,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! && kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || && entref target.owner> entref source> eq ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",true,null,null,null,null,null,null,null,null,"Containment"],
-    ["Damage","Lethal",0.161,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! && entref target.owner> entref source> eq ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",true],
-    ["Damage","Lethal",0.0179,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! && kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && entref target.owner> entref source> eq ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",true,null,null,null,null,null,null,null,null,"Containment"],
-    ["Meta",null,1,159,0,"Ranged_Ones","Cur","Expression","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kCloudedSkies Source.Mode? ! entref target.owner> entref source> eq &&",true,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-    ["Meta",null,1,160,239,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"entref target.owner> entref source> eq",true,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-    ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true,null,null,null,null,null,null,null,null,null,null,"null"]
+    ["EntCreate",null,-1,1,8,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","target.owner>","entref","source>","eq","!"]],
+    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target.owner>","entref","source>","eq","!","target.isFriend?","!","&&","enttype","target>","critter","eq","&&"]],
+    ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["entref","target.owner>","entref","source>","eq","!","target.isFriend?","!","&&","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Overpower"],
+    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target.owner>","entref","source>","eq","!","target.isFriend?","!","&&","enttype","target>","player","eq","&&"],true],
+    ["Damage","Lethal",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","entref","target.owner>","entref","source>","eq","!","&&","target.isFriend?","!","&&","Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","6","==","&&"],true],
+    ["Damage","Lethal",0.15,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&","kTerrorized","target>","0",">","kImmobilized","target>","0",">","||","kHeld","target>","0",">","||","kStunned","target>","0",">","||","Sleep","target.EventTimeSince>","3","<=","||","IncarnateBoss","target.HasTag?","||","&&","entref","target.owner>","entref","source>","eq","!","&&","Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","6","==","&&"],true,null,null,null,null,null,null,null,null,"Containment"],
+    ["Damage","Lethal",0.161,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","target.isFriend?","!","&&","entref","target.owner>","entref","source>","eq","!","&&","Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","6","==","&&"],true],
+    ["Damage","Lethal",0.0179,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","target.isFriend?","!","&&","kTerrorized","target>","0",">","kImmobilized","target>","0",">","||","kHeld","target>","0",">","||","kStunned","target>","0",">","||","Sleep","target.EventTimeSince>","3","<=","||","&&","entref","target.owner>","entref","source>","eq","!","&&","Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","6","==","&&"],true,null,null,null,null,null,null,null,null,"Containment"],
+    ["Meta",null,1,159,0,"Ranged_Ones","Cur","Expression","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["kCloudedSkies","Source.Mode?","!","entref","target.owner>","entref","source>","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,160,239,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["entref","target.owner>","entref","source>","eq"],true,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+    ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","SelfAndPets","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "specialEffects": [
     {
@@ -84,7 +84,12 @@ export const Vacuum: Power = {
       "label": "Hold"
     }
   ],
-  "requires": "accesslevel char> 0 >=",
+  "requires": [
+    "accesslevel",
+    "char>",
+    "0",
+    ">="
+  ],
   "setsModes": [
     "ClearSkies",
     "CloudedSkies"

@@ -120,7 +120,9 @@ export const OffensiveAdaptation: Power = {
       "enhanceable": false
     }
   ],
-  "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation",
+  "requires": [
+    "Stalker_Defense.Bio_Organic_Armor.Adaptation"
+  ],
   "setsModes": [
     "OffensiveAdaptation"
   ]

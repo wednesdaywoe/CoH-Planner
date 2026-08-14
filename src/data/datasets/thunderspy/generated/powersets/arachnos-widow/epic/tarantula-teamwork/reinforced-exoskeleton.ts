@@ -94,7 +94,7 @@ export const ReinforcedExoskeleton: Power = {
     ["Resistance","Energy",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Toxic",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Absorb",null,1,1,0.75,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> .015 * @Strength *"]
+    ["Absorb",null,1,1,0.75,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","source>",".015","*","@Strength","*"]]
   ],
   "modesRequired": [
     "Widow_Tarantula_Mode"

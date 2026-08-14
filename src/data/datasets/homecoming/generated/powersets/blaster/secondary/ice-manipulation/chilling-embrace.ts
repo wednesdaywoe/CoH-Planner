@@ -127,10 +127,10 @@ export const ChillingEmbrace: Power = {
     ["DamageBuff","Negative",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq"],
-    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq"]
+    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["@CustomFX","ShowFloaters","eq"]],
+    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["@CustomFX","ShowFloaters","eq"]]
   ]
 };

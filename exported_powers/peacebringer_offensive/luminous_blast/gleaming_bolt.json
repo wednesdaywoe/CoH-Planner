@@ -50,10 +50,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     132
@@ -62,12 +62,19 @@
   "redirect": [
     {
       "name": "Kheldian_Pets.Luminous_Blast.Gleaming_Bolt",
-      "condition_expression": "kPeacebringer_Tanker_Mode Source.Mode? !",
+      "condition_expression": [
+        "kPeacebringer_Tanker_Mode",
+        "Source.Mode?",
+        "!"
+      ],
       "show_in_info": true
     },
     {
       "name": "Kheldian_Pets.Luminous_Blast.Dwarf_Gleaming_Bolt",
-      "condition_expression": "kPeacebringer_Tanker_Mode Source.Mode?",
+      "condition_expression": [
+        "kPeacebringer_Tanker_Mode",
+        "Source.Mode?"
+      ],
       "show_in_info": true
     }
   ],

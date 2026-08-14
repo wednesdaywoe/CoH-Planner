@@ -69,16 +69,21 @@ export const RendingFlurry: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .06 * 1.18 + @StdResult *"],
-    ["Damage","Lethal",0.0944,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,null,null,0.8,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.531,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Damage","Fire",0.04248,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".06","*","1.18","+","@StdResult","*"],null,null,null,null,null,null,["Foe"]],
+    ["Damage","Lethal",0.0944,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.8,true,null,null,null,["Foe"]],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power",["Foe"]],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Fire",0.531,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Fire",0.04248,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,["Foe"]]
   ],
   "formVariants": [
     {
-      "condition": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 5 ==",
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy",
+        "source.ownPowerNum?",
+        "5",
+        "=="
+      ],
       "internalName": "Rending_Flurry_Large",
       "stats": {
         "accuracy": 1,
@@ -142,13 +147,27 @@ export const RendingFlurry: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq",
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ],
           null,
           null,
           null,
           null,
           null,
-          "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .06 * 1.18 + @StdResult *"
+          [
+            "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy",
+            "source.ownPowerNum?",
+            ".06",
+            "*",
+            "1.18",
+            "+",
+            "@StdResult",
+            "*"
+          ]
         ],
         [
           "Damage",
@@ -173,7 +192,12 @@ export const RendingFlurry: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq",
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ],
           null,
           null,
           null,
@@ -264,7 +288,16 @@ export const RendingFlurry: Power = {
           null,
           null,
           null,
-          "Raid target.HasTag? ! enttype target> critter eq &&"
+          [
+            "Raid",
+            "target.HasTag?",
+            "!",
+            "enttype",
+            "target>",
+            "critter",
+            "eq",
+            "&&"
+          ]
         ],
         [
           "Damage",

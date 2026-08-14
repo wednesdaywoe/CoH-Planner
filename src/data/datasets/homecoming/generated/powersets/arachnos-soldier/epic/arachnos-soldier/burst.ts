@@ -64,12 +64,23 @@ export const Burst: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.5467,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Damage","Lethal",0.5467,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
   ],
   "formVariants": [
     {
-      "condition": "@CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&",
+      "condition": [
+        "@CustomFX",
+        "Crabpack",
+        "eq",
+        "@CustomFX",
+        "CrabpackTintable",
+        "eq",
+        "||",
+        "Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor",
+        "source.ownPower?",
+        "&&"
+      ],
       "internalName": "Crab_Burst",
       "stats": {
         "accuracy": 1,
@@ -124,7 +135,12 @@ export const Burst: Power = {
           null,
           null,
           null,
-          "enttype target> critter eq"
+          [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ]
         ],
         [
           "Defense",

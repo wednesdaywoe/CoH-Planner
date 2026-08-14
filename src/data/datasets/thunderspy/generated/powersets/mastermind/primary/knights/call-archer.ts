@@ -41,8 +41,7 @@ export const CallArcher: Power = {
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Slow Movement",
-    "Universal Damage Sets"
+    "Slow Movement"
   ],
   "maxSlots": 6,
   "effects": {
@@ -55,7 +54,7 @@ export const CallArcher: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"combatlevel source> 5 >",true],
-    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"combatlevel source> 17 >",true]
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","5",">"],true],
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","17",">"],true]
   ]
 };

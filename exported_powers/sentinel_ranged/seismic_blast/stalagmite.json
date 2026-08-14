@@ -49,10 +49,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": "",
-  "activate_requires": "",
-  "target_requires": "",
-  "slot_requires": "",
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
   "attack_types": [
     104,
     116
@@ -61,12 +61,17 @@
   "redirect": [
     {
       "name": "Redirects.Seismic_Blast.Sentinel_Stalagmite_Enhanced",
-      "condition_expression": "kSeismicPower Source.Mode?",
+      "condition_expression": [
+        "kSeismicPower",
+        "Source.Mode?"
+      ],
       "show_in_info": true
     },
     {
       "name": "Redirects.Seismic_Blast.Sentinel_Stalagmite",
-      "condition_expression": "Always",
+      "condition_expression": [
+        "1"
+      ],
       "show_in_info": true
     }
   ],

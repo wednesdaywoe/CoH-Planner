@@ -46,8 +46,7 @@ export const RallyTheMilitia: Power = {
     "Healing",
     "Mastermind Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
+    "Recharge Intensive Pets"
   ],
   "maxSlots": 6,
   "effects": {

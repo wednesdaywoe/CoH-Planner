@@ -24,7 +24,15 @@ export const TeslaCage: Power = {
   "targetsAffected": [
     "Foe"
   ],
-  "maxTargetsExpression": "1 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? + 1 11 minmax",
+  "maxTargetsExpression": [
+    "1",
+    "Redirects.Shock_Therapy.Shock_Therapy_Static",
+    "source.ownPowerNum?",
+    "+",
+    "1",
+    "11",
+    "minmax"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,
@@ -81,20 +89,20 @@ export const TeslaCage: Power = {
   },
   "atoms": [
     ["Recovery",null,-1,1,8,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Damage","Energy",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",8,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-0.2,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-0.01,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-0.1,1,8,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Mez","Held",8,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Endurance",null,-0.2,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Endurance",null,-0.01,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Recovery",null,-0.1,1,8,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Cost",null,"revoke_power"],
-    ["Damage","Energy",0.02,0,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
-    ["Endurance",null,3.43,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
-    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
-    ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Energy",0.0813,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Endurance",null,-2.5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Energy",0.0163,0,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
-    ["Endurance",null,3.43,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"],
-    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * < &&",true,null,null,null,null,null,null,null,null,"Zapping"]
+    ["Damage","Energy",0.02,0,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Endurance",null,3.43,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Energy",0.0813,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Endurance",null,-2.5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Energy",0.0163,0,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Endurance",null,3.43,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
+    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"]
   ]
 };

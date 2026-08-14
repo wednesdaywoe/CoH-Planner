@@ -176,10 +176,15 @@ class _Node:
         self.op, self.kids = op, kids
 
 
-def parse(expr: str) -> _Node:
-    """RPN token stream -> tree. Raises unless it reduces to exactly one value."""
+def parse(tokens: list[str]) -> _Node:
+    """RPN token list -> tree. Raises unless it reduces to exactly one value.
+
+    Takes the list the wire holds, not a joined string. A costume-FX token like
+    `Minimal FX` is one operand and re-splitting it made two, which is what left
+    40 Homecoming expressions unreducible (DATA-GAP-REGISTER COND-8).
+    """
     stack: list[_Node] = []
-    for tok in expr.split():
+    for tok in tokens:
         n = _ARITY.get(tok.lower())
         if n is None:
             # The engine pushes any token its function table does not name as a
@@ -190,11 +195,11 @@ def parse(expr: str) -> _Node:
             # tree with a silent literal.
             if ((tok.endswith('>') or tok.endswith('?'))
                     and tok.lower() not in UNREGISTERED_OPERANDS):
-                raise RequiresParseError(f'no arity for {tok!r} in {expr!r}')
+                raise RequiresParseError(f'no arity for {tok!r} in {tokens!r}')
             n = 0
         if n:
             if len(stack) < n:
-                raise RequiresParseError(f'stack underflow at {tok!r} in {expr!r}')
+                raise RequiresParseError(f'stack underflow at {tok!r} in {tokens!r}')
             kids = stack[-n:]
             del stack[-n:]
         else:
@@ -202,7 +207,7 @@ def parse(expr: str) -> _Node:
         stack.append(_Node(tok, kids))
     if len(stack) != 1:
         raise RequiresParseError(
-            f'reduced to {len(stack)} values, not 1: {expr!r}')
+            f'reduced to {len(stack)} values, not 1: {tokens!r}')
     return stack[0]
 
 
@@ -258,20 +263,20 @@ def _satisfiable(node: _Node, want: bool, ent_type: str) -> bool:
     return True
 
 
-def entity_scope(expr: str) -> str:
+def entity_scope(tokens: list[str]) -> str:
     """The combat scope a group's `Requires` confines it to.
 
     `UNPARSED` when the expression constrains entity type but the parse failed —
     an explicit unknown, never folded into `EITHER`, so a vocabulary gap
     surfaces instead of silently keeping PvP content.
     """
-    if not expr or 'enttype' not in expr.lower():
+    if not any('enttype' in tok.lower() for tok in tokens):
         # No entity-type test at all, so nothing here bears on combat scope.
         # Short-circuiting also keeps the arity table off the critical path for
         # the ~1,200 expressions built from selectors it has never had to know.
         return EITHER
     try:
-        root = parse(expr)
+        root = parse(tokens)
     except RequiresParseError:
         return UNPARSED
     # The corpus only ever tests `player` and `critter`, but treat the entity

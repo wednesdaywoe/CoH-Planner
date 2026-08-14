@@ -59,7 +59,7 @@ describe('baseAtoms / gatedAtoms — the gate axis', () => {
   // both into the base is the stance-leak; only the base applies by default.
   const power = powerWith([
     atom({ effectType: 'Defense', scale: 1.5 }),
-    atom({ effectType: 'Defense', scale: 0.45, gated: true, requiresExpression: 'kDefensiveAdaptation source.Mode?' }),
+    atom({ effectType: 'Defense', scale: 0.45, gated: true, requiresExpression: ['kDefensiveAdaptation', 'source.Mode?'] }),
   ]);
 
   it('base excludes gated atoms; gated is exactly the complement', () => {
@@ -79,7 +79,7 @@ describe('baseAtoms / gatedAtoms — the gate axis', () => {
   });
 
   it('gated atoms keep the gate that explains them', () => {
-    expect(gatedAtoms(power)[0].requiresExpression).toContain('Mode?');
+    expect(gatedAtoms(power)[0].requiresExpression).toContain('source.Mode?');
   });
 });
 
@@ -108,14 +108,18 @@ describe('byType / atomsOfType / bySubType', () => {
 
 describe('selfDirected — the eToWho axis', () => {
   const atoms = [
-    atom({ toWho: 'Self' }),        // Rage's crash, Granite's -recharge
-    atom({ toWho: 'All' }),         // self + pets
-    atom({ toWho: 'Target' }),      // a foe debuff
+    atom({ toWho: 'Self' }),          // Rage's crash, Granite's -recharge
+    atom({ toWho: 'SelfAndPets' }),   // the caster, plus a copy for each pet
+    atom({ toWho: 'TargetAndPets' }), // whoever was hit, resolved UP to their owner
+    atom({ toWho: 'Target' }),        // a foe debuff
+    atom({ toWho: 'TargetOnly' }),    // the power's main target and nobody else
     atom({ toWho: 'Unspecified' }),
   ];
 
-  it("counts 'Self' AND 'All' as landing on the caster", () => {
-    expect(selfDirected(atoms).map((a) => a.toWho)).toEqual(['Self', 'All']);
+  it('counts the three caster-anchored recipients, and only those', () => {
+    expect(selfDirected(atoms).map((a) => a.toWho)).toEqual([
+      'Self', 'SelfAndPets', 'TargetAndPets',
+    ]);
   });
 
   it('partitions exactly — every atom is self- or target-directed, never both', () => {

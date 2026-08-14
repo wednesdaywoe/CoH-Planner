@@ -84,11 +84,11 @@ export const RisetotheChallenge: Power = {
     ["Regeneration",null,0.075,1,1.125,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.25],
     ["Regeneration",null,0.0225,1,1,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,0.0225],
-    ["Mez","Taunt",1.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Mez","Taunt",1.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"]],
     ["Regeneration",null,1,1,1.125,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Regeneration",null,0.075,1,1.125,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Regeneration",null,0.0225,1,1,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Mez","Taunt",1.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+    ["Mez","Taunt",1.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true]
   ]
 };

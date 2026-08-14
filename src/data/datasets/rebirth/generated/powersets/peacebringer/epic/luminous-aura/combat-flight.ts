@@ -142,7 +142,10 @@ export const CombatFlight: Power = {
     ["Movement","Friction",25,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true]
   ],
-  "requires": "Inherent.Inherent.Combat_Flight !",
+  "requires": [
+    "Inherent.Inherent.Combat_Flight",
+    "!"
+  ],
   "setsModes": [
     "HoverOn",
     "Peacebringer_Human_Mode"

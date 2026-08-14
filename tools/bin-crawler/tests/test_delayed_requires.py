@@ -162,12 +162,12 @@ def test_the_map_gate_splits_share_pain_into_a_pve_and_a_pvp_copy():
     for fork_power in (p for p in _powers("thunderspy")
                        if p["full_name"].endswith("Pain_Domination.Share_Pain")):
         pairs = [(g, t) for g, t in _templates(fork_power)
-                 if "isPVPMap?" in (t.get("jit_requires") or "")]
+                 if "isPVPMap?" in (t.get("jit_requires") or [])]
         assert len(pairs) == 2, f"{fork_power['full_name']}: {len(pairs)} map-gated templates"
         verdicts = {g["is_pvp"]: t["jit_requires"] for g, t in pairs}
         assert set(verdicts) == {"PVE_ONLY", "PVP_ONLY"}, \
             f"{fork_power['full_name']}: map-gated pair reads {set(verdicts)}"
-        assert verdicts["PVE_ONLY"].endswith("!") and not verdicts["PVP_ONLY"].endswith("!"), \
+        assert verdicts["PVE_ONLY"][-1:] == ["!"] and verdicts["PVP_ONLY"][-1:] != ["!"], \
             f"{fork_power['full_name']}: the negated gate is on the wrong side"
 
 

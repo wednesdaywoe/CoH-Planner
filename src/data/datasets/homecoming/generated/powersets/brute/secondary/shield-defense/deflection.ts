@@ -76,5 +76,18 @@ export const Deflection: Power = {
     ["Elusivity","Ranged",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Elusivity","AoE",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
-  "requires": "Brute_Melee.Dual_Blades Brute_Melee.Claws || Brute_Melee.Staff_Fighting || Brute_Melee.Katana || Brute_Melee.Titan_Weapons || Brute_Melee.Spines || !"
+  "requires": [
+    "Brute_Melee.Dual_Blades",
+    "Brute_Melee.Claws",
+    "||",
+    "Brute_Melee.Staff_Fighting",
+    "||",
+    "Brute_Melee.Katana",
+    "||",
+    "Brute_Melee.Titan_Weapons",
+    "||",
+    "Brute_Melee.Spines",
+    "||",
+    "!"
+  ]
 };

@@ -52,7 +52,9 @@ export const IncendiaryAmmunition: Power = {
     ["GlobalChanceMod",null,-0.05,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,91,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"]
   ],
-  "requires": "Defender_Ranged.Dual_Pistols.Swap_Ammo",
+  "requires": [
+    "Defender_Ranged.Dual_Pistols.Swap_Ammo"
+  ],
   "setsModes": [
     "FireAmmo"
   ],

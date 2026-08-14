@@ -91,6 +91,6 @@ export const ShoalRush: Power = {
     ["Movement","Jump",0.448,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","JumpHeight",0.448,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Ignore",2,null,null,1],
-    ["Movement","Run",-1,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"]
+    ["Movement","Run",-1,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"]]
   ]
 };

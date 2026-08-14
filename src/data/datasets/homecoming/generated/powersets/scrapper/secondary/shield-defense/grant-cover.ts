@@ -105,15 +105,15 @@ export const GrantCover: Power = {
     }
   },
   "atoms": [
-    ["Defense","Ranged",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Melee",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","AoE",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Smashing",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Lethal",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Fire",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Cold",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Energy",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Negative",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Ranged",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
+    ["Defense","Melee",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
+    ["Defense","AoE",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
+    ["Defense","Smashing",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
+    ["Defense","Lethal",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
+    ["Defense","Fire",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
+    ["Defense","Cold",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
+    ["Defense","Energy",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
+    ["Defense","Negative",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
     ["Defense","All",0.4,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,0.3,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ]
