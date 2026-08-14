@@ -355,7 +355,7 @@ describe('corpus sweep — nothing outside the snipe programs folds', () => {
 
     type Tmpl = {
       attribs?: string[]; aspect?: string; table?: string; scale?: number;
-      magnitude_expression?: string;
+      magnitude_expression?: string[];
     };
     type Group = { templates?: Tmpl[]; child_effects?: Group[]; activation_effects?: Group[] };
     const allTemplates = (groups: Group[] | undefined): Tmpl[] => {
