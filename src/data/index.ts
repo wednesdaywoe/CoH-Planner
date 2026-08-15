@@ -171,6 +171,7 @@ export {
   getInherentPowers,
   getInherentPowerDef,
   getArchetypeInherentPowers,
+  getPickShadowingInherentPowers,
   createArchetypeInherentPower,
 } from './levels';
 export type { LevelInfo, InherentPowerDef } from './levels';

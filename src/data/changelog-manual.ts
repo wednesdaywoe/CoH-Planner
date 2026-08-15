@@ -46,6 +46,13 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-08-15',
+
+    items: [
+      { id: 'thunderspy-stalker-reused-slots-hidden', message: 'Thunderspy Stalkers: every primary and secondary set was showing 8 powers instead of 9. Restoring the Hide and Placate inherents made the picker hide any set power sharing their internal names, and Thunderspy reuses those name slots for real powers (Spectral Melee\'s Possess, Ninjitsu\'s Quick Recovery, and one per set). All 28 are back. Thanks to the player who reported it', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-08-12',
 
     items: [

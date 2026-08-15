@@ -29,6 +29,7 @@ import {
   getAllIOSets,
   getInherentPowers,
   getArchetypeInherentPowers,
+  getPickShadowingInherentPowers,
   createArchetypeInherentPower,
   createIOSetEnhancement,
   createGenericIOEnhancement,
@@ -414,8 +415,12 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
   // Kheldian travel inherents (Energy Flight, Combat Flight) appear in the
   // powerset data but are modeled as auto-granted archetype inherents. Their
   // entries are routed to the inherent merge instead of consuming a power pick.
+  // The shared list only, not the merged one: Thunderspy reuses the internal
+  // names of its server additions (Hide, Placate) for unrelated Stalker set
+  // powers, and the merged list would route a picked Possess (internalName
+  // Placate) into the inherent merge and drop the pick.
   const archetypeInherentNames = new Set(
-    getArchetypeInherentPowers(archetypeId).map((p) => p.internalName.toLowerCase()),
+    getPickShadowingInherentPowers(archetypeId).map((p) => p.internalName.toLowerCase()),
   );
 
   // 4. Process powers by category

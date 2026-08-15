@@ -3,8 +3,16 @@
 // drives a real build through the store, so `resetBuild` writes.
 import '@/test/localstorage-polyfill';
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { loadDataset, getActiveDataset } from '@/data/dataset';
-import { getArchetypeInherentPowers, getInherentPowerDef, getPowerset } from '@/data';
+import {
+  getArchetypeInherentPowers,
+  getInherentPowerDef,
+  getPickShadowingInherentPowers,
+  getPowerset,
+  getPowersetsForArchetype,
+} from '@/data';
 import { useBuildStore } from '@/stores/buildStore';
 
 /**
@@ -267,5 +275,92 @@ describe('Kheldian travel inherents are not doubled on Thunderspy', () => {
     const names = defs.map((d) => d.internalName);
     expect(new Set(names).size, 'no duplicates').toBe(names.length);
     for (const name of expected) expect(names, `${name} present`).toContain(name);
+  });
+});
+
+/**
+ * The picker's shadow filter vs the reused name slots (user report,
+ * 2026-08-15: "several sets have only 8 powers instead of 9. Spectral melee
+ * now is missing the confuse power").
+ *
+ * The picker hides set powers whose internalName matches an archetype
+ * inherent, so the Kheldian travel powers don't show both as inherents and as
+ * epic-set picks. When the restore above put Hide and Placate into the merged
+ * list, that filter started matching Thunderspy's reused slots: every Stalker
+ * primary refills Placate's slot with its own power and every secondary
+ * refills Hide's, so all 28 sets lost one. The picker and the game importer
+ * now read getPickShadowingInherentPowers, the shared hand-written list only.
+ * The generated additions never need hiding: convert-archetype-inherents.cjs
+ * rule 4 only emits a power when no powerset in the dataset displays its name.
+ */
+describe("the picker's inherent shadow filter and the reused name slots", () => {
+  beforeAll(async () => {
+    await loadDataset('thunderspy');
+  }, DATASET_LOAD_MS);
+
+  afterAll(async () => {
+    await loadDataset('homecoming');
+  }, DATASET_LOAD_MS);
+
+  it('hides no Thunderspy Stalker set power', () => {
+    const shadowed = new Set(
+      getPickShadowingInherentPowers('stalker').map((p) => p.internalName),
+    );
+    const sets = getPowersetsForArchetype('stalker');
+    expect(sets.length).toBeGreaterThan(0);
+    for (const set of sets) {
+      for (const p of set.powers) {
+        expect(
+          shadowed.has(p.internalName),
+          `${set.id}: ${p.name} (${p.internalName}) hidden from the picker`,
+        ).toBe(false);
+      }
+    }
+  });
+
+  it('would hide 28 powers if it read the merged list — the trap is live, not historical', () => {
+    const merged = new Set(
+      getArchetypeInherentPowers('stalker').map((p) => p.internalName),
+    );
+    const collisions = getPowersetsForArchetype('stalker').flatMap((set) =>
+      set.powers
+        .filter((p) => merged.has(p.internalName))
+        .map((p) => `${set.id}:${p.name}`),
+    );
+    expect(collisions).toHaveLength(28);
+    expect(collisions).toContain('stalker/spectral-melee:Possess');
+  });
+
+  it('still hides the Kheldian travel picks on Homecoming — the filter is not a no-op', async () => {
+    await loadDataset('homecoming');
+    const shadowed = new Set(
+      getPickShadowingInherentPowers('peacebringer').map((p) => p.internalName),
+    );
+    const luminous = getPowerset('peacebringer/luminous-aura');
+    const hidden = luminous?.powers
+      .filter((p) => shadowed.has(p.internalName))
+      .map((p) => p.internalName);
+    expect(hidden).toEqual(expect.arrayContaining(['Energy_Flight', 'Combat_Flight']));
+  }, DATASET_LOAD_MS);
+
+  it('both call sites read the shared list, in source', () => {
+    // A data assertion can't see which function a component calls, so the two
+    // call sites are pinned in source. The picker no longer needs the merged
+    // list at all; the game importer still uses it legitimately to populate
+    // build.inherents, so only its name-routing set is pinned.
+    const picker = readFileSync(
+      fileURLToPath(new URL('../../../components/powers/AvailablePowers.tsx', import.meta.url)),
+      'utf8',
+    );
+    expect(picker).toContain('getPickShadowingInherentPowers(');
+    expect(picker).not.toContain('getArchetypeInherentPowers(');
+
+    const importer = readFileSync(
+      fileURLToPath(new URL('../../../utils/game-importer/importer.ts', import.meta.url)),
+      'utf8',
+    );
+    expect(importer).toMatch(
+      /archetypeInherentNames = new Set\(\s*getPickShadowingInherentPowers\(/,
+    );
   });
 });

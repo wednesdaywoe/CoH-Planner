@@ -7,7 +7,7 @@ import { useMemo, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { useIsTouchDevice } from '@/hooks';
 
-import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getArchetypeInherentPowers, getPowerPicksAtLevel } from '@/data';
+import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getPickShadowingInherentPowers, getPowerPicksAtLevel } from '@/data';
 import { evaluateRequires, setKeyFromId, type RequiresContext } from '@/data/power-requires';
 import { resolvePath } from '@/utils/paths';
 import { ProcPotentialBadge } from './ProcPotentialBadge';
@@ -314,14 +314,16 @@ export function AvailablePowers({
     };
   })();
 
-  // Build set of archetype-specific inherent power identifiers (e.g. Kheldian
-  // travel powers) so we can hide them from the selectable powerset list.
-  // Match on internalName because it's stable across servers — Rebirth renames
-  // some Kheldian powers (e.g. Shadow_Recall → "Starless Recall"), so a
-  // display-name match would miss them and the user would see the same power
-  // as both an inherent and a selectable secondary pick.
+  // Inherents that double as powerset picks (the Kheldian travel powers),
+  // hidden from the powerset list so they don't show twice. Matched on
+  // internalName because Rebirth renames some in both places at once
+  // (Shadow_Recall shows as "Starless Recall"), which a display-name match
+  // would miss. This must stay the shared list, not the merged
+  // getArchetypeInherentPowers: Thunderspy reuses the internal names of its
+  // server additions (Hide, Placate) for unrelated Stalker set powers, and
+  // filtering on the merged list hid one power from all 28 Stalker sets.
   const archetypeInherentInternalNames = new Set(
-    getArchetypeInherentPowers(archetypeId ?? undefined).map(p => p.internalName)
+    getPickShadowingInherentPowers(archetypeId ?? undefined).map(p => p.internalName)
   );
 
   // Show ALL user-selectable powers, not just ones available at current level

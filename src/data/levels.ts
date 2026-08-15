@@ -93,6 +93,27 @@ export function getArchetypeInherentPowers(archetypeId?: string): InherentPowerD
 }
 
 /**
+ * The archetype inherents the power picker must hide from powerset rows: the
+ * shared hand-written list only, whose members (the Kheldian travel powers)
+ * also sit in the epic powersets as picks. The picker matches these by
+ * internalName because Rebirth renames some in both places at once
+ * (Shadow_Recall displays as "Starless Recall"), so display names can't pair
+ * them.
+ *
+ * The generated server additions are deliberately not here. Their converter
+ * (`convert-archetype-inherents.cjs`, rule 4) only emits a power when no
+ * powerset in that dataset displays its name, so an addition never shadows a
+ * pick. Its internal name still can collide with an unrelated power in a
+ * reused name slot: Thunderspy refills the Stalker's vacated Hide/Placate
+ * slots in all 28 Stalker sets (Spectral Melee's Possess IS
+ * `Stalker_Melee.Spectral_Melee.Placate`), and filtering the picker on the
+ * merged list hid every one of those powers (user report, 2026-08-15).
+ */
+export function getPickShadowingInherentPowers(archetypeId?: string): InherentPowerDef[] {
+  return _getArchetypeInherentPowersBase(archetypeId);
+}
+
+/**
  * Name lookup against the active server's membership. Delegates
  * to the base resolver (which also covers archetype-specific inherents like
  * Kheldian travel powers), then falls back to the active server's own additions
