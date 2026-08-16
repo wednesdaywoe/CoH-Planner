@@ -9,7 +9,10 @@ import {
   getPetEntity, getSummonedEntityChain, type PetAbility, type PetEffect, type PetEntity,
 } from '@/data/pet-entities';
 import { getPetTableValue, getTableValue } from '@/data/at-tables';
+import { getArchetype } from '@/data/archetypes';
+import type { ArchetypeId } from '@/types';
 import type { ResolvedPseudoPet } from '@/types/power';
+import { getPetClassAttribs } from './pet-stats';
 
 // ============================================
 // TYPES
@@ -170,6 +173,9 @@ export interface PetDamageResult {
    *  accounting can cap fires-per-spawn at 1 — its attack's recharge is not a
    *  repeat cadence, because the pet does not survive to use it again. */
   oneShot?: boolean;
+  /** The damage-strength cap bound the Final tier (see `damageStrength`). Carried
+   *  so the display can mark it the same way a directly-cast power is marked. */
+  capped?: boolean;
 }
 
 // ============================================
@@ -178,6 +184,37 @@ export interface PetDamageResult {
 
 /** Minimum server tick / arcana time (3 server ticks at 30fps) */
 const ARCANA_TIME = 0.132 * 3; // ~0.396s
+
+/**
+ * The two damage multipliers a summoned entity's tiers use, with the class's
+ * damage-strength cap applied to the Final one.
+ *
+ * Enhancement and buffs are ONE additive strength — `1 + enh + buffs`, which is
+ * what the atoms' `Abs` aspect means and what the player-power path folds at
+ * `damage.ts:669` — and the cap binds that multiplier, not the buff total.
+ *
+ * Both halves were wrong here. The tiers multiplied the two separately
+ * (`(1 + enh) × (1 + buffs)`, which overstates every buffed pet), and nothing
+ * clamped the result, so a pseudo-pet's Final tier ran past every ceiling in the
+ * game while the caster's own attacks stopped at theirs: Burn read 1,171,602
+ * damage at a team-buffed damage strength its owner capped at.
+ *
+ * An absent cap does not clamp. A class row that ships no `damageCap` has not
+ * said the damage is unlimited, but inventing a ceiling would be worse.
+ */
+function damageStrength(
+  enhancementBonus: number,
+  applyEnhancements: boolean,
+  globalDamageBonus: number,
+  damageCap: number | undefined,
+): { enhMult: number; finalMult: number; capped: boolean } {
+  const enh = applyEnhancements ? enhancementBonus : 0;
+  const strength = 1 + enh + globalDamageBonus;
+  const capped = damageCap !== undefined && strength > damageCap;
+  // The Enhanced tier stays uncapped, as it is on the player path: it is the
+  // "your slotting alone" reading, and ED already bounds it well under the cap.
+  return { enhMult: 1 + enh, finalMult: capped ? damageCap! : strength, capped };
+}
 
 // ============================================
 // CALCULATION
@@ -256,6 +293,15 @@ export function calculatePetDamage(
 
   const allAbilities = resolveAbilities(entity, new Set(activeUpgradeTiers));
 
+  // A summon is a second character, so the ceiling its damage strength stops at
+  // is its OWN class row's — not the summoner's (COH-DATA-MODEL §6). Every pet
+  // class ships one; `getPetClassAttribs` returning null is the coverage failure
+  // `pet-stats.test.ts` guards, and it reads here as "no cap stated".
+  const { enhMult, finalMult, capped } = damageStrength(
+    enhancementBonus, applyEnhancements, globalDamageBonus,
+    getPetClassAttribs(entity.characterClass)?.damageCap,
+  );
+
   const abilities: PetAbilityDamage[] = [];
   const effectOnlyAbilities: PetAbility[] = [];
   const allEffectsMap = new Map<string, PetEffectComputed>();
@@ -298,13 +344,10 @@ export function calculatePetDamage(
     // Sum total damage per hit across all damage types
     const damagePerHit = baseDamages.reduce((sum, d) => sum + d.base, 0);
 
-    // Apply enhancement bonus (only if copyBoosts or copyCreatorMods)
-    const enhMult = applyEnhancements ? (1 + enhancementBonus) : 1;
+    // Enhancement (only if copyBoosts or copyCreatorMods) and buffs, as the one
+    // capped strength both tiers read off — see `damageStrength`.
     const damagePerHitEnhanced = damagePerHit * enhMult;
-
-    // Apply global damage buffs
-    const buffMult = 1 + globalDamageBonus;
-    const damagePerHitFinal = damagePerHitEnhanced * buffMult;
+    const damagePerHitFinal = damagePerHit * finalMult;
 
     // DPS = damage / cycleTime
     const dps = damagePerHit / cycleTime;
@@ -316,7 +359,7 @@ export function calculatePetDamage(
       type: d.type,
       base: d.base,
       enhanced: d.base * enhMult,
-      final: d.base * enhMult * buffMult,
+      final: d.base * finalMult,
     }));
 
     abilities.push({
@@ -354,6 +397,7 @@ export function calculatePetDamage(
     aggregateDpsBase: totalDpsBase * entityCount,
     aggregateDpsEnhanced: totalDpsEnhanced * entityCount,
     aggregateDpsFinal: totalDpsFinal * entityCount,
+    capped,
   };
 }
 
@@ -390,8 +434,13 @@ export function calculateResolvedPseudoPetDamage(
   const allEffectsMap = new Map<string, PetEffectComputed>();
   let totalDpsBase = 0, totalDpsEnhanced = 0, totalDpsFinal = 0;
 
-  const enhMult = applyEnhancements ? 1 + enhancementBonus : 1;
-  const buffMult = 1 + globalDamageBonus;
+  // These shells carry no class row of their own — their damage resolves against
+  // the SUMMONER's AT table (see the doc comment), so the ceiling it stops at is
+  // the summoner's too. Reading a pet class's here would be inventing one.
+  const { enhMult, finalMult, capped } = damageStrength(
+    enhancementBonus, applyEnhancements, globalDamageBonus,
+    getArchetype(archetype as ArchetypeId)?.stats?.damageCap,
+  );
 
   for (const ability of entity.abilities) {
     // When powered up, the empowered (WindSpeed) effects replace the base set,
@@ -480,7 +529,7 @@ export function calculateResolvedPseudoPetDamage(
 
     const damagePerHit = baseDamages.reduce((s, d) => s + d.base, 0);
     const damagePerHitEnhanced = damagePerHit * enhMult;
-    const damagePerHitFinal = damagePerHitEnhanced * buffMult;
+    const damagePerHitFinal = damagePerHit * finalMult;
 
     abilities.push({
       ability: ability as unknown as PetAbility,
@@ -492,7 +541,7 @@ export function calculateResolvedPseudoPetDamage(
       dpsFinal: damagePerHitFinal / cycleTime,
       cycleTime,
       damageByType: baseDamages.map(d => ({
-        type: d.type, base: d.base, enhanced: d.base * enhMult, final: d.base * enhMult * buffMult,
+        type: d.type, base: d.base, enhanced: d.base * enhMult, final: d.base * finalMult,
       })),
     });
     totalDpsBase += damagePerHit / cycleTime;
@@ -517,6 +566,7 @@ export function calculateResolvedPseudoPetDamage(
     aggregateDpsBase: totalDpsBase * count,
     aggregateDpsEnhanced: totalDpsEnhanced * count,
     aggregateDpsFinal: totalDpsFinal * count,
+    capped,
   };
 }
 

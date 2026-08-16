@@ -479,6 +479,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       final,
       type: typeLabel,
       scale: 1,
+      // The damage-strength cap bound at least one contributing entity, so the
+      // Final tier gets the same amber cap mark a directly-cast power gets.
+      capped: results.some(({ result }) => result.capped),
     } as PowerDamageResult;
   }, [calculatedDamage, effectivePower, build, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
 
