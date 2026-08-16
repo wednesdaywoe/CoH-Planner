@@ -255,6 +255,17 @@ interface UIState {
   /** Include proc damage in per-power DPS calculations */
   includeProcDamageInDPS: boolean;
 
+  /**
+   * Fold that proc damage into the InfoPanel's FINAL damage number instead of
+   * annotating it on a line of its own.
+   *
+   * Off by default, and the default is the honest one: proc damage is FLAT —
+   * cap-exempt, untouched by damage strength — so a Final that quietly contains
+   * it stops being "your damage × your strength" and its (+%) stops meaning
+   * anything. On, for the reader who wants one number to compare powers by.
+   */
+  foldProcsIntoFinalDamage: boolean;
+
   /** Use ArcanaTime (server-tick-adjusted cast time) for DPS calculations */
   useArcanaTime: boolean;
 
@@ -513,6 +524,7 @@ interface UIActions {
   setChainPowerMetric: (metric: PowerMetric) => void;
   setChainShowEffectWindows: (show: boolean) => void;
   toggleIncludeProcDamageInDPS: () => void;
+  toggleFoldProcsIntoFinalDamage: () => void;
   toggleUseArcanaTime: () => void;
   setDamageDisplayMode: (mode: DamageDisplayMode) => void;
   toggleCombatMode: () => void;
@@ -955,6 +967,7 @@ export const useUIStore = create<UIStore>()(
       chainPowerMetric: 'damage' as PowerMetric,
       chainShowEffectWindows: true,
       includeProcDamageInDPS: true,
+      foldProcsIntoFinalDamage: false,
       useArcanaTime: true,
       damageDisplayMode: 'damage' as DamageDisplayMode,
       combatMode: false,
@@ -1194,6 +1207,11 @@ export const useUIStore = create<UIStore>()(
       toggleIncludeProcDamageInDPS: () =>
         set((state) => ({
           includeProcDamageInDPS: !state.includeProcDamageInDPS,
+        })),
+
+      toggleFoldProcsIntoFinalDamage: () =>
+        set((state) => ({
+          foldProcsIntoFinalDamage: !state.foldProcsIntoFinalDamage,
         })),
 
       toggleCombatMode: () =>
@@ -2012,6 +2030,7 @@ export const useUIStore = create<UIStore>()(
         dismissedAnnouncements: state.dismissedAnnouncements,
         chainPowerMetric: state.chainPowerMetric,
         chainShowEffectWindows: state.chainShowEffectWindows,
+        foldProcsIntoFinalDamage: state.foldProcsIntoFinalDamage,
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };

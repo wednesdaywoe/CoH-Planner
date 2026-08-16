@@ -35,6 +35,8 @@ export function ProcSettingsModal({ isOpen, onClose }: ProcSettingsModalProps) {
   const procSettings = useUIStore((s) => s.procSettings);
   const toggleProcCategory = useUIStore((s) => s.toggleProcCategory);
   const setProcSettings = useUIStore((s) => s.setProcSettings);
+  const foldProcsIntoFinalDamage = useUIStore((s) => s.foldProcsIntoFinalDamage);
+  const toggleFoldProcsIntoFinalDamage = useUIStore((s) => s.toggleFoldProcsIntoFinalDamage);
 
   const enabledCount = Object.values(procSettings).filter(Boolean).length;
   const allEnabled = enabledCount === PROC_CATEGORIES.length;
@@ -85,6 +87,34 @@ export function ProcSettingsModal({ isOpen, onClose }: ProcSettingsModalProps) {
                 />
               </div>
             ))}
+          </div>
+
+          {/* Display preference, not a calculation one — it moves the same proc
+              damage from its own annotation line into the Final number. Kept
+              apart from the categories above (and out of Enable/Disable All)
+              because those decide what is COMPUTED. */}
+          <div className="mt-4 pt-3 border-t border-slate-700">
+            <div className="flex items-center justify-between px-3 py-2 rounded bg-slate-700/40 hover:bg-slate-700/60 transition-colors">
+              <div className="flex-1 min-w-0 mr-3">
+                <div className="text-sm font-medium text-cyan-400">
+                  Procs in Final damage
+                </div>
+                <div className="text-xs text-gray-500">
+                  Add proc damage to the Final number instead of listing it separately
+                </div>
+              </div>
+              <Toggle
+                id="proc-fold-final"
+                name="foldProcsIntoFinalDamage"
+                checked={foldProcsIntoFinalDamage}
+                onChange={toggleFoldProcsIntoFinalDamage}
+              />
+            </div>
+            <p className="text-xs text-gray-500 mt-2 px-3">
+              Proc damage is flat — it does not scale with damage buffs and is not
+              subject to the damage cap, so the (+%) under Final keeps excluding it
+              either way.
+            </p>
           </div>
         </div>
       </ModalBody>

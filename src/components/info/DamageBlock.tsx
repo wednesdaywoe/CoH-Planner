@@ -89,6 +89,9 @@ export function DamageBlock(props: DamageBlockProps) {
   // cap bar (yellow segment) and the tier readout so both reflect the same
   // number. Zero when the include-procs toggle is off.
   const procDamagePerActivation = computeProcDamagePerActivation(props);
+  // Read from the store rather than threaded through props: it is this block's
+  // own display preference, like the DMG/DPA/DPS/DPE mode beside it.
+  const foldProcsIntoFinal = useUIStore((s) => s.foldProcsIntoFinalDamage);
   return (
     <div>
       {/* Header + mode toggle share one row to save vertical space. */}
@@ -99,7 +102,7 @@ export function DamageBlock(props: DamageBlockProps) {
         <ModeToggle />
       </div>
       <div className="bg-slate-800/50 rounded p-2">
-        <DamageTiers {...props} procDamagePerActivation={procDamagePerActivation} />
+        <DamageTiers {...props} procDamagePerActivation={procDamagePerActivation} foldProcsIntoFinal={foldProcsIntoFinal} />
         {!calculatedDamage.unknown && calculatedDamage.scale != null && (
           <DamageBar {...props} procDamagePerActivation={procDamagePerActivation} />
         )}
@@ -183,7 +186,8 @@ function DamageTiers({
   enhancementBonuses,
   globalBonusesForCalc,
   procDamagePerActivation,
-}: DamageBlockProps & { procDamagePerActivation: number }) {
+  foldProcsIntoFinal,
+}: DamageBlockProps & { procDamagePerActivation: number; foldProcsIntoFinal: boolean }) {
   // DoT-inclusive lifetime totals (mirror DamageBar). For pure-DoT powers
   // calculatedDamage.base IS the per-tick value, so use only the DoT total.
   const dot = cd.dotDamage;
@@ -232,13 +236,23 @@ function DamageTiers({
 
   const baseVal = metric(totalBase, 'base');
   const enhVal = metric(totalEnh, 'final');
-  const finalVal = metric(totalFinal, 'final');
-  const inherentVal = metric(inherentFinal, 'final');
   const procVal = computeProcContribution(mode, procDamagePerActivation, finalCycle, effCast, endCost);
+
+  // Procs are flat and cap-exempt, so they are an ADDEND on whichever final the
+  // power ends up showing — the plain one and the AT-inherent one alike. The
+  // inherent multiplies the attack at hit time, not this per-cast average, which
+  // is why the same `procVal` lands on both.
+  const foldProcs = foldProcsIntoFinal && procVal > 0;
+  const finalNoProc = metric(totalFinal, 'final');
+  const finalVal = foldProcs ? finalNoProc + procVal : finalNoProc;
+  const inherentVal = metric(inherentFinal, 'final') + (foldProcs ? procVal : 0);
 
   const hasEnhDmg = Math.abs(totalEnh - totalBase) > 0.001;
   const hasInherent = inherentInfo != null && Math.abs(inherentFinal - totalFinal) > 0.001;
-  const improvedPct = baseVal > 0 ? ((finalVal - procVal) / baseVal - 1) * 100 : 0;
+  // Off the proc-free final either way: the (+%) is the damage-strength
+  // multiplier on the attack, and folding a flat addend into it would read as
+  // strength the build does not have.
+  const improvedPct = baseVal > 0 ? (finalNoProc / baseVal - 1) * 100 : 0;
   const finalImproved = improvedPct > 1 || showCombatMod;
   const cappedClass = cd.capped ? 'underline decoration-dotted decoration-amber-400/50' : '';
   const conArrow = showCombatMod ? getConArrow(targetLevelOffset) : null;
@@ -266,20 +280,25 @@ function DamageTiers({
           sub={hasEnhDmg ? undefined : 'no slots'}
         />
         <Tier
-          label={hasInherent ? `Final ${inherentInfo!.header}` : 'Final'}
+          label={`${hasInherent ? `Final ${inherentInfo!.header}` : 'Final'}${foldProcs ? ' +proc' : ''}`}
           value={hasInherent ? fmt(inherentVal) : fmt(finalVal)}
           valueClass={`${hasInherent ? inherentInfo!.color : finalImproved ? 'text-amber-400' : 'text-slate-100'} ${cappedClass}`}
           arrow={conArrow}
+          title={foldProcs
+            ? `Includes +${procVal.toFixed(1)} average proc damage, which is flat and cap-exempt. The (+%) is the attack's own damage-strength multiplier and excludes it.`
+            : undefined}
           sub={
             hasInherent
               ? `${fmt(finalVal)} base`
               : finalImproved && improvedPct > 1
-                ? `+${improvedPct.toFixed(0)}%`
-                : undefined
+                ? `+${improvedPct.toFixed(0)}%${foldProcs ? ' +proc' : ''}`
+                : foldProcs
+                  ? `incl. +${procVal.toFixed(1)} proc`
+                  : undefined
           }
         />
       </div>
-      {!cd.unknown && procDamagePerActivation > 0 && (
+      {!cd.unknown && !foldProcs && procDamagePerActivation > 0 && (
         <div
           className="text-center text-[11px] text-cyan-400 mt-1"
           title="Average proc damage per activation, shown separately (flat, cap-exempt) so the (+%) reflects the enhancement multiplier on the attack itself."
@@ -301,15 +320,17 @@ function Tier({
   valueClass,
   sub,
   arrow,
+  title,
 }: {
   label: string;
   value: string;
   valueClass?: string;
   sub?: string;
   arrow?: { symbol: string; colorClass: string } | null;
+  title?: string;
 }) {
   return (
-    <div className="min-w-0 rounded border border-slate-700/60 bg-slate-900/30 px-1 py-1.5">
+    <div className="min-w-0 rounded border border-slate-700/60 bg-slate-900/30 px-1 py-1.5" title={title}>
       <div className="text-[10px] uppercase tracking-wide text-slate-400 leading-tight truncate">{label}</div>
       <div className={`text-2xl font-bold tabular-nums leading-tight ${valueClass ?? 'text-slate-100'}`}>
         {value}
