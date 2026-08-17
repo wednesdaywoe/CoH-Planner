@@ -582,10 +582,10 @@ The TARGETS-2/3 + COND-8 vendor campaign (parser sync, atom-query/atomic-effect
 port, converter port, regen, `build:engine`) closed the 16 known parity counts
 (Fulcrum Shift N=1/N=5, Radiation Siphon and Chrono Shift healing, Temporal
 Healing absorb). Four `powerProjectionParity` tests stay red on two residue
-classes the vendor exposed. Both are display-twin gaps against engine behaviour
-1.0 gated after the previous vendor; neither is TARGETS/COND drift, and neither
-number should be guessed here — [H] means it blocks a green suite, not that the
-engine is suspected wrong.
+classes the vendor exposed. Neither is TARGETS/COND drift, and in both the engine
+is the side that's right. PAR1 is a display-twin gap. PAR2 was filed as one and
+isn't: it's a live beta defect the vendor happened to expose, and it ships wrong
+numbers on 167 powers today.
 
 - [ ] **PAR1** [H] **Pool fly rows (rebirth 15 deltas / thunderspy 12)** — the
   engine splits fly into per-row entries (MOVEMAP-1 axis split, `flyUnenhanced`
@@ -596,10 +596,31 @@ engine is suspected wrong.
   split independently. Either extend the test's atoms-absent evidence class from
   perma to movement rows, or (the real close, upstream in 1.0) make the pool and
   epic converters emit atoms and retire the evidence class.
-- [ ] **PAR2** [H] **HoT tail under combat toggles (HC 48 deltas / tspy 24)** —
-  Temporal Mending and Chrono Shift `@engaged`/`@hidden`: the engine drops the
-  heal-over-time tail under an explicit combat state; the display bag's damage
-  array carries no suppression or gate flag on its heal entries, so the twin
-  folds the tail in (`extractHealingFromDamage` now tick-folds, matching the
-  engine on plain rows). Needs the flag stamped by the converter (1.0-owned),
-  then read in `extractHealingFromDamage`.
+- [ ] **PAR2** [H] **`mode: 'replace'` is unread on the damage array (HC 48
+  deltas / tspy 24)** — Temporal Mending and Chrono Shift `@engaged`/`@hidden`.
+  The earlier reading of this row (a suppressed HoT tail needing a converter
+  flag) was wrong, and it pointed at the wrong repo. Both sides tick-fold the
+  tail identically. What differs is the merge: `applyActiveConditionals`
+  ([powerDisplayUtils.ts:554](../src/components/info/powerDisplayUtils.ts#L554))
+  honours `c.mode === 'replace'` on the effects branch and ignores it on the
+  damage branch, where every active conditional's rows are concatenated onto
+  base. Temporal Mending's two heal groups are mutex by construction, gated on
+  `Temporal_Selection_Buff target.ownPower?` and on its negation, so toggling the
+  adjuster shows 1.75 + 2.625 where the engine shows 2.625. Measured against the
+  export 2026-08-16.
+
+  Not test-only, and not confined to healing. 167 powers across the three forks
+  carry a replace-mode conditional with damage; Crushing Uppercut at Combo Level
+  1 displays scale 3.18 + 3.339 instead of 3.339. The parity gate never saw those
+  because it diffs granted magnitudes and execution tiers, not the damage array,
+  and healing is the one damage row that surfaces as a magnitude.
+
+  A blanket swap is the wrong fix. Psi Blade's Insight conditional is tagged
+  replace off a negated gate on its GrantPower atom while its own damage is a
+  genuinely additional DoT, so replacing the array there would delete the base
+  strike. The rows a conditional displaces are the ones whose atom gate negates
+  that conditional's predicate, which the export states and the generated
+  `damage[]` entries drop. Real close: have `convert-powerset.cjs` stamp the
+  linkage when it emits base damage (it already computes `baseNegated`), then
+  read it in the merger. Matching on damage type and tick shape instead would
+  pass all four powers measured here and is an invented discriminator.
