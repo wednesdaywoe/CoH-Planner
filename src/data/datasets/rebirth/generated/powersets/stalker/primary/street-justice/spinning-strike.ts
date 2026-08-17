@@ -53,12 +53,22 @@ export const SpinningStrike: Power = {
     {
       "type": "Smashing",
       "scale": 0.77,
-      "table": "Melee_Damage"
+      "table": "Melee_Damage",
+      "displacedBy": [
+        "combo_level_1",
+        "combo_level_2",
+        "combo_level_3"
+      ]
     },
     {
       "type": "Smashing",
       "scale": 0.77,
-      "table": "Melee_Damage"
+      "table": "Melee_Damage",
+      "displacedBy": [
+        "combo_level_1",
+        "combo_level_2",
+        "combo_level_3"
+      ]
     },
     {
       "type": "Smashing",

@@ -64,7 +64,12 @@ export const SpinningStrike: Power = {
     "scale": 0.77,
     "table": "Melee_Damage",
     "duration": 0.45,
-    "tickRate": 0.4000000059604645
+    "tickRate": 0.4000000059604645,
+    "displacedBy": [
+      "combo_level_1",
+      "combo_level_2",
+      "combo_level_3"
+    ]
   },
   "effects": {
     "knockback": {

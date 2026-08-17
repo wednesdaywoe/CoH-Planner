@@ -56,7 +56,12 @@ export const SweepingCross: Power = {
   "damage": {
     "type": "Smashing",
     "scale": 1.5,
-    "table": "Melee_Damage"
+    "table": "Melee_Damage",
+    "displacedBy": [
+      "combo_level_1",
+      "combo_level_2",
+      "combo_level_3"
+    ]
   },
   "effects": {
     "stun": {

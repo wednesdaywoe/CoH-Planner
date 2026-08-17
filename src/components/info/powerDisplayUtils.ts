@@ -552,11 +552,23 @@ export function applyActiveConditionals(
   if (active.length === 0) return { power, extraInstances };
 
   // --- damage ---
-  const baseDamageArr: ScaledDamageEntry[] = power.damage
+  // A base row names the toggles it's mutex with in `displacedBy` (the ones whose
+  // predicate its own gate negates), so an active one takes its place rather than
+  // stacking on top of it. Without this the two halves of a swap both showed:
+  // Temporal Mending read 1.75 + 2.625 with Temporal Selection on, and Crushing
+  // Uppercut read 3.18 + 3.339 at Combo Level 1 (PAR2).
+  //
+  // Rows with no `displacedBy` are untouched however the conditional is tagged. Psi
+  // Blade's Insight is `mode: 'replace'` off a negated gate on its GrantPower atom
+  // while its own damage is a genuinely extra DoT, so swapping the array wholesale
+  // would delete the base strike.
+  const activeIds = new Set(active.map((c) => c.id));
+  const baseDamageArr: ScaledDamageEntry[] = (power.damage
     ? Array.isArray(power.damage)
       ? [...power.damage]
       : [power.damage]
-    : [];
+    : []
+  ).filter((row) => !row.displacedBy?.some((id) => activeIds.has(id)));
   const merged: ScaledDamageEntry[] = baseDamageArr;
   for (const c of active) {
     if (!c.damage) continue;

@@ -51,7 +51,10 @@ export const TurbulentAura: Power = {
   "damage": {
     "type": "Cold",
     "scale": 0.15,
-    "table": "Ranged_Damage"
+    "table": "Ranged_Damage",
+    "displacedBy": [
+      "water_control_drowning"
+    ]
   },
   "effects": {
     "buffDuration": 1,

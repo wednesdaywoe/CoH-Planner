@@ -3688,6 +3688,37 @@ function _refineConditionalLabel(rawLabel, powerName, powersetKey) {
  * damage/effects on top of the base when the user enables it.
  */
 /**
+ * The state gates one RPN expression switches OFF, as canonicalized predicate strings
+ * (`Drowning target`). Shared by the two callers that need them for different reasons:
+ * `_collectBaseNegatedPredicates` asks per POWER, to decide whether a conditional is a
+ * mutex variant, and `extractDamage` asks per TEMPLATE, to record which conditional each
+ * damage row is the counterpart of.
+ */
+function _negatedOwnPowerPredicates(tokens) {
+  const negated = new Set();
+  if (!tokens.length) return negated;
+  // Match `<dotted.power.name> <side>.ownPower? ... !` — the predicate
+  // followed (eventually) by a top-level `!`. Walk the tokens rather than
+  // regex-greedy so we catch chained gates like
+  // `enttype target> critter eq Drowning target.ownPower? ! &&`.
+  // Find the last token that's `!` and walk back to find the predicate
+  // it negates (the nearest preceding `<X>.ownPower?` token).
+  for (let i = tokens.length - 1; i > 0; i--) {
+    if (tokens[i] !== '!') continue;
+    // Walk back to find the matching ownPower? token.
+    for (let j = i - 1; j >= 0; j--) {
+      const m = tokens[j].match(/^(target|source)\.ownPower\?$/);
+      if (m && j > 0) {
+        const predicate = `${tokens[j - 1]} ${m[1]}`;
+        negated.add(predicate.toLowerCase());
+        break;
+      }
+    }
+  }
+  return negated;
+}
+
+/**
  * Scan a power's effects for base templates that use a *negated* state gate
  * (RPN `... ownPower? !` form, etc.). Each one represents a base case that's
  * mutually exclusive with a positively-gated conditional sibling — i.e. the
@@ -3701,26 +3732,8 @@ function _collectBaseNegatedPredicates(effects) {
   const negated = new Set();
   function visit(eff) {
     if (eff.is_pvp === 'PVP_ONLY') return;
-    const tokens = gateTokens(eff.requires_expression);
-    if (tokens.length) {
-      // Match `<dotted.power.name> <side>.ownPower? ... !` — the predicate
-      // followed (eventually) by a top-level `!`. Walk the tokens rather than
-      // regex-greedy so we catch chained gates like
-      // `enttype target> critter eq Drowning target.ownPower? ! &&`.
-      // Find the last token that's `!` and walk back to find the predicate
-      // it negates (the nearest preceding `<X>.ownPower?` token).
-      for (let i = tokens.length - 1; i > 0; i--) {
-        if (tokens[i] !== '!') continue;
-        // Walk back to find the matching ownPower? token.
-        for (let j = i - 1; j >= 0; j--) {
-          const m = tokens[j].match(/^(target|source)\.ownPower\?$/);
-          if (m && j > 0) {
-            const predicate = `${tokens[j - 1]} ${m[1]}`;
-            negated.add(predicate.toLowerCase());
-            break;
-          }
-        }
-      }
+    for (const p of _negatedOwnPowerPredicates(gateTokens(eff.requires_expression))) {
+      negated.add(p);
     }
     for (const child of eff.child_effects || []) visit(child);
   }
@@ -3744,13 +3757,17 @@ function _remapUnenhancedPatchKeys(patches, effects) {
   }
 }
 
-function extractConditionalEffects(rawEffects, powerJson) {
+function extractConditionalEffects(rawEffects, powerJson, baseDamage) {
   if (!rawEffects?.length) return undefined;
   const powersetKey = powerJson.powerset || powerJson.full_name;
   const groups = collectConditionalsGrouped(rawEffects, powersetKey);
   if (groups.size === 0) return undefined;
 
   const baseNegated = _collectBaseNegatedPredicates(rawEffects);
+  // Predicate → the toggle that satisfies it, filled as the entries are built. The base
+  // damage rows carry the predicates they're gated OUT by, so this is the join that turns
+  // them into `displacedBy` ids.
+  const idByPredicate = new Map();
 
   const out = [];
   for (const [id, group] of groups) {
@@ -3801,6 +3818,7 @@ function extractConditionalEffects(rawEffects, powerJson) {
     if (group._powerName && group.side) {
       const predicate = `${group._powerName} ${group.side}`.toLowerCase();
       if (baseNegated.has(predicate)) mode = 'replace';
+      idByPredicate.set(predicate, id);
     }
 
     const entry = {
@@ -3829,6 +3847,17 @@ function extractConditionalEffects(rawEffects, powerJson) {
     out.push(entry);
   }
   if (out.length === 0) return undefined;
+
+  // Join the base damage rows to the toggles that displace them. A row is displaced by
+  // the toggle whose predicate its own gate negates, which is what makes the two the same
+  // template read under opposite conditions. Nothing else is touched: Psi Blade's Insight
+  // is tagged `replace` off a negated gate on its GrantPower atom while its damage rows
+  // carry no negation at all, so its DoT stays additive and the base strike survives.
+  for (const row of Array.isArray(baseDamage) ? baseDamage : baseDamage ? [baseDamage] : []) {
+    if (!row?._negates) continue;
+    const ids = row._negates.map((p) => idByPredicate.get(p)).filter(Boolean);
+    if (ids.length) row.displacedBy = [...new Set(ids)].sort();
+  }
 
   // Detect mutually-exclusive groups across the per-power conditional set.
   // Heuristic: ids that share a recognizable suffix word (e.g. "adaptation"
@@ -4988,6 +5017,15 @@ function extractDamage(templates, powerJson) {
         if ((template.flags || []).includes('CancelOnMiss')) dmg.cancelOnMiss = true;
       }
 
+      // Which conditional this row is the mutex counterpart of, carried as the raw
+      // predicates its own gate negates. `extractConditionalEffects` resolves them to
+      // toggle ids and rewrites this into `displacedBy`; `serializePower` strips any
+      // that never found a conditional, so the key never reaches a generated file.
+      // Without it the display merger has no way to tell a row a toggle REPLACES from
+      // one it adds to, and concatenates both (PAR2).
+      const negates = _negatedOwnPowerPredicates(gateTokens(template._groupRequires));
+      if (negates.size) dmg._negates = [...negates];
+
       damages.push(dmg);
     }
   }
@@ -5191,6 +5229,24 @@ function _inlineAtomTuples(tuples, depth) {
   return `[\n${tuples.map((t) => `${pad}  ${JSON.stringify(t)}`).join(',\n')}\n${pad}]`;
 }
 
+/** Drop the scratch keys the extraction hangs on emitted values. `_negates` is the only
+ *  one today: `extractDamage` stamps it on every gated damage row, and only the rows whose
+ *  predicate matched a conditional get rewritten to `displacedBy`. The rest have to be
+ *  cleared here rather than at the join, because a power can carry gated damage and no
+ *  conditional at all, and that path never reaches the join. */
+function _stripConverterScratch(v) {
+  if (Array.isArray(v)) return v.map(_stripConverterScratch);
+  if (v && typeof v === 'object') {
+    const out = {};
+    for (const [k, val] of Object.entries(v)) {
+      if (k === '_negates') continue;
+      out[k] = _stripConverterScratch(val);
+    }
+    return out;
+  }
+  return v;
+}
+
 /**
  * Serialize a Power to its generated-file literal. Identical to
  * `JSON.stringify(power, null, 2)` EXCEPT every atom wire list renders one
@@ -5205,7 +5261,7 @@ function _inlineAtomTuples(tuples, depth) {
  * hook — which is why a new atom-carrying field has to be added here as well as emitted.
  */
 function serializePower(power) {
-  const stub = { ...power };
+  const stub = _stripConverterScratch({ ...power });
   const inlines = [];
   if (power.atoms?.length) {
     const sentinel = '@@ATOMS_TUPLES@@';
@@ -8180,7 +8236,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
   // boost, Disintegration bonus damage, etc.). Each emits a toggle in the
   // InfoPanel that adds its damage/effects on top of the base when active.
   if (powerJson.effects?.length) {
-    const conditional = extractConditionalEffects(powerJson.effects, powerJson);
+    const conditional = extractConditionalEffects(powerJson.effects, powerJson, power.damage);
     if (conditional) power.conditionalEffects = conditional;
 
     // Special effects (chance procs / state grants) for the SPECIAL section.

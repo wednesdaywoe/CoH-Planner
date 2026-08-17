@@ -794,6 +794,18 @@ export interface ScaledDamageEntry {
    * so a Controller's Propel is `base × 2 + impact`, not `(base + impact) × 2`.
    */
   excludeFromAtMechanic?: boolean;
+  /**
+   * The `conditionalEffects` toggles this row is the mutex counterpart of — the ones
+   * whose predicate this row's own gate negates. When such a toggle is active the row
+   * is not part of the power any more, and the conditional's own damage is what stands
+   * in its place, so `applyActiveConditionals` drops it instead of concatenating both.
+   *
+   * Stamped by the converter, because the negation lives on the effect group's requires
+   * expression and the generated `damage[]` entry has no other trace of it. A row with
+   * no `displacedBy` is always additive: Psi Blade's Insight conditional is `replace`
+   * off a negated gate on its GrantPower atom, and its damage really is an extra DoT.
+   */
+  displacedBy?: string[];
 }
 
 /**
