@@ -190,3 +190,62 @@ describe('moveSlot store action (homecoming)', () => {
     expect(powers.find((p) => p.internalName === 'Beta')!.slots.length).toBe(1);
   });
 });
+
+describe('pieceSlottableNow (B3 — bulk placement skips ineligible pieces)', () => {
+  // A unique-only set shaped like a Superior ATO: every piece unique, category 'ato'.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const atoSet: any = {
+    id: 'superior-test-ato',
+    name: 'Superior Test ATO',
+    category: 'ato',
+    pieces: [1, 2, 3, 4, 5, 6].map((num) => ({
+      num,
+      name: `Piece ${num}`,
+      aspects: ['Damage'],
+      proc: false,
+      unique: true,
+    })),
+  };
+  const pieceIn = (num: number) => ({ type: 'io-set', setId: 'superior-test-ato', pieceNum: num });
+
+  it('refuses a piece already slotted in the current power', async () => {
+    const { pieceSlottableNow } = await import('./enhancement-eligibility');
+    const slots = [pieceIn(2), pieceIn(4), null, null];
+    expect(
+      pieceSlottableNow(atoSet, atoSet.pieces[1], slots, { compareMode: false, isUniqueSlotted: () => true }),
+    ).toBe(false);
+  });
+
+  it('refuses a unique piece consumed elsewhere in the build', async () => {
+    const { pieceSlottableNow } = await import('./enhancement-eligibility');
+    expect(
+      pieceSlottableNow(atoSet, atoSet.pieces[0], [null], {
+        compareMode: false,
+        isUniqueSlotted: (setId, num) => setId === 'superior-test-ato' && num === 1,
+      }),
+    ).toBe(false);
+  });
+
+  it('accepts the free pieces of the reported drag (1st→3rd with 2nd/4th slotted)', async () => {
+    const { pieceSlottableNow } = await import('./enhancement-eligibility');
+    const slots = [pieceIn(2), pieceIn(4), null, null];
+    const opts = {
+      compareMode: false,
+      isUniqueSlotted: (_setId: string, num: number) => [2, 4].includes(num),
+    };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const placeable = (atoSet.pieces as any[])
+      .slice(0, 3)
+      .filter((p) => pieceSlottableNow(atoSet, p, slots, opts))
+      .map((p) => p.num);
+    expect(placeable).toEqual([1, 3]);
+  });
+
+  it('compare mode ignores the build-wide unique check but not the in-power one', async () => {
+    const { pieceSlottableNow } = await import('./enhancement-eligibility');
+    const slots = [pieceIn(2), null];
+    const opts = { compareMode: true, isUniqueSlotted: () => true };
+    expect(pieceSlottableNow(atoSet, atoSet.pieces[0], slots, opts)).toBe(true);
+    expect(pieceSlottableNow(atoSet, atoSet.pieces[1], slots, opts)).toBe(false);
+  });
+});

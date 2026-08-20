@@ -308,6 +308,13 @@ export interface MovementByType {
   fly?: NumberOrScaled;
   movementControl?: NumberOrScaled;
   movementFriction?: NumberOrScaled;
+  // The paired IgnoreStrength halves (FLYPOOL-1): when an axis carries an
+  // enhanceable row AND an IgnoreStrength twin, the twin lives under the
+  // `<axis>Unenhanced` split-slot spelling instead of clobbering the axis.
+  runSpeedUnenhanced?: NumberOrScaled;
+  flySpeedUnenhanced?: NumberOrScaled;
+  jumpHeightUnenhanced?: NumberOrScaled;
+  jumpSpeedUnenhanced?: NumberOrScaled;
 }
 
 /** Stealth effects */

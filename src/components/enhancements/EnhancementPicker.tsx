@@ -30,6 +30,7 @@ import { formatBonusDesc } from '@/utils/set-bonus-format';
 import { isBonusCapped, getTotalBonusCount } from '@/utils/calculations/set-bonuses';
 import { useBonusTracking } from '@/hooks';
 import { getEnhancementOutline } from '@/utils/enhancement-outline';
+import { pieceSlottableNow } from '@/utils/enhancement-eligibility';
 
 // Max finger travel (px) between touchstart and touchend still counted as a tap
 // rather than a scroll. Generous enough for thumbs on a moving list.
@@ -63,6 +64,7 @@ export function EnhancementPicker() {
   const setEnhancement = useBuildStore((s) => s.setEnhancement);
   const buildOrigin = useBuildStore((s) => s.build.settings.origin);
   const build = useBuildStore((s) => s.build);
+  const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
 
   // Local filter state
   const [typeFilter, setTypeFilter] = useState<EnhancementTypeFilter>('io-sets');
@@ -382,6 +384,16 @@ export function EnhancementPicker() {
     });
   };
 
+  // Whether a piece may be PLACED here right now — the rule the piece rows
+  // render as their disabled state (`isPieceDisabled`), re-asked at placement
+  // time because the bulk paths sweep pieces the user never clicked (see
+  // `pieceSlottableNow`'s doc for the 2026-08-17 duplicate-ATO drag report).
+  const isPiecePlaceable = (set: IOSet, piece: IOSetPiece) =>
+    pieceSlottableNow(set, piece, picker.virtualSlots ?? currentPowerSlots, {
+      compareMode: picker.virtualSlots != null,
+      isUniqueSlotted: isUniqueEnhancementSlotted,
+    });
+
   // Auto-select category when modal opens; clear shift-selection.
   // Restore the per-power last-used filter (typeFilter + sidebarFilter)
   // if there is one for this power, otherwise fall back to the power's
@@ -498,7 +510,10 @@ export function EnhancementPicker() {
       const set = availableSets.find((s) => (s.id || s.name) === setId);
       if (!set) continue;
       for (const idx of Array.from(indices).sort((a, b) => a - b)) {
-        if (set.pieces[idx]) {
+        // Re-check at placement: a queued piece can have become illegal since it
+        // was selected (its twin slotted into this power, or a unique consumed
+        // elsewhere in the build) — same skip the drag path applies.
+        if (set.pieces[idx] && isPiecePlaceable(set, set.pieces[idx])) {
           allPieces.push({ set, piece: set.pieces[idx], pieceIndex: idx });
         }
       }
@@ -581,15 +596,19 @@ export function EnhancementPicker() {
 
     const minIndex = Math.min(startIndex, endIndex);
     const maxIndex = Math.max(startIndex, endIndex);
-    const selectedPieces = set.pieces.slice(minIndex, maxIndex + 1);
+    // The range sweeps every piece between the endpoints, including ones the
+    // rows render disabled — skip those instead of placing them positionally.
+    const selectedPieces = set.pieces
+      .map((piece, i) => ({ piece, pieceIndex: i }))
+      .slice(minIndex, maxIndex + 1)
+      .filter(({ piece }) => isPiecePlaceable(set, piece));
 
     // Get empty slots starting from current slot
     const slotsToFill = emptySlotIndices.slice(0, selectedPieces.length);
     if (slotsToFill.length === 0) return;
 
     // Fill slots with selected pieces
-    selectedPieces.forEach((piece, idx) => {
-      const pieceIndex = minIndex + idx;
+    selectedPieces.forEach(({ piece, pieceIndex }, idx) => {
       if (idx < slotsToFill.length) {
         placeEnhancement(
           picker.currentPowerName!,

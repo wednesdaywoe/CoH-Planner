@@ -14,12 +14,48 @@
  */
 import type { Enhancement } from '@/types/enhancement';
 import type { IOSetCategory } from '@/types/common';
+import type { IOSet, IOSetPiece } from '@/types/enhancement';
 import { getIOSetsForPower } from '@/data/io-sets';
 
 /** Minimal slottable-host shape — anything carrying the game's allow-lists. */
 export interface EnhancementHostPower {
   allowedEnhancements?: string[];
   allowedSetCategories?: IOSetCategory[];
+}
+
+/**
+ * Whether a set piece may be PLACED into a power's slots right now — the rule
+ * the picker's rows render as their disabled state, factored out so the bulk
+ * placement paths (drag-range, multi-select) can re-ask it per piece. A drag
+ * range sweeps every piece between its endpoints, disabled or not: without this
+ * check a Superior ATO with its 2nd piece already slotted got that piece placed
+ * AGAIN by a 1st→3rd drag — impossible slotting (2026-08-17 report).
+ *
+ * `compareMode` (Compare Slotting's virtual configuration) skips the build-wide
+ * unique check, exactly as the render does — each configuration is independent.
+ * Purple/ATO stay category-unique even where a fork ships `unique: 0` on a
+ * piece (the tspy Primalist ATO); Event uniqueness lives in the per-piece flag.
+ */
+export function pieceSlottableNow(
+  set: IOSet,
+  piece: IOSetPiece,
+  currentSlots: readonly (unknown | null)[],
+  opts: { compareMode: boolean; isUniqueSlotted: (setId: string, pieceNum: number) => boolean },
+): boolean {
+  const setId = set.id || set.name;
+  const inPower = currentSlots.some((enh) => {
+    if (!enh || typeof enh !== 'object') return false;
+    const io = enh as { type?: string; setId?: string; pieceNum?: number };
+    return io.type === 'io-set' && io.setId === setId && io.pieceNum === piece.num;
+  });
+  if (inPower) return false;
+  if (!opts.compareMode) {
+    const isSpecialRarity = set.category === 'purple' || set.category === 'ato';
+    if ((piece.unique || isSpecialRarity) && opts.isUniqueSlotted(setId, piece.num)) {
+      return false;
+    }
+  }
+  return true;
 }
 
 export function enhancementAllowedInPower(
