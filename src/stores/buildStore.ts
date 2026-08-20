@@ -246,13 +246,19 @@ interface BuildActions {
    * curves, and no enhancement sits on both. Slots already at the target
    * value are left alone so the operation is idempotent and the breakdown
    * stays clean.
+   *
+   * Returns how many slots actually changed. Callers that offer this from
+   * outside the tools modal need it: the eligibility rules above mean a
+   * plausible-looking request can legitimately move nothing (every IO
+   * attuned, every slot already at the target), and a bulk edit that
+   * silently does nothing reads as a broken button.
    */
   maximizeEnhancementLevels: (options?: {
     relativeLevel?: number;
     ioLevel?: number;
     attuneAll?: boolean;
     boostLevel?: number;
-  }) => void;
+  }) => number;
 
   // Accolades
   addAccolade: (accolade: Accolade) => void;
@@ -2364,7 +2370,15 @@ export const useBuildStore = create<BuildStore>()(
             // NON-attuned L50+ IOs (generic or set). Attuned IOs cannot
             // accept boosters in-game — they scale with character level
             // and that's the only knob they have.
-            if (boostLevel !== undefined && !isAttuned && (next.level ?? 50) >= 50) {
+            // A piece with no aspects is a pure proc: there is no magnitude
+            // for a booster to scale, and `createIOSetEnhancement` refuses one
+            // at placement. Skipping it here keeps the two paths agreeing —
+            // otherwise the same piece carries a boost or not depending on
+            // which one last touched it, and the shopping list bills a booster
+            // for a slot the picker would never have boosted.
+            const isPureProc =
+              next.type === 'io-set' && !!next.isProc && (next.aspects?.length ?? 0) === 0;
+            if (boostLevel !== undefined && !isAttuned && !isPureProc && (next.level ?? 50) >= 50) {
               if ((next.boost ?? 0) !== boostLevel) {
                 next = { ...next, boost: boostLevel };
               }
@@ -2377,7 +2391,7 @@ export const useBuildStore = create<BuildStore>()(
         // Apply across every power list (primary/secondary/pools/epic/
         // inherents). Walk in a single set() so undo treats it as one
         // operation.
-        let anyChanged = false;
+        let changedSlots = 0;
         const remap = (powers: SelectedPower[]): SelectedPower[] => {
           let powerChanged = false;
           const out = powers.map((p) => {
@@ -2385,14 +2399,16 @@ export const useBuildStore = create<BuildStore>()(
             let slotChanged = false;
             const nextSlots = p.slots.map((s) => {
               const next = maxSlot(s);
-              if (next !== s) slotChanged = true;
+              if (next !== s) {
+                slotChanged = true;
+                changedSlots += 1;
+              }
               return next;
             });
             if (!slotChanged) return p;
             powerChanged = true;
             return { ...p, slots: nextSlots };
           });
-          if (powerChanged) anyChanged = true;
           return powerChanged ? out : powers;
         };
         // Run the dry remap once to see whether anything would change —
@@ -2404,7 +2420,7 @@ export const useBuildStore = create<BuildStore>()(
         const dryPools = before.pools.map((pool) => ({ ...pool, powers: remap(pool.powers) }));
         const dryEpic = before.epicPool ? { ...before.epicPool, powers: remap(before.epicPool.powers) } : null;
         const dryInherents = remap(before.inherents);
-        if (!anyChanged) return;
+        if (changedSlots === 0) return 0;
 
         historyCheckpoint();
         set((state) => ({
@@ -2417,6 +2433,7 @@ export const useBuildStore = create<BuildStore>()(
             inherents: dryInherents,
           },
         }));
+        return changedSlots;
       },
 
       setOrigin: (origin) => {

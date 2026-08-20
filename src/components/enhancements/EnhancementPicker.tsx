@@ -85,6 +85,29 @@ export function EnhancementPicker() {
     [levelOffsetType],
   );
 
+  // The level offset above is a PLACEMENT default — it is stamped into an
+  // enhancement when the picker mints it and nothing revisits a slot after.
+  // A user who sets it to +5 mid-build therefore boosts only what they slot
+  // NEXT, while the spinner keeps reading +5 over a build full of unboosted
+  // enhancements (reported 2026-08-18: a Scrapper's max HP sat 21 short of the
+  // in-game character, exactly the +5 his 94 already-placed slots never got).
+  // This applies the current offset to what is already slotted, on the same
+  // store action the Enhancement Tools modal uses — one history checkpoint,
+  // one set of eligibility rules. Result count included because those rules
+  // can legitimately move nothing, and a silent no-op reads as a dead button.
+  const maximizeEnhancementLevels = useBuildStore((s) => s.maximizeEnhancementLevels);
+  const [bulkApplied, setBulkApplied] = useState<number | null>(null);
+  useEffect(() => setBulkApplied(null), [globalBoostLevel, levelOffsetAxis]);
+  const applyOffsetToSlotted = () => {
+    setBulkApplied(
+      maximizeEnhancementLevels(
+        levelOffsetAxis === 'relative'
+          ? { relativeLevel: globalBoostLevel }
+          : { boostLevel: globalBoostLevel },
+      ),
+    );
+  };
+
   // Switching to a booster-axis tab must not leave a negative behind — it would
   // silently read as +0 there while still showing as a penalty in the spinner.
   useEffect(() => {
@@ -848,6 +871,24 @@ export function EnhancementPicker() {
                 }
               />
             </div>
+            <button
+              onClick={applyOffsetToSlotted}
+              title={
+                levelOffsetAxis === 'relative'
+                  ? `Set every slotted origin and special enhancement to ${globalBoostLevel === 0 ? 'even' : globalBoostLevel > 0 ? `+${globalBoostLevel}` : globalBoostLevel} relative level. The spinner alone only affects enhancements you slot from here on.`
+                  : `Apply +${globalBoostLevel} to every enhancement already slotted in this build. The spinner alone only affects enhancements you slot from here on; attuned and sub-50 IOs cannot carry boosters.`
+              }
+              className="px-2 py-0.5 text-xs rounded border border-gray-600 text-gray-300 hover:text-gray-100 hover:border-gray-400 hover:bg-gray-800/60 transition-colors whitespace-nowrap"
+            >
+              Apply to slotted
+            </button>
+            {bulkApplied !== null && (
+              <span className={`text-xs whitespace-nowrap ${bulkApplied > 0 ? 'text-green-400' : 'text-gray-500'}`}>
+                {bulkApplied > 0
+                  ? `${bulkApplied} updated`
+                  : 'nothing eligible'}
+              </span>
+            )}
           </div>
         </div>
 
