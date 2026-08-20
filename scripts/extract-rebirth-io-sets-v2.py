@@ -1,21 +1,32 @@
-"""Extract a full IO set library from the live game's bin files — both
-Homecoming and Rebirth.
+"""Extract a full IO set library from the committed bin-crawler exports —
+Homecoming, Rebirth, and Thunderspy.
 
-Reads boostsets.bin + powers.bin directly from the .pigg archives and emits
+Reads boostsets.json + the boosts/*, set_bonus/* power-template trees that
+`export_powers.py` already parsed, resolved, and committed under
+exported_powers/ — no live .pigg reads — and emits
 src/data/datasets/<dataset>/io-sets-raw.ts. Supersedes the retired
 convert-io-sets.js (HC, hand-data) and extract-rebirth-io-sets.cjs (Rebirth).
+Reproducible from the committed tree alone: re-running this script requires
+nothing beyond what's already in git (previously it needed the live game
+install).
 
 Pipeline:
-  1. Parse boostsets.bin → set metadata + BoostLists + Bonuses + levels
-  2. For each piece (Boost power), look up powers.bin → derive aspects from
-     effect-template attribs (damage types collapse to "Damage", etc.) and
-     recover the effective aspect count from the enhancement scale.
-  3. For each bonus (Set_Bonus power), look up powers.bin → derive effects[]
-     entries: planner-canonical stat key + value (scale × per-attrib multiplier)
-  4. Resolve display strings via clientmessages-en.bin
-  5. Apply the per-dataset override pass (Rebirth: reuse HC for shared sets;
+  1. Load boostsets.json → set metadata + BoostLists + Bonuses + levels
+  2. For each piece (Boost power), look up its committed boosts/* template →
+     derive aspects from effect-template attribs (damage types collapse to
+     "Damage", etc.) and recover the effective aspect count from the
+     enhancement scale.
+  3. For each bonus (Set_Bonus power), look up its committed set_bonus/*
+     template → derive effects[] entries: planner-canonical stat key + value
+     (scale × per-attrib multiplier)
+  4. Apply the per-dataset override pass (Rebirth: reuse HC for shared sets;
      HC: targeted hand overrides for what the binary can't reproduce)
-  6. Emit TypeScript io-sets-raw
+  5. Emit TypeScript io-sets-raw
+
+Display strings (set names, boost-piece names) arrive already resolved —
+export_powers.py resolves every P-hash against clientmessages-en.bin before
+writing boostsets.json/boosts/*/set_bonus/*, so this script never touches a
+message table itself.
 
 Usage:
     py -3 scripts/extract-rebirth-io-sets-v2.py --dataset homecoming
@@ -24,10 +35,10 @@ Usage:
 from __future__ import annotations
 
 import json
-import os
 import re
 import subprocess
 import sys
+from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
 
@@ -35,19 +46,17 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / 'tools' / 'bin-crawler'))
 
-from bin_crawler.parser._pigg import BinResolver
-from bin_crawler.parser._boostsets import parse_boostsets, EC_CATEGORY_TO_PLANNER, BoostSetRecord, _resolve_category
-from bin_crawler.parser._powers import parse_powers, PowerRecord
-from bin_crawler.parser._messages import load_messages
+from bin_crawler.parser._boostsets import BoostSetRecord, BoostListEntry, BoostBonusEntry, _resolve_category
 
-# Asset (.pigg) read paths default to the Windows install locations, but can be
-# overridden per machine via env vars (e.g. on Linux where the drive letters
-# don't exist). Only the *read* path is overridden — the canonical Windows path
-# is still recorded in each generated file's `Source:` header (cfg['pigg'] below)
-# so committed output stays byte-identical across machines for the CI regen-diff.
-REBIRTH_ASSETS = os.environ.get('COH_REBIRTH_ASSETS', r'G:/Thunderspy Gaming/Sweet Tea/rebirth')
-HC_ASSETS = os.environ.get('COH_HC_ASSETS', r'G:/Homecoming/assets/live')
-THUNDERSPY_ASSETS = os.environ.get('COH_THUNDERSPY_ASSETS', r'G:/Thunderspy Gaming/Sweet Tea/tspy')
+# Each dataset's committed export tree (bin_crawler/export_powers.py output).
+# 'homecoming' writes to the export root itself (no per-dataset subdir);
+# rebirth/thunderspy get their own subdirs — matches export_powers.py's
+# existing --output-dir convention for these three datasets.
+EXPORT_DIRS = {
+    'homecoming': PROJECT_ROOT / 'exported_powers',
+    'rebirth':    PROJECT_ROOT / 'exported_powers' / 'rebirth',
+    'thunderspy': PROJECT_ROOT / 'exported_powers' / 'thunderspy',
+}
 OUTPUT_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'rebirth' / 'io-sets-raw.ts'
 HC_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'homecoming' / 'io-sets-raw.ts'
 THUNDERSPY_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'thunderspy' / 'io-sets-raw.ts'
@@ -56,13 +65,15 @@ THUNDERSPY_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'thunders
 def _load_hc_sets() -> dict[str, dict]:
     """Build a setId -> full-set-entry map from HC's io-sets-raw.ts.
 
-    HC's data has hand-curated piece names ("Accuracy/Damage", etc.) that
-    match Mids exports verbatim, plus complete bonus tiers. The Rebirth
-    binary extraction loses Accuracy aspects on many pieces and produces
-    auto-generated names that don't match Mids strings.
+    HC's entry carries complete aspect lists and bonus tiers, where the Rebirth and
+    Thunderspy binary extractions lose the Accuracy aspect on many pieces and resolve
+    fewer tiers. For a set that exists on both servers, that entry is reused; a
+    fork-only set falls back to its own binary extraction. Piece NAMES are not
+    borrowed — each fork names its pieces from its own boost powers.
 
-    For sets that exist in both servers, reuse HC's entry directly.
-    Rebirth-only sets fall back to the binary-extracted entry.
+    Note this file is the script's own previous output for the Homecoming dataset, so
+    the Homecoming paths that read `hc_sets` are self-referential: a change to how
+    they are built shows up only once, on the run that rewrites the file.
 
     Returns a dict mapping set_id -> parsed JSON object (the full set body).
     """
@@ -107,6 +118,158 @@ def _load_hc_sets() -> dict[str, dict]:
         except json.JSONDecodeError:
             continue
     return sets
+
+
+# ---------------------------------------------------------------------
+# Committed-export loaders (boostsets.json + boosts/*, set_bonus/*).
+#
+# export_powers.py already parses boostsets.bin/powers.bin once per dataset,
+# resolves display strings, and commits the result under exported_powers/.
+# These loaders reconstruct the same shapes build_sets() below expects
+# (BoostSetRecord and a full_name-keyed power index) from that committed
+# JSON instead of re-parsing the binary.
+# ---------------------------------------------------------------------
+
+def _load_boostsets(export_dir: Path) -> list[BoostSetRecord]:
+    """Reconstruct BoostSetRecord objects from the committed boostsets.json.
+
+    boostsets.json is `asdict()` of the exact same BoostSetRecord list
+    parse_boostsets() used to return — a lossless round-trip through JSON,
+    not a re-derivation — so this is field-for-field identical to a live
+    binary parse (display_name/group_name already message-resolved, see
+    export_powers.py's boost_sets resolution pass).
+    """
+    data = json.loads((export_dir / 'boostsets.json').read_text(encoding='utf-8'))
+    return [
+        BoostSetRecord(
+            name=s['name'],
+            display_name=s['display_name'],
+            group_name=s['group_name'],
+            conversion_groups=s['conversion_groups'],
+            rarity=s['rarity'],
+            category=s['category'],
+            allowed_powers=s['allowed_powers'],
+            boostlists=[BoostListEntry(boosts=bl['boosts']) for bl in s['boostlists']],
+            bonuses=[
+                BoostBonusEntry(min_boosts=b['min_boosts'], max_boosts=b['max_boosts'],
+                                 requires=b['requires'], auto_powers=b['auto_powers'])
+                for b in s['bonuses']
+            ],
+            min_level=s['min_level'],
+            max_level=s['max_level'],
+            store_product=s['store_product'],
+        )
+        for s in data
+    ]
+
+
+def _tier_gate(bonus: BoostBonusEntry) -> str | None:
+    """What a bonus tier's `Requires` gates it on: `'base'`, `'pvp'`, or None to skip.
+
+    A tier states its condition in the same RPN vocabulary a power's gate uses, and the
+    corpus states exactly four shapes across the three forks (258 gated tiers of 3,238):
+
+    - no Requires — applies on slotted-piece count alone.
+    - `isPVPMap?` — the PvP-only tier. A set states a second, different bonus at each
+      piece count that applies only on a PvP map, granting a `PVP_Set_Bonus` power.
+    - a `PowerBoostsSlotted>` test — the global a single unique piece grants by itself,
+      encoded as a tier whose condition is "that piece is slotted". SKIPPED, and not for
+      want of an evaluator: the binary ALSO encodes that global on the slottable piece,
+      proc-data carries it from there, and the calc grants it when the piece is slotted.
+      Emitting the tier too is the pseudo-tier double-count MEZRES-1 removed.
+    - a `TFChallenge.*` disjunction ANDed with `isPVPMap? !` — Rebirth's challenge-mode
+      bonuses, live only under a TF's challenge settings and off a PvP map. Rebirth-only,
+      granting `Challenge_Set_Bonus` powers. SKIPPED: no surface models challenge state.
+
+    An unrecognized shape raises. A tier the game gates and this catalog emits ungated
+    hands every build a bonus it has not earned, and one silently dropped is a bonus the
+    set grants that the planner never shows — so a fifth shape has to be read, not guessed.
+    """
+    requires = bonus.requires
+    if not requires:
+        return 'base'
+    if requires == ['isPVPMap?']:
+        return 'pvp'
+    if 'PowerBoostsSlotted>' in requires:
+        return None
+    if any(token.startswith('TFChallenge.') for token in requires):
+        return None
+    raise ValueError(
+        f'unrecognized set-bonus tier gate {requires!r} at {bonus.min_boosts}pc — '
+        'read what it gates on before emitting or skipping it (BONUS-REQ-1)'
+    )
+
+
+@dataclass
+class _JsonTemplate:
+    """The subset of an exported power.json effect template this script
+    reads (see power_to_dict()'s `effects[].templates[]` in export_powers.py)."""
+    attribs: list[str]
+    aspect: str
+    scale: float
+    table: str
+
+
+@dataclass
+class _JsonEffectGroup:
+    chance: float
+    ppm: float
+    templates: list[_JsonTemplate] = field(default_factory=list)
+
+
+@dataclass
+class _JsonPower:
+    """The subset of a power.json this script reads — a Boosts.*/Set_Bonus.*
+    power template, loaded from exported_powers/{boosts,set_bonus}/**."""
+    full_name: str
+    display_name: str
+    slot_requires: str
+    effects: list[_JsonEffectGroup] = field(default_factory=list)
+
+
+def _load_power_json(path: Path) -> _JsonPower:
+    d = json.loads(path.read_text(encoding='utf-8'))
+    effects = [
+        _JsonEffectGroup(
+            chance=eg.get('chance', 1.0),
+            ppm=eg.get('ppm', 0.0),
+            templates=[
+                _JsonTemplate(
+                    attribs=t.get('attribs') or [],
+                    aspect=t.get('aspect') or '',
+                    scale=t.get('scale', 0.0),
+                    table=t.get('table') or '',
+                )
+                for t in eg.get('templates', [])
+            ],
+        )
+        for eg in d.get('effects', [])
+    ]
+    return _JsonPower(
+        full_name=d['full_name'],
+        display_name=d.get('display_name', ''),
+        slot_requires=d.get('slot_requires', ''),
+        effects=effects,
+    )
+
+
+def _load_boost_piece_powers(export_dir: Path) -> dict[str, _JsonPower]:
+    """Index every committed Boosts.*/Set_Bonus.* power template by
+    full_name — the same lookup a live powers.bin parse's power_index gave
+    build_sets(), scoped to just the two boost-piece categories (this
+    script never needs a player power)."""
+    power_index: dict[str, _JsonPower] = {}
+    for tree_name in ('boosts', 'set_bonus'):
+        tree_dir = export_dir / tree_name
+        if not tree_dir.exists():
+            continue
+        for json_path in tree_dir.glob('*/*.json'):
+            if json_path.name == 'index.json':
+                continue
+            pw = _load_power_json(json_path)
+            power_index[pw.full_name] = pw
+    return power_index
+
 
 # ---------------------------------------------------------------------
 # Curated icon overrides for Rebirth-only sets.
@@ -165,39 +328,26 @@ ICON_OVERRIDES = {
 }
 
 # ---------------------------------------------------------------------
-# Curated piece data for Rebirth-only sets.
-# The binary extraction loses Accuracy aspects on many ATO pieces; Mids
-# exports use the standard ATO piece-name convention. Provide hand-curated
-# pieces so legacy "Set: Piece" Mids imports resolve correctly.
+# Curated aspects for the Rebirth-only ATO sets, whose binary extraction drops
+# the Accuracy aspect on every piece that has one. Fields only: each piece keeps
+# the name its own boost power gives it.
 # ---------------------------------------------------------------------
-def _ato_pieces(proc_name: str) -> list[dict]:
+def _ato_pieces() -> list[dict]:
     return [
-        {'num': 1, 'name': 'Accuracy/Damage',
-         'aspects': ['Accuracy', 'Damage'], 'proc': False, 'unique': True},
-        {'num': 2, 'name': 'Damage/RechargeTime',
-         'aspects': ['Damage', 'Recharge'], 'proc': False, 'unique': True},
-        {'num': 3, 'name': 'Accuracy/Damage/RechargeTime',
-         'aspects': ['Accuracy', 'Damage', 'Recharge'], 'proc': False, 'unique': True},
-        {'num': 4, 'name': 'Damage/Endurance/RechargeTime',
-         'aspects': ['Damage', 'Endurance', 'Recharge'], 'proc': False, 'unique': True},
-        {'num': 5, 'name': 'Accuracy/Damage/Endurance/RechargeTime',
-         'aspects': ['Accuracy', 'Damage', 'Endurance', 'Recharge'], 'proc': False, 'unique': True},
-        {'num': 6, 'name': proc_name,
-         'aspects': ['Recharge'], 'proc': True, 'unique': True},
+        {'num': 1, 'aspects': ['Accuracy', 'Damage'], 'proc': False, 'unique': True},
+        {'num': 2, 'aspects': ['Damage', 'Recharge'], 'proc': False, 'unique': True},
+        {'num': 3, 'aspects': ['Accuracy', 'Damage', 'Recharge'], 'proc': False, 'unique': True},
+        {'num': 4, 'aspects': ['Damage', 'Endurance', 'Recharge'], 'proc': False, 'unique': True},
+        {'num': 5, 'aspects': ['Accuracy', 'Damage', 'Endurance', 'Recharge'],
+         'proc': False, 'unique': True},
+        {'num': 6, 'aspects': ['Recharge'], 'proc': True, 'unique': True},
     ]
 
 PIECE_OVERRIDES = {
-    'guardians_gift':               _ato_pieces('RechargeTime/Chance for PBAoE Resolve'),
-    'superior_guardians_gift':      _ato_pieces('RechargeTime/Chance for PBAoE Resolve'),
-    'absolute_resolution':          _ato_pieces('RechargeTime/Chance for Energy Damage Bonus'),
-    'superior_absolute_resolution': _ato_pieces('RechargeTime/Chance for Energy Damage Bonus'),
-}
-
-# Rebirth renamed individual proc pieces from HC's naming. Applied after
-# the shared-HC override so the Rebirth-specific label wins.
-# Format: set_id → {piece_num: new_name}
-REBIRTH_PIECE_RENAMES = {
-    'ragnarok': {6: 'Chance for Knockdown'},
+    'guardians_gift':               _ato_pieces(),
+    'superior_guardians_gift':      _ato_pieces(),
+    'absolute_resolution':          _ato_pieces(),
+    'superior_absolute_resolution': _ato_pieces(),
 }
 
 # Per-piece aspect overrides for cases where the binary template carries
@@ -220,46 +370,36 @@ REBIRTH_PIECE_ASPECT_OVERRIDES: dict[str, dict[int, list[str]]] = {
 # Patch specific fields on a Rebirth-only piece the binary can't characterize.
 # Format: set_id → {piece_num: {field: value}}.
 #   Inexhaustibility's single piece carries only a `Set_Mode` marker template
-#   (no real attribs, no chance/ppm group), so it extracts as name="Empty",
-#   proc=false. It's a special Rest enhancement; restore the curated name +
-#   proc flag.
+#   (no real attribs, no chance/ppm group), so it extracts proc=false. It is a
+#   special Rest enhancement; restore the flag.
 #
-#   VERIFIED 2026-06-11 (verify-don't-assume): the patch is the CORRECT call,
-#   not a stopgap to be "fixed" away —
-#     * The piece's binary display_name is an unresolvable P-hash message ID
-#       (P3179408089), so even recognising the Set_Mode-piece shape can't name
-#       it without a localization-string table we don't parse. The curated name
-#       is the only source.
-#     * `proc=true` is right: the set's effect lives in the periodic-proc power
-#       Set_Bonus.Challenge_Set_Bonus.Inexhaustibility (activate_period=10,
-#       chance=0.5 → Heal 2.0 / +End 0.10 / +Regen 2.0), NOT an always-on set
-#       bonus. So the set's empty `bonuses` is CORRECT — emitting those values as
-#       a static bonus would over-count a +2.0 Regen that only procs on a 50%/10s
-#       tick. The proc itself is already captured (proc-data.ts +
-#       proc-residual-effects.ts, category 'Special' like the other bespoke
-#       Rebirth self-procs). Nothing is missing.
-#   Liberty's Belt #6 ("Resistance/Global Damage Bonus") carries an always-on
-#   global +Damage bonus FUSED onto a real Damage-Resistance enhancement aspect
-#   (the same shape as LotG's "Defense/+Recharge" in HC_PIECE_PATCHES). Proc
-#   detection misses the global because the piece also has a plain enhancement
-#   aspect, so the binary tags it proc=false / name="Damage Resistance"
-#   (leaving a tell-tale totalAspects=2). Restore the curated name + proc flag;
-#   findProcData resolves the effect by set name → the "Liberty's Belt:
-#   Resistance/Global Damage Bonus" PROC_DATABASE / proc-residual-effects entry.
+#   VERIFIED 2026-06-11 (verify-don't-assume): `proc=true` is right. The set's
+#   effect lives in the periodic-proc power Set_Bonus.Challenge_Set_Bonus.
+#   Inexhaustibility (activate_period=10, chance=0.5 → Heal 2.0 / +End 0.10 /
+#   +Regen 2.0), NOT an always-on set bonus. So the set's empty `bonuses` is
+#   CORRECT — emitting those values as a static bonus would over-count a +2.0
+#   Regen that only procs on a 50%/10s tick. The proc itself is already captured
+#   (proc-data.ts + proc-residual-effects.ts, category 'Special' like the other
+#   bespoke Rebirth self-procs). Nothing is missing.
+#
+#   The name is no longer patched. That entry was justified by the piece's
+#   display_name being an unresolvable P-hash (P3179408089); the committed export
+#   now resolves it to "Inexhaustibility: Out of Combat +Hit Points/Endurance",
+#   which is both readable and better than the curated "Inexhaustibility".
 REBIRTH_PIECE_PATCHES: dict[str, dict[int, dict]] = {
-    'inexhaustibility': {
-        1: {'name': 'Inexhaustibility', 'proc': True},
-    },
+    # Liberty's Belt F "Resistance/Global Damage Bonus": a hybrid piece — a
+    # real resist enhancement PLUS an always-on +7.5% damage global. The
+    # global lives in a PowerBoostsSlotted-gated auto (BOOST-4), not on the
+    # boost power, so nothing on the piece itself marks it; same shape as
+    # HC's hand-patched hybrids (Steadfast Resistance/Defense, LotG
+    # Defense/+Recharge). The flag is what admits the piece to the engine's
+    # always-on pass and adds the hidden segment to its enhancement
+    # dilution (BOOST-5 step 2 adjudication).
     'libertys_belt': {
-        6: {'name': 'Resistance/Global Damage Bonus', 'proc': True},
+        6: {'proc': True},
     },
-    # The F piece's display_name doesn't resolve from this vintage of the name
-    # tables (the extractor emits "Empty"); the resolved name matches the boost's
-    # in-game label. proc=True routes it through findProcData / the engine's
-    # always-on global pass (20% end-drain resist, see proc-residual-effects.ts).
-    'synapses_agility': {
-        6: {'name': 'Endurance Drain Resistance (20%)', 'proc': True},
-    },
+    # (inexhaustibility #1's flag is structural now: its boost power is a
+    # pure Null × Strength marker, recognized by _collapse_aspects.)
 }
 
 # ---------------------------------------------------------------------
@@ -270,37 +410,15 @@ REBIRTH_PIECE_PATCHES: dict[str, dict[int, dict]] = {
 # io-sets-raw.ts (parsed by _load_hc_sets), which is correct for them.
 # ---------------------------------------------------------------------
 
-# Sets whose set-bonus tiers can't be fully binary-sourced — keep HC's
-# hand-curated `bonuses` array verbatim:
-#   - Unique global IOs encode their signature global (e.g. Steadfast +3% Def,
-#     Kismet +Acc, Karma/BotZ +KB protection) as a slottable PIECE, not a
-#     Set_Bonus auto-power, so the binary has no bonus to resolve for it.
-#   - PvP sets carry a second, PvP-only value for each tier that boostsets.bin
-#     references with an empty auto-power list (the binary can't reach it). The
-#     PvE bonuses extract correctly, but we keep the hand entry so the planner
-#     still shows the PvP-mode values (which the calc skips in PvE anyway).
-HC_UNIQUE_GLOBAL_SETS = {
-    'gift_of_the_ancients', 'shield_wall', 'karma', 'kheldians_grace',
-    'superior_kheldians_grace', 'impervious_skin', 'unbreakable_guard',
-    'gladiators_armor', 'rectified_reticle', 'synapses_shock',
-    'steadfast_protection', 'blessing_of_the_zephyr',
-}
-HC_PVP_SETS = {
-    'gladiators_strike', 'gladiators_javelin', 'javelin_volley',
-    'fury_of_the_gladiator', 'shield_wall', 'gladiators_armor', 'panacea',
-    'gladiators_net', 'experienced_marksman',
-}
-HC_HAND_BONUS_SETS = HC_UNIQUE_GLOBAL_SETS | HC_PVP_SETS
-
 # Sets the binary skips entirely (rarity=ECUniversalDamage has its own
 # multi-thousand-power pool and no planner rarity mapping) — copy the whole
 # hand entry. These wide-pool universal-damage sets slot into nearly every
 # attack power.
 HC_WHOLESET_SETS = {'cupids_crush', 'overwhelming_force'}
 
-# Per-piece aspect overrides for the handful of pieces the binary mis-extracts
-# (kept matching HC's curated names). Each replaces the parsed aspect list and
-# regenerates the piece name from the canonical ordering.
+# Per-piece aspect overrides for the handful of pieces the binary mis-extracts.
+# Each replaces the parsed aspect list; the piece keeps the name its boost power
+# gave it, which is free to describe the piece differently.
 #   - hypersonic #4: a "+Fly Magnitude" special aspect alongside Fly the binary
 #     template doesn't surface.
 #   - blessing_of_the_zephyr / winters_gift: the all-three-movement-speeds
@@ -326,50 +444,49 @@ HC_PIECE_ASPECT_OVERRIDES: dict[str, dict[int, list[str]]] = {
     },
 }
 
-# Curated name + proc flag for global/special proc pieces the binary can't
-# characterize. These carry an always-on global (Luck of the Gambler +Recharge,
-# Steadfast +Def, the +Run Speed / +Perception / +Jump Height travel globals) or
-# a Grant_Power proc, encoded as a Null / Grant_Power / Current / Maximum
-# template that ISN'T a plain enhancement aspect — so proc detection misses it
-# when the piece also has a real enhancement aspect, and the global's identity
-# (its "+X" label) isn't derivable from the template at all (a `Null` row doesn't
-# say "Recharge"). The calc gates global/proc application on the piece's `proc`
-# flag (findProcData resolves the effect by set name), so without the flag the
-# global is silently dropped. Names mirror the prior curated io-sets-raw so the
-# slot UI matches in-game. (Sourced from the hand data, not the regenerated file,
-# so it's reproducible — the self-referential _load_hc_sets snapshot is already
-# binary by the time overrides run.) Enhancement aspects + scale-derived
-# totalAspects come from the binary unchanged (verified equal to the hand data).
+# The `proc` flag for global/special pieces the binary doesn't characterize as
+# procs. These carry an always-on global (Luck of the Gambler +Recharge, Steadfast
+# +Def, the +Run Speed / +Perception / +Jump Height travel globals) or a
+# Grant_Power proc, encoded as a Null / Grant_Power / Current / Maximum template
+# that ISN'T a plain enhancement aspect — so proc detection misses it whenever the
+# piece also has a real enhancement aspect. The calc gates global/proc application
+# on this flag (findProcData resolves the effect by set name), so a piece without
+# it drops its global from both the slot UI and the character totals.
+#
+# Flags only. The piece's name comes from its boost power like every other
+# piece's, and the global's identity reads far better there than in anything
+# assembled from templates: the game calls Luck of the Gambler #6 "Defense/
+# Increased Global Recharge Speed" and Reactive Defenses #6 "Scaling Damage
+# Resistance". Enhancement aspects and scale-derived totalAspects come from the
+# binary unchanged.
 HC_PIECE_PATCHES: dict[str, dict[int, dict]] = {
-    'luck_of_the_gambler':       {6: {'name': 'Defense/+Recharge', 'proc': True}},
-    'gift_of_the_ancients':      {6: {'name': 'Defense/+Run Speed', 'proc': True}},
-    'steadfast_protection':      {2: {'name': 'Damage Resistance/+Def(All)', 'proc': True},
-                                  3: {'name': 'Knockback Protection', 'proc': True}},
-    'reactive_defenses':         {6: {'name': '+Res(All)', 'proc': True}},
-    'thrust':                    {4: {'name': 'Run/+Run Speed', 'proc': True}},
+    'luck_of_the_gambler':       {6: {'proc': True}},
+    'gift_of_the_ancients':      {6: {'proc': True}},
+    'steadfast_protection':      {2: {'proc': True},
+                                  3: {'proc': True}},
+    'reactive_defenses':         {6: {'proc': True}},
+    'thrust':                    {4: {'proc': True}},
     # Travel-set +Stealth globals. The stealth grant is a Create_Entity template,
-    # which CREATE_ENTITY_LABEL names "Resurrect" (correct for RFtG, wrong here) —
-    # yielding a bogus "Chance for Resurrect". Force the real "+Stealth" name +
-    # proc flag (findProcData resolves the effect by set name: Celerity → "Buff
-    # Stealth"; the others have explicit "<Set>: +Stealth" PROC_DATABASE keys).
-    'celerity':                  {3: {'name': '+Stealth', 'proc': True}},
-    'freebird':                  {3: {'name': '+Stealth', 'proc': True}},
-    'timespace_manipulation':    {3: {'name': '+Stealth', 'proc': True}},
-    'unbounded_leap':            {3: {'name': '+Stealth', 'proc': True}},
-    # EndMod/+Run Speed always-on global (the bin tagged it proc:false, name "EndMod").
-    'synapses_shock':            {6: {'name': 'EndMod/+Run Speed', 'proc': True}},
-    'warp':                      {4: {'name': 'Range/+Perception', 'proc': True}},
-    'launch':                    {4: {'name': 'Jump/+Jump Height/+Max Jump Height', 'proc': True}},
-    # Stupefy #6 is a Chance-for-Knockback proc (not a global): the binary
-    # can't label a Knockback proc effect (no _PROC_EFFECT_LABEL entry), so it
-    # falls back to bare "Chance". Without the real name, findProcData's set
-    # fallback returns the wrong Stupefy entry (the generic "Chance for Stun"
-    # sits before "Chance for Knockback" in PROC_DATABASE).
-    'stupefy':                   {6: {'name': 'Chance for Knockback', 'proc': True}},
-    'assassins_mark':            {6: {'name': 'Recharge/Chance for Recharge Power', 'proc': True}},
-    'superior_assassins_mark':   {6: {'name': 'Recharge/Chance for Recharge Power', 'proc': True}},
-    'essence_transfer':          {6: {'name': 'Recharge/Chance for +Health', 'proc': True}},
-    'superior_essence_transfer': {6: {'name': 'Recharge/Chance for +Health', 'proc': True}},
+    # which proc detection doesn't read as one. findProcData resolves the effect
+    # by set name: Celerity → "Buff Stealth"; the others have explicit
+    # "<Set>: +Stealth" PROC_DATABASE keys.
+    'celerity':                  {3: {'proc': True}},
+    'freebird':                  {3: {'proc': True}},
+    'timespace_manipulation':    {3: {'proc': True}},
+    'unbounded_leap':            {3: {'proc': True}},
+    # An always-on +Run Speed global the bin tags proc:false.
+    'synapses_shock':            {6: {'proc': True}},
+    'warp':                      {4: {'proc': True}},
+    'launch':                    {4: {'proc': True}},
+    # Stupefy #6 is a Chance-for-Knockback proc, not a global. Its name matters
+    # beyond display: Stupefy has two PROC_DATABASE entries, and findProcData's
+    # set fallback hands back whichever sits first ("Chance for Stun") unless the
+    # name picks the right one. The boost power names it "Chance for Knockback".
+    'stupefy':                   {6: {'proc': True}},
+    'assassins_mark':            {6: {'proc': True}},
+    'superior_assassins_mark':   {6: {'proc': True}},
+    'essence_transfer':          {6: {'proc': True}},
+    'superior_essence_transfer': {6: {'proc': True}},
     # ATO passive-global 6th pieces — the special is an ALWAYS-ON global (not a
     # chance-proc), so the binary tags them proc:false and the global is dropped
     # from BOTH the slot UI and the character totals. (Reported via Scrapper's
@@ -379,16 +496,16 @@ HC_PIECE_PATCHES: dict[str, dict[int, dict]] = {
     # (std +2%/+4%, sup +3%/+6%, both confirmed in-game). findProcData resolves
     # each by set name, so the piece label is cosmetic; each set has exactly one
     # global proc-data entry so the set fallback is unambiguous.
-    'scrappers_strike':                   {6: {'name': 'Recharge/Critical Hit Bonus', 'proc': True}},
-    'superior_scrappers_strike':          {6: {'name': 'Recharge/Critical Hit Bonus', 'proc': True}},
-    'command_of_the_mastermind':          {6: {'name': 'Recharge/Pet Defense Bonus', 'proc': True}},
-    'superior_command_of_the_mastermind': {6: {'name': 'Recharge/Pet Defense Bonus', 'proc': True}},
-    'kheldians_grace':                    {6: {'name': 'Recharge/Resistance Bonus', 'proc': True}},
-    'superior_kheldians_grace':           {6: {'name': 'Recharge/Resistance Bonus', 'proc': True}},
-    'mark_of_supremacy':                  {6: {'name': 'Recharge/Pet Resistance Bonus', 'proc': True}},
-    'superior_mark_of_supremacy':         {6: {'name': 'Recharge/Pet Resistance Bonus', 'proc': True}},
-    'spiders_bite':                       {6: {'name': 'Recharge/Pet Toxic Bonus', 'proc': True}},
-    'superior_spiders_bite':              {6: {'name': 'Recharge/Pet Toxic Bonus', 'proc': True}},
+    'scrappers_strike':                   {6: {'proc': True}},
+    'superior_scrappers_strike':          {6: {'proc': True}},
+    'command_of_the_mastermind':          {6: {'proc': True}},
+    'superior_command_of_the_mastermind': {6: {'proc': True}},
+    'kheldians_grace':                    {6: {'proc': True}},
+    'superior_kheldians_grace':           {6: {'proc': True}},
+    'mark_of_supremacy':                  {6: {'proc': True}},
+    'superior_mark_of_supremacy':         {6: {'proc': True}},
+    'spiders_bite':                       {6: {'proc': True}},
+    'superior_spiders_bite':              {6: {'proc': True}},
 }
 
 # ---------------------------------------------------------------------
@@ -419,6 +536,12 @@ EC_RARITY_TO_PLANNER = {
     '':                     'event',
 }
 
+# Binary rarity tiers whose enhancement values run 25% hot: the very-rare
+# (purple) tiers plus the catalyzed Superior variants. The engine twins
+# (getSetRarityMultiplier / set_rarity_multiplier) carry the same vocabulary,
+# pinned TS<->Rust by the enhancement fixtures.
+SUPERIOR_RARITIES = {'ECVeryRare', 'ECUltraRare', 'ECSATO', 'ECSATO2', 'ECSWinter', 'ECSHalloween'}
+
 # ---------------------------------------------------------------------
 # Damage-type attribs that collapse into a single "Damage" aspect when
 # all 8 are present. Boost pieces enhance every damage type at once.
@@ -440,22 +563,22 @@ MEZ_ATTRIBS = {'Held', 'Stunned', 'Sleep', 'Confused', 'Terrorized', 'Immobilize
 
 # Defense attribs — a Defense BUFF piece carries Base_Defense plus the typed +
 # positional defense scalars; a Defense DEBUFF piece carries Base_Defense alone.
-# Both collapse to a single aspect, distinguished by the set's EC* category
+# Both collapse to a single aspect, distinguished by the set's slot GROUP
 # (verified against HC's hand-curated Aegis / Achilles' Heel / etc.).
 DEFENSE_ATTRIBS = {
     'Base_Defense', 'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy',
     'Negative_Energy', 'Psionic', 'Toxic', 'Melee', 'Ranged', 'Area',
 }
-DEFENSE_DEBUFF_CATEGORIES = {'ECDefenseDebuff', 'ECAccurateDefenseDebuff'}
+DEFENSE_DEBUFF_GROUPS = {'Defense Debuff', 'Accurate Defense Debuff'}
 
 # Movement-speed attribs. A Slow set debuffs ALL movement, so its pieces carry
 # all three speeds → single "Slow" aspect. Travel sets buff one mode → Run /
 # Fly / Jump individually (JumpHeight rides along with JumpingSpeed).
 MOVEMENT_SPEED_ATTRIBS = {'RunningSpeed', 'FlyingSpeed', 'JumpingSpeed'}
 
-# ToHit is one binary attrib; the set category decides buff vs debuff label,
+# ToHit is one binary attrib; the set's slot group decides buff vs debuff label,
 # matching HC's hand data ("ToHit" for buff sets, "ToHit Debuff" for debuff).
-TOHIT_DEBUFF_CATEGORIES = {'ECToHitDeBuff', 'ECAccurateToHitDebuff'}
+TOHIT_DEBUFF_GROUPS = {'To Hit Debuff', 'Accurate To-Hit Debuff'}
 
 # Map of bin attrib → planner aspect label (for boost pieces).
 ATTRIB_TO_ASPECT = {
@@ -492,9 +615,15 @@ ATTRIB_TO_ASPECT = {
     # Taunt/placate enhancement → Threat (Mocking Beratement, Perfect Zinger…).
     'Taunt':              'Threat',
     'Placate':            'Threat',
+    # The snipe sets' interrupt-reduction aspect. The engine's aspect
+    # vocabulary accepts "InterruptTime" (enhancement.rs, schedule C via the
+    # Melee_Boosts_40 table) — dropping the attrib here left that slot fed by
+    # nobody, so the six Interrupt pieces enhanced nothing and leaned on a
+    # totalAspects stamp for their dilution (BOOST-5 step 2, the beta led).
+    'InterruptTime':      'InterruptTime',
     'Unknown(91)':        'InterruptTime',
     # 'ToHit' is intentionally absent — mapped contextually in
-    # _collapse_aspects (buff vs debuff by set category).
+    # _collapse_aspects (buff vs debuff by set group).
     # Unknown indices we've seen in boost pieces — map to the most common
     # CoH boost-type meaning. These are heuristics; refine when the
     # binary parser maps them properly.
@@ -508,29 +637,69 @@ ATTRIB_TO_ASPECT = {
 }
 
 
-def _collapse_aspects(attribs: list[str], set_category: str = '') -> tuple[list[str], bool]:
+def _requires_text(requires) -> str:
+    """A `Requires` expression as one string, for asking whether a token appears.
+
+    The export states a requires clause as its RPN TOKEN LIST (COND-8); older
+    trees stated the same clause pre-joined. Both are accepted, and the joined
+    form is built here only to be searched — never re-split, because a token can
+    itself contain a space.
+    """
+    if requires is None:
+        return ''
+    if isinstance(requires, str):
+        return requires
+    if isinstance(requires, list):
+        return ' '.join(str(t) for t in requires)
+    raise TypeError(f'unhandled Requires shape {type(requires).__name__}: {requires!r}')
+
+
+def _collapse_aspects(attribs: list[str], set_group: str = '') -> tuple[list[str], bool]:
     """Collapse a piece's attribs into planner aspect labels.
 
     Returns (aspects, is_proc). is_proc=True when the piece carries a
     proc-marker attrib (Unknown(116) or similar). Aspects are returned
     in CoH community order (Accuracy, Damage, Endurance, Recharge, then
-    others) so the generated piece names match HC's hand-curated entries
-    and Mids exports — "Accuracy/Damage" not "Damage/Accuracy".
+    others) rather than the binary's, so the list reads the way players
+    talk about a piece — "Accuracy/Damage" not "Damage/Accuracy".
 
-    `set_category` is the boostset's EC* category (e.g. "ECResist", "ECMelee").
-    In CoH, boost pieces with the 8 damage-type attribs always have
-    aspect=Strength in the binary — the slotted power decides which
-    "Strength" scalar that buffs. For a Resist Damage set (ECResist) the
-    relevant scalar is the power's resistance scale, so the planner should
-    label those pieces "Damage Resistance" rather than "Damage" to match
+    `set_group` is the set's slot group — `_resolve_category`, i.e. the record's
+    `GroupName` ("Resist Damage", "Melee Damage", …). In CoH, boost pieces with
+    the 8 damage-type attribs always have aspect=Strength in the binary — the
+    slotted power decides which "Strength" scalar that buffs. For a Resist Damage
+    set the relevant scalar is the power's resistance scale, so the planner
+    should label those pieces "Damage Resistance" rather than "Damage" to match
     HC's hand-curated convention (Aegis, Impervium Armor, etc.).
+
+    This keys on GroupName and not on the record's `Category`, which the game
+    leaves BLANK for every PvP, purple, event and ATO set — 31 of Homecoming's
+    227, 100 of Rebirth's 233. Gladiator's Armor (PvP, all three forks) and
+    Rebirth's Liberty's Belt (event) are Resist Damage sets with no category, so
+    the old test labelled their resist pieces "Damage" and the engine dropped
+    their resistance out of the totals while the power window (reading the
+    hand-curated table) showed it — reported 2026-08-17. GroupName is stated by
+    every record and is the only name the game's own boostset path tests
+    (`_resolve_category`, BOOST-2); keying all three labels on it changes exactly
+    those four sets and nothing else on any fork.
     """
     aspects: list[str] = []
     is_proc = False
     distinct = set(attribs)
 
+    # A piece whose only attrib is Null carries no enhancement at all — the
+    # Null × Strength × scale=1 template is a pure special-piece marker (the
+    # third marker shape, alongside Create_Entity × Current and Null ×
+    # Absolute). Reactive Defenses F, Inexhaustibility A and Synapse's
+    # Agility F all state their always-on global this way; the global itself
+    # lives in a separate PowerBoostsSlotted-gated auto (BOOST-4), so the
+    # boost power shows only the marker. Pure markers only: a piece that
+    # ALSO enhances (Experienced Marksman F's Range) keeps its aspect list
+    # and is not flipped here — its dilution is stated by its own scale.
+    if distinct == {'Null'}:
+        return [], True
+
     if DAMAGE_ATTRIBS.issubset(distinct):
-        aspects.append('Damage Resistance' if set_category == 'ECResist' else 'Damage')
+        aspects.append('Damage Resistance' if set_group == 'Resist Damage' else 'Damage')
         distinct -= DAMAGE_ATTRIBS
 
     if MEZ_ATTRIBS.issubset(distinct):
@@ -540,7 +709,7 @@ def _collapse_aspects(attribs: list[str], set_category: str = '') -> tuple[list[
     # Defense buff/debuff — Base_Defense marks a defense piece (buffs also carry
     # the typed + positional scalars). One aspect, labelled by set category.
     if 'Base_Defense' in distinct:
-        aspects.append('Defense Debuff' if set_category in DEFENSE_DEBUFF_CATEGORIES else 'Defense')
+        aspects.append('Defense Debuff' if set_group in DEFENSE_DEBUFF_GROUPS else 'Defense')
         distinct -= DEFENSE_ATTRIBS
 
     # Slow — a Slow set debuffs all movement, so all three speeds are present.
@@ -552,7 +721,7 @@ def _collapse_aspects(attribs: list[str], set_category: str = '') -> tuple[list[
 
     # ToHit — one binary attrib; the set category decides buff vs debuff label.
     if 'ToHit' in distinct:
-        aspects.append('ToHit Debuff' if set_category in TOHIT_DEBUFF_CATEGORIES else 'ToHit')
+        aspects.append('ToHit Debuff' if set_group in TOHIT_DEBUFF_GROUPS else 'ToHit')
         distinct.discard('ToHit')
 
     for a in sorted(distinct):
@@ -570,11 +739,12 @@ def _collapse_aspects(attribs: list[str], set_category: str = '') -> tuple[list[
 # CoH community / Mids canonical piece-name ordering. The four most-
 # common attack-IO aspects come first in this fixed order; anything
 # else (procs, exotic mez aspects) follows alphabetically. Used by
-# `_collapse_aspects` so a piece carrying {Damage, Accuracy} surfaces
-# as "Accuracy/Damage" — matching how HC's hand-curated data names
-# them and how players reference them in Mids exports.
-# Full aspect ordering, derived from HC's hand-curated piece names (the order
-# players see in Mids exports). Recharge is always last; Accuracy first; the
+# `_collapse_aspects`, so a piece carrying {Damage, Accuracy} lists them in a
+# stable order rather than the binary's.
+#
+# This orders the ASPECT LIST only; piece names come from the boost power and
+# follow the game's own ordering, which is not this one. Recharge is last here;
+# Accuracy first; the
 # "type" aspects (Damage/Resistance/Defense) and EndMod precede Endurance;
 # Heal/Absorb sit just after Endurance; mez/movement/utility aspects follow,
 # before Recharge. Any aspect NOT listed falls to the end alphabetically, so
@@ -665,6 +835,31 @@ def _piece_name_from_aspects(aspects: list[str]) -> str:
     return '/'.join(aspects)
 
 
+def _piece_name_from_display(display: str) -> str | None:
+    """The game's own name for a boost piece, read off the boost power.
+
+    A boost power's display_name is "<qualifiers and set name>: <piece name>" —
+    "Aegis: Resistance/Endurance", "(Blaster) Defiant Barrage: Accuracy/Damage".
+    The split is on the LAST colon, because the head is not a dependable copy of
+    the set's own name and can hold a colon of its own: the binary spells one set
+    "Ascendancy" and its pieces "Ascendency", Rebirth's "Numina's Convalesence"
+    pieces say "Convalescence", and three Superior ATO pieces read "Superior:
+    Brute's Fury: ...". No piece name on any fork contains a colon, so the last
+    one is always the separator.
+
+    None means the export carries no name here, and the caller keeps whatever it
+    derived. Returning the whole string instead would salvage nothing: the only
+    separator-less display names in any fork are the two Thunderspy Scourging
+    Blast procs, whose display_name is an unresolved clientmessages id
+    ("P455782297") — a hash to print at the player, not a name.
+    """
+    text = (display or '').strip()
+    _head, sep, tail = text.rpartition(':')
+    if not sep:
+        return None
+    return tail.strip() or None
+
+
 # Multi-aspect dilution modifier — mirrors getMultiAspectModifier() in
 # src/utils/calculations/enhancement-values.ts: an IO that enhances N aspects
 # delivers each at this fraction of the single-aspect base.
@@ -732,13 +927,96 @@ def _derive_effective_aspect_count(enh_scales: list[float], rarity_mult: float) 
 _DMG_STRENGTH = {(a, 'Strength') for a in DAMAGE_ATTRIBS}
 # All-8 damage Resistance → damage_resistance_(all).
 _DMG_RESIST = {(a, 'Resistance') for a in DAMAGE_ATTRIBS}
-# All-6 mez Resistance → mez_resistance_(all). The planner has no per-type mez
-# resistance key, so individual mez resistance is intentionally NOT mapped —
-# only the all-6 collapse produces a recognised key.
+# All-6 mez Resistance → mez_resistance_(all). Only the all-6 collapse produces a
+# recognised key; a lone mez type has no per-type bonus stat in the vocabulary.
+# The collapse is lossy on its own — `(all)` names no types, and the calc has six
+# separate per-type accumulators to spend it into — so the consumed types ride
+# along on the emitted effect (`mez_types`). See _MEZ_ATTRIB_TO_TYPE.
 _MEZ_RESIST = {(m, 'Resistance') for m in MEZ_ATTRIBS}
 
-# (attrib, aspect) → planner-canonical bonus stat key. Keys match
-# STAT_NAME_MAP in set-bonuses.ts. Paired members are emitted as their own
+# Mez attrib → the planner's lowercase mez-type key (the `effects.mezResistance`
+# vocabulary a power's own mez resistance already uses, so a set bonus and a power
+# feed the same six accumulators). Terrorized is spelled `fear` there.
+_MEZ_ATTRIB_TO_TYPE = {
+    'Held': 'hold',
+    'Stunned': 'stun',
+    'Immobilized': 'immobilize',
+    'Sleep': 'sleep',
+    'Confused': 'confuse',
+    'Terrorized': 'fear',
+}
+
+
+def _binary_piece_names(set_id: str, ctx: dict | None) -> dict[int, str]:
+    """Piece number → the game's name for it, read straight from the boost powers.
+
+    For the sets whose hand-curated entry replaces the binary one wholesale. Those
+    are copied because `build_sets` skips the record (no planner rarity for its
+    tier), not because the record is unreadable — its boost powers name their
+    pieces like every other set's.
+    """
+    if not ctx:
+        return {}
+    record = next(
+        (s for s in ctx['sets'] if s.name.lower().replace('-', '').replace('__', '_') == set_id),
+        None,
+    )
+    if record is None:
+        return {}
+    names: dict[int, str] = {}
+    for index, entry in enumerate(record.boostlists):
+        if not entry.boosts:
+            continue
+        name = _piece_name_from_display(_power_display_name(ctx['power_index'].get(entry.boosts[0])))
+        if name:
+            names[index + 1] = name
+    return names
+
+
+def _binary_mez_types_by_tier(set_id: str, ctx: dict | None) -> dict[int, list[str]]:
+    """Tier (piece threshold) → mez types, read straight from the binary set record's
+    bonus auto-powers. For the sets whose hand-curated entry replaces the binary
+    bonuses wholesale, the binary record is the only surviving witness to which types
+    an `(all)` label covers."""
+    if not ctx:
+        return {}
+    record = next(
+        (
+            s
+            for s in ctx['sets']
+            if s.name.lower().replace('-', '').replace('__', '_') == set_id
+        ),
+        None,
+    )
+    if record is None:
+        return {}
+    by_tier: dict[int, list[str]] = {}
+    for bonus in record.bonuses:
+        if _tier_gate(bonus) != 'base':
+            continue
+        for auto_power in (bonus.auto_powers or []):
+            power = ctx['power_index'].get(auto_power)
+            types = _mez_types_of(power) if power else []
+            if types:
+                by_tier[bonus.min_boosts] = types
+    return by_tier
+
+
+def _mez_types_of(set_bonus_power) -> list[str]:
+    """The mez types a Set_Bonus power resists, as planner keys — or [] unless it
+    resists all six. Partial coverage has no `(all)` warrant and no per-type bonus
+    stat to carry it, so it is reported as absent rather than guessed at."""
+    attribs: set[str] = set()
+    for eg in (set_bonus_power.effects or []):
+        for t in (eg.templates or []):
+            if (t.aspect or '') == 'Resistance':
+                attribs |= set(t.attribs or []) & MEZ_ATTRIBS
+    if attribs != MEZ_ATTRIBS:
+        return []
+    return sorted(_MEZ_ATTRIB_TO_TYPE[a] for a in attribs)
+
+# (attrib, aspect) → planner-canonical bonus stat key. Keys match the statNameMap
+# in contract/set-bonus-stat-vocab.json. Paired members are emitted as their own
 # key here (e.g. both Fire_Dmg and Cold_Dmg → damage_resistance_(fire/cold));
 # the de-dup in _resolve_bonus_effects keeps only the alpha-first of a pair.
 LEGACY_ATTRIB_TO_BONUS_STAT = {
@@ -880,8 +1158,15 @@ def _bonus_stat_from_bridge(attrib: str, aspect: str, table: str = '') -> str | 
     if et == 'Movement':
         return 'increased_movement'
     if et == 'MezResist':
-        # Planner tracks mez resistance as one aggregate stat only.
-        return 'mez_resistance_(all)'
+        # `mez_resistance_(all)` is emitted by the family collapse in
+        # _resolve_bonus_effects, which only fires when all six mez types are present —
+        # that issubset check IS the warrant for the `(all)` label. Reaching here means a
+        # single mez type arrived on its own, so answering `(all)` would fabricate the
+        # warrant the collapse withheld, and the row would carry no mez_types for the calc
+        # to spend (the MEZRES-1 shape). Repel is the one such type with a set-bonus
+        # carrier and a global of its own (MEZRES-3); everything else returns None and is
+        # reported as unmapped rather than guessed at.
+        return 'repel_resistance' if sub == 'repel' else None
     if et == 'Mez' and sub in {'knockback', 'knockup'}:
         return 'knockback_protection'
     if et == 'Knockback':
@@ -908,29 +1193,28 @@ _BONUS_STAT_PAIRS = [
     ('+res(recharge_debuff)', '+res(slow)'),
 ]
 
-# Per-dataset damage-buff (aspect=Strength) set-bonus multiplier. The damage
-# set-bonus SCALE is stored differently per server: HC stores it at 0.4× the
-# natural value (raw scale 0.016 → 4%), so the game applies ×250; Rebirth stores
-# the SAME bonuses at the natural scale (raw 0.04 → 4%), so they need ×100.
-# Verified against the in-game Liberty's Belt tooltip: 3pc raw scale 0.025 →
-# 2.5% (×100), NOT 6.25% (×250). Confirmed by raw-bin comparison — HC damage
-# scales span 0.004–0.016, Rebirth's 0.01–0.04 (exactly 2.5× HC's). Non-damage
-# Strength buffs (recharge/accuracy/…) use ×100 on BOTH servers and are correct.
-# Set by main() from DATASET_CONFIG; default 250 (HC/tspy).
-_DAMAGE_STRENGTH_MULT: float = 250.0
-
-# Per-attrib scale→value multiplier. Cross-validated against all 225 shared HC
-# hand-data sets (see HC-IO-SETS-BINARY-SOURCING.md). The game multiplies the
-# stored `scale` by an attrib-specific modifier to get the displayed %:
-#   - damage buff (damage-type attribs, aspect=Strength) → _DAMAGE_STRENGTH_MULT
-#     (×250 HC/tspy, ×100 Rebirth — the raw bin scale differs; see above)
+# Per-attrib scale→value multiplier. Empirically derived and cross-validated
+# against all 225 shared HC hand-data sets (scripts: see HC-IO-SETS-BINARY-
+# SOURCING.md): every shared tier reproduces the hand value within float
+# rounding. The game multiplies the stored `scale` by an attrib-specific
+# modifier to get the displayed %:
+#   - damage buff (damage-type attribs, aspect=Strength)
+#     on HC's SetBonusPetShare table                     → ×250
 #   - max HP (HitPoints/Maximum)                         → ×10
 #   - max endurance (Endurance/Maximum)                  → ×1 (scale is already %)
 #   - everything else (resistance, defence, recharge,
 #     recovery, regen, movement, mez-res, durations, …)  → ×100
-def _bonus_multiplier(attrib: str, aspect: str) -> float:
+#
+# The damage ×2.5 belongs to HC's SetBonusPetShare authoring, not to the
+# damage attribs: Rebirth/Thunderspy re-authored their damage tiers on
+# Melee_Ones with the ×2.5 folded into the scale (Increased_Damage_5 is
+# HC 0.012×SetBonusPetShare and Rebirth 0.03×Melee_Ones — the same 3%),
+# while every non-damage tier kept its scale unchanged across the table
+# move. Keying the ×250 on the attrib alone inflated the fork-authored
+# damage tiers ×2.5 (BOOST-5).
+def _bonus_multiplier(attrib: str, aspect: str, table: str) -> float:
     if aspect == 'Strength' and attrib in DAMAGE_ATTRIBS:
-        return _DAMAGE_STRENGTH_MULT
+        return 250.0 if table == 'SetBonusPetShare' else 100.0
     if aspect == 'Maximum':
         if attrib == 'HitPoints':
             return 10.0
@@ -957,8 +1241,26 @@ _UNMAPPED_BONUS_PAIRS: dict[tuple[str, str], int] = {}
 # Printed at end-of-run as override candidates; not silently emitted.
 _ASPECT_COUNT_UNDERSHOOTS: list[str] = []
 
+# Hand-curated `mez_resistance_(all)` tiers the binary had no matching tier to carry
+# types across from (see _apply_homecoming_overrides). Reported at end-of-run: the
+# calc needs the types to spend the bonus, so an entry here is a bonus that would
+# reach the planner uncarried, not a cosmetic gap.
+_HAND_BONUS_UNTYPED: list[str] = []
 
-def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
+# Pieces whose boost power carries no readable display_name, so the game's own
+# name for them is unavailable and the derived one stands. Reported at end-of-run
+# because the derived name is a guess wherever it differs from the game's, and a
+# growing list here means the message table is resolving worse than it used to.
+_PIECE_NAME_UNAVAILABLE: list[str] = []
+
+# Shared sets where this fork's own build resolved NO bonus tiers, so HC's stood
+# in (see _reuse_hand_entry). Reported at end-of-run: each entry is a set whose
+# shipped bonuses are another fork's authoring, standing where the fork's own
+# resolution came up empty — a resolution gap to close, not a convention.
+_SHARED_BONUS_FALLBACK: list[str] = []
+
+
+def _resolve_bonus_effects(set_bonus_power: _JsonPower) -> list[dict]:
     """Build the planner's bonus effects[] list from a Set_Bonus power's
     effect templates.
 
@@ -976,7 +1278,7 @@ def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
             aspect = t.aspect or ''
             table = t.table or ''
             for a in (t.attribs or []):
-                value = round(abs(t.scale) * _bonus_multiplier(a, aspect), 4)
+                value = round(abs(t.scale) * _bonus_multiplier(a, aspect, table), 4)
                 entries.append((a, aspect, table, value))
 
     out: list[dict] = []
@@ -995,10 +1297,18 @@ def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
         if vals:
             key_values.setdefault('damage_resistance_(all)', []).append(max(vals))
         family_consumed |= _DMG_RESIST
+    key_types: dict[str, list[str]] = {}
     if _MEZ_RESIST.issubset(attset):
         vals = [v for a, asp, _, v in entries if (a, asp) in _MEZ_RESIST]
         if vals:
             key_values.setdefault('mez_resistance_(all)', []).append(max(vals))
+        # The types the `(all)` label stands for, so the calc spends the bonus into
+        # the same per-type accumulators a power's mez resistance feeds rather than
+        # re-deriving what "all" means. The issubset guard above is the warrant: the
+        # key is only emitted when every one of the six is present.
+        key_types['mez_resistance_(all)'] = sorted(
+            _MEZ_ATTRIB_TO_TYPE[a] for a, asp in _MEZ_RESIST
+        )
         family_consumed |= _MEZ_RESIST
 
     # Map remaining entries per-attrib through bridge/fallback resolver.
@@ -1026,7 +1336,10 @@ def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
             value = abs(value)
         value = round(value, 4)
         desc = f'+{value}% {key.replace("_", " ").title()}'
-        out.append({'stat': key, 'value': value, 'desc': desc})
+        effect = {'stat': key, 'value': value, 'desc': desc}
+        if key in key_types:
+            effect['mez_types'] = key_types[key]
+        out.append(effect)
     return out
 
 
@@ -1035,9 +1348,8 @@ def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
 # ---------------------------------------------------------------------
 
 def build_sets(
-    msgs,
     sets: list[BoostSetRecord],
-    power_index: dict[str, PowerRecord],
+    power_index: dict[str, _JsonPower],
     hc_sets: dict[str, dict],
 ) -> tuple[dict[str, dict], list[str]]:
     """Build the raw binary io-sets shape (one entry per boostset) from the
@@ -1056,17 +1368,14 @@ def build_sets(
         if not rarity:
             skipped.append(f'{s.name}: unmapped rarity {s.rarity!r}')
             continue
-        # _resolve_category applies the same rarity/name overrides used by
-        # build_power_category_index for the per-power allowedSetCategories,
-        # so the IO-set `type` field and the per-power match keys agree
-        # (notably the Rebirth Challenge sets — Forced Indoctrination ->
-        # "Universal Control Duration", Inexhaustibility -> "Rest Buff").
+        # The same read `build_power_category_index` makes, so a set's `type` and
+        # the categories its powers list are the one field rather than two
+        # derivations of it — the picker matches them as strings.
         type_ = _resolve_category(s)
 
-        # Resolve display name via clientmessages.
-        display = msgs._keys.get(s.display_name, '') if s.display_name else ''
-        if not display:
-            display = s.name.replace('_', ' ')
+        # display_name arrives pre-resolved from export_powers.py (P-hash ->
+        # text, see boost_sets resolution pass in main()).
+        display = s.display_name or s.name.replace('_', ' ')
 
         # Build pieces.
         pieces = []
@@ -1131,7 +1440,7 @@ def build_sets(
                         enh_scales.append(round(t.scale, 4))
                     else:
                         proc_effect_attribs.extend(t.attribs)
-            aspects, is_proc = _collapse_aspects(attribs, s.category)
+            aspects, is_proc = _collapse_aspects(attribs, type_)
             is_proc = is_proc or is_proc_marker or has_proc_group
             # Fallback proc detection: when the piece has NO Strength
             # templates (no enhancement aspects to collapse) but DOES carry
@@ -1143,25 +1452,35 @@ def build_sets(
             # empty attrib list and the piece exports as `name="Empty"`.
             if not is_proc and not attribs and proc_effect_attribs:
                 is_proc = True
-            piece_display = _piece_name_from_aspects(aspects) or 'Special'
+            derived_name = _piece_name_from_aspects(aspects) or 'Special'
             if is_proc:
-                # Build a "Chance for X" label using whatever proc effects
-                # we saw (Terrorized -> Fear, Psionic_Dmg -> Psionic Damage,
-                # Create_Entity for resurrection/summon procs, etc.). Falls
-                # back to a bare "Chance" / "Recharge/Chance" when the binary
-                # offers no readable effect attribs.
+                # A "Chance for X" label assembled from whatever proc effects we
+                # saw (Terrorized -> Fear, Psionic_Dmg -> Psionic Damage). It
+                # degrades to a bare "Chance" whenever the effect attribs aren't
+                # in the label map, which is the whole reason the game's own name
+                # below outranks it.
                 effect_labels = _proc_effect_labels(proc_effect_attribs)
                 effect_phrase = ', '.join(effect_labels)
                 if 'Recharge' in aspects:
-                    piece_display = f'Recharge/Chance for {effect_phrase}' if effect_phrase else 'Recharge/Chance'
+                    derived_name = f'Recharge/Chance for {effect_phrase}' if effect_phrase else 'Recharge/Chance'
                 else:
-                    piece_display = f'Chance for {effect_phrase}' if effect_phrase else 'Chance'
+                    derived_name = f'Chance for {effect_phrase}' if effect_phrase else 'Chance'
+            # The game names every piece, on the piece's own boost power. That is
+            # the string the player reads in-game and the one Mids prints, so it
+            # wins over anything assembled here from attribs. Only the display
+            # name moves: `aspects` and `totalAspects` stay binary-derived, and
+            # they alone feed the enhancement math.
+            piece_display = _piece_name_from_display(piece_power.display_name)
+            if not piece_display:
+                _PIECE_NAME_UNAVAILABLE.append(
+                    f'{s.name}#{i + 1}: {piece_power.display_name!r} -> kept derived {derived_name!r}')
+                piece_display = derived_name
             # Authoritative unique flag: the piece's `slot_requires`
             # contains a `BoostsSlotted>X <= 0` constraint when the game
             # enforces uniqueness for that piece (purples, ATOs, ATIO
             # globals, etc.). Empty / level-only slot_requires means the
             # piece is freely slottable across multiple powers.
-            slot_req = (piece_power.slot_requires or '').lower()
+            slot_req = _requires_text(piece_power.slot_requires).lower()
             is_unique = 'boostsslotted>' in slot_req
             # Effective aspect count, recovered from the enhancement scale (the
             # game's authoritative dilution). Emit `totalAspects` only when it
@@ -1171,7 +1490,7 @@ def build_sets(
             # list already accounts for the dilution, so no override is needed;
             # a derived count BELOW the list length signals a spurious extracted
             # aspect (logged for review, not emitted as a misleading override).
-            rarity_mult = 1.25 if (rarity == 'purple' or display.startswith('Superior')) else 1.0
+            rarity_mult = 1.25 if s.rarity in SUPERIOR_RARITIES else 1.0
             eff_count = _derive_effective_aspect_count(enh_scales, rarity_mult)
             total_aspects = None
             if eff_count is not None and eff_count > len(aspects):
@@ -1195,31 +1514,43 @@ def build_sets(
         # each a separate Set_Bonus.* power at a different scale); their effects
         # are additive, so aggregate across ALL of them — not just the first —
         # de-duping identical (stat, value) entries.
-        bonuses_out = []
+        #
+        # A PvP set states TWO tiers at one piece count — the PvE bonus and the PvP-only
+        # one — and the planner's tier is keyed by count, so both land in one entry with
+        # the PvP half flagged. The flag is what the calc gates on, so it belongs in the
+        # de-dup key too: the same (stat, value) can legitimately appear as both halves.
+        bonuses_by_pieces: dict[int, list[dict]] = {}
+        seen_by_pieces: dict[int, set[tuple[str, float, bool]]] = {}
         for bn in s.bonuses:
-            tier_effects: list[dict] = []
-            seen_effects: set[tuple[str, float]] = set()
+            gate = _tier_gate(bn)
+            if gate is None:
+                continue
+            tier_effects = bonuses_by_pieces.setdefault(bn.min_boosts, [])
+            seen_effects = seen_by_pieces.setdefault(bn.min_boosts, set())
             for ap in bn.auto_powers:
                 ap_power = power_index.get(ap) or power_index.get(f'Set_Bonus.Set_Bonus.{ap}')
                 if not ap_power:
                     continue
                 for eff in _resolve_bonus_effects(ap_power):
-                    key = (eff['stat'], eff['value'])
+                    if gate == 'pvp':
+                        eff['pvp'] = True
+                    key = (eff['stat'], eff['value'], eff.get('pvp', False))
                     if key in seen_effects:
                         continue
                     seen_effects.add(key)
                     tier_effects.append(eff)
-            if tier_effects:
-                bonuses_out.append({
-                    'pieces': bn.min_boosts,
-                    'effects': tier_effects,
-                })
+        bonuses_out = [
+            {'pieces': pieces, 'effects': effects}
+            for pieces, effects in bonuses_by_pieces.items()
+            if effects
+        ]
 
         # Build the set entry.
         set_id = s.name.lower().replace('-', '').replace('__', '_')
         out_sets[set_id] = {
             'name': display,
             'category': rarity,
+            'rarity': s.rarity,
             'type': type_,
             'minLevel': s.min_level or 1,
             'maxLevel': s.max_level or 50,
@@ -1231,45 +1562,91 @@ def build_sets(
     return out_sets, skipped
 
 
+def _reuse_hand_entry(out_sets: dict[str, dict], set_id: str, hc_entry: dict) -> None:
+    """Borrow Homecoming's hand entry for a set this fork also ships.
+
+    What it is borrowed FOR is the piece aspect lists: this fork's binary
+    extraction drops the Accuracy aspect on many pieces, and HC's entry carries
+    them. Everything the fork states for itself goes back on top: its icon
+    override, its own rarity token, its own slotting `type`, its own piece
+    names — and its own BONUS TIERS. The fork's game computes set bonuses from
+    the fork's own defs, and the two authorings genuinely differ (BOOST-5
+    step 2: HC re-rounded its defense scales to 4dp — 0.625 vs 0.63 — and its
+    damage tiers carry a +0.025 offset — 2.525 vs the forks' 2.5), so shipping
+    HC's values on a fork misstates what that fork's players see. A set where
+    the fork resolved NO tiers keeps HC's as a stand-in and is reported loudly
+    at end-of-run (_SHARED_BONUS_FALLBACK) rather than passing silently.
+
+    The `type` has to survive. The forks spell four headings differently from
+    Homecoming — "PBAoE Damage" for "Melee AoE Damage", "Targeted AoE Damage" for
+    "Ranged AoE Damage", "Taunt" for "Threat Duration", "Rez Sets" for the rez set —
+    and a set left carrying HC's spelling matches no power on this fork, so the
+    picker offers it nowhere. That is the shape of the bug BOOST-2 closed.
+
+    The names have to survive for the same reason one level down: a fork names its
+    own pieces, and the strings differ. Homecoming's ATO pieces carry an archetype
+    qualifier the other forks' don't ("Accuracy/Damage (Stalker)"), Rebirth calls
+    one piece "Chance for Buildup" where Homecoming writes "Chance for Build Up",
+    and Rebirth's Annoyance #1 is "Taunt" against Homecoming's "Taunt/Placate".
+    """
+    preserved_icon = ICON_OVERRIDES.get(set_id)
+    binary_rarity = out_sets[set_id].get('rarity')
+    binary_type = out_sets[set_id].get('type')
+    binary_names = {p.get('num'): p.get('name') for p in out_sets[set_id].get('pieces', [])}
+    binary_bonuses = out_sets[set_id].get('bonuses')
+    out_sets[set_id] = dict(hc_entry)
+    if binary_bonuses:
+        out_sets[set_id]['bonuses'] = binary_bonuses
+    else:
+        _SHARED_BONUS_FALLBACK.append(set_id)
+    if preserved_icon:
+        out_sets[set_id]['icon'] = preserved_icon
+    if binary_rarity is not None:
+        out_sets[set_id]['rarity'] = binary_rarity
+    if binary_type:
+        out_sets[set_id]['type'] = binary_type
+    # Copied per piece, because `dict(hc_entry)` shares HC's piece dicts and the
+    # later override passes mutate them in place.
+    pieces = [dict(piece) for piece in out_sets[set_id].get('pieces', [])]
+    for piece in pieces:
+        own_name = binary_names.get(piece.get('num'))
+        if own_name:
+            piece['name'] = own_name
+    out_sets[set_id]['pieces'] = pieces
+
+
 def _apply_rebirth_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict], ctx: dict | None = None) -> dict:
     """Rebirth post-build passes: reuse HC's hand entry for shared sets, then
     layer the Rebirth-only piece curation. Returns a small stats dict."""
-    # Override shared sets with HC's hand-curated entry. HC piece names
-    # match Mids exports verbatim (e.g. "Accuracy/Damage"); the binary
-    # extraction loses Accuracy aspects on many pieces and produces
-    # auto-generated names that fail Mids legacy-format imports.
+    # Override shared sets with HC's hand-curated entry, for the aspect lists
+    # this fork's binary extraction drops (see _reuse_hand_entry).
     shared_overridden = 0
     for set_id in list(out_sets.keys()):
         hc_entry = hc_sets.get(set_id)
         if hc_entry:
-            # Preserve our icon override if one exists.
-            preserved_icon = ICON_OVERRIDES.get(set_id)
-            out_sets[set_id] = dict(hc_entry)
-            if preserved_icon:
-                out_sets[set_id]['icon'] = preserved_icon
+            _reuse_hand_entry(out_sets, set_id, hc_entry)
             shared_overridden += 1
 
-    # Apply curated piece-data overrides for Rebirth-only sets where the
-    # binary extraction is incomplete (Guardian ATOs lose Accuracy aspect).
+    # Apply curated aspects for Rebirth-only sets where the binary extraction is
+    # incomplete (the Guardian ATOs lose their Accuracy aspect). Per-field, so a
+    # piece keeps the name its boost power gave it.
     pieces_overridden = 0
     for set_id, pieces in PIECE_OVERRIDES.items():
-        if set_id in out_sets:
-            out_sets[set_id]['pieces'] = pieces
-            pieces_overridden += 1
-
-    # Apply Rebirth-specific piece renames (post HC-override so they win).
-    for set_id, renames in REBIRTH_PIECE_RENAMES.items():
         entry = out_sets.get(set_id)
         if not entry:
             continue
-        for p in entry.get('pieces', []):
-            new_name = renames.get(p.get('num'))
-            if new_name:
-                p['name'] = new_name
+        by_num = {p['num']: p for p in pieces}
+        for existing in entry.get('pieces', []):
+            patch = by_num.get(existing.get('num'))
+            if patch:
+                existing.update(patch)
+        pieces_overridden += 1
 
     # Apply per-piece aspect overrides (for wiki/in-game vs binary
-    # discrepancies). Each override replaces the aspect list outright and
-    # regenerates the piece name from the canonical ordering.
+    # discrepancies). Each override replaces the aspect list outright. The name
+    # is left alone: it comes from the boost power, and the two are allowed to
+    # disagree — the game names Cupid's Crush #1 "Damage/Recharge" over a piece
+    # that also carries a PowerChanceMod aspect.
     for set_id, piece_overrides in REBIRTH_PIECE_ASPECT_OVERRIDES.items():
         entry = out_sets.get(set_id)
         if not entry:
@@ -1278,7 +1655,6 @@ def _apply_rebirth_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict]
             new_aspects = piece_overrides.get(p.get('num'))
             if new_aspects:
                 p['aspects'] = _sort_aspects_canonical(list(new_aspects))
-                p['name'] = '/'.join(p['aspects'])
 
     # Apply field-level patches for pieces the binary can't characterize.
     for set_id, patches in REBIRTH_PIECE_PATCHES.items():
@@ -1297,33 +1673,50 @@ def _apply_homecoming_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
     """Homecoming post-build passes. HC IS the source, so there's no shared-set
     reuse — only the targeted overrides for what the binary can't reproduce:
       - whole-set: cupids_crush / overwhelming_force (binary skips them).
-      - bonuses-from-hand: unique-global + PvP sets (see HC_HAND_BONUS_SETS).
       - per-piece aspect: hypersonic #4 (+Fly Magnitude special).
       - global/special proc name + flag: pieces the binary can't characterize
         (LotG +Recharge, Steadfast +Def, +Run Speed/+Perception globals, …).
     All hand data is read from the existing HC io-sets-raw (hc_sets)."""
-    stats = {'wholeset': 0, 'hand_bonuses': 0, 'pieces_overridden': 0, 'missing': []}
+    stats = {'wholeset': 0, 'pieces_overridden': 0, 'missing': []}
 
-    # Whole-set: bring in sets the binary doesn't yield at all.
+    # Whole-set: bring in sets the binary doesn't yield at all. Their binary
+    # records DO carry a rarity (the two-member ECUniversalDamage tier) —
+    # stamp it so the copied hand entry matches the binary field.
     for set_id in HC_WHOLESET_SETS:
         hand = hc_sets.get(set_id)
         if hand:
             out_sets[set_id] = dict(hand)
+            out_sets[set_id]['rarity'] = 'ECUniversalDamage'
+            out_sets[set_id]['bonuses'] = json.loads(json.dumps(hand.get('bonuses', [])))
+            # The record is skipped for its rarity, not for its readability: its
+            # boost powers name their pieces, so the hand entry's names give way.
+            own_names = _binary_piece_names(set_id, ctx)
+            out_sets[set_id]['pieces'] = [
+                {**piece, 'name': own_names.get(piece.get('num'), piece.get('name'))}
+                for piece in hand.get('pieces', [])
+            ]
+            # The hand entry names no mez types. The binary record is skipped for its
+            # rarity, not for its bonuses, so its auto-powers still say which types an
+            # `(all)` tier covers — read them rather than leave the calc guessing.
+            by_tier = _binary_mez_types_by_tier(set_id, ctx)
+            for bonus in out_sets[set_id]['bonuses']:
+                for effect in bonus.get('effects', []):
+                    if effect.get('stat') != 'mez_resistance_(all)' or effect.get('pvp'):
+                        continue
+                    types = by_tier.get(bonus.get('pieces'))
+                    if types:
+                        effect['mez_types'] = types
+                    else:
+                        _HAND_BONUS_UNTYPED.append(f'{set_id} {bonus.get("pieces")}pc (wholeset)')
             stats['wholeset'] += 1
         else:
             stats['missing'].append(f'{set_id} (wholeset)')
 
-    # Bonuses-from-hand: keep binary pieces/icon, swap in the hand bonuses.
-    for set_id in HC_HAND_BONUS_SETS:
-        entry = out_sets.get(set_id)
-        hand = hc_sets.get(set_id)
-        if entry and hand:
-            entry['bonuses'] = hand.get('bonuses', [])
-            stats['hand_bonuses'] += 1
-        elif not entry:
-            stats['missing'].append(f'{set_id} (hand-bonus target absent from binary)')
-
-    # Per-piece aspect overrides.
+    # Per-piece aspect overrides. Aspects only — the name stays the game's, and
+    # the two are allowed to disagree: the game calls Sudden Acceleration #6
+    # "Knockback to Knockdown" over a piece whose aspect is the raw attrib token
+    # KnockToKnockDown, and names Cupid's Crush by the aspects a player enhances
+    # rather than every attrib the template carries.
     for set_id, piece_overrides in HC_PIECE_ASPECT_OVERRIDES.items():
         entry = out_sets.get(set_id)
         if not entry:
@@ -1333,10 +1726,9 @@ def _apply_homecoming_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
             new_aspects = piece_overrides.get(p.get('num'))
             if new_aspects:
                 p['aspects'] = _sort_aspects_canonical(list(new_aspects))
-                p['name'] = '/'.join(p['aspects'])
                 stats['pieces_overridden'] += 1
 
-    # Curated name + proc flag for global/special proc pieces (HC_PIECE_PATCHES).
+    # The `proc` flag for global/special pieces (HC_PIECE_PATCHES).
     for set_id, patches in HC_PIECE_PATCHES.items():
         entry = out_sets.get(set_id)
         if not entry:
@@ -1410,29 +1802,32 @@ _TSPY_STAT_DESC = {
     'knockback_strength': 'Knockback',
 }
 
-# Thunderspy-only sets → the slotting `type` (category) the binary can't map,
-# plus the display name / rarity for the rebuilt entry.
-_TSPY_ONLY_SETS: dict[str, dict] = {
-    'kb':                          {'type': 'Universal Damage Sets'},
-    'primalists_nature':           {'type': 'Primalist Archetype Sets'},
-    'superior_primalists_nature':  {'type': 'Primalist Archetype Sets'},
-}
+# Sets no other fork ships, so no hand-curated Homecoming entry can supply their
+# pieces or bonus values. They take the rebuild path below, which reads both out of
+# tspy's own display strings and scales. Everything else about them — the slotting
+# `type` included — is an ordinary read of the record.
+_TSPY_ONLY_SETS: frozenset[str] = frozenset({
+    'kb',
+    'primalists_nature',
+    'superior_primalists_nature',
+})
 
 
-def _tspy_resolve_display(power, msgs) -> str:
-    dn = getattr(power, 'display_name', '') if power else ''
-    return msgs._keys.get(dn, '') if dn else ''
+def _power_display_name(power) -> str:
+    # display_name arrives pre-resolved from export_powers.py.
+    return getattr(power, 'display_name', '') if power else ''
 
 
-def _tspy_piece_from_boost(boost_full_name: str, num: int, power_index, msgs) -> dict | None:
+def _tspy_piece_from_boost(boost_full_name: str, num: int, power_index) -> dict | None:
     """Build one io-set piece from a Thunderspy boost power's authoritative
     display name (e.g. 'Subaluwa: Accuracy/Damage/Endurance' → aspects
     [Accuracy, Damage, Endurance]). Proc / special-global pieces ('Chance for
     Knockback', 'Recharge/Primal Energy Bonus') are flagged proc=true."""
-    disp = _tspy_resolve_display(power_index.get(boost_full_name), msgs)
-    if not disp:
+    disp = _power_display_name(power_index.get(boost_full_name))
+    part = _piece_name_from_display(disp)
+    if not part:
+        _PIECE_NAME_UNAVAILABLE.append(f'{boost_full_name} (tspy-only set #{num}): {disp!r}')
         return None
-    part = disp.split(':', 1)[1].strip() if ':' in disp else disp.strip()
     low = part.lower()
     is_proc = ('chance for' in low) or low.endswith('bonus')
     aspects: list[str] = []
@@ -1474,15 +1869,22 @@ def _tspy_bonus_effects(bonus_full_name: str, power_index) -> list[dict]:
     for stat, mult in mapping:
         value = round(scale * mult, 4)
         label = _TSPY_STAT_DESC.get(stat, stat.replace('_', ' ').title())
-        effects.append({'stat': stat, 'value': value, 'desc': f'+{value}% {label}'})
+        effect = {'stat': stat, 'value': value, 'desc': f'+{value}% {label}'}
+        # The stat came from the name stem, but the types it stands for still come
+        # from the power's own attribs — same warrant as the main collapse (all six
+        # present), so there is one rule for what `(all)` means, not two.
+        if stat == 'mez_resistance_(all)':
+            types = _mez_types_of(p)
+            if types:
+                effect['mez_types'] = types
+        effects.append(effect)
     return effects
 
 
-def _tspy_build_only_set(set_id: str, record, power_index, msgs, prior: dict) -> dict:
+def _tspy_build_only_set(set_id: str, record, power_index, prior: dict) -> dict:
     """Rebuild a Thunderspy-only set entry from authoritative display strings."""
-    display = _tspy_resolve_display(
+    display = _power_display_name(
         next((power_index.get(bl.boosts[0]) for bl in record.boostlists if bl.boosts), None),
-        msgs,
     )
     set_name = prior.get('name') or (display.split(':', 1)[0].strip() if ':' in display else record.name.replace('_', ' '))
 
@@ -1490,12 +1892,14 @@ def _tspy_build_only_set(set_id: str, record, power_index, msgs, prior: dict) ->
     for i, bl in enumerate(record.boostlists):
         if not bl.boosts:
             continue
-        piece = _tspy_piece_from_boost(bl.boosts[0], i + 1, power_index, msgs)
+        piece = _tspy_piece_from_boost(bl.boosts[0], i + 1, power_index)
         if piece:
             pieces.append(piece)
 
     bonuses = []
     for b in record.bonuses:
+        if _tier_gate(b) != 'base':
+            continue
         for ap in b.auto_powers:
             effects = _tspy_bonus_effects(ap, power_index)
             if effects:
@@ -1505,7 +1909,8 @@ def _tspy_build_only_set(set_id: str, record, power_index, msgs, prior: dict) ->
     return {
         'name': set_name,
         'category': prior.get('category', 'uncommon'),
-        'type': _TSPY_ONLY_SETS[set_id]['type'],
+        'rarity': record.rarity,
+        'type': _resolve_category(record),
         'minLevel': prior.get('minLevel', record.min_level or 1),
         'maxLevel': prior.get('maxLevel', record.max_level or 50),
         'bonuses': bonuses,
@@ -1519,8 +1924,8 @@ def _tspy_build_only_set(set_id: str, record, power_index, msgs, prior: dict) ->
 
 def _apply_thunderspy_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict], ctx: dict | None = None) -> dict:
     """Thunderspy post-build passes. Mirrors Rebirth's shared-set reuse (HC's
-    hand-curated entry wins for any set that also exists on HC, preserving
-    Mids-compatible piece names + complete bonus tiers), then REBUILDS the
+    piece aspect lists win for any set that also exists on HC; bonus tiers stay
+    tspy's own where its build resolved any — BOOST-5), then REBUILDS the
     Thunderspy-only sets (Subaluwa, the Primalist ATOs) from their authoritative
     clientmessages display strings, since tspy's AttribMod format doesn't carry
     the enum aspect field build_sets relies on. The 4 sets that shouldn't be on
@@ -1531,10 +1936,7 @@ def _apply_thunderspy_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
     for set_id in list(out_sets.keys()):
         hc_entry = hc_sets.get(set_id)
         if hc_entry:
-            preserved_icon = ICON_OVERRIDES.get(set_id)
-            out_sets[set_id] = dict(hc_entry)
-            if preserved_icon:
-                out_sets[set_id]['icon'] = preserved_icon
+            _reuse_hand_entry(out_sets, set_id, hc_entry)
             shared_overridden += 1
 
     rebuilt = []
@@ -1544,18 +1946,25 @@ def _apply_thunderspy_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
 
         # Whole-set injection (mirrors _apply_rebirth_overrides). build_sets can't
         # yield the universal-damage sets: HC/Rebirth skip them as ECUniversalDamage,
-        # and on tspy the `Overwhelming_Force` record is a gutted SumoBoostName stub
-        # (0 pieces, garbage rarity 'reign_Right_F') so it's dropped as unmapped-
-        # rarity. But tspy DOES ship Overwhelming Force in-game (a natively-attuned
-        # universal-damage set, verified in the AH), so restore it from HC's hand
-        # entry. Gate on the record actually existing in tspy's boostsets.bin — OF
-        # does, Cupid's Crush does NOT (don't inject a set that isn't on the server).
-        # This is SEPARATE from Subaluwa (a distinct tspy-only crafted knockback set,
-        # rebuilt below) — both are real, so both must appear.
+        # and tspy's `Overwhelming_Force` record states no conversion groups at all,
+        # so its rarity is empty and it drops as unmapped-rarity. But tspy DOES ship
+        # Overwhelming Force in-game (a natively-attuned universal-damage set,
+        # verified in the AH), so restore it from HC's hand entry. Gate on the record
+        # actually existing in tspy's boostsets.bin — OF does, Cupid's Crush does NOT
+        # (don't inject a set that isn't on the server). This is SEPARATE from
+        # Subaluwa (a distinct tspy-only crafted knockback set, rebuilt below) — both
+        # are real, so both must appear.
         for set_id in HC_WHOLESET_SETS:
             hand = hc_sets.get(set_id)
             if hand and set_id in by_id:
                 out_sets[set_id] = dict(hand)
+                # The tspy record states no conversion groups, so it carries no
+                # rarity of its own; stamp the tier the set actually belongs to.
+                out_sets[set_id]['rarity'] = 'ECUniversalDamage'
+                # It does state a GroupName, though, so the slotting type is read
+                # rather than inherited from the hand entry — same reason as
+                # `_reuse_hand_entry`.
+                out_sets[set_id]['type'] = _resolve_category(by_id[set_id])
                 wholeset += 1
 
         for set_id in _TSPY_ONLY_SETS:
@@ -1563,7 +1972,7 @@ def _apply_thunderspy_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
             if not record:
                 continue
             out_sets[set_id] = _tspy_build_only_set(
-                set_id, record, ctx['power_index'], ctx['msgs'], out_sets.get(set_id, {}),
+                set_id, record, ctx['power_index'], out_sets.get(set_id, {}),
             )
             rebuilt.append(set_id)
 
@@ -1571,46 +1980,37 @@ def _apply_thunderspy_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
             'rebuilt_tspy_only': rebuilt}
 
 
-# Per-dataset wiring: assets dir, output path, source description for the file
-# header, and which override pass to run after build_sets().
+# Per-dataset wiring: committed export dir, output path, and which override
+# pass to run after build_sets().
 DATASET_CONFIG = {
     'rebirth': {
-        'assets': REBIRTH_ASSETS,
+        'export_dir': EXPORT_DIRS['rebirth'],
         'output': OUTPUT_PATH,
-        'pigg': 'G:/Thunderspy Gaming/Sweet Tea/rebirth/z_rebirth_bin.pigg',
         'server': 'Rebirth',
-        # Rebirth bins store damage set-bonus scales at the natural value → ×100
-        # (HC's are 0.4×, needing ×250). See _DAMAGE_STRENGTH_MULT.
-        'damage_strength_mult': 100.0,
         'apply_overrides': _apply_rebirth_overrides,
         'extra_notes': (
             ' * Includes Rebirth-only sets (Guardian\'s Gift, Absolute Resolution,\n'
             ' * Halloween + Winter event sets, Liberty\'s Belt, etc.) that aren\'t in\n'
-            ' * HC\'s curated io-sets-raw. Shared sets reuse HC\'s hand-curated entry.\n'
+            ' * HC\'s curated io-sets-raw. Shared sets reuse HC\'s piece aspect lists;\n'
+            ' * bonus tiers are resolved from Rebirth\'s own export (BOOST-5).\n'
         ),
     },
     'homecoming': {
-        'assets': HC_ASSETS,
+        'export_dir': EXPORT_DIRS['homecoming'],
         'output': HC_IO_SETS_PATH,
-        'pigg': 'G:/Homecoming/assets/live/bin*.pigg',
         'server': 'Homecoming',
-        'damage_strength_mult': 250.0,  # HC damage scales are 0.4× → ×250
         'apply_overrides': _apply_homecoming_overrides,
         'extra_notes': (
             ' * Targeted hand overrides (from the prior curated io-sets-raw) cover\n'
             ' * what the binary can\'t reproduce: the cupids_crush / overwhelming_force\n'
-            ' * universal-damage sets, and the unique-global + PvP set bonuses.\n'
+            ' * universal-damage sets. Bonus VALUES are binary-sourced throughout,\n'
+            ' * PvP tiers included (BONUS-REQ-1).\n'
         ),
     },
     'thunderspy': {
-        'assets': THUNDERSPY_ASSETS,
+        'export_dir': EXPORT_DIRS['thunderspy'],
         'output': THUNDERSPY_IO_SETS_PATH,
-        'pigg': 'G:/Thunderspy Gaming/Sweet Tea/tspy/bin.pigg',
         'server': 'Thunderspy',
-        # tspy-only damage bonuses come from _apply_thunderspy_overrides, not the
-        # ×250 path; its committed values are correct at 250. (Bins incomplete —
-        # do NOT re-extract tspy; see the tspy-bin-incomplete note.)
-        'damage_strength_mult': 250.0,
         'apply_overrides': _apply_thunderspy_overrides,
         'extra_notes': (
             ' * Shared sets reuse HC\'s hand-curated entry. The 4 sets that are NOT on\n'
@@ -1627,23 +2027,24 @@ DATASET_CONFIG = {
 
 
 def _file_header(cfg: dict, total: int) -> str:
+    export_dir_rel = cfg['export_dir'].relative_to(PROJECT_ROOT).as_posix()
     return f'''/**
- * {cfg['server']} IO Set data — extracted from live {cfg['server']} bins.
+ * {cfg['server']} IO Set data — extracted from the committed bin-crawler export.
  *
  * Auto-generated by `scripts/extract-rebirth-io-sets-v2.py --dataset {cfg['_id']}`.
  * Do not hand-edit.
  *
- * Source: {cfg['pigg']}
- *   - boostsets.bin → set metadata + piece refs + bonus refs + levels
- *   - powers.bin    → boost-piece aspects (via Boosts.X.X power records)
- *                     and bonus values (via Set_Bonus.X.X power records)
- *   - clientmessages-en.bin → display name resolution
+ * Source: {export_dir_rel}/ (produced by `bin_crawler.export_powers`)
+ *   - boostsets.json → set metadata + piece refs + bonus refs + levels
+ *   - boosts/**      → boost-piece aspects (Boosts.X.X power templates)
+ *   - set_bonus/**   → bonus values (Set_Bonus.X.X power templates)
  *
  * Total sets: {total}
 {cfg['extra_notes']} *
- * Set-bonus values are scale × a per-attrib multiplier (damage ×250, max HP
- * ×10, max endurance ×1, everything else ×100) and use the planner-canonical
- * stat keys (see STAT_NAME_MAP in set-bonuses.ts). Proc-piece names are
+ * Set-bonus values are scale × a per-attrib multiplier (damage ×250 on HC's
+ * SetBonusPetShare table and ×100 on the forks' Melee_Ones re-authoring, max
+ * HP ×10, max endurance ×1, everything else ×100) and use the planner-canonical
+ * stat keys (see contract/set-bonus-stat-vocab.json). Proc-piece names are
  * heuristic and may read "Chance" until resolved via the trigger attribs.
  */
 
@@ -1671,6 +2072,8 @@ interface LegacySetBonus {{
 interface LegacyIOSet {{
   name: string;
   category: string;
+  /** Binary rarity tier from boostsets.bin (feeds getSetRarityMultiplier). */
+  rarity: string;
   type: string;
   minLevel: number;
   maxLevel: number;
@@ -1703,31 +2106,22 @@ def main(dataset: str | None = None) -> int:
         return 2
     cfg = {**cfg, '_id': dataset}
 
-    # Dataset-specific damage set-bonus multiplier (HC/tspy ×250, Rebirth ×100).
-    global _DAMAGE_STRENGTH_MULT
-    _DAMAGE_STRENGTH_MULT = cfg.get('damage_strength_mult', 250.0)
+    export_dir = cfg['export_dir']
+    print(f'[{dataset}] Loading committed export from {export_dir}…')
 
-    print(f'[{dataset}] Loading bins from {cfg["assets"]}…')
-    resolver = BinResolver(cfg['assets'])
-    msgs_path = resolver.read_to_tempfile('clientmessages-en.bin')
-    msgs = load_messages(msgs_path)
-    print(f'  {len(msgs)} client messages loaded')
+    sets = _load_boostsets(export_dir)
+    print(f'  {len(sets)} boostsets loaded')
 
-    sets = parse_boostsets(resolver.read('boostsets.bin'))
-    print(f'  {len(sets)} boostsets parsed')
-
-    print('Parsing powers.bin (large, ~30s)…')
-    powers = parse_powers(resolver.read('powers.bin'))
-    power_index: dict[str, PowerRecord] = {p.full_name: p for p in powers}
-    print(f'  {len(powers)} power records indexed')
+    power_index = _load_boost_piece_powers(export_dir)
+    print(f'  {len(power_index)} boost-piece/set-bonus power templates indexed')
 
     # HC's hand-curated io-sets-raw — used for icon fallback (both datasets),
     # Rebirth shared-set reuse, and HC's targeted bonus/whole-set overrides.
     hc_sets = _load_hc_sets()
     print(f'  {len(hc_sets)} HC hand sets loaded')
 
-    out_sets, skipped = build_sets(msgs, sets, power_index, hc_sets)
-    ctx = {'sets': sets, 'power_index': power_index, 'msgs': msgs}
+    out_sets, skipped = build_sets(sets, power_index, hc_sets)
+    ctx = {'sets': sets, 'power_index': power_index}
     stats = cfg['apply_overrides'](out_sets, hc_sets, ctx)
 
     print(f'\n[{dataset}] Extracted {len(out_sets)} sets ({len(skipped)} skipped)')
@@ -1748,6 +2142,21 @@ def main(dataset: str | None = None) -> int:
     if _ASPECT_COUNT_UNDERSHOOTS:
         print(f'\n!! {len(_ASPECT_COUNT_UNDERSHOOTS)} pieces: scale-derived count < extracted aspects (spurious-aspect candidates):')
         for u in _ASPECT_COUNT_UNDERSHOOTS:
+            print(f'   {u}')
+
+    if _HAND_BONUS_UNTYPED:
+        print(f'\n!! {len(_HAND_BONUS_UNTYPED)} hand-curated mez_resistance_(all) tiers with no binary tier to take types from:')
+        for u in _HAND_BONUS_UNTYPED:
+            print(f'   {u}  -> the calc cannot spend this bonus until it names its types')
+
+    if _PIECE_NAME_UNAVAILABLE:
+        print(f'\n!! {len(_PIECE_NAME_UNAVAILABLE)} pieces have no readable display_name; the derived name stands:')
+        for u in _PIECE_NAME_UNAVAILABLE:
+            print(f'   {u}')
+
+    if _SHARED_BONUS_FALLBACK:
+        print(f'\n!! {len(_SHARED_BONUS_FALLBACK)} shared sets resolved NO bonus tiers of their own; HC\'s stand in:')
+        for u in _SHARED_BONUS_FALLBACK:
             print(f'   {u}')
 
     header = _file_header(cfg, len(out_sets))

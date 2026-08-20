@@ -59,7 +59,7 @@ describe('pet-set procs do not buff the player', () => {
   });
 
   it('Soulbound Allegiance in a summon power adds NO global +Damage or +ToHit', () => {
-    const withProc = controllerBuild([ioSetSlot('soulbound_allegiance', 'Chance')]);
+    const withProc = controllerBuild([ioSetSlot('soulbound_allegiance', 'Chance for Build Up')]);
     const withoutProc = controllerBuild([null]);
 
     const t1 = calculateCharacterTotals(withProc, false, undefined, {});
@@ -85,7 +85,7 @@ describe('pet-set procs do not buff the player', () => {
       pick(propel, 'gravity_control', {
         level: 8,
         isActive: true,
-        slots: [ioSetSlot('decimation', 'Chance')],
+        slots: [ioSetSlot('decimation', 'Chance for Build Up')],
       }),
     ] } as any;
     expect(damageSources(b).some((s) => /Decimation/.test(s.name))).toBe(true);

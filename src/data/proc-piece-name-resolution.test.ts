@@ -2,20 +2,26 @@ import { describe, it, expect } from 'vitest';
 import { resolveProcPieceName, findProcData } from './proc-data';
 import { IO_SETS_RAW as HC_SETS } from './datasets/homecoming/io-sets-raw';
 import { IO_SETS_RAW as RB_SETS } from './datasets/rebirth/io-sets-raw';
+import { IO_SETS_RAW as TS_SETS } from './datasets/thunderspy/io-sets-raw';
 
 /**
  * resolveProcPieceName rescues the "proc shows just 'Chance'" bug.
  *
- * The IO-set binary extractor can only name a proc piece when its effect is
- * derivable from the binary template; otherwise it emits a placeholder
- * "Chance" / "Recharge/Chance". The authoritative proc identity lives in
- * PROC_DATABASE, so the DISPLAY layer resolves the real ioName from there
- * (e.g. Preventive Medicine "Chance" → "Chance for +Absorb").
+ * The placeholder is what the IO-set extractor falls back to for a proc piece it
+ * cannot name. The authoritative proc identity lives in PROC_DATABASE, so the
+ * DISPLAY layer resolves the real ioName from there (e.g. "Chance" → "Chance for
+ * +Absorb").
  *
  * Critically, the stored `enhancement.name` is NOT changed — it stays the raw
  * piece label because the calc engine keys findProcData on it, and the real
  * ioNames collide with bare PROC_DATABASE keys (e.g. "Chance for +Absorb"
  * exists for Entomb). Resolution happens only where names are displayed.
+ *
+ * The extractor now names pieces from the boost power's own display_name, so
+ * Homecoming and Rebirth ship no placeholders at all and the rescue is reached
+ * only by the two Thunderspy pieces whose display_name is an unresolved message
+ * id. The last block below guards that, and the unit cases above keep the rescue
+ * itself honest for as long as any piece needs it.
  */
 const PLACEHOLDERS = new Set(['Chance', 'Recharge/Chance']);
 
@@ -37,24 +43,35 @@ describe('resolveProcPieceName', () => {
     expect(resolveProcPieceName('Chance', 'No Such Set', true)).toBe('Chance');
   });
 
-  // Coverage guard: every placeholder-named proc piece in the shipped datasets
-  // that HAS a PROC_DATABASE entry must resolve to a real (non-placeholder)
-  // name, so a bare "Chance" never reaches the UI. (Pieces with no proc-data
-  // entry are a separate coverage gap and are skipped here.)
+  // Coverage guard, in two halves: no shipped piece should carry a placeholder
+  // in the first place, and any that still does must resolve to a real name.
   describe.each([
     ['homecoming', HC_SETS],
     ['rebirth', RB_SETS],
-  ])('%s placeholder procs resolve to real names', (_ds, REG) => {
-    for (const [setId, set] of Object.entries(REG)) {
-      for (const piece of set.pieces) {
-        if (!piece.proc || !PLACEHOLDERS.has(piece.name)) continue;
-        if (findProcData(piece.name, set.name) === undefined) continue;
-        it(`${setId} #${piece.num} "${piece.name}" → real name`, () => {
-          const resolved = resolveProcPieceName(piece.name, set.name, piece.proc);
-          expect(PLACEHOLDERS.has(resolved)).toBe(false);
-          expect(resolved.length).toBeGreaterThan(0);
-        });
-      }
-    }
+    ['thunderspy', TS_SETS],
+  ])('%s', (dataset, REG) => {
+    const placeholders = Object.entries(REG).flatMap(([setId, set]) =>
+      set.pieces
+        .filter((piece) => PLACEHOLDERS.has(piece.name))
+        .map((piece) => ({ label: `${setId} #${piece.num}`, piece, setName: set.name })),
+    );
+
+    it('ships no placeholder-named pieces beyond the ones the export cannot name', () => {
+      // Thunderspy's two Scourging Blast procs have an unresolved message id for
+      // a display_name, so the derived name stands; nothing else should be here.
+      const expected =
+        dataset === 'thunderspy'
+          ? ['scourging_blast #6', 'superior_scourging_blast #6']
+          : [];
+      expect(placeholders.map((row) => row.label).sort()).toEqual(expected);
+    });
+
+    it('resolves every placeholder it does ship to a real name', () => {
+      const unresolved = placeholders
+        .filter((row) => findProcData(row.piece.name, row.setName) !== undefined)
+        .filter((row) => PLACEHOLDERS.has(resolveProcPieceName(row.piece.name, row.setName, row.piece.proc)))
+        .map((row) => row.label);
+      expect(unresolved).toEqual([]);
+    });
   });
 });

@@ -39,7 +39,7 @@ describe('Proc runtime allowlist coverage', () => {
 
   it('applies defense-all globals to all defense buckets and breakdown', () => {
     const t = calculateCharacterTotals(
-      buildWithSlots([ioSlot('gladiators_armor', 'Chance')]),
+      buildWithSlots([ioSlot('gladiators_armor', 'Teleportation Protection, +Def(All)')]),
       false,
       undefined,
       {}
@@ -53,7 +53,7 @@ describe('Proc runtime allowlist coverage', () => {
 
   it('applies always-on absorb globals to absorb totals and breakdown', () => {
     const t = calculateCharacterTotals(
-      buildWithSlots([ioSlot('preventive_medicine', 'Chance')]),
+      buildWithSlots([ioSlot('preventive_medicine', 'Absorb Proc')]),
       false,
       undefined,
       {}
@@ -65,8 +65,18 @@ describe('Proc runtime allowlist coverage', () => {
   });
 
   it('accepts legacy extracted proc slots with isProc=false when name still matches', () => {
+    // The legacy shape is built here rather than slotted from the registry: the
+    // extractor names pieces from the boost power now, so no shipped piece is
+    // still called "Recharge/Resistance Bonus" and none carries proc:false. A
+    // saved build from before that change does, and the net that catches it is
+    // what this grades — so the violating case has to be constructed.
+    const legacy = {
+      ...ioSlot('kheldians_grace', 'Recharge/Form Empowerment'),
+      name: 'Recharge/Resistance Bonus',
+      isProc: false,
+    };
     const t = calculateCharacterTotals(
-      buildWithSlots([ioSlot('kheldians_grace', 'Recharge/Resistance Bonus')]),
+      buildWithSlots([legacy]),
       false,
       undefined,
       {}

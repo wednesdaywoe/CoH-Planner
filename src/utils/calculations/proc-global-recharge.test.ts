@@ -24,7 +24,7 @@ import { ioSetSlot } from '@/test/build-fixtures';
 // regardless of the host power's type.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function lotgSlot() {
-  return ioSetSlot('luck_of_the_gambler', 'Defense/+Recharge');
+  return ioSetSlot('luck_of_the_gambler', 'Defense/Increased Global Recharge Speed');
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -15,11 +15,11 @@ import type { Build, ProcOverride } from '@/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function motSlot() {
-  return ioSetSlot('might_of_the_tanker', 'Recharge/Chance');
+  return ioSetSlot('might_of_the_tanker', 'Recharge/Chance for +Res(All)');
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function reactiveSlot() {
-  return ioSetSlot('reactive_defenses', '+Res(All)');
+  return ioSetSlot('reactive_defenses', 'Scaling Damage Resistance');
 }
 
 function tankerBuild(

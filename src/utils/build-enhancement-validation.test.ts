@@ -32,7 +32,7 @@ describe('build enhancement legality', () => {
   // Built by the picker's own factory: a hand-rolled literal was missing `aspects` (and the
   // piece's real name), which the engine's CharacterState rejects outright.
   const LOTG_PIECE_NAMES = ['Defense/Endurance', 'Defense/Recharge', 'Endurance/Recharge',
-    'Defense/Endurance/Recharge', 'Defense', 'Defense/+Recharge'];
+    'Defense/Endurance/Recharge', 'Defense', 'Defense/Increased Global Recharge Speed'];
   const lotgPiece = (pieceNum: number): Enhancement =>
     ioSetSlot('luck_of_the_gambler', LOTG_PIECE_NAMES[pieceNum - 1]);
 
@@ -97,9 +97,9 @@ describe('build enhancement legality', () => {
             internalName: 'Battle_Agility',
             level: 10,
             slots: [
-              ioSetSlot('luck_of_the_gambler', 'Defense/+Recharge'),
+              ioSetSlot('luck_of_the_gambler', 'Defense/Increased Global Recharge Speed'),
               ioSetSlot('luck_of_the_gambler', 'Defense/Recharge'),
-              ioSetSlot('shield_wall', 'Chance'),
+              ioSetSlot('shield_wall', 'Teleportation Protection, +Res(All)'),
             ],
           },
           {

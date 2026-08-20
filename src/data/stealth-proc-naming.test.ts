@@ -4,13 +4,18 @@ import { IO_SETS_RAW as RB_SETS } from '@/data/datasets/rebirth/io-sets-raw';
 import { findProcData, getProcEffects } from '@/data/proc-data';
 
 /**
- * Regression: the travel-set +Stealth globals (Celerity, Freebird, Time & Space
+ * Regression: the travel-set stealth globals (Celerity, Freebird, Time & Space
  * Manipulation, Unbounded Leap) were mis-extracted as "Chance for Resurrect" —
  * their stealth grant is a Create_Entity template, which the extractor's
  * CREATE_ENTITY_LABEL maps to "Resurrect" (correct only for Return From The
  * Grave). The effect still resolved via findProcData's set-name fallback, but
- * the slot displayed the bogus name. They must read "+Stealth" and resolve to a
- * Stealth effect. Extractor guard: HC_PIECE_PATCHES in extract-rebirth-io-sets-v2.py.
+ * the slot displayed the bogus name.
+ *
+ * The name is the game's own now, read off the boost power, and the game calls
+ * the piece "Stealth". What still needs guarding is everything around it: the
+ * piece must carry the proc flag (HC_PIECE_PATCHES restores it, since a
+ * Create_Entity template isn't read as a proc), and the name must resolve to
+ * THIS set's stealth effect rather than a sibling travel set's.
  */
 type Registry = Record<string, { name: string; pieces: Array<{ name: string; num: number; proc: boolean }> }>;
 
@@ -22,10 +27,10 @@ describe('Travel-set +Stealth proc naming', () => {
     ['rebirth', RB_SETS as unknown as Registry],
   ] as const) {
     for (const setId of STEALTH_SETS) {
-      it(`${label}/${setId}: #3 is a "+Stealth" proc resolving to a Stealth effect`, () => {
+      it(`${label}/${setId}: #3 is a "Stealth" proc resolving to a Stealth effect`, () => {
         const set = reg[setId];
         const piece = set.pieces.find((p) => p.num === 3)!;
-        expect(piece.name).toBe('+Stealth');
+        expect(piece.name).toBe('Stealth');
         expect(piece.proc).toBe(true);
 
         const data = findProcData(piece.name, set.name);

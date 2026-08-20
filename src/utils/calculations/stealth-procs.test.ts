@@ -5,7 +5,7 @@ import { createEmptyBuild } from '@/types/build';
 import { ioSetSlot } from '@/test/build-fixtures';
 
 /**
- * Regression: stealth IO procs (Celerity +Stealth, Unbounded Leap +Stealth,
+ * Regression: stealth IO procs (Celerity, Unbounded Leap,
  * Freebird, Time & Space Manipulation) must contribute to the stealth-radius
  * totals on the dashboard.
  *
@@ -49,18 +49,18 @@ describe('stealth IO procs contribute to stealth radius (homecoming)', () => {
     await loadDataset('homecoming');
   });
 
-  it('Celerity +Stealth adds 30 ft PvE / 300 ft PvP', () => {
+  it('the Celerity Stealth IO adds 30 ft PvE / 300 ft PvP', () => {
     const t = calculateCharacterTotals(
-      buildWithStealthProcs([{ setName: 'celerity', name: '+Stealth' }]),
+      buildWithStealthProcs([{ setName: 'celerity', name: 'Stealth' }]),
       false, undefined, { combatMode: true },
     );
     expect(t.globalBonuses.stealthRadiusPvE).toBeCloseTo(30, 4);
     expect(t.globalBonuses.stealthRadiusPvP).toBeCloseTo(300, 4);
   });
 
-  it('Unbounded Leap +Stealth contributes the same radius', () => {
+  it('the Unbounded Leap Stealth IO contributes the same radius', () => {
     const t = calculateCharacterTotals(
-      buildWithStealthProcs([{ setName: 'unbounded_leap', name: '+Stealth' }]),
+      buildWithStealthProcs([{ setName: 'unbounded_leap', name: 'Stealth' }]),
       false, undefined, { combatMode: true },
     );
     expect(t.globalBonuses.stealthRadiusPvE).toBeCloseTo(30, 4);
@@ -70,8 +70,8 @@ describe('stealth IO procs contribute to stealth radius (homecoming)', () => {
   it('two different stealth IOs stack additively', () => {
     const t = calculateCharacterTotals(
       buildWithStealthProcs([
-        { setName: 'celerity', name: '+Stealth' },
-        { setName: 'unbounded_leap', name: '+Stealth' },
+        { setName: 'celerity', name: 'Stealth' },
+        { setName: 'unbounded_leap', name: 'Stealth' },
       ]),
       false, undefined, { combatMode: true },
     );
@@ -92,7 +92,7 @@ describe('stealth IO procs contribute to stealth radius (homecoming)', () => {
 
 /**
  * The reported scenario, end-to-end: a DP/NIN Sentinel running Shinobi-Iri (a
- * stealth Toggle, 35.5 ft PvE / 390 ft PvP) with a Celerity +Stealth IO slotted
+ * stealth Toggle, 35.5 ft PvE / 390 ft PvP) with a Celerity Stealth IO slotted
  * into it. Stealth is additive, so the IO stacks ON TOP of the power — the IO is
  * NOT masked by the stronger power (the pre-fix / max-wins behavior).
  */
@@ -109,7 +109,7 @@ describe('stealth power + stealth IO stack additively (homecoming, Sentinel Ninj
     b.archetype = { id: 'sentinel', name: 'Sentinel', stats: null, inherent: null } as any;
     b.secondary = { id: 'sentinel/ninjitsu', name: 'Ninjitsu', powers: [
       { internalName: 'Shinobi-Iri', name: 'Shinobi-Iri', powerSet: 'sentinel/ninjitsu', level: 1, powerType: 'Toggle', isActive: true,
-        slots: withProc ? [stealthProcSlot('celerity', '+Stealth')] : [] },
+        slots: withProc ? [stealthProcSlot('celerity', 'Stealth')] : [] },
     ] } as any;
     return b;
   }
@@ -120,7 +120,7 @@ describe('stealth power + stealth IO stack additively (homecoming, Sentinel Ninj
     expect(t.globalBonuses.stealthRadiusPvP).toBeCloseTo(390, 3);
   });
 
-  it('Shinobi-Iri + Celerity +Stealth = 65.5 ft PvE / 690 ft PvP (the IO stacks on top)', () => {
+  it('Shinobi-Iri + the Celerity Stealth IO = 65.5 ft PvE / 690 ft PvP (the IO stacks on top)', () => {
     const t = calculateCharacterTotals(ninjitsuBuild(true), false, undefined, { combatMode: true });
     expect(t.globalBonuses.stealthRadiusPvE).toBeCloseTo(35.5 + 30, 3);
     expect(t.globalBonuses.stealthRadiusPvP).toBeCloseTo(390 + 300, 3);
@@ -148,7 +148,7 @@ describe('suppress-group stealth powers do NOT stack (homecoming)', () => {
     if (opts.shinobi) {
       b.secondary = { id: 'sentinel/ninjitsu', name: 'Ninjitsu', powers: [
         { internalName: 'Shinobi-Iri', name: 'Shinobi-Iri', powerSet: 'sentinel/ninjitsu', level: 1, powerType: 'Toggle', isActive: true,
-          slots: opts.celerity ? [stealthProcSlot('celerity', '+Stealth')] : [] },
+          slots: opts.celerity ? [stealthProcSlot('celerity', 'Stealth')] : [] },
       ] } as any;
     }
     if (opts.superSpeed) {

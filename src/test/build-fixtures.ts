@@ -18,7 +18,7 @@ import type { Power, SelectedPower } from '@/types/power';
 
 /**
  * One slotted set piece, built by the same factory the enhancement picker calls.
- * `pieceName` is the piece's real label in the set data (e.g. `'+Stealth'`), which is also the
+ * `pieceName` is the piece's real label in the set data (e.g. `'Stealth'`), which is also the
  * key `findProcData` resolves procs by — a made-up name resolves to no proc at all.
  */
 export function ioSetSlot(setId: string, pieceName: string, level = 50): Enhancement {

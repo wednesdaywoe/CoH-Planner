@@ -14,6 +14,27 @@ import { IO_SETS_RAW as HC_SETS } from '@/data/datasets/homecoming/io-sets-raw';
  *
  * These invariants guard against a regression back to the HC roster.
  */
+/**
+ * A set entry with the fields each fork states for itself removed, so two forks'
+ * copies of one set can be compared for the structure they genuinely share.
+ *
+ * `rarity` and `type` are per-fork binary tokens (Thunderspy labels its second ATO
+ * families ECATO2/ECSATO2 where Homecoming uses ECATO/ECSATO for both, and the
+ * forks spell four slotting headings differently). Piece NAMES joined them in
+ * 2026-08: every fork names its pieces from its own boost powers, and the strings
+ * differ — Homecoming's ATO pieces carry an archetype qualifier the others don't.
+ * BONUSES joined them in BOOST-5 step 2: each fork's tiers resolve from its own
+ * export, and the authorings differ (HC re-rounded defense scales to 4dp and
+ * offset its damage tiers +0.025), so only the tier/piece structure is shared.
+ */
+function sharedStructure(set: Record<string, unknown>) {
+  const { rarity: _rarity, type: _type, bonuses: _bonuses, ...rest } = set;
+  return {
+    ...rest,
+    pieces: (rest.pieces as Array<Record<string, unknown>>).map(({ name: _name, ...piece }) => piece),
+  };
+}
+
 describe('Thunderspy IO-set roster', () => {
   it('excludes the HC-only sets that are not on Thunderspy', () => {
     // The four the player reported, plus a few of the other HC-only sets that
@@ -31,13 +52,15 @@ describe('Thunderspy IO-set roster', () => {
 
   it('has Overwhelming Force AND Subaluwa as distinct Universal Damage sets', () => {
     // Both exist on Thunderspy (verified in-game 2026-07-02): Overwhelming Force
-    // is the natively-attuned universal-damage set — its boostsets.bin record is
-    // a gutted `SumoBoostName` stub (0 pieces, garbage rarity) so build_sets drops
-    // it and it's re-injected from HC's hand entry (HC_WHOLESET_SETS). Subaluwa is
-    // a SEPARATE tspy-only crafted knockback set (record `kb`). An earlier pass
+    // is the natively-attuned universal-damage set — its boostsets.bin record
+    // states no conversion groups, so it carries no rarity, so build_sets drops it
+    // and it's re-injected from HC's hand entry (HC_WHOLESET_SETS). Subaluwa is a
+    // SEPARATE tspy-only crafted knockback set (record `kb`). An earlier pass
     // wrongly assumed OF had been reworked *into* Subaluwa and dropped it.
     expect(TSPY_SETS, 'Overwhelming Force should be present').toHaveProperty('overwhelming_force');
-    expect(TSPY_SETS['overwhelming_force']).toEqual(HC_SETS['overwhelming_force']);
+    expect(sharedStructure(TSPY_SETS['overwhelming_force'])).toEqual(
+      sharedStructure(HC_SETS['overwhelming_force']),
+    );
     // Distinct sets, distinct icons.
     expect(TSPY_SETS['overwhelming_force'].name).toBe('Overwhelming Force');
     expect(TSPY_SETS['kb'].name).toBe('Subaluwa');
@@ -53,9 +76,27 @@ describe('Thunderspy IO-set roster', () => {
       'superior_essence_transfer',
     ]) {
       expect(TSPY_SETS, `${id} should be present`).toHaveProperty(id);
-      // Shared sets reuse HC's entry verbatim (Mids-compatible piece names).
-      expect(TSPY_SETS[id]).toEqual(HC_SETS[id]);
+      // A shared set reuses HC's entry for the aspect lists this fork's own
+      // extraction is missing; see `sharedStructure` for what each fork keeps
+      // stating for itself.
+      expect(typeof TSPY_SETS[id].rarity).toBe('string');
+      expect(typeof HC_SETS[id].rarity).toBe('string');
+      expect(sharedStructure(TSPY_SETS[id])).toEqual(sharedStructure(HC_SETS[id]));
     }
+  });
+
+  it('a shared set\'s bonus VALUES are Thunderspy\'s own, not Homecoming\'s', () => {
+    // Kinetic Combat 4pc melee defense: tspy's export authors the exact scale
+    // 0.01875 (→ 1.875) where HC re-rounded to 0.0188 (→ 1.88). The pair going
+    // equal again means _reuse_hand_entry is back to shipping HC's tiers.
+    const tier = (sets: typeof TSPY_SETS, id: string, pieces: number) =>
+      sets[id].bonuses.find((b) => b.pieces === pieces)!.effects;
+    expect(tier(TSPY_SETS, 'kinetic_combat', 4)).toContainEqual(
+      expect.objectContaining({ stat: 'defense_(melee)', value: 1.875 }),
+    );
+    expect(tier(HC_SETS, 'kinetic_combat', 4)).toContainEqual(
+      expect.objectContaining({ stat: 'defense_(melee)', value: 1.88 }),
+    );
   });
 
   it('has strictly fewer sets than HC (HC-only sets removed)', () => {

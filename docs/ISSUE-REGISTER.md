@@ -54,6 +54,23 @@ canonical added a rule to `effective.rs` that beta's JS side hadn't picked up ye
 
 ---
 
+## Data ported from canonical
+
+The three `io-sets-raw` registries and their extractor are vendored from canonical, and the two
+trees had drifted wholesale (canonical's BOOST-5). The port landed 2026-08-20.
+
+[Full detail](gaps/data-port.md) — 1 of 2 closed
+
+- [x] **PORT-1** — a set's unique/global piece shipped as an extra `bonuses[]` tier (12/12/14 rows),
+      piece-count-gated where the game gates on that one piece being slotted, so a lone unique was
+      denied its global and a full set was credited it twice; deleted by the port after censusing
+      that `PROC_DATABASE` covers each one
+- [ ] **PORT-2** — `proc-globals.generated.ts` categorises the Rectified Reticle and Warp perception
+      globals as `Special` where canonical says `Perception`; display-only (totals come from the
+      vendored engine), waiting on the `extract-proc-data.py` port
+
+---
+
 ## Method notes
 
 [Full detail](gaps/method-notes.md) — cross-repo investigation method: how to tell a beta-side
