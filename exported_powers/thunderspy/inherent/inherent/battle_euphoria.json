@@ -62,7 +62,9 @@
         "0",
         ">"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -135,7 +137,9 @@
         "0",
         ">"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

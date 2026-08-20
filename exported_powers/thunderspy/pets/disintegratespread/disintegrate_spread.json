@@ -68,7 +68,9 @@
         "Class_Blaster",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -121,7 +123,9 @@
         "Class_Defender",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -174,7 +178,9 @@
         "Class_Corruptor",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -222,7 +228,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -274,7 +282,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

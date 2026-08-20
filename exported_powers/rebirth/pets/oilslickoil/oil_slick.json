@@ -67,7 +67,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -140,7 +142,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -220,7 +224,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -291,7 +297,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -362,7 +370,9 @@
         "target.VillainName>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -415,7 +425,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -469,7 +481,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedRunning"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -523,7 +537,9 @@
         "target.VillainName>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -582,7 +598,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -641,7 +659,9 @@
         "target.VillainName>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -695,7 +715,9 @@
         "target.VillainName>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

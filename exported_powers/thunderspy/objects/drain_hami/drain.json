@@ -52,7 +52,9 @@
         "DevouringEarth_Hamidon_Mission",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

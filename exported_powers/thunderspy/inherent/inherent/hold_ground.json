@@ -62,7 +62,9 @@
         "MastermindPets",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -129,7 +131,9 @@
         "MastermindPets",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -180,7 +184,9 @@
         "MastermindPets",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

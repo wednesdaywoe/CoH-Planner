@@ -68,7 +68,9 @@
         "kFastMode",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -126,7 +128,9 @@
       "requires_expression": [
         "1"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -186,7 +190,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -233,7 +239,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Debuff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -289,7 +297,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -341,7 +351,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "PlayerCrit"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -388,7 +400,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -439,7 +453,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -484,7 +500,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -529,7 +547,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -574,7 +594,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -619,7 +641,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -664,7 +688,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -709,7 +735,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -774,7 +802,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "MLCrit"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -862,7 +892,9 @@
         "||",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "BossCrit"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -930,7 +962,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "FieryEmbrace"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -978,7 +1012,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1026,7 +1062,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

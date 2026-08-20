@@ -36,6 +36,9 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 3,
+  "lifetime": 30.0,
+  "destroy_on_limit": true,
+  "stacking_usage": false,
   "requires": [],
   "activate_requires": [],
   "target_requires": [],
@@ -52,7 +55,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -105,7 +110,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -157,7 +164,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -209,7 +218,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -261,7 +272,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -313,7 +326,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -365,7 +380,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -416,7 +433,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -467,7 +486,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -518,7 +539,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -569,7 +592,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -620,7 +645,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

@@ -43,6 +43,9 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
+  "lifetime": 120.0,
+  "destroy_on_limit": true,
+  "stacking_usage": false,
   "requires": [],
   "activate_requires": [
     "isVIP?",
@@ -69,7 +72,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "HybridCC"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -129,7 +134,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "HybridCC"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",

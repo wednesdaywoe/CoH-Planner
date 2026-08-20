@@ -67,7 +67,9 @@
         "<=",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -139,7 +141,9 @@
         "<=",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedRunning"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -214,7 +218,9 @@
         "<=",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -289,7 +295,9 @@
         "<=",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -361,7 +369,9 @@
         "<=",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -439,7 +449,9 @@
         "&&",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Tempdamage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

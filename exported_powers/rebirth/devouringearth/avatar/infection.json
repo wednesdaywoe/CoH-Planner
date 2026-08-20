@@ -54,7 +54,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -101,7 +103,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -154,7 +158,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -201,7 +207,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -248,7 +256,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -295,7 +305,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -342,7 +354,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -389,7 +403,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -436,7 +452,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -486,7 +504,9 @@
         "kInfected_01",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -539,7 +559,9 @@
         "kInfected_01",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -592,7 +614,9 @@
         "kInfected_01",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -645,7 +669,9 @@
         "kInfected_01",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -698,7 +724,9 @@
         "kInfected_01",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -751,7 +779,9 @@
         "kInfected_01",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -804,7 +834,9 @@
         "kInfected_01",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -857,7 +889,9 @@
         "kInfected_01",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -910,7 +944,9 @@
         "kInfected_01",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -963,7 +999,9 @@
         "kInfected_02",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1016,7 +1054,9 @@
         "kInfected_02",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1069,7 +1109,9 @@
         "kInfected_02",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1122,7 +1164,9 @@
         "kInfected_02",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1175,7 +1219,9 @@
         "kInfected_02",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1228,7 +1274,9 @@
         "kInfected_02",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1281,7 +1329,9 @@
         "kInfected_02",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1334,7 +1384,9 @@
         "kInfected_02",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1387,7 +1439,9 @@
         "kInfected_02",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1437,7 +1491,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1488,7 +1544,9 @@
         "kInfected_01",
         "target.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

@@ -55,7 +55,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -102,7 +104,9 @@
         "1",
         "=="
       ],
-      "tags": [],
+      "tags": [
+        "Immobilize"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -163,7 +167,9 @@
         "2",
         "=="
       ],
-      "tags": [],
+      "tags": [
+        "Immobilize"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -224,7 +230,9 @@
         "3",
         "=="
       ],
-      "tags": [],
+      "tags": [
+        "Immobilize"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -285,7 +293,9 @@
         "4",
         "=="
       ],
-      "tags": [],
+      "tags": [
+        "Immobilize"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

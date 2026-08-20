@@ -53,7 +53,9 @@
         "0.10",
         "<"
       ],
-      "tags": [],
+      "tags": [
+        "Knockback"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

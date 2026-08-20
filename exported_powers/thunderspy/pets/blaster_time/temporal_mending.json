@@ -54,7 +54,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Heal"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -105,7 +107,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Heal"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -155,7 +159,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -207,7 +213,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -257,7 +265,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -309,7 +319,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

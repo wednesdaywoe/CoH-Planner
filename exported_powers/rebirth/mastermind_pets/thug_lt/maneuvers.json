@@ -65,7 +65,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -134,7 +136,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -203,7 +207,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -272,7 +278,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -341,7 +349,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -410,7 +420,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -479,7 +491,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -548,7 +562,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -617,7 +633,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -686,7 +704,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

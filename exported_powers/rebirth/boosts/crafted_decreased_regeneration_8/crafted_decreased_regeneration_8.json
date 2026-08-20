@@ -54,7 +54,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Regeneration"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",

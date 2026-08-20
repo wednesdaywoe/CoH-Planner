@@ -80,7 +80,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Boost"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

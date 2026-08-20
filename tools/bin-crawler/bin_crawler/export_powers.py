@@ -287,6 +287,26 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
         'cast_through': pw.cast_through,
         'toggle_ignore': pw.toggle_ignore,
         'num_allowed': pw.num_allowed,
+        # Usage-limit / lifetime block (parse-table fields 56-65, LIFETIME-1).
+        # `lifetime` is wall-clock seconds from grant to removal;
+        # `lifetime_in_game` counts only time in play (power_CheckUsageLimits).
+        # Each field is emitted only when nonzero: absence is a stated 0 — no
+        # limit — matching the parse-table defaults. destroy_on_limit /
+        # stacking_usage are read by the game only under an active limit
+        # (ExpirePowers_Tick), so they ride along only when some limit field is
+        # present; destroy_on_limit's authored default is TRUE.
+        **({'num_charges': pw.num_charges} if pw.num_charges else {}),
+        **({'max_num_charges': pw.max_num_charges} if pw.max_num_charges else {}),
+        **({'usage_time': round(pw.usage_time, 4)} if pw.usage_time else {}),
+        **({'max_usage_time': round(pw.max_usage_time, 4)} if pw.max_usage_time else {}),
+        **({'lifetime': round(pw.lifetime, 4)} if pw.lifetime else {}),
+        **({'max_lifetime': round(pw.max_lifetime, 4)} if pw.max_lifetime else {}),
+        **({'lifetime_in_game': round(pw.lifetime_in_game, 4)} if pw.lifetime_in_game else {}),
+        **({'max_lifetime_in_game': round(pw.max_lifetime_in_game, 4)} if pw.max_lifetime_in_game else {}),
+        **({
+            'destroy_on_limit': pw.destroy_on_limit,
+            'stacking_usage': pw.stacking_usage,
+        } if (pw.num_charges or pw.usage_time or pw.lifetime or pw.lifetime_in_game) else {}),
         'requires': pw.requires,
         'activate_requires': pw.activate_requires,
         'target_requires': pw.target_requires,

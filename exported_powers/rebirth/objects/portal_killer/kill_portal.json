@@ -52,7 +52,9 @@
         "Rikti_Homeworld_Assault_Portal",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

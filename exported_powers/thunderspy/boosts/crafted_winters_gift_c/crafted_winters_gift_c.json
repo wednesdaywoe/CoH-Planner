@@ -72,7 +72,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Resist"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

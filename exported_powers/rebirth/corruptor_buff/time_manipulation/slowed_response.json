@@ -66,7 +66,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -125,7 +127,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -178,7 +182,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -231,7 +237,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -284,7 +292,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -337,7 +347,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -390,7 +402,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -443,7 +457,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -496,7 +512,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -551,7 +569,9 @@
         "Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -608,7 +628,9 @@
         "Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -659,7 +681,9 @@
         "Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -710,7 +734,9 @@
         "Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -761,7 +787,9 @@
         "Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -812,7 +840,9 @@
         "Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -863,7 +893,9 @@
         "Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -914,7 +946,9 @@
         "Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -965,7 +999,9 @@
         "Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

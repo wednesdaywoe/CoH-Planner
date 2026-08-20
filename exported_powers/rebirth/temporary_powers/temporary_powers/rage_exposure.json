@@ -53,7 +53,9 @@
         "source.inVolume>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_ToHit"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -114,7 +116,9 @@
         "source.inVolume>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -175,7 +179,9 @@
         "source.inVolume>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -230,7 +236,9 @@
         "source.inVolume>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -285,7 +293,9 @@
         "source.inVolume>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -340,7 +350,9 @@
         "source.inVolume>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -395,7 +407,9 @@
         "source.inVolume>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -450,7 +464,9 @@
         "source.inVolume>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -505,7 +521,9 @@
         "source.inVolume>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -559,7 +577,9 @@
         "PsychicWorld",
         "source.inVolume>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -617,7 +637,9 @@
         "PsychicWorld",
         "source.inVolume>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -675,7 +697,9 @@
         "PsychicWorld",
         "source.inVolume>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -727,7 +751,9 @@
         "PsychicWorld",
         "source.inVolume>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -779,7 +805,9 @@
         "PsychicWorld",
         "source.inVolume>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -831,7 +859,9 @@
         "PsychicWorld",
         "source.inVolume>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -883,7 +913,9 @@
         "PsychicWorld",
         "source.inVolume>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -935,7 +967,9 @@
         "PsychicWorld",
         "source.inVolume>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -987,7 +1021,9 @@
         "PsychicWorld",
         "source.inVolume>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1040,7 +1076,9 @@
         "source>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1100,7 +1138,9 @@
         "source>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

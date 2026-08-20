@@ -43,6 +43,7 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
+  "max_lifetime": 10.25,
   "requires": [],
   "activate_requires": [],
   "target_requires": [],

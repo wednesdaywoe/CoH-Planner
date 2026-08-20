@@ -68,7 +68,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -138,7 +140,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Stun"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -203,7 +207,9 @@
         "source.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Stun"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -262,7 +268,9 @@
         "Pool.Fighting.Cross_Punch",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -313,7 +321,9 @@
         "Pool.Fighting.Cross_Punch",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -371,7 +381,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -447,7 +459,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -523,7 +537,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -599,7 +615,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -675,7 +693,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -751,7 +771,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -827,7 +849,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -903,7 +927,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -979,7 +1005,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1055,7 +1083,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1131,7 +1161,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1212,7 +1244,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1298,7 +1332,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1386,7 +1422,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1498,7 +1536,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1608,7 +1648,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Stun"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -1686,7 +1728,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Stun"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1794,7 +1838,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -1888,7 +1934,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -1984,7 +2032,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -2083,7 +2133,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -2200,7 +2252,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -2299,7 +2353,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -2395,7 +2451,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -2506,7 +2564,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -2602,7 +2662,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -2701,7 +2763,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -2799,7 +2863,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InherentTaunt"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -2869,7 +2935,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InherentTaunt"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",

@@ -62,7 +62,9 @@
         "target.TokenOwned?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Leap"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -117,7 +119,9 @@
         "target.TokenOwned?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedJumping"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -166,7 +170,9 @@
         "target.TokenOwned?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Control"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -215,7 +221,9 @@
         "target.TokenOwned?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Friction"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

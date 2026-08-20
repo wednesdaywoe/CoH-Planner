@@ -43,6 +43,9 @@
   ],
   "toggle_ignore": [],
   "num_allowed": 10,
+  "lifetime_in_game": 15.0,
+  "destroy_on_limit": true,
+  "stacking_usage": false,
   "requires": [],
   "activate_requires": [
     "temporary_powers.temporary_powers.Pack_Mentality_Lock",

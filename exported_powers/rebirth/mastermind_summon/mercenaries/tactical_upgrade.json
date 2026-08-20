@@ -56,7 +56,9 @@
         "MastermindPets_Soldier",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -114,7 +116,9 @@
         "MastermindPets_Soldier",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -176,7 +180,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -238,7 +244,9 @@
         "MastermindPets_Soldier",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -296,7 +304,9 @@
         "MastermindPets_Soldier",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -354,7 +364,9 @@
         "MastermindPets_Soldier",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -412,7 +424,9 @@
         "MastermindPets_Medic",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -470,7 +484,9 @@
         "MastermindPets_Medic",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -528,7 +544,9 @@
         "MastermindPets_Medic",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -586,7 +604,9 @@
         "MastermindPets_Spec_Ops",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -644,7 +664,9 @@
         "MastermindPets_Spec_Ops",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -702,7 +724,9 @@
         "MastermindPets_Spec_Ops",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -760,7 +784,9 @@
         "MastermindPets_Spec_Ops",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -818,7 +844,9 @@
         "MastermindPets_Commando",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -876,7 +904,9 @@
         "MastermindPets_Commando",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -934,7 +964,9 @@
         "MastermindPets_Commando",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -992,7 +1024,9 @@
         "MastermindPets_Commando",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1059,7 +1093,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

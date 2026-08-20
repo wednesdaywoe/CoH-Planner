@@ -57,7 +57,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -118,7 +120,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -185,7 +189,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -252,7 +258,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -313,7 +321,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -374,7 +384,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -435,7 +447,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -496,7 +510,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -557,7 +573,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -618,7 +636,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -679,7 +699,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -740,7 +762,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -801,7 +825,9 @@
         "target.VillainName>",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

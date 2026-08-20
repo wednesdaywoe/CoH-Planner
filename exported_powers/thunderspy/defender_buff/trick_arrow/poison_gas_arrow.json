@@ -59,7 +59,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Level"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

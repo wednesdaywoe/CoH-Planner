@@ -59,7 +59,9 @@
         "Class_Blaster",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -117,7 +119,9 @@
         "Class_Defender",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

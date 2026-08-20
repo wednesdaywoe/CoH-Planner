@@ -58,7 +58,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -112,7 +114,9 @@
         "MastermindPets_Howler_Wolf",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -168,7 +172,9 @@
         "MastermindPets_Howler_Wolf",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -224,7 +230,9 @@
         "MastermindPets_Howler_Wolf",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -280,7 +288,9 @@
         "MastermindPets_Howler_Wolf",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -336,7 +346,9 @@
         "MastermindPets_Howler_Wolf_Alpha",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -392,7 +404,9 @@
         "MastermindPets_Howler_Wolf_Alpha",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -448,7 +462,9 @@
         "MastermindPets_Howler_Wolf_Alpha",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -504,7 +520,9 @@
         "MastermindPets_Lioness",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -560,7 +578,9 @@
         "MastermindPets_Lioness",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -616,7 +636,9 @@
         "MastermindPets_Lioness",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -672,7 +694,9 @@
         "MastermindPets_Lioness",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -728,7 +752,9 @@
         "MastermindPets_Lioness",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -784,7 +810,9 @@
         "MastermindPets_Dire_Wolf",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -840,7 +868,9 @@
         "MastermindPets_Dire_Wolf",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -896,7 +926,9 @@
         "MastermindPets_Dire_Wolf",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -952,7 +984,9 @@
         "MastermindPets_Dire_Wolf",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

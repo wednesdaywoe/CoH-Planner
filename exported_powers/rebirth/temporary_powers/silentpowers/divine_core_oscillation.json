@@ -59,7 +59,9 @@
         "target.isFriend?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "TempDamage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

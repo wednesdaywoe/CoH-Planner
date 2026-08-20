@@ -80,7 +80,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "GenesisResistance"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -159,7 +161,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "GenesisResistance"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -232,7 +236,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "GenesisResistance"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -305,7 +311,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "GenesisResistance"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -378,7 +386,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "GenesisResistance"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -451,7 +461,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "GenesisResistance"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -524,7 +536,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "GenesisResistance"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -597,7 +611,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "GenesisResistance"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

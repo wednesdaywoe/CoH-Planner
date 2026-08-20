@@ -71,7 +71,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Heal"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -124,7 +126,9 @@
       "requires_expression": [
         "target.isFriend?"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -177,7 +181,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Regen"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

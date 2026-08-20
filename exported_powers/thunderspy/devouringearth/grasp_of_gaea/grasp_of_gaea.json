@@ -54,7 +54,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",

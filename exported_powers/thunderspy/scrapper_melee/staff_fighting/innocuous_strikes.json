@@ -70,7 +70,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -123,7 +125,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -176,7 +180,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "PlayerCrit"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -244,7 +250,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "MLCrit"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -318,7 +326,9 @@
         "||",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "BossCrit"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -366,7 +376,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "FieryEmbrace"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -425,7 +437,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Immobilize"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -478,7 +492,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -552,7 +568,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -600,7 +618,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -643,7 +663,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -700,7 +722,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofBody"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -762,7 +786,9 @@
         "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofBody"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -824,7 +850,9 @@
         "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofBody"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -883,7 +911,9 @@
         "source.ownPower?",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofBody"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -945,7 +975,9 @@
         "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofBody"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1010,7 +1042,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofMind"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1072,7 +1106,9 @@
         "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofMind"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1134,7 +1170,9 @@
         "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofMind"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1193,7 +1231,9 @@
         "source.ownPower?",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofMind"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1255,7 +1295,9 @@
         "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofMind"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1320,7 +1362,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofSoul"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1382,7 +1426,9 @@
         "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofSoul"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1444,7 +1490,9 @@
         "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofSoul"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1503,7 +1551,9 @@
         "source.ownPower?",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofSoul"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1565,7 +1615,9 @@
         "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "PerfectionofSoul"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

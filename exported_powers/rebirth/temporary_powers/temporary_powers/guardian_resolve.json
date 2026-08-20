@@ -36,6 +36,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
+  "lifetime": 8.0,
+  "max_lifetime": 8.0,
+  "destroy_on_limit": true,
+  "stacking_usage": true,
   "requires": [],
   "activate_requires": [],
   "target_requires": [],
@@ -57,7 +61,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -123,7 +129,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -184,7 +192,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -245,7 +255,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -306,7 +318,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -367,7 +381,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -428,7 +444,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -488,7 +506,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -552,7 +572,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -612,7 +634,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -672,7 +696,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -732,7 +758,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -792,7 +820,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -852,7 +882,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -905,7 +937,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

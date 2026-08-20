@@ -83,7 +83,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "SSDamage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -136,7 +138,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "SSDamage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -189,7 +193,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "SSDamage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -242,7 +248,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "SSDamage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -290,7 +298,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -335,7 +345,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -379,7 +391,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -430,7 +444,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -492,7 +508,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -549,7 +567,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -610,7 +630,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InherentTaunt"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -664,7 +686,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InherentTaunt"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",

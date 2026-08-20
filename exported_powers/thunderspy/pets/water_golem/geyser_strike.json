@@ -66,7 +66,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -119,7 +121,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -175,7 +179,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Drowning"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -231,7 +237,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Drowning"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -284,7 +292,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -337,7 +347,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -389,7 +401,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -438,7 +452,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -485,7 +501,9 @@
         "Temporary_Powers.Temporary_Powers.Water_Control_Drowning",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -533,7 +551,9 @@
         "Temporary_Powers.Temporary_Powers.Water_Control_Drowning",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -587,7 +607,9 @@
         "==",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Knockback"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -660,7 +682,9 @@
         "==",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Knockback"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",

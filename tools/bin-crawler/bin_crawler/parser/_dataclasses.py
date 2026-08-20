@@ -126,6 +126,13 @@ class EffectGroup:
     # FireDamage tag groups carry chance 0 until the matching ammo enables them).
     # Captured so the converter can attribute tag-gated effects to their mode
     # (e.g. ammo) instead of folding them into base. Usually 0 or 1 entry.
+    #
+    # Parse7 reads it from the group's own `Tag` field. The Parse6 forks have no
+    # group, and name the bucket on the AttribMod instead — `pchName`, which is
+    # what i24's `ChanceModAccumulate` matches a chance-mod's filter against — so
+    # their readers lift that string here. Consequence: on those forks a non-empty
+    # `tags` is the norm rather than the exception, because most mods carry a name
+    # nothing filters on.
     tags: list[str] = field(default_factory=list)
     templates: list[EffectTemplate] = field(default_factory=list)
     child_groups: list["EffectGroup"] = field(default_factory=list)
@@ -236,6 +243,25 @@ class PowerRecord:
     # time-limited toggles (Hibernate 30, Telekinesis 20). 0.0 = no limit;
     # HC-layout only.
     max_toggle_time: float = 0.0
+
+    # Usage-limit / lifetime block (parse-table fields 56-65, both layouts).
+    # The game derives bHasLifetime / bHasUseLimit from these at load
+    # (powers_load.c:1142-1152), so the raw fields are the whole story: a power
+    # with `lifetime` N is removed N wall-clock seconds after it was granted,
+    # and `lifetime_in_game` counts only time spent in play
+    # (power_CheckUsageLimits, ExpirePowers_Tick). This is how a granted combo
+    # charge decays — Combo_Level_1 authors `LifeTime 6`. Parse-table defaults:
+    # destroy_on_limit TRUE, everything else 0/false.
+    destroy_on_limit: bool = True
+    stacking_usage: bool = False
+    num_charges: int = 0
+    max_num_charges: int = 0
+    usage_time: float = 0.0
+    max_usage_time: float = 0.0
+    lifetime: float = 0.0
+    max_lifetime: float = 0.0
+    lifetime_in_game: float = 0.0
+    max_lifetime_in_game: float = 0.0
 
     # MaxBoosts (i24 tail field) — enhancement slot cap; parse-table default 6,
     # authored 0 on unslottable powers. Decoded on both layouts.

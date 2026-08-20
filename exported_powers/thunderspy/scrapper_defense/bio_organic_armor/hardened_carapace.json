@@ -59,7 +59,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Res_DMG"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -114,7 +116,9 @@
         "kDefensiveAdaptation",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "DefensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -170,7 +174,9 @@
         "kOffensiveAdaptation",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -231,7 +237,9 @@
         "kRestedAdaptation",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "EfficientAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -285,7 +293,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -334,7 +344,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

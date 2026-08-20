@@ -68,7 +68,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Immobilize"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -137,7 +139,9 @@
         ">",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Immobilize"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -203,7 +207,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -299,7 +305,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -351,7 +359,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "EndDrain"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -398,7 +408,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

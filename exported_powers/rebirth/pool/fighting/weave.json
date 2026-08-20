@@ -85,7 +85,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -169,7 +171,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -257,7 +261,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -345,7 +351,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -433,7 +441,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -521,7 +531,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -609,7 +621,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -697,7 +711,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -785,7 +801,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -873,7 +891,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -961,7 +981,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1048,7 +1070,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1125,7 +1149,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1202,7 +1228,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1279,7 +1307,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1356,7 +1386,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1433,7 +1465,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1510,7 +1544,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1587,7 +1623,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1664,7 +1702,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1741,7 +1781,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1816,7 +1858,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ShapeshiftDeactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1952,7 +1996,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -2153,7 +2199,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -2354,7 +2402,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -2555,7 +2605,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -2756,7 +2808,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -2957,7 +3011,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -3158,7 +3214,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -3359,7 +3417,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -3560,7 +3620,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -3761,7 +3823,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -3961,7 +4025,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -4140,7 +4206,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -4319,7 +4387,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -4498,7 +4568,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -4677,7 +4749,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -4856,7 +4930,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -5035,7 +5111,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -5214,7 +5292,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -5393,7 +5473,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -5572,7 +5654,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -5751,7 +5835,9 @@
         "isPVPMap?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "CantWeaveOffTheGround"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

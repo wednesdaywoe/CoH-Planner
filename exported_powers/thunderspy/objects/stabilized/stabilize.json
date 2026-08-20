@@ -52,7 +52,9 @@
         "Objects_Rikti_Portal_Stabilizer",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

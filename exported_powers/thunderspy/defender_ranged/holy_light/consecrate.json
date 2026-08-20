@@ -70,7 +70,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -126,7 +128,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -176,7 +180,9 @@
       "requires_expression": [
         "target.isFriend?"
       ],
-      "tags": [],
+      "tags": [
+        "Heal"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -236,7 +242,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

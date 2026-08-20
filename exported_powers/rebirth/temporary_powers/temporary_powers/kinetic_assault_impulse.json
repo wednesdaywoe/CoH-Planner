@@ -36,6 +36,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 5,
+  "lifetime": 30.0,
+  "max_lifetime": 30.0,
+  "destroy_on_limit": true,
+  "stacking_usage": false,
   "requires": [],
   "activate_requires": [],
   "target_requires": [],
@@ -49,7 +53,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -102,7 +108,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Recharge"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

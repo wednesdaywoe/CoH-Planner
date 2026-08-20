@@ -81,7 +81,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NormalDebuffGC"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -142,7 +144,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NormalDebuffGC"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -234,7 +238,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptationGC"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -294,7 +300,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptationGC"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -380,7 +388,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "EfficientAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -435,7 +445,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "DefensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -497,7 +509,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "DefensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -563,7 +577,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NormalDebuff"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -625,7 +641,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NormalDebuff"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -686,7 +704,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "DefensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -747,7 +767,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "DefensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

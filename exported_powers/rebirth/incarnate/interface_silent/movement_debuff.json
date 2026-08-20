@@ -70,7 +70,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InterfaceMovement"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -139,7 +141,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InterfaceMovement"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -202,7 +206,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InterfaceMovement"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -265,7 +271,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InterfaceMovement"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

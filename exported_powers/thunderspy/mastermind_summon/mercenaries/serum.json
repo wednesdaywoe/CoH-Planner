@@ -72,7 +72,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Res_DMG"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -135,7 +137,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Res_DMG"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -197,7 +201,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Res_DMG"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -256,7 +262,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -314,7 +322,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -387,7 +397,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -460,7 +472,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -533,7 +547,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -606,7 +622,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -679,7 +697,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -752,7 +772,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -812,7 +834,9 @@
         "target.VillainName>",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_ToHit"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

@@ -100,7 +100,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Boost"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",

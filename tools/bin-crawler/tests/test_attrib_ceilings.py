@@ -226,6 +226,51 @@ def test_max_endurance_ceiling_sits_above_its_base_row():
             )
 
 
+def test_every_player_archetype_carries_the_travel_floor():
+    """The other half of the pair `ClampCur` holds `attrCur` between.
+
+    `_classes.py` read AttribMaxTable for the travel ceilings and discarded
+    AttribMin, so a grounding power's saturating debuff — Granite Armor's
+    `JumpHeight −500 × Melee_Ones`, Rest's `−1000` on all four axes — projected
+    as a NEGATIVE speed with nothing to stop it (DATA-GAP-REGISTER MOVEMIN-1).
+
+    Two claims, because the slot is the failure mode. AttribMin sits two struct
+    slots from AttribBase and one from StrengthMin, and every one of them holds
+    plausible per-axis floats, so a slide is silent:
+
+      * the floor is the game's number rather than zero — run and fly at 0.1
+        scale, jump speed and height at 0.0, on all 45 player archetypes. An
+        engine that clamped at zero would satisfy every other check here and
+        still be wrong on two of the four axes.
+      * the floor is NOT the base. That is the oracle for the slot: AttribBase's
+        fly slot reads 1.5 where AttribMin's reads 0.1, so a read that slid one
+        struct over cannot land on these numbers by luck.
+    """
+    expected = {"run_speed": 0.1, "fly_speed": 0.1,
+                "jump_speed": 0.0, "jump_height": 0.0}
+    for dataset in ("homecoming", "rebirth", "thunderspy"):
+        for archetype, record in _player_archetypes(dataset).items():
+            attribs = record["attribs"]
+            floor = attribs.get("movement_floor")
+            base = attribs.get("movement_base")
+            assert isinstance(floor, dict), (
+                f"{dataset}/{archetype}: no movement_floor — AttribMin did not "
+                f"reach the export, so nothing bounds a saturating debuff below"
+            )
+            for axis, want in expected.items():
+                got = floor.get(axis)
+                assert isinstance(got, (int, float)) and abs(got - want) < 1e-6, (
+                    f"{dataset}/{archetype}: movement_floor.{axis} is {got!r}, "
+                    f"expected {want} — either the read slid off the AttribMin "
+                    f"slot or the class binary changed, and both are findings"
+                )
+            assert floor["fly_speed"] != base["fly_speed"], (
+                f"{dataset}/{archetype}: the fly floor equals the fly base "
+                f"({base['fly_speed']}) — movement_floor is reading AttribBase, "
+                f"the struct slot next door, not AttribMin"
+            )
+
+
 def test_no_mez_ceiling_is_invented():
     """A deliberate absence, not an omission: the mez rows are a flat 1.0 bound
     on the mez STATE and protection has no per-archetype ceiling at all, so

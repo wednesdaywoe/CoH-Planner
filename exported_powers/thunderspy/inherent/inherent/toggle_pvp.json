@@ -67,7 +67,9 @@
         "source.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -123,7 +125,9 @@
         "Temporary_Powers.Temporary_Powers.PvP_OptIn",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "ShredRecharge"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -179,7 +183,9 @@
         "Temporary_Powers.Temporary_Powers.PvP_OptIn",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

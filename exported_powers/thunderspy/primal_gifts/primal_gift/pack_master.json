@@ -63,7 +63,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBInactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -123,7 +125,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBInactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -176,7 +180,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -236,7 +242,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -296,7 +304,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBInactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -356,7 +366,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -404,7 +416,9 @@
         "kHunterMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBInactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -467,7 +481,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBInactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -523,7 +539,9 @@
         "kHunterMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -572,7 +590,9 @@
         "kHunterMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -621,7 +641,9 @@
         "kHunterMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -670,7 +692,9 @@
         "kHunterMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -719,7 +743,9 @@
         "kHunterMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -768,7 +794,9 @@
         "kHunterMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -817,7 +845,9 @@
         "kHunterMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -866,7 +896,9 @@
         "kHunterMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -922,7 +954,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -978,7 +1012,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1034,7 +1070,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1090,7 +1128,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1146,7 +1186,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1202,7 +1244,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1258,7 +1302,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1314,7 +1360,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1363,7 +1411,9 @@
         "kProwlerMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBInactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1419,7 +1469,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBInactive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1468,7 +1520,9 @@
         "kProwlerMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1524,7 +1578,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

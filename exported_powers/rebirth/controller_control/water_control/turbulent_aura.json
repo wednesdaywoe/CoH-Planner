@@ -75,7 +75,9 @@
         "||",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -139,7 +141,9 @@
         "||",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Drowning"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -221,7 +225,9 @@
         "||",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -319,7 +325,9 @@
         "||",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -398,7 +406,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -468,7 +478,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -545,7 +557,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Drowning"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -613,7 +627,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Drowning"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -684,7 +700,9 @@
         "Temporary_Powers.Temporary_Powers.Water_Control_Drowning",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "HealSelf"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -739,7 +757,9 @@
         "eq",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

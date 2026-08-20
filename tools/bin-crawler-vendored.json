@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "151b99f376cf6e6610b654d3d12281052349d58a",
-  "synced_from_subject": "TARGETS-3 is closed",
-  "synced_from_date": "2026-08-14T07:52:55-04:00",
-  "tree_fingerprint": "fd75e8656e49d6d66fc860614685d8280194c5caa7140181b8ac30a98b4744e4",
-  "export_manifest_digest": "34b093d06177a715f66d49bf088c98d2795c564a28cb960d4d648ea97c2250b3",
+  "synced_from_commit": "473070b364b3f56621d98e8c7ff761adfb43b019",
+  "synced_from_subject": "BOOST-3 closed — a set's aspect label reads GroupName, not Category",
+  "synced_from_date": "2026-08-19T20:10:23-04:00",
+  "tree_fingerprint": "b86e46069c1236118d2873c948dacec3c72a90341a714d4b5c9c63268b8f56ba",
+  "export_manifest_digest": "17c2e576a48a962796ef0f0078ab11bb0174d32674dc9dbcde6657a376817b96",
   "export_manifest_count": 10
 }

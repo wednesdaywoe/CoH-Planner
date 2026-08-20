@@ -65,7 +65,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Resist"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -127,7 +129,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -185,7 +189,9 @@
         "Source.Mode?",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -245,7 +251,9 @@
         "Source.Mode?",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "HealSelf"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

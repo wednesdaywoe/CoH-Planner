@@ -71,7 +71,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -127,7 +129,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBProwlerCloakCritActive"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -184,7 +188,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBProwlerCritActive"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -237,7 +243,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -293,7 +301,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -350,7 +360,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NBProwlerCritActive"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -398,7 +410,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -448,7 +462,9 @@
         "Source.Mode?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -502,7 +518,9 @@
         "kProwlerCloakMode",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -550,7 +568,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "NBActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -606,7 +626,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "NBProwlerBrutalSwipeStun"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -665,7 +687,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "NBProwlerBrutalSwipeStun"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",

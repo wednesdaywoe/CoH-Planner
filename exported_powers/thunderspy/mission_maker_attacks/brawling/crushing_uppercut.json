@@ -69,7 +69,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -120,7 +122,9 @@
         "Temporary_Powers.Temporary_Powers.Combo_Level_1",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -171,7 +175,9 @@
         "Temporary_Powers.Temporary_Powers.Combo_Level_2",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -222,7 +228,9 @@
         "Temporary_Powers.Temporary_Powers.Combo_Level_3",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -282,7 +290,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Stun"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -339,7 +349,9 @@
         "Temporary_Powers.Temporary_Powers.Combo_Level_1",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Stun"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -396,7 +408,9 @@
         "Temporary_Powers.Temporary_Powers.Combo_Level_2",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Stun"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -453,7 +467,9 @@
         "Temporary_Powers.Temporary_Powers.Combo_Level_3",
         "source.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Stun"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -507,7 +523,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Knockback"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -570,7 +588,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -623,7 +643,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -676,7 +698,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

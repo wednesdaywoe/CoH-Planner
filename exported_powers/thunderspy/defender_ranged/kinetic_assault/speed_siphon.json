@@ -135,7 +135,9 @@
         "eq",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -190,7 +192,9 @@
         "eq",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -239,7 +243,9 @@
         "eq",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -291,7 +297,9 @@
         "eq",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -340,7 +348,9 @@
         "eq",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedRunning"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

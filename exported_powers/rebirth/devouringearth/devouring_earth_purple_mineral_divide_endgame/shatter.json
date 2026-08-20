@@ -74,7 +74,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -171,7 +173,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -268,7 +272,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -365,7 +371,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -462,7 +470,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -559,7 +569,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

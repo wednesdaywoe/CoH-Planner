@@ -57,7 +57,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -111,7 +113,9 @@
         "0.50",
         "<="
       ],
-      "tags": [],
+      "tags": [
+        "Knockback"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -180,7 +184,9 @@
         "0.25",
         "<="
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -240,7 +246,9 @@
         "0.25",
         "<="
       ],
-      "tags": [],
+      "tags": [
+        "DeBuff_ToHit"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -291,7 +299,9 @@
         "0.25",
         "<="
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -342,7 +352,9 @@
         "0.25",
         "<="
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -399,7 +411,9 @@
         "0.25",
         "<="
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

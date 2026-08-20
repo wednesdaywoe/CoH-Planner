@@ -1,7 +1,7 @@
 {
   "schema": "bin-crawler-export-manifest/2",
   "note": "entities_fingerprint is the sha256 of the entities exporter (bin_crawler/parser/**/*.py + export_entities.py) at export time. If it disagrees with the current committed exporter source, THIS entities/ tree is stale \u2014 re-run export_entities for this dataset and commit. Guarded by src/data/export-staleness.test.ts. `source` names the assets shard the bytes were read from; guarded by src/data/export-provenance.test.ts.",
-  "entities_fingerprint": "00031bd9efcd31537bd0a31ebfe156d40b7e6cff8c602f770a5e19b0c47df19c",
+  "entities_fingerprint": "36481f3f5a5f8a5b8b7e611a55ebf6d5dd5604bec9d626628034a1cb5952437a",
   "source": {
     "assets_dir": "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/live",
     "shard": "live",

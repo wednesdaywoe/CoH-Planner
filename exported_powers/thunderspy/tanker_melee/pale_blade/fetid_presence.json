@@ -61,7 +61,9 @@
         "Temporary_Powers.Temporary_Powers.Pale_Enemy_Lash",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -106,7 +108,9 @@
         "Temporary_Powers.Temporary_Powers.Pale_Enemy_Lash",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -161,7 +165,9 @@
         "Temporary_Powers.Temporary_Powers.Pale_Enemy_Flay",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -206,7 +212,9 @@
         "Temporary_Powers.Temporary_Powers.Pale_Enemy_Flay",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -261,7 +269,9 @@
         "Temporary_Powers.Temporary_Powers.Pale_Enemy_RendFlesh",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -306,7 +316,9 @@
         "Temporary_Powers.Temporary_Powers.Pale_Enemy_RendFlesh",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -361,7 +373,9 @@
         "Temporary_Powers.Temporary_Powers.Pale_Enemy_Khloros",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -406,7 +420,9 @@
         "Temporary_Powers.Temporary_Powers.Pale_Enemy_Khloros",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -461,7 +477,9 @@
         "Temporary_Powers.Temporary_Powers.Pale_Enemy_PaleBlade",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -506,7 +524,9 @@
         "Temporary_Powers.Temporary_Powers.Pale_Enemy_PaleBlade",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

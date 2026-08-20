@@ -61,7 +61,9 @@
         "player",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Heal"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

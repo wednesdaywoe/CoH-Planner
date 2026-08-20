@@ -70,7 +70,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InterfaceRegen"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

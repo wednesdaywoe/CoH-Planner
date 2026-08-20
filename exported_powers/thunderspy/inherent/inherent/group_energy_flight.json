@@ -73,7 +73,9 @@
         "target.TokenOwned?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -133,7 +135,9 @@
         "target.TokenOwned?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Control"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -187,7 +191,9 @@
         "target.TokenOwned?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "SpeedFlying"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -241,7 +247,9 @@
         "target.TokenOwned?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Friction"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

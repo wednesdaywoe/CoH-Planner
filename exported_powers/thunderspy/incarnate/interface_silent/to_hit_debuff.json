@@ -64,7 +64,9 @@
         "target.isFriend?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "InterfaceToHit"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

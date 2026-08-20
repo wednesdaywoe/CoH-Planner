@@ -1,7 +1,7 @@
 {
   "schema": "bin-crawler-export-manifest/2",
   "note": "parser_fingerprint is the sha256 of the powers exporter (bin_crawler/parser/**/*.py + export_powers.py) at export time. If it disagrees with the current committed exporter source, THIS tree is stale \u2014 re-run export_powers for this dataset and commit. Guarded by src/data/export-staleness.test.ts. `source` names the assets shard the bytes were read from; guarded by src/data/export-provenance.test.ts.",
-  "parser_fingerprint": "eda18d3518300a4e44e463c5e1d59ca36128644a32fdd9871b5c8299cb8cc55f",
+  "parser_fingerprint": "82e0fe0113cf82d889a4e7cb99a266aa052862b03d79281b07a7845f07148a18",
   "source": {
     "assets_dir": "/home/jiiwii/Games/coh-sweettea/drive_c/users/jiiwii/AppData/Local/Thunderspy Gaming/Sweet Tea/tspy",
     "shard": "tspy",

@@ -63,7 +63,9 @@
         "Source.Mode?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_DMG"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -123,7 +125,9 @@
         "Source.Mode?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_DMG"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

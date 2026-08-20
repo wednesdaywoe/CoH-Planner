@@ -1,7 +1,7 @@
 {
   "schema": "bin-crawler-export-manifest/2",
   "note": "classes_fingerprint is the sha256 of the classes exporter (bin_crawler/parser/**/*.py + export_classes.py) at export time. If it disagrees with the current committed exporter source, THIS tables/ tree is stale \u2014 re-run export_classes for this dataset and commit. Guarded by src/data/export-staleness.test.ts. `source` names the assets shard the bytes were read from; guarded by src/data/export-provenance.test.ts.",
-  "classes_fingerprint": "234bc80543e56ff41f6c72e7a45663e7b4c7614dbabbaaf74e5e652f73dd8ef2",
+  "classes_fingerprint": "8e0f8bdee2ca8ef2b1bdf763e3fed17e37139e2dc455c5220ac4066499e18fa9",
   "source": {
     "assets_dir": "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/live",
     "shard": "live",

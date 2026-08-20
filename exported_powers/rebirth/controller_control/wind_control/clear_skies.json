@@ -61,7 +61,9 @@
         "kClearSkies",
         "source.mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Buff_ToHit"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -112,7 +114,9 @@
         "kClearSkies",
         "source.mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -164,7 +168,9 @@
         "kClearSkies",
         "source.mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -215,7 +221,9 @@
         "kClearSkies",
         "source.mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

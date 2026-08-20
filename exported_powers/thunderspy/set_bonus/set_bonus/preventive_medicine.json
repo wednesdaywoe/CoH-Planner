@@ -59,7 +59,9 @@
         "<=",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "PreventiveMedicine"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -125,7 +127,9 @@
         "31",
         "<"
       ],
-      "tags": [],
+      "tags": [
+        "PreventiveMedicine"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

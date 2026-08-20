@@ -66,7 +66,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -127,7 +129,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -182,7 +186,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -237,7 +243,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -292,7 +300,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -347,7 +357,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -401,7 +413,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -455,7 +469,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -509,7 +525,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -563,7 +581,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -617,7 +637,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -671,7 +693,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -729,7 +753,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -793,7 +819,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -851,7 +879,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -909,7 +939,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -967,7 +999,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -1025,7 +1059,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -1083,7 +1119,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -1141,7 +1179,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -1199,7 +1239,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -1257,7 +1299,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "DeBuff_ToHit"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -1321,7 +1365,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1385,7 +1431,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1443,7 +1491,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1501,7 +1551,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1559,7 +1611,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1617,7 +1671,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1675,7 +1731,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1733,7 +1791,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1791,7 +1851,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1849,7 +1911,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "DeBuff_ToHit"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",

@@ -64,7 +64,9 @@
         "kWarshade_Blaster_Mode",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -125,7 +127,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Stun"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -189,7 +193,9 @@
         "source.Mode?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -255,7 +261,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Stun"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",

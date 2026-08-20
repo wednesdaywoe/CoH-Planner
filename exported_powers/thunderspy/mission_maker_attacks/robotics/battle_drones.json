@@ -74,7 +74,9 @@
         "&&",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -152,7 +154,9 @@
         "&&",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -235,7 +239,9 @@
         "&&",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -323,7 +329,9 @@
         "&&",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus2"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -416,7 +424,9 @@
         "&&",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus2"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -509,7 +519,9 @@
         "&&",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Levelminus2"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

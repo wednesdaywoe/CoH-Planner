@@ -36,6 +36,9 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
+  "lifetime": 1.0,
+  "destroy_on_limit": true,
+  "stacking_usage": false,
   "requires": [],
   "activate_requires": [],
   "target_requires": [],
@@ -52,7 +55,9 @@
         "Stalker_Melee.Broad_Sword.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -110,7 +115,9 @@
         "Stalker_Melee.Claws.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -168,7 +175,9 @@
         "Stalker_Melee.Dark_Melee.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -226,7 +235,9 @@
         "Stalker_Melee.Dual_Blades.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -284,7 +295,9 @@
         "Stalker_Melee.Electrical_Melee.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -342,7 +355,9 @@
         "Stalker_Melee.Energy_Melee.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -400,7 +415,9 @@
         "Stalker_Melee.Kinetic_Attack.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -458,7 +475,9 @@
         "Stalker_Melee.Martial_Arts.Focus_Chi",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -516,7 +535,9 @@
         "Stalker_Melee.Ninja_Sword.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -574,7 +595,9 @@
         "Stalker_Melee.Psionic_Melee.Concentration",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -632,7 +655,9 @@
         "Stalker_Melee.Spines.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -690,7 +715,9 @@
         "Stalker_Melee.Brawling.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -748,7 +775,9 @@
         "Stalker_Melee.Staff_Fighting.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -806,7 +835,9 @@
         "Stalker_Melee.Savage_Melee.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -864,7 +895,9 @@
         "Stalker_Melee.Radiation_Melee.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -922,7 +955,9 @@
         "Stalker_Melee.Ice_Melee.Build_Up",
         "source.ownpower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

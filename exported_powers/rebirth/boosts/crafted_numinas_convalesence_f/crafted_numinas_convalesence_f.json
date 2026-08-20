@@ -70,7 +70,9 @@
         "source.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Regen"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -124,7 +126,9 @@
         "source.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Recovery"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

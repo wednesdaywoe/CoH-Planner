@@ -146,7 +146,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "GenesisMaxHp"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -285,7 +287,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "GenesisMaxHp"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",

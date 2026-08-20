@@ -67,7 +67,9 @@
         "eq",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "HealSelf"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

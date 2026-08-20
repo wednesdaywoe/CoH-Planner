@@ -59,7 +59,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Status"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -109,7 +111,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Heal"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

@@ -77,7 +77,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -135,7 +137,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -193,7 +197,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Def"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -244,7 +250,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "HealSelf"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -304,7 +312,9 @@
         "target.isFriend?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "HealSelf"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

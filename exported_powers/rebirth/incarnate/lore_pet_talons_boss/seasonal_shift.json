@@ -58,7 +58,9 @@
       "radius_inner": -1.0,
       "radius_outer": 14.989999771118164,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -106,7 +108,9 @@
       "radius_inner": 15.0,
       "radius_outer": 30.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -148,7 +152,9 @@
       "radius_inner": -1.0,
       "radius_outer": 14.989999771118164,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Debuff_ToHit"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -190,7 +196,9 @@
       "radius_inner": 15.0,
       "radius_outer": 30.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -232,7 +240,9 @@
       "radius_inner": 15.0,
       "radius_outer": 30.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -274,7 +284,9 @@
       "radius_inner": 15.0,
       "radius_outer": 30.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -316,7 +328,9 @@
       "radius_inner": 15.0,
       "radius_outer": 30.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -361,7 +375,9 @@
       "radius_inner": 15.0,
       "radius_outer": 30.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Slow"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

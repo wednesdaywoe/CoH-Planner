@@ -2101,26 +2101,29 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     r.read_u4()
     # 55. confirm_requires (string_array)
     r.read_string_array()
+    # 56-65. Usage-limit / lifetime block. Discarded until LIFETIME-1: the
+    # granted-power decay the chain's per-cast state needs (Combo_Level_1
+    # authors `LifeTime 6`) was decoded here and thrown away.
     # 56. destroy_on_limit (bool)
-    r.read_bool()
+    destroy_on_limit = r.read_bool()
     # 57. stacking_usage (bool)
-    r.read_bool()
+    stacking_usage = r.read_bool()
     # 58. num_charges (u4)
-    r.read_u4()
+    num_charges = r.read_u4()
     # 59. max_num_charges (u4)
-    r.read_u4()
+    max_num_charges = r.read_u4()
     # 60. usage_time (f4)
-    r.read_f4()
+    usage_time = r.read_f4()
     # 61. max_usage_time (f4)
-    r.read_f4()
+    max_usage_time = r.read_f4()
     # 62. lifetime (f4)
-    r.read_f4()
+    lifetime = r.read_f4()
     # 63. max_lifetime (f4)
-    r.read_f4()
+    max_lifetime = r.read_f4()
     # 64. lifetime_in_game (f4)
-    r.read_f4()
+    lifetime_in_game = r.read_f4()
     # 65. max_lifetime_in_game (f4)
-    r.read_f4()
+    max_lifetime_in_game = r.read_f4()
     # 66. interrupt_time (f4)
     interrupt_time = r.read_f4()
     # 67. target_visibility (u4)
@@ -2247,6 +2250,16 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         activate_period=activate_period,
         endurance_cost=endurance_cost,
         interrupt_time=interrupt_time,
+        destroy_on_limit=destroy_on_limit,
+        stacking_usage=stacking_usage,
+        num_charges=num_charges,
+        max_num_charges=max_num_charges,
+        usage_time=usage_time,
+        max_usage_time=max_usage_time,
+        lifetime=lifetime,
+        max_lifetime=max_lifetime,
+        lifetime_in_game=lifetime_in_game,
+        max_lifetime_in_game=max_lifetime_in_game,
         accuracy=accuracy,
         target_type=target_type,
         target_type_secondary=target_type_secondary,
@@ -2634,14 +2647,29 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     # displaced defense array.
     _elem_start = r._pos
 
-    # Front attribs (string-offset form). This array belongs to the ELEMENT, not to
-    # any one AttribMod in it — it is a group-level CATEGORY token (`Ones`, `Damage`,
-    # `Buff_Def`, `Res_DMG`, …), which is why so many powers carry the `Ones`
-    # placeholder here. The per-mod attribs live in each sub-record's index array
-    # (below); this is the fallback for the sub-records that carry no decodable one.
-    attrib_offs = r.read_u4_array()
-    front_attribs = [n for n in (_resolve_str(o) for o in attrib_offs) if n]
-    attribs = front_attribs
+    # The element's name, at the position HC's Parse7 EffectGroup opens with `Tag`.
+    # It is the string the global chance-mod system matches on: i24's
+    # `ChanceModAccumulate` (MapServer/src/entity/character_combat.c:103) compares
+    # `ptemplate->pchName` against each accumulated mod's filter name, which is the
+    # role HC later moved onto the group's `Tag`. tspy descends from that schema and
+    # hoists the name to the element, exactly one per element corpus-wide (79,308 of
+    # 79,703 carry one, none carry two), so it rides `group_extras` onto the
+    # synthetic group as `tags` — the field every consumer already asks for the
+    # chance-mod bucket by.
+    #
+    # Read as a group-level attrib CATEGORY token until now, and used only as a
+    # fallback attrib source, which is why the fork exported ZERO tagged groups
+    # while carrying 218 distinct names here — `ColdDamage` 862, `ToxicDamage` 1102,
+    # `FieryEmbrace` 1080, `PerfectionofBody/Mind/Soul` 430 each, i.e. precisely the
+    # names this fork's own `Global_Chance_Mod` rows filter on.
+    #
+    # It is no longer an attrib fallback. Corpus-wide only 117 of 79,718 templates
+    # decode no attrib index at all, and the 3 of those with a non-empty name all
+    # read `Ones`, which is a mod name and never an attrib. The fallback's whole
+    # remaining yield was one fabricated attrib.
+    tag_offs = r.read_u4_array()
+    tags = [n for n in (_resolve_str(o) for o in tag_offs) if n]
+    attribs: list[str] = []
 
     # The five header floats are HC's EffectGroup header, field for field
     # (Chance/PPM/Delay/RadiusInner/RadiusOuter), not the per-AttribMod defaults
@@ -2975,7 +3003,7 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     # against the raw tspy bin: `Res_DMG`-front templates carry per-type `*_Dmg` index
     # attribs on `*_Res_DMG` tables.)
     _tspy_res_surfaced = (bool(table) and 'Res_DMG' in table
-                          and front_attribs == ['Res_DMG'] and bool(_idx_attribs))
+                          and tags == ['Res_DMG'] and bool(_idx_attribs))
 
     # The table scale IS the scale on this schema. It used to fall back to the
     # header word for a tableless record, which the RB5-b2 decode retires — that
@@ -3039,8 +3067,8 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     # the melee tree, whose `*_Dmg` rows are damage RESISTANCE per HC/Rebirth/help,
     # see `_tspy_hybrid_aspect_class`): the empty-index Assault/Control grant shells
     # are deliberately left as the generic token.
-    if (incarnate_scope in ("hybrid", "hybrid_melee") and len(front_attribs) == 1
-            and front_attribs[0] in _TSPY_HYBRID_GENERIC_FRONTS
+    if (incarnate_scope in ("hybrid", "hybrid_melee") and len(tags) == 1
+            and tags[0] in _TSPY_HYBRID_GENERIC_FRONTS
             and table.endswith("_Ones") and _idx_attribs and final_scale > 0):
         _melee = incarnate_scope == "hybrid_melee"
         _classes = {_tspy_hybrid_aspect_class(a, melee=_melee) for a in _idx_attribs}
@@ -3064,8 +3092,8 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     #   - `ArchVillain_Res` front                  → Ageless Radial's debuff-
     #     resistance bundle (index = the ~20-attrib resistance list HC folds to
     #     debuffResistance); front is already real, only the aspect is synthesized.
-    if incarnate_scope == "destiny" and len(front_attribs) == 1:
-        _front = front_attribs[0]
+    if incarnate_scope == "destiny" and len(tags) == 1:
+        _front = tags[0]
         _idxset = set(_idx_attribs)
         if _front == "Ones" and _idx_attribs:
             if _idxset <= _TSPY_HYBRID_DEFENSE_ATTRIBS and final_scale > 0:
@@ -3142,6 +3170,7 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         'radius_inner': radius_inner,
         'radius_outer': radius_outer,
         'requires_expression': group_requires,
+        'tags': tags,
     }
     return template, group_extras
 
@@ -3322,8 +3351,29 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
     the AttribMod where HC keeps them on the EffectGroup wrapper, so the
     caller applies `group_extras` to the synthetic group it builds.
     """
-    # Header strings (5)
-    _name = r.read_string()
+    # Header strings (5). The leading one is `AttribModTemplate.pchName` — the
+    # source calls it "internal name of effect (for matching later on)"
+    # (attribmod.h:202), and the matching it means is the chance-mod system:
+    # `ChanceModAccumulate` (MapServer/src/entity/character_combat.c:103) walks the
+    # character's and the power's accumulated `Global_Chance_Mod`s and adds each
+    # one's magnitude where its filter name equals this string. That is the job HC
+    # later moved onto the EffectGroup's `Tag`, and stock Parse6 has no group to
+    # put it on — so it rides `group_extras` onto the synthetic group this mod is
+    # wrapped in, as `tags`, which is where every consumer asks for the bucket.
+    #
+    # Read into a discarded `_name` for as long as this reader existed, which is
+    # why Rebirth exported zero tagged groups while carrying 243 distinct names
+    # (`ColdDamage` 291, `ToxicDamage` 406, `FieryEmbrace` 571, `ShapeshiftDeactive`
+    # 260, `ShapeshiftActive` 16). Dual Pistols is the anchor: Rebirth's Pistols
+    # names its mods Damage / Lethal / FireDamage / FireDamageDoT / ColdDamage /
+    # ToxicDamage with chance 1.0 on the first two and 0.0 on the rest — the
+    # authored HC def's Effect tags and chances, mod for mod.
+    #
+    # Most names are not chance-mod buckets at all: ~90% simply restate the mod's
+    # own table (`Ones`, `Res_Dmg`, `Buff_Def`). Nothing filters on those, and the
+    # converter's tag consumers are name allowlists, so carrying them is faithful
+    # rather than load-bearing.
+    tag = r.read_string()
     _attacker_msg = r.read_string()
     _victim_msg = r.read_string()
     _float_msg = r.read_string()
@@ -3485,7 +3535,7 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
     suppress_events: list[dict] = []
     fx: dict | None = None
     boost_mod_allowed_id = 0
-    group_extras: dict = {}
+    group_extras: dict = {"tags": [tag] if tag else []}
     if tail is None:
         tail_bytes = bytes(r._data[r._pos:r._end])
         r.skip_to_end()
@@ -3515,6 +3565,7 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
             fx = None
         boost_mod_allowed_id = tail["boost_mod_allowed_id"]
         group_extras = {
+            "tags": [tag] if tag else [],
             "radius_inner": tail["radius_inner"],
             "radius_outer": tail["radius_outer"],
             "ppm": tail["procs_per_minute"],
@@ -3850,10 +3901,17 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     r.read_u4()  # 53
     r.read_u4()  # 54
     r.read_string_array()  # 55
-    r.read_bool()  # 56
-    r.read_bool()  # 57
-    r.read_u4(); r.read_u4()  # 58-59
-    for _ in range(6): r.read_f4()  # 60-65
+    # 56-65: usage-limit / lifetime block, same order as Parse7 (LIFETIME-1).
+    destroy_on_limit = r.read_bool()  # 56
+    stacking_usage = r.read_bool()  # 57
+    num_charges = r.read_u4()  # 58
+    max_num_charges = r.read_u4()  # 59
+    usage_time = r.read_f4()  # 60
+    max_usage_time = r.read_f4()  # 61
+    lifetime = r.read_f4()  # 62
+    max_lifetime = r.read_f4()  # 63
+    lifetime_in_game = r.read_f4()  # 64
+    max_lifetime_in_game = r.read_f4()  # 65
     interrupt_time = r.read_f4()  # 66
     target_visibility = r.read_u4()  # 67
     target_type = r.read_u4()  # 68
@@ -4048,6 +4106,16 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
         activate_period=activate_period,
         endurance_cost=endurance_cost,
         interrupt_time=interrupt_time,
+        destroy_on_limit=destroy_on_limit,
+        stacking_usage=stacking_usage,
+        num_charges=num_charges,
+        max_num_charges=max_num_charges,
+        usage_time=usage_time,
+        max_usage_time=max_usage_time,
+        lifetime=lifetime,
+        max_lifetime=max_lifetime,
+        lifetime_in_game=lifetime_in_game,
+        max_lifetime_in_game=max_lifetime_in_game,
         accuracy=accuracy,
         target_type=target_type,
         target_type_secondary=target_type_secondary,

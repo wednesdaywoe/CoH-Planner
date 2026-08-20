@@ -73,7 +73,9 @@
         "0",
         ">"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -129,7 +131,9 @@
         "0",
         ">"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -186,7 +190,9 @@
         "0",
         ">"
       ],
-      "tags": [],
+      "tags": [
+        "HealSelf"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -246,7 +252,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "DefensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -307,7 +315,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "DefensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -365,7 +375,9 @@
         "0",
         ">"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -416,7 +428,9 @@
         "0",
         "=="
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -466,7 +480,9 @@
         "0",
         "=="
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -520,7 +536,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "EfficientAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -575,7 +593,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "EfficientAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -625,7 +645,9 @@
         "kRestedAdaptation",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "EfficientAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -681,7 +703,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NormalDebuff"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -736,7 +760,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "NormalDebuff"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -785,7 +811,9 @@
         "kOffensiveAdaptation",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -847,7 +875,9 @@
         "kOffensiveAdaptation",
         "Source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -912,7 +942,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -966,7 +998,9 @@
         "Source.Mode?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1020,7 +1054,9 @@
         "<",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InherentTaunt"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1074,7 +1110,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "InherentTaunt"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",

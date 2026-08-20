@@ -68,7 +68,9 @@
         "0.5",
         "<="
       ],
-      "tags": [],
+      "tags": [
+        "Level"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -129,7 +131,9 @@
         "0.5",
         ">"
       ],
-      "tags": [],
+      "tags": [
+        "Level"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

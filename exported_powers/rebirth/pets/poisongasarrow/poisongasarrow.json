@@ -55,7 +55,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -103,7 +105,9 @@
         "Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn",
         "target.ownPower?"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -151,7 +155,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -202,7 +208,9 @@
         "critter",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Sleep"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -265,7 +273,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Sleep"
+      ],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "requires_pv": "PVE_ONLY",
@@ -328,7 +338,9 @@
         "Class_Defender",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -383,7 +395,9 @@
         "Class_Defender",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -438,7 +452,9 @@
         "Class_Defender",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -493,7 +509,9 @@
         "Class_Defender",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -548,7 +566,9 @@
         "Class_Defender",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -603,7 +623,9 @@
         "Class_Defender",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -658,7 +680,9 @@
         "Class_Defender",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -713,7 +737,9 @@
         "Class_Defender",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -768,7 +794,9 @@
         "Class_Mastermind",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -823,7 +851,9 @@
         "Class_Mastermind",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -878,7 +908,9 @@
         "Class_Mastermind",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -933,7 +965,9 @@
         "Class_Mastermind",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -988,7 +1022,9 @@
         "Class_Mastermind",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1043,7 +1079,9 @@
         "Class_Mastermind",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1098,7 +1136,9 @@
         "Class_Mastermind",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1153,7 +1193,9 @@
         "Class_Mastermind",
         "eq"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1213,7 +1255,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1278,7 +1322,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1343,7 +1389,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1408,7 +1456,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1473,7 +1523,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1538,7 +1590,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1603,7 +1657,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1668,7 +1724,9 @@
         "eq",
         "||"
       ],
-      "tags": [],
+      "tags": [
+        "Debuff_Dam"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1733,7 +1791,9 @@
         "eq",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1836,7 +1896,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -1942,7 +2004,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",
@@ -2051,7 +2115,9 @@
         "target.ownPower?",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "requires_pv": "PVP_ONLY",

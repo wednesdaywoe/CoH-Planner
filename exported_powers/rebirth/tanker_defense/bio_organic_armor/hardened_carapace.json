@@ -62,7 +62,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -118,7 +120,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -174,7 +178,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Dmg"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -230,7 +236,9 @@
         "kDefensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "DefensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -287,7 +295,9 @@
         "kDefensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "DefensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -344,7 +354,9 @@
         "kDefensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "DefensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -401,7 +413,9 @@
         "kOffensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -458,7 +472,9 @@
         "kOffensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -515,7 +531,9 @@
         "kOffensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -572,7 +590,9 @@
         "kOffensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -629,7 +649,9 @@
         "kOffensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -686,7 +708,9 @@
         "kOffensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -743,7 +767,9 @@
         "kOffensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -800,7 +826,9 @@
         "kOffensiveAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "OffensiveAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -857,7 +885,9 @@
         "kRestedAdaptation",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "EfficientAdaptation"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -914,7 +944,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -966,7 +998,9 @@
         "isPVPMap?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1017,7 +1051,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -1067,7 +1103,9 @@
       "requires_expression": [
         "isPVPMap?"
       ],
-      "tags": [],
+      "tags": [
+        "Res_Boolean"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

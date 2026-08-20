@@ -43,6 +43,9 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
+  "lifetime": 120.0,
+  "destroy_on_limit": true,
+  "stacking_usage": false,
   "requires": [],
   "activate_requires": [
     "isVIP?",
@@ -72,7 +75,9 @@
         "!",
         "&&"
       ],
-      "tags": [],
+      "tags": [
+        "ScourgeProc"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

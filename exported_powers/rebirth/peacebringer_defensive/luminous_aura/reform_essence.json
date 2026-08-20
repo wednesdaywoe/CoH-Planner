@@ -67,7 +67,9 @@
         "source.Mode?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "HealSelf"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -125,7 +127,9 @@
         "kPeacebringer_Tanker_Mode",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "HealSelf"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

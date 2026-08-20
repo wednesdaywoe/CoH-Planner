@@ -256,8 +256,10 @@ def _table_index(struct_index: int) -> int:
     return struct_index - 1
 
 
-def _movement_scales(name, attrib_base, attrib_max, movement_struct_indices):
-    """Per-axis `(base scalar, per-level cap row)` in movement SCALE units.
+def _movement_scales(name, attrib_min, attrib_base, attrib_max,
+                     movement_struct_indices):
+    """Per-axis `(floor scalar, base scalar, per-level cap row)` in movement
+    SCALE units.
 
     The scale is the multiplier the server hands the physics layer:
     `setSpeed(ent, surf, attrCur.fSpeedRunning)` scales
@@ -265,13 +267,20 @@ def _movement_scales(name, attrib_base, attrib_max, movement_struct_indices):
     `setJumpHeight` takes `attrCur.fJumpHeight` the same way
     (`Common/entity/character_tick.c`, `MapServer/src/entity/entGameActions.c`).
     Base is AttribBase's scalar — 1.0 run/jump/height and 1.5 fly on every
-    class of all three datasets — and the ceiling is the AttribMaxTable row
-    `ClampCur` bounds `attrCur` against, which is per-level on the forks
-    (Thunderspy scales 4.5 → 6.46 run over levels 1-50; Rebirth authors its own
-    4× band) and flat on Homecoming.
+    class of all three datasets — and the two bounds are the pair `ClampCur`
+    holds `attrCur` between: AttribMin's scalar below, the AttribMaxTable row
+    above. The ceiling is per-level on the forks (Thunderspy scales 4.5 → 6.46
+    run over levels 1-50; Rebirth authors its own 4× band) and flat on
+    Homecoming; the floor is a scalar on every dataset.
 
-    Both are exported raw. The unit projection (mph, feet) belongs to whoever
-    displays them, and lives in the client rather than in any bin.
+    The floor is not zero and could not have been guessed as zero: every player
+    class of all three datasets floors run and fly at 0.1 — a grounded character
+    still crawls at a tenth of base — while jump speed and height floor at 0.0.
+    NPC classes author their own (a 1.95 run floor, a 50.0 jump height), which
+    is why it is read per class rather than stated once.
+
+    All three are exported raw. The unit projection (mph, feet) belongs to
+    whoever displays them, and lives in the client rather than in any bin.
 
     Unlike [`_absorb_cap`] there is no value signature re-proving the rows'
     identity, because there is no value a movement row cannot hold: NPC classes
@@ -281,10 +290,12 @@ def _movement_scales(name, attrib_base, attrib_max, movement_struct_indices):
     constant; these indices come from the per-dataset attrib NAME maps via
     [`_attrib_struct_index`], which raises on a rename, so the anchor is the
     name and any added value rule would only reject real data."""
-    out_base, out_cap = {}, {}
+    out_floor, out_base, out_cap = {}, {}, {}
     for axis, struct_index in movement_struct_indices.items():
         table_index = _table_index(struct_index)
-        if len(attrib_base[0]) <= struct_index or len(attrib_max[0]) <= table_index:
+        if (len(attrib_min[0]) <= struct_index
+                or len(attrib_base[0]) <= struct_index
+                or len(attrib_max[0]) <= table_index):
             raise ValueError(f"{name}: movement axis {axis} sits past the end "
                              f"of the attrib struct/table — layout drift")
         cap = attrib_max[0][table_index]
@@ -292,9 +303,10 @@ def _movement_scales(name, attrib_base, attrib_max, movement_struct_indices):
             raise ValueError(f"{name}: movement axis {axis} cap row has "
                              f"{len(cap)} levels, expected at least "
                              f"{_PLAYER_LEVELS} — table drift")
+        out_floor[axis] = attrib_min[0][struct_index]
         out_base[axis] = attrib_base[0][struct_index]
         out_cap[axis] = cap[:_PLAYER_LEVELS]
-    return out_base, out_cap
+    return out_floor, out_base, out_cap
 
 
 def _ceiling_row(name, table, attrib, table_index):
@@ -322,7 +334,27 @@ def _ceiling_row(name, table, attrib, table_index):
     return row[:_PLAYER_LEVELS]
 
 
-def _defense_cap(name, attrib_max, defense_struct_indices) -> list[float] | None:
+def _authored_defense_attribs(attrib_max, defense_struct_indices) -> dict:
+    """The typed-defense slots this dataset actually authors, as
+    `{attrib: struct_index}`.
+
+    Authorship is asked ONCE, of AttribMaxTable, and both defense bounds read
+    the answer — because the two tables disagree about how an unauthored slot
+    LOOKS. AttribMaxTable leaves it an empty row, which is unmistakable;
+    AttribMin leaves it a bare `0.0`, which is a perfectly legal floor (
+    Class_Boss_RularuuCoP floors every defense slot at 0.0 on all three
+    datasets) and so cannot be told from real data on its own. Both forks stop
+    authoring at Psionic and leave Toxic that way, where Homecoming authors all
+    eleven; reading the fork's Toxic `0.0` as a floor would ship "toxic defense
+    can never go negative," a claim the dataset never makes.
+    """
+    return {attrib: struct_index
+            for attrib, struct_index in defense_struct_indices.items()
+            if len(attrib_max[0]) > _table_index(struct_index)
+            and len(attrib_max[0][_table_index(struct_index)]) >= _PLAYER_LEVELS}
+
+
+def _defense_cap(name, attrib_max, authored) -> list[float] | None:
     """The per-level defense ceiling — one curve, proven against every typed
     defense row the dataset authors.
 
@@ -334,18 +366,12 @@ def _defense_cap(name, attrib_max, defense_struct_indices) -> list[float] | None
     Returns None when the dataset authors no populated typed-defense row at all,
     and raises when two populated rows disagree — that disagreement would mean
     defense has become a per-type ceiling and one number can no longer carry it.
-    An EMPTY row is not a disagreement: both forks stop authoring at Psionic and
-    leave Toxic empty where Homecoming authors all eleven.
+    An unauthored slot is not a disagreement (see
+    [`_authored_defense_attribs`]).
     """
     agreed, agreed_by = None, None
-    for attrib, struct_index in defense_struct_indices.items():
-        table_index = _table_index(struct_index)
-        if len(attrib_max[0]) <= table_index:
-            continue
-        row = attrib_max[0][table_index]
-        if len(row) < _PLAYER_LEVELS:
-            continue
-        row = row[:_PLAYER_LEVELS]
+    for attrib, struct_index in authored.items():
+        row = attrib_max[0][_table_index(struct_index)][:_PLAYER_LEVELS]
         if agreed is None:
             agreed, agreed_by = row, attrib
         elif row != agreed:
@@ -356,7 +382,41 @@ def _defense_cap(name, attrib_max, defense_struct_indices) -> list[float] | None
     return agreed
 
 
-def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
+def _defense_floor(name, attrib_min, authored) -> float | None:
+    """The defense floor — AttribMin's scalar, the other half of the pair
+    `ClampCur` holds `attrCur.fDefenseType[]` between.
+
+    −1.0 on every player archetype of all three datasets, and the reason it has
+    to be read is that the game writes "your defense is negated" as a saturating
+    magnitude rather than as a switch, exactly as it writes grounding
+    (MOVEMIN-1). Thunderspy's Organic Armor states `Defense −500 ×
+    Melee_Buff_Def` on all seven typed slots while Defensive Adaptation is up —
+    −50.0 on a Tanker at level 50, fifty times past this floor — and the power's
+    own description says why: it "negates your defense, instead applying a
+    constant 1 percent absorb shield." Without the floor there is no number that
+    debuff resolves to. DATA-GAP-REGISTER ATTRMIN-1.
+
+    Read at the slots [`_authored_defense_attribs`] names, for the reason given
+    there, and proven the same way as the ceiling: one number for the family, or
+    a raise. Returns None when the dataset authors no typed-defense slot at all.
+    """
+    agreed, agreed_by = None, None
+    for attrib, struct_index in authored.items():
+        if len(attrib_min[0]) <= struct_index:
+            raise ValueError(f"{name}: defense slot {attrib} sits past the end "
+                             f"of the AttribMin struct — layout drift")
+        value = attrib_min[0][struct_index]
+        if agreed is None:
+            agreed, agreed_by = value, attrib
+        elif value != agreed:
+            raise ValueError(
+                f"{name}: defense floor {attrib}={value} disagrees with "
+                f"{agreed_by}={agreed} — defense is now a per-type floor and "
+                f"the export must carry one per type")
+    return agreed
+
+
+def _extract_attribs(name, attrib_min, attrib_base, attrib_max, attrib_max_max,
                      strength_max, resistance_max, strength_min,
                      struct_indices) -> dict:
     """The planner's attrib values, addressed structurally.
@@ -379,15 +439,18 @@ def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
     strength clamp bounds (`ClampStrength`, `Common/entity/character_attribs.c`:
     net strength clamps between StrengthMin — struct order — and
     StrengthMaxTable[level] — table order, see [`_table_index`]).
-    movement_base / movement_cap for each of `_MOVEMENT_ATTRIBS`: the travel
-    scales and their per-level ceilings (see [`_movement_scales`]).
+    movement_floor / movement_base / movement_cap for each of
+    `_MOVEMENT_ATTRIBS`: the travel scales and the pair of bounds `ClampCur`
+    holds them between (see [`_movement_scales`]).
     <prefix>_base / <prefix>_cap for each of `_CEILED_ATTRIBS`: the AttribBase
     scalar and the per-level AttribMaxTable ceiling `ClampCur` bounds it against
     (see [`_ceiling_row`]). DATA-GAP-REGISTER CAPS-1.
     <name> / <name>_cap for each of `_MAX_STYLE_ATTRIBS`: HitPoints' shape —
     the AttribMaxTable row and the AttribMaxMaxTable ceiling over it.
-    defense_cap: the per-level defense ceiling, one curve proven against every
-    typed defense row the dataset authors (see [`_defense_cap`]).
+    defense_cap / defense_floor: the pair `ClampCur` holds typed defense
+    between — one per-level ceiling curve and one scalar floor, each proven
+    against every typed defense slot the dataset authors (see [`_defense_cap`],
+    [`_defense_floor`], [`_authored_defense_attribs`]).
 
     recharge: 0.25 / 5.0 on every player class of all three datasets — the −75%
     recharge-debuff floor and the +400% recharge cap.
@@ -429,9 +492,11 @@ def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
             row = strength_max[0][table_index]
             if len(row) >= _PLAYER_LEVELS:
                 out[f"{aspect}_cap"] = row[_PLAYER_LEVELS - 1]
-    if attrib_base and attrib_max:
-        base, cap = _movement_scales(name, attrib_base, attrib_max,
-                                     struct_indices["movement"])
+    if attrib_min and attrib_base and attrib_max:
+        floor, base, cap = _movement_scales(name, attrib_min, attrib_base,
+                                            attrib_max,
+                                            struct_indices["movement"])
+        out["movement_floor"] = floor
         out["movement_base"] = base
         out["movement_cap"] = cap
     for prefix, struct_index in struct_indices["ceiled"].items():
@@ -449,9 +514,15 @@ def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
             out[f"{export_name}_cap"] = _ceiling_row(name, attrib_max_max,
                                                      export_name, table_index)
     if attrib_max:
-        defense_cap = _defense_cap(name, attrib_max, struct_indices["defense"])
+        authored = _authored_defense_attribs(attrib_max,
+                                             struct_indices["defense"])
+        defense_cap = _defense_cap(name, attrib_max, authored)
         if defense_cap is not None:
             out["defense_cap"] = defense_cap
+        if attrib_min:
+            defense_floor = _defense_floor(name, attrib_min, authored)
+            if defense_floor is not None:
+                out["defense_floor"] = defense_floor
     return out
 
 
@@ -501,8 +572,10 @@ def _read_class_record(r, flavor: str) -> ClassRecord:
         rec["playstyle_flags"] = r.read_u4()
 
     # AttribMin, AttribBase, StrengthMin, ResistanceMin, then the six
-    # diminishing-returns tables; AttribBase and StrengthMin feed the export.
+    # diminishing-returns tables; AttribMin, AttribBase and StrengthMin feed
+    # the export.
     attrib_structs = [_read_attrib_struct_array(r) for _ in range(10)]
+    attrib_min = attrib_structs[0]
     attrib_base = attrib_structs[1]
     strength_min = attrib_structs[2]
     attrib_max = _read_attrib_table_array(r)
@@ -523,8 +596,8 @@ def _read_class_record(r, flavor: str) -> ClassRecord:
         "defense": {attrib: _attrib_struct_index(flavor, attrib)
                     for attrib in _DEFENSE_ATTRIBS},
     }
-    rec["attribs"] = _extract_attribs(rec["name"], attrib_base, attrib_max,
-                                      attrib_max_max, strength_max,
+    rec["attribs"] = _extract_attribs(rec["name"], attrib_min, attrib_base,
+                                      attrib_max, attrib_max_max, strength_max,
                                       resistance_max, strength_min,
                                       struct_indices)
 

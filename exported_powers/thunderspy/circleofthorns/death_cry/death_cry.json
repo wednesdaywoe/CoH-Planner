@@ -54,7 +54,9 @@
         "target.VillainName>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -106,7 +108,9 @@
         "target.VillainName>",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -157,7 +161,9 @@
         "CircleOfThorns_Pink_Crystal",
         "target.VillainName>"
       ],
-      "tags": [],
+      "tags": [
+        "Damage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

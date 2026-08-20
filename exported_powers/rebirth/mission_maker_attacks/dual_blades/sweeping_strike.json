@@ -52,7 +52,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": [],
-      "tags": [],
+      "tags": [
+        "Tempdamage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
@@ -97,7 +99,9 @@
         "kDD_BonusDoTMode_2",
         "source.Mode?"
       ],
-      "tags": [],
+      "tags": [
+        "Tempdamage"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

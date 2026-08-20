@@ -52,7 +52,9 @@
         "Generator",
         "target.HasTag?"
       ],
-      "tags": [],
+      "tags": [
+        "Heal"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

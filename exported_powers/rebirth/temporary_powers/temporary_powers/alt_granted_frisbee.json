@@ -36,6 +36,9 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
+  "num_charges": 1,
+  "destroy_on_limit": true,
+  "stacking_usage": false,
   "requires": [
     "accesslevel",
     "char>",
@@ -75,7 +78,9 @@
         "target.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Ones"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

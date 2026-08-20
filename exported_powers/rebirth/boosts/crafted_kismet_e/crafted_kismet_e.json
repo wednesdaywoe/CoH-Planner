@@ -70,7 +70,9 @@
         "source.ownPower?",
         "!"
       ],
-      "tags": [],
+      "tags": [
+        "Accuracy"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",

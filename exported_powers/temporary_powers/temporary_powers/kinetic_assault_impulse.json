@@ -36,6 +36,10 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 5,
+  "lifetime": 30.0,
+  "max_lifetime": 30.0,
+  "destroy_on_limit": true,
+  "stacking_usage": false,
   "requires": [
     "accesslevel",
     "char>",

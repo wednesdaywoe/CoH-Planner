@@ -5276,6 +5276,12 @@
     "recharge_cap": 5.0,
     "endurance_floor": 9.999999747378752e-05,
     "endurance_cap": 5.0,
+    "movement_floor": {
+      "run_speed": 0.10000000149011612,
+      "fly_speed": 0.5,
+      "jump_speed": 0.0,
+      "jump_height": 0.0
+    },
     "movement_base": {
       "run_speed": 1.0,
       "fly_speed": 0.8999999761581421,
@@ -5806,7 +5812,8 @@
       1.75,
       1.75,
       1.75
-    ]
+    ],
+    "defense_floor": 0.0
   },
   "mechanic_bar_raw": 0,
   "mechanic_gap_raw": 0
