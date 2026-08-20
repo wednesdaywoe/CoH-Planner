@@ -46,12 +46,23 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-08-20',
+
+    items: [
+      { id: 'synapses-agility-end-drain-global', message: 'Rebirth: Synapse\'s Agility\'s 6th enhancement showed as "Empty" and did nothing when slotted. It now has its real name (Endurance Drain Resistance) and grants its 20% resistance to endurance drain', type: 'fix' },
+      { id: 'libertys-belt-blank-category', message: 'Rebirth: Liberty\'s Belt\'s resistance pieces weren\'t enhancing resistance (in Tough or anywhere else). Same underlying bug as the Gladiator\'s Armor fix below', type: 'fix' },
+      { id: 'epic-pick-no-free-level-relevel', message: 'Re-picking an epic power with no free pick level at or above its unlock could leave it selected and slotted but invisible in the by-level view. Build now relevels instead, and earlier picks slide into the free low levels so the new power lands and saved builds carrying the broken state should heal on load', type: 'fix' },
+      { id: 'bulk-placement-eligibility', message: 'Dragging a range of set pieces (or multi-selecting) could place a piece the picker itself showed as disabled, like slotting a unique ATO piece twice. Both bulk paths now check each piece', type: 'fix' },
+      { id: 'poisoned-allow-list-heal', message: 'Some saved builds rejected every piece of a set the picker was offering The power\'s stored slotting rules had been saved in a broken state and kept overriding the real ones on every load', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-08-19',
 
     items: [
-      { id: 'boost-spinner-apply-to-slotted', message: 'The picker\'s Boost spinner only applies to enhancements you slot AFTER setting it — anything already slotted kept its old boost level, so a build could read +5 on the spinner while every slot sat unboosted. There\'s now an "Apply to slotted" button next to the spinner that restamps every eligible slot at once (it respects attuned pieces and catalyzed sets, and one Undo reverses the whole thing). Thanks to the player whose max HP was 21 short in the app and who sent the build that proved it', type: 'feat' },
-      { id: 'blank-category-set-aspects', message: 'Gladiator\'s Armor — and every PvP, purple, event and ATO set — was labelled from a field the game leaves blank on exactly those sets, so its pieces exported as damage enhancement and the set\'s real bonuses never reached your totals. The labels now come from the field the game actually fills. Thanks to the player who reported Gladiator\'s Armor doing nothing', type: 'fix' },
-      { id: 'form-redirect-dead-branch', message: 'Powers that change form under a mode could show the wrong form when their redirect table also carries a condition no planner can answer (target distance): the unanswerable branch froze the whole table, even when that branch was already ruled out. Energy Manipulation\'s Stun is the known case — with Power Boost active it now correctly shows its AoE form (90s recharge) instead of the single-target one', type: 'fix' },
+      { id: 'boost-spinner-apply-to-slotted', message: 'There\'s now an "Apply to slotted" button next to the enhancement boost setting that restamps every eligible slot at once (it respects attuned pieces and catalyzed sets, and undo-able)', type: 'feat' },
+      { id: 'blank-category-set-aspects', message: 'Gladiator\'s Armor, and every PvP, purple, event, and ATO set was labelled from a field the game leaves blank, so its pieces exported as damage enhancement and the set\'s real bonuses never reached your totals', type: 'fix' },
+      { id: 'form-redirect-dead-branch', message: 'Powers that change form under a mode could show the wrong form when their redirect table also carries a condition the planner can\'t answer (target distance). This froze the whole table. Energy Manipulation\'s Stun is the known case — with Power Boost active it should now show its AoE form (90s recharge) instead of the single-target one', type: 'fix' },
     ]
   },
   {
