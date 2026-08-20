@@ -76,6 +76,13 @@ export const PROC_RESIDUAL_EFFECTS: Record<string, ProcEffect[]> = {
   // powers — the LotG +Recharge analogue for damage, Rule-of-5 capped. Never
   // functional in Mids (value not cleanly in the boost template), hence hand-curated.
   "Liberty's Belt: Resistance/Global Damage Bonus": [{ category: 'Damage', value: 7.5 }],
+  // Synapse's Agility (Rebirth): always-on 20% resistance to endurance drain,
+  // fused onto the 6th piece. The bins carry it as an F-piece-gated auto power
+  // (Set_Bonus.Challenge_Set_Bonus.Synapses_Agility) whose two templates are
+  // 0.2×Melee_Ones on the Recovery and Endurance attribs — one named effect
+  // covering both drain axes, so the one category fans out to both debuff
+  // resists at the consumer.
+  "Synapse's Agility: Endurance Drain Resistance (20%)": [{ category: 'EnduranceDrainResistance', value: 20 }],
 
   // --- PBAoE ally buffs (caster + nearby allies; slotted-power-scaled) --------
   'Vigilant Assault: Recharge/Chance for +Absorb': [{ category: 'Absorb' }],

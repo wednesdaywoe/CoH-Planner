@@ -25397,9 +25397,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Endurance Drain Resistance (20%)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 1,
         "unique": false
       }

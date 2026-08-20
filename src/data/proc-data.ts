@@ -35,6 +35,7 @@ export type ProcEffectCategory =
   | 'MezResist'
   | 'SlowResistance'
   | 'RechargeResistance'
+  | 'EnduranceDrainResistance'
   | 'Stealth'
   | 'BuildUp'
   | 'Control'
@@ -2413,6 +2414,26 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     // Not globally unique — rule-of-5 like LotG (mirror LotG's empty `unique`).
     unique: ""
   },
+  // Rebirth-only. Always-on global fused onto the set's 6th piece: 20%
+  // resistance to endurance drain. The bins grant it as an auto power gated on
+  // the F piece being slotted (Set_Bonus.Challenge_Set_Bonus.Synapses_Agility,
+  // two 0.2×Melee_Ones templates on the Recovery and Endurance attribs), a
+  // shape the set-bonus extractor can't reach — hence hand-curated, like
+  // Liberty's Belt above. Effect in proc-residual-effects.ts.
+  "Synapse's Agility: Endurance Drain Resistance (20%)": {
+    setCategory: "Universal Travel",
+    setName: "Synapse's Agility",
+    ioName: "Endurance Drain Resistance (20%)",
+    ppm: null,
+    mechanics: "Res(Endurance Drain 20%)",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "10--50",
+    pool: "Event",
+    // The auto power stacks to 2 across powers (StackExactPower, stack_limit 2);
+    // the planner models one copy, like every other always-on global.
+    unique: ""
+  },
 };
 
 // Merge binary-sourced structured global effects (Phase 2: always-on globals).
@@ -2606,6 +2627,7 @@ export function getProcEffectLabel(category: ProcEffectCategory): string {
     case 'MezResist': return '+Mez Resist';
     case 'SlowResistance': return 'Slow Resist';
     case 'RechargeResistance': return 'Rech Debuff Resist';
+    case 'EnduranceDrainResistance': return 'End Drain Resist';
     case 'Stealth': return 'Stealth';
     case 'BuildUp': return 'Build Up';
     case 'Control': return 'Control';
@@ -2638,6 +2660,7 @@ export function getProcEffectColor(category: ProcEffectCategory): string {
     case 'MezResist': return 'text-violet-400';
     case 'SlowResistance': return 'text-teal-300';
     case 'RechargeResistance': return 'text-amber-300';
+    case 'EnduranceDrainResistance': return 'text-blue-300';
     case 'Stealth': return 'text-gray-400';
     case 'BuildUp': return 'text-yellow-300';
     case 'Control': return 'text-indigo-400';

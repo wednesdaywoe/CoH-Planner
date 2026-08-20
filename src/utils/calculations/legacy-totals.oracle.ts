@@ -2056,6 +2056,26 @@ function applySingleProcEffect(
       });
       break;
 
+    // One named effect covering both drain axes: the source auto power carries
+    // same-scale templates on Recovery and Endurance (Synapse's Agility's 6th
+    // piece), so the category fans out to both debuff resists.
+    case 'EnduranceDrainResistance':
+      global.debuffResistEndurance += value;
+      global.debuffResistRecovery += value;
+      addToBreakdown(breakdown, 'debuffResistEndurance', {
+        name: sourceName,
+        value,
+        type: 'proc',
+        powerName,
+      });
+      addToBreakdown(breakdown, 'debuffResistRecovery', {
+        name: sourceName,
+        value,
+        type: 'proc',
+        powerName,
+      });
+      break;
+
     case 'KnockbackProtection':
       global.protKnockback += value;
       addToBreakdown(breakdown, 'protKnockback', {

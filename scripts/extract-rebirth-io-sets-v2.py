@@ -253,6 +253,13 @@ REBIRTH_PIECE_PATCHES: dict[str, dict[int, dict]] = {
     'libertys_belt': {
         6: {'name': 'Resistance/Global Damage Bonus', 'proc': True},
     },
+    # The F piece's display_name doesn't resolve from this vintage of the name
+    # tables (the extractor emits "Empty"); the resolved name matches the boost's
+    # in-game label. proc=True routes it through findProcData / the engine's
+    # always-on global pass (20% end-drain resist, see proc-residual-effects.ts).
+    'synapses_agility': {
+        6: {'name': 'Endurance Drain Resistance (20%)', 'proc': True},
+    },
 }
 
 # ---------------------------------------------------------------------
