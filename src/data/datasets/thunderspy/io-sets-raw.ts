@@ -40,6 +40,11 @@ interface LegacySetBonusEffect {
   value: number;
   desc: string;
   pvp?: boolean;
+  /** The six mez types a `mez_resistance_(all)` bonus covers. The stat key
+   *  names none of them and only the all-6 collapse mints it, so the types
+   *  ride along here. The calc doesn't need them today: it spends `(all)`
+   *  into one accumulator and fans that out to all six at display time. */
+  mez_types?: string[];
 }
 
 interface LegacySetBonus {
@@ -47,7 +52,11 @@ interface LegacySetBonus {
   effects: LegacySetBonusEffect[];
 }
 
-interface LegacyIOSet {
+// A type alias rather than an interface: TS gives an alias an implicit index
+// signature, so a set entry can be passed to a helper typed
+// `Record<string, unknown>`. The roster tests' `sharedStructure` does exactly
+// that, and an interface won't assign to it.
+type LegacyIOSet = {
   name: string;
   category: string;
   /** Binary rarity tier from boostsets.bin (feeds getSetRarityMultiplier). */
@@ -58,7 +67,7 @@ interface LegacyIOSet {
   bonuses: LegacySetBonus[];
   pieces: LegacyIOSetPiece[];
   icon: string;
-}
+};
 
 type LegacyIOSetRegistry = Record<string, LegacyIOSet>;
 
