@@ -1398,6 +1398,211 @@ export function categoryOwnsLevelOne(build: Build, category: 'primary' | 'second
   return build[category].powers.some((p) => !p.isAutoGranted && p.level === 1);
 }
 
+/**
+ * Relevel every pick onto a legal, unoccupied pick level. Runs when any
+ * power sits on a level that isn't a pick level, duplicates another pick,
+ * or sits below the level the game first offers it. Powers keep their
+ * relative order; each takes the earliest free pick level at or above its
+ * floor, so the result is a build the picker could have produced click by
+ * click. Shared by rehydration, importBuild, and addPower's no-free-level
+ * case (B4: a silent level-50 stamp made the power invisible in the
+ * by-level view while it stayed selected and slotted).
+ */
+export function relevelInvalidPicks(build: Build): void {
+    // `poolIndex` is the only record of which pool a power came from
+    // that survives the global sort below — the sort interleaves pools,
+    // so position in this list stops implying pool membership.
+    const allPowers: { power: SelectedPower; category: string; index: number; poolIndex?: number }[] = [];
+    // Exclude auto-granted form sub-powers from level migration
+    build.primary.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'primary', index: i }));
+    build.secondary.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'secondary', index: i }));
+    build.pools.forEach((pool, poolIndex) => pool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'pool', index: i, poolIndex })));
+    if (build.epicPool) {
+      build.epicPool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'epic', index: i }));
+    }
+
+    // The floor addPower applies at pick time, re-applied here: a power may
+    // not sit below max(available + 1, its category's unlock floor). The
+    // def sync above has already re-attached `available`, so the floor is
+    // readable even though the slim serializer drops it.
+    const minPickLevel = (entry: { power: SelectedPower; category: string }): number => {
+      const categoryMin = entry.category === 'pool' ? POOL_UNLOCK_LEVEL
+        : entry.category === 'epic' ? EPIC_POOL_LEVEL
+        : 1;
+      return Math.max((entry.power.available ?? 0) + 1, categoryMin);
+    };
+
+    // Check if any non-inherent power has a level that isn't a valid pick level,
+    // OR if there are duplicate levels (e.g., 6 primaries all at level 1)
+    const pickLevelSet = new Set(POWER_PICK_LEVELS);
+    const hasInvalidLevels = allPowers.some((entry) => !pickLevelSet.has(entry.power.level));
+
+    // A level that IS a valid pick level can still sit below the level the
+    // game first offers the power — the earlier positional relevel produced
+    // exactly that (a Defender's Distortion Field on the level-6 pick when
+    // the game offers it at 8). Such builds re-enter the relevel here.
+    const hasBelowUnlockLevels = allPowers.some((entry) => entry.power.level < minPickLevel(entry));
+
+    // Detect duplicate levels: count how many powers occupy each pick.
+    // Level 1 holds two picks, but one PRIMARY and one SECONDARY — two
+    // level-1 powers from a single category are as impossible as two
+    // powers anywhere else — so its occupancy counts per category.
+    let hasDuplicateLevels = false;
+    if (!hasInvalidLevels && allPowers.length > 0) {
+      const slotCounts = new Map<string, number>();
+      for (const entry of allPowers) {
+        const slot = entry.power.level === 1 ? `1:${entry.category}` : `${entry.power.level}`;
+        slotCounts.set(slot, (slotCounts.get(slot) || 0) + 1);
+      }
+      hasDuplicateLevels = [...slotCounts.values()].some((count) => count > 1);
+    }
+
+    if ((hasInvalidLevels || hasDuplicateLevels || hasBelowUnlockLevels) && allPowers.length > 0) {
+      // Level 1 is special: one primary + one secondary. Pull those out first
+      // to guarantee they get level 1, regardless of how many of each exist —
+      // but only powers the game offers at level 1: a partial build whose
+      // earliest surviving power is a high-tier pick keeps it at its unlock
+      // level rather than dragging it to 1.
+      const firstPrimaryIdx = allPowers.findIndex((e) => e.category === 'primary' && minPickLevel(e) <= 1);
+      const firstSecondaryIdx = allPowers.findIndex((e) => e.category === 'secondary' && minPickLevel(e) <= 1);
+
+      const level1Powers: typeof allPowers = [];
+      const restPowers: typeof allPowers = [];
+
+      allPowers.forEach((entry, idx) => {
+        if (idx === firstPrimaryIdx || idx === firstSecondaryIdx) {
+          level1Powers.push(entry);
+        } else {
+          restPowers.push(entry);
+        }
+      });
+
+      // Sort level 1 powers: primary before secondary
+      level1Powers.sort((a, b) => {
+        const order = { primary: 0, secondary: 1, pool: 2, epic: 3 };
+        return (order[a.category as keyof typeof order] ?? 9) -
+               (order[b.category as keyof typeof order] ?? 9);
+      });
+
+      // Sort remaining powers by their original level, then by category
+      const categoryOrder = { primary: 0, secondary: 1, pool: 2, epic: 3 };
+      restPowers.sort((a, b) => {
+        if (a.power.level !== b.power.level) return a.power.level - b.power.level;
+        return (categoryOrder[a.category as keyof typeof categoryOrder] ?? 9) -
+               (categoryOrder[b.category as keyof typeof categoryOrder] ?? 9);
+      });
+
+      // Recombine: level 1 powers first, then the rest
+      const sorted = [...level1Powers, ...restPowers];
+
+      // Assign pick levels sequentially: the level-1 pair first, then each
+      // remaining power takes the EARLIEST free pick level at or above its
+      // own floor — the same placement addPower's out-of-order path makes,
+      // so a relevelled build is one the picker could have produced click
+      // by click. Positional stamping (slot index → level) ignored the
+      // floor and produced picks the game refuses to grant.
+      let anyChanged = false;
+      const assign = (entry: (typeof allPowers)[number], level: number) => {
+        if (entry.power.level !== level) {
+          entry.power = { ...entry.power, level };
+          anyChanged = true;
+        }
+      };
+      level1Powers.forEach((entry) => assign(entry, 1));
+      const laterSlots = POWER_PICK_LEVELS.slice(1);
+      const slotFilled = laterSlots.map(() => false);
+      restPowers.forEach((entry) => {
+        const floor = minPickLevel(entry);
+        const slot = laterSlots.findIndex((level, i) => !slotFilled[i] && level >= floor);
+        if (slot === -1) {
+          // More powers than legal picks — overflow pins to the last pick
+          // level, exactly as the positional stamping overflowed before.
+          assign(entry, POWER_PICK_LEVELS[POWER_PICK_LEVELS.length - 1]);
+        } else {
+          slotFilled[slot] = true;
+          assign(entry, laterSlots[slot]);
+        }
+      });
+
+      // Use sorted array for write-back
+      allPowers.length = 0;
+      allPowers.push(...sorted);
+
+      if (anyChanged) {
+        // The write-back below rebuilds each category from `allPowers`,
+        // which EXCLUDES auto-granted form sub-powers (Kheldian
+        // Nova/Dwarf, Primalist Hunter/Prowler) — they don't occupy a
+        // pick slot, so they're rightly left out of the relevelling.
+        // But they're still in the build arrays, and rebuilding from
+        // the filtered list alone deletes them together with every
+        // slot and enhancement the user put in them. Carry them over,
+        // restamped to their parent's corrected pick level (addPower
+        // keeps a sub-power at its form's level; leaving it at the
+        // stale one misreports slot placement — see
+        // addAutoGrantedPowers in slot-levels.ts).
+        const correctedLevels = new Map<string, number>();
+        for (const entry of allPowers) {
+          correctedLevels.set(`${entry.category}|${entry.power.internalName}`, entry.power.level);
+        }
+        const carryGranted = (powers: SelectedPower[], category: string): SelectedPower[] =>
+          powers
+            .filter((p) => p.isAutoGranted)
+            .map((p) => {
+              const parentLevel = p.grantedByPower
+                ? correctedLevels.get(`${category}|${p.grantedByPower}`)
+                : undefined;
+              return parentLevel !== undefined && parentLevel !== p.level
+                ? { ...p, level: parentLevel }
+                : p;
+            });
+
+        // Write fixed levels back to the build
+        const fixedPrimary = allPowers.filter((e) => e.category === 'primary').map((e) => e.power);
+        const fixedSecondary = allPowers.filter((e) => e.category === 'secondary').map((e) => e.power);
+
+        if (fixedPrimary.length > 0) {
+          build.primary = {
+            ...build.primary,
+            powers: [...fixedPrimary, ...carryGranted(build.primary.powers, 'primary')],
+          };
+        }
+        if (fixedSecondary.length > 0) {
+          build.secondary = {
+            ...build.secondary,
+            powers: [...fixedSecondary, ...carryGranted(build.secondary.powers, 'secondary')],
+          };
+        }
+
+        // Fix pool powers — regroup by the pool each power was
+        // collected from. Pools are the one category that is a list OF
+        // lists, so the write-back has to re-partition a list the sort
+        // has reordered; partitioning it positionally would hand each
+        // pool the right COUNT of powers and the wrong ones, which
+        // reads as an intact build that computes low (the engine keys
+        // pool powers `<poolId>/<internalName>` and drops the misses).
+        const fixedPoolPowers = allPowers.filter((e) => e.category === 'pool');
+        if (fixedPoolPowers.length > 0) {
+          build.pools = build.pools.map((pool, poolIndex) => ({
+            ...pool,
+            powers: [
+              ...fixedPoolPowers.filter((e) => e.poolIndex === poolIndex).map((e) => e.power),
+              ...carryGranted(pool.powers, 'pool'),
+            ],
+          }));
+        }
+
+        // Fix epic powers
+        const fixedEpic = allPowers.filter((e) => e.category === 'epic').map((e) => e.power);
+        if (fixedEpic.length > 0 && build.epicPool) {
+          build.epicPool = {
+            ...build.epicPool,
+            powers: [...fixedEpic, ...carryGranted(build.epicPool.powers, 'epic')],
+          };
+        }
+      }
+    }
+}
+
 // ============================================
 // STORE CREATION
 // ============================================
@@ -1608,6 +1813,8 @@ export const useBuildStore = create<BuildStore>()(
             }
           }
 
+          let needsRelevel = false;
+
           // Assign a valid pick level for this power.
           // The level must be:
           //   1. A valid POWER_PICK_LEVEL (1, 2, 4, 6, 8, ...)
@@ -1632,8 +1839,20 @@ export const useBuildStore = create<BuildStore>()(
               const occupied = getOccupiedLevels(state.build);
               const assignedLevel = POWER_PICK_LEVELS.find(
                 l => l >= minLevel && (l === 1 ? false : !occupied.has(l))
-              ) ?? 50;
-              power = { ...power, level: assignedLevel };
+              );
+              if (assignedLevel === undefined) {
+                // Every pick level at or above the floor is taken (the free
+                // picks all sit below it). Stamp a provisional 50 and relevel
+                // the whole build below: earlier picks cascade down into the
+                // free low levels, freeing a legal level for this power. The
+                // old `?? 50` stamp shipped as-is — a level with no pick row,
+                // so the power was selected and slotted but invisible in the
+                // by-level view (B4, 2026-08-17).
+                needsRelevel = true;
+                power = { ...power, level: 50 };
+              } else {
+                power = { ...power, level: assignedLevel };
+              }
             }
           }
 
@@ -1722,6 +1941,13 @@ export const useBuildStore = create<BuildStore>()(
                 newBuild = applyPowerUpdate(newBuild, category, (powers) => [...powers, subPower]);
               }
             }
+          }
+
+          // No-free-level add (see above): relevel now that the power is in
+          // the build. Runs after sub-power grants so carryGranted restamps
+          // them to their parent's corrected level.
+          if (needsRelevel) {
+            relevelInvalidPicks(newBuild);
           }
 
           // Auto-advance level if all power picks for current level have been used.
@@ -2841,6 +3067,12 @@ export const useBuildStore = create<BuildStore>()(
           // into leveling mode.
           ensureSlotOrderPopulated(build);
 
+          // Repair invalid/duplicate/below-unlock pick levels in the import
+          // itself — an export carrying addPower's old silent level-50 stamp
+          // (B4) otherwise reproduces the invisible power until the next
+          // full-page rehydrate happens to run this same migration.
+          relevelInvalidPicks(build);
+
           // Auto-detect branch for VEAT builds (so branch powers appear in the picker)
           const branch = detectBranch(build);
           if (branch) {
@@ -3245,204 +3477,9 @@ export const useBuildStore = create<BuildStore>()(
             setTimeout(() => useUIStore.getState().setSelectedBranch(branch), 0);
           }
 
-          // Migration: Fix power pick levels that don't match valid power pick levels.
-          // Older builds may have all powers at the display level (e.g., 50) instead of
-          // the correct sequential pick levels (1, 1, 2, 4, 6, ...).
-          // This reassigns levels based on category order and selection sequence.
-          {
-            // `poolIndex` is the only record of which pool a power came from
-            // that survives the global sort below — the sort interleaves pools,
-            // so position in this list stops implying pool membership.
-            const allPowers: { power: SelectedPower; category: string; index: number; poolIndex?: number }[] = [];
-            // Exclude auto-granted form sub-powers from level migration
-            state.build.primary.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'primary', index: i }));
-            state.build.secondary.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'secondary', index: i }));
-            state.build.pools.forEach((pool, poolIndex) => pool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'pool', index: i, poolIndex })));
-            if (state.build.epicPool) {
-              state.build.epicPool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'epic', index: i }));
-            }
-
-            // The floor addPower applies at pick time, re-applied here: a power may
-            // not sit below max(available + 1, its category's unlock floor). The
-            // def sync above has already re-attached `available`, so the floor is
-            // readable even though the slim serializer drops it.
-            const minPickLevel = (entry: { power: SelectedPower; category: string }): number => {
-              const categoryMin = entry.category === 'pool' ? POOL_UNLOCK_LEVEL
-                : entry.category === 'epic' ? EPIC_POOL_LEVEL
-                : 1;
-              return Math.max((entry.power.available ?? 0) + 1, categoryMin);
-            };
-
-            // Check if any non-inherent power has a level that isn't a valid pick level,
-            // OR if there are duplicate levels (e.g., 6 primaries all at level 1)
-            const pickLevelSet = new Set(POWER_PICK_LEVELS);
-            const hasInvalidLevels = allPowers.some((entry) => !pickLevelSet.has(entry.power.level));
-
-            // A level that IS a valid pick level can still sit below the level the
-            // game first offers the power — the earlier positional relevel produced
-            // exactly that (a Defender's Distortion Field on the level-6 pick when
-            // the game offers it at 8). Such builds re-enter the relevel here.
-            const hasBelowUnlockLevels = allPowers.some((entry) => entry.power.level < minPickLevel(entry));
-
-            // Detect duplicate levels: count how many powers occupy each pick.
-            // Level 1 holds two picks, but one PRIMARY and one SECONDARY — two
-            // level-1 powers from a single category are as impossible as two
-            // powers anywhere else — so its occupancy counts per category.
-            let hasDuplicateLevels = false;
-            if (!hasInvalidLevels && allPowers.length > 0) {
-              const slotCounts = new Map<string, number>();
-              for (const entry of allPowers) {
-                const slot = entry.power.level === 1 ? `1:${entry.category}` : `${entry.power.level}`;
-                slotCounts.set(slot, (slotCounts.get(slot) || 0) + 1);
-              }
-              hasDuplicateLevels = [...slotCounts.values()].some((count) => count > 1);
-            }
-
-            if ((hasInvalidLevels || hasDuplicateLevels || hasBelowUnlockLevels) && allPowers.length > 0) {
-              // Level 1 is special: one primary + one secondary. Pull those out first
-              // to guarantee they get level 1, regardless of how many of each exist —
-              // but only powers the game offers at level 1: a partial build whose
-              // earliest surviving power is a high-tier pick keeps it at its unlock
-              // level rather than dragging it to 1.
-              const firstPrimaryIdx = allPowers.findIndex((e) => e.category === 'primary' && minPickLevel(e) <= 1);
-              const firstSecondaryIdx = allPowers.findIndex((e) => e.category === 'secondary' && minPickLevel(e) <= 1);
-
-              const level1Powers: typeof allPowers = [];
-              const restPowers: typeof allPowers = [];
-
-              allPowers.forEach((entry, idx) => {
-                if (idx === firstPrimaryIdx || idx === firstSecondaryIdx) {
-                  level1Powers.push(entry);
-                } else {
-                  restPowers.push(entry);
-                }
-              });
-
-              // Sort level 1 powers: primary before secondary
-              level1Powers.sort((a, b) => {
-                const order = { primary: 0, secondary: 1, pool: 2, epic: 3 };
-                return (order[a.category as keyof typeof order] ?? 9) -
-                       (order[b.category as keyof typeof order] ?? 9);
-              });
-
-              // Sort remaining powers by their original level, then by category
-              const categoryOrder = { primary: 0, secondary: 1, pool: 2, epic: 3 };
-              restPowers.sort((a, b) => {
-                if (a.power.level !== b.power.level) return a.power.level - b.power.level;
-                return (categoryOrder[a.category as keyof typeof categoryOrder] ?? 9) -
-                       (categoryOrder[b.category as keyof typeof categoryOrder] ?? 9);
-              });
-
-              // Recombine: level 1 powers first, then the rest
-              const sorted = [...level1Powers, ...restPowers];
-
-              // Assign pick levels sequentially: the level-1 pair first, then each
-              // remaining power takes the EARLIEST free pick level at or above its
-              // own floor — the same placement addPower's out-of-order path makes,
-              // so a relevelled build is one the picker could have produced click
-              // by click. Positional stamping (slot index → level) ignored the
-              // floor and produced picks the game refuses to grant.
-              let anyChanged = false;
-              const assign = (entry: (typeof allPowers)[number], level: number) => {
-                if (entry.power.level !== level) {
-                  entry.power = { ...entry.power, level };
-                  anyChanged = true;
-                }
-              };
-              level1Powers.forEach((entry) => assign(entry, 1));
-              const laterSlots = POWER_PICK_LEVELS.slice(1);
-              const slotFilled = laterSlots.map(() => false);
-              restPowers.forEach((entry) => {
-                const floor = minPickLevel(entry);
-                const slot = laterSlots.findIndex((level, i) => !slotFilled[i] && level >= floor);
-                if (slot === -1) {
-                  // More powers than legal picks — overflow pins to the last pick
-                  // level, exactly as the positional stamping overflowed before.
-                  assign(entry, POWER_PICK_LEVELS[POWER_PICK_LEVELS.length - 1]);
-                } else {
-                  slotFilled[slot] = true;
-                  assign(entry, laterSlots[slot]);
-                }
-              });
-
-              // Use sorted array for write-back
-              allPowers.length = 0;
-              allPowers.push(...sorted);
-
-              if (anyChanged) {
-                // The write-back below rebuilds each category from `allPowers`,
-                // which EXCLUDES auto-granted form sub-powers (Kheldian
-                // Nova/Dwarf, Primalist Hunter/Prowler) — they don't occupy a
-                // pick slot, so they're rightly left out of the relevelling.
-                // But they're still in the build arrays, and rebuilding from
-                // the filtered list alone deletes them together with every
-                // slot and enhancement the user put in them. Carry them over,
-                // restamped to their parent's corrected pick level (addPower
-                // keeps a sub-power at its form's level; leaving it at the
-                // stale one misreports slot placement — see
-                // addAutoGrantedPowers in slot-levels.ts).
-                const correctedLevels = new Map<string, number>();
-                for (const entry of allPowers) {
-                  correctedLevels.set(`${entry.category}|${entry.power.internalName}`, entry.power.level);
-                }
-                const carryGranted = (powers: SelectedPower[], category: string): SelectedPower[] =>
-                  powers
-                    .filter((p) => p.isAutoGranted)
-                    .map((p) => {
-                      const parentLevel = p.grantedByPower
-                        ? correctedLevels.get(`${category}|${p.grantedByPower}`)
-                        : undefined;
-                      return parentLevel !== undefined && parentLevel !== p.level
-                        ? { ...p, level: parentLevel }
-                        : p;
-                    });
-
-                // Write fixed levels back to the build
-                const fixedPrimary = allPowers.filter((e) => e.category === 'primary').map((e) => e.power);
-                const fixedSecondary = allPowers.filter((e) => e.category === 'secondary').map((e) => e.power);
-
-                if (fixedPrimary.length > 0) {
-                  state.build.primary = {
-                    ...state.build.primary,
-                    powers: [...fixedPrimary, ...carryGranted(state.build.primary.powers, 'primary')],
-                  };
-                }
-                if (fixedSecondary.length > 0) {
-                  state.build.secondary = {
-                    ...state.build.secondary,
-                    powers: [...fixedSecondary, ...carryGranted(state.build.secondary.powers, 'secondary')],
-                  };
-                }
-
-                // Fix pool powers — regroup by the pool each power was
-                // collected from. Pools are the one category that is a list OF
-                // lists, so the write-back has to re-partition a list the sort
-                // has reordered; partitioning it positionally would hand each
-                // pool the right COUNT of powers and the wrong ones, which
-                // reads as an intact build that computes low (the engine keys
-                // pool powers `<poolId>/<internalName>` and drops the misses).
-                const fixedPoolPowers = allPowers.filter((e) => e.category === 'pool');
-                if (fixedPoolPowers.length > 0) {
-                  state.build.pools = state.build.pools.map((pool, poolIndex) => ({
-                    ...pool,
-                    powers: [
-                      ...fixedPoolPowers.filter((e) => e.poolIndex === poolIndex).map((e) => e.power),
-                      ...carryGranted(pool.powers, 'pool'),
-                    ],
-                  }));
-                }
-
-                // Fix epic powers
-                const fixedEpic = allPowers.filter((e) => e.category === 'epic').map((e) => e.power);
-                if (fixedEpic.length > 0 && state.build.epicPool) {
-                  state.build.epicPool = {
-                    ...state.build.epicPool,
-                    powers: [...fixedEpic, ...carryGranted(state.build.epicPool.powers, 'epic')],
-                  };
-                }
-              }
-            }
-          }
+          // Migration: fix pick levels that are invalid, duplicated, or below
+          // the power's unlock level (see relevelInvalidPicks).
+          relevelInvalidPicks(state.build);
 
           } catch (err) {
             // A migration threw. The early structural init above guarantees
