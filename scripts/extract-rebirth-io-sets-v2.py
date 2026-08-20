@@ -296,7 +296,20 @@ ICON_OVERRIDES = {
     # Winter event sets (Event/)
     'winter_storm':                    'EO_Winter_Storm.png',
     'superior_winter_storm':           'SEO_Winter_Storm.png',
-    'winters_gift':                    'SEO_Winters_Gift.png',
+    # Winter's Gift is the one pair where the two halves were swapped onto one
+    # entry. `SEO_Winters_Gift.png` is byte-identical to MidsReborn's Rebirth
+    # asset `Winters_Gift_Superior_Attuned.png`, so it is the SUPERIOR artwork,
+    # and it was keyed to the base set on all three forks. The base set then had
+    # the superior icon, `superior_winters_gift` (Rebirth-only, so no HC set_id
+    # to inherit from) fell to the `s{set_id}.png` fallback and 404'd as
+    # `ssuperior_winters_gift.png`, and `IO Sets/WintersGift.png` sat in the
+    # asset library referenced by no set at all. That orphan is byte-identical to
+    # Mids' shared `Assets/Enhancements/WintersGift.png`, which is the base.
+    # Unlike the pairs above, the base half is not an `EO_` file: Winter's Gift
+    # is category `rare` on every fork, not `event`, and only Rebirth mints a
+    # superior version of it.
+    'winters_gift':                    'WintersGift.png',
+    'superior_winters_gift':           'SEO_Winters_Gift.png',
     # Misc Rebirth-only (IO Sets/)
     'forced_indoctrination':           'ForcedIndoctrination.png',
     'imperial_might':                  'ImperialMight.png',
@@ -1556,10 +1569,35 @@ def build_sets(
             'maxLevel': s.max_level or 50,
             'bonuses': bonuses_out,
             'pieces': pieces,
-            'icon': ICON_OVERRIDES.get(set_id) or (hc_sets.get(set_id, {}).get('icon')) or f's{set_id}.png',
+            'icon': _resolve_icon(set_id, hc_sets.get(set_id, {}).get('icon')),
         }
 
     return out_sets, skipped
+
+
+def _resolve_icon(set_id: str, inherited: str | None) -> str:
+    """The set's icon filename, or a hard failure saying which set has none.
+
+    Icons aren't in the binary, so every one is curated: an ICON_OVERRIDES entry,
+    or the icon HC's registry already states for the same set_id. There used to be
+    a third arm, `f's{set_id}.png'`, and its own comment called it bogus — the name
+    is in no asset library, so EnhancementIcon resolved it to a 404. It shipped one:
+    Rebirth's `superior_winters_gift` requested `ssuperior_winters_gift.png` from
+    the day the set was added until 2026-08-20, because the fallback answered
+    plausibly instead of saying it had no answer.
+
+    Rule 1: a soft-wrong value ships a broken icon as authoritative and nobody hears
+    about it for months. Raising means the regen stops on the set that needs a
+    curated icon and names it, which is a bug report rather than a lie.
+    """
+    icon = ICON_OVERRIDES.get(set_id) or inherited
+    if not icon:
+        raise SystemExit(
+            f"no curated icon for set '{set_id}': icons are not in the binary, so add an "
+            f"ICON_OVERRIDES entry pointing at a file under public/img/Enhancements/ "
+            f"(the folder is chosen from the filename prefix by getIOSetFolder)"
+        )
+    return icon
 
 
 def _reuse_hand_entry(out_sets: dict[str, dict], set_id: str, hc_entry: dict) -> None:
@@ -1916,9 +1954,9 @@ def _tspy_build_only_set(set_id: str, record, power_index, prior: dict) -> dict:
         'bonuses': bonuses,
         'pieces': pieces,
         # ICON_OVERRIDES first: tspy-only sets have no HC set_id to inherit an
-        # icon from, so without this they'd fall to the bogus `s{set_id}.png`
-        # (never in our asset library → broken icon).
-        'icon': ICON_OVERRIDES.get(set_id) or prior.get('icon') or f's{set_id}.png',
+        # icon from, so without an entry here there is nothing to inherit and
+        # _resolve_icon stops the run naming the set.
+        'icon': _resolve_icon(set_id, prior.get('icon')),
     }
 
 

@@ -21,7 +21,8 @@
     "import-mids": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/bulk-import-mids.ts",
     "delete-user-builds": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/delete-user-shared-builds.ts",
     "changelog:push": "tsx --env-file-if-exists=.env scripts/push-changelog-discord.ts",
-    "hooks:install": "git config core.hooksPath scripts/git-hooks"
+    "hooks:install": "git config core.hooksPath scripts/git-hooks",
+    "verify:sync": "node scripts/verify-sync.cjs --gate"
   },
   "repository": {
     "type": "git",

@@ -53,6 +53,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { id: 'libertys-belt-blank-category', message: 'Rebirth: Liberty\'s Belt\'s resistance pieces weren\'t enhancing resistance (in Tough or anywhere else). Same underlying bug as the Gladiator\'s Armor fix below', type: 'fix' },
       { id: 'epic-pick-no-free-level-relevel', message: 'Re-picking an epic power with no free pick level at or above its unlock could leave it selected and slotted but invisible in the by-level view. Build now relevels instead, and earlier picks slide into the free low levels so the new power lands and saved builds carrying the broken state should heal on load', type: 'fix' },
       { id: 'bulk-placement-eligibility', message: 'Dragging a range of set pieces (or multi-selecting) could place a piece the picker itself showed as disabled, like slotting a unique ATO piece twice. Both bulk paths now check each piece', type: 'fix' },
+      { id: 'winters-gift-icon-pair', message: 'Rebirth: Superior Winter\'s Gift had no icon, and on every server Winter\'s Gift was using the Superior icon', type: 'fix' },
       { id: 'poisoned-allow-list-heal', message: 'Some saved builds rejected every piece of a set the picker was offering The power\'s stored slotting rules had been saved in a broken state and kept overriding the real ones on every load', type: 'fix' },
     ]
   },

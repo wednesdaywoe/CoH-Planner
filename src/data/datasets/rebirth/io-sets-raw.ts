@@ -26766,7 +26766,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_winters_gift.png",
+    "icon": "SEO_Winters_Gift.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Superior Winter's Gift",
@@ -30424,7 +30424,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "SEO_Winters_Gift.png",
+    "icon": "WintersGift.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Winter's Gift",

@@ -1,0 +1,361 @@
+{
+  "$comment": "The shared pipeline surface of the two repos. See scripts/verify-sync.cjs and FORK-1.",
+  "repos": {
+    "canonical": "wednesdaywoe/coh-sidekick-1.0 (private, Rust/Dioxus rebuild, owns the parser)",
+    "beta": "wednesdaywoe/CoH-Sidekick (public, TS/React, the live site)"
+  },
+  "entries": [
+    {
+      "path": "scripts/README-bulk-import-mids.md",
+      "status": "identical",
+      "sha256": "2c45e6c19c7fe8f80de61307d5c2f0ab019af89c0ef162766d499ea88945e5a5"
+    },
+    {
+      "path": "scripts/_boost-stats.cjs",
+      "status": "identical",
+      "sha256": "2489bf0ae50808dd7c6c3b71464c8ee6167c3b566597f272b510a75232123cf4"
+    },
+    {
+      "path": "scripts/_dataset-paths.cjs",
+      "status": "identical",
+      "sha256": "4144d8ab157f2f0e32062ea3fd4559eb1de68859c5e83252ba00f7835f7fc224"
+    },
+    {
+      "path": "scripts/_dim-returns.cjs",
+      "status": "identical",
+      "sha256": "ae8bfac813d9c0b33fe96ec65cff9eb9a7e4423128eb5ea0c465bf613d8509a3"
+    },
+    {
+      "path": "scripts/_display-text.cjs",
+      "status": "identical",
+      "sha256": "df6371abe6baabc406e848b6fc0cc15fc7276480b2c10efd268ffab42f41e105"
+    },
+    {
+      "path": "scripts/_display-text.d.cts",
+      "status": "identical",
+      "sha256": "1996ecbb8b924903b877c88fc21623fffd8b51a55df90f023dca3208b56fc816"
+    },
+    {
+      "path": "scripts/_export-join.cjs",
+      "status": "identical",
+      "sha256": "f0d8843e55cf5ea1e5ba9c479ec8cc5bd89cf4e8b0be59b3bc89eedec4d5b349"
+    },
+    {
+      "path": "scripts/_gate-default.cjs",
+      "status": "identical",
+      "sha256": "a1c9b0f28e957b79f4b8db4c9cfb3038f8cda2bba8ee7a3e80ede4e7e3c77dd6"
+    },
+    {
+      "path": "scripts/_gate-tokens.cjs",
+      "status": "identical",
+      "sha256": "544759232983ceaeb839d6f2f3cb7c23c9ba20fa8d2188b1fbc3d31fe9c03235"
+    },
+    {
+      "path": "scripts/_player-classes.cjs",
+      "status": "identical",
+      "sha256": "48057852e5f7cf4dd10fc8c7508c0a32041b3b500e118d852a355b0587549cb9"
+    },
+    {
+      "path": "scripts/_pv-scope.cjs",
+      "status": "identical",
+      "sha256": "f9271521c4efec560d08a894e0dde6216bc8a625fa1f0be03cea22bf364fe367"
+    },
+    {
+      "path": "scripts/audit-allowed-set-categories.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "acb93bc85f72ef08466ecd8e665938e4d1d51cfe531628a83a7238f19423b96e",
+        "beta": "ef56d3b8957be01d73fa120a5415877b19e081046264e1225e7b545d0fa96726"
+      },
+      "reason": "Divergence is in the failure message only: the two name different internals of `_boostsets.py` (`placeholder handling` in beta, `_resolve_category` in canonical) because the extractors they describe have themselves diverged.",
+      "exit": "Settle after the boostset extractor is reconciled; the message should name whichever function actually exists.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/audit-converter-twins.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "d64752cdb746dc391b19aa8d13e4d46815e76e999d84aa0524f381a159cae4a2",
+        "beta": "9d4288e8aec52a38649090f100be4c540444304a1dbeedcccdfcae09468e5f54"
+      },
+      "reason": "Canonical added `--gate` and `--write-baseline` over a committed `audit-twins-baseline.json`, turning the twin audit from a report into a ratchet. Beta has the report only.",
+      "exit": "Port the gate and the baseline, or declare the audit canonical-only and drop it from the shared surface.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/audit-coverage-census.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "2dbf747b23da69e42fef2f76cd4cf3d5cbe48aa9aeba1da32b1998da82e1d59e",
+        "beta": "82c2e5775d80bcd4a1d7f321710ad24bbed5aab561fb27276a9b4c5c59358b0d"
+      },
+      "reason": "Same as the twin audit: canonical gates structural zeros against a committed baseline, beta prints them.",
+      "exit": "Port the gate and the baseline, or declare it canonical-only.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/bridge-attrib-one.cjs",
+      "status": "identical",
+      "sha256": "eeac16a0a94576c5a96f0280e14e1977f4b5e5968f54233e18bdaeb5243db2d0"
+    },
+    {
+      "path": "scripts/bulk-import-mids.ts",
+      "status": "identical",
+      "sha256": "71843daed8f2185d4d66ed7597c3e6386ea1d4ed7c0c5128c9ede53b89909d7e"
+    },
+    {
+      "path": "scripts/convert-all-powersets.cjs",
+      "status": "identical",
+      "sha256": "ba242e91abf541c92bf29e150b0b3f4fad06e33b598bbd910789f570dfee52b9"
+    },
+    {
+      "path": "scripts/convert-archetypes.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "f9e55216b544b23ab09b20f9a65b673d752c7af5456e0d3c11c7b18d6b0556c0",
+        "beta": "afeadc09d2b5a46a8fd491313d011d9bfdd4e0e32b9260fd2ab86bc5b77f4ea9"
+      },
+      "reason": "Canonical reads and emits `defenseFloor` from the class export and fails loud when it is missing or non-negative; beta has no such field and its `!base || !cap` guard treats a legitimate zero as absent.",
+      "exit": "Port the `defenseFloor` read, which needs beta's `export_classes.py` output to carry the field.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/convert-basic-inherents.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "ce511d25e04f8a826a6bcc74cd0a0ea3329a73815804f53945d3418c03e8b9d6",
+        "beta": "ece14fd99d0fc53f52f319a8fa51a5bcca76397ef88364ad99a72e243c304fc7"
+      },
+      "reason": "Two forks. Canonical emits grant edges and calls the Thunderspy applied-mez guard; beta still ships the `maxSlotsFallback` hand table that MAXBOOST-1 retired, which states a slot ceiling the export owns.",
+      "exit": "Port the grant-edge and guard half; delete `maxSlotsFallback` in beta, since export silence is a stated six.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/convert-enhancement-curves.cjs",
+      "status": "identical",
+      "sha256": "f72fd2e1ccc418402ce753d88c65dd7a08b28023e86699f083dc093a62564f07"
+    },
+    {
+      "path": "scripts/convert-epic-pools.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "9bf08c3a1499a10b13b564e2097a44dc4b2ab9dbe7d0d7e138cde0b635faa62a",
+        "beta": "a2b597efa8896d17dc71f9e134dc10e91d0b6bbd772e7062a1693f5a2414325f"
+      },
+      "reason": "Canonical passes `targets_affected` into `extractEffects` and emits `grantEdges` (WALK-1), stamps conditional ids, and calls two Thunderspy guards beta does not.",
+      "exit": "Port with `convert-powerset.cjs`; these converters share its exports and cannot move separately.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/convert-incarnate-effects.cjs",
+      "status": "identical",
+      "sha256": "42c047655636ba5087837ff14a0348c750c3537f6486443759ba7b849b772157"
+    },
+    {
+      "path": "scripts/convert-pet-entities.cjs",
+      "status": "identical",
+      "sha256": "a40b21c96695b0ca4a0790e63c5b8eb996061054384c9ad59b6cddffb6f6d0a9"
+    },
+    {
+      "path": "scripts/convert-pool-powers.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "ef385164bd1c3c6d0e83e474cad84b5f23ad55042f4a80913cf6dcea27cab108",
+        "beta": "80831fcccf77a7d3145607d272819b0a02ac8009bb93edc010076ca61a0e2440"
+      },
+      "reason": "Same as the epic-pool converter: canonical emits `grantEdges`, stamps conditional ids, and calls the Thunderspy applied-mez guard.",
+      "exit": "Port with `convert-powerset.cjs`.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/convert-powerset.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "ddd7934296fecc3e0983e63568f8ea333b789153a57b1a03258ad85ca3747baf",
+        "beta": "cd5cc19e2e1e72b9acae09a59698a9e3e28e4e0e6e8cb418d7ff936d27949146"
+      },
+      "reason": "The pipeline's two genuine forks in one file: 1,006 lines only canonical has and 292 only beta has. Canonical carries the register's gate-classification, caster-meter, chance-mod-selector, conditional-id-stamp, grant-edge and variant-mode work; beta carries `extractDualPistolsAmmo`, which branches on `dual_pistols` in a conditional and is a Rule 0 breach that only drift kept invisible. Canonical's half cannot simply be copied: it requires `_variant-modes.cjs`, `detect-caster-meters.cjs` and `detect-chance-mod-selectors.cjs`, none of which exist in beta.",
+      "exit": "Port the three missing modules to beta, then reconcile function by function against the register; delete `extractDualPistolsAmmo` rather than porting it, and source the ammo forms from the export.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/convert-salvage.cjs",
+      "status": "identical",
+      "sha256": "27d8f1995d321bb56ff1f5e2123c5b897bbb836af8433c5bbffec1a0fefae17a"
+    },
+    {
+      "path": "scripts/dsh6-collapse-detector.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "14d94396a8dae0388f3e0e1fb32d5dabb3a2e9542158454805aa93065b443321",
+        "beta": "b4007a53437415c7e4c0a796236f72fbc9528bbf135426dc5d1d788b90d23b37"
+      },
+      "reason": "`_gate-tokens.cjs` is byte-identical in both repos, but beta calls `gateText` at 3 of the 9 sites canonical does and this is one it misses, so a COND-8 joined token array reads here as the empty string and the PvP-only skip never fires.",
+      "exit": "Port the `gateText` call site. The module itself needs no change.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/dsh6-collapse-worklist.json",
+      "status": "forked",
+      "sha256": {
+        "canonical": "fe67c761b62f087194e4b03ec46317e4bb4358e29157edb334a07952cb6d2ecc",
+        "beta": "2d166f9afce20b17423afb0af90cc179dea4d6dc3f6ca23fe15c8d862577c43a"
+      },
+      "reason": "Not a source fork: this is the detector's committed output, and the two copies are from runs over different corpora (3,359 powers against 3,364, five of which beta reports as `sourceMissing`).",
+      "exit": "Regenerate both from one run after the detector call sites are reconciled, or drop the worklists from the shared surface as per-repo run artifacts.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/dsh6-gate-allowlist.json",
+      "status": "identical",
+      "sha256": "1971a89f7d0265dced299e24fcaabfb2a64254c07f3bb1d401c7160c71c49016"
+    },
+    {
+      "path": "scripts/dsh8-incarnate-collapse-detector.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "1008bb83a92aba718af2f631580f4d8795b337ffd05d0bda48087ed9fc72b3f9",
+        "beta": "18fbfd67649fcb667e93f00bee1e8f61d7fc8f25ebae39caab757b6fe42ccf34"
+      },
+      "reason": "Same missing `gateText` call site as the dsh6 detector: the `isPVPMap?` test runs against a raw `requiresExpression` that COND-8 can deliver as an array.",
+      "exit": "Port the `gateText` call site.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/dsh8-incarnate-collapse-worklist.json",
+      "status": "forked",
+      "sha256": {
+        "canonical": "a50f4a08d51ae3b16bafd122af8265a27c2e576f92c82c052a17c82b050b2cc3",
+        "beta": "3b176ad4afd809531518bef3ba763be966e27f70979bab7ad846a37c62bffe2d"
+      },
+      "reason": "Not a source fork: committed detector output, and the two copies were produced against different DATASETS (beta's says homecoming, canonical's says thunderspy), so they were never comparable.",
+      "exit": "Same as the dsh6 worklist: one run, or drop from the shared surface.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/env-loader.ts",
+      "status": "identical",
+      "sha256": "b423c7b5af7b1e250fa32a9226db7a3afe4bcc0afa83be8cbd1f60756e31af85"
+    },
+    {
+      "path": "scripts/extract-at-tables.cjs",
+      "status": "identical",
+      "sha256": "610df72ab2dd2de99eeb0ea51762e0f3d8d619897bf2c4087e80069331aaa05f"
+    },
+    {
+      "path": "scripts/extract-proc-data.py",
+      "status": "identical",
+      "sha256": "864694d86fa8ec89d21cc00b9acdb6722941baa54486db3f0717a76ca8f82b0c"
+    },
+    {
+      "path": "scripts/extract-rebirth-io-sets-v2.py",
+      "status": "identical",
+      "sha256": "fa3b580fd825f2a8c879dc9afac4a37d8dfec7f3c2689b1a2d20c6be0544df05"
+    },
+    {
+      "path": "scripts/generate-archetypes.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "565eeb08749657f9c3d3779c1aaf9f8eb3f95db94c7c0388919bee45170332a3",
+        "beta": "219a9c3f08ed8d1086b7a32526389625373ce5fd5540c30b5d3e4d39d7a231de"
+      },
+      "reason": "One line: beta emits a Tarantula pet at `level: 24`, canonical emits the same pet with no level. A hand-stated pet level is the shape Rule 0 exists to catch, but it is not yet measured which side reads it from the export.",
+      "exit": "Check whether the entity export states the level; keep the sourced side.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/generate-powerset-index.cjs",
+      "status": "identical",
+      "sha256": "a943e53b4e7ed4397abd16b30c9db0886fd15484b95ae3cbec00768444f732f3"
+    },
+    {
+      "path": "scripts/git-hooks/post-commit",
+      "status": "identical",
+      "sha256": "6fe6dd74c8c2719514da9ae98e1d6e101925ab9908c81e3420324bcc7a10c7da"
+    },
+    {
+      "path": "scripts/planb-shadow-bag.cjs",
+      "status": "identical",
+      "sha256": "14e5c5b08d8f838d30c998888b59ce517ee0a2c60e19f13ab7468570a5c31711"
+    },
+    {
+      "path": "scripts/planb-shadow-defense.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "545903830dced077cb50488e21188f49dc96f80dd9174821d19cdf7c55506f8f",
+        "beta": "b8bf488345c6ca97c0cbfe8db1ceaf0db35232118612b0c4dc265bf0d14725f2"
+      },
+      "reason": "Canonical added `expandScalarAll`, which expands a scalar defense bag slot across the standard types and throws when a slot mixes a scalar with typed keys. Beta has neither the expansion nor the throw.",
+      "exit": "Port the expansion; it is a fail-loud rule and beta is the repo that ships numbers.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/planb-shadow-maxhp.cjs",
+      "status": "identical",
+      "sha256": "c6012b575daa878fc8f6960767a73f70dbee54971424d76c3a5771f7bc00006c"
+    },
+    {
+      "path": "scripts/planb-shadow-movement.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "338560a5d3b9fad285cd3740f33aa81523129e7deaf229b5f787641cdfb9cd03",
+        "beta": "6aa1c4de2e1e1d982f203c53779d126881f5c083a026ad30e3bf9fcda383877a"
+      },
+      "reason": "Beta pins two Rebirth expected values canonical does not carry (Aerobatics and Solar Glide fly speed). Which side is right is unadjudicated: either canonical dropped two real pins or beta pinned two values its own shadow pass no longer produces.",
+      "exit": "Measure both powers against the Rebirth export and keep the side the data agrees with.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/planb-shadow-pertarget.cjs",
+      "status": "identical",
+      "sha256": "cdfc468c46eb9c08b76cc4c0fb2daa3cefea06cd4ea22990e8b0e1d38c03f0a9"
+    },
+    {
+      "path": "scripts/planb-shadow-resistance.cjs",
+      "status": "identical",
+      "sha256": "62afc94b41d278f25ae0c440e3102386b0794cbf9f81e925c8dd325860347dbe"
+    },
+    {
+      "path": "scripts/planb-shadow-resources.cjs",
+      "status": "identical",
+      "sha256": "7ff01825ae64713287485532acc9ca214377a061cec3460d46f59253e810ad9e"
+    },
+    {
+      "path": "scripts/planb-shadow-sweep.cjs",
+      "status": "identical",
+      "sha256": "86daadb0a02c8923e3dd19132e7e84b02dafb586b96c8e5f7972abee1536f420"
+    },
+    {
+      "path": "scripts/regen-all.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "07753433e1b37b2bde881de994316efe13e30621cc7ca21a59d40017a70d42d6",
+        "beta": "60631540d61772348d4a3b2c8771b7ad401d9a354bc14b50f2de6a7b91ef07ab"
+      },
+      "reason": "The two pipelines genuinely differ in scope. Canonical drives six stages beta has no scripts for (enhancement curves, special enhancements, boost index, leveling schedule, chance-mod selectors, caster meters); beta drives `generate-powerset-index.cjs`, which the Rust app does not need. This may be a permanent scoped fork rather than drift.",
+      "exit": "Decide whether the driver is shared at all. If the stage lists must differ, split the shared stage table out and let each repo own only its driver.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/register-env-loader.mjs",
+      "status": "identical",
+      "sha256": "3ee48a17d334857a519769c7070ee44db041f62957866382ac4a22590d8c7882"
+    },
+    {
+      "path": "scripts/validate-converter-output.cjs",
+      "status": "forked",
+      "sha256": {
+        "canonical": "c048d77f1747cae261d45909d1617ebbaad05f76b48adc495585029d70162d42",
+        "beta": "482566468764125fed3febf4180afbf5a0d36368880bfacd42d8fa91aaf26c54"
+      },
+      "reason": "Same missing `gateText` call site. This one is a gate, so a joined-array expression makes the check pass by reading nothing rather than fail.",
+      "exit": "Port the `gateText` call site, then mutation-score the gate on an array-form expression.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/verify-sync.cjs",
+      "status": "identical",
+      "sha256": "80ae0b924ea8283fd8c5a9be0115963d27f5f54a61a9ae0ee7ec65737857461d"
+    }
+  ]
+}

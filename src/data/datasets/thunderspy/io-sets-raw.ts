@@ -27883,7 +27883,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "SEO_Winters_Gift.png",
+    "icon": "WintersGift.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Winter's Gift",
