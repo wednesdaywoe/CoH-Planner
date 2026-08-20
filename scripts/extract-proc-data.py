@@ -31,14 +31,19 @@ from bin_crawler.parser._pigg import BinResolver
 from bin_crawler.parser._boostsets import parse_boostsets
 from bin_crawler.parser._powers import parse_powers, PowerRecord
 from bin_crawler.parser._classes import parse_classes
+from bin_crawler.parser._messages import load_messages
+from bin_crawler import assets_sources
 
-HC_ASSETS = os.environ.get('COH_HC_ASSETS', r'G:/Homecoming/assets/live')
+# The registry is the single place an install path lives; a hardcoded default
+# here was a dead path from a previous machine (the defdiff absolute-path trap).
+HC_ASSETS = os.environ.get('COH_HC_ASSETS') or assets_sources.canonical_path('homecoming')
 PROC_DATA_TS = PROJECT_ROOT / 'src' / 'data' / 'proc-data.ts'
 GEN_DIR = PROJECT_ROOT / 'src' / 'data' / 'generated'
 OUT_GLOBALS = GEN_DIR / 'proc-globals.generated.ts'
 OUT_DAMAGE = GEN_DIR / 'proc-damage.generated.ts'
 OUT_EFFECTS = GEN_DIR / 'proc-effects.generated.ts'
 OUT_PPM = GEN_DIR / 'proc-ppm.generated.ts'
+OUT_PERIOD = GEN_DIR / 'proc-activate-period.generated.ts'
 OUT_BOOSTS = GEN_DIR / 'proc-boosts-allowed.generated.ts'
 
 # ---------------------------------------------------------------------
@@ -76,7 +81,7 @@ ATTRIB_ASPECT_TO_EFFECT = {
     ('Heal_Dmg', 'Absolute'):     ('Heal', 100.0),
     ('Absorb', 'Maximum'):        ('Absorb', 100.0),
     ('Absorb', 'Current'):        ('Absorb', 100.0),
-    ('PerceptionRadius', 'Current'): ('Special', 100.0),
+    ('PerceptionRadius', 'Current'): ('Perception', 100.0),
     ('Taunt', 'Resistance'):      ('Debuff', 100.0),
     ('RunningSpeed', 'Resistance'): ('SlowResistance', 100.0),
     ('FlyingSpeed', 'Resistance'):  ('SlowResistance', 100.0),
@@ -127,7 +132,7 @@ def _proc_effect_from_bridge(attrib: str, aspect: str, table: str = '') -> tuple
     if et == 'Heal':
         return ('Heal', 100.0, None)
     if et == 'Perception':
-        return ('Special', 100.0, None)
+        return ('Perception', 100.0, None)
     if et == 'Movement':
         # Each movement axis maps to its OWN proc stat. Collapsing them all onto
         # RunSpeed read Launch's +Jump Height as +Run Speed.
@@ -173,14 +178,22 @@ TAG_TO_CATEGORY = {
 # player, so every effect they resolve to has to be stamped `target: 'pets'` for the
 # player-dashboard passes to skip it.
 #
-# The set category is the ONLY discriminator the binary offers. Verified 2026-07-30:
-# Soulbound Allegiance (ECPetDamage), Decimation (ECRanged) and Gaussian's
-# (ECToHitBuff) all grant the byte-identical `Set_Bonus.Global_Bonus.Boost_Up` power
-# through a byte-identical `Grant_Power` template — nothing inside the proc piece
-# distinguishes the pet-only Build Up from the two self ones.
-PET_CARRIED_CATEGORIES = {
-    'ECPetDamage', 'ECRechargeIntensivePets',   # Soulbound, Expedient Reinforcement, Call to Arms…
-    'ECMastermind', 'ECSMastermind',            # Mastermind ATOs (henchman summons only)
+# The set's slot heading is the ONLY discriminator the binary offers: Soulbound
+# Allegiance, Decimation and Gaussian's all grant the byte-identical
+# `Set_Bonus.Global_Bonus.Boost_Up` power through a byte-identical `Grant_Power`
+# template — nothing inside the proc piece distinguishes the pet-only Build Up from
+# the two self ones.
+#
+# That heading is `GroupName`, not `Category`. `Category` is blank on every PvP,
+# purple, event and ATO record (31 of Homecoming's 227), so keying on it dropped the
+# stamp for Soulbound Allegiance — a purple set — and its pet Build Up leaked into
+# the player's totals. BOOST-3 established the same field as the answer after the
+# same blank bit a resist set's aspect label; this was one of the sites it named and
+# did not move. `GroupName` is a message-store hash, hence the resolve in `main`.
+PET_CARRIED_GROUPS = {
+    'Pet Damage',                  # Soulbound Allegiance, Sovereign Right, Blood Mandate…
+    'Recharge Intensive Pets',     # Call to Arms, Expedient Reinforcement
+    'Mastermind Archetype Sets',   # the MM ATOs (henchman summons only)
 }
 
 # Globals the binary can't express as a plain (attrib, scale) — value comes from
@@ -584,6 +597,8 @@ def infer_category(mech: str) -> str:
         return 'Absorb'
     if 'stealth' in m:
         return 'Stealth'
+    if 'perception' in m:
+        return 'Perception'
     return 'Special'
 
 
@@ -630,35 +645,6 @@ def infer_proc_category(mech: str) -> str:
     return ''
 
 
-def parse_hand_ppm() -> list[dict]:
-    """Parse every PROC_DATABASE entry that has a numeric PPM (key + setName + ppm)."""
-    txt = PROC_DATA_TS.read_text(encoding='utf-8')
-    out = []
-    for m in re.finditer(
-        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
-        r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"[^"]+",\s*\n\s*ppm:\s*([0-9.]+),', txt):
-        out.append({'key': m.group(1), 'setName': m.group(2), 'ppm': float(m.group(3))})
-    return out
-
-
-def parse_hand_globals() -> list[dict]:
-    """Parse the hand PROC_DATABASE for Global / Proc120s entries (key + fields)."""
-    txt = PROC_DATA_TS.read_text(encoding='utf-8')
-    entries = []
-    for m in re.finditer(
-        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
-        r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"([^"]+)",\s*\n\s*ppm:\s*([^,]+),\s*\n\s*'
-        r'mechanics:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*pvpNotes:[^\n]*\n\s*type:\s*"(Global|Proc120s)"',
-        txt):
-        entries.append({'key': m.group(1), 'setName': m.group(2), 'ioName': m.group(3),
-                        'ppm': m.group(4).strip(), 'mechanics': m.group(5), 'type': m.group(6)})
-    return entries
-
-
-def sid(n: str) -> str:
-    return re.sub(r'[^a-z0-9]', '', n.lower())
-
-
 # PROC_DATABASE is one cross-server table, but the bins this script reads are
 # Homecoming's, so a fork-UNIQUE set (Witchcraft, Endless Nightmare) resolves to no
 # binary set here. Those forks' own committed exports carry the same two structures —
@@ -666,6 +652,33 @@ def sid(n: str) -> str:
 # per directory — so the fallback reads them rather than leaving the entry unsourced.
 EXPORT_ROOT = PROJECT_ROOT / 'exported_powers'
 EXPORT_FORKS = {'homecoming': '', 'rebirth': 'rebirth', 'thunderspy': 'thunderspy'}
+
+
+@lru_cache(maxsize=1)
+def export_periods_by_set() -> dict[str, set[float]]:
+    """`{set name slug: {activate_period, …}}` over every fork's committed export."""
+    out: dict[str, set[float]] = {}
+    for sub in EXPORT_FORKS.values():
+        base = EXPORT_ROOT / sub
+        sets_file = base / 'boostsets.json'
+        boosts_dir = base / 'boosts'
+        if not sets_file.exists() or not boosts_dir.is_dir():
+            continue
+        periods: dict[str, float] = {}
+        for entry in boosts_dir.iterdir():
+            record = entry / f'{entry.name}.json'
+            if not record.exists():
+                continue
+            power = json.loads(record.read_text(encoding='utf-8'))
+            if 'full_name' in power and 'activate_period' in power:
+                periods[power['full_name'].lower()] = float(power['activate_period'])
+        for s in json.loads(sets_file.read_text(encoding='utf-8')):
+            found = {round(periods[b.lower()], 4)
+                     for bl in s.get('boostlists', []) for b in bl.get('boosts', [])
+                     if b.lower() in periods}
+            if found:
+                out.setdefault(sid(s['name']), set()).update(found)
+    return out
 
 
 @lru_cache(maxsize=1)
@@ -706,6 +719,43 @@ def export_proc_boosts_by_set() -> dict[str, list[str]]:
     return {k: list(v[1]) for k, v in picked.items() if k not in conflicted}
 
 
+def parse_hand_entries() -> list[dict]:
+    """Parse every PROC_DATABASE entry, whatever its type (key + setName)."""
+    txt = PROC_DATA_TS.read_text(encoding='utf-8')
+    return [{'key': m.group(1), 'setName': m.group(2)} for m in re.finditer(
+        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
+        r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"[^"]+",', txt)]
+
+
+def parse_hand_ppm() -> list[dict]:
+    """Parse every PROC_DATABASE entry that has a numeric PPM (key + setName + ppm)."""
+    txt = PROC_DATA_TS.read_text(encoding='utf-8')
+    out = []
+    for m in re.finditer(
+        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
+        r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"[^"]+",\s*\n\s*ppm:\s*([0-9.]+),', txt):
+        out.append({'key': m.group(1), 'setName': m.group(2), 'ppm': float(m.group(3))})
+    return out
+
+
+def parse_hand_globals() -> list[dict]:
+    """Parse the hand PROC_DATABASE for Global / Proc120s entries (key + fields)."""
+    txt = PROC_DATA_TS.read_text(encoding='utf-8')
+    entries = []
+    for m in re.finditer(
+        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
+        r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"([^"]+)",\s*\n\s*ppm:\s*([^,]+),\s*\n\s*'
+        r'mechanics:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*pvpNotes:[^\n]*\n\s*type:\s*"(Global|Proc120s)"',
+        txt):
+        entries.append({'key': m.group(1), 'setName': m.group(2), 'ioName': m.group(3),
+                        'ppm': m.group(4).strip(), 'mechanics': m.group(5), 'type': m.group(6)})
+    return entries
+
+
+def sid(n: str) -> str:
+    return re.sub(r'[^a-z0-9]', '', n.lower())
+
+
 def _emit_effect(ef: dict) -> str:
     parts = [f'category: "{ef["category"]}"']
     if ef.get('value') is not None:
@@ -735,6 +785,22 @@ def _emit_file(path: Path, const_name: str, generated: dict[str, list[dict]], de
         body = ', '.join(_emit_effect(ef) for ef in generated[key])
         esc = key.replace('\\', '\\\\').replace('"', '\\"')
         lines.append(f'  "{esc}": [{body}],')
+    lines.append('};')
+    path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    print(f'Wrote {path}')
+
+
+def _emit_activate_period(path: Path, periods: dict[str, float]) -> None:
+    lines = ['// AUTO-GENERATED by scripts/extract-proc-data.py — do not hand-edit.',
+             '// The proc PIECE\'s own fActivatePeriod, read off the boost power that carries the',
+             '// templates. This is the term `CalculateModChance` multiplies PPM by for an',
+             '// auto/toggle host, and the interval `power_IncrementBoostTimers` re-arms on.',
+             '// Keyed by PROC_DATABASE key. See PROC-DATA-BINARY-SOURCING.md.', '',
+             'export const PROC_ACTIVATE_PERIOD: Record<string, number> = {']
+    for key in sorted(periods):
+        esc = key.replace('\\', '\\\\').replace('"', '\\"')
+        v = periods[key]
+        lines.append(f'  "{esc}": {int(v) if v == int(v) else v},')
     lines.append('};')
     path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
     print(f'Wrote {path}')
@@ -776,6 +842,11 @@ def main() -> int:
     print(f'Loading HC bins from {HC_ASSETS}…')
     r = BinResolver(HC_ASSETS)
     sets = parse_boostsets(r.read('boostsets.bin'))
+    # `GroupName` is stored as a message-store key ("P2234567739"); PET_CARRIED_GROUPS
+    # matches the resolved heading, so resolve before any read of the field.
+    msgs = load_messages(r.read('clientmessages-en.bin'))
+    for s in sets:
+        s.group_name = msgs.resolve(s.group_name)
     powers = parse_powers(r.read('powers.bin'))
     pidx = {p.full_name: p for p in powers}
     gb_index = {p.full_name: p for p in powers if p.full_name.startswith('Set_Bonus.Global_Bonus.')}
@@ -787,14 +858,17 @@ def main() -> int:
     hand = parse_hand_globals()
     print(f'  {len(hand)} hand Global/Proc120s entries\n')
 
-    # Hand setName -> binary set id. Most are binary MISSPELLINGS (HC's data has
-    # the typo); aliasing lets the generator resolve the proc from the right set.
+    # Hand setName -> the name the DATA uses. Most are binary MISSPELLINGS (HC's data
+    # has the typo); aliasing lets the generator resolve the proc from the right set.
+    # `superiorhaunting` is not a typo but a drift — Rebirth's export calls the set
+    # `Superior_The_Haunting` where the hand table dropped the article.
     SET_ALIASES = {
         'numinasconvalescence': 'numinasconvalesence',
         'cacophony': 'cacophany',                       # binary typo
         'debilitativeaction': 'debiliativeaction',      # binary typo (missing 't')
         'ascendancyofthedominator': 'ascendencyofthedominator',          # a->e
         'superiorascendancyofthedominator': 'superiorascendencyofthedominator',
+        'superiorhaunting': 'superiorthehaunting',
     }
     set_by_id = {sid(s.name): s for s in sets}
     for hk, bk in SET_ALIASES.items():
@@ -884,10 +958,10 @@ def main() -> int:
         if not pick and not want:
             pick = next(iter(by_key.values()), None)  # no inference -> any payload
         if pick:
-            # A piece from a pet set rides on the PET (see PET_CARRIED_CATEGORIES) —
+            # A piece from a pet set rides on the PET (see PET_CARRIED_GROUPS) —
             # its `target: Self` templates mean the pet. Copy rather than mutate:
             # `by_key` aliases one payload list under several keys.
-            if s.category in PET_CARRIED_CATEGORIES:
+            if s.group_name in PET_CARRIED_GROUPS:
                 pick = [{**ef, 'target': 'pets'} for ef in pick]
             eff_gen[e['key']] = pick
         else:
@@ -954,6 +1028,35 @@ def main() -> int:
           f'{len(boosts_unresolved)} unresolved ===')
     print('\n'.join(boosts_unresolved))
 
+    # --- ActivatePeriod (PPM-1): the piece's own fActivatePeriod ------------
+    # `CalculateModChance` multiplies PPM by `ptemplate->ppowBase->fActivatePeriod`,
+    # and a proc's templates are iterated straight off the boost, so the period read
+    # is the ENHANCEMENT PIECE's — never the host toggle's. Emitted per entry so both
+    # engines read it instead of standing a constant where the data belongs.
+    # A set's pieces are asked as a group: they author one period between them, and a
+    # set that ever disagrees is reported rather than resolved by picking a piece,
+    # because then the piece identity is load-bearing and this resolution is too coarse.
+    period_gen: dict[str, float] = {}
+    period_split: list[str] = []
+    period_unresolved: list[str] = []
+    from_export = export_periods_by_set()
+    for e in parse_hand_entries():
+        set_key = sid(e['setName'])
+        s = set_by_id.get(set_key)
+        found = {round(pidx[b].activate_period, 4)
+                 for bl in s.boostlists for b in bl.boosts if b in pidx} if s else set()
+        if not found:
+            found = from_export.get(set_key) or from_export.get(SET_ALIASES.get(set_key, '')) or set()
+        if len(found) == 1:
+            period_gen[e['key']] = next(iter(found))
+        elif found:
+            period_split.append(f'    SPLIT: {e["key"]} (set={e["setName"]}) periods={sorted(found)}')
+        else:
+            period_unresolved.append(f'    NO-SET: {e["key"]} (set={e["setName"]})')
+    print(f'=== activate period: {len(period_gen)} entries; {len(period_split)} sets disagree; '
+          f'{len(period_unresolved)} unresolved ===')
+    print('\n'.join(period_split + period_unresolved))
+
     # NOTE (P5 — Rebirth): the Rebirth-UNIQUE proc sets (Guardian's Gift, Imperial
     # Might, The Haunting, Vampire's Bite, Return From The Grave, Inexhaustibility,
     # Superior Winter's Gift, …) are bespoke — Create_Entity summons, Set_Mode
@@ -972,6 +1075,7 @@ def main() -> int:
         _emit_file(OUT_EFFECTS, 'PROC_OTHER_EFFECTS', eff_gen,
                    'Structured non-global proc payloads: self-buff / foe debuff / mez / knock / Build Up.')
         _emit_ppm(OUT_PPM, ppm_gen)
+        _emit_activate_period(OUT_PERIOD, period_gen)
         _emit_boosts_allowed(OUT_BOOSTS, boosts_gen)
     return 0
 

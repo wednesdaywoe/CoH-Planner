@@ -32,7 +32,7 @@ export const PROC_GLOBAL_EFFECTS: Record<string, ProcEffect[]> = {
   "Mark of Supremacy: Pet Resistance Bonus": [{ category: "Special" }],
   "Max HP": [{ category: "MaxHP", value: 7.5 }],
   "Protection from Knockback": [{ category: "KnockbackProtection", value: 4.0 }],
-  "Rectified Reticle: +Perception": [{ category: "Special", value: 20.0 }],
+  "Rectified Reticle: +Perception": [{ category: "Perception", value: 20.0 }],
   "Resist Speed and Recharge Debuffs": [{ category: "SlowResistance", value: 20.0 }, { category: "RechargeResistance", value: 20.0 }],
   "Scaling +Res(All)": [{ category: "Resistance", value: 3.0, effectType: "All", scaling: true }],
   "Sovereign Right: +Res(All)": [{ category: "Resistance", value: 10.0, effectType: "All", target: "pets" }],
@@ -50,5 +50,5 @@ export const PROC_GLOBAL_EFFECTS: Record<string, ProcEffect[]> = {
   "Thrust: Run/+Run Speed": [{ category: "RunSpeed", value: 35.0 }],
   "Time & Space Manipulation: +Stealth": [{ category: "Stealth", value: 30.0 }, { category: "Stealth", value: 300.0, valueMax: 300.0 }],
   "Unbounded Leap: +Stealth": [{ category: "Stealth", value: 30.0 }, { category: "Stealth", value: 300.0, valueMax: 300.0 }],
-  "Warp: Range/+Perception": [{ category: "Special", value: 20.0 }],
+  "Warp: Range/+Perception": [{ category: "Perception", value: 20.0 }],
 };

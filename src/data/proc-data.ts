@@ -36,6 +36,7 @@ export type ProcEffectCategory =
   | 'SlowResistance'
   | 'RechargeResistance'
   | 'EnduranceDrainResistance'
+  | 'Perception'
   | 'Stealth'
   | 'BuildUp'
   | 'Control'
@@ -2628,6 +2629,7 @@ export function getProcEffectLabel(category: ProcEffectCategory): string {
     case 'SlowResistance': return 'Slow Resist';
     case 'RechargeResistance': return 'Rech Debuff Resist';
     case 'EnduranceDrainResistance': return 'End Drain Resist';
+    case 'Perception': return '+Perception';
     case 'Stealth': return 'Stealth';
     case 'BuildUp': return 'Build Up';
     case 'Control': return 'Control';
@@ -2661,6 +2663,7 @@ export function getProcEffectColor(category: ProcEffectCategory): string {
     case 'SlowResistance': return 'text-teal-300';
     case 'RechargeResistance': return 'text-amber-300';
     case 'EnduranceDrainResistance': return 'text-blue-300';
+    case 'Perception': return 'text-sky-400';
     case 'Stealth': return 'text-gray-400';
     case 'BuildUp': return 'text-yellow-300';
     case 'Control': return 'text-indigo-400';
