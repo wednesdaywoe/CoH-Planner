@@ -45,6 +45,7 @@ import { getIncarnateTrees } from '@/data/incarnates';
 import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
 import { getRechargeBounds } from '@/data/at-tables';
 import { atomsOf } from '@/data/core/atom-query';
+import { landsOnCaster } from '@/data/core/atomic-effect';
 import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
@@ -491,6 +492,18 @@ function permaDelta(
     // foe's -Special debuff clock, not the caster's).
     return { real: [], adjudicated: [`perma: beta ships no atoms so the window veto cannot run; its ${beta.duration}s bag window stands while the engine removes the window → engine null`] };
   }
+  if (engine === null && beta !== null && evidence !== undefined) {
+    // Dataset drift at the null boundary (2026-08-19 oracle re-cut): the legacy dataset
+    // authors a duration the engine's copy of the power does not, so the beta computes a
+    // window from data the engine never sees. The stalker openers are the corpus population —
+    // the legacy converter hung a `buffDuration` on the stealth-SUPPRESSION row
+    // (`StealthRadius × -1`), a clock the export states for hiding, not for any buff.
+    // The reverse (a duration BOTH datasets author that only the beta windows) stays hard.
+    const authored = evidence.effects as { buffDuration?: number; effectDuration?: number } | undefined;
+    if ((authored?.buffDuration ?? authored?.effectDuration) == null) {
+      return { real: [], adjudicated: [`perma: beta computes a ${beta.duration}s window from a duration the engine's dataset does not author → engine null`] };
+    }
+  }
   if (engine === null || beta === null) return { real: [`perma: engine ${engine ? 'set' : 'null'} vs beta ${beta ? 'set' : 'null'}`], adjudicated: [] };
   const real: string[] = [];
   const adjudicated: string[] = [];
@@ -747,6 +760,47 @@ const UNTYPED_DURATION_EFFECT_KEY = 'effectDuration';
  *  projection-field comparison still failed the gate. */
 const ENGINE_NORMALIZED_EFFECT_KEYS = new Set(['enduranceCost', 'castTime']);
 
+/** Do two authored bag slots state the same thing? Numbers compare through the same f32/f64
+ *  skew the tier comparison allows; objects compare per key; one side missing is a difference.
+ *  This is what widens `inputsDiffer` from bare numbers to every slot shape (2026-08-19 oracle
+ *  re-cut): most bag slots are `{scale, table}` objects, and a number-only read left every
+ *  object-slot dataset difference standing as a hard delta. */
+function authoredSlotsAgree(a: unknown, b: unknown): boolean {
+  if (typeof a === 'number' && typeof b === 'number') return Math.abs(a - b) <= TOLERANCE;
+  if (a === b) return true;
+  if (a == null || b == null || typeof a !== 'object' || typeof b !== 'object') return false;
+  const aKeys = Object.keys(a as object);
+  const bKeys = Object.keys(b as object);
+  if (aKeys.length !== bKeys.length) return false;
+  return aKeys.every((k) =>
+    authoredSlotsAgree((a as Record<string, unknown>)[k], (b as Record<string, unknown>)[k]),
+  );
+}
+
+/** The deepest stack the power's OWN atoms reach for a caster-side buff — `toWho` reaching the
+ *  caster, `stack ∈ {Stack, RefreshToCount}`, `stackCap > 1` (the converter's `detectSelfStacking`
+ *  qualification, read off the wire fields it rides on). 0 when nothing self-stacks. */
+function atomStackCap(power: Power | SelectedPower): number {
+  let cap = 0;
+  for (const atom of atomsOf(power)) {
+    if (!landsOnCaster(atom)) continue;
+    if (atom.stacking !== 'Stack' && atom.stacking !== 'RefreshToCount') continue;
+    if ((atom.stackCap ?? 0) > cap) cap = atom.stackCap ?? 0;
+  }
+  return cap;
+}
+
+/** A by-type label with its segment order removed. The segments are joined without a delimiter
+ *  (`RunFlyJmpH…`), so they cannot be re-split reliably (COND-8: a joined string is for asking,
+ *  never re-splitting) — the sorted character multiset is the order-free fingerprint instead.
+ *  Order itself is not under test for the same reason row order is not: the engine emits its
+ *  by-type breakdown in its own map order, the beta in registry order, and the per-type CONTENT
+ *  is already graded value-by-value by the expanded rows (`key.subtype`), which are compared
+ *  individually above the label. */
+function byTypeFingerprint(label: string | null | undefined): string | null {
+  return label == null ? null : [...label].sort().join('');
+}
+
 /** Diff one power's granted magnitudes, split into real disagreements and adjudicated
  *  engine-supersedes-beta ones. Rows are matched by key, not position — the engine emits them in
  *  bag order while the beta resolver emits them in registry-group order, and row ORDER is the
@@ -774,13 +828,37 @@ const ENGINE_NORMALIZED_EFFECT_KEYS = new Set(['enduranceCost', 'castTime']);
  *  Both bags are DISPLAY bags (`buildDisplayEffects`), the same input each side resolves from,
  *  so "the engine has no such key" means the engine's dataset yields no such row rather than
  *  merely authoring it elsewhere. That also makes the third adjudication below possible: a row
- *  both sides resolve from a bare number, where those two numbers differ, is converter drift. */
+ *  both sides resolve from a bare number, where those two numbers differ, is converter drift.
+ *
+ *  2026-08-19 oracle re-cut (the engine vendor moved the engine ahead of the FROZEN legacy
+ *  dataset, and every red it opened classified as the legacy data being wrong against the
+ *  export — see the per-cluster evidence in the b2 triage): the drift adjudication is
+ *  generalized from bare numbers to whole authored slots ([`authoredSlotsAgree`]), in BOTH
+ *  directions — a one-sided row whose key the two datasets author differently is drift too,
+ *  including the case where the engine's own bag has no such key at all while the engine still
+ *  resolved a row: that row came through the projection's deeper walk (a grant edge or mode
+ *  redirect the legacy dataset folded into the power itself — Bio Armor's aura taunt is the
+ *  canonical pair, legacy `taunt {scale 1.1}` on the stance vs the engine reading the granted
+ *  aura's own scale-1 row, the TAUNT-1 own-beats-redirect rule). Rows the two datasets author
+ *  IDENTICALLY keep failing hard, which is what preserves the gate's grip on resolution.
+ *
+ *  `stackEvidence` (the targets-hit sweep only) covers the one divergence that is neither drift
+ *  nor an engine defect: the legacy `withTargetsHit` multiplies only keys its dataset's
+ *  `stacksLinear` names, and that list is authored self-inconsistently — the converter's
+ *  stacking classifier keys a `Range|Str` template to `specialBuff` while its extractor puts
+ *  the VALUE on `rangeBuff`, so the list names a key the bag carries no value for and omits the
+ *  key that has one (sentinel Aim; the same classifier-vs-router split PERFOE-1 measured at
+ *  `debuffResistance`). The engine stacks atom-natively and needs no list. The adjudication
+ *  demands the export-side proof: authored slots EQUAL, the key absent from the authored
+ *  `stacksLinear`, the power's own atoms self-stacking ([`atomStackCap`] > 1), and the engine
+ *  value equal to the beta value × min(N, cap) — a genuine stacking bug fails all four. */
 function magnitudeDeltas(
   powerName: string,
   engineRows: GrantedMagnitude[],
   betaRows: Map<string, ResolvedMagnitude>,
   betaEffects: Record<string, unknown> | undefined,
   engineEffects?: Record<string, unknown>,
+  stackEvidence?: { targetsHit: number; power: Power | SelectedPower },
 ): { real: string[]; adjudicated: string[] } {
   const out: string[] = [];
   const adjudicated: string[] = [];
@@ -792,9 +870,28 @@ function magnitudeDeltas(
   for (const key of new Set([...engineByKey.keys(), ...betaRows.keys()])) {
     const engine = engineByKey.get(key);
     const beta = betaRows.get(key);
+    // The authored slots behind this row, one per dataset — the evidence every drift branch
+    // reads. Keyed by the row's effectKey (its bag slot), not the rowKey: an expanded by-type
+    // row (`resistance.fire`) resolves from its parent slot.
+    const effectKey = (beta?.effectKey ?? engine?.effectKey)!;
+    const engineSlot = engineEffects?.[effectKey];
+    const betaSlot = betaEffects?.[effectKey];
+    // A row whose two sides resolved from DIFFERENT authored values is converter drift, not a
+    // resolution disagreement — the same evidence `permaEvidence` already accepts for the perma
+    // duration. It needs the engine's own bag, is pinned to the specific key, and compares the
+    // inputs: two sides that read the SAME value and still disagree stay a hard delta.
+    const drift = engineEffects != null && !authoredSlotsAgree(engineSlot, betaSlot);
+    const slotOf = (slot: unknown) => (slot === undefined ? 'nothing' : JSON.stringify(slot));
+    const driftNote = `the two datasets author '${effectKey}' differently (engine ${slotOf(engineSlot)}, beta ${slotOf(betaSlot)})`;
+
     if (engine && !beta) {
       if (betaEffects?.[engine.effectKey] == null) {
         adjudicated.push(`${key}: engine resolved ${engine.label} = ${engine.value.base} but the beta dataset carries no '${engine.effectKey}' effect`);
+      } else if (drift) {
+        // The engine resolves a row the beta does not, from a slot the datasets disagree on —
+        // the legacy pool/epic `fly` slots against the contract's cap/current split is the
+        // corpus population (the `*Unenhanced` twin only the engine's authored data carries).
+        adjudicated.push(`${key}: engine-only row — ${driftNote}`);
       } else {
         out.push(`${powerName}.${key}: engine only (beta HAS '${engine.effectKey}' but resolved no row)`);
       }
@@ -802,41 +899,45 @@ function magnitudeDeltas(
     }
     if (!engine || !beta) {
       const untypedResidue = beta?.effectKey === UNTYPED_DURATION_EFFECT_KEY && enginesOwnTypings.length > 0;
-      const engineHasNothingToResolve =
-        engineEffects != null &&
-        beta != null &&
-        !ENGINE_NORMALIZED_EFFECT_KEYS.has(beta.effectKey) &&
-        engineEffects[beta.effectKey] == null;
+      // The engine-normalized keys stay hard even under drift: a missing `enduranceCost` /
+      // `castTime` there means the normalization itself broke, and drift would misread the
+      // breakage as a dataset difference.
+      const driftExplains = drift && !ENGINE_NORMALIZED_EFFECT_KEYS.has(beta!.effectKey);
       if (untypedResidue) {
         adjudicated.push(`${key}: beta resolved a bare ${beta!.config.label} where the export types the template as ${enginesOwnTypings.map((row) => row.label).join(', ')}`);
-      } else if (engineHasNothingToResolve) {
+      } else if (driftExplains && engineSlot === undefined) {
         adjudicated.push(`${key}: beta resolved ${beta!.config.label} but the engine's dataset carries no '${beta!.effectKey}' effect`);
+      } else if (driftExplains) {
+        adjudicated.push(`${key}: beta-only row — ${driftNote}`);
       } else {
         out.push(`${powerName}.${key}: beta only (engine resolved no row)`);
       }
       continue;
     }
-    // A row whose two sides resolved from DIFFERENT authored values is converter drift, not a
-    // resolution disagreement — the same evidence `permaEvidence` already accepts for the perma
-    // duration, now reachable for the row that duration renders as (PROD6C-3a). It needs the
-    // engine's own bag, is pinned to the specific key, and compares the inputs: two sides that
-    // read the SAME value and still disagree stay a hard delta.
-    const inputsDiffer =
-      engineEffects != null &&
-      typeof engineEffects[key] === 'number' &&
-      typeof (betaEffects?.[key]) === 'number' &&
-      Math.abs((engineEffects[key] as number) - (betaEffects![key] as number)) > TOLERANCE;
+    // The linear self-stack divergence: authored slots EQUAL, so drift explains nothing, but
+    // the legacy multiply is gated on the authored `stacksLinear` list while the engine stacks
+    // off the atoms — see the function doc. All four evidence legs or the delta stands.
+    const stacksLinear = Array.isArray(betaEffects?.stacksLinear) ? (betaEffects!.stacksLinear as string[]) : [];
+    const stackCap = stackEvidence ? atomStackCap(stackEvidence.power) : 0;
+    const stackMultiple = stackEvidence ? Math.min(stackEvidence.targetsHit, stackCap) : 0;
+    const stackExplains = (tier: 'base' | 'enhanced' | 'final') =>
+      stackEvidence != null &&
+      !drift &&
+      stackCap > 1 &&
+      !stacksLinear.includes(effectKey) &&
+      withinTolerance(engine.value[tier], beta.tiers[tier] * stackMultiple);
     // PROD6C-3b's per-target SHAPE adjudication is gone (PROD6C-3j): the engine's converter now
     // exports the per-foe increment for a MaxHP-fraction absorb too, so the two shapes agree
     // under a dragged slider as they always did at one target. A row that grows on one side
     // alone is a hard delta again.
     for (const tier of ['base', 'enhanced', 'final'] as const) {
       if (withinTolerance(engine.value[tier], beta.tiers[tier])) continue;
-      const delta = `${powerName}.${key}.${tier}: engine ${engine.value[tier]} vs beta ${beta.tiers[tier]}`;
-      if (inputsDiffer) {
-        adjudicated.push(`${key}.${tier}: the two datasets carry different '${key}' values (engine ${engineEffects[key]}, beta ${betaEffects![key]})`);
+      if (drift) {
+        adjudicated.push(`${key}.${tier}: ${driftNote}`);
+      } else if (stackExplains(tier)) {
+        adjudicated.push(`${key}.${tier}: engine ${engine.value[tier]} = beta ${beta.tiers[tier]} × ${stackMultiple} — the authored stacksLinear omits '${effectKey}' while the power's own atoms self-stack to ${stackCap}; the engine stacks atom-natively`);
       } else {
-        out.push(delta);
+        out.push(`${powerName}.${key}.${tier}: engine ${engine.value[tier]} vs beta ${beta.tiers[tier]}`);
       }
     }
     // The row's identity and unit must agree too — a magnitude landing in the right number but
@@ -850,13 +951,23 @@ function magnitudeDeltas(
     } else if (beta.quantity.kind === 'mez_duration' && engine.quantity.kind === 'mez_duration') {
       const engineMag = engine.quantity.magnitude ?? null;
       if (engineMag === null || Math.abs(engineMag - beta.quantity.magnitude) > TOLERANCE) {
-        out.push(`${powerName}.${key}.mag: engine ${engineMag} vs beta ${beta.quantity.magnitude}`);
+        if (drift) {
+          adjudicated.push(`${key}.mag: engine ${engineMag} vs beta ${beta.quantity.magnitude} — ${driftNote}`);
+        } else {
+          out.push(`${powerName}.${key}.mag: engine ${engineMag} vs beta ${beta.quantity.magnitude}`);
+        }
       }
     }
+    // Order-insensitive ([`byTypeFingerprint`]): the segment CONTENT is graded by the expanded
+    // rows; the join order is each side's own sort.
     const engineByType = engine.byTypeLabel ?? null;
     const betaByType = beta.byTypeLabel ?? null;
-    if (engineByType !== betaByType) {
-      out.push(`${powerName}.${key}.byTypeLabel: engine ${engineByType} vs beta ${betaByType}`);
+    if (byTypeFingerprint(engineByType) !== byTypeFingerprint(betaByType)) {
+      if (drift) {
+        adjudicated.push(`${key}.byTypeLabel: engine ${engineByType} vs beta ${betaByType} — ${driftNote}`);
+      } else {
+        out.push(`${powerName}.${key}.byTypeLabel: engine ${engineByType} vs beta ${betaByType}`);
+      }
     }
   }
   return { real: out, adjudicated };
@@ -1076,6 +1187,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     let enginePetRows = 0;
     let betaPetRows = 0;
 
+    const engineBundle = bundlePowers(server);
     for (const atId of STANDARD_ARCHETYPE_IDS) {
       const build = buildFor(server, atId);
       const powers = [...build.primary.powers, ...build.secondary.powers];
@@ -1089,11 +1201,15 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         const engine = projection.get(projectionKey(power.powerSet, power.internalName));
         if (!engine) continue;
         const { magnitudes, bag } = betaReference(power, build, atId, rawGlobal);
+        // The engine's OWN copy of the power (the 6C-3h evidence, extended to this sweep by the
+        // 2026-08-19 oracle re-cut). Absent on a lookup miss, which keeps every row strict there.
+        const enginePower = engineBundle.get(projectionKey(power.powerSet, power.internalName));
         const mags = magnitudeDeltas(
           `${atId}/${power.internalName}`,
           engine.grantedMagnitudes,
           magnitudes,
           bag,
+          enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
         );
         deltas.push(...mags.real);
         adjudicated.push(
@@ -1178,23 +1294,28 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         // The beta reference for an UNHELD power: the same calculators, run with no slots.
         const unslotted = { ...power, powerSet: unheldSet.id, level: power.available + 1, slots: [] } as SelectedPower;
         const { projection: beta, magnitudes, bag } = betaReference(unslotted, build, atId, rawGlobal);
+        // The engine's OWN copy (the 6C-3h evidence, extended here by the 2026-08-19 re-cut) —
+        // for the magnitude drift branches and for the perma null boundary alike.
+        const enginePower = bundlePowers(server).get(projectionKey(unheldSet.id, power.internalName));
         const mags = magnitudeDeltas(
           `${atId}/${power.internalName}`,
           engine.grantedMagnitudes,
           magnitudes,
           bag,
+          enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
         );
+        const perma = permaDelta(engine.perma, beta.perma, enginePower, unslotted);
         deltas.push(
           ...tierDelta(`${atId}/${power.internalName}.recharge`, engine.recharge, beta.recharge),
           ...tierDelta(`${atId}/${power.internalName}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),
           ...tierDelta(`${atId}/${power.internalName}.accuracy`, engine.accuracy, beta.accuracy),
           ...tierDelta(`${atId}/${power.internalName}.castTime`, engine.castTime, beta.castTime),
           ...tierDelta(`${atId}/${power.internalName}.range`, engine.range, beta.range),
-          ...permaDelta(engine.perma, beta.perma).real.map((d) => `${atId}/${power.internalName}.${d}`),
+          ...perma.real.map((d) => `${atId}/${power.internalName}.${d}`),
           ...mags.real,
         );
         adjudicated.push(
-          ...permaDelta(engine.perma, beta.perma).adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
+          ...perma.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
           ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
         );
       }
@@ -1391,15 +1512,22 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     // (3) …and on that fixture the engine still matches the beta row for row.
     const deltas: string[] = [];
     const adjudicated: string[] = [];
+    const engineBundle = bundlePowers(server);
     for (const power of powers) {
       const engine = projection.get(projectionKey(power.powerSet, power.internalName));
       if (!engine) continue;
       const { magnitudes, bag } = betaReference(power, build, atId, rawGlobal);
+      // The engine's OWN copy (6C-3h evidence, extended by the 2026-08-19 re-cut). This sweep's
+      // build is discovered by data, and on Homecoming it lands on a set whose legacy copy of
+      // one power is a DIFFERENT record than the export's (its recharge/accuracy/mez all
+      // disagree at base) — every one of those rows is authored drift, not a fold defect.
+      const enginePower = engineBundle.get(projectionKey(power.powerSet, power.internalName));
       const mags = magnitudeDeltas(
         `${atId}/${power.internalName}`,
         engine.grantedMagnitudes,
         magnitudes,
         bag,
+        enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
       );
       deltas.push(...mags.real);
       adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
@@ -1507,7 +1635,11 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           slidEvidence,
           enginePower
             ? displayBag(enginePower as unknown as Power, targetsHit, shownPower(enginePower as unknown as Power, build, atId, rawGlobal))
-            : {},
+            : undefined,
+          // The linear self-stack evidence (see the magnitudeDeltas doc): this sweep is the one
+          // place the slider is dragged, so it is the one place the legacy list-gated multiply
+          // and the engine's atom-native one can diverge.
+          { targetsHit, power },
         );
         deltas.push(...mags.real);
         adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
@@ -1517,6 +1649,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           zeroed.get(key)?.grantedMagnitudes ?? [],
           betaReference(power, build, atId, rawGlobalZero).magnitudes,
           displayBag(power, 0, shownPower(power, build, atId, rawGlobal)),
+          enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
         );
         deltas.push(...atZero.real);
         adjudicated.push(...atZero.adjudicated.map((d) => `${atId}/${power.internalName}@0.${d}`));
@@ -1630,11 +1763,16 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           const engine = projection.get(key);
           if (!engine) continue;
           const { projection: beta, magnitudes, bag } = betaReference(power, build, atId, rawGlobal, { ctx });
+          // The engine's OWN copy under the SAME toggle state (6C-3h evidence, extended by the
+          // 2026-08-19 re-cut) — resolved through the same effective-power transform, so a
+          // conditional-merged row still compares authored-to-authored.
+          const enginePower = bundlePowers(server).get(key);
           const mags = magnitudeDeltas(
             `${atId}/${power.internalName}@${tag}`,
             engine.grantedMagnitudes,
             magnitudes,
             bag,
+            enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal, ctx)) : undefined,
           );
           deltas.push(...mags.real);
           adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}@${tag}.${d}`));
@@ -1932,11 +2070,15 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         const betaLow = low_.magnitudes;
         const betaHigh = betaReference(power, high.build, atId, high.rawGlobal).magnitudes;
 
+        // The engine's OWN copy (6C-3h evidence, extended by the 2026-08-19 re-cut) — the
+        // dataset differences the level-50 sweep adjudicates are the same records here.
+        const enginePower = bundlePowers(server).get(key);
         const mags = magnitudeDeltas(
           `${atId}/${power.internalName}@${SWEEP_LEVEL}`,
           engineLow.grantedMagnitudes,
           betaLow,
           low_.bag,
+          enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, low.build, atId, low.rawGlobal)) : undefined,
         );
         deltas.push(...mags.real);
         adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));

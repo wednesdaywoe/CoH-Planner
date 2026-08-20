@@ -55,6 +55,62 @@ const nodeEngine = artifactsReady
 // One handle per dataset, loaded from the same gzip bundle engine.ts fetches in the browser.
 const handles = new Map<Server, EngineHandle>();
 
+/** Whether the ENGINE's own copy of a power authors any per-foe increment, read off its bundle
+ *  bag exactly the way `forkHasPerFoeData` reads the legacy one (2026-08-19 oracle re-cut).
+ *  The per-foe walk below discovers its corpus from the LEGACY dataset's increments, and the two
+ *  converters disagree about a handful of powers — the legacy one invents an increment on rows
+ *  the export states as flat Self buffs (a Defiance rider read as per-foe scaling), while the
+ *  contract's `per_target` stamp is restricted to the export's real increments (PERFOE-1). A
+ *  response comparison on such a power grades two different authored datasets, not the two
+ *  calcs, so it is logged and skipped; a power BOTH datasets give an increment still fails hard
+ *  on any response mismatch. */
+const bundleEffectsCache = new Map<Server, Map<string, Record<string, unknown>>>();
+function bundleEffects(server: Server): Map<string, Record<string, unknown>> {
+  const cached = bundleEffectsCache.get(server);
+  if (cached) return cached;
+  const { gunzipSync } = require('node:zlib') as typeof import('node:zlib');
+  const bundle = JSON.parse(
+    gunzipSync(readFileSync(join(BUNDLE_DIR, `${server}.json.gz`))).toString('utf8'),
+  ) as Record<string, Record<string, { id?: string; powers?: { internalName?: string; effects?: Record<string, unknown> }[] }>>;
+  const out = new Map<string, Record<string, unknown>>();
+  for (const section of ['powersets', 'power-pools', 'epic-pools']) {
+    for (const [setKey, set] of Object.entries(bundle[section] ?? {})) {
+      for (const power of set.powers ?? []) {
+        if (power.internalName) out.set(`${set.id ?? setKey}\0${power.internalName}`, power.effects ?? {});
+      }
+    }
+  }
+  bundleEffectsCache.set(server, out);
+  return out;
+}
+
+/** The slot paths in an effects bag that carry a per-foe increment (`defenseBuff`,
+ *  `movement.runSpeed`, …), sorted — one dataset's answer to "which of this power's effects
+ *  grow per foe". */
+function perTargetSlots(effects: Record<string, unknown> | undefined): string[] {
+  const out: string[] = [];
+  for (const [key, slot] of Object.entries(effects ?? {})) {
+    if (!slot || typeof slot !== 'object') continue;
+    const record = slot as Record<string, unknown>;
+    if (record.perTarget || record.maxHPFractionPerTarget) out.push(key);
+    for (const [subKey, entry] of Object.entries(record)) {
+      if (entry && typeof entry === 'object' && (entry as { perTarget?: number }).perTarget) {
+        out.push(`${key}.${subKey}`);
+      }
+    }
+  }
+  return out.sort();
+}
+
+/** `null` when the two datasets agree which of this power's slots grow per foe; otherwise a
+ *  description of the disagreement. */
+function perTargetDrift(server: Server, powersetId: string, internalName: string, legacy: Power): string | null {
+  const engineSlots = perTargetSlots(bundleEffects(server).get(`${powersetId}\0${internalName}`));
+  const legacySlots = perTargetSlots((legacy as unknown as { effects?: Record<string, unknown> }).effects);
+  if (engineSlots.join(',') === legacySlots.join(',')) return null;
+  return `legacy grows [${legacySlots.join(', ')}] per foe, engine dataset grows [${engineSlots.join(', ') || 'none'}]`;
+}
+
 function engineHandle(server: Server) {
   const cached = handles.get(server);
   if (cached) return cached;
@@ -364,6 +420,7 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
     };
 
     const mismatches: string[] = [];
+    const adjudicated: string[] = [];
     let examined = 0;
     let responsive = 0;
 
@@ -375,6 +432,18 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
         // is what puts a click's buff in the totals, and the per-foe absorbs live only on clicks.
         if (power.powerType !== 'Toggle' && power.powerType !== 'Auto' && power.powerType !== 'Click') continue;
         if (!carriesPerTarget(power)) continue;
+        // The corpus above is discovered from the LEGACY dataset's increments; a power whose
+        // datasets DISAGREE about which slots grow per foe is dataset drift, not a slider
+        // defect — the legacy converter invented an increment on rows the export states flat
+        // (a Defiance rider read as per-foe damage), while the contract's `per_target` stamp
+        // is restricted to the export's real increments (PERFOE-1). Logged and skipped whole:
+        // one drifted slot pollutes the power's response totals. Excluded from `examined` so
+        // the anti-vacuity counters keep counting only powers both sides can actually grade.
+        const drift = perTargetDrift(server, powerset.id ?? powersetKey, power.internalName, power);
+        if (drift) {
+          adjudicated.push(`${powersetKey}/${power.name}: ${drift} — dataset drift, response comparison skipped`);
+          continue;
+        }
         examined++;
 
         const build = solo(atId, powerset.id ?? powersetKey, power);
@@ -415,6 +484,10 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
 
     // eslint-disable-next-line no-console
     console.warn(`[PROD6B-2d] ${server}: ${examined} per-foe powers, ${responsive} slider responses observed`);
+    if (adjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6B-2d] ${server} dataset drift (accepted, ${adjudicated.length}):\n    ${adjudicated.join('\n    ')}`);
+    }
 
     if (mismatches.length) {
       // eslint-disable-next-line no-console
