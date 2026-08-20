@@ -356,7 +356,15 @@ function getAtoIndex() {
   if (_atoIndexCache) return _atoIndexCache;
   const boostsets = JSON.parse(fs.readFileSync(path.join(RAW_DATA_PATH, 'boostsets.json'), 'utf-8'));
   const ioSetsText = fs.readFileSync(datasetPath(datasetId, 'io-sets-raw.ts'), 'utf-8');
-  const ioSets = JSON.parse(ioSetsText.slice(ioSetsText.indexOf('= {') + 2, ioSetsText.lastIndexOf(';')));
+  // Anchor on the export, not on the first `= {` in the file. The registry carries its own type
+  // header above the data, and the day a declaration up there became a type ALIAS rather than an
+  // interface it introduced an earlier `= {` — the slice then started mid-header and JSON.parse
+  // died on `name: string;` for every powerset in the run.
+  const declAt = ioSetsText.indexOf('IO_SETS_RAW');
+  if (declAt < 0) throw new Error('io-sets-raw.ts: no IO_SETS_RAW export found');
+  const openAt = ioSetsText.indexOf('= {', declAt);
+  if (openAt < 0) throw new Error('io-sets-raw.ts: IO_SETS_RAW export has no object literal');
+  const ioSets = JSON.parse(ioSetsText.slice(openAt + 2, ioSetsText.lastIndexOf(';')));
   const categoriesByPower = new Map(); // lowercased full_name -> Set(category display name)
   const allCategories = new Set();
   for (const record of boostsets) {
