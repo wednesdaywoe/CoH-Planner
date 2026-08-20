@@ -83,6 +83,13 @@ export function computeModeSuppression(powers: ModeCarrier[]): Map<string, Suppr
  * A mode is selectable exactly when some power in the build displays differently under it —
  * which is what the binary's per-power `Redirect` table says, so the selector is a read of the
  * build's own data rather than a list of which archetypes have forms.
+ *
+ * SELECTABLE is not the same as LIVE, and conflating them was a real defect. This answers "what
+ * does the form selector offer", which is a `modeVariants` question. What a mode-gated condition
+ * reads is `publishedModes` below — every mode an active power SETS, whether or not a selector
+ * offers it. Power Boost sets `BoostPower` and no power carries a `BoostPower` modeVariant, so
+ * filtering the published set through this one left `kBoostPower Source.Mode?` permanently false
+ * and Stun stuck in its single-target form with Power Boost running.
  */
 export function selectableModes(powers: { modeVariants?: Record<string, unknown> }[]): string[] {
   const modes = new Set<string>();
@@ -90,6 +97,22 @@ export function selectableModes(powers: { modeVariants?: Record<string, unknown>
     for (const mode of Object.keys(p.modeVariants ?? {})) modes.add(mode);
   }
   return [...modes];
+}
+
+/**
+ * The modes a power publishes while it is running: its `setsModes`, verbatim.
+ *
+ * This is the beta's half of `crates/coh_math/src/gather.rs`'s `collect_source_modes`, which
+ * unions the `setsModes` of every active power with no filter of any kind. Keeping the two rules
+ * identical is the point — the engine and the display resolver answer the same `Source.Mode?`
+ * gates, so a mode either side drops is a form the other still swaps.
+ *
+ * The combat pair (`kEngaged`/`kOutOfCombat`) is deliberately absent: no power's `setsModes`
+ * publishes either, and both are bound from the in-combat flag where the condition context is
+ * built, exactly as the engine binds them in `live_modes`.
+ */
+export function publishedModes(power: { setsModes?: string[] } | undefined): string[] {
+  return power?.setsModes ?? [];
 }
 
 /** Curated → human labels for the ~15 `modesRequired` values (annotation only). */

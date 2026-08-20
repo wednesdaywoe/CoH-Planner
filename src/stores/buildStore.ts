@@ -73,7 +73,7 @@ import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPo
 import { enhancementAllowedInPower } from '@/utils/enhancement-eligibility';
 import { dedupePools } from '@/utils/build-powers';
 import { branchPowersInBuild, branchSetIds } from '@/utils/branch-powers';
-import { selectableModes } from '@/utils/mode-suppression';
+import { selectableModes, publishedModes } from '@/utils/mode-suppression';
 // The one toggle classifier (`ba84984159` unified it); a second copy here is exactly
 // the drift that unification closed, so the store reads the same function the rows do.
 import { shouldShowToggle } from '@/components/powers/power-row-utils';
@@ -761,6 +761,46 @@ function syncBuildDefinitions(build: Build): void {
       const newName = internalNameMigrations.get(entry.powerName);
       if (newName) entry.powerName = newName;
     }
+  }
+
+  // Reconcile `activeModes` with what the build's own powers publish.
+  //
+  // The per-power toggle maintains this incrementally, so a build that arrives already holding
+  // an active mode setter never passed through that writer: a saved build, an import, a hash
+  // deeplink, or a power that auto-activated at pick time. Those carried `isActive: true` with
+  // the mode missing, and a mode-gated redirect stayed unresolved until the user toggled the
+  // power off and on again — the Power Boost / Stun case, still broken on every build saved
+  // before the writer was fixed.
+  //
+  // A mode SOME power publishes is decided by that power's own state, which is exactly the
+  // engine's `collect_source_modes` over active powers. A mode NO power publishes is left
+  // alone: Thunderspy exports no `Set_Mode` template (TSPY-3's excluded tail), so its
+  // Hunter/Prowler forms are pure display state with no setter to read, and recomputing over
+  // publishers would silently switch them off.
+  const allSelected: SelectedPower[] = [
+    ...build.primary.powers,
+    ...build.secondary.powers,
+    ...build.pools.flatMap((pool) => pool.powers),
+    ...(build.epicPool?.powers ?? []),
+    ...(build.inherents ?? []),
+  ];
+  const publishable = new Set<string>();
+  const live = new Set<string>();
+  for (const power of allSelected) {
+    const sets = power.setsModes ?? [];
+    if (!sets.length) continue;
+    const isOn = power.powerType?.toLowerCase() === 'auto' || !!power.isActive;
+    for (const mode of sets) {
+      publishable.add(mode);
+      if (isOn) live.add(mode);
+    }
+  }
+  if (publishable.size > 0) {
+    const kept = (build.activeModes ?? []).filter((m) => !publishable.has(m));
+    const next = [...new Set([...kept, ...live])];
+    const prev = build.activeModes ?? [];
+    const changed = next.length !== prev.length || next.some((m) => !prev.includes(m));
+    if (changed) build.activeModes = next;
   }
 }
 
@@ -2441,10 +2481,18 @@ export const useBuildStore = create<BuildStore>()(
           return changed ? out : powers;
         };
 
+        // The selector owns the SELECTABLE slice of `activeModes` and nothing else. Modes a
+        // running power publishes (Power Boost's `BoostPower`, a stealth toggle's
+        // `Hidden_Attack`) are owned by that power's own toggle, so switching form replaces the
+        // form and leaves them standing — a wholesale replace here would switch them off
+        // without switching the power off, and only the toggle can put them back.
+        const kept = (get().build.activeModes ?? []).filter((m) => !selectable.has(m));
+        const nextActiveModes = [...new Set([...modes, ...kept])];
+
         set((s) => ({
           build: {
             ...s.build,
-            activeModes: modes,
+            activeModes: nextActiveModes,
             primary: { ...s.build.primary, powers: syncPowerList(s.build.primary.powers, defsFor(s.build.primary.id)) },
             secondary: { ...s.build.secondary, powers: syncPowerList(s.build.secondary.powers, defsFor(s.build.secondary.id)) },
           },
@@ -2895,12 +2943,13 @@ export const useBuildStore = create<BuildStore>()(
 
         set((s) => {
           const updatedBuild = applyToAllPowers(s.build, transformPowers);
-          // Keep the mode selector consistent with the per-power toggle: a power that SETS a
-          // selectable mode makes that mode live when switched on, and drops it when switched off.
+          // A power that SETS a mode makes that mode live when switched on and drops it when
+          // switched off — every mode it sets, not just the ones the form selector offers. The
+          // engine's `collect_source_modes` reads `setsModes` unfiltered and this is the same
+          // rule, so `Source.Mode?` resolves the same way on both sides. Filtering by
+          // `selectableModes` here is what kept Power Boost from ever publishing `BoostPower`.
           const defs = archetypePowerDefs(updatedBuild);
-          const selectable = new Set(selectableModes(defs));
-          const toggledModes = (defs.find((d) => d.internalName === powerName)?.setsModes ?? [])
-            .filter((m) => selectable.has(m));
+          const toggledModes = publishedModes(defs.find((d) => d.internalName === powerName));
           if (!toggledModes.length) return { build: updatedBuild };
           const nextModes = new Set(updatedBuild.activeModes ?? []);
           for (const mode of toggledModes) {

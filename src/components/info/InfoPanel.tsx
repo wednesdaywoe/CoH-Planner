@@ -1308,7 +1308,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         * End Cost / Recharge are scoped into RegistryEffectsDisplay above
         * via executionKeys so they get the three-column layout. */}
       <GeneralStatsBlock
-        power={power}
+        // The EFFECTIVE power, like every other block here and like the `effects` this same
+        // call passes. Reading the base record left this block describing a form the rest of
+        // the panel wasn't showing: with Power Boost live, Stun's redirect moved Rech Time to
+        // 90s while Effect Area still read Single Target off the unredirected record.
+        power={effectivePower ?? power}
         effects={effects}
         enhancementBonuses={enhancementBonuses}
         globalRechargeBonus={globalBonusesForCalc.recharge || 0}
