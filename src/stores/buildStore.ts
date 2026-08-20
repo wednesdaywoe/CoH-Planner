@@ -350,6 +350,7 @@ function syncBuildDefinitions(build: Build): void {
     | 'name' | 'internalName' | 'effects' | 'icon' | 'powerType' | 'targetType' | 'effectArea'
     | 'damage' | 'shortHelp' | 'available'
     | 'setsModes' | 'modesRequired' | 'modesDisallowed' | 'modesSuspended' | 'modeVariants'
+    | 'allowedEnhancements' | 'allowedSetCategories'
   >;
   /**
    * The five mode-gating fields, lifted off a definition as one unit.
@@ -439,8 +440,20 @@ function syncBuildDefinitions(build: Build): void {
       const needsDamage = JSON.stringify(currentDef.damage) !== JSON.stringify(power.damage);
       const needsModeGates =
         JSON.stringify(modeGates(currentDef)) !== JSON.stringify(modeGates(power));
+      // The slotting allow-lists, repaired for the same reason as the mode gates:
+      // the persisted build stores whole SelectedPower objects, and a record that
+      // hydrated while its powerset def was unreachable (the epic registry keyed by
+      // a dataset not yet active) carries `allowedEnhancements: []` and no
+      // allowedSetCategories forever. The legality check then rejects every
+      // enhancement while the picker — a fresh def lookup — happily lists the sets
+      // (the Rebirth Psionic Tornado / Ragnarok report, 2026-08-13). Both
+      // directions, like the gates: a list the game data dropped must clear too.
+      const needsAllowLists =
+        JSON.stringify([currentDef.allowedEnhancements, currentDef.allowedSetCategories])
+          !== JSON.stringify([power.allowedEnhancements, power.allowedSetCategories]);
       const metadataChanged = needsInternalName || needsEffects || needsIcon || needsPowerType
-        || needsTargetType || needsEffectArea || needsShortHelp || needsAvailable || needsDamage || needsModeGates;
+        || needsTargetType || needsEffectArea || needsShortHelp || needsAvailable || needsDamage
+        || needsModeGates || needsAllowLists;
       // Judge the toggle on the REPAIRED power, not the stored one — the whole point
       // of the metadata sync above is that the stored copy may be missing the fields
       // `shouldShowToggle` reads.
@@ -457,6 +470,12 @@ function syncBuildDefinitions(build: Build): void {
             ...(needsAvailable ? { available: currentDef.available } : {}),
             ...(needsDamage ? { damage: currentDef.damage } : {}),
             ...(needsModeGates ? modeGates(currentDef) : {}),
+            ...(needsAllowLists
+              ? {
+                  allowedEnhancements: currentDef.allowedEnhancements,
+                  allowedSetCategories: currentDef.allowedSetCategories,
+                }
+              : {}),
           }
         : power;
       const dropsActive = hasUnreachableActiveFlag(repaired);
