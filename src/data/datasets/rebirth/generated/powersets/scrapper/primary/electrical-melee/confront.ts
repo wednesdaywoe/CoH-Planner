@@ -46,8 +46,8 @@ export const Confront: Power = {
     }
   },
   "atoms": [
-    ["Mez","Taunt",15,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Range",null,-0.75,1,12,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Mez","Taunt",4,4,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true]
+    ["Mez","Taunt",15,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Taunt"],
+    ["Range",null,-0.75,1,12,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Taunt",4,4,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true,null,null,null,null,null,null,null,null,"Taunt"]
   ]
 };

@@ -52,8 +52,8 @@ export const CombatTrainingOffensive: Power = {
     }
   },
   "atoms": [
-    ["Accuracy",null,1,1,0.75,"Melee_Buff_ToHit","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["ToHit",null,0.33,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Accuracy",null,1,1,0.75,"Melee_Buff_ToHit","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
+    ["ToHit",null,0.33,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "mechanicType": "parentMechanic"
 };

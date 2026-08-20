@@ -66,6 +66,6 @@ export const GlacialShield: Power = {
     ["Resistance","Fire",3,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Cold",3.25,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Fire",2.5,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Energy",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+    ["Resistance","Energy",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
   ]
 };

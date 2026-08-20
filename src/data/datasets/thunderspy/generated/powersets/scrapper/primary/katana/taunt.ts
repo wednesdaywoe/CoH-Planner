@@ -46,12 +46,12 @@ export const Taunt: Power = {
     }
   },
   "atoms": [
-    ["Mez","Taunt",15,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Range",null,-0.75,1,12,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.10000000149011612,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.BulletCut","source.ownPower?","!"]],
-    ["Mez","Taunt",4,4,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit",">=","@ForceHit","||","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
-    ["Defense","Ranged",2,1,5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.BulletCut","source.ownPower?"],true]
+    ["Mez","Taunt",15,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Taunt"],
+    ["Range",null,-0.75,1,12,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.10000000149011612,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.BulletCut","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Taunt",4,4,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true,null,null,null,null,null,null,null,null,"Taunt"],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit",">=","@ForceHit","||","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"],
+    ["Defense","Ranged",2,1,5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.BulletCut","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Def"]
   ],
   "conditionalEffects": [
     {

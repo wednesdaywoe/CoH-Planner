@@ -55,18 +55,6 @@ export const Gust: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "slow": 4
-    },
-    "slow": {
-      "fly": {
-        "scale": 2.6,
-        "table": "Ranged_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Smashing",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],

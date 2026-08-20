@@ -59,18 +59,11 @@ export const Thundergust: Power = {
   "effects": {
     "buffDuration": 12,
     "durations": {
-      "slow": 12,
       "tohitDebuff": 12
     },
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 3,
-        "table": "Ranged_Ones"
-      }
     },
     "tohitDebuff": {
       "scale": 1.5,

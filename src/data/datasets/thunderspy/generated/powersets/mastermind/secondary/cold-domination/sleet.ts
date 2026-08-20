@@ -56,7 +56,7 @@ export const Sleet: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+    ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "damageTypes": [
     "Cold"

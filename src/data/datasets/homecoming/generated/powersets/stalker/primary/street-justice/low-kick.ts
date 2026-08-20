@@ -72,10 +72,6 @@ export const LowKick: Power = {
       "slow": 8
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      },
       "jumpHeight": {
         "ignoreStrength": true,
         "scale": 0.5,

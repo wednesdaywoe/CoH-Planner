@@ -59,7 +59,7 @@ export const Tornado: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+    ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"]
   ],
   "damageTypes": [
     "Smashing"

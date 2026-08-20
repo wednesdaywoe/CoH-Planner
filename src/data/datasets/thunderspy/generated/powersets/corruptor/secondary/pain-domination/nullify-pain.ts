@@ -47,7 +47,7 @@ export const NullifyPain: Power = {
     "table": "Ranged_Heal"
   },
   "atoms": [
-    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal"],
     ["DamageBuff","Smashing",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true],
     ["DamageBuff","Lethal",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true],
     ["DamageBuff","Fire",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","Max.kHitPoints","target>","<"],true],

@@ -134,12 +134,6 @@ export const Rooted: Power = {
       "table": "Melee_Res_Boolean"
     },
     "slow": {
-      "fly": {
-        "ignoreStrength": true,
-        "scale": 10,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
       "runSpeed": {
         "ignoreStrength": true,
         "scale": 0.9,

@@ -100,14 +100,14 @@ export const SiphonSpeed: Power = {
     }
   },
   "atoms": [
-    ["Movement","Run",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Movement","Fly",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Movement","Jump",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Movement","JumpHeight",0.5,1,60,"Melee_Slow","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["RechargeTime",null,-0.2,1,60,"Melee_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["RechargeTime",null,0.2,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true],
-    ["Movement","Run",-1,1,60,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Movement","Run",0.85,1,60,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1],
-    ["Movement","Fly",0.85,1,60,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1]
+    ["Movement","Run",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Fly",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","JumpHeight",0.5,1,60,"Melee_Slow","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["RechargeTime",null,-0.2,1,60,"Melee_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["RechargeTime",null,0.2,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Run",-1,1,60,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["Movement","Run",0.85,1,60,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["Movement","Fly",0.85,1,60,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"StackThenIgnore",3,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedFlying"]
   ]
 };

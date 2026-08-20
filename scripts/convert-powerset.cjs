@@ -6007,6 +6007,29 @@ function projectAtomsToEffects(atoms, powerName) {
         if (isCombatSuppressed) e.suppressible = true;
         return e;
       };
+      // FLYPOOL-1: an axis can carry an enhanceable row AND its IgnoreStrength
+      // twin (pool Fly is 0.83×Melee_SpeedFlying plus 0.66×Melee_Ones IS), and
+      // last-write-wins here kept whichever came later — the pool fly slot held
+      // the IS Ones row, so the display read 83 where the game shows 113.3
+      // (scale × the AT flying table, calibrated against HC's in-game 160.91%).
+      // The enhanceable row keeps the axis; a PAIRED IgnoreStrength row moves to
+      // `<axis>Unenhanced`, the ENT-6 split-slot spelling the registry resolves
+      // flat. A lone IS row keeps the plain key (granted.rs's MOVEMAP-1 rule:
+      // the totals still enhance it). Same-kind collisions keep last-write, as
+      // the engine's own bag insert does.
+      const writeMovementBuff = (entry) => {
+        if (!effects.movement) effects.movement = {};
+        const cur = effects.movement[moveType];
+        const twinKey = moveType + 'Unenhanced';
+        if (cur && !cur.ignoreStrength && entry.ignoreStrength) {
+          effects.movement[twinKey] = entry;
+        } else if (cur && cur.ignoreStrength && !entry.ignoreStrength) {
+          effects.movement[twinKey] = cur;
+          effects.movement[moveType] = entry;
+        } else {
+          effects.movement[moveType] = entry;
+        }
+      };
       if (aspect === 'resistance') {
         if (!effects.debuffResistance) effects.debuffResistance = {};
         effects.debuffResistance.movement = makeEffect();
@@ -6028,6 +6051,15 @@ function projectAtomsToEffects(atoms, powerName) {
         if (!effects.movementCapBump) effects.movementCapBump = {};
         effects.movementCapBump[moveType] = attachTravelMeta(makeEffect());
         recordDuration('movementCapBump');
+      } else if (moveType === 'fly' && isSlow) {
+        // MOVEMAP-7: `Fly` here is the kFly flight-MODE attrib ('fly' in
+        // MOVEMENT_TYPES), not a speed. A negative row grounds the target
+        // (Time's Juncture -1.6 on Ranged_Ones; Granite/Hibernate kill it at
+        // 10 to 10000 on *_Ones), so its scale is a mode magnitude and
+        // spending it as `slow.fly` rendered Time's Juncture's slow as 192%.
+        // The debuff display slots skip the axis, matching the atom readers
+        // (SLOW_AXIS_TO_KEY omits FlyMode, atom-query.ts); the atom stream
+        // still carries the row as subType FlyMode.
       } else if (aspect === 'maximum' && isSlow) {
         // The debuff direction of the same split. A cap debuff and a speed
         // debuff are different attributes — Chilling Embrace states both on
@@ -6049,16 +6081,14 @@ function projectAtomsToEffects(atoms, powerName) {
         effects.slow[moveType].toWho = 'Self';
         recordDuration('slow');
       } else if (isSelfTargeting) {
-        if (!effects.movement) effects.movement = {};
-        effects.movement[moveType] = attachTravelMeta(makeEffect());
+        writeMovementBuff(attachTravelMeta(makeEffect()));
         recordDuration('movement');
       } else if (isSlow) {
         if (!effects.slow) effects.slow = {};
         effects.slow[moveType] = makeEffect();
         recordDuration('slow');
       } else if (aspect === 'current') {
-        if (!effects.movement) effects.movement = {};
-        effects.movement[moveType] = attachTravelMeta(makeEffect());
+        writeMovementBuff(attachTravelMeta(makeEffect()));
         recordDuration('movement');
       }
       continue;

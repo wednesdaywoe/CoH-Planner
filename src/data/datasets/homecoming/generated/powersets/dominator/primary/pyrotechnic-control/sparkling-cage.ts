@@ -62,10 +62,9 @@ export const SparklingCage: Power = {
     }
   ],
   "effects": {
-    "buffDuration": 10,
+    "buffDuration": 5,
     "durations": {
-      "resistanceDebuff": 5,
-      "slow": 10
+      "resistanceDebuff": 5
     },
     "immobilize": {
       "mag": 4,
@@ -116,12 +115,6 @@ export const SparklingCage: Power = {
         "ignoreStrength": true,
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
       }
     }
   },

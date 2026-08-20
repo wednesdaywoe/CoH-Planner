@@ -62,25 +62,18 @@ export const StonePrison: Power = {
     "tickRate": 2
   },
   "effects": {
-    "buffDuration": 15,
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10,
-      "slow": 15
+      "defenseDebuff": 10
     },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     }
   },
   "atoms": [

@@ -64,10 +64,9 @@ export const ChainFences: Power = {
     }
   ],
   "effects": {
-    "buffDuration": 15,
+    "buffDuration": 6,
     "durations": {
-      "recoveryDebuff": 6,
-      "slow": 15
+      "recoveryDebuff": 6
     },
     "enduranceDrain": {
       "scale": 0.1,
@@ -81,12 +80,6 @@ export const ChainFences: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     }
   },
   "atoms": [

@@ -45,7 +45,7 @@ export const Hide: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,0.3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+    ["Recovery",null,0.3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "mechanicType": "parentMechanic"
 };

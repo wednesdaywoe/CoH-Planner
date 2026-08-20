@@ -103,10 +103,10 @@ export const SpeedSiphon: Power = {
     ["Movement","Run",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1],
     ["Movement","Jump",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1],
     ["Movement","Fly",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1],
-    ["Damage","Energy",0.11,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","source>","entref","target>","eq","!"]],
-    ["Movement","Run",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","source>","entref","target>","eq","!"]],
-    ["Movement","JumpHeight",0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","source>","entref","target>","eq","!"]],
-    ["Movement","Jump",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","source>","entref","target>","eq","!"]],
-    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","source>","entref","target>","eq","!"]]
+    ["Damage","Energy",0.11,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","source>","entref","target>","eq","!"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Movement","Run",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","source>","entref","target>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","JumpHeight",0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","source>","entref","target>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","source>","entref","target>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","source>","entref","target>","eq","!"],null,null,null,null,null,null,null,null,null,"SpeedRunning"]
   ]
 };

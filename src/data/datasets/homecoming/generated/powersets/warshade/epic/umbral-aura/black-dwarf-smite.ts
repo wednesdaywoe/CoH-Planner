@@ -79,10 +79,6 @@ export const BlackDwarfSmite: Power = {
       "table": "Melee_Slow"
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      },
       "flySpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"

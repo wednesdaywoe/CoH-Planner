@@ -59,8 +59,8 @@ export const IntimidatingPresence: Power = {
     }
   },
   "atoms": [
-    ["Mez","Terrorized",10,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1]
+    ["Mez","Terrorized",10,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Fear"],
+    ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Immobilize"]
   ],
   "damageTypes": [
     "Psionic"

@@ -74,10 +74,6 @@ export const CallLocusts: Power = {
       "table": "Melee_HealSelf"
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"

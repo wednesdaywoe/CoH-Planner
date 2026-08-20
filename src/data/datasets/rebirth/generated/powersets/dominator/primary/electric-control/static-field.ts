@@ -55,6 +55,6 @@ export const StaticField: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,25,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+    ["EntCreate",null,1,1,25,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"]
   ]
 };

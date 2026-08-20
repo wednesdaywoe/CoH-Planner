@@ -62,7 +62,7 @@ export const RadiationInfection: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,2.5,1,0.75,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Defense","All",2.5,1,0.75,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+    ["ToHit",null,2.5,1,0.75,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_ToHit"],
+    ["Defense","All",2.5,1,0.75,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Def"]
   ]
 };

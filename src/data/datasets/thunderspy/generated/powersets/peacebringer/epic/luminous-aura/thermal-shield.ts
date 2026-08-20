@@ -61,7 +61,7 @@ export const ThermalShield: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Fire",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Blaster_Mode","Source.Mode?","!"]],
-    ["Resistance","Cold",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Blaster_Mode","Source.Mode?","!"]]
+    ["Resistance","Fire",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Blaster_Mode","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Cold",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Blaster_Mode","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Res_DMG"]
   ]
 };

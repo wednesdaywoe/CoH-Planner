@@ -67,10 +67,10 @@ export const SavageBlow: Power = {
     }
   ],
   "atoms": [
-    ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
-    ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage",["Foe"]],
-    ["Heal",null,0.712,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
-    ["Heal",null,1.424,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
+    ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,["Foe"]],
+    ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"rage",["Foe"]],
+    ["Heal",null,0.712,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBInactive",null,null,["Foe"]],
+    ["Heal",null,1.424,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBActive",null,null,["Foe"]]
   ],
   "modeVariants": {
     "HunterMode": {
@@ -107,24 +107,24 @@ export const SavageBlow: Power = {
       "targetType": "Foe",
       "powerType": "Click",
       "atoms": [
-        ["Damage","Lethal",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-        ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
-        ["DamageBuff","Smashing",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-        ["DamageBuff","Lethal",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-        ["DamageBuff","Fire",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-        ["DamageBuff","Cold",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-        ["DamageBuff","Energy",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-        ["DamageBuff","Negative",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-        ["DamageBuff","Toxic",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-        ["DamageBuff","Psionic",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-        ["DamageBuff","Smashing",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-        ["DamageBuff","Lethal",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-        ["DamageBuff","Fire",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-        ["DamageBuff","Cold",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-        ["DamageBuff","Energy",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-        ["DamageBuff","Negative",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-        ["DamageBuff","Toxic",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
-        ["DamageBuff","Psionic",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true]
+        ["Damage","Lethal",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
+        ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
+        ["DamageBuff","Smashing",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBInactive"],
+        ["DamageBuff","Lethal",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBInactive"],
+        ["DamageBuff","Fire",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBInactive"],
+        ["DamageBuff","Cold",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBInactive"],
+        ["DamageBuff","Energy",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBInactive"],
+        ["DamageBuff","Negative",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBInactive"],
+        ["DamageBuff","Toxic",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBInactive"],
+        ["DamageBuff","Psionic",2.5,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBInactive"],
+        ["DamageBuff","Smashing",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBActive"],
+        ["DamageBuff","Lethal",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBActive"],
+        ["DamageBuff","Fire",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBActive"],
+        ["DamageBuff","Cold",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBActive"],
+        ["DamageBuff","Energy",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBActive"],
+        ["DamageBuff","Negative",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBActive"],
+        ["DamageBuff","Toxic",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBActive"],
+        ["DamageBuff","Psionic",3.75,1,8,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"NBActive"]
       ]
     },
     "ProwlerMode": {
@@ -171,11 +171,11 @@ export const SavageBlow: Power = {
       "targetType": "Foe",
       "powerType": "Click",
       "atoms": [
-        ["Damage","Lethal",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-        ["Damage","Lethal",1.78,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kProwlerCloakMode","Source.Mode?","!","&&"]],
-        ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"],
-        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kProwlerCloakMode","Source.Mode?","!"]],
-        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true]
+        ["Damage","Lethal",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
+        ["Damage","Lethal",1.78,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kProwlerCloakMode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"NBProwlerCritActive"],
+        ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kProwlerCloakMode","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Damage"],
+        ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true,"NBActive"]
       ]
     }
   },

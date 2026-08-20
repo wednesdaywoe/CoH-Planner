@@ -67,10 +67,6 @@ export const SnowStorm: Power = {
       "table": "Ranged_Slow"
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.5,
         "table": "Ranged_Slow"

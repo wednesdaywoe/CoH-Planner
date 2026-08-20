@@ -55,9 +55,9 @@ export const Crush: Power = {
     "tickRate": 2
   },
   "effects": {
-    "buffDuration": 10,
+    "buffDuration": 15,
     "durations": {
-      "slow": 10
+      "slow": 15
     },
     "immobilize": {
       "mag": 4,
@@ -65,10 +65,6 @@ export const Crush: Power = {
       "table": "Ranged_Immobilize"
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.5,
         "table": "Ranged_Slow"

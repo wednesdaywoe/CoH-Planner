@@ -72,18 +72,18 @@ export const ModerateBridge: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.66,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"]],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?","!","&&"]],
-    ["Damage","Fire",0.297,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
-    ["Damage","Lethal",0.92039,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","70","<","&&"],true,null,null,null,null,null,null,null,null,null,null,"rage"],
-    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?"],true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?","Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?","||"],true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
+    ["Damage","Lethal",0.66,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Def"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Damage","Fire",0.297,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FieryEmbrace"],
+    ["Damage","Lethal",0.92039,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","70","<","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?","Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?","||"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"]
   ],
   "damageTypes": [
     "Lethal"

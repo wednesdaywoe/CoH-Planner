@@ -59,11 +59,11 @@ export const RisetotheChallenge: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,0.5,1,1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,0.25],
-    ["Regeneration",null,1,1,1.125,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"]],
-    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,0.25],
-    ["Regeneration",null,1,1,1.125,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true]
+    ["ToHit",null,0.5,1,1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,0.25,null,null,null,null,null,null,null,"Ones"],
+    ["Regeneration",null,1,1,1.125,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,0.25,null,null,null,null,null,null,null,"Ones"],
+    ["Regeneration",null,1,1,1.125,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "requires": [
     "Stalker_Defense.Willpower.Reconstruction",

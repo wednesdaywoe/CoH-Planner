@@ -54,18 +54,6 @@ export const Gust: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "slow": 4
-    },
-    "slow": {
-      "fly": {
-        "scale": 2.6,
-        "table": "Ranged_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
     ["Movement","FlyMode",-2.6,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],

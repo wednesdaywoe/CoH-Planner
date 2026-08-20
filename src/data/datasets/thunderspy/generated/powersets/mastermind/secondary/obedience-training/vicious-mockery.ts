@@ -50,7 +50,7 @@ export const ViciousMockery: Power = {
     }
   },
   "atoms": [
-    ["Mez","Knockback",0.1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Mez","Knockback",0.1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Knockback"]
   ],
   "damageTypes": [
     "Psionic"

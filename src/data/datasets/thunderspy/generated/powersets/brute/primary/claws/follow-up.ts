@@ -46,8 +46,8 @@ export const FollowUp: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,1,1,1.25,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"]],
-    ["ToHit",null,0.5,1,1.25,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true]
+    ["ToHit",null,1,1,1.25,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
+    ["ToHit",null,0.5,1,1.25,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_ToHit"]
   ],
   "mechanicType": "parentMechanic"
 };

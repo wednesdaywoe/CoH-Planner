@@ -68,7 +68,6 @@ export const Geode: Power = {
       "mezResistance": 0.2,
       "recoveryBuff": 0.2,
       "regenBuff": 0.2,
-      "slow": 0.2,
       "taunt": 0.2,
       "untouchable": 0.2
     },
@@ -99,13 +98,6 @@ export const Geode: Power = {
     "regenBuff": {
       "scale": 10,
       "table": "Melee_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 10000,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      }
     },
     "summon": {
       "displayName": "Geode",

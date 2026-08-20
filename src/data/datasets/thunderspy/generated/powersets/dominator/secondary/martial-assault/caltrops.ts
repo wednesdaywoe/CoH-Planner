@@ -52,7 +52,7 @@ export const Caltrops: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"]
   ],
   "damageTypes": [
     "Lethal"

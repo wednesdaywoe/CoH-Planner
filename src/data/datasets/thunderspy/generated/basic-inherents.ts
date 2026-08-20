@@ -47,11 +47,11 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "castTime": 0.83
     },
     "atoms": [
-      ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-      ["Regeneration",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,true],
-      ["Recovery",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,true],
-      ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,"drop_toggles"],
-      ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Controller","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&"],true]
+      ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
+      ["Regeneration",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,true,"Ones"],
+      ["Recovery",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,true,"Ones"],
+      ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,"drop_toggles"],
+      ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Controller","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
     ],
     "effects": {
       "effectArea": "SingleTarget",
@@ -111,14 +111,14 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "activatePeriod": 0.5
     },
     "atoms": [
-      ["Movement","Run",0.5,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-      ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-      ["Movement","JumpHeight",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true],
-      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true],
-      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true],
-      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true],
-      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true]
+      ["Movement","Run",0.5,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Movement","JumpHeight",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Leap"],
+      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedJumping"],
+      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedRunning"]
     ],
     "effects": {
       "effectArea": "SingleTarget",
@@ -128,6 +128,10 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       },
       "movement": {
         "jumpHeight": {
+          "scale": 0.1,
+          "table": "Melee_Ones"
+        },
+        "jumpHeightUnenhanced": {
           "ignoreStrength": true,
           "scale": 0.25,
           "suppressible": true,
@@ -152,6 +156,10 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
           "table": "Melee_Ones"
         },
         "runSpeed": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        },
+        "runSpeedUnenhanced": {
           "ignoreStrength": true,
           "scale": 0.4,
           "suppressible": true,
@@ -193,27 +201,27 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "activatePeriod": 0.2
     },
     "atoms": [
-      ["Regeneration",null,19,1,0.55,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-      ["Recovery",null,4.25,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,1,1],
-      ["Mez","Immobilized",0.3,100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Mez","OnlyAffectsSelf",0.55,100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Mez","Untouchable",0.55,-100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Movement","FlyMode",0.55,-100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Resistance","Smashing",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Resistance","Lethal",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Resistance","Fire",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Resistance","Cold",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Resistance","Energy",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Resistance","Negative",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Resistance","Toxic",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Resistance","Psionic",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Resistance","Special",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Defense","All",-1000,1,0.55,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Mez","Teleport",-100,1,0.55,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-      ["Mez","Stunned",0.55,1,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["Mez","Sleep",0.55,1,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["MezResist","Stunned",-1,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-      ["MezResist","Sleep",-1,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+      ["Regeneration",null,19,1,0.55,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Recovery",null,4.25,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Mez","Immobilized",0.3,100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Mez","OnlyAffectsSelf",0.55,100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Mez","Untouchable",0.55,-100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Movement","FlyMode",0.55,-100,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Resistance","Smashing",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Resistance","Lethal",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Resistance","Fire",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Resistance","Cold",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Resistance","Energy",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Resistance","Negative",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Resistance","Toxic",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Resistance","Psionic",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Resistance","Special",-10,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Defense","All",-1000,1,0.55,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Mez","Teleport",-100,1,0.55,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Mez","Stunned",0.55,1,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["Mez","Sleep",0.55,1,0,"Melee_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["MezResist","Stunned",-1,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+      ["MezResist","Sleep",-1,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
     ],
     "effects": {
       "effectArea": "SingleTarget",

@@ -37,6 +37,6 @@ export const NoxiousGas: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["group","target>","MastermindPets","eq"],true]
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["group","target>","MastermindPets","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
   ]
 };

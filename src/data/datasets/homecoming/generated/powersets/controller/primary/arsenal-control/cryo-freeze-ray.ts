@@ -53,10 +53,10 @@ export const CryoFreezeRay: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "buffDuration": 15,
+    "buffDuration": 12,
     "durations": {
       "rechargeDebuff": 12,
-      "slow": 15
+      "slow": 12
     },
     "hold": {
       "mag": 3,
@@ -69,10 +69,6 @@ export const CryoFreezeRay: Power = {
       "table": "Ranged_Slow"
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"

@@ -56,11 +56,11 @@ export const BloodThirst: Power = {
     }
   ],
   "atoms": [
-    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Heal",null,1,1,9.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?","5","<"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?",".084","*",".33","+","@StdResult","*"]],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["Heal",null,1,1,12.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?","4",">"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?",".084","*",".33","+","@StdResult","*"]],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?","4",">","&&"],true]
+    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
+    ["Heal",null,1,1,9.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?","5","<"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?",".084","*",".33","+","@StdResult","*"],null,null,null,"HealSelf"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
+    ["Heal",null,1,1,12.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?","4",">"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?",".084","*",".33","+","@StdResult","*"],null,null,null,"HealSelf"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?","4",">","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "conditionalEffects": [
     {

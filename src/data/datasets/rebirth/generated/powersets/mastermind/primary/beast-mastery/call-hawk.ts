@@ -58,18 +58,11 @@ export const CallHawk: Power = {
   "effects": {
     "buffDuration": 10,
     "durations": {
-      "slow": 10,
       "tohitDebuff": 10
     },
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     },
     "tohitDebuff": {
       "scale": 0.75,
@@ -77,13 +70,13 @@ export const CallHawk: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.3256,1,1.3,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.4],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.6136000156402588,null,true,null,null,null,null,["temporary_powers.temporary_powers.Pack_Mentality_Lock","source.ownPower?","!"],null,null,null,null,null,null,null,0.61],
-    ["Damage","Lethal",0.600556,1,1.3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.4]
+    ["Damage","Lethal",0.3256,1,1.3,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.4,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.6136000156402588,null,true,null,null,null,null,["temporary_powers.temporary_powers.Pack_Mentality_Lock","source.ownPower?","!"],null,null,null,null,null,null,null,0.61,null,"Ones"],
+    ["Damage","Lethal",0.600556,1,1.3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.4,null,"Ones"]
   ],
   "specialEffects": [
     {

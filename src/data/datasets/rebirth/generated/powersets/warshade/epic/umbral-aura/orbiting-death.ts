@@ -52,9 +52,9 @@ export const OrbitingDeath: Power = {
     "tickRate": 3
   },
   "atoms": [
-    ["Damage","Negative",0.17,1,2.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1],
-    ["Meta",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
-    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","kWarshade_Tanker_Mode","source.Mode?","&&"],true],
-    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&","kWarshade_Tanker_Mode","source.Mode?","&&"],true]
+    ["Damage","Negative",0.17,1,2.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Meta",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","kWarshade_Tanker_Mode","source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&","kWarshade_Tanker_Mode","source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

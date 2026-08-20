@@ -7,9 +7,9 @@
     "signRule": "sign follows the converter (scale<0 OR table matches /debuff/), not scale alone."
   },
   "coverage": {
-    "powersTotal": 3364,
+    "powersTotal": 3359,
     "powersChecked": 3359,
-    "sourceMissing": 5,
+    "sourceMissing": 0,
     "requireFail": 0,
     "atomsChecked": 5865,
     "scalarChecked": 1231
@@ -23,7 +23,7 @@
     "scalarClassAbsent": 87,
     "discriminatorCollapses": 1,
     "discriminatorGroups": 1,
-    "discriminatorClassAbsent": 1
+    "discriminatorClassAbsent": 4
   },
   "collapseGroups": [],
   "classAbsentGroups": [
@@ -210,6 +210,16 @@
     }
   ],
   "discriminatorClassAbsentGroups": [
+    {
+      "kind": "self-penalty",
+      "et": "Movement",
+      "count": 3,
+      "powers": [
+        "Geode",
+        "Geode",
+        "Geode"
+      ]
+    },
     {
       "kind": "twin-unenhanced",
       "et": "Regeneration",

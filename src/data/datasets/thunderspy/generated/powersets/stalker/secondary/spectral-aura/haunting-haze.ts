@@ -90,22 +90,22 @@ export const HauntingHaze: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,1,1,5,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Perception",null,-0.9,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Movement","Fly",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["RechargeTime",null,0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Smashing",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true],
-    ["DamageBuff","Lethal",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true],
-    ["DamageBuff","Fire",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true],
-    ["DamageBuff","Cold",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true],
-    ["DamageBuff","Energy",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true],
-    ["DamageBuff","Negative",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true],
-    ["DamageBuff","Toxic",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true],
-    ["DamageBuff","Psionic",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true],
-    ["Perception",null,-0.9,1,2,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
+    ["ToHit",null,1,1,5,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["Perception",null,-0.9,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Fly",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["RechargeTime",null,0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["DamageBuff","Smashing",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Lethal",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Fire",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Cold",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Energy",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Negative",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Toxic",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Psionic",-0.15,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kTerrorized","target>","0",">"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Perception",null,-0.9,1,2,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "damageTypes": [
     "Psionic"

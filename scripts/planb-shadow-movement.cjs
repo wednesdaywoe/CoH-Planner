@@ -168,6 +168,13 @@ const axisEntries = (list, axis) =>
  * The count is of entries that survive `norm` (a scale-0 entry reaches no total).
  */
 const EXPECTED_SPLITS = {
+  // FLYPOOL-1's pairing re-cut these two from abstentions: the bag's flySpeed axis
+  // now holds the enhanceable row (its IS twin moved to flySpeedUnenhanced), which
+  // matches one of the pair the atoms state, so the sweep sees the split it always
+  // should have. Afterburner and Quantum Acceleration re-classified as plain agree
+  // the same way, so all four left EXPECTED_ABSTENTIONS together.
+  'rebirth|Aerobatics|flySpeed': 2,
+  'rebirth|Solar Glide|flySpeed': 2,
   'homecoming|Sprint|runSpeed': 2,
   'homecoming|Prestige Power Slide|runSpeed': 2,
   'homecoming|Prestige Power Rush|runSpeed': 2,
@@ -229,28 +236,17 @@ const EXPECTED_SPLITS = {
  * on one running Hibernate, Icy Bastion or Geode. It is the +200% Fly double-count
  * (COH-DATA-MODEL §3) in the debuff direction — a mode magnitude read as a speed.
  *
- * The atom side has no key for `FlyMode` on either map, so it drops them. Pinned both
- * ways: a LOST entry means the converter stopped stating the mode kill, and a magnitude
- * that reappears on the atom side means the axis map has re-conflated the two attribs.
+ * The atom side has no key for `FlyMode` on either map, so it drops them. Since
+ * MOVEMAP-7 the converter drops them from the display slow slots too — the bag no
+ * longer states a `fly` axis, so this pin is EMPTY, and its live direction is the
+ * `NEW kFly mode kill, never read` check below: an entry reappearing here means the
+ * extractor has resumed folding the mode axis into `slow`. The retired population
+ * (Geode/Granite/Hibernate/Icy Bastion at 10000, Granite/Rooted at 10) is in the
+ * MOVEMAP-7 census, the rebuild's docs/gaps/stat-routing.md.
  */
-const EXPECTED_MODE_KILLS = {
-  'homecoming|Geode': 10000,
-  'homecoming|Granite Armor': 10000,
-  'homecoming|Hibernate': 10000,
-  'homecoming|Icy Bastion': 10000,
-  'homecoming|Rooted': 10,
-  'rebirth|Granite Armor': 10,
-  'rebirth|Rooted': 10,
-  'thunderspy|Granite Armor': 10,
-  'thunderspy|Rooted': 10,
-};
+const EXPECTED_MODE_KILLS = {};
 
-const EXPECTED_ABSTENTIONS = {
-  'rebirth|Aerobatics|flySpeed': true,
-  'rebirth|Solar Glide|flySpeed': true,
-  'rebirth|Afterburner|flySpeed': true,
-  'rebirth|Quantum Acceleration|flySpeed': true,
-};
+const EXPECTED_ABSTENTIONS = {};
 
 /**
  * The bag credits the caster with a buff the power hands to somebody else, and the atom

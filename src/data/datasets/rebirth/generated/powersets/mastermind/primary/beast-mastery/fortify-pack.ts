@@ -96,19 +96,19 @@ export const FortifyPack: Power = {
     }
   },
   "atoms": [
-    ["Defense","Melee",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"]],
-    ["Defense","Ranged",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"]],
-    ["Defense","AoE",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"]],
-    ["Defense","Smashing",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"]],
-    ["Defense","Lethal",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"]],
-    ["Defense","Fire",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"]],
-    ["Defense","Cold",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"]],
-    ["Defense","Energy",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"]],
-    ["Defense","Negative",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"]],
-    ["Defense","Psionic",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"]],
-    ["Regeneration",null,0,1,60,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>","2","*","1","+","@Strength","*"]],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+    ["Defense","Melee",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
+    ["Defense","Ranged",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
+    ["Defense","AoE",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
+    ["Defense","Smashing",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
+    ["Defense","Lethal",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
+    ["Defense","Fire",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
+    ["Defense","Cold",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
+    ["Defense","Energy",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
+    ["Defense","Negative",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
+    ["Defense","Psionic",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
+    ["Regeneration",null,0,1,60,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>","2","*","1","+","@Strength","*"],null,null,null,"Ones"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ]
 };

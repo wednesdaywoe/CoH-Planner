@@ -73,10 +73,6 @@ export const WindShear: Power = {
       }
     },
     "slow": {
-      "fly": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      },
       "flySpeed": {
         "scale": 0.65,
         "table": "Melee_Slow"
@@ -101,20 +97,20 @@ export const WindShear: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,0.75,1,2.1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Movement","JumpHeight",0.65,1,2.1,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","Jump",0.65,1,2.1,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Movement","Run",0.65,1,2.1,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Movement","Fly",0.65,1,2.1,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Movement","Run",-1,1,2.1,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["DamageBuff","Smashing",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Lethal",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Fire",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Cold",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Energy",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Negative",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Psionic",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Toxic",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","FlyMode",-2,1,2.1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+    ["ToHit",null,0.75,1,2.1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["Movement","JumpHeight",0.65,1,2.1,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",0.65,1,2.1,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Run",0.65,1,2.1,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Fly",0.65,1,2.1,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Run",-1,1,2.1,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["DamageBuff","Smashing",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Lethal",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Fire",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Cold",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Energy",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Negative",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Psionic",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Toxic",1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["Movement","FlyMode",-2,1,2.1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ]
 };

@@ -108,21 +108,21 @@ export const IncreaseDensity: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Energy",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Mez","Stunned",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"]],
-    ["Mez","Held",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"]],
-    ["Mez","Immobilized",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"]],
-    ["Mez","Knockback",-8,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Mez","Knockup",-8,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Mez","Repel",-8,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["MezResist","Teleport",1,1,60,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Movement","JumpHeight",0.1,1,60,"Ranged_Slow","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],
-    ["Movement","Jump",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],
-    ["Movement","Fly",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],
-    ["Movement","Run",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],
-    ["MezResist","Stunned",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true],
-    ["MezResist","Held",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true],
-    ["MezResist","Immobilized",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true]
+    ["Resistance","Smashing",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],
+    ["Resistance","Energy",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],
+    ["Mez","Stunned",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],
+    ["Mez","Held",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],
+    ["Mez","Immobilized",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],
+    ["Mez","Knockback",-8,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Knockup",-8,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Repel",-8,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["MezResist","Teleport",1,1,60,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","JumpHeight",0.1,1,60,"Ranged_Slow","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Fly",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Run",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["MezResist","Stunned",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Res_Boolean"],
+    ["MezResist","Held",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Res_Boolean"],
+    ["MezResist","Immobilized",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Res_Boolean"]
   ]
 };

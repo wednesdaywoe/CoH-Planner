@@ -179,12 +179,6 @@ export const GraniteArmor: Power = {
       "table": "Melee_Res_Boolean"
     },
     "slow": {
-      "fly": {
-        "ignoreStrength": true,
-        "scale": 10000,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
       "jumpSpeed": {
         "ignoreStrength": true,
         "scale": 1.893,

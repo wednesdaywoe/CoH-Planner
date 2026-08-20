@@ -45,7 +45,7 @@ export const WhiteDwarfSublimation: Power = {
     "table": "Melee_HealSelf"
   },
   "atoms": [
-    ["Heal",null,4.375,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+    ["Heal",null,4.375,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"]
   ],
   "requires": [
     "0"

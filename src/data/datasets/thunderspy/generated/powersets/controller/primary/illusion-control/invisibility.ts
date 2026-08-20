@@ -70,13 +70,13 @@ export const Invisibility: Power = {
     }
   },
   "atoms": [
-    ["Stealth","RadiusPvE",200,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Stealth","RadiusPvP",1000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Stealth","Translucency",0.9,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["Stealth","Translucency",0.8,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["@CustomFX","BrightNoTransparency","eq","@CustomFX","DarkNoTransparency","eq","||"],null,null,true],
-    ["Defense","Melee",0,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Stealth","Translucency",0.5,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["@CustomFX","BrightNoTransparency","eq","@CustomFX","DarkNoTransparency","eq","||","!"],true,null,true]
+    ["Stealth","RadiusPvE",200,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Stealth","RadiusPvP",1000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Stealth","Translucency",0.9,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
+    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Stealth","Translucency",0.8,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["@CustomFX","BrightNoTransparency","eq","@CustomFX","DarkNoTransparency","eq","||"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Defense","Melee",0,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
+    ["Stealth","Translucency",0.5,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["@CustomFX","BrightNoTransparency","eq","@CustomFX","DarkNoTransparency","eq","||","!"],true,null,true,null,null,null,null,null,null,"Ones"]
   ],
   "requires": [
     "Controller_Control.Illusion_Control.Blind",

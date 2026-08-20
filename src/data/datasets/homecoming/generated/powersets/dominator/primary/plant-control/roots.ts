@@ -64,20 +64,10 @@ export const Roots: Power = {
     }
   ],
   "effects": {
-    "buffDuration": 12,
-    "durations": {
-      "slow": 12
-    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     }
   },
   "atoms": [

@@ -60,7 +60,7 @@ export const Frostbite: Power = {
     "buffDuration": 15,
     "durations": {
       "rechargeDebuff": 15,
-      "slow": 10
+      "slow": 15
     },
     "immobilize": {
       "mag": 3,
@@ -73,10 +73,6 @@ export const Frostbite: Power = {
       "table": "Ranged_Slow"
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"

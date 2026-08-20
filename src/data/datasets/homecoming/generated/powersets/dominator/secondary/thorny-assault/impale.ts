@@ -82,10 +82,6 @@ export const Impale: Power = {
       "table": "Ranged_Immobilize"
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"

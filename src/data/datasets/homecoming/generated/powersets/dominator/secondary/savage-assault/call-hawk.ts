@@ -65,18 +65,11 @@ export const CallHawk: Power = {
   "effects": {
     "buffDuration": 10,
     "durations": {
-      "slow": 10,
       "tohitDebuff": 10
     },
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     },
     "tohitDebuff": {
       "scale": 0.75,

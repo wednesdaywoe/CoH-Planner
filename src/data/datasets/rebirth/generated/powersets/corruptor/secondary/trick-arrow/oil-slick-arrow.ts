@@ -62,7 +62,7 @@ export const OilSlickArrow: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "conditionalEffects": [
     {

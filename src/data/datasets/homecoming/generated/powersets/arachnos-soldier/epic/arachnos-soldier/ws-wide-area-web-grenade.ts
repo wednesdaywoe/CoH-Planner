@@ -60,10 +60,6 @@ export const WSWideAreaWebGrenade: Power = {
       "table": "Ranged_Slow"
     },
     "slow": {
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.5,
         "table": "Ranged_Slow"
@@ -129,10 +125,6 @@ export const WSWideAreaWebGrenade: Power = {
           "table": "Ranged_Slow"
         },
         "slow": {
-          "fly": {
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
           "flySpeed": {
             "scale": 0.5,
             "table": "Ranged_Slow"
@@ -365,10 +357,6 @@ export const WSWideAreaWebGrenade: Power = {
           "table": "Ranged_Slow"
         },
         "slow": {
-          "fly": {
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
           "flySpeed": {
             "scale": 0.5,
             "table": "Ranged_Slow"

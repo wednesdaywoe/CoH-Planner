@@ -65,6 +65,6 @@ export const EnforcedMorale: Power = {
     ["Movement","JumpHeight",0.1,1,90,"Ranged_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["target.isFriend?"],true],
     ["Perception",null,2.5,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["target.isFriend?"],true],
     ["Perception",null,2.5,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["target.isFriend?"],true],
-    ["MezResist","Knockback",0.99,1,90,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["target.isFriend?"],true]
+    ["MezResist","Knockback",0.99,1,90,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["target.isFriend?"],true,null,null,null,null,null,null,null,null,"Ones"]
   ]
 };

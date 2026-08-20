@@ -55,20 +55,10 @@ export const FireCages: Power = {
     "tickRate": 2
   },
   "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "slow": 10
-    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     }
   },
   "atoms": [

@@ -71,10 +71,6 @@ export const Microburst: Power = {
       "table": "Ranged_Slow"
     },
     "slow": {
-      "fly": {
-        "scale": 2,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"
@@ -100,22 +96,22 @@ export const Microburst: Power = {
     }
   },
   "atoms": [
-    ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["@Scale","0.02","Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","*","+","@Value","*","@Effectiveness","*","@Strength","*"]],
-    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Movement","Run",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Movement","Fly",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Movement","JumpHeight",0.3,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","Jump",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["RechargeTime",null,0.3,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","FlyMode",-2,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,["@Scale","0.02","Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","*","+","@Value","*","@Effectiveness","*","@Strength","*"]],
-    ["Mez","Stunned",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Mez","Stunned",12,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&"],true],
-    ["Mez","Stunned",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&"],true],
-    ["Defense","All",2,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","5","=="],true],
-    ["Defense","All",2.5,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","6","=="],true],
-    ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","SelfAndPets","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"null"]
+    ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["@Scale","0.02","Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","*","+","@Value","*","@Effectiveness","*","@Strength","*"],null,null,null,"Damage"],
+    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],
+    ["Movement","Run",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Fly",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","JumpHeight",0.3,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["RechargeTime",null,0.3,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","FlyMode",-2,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,["@Scale","0.02","Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","*","+","@Value","*","@Effectiveness","*","@Strength","*"],null,null,null,"Damage"],
+    ["Mez","Stunned",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Stunned",12,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
+    ["Mez","Stunned",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Defense","All",2,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","5","=="],true,null,null,null,null,null,null,null,null,"Debuff_Def"],
+    ["Defense","All",2.5,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","6","=="],true,null,null,null,null,null,null,null,null,"Debuff_Def"],
+    ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","SelfAndPets","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"]
   ],
   "conditionalEffects": [
     {

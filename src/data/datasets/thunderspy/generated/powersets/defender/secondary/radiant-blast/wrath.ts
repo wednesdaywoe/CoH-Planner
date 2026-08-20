@@ -53,10 +53,10 @@ export const Wrath: Power = {
     "table": "Ranged_Damage"
   },
   "atoms": [
-    ["Damage","Fire",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"]],
-    ["Damage","Fire",0.815631,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","target.isFriend?","!","&&"],true],
-    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["target.isFriend?"],true],
-    ["Damage","Fire",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Ghost","target.HasTag?","Demon","target.HasTag?","||","Undead","target.HasTag?","||","target.isFriend?","!","&&"],true]
+    ["Damage","Fire",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Fire",0.815631,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","target.isFriend?","!","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
+    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["target.isFriend?"],true,null,null,null,null,null,null,null,null,"Heal"],
+    ["Damage","Fire",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Ghost","target.HasTag?","Demon","target.HasTag?","||","Undead","target.HasTag?","||","target.isFriend?","!","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
   ],
   "damageTypes": [
     "Fire"

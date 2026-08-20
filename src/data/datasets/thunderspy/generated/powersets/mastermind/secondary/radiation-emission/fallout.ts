@@ -49,8 +49,8 @@ export const Fallout: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["group","target>","MastermindPets","eq"],true],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["group","target>","MastermindPets","eq"],true,null,null,null,null,null,null,null,null,null,null,"silent_kill"]
+    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["group","target>","MastermindPets","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["group","target>","MastermindPets","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,"silent_kill"]
   ],
   "damageTypes": [
     "Energy"

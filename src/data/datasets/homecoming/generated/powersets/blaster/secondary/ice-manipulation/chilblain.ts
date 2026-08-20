@@ -64,7 +64,7 @@ export const Chilblain: Power = {
     "buffDuration": 18,
     "durations": {
       "rechargeDebuff": 18,
-      "slow": 15
+      "slow": 18
     },
     "immobilize": {
       "mag": 3,
@@ -77,10 +77,6 @@ export const Chilblain: Power = {
       "table": "Ranged_Slow"
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"

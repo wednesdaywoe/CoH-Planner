@@ -67,10 +67,6 @@ export const HotFeet: Power = {
       "table": "Ranged_Ones"
     },
     "slow": {
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
-      },
       "jumpHeight": {
         "ignoreStrength": true,
         "scale": 0.7,

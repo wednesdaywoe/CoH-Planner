@@ -57,18 +57,18 @@ export const Reactiontime: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
-    ["RechargeTime",null,0.4,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
-    ["Movement","Fly",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
-    ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
-    ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","target>","entref","source>","eq","!"]],
-    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","entref","target>","entref","source>","eq","!","&&"]],
-    ["Movement","Run",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","Fly",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","Jump",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["RechargeTime",null,-0.4,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","JumpHeight",-0.7,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
+    ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["RechargeTime",null,0.4,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Fly",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["Movement","Run",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Fly",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["RechargeTime",null,-0.4,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","JumpHeight",-0.7,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"]
   ],
   "conditionalEffects": [
     {

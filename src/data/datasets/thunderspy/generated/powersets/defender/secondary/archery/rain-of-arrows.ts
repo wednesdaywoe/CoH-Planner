@@ -61,8 +61,8 @@ export const RainofArrows: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,3,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,1,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["EntCreate",null,1,1,3,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,1,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"]
   ],
   "damageTypes": [
     "Lethal"

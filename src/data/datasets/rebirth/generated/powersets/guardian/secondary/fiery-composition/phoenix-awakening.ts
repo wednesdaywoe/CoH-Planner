@@ -77,14 +77,14 @@ export const PhoenixAwakening: Power = {
     }
   },
   "atoms": [
-    ["Heal",null,0.54,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"]],
-    ["Endurance",null,-24,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","0",">"]],
-    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Mez","Untouchable",10,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["cur.kHitPoints","target>","1","<"],true],
-    ["Heal",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,1.5,1,null,null,null,null,null,null,["cur.kHitPoints","target>","1","<"],true],
-    ["Endurance",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,1.5,1,null,null,null,null,null,null,["cur.kHitPoints","target>","1","<"],true],
-    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["cur.kHitPoints","target>","1","<"],true,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"]
+    ["Heal",null,0.54,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,null,null,null,null,null,null,null,null,"Heal"],
+    ["Endurance",null,-24,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Untouchable",10,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["cur.kHitPoints","target>","1","<"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Heal",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,1.5,1,null,null,null,null,null,null,["cur.kHitPoints","target>","1","<"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Endurance",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,1.5,1,null,null,null,null,null,null,["cur.kHitPoints","target>","1","<"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["cur.kHitPoints","target>","1","<"],true,null,null,null,null,null,null,null,null,"Ones",null,"xpdebtprotection"]
   ],
   "conditionalEffects": [
     {

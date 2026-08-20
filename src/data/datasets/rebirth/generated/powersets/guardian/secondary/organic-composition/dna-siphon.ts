@@ -102,14 +102,14 @@ export const DNASiphon: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"]],
-    ["Damage","Toxic",0.1,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,null,null,null,null,null,null,0.8,true],
-    ["Heal",null,1.25,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"]],
-    ["Endurance",null,5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,5],
-    ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0","=="],null,0.2],
-    ["Recovery",null,0.125,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0","=="],null,0.125],
-    ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","kOffensiveAdaptation","source.Mode?","!","&&"]],
-    ["Regeneration",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","kOffensiveAdaptation","source.Mode?","!","&&"],true]
+    ["Damage","Lethal",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Toxic",0.1,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,null,null,null,null,null,null,0.8,true,"Damage"],
+    ["Heal",null,1.25,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,null,null,null,null,null,null,null,null,"HealSelf"],
+    ["Endurance",null,5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,5,null,null,null,null,null,null,null,"Ones"],
+    ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0","=="],null,0.2,null,null,null,null,null,null,null,"Ones"],
+    ["Recovery",null,0.125,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0","=="],null,0.125,null,null,null,null,null,null,null,"Ones"],
+    ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","kOffensiveAdaptation","source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"NormalDebuff"],
+    ["Regeneration",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","kOffensiveAdaptation","source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"NormalDebuff"]
   ],
   "specialEffects": [
     {

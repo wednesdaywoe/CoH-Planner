@@ -69,15 +69,15 @@ export const DarkConsumption: Power = {
     }
   },
   "atoms": [
-    ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25],
-    ["DamageBuff","Smashing",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031],
-    ["DamageBuff","Lethal",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031],
-    ["DamageBuff","Fire",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031],
-    ["DamageBuff","Cold",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031],
-    ["DamageBuff","Energy",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031],
-    ["DamageBuff","Negative",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031],
-    ["DamageBuff","Toxic",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031],
-    ["DamageBuff","Psionic",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031]
+    ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Smashing",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Lethal",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Fire",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Cold",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Energy",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Negative",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Toxic",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Psionic",0.031,1,7.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.031,null,null,null,null,null,null,null,"Ones"]
   ]
 };

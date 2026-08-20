@@ -72,9 +72,9 @@ export const GaiasBlessing: Power = {
     }
   },
   "atoms": [
-    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
+    ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"]
   ]
 };

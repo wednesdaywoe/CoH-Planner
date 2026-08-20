@@ -58,8 +58,7 @@ export const Gravestone: Power = {
   "effects": {
     "buffDuration": 16,
     "durations": {
-      "movementCapDebuff": 16,
-      "slow": 16
+      "movementCapDebuff": 16
     },
     "movementCapDebuff": {
       "jumpHeight": {
@@ -71,12 +70,6 @@ export const Gravestone: Power = {
         "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Slow"
-      }
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
       }
     }
   },

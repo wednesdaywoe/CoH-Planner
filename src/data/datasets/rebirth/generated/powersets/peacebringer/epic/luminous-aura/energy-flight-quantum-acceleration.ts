@@ -69,11 +69,11 @@ export const EnergyFlightQuantumAcceleration: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-    ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,true,null,null,null,null,0],
-    ["Movement","Fly",-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
-    ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]
+    ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+    ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,true,null,null,null,null,0,null,"FlightActive"],
+    ["Movement","Fly",-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"GroupFlying"],
+    ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FlightActive"]
   ],
   "requires": [
     "Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration"

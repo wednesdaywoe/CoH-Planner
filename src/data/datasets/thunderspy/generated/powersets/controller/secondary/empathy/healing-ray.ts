@@ -86,15 +86,15 @@ export const HealingRay: Power = {
     }
   },
   "atoms": [
-    ["HealResistance",null,-0.25,1,0.13,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Resistance","Psionic",0.03,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Toxic",0.03,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Smashing",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Lethal",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Energy",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Cold",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Fire",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Heal",null,0,1,0,"Ranged_Heal","Abs","Expression","Target","Any",false,"Replace",2,null,0.125,1,null,true,null,null,null,null,["target.TickDamage","0",">"],true,null,null,null,null,["target.TickDamage","0.25","*"]],
-    ["Damage","Special",0,1,0,"Ranged_Damage","Abs","Expression","Self","Any",false,"Replace",2,null,0.125,1,null,true,null,null,null,null,["target.TickDamage","0",">"],true,null,null,null,null,["target.TickDamage","-0.25","*"]]
+    ["HealResistance",null,-0.25,1,0.13,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Resistance","Psionic",0.03,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Toxic",0.03,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Smashing",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Lethal",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Energy",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Cold",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Fire",0.05,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Heal",null,0,1,0,"Ranged_Heal","Abs","Expression","Target","Any",false,"Replace",2,null,0.125,1,null,true,null,null,null,null,["target.TickDamage","0",">"],true,null,null,null,null,["target.TickDamage","0.25","*"],null,null,null,"Heal"],
+    ["Damage","Special",0,1,0,"Ranged_Damage","Abs","Expression","Self","Any",false,"Replace",2,null,0.125,1,null,true,null,null,null,null,["target.TickDamage","0",">"],true,null,null,null,null,["target.TickDamage","-0.25","*"],null,null,null,"Damage"]
   ]
 };

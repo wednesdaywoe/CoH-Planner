@@ -41,14 +41,14 @@ export const FieryEmbrace: Power = {
     ]
   },
   "atoms": [
-    ["GlobalChanceMod",null,1,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"]],
-    ["DamageBuff","Fire",10,1,20,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true],
-    ["DamageBuff","Smashing",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true],
-    ["DamageBuff","Lethal",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true],
-    ["DamageBuff","Cold",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true],
-    ["DamageBuff","Energy",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true],
-    ["DamageBuff","Negative",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true],
-    ["DamageBuff","Toxic",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true],
-    ["DamageBuff","Psionic",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true]
+    ["GlobalChanceMod",null,1,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Fire",10,1,20,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_DMG"],
+    ["DamageBuff","Smashing",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_DMG"],
+    ["DamageBuff","Lethal",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_DMG"],
+    ["DamageBuff","Cold",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_DMG"],
+    ["DamageBuff","Energy",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_DMG"],
+    ["DamageBuff","Negative",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_DMG"],
+    ["DamageBuff","Toxic",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_DMG"],
+    ["DamageBuff","Psionic",8,1,10,"Melee_Buff_DMG","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_DMG"]
   ]
 };

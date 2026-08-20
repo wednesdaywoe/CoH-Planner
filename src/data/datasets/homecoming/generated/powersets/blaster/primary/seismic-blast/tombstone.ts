@@ -56,8 +56,7 @@ export const Tombstone: Power = {
     "buffDuration": 16,
     "durations": {
       "movementCapDebuff": 16,
-      "rangeBuff": 10,
-      "slow": 16
+      "rangeBuff": 10
     },
     "movementCapDebuff": {
       "jumpHeight": {
@@ -75,12 +74,6 @@ export const Tombstone: Power = {
       "ignoreStrength": true,
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     }
   },
   "atoms": [

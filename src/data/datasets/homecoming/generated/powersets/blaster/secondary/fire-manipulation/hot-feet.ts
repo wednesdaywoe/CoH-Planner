@@ -68,10 +68,6 @@ export const HotFeet: Power = {
       "table": "Melee_Ones"
     },
     "slow": {
-      "fly": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
       "runSpeed": {
         "scale": 0.7,
         "table": "Melee_Slow"

@@ -53,19 +53,19 @@ export const GangWar: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.5,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.25,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.10000000149011612,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.10000000149011612,null,true]
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.5,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.25,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.10000000149011612,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.10000000149011612,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"]
   ],
   "specialEffects": [
     {

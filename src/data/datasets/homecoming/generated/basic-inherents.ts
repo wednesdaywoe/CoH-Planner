@@ -143,6 +143,10 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
           "table": "Melee_Ones"
         },
         "runSpeed": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        },
+        "runSpeedUnenhanced": {
           "ignoreStrength": true,
           "scale": 0.5,
           "table": "Melee_Ones"
@@ -290,11 +294,6 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
         }
       },
       "slow": {
-        "fly": {
-          "ignoreStrength": true,
-          "scale": 1000,
-          "table": "Melee_Ones"
-        },
         "flySpeed": {
           "ignoreStrength": true,
           "scale": 1000,
@@ -609,6 +608,10 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
           "table": "Melee_Ones"
         },
         "runSpeed": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        },
+        "runSpeedUnenhanced": {
           "ignoreStrength": true,
           "scale": 0.5,
           "table": "Melee_Ones"
@@ -672,6 +675,10 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
           "table": "Melee_Ones"
         },
         "runSpeed": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        },
+        "runSpeedUnenhanced": {
           "ignoreStrength": true,
           "scale": 0.5,
           "table": "Melee_Ones"
@@ -735,6 +742,10 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
           "table": "Melee_Ones"
         },
         "runSpeed": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        },
+        "runSpeedUnenhanced": {
           "ignoreStrength": true,
           "scale": 0.5,
           "table": "Melee_Ones"
@@ -798,6 +809,10 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
           "table": "Melee_Ones"
         },
         "runSpeed": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        },
+        "runSpeedUnenhanced": {
           "ignoreStrength": true,
           "scale": 0.5,
           "table": "Melee_Ones"
@@ -861,6 +876,10 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
           "table": "Melee_Ones"
         },
         "runSpeed": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        },
+        "runSpeedUnenhanced": {
           "ignoreStrength": true,
           "scale": 0.5,
           "table": "Melee_Ones"

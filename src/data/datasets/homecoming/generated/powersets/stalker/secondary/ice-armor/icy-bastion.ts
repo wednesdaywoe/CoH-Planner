@@ -61,7 +61,6 @@ export const IcyBastion: Power = {
       "repel": 30,
       "resistance": 30,
       "sleep": 30,
-      "slow": 0.75,
       "stun": 30
     },
     "effectDuration": 30,
@@ -155,13 +154,6 @@ export const IcyBastion: Power = {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
-    },
-    "slow": {
-      "fly": {
-        "scale": 10000,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      }
     },
     "stun": {
       "mag": 1,

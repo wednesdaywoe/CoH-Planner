@@ -106,10 +106,6 @@ export const EntanglingArrow: Power = {
       }
     },
     "slow": {
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.5,
         "table": "Ranged_Slow"

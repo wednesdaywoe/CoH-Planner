@@ -92,14 +92,14 @@ export const Praise: Power = {
     }
   },
   "atoms": [
-    ["Heal",null,0.35,1,5,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Resistance","Smashing",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Resistance","Lethal",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Resistance","Fire",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Resistance","Cold",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Resistance","Energy",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Resistance","Negative",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Resistance","Toxic",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Resistance","Psionic",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+    ["Heal",null,0.35,1,5,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal"],
+    ["Resistance","Smashing",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Lethal",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Fire",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Cold",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Energy",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Negative",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Toxic",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Psionic",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
   ]
 };

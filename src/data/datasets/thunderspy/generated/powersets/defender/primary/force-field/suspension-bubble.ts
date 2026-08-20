@@ -74,12 +74,12 @@ export const SuspensionBubble: Power = {
     }
   },
   "atoms": [
-    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Movement","FlyMode",4,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Movement","Fly",-1.01,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Control",25,1,1,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Movement","Friction",25,1,1,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,true,null,null,null,null,["enttype","target>","player","eq"],true]
+    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","FlyMode",4,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Fly",-1.01,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Control",25,1,1,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Control"],
+    ["Movement","Friction",25,1,1,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Friction"],
+    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "specialEffects": [
     {

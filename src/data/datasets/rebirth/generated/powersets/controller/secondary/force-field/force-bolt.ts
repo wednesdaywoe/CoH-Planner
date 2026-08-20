@@ -56,19 +56,9 @@ export const ForceBolt: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "slow": 15
-    },
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      }
     },
     "stun": {
       "mag": 1.5,
@@ -77,15 +67,15 @@ export const ForceBolt: Power = {
     }
   },
   "atoms": [
-    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<="]],
-    ["Movement","FlyMode",-1.6,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Knockback",9,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","critter","eq","&&"]],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","cur.kUntouchable","target>","0","<=","&&"]],
-    ["Mez","Stunned",8,1.5,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","cur.kUntouchable","target>","0","<=","&&"]],
-    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.hasTag?","||","cur.kUntouchable","target>","0","<=","&&"],true],
-    ["Mez","Knockback",9,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","player","eq","&&"],true],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","cur.kUntouchable","target>","0","<=","&&"],true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,["enttype","target>","player","eq","cur.kUntouchable","target>","0","<=","&&"],true,null,null,null,null,null,null,0,null,null,null,"drop_toggles"],
-    ["Mez","Stunned",4,2,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","cur.kUntouchable","target>","0","<=","&&"],true]
+    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<="],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Movement","FlyMode",-1.6,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Knockback",9,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Knockback"],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","cur.kUntouchable","target>","0","<=","&&"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Stunned",8,1.5,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","cur.kUntouchable","target>","0","<=","&&"],null,null,null,null,null,null,null,null,null,"Stun"],
+    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.hasTag?","||","cur.kUntouchable","target>","0","<=","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
+    ["Mez","Knockback",9,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Knockback"],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","cur.kUntouchable","target>","0","<=","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,["enttype","target>","player","eq","cur.kUntouchable","target>","0","<=","&&"],true,null,null,null,null,null,null,0,null,"Ones",null,"drop_toggles"],
+    ["Mez","Stunned",4,2,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","cur.kUntouchable","target>","0","<=","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
   ]
 };

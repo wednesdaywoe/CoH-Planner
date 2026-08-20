@@ -90,20 +90,20 @@ export const QuantumFlight: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-    ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Fly",1.5,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Control",3,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Friction",3,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Stealth","Translucency",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true],
-    ["Stealth","RadiusPvE",20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true],
-    ["Stealth","RadiusPvP",222,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true],
-    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true],
-    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true],
-    ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true],
-    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true],
-    ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+    ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Fly",1.5,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedFlying"],
+    ["Movement","Control",3,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Control"],
+    ["Movement","Friction",3,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Friction"],
+    ["Stealth","Translucency",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Stealth","RadiusPvE",20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Stealth","RadiusPvP",222,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDisable_Toggle","source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "setsModes": [
     "Peacebringer_Human_Mode"

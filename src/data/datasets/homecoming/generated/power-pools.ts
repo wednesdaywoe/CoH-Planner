@@ -1685,19 +1685,9 @@ export const POWER_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "buffDuration": 30,
-          "durations": {
-            "slow": 30
-          },
           "knockup": {
             "scale": 0.75,
             "table": "Melee_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Melee_Ones"
-            }
           }
         }
       },
@@ -2847,10 +2837,6 @@ export const POWER_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.6,
               "table": "Ranged_Slow"
@@ -7836,10 +7822,9 @@ export const POWER_POOLS_RAW = {
           "endurance": 7.28,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
-          "buffDuration": 15,
+          "buffDuration": 12,
           "durations": {
-            "knockback": 12,
-            "slow": 15
+            "knockback": 12
           },
           "immobilize": {
             "mag": 3,
@@ -7849,12 +7834,6 @@ export const POWER_POOLS_RAW = {
           "knockback": {
             "scale": 0.67,
             "table": "Ranged_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            }
           }
         }
       },

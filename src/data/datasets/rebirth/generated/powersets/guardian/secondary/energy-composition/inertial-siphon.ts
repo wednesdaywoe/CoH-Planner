@@ -94,12 +94,12 @@ export const InertialSiphon: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Movement","Run",0.5,1,45,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Movement","Fly",0.5,1,45,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Movement","JumpHeight",0.5,1,45,"Melee_Slow","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Movement","Jump",0.5,1,45,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["RechargeTime",null,-0.2,1,45,"Melee_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["Movement","Run",-1,1,45,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+    ["EntCreate",null,-1,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Run",0.5,1,45,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Fly",0.5,1,45,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","JumpHeight",0.5,1,45,"Melee_Slow","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",0.5,1,45,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
+    ["RechargeTime",null,-0.2,1,45,"Melee_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Run",-1,1,45,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"]
   ]
 };

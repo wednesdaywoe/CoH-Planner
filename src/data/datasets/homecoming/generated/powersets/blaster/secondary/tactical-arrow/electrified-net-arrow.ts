@@ -85,10 +85,6 @@ export const ElectrifiedNetArrow: Power = {
       "table": "Ranged_Slow"
     },
     "slow": {
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.1,
         "table": "Ranged_Slow"

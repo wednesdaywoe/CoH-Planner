@@ -83,19 +83,19 @@ export const HuntersHowl: Power = {
     }
   },
   "atoms": [
-    ["Movement","Run",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"]],
-    ["RechargeTime",null,1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"]],
-    ["Movement","Fly",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"]],
-    ["Movement","JumpHeight",1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"]],
-    ["Movement","Jump",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"]],
-    ["ToHit",null,1,1,30,"Melee_DeBuff_ToHit","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>","1","*","1","+","@StdResult","*"]],
-    ["Movement","Run",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"]],
-    ["RechargeTime",null,1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"]],
-    ["Movement","Fly",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"]],
-    ["Movement","JumpHeight",1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"]],
-    ["Movement","Jump",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"]],
-    ["ToHit",null,1,1,30,"Melee_DeBuff_ToHit","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>","1.5","*","1.5","+","@StdResult","*"]],
-    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"rage"]
+    ["Movement","Run",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"],null,null,null,"NBInactive"],
+    ["RechargeTime",null,1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"],null,null,null,"NBInactive"],
+    ["Movement","Fly",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"],null,null,null,"NBInactive"],
+    ["Movement","JumpHeight",1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"],null,null,null,"NBInactive"],
+    ["Movement","Jump",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"],null,null,null,"NBInactive"],
+    ["ToHit",null,1,1,30,"Melee_DeBuff_ToHit","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>","1","*","1","+","@StdResult","*"],null,null,null,"NBInactive"],
+    ["Movement","Run",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"],null,null,null,"NBActive"],
+    ["RechargeTime",null,1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"],null,null,null,"NBActive"],
+    ["Movement","Fly",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"],null,null,null,"NBActive"],
+    ["Movement","JumpHeight",1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"],null,null,null,"NBActive"],
+    ["Movement","Jump",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"],null,null,null,"NBActive"],
+    ["ToHit",null,1,1,30,"Melee_DeBuff_ToHit","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>","1.5","*","1.5","+","@StdResult","*"],null,null,null,"NBActive"],
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"rage"]
   ],
   "requires": [
     "Feral_Might.Feral_Might.Hunter_Form"

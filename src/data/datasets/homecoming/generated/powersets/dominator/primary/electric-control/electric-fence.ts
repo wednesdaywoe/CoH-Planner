@@ -55,11 +55,10 @@ export const ElectricFence: Power = {
     "tickRate": 2
   },
   "effects": {
-    "buffDuration": 15,
+    "buffDuration": 6.2,
     "durations": {
       "enduranceDrain": 6.2,
-      "recoveryDebuff": 2,
-      "slow": 15
+      "recoveryDebuff": 2
     },
     "enduranceDrain": {
       "scale": 0.028,
@@ -77,12 +76,6 @@ export const ElectricFence: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     },
     "maxStacks": 2,
     "stacksLinear": [

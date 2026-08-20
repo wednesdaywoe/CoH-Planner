@@ -48,8 +48,8 @@ export const GeomancyRootBonus: Power = {
     }
   },
   "atoms": [
-    ["MezResist","Knockback",100,1,10.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["MezResist","Knockup",100,1,10.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["MezResist","Knockback",100,1,10.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["MezResist","Knockup",100,1,10.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "requires": [
     "Tanker_Defense.Sacred_Armor.Geomancy"

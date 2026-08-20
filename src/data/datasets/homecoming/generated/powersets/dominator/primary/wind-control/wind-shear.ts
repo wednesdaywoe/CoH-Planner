@@ -73,10 +73,6 @@ export const WindShear: Power = {
       }
     },
     "slow": {
-      "fly": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      },
       "flySpeed": {
         "scale": 0.65,
         "table": "Melee_Slow"

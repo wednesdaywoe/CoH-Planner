@@ -69,10 +69,6 @@ export const TimesJuncture: Power = {
       }
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"
@@ -156,10 +152,6 @@ export const TimesJuncture: Power = {
           }
         },
         "slow": {
-          "fly": {
-            "scale": 1.92,
-            "table": "Ranged_Ones"
-          },
           "flySpeed": {
             "scale": 0.36,
             "table": "Ranged_Slow"

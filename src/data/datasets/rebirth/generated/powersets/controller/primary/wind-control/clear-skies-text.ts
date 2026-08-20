@@ -36,8 +36,8 @@ export const ClearSkiesText: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Meta",null,-1,1,2.1,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,["kClearSkies","source.mode?"],true,null,null,null,null,null,null,null,null,null,null,"designer_status"],
-    ["Meta",null,-1,1,2.1,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,["kClearSkies","source.mode?","!","kCloudedSkies","source.mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,"designer_status"]
+    ["Meta",null,-1,1,2.1,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,["kClearSkies","source.mode?"],true,null,null,null,null,null,null,null,null,"Ones",null,"designer_status"],
+    ["Meta",null,-1,1,2.1,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,["kClearSkies","source.mode?","!","kCloudedSkies","source.mode?","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"designer_status"]
   ],
   "requires": [
     "Controller_Control.Wind_Control.Vortex",

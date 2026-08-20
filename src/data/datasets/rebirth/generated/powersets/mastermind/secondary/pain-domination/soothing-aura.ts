@@ -58,6 +58,6 @@ export const SoothingAura: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,2,1,4.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+    ["Regeneration",null,2,1,4.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ]
 };

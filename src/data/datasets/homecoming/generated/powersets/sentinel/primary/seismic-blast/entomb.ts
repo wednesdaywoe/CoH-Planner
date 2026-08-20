@@ -66,8 +66,7 @@ export const Entomb: Power = {
     },
     "durations": {
       "defenseDebuff": 12,
-      "movementCapDebuff": 12,
-      "slow": 12
+      "movementCapDebuff": 12
     },
     "movementCapDebuff": {
       "jumpHeight": {
@@ -79,12 +78,6 @@ export const Entomb: Power = {
         "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Slow"
-      }
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
       }
     }
   },

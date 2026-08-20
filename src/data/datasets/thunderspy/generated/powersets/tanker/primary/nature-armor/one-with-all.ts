@@ -96,18 +96,18 @@ export const OneWithAll: Power = {
     }
   },
   "atoms": [
-    ["Damage","Fire",3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"]],
-    ["Meta",null,0,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
-    ["Resistance","Smashing",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
-    ["Resistance","Lethal",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
-    ["Resistance","Fire",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
-    ["Resistance","Cold",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
-    ["Resistance","Energy",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
-    ["Resistance","Negative",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
-    ["Resistance","Psionic",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
-    ["Resistance","Toxic",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
-    ["Damage","Fire",1.54,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","target.isFriend?","!","&&"],true],
-    ["Heal",null,3,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["target.isFriend?"],true]
+    ["Damage","Fire",3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Meta",null,0,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null"],
+    ["Resistance","Smashing",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Lethal",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Fire",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Cold",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Energy",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Negative",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Psionic",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Resistance","Toxic",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07,null,null,null,null,null,null,null,"Res_DMG"],
+    ["Damage","Fire",1.54,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","target.isFriend?","!","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
+    ["Heal",null,3,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["target.isFriend?"],true,null,null,null,null,null,null,null,null,"Heal"]
   ],
   "damageTypes": [
     "Fire"

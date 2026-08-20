@@ -59,8 +59,7 @@ export const Shatter: Power = {
     },
     "durations": {
       "defenseDebuff": 6,
-      "movementCapDebuff": 6,
-      "slow": 6
+      "movementCapDebuff": 6
     },
     "movementCapDebuff": {
       "jumpHeight": {
@@ -72,12 +71,6 @@ export const Shatter: Power = {
         "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Slow"
-      }
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
       }
     }
   },

@@ -45,12 +45,12 @@ export const ShadowSlipping: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-    ["Meta",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-    ["Stealth","Translucency",0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["allyID","source>","hero","eq","praetorianprogress","source>","normal","eq","praetorianprogress","source>","earth","eq","||","&&","praetoria","source.MapTeamArea>","eq","!","&&"],true],
-    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["allyID","source>","villain","eq","praetorianprogress","source>","normal","eq","praetorianprogress","source>","earth","eq","||","&&","praetoria","source.MapTeamArea>","eq","!","&&"],true],
-    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["praetorianprogress","source>","praetoria","eq","praetoria","source.MapTeamArea>","eq","||"],true]
+    ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+    ["Meta",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+    ["Stealth","Translucency",0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["allyID","source>","hero","eq","praetorianprogress","source>","normal","eq","praetorianprogress","source>","earth","eq","||","&&","praetoria","source.MapTeamArea>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["allyID","source>","villain","eq","praetorianprogress","source>","normal","eq","praetorianprogress","source>","earth","eq","||","&&","praetoria","source.MapTeamArea>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["praetorianprogress","source>","praetoria","eq","praetoria","source.MapTeamArea>","eq","||"],true,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "requires": [
     "Warshade_Defensive.Umbral_Aura.Shadow_Slip"

@@ -80,13 +80,13 @@ export const GroundZero: Power = {
     }
   },
   "atoms": [
-    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"]],
-    ["Damage","Toxic",0.1,1,9.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"]],
-    ["Defense","All",2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"]],
-    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","!","&&"]],
-    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","&&"],true],
-    ["Heal",null,0.05,1,9.1,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","&&"],true],
-    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?"],true]
+    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Toxic",0.1,1,9.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Defense","All",2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Debuff_Def"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt"],
+    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","&&"],true,null,null,null,null,null,null,null,null,"HealSelf"],
+    ["Heal",null,0.05,1,9.1,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","&&"],true,null,null,null,null,null,null,null,null,"HealSelf"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ],
   "damageTypes": [
     "Energy",

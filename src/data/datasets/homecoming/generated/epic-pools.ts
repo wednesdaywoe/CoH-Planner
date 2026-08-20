@@ -113,7 +113,7 @@ export const EPIC_POOLS_RAW = {
           "buffDuration": 18,
           "durations": {
             "rechargeDebuff": 18,
-            "slow": 15
+            "slow": 18
           },
           "immobilize": {
             "mag": 3,
@@ -126,10 +126,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 1,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.3,
               "table": "Ranged_Slow"
@@ -1194,10 +1190,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.2,
               "table": "Ranged_Slow"
@@ -1526,10 +1518,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.5,
               "table": "Ranged_Slow"
@@ -4007,10 +3995,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.2,
               "table": "Ranged_Slow"
@@ -6046,8 +6030,7 @@ export const EPIC_POOLS_RAW = {
             "knockup": 0.75,
             "mezResistance": 0.75,
             "recoveryBuff": 0.75,
-            "regenBuff": 0.75,
-            "slow": 0.75
+            "regenBuff": 0.75
           },
           "immobilize": {
             "ignoreStrength": true,
@@ -6087,13 +6070,6 @@ export const EPIC_POOLS_RAW = {
           "regenBuff": {
             "scale": 10,
             "table": "Melee_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 10000,
-              "table": "Melee_Ones",
-              "toWho": "Self"
-            }
           },
           "untouchable": {
             "ignoreStrength": true,
@@ -6190,10 +6166,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 1,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.5,
               "table": "Ranged_Slow"
@@ -6523,8 +6495,7 @@ export const EPIC_POOLS_RAW = {
             "knockup": 0.75,
             "mezResistance": 0.75,
             "recoveryBuff": 0.75,
-            "regenBuff": 0.75,
-            "slow": 0.75
+            "regenBuff": 0.75
           },
           "immobilize": {
             "ignoreStrength": true,
@@ -6564,13 +6535,6 @@ export const EPIC_POOLS_RAW = {
           "regenBuff": {
             "scale": 10,
             "table": "Melee_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 10000,
-              "table": "Melee_Ones",
-              "toWho": "Self"
-            }
           },
           "untouchable": {
             "ignoreStrength": true,
@@ -8137,8 +8101,7 @@ export const EPIC_POOLS_RAW = {
             "knockup": 0.75,
             "mezResistance": 0.75,
             "recoveryBuff": 0.75,
-            "regenBuff": 0.75,
-            "slow": 0.75
+            "regenBuff": 0.75
           },
           "immobilize": {
             "ignoreStrength": true,
@@ -8178,13 +8141,6 @@ export const EPIC_POOLS_RAW = {
           "regenBuff": {
             "scale": 10,
             "table": "Melee_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 10000,
-              "table": "Melee_Ones",
-              "toWho": "Self"
-            }
           },
           "untouchable": {
             "ignoreStrength": true,
@@ -8264,20 +8220,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
-          "buffDuration": 15,
-          "durations": {
-            "slow": 15
-          },
           "hold": {
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
-          },
-          "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Ranged_Ones"
-            }
           }
         }
       },
@@ -8468,10 +8414,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.2,
               "table": "Ranged_Slow"
@@ -8761,10 +8703,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.5,
               "table": "Ranged_Slow"
@@ -12117,8 +12055,7 @@ export const EPIC_POOLS_RAW = {
             "knockup": 0.75,
             "mezResistance": 0.75,
             "recoveryBuff": 0.75,
-            "regenBuff": 0.75,
-            "slow": 0.75
+            "regenBuff": 0.75
           },
           "immobilize": {
             "ignoreStrength": true,
@@ -12158,13 +12095,6 @@ export const EPIC_POOLS_RAW = {
           "regenBuff": {
             "scale": 10,
             "table": "Melee_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 10000,
-              "table": "Melee_Ones",
-              "toWho": "Self"
-            }
           },
           "untouchable": {
             "ignoreStrength": true,
@@ -13851,19 +13781,12 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Debuff_Def"
           },
           "durations": {
-            "defenseDebuff": 15,
-            "slow": 15
+            "defenseDebuff": 15
           },
           "immobilize": {
             "mag": 4,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "slow": {
-            "fly": {
-              "scale": 1,
-              "table": "Ranged_Ones"
-            }
           }
         }
       },
@@ -18574,8 +18497,7 @@ export const EPIC_POOLS_RAW = {
             "knockup": 0.75,
             "mezResistance": 0.75,
             "recoveryBuff": 0.75,
-            "regenBuff": 0.75,
-            "slow": 0.75
+            "regenBuff": 0.75
           },
           "immobilize": {
             "ignoreStrength": true,
@@ -18615,13 +18537,6 @@ export const EPIC_POOLS_RAW = {
           "regenBuff": {
             "scale": 10,
             "table": "Melee_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 10000,
-              "table": "Melee_Ones",
-              "toWho": "Self"
-            }
           },
           "untouchable": {
             "ignoreStrength": true,
@@ -19015,8 +18930,7 @@ export const EPIC_POOLS_RAW = {
             "knockup": 0.75,
             "mezResistance": 0.75,
             "recoveryBuff": 0.75,
-            "regenBuff": 0.75,
-            "slow": 0.75
+            "regenBuff": 0.75
           },
           "immobilize": {
             "ignoreStrength": true,
@@ -19056,13 +18970,6 @@ export const EPIC_POOLS_RAW = {
           "regenBuff": {
             "scale": 10,
             "table": "Melee_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 10000,
-              "table": "Melee_Ones",
-              "toWho": "Self"
-            }
           },
           "untouchable": {
             "ignoreStrength": true,
@@ -19454,19 +19361,12 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 15,
           "durations": {
-            "slow": 15,
             "tohitDebuff": 15
           },
           "immobilize": {
             "mag": 4,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Ranged_Ones"
-            }
           },
           "tohitDebuff": {
             "scale": 0.75,
@@ -20254,20 +20154,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
-          "buffDuration": 15,
-          "durations": {
-            "slow": 15
-          },
           "hold": {
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
-          },
-          "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Ranged_Ones"
-            }
           }
         }
       }
@@ -20389,10 +20279,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.2,
               "table": "Ranged_Slow"
@@ -20849,10 +20735,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.5,
               "table": "Ranged_Slow"
@@ -26302,21 +26184,14 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 2
             }
           ],
-          "buffDuration": 15,
+          "buffDuration": 8,
           "durations": {
-            "slow": 15,
             "tohitDebuff": 8
           },
           "immobilize": {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Ranged_Ones"
-            }
           },
           "tohitDebuff": {
             "scale": 0.75,
@@ -26766,10 +26641,9 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_InherentDamage"
             }
           ],
-          "buffDuration": 15,
+          "buffDuration": 6,
           "durations": {
-            "recoveryDebuff": 6,
-            "slow": 15
+            "recoveryDebuff": 6
           },
           "enduranceDrain": {
             "scale": 0.1,
@@ -26783,12 +26657,6 @@ export const EPIC_POOLS_RAW = {
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Ranged_Ones"
-            }
           }
         }
       },
@@ -27216,20 +27084,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 2
             }
           ],
-          "buffDuration": 10,
-          "durations": {
-            "slow": 10
-          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Ranged_Ones"
-            }
           }
         }
       },
@@ -27627,7 +27485,7 @@ export const EPIC_POOLS_RAW = {
           "buffDuration": 15,
           "durations": {
             "rechargeDebuff": 15,
-            "slow": 10
+            "slow": 15
           },
           "immobilize": {
             "mag": 3,
@@ -27640,10 +27498,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.3,
               "table": "Ranged_Slow"
@@ -28038,10 +27892,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.5,
               "table": "Ranged_Slow"
@@ -28371,20 +28221,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
-          "buffDuration": 15,
-          "durations": {
-            "slow": 15
-          },
           "hold": {
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
-          },
-          "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Ranged_Ones"
-            }
           }
         }
       },
@@ -28763,10 +28603,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.2,
               "table": "Ranged_Slow"
@@ -28981,10 +28817,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.5,
               "table": "Ranged_Slow"
@@ -31284,8 +31116,7 @@ export const EPIC_POOLS_RAW = {
             "knockup": 0.75,
             "mezResistance": 0.75,
             "recoveryBuff": 0.75,
-            "regenBuff": 0.75,
-            "slow": 0.75
+            "regenBuff": 0.75
           },
           "immobilize": {
             "ignoreStrength": true,
@@ -31325,13 +31156,6 @@ export const EPIC_POOLS_RAW = {
           "regenBuff": {
             "scale": 10,
             "table": "Melee_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 10000,
-              "table": "Melee_Ones",
-              "toWho": "Self"
-            }
           },
           "untouchable": {
             "ignoreStrength": true,
@@ -31418,20 +31242,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
-          "buffDuration": 15,
-          "durations": {
-            "slow": 15
-          },
           "hold": {
             "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
-          },
-          "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Melee_Ones"
-            }
           }
         }
       },
@@ -31893,10 +31707,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.5,
               "table": "Ranged_Slow"
@@ -34825,10 +34635,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.2,
               "table": "Ranged_Slow"
@@ -36034,10 +35840,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.5,
               "table": "Ranged_Slow"
@@ -36427,10 +36229,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "slow": {
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
-            },
             "flySpeed": {
               "scale": 0.5,
               "table": "Ranged_Slow"

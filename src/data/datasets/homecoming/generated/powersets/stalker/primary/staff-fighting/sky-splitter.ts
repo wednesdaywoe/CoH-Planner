@@ -65,19 +65,9 @@ export const SkySplitter: Power = {
     }
   ],
   "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "slow": 10
-    },
     "knockup": {
       "scale": 0.67,
       "table": "Melee_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      }
     },
     "stun": {
       "mag": 3,

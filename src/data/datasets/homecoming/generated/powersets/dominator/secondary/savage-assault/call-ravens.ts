@@ -68,10 +68,6 @@ export const CallRavens: Power = {
       "slow": 10
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"

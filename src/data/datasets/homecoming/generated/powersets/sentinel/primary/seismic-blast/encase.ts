@@ -66,8 +66,7 @@ export const Encase: Power = {
     },
     "durations": {
       "defenseDebuff": 3,
-      "movementCapDebuff": 3,
-      "slow": 3
+      "movementCapDebuff": 3
     },
     "movementCapDebuff": {
       "jumpHeight": {
@@ -79,12 +78,6 @@ export const Encase: Power = {
         "ignoreStrength": true,
         "scale": 1,
         "table": "Ranged_Slow"
-      }
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
       }
     }
   },

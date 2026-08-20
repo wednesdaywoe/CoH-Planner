@@ -47,6 +47,6 @@ export const Warmth: Power = {
     "table": "Ranged_Heal"
   },
   "atoms": [
-    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal"]
   ]
 };

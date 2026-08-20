@@ -50,19 +50,9 @@ export const Updraft: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "slow": 10
-    },
     "knockup": {
       "scale": 6,
       "table": "Ranged_Knockback"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.5,
-        "table": "Ranged_Ones"
-      }
     }
   },
   "atoms": [

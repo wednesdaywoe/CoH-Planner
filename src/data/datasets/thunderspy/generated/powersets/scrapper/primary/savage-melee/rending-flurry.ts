@@ -63,9 +63,9 @@ export const RendingFlurry: Power = {
     }
   ],
   "atoms": [
-    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".06","*","1.18","+","@StdResult","*"],null,null,null,null,null,null,["Foe"]],
-    ["Damage","Lethal",0.0944,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.8,true,null,null,null,["Foe"]],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power",["Foe"]]
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".06","*","1.18","+","@StdResult","*"],null,null,null,"Damage",null,null,["Foe"]],
+    ["Damage","Lethal",0.0944,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.8,true,"Damage",null,null,["Foe"]],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",["Foe"]]
   ],
   "formVariants": [
     {
@@ -152,7 +152,11 @@ export const RendingFlurry: Power = {
             "+",
             "@StdResult",
             "*"
-          ]
+          ],
+          null,
+          null,
+          null,
+          "Damage"
         ],
         [
           "Damage",
@@ -191,7 +195,8 @@ export const RendingFlurry: Power = {
           null,
           null,
           0.8,
-          true
+          true,
+          "Damage"
         ],
         [
           "Meta",
@@ -226,7 +231,7 @@ export const RendingFlurry: Power = {
           null,
           null,
           null,
-          null,
+          "Ones",
           null,
           "revoke_power"
         ],
@@ -248,7 +253,22 @@ export const RendingFlurry: Power = {
           null,
           1,
           null,
-          true
+          true,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "Ones"
         ]
       ]
     }

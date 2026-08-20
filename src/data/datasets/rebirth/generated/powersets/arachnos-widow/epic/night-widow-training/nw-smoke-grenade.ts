@@ -58,7 +58,7 @@ export const NWSmokeGrenade: Power = {
     }
   },
   "atoms": [
-    ["Perception",null,-0.9,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["ToHit",null,0.5,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+    ["Perception",null,-0.9,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["ToHit",null,0.5,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"]
   ]
 };

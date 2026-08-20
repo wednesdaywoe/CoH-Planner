@@ -52,8 +52,8 @@ export const FireImps: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1]
+    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"LevelMinus"],
+    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"LevelMinus"],
+    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"LevelMinus"]
   ]
 };

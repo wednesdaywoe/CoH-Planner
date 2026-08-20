@@ -93,6 +93,14 @@ export function buildDisplayEffects(
     if (movement.runSpeed) bag.runSpeed = movement.runSpeed;
     if (movement.jumpSpeed) bag.jumpSpeed = movement.jumpSpeed;
     if (movement.jumpHeight) bag.jumpHeight = movement.jumpHeight;
+    // The converter's `<axis>Unenhanced` split slots (FLYPOOL-1): a paired
+    // IgnoreStrength half beside the enhanceable one, flattened to the flat
+    // spellings the registry resolves through the base key (ENT-6) and the
+    // engine's granted.rs emits from the atoms. Pool Fly carries both halves.
+    if (movement.flySpeedUnenhanced) bag.flyUnenhanced = movement.flySpeedUnenhanced;
+    if (movement.runSpeedUnenhanced) bag.runSpeedUnenhanced = movement.runSpeedUnenhanced;
+    if (movement.jumpSpeedUnenhanced) bag.jumpSpeedUnenhanced = movement.jumpSpeedUnenhanced;
+    if (movement.jumpHeightUnenhanced) bag.jumpHeightUnenhanced = movement.jumpHeightUnenhanced;
   }
 
   return bag as PowerEffects;

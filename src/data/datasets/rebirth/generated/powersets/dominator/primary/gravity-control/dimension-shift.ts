@@ -60,7 +60,7 @@ export const DimensionShift: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1],
-    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1]
+    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ]
 };

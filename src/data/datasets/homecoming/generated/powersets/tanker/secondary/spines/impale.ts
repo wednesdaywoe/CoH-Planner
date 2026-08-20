@@ -87,10 +87,6 @@ export const Impale: Power = {
       "table": "Melee_Ones"
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      },
       "flySpeed": {
         "scale": 0.3,
         "table": "Melee_Slow"

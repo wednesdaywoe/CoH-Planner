@@ -39,17 +39,17 @@ export const TrainNinjas: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Genin","target.VillainName>"],true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Genin","target.VillainName>"],true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Genin","target.VillainName>"],true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Jonin","target.VillainName>"],true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Jonin","target.VillainName>"],true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Jonin","target.VillainName>"],true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Jonin","target.VillainName>"],true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Oni","target.VillainName>"],true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Oni","target.VillainName>"],true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Oni","target.VillainName>"],true],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Oni","target.VillainName>"],true],
-    ["Mez","Evade",100,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["MastermindPets_Genin","target.VillainName>","MastermindPets_Jounin","target.VillainName>","||","MastermindPets_Oni","target.VillainName>","||"],true,null,null,null,null,null,null,0]
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Genin","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Genin","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Genin","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Jonin","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Jonin","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Jonin","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Jonin","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Oni","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Oni","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Oni","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Oni","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Evade",100,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["MastermindPets_Genin","target.VillainName>","MastermindPets_Jounin","target.VillainName>","||","MastermindPets_Oni","target.VillainName>","||"],true,null,null,null,null,null,null,0,null,"Ones"]
   ]
 };

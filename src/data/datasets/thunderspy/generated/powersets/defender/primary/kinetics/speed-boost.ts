@@ -85,18 +85,18 @@ export const SpeedBoost: Power = {
     }
   },
   "atoms": [
-    ["RechargeTime",null,0.5,1,240,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Recovery",null,0.5,1,240,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["RechargeTime",null,0.5,1,240,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Run",0.5,1,240,"Melee_SpeedRunning","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],
-    ["Movement","Fly",0.5,1,240,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],
-    ["Movement","Run",0.5,1,240,"Melee_SpeedRunning","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Movement","Fly",0.5,1,240,"Melee_SpeedFlying","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Recovery",null,0.25,1,240,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["RechargeTime",null,0.25,1,240,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Run",0.25,1,240,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],
-    ["Movement","Fly",0.25,1,240,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],
-    ["Movement","Run",0.25,1,240,"Melee_SpeedRunning","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Fly",0.25,1,240,"Melee_SpeedFlying","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+    ["RechargeTime",null,0.5,1,240,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Recovery",null,0.5,1,240,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["RechargeTime",null,0.5,1,240,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Run",0.5,1,240,"Melee_SpeedRunning","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["Movement","Fly",0.5,1,240,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"SpeedFlying"],
+    ["Movement","Run",0.5,1,240,"Melee_SpeedRunning","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["Movement","Fly",0.5,1,240,"Melee_SpeedFlying","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedFlying"],
+    ["Recovery",null,0.25,1,240,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["RechargeTime",null,0.25,1,240,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Run",0.25,1,240,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["Movement","Fly",0.25,1,240,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"SpeedFlying"],
+    ["Movement","Run",0.25,1,240,"Melee_SpeedRunning","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["Movement","Fly",0.25,1,240,"Melee_SpeedFlying","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedFlying"]
   ]
 };

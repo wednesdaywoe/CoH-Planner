@@ -69,10 +69,6 @@ export const TimesJuncture: Power = {
       }
     },
     "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
       "flySpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"
@@ -97,36 +93,36 @@ export const TimesJuncture: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,1.25,1,1,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["Movement","Run",0.3,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["Movement","JumpHeight",0.3,1,1,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["Movement","Jump",0.3,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["Movement","Fly",0.3,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["Movement","Run",-1,1,1,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!","enttype","target>","critter","eq","&&"]],
-    ["Movement","FlyMode",-1.6,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["DamageBuff","Smashing",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["DamageBuff","Lethal",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["DamageBuff","Toxic",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["DamageBuff","Psionic",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["DamageBuff","Fire",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["DamageBuff","Cold",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["DamageBuff","Energy",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["DamageBuff","Negative",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"]],
-    ["ToHit",null,1.5,1,1,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["Movement","Run",0.36,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["Movement","JumpHeight",0.36,1,1,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["Movement","Jump",0.36,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["Movement","Fly",0.36,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["Movement","Run",-1.2,1,1,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","enttype","target>","critter","eq","&&"],true],
-    ["Movement","FlyMode",-1.92,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["DamageBuff","Smashing",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["DamageBuff","Lethal",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["DamageBuff","Toxic",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["DamageBuff","Psionic",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["DamageBuff","Fire",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["DamageBuff","Cold",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["DamageBuff","Energy",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true],
-    ["DamageBuff","Negative",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true]
+    ["ToHit",null,1.25,1,1,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["Movement","Run",0.3,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","JumpHeight",0.3,1,1,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",0.3,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Fly",0.3,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Run",-1,1,1,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["Movement","FlyMode",-1.6,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Smashing",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Lethal",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Toxic",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Psionic",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Fire",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Cold",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Energy",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Negative",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["ToHit",null,1.5,1,1,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["Movement","Run",0.36,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","JumpHeight",0.36,1,1,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Jump",0.36,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Fly",0.36,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Slow"],
+    ["Movement","Run",-1.2,1,1,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["Movement","FlyMode",-1.92,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Smashing",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Lethal",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Toxic",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Psionic",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Fire",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Cold",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Energy",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Debuff_Dam"],
+    ["DamageBuff","Negative",2.4,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Debuff_Dam"]
   ],
   "conditionalEffects": [
     {
@@ -156,10 +152,6 @@ export const TimesJuncture: Power = {
           }
         },
         "slow": {
-          "fly": {
-            "scale": 1.92,
-            "table": "Ranged_Ones"
-          },
           "flySpeed": {
             "scale": 0.36,
             "table": "Ranged_Slow"

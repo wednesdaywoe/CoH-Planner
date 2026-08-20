@@ -90,18 +90,18 @@ export const NebulousForm: Power = {
     }
   },
   "atoms": [
-    ["Stealth","Translucency",0.8,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"]],
-    ["Stealth","RadiusPvE",20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
-    ["Stealth","RadiusPvP",222,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
-    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
-    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
-    ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
-    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],
-    ["Movement","JumpHeight",0.5,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Jump",0.5,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true]
+    ["Stealth","Translucency",0.8,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Stealth","RadiusPvE",20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Stealth","RadiusPvP",222,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
+    ["Movement","JumpHeight",0.5,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Leap"],
+    ["Movement","Jump",0.5,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedJumping"],
+    ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "modesDisallowed": [
     "Warshade_Blaster_Mode",

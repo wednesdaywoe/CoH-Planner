@@ -53,8 +53,8 @@ export const PowerSiphon: Power = {
     ]
   },
   "atoms": [
-    ["Meta",null,1,79,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-    ["ToHit",null,2,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+    ["Meta",null,1,79,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+    ["ToHit",null,2,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"]
   ],
   "setsModes": [
     "SiphonMode"

@@ -66,18 +66,18 @@ export const FlashArrow: Power = {
     }
   },
   "atoms": [
-    ["Perception",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["ToHit",null,0.5,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["ToHit",null,1,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pets_OilSlickTarget","target.VillainName>","!"]],
-    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["ToHit",null,0.1,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn","target.ownPower?","&&"],true],
-    ["ToHit",null,0.5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true],
-    ["ToHit",null,0.1,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&","Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn","target.ownPower?","&&"],true],
-    ["ToHit",null,0.2,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn","target.ownPower?","&&"],true],
-    ["ToHit",null,1,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true],
-    ["ToHit",null,0.2,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&","Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn","target.ownPower?","&&"],true],
-    ["Perception",null,-0.9,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true]
+    ["Perception",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["ToHit",null,0.5,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["ToHit",null,1,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pets_OilSlickTarget","target.VillainName>","!"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["ToHit",null,0.1,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn","target.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["ToHit",null,0.5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["ToHit",null,0.1,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&","Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn","target.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["ToHit",null,0.2,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn","target.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["ToHit",null,1,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["ToHit",null,0.2,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&","Temporary_Powers.Temporary_Powers.AcidArrow_AcidBurn","target.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
+    ["Perception",null,-0.9,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "conditionalEffects": [
     {
