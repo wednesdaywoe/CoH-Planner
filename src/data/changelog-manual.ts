@@ -46,6 +46,15 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-08-19',
+
+    items: [
+      { id: 'boost-spinner-apply-to-slotted', message: 'The picker\'s Boost spinner only applies to enhancements you slot AFTER setting it — anything already slotted kept its old boost level, so a build could read +5 on the spinner while every slot sat unboosted. There\'s now an "Apply to slotted" button next to the spinner that restamps every eligible slot at once (it respects attuned pieces and catalyzed sets, and one Undo reverses the whole thing). Thanks to the player whose max HP was 21 short in the app and who sent the build that proved it', type: 'feat' },
+      { id: 'blank-category-set-aspects', message: 'Gladiator\'s Armor — and every PvP, purple, event and ATO set — was labelled from a field the game leaves blank on exactly those sets, so its pieces exported as damage enhancement and the set\'s real bonuses never reached your totals. The labels now come from the field the game actually fills. Thanks to the player who reported Gladiator\'s Armor doing nothing', type: 'fix' },
+      { id: 'form-redirect-dead-branch', message: 'Powers that change form under a mode could show the wrong form when their redirect table also carries a condition no planner can answer (target distance): the unanswerable branch froze the whole table, even when that branch was already ruled out. Energy Manipulation\'s Stun is the known case — with Power Boost active it now correctly shows its AoE form (90s recharge) instead of the single-target one', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-08-15',
 
     items: [
