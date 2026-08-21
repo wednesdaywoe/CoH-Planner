@@ -368,10 +368,10 @@
       "path": "src/data/dataset.ts",
       "status": "forked",
       "sha256": {
-        "canonical": "34778a59c8b9cf532eceb3f53c66d9dd65033f47f5c1f5c68d95e0ed3355367f",
+        "canonical": "36d7ec1797c15e2fe63cccb63ddf1cba76e1b786223435c7f549c224c1638725",
         "beta": "4df10b24657e42817f19dea02c95b4c4bf5a95c1c2beac7f303661f4dce3b8ca"
       },
-      "reason": "The dataset loader, reached by `emit-enhancement-fixtures.cjs`. Forked both ways: 48 lines only canonical has, 72 only beta has. Beta's half is the live site's loading path (lazy chunks, the browser cache) and canonical's is the fixture emitter's, so the two grew apart around what a 'dataset' has to do rather than around a data question. Both now re-export `EnhancementSchedule` and `OriginTier`, which is what closed the `enhancement-curves.ts` facade above it.",
+      "reason": "The dataset loader, reached by `emit-enhancement-fixtures.cjs`. Forked both ways, and not only around what a 'dataset' has to do: canonical alone declares `specialEnhancements` (Hamidon/Titan/Hydra/D-Sync/prestige) with the generated-module staleness check, and `activateDataset` for the CJS fixture emitters; beta alone declares `archetypeInherents`, the hook that reaches Thunderspy's Stalker Hide and Placate \u2014 powers that fork moved out of the powersets into `Inherent.Inherent`, reachable from no screen without it. Each side therefore drops data the other carries, which the earlier reason ('grew apart around what a dataset has to do rather than around a data question') did not survive. The five `*Raw` chunking fields are the remaining shape question; `ioSetsRaw` is settled on both sides as of io-sets.ts, the other four are not.",
       "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
       "gap": "FORK-2"
     },
@@ -382,14 +382,8 @@
     },
     {
       "path": "src/data/io-sets.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "118ae7e63ca17a7e0ad74ae3917e8f8bf139a12ddc4cbcece0fdc63a1ddfdbc5",
-        "beta": "7b334df2ecb6f3256e7d0729c576df6e672954555884b26fe7871849db1e3550"
-      },
-      "reason": "29 lines only canonical has and 131 only beta has. The larger beta half is the piece-count-gated pseudo-row work BOOST-5 deleted on the canonical side, so this one has a known direction even though the diff is two-way. Beta's copy now carries the binary `rarity` tier through the transform, which is what `getSetRarityMultiplier` reads on both sides.",
-      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "cfd44593ac123bab8c704bcd757a014a1626730cf49cecff1670f73601d842a1"
     },
     {
       "path": "src/types/archetype.ts",

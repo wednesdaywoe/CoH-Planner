@@ -33,7 +33,7 @@
 
 import type { Power, ProcRollSite } from '@/types/power';
 import type { IOSetCategory, IOSetRarity } from '@/types';
-import { getIOSetsForPower, IO_SET_TYPE_TO_CATEGORY } from './io-sets';
+import { getIOSetsForPower } from './io-sets';
 import {
   PROC_DATABASE,
   getProcEffects,
@@ -383,9 +383,14 @@ export function getProcPotential(power: Power): ProcPotential | null {
   return result;
 }
 
-/** Does an IO set's `type` fall under this power-facing category? */
+/**
+ * Does an IO set's `type` fall under this power-facing category?
+ *
+ * Both sides are `BoostSet.GroupName` read twice, so they compare as strings —
+ * see BOOST-2 for what the lookup table that used to sit here cost.
+ */
 function setMatchesCategory(setType: string, category: IOSetCategory): boolean {
-  return IO_SET_TYPE_TO_CATEGORY[setType] === category;
+  return setType === category;
 }
 
 /**

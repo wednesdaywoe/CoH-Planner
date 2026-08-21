@@ -33,87 +33,6 @@ const CATEGORY_MAP: Record<string, IOSetRarity> = {
 };
 
 /**
- * Maps IO set types to IOSetCategory for slotting validation
- * The keys match the exact "type" values from the IO sets data
- */
-export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
-  // Damage categories
-  'Ranged Damage': 'Ranged Damage',
-  'Melee Damage': 'Melee Damage',
-  'Ranged AoE Damage': 'Ranged AoE Damage',
-  'Melee AoE Damage': 'Melee AoE Damage',
-  // Rebirth/Thunderspy's own GroupName for the same two concepts.
-  'Targeted AoE Damage': 'Targeted AoE Damage',
-  'PBAoE Damage': 'PBAoE Damage',
-  'Universal Damage Sets': 'Universal Damage Sets',
-  'Sniper Attacks': 'Sniper Attacks',
-  'Pet Damage': 'Pet Damage',
-  'Recharge Intensive Pets': 'Recharge Intensive Pets',
-
-  // Defense/Resistance
-  'Defense Sets': 'Defense Sets',
-  'Resist Damage': 'Resist Damage',
-
-  // Control (Mez)
-  Holds: 'Holds',
-  Stuns: 'Stuns',
-  Immobilize: 'Immobilize',
-  Sleep: 'Sleep',
-  Confuse: 'Confuse',
-  Fear: 'Fear',
-  Knockback: 'Knockback',
-
-  // Support/Debuff
-  Healing: 'Healing',
-  'Endurance Modification': 'Endurance Modification',
-  'To Hit Buff': 'To Hit Buff',
-  'To Hit Debuff': 'To Hit Debuff',
-  'Defense Debuff': 'Defense Debuff',
-  'Slow Movement': 'Slow Movement',
-  'Threat Duration': 'Threat Duration',
-  // Rebirth/Thunderspy's own GroupName for the same Threat Duration concept.
-  Taunt: 'Taunt',
-  'Accurate Defense Debuff': 'Accurate Defense Debuff',
-  'Accurate Healing': 'Accurate Healing',
-  'Accurate To-Hit Debuff': 'Accurate To-Hit Debuff',
-
-  // Travel
-  Running: 'Running',
-  'Running & Sprints': 'Running & Sprints',
-  Leaping: 'Leaping',
-  'Leaping & Sprints': 'Leaping & Sprints',
-  Flight: 'Flight',
-  Teleport: 'Teleport',
-  'Universal Travel': 'Universal Travel',
-
-  // Archetype-specific
-  'Blaster Archetype Sets': 'Blaster Archetype Sets',
-  'Brute Archetype Sets': 'Brute Archetype Sets',
-  'Controller Archetype Sets': 'Controller Archetype Sets',
-  'Corruptor Archetype Sets': 'Corruptor Archetype Sets',
-  'Defender Archetype Sets': 'Defender Archetype Sets',
-  'Dominator Archetype Sets': 'Dominator Archetype Sets',
-  'Mastermind Archetype Sets': 'Mastermind Archetype Sets',
-  'Scrapper Archetype Sets': 'Scrapper Archetype Sets',
-  'Stalker Archetype Sets': 'Stalker Archetype Sets',
-  'Tanker Archetype Sets': 'Tanker Archetype Sets',
-  'Sentinel Archetype Sets': 'Sentinel Archetype Sets',
-  'Kheldian Archetype Sets': 'Kheldian Archetype Sets',
-  'Soldiers of Arachnos Archetype Sets': 'Soldiers of Arachnos Archetype Sets',
-  'Guardian Archetype Sets': 'Guardian Archetype Sets',
-  'Primalist Archetype Sets': 'Primalist Archetype Sets',
-
-  // Rebirth Challenge Enhancement categories — universal mez set (Forced
-  // Indoctrination) + the single-piece Rest enhancement (Inexhaustibility).
-  // Without these identity entries the picker silently drops the sets even
-  // though the per-power `allowedSetCategories` already lists the category.
-  'Universal Control Duration Sets': 'Universal Control Duration Sets',
-  'Rest Buff': 'Rest Buff',
-  'Universal Debuff': 'Universal Debuff',
-  'Rez Sets': 'Rez Sets',
-};
-
-/**
  * Maps archetype IDs to their ATO (Archetype Origin) set category.
  * In CoH, ATOs can be slotted into ANY power of the matching archetype.
  */
@@ -322,10 +241,12 @@ export function getIOSetsByRarity(rarity: IOSetRarity): IOSet[] {
  * Get all IO sets that can be slotted in a power category
  */
 export function getIOSetsForCategory(category: IOSetCategory): IOSet[] {
-  return Object.values(_activeRegistry()).filter((set) => {
-    const mappedCategory = IO_SET_TYPE_TO_CATEGORY[set.type];
-    return mappedCategory === category;
-  });
+  // A set's `type` and a power's allowed categories are the same field read twice
+  // (`BoostSet.GroupName`), so they compare as strings. The lookup table that used
+  // to sit between them mapped all 56 headings to themselves and answered
+  // `undefined` for anything it had not been told about, which dropped a fork's
+  // sets from the picker silently rather than failing — see BOOST-2.
+  return Object.values(_activeRegistry()).filter((set) => set.type === category);
 }
 
 /**
@@ -333,10 +254,9 @@ export function getIOSetsForCategory(category: IOSetCategory): IOSet[] {
  */
 export function getIOSetsForPower(allowedCategories: IOSetCategory[] = []): IOSet[] {
   if (!allowedCategories || allowedCategories.length === 0) return [];
-  return Object.values(_activeRegistry()).filter((set) => {
-    const mappedCategory = IO_SET_TYPE_TO_CATEGORY[set.type];
-    return mappedCategory && allowedCategories.includes(mappedCategory);
-  });
+  return Object.values(_activeRegistry()).filter(
+    (set) => allowedCategories.includes(set.type as IOSetCategory),
+  );
 }
 
 /**

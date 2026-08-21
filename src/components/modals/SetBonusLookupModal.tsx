@@ -10,7 +10,6 @@
 import { useState, useMemo, useCallback } from 'react';
 import { Modal } from './Modal';
 import { useBuild } from '@/stores/buildStore';
-import { IO_SET_TYPE_TO_CATEGORY } from '@/data/io-sets';
 import type { IOSetCategory } from '@/types';
 import {
   getEffects,
@@ -174,10 +173,9 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
     });
 
     if (myPowersOnly && slottableCategories.size > 0) {
-      entries = entries.filter(entry => {
-        const mappedCategory = IO_SET_TYPE_TO_CATEGORY[entry.setType] as IOSetCategory | undefined;
-        return mappedCategory && slottableCategories.has(mappedCategory);
-      });
+      entries = entries.filter(entry =>
+        slottableCategories.has(entry.setType as IOSetCategory),
+      );
     }
 
     return entries;
@@ -331,8 +329,8 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
 
 function canSlot(entry: LookupEntry, slottableCategories: Set<IOSetCategory>): boolean {
   if (slottableCategories.size === 0) return true;
-  const mapped = IO_SET_TYPE_TO_CATEGORY[entry.setType] as IOSetCategory | undefined;
-  return !!mapped && slottableCategories.has(mapped);
+  // `setType` and the power's allowed categories are both `BoostSet.GroupName`.
+  return slottableCategories.has(entry.setType as IOSetCategory);
 }
 
 const RARITY_BADGE: Record<string, { label: string; className: string }> = {

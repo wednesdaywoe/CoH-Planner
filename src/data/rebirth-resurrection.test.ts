@@ -2,18 +2,17 @@ import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { IO_SETS_RAW as IO_SETS_RAW_REBIRTH } from './datasets/rebirth/io-sets-raw';
-import { IO_SET_TYPE_TO_CATEGORY } from './io-sets';
 
 /**
- * Rebirth "Rez Sets" category (Return From The Grave / Superior).
+ * Rebirth's "Rez Sets" category (Return From The Grave / Superior).
  *
- * Rebirth's first-ever Rez IO Set. Its 60-power pool is exclusively
- * resurrection powers (Revive, Rise of the Phoenix, Soul Transfer, Resurgence,
- * Howling Twilight, Resurrect, Rebirth, Mutation, Stygian Return, …). No
- * common-rarity set shares that pool, so pool-matching used to fail and an
- * AT-prefix fallback mislabeled it "Brute Archetype Sets" off its first rez
- * power (Brute_Defense.Dark_Armor.Soul_Transfer). "Rez Sets" is the set's own
- * authoritative GroupName, read straight from the binary. See HOMECOMING_PARSER.
+ * Rebirth's first-ever Rez IO Set. Its 60-power pool is exclusively resurrection
+ * powers (Revive, Rise of the Phoenix, Soul Transfer, Resurgence, Howling Twilight,
+ * Resurrect, Rebirth, Mutation, Stygian Return, …), which no common-rarity set
+ * shares — so every attempt to infer the category from the conversion groups landed
+ * somewhere wrong, most memorably "Brute Archetype Sets" off the first rez power in
+ * the pool (Brute_Defense.Dark_Armor.Soul_Transfer). The record states "Rez Sets" in
+ * its GroupName and always did; BOOST-2 stopped inferring and read it.
  */
 function gen(rel: string): string {
   const p = fileURLToPath(new URL(`./datasets/rebirth/generated/powersets/${rel}`, import.meta.url));
@@ -28,10 +27,6 @@ describe('Rebirth Resurrection (Return From The Grave) categorization', () => {
   it('the set itself is typed "Rez Sets", not "Brute Archetype Sets"', () => {
     expect(IO_SETS_RAW_REBIRTH['return_from_the_grave']?.type).toBe('Rez Sets');
     expect(IO_SETS_RAW_REBIRTH['superior_return_from_the_grave']?.type).toBe('Rez Sets');
-  });
-
-  it('the "Rez Sets" set type maps to the "Rez Sets" picker category', () => {
-    expect(IO_SET_TYPE_TO_CATEGORY['Rez Sets']).toBe('Rez Sets');
   });
 
   it('a non-Brute rez power (Scrapper Revive) gains Rez Sets and DROPS the spurious Brute Archetype Sets', () => {

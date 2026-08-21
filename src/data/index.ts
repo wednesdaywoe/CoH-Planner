@@ -42,8 +42,6 @@ export {
   getGenericIOIconPath,
   getOriginIconPath,
   // Category mappings
-  SET_CATEGORY_TO_ENHANCEMENT,
-  getEnhancementTypesForCategory,
   CATEGORY_PRIORITY,
   sortCategoriesByPriority,
   // Display config
@@ -78,7 +76,6 @@ export {
   getIOSetPiece,
   getSetBonusesAtCount,
   getAllIOSetTypes,
-  IO_SET_TYPE_TO_CATEGORY,
   IO_SET_RARITIES,
   getIOSetRarityInfo,
   ARCHETYPE_ATO_CATEGORY,

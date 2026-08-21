@@ -223,3 +223,84 @@ describe('fork category spellings', () => {
     expect(THUNDERSPY[setId]?.type).toBe(forkName);
   });
 });
+
+/**
+ * The class rather than the instance: a heading vocabulary is complete or it is absent.
+ *
+ * The three cases above each grade one *named* list — `IO_SET_CATEGORIES`,
+ * `CATEGORY_PRIORITY` — and are blind to a fourth list nobody thought to name here.
+ * The twin carried exactly that: an `IO_SET_TYPE_TO_CATEGORY` keyed by heading and
+ * mapping all 56 to themselves, interposed between a set's `type` and a power's
+ * category by `getIOSetsForCategory`, `getIOSetsForPower`, the set-bonus lookup modal
+ * and the proc-potential scorer. It agreed with the data on every row, so no test
+ * could have caught it by value — but it answered `undefined` for a heading it had
+ * not been told about, and a heading it has not been told about is exactly what the
+ * next fork ships. That is BOOST-2's failure mode rebuilt, waiting for the data to
+ * move.
+ *
+ * So this grades no particular list. Any export keyed by slotting headings is a
+ * vocabulary, and a vocabulary that is missing one is a silent drop — including one
+ * added after this file was written.
+ *
+ * Which is the point: its first run found a third list, in this repo, that the twin
+ * had nothing to do with. `SET_CATEGORY_TO_ENHANCEMENT` in `enhancement-registry.ts`
+ * stated 53 of the 56 — no Guardian Archetype Sets, no Rest Buff, no Universal
+ * Control Duration Sets — behind a reader that answered `|| []`, so those three
+ * headings reported that nothing enhances them. It had no consumer left, and its own
+ * comments called it a fallback superseded by the binary, so it was deleted rather
+ * than completed; hardcoding the three missing rows would have been the Rule 0 breach
+ * the table already was.
+ */
+describe('every heading vocabulary in the data layer is complete', () => {
+  const HEADINGS = new Set<string>(IO_SET_CATEGORIES);
+
+  /**
+   * A record keyed by headings, or an array of them.
+   *
+   * Keyed by *most* of its keys being headings, not by a count of them: several
+   * headings are also enhancement stat names, so `STAT_ICON_MAP` matches nine of
+   * the 56 while being no kind of slotting vocabulary. A real one is all headings
+   * (both live lists are 56 of 56); the overlap tops out at a third.
+   */
+  function headingKeys(value: unknown): string[] | null {
+    let keys: string[];
+    if (Array.isArray(value)) {
+      if (!value.every((v) => typeof v === 'string')) return null;
+      keys = value as string[];
+    } else if (value && typeof value === 'object' && Object.getPrototypeOf(value) === Object.prototype) {
+      keys = Object.keys(value);
+    } else {
+      return null;
+    }
+    if (!keys.length) return null;
+    return keys.filter((k) => HEADINGS.has(k)).length / keys.length > 0.5 ? keys : null;
+  }
+
+  it('and there are some, so the sweep is not vacuously green', async () => {
+    const found = await headingVocabularies();
+    expect(found.map(([name]) => name).sort()).toEqual(['CATEGORY_PRIORITY', 'IO_SET_CATEGORIES']);
+  });
+
+  it('each states all 56 headings, so none can answer `undefined` for a real set', async () => {
+    for (const [name, keys] of await headingVocabularies()) {
+      const missing = [...HEADINGS].filter((h) => !keys.includes(h)).sort();
+      expect(missing, `${name} is missing headings a fork's sets carry`).toEqual([]);
+    }
+  });
+
+  async function headingVocabularies(): Promise<[string, string[]][]> {
+    const mods: [string, Record<string, unknown>][] = [
+      ['@/types/common', await import('@/types/common')],
+      ['@/data/io-sets', await import('./io-sets')],
+      ['@/data/enhancement-registry', await import('./enhancement-registry')],
+    ];
+    const found: [string, string[]][] = [];
+    for (const [, mod] of mods) {
+      for (const [name, value] of Object.entries(mod)) {
+        const keys = headingKeys(value);
+        if (keys) found.push([name, keys]);
+      }
+    }
+    return found;
+  }
+});
