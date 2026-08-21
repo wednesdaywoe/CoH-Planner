@@ -2216,15 +2216,15 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
     return calculateSingleEnhancementValues(slot, build.level, getIOSet, exemplarLevel);
   }, [set, piece, attunementEnabled, effectiveLevel, globalBoostLevel, build.level, exemplarLevel]);
 
-  // The multi-aspect penalty note under the list. Picks up special segments encoded only in
-  // the piece name (e.g. "EndMod/+Run Speed" → 2 effective aspects), the same classifier the
-  // calculation applies.
+  // The multi-aspect penalty note under the list, through the same classifier the
+  // calculation applies. Picks up the hidden global/proc segments that dilute a
+  // named aspect without appearing in the list, which reach the piece as the
+  // scale-derived `totalAspects`.
   const rawAspectCount = piece.aspects.filter((a) => normalizeAspectName(a) !== null).length || piece.aspects.length;
   const aspectCount = getEffectiveAspectCount(
     piece.aspects.slice(0, rawAspectCount),
     !!piece.proc,
     piece.totalAspects,
-    piece.name,
   );
 
   const calculateAspectValue = (aspect: string): number | null =>

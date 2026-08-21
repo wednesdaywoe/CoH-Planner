@@ -79,12 +79,19 @@ describe('evaluateConditionTri — the third value', () => {
   });
 });
 
-const power = (variants: { internalName: string; condition: string[]; rechargeTime: number }[]) =>
+// `stats.recharge`, not a top-level scalar: that is the shape the generated variants
+// ship, and `applyFormVariant` spreads the variant over the power, so a variant that
+// states `stats` replaces the object wholesale.
+const power = (variants: { internalName: string; condition: string[]; recharge: number }[]) =>
   ({
     name: 'Assassin’s Claw',
     internalName: 'Assassins_Claw',
-    rechargeTime: 15,
-    formVariants: variants,
+    stats: { recharge: 15 },
+    formVariants: variants.map(({ internalName, condition, recharge }) => ({
+      internalName,
+      condition,
+      stats: { recharge },
+    })),
   }) as unknown as Power;
 
 describe('applyFormVariant — the walk stops where the engine stops', () => {
@@ -92,33 +99,33 @@ describe('applyFormVariant — the walk stops where the engine stops', () => {
     // The shipped shape: `kMeter source> .9 <` then `1`. Two-valued, the walk skipped the first
     // and took the second, giving recharge 14 against the export's 15.
     const p = power([
-      { internalName: 'Assassins_Claw_Quick', condition: ['kMeter', 'source>', '.9', '<'], rechargeTime: 14 },
-      { internalName: 'Assassins_Claw_Stealth', condition: ['1'], rechargeTime: 13 },
+      { internalName: 'Assassins_Claw_Quick', condition: ['kMeter', 'source>', '.9', '<'], recharge: 14 },
+      { internalName: 'Assassins_Claw_Stealth', condition: ['1'], recharge: 13 },
     ]);
-    expect(applyFormVariant(p, ctx()).rechargeTime).toBe(15);
+    expect(applyFormVariant(p, ctx()).stats?.recharge).toBe(15);
   });
 
   it('still selects a variant whose gate reads definitely true', () => {
     const p = power([
-      { internalName: 'Quick', condition: ['kEngaged', 'Source.Mode?'], rechargeTime: 14 },
-      { internalName: 'Fallback', condition: ['1'], rechargeTime: 13 },
+      { internalName: 'Quick', condition: ['kEngaged', 'Source.Mode?'], recharge: 14 },
+      { internalName: 'Fallback', condition: ['1'], recharge: 13 },
     ]);
-    expect(applyFormVariant(p, ctx({ liveModes: new Set(['kengaged']) })).rechargeTime).toBe(14);
+    expect(applyFormVariant(p, ctx({ liveModes: new Set(['kengaged']) })).stats?.recharge).toBe(14);
   });
 
   it('still walks past a variant whose gate reads definitely false', () => {
     const p = power([
-      { internalName: 'Quick', condition: ['kEngaged', 'Source.Mode?'], rechargeTime: 14 },
-      { internalName: 'Fallback', condition: ['1'], rechargeTime: 13 },
+      { internalName: 'Quick', condition: ['kEngaged', 'Source.Mode?'], recharge: 14 },
+      { internalName: 'Fallback', condition: ['1'], recharge: 13 },
     ]);
-    expect(applyFormVariant(p, ctx()).rechargeTime).toBe(13);
+    expect(applyFormVariant(p, ctx()).stats?.recharge).toBe(13);
   });
 
   it('walks past an absorbed unknown, which is a definite false and not a stop', () => {
     const p = power([
-      { internalName: 'Ranged', condition: ['kBoostRange', 'Source.Mode?', 'distance', '7', '>', '&&'], rechargeTime: 14 },
-      { internalName: 'Fallback', condition: ['1'], rechargeTime: 13 },
+      { internalName: 'Ranged', condition: ['kBoostRange', 'Source.Mode?', 'distance', '7', '>', '&&'], recharge: 14 },
+      { internalName: 'Fallback', condition: ['1'], recharge: 13 },
     ]);
-    expect(applyFormVariant(p, ctx()).rechargeTime).toBe(13);
+    expect(applyFormVariant(p, ctx()).stats?.recharge).toBe(13);
   });
 });

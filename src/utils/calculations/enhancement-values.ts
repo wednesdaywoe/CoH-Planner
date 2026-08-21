@@ -521,75 +521,113 @@ export interface ParsedBonuses {
 }
 
 /**
- * Get the multi-aspect modifier for IO set pieces
- * Per Homecoming Wiki:
- * - 1 aspect: 100% of base value
- * - 2 aspects: 62.5% (5/8) of base value per aspect
- * - 3 aspects: 50% of base value per aspect
- * - 4 aspects: 43.75% of base value per aspect
+ * Per-aspect scale for an IO set piece by aspect count — the dataset's
+ * multi-aspect ladder (modal standard crafted-piece fScale; 1 / 0.625 / 0.5
+ * / 0.4375 on all three committed datasets). Counts past the ladder's last
+ * rung keep its scale: an aspect list runs to four at most, but the
+ * scale-derived `totalAspects` reaches 8 (Rebirth's Return From The Grave
+ * "Rez Effects/Endurance/Recharge"), and 11 pieces across the three forks sit
+ * past rung 4. A non-positive or fractional count is malformed input and
+ * fails loud.
  */
 export function getMultiAspectModifier(aspectCount: number): number {
-  switch (aspectCount) {
-    case 1: return 1.0;
-    case 2: return 0.625;  // 5/8
-    case 3: return 0.5;
-    case 4:
-    default: return 0.4375;
+  if (!Number.isInteger(aspectCount) || aspectCount < 1) {
+    throw new Error(`IO piece aspect count must be a positive integer, got ${aspectCount}`);
   }
+  const { multiAspectScale } = getEnhancementCurves();
+  return multiAspectScale[Math.min(aspectCount, multiAspectScale.length) - 1];
 }
 
+/** Enhancement multiplier of the 25%-hot rarity tiers (purples + catalyzed Superior variants). */
+const HIGH_RARITY_MULTIPLIER = 1.25;
+
 /**
- * Get the rarity-based enhancement multiplier for IO sets.
- * Purple (Very Rare) and Superior sets get 25% higher enhancement values.
+ * Enhancement multiplier per binary rarity tier (`boostsets.bin`). The 25%-hot
+ * tiers are the very-rare (purple) tiers and the catalyzed Superior variants;
+ * everything else — including the Rebirth one-off event tiers — enhances at
+ * standard values. Closed vocabulary: an unknown tier must surface, never
+ * silently enhance at 1.0. (Replaces the category=='purple' / "Superior"
+ * name-prefix heuristic — SOURCE-1 item 3.)
  */
-export function getSetRarityMultiplier(category?: string, name?: string): number {
-  if (category === 'purple') return 1.25;
-  if (name?.startsWith('Superior')) return 1.25;
-  return 1.0;
+const RARITY_TIER_MULTIPLIER: Record<string, number> = {
+  ECCommon: 1,
+  ECUncommon: 1,
+  ECRare: 1,
+  ECPvP: 1,
+  ECPVP: 1,
+  ECATO: 1,
+  ECATO2: 1,
+  ECWinter: 1,
+  ECHalloween: 1,
+  ECSummer: 1,
+  ECUniversalDamage: 1,
+  // Rebirth one-off event tiers (Liberty's Belt, Imperial Might, Forced
+  // Indoctrination, Synapse's Agility, Inexhaustibility's blank tier).
+  LibertysBelt: 1,
+  ImperialMight: 1,
+  ForcedIndoctrination: 1,
+  ECSpeedRun: 1,
+  '': 1,
+  ECVeryRare: HIGH_RARITY_MULTIPLIER,
+  ECUltraRare: HIGH_RARITY_MULTIPLIER,
+  ECSATO: HIGH_RARITY_MULTIPLIER,
+  ECSATO2: HIGH_RARITY_MULTIPLIER,
+  ECSWinter: HIGH_RARITY_MULTIPLIER,
+  ECSHalloween: HIGH_RARITY_MULTIPLIER,
+};
+
+/** Get the rarity-based enhancement multiplier for an IO set's binary rarity tier. */
+export function getSetRarityMultiplier(rarity: string): number {
+  const multiplier = RARITY_TIER_MULTIPLIER[rarity];
+  if (multiplier === undefined) {
+    throw new Error(`Unknown set rarity tier "${rarity}" — not in the binary rarity vocabulary`);
+  }
+  return multiplier;
 }
 
 /**
  * Count the effective aspect "slots" on an IO set piece for the multi-aspect
  * scheduling penalty. The explicit `aspects` array only lists enhancement
- * attributes the piece directly enhances; it omits global-proc, power-grant,
- * and other special segments that nonetheless count toward the penalty.
- *
- * The piece's display name reflects every segment (e.g. "EndMod/+Run Speed",
- * "Range/Fast Snipe", "Recharge/+Dam(All)/+Max HitPoints/+Res(All)") and is
- * the most reliable signal across both legacy Mids data (HC) and bin-derived
- * Rebirth data — which inconsistently tag `proc: true` on pieces of this
- * shape (Thrust #4 is `proc: true`, Synapse's Shock #6 is `proc: false`,
- * despite both being "X/+Y" patterns).
+ * attributes the piece directly enhances; it omits the global-proc and
+ * power-grant segments that nonetheless count toward the penalty.
  *
  * Rules, in priority order:
- *   1. Explicit `totalAspects` wins (used for pieces with internal multi-
- *      attribute effects like +Critical Hit% that count as 3 extra).
- *   2. Otherwise: max of the explicit `aspects.length` (+1 if `isProc`) and
- *      the slash-segment count of the piece name.
+ *   1. Explicit `totalAspects` wins. The extractor recovers it by inverting the
+ *      piece's own enhancement scale, which is the game's authoritative dilution,
+ *      and emits it exactly where the aspect list under-counts.
+ *   2. Otherwise the aspect list, plus one for a proc's hidden segment.
  *
  * Heal and Absorb share a single enhancement category in-game: the Healing
  * enhancement boosts both attributes at the same value, so a piece listing
  * both occupies just ONE aspect slot for the scheduling penalty. The data
- * carries Absorb as its own aspect (and name segment) so it surfaces as a
- * distinct enhanced stat, but it must not dilute the per-aspect value — e.g.
- * "Heal/Absorb/Recharge" is a 2-aspect piece (26.5% @ L50), not 3 (21.2%),
- * and a pure "Heal/Absorb" is a 1-aspect piece (42.4%), not 2. Collapse the
- * pair in both the explicit-aspect and name-segment counts.
+ * carries Absorb as its own aspect so it surfaces as a distinct enhanced stat,
+ * but it must not dilute the per-aspect value — "Heal/Absorb/Recharge" is a
+ * 2-aspect piece (26.5% @ L50), not 3 (21.2%), and a pure "Heal/Absorb" is a
+ * 1-aspect piece (42.4%), not 2.
+ *
+ * The piece's display NAME is not an input. It once was, as a second count that
+ * won when it was larger, back when names were assembled from the same attribs
+ * as the aspect list. Names are the game's own now — read off the boost power —
+ * and the game writes "Healing/Absorb", which the collapse above does not match:
+ * counting its segments would dilute exactly the pieces the collapse exists for.
+ * Measured across all three forks, taking the larger of the two counts moves
+ * 145 of the 3,653 pieces, and every one of them moves the wrong way: 114 are
+ * the Heal/Absorb pieces the collapse exists for, and the other 31 are pieces
+ * whose name segments outrun their aspect list (Mocking Beratement's
+ * "Taunt/Placate", Thunderspy's "Fear/Endurance/Recharge" over
+ * `[Range, Terrorize]`). The extractor derives every piece's count from its
+ * own enhancement scale and emits `totalAspects` whenever that exceeds the
+ * aspect list, so on a piece with no override the list is not silence — it is
+ * the measured answer, and a name count can only inflate it.
  */
 export function getEffectiveAspectCount(
   aspects: string[],
   isProc: boolean,
   totalAspects: number | undefined,
-  pieceName: string,
 ): number {
   if (totalAspects != null) return totalAspects;
-  const aspectsHaveHealAbsorb = aspects.includes('Heal') && aspects.includes('Absorb');
-  const explicit = aspects.length + (isProc ? 1 : 0) - (aspectsHaveHealAbsorb ? 1 : 0);
-  if (!pieceName) return explicit;
-  const segments = pieceName.split('/');
-  const nameHasHealAbsorb = segments.includes('Heal') && segments.includes('Absorb');
-  const nameSegments = segments.length - (nameHasHealAbsorb ? 1 : 0);
-  return Math.max(explicit, nameSegments);
+  const healAbsorb = aspects.includes('Heal') && aspects.includes('Absorb');
+  return aspects.length + (isProc ? 1 : 0) - (healAbsorb ? 1 : 0);
 }
 
 // "Mez" is the universal-mez aspect carried by Controller and Dominator
@@ -669,14 +707,13 @@ export function parseIOSetPieceValues(
   level = 50,
   isProc = false,
   totalAspects?: number,
-  pieceName = '',
 ): ParsedBonuses {
   if (!aspects || !Array.isArray(aspects)) {
     return {};
   }
 
   const bonuses: ParsedBonuses = {};
-  const effectiveAspectCount = getEffectiveAspectCount(aspects, isProc, totalAspects, pieceName);
+  const effectiveAspectCount = getEffectiveAspectCount(aspects, isProc, totalAspects);
   const modifier = getMultiAspectModifier(effectiveAspectCount);
 
   // Each aspect gets the schedule's value modified by aspect count
@@ -855,7 +892,7 @@ export function calculateSingleEnhancementValues(
 function accumulateRawSlotBonuses(
   slots: PowerWithSlots['slots'],
   globalIOLevel: number,
-  getIOSet: ((setId: string) => { pieces: Array<{ num: number; name?: string; aspects?: string[]; proc?: boolean; totalAspects?: number }>; maxLevel: number; category?: string; name?: string } | undefined) | undefined,
+  getIOSet: ((setId: string) => { pieces: Array<{ num: number; name?: string; aspects?: string[]; proc?: boolean; totalAspects?: number }>; maxLevel: number; rarity: string; category?: string; name?: string } | undefined) | undefined,
   exemplarLevel: number | undefined,
 ): Record<string, number> {
   const rawBonuses: Record<string, number> = {};
@@ -897,9 +934,8 @@ function accumulateRawSlotBonuses(
         const desiredLevel = (slot as { level?: number }).level ?? globalIOLevel;
         ioLevel = Math.min(desiredLevel, set.maxLevel);
       }
-      // Purple and Superior sets get 25% higher enhancement values
-      const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
-      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc, piece.totalAspects, piece.name);
+      const rarityMultiplier = getSetRarityMultiplier(set.rarity);
+      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc, piece.totalAspects);
 
       Object.entries(bonuses).forEach(([aspect, value]) => {
         let scaledValue = value * rarityMultiplier * boostMultiplier;
@@ -957,7 +993,7 @@ function accumulateRawSlotBonuses(
 export function calculatePowerEnhancementBonuses(
   power: PowerWithSlots,
   globalIOLevel = 50,
-  getIOSet?: (setId: string) => { pieces: Array<{ num: number; name?: string; aspects?: string[]; proc?: boolean; totalAspects?: number }>; maxLevel: number; category?: string; name?: string } | undefined,
+  getIOSet?: (setId: string) => { pieces: Array<{ num: number; name?: string; aspects?: string[]; proc?: boolean; totalAspects?: number }>; maxLevel: number; rarity: string; category?: string; name?: string } | undefined,
   exemplarLevel?: number
 ): EnhancementBonuses {
   if (!power?.slots) {

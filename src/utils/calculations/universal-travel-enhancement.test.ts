@@ -52,8 +52,14 @@ describe('Universal Travel aspect ("Move Speed") — data shape', () => {
 });
 
 describe('Universal Travel aspect — enhancement values', () => {
+  // The multi-aspect ladder is read from the active dataset's curves, so the
+  // value assertions below need one loaded.
+  beforeAll(async () => {
+    await loadDataset('homecoming');
+  }, 120_000);
+
   it('a one-slot travel piece enhances run, fly, jump AND range', () => {
-    const bonuses = parseIOSetPieceValues(['Move Speed'], 50, false, undefined, 'Move Speed');
+    const bonuses = parseIOSetPieceValues(['Move Speed'], 50, false, undefined);
     // Schedule A for the travel modes, Schedule B for Range — the two tables in the
     // export. Non-zero is the actual regression; the ratio pins the schedule split.
     for (const key of ['run', 'fly', 'jump', 'range']) {
@@ -65,14 +71,8 @@ describe('Universal Travel aspect — enhancement values', () => {
   });
 
   it('the travel bundle counts as ONE aspect slot, so a second aspect applies the 2-slot rate', () => {
-    const solo = parseIOSetPieceValues(['Move Speed'], 50, false, undefined, 'Move Speed');
-    const duo = parseIOSetPieceValues(
-      ['Endurance', 'Move Speed'],
-      50,
-      false,
-      undefined,
-      'Endurance/Move Speed',
-    );
+    const solo = parseIOSetPieceValues(['Move Speed'], 50, false, undefined);
+    const duo = parseIOSetPieceValues(['Endurance', 'Move Speed'], 50, false, undefined);
     // 0.625 is getMultiAspectModifier(2). If the bundle were counted as four
     // aspects, the piece would land on the 4+ rate (0.4375) instead.
     expect(duo.run! / solo.run!).toBeCloseTo(0.625, 6);

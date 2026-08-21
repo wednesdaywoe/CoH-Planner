@@ -178,6 +178,8 @@ interface LegacySetBonus {
 interface LegacyIOSet {
   name: string;
   category: string;
+  /** Binary rarity tier from boostsets.bin (feeds getSetRarityMultiplier). */
+  rarity: string;
   type: string;
   minLevel: number;
   maxLevel: number;
@@ -200,6 +202,7 @@ function transformIOSet(id: string, legacy: LegacyIOSet): IOSet {
     id,
     name: legacy.name,
     category: (CATEGORY_MAP[legacy.category] || 'uncommon') as IOSetRarity,
+    rarity: legacy.rarity,
     type: legacy.type,
     minLevel: legacy.minLevel,
     maxLevel: legacy.maxLevel,

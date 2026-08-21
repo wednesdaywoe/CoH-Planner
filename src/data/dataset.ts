@@ -23,12 +23,12 @@ import type { LegacyPowerPoolRegistry } from './power-pools';
 // module; the homecoming copy is imported type-only as the contract's
 // reference declaration.
 import type { EnhancementCurvesData } from './datasets/homecoming/generated/enhancement-curves';
+
+export type { EnhancementCurvesData, EnhancementSchedule, OriginTier } from './datasets/homecoming/generated/enhancement-curves';
 // Same rationale as above: the archetype-inherent shape is authored in the
 // homecoming levels module and imported type-only as the contract's reference
 // declaration. Every dataset's generated `archetype-inherents.ts` satisfies it.
 import type { InherentPowerDef } from './datasets/homecoming/levels';
-
-export type { EnhancementCurvesData } from './datasets/homecoming/generated/enhancement-curves';
 
 // ============================================
 // DATA SHAPES SHARED ACROSS DATASETS

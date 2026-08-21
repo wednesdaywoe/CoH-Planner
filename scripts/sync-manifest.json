@@ -369,31 +369,25 @@
       "status": "forked",
       "sha256": {
         "canonical": "34778a59c8b9cf532eceb3f53c66d9dd65033f47f5c1f5c68d95e0ed3355367f",
-        "beta": "b84eab63a8b246a6810b6c28e8b8f459a192963e15e6c6ede8b3b0497615a67e"
+        "beta": "4df10b24657e42817f19dea02c95b4c4bf5a95c1c2beac7f303661f4dce3b8ca"
       },
-      "reason": "The dataset loader, reached by `emit-enhancement-fixtures.cjs`. Forked both ways: 48 lines only canonical has, 67 only beta has. Beta's half is the live site's loading path (lazy chunks, the browser cache) and canonical's is the fixture emitter's, so the two grew apart around what a 'dataset' has to do rather than around a data question.",
+      "reason": "The dataset loader, reached by `emit-enhancement-fixtures.cjs`. Forked both ways: 48 lines only canonical has, 72 only beta has. Beta's half is the live site's loading path (lazy chunks, the browser cache) and canonical's is the fixture emitter's, so the two grew apart around what a 'dataset' has to do rather than around a data question. Both now re-export `EnhancementSchedule` and `OriginTier`, which is what closed the `enhancement-curves.ts` facade above it.",
       "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
       "gap": "FORK-2"
     },
     {
       "path": "src/data/enhancement-curves.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "e3d7aa3a47f6a33ced045ff71212bfd0471a3bc49d76bbb21141510466c75dff",
-        "beta": "ad3eac12eb552582f769d6400fd110e088c0afe4e4b6bbfa4cd74255428e7647"
-      },
-      "reason": "Six lines each way, the smallest of the twelve. Read by `emit-enhancement-fixtures.cjs` through `enhancement-values.ts`.",
-      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "e5803ca732ba9c9873e4e3f44bab1b37f7d00da47d26f4df9f5e39a97cc92577"
     },
     {
       "path": "src/data/io-sets.ts",
       "status": "forked",
       "sha256": {
         "canonical": "118ae7e63ca17a7e0ad74ae3917e8f8bf139a12ddc4cbcece0fdc63a1ddfdbc5",
-        "beta": "f8219beace33ae5c3bb95688c6beae5e5c224a43338036dfb231c4b3fea02494"
+        "beta": "7b334df2ecb6f3256e7d0729c576df6e672954555884b26fe7871849db1e3550"
       },
-      "reason": "31 lines only canonical has and 121 only beta has. The larger beta half is the piece-count-gated pseudo-row work BOOST-5 deleted on the canonical side, so this one has a known direction even though the diff is two-way.",
+      "reason": "29 lines only canonical has and 131 only beta has. The larger beta half is the piece-count-gated pseudo-row work BOOST-5 deleted on the canonical side, so this one has a known direction even though the diff is two-way. Beta's copy now carries the binary `rarity` tier through the transform, which is what `getSetRarityMultiplier` reads on both sides.",
       "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
       "gap": "FORK-2"
     },
@@ -426,31 +420,19 @@
         "canonical": "1c4359e54234afa60a701b7cbffc9ec4bf52aaa76489300173d6fb0db24c7e70",
         "beta": "5dea83125dae3dff783b22e6f936ba50ce60b70b417c6136a12104a12538726c"
       },
-      "reason": "Type fork, 82 lines canonical / 76 beta \u2014 the most balanced of the twelve, and the one most likely to be two independent sets of additions rather than one side lagging.",
+      "reason": "Type fork, 82 lines canonical / 76 beta — the most balanced of the twelve, and the one most likely to be two independent sets of additions rather than one side lagging.",
       "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
       "gap": "FORK-2"
     },
     {
       "path": "src/types/enhancement.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "f7d6fb8f0e4883c7032f6a4d49be979df986e73a353ea8e6f4cefb006c579cc9",
-        "beta": "3ad0c2d9d4d4c45c9bae86b7e975bb1cd28194008b0d30407c917dafd967129c"
-      },
-      "reason": "Type fork, 4 lines canonical / 15 beta.",
-      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "c4fc643b60d60f71fa92d3d64c872fcdba69be97ea7bbb3b9b35e2b899769d7b"
     },
     {
       "path": "src/types/incarnate.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "936df6ddea97e9bfde41a9c0eb2a1a6c353808d15075f69c01df1eb5aa7a2d08",
-        "beta": "05ecff1f0157f78da8994f792fd690b6d22912728a9cbcae88bc47820cb561f7"
-      },
-      "reason": "Type fork, 4 lines each way.",
-      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "936df6ddea97e9bfde41a9c0eb2a1a6c353808d15075f69c01df1eb5aa7a2d08"
     },
     {
       "path": "src/types/index.ts",
@@ -499,10 +481,10 @@
       "path": "src/utils/calculations/enhancement-values.ts",
       "status": "forked",
       "sha256": {
-        "canonical": "caeed2156c576a16208858adc4bdc95d68b921260e85112d311c0161f52eb58c",
-        "beta": "17f0a9084d46a7424beb9bda067f9e7be9fc7c1919c784c11725eb128b8e1fb5"
+        "canonical": "17a07c9dc68c93da3edcac2e0aed91248d6fbe30d366639f9863f2dee80b1951",
+        "beta": "6405bbc031286b2d02e10bb08a2e1e9736b7d7d70a1bd56c159ec18aef2b4ecb"
       },
-      "reason": "The biggest fork on the list: 232 lines only canonical has, 391 only beta has. This is the enhancement math authored twice, which is the shape FORK-1 already flagged as having no file to compare \u2014 it needs a shared conformance corpus, not a copy.",
+      "reason": "The enhancement math authored twice, and still the biggest fork on the list at 159 lines only canonical has and 355 only beta has. Three functions came off it on 2026-08-21 and are now byte-identical: `getMultiAspectModifier`, `getSetRarityMultiplier` and `getEffectiveAspectCount`, adjudicated by the corpus in `src/data/io-sets-aspect-count-corpus.test.ts` rather than by copying a side. The rest is unadjudicated and needs the same treatment, function by function.",
       "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
       "gap": "FORK-2"
     }

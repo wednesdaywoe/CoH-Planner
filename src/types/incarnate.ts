@@ -12,9 +12,9 @@
 /**
  * The main incarnate slots.
  *
- * `genesis` is a 7th slot that only exists on the Rebirth server (added in
- * Rebirth Issue 6). It is a partner-slot amplifier rather than a standalone
- * power, so it is hidden in the UI for datasets that don't have it — see
+ * `genesis` is a 7th slot released only on the Rebirth server. All three exports
+ * define it, but HC and Thunderspy ship dormant placeholders (GENESIS-1), so it
+ * is a partner-slot amplifier offered in the UI only on Rebirth — see
  * `getSelectableIncarnateSlotIds()`. It is still a first-class member of this
  * union so build state, serialization and export handle it uniformly.
  */
@@ -105,7 +105,7 @@ export interface IncarnateBuildState {
   destiny: SelectedIncarnatePower | null;
   lore: SelectedIncarnatePower | null;
   hybrid: SelectedIncarnatePower | null;
-  /** Rebirth-only. Null on Homecoming builds (slot doesn't exist there). */
+  /** Released on Rebirth only; null on HC/tspy builds (slot dormant there). */
   genesis: SelectedIncarnatePower | null;
 }
 

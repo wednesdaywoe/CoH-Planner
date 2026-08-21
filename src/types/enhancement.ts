@@ -170,8 +170,10 @@ export interface IOSet {
   id?: string;
   /** Display name */
   name: string;
-  /** Rarity/category */
+  /** Rarity/category (display grouping) */
   category: IOSetRarity;
+  /** Binary rarity tier from boostsets.bin (feeds getSetRarityMultiplier) */
+  rarity: string;
   /** Power type this set enhances (e.g., "Ranged Damage", "Stuns") */
   type: string;
   /** Minimum level */

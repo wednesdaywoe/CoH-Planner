@@ -1,8 +1,15 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
+import { loadDataset } from '@/data/dataset';
 import {
   getEffectiveAspectCount,
   parseIOSetPieceValues,
 } from './enhancement-values';
+
+// The value curves read from the active dataset (SOURCE-1 SW5); the expected
+// percentages below are Homecoming's.
+beforeAll(async () => {
+  await loadDataset('homecoming');
+});
 
 /**
  * Regression: Heal/Absorb share one enhancement category, so a piece listing
@@ -18,44 +25,39 @@ import {
 describe('Heal/Absorb counts as a single aspect slot', () => {
   it('collapses the Heal+Absorb pair in the effective aspect count', () => {
     // pure Heal (Heal/Absorb) → 1
-    expect(getEffectiveAspectCount(['Heal', 'Absorb'], false, undefined, 'Heal/Absorb')).toBe(1);
+    expect(getEffectiveAspectCount(['Heal', 'Absorb'], false, undefined)).toBe(1);
     // Heal/Recharge (Heal/Absorb/Recharge) → 2
     expect(
-      getEffectiveAspectCount(['Heal', 'Absorb', 'Recharge'], false, undefined, 'Heal/Absorb/Recharge'),
+      getEffectiveAspectCount(['Heal', 'Absorb', 'Recharge'], false, undefined),
     ).toBe(2);
     // Endurance/Heal (Endurance/Heal/Absorb) → 2
     expect(
-      getEffectiveAspectCount(['Endurance', 'Heal', 'Absorb'], false, undefined, 'Endurance/Heal/Absorb'),
+      getEffectiveAspectCount(['Endurance', 'Heal', 'Absorb'], false, undefined),
     ).toBe(2);
     // Endurance/Heal/Recharge (Endurance/Heal/Absorb/Recharge) → 3
     expect(
-      getEffectiveAspectCount(
-        ['Endurance', 'Heal', 'Absorb', 'Recharge'],
-        false,
-        undefined,
-        'Endurance/Heal/Absorb/Recharge',
-      ),
+      getEffectiveAspectCount(['Endurance', 'Heal', 'Absorb', 'Recharge'], false, undefined),
     ).toBe(3);
   });
 
   it('does not affect pieces without the Heal+Absorb pair', () => {
-    expect(getEffectiveAspectCount(['Endurance', 'Recharge'], false, undefined, 'Endurance/Recharge')).toBe(2);
-    expect(getEffectiveAspectCount(['Recharge'], false, undefined, 'Recharge')).toBe(1);
+    expect(getEffectiveAspectCount(['Endurance', 'Recharge'], false, undefined)).toBe(2);
+    expect(getEffectiveAspectCount(['Recharge'], false, undefined)).toBe(1);
   });
 
   it('values Doctored Wounds pieces per the bug report (@ L50)', () => {
     const round = (v: number) => Math.round(v * 1000) / 10; // → percent, 1 decimal
 
-    const healRecharge = parseIOSetPieceValues(['Heal', 'Absorb', 'Recharge'], 50, false, undefined, 'Heal/Absorb/Recharge');
+    const healRecharge = parseIOSetPieceValues(['Heal', 'Absorb', 'Recharge'], 50, false, undefined);
     expect(round(healRecharge.heal)).toBe(26.5);
     expect(round(healRecharge.absorb)).toBe(26.5);
     expect(round(healRecharge.recharge)).toBe(26.5);
 
-    const pureHeal = parseIOSetPieceValues(['Heal', 'Absorb'], 50, false, undefined, 'Heal/Absorb');
+    const pureHeal = parseIOSetPieceValues(['Heal', 'Absorb'], 50, false, undefined);
     expect(round(pureHeal.heal)).toBe(42.4);
     expect(round(pureHeal.absorb)).toBe(42.4);
 
-    const endRecharge = parseIOSetPieceValues(['Endurance', 'Recharge'], 50, false, undefined, 'Endurance/Recharge');
+    const endRecharge = parseIOSetPieceValues(['Endurance', 'Recharge'], 50, false, undefined);
     expect(round(endRecharge.endurance)).toBe(26.5);
     expect(round(endRecharge.recharge)).toBe(26.5);
   });

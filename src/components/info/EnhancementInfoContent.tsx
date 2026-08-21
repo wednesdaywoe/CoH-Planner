@@ -127,14 +127,12 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
     // don't appear in the aspects array but still count toward the
     // multi-aspect penalty. Mirrors the main calc engine's behavior.
     const piece = ioSet?.pieces.find((p) => p.num === ioEnh.pieceNum);
-    const pieceName = piece?.name || '';
     const pieceTotalAspects = (piece as { totalAspects?: number } | undefined)?.totalAspects;
     const rawAspectCount = ioEnh.aspects.filter(a => normalizeAspectName(a) !== null).length || ioEnh.aspects.length;
     const effectiveAspectCount = getEffectiveAspectCount(
       ioEnh.aspects.slice(0, rawAspectCount),
       !!ioEnh.isProc,
       pieceTotalAspects,
-      pieceName,
     );
     const aspectModifier = getMultiAspectModifier(effectiveAspectCount);
 
