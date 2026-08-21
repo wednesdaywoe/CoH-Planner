@@ -12,13 +12,14 @@
  * and the net-strength clamp bounds (StrengthMin / StrengthMax) of the two
  * reduction aspects: rechargeFloor/rechargeCap (the −75% debuff floor and the
  * +400% recharge cap) and enduranceFloor/enduranceCap (a divide-guard epsilon
- * and the +400% endurance-discount cap), plus movementBase/movementCapTable
- * (Phase 5 — the travel scales and the per-level ceilings ClampCur bounds them
- * against, in scale units: 1.0 = 21 ft/s for the speeds, 4 ft for jump height),
- * and the attribute ceilings of Phase 6 (DATA-GAP-REGISTER CAPS-1): toHit/
+ * and the +400% endurance-discount cap), plus movementFloor/movementBase/
+ * movementCapTable (Phase 5 — the travel scales and the pair of bounds ClampCur
+ * holds them between, in scale units: 1.0 = 21 ft/s for the speeds, 4 ft for
+ * jump height), and the attribute ceilings of Phase 6 (CAPS-1): toHit/
  * regeneration/recovery as a base scalar plus a per-level cap table, the single
- * per-level defenseCeilingTable (a real clamp far ABOVE the purple-patch softcap,
- * which is a threshold and stays separate), and maxEndurance base/cap.
+ * per-level defenseCeilingTable with its defenseFloor scalar (a real clamp far
+ * ABOVE the purple-patch softcap, which is a threshold and stays separate), and
+ * maxEndurance base/cap.
  */
 
 /** One value per travel axis, keyed as the calc totals key them. */
@@ -48,6 +49,10 @@ export interface ArchetypeBinaryStats {
   rechargeCap: number;
   enduranceFloor: number;
   enduranceCap: number;
+  /** The lowest scale ClampCur lets a debuff push each axis to — AttribMin.
+   *  0.1 run/fly and 0.0 jump on every player class, so a grounding power
+   *  leaves a crawl rather than a negative speed (DATA-GAP-REGISTER MOVEMIN-1). */
+  movementFloor: MovementAxes;
   movementBase: MovementAxes;
   movementCapTable: MovementAxisTables;
   toHitBase: number;
@@ -57,6 +62,12 @@ export interface ArchetypeBinaryStats {
   recoveryBase: number;
   recoveryCapTable: number[];
   defenseCeilingTable: number[];
+  /** The lowest ClampCur lets a debuff push typed defense — AttribMin's
+   *  scalar, −1.0 on every player archetype. The game writes "your defense
+   *  is negated" as a saturating magnitude (Thunderspy Organic Armor states
+   *  Defense −500 under Defensive Adaptation), so without this the debuff
+   *  resolves to nothing at all (DATA-GAP-REGISTER ATTRMIN-1). */
+  defenseFloor: number;
   maxEnduranceTable: number[];
   maxEnduranceCapTable: number[];
   hpTable: number[];
@@ -80,6 +91,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -142,6 +154,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038,
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -190,6 +203,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -252,6 +266,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038,
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -300,6 +315,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -362,6 +378,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75,
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -410,6 +427,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -472,6 +490,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505,
       2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -520,6 +539,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -582,6 +602,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75,
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -630,6 +651,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -692,6 +714,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75,
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -740,6 +763,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -802,6 +826,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75,
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -850,6 +875,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -912,6 +938,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75,
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -960,6 +987,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -1022,6 +1050,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75,
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -1070,6 +1099,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -1132,6 +1162,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038,
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -1180,6 +1211,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -1242,6 +1274,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038,
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -1290,6 +1323,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -1352,6 +1386,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75,
       1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75, 1.75
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -1400,6 +1435,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -1462,6 +1498,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038,
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -1510,6 +1547,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -1572,6 +1610,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505,
       2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505, 2.2505
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -1620,6 +1659,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     rechargeCap: 5,
     enduranceFloor: 0.0001,
     enduranceCap: 5,
+    movementFloor: { runSpeed: 0.1, flySpeed: 0.1, jumpSpeed: 0, jumpHeight: 0 },
     movementBase: { runSpeed: 1, flySpeed: 1.5, jumpSpeed: 1, jumpHeight: 1 },
     movementCapTable: {
       runSpeed: [
@@ -1682,6 +1722,7 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038,
       2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038, 2.0038
     ],
+    defenseFloor: -1,
     maxEnduranceTable: [
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
       100, 100, 100, 100, 100, 100, 100, 100, 100, 100,

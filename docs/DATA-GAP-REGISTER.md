@@ -24,9 +24,9 @@ Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a
 doesn't accumulate closure prose.
 
 - **FORK-1** — the three converters are reconciled and the two repos' generated powerset trees are
-  byte-identical on all three forks (2026-08-21); waiting on the 14 remaining forked scripts
+  byte-identical on all three forks (2026-08-21); waiting on the 12 remaining forked scripts
 - **FORK-2** — the guard watched `scripts/` while the pipeline also EXECUTES twelve forked `src/`
-  modules; the manifest now covers them and eight are reconciled, waiting on the other four plus
+  modules; the manifest now covers them and nine are reconciled, waiting on the other three plus
   the two the closure of `dataset.ts` pulled onto the surface
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
@@ -259,12 +259,12 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   had forked, `convert-powerset.cjs` by 714 lines in BOTH directions, and the beta still shipped a
   `dual_pistols` proper noun in a converter conditional plus the hand table MAXBOOST-1 retired; a
   hash manifest now adjudicates every shared path, the three converters are reconciled and PAR2
-  crossed to canonical, and 14 forked scripts remain
+  crossed to canonical, and 12 forked scripts remain
 - [ ] **FORK-2** — `convert-powerset.cjs` loads its atom encoder from `src/` at runtime, so three
   byte-identical converters still emitted different files; twelve `src/` modules the pipeline
   executes had forked in BOTH directions and no guard watched any of them, because the manifest
-  discovered its surface from `git ls-files scripts` alone; eight reconciled, and closing
-  `dataset.ts` widened the derived surface to 74 paths and put two more modules on it
+  discovered its surface from `git ls-files scripts` alone; nine reconciled, and `archetype.ts`
+  answered for 22 of the 27 fields its own pipeline writes onto every archetype
 - [x] **FIXTURE-1** — the manually-emitted gate fixtures (procs, movement, set-bonus) drifted on
   sampling identity and labels only, no values; all three re-emitted, gates green, and the
   emitters now run in `npm run regen` so the drift class is closed

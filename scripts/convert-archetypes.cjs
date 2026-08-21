@@ -125,33 +125,58 @@ function attributeCeilings(at, attribs) {
     if (!perLevel(`${exportKey}_cap`, `${name}CapTable`)) return null;
   }
   if (!perLevel('defense_cap', 'defenseCeilingTable')) return null;
+  // The other half of the same clamp: AttribMin's scalar, −1.0 on every player
+  // archetype (ATTRMIN-1). Validated `<= 0` rather than `< 0` because a 0.0
+  // floor is real data on the classes that author one, and validated at all
+  // because a POSITIVE defense floor would mean defense can never go negative —
+  // a claim no dataset makes about a player class.
+  const defenseFloor = attribs.defense_floor;
+  if (typeof defenseFloor !== 'number' || !(defenseFloor <= 0)) {
+    console.warn(`Warning: ${at} missing/invalid defense_floor (${defenseFloor}) — re-run export_classes.py — skipping`);
+    return null;
+  }
+  out.defenseFloor = r4(defenseFloor);
   if (!perLevel('max_endurance', 'maxEnduranceTable')) return null;
   if (!perLevel('max_endurance_cap', 'maxEnduranceCapTable')) return null;
   return out;
 }
 
 /**
- * The travel scales and their per-level ceilings, in movement SCALE units (the
- * multiplier the server hands the physics layer: 1.0 = 21 ft/s for the three
- * speeds, 4 ft for jump height). The ceiling is AttribMaxTable's row — flat on
- * Homecoming, per-level on both forks — so exemplaring down genuinely lowers
- * what a build can reach there.
+ * The travel scales and the pair of bounds ClampCur holds them between, in
+ * movement SCALE units (the multiplier the server hands the physics layer:
+ * 1.0 = 21 ft/s for the three speeds, 4 ft for jump height). The ceiling is
+ * AttribMaxTable's row — flat on Homecoming, per-level on both forks — so
+ * exemplaring down genuinely lowers what a build can reach there. The floor is
+ * AttribMin's scalar, and it is not zero: every player class of all three
+ * datasets floors run and fly at 0.1, jump speed and height at 0.0
+ * (DATA-GAP-REGISTER MOVEMIN-1).
+ *
+ * The floor is therefore validated as `>= 0` where base and cap are validated
+ * as `> 0` — a zero floor is real data on two of the four axes, so rejecting it
+ * would drop every archetype.
  *
  * Returns null (with a warning naming the axis) when the export is missing one,
- * so the caller drops the archetype rather than shipping a fabricated ceiling.
+ * so the caller drops the archetype rather than shipping a fabricated bound.
  */
 function movementScales(at, attribs) {
+  const floor = attribs.movement_floor;
   const base = attribs.movement_base;
   const cap = attribs.movement_cap;
-  if (!base || !cap) {
-    console.warn(`Warning: ${at} missing movement_base/movement_cap — re-run export_classes.py — skipping`);
+  if (!floor || !base || !cap) {
+    console.warn(`Warning: ${at} missing movement_floor/movement_base/movement_cap — re-run export_classes.py — skipping`);
     return null;
   }
+  const movementFloor = {};
   const movementBase = {};
   const movementCapTable = {};
   for (const [exportKey, axis] of Object.entries(MOVEMENT_AXES)) {
+    const low = floor[exportKey];
     const scale = base[exportKey];
     const row = cap[exportKey];
+    if (typeof low !== 'number' || !(low >= 0)) {
+      console.warn(`Warning: ${at} missing/invalid movement_floor.${exportKey} (${low}) — skipping`);
+      return null;
+    }
     if (typeof scale !== 'number' || !(scale > 0)) {
       console.warn(`Warning: ${at} missing/invalid movement_base.${exportKey} (${scale}) — skipping`);
       return null;
@@ -160,10 +185,11 @@ function movementScales(at, attribs) {
       console.warn(`Warning: ${at} movement_cap.${exportKey} has ${row?.length} levels (expected ${PLAYER_LEVELS}) — skipping`);
       return null;
     }
+    movementFloor[axis] = r4(low);
     movementBase[axis] = r4(scale);
     movementCapTable[axis] = row.slice(0, PLAYER_LEVELS).map(r4);
   }
-  return { movementBase, movementCapTable };
+  return { movementFloor, movementBase, movementCapTable };
 }
 
 /**
@@ -306,13 +332,14 @@ function generate(stats) {
   L.push(' * and the net-strength clamp bounds (StrengthMin / StrengthMax) of the two');
   L.push(' * reduction aspects: rechargeFloor/rechargeCap (the −75% debuff floor and the');
   L.push(' * +400% recharge cap) and enduranceFloor/enduranceCap (a divide-guard epsilon');
-  L.push(' * and the +400% endurance-discount cap), plus movementBase/movementCapTable');
-  L.push(' * (Phase 5 — the travel scales and the per-level ceilings ClampCur bounds them');
-  L.push(' * against, in scale units: 1.0 = 21 ft/s for the speeds, 4 ft for jump height),');
-  L.push(' * and the attribute ceilings of Phase 6 (DATA-GAP-REGISTER CAPS-1): toHit/');
+  L.push(' * and the +400% endurance-discount cap), plus movementFloor/movementBase/');
+  L.push(' * movementCapTable (Phase 5 — the travel scales and the pair of bounds ClampCur');
+  L.push(' * holds them between, in scale units: 1.0 = 21 ft/s for the speeds, 4 ft for');
+  L.push(' * jump height), and the attribute ceilings of Phase 6 (CAPS-1): toHit/');
   L.push(' * regeneration/recovery as a base scalar plus a per-level cap table, the single');
-  L.push(' * per-level defenseCeilingTable (a real clamp far ABOVE the purple-patch softcap,');
-  L.push(' * which is a threshold and stays separate), and maxEndurance base/cap.');
+  L.push(' * per-level defenseCeilingTable with its defenseFloor scalar (a real clamp far');
+  L.push(' * ABOVE the purple-patch softcap, which is a threshold and stays separate), and');
+  L.push(' * maxEndurance base/cap.');
   L.push(' */');
   L.push('');
   L.push('/** One value per travel axis, keyed as the calc totals key them. */');
@@ -342,6 +369,10 @@ function generate(stats) {
   L.push('  rechargeCap: number;');
   L.push('  enduranceFloor: number;');
   L.push('  enduranceCap: number;');
+  L.push('  /** The lowest scale ClampCur lets a debuff push each axis to — AttribMin.');
+  L.push('   *  0.1 run/fly and 0.0 jump on every player class, so a grounding power');
+  L.push('   *  leaves a crawl rather than a negative speed (DATA-GAP-REGISTER MOVEMIN-1). */');
+  L.push('  movementFloor: MovementAxes;');
   L.push('  movementBase: MovementAxes;');
   L.push('  movementCapTable: MovementAxisTables;');
   L.push('  toHitBase: number;');
@@ -351,6 +382,12 @@ function generate(stats) {
   L.push('  recoveryBase: number;');
   L.push('  recoveryCapTable: number[];');
   L.push('  defenseCeilingTable: number[];');
+  L.push('  /** The lowest ClampCur lets a debuff push typed defense — AttribMin\'s');
+  L.push('   *  scalar, −1.0 on every player archetype. The game writes "your defense');
+  L.push('   *  is negated" as a saturating magnitude (Thunderspy Organic Armor states');
+  L.push('   *  Defense −500 under Defensive Adaptation), so without this the debuff');
+  L.push('   *  resolves to nothing at all (DATA-GAP-REGISTER ATTRMIN-1). */');
+  L.push('  defenseFloor: number;');
   L.push('  maxEnduranceTable: number[];');
   L.push('  maxEnduranceCapTable: number[];');
   L.push('  hpTable: number[];');
@@ -375,6 +412,7 @@ function generate(stats) {
     L.push(`    rechargeCap: ${s.rechargeCap},`);
     L.push(`    enduranceFloor: ${s.enduranceFloor},`);
     L.push(`    enduranceCap: ${s.enduranceCap},`);
+    L.push(`    movementFloor: ${fmtAxes(s.movementFloor)},`);
     L.push(`    movementBase: ${fmtAxes(s.movementBase)},`);
     L.push('    movementCapTable: {');
     for (const [axis, row] of Object.entries(s.movementCapTable)) {
@@ -388,6 +426,7 @@ function generate(stats) {
     L.push(`    recoveryBase: ${s.recoveryBase},`);
     L.push(`    recoveryCapTable: ${fmtArray(s.recoveryCapTable)},`);
     L.push(`    defenseCeilingTable: ${fmtArray(s.defenseCeilingTable)},`);
+    L.push(`    defenseFloor: ${s.defenseFloor},`);
     L.push(`    maxEnduranceTable: ${fmtArray(s.maxEnduranceTable)},`);
     L.push(`    maxEnduranceCapTable: ${fmtArray(s.maxEnduranceCapTable)},`);
     L.push(`    hpTable: ${fmtArray(s.hpTable)},`);

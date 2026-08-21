@@ -765,13 +765,11 @@ export const ARCHETYPES: ArchetypeRegistry = {
     branches: {
       'bane-spider': {
         name: 'Bane Spider',
-        level: 24,
         primarySet: 'arachnos-soldier/bane-spider-soldier',
         secondarySet: 'arachnos-soldier/bane-spider-training',
       },
       'crab-spider': {
         name: 'Crab Spider',
-        level: 24,
         primarySet: 'arachnos-soldier/crab-spider-soldier',
         secondarySet: 'arachnos-soldier/crab-spider-training',
       },
@@ -804,13 +802,11 @@ export const ARCHETYPES: ArchetypeRegistry = {
     branches: {
       'night-widow': {
         name: 'Night Widow',
-        level: 24,
         primarySet: 'arachnos-widow/night-widow-training',
         secondarySet: 'arachnos-widow/widow-teamwork',
       },
       fortunata: {
         name: 'Fortunata',
-        level: 24,
         primarySet: 'arachnos-widow/fortunata-training',
         secondarySet: 'arachnos-widow/fortunata-teamwork',
       },

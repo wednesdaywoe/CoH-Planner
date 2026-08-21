@@ -115,14 +115,8 @@
     },
     {
       "path": "scripts/convert-archetypes.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "f9e55216b544b23ab09b20f9a65b673d752c7af5456e0d3c11c7b18d6b0556c0",
-        "beta": "afeadc09d2b5a46a8fd491313d011d9bfdd4e0e32b9260fd2ab86bc5b77f4ea9"
-      },
-      "reason": "Canonical reads and emits `defenseFloor` from the class export and fails loud when it is missing or non-negative; beta has no such field and its `!base || !cap` guard treats a legitimate zero as absent.",
-      "exit": "Port the `defenseFloor` read, which needs beta's `export_classes.py` output to carry the field.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "f9e55216b544b23ab09b20f9a65b673d752c7af5456e0d3c11c7b18d6b0556c0"
     },
     {
       "path": "scripts/convert-basic-inherents.cjs",
@@ -256,14 +250,8 @@
     },
     {
       "path": "scripts/generate-archetypes.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "565eeb08749657f9c3d3779c1aaf9f8eb3f95db94c7c0388919bee45170332a3",
-        "beta": "219a9c3f08ed8d1086b7a32526389625373ce5fd5540c30b5d3e4d39d7a231de"
-      },
-      "reason": "One line: beta emits a Tarantula pet at `level: 24`, canonical emits the same pet with no level. A hand-stated pet level is the shape Rule 0 exists to catch, but it is not yet measured which side reads it from the export.",
-      "exit": "Check whether the entity export states the level; keep the sourced side.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "565eeb08749657f9c3d3779c1aaf9f8eb3f95db94c7c0388919bee45170332a3"
     },
     {
       "path": "scripts/generate-powerset-index.cjs",
@@ -418,14 +406,8 @@
     },
     {
       "path": "src/types/archetype.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "04d3693e891525e884639c621549af67f2e5eb381b72745d97e9343a8cc78964",
-        "beta": "579b1893712773e788e5016e51c9c79c23aef2920e2145d105082c4710676e6e"
-      },
-      "reason": "Type fork, 37 lines canonical / 25 beta. Pulled in through `@/types`, which every pipeline-loaded module imports.",
-      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "46f807cfd9c4602b580a33c55dafa840602bd9d55b240ee209a59496edb911f5"
     },
     {
       "path": "src/types/build.ts",

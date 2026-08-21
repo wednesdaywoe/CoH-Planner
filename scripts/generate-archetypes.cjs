@@ -125,7 +125,7 @@ for (const at of [...KHELDIAN, ...VEAT]) {
   if (datasetId === 'thunderspy' && at === 'arachnos-widow'
       && veatSetExists(at, 'tarantula-training') && veatSetExists(at, 'tarantula-teamwork')) {
     const tarantula = `branches: {\n      tarantula: {\n` +
-      `        name: 'Tarantula',\n        level: 24,\n` +
+      `        name: 'Tarantula',\n` +
       `        primarySet: 'arachnos-widow/tarantula-training',\n` +
       `        secondarySet: 'arachnos-widow/tarantula-teamwork',\n      },`;
     body = body.replace(/branches: \{/, tarantula);

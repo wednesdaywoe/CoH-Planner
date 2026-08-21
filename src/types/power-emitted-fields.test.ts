@@ -1,7 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import fs from 'node:fs';
-import path from 'node:path';
 import { loadDataset } from '@/data/dataset';
+import { declaredFields as readDeclared } from './declared-fields';
 import { getAllPowersets } from '@/data/powersets';
 
 /**
@@ -25,36 +24,7 @@ import { getAllPowersets } from '@/data/powersets';
 
 const FORKS = ['homecoming', 'rebirth', 'thunderspy'] as const;
 
-/** Declared property names of one exported interface, read out of the type source. */
-function declaredFields(iface: string): Set<string> {
-  const src = fs.readFileSync(path.join(process.cwd(), 'src/types/power.ts'), 'utf8');
-  const out = new Set<string>();
-  let depth = 0, inside = false, inBlock = false;
-  for (const raw of src.split('\n')) {
-    let line = raw;
-    if (inBlock) {
-      const e = line.indexOf('*/');
-      if (e < 0) continue;
-      line = line.slice(e + 2);
-      inBlock = false;
-    }
-    const b = line.indexOf('/*');
-    if (b >= 0) {
-      const e = line.indexOf('*/', b);
-      if (e < 0) { line = line.slice(0, b); inBlock = true; } else line = line.slice(0, b) + line.slice(e + 2);
-    }
-    line = line.replace(/\/\/.*$/, '').trim();
-    if (!line) continue;
-    if (depth === 0 && new RegExp(`^export\\s+interface\\s+${iface}\\b`).test(line)) inside = true;
-    if (inside && depth >= 1) {
-      const p = line.match(/^(\w+)\??\s*:/);
-      if (p) out.add(p[1]);
-    }
-    depth += (line.match(/[{[]/g) || []).length - (line.match(/[}\]]/g) || []).length;
-    if (depth <= 0) { depth = 0; if (inside) inside = false; }
-  }
-  return out;
-}
+const declaredFields = (iface: string) => readDeclared('src/types/power.ts', iface);
 
 describe('every emitted Power / Powerset key is declared on its type', () => {
   const powerKeys = new Map<string, Set<string>>();

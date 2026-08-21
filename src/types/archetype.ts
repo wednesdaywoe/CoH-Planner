@@ -18,6 +18,30 @@ export interface DamageModifiers {
 // ARCHETYPE STATS
 // ============================================
 
+/** One value per travel axis, keyed as the calc totals key them. */
+export interface MovementAxes {
+  runSpeed: number;
+  flySpeed: number;
+  jumpSpeed: number;
+  jumpHeight: number;
+}
+
+/** Per-level ceiling per travel axis (index = level − 1). */
+export interface MovementAxisTables {
+  runSpeed: number[];
+  flySpeed: number[];
+  jumpSpeed: number[];
+  jumpHeight: number[];
+}
+
+/**
+ * An archetype's numbers. The binary half is spread in from each dataset's
+ * `generated/archetype-stats.generated.ts` (convert-archetypes.cjs, off classes.bin), so this
+ * type has to declare every key that emitter writes — a spread is exempt from excess-property
+ * checking, so an undeclared field is not a tsc error here, just a field no consumer can read.
+ * `archetype-stats-fidelity.test.ts` reads the shipped data and holds the type to it.
+ */
+
 export interface ArchetypeStats {
   /** Base HP at level 50 (attrib_max.hit_points[49]) */
   baseHP: number;
@@ -27,6 +51,12 @@ export interface ArchetypeStats {
   hpTable: number[];
   /** HP cap per level, index 0 = level 1 through index 49 = level 50 */
   hpCapTable: number[];
+  /** Absorb ceiling at level 50 (attrib_max_max.absorb[49]). Its own row, not a second
+   *  statement of the HP one: Homecoming's Dominator absorbs to 1070.9 against a 1017.4
+   *  baseHP (DATA-GAP-REGISTER CLASSES-3). */
+  absorbCap: number;
+  /** Absorb ceiling per level, index 0 = level 1 through index 49 = level 50 */
+  absorbCapTable: number[];
   /** Base endurance pool */
   baseEndurance: number;
   /** Base endurance recovery rate */
@@ -39,47 +69,79 @@ export interface ArchetypeStats {
   buffDebuffModifier: number;
   /** Total damage strength multiplier cap (e.g., 4.0 = 400%) */
   damageCap: number;
-  /** RechargeTime net-strength FLOOR (`ClampStrength` StrengthMin — 0.25 on every player
-   *  class, the −75% debuff floor: a power slows to at most 4× its base recharge). */
+  /** RechargeTime net-strength floor (ClampStrength StrengthMin). 0.25 on every class on
+   *  every fork: the −75% debuff floor, so a power slows to at most 4× its base recharge. */
   rechargeFloor: number;
-  /** RechargeTime net-strength CAP (`ClampStrength` StrengthMaxTable at level 50 — 5.0 on
-   *  every player class, the +400% recharge cap). */
+  /** RechargeTime net-strength cap (ClampStrength StrengthMaxTable at level 50). 5.0 on every
+   *  class on every fork, the +400% recharge cap. */
   rechargeCap: number;
-  /** EnduranceDiscount net-strength FLOOR (`ClampStrength` StrengthMin — the epsilon the
-   *  server adds to the divisor, so an endurance debuff is effectively unbounded). */
+  /** EnduranceDiscount net-strength floor (ClampStrength StrengthMin). 0.0001 on every class,
+   *  which is the epsilon the server adds to the divisor rather than a real floor, so an
+   *  endurance debuff is effectively unbounded. */
   enduranceFloor: number;
-  /** EnduranceDiscount net-strength CAP (`ClampStrength` StrengthMaxTable at level 50). */
+  /** EnduranceDiscount net-strength cap (ClampStrength StrengthMaxTable at level 50). 5.0 on
+   *  every class, the +400% discount cap. */
   enduranceCap: number;
-  /** Defense cap as decimal (e.g., 0.45 = 45%) */
+  /**
+   * Hand-curated 0.45. This is the purple-patch defense SOFTCAP under a wrong
+   * name — a level-diff threshold defense legitimately exceeds, not a clamp.
+   * `getDefenseSoftcap` is the sourced answer; this survives as a fallback.
+   * The real defense clamp is {@link defenseCeilingTable}.
+   */
   defenseCap: number;
   /** Resistance cap as decimal (e.g., 0.75 = 75%) */
   resistanceCap: number;
 
-  // The attribute ceilings recovered from classes.bin `AttribMaxTable` (CAPS-1). Each pairs a
-  // BASE (the class's authored `AttribBase` scalar, in absolute attribute units) with a
-  // per-level ceiling row, because a ceiling only becomes a percentage against that class's own
-  // base — Arachnos Soldier/Widow author a higher regeneration base under the same ceiling and
-  // so cap at 1667% where a Blaster caps at 2000%.
+  // The attribute ceilings ClampCur bounds attrCur against, read from the class binary's
+  // AttribMaxTable (DATA-GAP-REGISTER CAPS-1). Each cap is an ABSOLUTE attribute value, so the
+  // percentage a dashboard shows is only recoverable against that class's own base — which is
+  // why the bases ride along, and why the published percentage is not a per-class constant: the
+  // Arachnos classes author a higher regeneration base under the same 5.0 ceiling, so they cap
+  // at 1667% where a Blaster caps at 2000%. All tables are indexed by level − 1.
 
-  /** ToHit base (0.75 on every class) — the 75% the game's hit-chance formula starts from. */
+  /** ToHit base (0.75 on every class) — what the game's hit-chance formula starts from. */
   toHitBase: number;
-  /** Per-level ToHit ceiling, absolute. Index 0 = level 1. */
+  /** Per-level ToHit ceiling, absolute (0.95 at level 1 rising to 2.0035 at 50, every class). */
   toHitCapTable: number[];
-  /** Regeneration base, absolute (HP-per-tick scale). */
+  /** Regeneration base, absolute. 0.25, and 0.30 on the Arachnos pair and Thunderspy's
+   *  Primalist. */
   regenerationBase: number;
-  /** Per-level regeneration ceiling, absolute — 2000/2500/3000% of base by class. */
+  /** Per-level regeneration ceiling, absolute. Read against {@link regenerationBase} it is
+   *  1667% on the Arachnos pair, 2000% standard, 2500% on Brute/Tanker/Guardian/Primalist and
+   *  3000% on Scrapper/Stalker. */
   regenerationCapTable: number[];
-  /** Recovery base, absolute (endurance-per-tick scale). */
+  /** Recovery base, absolute. 1.0, and 1.05 on the Arachnos pair and Primalist. */
   recoveryBase: number;
-  /** Per-level recovery ceiling, absolute — 500/625/750% of base by class. */
+  /** Per-level recovery ceiling, absolute. Read against {@link recoveryBase} it is 476% on the
+   *  Arachnos classes and Primalist, 500% standard, 625% on Defender and 750% on
+   *  Controller/Dominator/Mastermind. */
   recoveryCapTable: number[];
-  /** The REAL per-level defense clamp (~175-225%), not {@link defenseCap} — that scalar holds
-   *  the 0.45 purple-patch softcap, which is a threshold and clamps nothing. */
+  /** The real per-level defense clamp, NOT the softcap {@link defenseCap} misnames. Three
+   *  curves across the classes, 1.75 to 2.2505 at level 50. One curve per archetype: every
+   *  typed defense row the binary authors agrees with every other on the same archetype. */
   defenseCeilingTable: number[];
-  /** The endurance pool per level, absolute points (100 on every shipped class). */
+  /** The lowest ClampCur lets a debuff push typed defense (AttribMin's scalar, −1.0 on every
+   *  player archetype). The game writes "your defense is negated" as a saturating magnitude,
+   *  so without this the debuff resolves to nothing (DATA-GAP-REGISTER ATTRMIN-1). */
+  defenseFloor: number;
+  /** Base max endurance per level (a flat 100 on every player archetype). */
   maxEnduranceTable: number[];
-  /** The per-level ceiling the pool is clamped to (120 at level 1 → 365 at 50). */
+  /** Max-endurance ceiling per level (120 at level 1 rising to 365 at 50) —
+   *  how far +MaxEnd buffs can raise {@link maxEnduranceTable}. */
   maxEnduranceCapTable: number[];
+
+  /** Travel scales at rest, one per axis (1.0 = 21 ft/s for the speeds, 4 ft for jump). */
+  movementBase: MovementAxes;
+  /** The lowest scale ClampCur lets a debuff push each axis to (AttribMin). 0.1 run/fly and
+   *  0.0 jump on every player class, so a grounding power leaves a crawl rather than a negative
+   *  speed (DATA-GAP-REGISTER MOVEMIN-1). */
+  movementFloor: MovementAxes;
+  /** Per-level ceiling per travel axis, in the same scale units as {@link movementBase}. */
+  movementCapTable: MovementAxisTables;
+
+  /** The game's own class token (`Class_Blaster`) — what the effect gates compare against, so
+   *  an archetype-forked atom can be matched to a build. */
+  className: string;
 }
 
 // ============================================
@@ -109,11 +171,14 @@ export interface InherentPower {
 // ARCHETYPE BRANCHES (For Epic ATs like Arachnos)
 // ============================================
 
+/**
+ * A branch carries no level. Its own powersets carry `specializeAt` from the
+ * binary and the character level is one higher, so a hand-typed copy here would
+ * be a second statement of a value the export owns.
+ */
 export interface ArchetypeBranch {
   /** Display name of the branch (e.g., "Bane Spider", "Fortunata") */
   name: string;
-  /** Level at which this branch becomes available */
-  level: number;
   /** Additional primary powerset for this branch (optional) */
   primarySet?: string;
   /** Additional secondary powerset for this branch */
