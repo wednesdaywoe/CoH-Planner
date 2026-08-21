@@ -496,9 +496,9 @@ export function createOriginEnhancement(
     origin: tier === 'SO' ? (origin as OriginEnhancement['origin']) : undefined,
     boost: storedLevelOffset(boost),
     stat,
-    // Per aspect, not per tier: the flat ORIGIN_TIERS number is Schedule A's, and a
-    // Defense SO is 20% where a Knockback SO is 60%. Stamped from the same reader the
-    // math uses so the picker cannot show a number the total disagrees with.
+    // Per aspect, not per tier — a Defense SO is 20% where a Knockback SO is 60%.
+    // Stamped from the same reader the math uses so the picker cannot show a number
+    // the total disagrees with.
     value: getOriginTierValue(tier, normalized),
   };
 }

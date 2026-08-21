@@ -6,7 +6,6 @@
 import type {
   EnhancementStatType,
   Origin,
-  EnhancementTier,
   OriginTierInfo,
   HamidonRegistry,
   SpecialEnhancementRegistry,
@@ -631,41 +630,34 @@ export const COMMON_IO_TYPES: EnhancementStatType[] = [
 // TO/DO/SO TIERS
 // ============================================
 
-export const ORIGIN_TIERS: OriginTierInfo[] = [
+/**
+ * Presentation metadata only. Tier VALUES are per-aspect data from the
+ * dataset's enhancement curves — `getOriginTierValue` in
+ * `@/utils/calculations/enhancement-values` (SOURCE-1 SW8).
+ *
+ * The flat 8.3 / 16.7 / 33.3 that used to sit here was Schedule A's ladder
+ * wearing every schedule's name: the export pays a Defense SO 20% and a
+ * Knockback SO 60%, and Thunderspy rebalances the whole ladder so its TO and
+ * DO disagreed too. A same-named `getOriginTierValue` next to it shadowed the
+ * curve read through the `@/data` barrel.
+ */
+export const ORIGIN_TIER_INFO: OriginTierInfo[] = [
   {
     name: 'Training Origin',
     short: 'TO',
-    value: 8.3,
     description: 'These are the least potent of all Enhancements.',
   },
   {
     name: 'Dual Origin',
     short: 'DO',
-    value: 16.7,
     description: 'These are twice as potent as TO Enhancements. Limited to 2 specific Origins.',
   },
   {
     name: 'Single Origin',
     short: 'SO',
-    value: 33.3,
     description: 'These are twice as potent as DO Enhancements. Limited to a single Origin.',
   },
 ];
-
-/**
- * Get tier info by short name
- */
-export function getOriginTier(tier: EnhancementTier): OriginTierInfo | undefined {
-  return ORIGIN_TIERS.find((t) => t.short === tier);
-}
-
-/**
- * Get enhancement value for a tier
- */
-export function getOriginTierValue(tier: EnhancementTier): number {
-  const tierInfo = getOriginTier(tier);
-  return tierInfo?.value ?? 0;
-}
 
 // ============================================
 // ORIGINS

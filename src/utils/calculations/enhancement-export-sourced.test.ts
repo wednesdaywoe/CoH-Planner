@@ -1,5 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
+import { ORIGIN_TIER_INFO } from '@/data/enhancements';
+import * as dataBarrel from '@/data';
 import { getEnhancementCurves } from '@/data/enhancement-curves';
 import {
   getIOValueAtLevel,
@@ -131,5 +133,35 @@ describe.each(FORKS)('enhancement magnitudes are export-sourced (%s)', (fork) =>
     // give all four the same number.
     expect(getAspectSchedule('range')).not.toBe(getAspectSchedule('run'));
     expect(v.range).not.toBeCloseTo(v.run!, 6);
+  });
+});
+
+/**
+ * The class rather than the instance: a tier magnitude has exactly one home.
+ *
+ * The case above grades `getOriginTierValue`, and is blind to a second, flat copy of
+ * the same number living somewhere else and being read instead. That is not
+ * hypothetical — the twin's `OriginTierInfo` carried a `value: 33.3` that its picker
+ * printed directly, both as the tier heading and inside a per-stat tooltip that names
+ * the aspect while quoting a number that ignores it, and a same-named
+ * `getOriginTierValue` sat beside it in the `@/data` barrel shadowing the curve read.
+ * Every magnitude test passed the whole time, because none of them looked here.
+ */
+describe('an origin-tier magnitude has one source', () => {
+  it('the presentation table carries no number at all', () => {
+    for (const tier of ORIGIN_TIER_INFO) {
+      const numeric = Object.entries(tier)
+        .filter(([, v]) => typeof v === 'number')
+        .map(([k]) => k);
+      expect(numeric, `${tier.short}: presentation metadata only`).toEqual([]);
+    }
+  });
+
+  it('and no second `getOriginTierValue` is reachable beside the curve read', () => {
+    // A flat re-implementation under the same name is resolved by import order, so the
+    // two-argument curve read being correct is not enough — the shadow must not exist.
+    expect(Object.keys(dataBarrel)).not.toContain('getOriginTierValue');
+    expect(Object.keys(dataBarrel)).not.toContain('getOriginTier');
+    expect(getOriginTierValue.length, 'the curve read takes tier AND aspect').toBe(2);
   });
 });

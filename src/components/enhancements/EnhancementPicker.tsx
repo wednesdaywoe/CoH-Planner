@@ -11,14 +11,14 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import {
   getIOSetsForPower, getIOSet, getMostCommonSetSize, lookupPower,
-  ORIGIN_TIERS,
+  ORIGIN_TIER_INFO,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement, isInherentlyAttuned,
   getAvailableGenericIOs, getAvailableHamidons, getAvailableTitans, getAvailableHydras, getAvailableDSyncs, getAvailablePrestige,
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
-import { normalizeAspectName, readAspectDisplayValue, getEffectiveAspectCount, calculateSingleEnhancementValues, enhancementLevelAxis, enhancementLevelRange, genericIOValueAtLevel } from '@/utils/calculations';
+import { normalizeAspectName, readAspectDisplayValue, getEffectiveAspectCount, calculateSingleEnhancementValues, enhancementLevelAxis, enhancementLevelRange, genericIOValueAtLevel, getOriginTierValue } from '@/utils/calculations';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle, LevelSpinner } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
@@ -2145,20 +2145,20 @@ function OriginContent({ availableTypes, onSelect, stackedCountFor, onDecrement 
 
   return (
     <div className="space-y-3">
-      {ORIGIN_TIERS.map((tier) => (
+      {ORIGIN_TIER_INFO.map((tier) => (
         <div key={tier.short} className="bg-gray-800/40 rounded-lg p-2">
           <div className="flex items-center gap-2 mb-2">
             <span className={`text-sm font-medium ${getTierTextColor(tier.short)}`}>
               {tier.name} ({tier.short})
             </span>
-            <span className="text-xs text-gray-500">+{tier.value.toFixed(1)}%</span>
           </div>
           <div className="flex flex-wrap gap-1">
             {availableTypes.map((stat) => {
               const tierShort = tier.short as 'TO' | 'DO' | 'SO';
               const count = stackedCountFor(stat, tierShort);
+              const tierValue = getOriginTierValue(tierShort, normalizeAspectName(stat) ?? stat);
               return (
-                <Tooltip key={stat} content={`${stat} ${tier.short} (+${tier.value.toFixed(1)}%)`}>
+                <Tooltip key={stat} content={`${stat} ${tier.short} (+${tierValue.toFixed(1)}%)`}>
                   <div className="relative">
                     <button
                       onClick={(e) => onSelect(stat, tierShort, e)}

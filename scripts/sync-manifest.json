@@ -415,14 +415,8 @@
     },
     {
       "path": "src/types/common.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "1c4359e54234afa60a701b7cbffc9ec4bf52aaa76489300173d6fb0db24c7e70",
-        "beta": "5dea83125dae3dff783b22e6f936ba50ce60b70b417c6136a12104a12538726c"
-      },
-      "reason": "Type fork, 82 lines canonical / 76 beta — the most balanced of the twelve, and the one most likely to be two independent sets of additions rather than one side lagging.",
-      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "fec519a5c5765af94fc01a9a1a6fc5c511c1c744e0685ec397bb8d1eac30bdc3"
     },
     {
       "path": "src/types/enhancement.ts",

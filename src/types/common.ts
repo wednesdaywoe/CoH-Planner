@@ -130,82 +130,89 @@ export type Faction = 'hero' | 'villain';
 // IO SET CATEGORIES
 // ============================================
 
-export type IOSetCategory =
-  // Damage categories
-  | 'Ranged Damage'
-  | 'Melee Damage'
-  | 'Ranged AoE Damage'
-  | 'Melee AoE Damage'
-  // Rebirth/Thunderspy read straight off the binary and name these two
-  // "Targeted AoE Damage" / "PBAoE Damage" — Homecoming's own GroupName is
-  // "Ranged AoE Damage" / "Melee AoE Damage" for the equivalent sets. Two
-  // real category names for the same concept, not a converter inference.
-  | 'Targeted AoE Damage'
-  | 'PBAoE Damage'
-  | 'Universal Damage Sets'
-  | 'Sniper Attacks'
-  | 'Pet Damage'
-  | 'Recharge Intensive Pets'
-  // Defense/Resistance
-  | 'Defense Sets'
-  | 'Resist Damage'
+/**
+ * Every slot-category heading the three forks state, verbatim.
+ *
+ * This is `BoostSet.GroupName` — the field the client itself groups a power's
+ * "AllowedBoostCategories" tooltip by, and the field both sides of a slotting match
+ * now read (`_boostsets.py::_resolve_category`). The forks rename three of them, so
+ * both spellings are members: Homecoming says "Melee AoE Damage", "Ranged AoE Damage"
+ * and "Threat Duration" where Rebirth and Thunderspy say "PBAoE Damage", "Targeted
+ * AoE Damage" and "Taunt". Homecoming ships 47 headings, Rebirth 49, Thunderspy 45.
+ *
+ * Kept as a `const` array, not a bare union, so the list survives to runtime and
+ * `io-set-slotting-reach.test.ts` can hold the shipped data against it — every set's
+ * `type` and every power's `allowedSetCategories`, on all three forks. A bare union
+ * is a compile-time claim no fixture can grade.
+ */
+export const IO_SET_CATEGORIES = [
+  // Damage
+  'Ranged Damage',
+  'Melee Damage',
+  'Ranged AoE Damage',
+  'Targeted AoE Damage',
+  'Melee AoE Damage',
+  'PBAoE Damage',
+  'Universal Damage Sets',
+  'Sniper Attacks',
+  'Pet Damage',
+  'Recharge Intensive Pets',
+  // Defense / Resistance
+  'Defense Sets',
+  'Resist Damage',
   // Control (Mez)
-  | 'Holds'
-  | 'Stuns'
-  | 'Immobilize'
-  | 'Sleep'
-  | 'Confuse'
-  | 'Fear'
-  | 'Knockback'
-  // Support/Debuff
-  | 'Healing'
-  | 'Endurance Modification'
-  | 'To Hit Buff'
-  | 'To Hit Debuff'
-  | 'Defense Debuff'
-  | 'Slow Movement'
-  | 'Threat Duration'
-  // Rebirth/Thunderspy's own GroupName for the same Threat Duration concept.
-  | 'Taunt'
-  | 'Accurate Defense Debuff'
-  | 'Accurate Healing'
-  | 'Accurate To-Hit Debuff'
-  // Travel
-  | 'Running'
-  | 'Running & Sprints'
-  | 'Leaping'
-  | 'Leaping & Sprints'
-  | 'Flight'
-  | 'Teleport'
-  | 'Universal Travel'
-  // Archetype-specific
-  | 'Blaster Archetype Sets'
-  | 'Brute Archetype Sets'
-  | 'Controller Archetype Sets'
-  | 'Corruptor Archetype Sets'
-  | 'Defender Archetype Sets'
-  | 'Dominator Archetype Sets'
-  | 'Mastermind Archetype Sets'
-  | 'Scrapper Archetype Sets'
-  | 'Stalker Archetype Sets'
-  | 'Tanker Archetype Sets'
-  | 'Sentinel Archetype Sets'
-  | 'Kheldian Archetype Sets'
-  | 'Soldiers of Arachnos Archetype Sets'
-  | 'Guardian Archetype Sets'
-  // Thunderspy-only AT (Primalist) ATO / superior-ATO category
-  | 'Primalist Archetype Sets'
-  // Rebirth Challenge Enhancement categories — universal mez set (Forced
-  // Indoctrination) and the single-piece Rest enhancement (Inexhaustibility)
-  | 'Universal Control Duration Sets'
-  | 'Rest Buff'
-  // Rebirth multi-aspect debuff event sets (Witchcraft) — slottable in any
-  // Slow / Defense-debuff / ToHit-debuff power (e.g. Tar Patch via Slow)
-  | 'Universal Debuff'
-  // Rebirth resurrection event set (Return From The Grave) — slottable only
-  // in resurrection powers (Revive, Rise of the Phoenix, Howling Twilight, …).
-  // "Rez Sets" is the game's own GroupName, read straight from the binary.
-  | 'Rez Sets';
+  'Holds',
+  'Stuns',
+  'Immobilize',
+  'Sleep',
+  'Confuse',
+  'Fear',
+  'Knockback',
+  // Support / Debuff
+  'Healing',
+  'Endurance Modification',
+  'To Hit Buff',
+  'To Hit Debuff',
+  'Defense Debuff',
+  'Slow Movement',
+  'Threat Duration',
+  'Taunt',
+  'Accurate Defense Debuff',
+  'Accurate Healing',
+  'Accurate To-Hit Debuff',
+  // Travel. Homecoming splits the two Sprint-slottable pools into their own
+  // headings; the forks state one heading each and slot Sprint under it.
+  'Running',
+  'Running & Sprints',
+  'Leaping',
+  'Leaping & Sprints',
+  'Flight',
+  'Teleport',
+  'Universal Travel',
+  // Archetype. One heading per AT covers both the ATO and its Superior tier.
+  'Blaster Archetype Sets',
+  'Brute Archetype Sets',
+  'Controller Archetype Sets',
+  'Corruptor Archetype Sets',
+  'Defender Archetype Sets',
+  'Dominator Archetype Sets',
+  'Mastermind Archetype Sets',
+  'Scrapper Archetype Sets',
+  'Stalker Archetype Sets',
+  'Tanker Archetype Sets',
+  'Sentinel Archetype Sets',
+  'Kheldian Archetype Sets',
+  'Soldiers of Arachnos Archetype Sets',
+  'Guardian Archetype Sets',
+  'Primalist Archetype Sets',
+  // Event and challenge-reward sets, all Rebirth-only bar the Primalist ATOs above.
+  'Universal Control Duration Sets',
+  'Rest Buff',
+  'Universal Debuff',
+  'Rez Sets',
+] as const;
+
+export type IOSetCategory = (typeof IO_SET_CATEGORIES)[number];
 
 // ============================================
 // IO SET RARITY
@@ -225,10 +232,12 @@ export type IOSetRarity =
 
 export type EnhancementTier = 'TO' | 'DO' | 'SO';
 
+/** Presentation metadata for a TO/DO/SO tier. Enhancement values are
+ * per-aspect data from the dataset's enhancement curves (`getOriginTierValue`),
+ * not a tier property. */
 export interface OriginTierInfo {
   name: string;
   short: EnhancementTier;
-  value: number;
   description: string;
 }
 
