@@ -24,9 +24,8 @@ Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a
 doesn't accumulate closure prose.
 
 - **FORK-2** — the guard watched `scripts/` while the pipeline also EXECUTES twelve forked `src/`
-  modules; the manifest now covers them and ten are reconciled, waiting on `types/build.ts`'s four
-  remaining clusters and `calc-debug.ts`, plus the two the closure of `dataset.ts` pulled onto the
-  surface
+  modules; the manifest now covers them and eleven are reconciled, waiting on `types/build.ts`'s
+  four remaining clusters, plus the two the closure of `dataset.ts` pulled onto the surface
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -271,9 +270,9 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 - [ ] **FORK-2** — `convert-powerset.cjs` loads its atom encoder from `src/` at runtime, so three
   byte-identical converters still emitted different files; twelve `src/` modules the pipeline
   executes had forked in BOTH directions and no guard watched any of them, because the manifest
-  discovered its surface from `git ls-files scripts` alone; ten reconciled, and `build.ts`'s
-  accolade half was the ACCOLADE-1 silo still live here — a hand table of eight served to every
-  fork where the export says twelve/ten/ten
+  discovered its surface from `git ls-files scripts` alone; eleven reconciled, and
+  `calc-debug.ts`'s twelve beta-only lines were a quarantined silo's private helper still living in
+  a file both repos share
 - [x] **FIXTURE-1** — the manually-emitted gate fixtures (procs, movement, set-bonus) drifted on
   sampling identity and labels only, no values; all three re-emitted, gates green, and the
   emitters now run in `npm run regen` so the drift class is closed

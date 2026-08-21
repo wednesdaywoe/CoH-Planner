@@ -175,19 +175,6 @@ export function debugAlphaBonuses(bonuses: Record<string, number | undefined>): 
   debugGroupEnd();
 }
 
-/** Log fitness power contributions */
-export function debugFitnessPower(
-  name: string,
-  effects: { stat: string; base: number; enhanced: number; enhBonus: number }[]
-): void {
-  if (!_enabled) return;
-  debugGroup(`${name}`);
-  for (const e of effects) {
-    debugFormula(`${e.stat}: ${formatNum(e.base)}% base × (1 + ${formatNum(e.enhBonus * 100)}% enh) = ${formatNum(e.enhanced)}%`);
-  }
-  debugGroupEnd();
-}
-
 /** Log a single active power's contributions */
 export function debugActivePower(
   name: string,

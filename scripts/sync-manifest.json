@@ -398,14 +398,8 @@
     },
     {
       "path": "src/utils/calc-debug.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "22d3d36b0125f6d17c17030320e45d3134c5c5fd5501ac729fb4ace98befa4b5",
-        "beta": "485c3eea763da9b6ad9c1f970c0c7a599e0321b3b1e9b2159756ccd3bd2a230d"
-      },
-      "reason": "Twelve lines only beta has, a debug hook the rebuild never grew. One-directional, so it is the cheapest of the twelve to close.",
-      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "22d3d36b0125f6d17c17030320e45d3134c5c5fd5501ac729fb4ace98befa4b5"
     },
     {
       "path": "src/utils/calculations/enhancement-values.ts",

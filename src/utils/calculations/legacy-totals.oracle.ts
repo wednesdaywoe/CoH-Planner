@@ -36,7 +36,7 @@ import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
 import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
 import { computeModeSuppression, type ModeCarrier } from '@/utils/mode-suppression';
-import { isCalcDebugEnabled, debugBuildContext, debugSetBonuses, debugAlphaBonuses, debugGroup, debugGroupEnd, debugFitnessPower, debugFormula, debugAccolade, debugHitChance, debugFinalStats, debugNetEndurance, debugEnd } from '@/utils/calc-debug';
+import { isCalcDebugEnabled, debugBuildContext, debugSetBonuses, debugAlphaBonuses, debugGroup, debugGroupEnd, debugFormula, debugAccolade, debugHitChance, debugFinalStats, debugNetEndurance, debugEnd } from '@/utils/calc-debug';
 import type { ActivePowerEffect, CalculationOptions, CharacterCalculationResult, DashboardStatBreakdown, GlobalBonuses, MezScaled, PowerWithToggle, ScalarOrScaled, StatSource, StrengthBuffs } from './character-totals';
 import { adjustForStacking, collectStrengthBuffs, createEmptyGlobalBonuses, emptyStrengthBuffs, getAlphaEdBypassBonuses, getAlphaEnhancementBonuses, resolveScaledEffect } from './character-totals';
 
@@ -1632,6 +1632,24 @@ const FITNESS_POWER_EFFECTS: Record<string, FitnessEffect[]> = {
     { stat: 'recovery', value: 25, enhancementType: 'enduranceMod' },
   ],
 };
+
+/**
+ * Log this silo's contributions. It lived in `calc-debug.ts` until FORK-2, which is
+ * how a beta-only debug hook came to fork a file both repos share: the rebuild has no
+ * legacy entry point, so it never had the caller, so the twelve lines never ported.
+ * Nothing outside this file calls it — it belongs to the silo, not to the debug hub.
+ */
+function debugFitnessPower(
+  name: string,
+  effects: { stat: string; base: number; enhanced: number; enhBonus: number }[]
+): void {
+  if (!isCalcDebugEnabled()) return;
+  debugGroup(`${name}`);
+  for (const e of effects) {
+    debugFormula(`${e.stat}: ${formatDebugNum(e.base)}% base × (1 + ${formatDebugNum(e.enhBonus * 100)}% enh) = ${formatDebugNum(e.enhanced)}%`);
+  }
+  debugGroupEnd();
+}
 
 /**
  * Apply bonuses from inherent fitness powers
