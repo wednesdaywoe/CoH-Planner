@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from './dataset';
-import { getAccolades, accoladeId, accoladeFaction } from './accolades';
+import { getAccolades, accoladeId, accoladeFaction, accoladeRequiredModes } from './accolades';
 import { maxHPBuffValue } from './core/atom-query';
 import type { AccoladePower } from './accolades';
 
@@ -97,6 +97,31 @@ describe('the accolade roster is each fork\'s own', () => {
   it.each(Object.keys(EXPECTED))('%s offers exactly its own stat accolades', async (dataset) => {
     await loadDataset(dataset as 'homecoming' | 'rebirth' | 'thunderspy');
     expect(getAccolades().map(accoladeId).sort()).toEqual([...EXPECTED[dataset]].sort());
+  });
+
+  // The accolade converter was the fourth tree to call `assignModes` and the last to get it,
+  // so `modesRequired` read empty on every accolade and the two zone-gated ones presented as
+  // permanent buffs. The gather folds them into the totals either way, so the picker's warning
+  // is the only thing that says the buff is conditional — which makes an empty read here a
+  // silent wrong number, not a missing feature.
+  it('carries the zone gate the game states on the Labyrinth pair', async () => {
+    await loadDataset('homecoming');
+    const byName = new Map(getAccolades().map((p) => [accoladeId(p), p]));
+    for (const id of ['labyrinth_conqueror', 'mazebreaker']) {
+      expect(byName.get(id)!.modesRequired, id).toEqual(['InLabyrinth']);
+      expect(accoladeRequiredModes(byName.get(id)!), id).toEqual(['In Labyrinth']);
+    }
+  });
+
+  it('gates no other accolade on any fork', async () => {
+    for (const fork of ['homecoming', 'rebirth', 'thunderspy'] as const) {
+      await loadDataset(fork);
+      const gated = getAccolades()
+        .filter((p) => accoladeRequiredModes(p).length > 0)
+        .map(accoladeId)
+        .sort();
+      expect(gated, fork).toEqual(fork === 'homecoming' ? ['labyrinth_conqueror', 'mazebreaker'] : []);
+    }
   });
 
   it('the Labyrinth of Fog pair is Homecoming-only', () => {

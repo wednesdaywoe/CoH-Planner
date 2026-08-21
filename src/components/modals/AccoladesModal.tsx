@@ -7,7 +7,7 @@
  */
 
 import { useBuildStore } from '@/stores';
-import { getAccolades, accoladeId, accoladeFaction } from '@/data';
+import { getAccolades, accoladeId, accoladeFaction, accoladeRequiredModes } from '@/data';
 import type { AccoladePower } from '@/data';
 import { Modal, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
@@ -65,6 +65,10 @@ export function AccoladesModal({ isOpen, onClose }: AccoladesModalProps) {
             const id = accoladeId(accolade);
             const enabled = isAccoladeEnabled(id);
             const faction = accoladeFaction(accolade);
+            // A mode requirement means the buff is real but conditional: the totals fold it in
+            // either way, so the row says what the number can't. Read off the def, so no
+            // accolade is named here.
+            const requires = accoladeRequiredModes(accolade).join(', ');
             return (
               <button
                 key={id}
@@ -115,6 +119,11 @@ export function AccoladesModal({ isOpen, onClose }: AccoladesModalProps) {
                   <div className="text-xs text-gray-400 mt-0.5">
                     {accolade.shortHelp || accolade.description}
                   </div>
+                  {requires && (
+                    <div className="text-xs text-amber-400/90 mt-0.5">
+                      Requires {requires}. Counted in totals regardless.
+                    </div>
+                  )}
                 </div>
               </button>
             );

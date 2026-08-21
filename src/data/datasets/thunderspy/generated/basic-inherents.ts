@@ -31,6 +31,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Melee, Minor DMG (Smashing), Fighting Synergy",
     "icon": "inherent_brawl.png",
     "powerType": "Click",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Foe",
     "requires": [],
     "maxSlots": 6,
@@ -93,9 +99,15 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -184,9 +196,15 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Self Heal Recover, -DEF",
     "icon": "inherent_rest.png",
     "powerType": "Toggle",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceModification",
       "Healing",
@@ -237,12 +255,6 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
         "regenBuff": 0.55,
         "resistanceDebuff": 0.55,
         "teleport": 0.55
-      },
-      "immobilize": {
-        "ignoreStrength": true,
-        "mag": 100,
-        "scale": 0.3,
-        "table": "Melee_Ones"
       },
       "mezResistance": {
         "sleep": {
@@ -322,18 +334,6 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
           "scale": 10,
           "table": "Melee_Ones"
         }
-      },
-      "sleep": {
-        "ignoreStrength": true,
-        "mag": 1,
-        "scale": 0.55,
-        "table": "Melee_Ones"
-      },
-      "stun": {
-        "ignoreStrength": true,
-        "mag": 1,
-        "scale": 0.55,
-        "table": "Melee_Ones"
       },
       "teleport": {
         "scale": 100,

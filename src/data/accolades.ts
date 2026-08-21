@@ -83,6 +83,32 @@ export function getAccolades(): AccoladePower[] {
   return activeAccoladePowerset().powers.filter(isStatToggle);
 }
 
+/**
+ * Modes the game requires for this accolade's buff to apply, as display labels.
+ *
+ * Empty for the permanent ones, which is nearly all of them. The totals fold every selected
+ * accolade unconditionally, so a non-empty list means the buff is real but conditional and the
+ * picker has to say so. Read off `modesRequired`, so a fork that gates a different accolade
+ * needs no code change. The accolade converter was the fourth tree to call `assignModes` and
+ * the last to get it, which is why this read empty everywhere until 2026-08-21.
+ */
+export function accoladeRequiredModes(power: AccoladePower): string[] {
+  return (power.modesRequired ?? []).map(spacedMode);
+}
+
+/**
+ * A mode key spelled for display: `InLabyrinth` reads as "In Labyrinth". Separators and
+ * camel-case seams become spaces and nothing else changes, matching `coh_data`'s `mode_label`.
+ *
+ * Deliberately not the beta's `modeLabel` from mode-suppression.ts, which maps a curated set of
+ * form tokens to nicer names (`FastMode` → "Momentum"). That map doesn't know these tokens, and
+ * exporting a second `modeLabel` would put two readers of the same name in two barrels with
+ * import order deciding.
+ */
+function spacedMode(token: string): string {
+  return token.replace(/[_-]+/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+}
+
 /** Resolve a selected accolade id to its power (active dataset), or undefined. */
 export function getAccolade(id: string): AccoladePower | undefined {
   return getAccolades().find((power) => accoladeId(power) === id);

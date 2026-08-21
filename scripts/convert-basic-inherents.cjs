@@ -43,13 +43,17 @@ const {
   collectBaseTemplates,
   collectAtomTemplates,
   encodeAtomsForEmit,
+  assignModes,
   resolveThunderspyMovementTargets,
   guardThunderspyOnesBuffs,
+  guardThunderspyAppliedMez,
   TARGET_TYPE_MAP,
   EFFECT_AREA_MAP,
   BOOST_TYPE_MAP,
   BIN_BOOST_MAP,
   RAW_DATA_PATH,
+  extractGrantEdges,
+  _readPowerFile,
 } = require('./convert-powerset.cjs');
 const { displayText } = require('./_display-text.cjs');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
@@ -75,31 +79,31 @@ const OUTPUT_PATH = datasetPath(datasetId, 'generated', 'basic-inherents.ts');
  * game data: which picker tab the power renders under, and that the player
  * cannot un-grant it.
  *
- * `maxSlotsFallback` applies only when the record does NOT state `max_boosts`.
- * The three travel toggles state `0` and mean it; Sprint, Rest and the prestige
- * sprints say nothing, and the converter's usual reading of silence — six slots,
- * same as any picked power — is a convention rather than something the game
- * says. Rather than change a shipped slot budget on the strength of a default,
- * silence keeps the number the planner has always used. See INHERENT-7.
+ * Slot ceiling: a stated `max_boosts` is read literally, and export silence
+ * decodes to six — not as a convention but as what the export means. The game's
+ * parse table stamps 6 into the binary when the authored def says nothing
+ * (powers_load.c `TOK_INT(BasePower, iMaxBoosts, 6)`), the exporter omits
+ * exactly the value 6, and the engine enforces the stored value plus a
+ * five-slot buy cap (`MAX_BOOSTS_BOUGHT`) that lands on the same six. So the
+ * three travel toggles state `0` and mean it, and Sprint, Rest and the
+ * prestige sprints are silent sixes. The hand table's four had no source and
+ * is retired. Closed INHERENT-7 / MAXBOOST-1.
  */
 const OFFERED = [
   {
     addresses: ['Inherent.Inherent.Brawl'],
     category: 'basic',
     locked: true,
-    maxSlotsFallback: 6,
   },
   {
     addresses: ['Inherent.Inherent.Sprint'],
     category: 'basic',
     locked: true,
-    maxSlotsFallback: 4,
   },
   {
     addresses: ['Inherent.Inherent.Rest'],
     category: 'basic',
     locked: true,
-    maxSlotsFallback: 4,
   },
   {
     addresses: [
@@ -108,7 +112,6 @@ const OFFERED = [
     ],
     category: 'basic',
     locked: true,
-    maxSlotsFallback: 0,
   },
   {
     addresses: [
@@ -117,13 +120,11 @@ const OFFERED = [
     ],
     category: 'basic',
     locked: true,
-    maxSlotsFallback: 0,
   },
   {
     addresses: ['Prestige.Prestige_Travel.Prestige_Athletic_Run'],
     category: 'basic',
     locked: true,
-    maxSlotsFallback: 0,
   },
   {
     addresses: [
@@ -132,7 +133,6 @@ const OFFERED = [
     ],
     category: 'prestige',
     locked: true,
-    maxSlotsFallback: 4,
   },
   {
     addresses: [
@@ -141,7 +141,6 @@ const OFFERED = [
     ],
     category: 'prestige',
     locked: true,
-    maxSlotsFallback: 4,
   },
   {
     addresses: [
@@ -150,7 +149,6 @@ const OFFERED = [
     ],
     category: 'prestige',
     locked: true,
-    maxSlotsFallback: 4,
   },
   {
     addresses: [
@@ -159,7 +157,6 @@ const OFFERED = [
     ],
     category: 'prestige',
     locked: true,
-    maxSlotsFallback: 4,
   },
   {
     addresses: [
@@ -168,7 +165,6 @@ const OFFERED = [
     ],
     category: 'prestige',
     locked: true,
-    maxSlotsFallback: 4,
   },
 ];
 
@@ -192,7 +188,8 @@ function buildIndex() {
       if (!entry.name.endsWith('.json') || entry.name === 'index.json') continue;
       let json;
       try {
-        json = JSON.parse(fs.readFileSync(full, 'utf-8'));
+        // Through the gate-stamping reader (COND-12): the Stance inherent is a carrier.
+        json = _readPowerFile(full);
       } catch {
         continue;
       }
@@ -299,6 +296,14 @@ function convertBasicInherent(rawJson, entry, granter) {
   power.icon = normalizeIconPath(rawJson.icon || '');
   power.powerType = rawJson.type || 'Toggle';
 
+  // The same call every other Power-emitting converter makes, for the reason
+  // `assignModes` states: a power's mode gating must not depend on which tree
+  // converted it. This was the last tree without it. Read off the toggle rather
+  // than the granter, because the granter only says who hands the power over,
+  // while the toggle is what carries `modes_suspended` — the field saying a
+  // Kheldian in Nova form is not getting their Sprint speed (INHERENT-9).
+  assignModes(power, rawJson);
+
   if (rawJson.target_type) {
     const mapped = TARGET_TYPE_MAP[rawJson.target_type];
     if (mapped) power.targetType = mapped;
@@ -310,9 +315,11 @@ function convertBasicInherent(rawJson, entry, granter) {
   // these. Kept so the question stays visible in the data.
   power.requires = gateTokens(rawJson.requires);
 
+  // Literal read; silence is the exporter suppressing the parse-table default,
+  // so it decodes to 6 (see the OFFERED comment — INHERENT-7 / MAXBOOST-1).
   power.maxSlots =
     rawJson.max_boosts === undefined || rawJson.max_boosts === null
-      ? entry.maxSlotsFallback
+      ? 6
       : rawJson.max_boosts;
 
   const enhancements = (rawJson.boosts_allowed || [])
@@ -356,7 +363,8 @@ function convertBasicInherent(rawJson, entry, granter) {
   if (allTemplates.length > 0) {
     const damage = extractDamage(allTemplates);
     if (damage) effects.damage = damage;
-    for (const [key, value] of Object.entries(extractEffects(allTemplates, rawJson.name))) {
+    const extracted = extractEffects(allTemplates, rawJson.name, rawJson.targets_affected);
+    for (const [key, value] of Object.entries(extracted)) {
       effects[key] = value;
     }
   }
@@ -373,12 +381,24 @@ function convertBasicInherent(rawJson, entry, granter) {
 
   power.effects = effects;
 
+  // Caster-state writes (grant/revoke edges) — the stamp every partition gets, called
+  // explicitly for the audit-grant-edges.cjs reason: an extractor reaches only the
+  // converters that ask.
+  const grantEdges = extractGrantEdges(rawJson);
+  if (grantEdges) power.grantEdges = grantEdges;
+
   if (Array.isArray(rawJson.targets_affected) && rawJson.targets_affected.length) {
     power.targetsAffected = rawJson.targets_affected;
   }
 
   if (datasetId === 'thunderspy') {
+    // Both Thunderspy target-trap guards, because the trap is a property of the BINARY and
+    // not of which converter read it: the aspect and per-template target the recovered slot
+    // needs are missing from every fork-6 power alike. The applied-mez half was called only by
+    // convert-powerset.cjs, so Rest, Hibernate and Rise of the Phoenix shipped 15 foe-control
+    // slots on self-only powers (TWIN-2).
     guardThunderspyOnesBuffs(power, rawJson.targets_affected);
+    guardThunderspyAppliedMez(power, rawJson.targets_affected);
   }
 
   return power;

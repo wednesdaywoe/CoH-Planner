@@ -26,6 +26,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max END",
       "icon": "ba_atlas_medallions.png",
       "powerType": "Auto",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "activateRequires": [
         "type",
@@ -66,6 +69,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max END",
       "icon": "ba_super_patriot.png",
       "powerType": "Auto",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "activateRequires": [
         "type",
@@ -106,6 +112,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max HP",
       "icon": "ba_phalanx_reserve.png",
       "powerType": "Auto",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "activateRequires": [
         "type",
@@ -146,6 +155,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max HP",
       "icon": "ba_task_force_cmmndr.png",
       "powerType": "Auto",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "activateRequires": [
         "type",
@@ -186,6 +198,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max HP, +Max END",
       "icon": "ba_poortal_jockey.png",
       "powerType": "Auto",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "activateRequires": [
         "type",
@@ -233,6 +248,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge, -Fly",
       "icon": "ba_crey_pistol.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Foe",
       "allowedEnhancements": [],
       "atoms": [
@@ -300,6 +318,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Self, +Res(All but Psionics), +DEF(All but Psionics)",
       "icon": "ba_eye_of_the_magus.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "allowedEnhancements": [],
       "atoms": [
@@ -413,6 +434,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Self +Special",
       "icon": "ba_vangaurd_medal.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "allowedEnhancements": [],
       "atoms": [
@@ -481,6 +505,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Self +Recovery, +ACC, +Recharge, -DEF",
       "icon": "ba_geas_of_kind_ones.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "allowedEnhancements": [],
       "atoms": [
@@ -537,6 +564,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max END",
       "icon": "ba_atlas_medallions.png",
       "powerType": "Auto",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "activateRequires": [
         "type",
@@ -577,6 +607,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max HP",
       "icon": "ba_phalanx_reserve.png",
       "powerType": "Auto",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "activateRequires": [
         "type",
@@ -617,6 +650,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max HP, +Max END",
       "icon": "ba_poortal_jockey.png",
       "powerType": "Auto",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "activateRequires": [
         "type",
@@ -664,6 +700,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Ranged, Moderate DoT(Energy), Foe Immobilize, -SPD, -Recharge, -Fly",
       "icon": "ba_crey_pistol.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Foe",
       "allowedEnhancements": [],
       "atoms": [
@@ -731,6 +770,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Self, +Res(All but Psionics), +DEF(All but Psionics)",
       "icon": "ba_eye_of_the_magus.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "allowedEnhancements": [],
       "atoms": [
@@ -844,6 +886,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Self +Special",
       "icon": "ba_vangaurd_medal.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "allowedEnhancements": [],
       "atoms": [
@@ -912,6 +957,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max HP",
       "icon": "ba_task_force_cmmndr.png",
       "powerType": "Auto",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "activateRequires": [
         "type",
@@ -952,6 +1000,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Self +Recovery, +ACC, +Recharge, -DEF",
       "icon": "ba_geas_of_kind_ones.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "allowedEnhancements": [],
       "atoms": [
@@ -1008,6 +1059,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max HP, +Max END",
       "icon": "ba_poortal_jockey.png",
       "powerType": "Auto",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "activateRequires": [
         "type",
@@ -1098,6 +1152,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Moderate Psionic Resistance",
       "icon": "ba_elusivemind.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "allowedEnhancements": [],
       "atoms": [
@@ -1193,6 +1250,12 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Special: Set Teleport",
       "icon": "accolade_mark.png",
       "powerType": "Toggle",
+      "setsModes": [
+        "MarkPlaced"
+      ],
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Location",
       "activateRequires": [
         "NoRecall",
@@ -1251,6 +1314,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Resist Effects",
       "icon": "accolade_sheerwillpower.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Self",
       "allowedEnhancements": [],
       "atoms": [
@@ -1368,6 +1434,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max HP, +Max END",
       "icon": "accolade_labyrinthconqueror.png",
       "powerType": "Auto",
+      "modesRequired": [
+        "InLabyrinth"
+      ],
       "targetType": "Self",
       "allowedEnhancements": [],
       "atoms": [
@@ -1409,6 +1478,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "+Max END",
       "icon": "accolade_mazebreaker.png",
       "powerType": "Auto",
+      "modesRequired": [
+        "InLabyrinth"
+      ],
       "targetType": "Self",
       "allowedEnhancements": [],
       "atoms": [
@@ -1467,6 +1539,12 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Minor Minor DMG(Special)",
       "icon": "accolade_excalibonk.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Peacebringer_Blaster_Mode",
+        "Peacebringer_Tanker_Mode",
+        "Warshade_Blaster_Mode",
+        "Warshade_Tanker_Mode"
+      ],
       "targetType": "Any",
       "activateRequires": [
         "mapname>",
@@ -1506,6 +1584,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Special",
       "icon": "accolade_weaver_scanalyzer.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Arena"
+      ],
       "targetType": "Foe",
       "allowedEnhancements": [],
       "atoms": [

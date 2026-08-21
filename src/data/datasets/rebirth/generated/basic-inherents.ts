@@ -31,6 +31,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Melee, Minor DMG (Smashing), Fighting Synergy",
     "icon": "inherent_brawl.png",
     "powerType": "Click",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Foe",
     "requires": [],
     "maxSlots": 6,
@@ -82,9 +88,15 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -143,9 +155,15 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Self Heal Recover, -DEF",
     "icon": "inherent_rest.png",
     "powerType": "Toggle",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceModification",
       "Healing",
@@ -324,6 +342,16 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Toggle: Self +Run Speed, +Jump",
     "icon": "inherent_ninjarun.png",
     "powerType": "Toggle",
+    "setsModes": [
+      "TravelJumpOn"
+    ],
+    "modesDisallowed": [
+      "Disable_Travel",
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [
       "MartialArtsPack",
@@ -342,13 +370,13 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "activatePeriod": 0.5
     },
     "atoms": [
-      ["Meta",null,1,122,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+      ["Meta",null,1,122,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],
       ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Leap"],
       ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedJumping"],
       ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
       ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
       ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedRunning"],
-      ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"ninja_run"],
+      ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"ninja_run",null,null,null,null,null,["Held","Stunned","Sleep"]],
       ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Leap"],
       ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"SpeedJumping"],
       ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
@@ -406,6 +434,16 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Toggle: Self +Run Speed, +Jump",
     "icon": "inherent_beastrun.png",
     "powerType": "Toggle",
+    "setsModes": [
+      "TravelJumpOn"
+    ],
+    "modesDisallowed": [
+      "Disable_Travel",
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [
       "AnimalPack",
@@ -422,13 +460,13 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "activatePeriod": 0.5
     },
     "atoms": [
-      ["Meta",null,1,122,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+      ["Meta",null,1,122,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],
       ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Leap"],
       ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedJumping"],
       ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
       ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
       ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedRunning"],
-      ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"beast_run"],
+      ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"beast_run",null,null,null,null,null,["Held","Stunned","Sleep"]],
       ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Leap"],
       ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"SpeedJumping"],
       ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
@@ -486,6 +524,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [
       "DVDSpecialEdition",
@@ -494,7 +538,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "productOwned?",
       "||"
     ],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -513,7 +557,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       ["Movement","Run",0.5,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
       ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
       ["Movement","JumpHeight",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-      ["Meta",null,1,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"glide"]
+      ["Meta",null,1,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"glide",null,null,null,null,null,["Held","Stunned","Sleep"]]
     ],
     "effects": {
       "effectArea": "SingleTarget",
@@ -554,6 +598,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [
       "Preorder:GameStop",
@@ -562,7 +612,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "Owned?",
       "||"
     ],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -621,6 +671,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [
       "Preorder:Generic",
@@ -629,7 +685,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "Owned?",
       "||"
     ],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -688,6 +744,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [
       "Preorder:BestBuy",
@@ -696,7 +758,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "Owned?",
       "||"
     ],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -755,6 +817,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [
       "Preorder:EB",
@@ -763,7 +831,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "Owned?",
       "||"
     ],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",

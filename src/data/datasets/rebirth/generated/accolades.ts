@@ -1099,6 +1099,9 @@ export const ACCOLADES_POWERSET = {
       "shortHelp": "Summon Portable Workbench",
       "icon": "veteran_summonpet.png",
       "powerType": "Click",
+      "modesDisallowed": [
+        "Disable_Temp"
+      ],
       "targetType": "Location",
       "allowedEnhancements": [],
       "atoms": [

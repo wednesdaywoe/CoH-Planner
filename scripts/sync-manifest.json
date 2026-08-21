@@ -111,7 +111,7 @@
     {
       "path": "scripts/convert-accolades.cjs",
       "status": "identical",
-      "sha256": "45bc7c36072fa976b1447060e602c8dc57d6e734b660ab83298c06fffb04e75f"
+      "sha256": "21ab049b97f7f3fa871b7cdca44e8b77e7a1c49b94c4c66e7efa339c505b9556"
     },
     {
       "path": "scripts/convert-all-powersets.cjs",
@@ -125,14 +125,8 @@
     },
     {
       "path": "scripts/convert-basic-inherents.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "ce511d25e04f8a826a6bcc74cd0a0ea3329a73815804f53945d3418c03e8b9d6",
-        "beta": "ece14fd99d0fc53f52f319a8fa51a5bcca76397ef88364ad99a72e243c304fc7"
-      },
-      "reason": "Two forks. Canonical emits grant edges and calls the Thunderspy applied-mez guard; beta still ships the `maxSlotsFallback` hand table that MAXBOOST-1 retired, which states a slot ceiling the export owns.",
-      "exit": "Port the grant-edge and guard half; delete `maxSlotsFallback` in beta, since export silence is a stated six.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "b5fff947bb41e60ec006dc9020a75200b9248967162276e1700f2ce9d4218eb7"
     },
     {
       "path": "scripts/convert-enhancement-curves.cjs",
@@ -394,8 +388,8 @@
         "canonical": "59085d26d98b998b6cc8255cf874224e89f95fea0c8f08e368165c357d5a6cb5",
         "beta": "f6dd979bd02bc6f4317bfcc2f70aa15441e638fefd99a4a42a13a69a87b7ce50"
       },
-      "reason": "Pulled onto the surface by `power-pools.ts`. Forked both ways and both halves are named elsewhere: canonical alone sources the level schedule per fork (`getPoolUnlockLevel` and friends, off schedules.bin) where the beta hardcodes the Homecoming numbers; the beta alone merges `inherentRules.archetypeInherents` into the shared hand-written inherent list and splits `getPickShadowingInherentPowers` off it (AUTOISSUE-2's beta closure, and AUTOISSUE-3's fix to it). Canonical needs no merge \u2014 its Rust engine admits an archetype-gated grant by GATE SHAPE and dedupes against the archetype catalogue's declared names, which is why `Dataset.archetypeInherents` is optional.",
-      "exit": "Two independent halves. The schedule half closes with the leveling-schedule port named on `power-pools.ts`. The inherent half closes by carrying the beta's merge into canonical's copy \u2014 harmless there, since canonical's datasets leave `archetypeInherents` absent and the merge degenerates to the shared list.",
+      "reason": "Pulled onto the surface by `power-pools.ts`. Forked both ways and both halves are named elsewhere: canonical alone sources the level schedule per fork (`getPoolUnlockLevel` and friends, off schedules.bin) where the beta hardcodes the Homecoming numbers; the beta alone merges `inherentRules.archetypeInherents` into the shared hand-written inherent list and splits `getPickShadowingInherentPowers` off it (AUTOISSUE-2's beta closure, and AUTOISSUE-3's fix to it). Canonical needs no merge — its Rust engine admits an archetype-gated grant by GATE SHAPE and dedupes against the archetype catalogue's declared names, which is why `Dataset.archetypeInherents` is optional.",
+      "exit": "Two independent halves. The schedule half closes with the leveling-schedule port named on `power-pools.ts`. The inherent half closes by carrying the beta's merge into canonical's copy — harmless there, since canonical's datasets leave `archetypeInherents` absent and the merge degenerates to the shared list.",
       "gap": "FORK-2"
     },
     {
@@ -405,8 +399,8 @@
         "canonical": "7ff783ea9106d3ca53d51141f3e7de73b73fbe11d2f8c4d4d1443c8520592f0f",
         "beta": "9df3751836e38529f37826264670dbc664e1187a582e3d7c99fcbd0b8252e5ec"
       },
-      "reason": "Reached from `dataset.ts` (powerPoolsRaw's type), so it joined the surface when that module closed. One fork left, and it is a data question: canonical reads the pool-unlock level per server from that fork's own generated leveling schedule (`getPoolUnlockLevel`, schedules.bin \u2014 4 on the shared schedule, 1 on Thunderspy), the beta states a `POOL_UNLOCK_LEVEL = 4` constant on all three. So the beta gates Thunderspy pools three levels late. Everything else here \u2014 `pickModeGates` and the five-member Specialized exclusion \u2014 travelled the other way in this same step and is now identical.",
-      "exit": "Port the generated leveling-schedule layer (`convert-leveling-schedule.cjs` + the per-dataset generated modules + `getPoolUnlockLevel`/`getSlotGrants`/`getMaxPowerPools`) into the beta, then take canonical's copy of this file wholesale. Blocked on that port, not on an adjudication \u2014 the two sides agree which answer is right.",
+      "reason": "Reached from `dataset.ts` (powerPoolsRaw's type), so it joined the surface when that module closed. One fork left, and it is a data question: canonical reads the pool-unlock level per server from that fork's own generated leveling schedule (`getPoolUnlockLevel`, schedules.bin — 4 on the shared schedule, 1 on Thunderspy), the beta states a `POOL_UNLOCK_LEVEL = 4` constant on all three. So the beta gates Thunderspy pools three levels late. Everything else here — `pickModeGates` and the five-member Specialized exclusion — travelled the other way in this same step and is now identical.",
+      "exit": "Port the generated leveling-schedule layer (`convert-leveling-schedule.cjs` + the per-dataset generated modules + `getPoolUnlockLevel`/`getSlotGrants`/`getMaxPowerPools`) into the beta, then take canonical's copy of this file wholesale. Blocked on that port, not on an adjudication — the two sides agree which answer is right.",
       "gap": "FORK-2"
     },
     {
@@ -421,7 +415,7 @@
         "canonical": "4725fdbc6e36b34c9ec94e7b569937055e71723bed33eda841b4af30ce54e56a",
         "beta": "e9692408504b8b69cc848fe86db7f64180ddedb2ea0c93f11c0c1b61b389d06e"
       },
-      "reason": "Four clusters, all beta-ahead, none reaching a converter \u2014 the file is on the shared surface only because types/index.ts re-exports it. The one that matters is activeModes against the twin's kheldianForm/primalistForm: the twin's two form enums are backed by hand-authored per-fork variant tables (Rebirth's is a community mapping standing in for unparsed Parse6, and Homecoming's is empty), where the beta reads the export's modeVariants. The other three are app state the twin was never vendored: mutedOverCapStats, startForm/fullShiftAnimations, DEFAULT_BUILD_NAME.",
+      "reason": "Four clusters, all beta-ahead, none reaching a converter — the file is on the shared surface only because types/index.ts re-exports it. The one that matters is activeModes against the twin's kheldianForm/primalistForm: the twin's two form enums are backed by hand-authored per-fork variant tables (Rebirth's is a community mapping standing in for unparsed Parse6, and Homecoming's is empty), where the beta reads the export's modeVariants. The other three are app state the twin was never vendored: mutedOverCapStats, startForm/fullShiftAnimations, DEFAULT_BUILD_NAME.",
       "exit": "The form model closes by porting the beta's modeVariants read into the twin and retiring the four hand tables with their two generators; the other three close by vendoring. Until then the pipeline's answer is canonical's copy, because that is the copy the converters were reconciled against.",
       "gap": "FORK-2"
     },

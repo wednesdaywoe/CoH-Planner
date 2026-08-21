@@ -47,6 +47,7 @@ const {
   BOOST_TYPE_MAP,
   BIN_BOOST_MAP,
   RAW_DATA_PATH,
+  assignModes,
   extractGrantEdges,
 } = require('./convert-powerset.cjs');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
@@ -87,6 +88,13 @@ function convertAccoladePower(rawJson) {
   }
   power.icon = normalizeIconPath(rawJson.icon || '');
   power.powerType = rawJson.type || 'Auto';
+
+  // The same call the pool, epic and inherent converters make, for the reason `assignModes`
+  // states: a power's mode gating must not depend on which tree converted it. Accolades were
+  // the fourth tree and the one still missing it, so the Labyrinth of Fog pair — the only
+  // accolades the game gates with `modes_required` — published no mode at all and read as
+  // permanent buffs.
+  assignModes(power, rawJson);
 
   if (rawJson.target_type) {
     const mapped = TARGET_TYPE_MAP[rawJson.target_type];

@@ -19,12 +19,13 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**2 open, of 182 entries.** When an entry is open it is listed here with what it's waiting on.
+**2 open, of 184 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
-- **FORK-1** — the three converters are reconciled and the two repos' generated powerset trees are
-  byte-identical on all three forks (2026-08-21); waiting on the 12 remaining forked scripts
+- **FORK-1** — the four converters are reconciled and the two repos' generated powerset and
+  basic-inherent trees are byte-identical on all three forks (2026-08-21); waiting on the 11
+  remaining forked scripts
 - **FORK-2** — the guard watched `scripts/` while the pipeline also EXECUTES twelve forked `src/`
   modules; the manifest now covers them and ten are reconciled, waiting on `types/build.ts`'s four
   remaining clusters and `calc-debug.ts`, plus the two the closure of `dataset.ts` pulled onto the
@@ -37,8 +38,16 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Sets, boosts, incarnates, inherents
 
-[Full detail](gaps/sets-boosts-incarnates.md) — 23 of 23 closed
+[Full detail](gaps/sets-boosts-incarnates.md) — 24 of 25 closed
 
+- [x] **INHERENT-9** — the basic-inherent converter dropped the same four mode arrays ACCOLADE-2
+  closed, so Sprint, Rest, Brawl and the prestige travel toggles published none of the Kheldian
+  form gating the game gives them on every fork; the call landed with the script's FORK-1
+  reconciliation, and a two-legged guard now derives the emitter roster and grades all 10,502
+  emitted powers against their own export records
+- [x] **ACCOLADE-2** — the accolade converter was the one tree that never called `assignModes`, so
+  the Labyrinth pair's `modes_required` zone gate was dropped and a buff you only have in one zone
+  presented as permanent; the picker now warns from the field
 - [x] **ICON-1** — one mis-keyed override gave the base Winter's Gift the SUPERIOR artwork on all
   three forks and left Rebirth's `superior_winters_gift` on a filename the extractor fabricated,
   `ssuperior_winters_gift.png`, 404ing from the day the set was added while the base set's own

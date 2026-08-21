@@ -31,6 +31,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Melee, Minor DMG(Smashing), Fighting Synergy",
     "icon": "inherent_brawl.png",
     "powerType": "Click",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Foe",
     "requires": [],
     "maxSlots": 6,
@@ -68,21 +74,21 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0.5,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
       ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
       ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0.1111999973654747,null,null,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true],
-      ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0.1111999973654747,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
-      ["Mez","Knockback",100,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,0.11550000309944153,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true],
-      ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0.11550000309944153,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
+      ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0.1111999973654747,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null",null,1],
+      ["Mez","Knockback",100,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,0.11550000309944153,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.01],
+      ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0.11550000309944153,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null",null,0.75],
       ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0.18780000507831573,null,null,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true],
-      ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0.18780000507831573,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
+      ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0.18780000507831573,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null",null,0.7],
       ["Mez","Repel",3,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true],
       ["Meta",null,0,0,1,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
-      ["Meta",null,0,0,0.4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
-      ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
+      ["Meta",null,0,0,0.4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null",null,0.9],
+      ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null",null,1],
       ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0.5,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
       ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
       ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true],
-      ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0.20000000298023224,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
-      ["Mez","Knockback",3,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&","enttype","target>","player","eq","&&"],true],
-      ["Mez","Knockback",3,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&","enttype","target>","critter","eq","&&"],true]
+      ["Meta",null,0,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0.20000000298023224,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true,null,null,null,null,null,null,null,null,null,null,"null",null,0.45],
+      ["Mez","Knockback",3,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,1],
+      ["Mez","Knockback",3,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,1]
     ],
     "effects": {
       "effectArea": "SingleTarget",
@@ -109,9 +115,19 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesSuspended": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Suppress_RunToggles",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
+    "modesDisallowed": [
+      "Disable_RunToggles"
+    ],
     "targetType": "Self",
     "requires": [],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -170,9 +186,15 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Self Heal Recover, -DEF",
     "icon": "inherent_rest.png",
     "powerType": "Toggle",
+    "modesDisallowed": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
     "targetType": "Self",
     "requires": [],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceModification",
       "Healing",
@@ -344,6 +366,23 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Toggle: Self +Run Speed, +Jump",
     "icon": "inherent_ninjarun.png",
     "powerType": "Toggle",
+    "setsModes": [
+      "Disable_Stance"
+    ],
+    "modesSuspended": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Suppress_JumpToggles",
+      "Suppress_RunToggles",
+      "Suppress_TravelToggles",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
+    "modesDisallowed": [
+      "Disable_JumpToggles",
+      "Disable_RunToggles",
+      "Disable_Travel"
+    ],
     "targetType": "Self",
     "requires": [],
     "maxSlots": 0,
@@ -354,12 +393,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "activatePeriod": 0.5
     },
     "atoms": [
-      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stance",null,"null"],
+      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stance",null,"null",null,null,null,null,null,["Stunned","Held","Sleep"]],
       ["Meta",null,1,32,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stance",null,"set_mode"]
     ],
     "effects": {
@@ -419,6 +458,23 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Toggle: Self +Run Speed, +Jump",
     "icon": "inherent_beastrun.png",
     "powerType": "Toggle",
+    "setsModes": [
+      "Disable_Stance"
+    ],
+    "modesSuspended": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Suppress_JumpToggles",
+      "Suppress_RunToggles",
+      "Suppress_TravelToggles",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
+    "modesDisallowed": [
+      "Disable_JumpToggles",
+      "Disable_RunToggles",
+      "Disable_Travel"
+    ],
     "targetType": "Self",
     "requires": [],
     "maxSlots": 0,
@@ -429,12 +485,12 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "activatePeriod": 0.5
     },
     "atoms": [
-      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stance",null,"null"],
+      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stance",null,"null",null,null,null,null,null,["Stunned","Held","Sleep"]],
       ["Meta",null,1,32,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stance",null,"set_mode"]
     ],
     "effects": {
@@ -493,6 +549,20 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Toggle: Self +Run Speed, +Jump",
     "icon": "inherent_athleticrun.png",
     "powerType": "Toggle",
+    "modesSuspended": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Suppress_JumpToggles",
+      "Suppress_RunToggles",
+      "Suppress_TravelToggles",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
+    "modesDisallowed": [
+      "Disable_JumpToggles",
+      "Disable_RunToggles",
+      "Disable_Travel"
+    ],
     "targetType": "Self",
     "requires": [],
     "maxSlots": 0,
@@ -503,11 +573,11 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "activatePeriod": 0.5
     },
     "atoms": [
-      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
+      ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+      ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
       ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
     ],
     "effects": {
@@ -566,6 +636,19 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "setsModes": [
+      "Disable_Stance"
+    ],
+    "modesSuspended": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Suppress_RunToggles",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
+    "modesDisallowed": [
+      "Disable_RunToggles"
+    ],
     "targetType": "Self",
     "requires": [
       "DVDSpecialEdition",
@@ -574,7 +657,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "productOwned?",
       "||"
     ],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -593,7 +676,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
       ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
       ["Movement","JumpHeight",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-      ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stance",null,"null"],
+      ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stance",null,"null",null,null,null,null,null,["Stunned","Held","Sleep"]],
       ["Meta",null,1,32,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stance",null,"set_mode"]
     ],
     "effects": {
@@ -635,6 +718,16 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesSuspended": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Suppress_RunToggles",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
+    "modesDisallowed": [
+      "Disable_RunToggles"
+    ],
     "targetType": "Self",
     "requires": [
       "Preorder:GameStop",
@@ -643,7 +736,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "Owned?",
       "||"
     ],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -702,6 +795,16 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesSuspended": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Suppress_RunToggles",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
+    "modesDisallowed": [
+      "Disable_RunToggles"
+    ],
     "targetType": "Self",
     "requires": [
       "Preorder:Generic",
@@ -710,7 +813,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "Owned?",
       "||"
     ],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -769,6 +872,16 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesSuspended": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Suppress_RunToggles",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
+    "modesDisallowed": [
+      "Disable_RunToggles"
+    ],
     "targetType": "Self",
     "requires": [
       "Preorder:BestBuy",
@@ -777,7 +890,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "Owned?",
       "||"
     ],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
@@ -836,6 +949,16 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "shortHelp": "Boost Run SPD",
     "icon": "inherent_sprint.png",
     "powerType": "Toggle",
+    "modesSuspended": [
+      "Peacebringer_Blaster_Mode",
+      "Peacebringer_Tanker_Mode",
+      "Suppress_RunToggles",
+      "Warshade_Blaster_Mode",
+      "Warshade_Tanker_Mode"
+    ],
+    "modesDisallowed": [
+      "Disable_RunToggles"
+    ],
     "targetType": "Self",
     "requires": [
       "Preorder:EB",
@@ -844,7 +967,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "Owned?",
       "||"
     ],
-    "maxSlots": 4,
+    "maxSlots": 6,
     "allowedEnhancements": [
       "EnduranceReduction",
       "Jump",
