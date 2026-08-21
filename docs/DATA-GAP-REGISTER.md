@@ -25,8 +25,9 @@ doesn't accumulate closure prose.
 
 - **FORK-1** — the four converters, the `gateText` cluster and the three shadow ports are
   reconciled (2026-08-21); the two shadows were red on this repo's own data at HEAD and green on the
-  port, so the fork was in the script and not the data; waiting on the disposition of the 3
-  remaining forked scripts, two of which only canonical runs
+  port, so the fork was in the script and not the data; the two ratchet copies this repo held
+  were dead — unreferenced, and reading a baseline file absent there — so they are deleted and
+  declared canonical-only, measured by a tripwire; waiting on `regen-all.cjs`
 - **FORK-2** — the guard watched `scripts/` while the pipeline also EXECUTES twelve forked `src/`
   modules; the manifest now covers them and ten are reconciled, waiting on `types/build.ts`'s four
   remaining clusters and `calc-debug.ts`, plus the two the closure of `dataset.ts` pulled onto the
@@ -270,7 +271,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   had forked, `convert-powerset.cjs` by 714 lines in BOTH directions, and the beta still shipped a
   `dual_pistols` proper noun in a converter conditional plus the hand table MAXBOOST-1 retired; a
   hash manifest now adjudicates every shared path, the three converters are reconciled and PAR2
-  crossed to canonical, and 3 forked scripts remain
+  crossed to canonical, and 1 forked script remains
 - [ ] **FORK-2** — `convert-powerset.cjs` loads its atom encoder from `src/` at runtime, so three
   byte-identical converters still emitted different files; twelve `src/` modules the pipeline
   executes had forked in BOTH directions and no guard watched any of them, because the manifest

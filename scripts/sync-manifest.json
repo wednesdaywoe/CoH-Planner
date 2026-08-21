@@ -4,6 +4,18 @@
     "canonical": "wednesdaywoe/coh-sidekick-1.0 (private, Rust/Dioxus rebuild, owns the parser)",
     "beta": "wednesdaywoe/CoH-Sidekick (public, TS/React, the live site)"
   },
+  "canonicalOnly": [
+    {
+      "path": "scripts/audit-converter-twins.cjs",
+      "reason": "Wired into canonical's regen-all.cjs and package.json as audit:twins. The beta held a copy it never referenced and could not have run — the --gate leg reads scripts/audit-twins-baseline.json, which the beta does not carry.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/audit-coverage-census.cjs",
+      "reason": "Wired into canonical's regen-all.cjs and package.json as audit:census. Same shape as the twins ratchet: an unreferenced beta copy whose --gate leg reads scripts/audit-census-baseline.json, absent there.",
+      "gap": "FORK-1"
+    }
+  ],
   "entries": [
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -69,28 +81,6 @@
       "path": "scripts/audit-allowed-set-categories.cjs",
       "status": "identical",
       "sha256": "acb93bc85f72ef08466ecd8e665938e4d1d51cfe531628a83a7238f19423b96e"
-    },
-    {
-      "path": "scripts/audit-converter-twins.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "d64752cdb746dc391b19aa8d13e4d46815e76e999d84aa0524f381a159cae4a2",
-        "beta": "9d4288e8aec52a38649090f100be4c540444304a1dbeedcccdfcae09468e5f54"
-      },
-      "reason": "Canonical added `--gate` and `--write-baseline` over a committed `audit-twins-baseline.json`, turning the twin audit from a report into a ratchet. Beta has the report only.",
-      "exit": "Port the gate and the baseline, or declare the audit canonical-only and drop it from the shared surface.",
-      "gap": "FORK-1"
-    },
-    {
-      "path": "scripts/audit-coverage-census.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "2dbf747b23da69e42fef2f76cd4cf3d5cbe48aa9aeba1da32b1998da82e1d59e",
-        "beta": "82c2e5775d80bcd4a1d7f321710ad24bbed5aab561fb27276a9b4c5c59358b0d"
-      },
-      "reason": "Same as the twin audit: canonical gates structural zeros against a committed baseline, beta prints them.",
-      "exit": "Port the gate and the baseline, or declare it canonical-only.",
-      "gap": "FORK-1"
     },
     {
       "path": "scripts/bridge-attrib-one.cjs",
@@ -296,7 +286,7 @@
     {
       "path": "scripts/verify-sync.cjs",
       "status": "identical",
-      "sha256": "6a9431c26837c0ef6b8ac9764870fd3e8efbd81128a3cc243a5f5ba654a77442"
+      "sha256": "876249e730dacf5489aaeefa91edbdd16f5e8f5eb29db51aa6ef9a7e6b71708c"
     },
     {
       "path": "src/data/core/atom-query.ts",

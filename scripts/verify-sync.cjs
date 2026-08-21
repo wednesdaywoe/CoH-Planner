@@ -15,6 +15,9 @@
  * in sync-manifest.json as `identical` or `forked`, a fork must name a reason and a gap id, and
  * either repo editing a shared file without re-adjudicating turns this red.
  *
+ * Paths only one repo runs are declared instead, in `canonicalOnly`, and checked from the other
+ * direction: the beta must neither hold the file nor name it anywhere tracked.
+ *
  * Two modes, because only one repo can see the other. Beta is public and canonical's CI already
  * checks it out (see the beta-engine-staleness job), but canonical is private and beta's CI
  * cannot check it out at all:
@@ -130,6 +133,10 @@ function pipelineSources(root) {
   const queue = [];
   for (const f of trackedScripts(root)) {
     if (!f.endsWith('.cjs')) continue;
+    // Tracked and not on disk = deleted without `git rm`. Both the manifest loop and the
+    // canonical-only check name that file explicitly; reading it here first turned their
+    // report into an ENOENT stack trace, which is loud but says nothing.
+    if (!fs.existsSync(path.join(root, f))) continue;
     const src = fs.readFileSync(path.join(root, f), 'utf8');
     for (const m of src.matchAll(/require\('\.\.\/(src\/[^']+)'\)/g)) queue.push(m[1]);
   }
@@ -208,6 +215,77 @@ for (const e of manifest.entries) {
           `changed without re-adjudicating (run --sibling <path> --write, then say why)`
       );
     }
+  }
+}
+
+/**
+ * Tracked files in `root` that WIRE `needle` — name it somewhere it could be run from.
+ *
+ * Scoped rather than corpus-wide, for two reasons that pull the same way. The question this
+ * answers is whether the repo runs the script, and the places a script gets run from are the
+ * scripts themselves, the modules they load, the npm scripts, and CI. And the beta has a
+ * committed `.ua/.trash-*` dump that names half of `scripts/` in tool scratch JSON; an
+ * unscoped grep is permanently red on it, which is the way a gate stops being read.
+ *
+ * The two files that exist to DESCRIBE the declaration are excluded, or it would report itself.
+ */
+const WIRING_PATHS = ['scripts', 'src', 'package.json', '.github'];
+const SELF_GUARD = 'scripts/verify-sync.cjs';
+function referencesTo(root, needle) {
+  try {
+    return execFileSync('git', ['grep', '-l', '--fixed-strings', needle, '--', ...WIRING_PATHS], {
+      cwd: root,
+      encoding: 'utf8',
+    })
+      .split('\n')
+      .filter(Boolean)
+      .filter((f) => f !== SELF_MANIFEST && f !== SELF_GUARD);
+  } catch {
+    return []; // git grep exits 1 on no match
+  }
+}
+
+/**
+ * Scripts only canonical runs, declared rather than shared.
+ *
+ * Most of canonical's audits were never on the shared surface at all — they exist here, the beta
+ * has no copy, and nothing noticed because the manifest discovers its entries from the paths the
+ * two repos both hold. `audit-converter-twins.cjs` and `audit-coverage-census.cjs` were the
+ * exception only by accident: the beta held a copy, so they were adjudicated as forks and given
+ * exit conditions, when the truth was that neither had ever been wired into anything there and
+ * neither could run — both read a `*-baseline.json` the beta does not have, so `--gate` was an
+ * ENOENT away from the first line it mattered on.
+ *
+ * So the rule the other audits already follow gets written down: a script only canonical runs is
+ * not shared surface. And written down is not enough on its own, because the reason those two
+ * became drift is that a convention nobody measures decays into one. This is the measurement. A
+ * declaration goes stale in two directions and both are errors: the script disappearing from
+ * canonical, and the beta growing the file back or naming it anywhere tracked. The second is the
+ * live one — the day the beta wires one of these in, it is shared surface again, and nothing else
+ * here would say so.
+ */
+for (const d of manifest.canonicalOnly ?? []) {
+  if (!d.reason)
+    errors.push(`${d.path}: declared canonical-only with no reason — same door as a fork`);
+
+  if (paired || selfRole === 'canonical') {
+    if (!fs.existsSync(path.join(rootFor('canonical'), d.path)))
+      errors.push(`${d.path}: declared canonical-only and absent from canonical — a stale declaration`);
+  }
+
+  if (paired || selfRole === 'beta') {
+    const betaRoot = rootFor('beta');
+    if (fs.existsSync(path.join(betaRoot, d.path)))
+      errors.push(
+        `${d.path}: declared canonical-only but present in beta — either that copy is dead and ` +
+          `should go, or the declaration is wrong and this is shared surface`
+      );
+    const refs = referencesTo(betaRoot, path.basename(d.path));
+    if (refs.length)
+      errors.push(
+        `${d.path}: declared canonical-only, and beta names it in ${refs.join(', ')} — a script ` +
+          `beta RUNS is shared surface, so re-adjudicate it as an entry`
+      );
   }
 }
 
