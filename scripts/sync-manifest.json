@@ -447,14 +447,8 @@
     },
     {
       "path": "src/types/power.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "06ca1ff5618fa5a16d0207a633aeab451ad869087adb112efed65743b1b77ea6",
-        "beta": "c135813895c6f1a6c6730c3d7a145e2f03b6cad17733fd4128a6eabf01e1d97d"
-      },
-      "reason": "The contract's shape, and the fork that matters most: 60 lines only canonical has (`damageTypes`, `procsOnlyOnMainTarget`, `procsAllowed`, `casterArchetypes`, the chain fields) and 185 only beta has (`petClass`, `ignoreStrength`, `special` damage, and until 2026-08-21 `displacedBy`). Both halves are real: each repo declared what its own consumer needed and neither carried the other's. Three of beta's are named already as UNFILED U6.",
-      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "d5ed9ef9181de348f59839f69607862bcf686172e5dd5ef83b30368eee8e2af9"
     },
     {
       "path": "src/types/shared.ts",

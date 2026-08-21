@@ -128,7 +128,7 @@ describe.each(FORKS)('%s requires tokens resolve to a real powerset', (fork) => 
   it('has no powerset token that matches nothing', () => {
     const live = new Set(
       Object.values(getAllPowersets())
-        .map((s) => setKeyFromId(s.id, s.internalName, s.setPath))
+        .map((s) => setKeyFromId(s.id, s.setPath))
         .filter((k): k is string => k !== undefined),
     );
     const unresolved = new Set<string>();

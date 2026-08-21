@@ -326,7 +326,7 @@ export interface StealthEffects {
    *  key mutually suppress — only the largest StealthRadius in the group
    *  applies (e.g. "NictusFX": Stealth, Super Speed, Shinobi-Iri, the cloak
    *  toggles). Null/absent means the radius stacks additively. Consumed by
-   *  resolveStealthRadius in legacy-totals.oracle. */
+   *  resolveStealthRadius in character-totals. */
   stackKey?: string | null;
 }
 
@@ -833,8 +833,9 @@ export interface ProcRollSite {
   radius: number;
   /** The child's own arc in RAW radians, as `stats.arc` carries it. */
   arc: number;
-  /** The child's own `ProcMainTargetOnly`, when it sets one. */
-  procsOnlyOnMainTarget?: boolean;
+  /** The child's own `ProcMainTargetOnly`, when it sets one — see
+   *  {@link Power.procsOnlyOnMainTarget}, same `true`-or-absent shape. */
+  procsOnlyOnMainTarget?: true;
 }
 
 /**
@@ -971,15 +972,17 @@ export interface Power {
    * ChainTarget — the raw RPN weighting that decides which target a chain power
    * jumps to next (bin field 43b). Electrical Affinity circuits use it to pick
    * the neediest ally (`kHitPoints%` / `kEndurance%` priority) or the nearest
-   * one (`prevdistance`). Carried verbatim from the binary; the Info panel
-   * humanizes the known patterns. Absent on non-chain powers.
+   * one (`prevdistance`). Carried verbatim from the binary as the token list the
+   * wire holds (COND-8); the Info panel humanizes the known patterns. Absent on
+   * non-chain powers.
    */
   chainTargetExpression?: string[];
   /**
    * MaxTargetsExpr — a computed target-cap RPN (bin field 38) that overrides the
    * static `stats.maxTargets` when its condition holds (e.g. the circuits' cap
    * grows while the Static buff is stacked; a Tanker Gauntlet attack's cap).
-   * Absent unless the cap is conditional.
+   * A token list, like every other expression on the wire (COND-8). Absent
+   * unless the cap is conditional.
    */
   maxTargetsExpression?: string[];
   /**
@@ -998,26 +1001,33 @@ export interface Power {
    */
   globalStrengthsDisallowed?: string[];
   /**
-   * `ProcMainTargetOnly` (HC power-level bin field, decoded 2026-07-29). Procs
-   * slotted here roll against the main target only, so they use the
-   * single-target PPM area factor even though the power carries an AoE radius —
-   * that radius belongs to a splash the procs don't follow (Propel's 15ft is its
-   * knockback). Applies to EVERY proc in the power, damage or not, because it is
-   * a property of the power. Read by `resolveProcRollGeometry`, the one place
-   * the rule lives.
+   * `ProcMainTargetOnly` (power-level bin field). Procs slotted here roll against
+   * the main target only, so they use the single-target PPM area factor even
+   * though the power carries an AoE radius — that radius belongs to a splash the
+   * procs don't follow (Propel's 15ft is its knockback). Applies to EVERY proc in
+   * the power, damage or not, because it is a property of the power. Read by
+   * `resolveProcRollGeometry`, the one place the rule lives.
    *
    * Authored per AT copy, which is why a name-keyed override could never express
    * it: Lightning Clap carries the flag on Brute/Scrapper/Tanker but not on
-   * Stalker. Sparse — absent on powers that don't set it, and on every
-   * Rebirth/Thunderspy power (no such field exists in the Parse6 tail).
+   * Stalker.
+   *
+   * Present on all three forks — 143/153/173 powers. It sits in the stock i24
+   * parse table (`powers_load.c:2192`) right after `StrengthsDisallowed`, ahead of
+   * HC's inserted `GlobalStrengthsDisallowed`; the Parse6 reader used to stop
+   * short of it, so Rebirth and Thunderspy exported an all-zero column that read
+   * as absence (PPM-3, recovered 2026-08-03).
+   *
+   * Only ever `true` — absence is the other state, so the type carries no `false`.
    */
-  procsOnlyOnMainTarget?: boolean;
+  procsOnlyOnMainTarget?: true;
   /**
    * `ProcAllowed kNone` (HC power-level bin field). **This power never rolls a
    * PPM proc** — whatever is slotted, no PPM chance is computed against its
-   * recharge. Sparse and only ever `false`: absent means procs roll normally,
-   * and no Rebirth/Thunderspy power carries it (no such field in the Parse6
-   * tail). Read through `powerFiresProcs`, the one place the rule lives.
+   * recharge. Sparse and only ever `false` — the flag's one authored value is
+   * `kNone`, so absence means procs roll normally. Homecoming only: stock Parse6
+   * has no such word (Rebirth), and Thunderspy carries the word but authors no
+   * `kNone` (TSPY-5). Read through `powerFiresProcs`, the one place the rule lives.
    *
    * HC authors it on 165 powers, in two groups that mean different things to a
    * player:
@@ -1047,7 +1057,7 @@ export interface Power {
    * power is normally a live proc-firing site. What the bins do NOT say is how
    * often that pulse rolls — see `resolveProcContext`.
    */
-  procsAllowed?: boolean;
+  procsAllowed?: false;
   /**
    * Where this power's PPM procs roll when the power itself cannot — present
    * on the powers that pair `ProcAllowed kNone` with a `CopyBoosts` executed
@@ -1109,8 +1119,8 @@ export interface Power {
    * greyed out, and the InfoPanel just shows a "Requires: <mode>" note.
    *
    * The attack chain builder does read it as a cast gate, but only for the modes
-   * its form selector offers (`buildFormModes`) — a Momentum- or ammo-gated attack
-   * has no selectable form to sit in and is scheduled as it always was. Raw mode ids.
+   * its own form selector offers. A Momentum- or ammo-gated attack has no selectable
+   * form to sit in and is scheduled as it always was. Raw mode ids.
    */
   modesRequired?: string[];
   /**
@@ -1337,6 +1347,17 @@ export interface ConditionalEffect {
    * that satisfies every constraint in the group.
    */
   ownedPower?: { path: string; count: number };
+  /**
+   * The archetypes this conditional exists for, in the export's `Class_*` spelling —
+   * absent when it exists for everyone.
+   *
+   * A gate can fork on who cast the power, and the fork is not a second toggle: the
+   * Domination bonus a Dominator gets from Cross Punch is simply not there for anyone
+   * else holding the same pool power. The Rust engine enforces it in
+   * `coh_data::conditional_for_class`; `expandActiveConditionals` is the twin's
+   * enforcement point (DATA-GAP-REGISTER COND-4, COND-13).
+   */
+  casterArchetypes?: string[];
   /** Damage entries that apply on top of base damage when active. */
   damage?: ScaledDamageEntry[] | ScaledDamageEntry;
   /** Effect deltas that apply on top of base effects when active. */
@@ -1380,14 +1401,6 @@ export interface Powerset {
    */
   specializeAt?: number;
   specializeRequires?: string[];
-  /**
-   * The set's name in the game's own data (e.g. `quills` for the set that ships as
-   * "Spines", `ninja_sword` for "Ninja Blade"). `id` is built from the DISPLAY name and
-   * the two diverge for a dozen renamed sets per fork, so an expression that names a
-   * powerset — `requires`, which speaks internal names — can only be resolved through
-   * this field. Emitted by scripts/convert-powerset.cjs from the export's own directory.
-   */
-  internalName?: string;
   /** Display name (e.g., "Fire Blast") */
   name: string;
   /** Display name (alternative) */

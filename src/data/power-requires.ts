@@ -90,24 +90,21 @@ export function setKey(name: string): string {
  * The key for a powerset, from the name the game's own data uses for it.
  *
  * `setPath` is the fully-qualified binary name (`Scrapper_Melee.Quills`), and a two-segment
- * `requires` token names the set exactly that way — so its LEAF is the key, and it is read
- * first. `internalName` is the same name unqualified, kept as the fallback for records that
- * carry only it.
+ * `requires` token names the set exactly that way — so its LEAF is the key.
  *
- * Falls back to the `id` slug for records with neither — power POOLS, which
+ * Falls back to the `id` slug for records without one — power POOLS, which
  * `convert-pool-powers.cjs` does not stamp. No shipped expression names a pool by a
  * two-segment path (every one names an archetype set), so the fallback is unexercised
  * today; it is here so a fork that starts naming pools resolves rather than silently
  * missing, which is the failure this function exists to have fixed.
+ *
+ * There was a third source, an unqualified `internalName` off the Powerset. Nothing ever
+ * stamped one — all 980 sets across the three forks carry `setPath` and none carries
+ * `internalName` — so the branch was unreachable behind the leaf read above it.
  */
-export function setKeyFromId(
-  id: string | undefined,
-  internalName?: string,
-  setPath?: string,
-): string | undefined {
+export function setKeyFromId(id: string | undefined, setPath?: string): string | undefined {
   const leaf = setPath?.split('.').pop();
   if (leaf) return setKey(leaf);
-  if (internalName) return setKey(internalName);
   const slug = id?.split('/')[1];
   return slug ? setKey(slug) : undefined;
 }
@@ -116,7 +113,7 @@ export function setKeyFromId(
 export function heldPowersetNames(sets: (Powerset | undefined)[]): Set<string> {
   return new Set(
     sets
-      .map((s) => setKeyFromId(s?.id, s?.internalName, s?.setPath))
+      .map((s) => setKeyFromId(s?.id, s?.setPath))
       .filter((n): n is string => n !== undefined),
   );
 }

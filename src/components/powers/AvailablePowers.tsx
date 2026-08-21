@@ -297,7 +297,7 @@ export function AvailablePowers({
     // that ships as "Spines" is `quills` in every expression that names it).
     for (const id of [build.primary.id, build.secondary.id]) {
       const set = id ? getPowerset(id) : undefined;
-      const key = setKeyFromId(id ?? undefined, set?.internalName, set?.setPath);
+      const key = setKeyFromId(id ?? undefined, set?.setPath);
       if (key) selectedPowersetKeys.add(key);
     }
     for (const pool of build.pools) {
