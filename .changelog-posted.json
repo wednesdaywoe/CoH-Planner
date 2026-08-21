@@ -670,6 +670,61 @@
       "id": "stacking-flag-indicator",
       "date": "2026-08-11",
       "preview": "Buffs should now also show flags that indicate whether it stacks with itself, or"
+    },
+    {
+      "id": "synapses-agility-end-drain-global",
+      "date": "2026-08-20",
+      "preview": "Rebirth: Synapse's Agility's 6th enhancement showed as \"Empty\" and did nothing w"
+    },
+    {
+      "id": "libertys-belt-blank-category",
+      "date": "2026-08-20",
+      "preview": "Rebirth: Liberty's Belt's resistance pieces weren't enhancing resistance (in Tou"
+    },
+    {
+      "id": "epic-pick-no-free-level-relevel",
+      "date": "2026-08-20",
+      "preview": "Re-picking an epic power with no free pick level at or above its unlock could le"
+    },
+    {
+      "id": "bulk-placement-eligibility",
+      "date": "2026-08-20",
+      "preview": "Dragging a range of set pieces (or multi-selecting) could place a piece the pick"
+    },
+    {
+      "id": "winters-gift-icon-pair",
+      "date": "2026-08-20",
+      "preview": "Rebirth: Superior Winter's Gift had no icon, and on every server Winter's Gift w"
+    },
+    {
+      "id": "poisoned-allow-list-heal",
+      "date": "2026-08-20",
+      "preview": "Some saved builds rejected every piece of a set the picker was offering The powe"
+    },
+    {
+      "id": "boost-spinner-apply-to-slotted",
+      "date": "2026-08-19",
+      "preview": "There's now an \"Apply to slotted\" button next to the enhancement boost setting t"
+    },
+    {
+      "id": "blank-category-set-aspects",
+      "date": "2026-08-19",
+      "preview": "Gladiator's Armor, and every PvP, purple, event, and ATO set was labelled from a"
+    },
+    {
+      "id": "form-redirect-dead-branch",
+      "date": "2026-08-19",
+      "preview": "Powers that change form under a mode could show the wrong form when their redire"
+    },
+    {
+      "id": "thunderspy-stalker-reused-slots-hidden",
+      "date": "2026-08-15",
+      "preview": "Thunderspy Stalkers: every primary and secondary set was showing 8 powers instea"
+    },
+    {
+      "id": "grant-cover-team-only",
+      "date": "2026-08-12",
+      "preview": "Shield Defense: Grant Cover was adding its defense to your own totals on every s"
     }
   ]
 }

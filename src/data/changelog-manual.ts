@@ -70,14 +70,14 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-08-15',
 
     items: [
-      { id: 'thunderspy-stalker-reused-slots-hidden', message: 'Thunderspy Stalkers: every primary and secondary set was showing 8 powers instead of 9. Restoring the Hide and Placate inherents made the picker hide any set power sharing their internal names, and Thunderspy reuses those name slots for real powers (Spectral Melee\'s Possess, Ninjitsu\'s Quick Recovery, and one per set). All 28 are back. Thanks to the player who reported it', type: 'fix' },
+      { id: 'thunderspy-stalker-reused-slots-hidden', message: 'Thunderspy Stalkers: every primary and secondary set was showing 8 powers instead of 9. Restoring the Hide and Placate inherents made the picker hide any set power sharing their internal names', type: 'fix' },
     ]
   },
   {
     date: '2026-08-12',
 
     items: [
-      { id: 'grant-cover-team-only', message: 'Shield Defense: Grant Cover was adding its defense to your own totals on every server. The power covers your teammates and not you — its own in-game description says so — so that defense is gone from your numbers. Every Shield Defense build will read lower defense than it did yesterday; the build did not change, the number was wrong. Thanks to the player who reported it', type: 'fix' },
+      { id: 'grant-cover-team-only', message: 'Shield Defense: Grant Cover was adding its defense to your own totals on every server', type: 'fix' },
     ]
   },
   {
