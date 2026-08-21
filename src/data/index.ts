@@ -2,7 +2,7 @@
  * Data layer barrel export
  *
  * Import data and accessors from here:
- * import { getArchetype, getIOSet, HAMIDON_ENHANCEMENTS } from '@/data';
+ * import { getArchetype, getIOSet, getSpecialRegistry } from '@/data';
  */
 
 // Archetype data and accessors
@@ -20,11 +20,6 @@ export {
 
 // Enhancement data (non-IO)
 export {
-  HAMIDON_ENHANCEMENTS,
-  TITAN_ENHANCEMENTS,
-  HYDRA_ENHANCEMENTS,
-  DSYNC_ENHANCEMENTS,
-  PRESTIGE_ENHANCEMENTS,
   COMMON_IO_TYPES,
   ORIGIN_TIER_INFO,
   ORIGINS,
@@ -33,6 +28,10 @@ export {
   ENHANCEMENT_CATEGORIES,
 } from './enhancements';
 export type { DualOriginCombo, EnhancementCategory } from './enhancements';
+
+// Special-enhancement registries (per-dataset generated, SOURCE-1 item 9)
+export { getSpecialEnhancements, getSpecialRegistry } from './special-enhancements';
+export type { SpecialCategory, GeneratedSpecialEnhancementDef } from './special-enhancements';
 
 // Enhancement registry (centralized mappings, factory functions, query functions)
 export {

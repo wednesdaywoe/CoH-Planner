@@ -26,6 +26,7 @@ import {
 import { getBaseToHit, getCombatModifier, getDefenseSoftcap } from './purple-patch';
 import { GRANTED_POWER_GROUPS } from './granted-powers';
 import { ENHANCEMENT_CURVES } from './generated/enhancement-curves';
+import { SPECIAL_ENHANCEMENTS } from './generated/special-enhancements';
 import { GENERATED_ARCHETYPE_INHERENTS } from './generated/archetype-inherents';
 import { PET_ENTITIES } from './pet-entities';
 import { MODULAR_POWERSETS } from './powersets/index';
@@ -80,6 +81,7 @@ const dataset: Dataset = {
 
   petEntities: PET_ENTITIES,
   enhancementCurves: ENHANCEMENT_CURVES,
+  specialEnhancements: SPECIAL_ENHANCEMENTS,
 
   powersetsRaw: MODULAR_POWERSETS,
   ioSetsRaw: IO_SETS_RAW,
@@ -94,6 +96,8 @@ const dataset: Dataset = {
     interface: IncarnateGen.GENERATED_INTERFACE_EFFECTS,
     judgement: IncarnateGen.GENERATED_JUDGEMENT_EFFECTS,
     lore: IncarnateGen.GENERATED_LORE_EFFECTS,
+    // Rebirth is the only server that finished the Genesis slot; the other two
+    // export a byte-shaped-but-dormant table and serve `{}` — see GENESIS-1.
     genesis: IncarnateGen.GENERATED_GENESIS_EFFECTS,
   } as unknown as IncarnateEffectsRaw,
   powerPoolsRaw: POWER_POOLS_RAW as unknown as LegacyPowerPoolRegistry,

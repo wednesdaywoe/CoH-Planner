@@ -17,11 +17,7 @@ import {
   createGenericIOEnhancement,
   createOriginEnhancement,
   createSpecialEnhancement,
-  HAMIDON_ENHANCEMENTS,
-  TITAN_ENHANCEMENTS,
-  HYDRA_ENHANCEMENTS,
-  DSYNC_ENHANCEMENTS,
-  PRESTIGE_ENHANCEMENTS,
+  getSpecialRegistry,
 } from '@/data';
 import { LEGACY_PIECE_ALIASES } from './legacy-piece-aliases';
 import type { MidsImportWarning } from './types';
@@ -1127,15 +1123,9 @@ function isSpecialEnhancementName(name: string): boolean {
  */
 function findSpecialByDisplayName(displayName: string, boost: number): Enhancement | null {
   const needle = displayName.toLowerCase().trim();
-  const registries: Array<[typeof HAMIDON_ENHANCEMENTS, 'hamidon' | 'titan' | 'hydra' | 'd-sync' | 'prestige']> = [
-    [HAMIDON_ENHANCEMENTS, 'hamidon'],
-    [TITAN_ENHANCEMENTS, 'titan'],
-    [HYDRA_ENHANCEMENTS, 'hydra'],
-    [DSYNC_ENHANCEMENTS, 'd-sync'],
-    [PRESTIGE_ENHANCEMENTS, 'prestige'],
-  ];
-  for (const [registry, category] of registries) {
-    for (const [id, def] of Object.entries(registry)) {
+  const categories: SpecialCategory[] = ['hamidon', 'titan', 'hydra', 'd-sync', 'prestige'];
+  for (const category of categories) {
+    for (const [id, def] of Object.entries(getSpecialRegistry(category))) {
       if (def.name.toLowerCase() === needle) {
         try {
           return createSpecialEnhancement(id, def, category, boost || undefined);
@@ -1533,14 +1523,6 @@ function matchByKeywords(
   return bestId && bestScore >= 0.5 ? bestId : null;
 }
 
-const SPECIAL_REGISTRIES: Record<SpecialCategory, Record<string, SpecialRegistryDef>> = {
-  'hamidon': HAMIDON_ENHANCEMENTS,
-  'titan': TITAN_ENHANCEMENTS,
-  'hydra': HYDRA_ENHANCEMENTS,
-  'd-sync': DSYNC_ENHANCEMENTS,
-  'prestige': PRESTIGE_ENHANCEMENTS,
-};
-
 /**
  * Direct mapping from Mids UID suffix (lowercased) to registry entry ID.
  * Mids UIDs use stat-based naming like "Damage_Range", "Buff_Endurance_Discount".
@@ -1593,7 +1575,7 @@ function mapSpecialEnhancementUid(uid: string, boost?: number): EnhancementMapRe
     };
   }
 
-  const registry = SPECIAL_REGISTRIES[category];
+  const registry = getSpecialRegistry(category);
 
   // Try direct suffix lookup first (most reliable)
   const suffixMap = SPECIAL_SUFFIX_MAPS[category];

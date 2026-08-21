@@ -22,7 +22,8 @@ import type {
   OriginEnhancement,
   SpecialEnhancementDef,
 } from '@/types';
-import { HAMIDON_ENHANCEMENTS, TITAN_ENHANCEMENTS, HYDRA_ENHANCEMENTS, DSYNC_ENHANCEMENTS, PRESTIGE_ENHANCEMENTS, COMMON_IO_TYPES } from './enhancements';
+import { COMMON_IO_TYPES } from './enhancements';
+import { getSpecialRegistry } from './special-enhancements';
 import { genericIOValueAtLevel, getOriginTierValue, normalizeAspectName } from '@/utils/calculations/enhancement-values';
 import { resolvePath } from '@/utils/paths';
 
@@ -456,33 +457,33 @@ function filterSpecialEnhancements(
 export function getAvailableHamidons(
   power: { allowedEnhancements: string[] } | null,
 ): [string, SpecialEnhancementDef][] {
-  return filterSpecialEnhancements(HAMIDON_ENHANCEMENTS, power);
+  return filterSpecialEnhancements(getSpecialRegistry('hamidon'), power);
 }
 
 /** Get available Titan enhancements for a power */
 export function getAvailableTitans(
   power: { allowedEnhancements: string[] } | null,
 ): [string, SpecialEnhancementDef][] {
-  return filterSpecialEnhancements(TITAN_ENHANCEMENTS, power);
+  return filterSpecialEnhancements(getSpecialRegistry('titan'), power);
 }
 
 /** Get available Hydra enhancements for a power */
 export function getAvailableHydras(
   power: { allowedEnhancements: string[] } | null,
 ): [string, SpecialEnhancementDef][] {
-  return filterSpecialEnhancements(HYDRA_ENHANCEMENTS, power);
+  return filterSpecialEnhancements(getSpecialRegistry('hydra'), power);
 }
 
-/** Get available D-Sync enhancements for a power */
+/** Get available D-Sync enhancements for a power (empty on datasets without the family) */
 export function getAvailableDSyncs(
   power: { allowedEnhancements: string[] } | null,
 ): [string, SpecialEnhancementDef][] {
-  return filterSpecialEnhancements(DSYNC_ENHANCEMENTS, power);
+  return filterSpecialEnhancements(getSpecialRegistry('d-sync'), power);
 }
 
 /** Get available Prestige enhancements for a power */
 export function getAvailablePrestige(
   power: { allowedEnhancements: string[] } | null,
 ): [string, SpecialEnhancementDef][] {
-  return filterSpecialEnhancements(PRESTIGE_ENHANCEMENTS, power);
+  return filterSpecialEnhancements(getSpecialRegistry('prestige'), power);
 }

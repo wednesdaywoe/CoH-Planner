@@ -171,6 +171,11 @@
       "sha256": "27d8f1995d321bb56ff1f5e2123c5b897bbb836af8433c5bbffec1a0fefae17a"
     },
     {
+      "path": "scripts/convert-special-enhancements.cjs",
+      "status": "identical",
+      "sha256": "3a0657ebe406fe173b29d3dc3c44c81da6e74f89b6f1d1e177c899fc5a5e84b8"
+    },
+    {
       "path": "scripts/detect-caster-meters.cjs",
       "status": "identical",
       "sha256": "1ef8aef624b832ca58108bf2b1e72f0df6bc573f72a7e4b6fe1a52538caeb3d2"
@@ -366,14 +371,8 @@
     },
     {
       "path": "src/data/dataset.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "36d7ec1797c15e2fe63cccb63ddf1cba76e1b786223435c7f549c224c1638725",
-        "beta": "4df10b24657e42817f19dea02c95b4c4bf5a95c1c2beac7f303661f4dce3b8ca"
-      },
-      "reason": "The dataset loader, reached by `emit-enhancement-fixtures.cjs`. Forked both ways, and not only around what a 'dataset' has to do: canonical alone declares `specialEnhancements` (Hamidon/Titan/Hydra/D-Sync/prestige) with the generated-module staleness check, and `activateDataset` for the CJS fixture emitters; beta alone declares `archetypeInherents`, the hook that reaches Thunderspy's Stalker Hide and Placate \u2014 powers that fork moved out of the powersets into `Inherent.Inherent`, reachable from no screen without it. Each side therefore drops data the other carries, which the earlier reason ('grew apart around what a dataset has to do rather than around a data question') did not survive. The five `*Raw` chunking fields are the remaining shape question; `ioSetsRaw` is settled on both sides as of io-sets.ts, the other four are not.",
-      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "9b1bc36659d29d772efaacf727e668192ae87828796e488a4bd8092c33dcb29a"
     },
     {
       "path": "src/data/enhancement-curves.ts",
@@ -381,9 +380,41 @@
       "sha256": "e5803ca732ba9c9873e4e3f44bab1b37f7d00da47d26f4df9f5e39a97cc92577"
     },
     {
+      "path": "src/data/epic-pools.ts",
+      "status": "identical",
+      "sha256": "6807b01b0f307dc077652699bbae8fdf40ad458ee4f21614777fcaeb831b9d58"
+    },
+    {
+      "path": "src/data/incarnate-effects.ts",
+      "status": "identical",
+      "sha256": "040f4f31411cb016d82405c56f675052112a45054258d551cbf1cfe95836cb1b"
+    },
+    {
       "path": "src/data/io-sets.ts",
       "status": "identical",
       "sha256": "cfd44593ac123bab8c704bcd757a014a1626730cf49cecff1670f73601d842a1"
+    },
+    {
+      "path": "src/data/levels.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "59085d26d98b998b6cc8255cf874224e89f95fea0c8f08e368165c357d5a6cb5",
+        "beta": "f6dd979bd02bc6f4317bfcc2f70aa15441e638fefd99a4a42a13a69a87b7ce50"
+      },
+      "reason": "Pulled onto the surface by `power-pools.ts`. Forked both ways and both halves are named elsewhere: canonical alone sources the level schedule per fork (`getPoolUnlockLevel` and friends, off schedules.bin) where the beta hardcodes the Homecoming numbers; the beta alone merges `inherentRules.archetypeInherents` into the shared hand-written inherent list and splits `getPickShadowingInherentPowers` off it (AUTOISSUE-2's beta closure, and AUTOISSUE-3's fix to it). Canonical needs no merge — its Rust engine admits an archetype-gated grant by GATE SHAPE and dedupes against the archetype catalogue's declared names, which is why `Dataset.archetypeInherents` is optional.",
+      "exit": "Two independent halves. The schedule half closes with the leveling-schedule port named on `power-pools.ts`. The inherent half closes by carrying the beta's merge into canonical's copy — harmless there, since canonical's datasets leave `archetypeInherents` absent and the merge degenerates to the shared list.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/data/power-pools.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "7ff783ea9106d3ca53d51141f3e7de73b73fbe11d2f8c4d4d1443c8520592f0f",
+        "beta": "9df3751836e38529f37826264670dbc664e1187a582e3d7c99fcbd0b8252e5ec"
+      },
+      "reason": "Reached from `dataset.ts` (powerPoolsRaw's type), so it joined the surface when that module closed. One fork left, and it is a data question: canonical reads the pool-unlock level per server from that fork's own generated leveling schedule (`getPoolUnlockLevel`, schedules.bin — 4 on the shared schedule, 1 on Thunderspy), the beta states a `POOL_UNLOCK_LEVEL = 4` constant on all three. So the beta gates Thunderspy pools three levels late. Everything else here — `pickModeGates` and the five-member Specialized exclusion — travelled the other way in this same step and is now identical.",
+      "exit": "Port the generated leveling-schedule layer (`convert-leveling-schedule.cjs` + the per-dataset generated modules + `getPoolUnlockLevel`/`getSlotGrants`/`getMaxPowerPools`) into the beta, then take canonical's copy of this file wholesale. Blocked on that port, not on an adjudication — the two sides agree which answer is right.",
+      "gap": "FORK-2"
     },
     {
       "path": "src/types/archetype.ts",

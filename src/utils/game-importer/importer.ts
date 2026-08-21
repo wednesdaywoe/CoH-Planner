@@ -13,7 +13,6 @@ import type {
   Power,
   Enhancement,
   SpecialEnhancement,
-  SpecialEnhancementDef,
   PoolSelection,
   Origin,
 } from '@/types';
@@ -35,11 +34,7 @@ import {
   createGenericIOEnhancement,
   createOriginEnhancement,
   createSpecialEnhancement,
-  HAMIDON_ENHANCEMENTS,
-  TITAN_ENHANCEMENTS,
-  HYDRA_ENHANCEMENTS,
-  DSYNC_ENHANCEMENTS,
-  PRESTIGE_ENHANCEMENTS,
+  getSpecialRegistry,
 } from '@/data';
 import { GRANTED_POWER_GROUPS } from '@/data/granted-powers';
 import type { InherentPowerDef } from '@/data';
@@ -854,18 +849,19 @@ interface EnhancementResolveResult {
   warning: GameImportWarning | null;
 }
 
-// Special enhancement prefix → category + registry mapping.
-// Synthetic HOs share the Hamidon registry (identical aspect values in-game;
-// the "synthetic" distinction is cosmetic). Prefix order matters — the longer
-// `Synthetic_Hamidon_` must come before `Hamidon_` so `startsWith` matches it first.
-const SPECIAL_ENH_PREFIXES: [string, SpecialEnhancement['category'], Record<string, SpecialEnhancementDef>][] = [
-  ['Synthetic_Hamidon_', 'hamidon', HAMIDON_ENHANCEMENTS],
-  ['Hamidon_', 'hamidon', HAMIDON_ENHANCEMENTS],
-  ['Titan_', 'titan', TITAN_ENHANCEMENTS],
-  ['Hydra_', 'hydra', HYDRA_ENHANCEMENTS],
-  ['DSync_', 'd-sync', DSYNC_ENHANCEMENTS],
-  ['Dsync_', 'd-sync', DSYNC_ENHANCEMENTS],
-  ['Generic_', 'prestige', PRESTIGE_ENHANCEMENTS],
+// Special enhancement prefix → category mapping (registries come from the
+// active dataset at resolve time). Synthetic HOs share the Hamidon registry
+// (identical aspect values in-game; the "synthetic" distinction is cosmetic).
+// Prefix order matters — the longer `Synthetic_Hamidon_` must come before
+// `Hamidon_` so `startsWith` matches it first.
+const SPECIAL_ENH_PREFIXES: [string, SpecialEnhancement['category']][] = [
+  ['Synthetic_Hamidon_', 'hamidon'],
+  ['Hamidon_', 'hamidon'],
+  ['Titan_', 'titan'],
+  ['Hydra_', 'hydra'],
+  ['DSync_', 'd-sync'],
+  ['Dsync_', 'd-sync'],
+  ['Generic_', 'prestige'],
 ];
 
 /**
@@ -873,9 +869,10 @@ const SPECIAL_ENH_PREFIXES: [string, SpecialEnhancement['category'], Record<stri
  * Returns null if the UID doesn't match any special prefix.
  */
 function resolveSpecialEnhancement(uid: string, boost?: number, level?: number): EnhancementResolveResult | null {
-  for (const [prefix, category, registry] of SPECIAL_ENH_PREFIXES) {
+  for (const [prefix, category] of SPECIAL_ENH_PREFIXES) {
     if (!uid.startsWith(prefix)) continue;
 
+    const registry = getSpecialRegistry(category);
     const suffix = uid.slice(prefix.length).toLowerCase();
     const suffixMap = SPECIAL_SUFFIX_MAPS[category];
     const id = suffixMap?.[suffix];

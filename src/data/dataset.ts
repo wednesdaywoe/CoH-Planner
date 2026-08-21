@@ -21,13 +21,16 @@ import type { LegacyPowerPoolRegistry } from './power-pools';
 // The canonical EnhancementCurvesData shape is authored by the SW3 converter
 // (scripts/convert-enhancement-curves.cjs) into every dataset's generated
 // module; the homecoming copy is imported type-only as the contract's
-// reference declaration.
+// reference declaration. The staleness guard asserts all three modules stay
+// structurally identical to the binary export.
 import type { EnhancementCurvesData } from './datasets/homecoming/generated/enhancement-curves';
+import type { SpecialEnhancementsData } from './datasets/homecoming/generated/special-enhancements';
 
 export type { EnhancementCurvesData, EnhancementSchedule, OriginTier } from './datasets/homecoming/generated/enhancement-curves';
+export type { GeneratedSpecialEnhancementDef, SpecialEnhancementsData } from './datasets/homecoming/generated/special-enhancements';
 // Same rationale as above: the archetype-inherent shape is authored in the
 // homecoming levels module and imported type-only as the contract's reference
-// declaration. Every dataset's generated `archetype-inherents.ts` satisfies it.
+// declaration. A dataset that populates `archetypeInherents` satisfies it.
 import type { InherentPowerDef } from './datasets/homecoming/levels';
 
 // ============================================
@@ -42,7 +45,7 @@ export interface ATTableData {
   secondaryCategory: string;
   /** RechargeTime ClampStrength interval — the bounds on NET recharge strength
    *  (floor 0.25 = the −75% debuff floor, cap 5 = +400%). Absent when the
-   *  dataset's export didn't carry it; read via `getRechargeBounds`. */
+   *  dataset's export didn't carry it. */
   rechargeBounds?: { floor: number; cap: number };
   tables: Record<string, number[]>;
 }
@@ -58,11 +61,11 @@ export interface PetMovementAttrib {
 /**
  * A pet class's own character stats.
  *
- * A summon is a second character (COH-DATA-MODEL §6), and these are the numbers
- * that make it one: its hit points and the ceilings it lives against. They come
- * from the PET's class row (`Class_Minion_Pets`, `Class_Henchman_Boss`, …), never
- * from the caster's archetype — a Bruiser's 90% resistance cap is not its
- * Mastermind's, and neither is its HP.
+ * A summon is a second character, and these are the numbers that make it one:
+ * its hit points and the ceilings it lives against. They come from the PET's
+ * class row (`Class_Minion_Pets`, `Class_Henchman_Boss`, …), never from the
+ * caster's archetype — a Bruiser's 90% resistance cap is not its Mastermind's,
+ * and neither is its HP.
  */
 export interface PetClassAttribs {
   /** Base max HP per level (index = level − 1). */
@@ -89,9 +92,7 @@ export interface PetTableData {
    *  separate a henchman minion from a henchman boss. Useful only for telling a
    *  pet class apart from a repurposed NPC one (grunt 2, elite 6, AV 7). */
   villainRank?: number;
-  /** Absent when the dataset's export didn't carry an attribs block — read via
-   *  `getPetClassStats` in `src/utils/calculations/pet-stats.ts`, which stands
-   *  aside rather than inventing a hit point total. */
+  /** Absent when the dataset's export didn't carry an attribs block. */
   attribs?: PetClassAttribs;
 }
 
@@ -266,20 +267,25 @@ export interface InherentRules {
    */
   autoGrantedSlotLevels: Record<string, readonly number[]>;
 
-
   /**
    * Extra archetype-gated inherents this server grants that the shared
    * hand-written list in `datasets/homecoming/levels.ts` doesn't carry, keyed
    * by archetype id. Merged on top of that list (which wins on a name clash,
    * so a server that simply also has Energy Flight doesn't get it twice).
    *
-   * Populated by `scripts/convert-archetype-inherents.cjs` from the server's
-   * own `Inherent.Inherent` export — see that script's header for the rule.
    * The case that forced this hook: Thunderspy moved the Stalker's **Hide**
    * and **Placate** out of the powersets into `Inherent.Inherent` and reused
    * the vacated powerset name slots for other powers, so both were reachable
-   * from no screen at all. Homecoming and Rebirth grant them from powersets
-   * and so contribute nothing here.
+   * from no screen at all (AUTOISSUE-2). Homecoming and Rebirth grant them
+   * from powersets and so contribute nothing here.
+   *
+   * OPTIONAL because the two repos close AUTOISSUE-2 at different layers. A
+   * dataset built for the TypeScript planner populates it from a generated
+   * `archetype-inherents.ts`. The Rust engine needs no list: it admits a grant
+   * by GATE SHAPE (`granted_powers::inherent_scope` keeps a member whose
+   * `requires` names player archetype classes and nothing else) and dedupes
+   * against the archetype catalogue's own declared inherent names, so its
+   * datasets leave this absent and lose nothing.
    */
   archetypeInherents?: Record<string, readonly InherentPowerDef[]>;
 }
@@ -338,33 +344,42 @@ export interface Dataset {
   // Enhancement curves — ED thresholds, boost-type→schedule assignment,
   // per-boost-level strength curves, multi-aspect scale, relative-level
   // attenuation, and the exemplar magnitude handicaps, all generated from the
-  // dataset's binary export (SOURCE-1 SW3). Read through
-  // `src/data/enhancement-curves.ts`.
+  // dataset's binary export (SOURCE-1 SW3). The enhancement engine reads these
+  // through `src/data/enhancement-curves.ts`.
   enhancementCurves: EnhancementCurvesData;
 
-  // Raw powerset registry (INCLUDES dormant sets). Lives on the dataset —
-  // and therefore in this dataset's dynamic chunk — so only the active
-  // server's ~13-20 MB of powerset data loads, instead of all three being
-  // welded into the eager entry bundle by a static cross-dataset import.
-  // The `powersets` facade filters dormant sets lazily per active dataset;
-  // the raw is kept whole for a possible future "show unreleased sets" toggle.
+  // Special-enhancement registries (Hamidon/Titan/Hydra/D-Sync/prestige),
+  // generated from the dataset's boost-piece templates (SOURCE-1 item 9).
+  // The forks carry no D-Sync pieces and only the classic 11 Hamidons —
+  // per-dataset by necessity, read through `src/data/special-enhancements.ts`.
+  specialEnhancements: SpecialEnhancementsData;
+
+  // Raw powerset registry (INCLUDES dormant sets). Lives on the dataset — and
+  // therefore in this dataset's chunk — rather than being reached by a static
+  // cross-dataset import, so a bundling consumer pulls only the active server's
+  // ~13-20 MB of powerset data instead of welding all three into the eager
+  // entry bundle. The `powersets` facade filters dormant sets lazily per active
+  // dataset; the raw is kept whole for a possible future "show unreleased sets"
+  // toggle.
   powersetsRaw: Record<string, Powerset>;
 
-  // Raw (untransformed) IO-set registry. Same rationale as `powersetsRaw`:
-  // lives on the dataset so only the active server's set data loads. The
-  // `io-sets` facade transforms it to the runtime `IOSetRegistry` lazily.
+  // Raw (untransformed) IO-set registry. Same rationale as `powersetsRaw`, at
+  // ~600 KB per server. The `io-sets` facade transforms it to the runtime
+  // `IOSetRegistry` lazily.
   ioSetsRaw: LegacyIOSetRegistry;
 
-  // Raw epic-pool registry. Same rationale as `powersetsRaw`/`ioSetsRaw`. The
-  // per-dataset generated literal is structurally looser than the facade's
-  // `LegacyEpicPoolRegistry`, so each dataset asserts the type at assignment
-  // (the cast that formerly lived in the epic-pools facade).
+  // Raw epic-pool registry. Same rationale again. The per-dataset generated
+  // literal is structurally looser than the facade's `LegacyEpicPoolRegistry`,
+  // so each dataset asserts the type at assignment (the cast that formerly
+  // lived in the epic-pools facade).
   epicPoolsRaw: LegacyEpicPoolRegistry;
 
   // Raw incarnate effect tables (alpha/destiny/hybrid/interface/judgement/lore/
-  // genesis + destiny timeline & boosts) for this server. Same rationale as the
-  // other `*Raw` fields — keeps all three servers' incarnate data out of the
-  // eager bundle. The `incarnate-effects` facade reads each slot on demand.
+  // genesis + destiny timeline & boosts) for this server. Same rationale. The
+  // `incarnate-effects` facade reads each slot on demand — including the
+  // decision that a dormant slot is served as `{}` rather than as the
+  // placeholder table the export carries, which is now stated by each dataset's
+  // own index rather than by a fork branch in the facade.
   incarnateEffectsRaw: IncarnateEffectsRaw;
 
   // Raw power-pool registry (INCLUDES dormant pools). Same rationale/shape as
@@ -417,9 +432,24 @@ export function getActiveDataset(): Dataset {
  *   ([REBIRTH_ARACHNOS_SOLDIER_BUG.md](../../REBIRTH_ARACHNOS_SOLDIER_BUG.md)).
  *   Almost always means the secondary powerset wasn't extracted and
  *   was filled in with placeholder data.
+ * - **Enhancement-curves dataset id**: the generated curves module stamps
+ *   its dataset id; a mismatch means the index wired another dataset's
+ *   module (copy-paste hazard across the three near-identical index files).
  */
 function validateDataset(ds: Dataset): void {
   const errors: string[] = [];
+  if (ds.enhancementCurves.dataset !== ds.id) {
+    errors.push(
+      `enhancementCurves carries dataset id "${ds.enhancementCurves.dataset}" — the index ` +
+      `wired another dataset's generated module.`,
+    );
+  }
+  if (ds.specialEnhancements.dataset !== ds.id) {
+    errors.push(
+      `specialEnhancements carries dataset id "${ds.specialEnhancements.dataset}" — the index ` +
+      `wired another dataset's generated module.`,
+    );
+  }
   for (const [atId, at] of Object.entries(ds.archetypes.registry)) {
     if (!at.branches) continue;
     for (const [branchId, branch] of Object.entries(at.branches)) {
@@ -441,6 +471,18 @@ function validateDataset(ds: Dataset): void {
   // In prod, log loudly but don't crash the app — the user can still
   // use ATs that aren't affected.
   console.error(message);
+}
+
+/**
+ * Validate an already-constructed dataset and set it active, synchronously.
+ * The app goes through `loadDataset`; this entry exists for Node tooling
+ * (fixture emitters) that loads dataset modules through a CJS require hook,
+ * where `loadDataset`'s dynamic import cannot resolve.
+ */
+export function activateDataset(ds: Dataset): Dataset {
+  validateDataset(ds);
+  active = ds;
+  return ds;
 }
 
 /**
@@ -468,9 +510,7 @@ export async function loadDataset(id: DatasetId): Promise<Dataset> {
     cache.set(id, promise);
   }
   const ds = await promise;
-  validateDataset(ds);
-  active = ds;
-  return ds;
+  return activateDataset(ds);
 }
 
 /**

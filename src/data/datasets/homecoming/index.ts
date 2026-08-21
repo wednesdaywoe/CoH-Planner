@@ -26,6 +26,7 @@ import {
 import { getBaseToHit, getCombatModifier, getDefenseSoftcap } from './purple-patch';
 import { GRANTED_POWER_GROUPS } from './granted-powers';
 import { ENHANCEMENT_CURVES } from './generated/enhancement-curves';
+import { SPECIAL_ENHANCEMENTS } from './generated/special-enhancements';
 import { GENERATED_ARCHETYPE_INHERENTS } from './generated/archetype-inherents';
 import { PET_ENTITIES } from './pet-entities';
 import { MODULAR_POWERSETS } from './powersets/index';
@@ -70,6 +71,7 @@ const dataset: Dataset = {
 
   petEntities: PET_ENTITIES,
   enhancementCurves: ENHANCEMENT_CURVES,
+  specialEnhancements: SPECIAL_ENHANCEMENTS,
 
   powersetsRaw: MODULAR_POWERSETS,
   ioSetsRaw: IO_SETS_RAW,
@@ -84,7 +86,12 @@ const dataset: Dataset = {
     interface: IncarnateGen.GENERATED_INTERFACE_EFFECTS,
     judgement: IncarnateGen.GENERATED_JUDGEMENT_EFFECTS,
     lore: IncarnateGen.GENERATED_LORE_EFFECTS,
-    genesis: {}, // Homecoming ships no Genesis slot (see incarnate-effects facade).
+    // This server's export carries a genesis table, but the slot was defined and
+    // never enabled: 36/36 powers with authored help of literally "… text",
+    // reused Interface icons, and no exemplar-grant linkage. Serving it would
+    // apply a slot the picker rightly hides (DATASET_ONLY_SLOTS in
+    // incarnates.ts) — see GENESIS-1.
+    genesis: {},
   } as unknown as IncarnateEffectsRaw,
   powerPoolsRaw: POWER_POOLS_RAW as unknown as LegacyPowerPoolRegistry,
 

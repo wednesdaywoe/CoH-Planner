@@ -98,16 +98,24 @@ describe('Genesis slot gating — Rebirth', () => {
   });
 });
 
-describe('Genesis slot gating — Homecoming', () => {
-  beforeAll(async () => {
-    await loadDataset('homecoming');
-  });
+// HC and Thunderspy both export a genesis table, but every power is a dormant
+// placeholder (authored help = "… text", reused Interface icons) — the slot was
+// defined but never enabled. Both must hide the slot AND serve no effects, so a
+// deserialized cross-dataset build can't apply an unreleased amplifier. See the
+// GENESIS-1 register entry.
+describe.each(['homecoming', 'thunderspy'] as const)(
+  'Genesis slot gating — %s (dormant placeholder)',
+  (datasetId) => {
+    beforeAll(async () => {
+      await loadDataset(datasetId);
+    });
 
-  it('hides the genesis slot (no Genesis on Homecoming)', () => {
-    expect(getSelectableIncarnateSlotIds()).not.toContain('genesis');
-  });
+    it('hides the genesis slot', () => {
+      expect(getSelectableIncarnateSlotIds()).not.toContain('genesis');
+    });
 
-  it('returns no Genesis effects', () => {
-    expect(getGenesisEffects('socket_core_flawless_genesis')).toBeNull();
-  });
-});
+    it('returns no Genesis effects', () => {
+      expect(getGenesisEffects('socket_core_flawless_genesis')).toBeNull();
+    });
+  },
+);

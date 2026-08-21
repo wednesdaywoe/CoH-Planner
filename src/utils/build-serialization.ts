@@ -34,13 +34,11 @@ import {
   createGenericIOEnhancement,
   createOriginEnhancement,
   createSpecialEnhancement,
-  HAMIDON_ENHANCEMENTS,
-  TITAN_ENHANCEMENTS,
-  HYDRA_ENHANCEMENTS,
-  DSYNC_ENHANCEMENTS,
+  getSpecialRegistry,
   getInherentAutoGrantedSlotCount,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
+import type { SpecialCategory } from '@/data';
 import { currentInherentName } from '@/data/inherent-aliases';
 import { encodeImportFragment } from '@/utils/import-url';
 
@@ -223,12 +221,9 @@ function slimInherents(inherents: SelectedPower[]): SlimPower[] {
 // IMPORT: Slim → Build (hydration)
 // ============================================
 
-const SPECIAL_REGISTRIES = {
-  'hamidon': HAMIDON_ENHANCEMENTS,
-  'titan': TITAN_ENHANCEMENTS,
-  'hydra': HYDRA_ENHANCEMENTS,
-  'd-sync': DSYNC_ENHANCEMENTS,
-} as const;
+const SPECIAL_CATEGORIES: ReadonlySet<string> = new Set([
+  'hamidon', 'titan', 'hydra', 'd-sync', 'prestige',
+]);
 
 /**
  * For VEAT archetypes, collect power definitions from all branch powersets
@@ -510,10 +505,12 @@ function hydrateEnhancement(slim: SlimEnhancement): Enhancement | null {
       );
     }
     case 'special': {
-      const category = slim.category as keyof typeof SPECIAL_REGISTRIES;
-      const registry = SPECIAL_REGISTRIES[category];
-      if (!registry) return null;
-      const def = registry[slim.id];
+      if (!SPECIAL_CATEGORIES.has(slim.category)) return null;
+      const category = slim.category as SpecialCategory;
+      // Active-dataset registry: a build slot whose piece the dataset doesn't
+      // carry (e.g. a D-Sync on a fork) drops here rather than resurrecting
+      // another server's enhancement.
+      const def = getSpecialRegistry(category)[slim.id];
       if (!def) return null;
       return createSpecialEnhancement(slim.id, def, category, slim.boost);
     }
