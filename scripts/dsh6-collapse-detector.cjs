@@ -45,6 +45,7 @@ const fs = require('fs');
 const path = require('path');
 const { ingestExportPower } = require('../src/data/core/atomic-effect.ts');
 const { isPvpOnlyGroup: isPvpOnlyByRequires } = require('./_pv-scope.cjs');
+const { gateText } = require('./_gate-tokens.cjs');
 
 const REPO = path.resolve(__dirname, '..');
 const GEN_ROOT = path.join(REPO, 'src/data/datasets/homecoming/generated/powersets');
@@ -219,7 +220,7 @@ const PVP_ONLY_REQUIRES = new Set();
 function indexRequiresScopes(sourceJson) {
   const walk = (groups) => {
     for (const g of groups || []) {
-      if (isPvpOnlyByRequires(g)) PVP_ONLY_REQUIRES.add(g.requires_expression || '');
+      if (isPvpOnlyByRequires(g)) PVP_ONLY_REQUIRES.add(gateText(g.requires_expression));
       walk(g.child_effects);
     }
   };
@@ -227,7 +228,7 @@ function indexRequiresScopes(sourceJson) {
   walk(sourceJson && sourceJson.activation_effects);
 }
 const isPvpVariant = (a) => {
-  const req = a.requiresExpression || '';
+  const req = gateText(a.requiresExpression);
   return PVP_ONLY_REQUIRES.has(req) || /\bisPVPMap\?(?!\s+!)/.test(req);
 };
 

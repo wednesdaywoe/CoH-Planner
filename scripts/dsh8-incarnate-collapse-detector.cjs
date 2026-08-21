@@ -44,6 +44,7 @@ require('tsx/cjs');
 const fs = require('fs');
 const path = require('path');
 const { ingestExportPower } = require('../src/data/core/atomic-effect.ts');
+const { gateText } = require('./_gate-tokens.cjs');
 
 const REPO = path.resolve(__dirname, '..');
 const argv = process.argv.slice(2);
@@ -209,7 +210,7 @@ function inputIdentities(sourceJson, slot) {
     // synthesized flag reads only the enttype target-type), so the gate rides
     // requires_expression: tspy Clarion's 6-mez status-resistance twin carries
     // it where HC marks the same rows is_pvp=PVP_ONLY.
-    if (/\bisPVPMap\?(?!\s+!)/i.test(a.requiresExpression || '')) continue;
+    if (/\bisPVPMap\?(?!\s+!)/i.test(gateText(a.requiresExpression))) continue;
     if (!a.scale) continue;                       // scale-0 marker
     if (a.attribType === 'Expression') continue;  // engine phantom / cap
     const et = a.effectType;

@@ -44,6 +44,7 @@ require('tsx/cjs');
 const { ingestExportGroup } = require('../src/data/core/atomic-effect.ts');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
 const { isPvpOnlyGroup: isPvpOnlyByRequires } = require('./_pv-scope.cjs');
+const { gateText } = require('./_gate-tokens.cjs');
 
 const args = process.argv.slice(2);
 const GATE = args.includes('--gate');
@@ -106,7 +107,7 @@ function flattenTemplates(groups, out = []) {
 function flattenTemplatesWithMeta(groups, out = []) {
   for (const g of groups || []) {
     const pvMode = g.is_pvp || 'EITHER';
-    const requires = g.requires_expression || '';
+    const requires = gateText(g.requires_expression);
     // Carried per row because the PvP verdict is the parser's structural read
     // of the expression, not something re-derivable from the string here.
     const pvpByRequires = isPvpOnlyByRequires(g);

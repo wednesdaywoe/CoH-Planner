@@ -23,9 +23,10 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
-- **FORK-1** — the four converters are reconciled and the two repos' generated powerset and
-  basic-inherent trees are byte-identical on all three forks (2026-08-21); waiting on the 11
-  remaining forked scripts
+- **FORK-1** — the four converters and the `gateText` cluster are reconciled (2026-08-21); this
+  repo's three un-ported call sites had been reading a COND-8 token array as comma-joined text, so
+  its converter gate skipped the PvE half of every `isPVPMap?` split; waiting on the 6 remaining
+  forked scripts
 - **FORK-2** — the guard watched `scripts/` while the pipeline also EXECUTES twelve forked `src/`
   modules; the manifest now covers them and ten are reconciled, waiting on `types/build.ts`'s four
   remaining clusters and `calc-debug.ts`, plus the two the closure of `dataset.ts` pulled onto the

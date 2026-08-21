@@ -180,25 +180,13 @@
     },
     {
       "path": "scripts/dsh6-collapse-detector.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "14d94396a8dae0388f3e0e1fb32d5dabb3a2e9542158454805aa93065b443321",
-        "beta": "b4007a53437415c7e4c0a796236f72fbc9528bbf135426dc5d1d788b90d23b37"
-      },
-      "reason": "`_gate-tokens.cjs` is byte-identical in both repos, but beta calls `gateText` at 3 of the 9 sites canonical does and this is one it misses, so a COND-8 joined token array reads here as the empty string and the PvP-only skip never fires.",
-      "exit": "Port the `gateText` call site. The module itself needs no change.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "14d94396a8dae0388f3e0e1fb32d5dabb3a2e9542158454805aa93065b443321"
     },
     {
       "path": "scripts/dsh6-collapse-worklist.json",
-      "status": "forked",
-      "sha256": {
-        "canonical": "fe67c761b62f087194e4b03ec46317e4bb4358e29157edb334a07952cb6d2ecc",
-        "beta": "2d166f9afce20b17423afb0af90cc179dea4d6dc3f6ca23fe15c8d862577c43a"
-      },
-      "reason": "Not a source fork: this is the detector's committed output, and the two copies are from runs over different corpora (3,359 powers against 3,364, five of which beta reports as `sourceMissing`).",
-      "exit": "Regenerate both from one run after the detector call sites are reconciled, or drop the worklists from the shared surface as per-repo run artifacts.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "7d7a7bb2589c9924186584dbce6037422c37c86bfba3af4a45456721a6e4431a"
     },
     {
       "path": "scripts/dsh6-gate-allowlist.json",
@@ -207,25 +195,13 @@
     },
     {
       "path": "scripts/dsh8-incarnate-collapse-detector.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "1008bb83a92aba718af2f631580f4d8795b337ffd05d0bda48087ed9fc72b3f9",
-        "beta": "18fbfd67649fcb667e93f00bee1e8f61d7fc8f25ebae39caab757b6fe42ccf34"
-      },
-      "reason": "Same missing `gateText` call site as the dsh6 detector: the `isPVPMap?` test runs against a raw `requiresExpression` that COND-8 can deliver as an array.",
-      "exit": "Port the `gateText` call site.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "1008bb83a92aba718af2f631580f4d8795b337ffd05d0bda48087ed9fc72b3f9"
     },
     {
       "path": "scripts/dsh8-incarnate-collapse-worklist.json",
-      "status": "forked",
-      "sha256": {
-        "canonical": "a50f4a08d51ae3b16bafd122af8265a27c2e576f92c82c052a17c82b050b2cc3",
-        "beta": "3b176ad4afd809531518bef3ba763be966e27f70979bab7ad846a37c62bffe2d"
-      },
-      "reason": "Not a source fork: committed detector output, and the two copies were produced against different DATASETS (beta's says homecoming, canonical's says thunderspy), so they were never comparable.",
-      "exit": "Same as the dsh6 worklist: one run, or drop from the shared surface.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "a50f4a08d51ae3b16bafd122af8265a27c2e576f92c82c052a17c82b050b2cc3"
     },
     {
       "path": "scripts/env-loader.ts",
@@ -332,14 +308,8 @@
     },
     {
       "path": "scripts/validate-converter-output.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "c048d77f1747cae261d45909d1617ebbaad05f76b48adc495585029d70162d42",
-        "beta": "482566468764125fed3febf4180afbf5a0d36368880bfacd42d8fa91aaf26c54"
-      },
-      "reason": "Same missing `gateText` call site. This one is a gate, so a joined-array expression makes the check pass by reading nothing rather than fail.",
-      "exit": "Port the `gateText` call site, then mutation-score the gate on an array-form expression.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "c048d77f1747cae261d45909d1617ebbaad05f76b48adc495585029d70162d42"
     },
     {
       "path": "scripts/verify-sync.cjs",
