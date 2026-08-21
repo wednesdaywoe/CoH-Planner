@@ -33,7 +33,7 @@ import {
   getMaxPowerPools,
   MAX_POWER_PICKS,
   EPIC_POOL_LEVEL,
-  POOL_UNLOCK_LEVEL,
+  getPoolUnlockLevel,
   getInherentPowers,
   getInherentPowerDef,
   getArchetypeInherentPowers,
@@ -1465,7 +1465,7 @@ export function relevelInvalidPicks(build: Build): void {
     // def sync above has already re-attached `available`, so the floor is
     // readable even though the slim serializer drops it.
     const minPickLevel = (entry: { power: SelectedPower; category: string }): number => {
-      const categoryMin = entry.category === 'pool' ? POOL_UNLOCK_LEVEL
+      const categoryMin = entry.category === 'pool' ? getPoolUnlockLevel(build.serverId)
         : entry.category === 'epic' ? EPIC_POOL_LEVEL
         : 1;
       return Math.max((entry.power.available ?? 0) + 1, categoryMin);
@@ -1865,7 +1865,7 @@ export const useBuildStore = create<BuildStore>()(
             // Level 1 is creation: one primary pick and one secondary pick,
             // exactly. Once this category owns its level-1 power, the rest of
             // the category floors at 2 (categoryOwnsLevelOne).
-            const categoryMin = category === 'pool' ? POOL_UNLOCK_LEVEL
+            const categoryMin = category === 'pool' ? getPoolUnlockLevel(state.build.serverId)
               : category === 'epic' ? EPIC_POOL_LEVEL
               : categoryOwnsLevelOne(state.build, category) ? 2
               : 1;

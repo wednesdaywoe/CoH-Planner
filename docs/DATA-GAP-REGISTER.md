@@ -24,8 +24,8 @@ Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a
 doesn't accumulate closure prose.
 
 - **FORK-2** — the guard watched `scripts/` while the pipeline also EXECUTES twelve forked `src/`
-  modules; the manifest now covers them and eleven are reconciled, waiting on `types/build.ts`'s
-  four remaining clusters, plus the two the closure of `dataset.ts` pulled onto the surface
+  modules; the manifest now covers them and thirteen of fourteen are reconciled — only
+  `types/build.ts` is left, on its four remaining clusters
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -270,9 +270,9 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 - [ ] **FORK-2** — `convert-powerset.cjs` loads its atom encoder from `src/` at runtime, so three
   byte-identical converters still emitted different files; twelve `src/` modules the pipeline
   executes had forked in BOTH directions and no guard watched any of them, because the manifest
-  discovered its surface from `git ls-files scripts` alone; eleven reconciled, and
-  `calc-debug.ts`'s twelve beta-only lines were a quarantined silo's private helper still living in
-  a file both repos share
+  discovered its surface from `git ls-files scripts` alone; 13 of 14 reconciled, and the hand-typed
+  leveling schedule matched the export everywhere a player had checked it while gating Thunderspy's
+  pools at 4 where `schedules.bin` says 1
 - [x] **FIXTURE-1** — the manually-emitted gate fixtures (procs, movement, set-bonus) drifted on
   sampling identity and labels only, no values; all three re-emitted, gates green, and the
   emitters now run in `npm run regen` so the drift class is closed

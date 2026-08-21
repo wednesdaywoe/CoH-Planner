@@ -46,6 +46,7 @@ const datasets = (() => {
 // they must carry it here or the orchestrator silently never refreshes
 // generated/power-pools.ts + epic-pools.ts (and CI's regen-diff misses pool/epic
 // drift entirely).
+//   convert-leveling-schedule -> generated/leveling-schedule.ts
 //   convert-all-powersets  -> generated/powersets/** (+ composed powersets/**)
 //   convert-pool-powers    -> generated/power-pools.ts
 //   convert-epic-pools     -> generated/epic-pools.ts
@@ -59,6 +60,9 @@ const datasets = (() => {
 //   convert-archetype-inherents -> generated/archetype-inherents.ts (needs powersets first)
 const STEPS = [
   { script: 'extract-at-tables.cjs',          args: [],          generated: false },
+  // Power-pick/slot-grant schedules, pool + epic unlock levels, pool cap and
+  // per-power auto-granted slot levels -> generated/leveling-schedule.ts.
+  { script: 'convert-leveling-schedule.cjs',  args: [],          generated: true },
   { script: 'convert-archetypes.cjs',         args: [],          generated: true },
   { script: 'convert-all-powersets.cjs',      args: ['--force'], generated: true },
   { script: 'generate-powerset-index.cjs',    args: [],          generated: false },

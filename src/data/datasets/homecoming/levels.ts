@@ -6,9 +6,36 @@
  */
 
 import type { Power } from '@/types';
+import type { EncodedAtom } from '@/data/core/atomic-effect';
+import { POWER_POOLS_RAW } from './generated/power-pools';
 import { BASIC_INHERENTS, type BasicInherentDef } from './generated/basic-inherents';
 import { BASIC_INHERENTS as REBIRTH_BASIC_INHERENTS } from '../rebirth/generated/basic-inherents';
 import { BASIC_INHERENTS as THUNDERSPY_BASIC_INHERENTS } from '../thunderspy/generated/basic-inherents';
+import { LEVELING_SCHEDULE, type LevelingScheduleData } from './generated/leveling-schedule';
+import { LEVELING_SCHEDULE as REBIRTH_LEVELING_SCHEDULE } from '../rebirth/generated/leveling-schedule';
+import { LEVELING_SCHEDULE as THUNDERSPY_LEVELING_SCHEDULE } from '../thunderspy/generated/leveling-schedule';
+
+// ============================================
+// LEVELING SCHEDULE (binary-sourced)
+// ============================================
+
+/**
+ * Per-server leveling schedules, generated from each dataset's schedules.bin
+ * export (`generated/leveling-schedule.ts`, WS17). The module-level constants
+ * below read the Homecoming schedule — every schedule the datasets share sits
+ * there — while the `serverId`-keyed getters return the build's own schedule
+ * (Thunderspy diverges: 71 slots, 5 pools, pools from level 1). Pass
+ * `build.serverId` at any call site that has it.
+ */
+const LEVELING_BY_SERVER: Record<string, LevelingScheduleData> = {
+  homecoming: LEVELING_SCHEDULE,
+  rebirth: REBIRTH_LEVELING_SCHEDULE,
+  thunderspy: THUNDERSPY_LEVELING_SCHEDULE,
+};
+
+function getLevelingSchedule(serverId?: string): LevelingScheduleData {
+  return (serverId !== undefined ? LEVELING_BY_SERVER[serverId] : undefined) ?? LEVELING_SCHEDULE;
+}
 
 // ============================================
 // CONSTANTS
@@ -17,11 +44,20 @@ import { BASIC_INHERENTS as THUNDERSPY_BASIC_INHERENTS } from '../thunderspy/gen
 /** Maximum character level */
 export const MAX_LEVEL = 50;
 
-/** Level at which Epic/Patron pools become available */
-export const EPIC_POOL_LEVEL = 35;
+/** Level at which Epic/Patron pools become available (identical on all three servers) */
+export const EPIC_POOL_LEVEL = LEVELING_SCHEDULE.epicPoolLevel;
 
-/** Level at which regular Power Pools become available */
-export const POOL_UNLOCK_LEVEL = 4;
+/**
+ * Level at which regular Power Pools become available on the shared schedule.
+ * Thunderspy opens pools at level 1 — prefer {@link getPoolUnlockLevel} at any
+ * call site that has the build's `serverId`.
+ */
+export const POOL_UNLOCK_LEVEL = LEVELING_SCHEDULE.poolUnlockLevel;
+
+/** The pool-unlock level for a server (Thunderspy: level 1; shared schedule: level 4). */
+export function getPoolUnlockLevel(serverId?: string): number {
+  return getLevelingSchedule(serverId).poolUnlockLevel;
+}
 
 /**
  * Maximum number of power pools that can be selected on the shared schedule
@@ -29,57 +65,56 @@ export const POOL_UNLOCK_LEVEL = 4;
  * {@link getMaxPowerPools}. Prefer the getter over this constant at any call
  * site that has the build's `serverId`.
  */
-export const MAX_POWER_POOLS = 4;
-
-/** Thunderspy lets characters slot a 5th power pool. */
-const THUNDERSPY_MAX_POWER_POOLS = 5;
+export const MAX_POWER_POOLS = LEVELING_SCHEDULE.maxPowerPools;
 
 /**
- * Maximum number of power pools selectable on a given server. Defaults to the
- * shared cap of 4; Thunderspy allows 5. Pass `build.serverId` at the call site
- * (mirrors {@link getSlotGrants}).
+ * Maximum number of power pools selectable on a given server (Thunderspy: 5;
+ * shared schedule: 4). Pass `build.serverId` at the call site (mirrors
+ * {@link getSlotGrants}).
  */
 export function getMaxPowerPools(serverId?: string): number {
-  return serverId === 'thunderspy' ? THUNDERSPY_MAX_POWER_POOLS : MAX_POWER_POOLS;
+  return getLevelingSchedule(serverId).maxPowerPools;
 }
 
 /** Maximum number of enhancement slots per power */
 export const MAX_SLOTS_PER_POWER = 6;
 
-/** Total enhancement slots available at level 50 */
-export const TOTAL_SLOTS_AT_50 = 67;
+/** Total enhancement slots available at level 50 (Thunderspy: 71 — see {@link getSlotGrants}) */
+export const TOTAL_SLOTS_AT_50 = LEVELING_SCHEDULE.totalSlots;
 
 // ============================================
 // POWER PICK LEVELS
 // ============================================
 
 /**
- * Levels at which new powers can be selected.
- * Players get a power pick at each of these levels.
- * Total: 24 power picks (level 1 grants 2 picks: primary + secondary)
+ * Levels at which new powers can be selected (identical on all three servers).
+ * Level 1 grants 2 picks (primary + secondary) but appears once here — count
+ * picks with {@link getPicksGrantedAtLevel}, which reads the schedule's own
+ * per-level grant counts.
  */
-export const POWER_PICK_LEVELS: readonly number[] = [
-  1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 35, 38, 41, 44, 47, 49,
-] as const;
+export const POWER_PICK_LEVELS: readonly number[] = Object.keys(LEVELING_SCHEDULE.powerPicks)
+  .map(Number)
+  .sort((a, b) => a - b);
 
-/** Maximum selectable powers (23 pick levels, with level 1 granting 2 picks) */
-export const MAX_POWER_PICKS = POWER_PICK_LEVELS.length + 1; // 24
+/** Maximum selectable powers (level 1's double pick included) */
+export const MAX_POWER_PICKS = LEVELING_SCHEDULE.maxPowerPicks;
 
 /**
  * Check if a level grants a power pick
  */
 export function isPowerPickLevel(level: number): boolean {
-  return POWER_PICK_LEVELS.includes(level);
+  return (LEVELING_SCHEDULE.powerPicks[level] ?? 0) > 0;
 }
 
 /**
  * Get the number of power picks available at a given level.
- * Level 1 grants 2 picks (primary + secondary) but is a single entry in
- * POWER_PICK_LEVELS, so we add 1 to account for the bonus pick.
  */
 export function getPowerPicksAtLevel(level: number): number {
-  const entries = POWER_PICK_LEVELS.filter((l) => l <= level).length;
-  return level >= 1 ? entries + 1 : entries;
+  let total = 0;
+  for (const [pickLevel, picks] of Object.entries(LEVELING_SCHEDULE.powerPicks)) {
+    if (Number(pickLevel) <= level) total += picks;
+  }
+  return total;
 }
 
 // ============================================
@@ -87,77 +122,22 @@ export function getPowerPicksAtLevel(level: number): number {
 // ============================================
 
 /**
- * Enhancement slot grants by level.
+ * Enhancement slot grants by level on the shared (Homecoming/Rebirth) schedule.
  * Key = level, Value = number of PLACEABLE slots granted at that level.
  * These are the extra slots players can freely assign — NOT the free slot 0
  * that comes with every power pick.
- *
- * Pattern:
- *   L1-L2: No placeable slots (only free defaults for picked powers)
- *   L3-L29 (odd levels): 2 placeable slots each
- *   L31+: 3 placeable slots, schedule interleaved with power picks:
- *     31 slots, 32 power, 33 slots, 34 slots,
- *     35 power, 36 slots, 37 slots, 38 power, 39 slots, 40 slots,
- *     41 power, 42 slots, 43 slots, 44 power, 45 slots, 46 slots,
- *     47 power, 48 slots, 49 power, 50 slots
- *
- * Total: 14×2 + 13×3 = 67 placeable slots at level 50
  */
-export const SLOT_GRANTS: Readonly<Record<number, number>> = {
-  // Levels 3-29 (odd): 2 slots each
-  3: 2,
-  5: 2,
-  7: 2,
-  9: 2,
-  11: 2,
-  13: 2,
-  15: 2,
-  17: 2,
-  19: 2,
-  21: 2,
-  23: 2,
-  25: 2,
-  27: 2,
-  29: 2,
-  // Levels 31+: 3 slots each
-  31: 3,
-  33: 3,
-  34: 3,
-  36: 3,
-  37: 3,
-  39: 3,
-  40: 3,
-  42: 3,
-  43: 3,
-  45: 3,
-  46: 3,
-  48: 3,
-  50: 3,
-} as const;
+export const SLOT_GRANTS: Readonly<Record<number, number>> = LEVELING_SCHEDULE.slotGrants;
 
 /**
- * Thunderspy grants four MORE placeable slots than every other server — one
- * extra at L9, L23 and L29 (2→3) and at L43 (3→4) — for 71 total at L50 instead
- * of 67. (Schedule confirmed by a Thunderspy player, 2026-06-16; the only diffs
- * from the shared schedule are those four levels.) Homecoming and Rebirth use
- * the shared SLOT_GRANTS above.
- */
-const THUNDERSPY_SLOT_GRANTS: Readonly<Record<number, number>> = {
-  ...SLOT_GRANTS,
-  9: 3,
-  23: 3,
-  29: 3,
-  43: 4,
-};
-
-/**
- * The slot-grant schedule for a server. Defaults to the shared 67-slot schedule;
- * Thunderspy gets its own 71-slot variant. The slot functions below all accept
- * an optional `serverId` so the budget/progression math tracks the build's
+ * The slot-grant schedule for a server. Defaults to the shared 67-slot
+ * schedule; Thunderspy's own schedules.bin grants four more (one extra at L9,
+ * L23, L29 and L43 — 71 total). The slot functions below all accept an
+ * optional `serverId` so the budget/progression math tracks the build's
  * server — pass `build.serverId` at the call site.
  */
 export function getSlotGrants(serverId?: string): Readonly<Record<number, number>> {
-  return serverId === 'thunderspy' ? THUNDERSPY_SLOT_GRANTS : SLOT_GRANTS;
+  return getLevelingSchedule(serverId).slotGrants;
 }
 
 /**
@@ -195,11 +175,10 @@ export function getNextGrantLevel(currentLevel: number, serverId?: string): numb
 
 /**
  * Number of *new* power picks granted at this specific level (not cumulative).
- * Level 1 grants 2 (primary + secondary); every other POWER_PICK_LEVELS entry grants 1.
+ * Level 1 grants 2 (primary + secondary).
  */
 export function getPicksGrantedAtLevel(level: number): number {
-  if (!POWER_PICK_LEVELS.includes(level)) return 0;
-  return level === 1 ? 2 : 1;
+  return LEVELING_SCHEDULE.powerPicks[level] ?? 0;
 }
 
 /**
@@ -422,7 +401,40 @@ export interface InherentPowerDef extends Power {
 }
 
 /**
- * Inherent Fitness powers - all characters receive these at level 1
+ * The generated, atomized Fitness POOL powers, keyed by display name — which
+ * equals each Fitness inherent's `internalName` (Swift/Hurdle/Health/Stamina).
+ */
+const FITNESS_POOL_BY_NAME = new Map(
+  POWER_POOLS_RAW.fitness.powers.map((power) => [power.name, power]),
+);
+
+/**
+ * The export-derived calc payload (atom list + effects bag) for a Fitness
+ * inherent, read from the generated Fitness pool instead of a hand-transcribed
+ * scale table. This is what makes Health/Stamina/Swift/Hurdle interpret the SAME
+ * atomized data the Rust engine reads from the contract — most importantly
+ * Health's `MezResist(Sleep)` atom, which the old hand table dropped so the
+ * planner reported no Sleep resistance at all (DATA-GAP INHERENT-1). Health's
+ * power only ever affects its caster (authored `Target kCaster`), so its
+ * `Res(Sleep)` is the caster's own and belongs in the player's mezResistSleep.
+ */
+function fitnessPoolCalcFields(internalName: string): Pick<Power, 'atoms' | 'effects'> {
+  const pool = FITNESS_POOL_BY_NAME.get(internalName);
+  if (!pool) {
+    throw new Error(`INHERENT_FITNESS_POWERS: no generated Fitness pool power named ${internalName}`);
+  }
+  return {
+    atoms: pool.atoms as EncodedAtom[],
+    effects: pool.effects as unknown as Power['effects'],
+  };
+}
+
+/**
+ * Inherent Fitness powers - all characters receive these at level 1.
+ * Their calc payload (atoms + effects) is derived from the atomized Fitness
+ * pool via `fitnessPoolCalcFields`; only the inherent-specific metadata
+ * (availability, locked/slot rules, allowed enhancements, category) is authored
+ * here.
  */
 export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
   {
@@ -439,10 +451,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
     allowedSetCategories: [],
     isLocked: true,
     category: 'fitness',
-    effects: {
-      runSpeed: { scale: 0.1, table: 'Melee_SpeedRunning' },
-      flySpeed: { scale: 0.1, table: 'Melee_SpeedFlying' },
-    },
+    ...fitnessPoolCalcFields('Swift'),
   },
   {
     name: 'Hurdle',
@@ -458,10 +467,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
     allowedSetCategories: [],
     isLocked: true,
     category: 'fitness',
-    effects: {
-      jumpHeight: { scale: 0.06, table: 'Melee_Leap' },
-      jumpSpeed: { scale: 0.5, table: 'Melee_SpeedJumping' },
-    },
+    ...fitnessPoolCalcFields('Hurdle'),
   },
   {
     name: 'Health',
@@ -477,9 +483,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
     allowedSetCategories: ['Healing'],
     isLocked: true,
     category: 'fitness',
-    effects: {
-      regenBuff: { scale: 0.4, table: 'Melee_Ones' },
-    },
+    ...fitnessPoolCalcFields('Health'),
   },
   {
     name: 'Stamina',
@@ -495,9 +499,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
     allowedSetCategories: ['Endurance Modification'],
     isLocked: true,
     category: 'fitness',
-    effects: {
-      recoveryBuff: { scale: 0.25, table: 'Melee_Ones' },
-    },
+    ...fitnessPoolCalcFields('Stamina'),
   },
 ];
 
@@ -699,6 +701,10 @@ export function getArchetypeInherentPowers(archetypeId?: string): InherentPowerD
 /**
  * Get all inherent powers that should be auto-granted
  * Note: Archetype inherent is added separately based on selected archetype
+ *
+ * Pass the build's `serverId` wherever one is in hand: the basic and prestige
+ * halves are per-fork membership now, and the no-argument form answers with
+ * Homecoming's.
  */
 export function getInherentPowers(serverId?: string): InherentPowerDef[] {
   return [

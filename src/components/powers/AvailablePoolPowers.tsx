@@ -11,7 +11,7 @@ import {
   getEpicPoolsForArchetype,
   getEpicPool,
   getPowerIconPath,
-  POOL_UNLOCK_LEVEL,
+  getPoolUnlockLevel,
   arePoolsUnlocked,
   isPowerAvailableInPool,
   areEpicPoolsUnlocked,
@@ -175,7 +175,7 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
     return (
       <div className="mb-3">
         <div className="text-[10px] text-slate-500 italic px-1 py-2 text-center bg-slate-800/30 rounded border border-slate-700/30">
-          Power Pools unlock at level {POOL_UNLOCK_LEVEL}
+          Power Pools unlock at level {getPoolUnlockLevel(build.serverId)}
         </div>
       </div>
     );

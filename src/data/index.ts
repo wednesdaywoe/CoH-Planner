@@ -128,6 +128,7 @@ export {
   MAX_LEVEL,
   EPIC_POOL_LEVEL,
   POOL_UNLOCK_LEVEL,
+  getPoolUnlockLevel,
   MAX_POWER_POOLS,
   getMaxPowerPools,
   MAX_POWER_PICKS,

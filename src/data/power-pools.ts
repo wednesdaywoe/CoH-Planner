@@ -15,7 +15,7 @@ import type {
   PowerType,
 } from '@/types';
 import { getActiveDataset } from './dataset';
-import { POOL_UNLOCK_LEVEL } from './levels';
+import { getPoolUnlockLevel } from './levels';
 
 // ============================================
 // POWER POOL REGISTRY TYPE
@@ -536,7 +536,7 @@ export function getPoolsByCategory(categoryId: string): PowerPool[] {
  * Check if power pools are available at the given level
  */
 export function arePoolsUnlocked(level: number): boolean {
-  return level >= POOL_UNLOCK_LEVEL;
+  return level >= getPoolUnlockLevel(getActiveDataset().id);
 }
 
 /**
@@ -544,7 +544,9 @@ export function arePoolsUnlocked(level: number): boolean {
  *
  * Fully DATA-DRIVEN — no rank heuristics or hard-coded travel-power lists.
  * Every gate comes from fields the bin parser already extracts:
- *   - Pools unlock at level 4 (POOL_UNLOCK_LEVEL).
+ *   - Pools unlock at the active dataset's schedules.bin level
+ *     (getPoolUnlockLevel: level 4 on the shared schedule, level 1 on
+ *     Thunderspy).
  *   - `power.available` is the power's own 0-indexed unlock level and is the
  *     authoritative level gate, clamped to the pool-unlock floor:
  *       available 0  → level 4 (e.g. Boxing, Flurry — gated by pool unlock)
@@ -572,14 +574,15 @@ export function isPowerAvailableInPool(
   selectedPowersInPool: string[]
 ): boolean {
   // Pools as a whole unlock at level 4.
-  if (level < POOL_UNLOCK_LEVEL) return false;
+  const poolUnlockLevel = getPoolUnlockLevel(getActiveDataset().id);
+  if (level < poolUnlockLevel) return false;
 
   // available = -1 marks auto-granted sub-powers (Afterburner from Fly, Bio
   // Armor adaptations, etc.) — never user-pickable.
   if (power.available < 0) return false;
 
   // Data-driven level gate (the power's own unlock level, clamped to the floor).
-  if (level < Math.max(POOL_UNLOCK_LEVEL, power.available + 1)) return false;
+  if (level < Math.max(poolUnlockLevel, power.available + 1)) return false;
 
   // Data-driven prerequisites (intra-pool counts + mutual-exclusion locks).
   return arePoolPrerequisitesMet(poolId, power.internalName, selectedPowersInPool);

@@ -9,12 +9,11 @@
  * `getActiveDataset()` indirection seen in `archetypes.ts` / `at-tables.ts`.
  * That's intentional: most exports here are primitive constants
  * (`MAX_LEVEL`, `EPIC_POOL_LEVEL`, …) which JS doesn't allow live-binding
- * across module boundaries. In practice these values are identical across
- * every CoH server we'd realistically support — the file is siloed for
- * organizational tidiness and to give a future Rebirth fork a single
- * place to edit, NOT for runtime swap. If a primitive ever needs to
- * actually differ at runtime, convert that single export to a getter
- * function that reads from `getActiveDataset()`.
+ * across module boundaries. The constants carry the shared (Homecoming/
+ * Rebirth) schedule; anywhere a value genuinely differs per server
+ * (Thunderspy's slot grants, pool cap, pool-unlock level) a `serverId`-keyed
+ * getter (`getSlotGrants`, `getMaxPowerPools`, `getPoolUnlockLevel`) reads
+ * the build's own generated leveling schedule — pass `build.serverId` there.
  */
 
 export * from './datasets/homecoming/levels';

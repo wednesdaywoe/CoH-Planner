@@ -617,6 +617,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "@Class_Peacebringer",
         "=="
       ],
+      "setsModes": [
+        "FlightActive"
+      ],
       "modesDisallowed": [
         "Peacebringer_Blaster_Mode",
         "Peacebringer_Tanker_Mode",
@@ -1346,6 +1349,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "$archetype",
         "@Class_Peacebringer",
         "=="
+      ],
+      "setsModes": [
+        "FlightActive"
       ],
       "modesDisallowed": [
         "Peacebringer_Blaster_Mode",
@@ -2883,7 +2889,21 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           "Ones",
           null,
-          "meter"
+          "meter",
+          null,
+          null,
+          [
+            "Attacked",
+            "Damaged",
+            "MissionObjectClick"
+          ],
+          8,
+          true,
+          [
+            "Held",
+            "Stunned",
+            "Sleep"
+          ]
         ],
         [
           "Defense",
@@ -3825,7 +3845,17 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           "Ones",
           null,
-          "meter"
+          "meter",
+          null,
+          null,
+          null,
+          null,
+          null,
+          [
+            "Attacked",
+            "Damaged",
+            "MissionObjectClick"
+          ]
         ],
         [
           "Stealth",
@@ -4306,7 +4336,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ],
         [
           "EntCreate",
@@ -4341,7 +4375,17 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Level"
+          "Level",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1
         ],
         [
           "MezResist",
@@ -4381,7 +4425,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.5
         ],
         [
           "Stealth",
@@ -4421,7 +4469,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ],
         [
           "Stealth",
@@ -4461,7 +4513,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ],
         [
           "Mez",
@@ -4501,7 +4557,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ],
         [
           "Mez",
@@ -4541,7 +4601,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ],
         [
           "ThreatLevel",
@@ -4581,7 +4645,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ],
         [
           "Mez",
@@ -4621,7 +4689,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ]
       ],
       "requires": [
@@ -4759,7 +4831,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ]
       ],
       "requires": [
@@ -4906,7 +4982,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ],
         [
           "Mez",
@@ -4961,7 +5041,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ],
         [
           "Mez",
@@ -5005,7 +5089,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.17
         ]
       ],
       "requires": [

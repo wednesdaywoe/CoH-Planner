@@ -7,7 +7,7 @@
   "canonicalOnly": [
     {
       "path": "scripts/audit-converter-twins.cjs",
-      "reason": "Wired into canonical's regen-all.cjs and package.json as audit:twins. The beta held a copy it never referenced and could not have run — the --gate leg reads scripts/audit-twins-baseline.json, which the beta does not carry.",
+      "reason": "Wired into canonical's regen-all.cjs and package.json as audit:twins. The beta held a copy it never referenced and could not have run \u2014 the --gate leg reads scripts/audit-twins-baseline.json, which the beta does not carry.",
       "gap": "FORK-1"
     },
     {
@@ -126,6 +126,11 @@
       "path": "scripts/convert-incarnate-effects.cjs",
       "status": "identical",
       "sha256": "42c047655636ba5087837ff14a0348c750c3537f6486443759ba7b849b772157"
+    },
+    {
+      "path": "scripts/convert-leveling-schedule.cjs",
+      "status": "identical",
+      "sha256": "69498458cedbe32315913eb3cc0d4453bafa0b7210cd36493dc38070b7ee1a2f"
     },
     {
       "path": "scripts/convert-pet-entities.cjs",
@@ -267,9 +272,9 @@
       "status": "per-repo",
       "sha256": {
         "canonical": "07753433e1b37b2bde881de994316efe13e30621cc7ca21a59d40017a70d42d6",
-        "beta": "60631540d61772348d4a3b2c8771b7ad401d9a354bc14b50f2de6a7b91ef07ab"
+        "beta": "43a61ba55338f1fed290a600a6cc95e8c56af3cd428d0a6919c5c66ffbb66b24"
       },
-      "reason": "The stage roster and the gate roster ARE the repo's identity — which converters exist and which gates it can currently pass — so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 13, not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
+      "reason": "The stage roster and the gate roster ARE the repo's identity \u2014 which converters exist and which gates it can currently pass \u2014 so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 14, not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
       "exit": null,
       "gap": "FORK-1"
     },
@@ -325,25 +330,13 @@
     },
     {
       "path": "src/data/levels.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "59085d26d98b998b6cc8255cf874224e89f95fea0c8f08e368165c357d5a6cb5",
-        "beta": "f6dd979bd02bc6f4317bfcc2f70aa15441e638fefd99a4a42a13a69a87b7ce50"
-      },
-      "reason": "Pulled onto the surface by `power-pools.ts`. Forked both ways and both halves are named elsewhere: canonical alone sources the level schedule per fork (`getPoolUnlockLevel` and friends, off schedules.bin) where the beta hardcodes the Homecoming numbers; the beta alone merges `inherentRules.archetypeInherents` into the shared hand-written inherent list and splits `getPickShadowingInherentPowers` off it (AUTOISSUE-2's beta closure, and AUTOISSUE-3's fix to it). Canonical needs no merge — its Rust engine admits an archetype-gated grant by GATE SHAPE and dedupes against the archetype catalogue's declared names, which is why `Dataset.archetypeInherents` is optional.",
-      "exit": "Two independent halves. The schedule half closes with the leveling-schedule port named on `power-pools.ts`. The inherent half closes by carrying the beta's merge into canonical's copy — harmless there, since canonical's datasets leave `archetypeInherents` absent and the merge degenerates to the shared list.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "148f203c5c74d35cf74dd989717c6ca1adea7859cfdcc9cd975a9690e063d081"
     },
     {
       "path": "src/data/power-pools.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "7ff783ea9106d3ca53d51141f3e7de73b73fbe11d2f8c4d4d1443c8520592f0f",
-        "beta": "9df3751836e38529f37826264670dbc664e1187a582e3d7c99fcbd0b8252e5ec"
-      },
-      "reason": "Reached from `dataset.ts` (powerPoolsRaw's type), so it joined the surface when that module closed. One fork left, and it is a data question: canonical reads the pool-unlock level per server from that fork's own generated leveling schedule (`getPoolUnlockLevel`, schedules.bin — 4 on the shared schedule, 1 on Thunderspy), the beta states a `POOL_UNLOCK_LEVEL = 4` constant on all three. So the beta gates Thunderspy pools three levels late. Everything else here — `pickModeGates` and the five-member Specialized exclusion — travelled the other way in this same step and is now identical.",
-      "exit": "Port the generated leveling-schedule layer (`convert-leveling-schedule.cjs` + the per-dataset generated modules + `getPoolUnlockLevel`/`getSlotGrants`/`getMaxPowerPools`) into the beta, then take canonical's copy of this file wholesale. Blocked on that port, not on an adjudication — the two sides agree which answer is right.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "7ff783ea9106d3ca53d51141f3e7de73b73fbe11d2f8c4d4d1443c8520592f0f"
     },
     {
       "path": "src/types/archetype.ts",
@@ -357,7 +350,7 @@
         "canonical": "4725fdbc6e36b34c9ec94e7b569937055e71723bed33eda841b4af30ce54e56a",
         "beta": "e9692408504b8b69cc848fe86db7f64180ddedb2ea0c93f11c0c1b61b389d06e"
       },
-      "reason": "Four clusters, all beta-ahead, none reaching a converter — the file is on the shared surface only because types/index.ts re-exports it. The one that matters is activeModes against the twin's kheldianForm/primalistForm: the twin's two form enums are backed by hand-authored per-fork variant tables (Rebirth's is a community mapping standing in for unparsed Parse6, and Homecoming's is empty), where the beta reads the export's modeVariants. The other three are app state the twin was never vendored: mutedOverCapStats, startForm/fullShiftAnimations, DEFAULT_BUILD_NAME.",
+      "reason": "Four clusters, all beta-ahead, none reaching a converter \u2014 the file is on the shared surface only because types/index.ts re-exports it. The one that matters is activeModes against the twin's kheldianForm/primalistForm: the twin's two form enums are backed by hand-authored per-fork variant tables (Rebirth's is a community mapping standing in for unparsed Parse6, and Homecoming's is empty), where the beta reads the export's modeVariants. The other three are app state the twin was never vendored: mutedOverCapStats, startForm/fullShiftAnimations, DEFAULT_BUILD_NAME.",
       "exit": "The form model closes by porting the beta's modeVariants read into the twin and retiring the four hand tables with their two generators; the other three close by vendoring. Until then the pipeline's answer is canonical's copy, because that is the copy the converters were reconciled against.",
       "gap": "FORK-2"
     },
