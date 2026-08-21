@@ -13,7 +13,6 @@ import type {
   ProcOverride,
   SelectedPower,
   Power,
-  Accolade,
   ArchetypeId,
   ArchetypeBranchId,
   Origin,
@@ -260,8 +259,8 @@ interface BuildActions {
     boostLevel?: number;
   }) => number;
 
-  // Accolades
-  addAccolade: (accolade: Accolade) => void;
+  // Accolades — selected ids (internal name, lower-cased)
+  addAccolade: (accoladeId: string) => void;
   removeAccolade: (accoladeId: string) => void;
 
   // Incarnates
@@ -2740,12 +2739,14 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       // Accolades
-      addAccolade: (accolade) => {
+      addAccolade: (accoladeId) => {
         historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
-            accolades: [...state.build.accolades, accolade],
+            accolades: state.build.accolades.includes(accoladeId)
+              ? state.build.accolades
+              : [...state.build.accolades, accoladeId],
           },
         }));
       },
@@ -2755,7 +2756,7 @@ export const useBuildStore = create<BuildStore>()(
         set((state) => ({
           build: {
             ...state.build,
-            accolades: state.build.accolades.filter((a) => a.id !== accoladeId),
+            accolades: state.build.accolades.filter((id) => id !== accoladeId),
           },
         }));
       },
@@ -3448,15 +3449,17 @@ export const useBuildStore = create<BuildStore>()(
             state.build.slotOrder = [];
           }
 
-          // Migration: Rename old accolade IDs to match game internal names
-          if (state.build.accolades?.length > 0) {
+          // Migration: accolades were stored as full { id, bonuses, … } objects; they are
+          // now selected ids (internal name, lower-cased). Fold any legacy object to its id,
+          // renaming the two ids that predate the game-internal-name convention.
+          if (Array.isArray(state.build.accolades) && state.build.accolades.length > 0) {
             const accoladeIdMap: Record<string, string> = {
               'atlas_medallion': 'the_atlas_medallion',
               'freedom_phalanx': 'freedom_phalanx_reserve',
             };
-            state.build.accolades = state.build.accolades.map((a) => {
-              const newId = accoladeIdMap[a.id];
-              return newId ? { ...a, id: newId } : a;
+            state.build.accolades = (state.build.accolades as Array<string | { id: string }>).map((a) => {
+              const id = typeof a === 'string' ? a : a.id;
+              return accoladeIdMap[id] ?? id;
             });
           }
 

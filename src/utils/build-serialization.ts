@@ -371,7 +371,10 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     pools,
     epicPool,
     inherents,
-    accolades: slim.accolades ?? [],
+    // Accolades are selected ids now; fold any legacy { id, … } object from an older code.
+    accolades: (slim.accolades ?? []).map((a: string | { id: string }) =>
+      typeof a === 'string' ? a : a.id
+    ),
     settings: slim.settings ?? { origin: 'Natural' },
     sets,
     incarnates: slim.incarnates ?? createEmptyIncarnateBuildState(),

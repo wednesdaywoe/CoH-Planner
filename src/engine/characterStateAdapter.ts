@@ -495,7 +495,7 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
     pools: build.pools.map((p) => mapPool(p, ctx.targetsHitValues)),
     epic_pool: build.epicPool ? mapPool(build.epicPool, ctx.targetsHitValues) : null,
     inherents: build.inherents.map((p) => mapPower(p, ctx.targetsHitValues)),
-    accolades: build.accolades.map((a) => a.id.toLowerCase()),
+    accolades: [...build.accolades],
     incarnates: mapIncarnates(build, ctx.incarnateActive),
     proc_overrides: procOverridesFrom(build),
     slot_order: build.slotOrder.map((s) => ({

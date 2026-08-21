@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import { getAccolades, accoladeId } from '@/data';
+import { loadDataset } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
 import type { Build } from '@/types/build';
 import type { SelectedPower } from '@/types/power';
@@ -79,11 +81,15 @@ describe('toCharacterState', () => {
     expect(p.slots[3]).toMatchObject({ type: 'origin', secondary_origin: null, origin: 'Magic' });
   });
 
-  it('lowercases accolade ids to their engine key', () => {
-    const build: Build = {
-      ...createEmptyBuild('homecoming'),
-      accolades: [{ id: 'The_Atlas_Medallion', name: 'Atlas Medallion', description: '', icon: '', bonuses: [] }],
-    };
+  it('carries accolade ids through as the engine key', async () => {
+    await loadDataset('homecoming');
+    // The build stores the lower-cased internal name (`accoladeId`), which IS the engine key,
+    // so the adapter passes it through rather than re-casing it. Minting the id from a real
+    // powerset member keeps both halves graded: a registry that stopped lower-casing, and an
+    // adapter that started transforming, each red this.
+    const atlas = getAccolades().find((p) => p.internalName === 'The_Atlas_Medallion')!;
+    expect(accoladeId(atlas)).toBe('the_atlas_medallion');
+    const build: Build = { ...createEmptyBuild('homecoming'), accolades: [accoladeId(atlas)] };
     expect(toCharacterState(build, defaultCtx()).accolades).toEqual(['the_atlas_medallion']);
   });
 

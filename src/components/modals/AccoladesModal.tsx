@@ -1,17 +1,27 @@
 /**
- * AccoladesModal - Toggle accolades that provide stat bonuses
+ * AccoladesModal - Toggle accolades that provide permanent stat bonuses.
+ *
+ * The toggles are derived from the exported Accolades powerset (see @/data/accolades);
+ * each stands alone (on/off), with a hero/villain/any faction label. There is no mutual
+ * exclusion — the real activateRequires gates don't 1:1-pair (DATA-GAP ACCOLADE-1).
  */
 
 import { useBuildStore } from '@/stores';
-import { getAccolades } from '@/data';
+import { getAccolades, accoladeId, accoladeFaction } from '@/data';
+import type { AccoladePower } from '@/data';
 import { Modal, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
-import type { Accolade } from '@/types';
 
 interface AccoladesModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+const FACTION_LABEL: Record<string, string> = {
+  hero: 'Hero',
+  villain: 'Villain',
+  any: 'Any',
+};
 
 export function AccoladesModal({ isOpen, onClose }: AccoladesModalProps) {
   const accolades = getAccolades();
@@ -19,25 +29,20 @@ export function AccoladesModal({ isOpen, onClose }: AccoladesModalProps) {
   const addAccolade = useBuildStore((s) => s.addAccolade);
   const removeAccolade = useBuildStore((s) => s.removeAccolade);
 
-  const isAccoladeEnabled = (id: string) => {
-    return buildAccolades.some((a) => a.id === id);
-  };
+  const isAccoladeEnabled = (id: string) => buildAccolades.includes(id);
 
-  const toggleAccolade = (accolade: Accolade) => {
-    if (isAccoladeEnabled(accolade.id)) {
-      removeAccolade(accolade.id);
+  const toggleAccolade = (power: AccoladePower) => {
+    const id = accoladeId(power);
+    if (isAccoladeEnabled(id)) {
+      removeAccolade(id);
     } else {
-      // Remove mutually exclusive counterpart if selected
-      if (accolade.excludes && isAccoladeEnabled(accolade.excludes)) {
-        removeAccolade(accolade.excludes);
-      }
-      addAccolade(accolade);
+      addAccolade(id);
     }
   };
 
   const clearAll = () => {
-    for (const accolade of buildAccolades) {
-      removeAccolade(accolade.id);
+    for (const id of [...buildAccolades]) {
+      removeAccolade(id);
     }
   };
 
@@ -57,20 +62,19 @@ export function AccoladesModal({ isOpen, onClose }: AccoladesModalProps) {
         {/* Accolades list */}
         <div className="p-4 space-y-2">
           {accolades.map((accolade) => {
-            const enabled = isAccoladeEnabled(accolade.id);
-            const counterpartEnabled = accolade.excludes ? isAccoladeEnabled(accolade.excludes) : false;
+            const id = accoladeId(accolade);
+            const enabled = isAccoladeEnabled(id);
+            const faction = accoladeFaction(accolade);
             return (
               <button
-                key={accolade.id}
+                key={id}
                 onClick={() => toggleAccolade(accolade)}
                 className={`
                   w-full flex items-center gap-3 p-3 rounded-lg border transition-all
                   ${
                     enabled
                       ? 'bg-amber-900/40 border-amber-500 text-amber-100'
-                      : counterpartEnabled
-                        ? 'bg-gray-800/30 border-gray-700/50 text-gray-500 opacity-50 hover:opacity-80'
-                        : 'bg-gray-800/50 border-gray-700 text-gray-300 hover:border-gray-600 hover:bg-gray-800'
+                      : 'bg-gray-800/50 border-gray-700 text-gray-300 hover:border-gray-600 hover:bg-gray-800'
                   }
                 `}
               >
@@ -78,11 +82,7 @@ export function AccoladesModal({ isOpen, onClose }: AccoladesModalProps) {
                 <div
                   className={`
                     w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-colors
-                    ${
-                      enabled
-                        ? 'bg-amber-500 border-amber-500'
-                        : 'border-gray-500'
-                    }
+                    ${enabled ? 'bg-amber-500 border-amber-500' : 'border-gray-500'}
                   `}
                 >
                   {enabled && (
@@ -104,9 +104,16 @@ export function AccoladesModal({ isOpen, onClose }: AccoladesModalProps) {
 
                 {/* Accolade info */}
                 <div className="flex-1 text-left">
-                  <div className="font-medium text-sm">{accolade.name}</div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-sm">{accolade.name}</span>
+                    {faction !== 'any' && (
+                      <span className="text-[10px] uppercase tracking-wide text-gray-500 border border-gray-600 rounded px-1">
+                        {FACTION_LABEL[faction]}
+                      </span>
+                    )}
+                  </div>
                   <div className="text-xs text-gray-400 mt-0.5">
-                    {accolade.description}
+                    {accolade.shortHelp || accolade.description}
                   </div>
                 </div>
               </button>

@@ -6,7 +6,7 @@
  * splits them and converts the selected build via the shared game-importer pipeline.
  */
 
-import type { Build, Accolade, IncarnateSlotId, SelectedIncarnatePower } from '@/types';
+import type { Build, IncarnateSlotId, SelectedIncarnatePower } from '@/types';
 import { createEmptyIncarnateBuildState } from '@/types';
 import { importFromParsedData } from '@/utils/game-importer';
 import type {
@@ -17,7 +17,7 @@ import type {
   GameImportWarning,
   GameImportSummary,
 } from '@/utils/game-importer';
-import { getAccolades, getIncarnatePower, getIncarnateSlot } from '@/data';
+import { getAccolades, accoladeId, getIncarnatePower, getIncarnateSlot } from '@/data';
 
 // ============================================
 // EXTERNAL JSON TYPES
@@ -369,13 +369,13 @@ function augmentAccolades(
   build: Build,
   accoladePowers: ExternalPower[],
 ): void {
-  const allAccolades = getAccolades();
-  const matched: Accolade[] = [];
+  const validIds = new Set(getAccolades().map(accoladeId));
+  const matched: string[] = [];
 
   for (const ext of accoladePowers) {
-    const accolade = allAccolades.find(a => a.id === ext.powerName);
-    if (accolade && !matched.some(m => m.id === accolade.id)) {
-      matched.push(accolade);
+    const id = ext.powerName.toLowerCase();
+    if (validIds.has(id) && !matched.includes(id)) {
+      matched.push(id);
     }
   }
 

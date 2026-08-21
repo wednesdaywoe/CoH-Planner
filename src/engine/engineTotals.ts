@@ -21,7 +21,7 @@
 import type { Build } from '@/types/build';
 import type { SelectedPower } from '@/types/power';
 import type { IncarnateActiveState } from '@/types/incarnate';
-import { ACCOLADES } from '@/data/accolades';
+import { getAccolades, accoladeId } from '@/data/accolades';
 import type { CharacterCalculationResult } from '@/utils/calculations';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { recalcJson } from './engine';
@@ -66,7 +66,7 @@ function powerNameResolver(build: Build): PowerNameResolver {
   for (const pool of build.pools) add(pool.powers);
   add(build.epicPool?.powers);
   add(build.inherents);
-  const accoladeName = new Map(ACCOLADES.map((a) => [a.id, a.name]));
+  const accoladeName = new Map(getAccolades().map((p) => [accoladeId(p), p.name]));
   // Second-chance lookup on the internal name alone, kept only where it is unambiguous
   // within this build. It answers the case the primary key cannot: the adapter addresses a
   // pool power by its POOL id while `powerSet` is stamped from the set the power was picked

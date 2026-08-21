@@ -98,8 +98,6 @@ export type {
 export type {
   PowersetSelection,
   PoolSelection,
-  Accolade,
-  AccoladeBonus,
   BuildSettings,
   SetTracking,
   ArchetypeSelection,

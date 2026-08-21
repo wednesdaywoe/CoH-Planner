@@ -24,7 +24,7 @@ import { loadDataset } from '@/data/dataset';
 import { getArchetype, STANDARD_ARCHETYPE_IDS } from '@/data/archetypes';
 import { getPowersetsForArchetype } from '@/data/powersets';
 import { getAllIncarnateSlots } from '@/data/incarnates';
-import { ACCOLADES } from '@/data/accolades';
+import { getAccolades, accoladeId } from '@/data/accolades';
 import { getAvailableGenericIOs, createGenericIOEnhancement } from '@/data/enhancement-registry';
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
 import { createEmptyBuild } from '@/types/build';
@@ -110,8 +110,9 @@ function buildFor(server: Server, atId: string): Build {
 
   // Accolades are the ledger's third `kind`, and the only contributors the build stores as bare
   // ids rather than as picked powers — which is what made their rows fall back to the internal
-  // name until the resolver learned to read the registry.
-  build.accolades = ACCOLADES.filter((a) => !a.excludes || a.id < a.excludes);
+  // name until the resolver learned to read the registry. Every toggle the fork offers: the
+  // hero/villain gates are the game's, and the planner lets each stand alone (ACCOLADE-1).
+  build.accolades = getAccolades().map(accoladeId);
 
   // One incarnate per slot the fork offers, top tier of the first tree — the incarnate ledger is
   // the second of the three that went unread, and it files nothing on an unslotted build.
@@ -236,7 +237,7 @@ suite('the breakdown map folds every engine ledger', () => {
         // A row the resolver cannot place falls back to the raw internal name — readable enough
         // to pass a reviewer's eye ("The_Atlas_Medallion") and wrong on screen. Accolades are the
         // case that actually failed, so they get the exact check; the rest get the tell.
-        const accoladeNames = new Set(ACCOLADES.map((a) => a.name));
+        const accoladeNames = new Set(getAccolades().map((p) => p.name));
         const rows = [...sources.values()].flat();
         const accolades = rows.filter((s) => s.type === 'accolade');
         expect(accolades.length).toBeGreaterThan(0);

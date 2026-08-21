@@ -170,8 +170,9 @@ export {
 } from './levels';
 export type { LevelInfo, InherentPowerDef } from './levels';
 
-// Accolades data and accessors
-export { ACCOLADES, getAccolades, getAccolade } from './accolades';
+// Accolades — derived from the exported Accolades powerset (see ./accolades)
+export { getAccolades, getAccolade, accoladeId, accoladeFaction } from './accolades';
+export type { AccoladePower, AccoladeFaction } from './accolades';
 
 // Incarnate data and accessors
 export {

@@ -1,123 +1,110 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { createRequire } from 'node:module';
-import { existsSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { loadDataset } from '@/data/dataset';
-import { getArchetype, STANDARD_ARCHETYPE_IDS } from '@/data/archetypes';
-import { getAccolades } from '@/data/accolades';
-import { toCharacterStateJson, type AdapterCalcContext } from '@/engine/characterStateAdapter';
-import { mapStats, type EngineTotals } from '@/engine/engineTotalsMap';
-import { createEmptyBuild } from '@/types/build';
-import type { Build } from '@/types/build';
+import { loadDataset } from './dataset';
+import { getAccolades, accoladeId, accoladeFaction } from './accolades';
+import { maxHPBuffValue } from './core/atom-query';
+import type { AccoladePower } from './accolades';
 
-/**
- * Accolades must actually reach the totals — and the hand-authored table must say what the
- * game data says.
- *
- * Two failures met here (report 2026-07-26, "accolades are not applying their bonuses"):
- *
- *  1. The engine dropped them outright. `CharacterState.accolades` crossed the WASM boundary
- *     and no pass read it, so every selected accolade contributed zero. The pre-engine TS calc
- *     applied them in its own Step 8, which is why this reads as a swap regression. Fixed in
- *     the engine's Pass 0 gather (`coh_math::gather::resolve_accolades`): an accolade is an
- *     ordinary auto-on power and its atoms now flow through the apply loop like Health's.
- *  2. `src/data/accolades.ts` is a hand transcription of powers the contract already carries,
- *     and it had drifted from them — Marshall claimed a +5% Max Health its def does not carry,
- *     Born In Battle dropped the +5% Max Health its def does. Both errors were invisible while
- *     nothing applied.
- *
- * So the transcription is graded against the engine rather than against a second copy of the
- * numbers: for each accolade, toggle it alone and diff the dashboard totals. A future data
- * change (or another hand edit) that moves one apart from the other fails here.
- *
- * Runs on the wasm-node engine target, like the other `src/engine` gates — see
- * `serverParity.test.ts` for why a fresh checkout skips instead of erroring.
- */
-
-const require = createRequire(import.meta.url);
-const NODE_ENGINE = join(__dirname, '..', 'engine', 'wasm-node', 'coh_wasm.cjs');
-const BUNDLE = join(__dirname, '..', '..', 'public', 'engine', 'contract', 'homecoming.json.gz');
-const artifactsReady = existsSync(NODE_ENGINE) && existsSync(BUNDLE);
-
-const CTX: AdapterCalcContext = {
-  exemplarMode: false,
-  exemplarLevel: 50,
-  incarnateActive: { alpha: false, destiny: false, hybrid: false, interface: false, judgement: false, lore: false, genesis: false },
-  incarnateLevelShiftActive: true,
-  targetsHitValues: {},
-  targetLevelOffset: 0,
-  vigilanceTeamSize: 0,
-  furyLevel: 75,
-  combatMode: false,
-  destinyTime: null,
-  globalAdjusters: {},
-  mechanicAdjusters: {},
-  dominationActive: false,
-  stalkerHidden: false,
-  whatIfBuffs: {},
-};
-
-/** The stats an accolade can move, keyed the way `Accolade.bonuses` names them. */
-const STAT_KEY = { maxHP: 'maxhp', maxEndurance: 'maxend' } as const;
-
-const suite = artifactsReady ? describe : describe.skip;
-if (!artifactsReady) {
-  // eslint-disable-next-line no-console
-  console.warn('[accolades] skipped — engine artifacts absent; run `npm run build:engine`.');
+// The derived +Max HP (% — 10 per scale point, IgnoreStrength) and +Max End (flat) an
+// accolade grants, read off the power exactly as the totals calc reads it. This is the
+// fidelity claim: the values come from the exported atoms, not the removed hand-built silo.
+function statOf(power: AccoladePower): { hpPct: number; endFlat: number } {
+  const hp = maxHPBuffValue(power, { ignoreStrength: true });
+  const hpPct = hp === undefined ? 0 : (typeof hp === 'number' ? hp : hp.scale) * 10;
+  const end = power.effects?.maxEndBuff;
+  const endFlat = end === undefined ? 0 : (typeof end === 'number' ? end : end.scale);
+  return { hpPct, endFlat };
 }
 
-suite('accolades reach the totals (homecoming)', () => {
-  let run: (b: Build) => Record<string, number>;
-  let bare: Build;
-
+describe('accolades derived from the exported Accolades powerset', () => {
+  let byId: Map<string, AccoladePower>;
   beforeAll(async () => {
     await loadDataset('homecoming');
-    const mod = require(NODE_ENGINE) as { load_dataset: (b: Uint8Array) => { recalculate: (j: string) => string } };
-    const handle = mod.load_dataset(new Uint8Array(readFileSync(BUNDLE)));
-    run = (b) => {
-      const totals = JSON.parse(handle.recalculate(toCharacterStateJson(b, CTX))) as EngineTotals;
-      return mapStats(totals.stats, totals.bonuses) as unknown as Record<string, number>;
-    };
-
-    // An archetype and a level are all an accolade needs — it is picked beside the powersets,
-    // not out of one, so an empty build isolates its contribution exactly.
-    const atId = STANDARD_ARCHETYPE_IDS[0];
-    bare = createEmptyBuild('homecoming');
-    bare.level = 50;
-    bare.archetype = { id: atId, name: getArchetype(atId)?.name ?? atId, stats: null, inherent: null } as Build['archetype'];
+    byId = new Map(getAccolades().map((p) => [accoladeId(p), p]));
   });
 
-  it('the fixture itself has accolades to grade', () => {
-    // A table that returned nothing would make every assertion below vacuous.
-    expect(getAccolades().length).toBeGreaterThan(0);
-  });
-
-  it('every accolade applies exactly the bonuses its entry claims', () => {
-    const before = run(bare);
-    for (const accolade of getAccolades()) {
-      const after = run({ ...bare, accolades: [accolade] });
-      for (const [stat, key] of Object.entries(STAT_KEY) as [keyof typeof STAT_KEY, string][]) {
-        const claimed = accolade.bonuses.find((b) => b.stat === stat)?.value ?? 0;
-        expect(after[key] - before[key], `${accolade.id} ${stat}`).toBeCloseTo(claimed, 4);
-      }
+  it('surfaces the four permanent stat accolades the beta silo dropped', () => {
+    for (const id of ['iron_man', 'super_patriot', 'labyrinth_conqueror', 'mazebreaker']) {
+      expect(byId.has(id), id).toBe(true);
     }
   });
 
-  it('pairs each accolade with the twin that carries the same effect', () => {
-    // `excludes` deselects its counterpart, so a crossed pairing silently drops a bonus the
-    // user picked. The twins are the hero/villain copies of ONE accolade — identical effect.
-    const byId = new Map(getAccolades().map((a) => [a.id, a]));
-    let checked = 0;
-    for (const accolade of getAccolades()) {
-      if (!accolade.excludes) continue;
-      const twin = byId.get(accolade.excludes);
-      expect(twin, `${accolade.id} excludes unknown ${accolade.excludes}`).toBeDefined();
-      expect(twin!.excludes, `${accolade.id}/${twin!.id} must exclude each other`).toBe(accolade.id);
-      const effect = (a: typeof accolade) =>
-        [...a.bonuses].sort((x, y) => x.stat.localeCompare(y.stat)).map((b) => `${b.stat}:${b.value}`).join(',');
-      expect(effect(twin!), `${accolade.id} vs ${twin!.id}`).toBe(effect(accolade));
-      checked++;
+  it('excludes click/travel/summon accolades (no +Max HP/End buff)', () => {
+    for (const id of ['eye_of_the_magus', 'long_range_teleport', 'portable_workbench']) {
+      expect(byId.has(id), id).toBe(false);
     }
-    expect(checked, 'no accolade declares an exclusion — the pairing went ungraded').toBeGreaterThan(0);
+  });
+
+  it.each([
+    // id                        hpPct  endFlat   note
+    ['the_atlas_medallion',        0,     5], //  hero  +5 End
+    ['freedom_phalanx_reserve',   10,     0], //  hero  +10% HP
+    ['task_force_commander',       5,     0], //  hero  +5% HP
+    ['portal_jockey',              5,     5], //  hero  +5% HP +5 End
+    ['marshall',                   0,     5], //  villain +5 End ONLY (silo faked a +5% HP)
+    ['born_in_battle',             5,     5], //  villain +5% HP +5 End (silo DROPPED the HP)
+    ['high_pain_threshold',       10,     0], //  villain +10% HP
+    ['invader',                    5,     0], //  villain +5% HP
+    ['iron_man',                  10,    10], //  villain +10% HP +10 End
+    ['labyrinth_conqueror',        5,     5], //  any    +5% HP +5 End
+    ['mazebreaker',                0,     5], //  any    +5 End
+  ])('%s grants +%i%% HP, +%i End', (id, hpPct, endFlat) => {
+    const power = byId.get(id as string);
+    expect(power, id as string).toBeDefined();
+    expect(statOf(power!)).toEqual({ hpPct, endFlat });
+  });
+
+  it('reads faction from the activateRequires gate', () => {
+    expect(accoladeFaction(byId.get('the_atlas_medallion')!)).toBe('hero');
+    expect(accoladeFaction(byId.get('marshall')!)).toBe('villain');
+    expect(accoladeFaction(byId.get('mazebreaker')!)).toBe('any');
+  });
+
+  // The shipped gates are all a bare `type char> <faction> eq`, on which a substring search of
+  // the joined text agrees with the token-pair read on every row — so the corpus cannot tell a
+  // correct reader from a lucky one. These are the violating cases the data does not contain:
+  // the faction word present but NOT as the operand `eq` consumes. Joining is for asking a
+  // question, never for re-splitting one (COND-8).
+  it.each([
+    [['type', 'char>', 'villain', 'eq', 'hero', 'teamup', 'neq'], 'villain'],
+    [['type', 'char>', 'hero', 'neq'], 'any'],
+    [['zone', 'name>', 'hero_hideout', 'streq'], 'any'],
+  ])('%s reads as %s', (gate, expected) => {
+    expect(accoladeFaction({ activateRequires: gate } as AccoladePower)).toBe(expected);
+  });
+});
+
+// The silo's defining error was not any single magnitude — it was serving ONE curated list to
+// every fork. Membership is per-fork data, so it gets a per-fork census: the Labyrinth of Fog
+// pair is Homecoming's alone, and a fork that grows or drops a stat accolade reds this rather
+// than silently shipping another server's roster.
+describe('the accolade roster is each fork\'s own', () => {
+  const EXPECTED: Record<string, string[]> = {
+    homecoming: [
+      'the_atlas_medallion', 'super_patriot', 'freedom_phalanx_reserve', 'task_force_commander',
+      'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader',
+      'iron_man', 'labyrinth_conqueror', 'mazebreaker',
+    ],
+    rebirth: [
+      'the_atlas_medallion', 'super_patriot', 'freedom_phalanx_reserve', 'task_force_commander',
+      'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader', 'iron_man',
+    ],
+    thunderspy: [
+      'the_atlas_medallion', 'super_patriot', 'freedom_phalanx_reserve', 'task_force_commander',
+      'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader', 'iron_man',
+    ],
+  };
+
+  it.each(Object.keys(EXPECTED))('%s offers exactly its own stat accolades', async (dataset) => {
+    await loadDataset(dataset as 'homecoming' | 'rebirth' | 'thunderspy');
+    expect(getAccolades().map(accoladeId).sort()).toEqual([...EXPECTED[dataset]].sort());
+  });
+
+  it('the Labyrinth of Fog pair is Homecoming-only', () => {
+    for (const fork of ['rebirth', 'thunderspy']) {
+      expect(EXPECTED[fork]).not.toContain('labyrinth_conqueror');
+      expect(EXPECTED[fork]).not.toContain('mazebreaker');
+    }
+    expect(EXPECTED.homecoming).toContain('labyrinth_conqueror');
+    expect(EXPECTED.homecoming).toContain('mazebreaker');
   });
 });

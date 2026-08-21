@@ -10,14 +10,15 @@
  * the gate's UNMAPPED set records it — do not "fix" this file to agree.
  */
 
-import type { Build, Accolade, Enhancement, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
+import type { Build, Enhancement, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
 import { isSelfDirectedEffect } from '@/types';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
 import { getBuffPetSources, BUFF_PET_TOGGLE_ID, type BuffPetSource } from './buff-pet-auras';
 import type { SummonEffect } from '@/types/power';
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
-import { stanceAdjusterOverrides, STANCE_GROUPS, activeStanceOptionId } from '@/data';
+import { stanceAdjusterOverrides, STANCE_GROUPS, activeStanceOptionId, getAccolades, accoladeId } from '@/data';
+import type { AccoladePower } from '@/data';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees, getProcControlType, DEFAULT_STACK_COUNT, resolveProcContribution, procOverrideKey } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
 import type { ProcEffect } from '@/data/proc-data';
@@ -2597,35 +2598,38 @@ function applyVariableProcBonuses(
 // ACCOLADE PROCESSING
 // ============================================
 
-function applyAccoladeBonuses(
-  accolades: Accolade[],
+// Accolades are ordinary auto-on Self powers (`Temporary_Powers.Accolades`). Their +Max HP /
+// +Max End contribution is READ FROM THE POWER via the same resolvers processPower uses —
+// never a hand-authored bonus table (the removed `src/data/accolades.ts` silo mis-transcribed
+// these; DATA-GAP ACCOLADE-1). A focused apply (rather than routing through processPower)
+// keeps the dashboard's dedicated 'accolade' breakdown grouping. Accolades carry no slots, so
+// no enhancement multiplier applies.
+function applyAccoladeStats(
+  accolades: AccoladePower[],
+  archetypeId: string,
+  buildLevel: number,
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>
 ): void {
-  for (const accolade of accolades) {
-    for (const bonus of accolade.bonuses) {
-      // Map accolade stat names to our global bonus property names
-      const stat = bonus.stat.toLowerCase();
+  for (const power of accolades) {
+    // +Max HP — a flat 10% per scale point (the same rule as processPower). The enhanceable
+    // and IgnoreStrength (flat, no +Healing) halves resolve through disjoint atom queries;
+    // accolade MaxHP atoms are all IgnoreStrength, but read both to stay faithful to the data.
+    for (const half of [maxHPBuffValue(power), maxHPBuffValue(power, { ignoreStrength: true })]) {
+      if (half === undefined) continue;
+      const scale = typeof half === 'number' ? half : half.scale;
+      const value = scale * 10;
+      global.maxHP += value;
+      addToBreakdown(breakdown, 'maxHP', { name: power.name, value, type: 'accolade' });
+      if (isCalcDebugEnabled()) debugAccolade(power.name, 'maxHP', value);
+    }
 
-      if (stat === 'maxhp') {
-        // HP bonuses from accolades are percentages
-        global.maxHP += bonus.value;
-        addToBreakdown(breakdown, 'maxHP', {
-          name: accolade.name,
-          value: bonus.value,
-          type: 'accolade',
-        });
-        if (isCalcDebugEnabled()) debugAccolade(accolade.name, 'maxHP', bonus.value);
-      } else if (stat === 'maxendurance') {
-        // Endurance bonuses from accolades are flat values
-        global.maxEndurance += bonus.value;
-        addToBreakdown(breakdown, 'maxend', {
-          name: accolade.name,
-          value: bonus.value,
-          type: 'accolade',
-        });
-        if (isCalcDebugEnabled()) debugAccolade(accolade.name, 'maxEndurance', bonus.value);
-      }
+    // +Max Endurance — flat endurance points (scale already absolute, e.g. scale 5 = +5 end).
+    if (power.effects?.maxEndBuff !== undefined) {
+      const value = resolveScaledEffect(power.effects.maxEndBuff, archetypeId, buildLevel);
+      global.maxEndurance += value;
+      addToBreakdown(breakdown, 'maxEndurance', { name: power.name, value, type: 'accolade' });
+      if (isCalcDebugEnabled()) debugAccolade(power.name, 'maxEndurance', value);
     }
   }
 }
@@ -3709,12 +3713,16 @@ export function legacyCalculateCharacterTotals(
   }
   if (_debug) debugGroupEnd();
 
-  // Step 8: Apply accolade bonuses
-  if (_debug && build.accolades && build.accolades.length > 0) debugGroup('Step 8: Accolades');
-  if (build.accolades && build.accolades.length > 0) {
-    applyAccoladeBonuses(build.accolades, globalBonuses, breakdown);
+  // Step 8: Apply accolade bonuses. Selected ids resolve to their powers in the active
+  // dataset's Accolades powerset; stats are read off the power, not a stored bonus list.
+  const selectedAccolades = build.accolades?.length
+    ? getAccolades().filter((power) => build.accolades.includes(accoladeId(power)))
+    : [];
+  if (_debug && selectedAccolades.length > 0) debugGroup('Step 8: Accolades');
+  if (selectedAccolades.length > 0) {
+    applyAccoladeStats(selectedAccolades, build.archetype.id || '', effectiveLevel, globalBonuses, breakdown);
   }
-  if (_debug && build.accolades && build.accolades.length > 0) debugGroupEnd();
+  if (_debug && selectedAccolades.length > 0) debugGroupEnd();
 
   // Step 9: Apply incarnate bonuses (Destiny, Hybrid - direct stats)
   // Note: Alpha bonuses were already applied in Step 7 as enhancement bonuses

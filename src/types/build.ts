@@ -35,30 +35,6 @@ export interface PoolSelection {
 }
 
 // ============================================
-// ACCOLADE
-// ============================================
-
-export interface Accolade {
-  /** Accolade ID */
-  id: string;
-  /** Display name */
-  name: string;
-  /** Description */
-  description: string;
-  /** Icon filename */
-  icon: string;
-  /** Stat bonuses granted */
-  bonuses: AccoladeBonus[];
-  /** ID of the mutually exclusive counterpart (hero/villain pair) */
-  excludes?: string;
-}
-
-export interface AccoladeBonus {
-  stat: string;
-  value: number;
-}
-
-// ============================================
 // BUILD SETTINGS
 // ============================================
 
@@ -181,8 +157,8 @@ export interface Build {
   /** Inherent powers */
   inherents: SelectedPower[];
 
-  /** Selected accolades */
-  accolades: Accolade[];
+  /** Selected accolade ids (internal name, lower-cased) — resolved to powers via getAccolades() */
+  accolades: string[];
 
   /** Build settings */
   settings: BuildSettings;
