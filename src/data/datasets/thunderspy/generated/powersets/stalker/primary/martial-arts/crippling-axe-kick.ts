@@ -116,6 +116,15 @@ export const CripplingAxeKick: Power = {
       "label": "Immobilized"
     }
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "expires": 10,
+      "maxCount": 3
+    }
+  ],
   "damageTypes": [
     "Smashing"
   ]

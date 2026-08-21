@@ -60,6 +60,18 @@ export const Telekinesis: Power = {
     ["Mez","Held",0.75,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.KillTk",
+      "count": 1,
+      "condition": [
+        "isPVPMap?"
+      ],
+      "expiresInGame": 27,
+      "maxCount": 1
+    }
+  ],
   "modesDisallowed": [
     "Defiant"
   ]

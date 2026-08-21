@@ -74,7 +74,7 @@ export const ShiftingTides: Power = {
   "atoms": [
     ["GrantPower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&","Redirects.Marine_Affinity.Shifting_Tides","target.ownPower?","!","&&"]],
     ["Meta",null,1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
-    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
+    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,0.5],
     ["DamageBuff","Smashing",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["DamageBuff","Lethal",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
     ["DamageBuff","Fire",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
@@ -88,7 +88,7 @@ export const ShiftingTides: Power = {
     ["Meta",null,1,1,0.2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Redirects.Marine_Affinity.Shifting_Tides_FX","target.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"null"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&","kShiftingTides","target.mode?","&&"],true],
     ["Meta",null,1,188,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&","kShiftingTides","target.mode?","&&","kWet","target.mode?","!","&&"],true,null,null,null,null,null,null,null,null,"WetStatus",null,"set_mode"],
-    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&","kShiftingTides","target.mode?","&&","Redirects.Marine_Affinity.Shifting_Tides_FX","target.ownPower?","!","&&"],true,null,null,null,null,null,null,null,null,"RisingTide"],
+    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&","kShiftingTides","target.mode?","&&","Redirects.Marine_Affinity.Shifting_Tides_FX","target.ownPower?","!","&&"],true,null,null,null,null,null,null,null,null,"RisingTide",null,null,null,0.5],
     ["GrantPower",null,0,0,0.24,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&","kShiftingTides","target.mode?","&&","Redirects.Marine_Affinity.Shifting_Tides_FX","target.ownPower?","!","&&"],true,null,null,null,null,null,null,null,null,"RisingTide"]
   ],
   "specialEffects": [
@@ -101,6 +101,29 @@ export const ShiftingTides: Power = {
       "kind": "grant",
       "chance": 0.25,
       "label": "FX"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Rising_Tide",
+      "count": 1,
+      "condition": [
+        "entref",
+        "target>",
+        "entref",
+        "source>",
+        "eq",
+        "!",
+        "target.isFriend?",
+        "!",
+        "&&",
+        "kShiftingTides",
+        "target.mode?",
+        "&&"
+      ],
+      "expires": 10,
+      "maxCount": 10
     }
   ]
 };

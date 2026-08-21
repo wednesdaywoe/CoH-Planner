@@ -110,6 +110,19 @@ export const Burst: Power = {
       "label": "Energy_Dmg"
     }
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Power_Siphon",
+      "count": 1,
+      "condition": [
+        "kSiphonMode",
+        "Source.Mode?"
+      ],
+      "expiresInGame": 10,
+      "maxCount": 5
+    }
+  ],
   "damageTypes": [
     "Energy",
     "Smashing"

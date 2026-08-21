@@ -99,5 +99,18 @@ export const BallLightning: Power = {
     ["Damage","Energy",0.441,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
     ["Damage","Energy",0.0275,1,2.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Sentinel_Ranged.Electrical_Blast.Tesla_Cage","source.ownPower?"],true,null,null,null,null,null,null,null,null,"BuildStatic"]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Shock_Therapy.Shock_Therapy_Static",
+      "count": 1,
+      "condition": [
+        "Sentinel_Ranged.Electrical_Blast.Tesla_Cage",
+        "source.ownPower?"
+      ],
+      "expires": 30,
+      "maxCount": 30
+    }
   ]
 };

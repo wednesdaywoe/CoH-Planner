@@ -56,6 +56,45 @@ export const Reactiontime: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "movementCapDebuff": 5,
+      "rechargeDebuff": 5,
+      "slow": 5
+    },
+    "movementCapDebuff": {
+      "runSpeed": {
+        "ignoreStrength": true,
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
+    "rechargeDebuff": {
+      "ignoreStrength": true,
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "ignoreStrength": true,
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      }
+    }
+  },
   "atoms": [
     ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
     ["RechargeTime",null,0.4,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
@@ -63,60 +102,12 @@ export const Reactiontime: Power = {
     ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"SpeedRunning"],
-    ["Movement","Run",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
-    ["Movement","Fly",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
-    ["Movement","Jump",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
-    ["RechargeTime",null,-0.4,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
-    ["Movement","JumpHeight",-0.7,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
-    ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"]
-  ],
-  "conditionalEffects": [
-    {
-      "id": "cryoammunition",
-      "label": "Cryo Ammo",
-      "scope": "global",
-      "defaultActive": false,
-      "group": "swap-ammo",
-      "effects": {
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.4,
-          "table": "Melee_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.7,
-            "table": "Melee_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.7,
-            "table": "Melee_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.7,
-            "table": "Melee_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.7,
-            "table": "Melee_Slow"
-          }
-        },
-        "movementCapDebuff": {
-          "runSpeed": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_SpeedRunning"
-          }
-        },
-        "durations": {
-          "rechargeDebuff": 5,
-          "slow": 5,
-          "movementCapDebuff": 5
-        },
-        "buffDuration": 5
-      }
-    }
+    ["Movement","Run",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow",null,null,null,null,null,null,null,null,"OnDeactivate"],
+    ["Movement","Fly",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow",null,null,null,null,null,null,null,null,"OnDeactivate"],
+    ["Movement","Jump",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow",null,null,null,null,null,null,null,null,"OnDeactivate"],
+    ["RechargeTime",null,-0.4,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow",null,null,null,null,null,null,null,null,"OnDeactivate"],
+    ["Movement","JumpHeight",-0.7,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow",null,null,null,null,null,null,null,null,"OnDeactivate"],
+    ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning",null,null,null,null,null,null,null,null,"OnDeactivate"]
   ],
   "damageTypes": [
     "Energy"

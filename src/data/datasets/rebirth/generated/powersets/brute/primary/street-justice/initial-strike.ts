@@ -75,14 +75,14 @@ export const InitialStrike: Power = {
   },
   "atoms": [
     ["Damage","Smashing",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Smashing",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Smashing",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.33],
     ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.1,null,"Stun"],
     ["Damage","Fire",0.378,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FieryEmbrace"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Combo_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_3","source.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Mez","Stunned",2,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.1,null,"Stun"],
     ["Damage","Smashing",0.730361,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Smashing",0.730361,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Smashing",0.730361,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.33],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
     ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","Source>","70","<","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones"],
@@ -95,6 +95,71 @@ export const InitialStrike: Power = {
       "kind": "effect-proc",
       "chance": 0.10000000149011612,
       "label": "Stun"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Combo_Level_1",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Combo_Level_1",
+        "source.ownPower?",
+        "!",
+        "Temporary_Powers.Temporary_Powers.Combo_Level_2",
+        "source.ownPower?",
+        "!",
+        "&&",
+        "Temporary_Powers.Temporary_Powers.Combo_Level_3",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Combo_Level_2",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Combo_Level_1",
+        "source.ownPower?"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Combo_Level_1",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Combo_Level_1",
+        "source.ownPower?"
+      ]
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Combo_Level_3",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Combo_Level_2",
+        "source.ownPower?",
+        "Temporary_Powers.Temporary_Powers.Combo_Level_3",
+        "source.ownPower?",
+        "||"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Combo_Level_2",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Combo_Level_2",
+        "source.ownPower?"
+      ]
     }
   ]
 };

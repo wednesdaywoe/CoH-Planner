@@ -101,5 +101,12 @@ export const TeslaCage: Power = {
     ["Damage","Energy",0.0163,0,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
     ["Endurance",null,3.43,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
     ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"]
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Redirects.Shock_Therapy.Shock_Therapy_Static",
+      "count": 1
+    }
   ]
 };

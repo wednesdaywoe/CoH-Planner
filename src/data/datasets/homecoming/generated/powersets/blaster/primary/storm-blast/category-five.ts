@@ -225,7 +225,16 @@ export const CategoryFive: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,20,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,1,1,17,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1]
+    ["EntCreate",null,1,1,20,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,20],
+    ["EntCreate",null,1,1,17,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing",
+      "count": 1,
+      "expires": 30,
+      "maxCount": 5
+    }
   ]
 };

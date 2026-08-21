@@ -99,6 +99,16 @@ export const MercurialBlow: Power = {
       "label": "Smashing_Dmg"
     }
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "chance": 0.6499999761581421,
+      "expires": 10,
+      "maxCount": 3
+    }
+  ],
   "requires": [
     "Stalker_Defense.Shield_Defense",
     "!"

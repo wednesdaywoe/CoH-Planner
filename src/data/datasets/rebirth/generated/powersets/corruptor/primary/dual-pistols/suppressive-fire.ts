@@ -58,29 +58,9 @@ export const SuppressiveFire: Power = {
       "type": "Lethal",
       "scale": 0.05,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.05,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.05,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.05,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Sleep"
-    },
     "stun": {
       "mag": 3,
       "scale": 8,
@@ -89,36 +69,92 @@ export const SuppressiveFire: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Lethal"],
-    ["Mez","Stunned",8,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Lethal"],
-    ["Damage","Cold",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"ColdDamage"],
-    ["Mez","Held",8,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"ColdDamage"],
-    ["Damage","Fire",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"FireDamage"],
-    ["Mez","Held",8,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"FireDamage"],
-    ["Damage","Toxic",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"ToxicDamage"],
-    ["Mez","Held",8,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"ToxicDamage"],
+    ["Damage","Lethal",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kLethal","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Lethal"],
+    ["Mez","Stunned",8,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kLethal","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Lethal"],
     ["Damage","Lethal",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Lethal"],
-    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Lethal"],
-    ["Damage","Cold",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
-    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
-    ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
-    ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
-    ["Mez","Knockback",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,null,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
-    ["Mez","Knockup",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,null,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
-    ["Damage","Fire",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"FireDamage"],
-    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"FireDamage"],
-    ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"FireDamage"],
-    ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"FireDamage"],
-    ["Mez","Knockback",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,null,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"FireDamage"],
-    ["Mez","Knockup",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,null,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"FireDamage"],
-    ["Damage","Toxic",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"ToxicDamage"],
-    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"ToxicDamage"],
-    ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"ToxicDamage"],
-    ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"ToxicDamage"],
-    ["Mez","Knockback",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,null,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"ToxicDamage"],
-    ["Mez","Knockup",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,null,null,null,null,null,["kHeld","target>","0",">"],true,null,null,null,null,null,null,0,null,"ToxicDamage"]
+    ["Damage","Lethal",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kLethal","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"Lethal"],
+    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kLethal","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"Lethal"],
+    ["Damage","Cold",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ColdDamage",null,null,null,null,null,null,null,null,null,null,"colddamage"],
+    ["Damage","Cold",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
+    ["Mez","Held",8,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ColdDamage",null,null,null,null,null,null,null,null,null,null,"colddamage"],
+    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
+    ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kHeld","target>","0",">","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
+    ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kHeld","target>","0",">","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
+    ["Mez","Knockback",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kHeld","target>","0",">","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
+    ["Mez","Knockup",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kHeld","target>","0",">","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ColdDamage"],
+    ["Damage","Fire",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kFireDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FireDamage",null,null,null,null,null,null,null,null,null,null,"firedamage"],
+    ["Damage","Fire",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kFireDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FireDamage"],
+    ["Mez","Held",8,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kFireDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FireDamage",null,null,null,null,null,null,null,null,null,null,"firedamage"],
+    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kFireDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FireDamage"],
+    ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kHeld","target>","0",">","kFireDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FireDamage"],
+    ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kHeld","target>","0",">","kFireDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FireDamage"],
+    ["Mez","Knockback",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kHeld","target>","0",">","kFireDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FireDamage"],
+    ["Mez","Knockup",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kHeld","target>","0",">","kFireDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FireDamage"],
+    ["Damage","Toxic",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kToxicDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"],
+    ["Damage","Toxic",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kToxicDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ToxicDamage"],
+    ["Mez","Held",8,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kToxicDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"],
+    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kToxicDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ToxicDamage"],
+    ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kHeld","target>","0",">","kToxicDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ToxicDamage"],
+    ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kHeld","target>","0",">","kToxicDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ToxicDamage"],
+    ["Mez","Knockback",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kHeld","target>","0",">","kToxicDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ToxicDamage"],
+    ["Mez","Knockup",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kHeld","target>","0",">","kToxicDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ToxicDamage"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "colddamage",
+      "label": "Cold Damage",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Cold",
+        "scale": 0.05,
+        "table": "Ranged_Damage"
+      },
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 8,
+          "table": "Ranged_Sleep"
+        }
+      }
+    },
+    {
+      "id": "firedamage",
+      "label": "Fire Damage",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Fire",
+        "scale": 0.05,
+        "table": "Ranged_Damage"
+      },
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 8,
+          "table": "Ranged_Sleep"
+        }
+      }
+    },
+    {
+      "id": "toxicdamage",
+      "label": "Toxic Damage",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Toxic",
+        "scale": 0.05,
+        "table": "Ranged_Damage"
+      },
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 8,
+          "table": "Ranged_Sleep"
+        }
+      }
+    }
   ]
 };

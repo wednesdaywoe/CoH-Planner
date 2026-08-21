@@ -126,5 +126,22 @@ export const SweepingCross: Power = {
       "chance": 0.10000000149011612,
       "label": "Smashing_Dmg"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Combo_Level_1",
+      "count": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Combo_Level_2",
+      "count": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Combo_Level_3",
+      "count": 1
+    }
   ]
 };

@@ -91,11 +91,11 @@ export const TotalFocus: Power = {
     }
   },
   "atoms": [
-    ["Damage","Energy",0.6,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Energy",0.6,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.2],
     ["Damage","Energy",1.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Stunned",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Damage","Energy",1.1867,1,3,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
+    ["Damage","Energy",1.1867,1,3,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit",null,null,null,0.2],
     ["DamageBuff","Smashing",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -105,13 +105,13 @@ export const TotalFocus: Power = {
     ["DamageBuff","Psionic",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Damage","Energy",1.1867,1,3,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>","0",">","enttype","target>","critter","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit"],
-    ["Damage","Energy",0.5171,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Energy",1.1867,1,3,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>","0",">","enttype","target>","critter","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit",null,null,null,0.2],
+    ["Damage","Energy",0.5171,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.2],
     ["Damage","Energy",1.1724,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Smashing",0.8624,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Damage","Energy",1.023,1,3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>","0",">","enttype","target>","player","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit"],
-    ["Damage","Energy",1.023,1,3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&","&&"],true]
+    ["Damage","Energy",1.023,1,3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>","0",">","enttype","target>","player","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit",null,null,null,0.2],
+    ["Damage","Energy",1.023,1,3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.2]
   ],
   "specialEffects": [
     {
@@ -123,6 +123,15 @@ export const TotalFocus: Power = {
       "kind": "effect-proc",
       "chance": 0.20000000298023224,
       "label": "Energy_Dmg"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "expires": 10,
+      "maxCount": 3
     }
   ]
 };

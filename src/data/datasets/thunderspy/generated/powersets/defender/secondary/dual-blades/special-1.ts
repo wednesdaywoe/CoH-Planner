@@ -77,20 +77,85 @@ export const Special1: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.33],
+    ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.8],
+    ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.5],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.8],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
+    ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.33],
+    ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.8],
+    ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.5],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.8],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?","Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?","||"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade1",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade1",
+        "source.ownPower?",
+        "!",
+        "Temporary_Powers.Temporary_Powers.ComboBlade2",
+        "source.ownPower?",
+        "!",
+        "&&",
+        "Temporary_Powers.Temporary_Powers.ComboBlade3",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade2",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade1",
+        "source.ownPower?"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade1",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade1",
+        "source.ownPower?"
+      ]
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade3",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade2",
+        "source.ownPower?",
+        "Temporary_Powers.Temporary_Powers.ComboBlade3",
+        "source.ownPower?",
+        "||"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade2",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade2",
+        "source.ownPower?"
+      ]
+    }
   ],
   "damageTypes": [
     "Lethal"

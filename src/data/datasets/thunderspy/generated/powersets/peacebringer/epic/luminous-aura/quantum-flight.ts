@@ -99,6 +99,18 @@ export const QuantumFlight: Power = {
     ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
     ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"]
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.NoPhase",
+      "count": 1,
+      "expiresInGame": 60,
+      "maxCount": 1
+    }
+  ],
+  "setsModes": [
+    "FlightActive"
+  ],
   "modesDisallowed": [
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Tanker_Mode"

@@ -68,12 +68,12 @@ export const JetStream: Power = {
     ["Mez","Repel",4,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["kLightningCat5","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"IncreaseStormStrength"],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"StormBrewing"],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?"],true],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"stormblast_instormcell"],
     ["Damage","Smashing",0.8,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<"],true],
     ["Damage","Smashing",0.8037,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Damage","Smashing",0.8037,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<"],true],
     ["Mez","Repel",2,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?","!"],true],
-    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?"],true]
+    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.3]
   ],
   "conditionalEffects": [
     {
@@ -88,6 +88,15 @@ export const JetStream: Power = {
           "table": "Ranged_Ones"
         }
       }
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing",
+      "count": 1,
+      "expires": 30,
+      "maxCount": 5
     }
   ]
 };

@@ -38,6 +38,11 @@ describe('converter: chance-0 Expression resource markers are phantoms', () => {
     table: 'Melee_Ones',
     scale: 1,
     magnitude: 1,
+    // The standing case, stated rather than omitted. `mapApplicationType` throws on a
+    // template that names none, because absence encodes `OnTick` on the ATOM and a silent
+    // export would give that absence a second cause (MOVEMAP-6). A hand-built subject has to
+    // state what every real template states, or it exercises a path the converter never takes.
+    application_type: 'OnTick',
     ...over,
   });
 

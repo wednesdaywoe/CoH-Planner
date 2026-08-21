@@ -204,9 +204,9 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",0.0758,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["Damage","Toxic",0.0909,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+          ["Damage","Toxic",0.0909,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
           ["Damage","Lethal",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,null,"Class_Scrapper"],
-          ["Damage","Toxic",0.119,1,4.6,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+          ["Damage","Toxic",0.119,1,4.6,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
           ["Damage","Lethal",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","critter","eq","&&"],true],
           ["Damage","Lethal",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","critter","eq","&&"],true],
           ["Damage","Lethal",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","critter","eq","&&"],true],
@@ -280,12 +280,12 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Run",1.938,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelBuff"],
+          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",1.938,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["Meta",null,1,161,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Run",1.938,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelBuff"]
+          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",1.938,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -363,7 +363,7 @@ export const POWER_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["EntCreate",null,1,1,14,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+          ["EntCreate",null,1,1,14,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,null,14]
         ],
         "effects": {
           "accuracy": 1,
@@ -438,17 +438,17 @@ export const POWER_POOLS_RAW = {
           ["DamageBuff","Psionic",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["DamageBuff","Toxic",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["RechargeTime",null,1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Endurance",null,1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
-          ["Movement","Run",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
-          ["Movement","Fly",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
-          ["Enhancement","Confused",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
-          ["Enhancement","Terrorized",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
-          ["Enhancement","Held",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
-          ["Enhancement","Immobilized",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
-          ["Enhancement","Stunned",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
-          ["Enhancement","Sleep",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA"],
-          ["Defense","All",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"],
-          ["ToHit",null,1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB"]
+          ["Endurance",null,1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Enhancement","Confused",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Enhancement","Terrorized",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Enhancement","Held",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Enhancement","Immobilized",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Enhancement","Stunned",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Enhancement","Sleep",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","All",1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["ToHit",null,1,1,60,"Melee_Res_Boolean","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostB",null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -567,12 +567,12 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [],
         "atoms": [
           ["Stealth","Translucency",0,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-          ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"QuickJaunt"],
-          ["GlobalChanceMod",null,-1,1,10,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"QuickJaunt"],
-          ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"QuickJaunt"],
-          ["GlobalChanceMod",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"QuickJaunt"],
-          ["RechargePower",null,30,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true]
+          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
+          ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"QuickJaunt",null,null,null,1],
+          ["GlobalChanceMod",null,-1,1,10,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"QuickJaunt",null,null,null,1],
+          ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"QuickJaunt",null,null,null,1],
+          ["GlobalChanceMod",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"QuickJaunt",null,null,null,1],
+          ["RechargePower",null,30,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -668,8 +668,8 @@ export const POWER_POOLS_RAW = {
           ["Damage","Smashing",1.249,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?",".15","*","Pool.Fighting.Cross_Punch","source.ownPowerNum?",".15","*","+","1","+","*"],null,null,null,"Corruptor"],
           ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["Pool.Fighting.Kick","source.ownPower?","!","enttype","target>","player","eq","&&"],true],
           ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.3499999940395355,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-          ["Endurance",null,-0.02,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,null,null,"SynergyFatigue"],
-          ["Recovery",null,-0.05,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,null,null,"SynergyFatigue"]
+          ["Endurance",null,-0.02,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,null,null,"SynergyFatigue",null,null,null,null,null,null,null,null,null,null,"cross_punch"],
+          ["Recovery",null,-0.05,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,null,null,"SynergyFatigue",null,null,null,null,null,null,null,null,null,null,"cross_punch"]
         ],
         "effects": {
           "accuracy": 1,
@@ -774,8 +774,8 @@ export const POWER_POOLS_RAW = {
           ["Damage","Smashing",1.801,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,["@StdResult","Pool.Fighting.Boxing","source.ownPowerNum?",".15","*","Pool.Fighting.Cross_Punch","source.ownPowerNum?",".15","*","+","1","+","*"],null,null,null,"Corruptor"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,["Pool.Fighting.Boxing","source.ownPower?","!","enttype","target>","player","eq","&&"],true],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-          ["Endurance",null,-0.03,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,null,null,"SynergyFatigue"],
-          ["Recovery",null,-0.05,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,null,null,"SynergyFatigue"]
+          ["Endurance",null,-0.03,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,null,null,"SynergyFatigue",null,null,null,null,null,null,null,null,null,null,"cross_punch"],
+          ["Recovery",null,-0.05,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,null,null,"SynergyFatigue",null,null,null,null,null,null,null,null,null,null,"cross_punch"]
         ],
         "effects": {
           "accuracy": 1,
@@ -1095,16 +1095,16 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",1.27,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?",".15","*","Pool.Fighting.Boxing","source.ownPowerNum?",".15","*","+","1","+","*"]],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-          ["Mez","Stunned",6,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+          ["Mez","Stunned",6,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
           ["Damage","Smashing",1.27,1,0,"Melee_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","critter","eq","&&"],null,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?",".15","*","Pool.Fighting.Boxing","source.ownPowerNum?",".15","*","+","1","+","*"],null,null,null,"Scrapper","Class_Scrapper"],
           ["RechargeTime",null,0.05,1,6,"Melee_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?","Pool.Fighting.Boxing","source.ownPowerNum?","+","*"]],
           ["ToHit",null,0.05,1,6,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?","Pool.Fighting.Boxing","source.ownPowerNum?","+","*"]],
           ["Damage","Smashing",1.4628,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?",".15","*","Pool.Fighting.Boxing","source.ownPowerNum?",".15","*","+","1","+","*"]],
           ["Damage","Smashing",0.4262,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-          ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-          ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Domination,Dominator","Class_Dominator"],
-          ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Domination,Dominator"],
+          ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
+          ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Domination,Dominator","Class_Dominator",null,null,0.5,null,null,null,null,null,null,"domination"],
+          ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Domination,Dominator",null,null,null,0.5],
           ["Damage","Smashing",1.27,1,0,"Melee_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?",".15","*","Pool.Fighting.Boxing","source.ownPowerNum?",".15","*","+","1","+","*"],null,null,null,"Stalker"],
           ["Damage","Smashing",1.27,1,0,"Melee_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?",".15","*","Pool.Fighting.Boxing","source.ownPowerNum?",".15","*","+","1","+","*"],null,null,null,"Stalker"],
           ["Damage","Smashing",1.27,1,0,"Melee_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?",".15","*","Pool.Fighting.Boxing","source.ownPowerNum?",".15","*","+","1","+","*"],null,null,null,"Corruptor"],
@@ -1114,8 +1114,8 @@ export const POWER_POOLS_RAW = {
           ["Damage","Smashing",1.4628,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?",".15","*","Pool.Fighting.Boxing","source.ownPowerNum?",".15","*","+","1","+","*"],null,null,null,"Stalker"],
           ["Damage","Smashing",1.4628,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?",".15","*","Pool.Fighting.Boxing","source.ownPowerNum?",".15","*","+","1","+","*"],null,null,null,"Stalker"],
           ["Damage","Smashing",1.4628,1,0,"Melee_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?",".15","*","Pool.Fighting.Boxing","source.ownPowerNum?",".15","*","+","1","+","*"],null,null,null,"Corruptor"],
-          ["RechargeTime",null,0.05,1,6,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["0"],true],
-          ["ToHit",null,0.05,1,6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["0"],true]
+          ["RechargeTime",null,0.05,1,6,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["0"],true,0.05,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"conditional"],
+          ["ToHit",null,0.05,1,6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["0"],true,0.05,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"conditional"]
         ],
         "effects": {
           "accuracy": 1,
@@ -1488,6 +1488,9 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_combatflight.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "FlightActive"
+        ],
         "modesSuspended": [
           "Suppress_FlyToggles",
           "Suppress_PoolToggles"
@@ -1509,36 +1512,36 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","FlyMode",4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Fly",0,1,0.75,"Melee_Ones","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",["@Strength","1","-","0.47","*"]],
-          ["Movement","Control",25,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Friction",25,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
+          ["Movement","FlyMode",4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",0,1,0.75,"Melee_Ones","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",["@Strength","1","-","0.47","*"],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",25,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",25,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true],
           ["Meta",null,0,0,0.75,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
-          ["Movement","FlyMode",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup"],
+          ["Movement","FlyMode",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup",null,null,null,null,null,null,null,null,null,null,null,true],
           ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense"],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"],
-          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense"]
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"HoverDefense",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -1707,7 +1710,8 @@ export const POWER_POOLS_RAW = {
         "powerType": "Toggle",
         "targetType": "Self",
         "setsModes": [
-          "FlyOn"
+          "FlyOn",
+          "FlightActive"
         ],
         "modesSuspended": [
           "Suppress_FlyToggles",
@@ -1730,18 +1734,18 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
+          ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["Meta",null,1,168,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true],
           ["Meta",null,0,0,0.75,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
-          ["Movement","FlyMode",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup"],
+          ["Movement","FlyMode",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup",null,null,null,null,null,null,null,null,null,null,null,true],
           ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"],
-          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelMaxBuff"],
-          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelMaxBuff"]
+          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -1801,6 +1805,9 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_groupfly.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "FlightActive"
+        ],
         "modesSuspended": [
           "Suppress_FlyToggles",
           "Suppress_PoolToggles",
@@ -1834,16 +1841,16 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","FlyMode",2,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
-          ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
-          ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
-          ["Movement","Friction",10,1,10,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"]],
-          ["Movement","FlyMode",2,1,2.25,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
-          ["Movement","Fly",0.5,1,2.25,"Melee_SpeedFlying","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
-          ["Movement","Control",10,1,2.25,"Melee_Control","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
-          ["Movement","Friction",10,1,2.25,"Melee_Friction","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets"],
+          ["Movement","FlyMode",2,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",10,1,10,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","FlyMode",2,1,2.25,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",0.5,1,2.25,"Melee_SpeedFlying","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,2.25,"Melee_Control","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",10,1,2.25,"Melee_Friction","Cur","Magnitude","SelfAndPets","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,"SelfAndPets",null,null,null,null,null,null,null,null,null,null,null,true],
           ["GlobalChanceMod",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SelfAndPets"],
-          ["Movement","FlyMode",0.1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup"],
+          ["Movement","FlyMode",0.1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup",null,null,null,null,null,null,null,null,null,null,null,true],
           ["Movement","FlyMode",2,1,2.25,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"]
         ],
         "effects": {
@@ -1929,14 +1936,6 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","FlyMode",4,1,0.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FlightActive"],
-          ["Movement","Control",15,1,0.25,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FlightActive"],
-          ["Movement","Friction",15,1,0.25,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FlightActive"],
-          ["Movement","Fly",0.4,1,0.25,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FlightActive"],
-          ["Mez","Immobilized",-30,1,0.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
-          ["MezResist","Knockup",1.75,1,0.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
-          ["MezResist","Knockback",1.75,1,0.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
-          ["Movement","FlyMode",2,1,0.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"],
           ["Defense","Ranged",1.5,1,0.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
           ["Defense","Melee",1.5,1,0.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
           ["Defense","AoE",1.5,1,0.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
@@ -1949,9 +1948,17 @@ export const POWER_POOLS_RAW = {
           ["Defense","Psionic",1.5,1,0.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
           ["Defense","Toxic",1.5,1,0.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
           ["Meta",null,0,0,0.25,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
-          ["MezResist","Immobilized",3,1,0.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-          ["MezResist","Knockup",1.75,1,0.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-          ["MezResist","Knockback",1.75,1,0.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
+          ["Movement","FlyMode",4,1,0.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,null,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
+          ["Movement","Control",15,1,0.25,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,null,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
+          ["Movement","Friction",15,1,0.25,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,null,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
+          ["Movement","Fly",0.4,1,0.25,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,null,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
+          ["Mez","Immobilized",-30,1,0.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"flightactive"],
+          ["MezResist","Knockup",1.75,1,0.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"flightactive"],
+          ["MezResist","Knockback",1.75,1,0.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"flightactive"],
+          ["MezResist","Immobilized",3,1,0.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kFlightActive","Source.Mode?"],true],
+          ["MezResist","Knockup",1.75,1,0.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kFlightActive","Source.Mode?"],true],
+          ["MezResist","Knockback",1.75,1,0.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kFlightActive","Source.Mode?"],true],
+          ["Movement","FlyMode",2,1,0.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,null,null,"HypersonicFly"]
         ],
         "effects": {
           "accuracy": 1,
@@ -2007,48 +2014,61 @@ export const POWER_POOLS_RAW = {
             }
           },
           "durations": {
-            "defenseBuffSuppressible": 0.25,
-            "immobilize": 0.25,
-            "knockback": 0.25,
-            "knockup": 0.25,
-            "movement": 0.25
-          },
-          "effectDuration": 0.25,
-          "immobilize": {
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": 30,
-            "table": "Melee_Res_Boolean"
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 1.75,
-            "table": "Melee_Res_Boolean"
-          },
-          "knockup": {
-            "ignoreStrength": true,
-            "scale": 1.75,
-            "table": "Melee_Res_Boolean"
-          },
-          "movement": {
-            "fly": {
-              "scale": 2,
-              "table": "Melee_Ones"
-            },
-            "flySpeed": {
-              "scale": 0.4,
-              "table": "Melee_SpeedFlying"
-            },
-            "movementControl": {
-              "scale": 15,
-              "table": "Melee_Control"
-            },
-            "movementFriction": {
-              "scale": 15,
-              "table": "Melee_Friction"
+            "defenseBuffSuppressible": 0.25
+          }
+        },
+        "conditionalEffects": [
+          {
+            "id": "flightactive",
+            "label": "Flight Active",
+            "scope": "global",
+            "defaultActive": false,
+            "effects": {
+              "buffDuration": 0.25,
+              "durations": {
+                "immobilize": 0.25,
+                "knockback": 0.25,
+                "knockup": 0.25,
+                "movement": 0.25
+              },
+              "effectDuration": 0.25,
+              "immobilize": {
+                "ignoreStrength": true,
+                "mag": 1,
+                "scale": 30,
+                "table": "Melee_Res_Boolean"
+              },
+              "knockback": {
+                "ignoreStrength": true,
+                "scale": 1.75,
+                "table": "Melee_Res_Boolean"
+              },
+              "knockup": {
+                "ignoreStrength": true,
+                "scale": 1.75,
+                "table": "Melee_Res_Boolean"
+              },
+              "movement": {
+                "fly": {
+                  "scale": 4,
+                  "table": "Melee_Ones"
+                },
+                "flySpeed": {
+                  "scale": 0.4,
+                  "table": "Melee_SpeedFlying"
+                },
+                "movementControl": {
+                  "scale": 15,
+                  "table": "Melee_Control"
+                },
+                "movementFriction": {
+                  "scale": 15,
+                  "table": "Melee_Friction"
+                }
+              }
             }
           }
-        }
+        ]
       },
       {
         "name": "Afterburner",
@@ -2086,8 +2106,8 @@ export const POWER_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [],
         "atoms": [
-          ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelTurboMaxBuff"],
-          ["Movement","Fly",0.35,1,0.75,"Ranged_SpeedFlying","Str","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelTurboBuff"]
+          ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelTurboMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",0.35,1,0.75,"Ranged_SpeedFlying","Str","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelTurboBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -2386,16 +2406,16 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Meta",null,1,162,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Jump",1.65,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelMaxBuff"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Jump",1.65,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelMaxBuff"]
+          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",1.65,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",1.65,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -2950,7 +2970,8 @@ export const POWER_POOLS_RAW = {
         "powerType": "Toggle",
         "targetType": "Self",
         "setsModes": [
-          "JetpackOn"
+          "JetpackOn",
+          "FlightActive"
         ],
         "modesSuspended": [
           "Suppress_FlyToggles",
@@ -2988,17 +3009,17 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
+          ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["Meta",null,1,163,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true],
           ["Meta",null,0,0,0.75,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
-          ["Movement","FlyMode",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup"],
+          ["Movement","FlyMode",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup",null,null,null,null,null,null,null,null,null,null,null,true],
           ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"],
-          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelMaxBuff"],
-          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"]
+          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -3249,8 +3270,8 @@ export const POWER_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [],
         "atoms": [
-          ["Movement","Fly",1.0238,1,0.75,"Ranged_Ones","Max","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelTurboMaxBuff"],
-          ["Movement","Fly",10,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelTurboBuff"]
+          ["Movement","Fly",1.0238,1,0.75,"Ranged_Ones","Max","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelTurboMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",10,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelTurboBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -3332,56 +3353,56 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Stealth","Translucency",0.85,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"],
-          ["Stealth","RadiusPvE",55,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Stealth","RadiusPvP",611,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
+          ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode",null,null,null,null,null,null,null,null,null,true],
+          ["Stealth","RadiusPvE",55,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Stealth","RadiusPvP",611,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["Stealth","Translucency",0.05,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","@CustomFX","InvisibleBright","eq","@CustomFX","InvisibleDark","eq","||","&&"],null,null,true],
-          ["Defense","Ranged",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Melee",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","AoE",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Smashing",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Lethal",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Fire",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Cold",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Energy",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Negative",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Psionic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Toxic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
+          ["Defense","Ranged",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Melee",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","AoE",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Smashing",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Lethal",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Fire",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Cold",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Energy",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Negative",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Psionic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Toxic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["Stealth","Translucency",0.7,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","@CustomFX","InvisibleBright","eq","@CustomFX","InvisibleDark","eq","||","!","&&"],true,null,true],
-          ["Defense","Ranged",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Melee",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","AoE",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Smashing",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Lethal",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Fire",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Cold",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Energy",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Negative",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Psionic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Toxic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"],
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"],
-          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle"]
+          ["Defense","Ranged",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Melee",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","AoE",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Smashing",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Lethal",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Fire",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Cold",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Energy",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Negative",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Psionic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Toxic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&","Helped","source.EventTimeSince>","10",">","&&","CommandedPet","source.EventTimeSince>","10",">","&&","PseudoPetAttacked","source.EventTimeSince>","10",">","&&","PseudoPetHelped","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -3740,45 +3761,45 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","JumpHeight",0.275,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,["ActivateAttackClick","source.EventTimeSince>","4",">"],null,null,null,null,"TravelBuff"],
-          ["Movement","Jump",0.605,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,["ActivateAttackClick","source.EventTimeSince>","4",">"],null,null,null,null,"TravelBuff"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,["ActivateAttackClick","source.EventTimeSince>","4",">"],null,null,null,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,["ActivateAttackClick","source.EventTimeSince>","4",">"],null,null,null,null,"TravelBuff"],
-          ["Movement","Run",0.44,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,["ActivateAttackClick","source.EventTimeSince>","4",">"],null,null,null,null,"TravelBuff"],
+          ["Movement","JumpHeight",0.275,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,["ActivateAttackClick","source.EventTimeSince>","4",">"],null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",0.605,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,["ActivateAttackClick","source.EventTimeSince>","4",">"],null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,["ActivateAttackClick","source.EventTimeSince>","4",">"],null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,["ActivateAttackClick","source.EventTimeSince>","4",">"],null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",0.44,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,["ActivateAttackClick","source.EventTimeSince>","4",">"],null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["Stealth","Translucency",0.85,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Meta",null,0,0,0.75,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"],
-          ["Stealth","RadiusPvE",36,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Stealth","RadiusPvP",389,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
+          ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode",null,null,null,null,null,null,null,null,null,true],
+          ["Stealth","RadiusPvE",36,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Stealth","RadiusPvP",389,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["Stealth","Translucency",0.7,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Movement","JumpHeight",0.275,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Jump",0.605,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Run",0.44,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"],
-          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle"]
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","JumpHeight",0.275,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",0.605,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",0.44,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","HitByFoe","source.EventTimeSince>","10",">","&&","MissionObjectClick","source.EventTimeSince>","10",">","&&"],true,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -3896,6 +3917,15 @@ export const POWER_POOLS_RAW = {
         "icon": "invisibility_phaseshift.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.NoPhase",
+            "count": 1,
+            "expiresInGame": 90,
+            "maxCount": 1
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "Disable_Toggle",
@@ -4789,10 +4819,10 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","JumpHeight",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Jump",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Control",10,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Friction",0.2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
+          ["Movement","JumpHeight",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",0.2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -4945,18 +4975,18 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Jump",1.65,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelMaxBuff"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
+          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",1.65,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["Meta",null,1,167,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Jump",1.65,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelMaxBuff"]
+          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",1.65,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -5159,11 +5189,11 @@ export const POWER_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-          ["Damage","Smashing",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
-          ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
-          ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
-          ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.7],
+          ["Damage","Smashing",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],1.3],
+          ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],1.3],
+          ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],1.3],
+          ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1.3]
         ],
         "effects": {
           "accuracy": 1,
@@ -5229,9 +5259,9 @@ export const POWER_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [],
         "atoms": [
-          ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,"jump pack"],
-          ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"Shutdown"],
-          ["Meta",null,1,31,30,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,35,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"Shutdown",null,"set_mode"]
+          ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,"jump pack",null,null,null,null,null,["Stunned","Held","Sleep"],null,null,null,true],
+          ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"Shutdown",null,null,null,10],
+          ["Meta",null,1,31,30,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,35,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"Shutdown",null,"set_mode",null,null,null,null,null,null,"OnDeactivate"]
         ],
         "effects": {
           "accuracy": 1,
@@ -5400,7 +5430,7 @@ export const POWER_POOLS_RAW = {
           ["Mez","Terrorized",7,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Terrorized",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-          ["Mez","Terrorized",10.5,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Domination","Class_Dominator"],
+          ["Mez","Terrorized",10.5,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Domination","Class_Dominator",null,null,null,null,null,null,null,null,null,"domination"],
           ["Mez","Terrorized",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Domination"]
         ],
         "effects": {
@@ -5483,7 +5513,7 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Mez","Terrorized",7,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Terrorized",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-          ["Mez","Terrorized",10.5,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Domination","Class_Dominator"],
+          ["Mez","Terrorized",10.5,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Domination","Class_Dominator",null,null,null,null,null,null,null,null,null,"domination"],
           ["Mez","Terrorized",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Domination"]
         ],
         "effects": {
@@ -5588,7 +5618,7 @@ export const POWER_POOLS_RAW = {
           ["DamageBuff","Negative",2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["DamageBuff","Psionic",2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["DamageBuff","Toxic",2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["Heal",null,0.5,1,0.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,2,1,null,null,null,null,null,null,["Cur.kHitPoints","source>","1","<"],true]
+          ["Heal",null,0.5,1,0.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,2,1,null,null,null,null,null,null,["Cur.kHitPoints","source>","1","<"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"conditional"]
         ],
         "effects": {
           "accuracy": 2,
@@ -5865,7 +5895,7 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Heal",null,1.96,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
           ["MezResist","Stunned",1.75,1,45,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-          ["Endurance",null,0.05,1,8.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,2,1,null,true,null,null,null,null,["Pool.Medicine.Field_Medic","source.ownPower?"],true]
+          ["Endurance",null,0.05,1,8.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,2,1,null,true,null,null,null,null,["Pool.Medicine.Field_Medic","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"field_medic"]
         ],
         "effects": {
           "accuracy": 1,
@@ -6141,7 +6171,7 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Absorb",null,0.2,1,20,"Ranged_Heal","Max","Magnitude","Target","Any",true,"Continuous",2,null,null,1],
           ["Meta",null,1,0,2,"Melee_Ones","Str","Magnitude","Target","Any",true,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
-          ["GlobalChanceMod",null,-1,1,9999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true],
+          ["GlobalChanceMod",null,-1,1,9999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
           ["Absorb",null,1,1,10,"Ranged_Heal","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"initAbsorb"],
           ["Meta",null,0,0,1,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"initAbsorb",null,"null"]
         ],
@@ -6209,9 +6239,9 @@ export const POWER_POOLS_RAW = {
           ["Damage","Energy",1.48,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kTerrorized","target>","0",">","kImmobilized","target>","0",">","||","kHeld","target>","0",">","||","kStunned","target>","0",">","||","Sleep","target.EventTimeSince>","3","<=","||","IncarnateBoss","target.HasTag?","||","arch","source>","Class_Controller","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"Containment,Controller"],
           ["Damage","Energy",1.48,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","source>","Class_Stalker","eq","&&","kMeter","source>","0",">","&&"],true,null,null,null,null,null,null,null,null,null,"Class_Stalker"],
           ["Damage","Energy",1.48,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","source>","Class_Stalker","eq","&&","kHeld","target>","0",">","kSleep","target>","0",">","||","kMeter","source>",".9","<","&&","&&"],true,null,null,null,null,null,null,null,null,null,"Class_Stalker"],
-          ["Damage","Energy",1.48,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kArcaneBolt","Source.Mode?","&&"],true],
-          ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kArcaneBolt","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
-          ["Meta",null,1,65,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","kArcaneBolt","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,"unset_mode"],
+          ["Damage","Energy",1.48,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kArcaneBolt","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"arcanebolt"],
+          ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kArcaneBolt","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,"cancel_mods",null,0.5,null,null,null,null,null,null,"arcanebolt"],
+          ["Meta",null,1,65,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","kArcaneBolt","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,"unset_mode",null,null,null,null,null,null,null,null,"arcanebolt"],
           ["Damage","Energy",1.891,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
           ["Damage","Energy",0.9455,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kTerrorized","target>","0",">","kImmobilized","target>","0",">","||","kHeld","target>","0",">","||","kStunned","target>","0",">","||","Sleep","target.EventTimeSince>","3","<=","||","arch","source>","Class_Controller","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"Containment,Controller"],
           ["Damage","Energy",1.891,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"Corruptor"],
@@ -6221,7 +6251,7 @@ export const POWER_POOLS_RAW = {
           ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
           ["Damage","Energy",1.891,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kArcaneBolt","Source.Mode?","&&"],true],
           ["Meta",null,1,65,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","kArcaneBolt","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,"unset_mode"],
-          ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kArcaneBolt","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"]
+          ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kArcaneBolt","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,"cancel_mods",null,0.5]
         ],
         "effects": {
           "accuracy": 1,
@@ -6270,7 +6300,8 @@ export const POWER_POOLS_RAW = {
         "powerType": "Toggle",
         "targetType": "Self",
         "setsModes": [
-          "MysticFlightOn"
+          "MysticFlightOn",
+          "FlightActive"
         ],
         "modesSuspended": [
           "Suppress_FlyToggles",
@@ -6293,18 +6324,18 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
+          ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true],
           ["Meta",null,0,0,0.75,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
           ["Meta",null,1,164,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-          ["Movement","FlyMode",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup"],
+          ["Movement","FlyMode",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Backup",null,null,null,null,null,null,null,null,null,null,null,true],
           ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HypersonicFly"],
-          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelMaxBuff"],
-          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelMaxBuff"]
+          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"TravelMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"TravelMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -6393,7 +6424,7 @@ export const POWER_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5],
           ["Meta",null,1,0,3.25,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
         ],
         "effects": {
@@ -6600,7 +6631,7 @@ export const POWER_POOLS_RAW = {
         "maxSlots": 0,
         "allowedEnhancements": [],
         "atoms": [
-          ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,-0.75,null,true,null,null,null,null,["EndActivateClick","target.EventCount>","0",">","EndActivateInsp","target.EventCount>","0",">","+","kArcaneBolt","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"ArcanePower"],
+          ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,-0.75,null,true,null,null,null,null,["EndActivateClick","target.EventCount>","0",">","EndActivateInsp","target.EventCount>","0",">","+","kArcaneBolt","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"ArcanePower",null,null,null,1],
           ["Meta",null,1,65,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,15.25,-0.75,null,true,null,null,null,null,["EndActivateClick","target.EventCount>","0",">","EndActivateInsp","target.EventCount>","0",">","+","kArcaneBolt","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"ArcanePower",null,"set_mode"],
           ["GlobalChanceMod",null,0.1,1,600,"Melee_Ones","Cur","Magnitude","Self","Any",false,"StackThenIgnore",25,null,null,1,null,true,null,null,null,null,["EndActivateClick","target.EventCount>","0",">","EndActivateInsp","target.EventCount>","0",">","+","kArcaneBolt","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"ArcanePower,ArcanePowerBoost"],
           ["GlobalChanceMod",null,-1000,1,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["EndActivateClick","target.EventCount>","0",">","EndActivateInsp","target.EventCount>","0",">","+","kArcaneBolt","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"ArcanePower,ArcanePowerBoost"]
@@ -6727,14 +6758,14 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",0.143,1,1.8,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-          ["Damage","Smashing",1.144,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,null,"Class_Scrapper"],
+          ["Damage","Smashing",1.144,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,null,"Class_Scrapper",null,null,1.8],
           ["Damage","Smashing",0.3336,1,1.8,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
           ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-          ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true],
+          ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"stealthed"],
           ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true],
-          ["Damage","Smashing",1.144,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","critter","eq","&&"],true],
-          ["Damage","Smashing",1.144,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","critter","eq","&&"],true],
-          ["Damage","Smashing",1.144,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","critter","eq","&&"],true],
+          ["Damage","Smashing",1.144,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,1.8],
+          ["Damage","Smashing",1.144,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,1.8],
+          ["Damage","Smashing",1.144,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,1.8],
           ["Damage","Smashing",0.143,1,1.8,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["kTerrorized","target>","0",">","kImmobilized","target>","0",">","||","kHeld","target>","0",">","||","kStunned","target>","0",">","||","Sleep","target.EventTimeSince>","3","<=","||","IncarnateBoss","target.HasTag?","||","arch","source>","Class_Controller","eq","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Containment"],
           ["Damage","Smashing",2.669,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","player","eq","&&"],true],
           ["Damage","Smashing",0.1668,1,1.8,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["kTerrorized","target>","0",">","kImmobilized","target>","0",">","||","kHeld","target>","0",">","||","kStunned","target>","0",">","||","Sleep","target.EventTimeSince>","3","<=","||","arch","source>","Class_Controller","eq","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Containment"],
@@ -6761,7 +6792,25 @@ export const POWER_POOLS_RAW = {
             "scale": 4,
             "table": "Melee_Stun"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "stealthed",
+            "label": "Stealthed",
+            "scope": "global",
+            "defaultActive": false,
+            "casterArchetypes": [
+              "Class_Dominator"
+            ],
+            "effects": {
+              "stun": {
+                "mag": 2,
+                "scale": 6,
+                "table": "Melee_Stun"
+              }
+            }
+          }
+        ]
       },
       {
         "name": "Hasten",
@@ -6792,7 +6841,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["RechargeTime",null,0.7,1,120,"Melee_Ones","Str","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"HasteBuff"],
-          ["Endurance",null,-15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+          ["Endurance",null,-15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,120]
         ],
         "effects": {
           "accuracy": 1,
@@ -6830,6 +6879,26 @@ export const POWER_POOLS_RAW = {
         "icon": "superspeed_superspeed.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Redirects.Pool_Speed.Super_Speed_Momentum",
+            "count": 1,
+            "condition": [
+              "Moved",
+              "source.EventTimeSince>",
+              "1",
+              "<=",
+              "NearGround",
+              "source.EventTimeSince>",
+              "1",
+              ">=",
+              "&&"
+            ],
+            "expires": 4,
+            "maxCount": 20
+          }
+        ],
         "setsModes": [
           "SuperSpeedOn",
           "Hidden_Attack"
@@ -6856,19 +6925,19 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Run",1.938,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",1.938,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["Meta",null,1,166,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"],
-          ["Movement","JumpHeight",0.1,1,0.75,"Melee_Leap","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelBuff",["Redirects.Pool_Speed.Super_Speed_Momentum","source.ownPowerNum?","@StdResult","*"],null,null,null,"MomentumLeap"],
-          ["Movement","Jump",0.075,1,0.75,"Melee_SpeedJumping","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelBuff",["Redirects.Pool_Speed.Super_Speed_Momentum","source.ownPowerNum?","@StdResult","*"],null,null,null,"MomentumLeap"],
-          ["Movement","Control",-0.1,1,0.75,"Melee_Ones","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelBuff",["Redirects.Pool_Speed.Super_Speed_Momentum","source.ownPowerNum?","@StdResult","*"],null,null,null,"MomentumLeap"],
-          ["Movement","Friction",-0.1,1,0.75,"Melee_Ones","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelBuff",["Redirects.Pool_Speed.Super_Speed_Momentum","source.ownPowerNum?","@StdResult","*"],null,null,null,"MomentumLeap"],
-          ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Run",1.938,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+          ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode",null,null,null,null,null,null,null,null,null,true],
+          ["Movement","JumpHeight",0.1,1,0.75,"Melee_Leap","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelBuff",["Redirects.Pool_Speed.Super_Speed_Momentum","source.ownPowerNum?","@StdResult","*"],null,null,null,"MomentumLeap",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",0.075,1,0.75,"Melee_SpeedJumping","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelBuff",["Redirects.Pool_Speed.Super_Speed_Momentum","source.ownPowerNum?","@StdResult","*"],null,null,null,"MomentumLeap",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",-0.1,1,0.75,"Melee_Ones","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelBuff",["Redirects.Pool_Speed.Super_Speed_Momentum","source.ownPowerNum?","@StdResult","*"],null,null,null,"MomentumLeap",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",-0.1,1,0.75,"Melee_Ones","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelBuff",["Redirects.Pool_Speed.Super_Speed_Momentum","source.ownPowerNum?","@StdResult","*"],null,null,null,"MomentumLeap",null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat",["Attacked","source.EventTimeSince>","10",">","MissionObjectClick","source.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",1.938,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Moved","source.EventTimeSince>","1","<=","NearGround","source.EventTimeSince>","1",">=","&&"],true,null,null,null,null,null,null,null,null,"MomentumLeap"]
         ],
         "effects": {
@@ -7226,10 +7295,10 @@ export const POWER_POOLS_RAW = {
             "powerType": "Click",
             "atoms": [
               ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-              ["Mez","Teleport",2.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-              ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-              ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0],
-              ["Meta",null,-10,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq"],null,null,null,null,null,null,null,null,null,null,"Class_Stalker","meter"]
+              ["Mez","Teleport",2.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1.17],
+              ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1.3],
+              ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,1],
+              ["Meta",null,-10,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq"],null,null,null,null,null,null,null,null,null,null,"Class_Stalker","meter",null,1.17]
             ]
           }
         ],
@@ -7256,7 +7325,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadOrAliveLeaguemate"]],
-          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadOrAliveLeaguemate"]]
+          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadOrAliveLeaguemate"],1.17]
         ],
         "effects": {
           "accuracy": 1,
@@ -7325,10 +7394,10 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-          ["ToHit",null,1,1,5,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-          ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"QuickCombatTeleport"],
-          ["GlobalChanceMod",null,-1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"QuickCombatTeleport"]
+          ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
+          ["ToHit",null,1,1,5,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
+          ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"QuickCombatTeleport",null,null,null,1],
+          ["GlobalChanceMod",null,-1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"QuickCombatTeleport",null,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -7434,19 +7503,19 @@ export const POWER_POOLS_RAW = {
               ["Movement","Friction",8,0,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
               ["Mez","Intangible",8,0,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover"],
               ["Meta",null,1,66,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover",null,"set_mode"],
-              ["Movement","FlyMode",1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-              ["Movement","Fly",500,1,15,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-              ["Movement","Control",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-              ["Movement","Friction",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-              ["Mez","Intangible",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-              ["Meta",null,1,66,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode",["Self"]],
-              ["Mez","Untouchable",1000,1000,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,null,["Self"]],
-              ["Stealth","Translucency",0.25,1,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,0,null,null,null,null,["Self"]],
-              ["Meta",null,-1,1,3,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,"designer_status",["Self"]],
+              ["Movement","FlyMode",1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+              ["Movement","Fly",500,1,15,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+              ["Movement","Control",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+              ["Movement","Friction",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+              ["Mez","Intangible",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+              ["Meta",null,1,66,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode",["Self"],1,null,null,null,["Attacked","Event_11","HitByOther","MissionObjectClick","Event_38"]],
+              ["Mez","Untouchable",1000,1000,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,null,["Self"],1],
+              ["Stealth","Translucency",0.25,1,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,0,null,null,null,null,["Self"],2.5],
+              ["Meta",null,-1,1,3,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,"designer_status",["Self"],1,["Attacked","HitByFoe","MissionObjectClick"],10,true,["Attacked","Event_11","HitByOther","MissionObjectClick","Event_38"]],
               ["Mez","Untouchable",1000,1000,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true],
-              ["GlobalChanceMod",null,1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"]],
-              ["Stealth","Translucency",0.25,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,0],
-              ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,"designer_status"]
+              ["GlobalChanceMod",null,1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
+              ["Stealth","Translucency",0.25,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,0,null,null,null,null,null,1.5],
+              ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,"designer_status",null,null,["Attacked","HitByFoe","MissionObjectClick"],10,true,["Attacked","MissionObjectClick"]]
             ]
           }
         },
@@ -7481,19 +7550,19 @@ export const POWER_POOLS_RAW = {
           ["Movement","Friction",8,0,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover",null,null,["Self"]],
           ["Mez","Intangible",8,0,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover",null,null,["Self"]],
           ["Meta",null,1,66,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"TeleHover",null,"set_mode",["Self"]],
-          ["Movement","FlyMode",1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-          ["Movement","Fly",500,1,15,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-          ["Movement","Control",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-          ["Movement","Friction",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-          ["Mez","Intangible",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-          ["Meta",null,1,66,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode",["Self"]],
-          ["Mez","Untouchable",1000,1000,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,null,["Self"]],
-          ["Stealth","Translucency",0.25,1,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,0,null,null,null,null,["Self"]],
-          ["Meta",null,-1,1,3,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,"designer_status",["Self"]],
+          ["Movement","FlyMode",1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+          ["Movement","Fly",500,1,15,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+          ["Movement","Control",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+          ["Movement","Friction",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+          ["Mez","Intangible",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+          ["Meta",null,1,66,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode",["Self"],1,null,null,null,["Attacked","Event_11","HitByOther","MissionObjectClick","Event_38"]],
+          ["Mez","Untouchable",1000,1000,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,null,["Self"],1],
+          ["Stealth","Translucency",0.25,1,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,0,null,null,null,null,["Self"],2.5],
+          ["Meta",null,-1,1,3,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,"designer_status",["Self"],1,["Attacked","HitByFoe","MissionObjectClick"],10,true,["Attacked","Event_11","HitByOther","MissionObjectClick","Event_38"]],
           ["Mez","Untouchable",1000,1000,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,null,["Self"]],
-          ["GlobalChanceMod",null,1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
-          ["Stealth","Translucency",0.25,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,0,null,null,null,null,["Self"]],
-          ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,"designer_status",["Self"]]
+          ["GlobalChanceMod",null,1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1],
+          ["Stealth","Translucency",0.25,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,0,null,null,null,null,["Self"],1.5],
+          ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,"designer_status",["Self"],null,["Attacked","HitByFoe","MissionObjectClick"],10,true,["Attacked","MissionObjectClick"]]
         ],
         "effects": {
           "accuracy": 1,
@@ -7599,7 +7668,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"]],
-          ["Mez","Teleport",3.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"]],
+          ["Mez","Teleport",3.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,null,null,null,null,1.17],
           ["Movement","FlyMode",1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"]],
           ["Movement","Fly",-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"]],
           ["Movement","Control",-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"]],
@@ -7701,8 +7770,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "atoms": [
-          ["Mez","Teleport",4.1,3,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+          ["Mez","Teleport",4.1,3,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1.5],
+          ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2.8]
         ],
         "effects": {
           "accuracy": 1,
@@ -7879,7 +7948,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-          ["Damage","Toxic",0.1,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+          ["Damage","Toxic",0.1,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
           ["Damage","Lethal",1.7,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,null,"Class_Scrapper"],
           ["DamageBuff","Smashing",0.8,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
           ["DamageBuff","Lethal",0.8,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
@@ -7994,20 +8063,20 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ninja_run"],
+          ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ninja_run",null,null,null,null,null,["Stunned","Held","Sleep"]],
           ["Meta",null,1,165,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
-          ["GlobalChanceMod",null,-1,1,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["GlobalChanceMod",null,-1,1,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff"],
-          ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff"],
-          ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,true,null,"TravelBuff"]
+          ["GlobalChanceMod",null,-1,1,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"OnActivate"],
+          ["GlobalChanceMod",null,-1,1,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"OnActivate"],
+          ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","PvP",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,true,null,true,null,"TravelBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -8107,7 +8176,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",1.01,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-          ["Damage","Toxic",0.1,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+          ["Damage","Toxic",0.1,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
           ["Damage","Lethal",1.01,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,null,"Class_Scrapper"],
           ["DamageBuff","Smashing",0.8,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
           ["DamageBuff","Lethal",0.8,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],

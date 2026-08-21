@@ -54,6 +54,10 @@ export const IncendiaryAmmunition: Power = {
   "requires": [
     "Blaster_Ranged.Dual_Pistols.Swap_Ammo"
   ],
+  "setsModes": [
+    "FireDamage",
+    "Lethal"
+  ],
   "modesRequired": [
     "LethalAmmo"
   ]

@@ -102,17 +102,17 @@ export const WaterBurst: Power = {
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","0","==","&&"]],
     ["Damage","Smashing",0.1731,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Cold",0.5194,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Damage","Cold",0.045,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true],
-    ["Damage","Cold",0.108,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","==","&&"],true],
-    ["Damage","Cold",0.225,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","&&"],true],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","&&"],true],
+    ["Damage","Cold",0.045,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"tidal_power-1"],
+    ["Damage","Cold",0.108,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"tidal_power-2"],
+    ["Damage","Cold",0.225,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"tidal_power-3"],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"tidal_power-3"],
     ["Damage","Cold",0.0346,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true],
     ["Damage","Cold",0.0831,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","==","&&"],true],
     ["Damage","Cold",0.1731,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","&&"],true],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","&&"],true],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,["enttype","target>","player","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","0","==","&&"],true],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.44999998807907104,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.699999988079071,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","==","&&"],true],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.44999998807907104,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"tidal_power-1"],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.699999988079071,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"tidal_power-2"],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.44999998807907104,null,null,null,null,null,null,["enttype","target>","player","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.699999988079071,null,null,null,null,null,null,["enttype","target>","player","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","==","&&"],true]
   ],
@@ -199,6 +199,13 @@ export const WaterBurst: Power = {
       "kind": "effect-proc",
       "chance": 0.699999988079071,
       "label": "Knockback"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "temporary_powers.temporary_powers.tidal_power",
+      "count": 1
     }
   ]
 };

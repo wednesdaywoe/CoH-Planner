@@ -57,9 +57,9 @@ export const BloodThirst: Power = {
   ],
   "atoms": [
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
-    ["Heal",null,1,1,9.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","5","<"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".084","*",".33","+","@StdResult","*"],null,null,null,"HealSelf"],
+    ["Heal",null,1,1,9.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","5","<"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".084","*",".33","+","@StdResult","*"],null,null,null,"HealSelf",null,null,null,1],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Heal",null,1,1,12.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","4",">"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".084","*",".33","+","@StdResult","*"],null,null,null,"HealSelf"],
+    ["Heal",null,1,1,12.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","4",">"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".084","*",".33","+","@StdResult","*"],null,null,null,"HealSelf",null,null,null,1,null,null,null,null,null,null,"savage_melee_blood_frenzy-5plus"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","4",">","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "conditionalEffects": [
@@ -79,6 +79,30 @@ export const BloodThirst: Power = {
         "duration": 12.1,
         "tickRate": 3
       }
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy",
+      "count": 1
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted",
+        "source.ownPower?",
+        "!",
+        "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy",
+        "source.ownPowerNum?",
+        "4",
+        ">",
+        "&&"
+      ],
+      "expires": 8,
+      "maxCount": 1
     }
   ]
 };

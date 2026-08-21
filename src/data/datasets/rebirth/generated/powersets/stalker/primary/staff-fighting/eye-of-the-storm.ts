@@ -70,24 +70,24 @@ export const EyeoftheStorm: Power = {
   },
   "atoms": [
     ["Damage","Smashing",0.205,1,2.3,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.4,null,"Ones"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.4,null,"Ones",null,null,null,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Smashing",1.23,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>",".9","<","&&"],null,null,null,null,null,["30","source.TeamSize>","0.03","*","0.07","+","rand",">=","@StdResult","*"],null,null,null,"Damage"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Smashing",0.250297,1,2.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Smashing",0.246,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Smashing",0.300356,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Meta",null,1,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"],
-    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.4,null,"Ones"],
-    ["Resistance","Smashing",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["Resistance","Lethal",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["Resistance","Fire",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["Resistance","Cold",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["Resistance","Energy",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["Resistance","Negative",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["Resistance","Psionic",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["Resistance","Toxic",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
+    ["Damage","Smashing",0.246,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,2.3,null,null,null,null,null,null,"perfection_of_body_level_3"],
+    ["Damage","Smashing",0.300356,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,2.3],
+    ["Meta",null,1,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null",null,1,null,null,null,null,null,null,"perfection_of_body_level_3"],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null",null,null,null,null,null,null,null,null,"perfection_of_body_level_3"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.4,null,"Ones",null,null,null,1],
+    ["Resistance","Smashing",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"perfection_of_body_level_3"],
+    ["Resistance","Lethal",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"perfection_of_body_level_3"],
+    ["Resistance","Fire",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"perfection_of_body_level_3"],
+    ["Resistance","Cold",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"perfection_of_body_level_3"],
+    ["Resistance","Energy",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"perfection_of_body_level_3"],
+    ["Resistance","Negative",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"perfection_of_body_level_3"],
+    ["Resistance","Psionic",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"perfection_of_body_level_3"],
+    ["Resistance","Toxic",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"perfection_of_body_level_3"],
     ["Resistance","Smashing",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
     ["Resistance","Lethal",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
     ["Resistance","Fire",-1,1,6,"Melee_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
@@ -100,7 +100,7 @@ export const EyeoftheStorm: Power = {
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,null,null,null,null,null,null,null,"perfection_of_body_level_3"],
     ["Damage","Smashing",1.501782,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,0.5,null,"Damage"],
     ["Damage","Smashing",1.501782,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,0.2,null,"Damage"],
     ["Damage","Smashing",1.23,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,0.5,null,"Damage"]
@@ -181,6 +181,84 @@ export const EyeoftheStorm: Power = {
       "kind": "effect-proc",
       "chance": 0.5,
       "label": "Smashing_Dmg"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1",
+        "source.ownPower?",
+        "!",
+        "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2",
+        "source.ownPower?",
+        "!",
+        "&&",
+        "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1",
+        "source.ownPower?"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1",
+        "source.ownPower?"
+      ]
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2",
+        "source.ownPower?"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2",
+        "source.ownPower?"
+      ]
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3",
+        "source.ownPower?"
+      ]
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "expires": 10,
+      "maxCount": 3
     }
   ]
 };

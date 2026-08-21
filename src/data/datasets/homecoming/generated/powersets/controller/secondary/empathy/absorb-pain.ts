@@ -76,11 +76,11 @@ export const AbsorbPain: Power = {
     ]
   },
   "atoms": [
-    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
+    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
     ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
     ["HealResistance",null,1,1,20,"Ranged_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
     ["Damage","Special",3,1,0,"Ranged_Damage","Abs","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
-    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
     ["Regeneration",null,-0.5,1,25,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
     ["HealResistance",null,0.5,1,25,"Ranged_Ones","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Damage","Special",1.7896,1,0,"Ranged_PvPDamage","Abs","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true]

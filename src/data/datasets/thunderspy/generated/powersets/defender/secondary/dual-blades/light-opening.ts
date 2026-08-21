@@ -53,13 +53,78 @@ export const LightOpening: Power = {
     "tickRate": 0.33000001311302185
   },
   "atoms": [
-    ["Damage","Lethal",0.42,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Lethal",0.42,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.125],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones"],
-    ["Damage","Lethal",0.839239,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Lethal",0.839239,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.13],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade1","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?","Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?","||"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade2","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade1",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade1",
+        "source.ownPower?",
+        "!",
+        "Temporary_Powers.Temporary_Powers.ComboBlade2",
+        "source.ownPower?",
+        "!",
+        "&&",
+        "Temporary_Powers.Temporary_Powers.ComboBlade3",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade2",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade1",
+        "source.ownPower?"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade1",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade1",
+        "source.ownPower?"
+      ]
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade3",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade2",
+        "source.ownPower?",
+        "Temporary_Powers.Temporary_Powers.ComboBlade3",
+        "source.ownPower?",
+        "||"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade2",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade2",
+        "source.ownPower?"
+      ]
+    }
   ],
   "damageTypes": [
     "Lethal"

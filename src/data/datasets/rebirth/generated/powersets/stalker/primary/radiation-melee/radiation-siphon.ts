@@ -90,11 +90,11 @@ export const RadiationSiphon: Power = {
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Smashing",0.727318,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",2.181954,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Toxic",0.392,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","now","Radiation_Melee_Contamination_Hit","source.TokenTime>","-","1","<","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Toxic",0.581854,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","now","Radiation_Melee_Contamination_Hit","source.TokenTime>","-","1","<","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Toxic",0.392,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","now","Radiation_Melee_Contamination_Hit","source.TokenTime>","-","1","<","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.2],
+    ["Damage","Toxic",0.581854,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","now","Radiation_Melee_Contamination_Hit","source.TokenTime>","-","1","<","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.2],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"token_set"],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Heal",null,0.666667,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,["now","Radiation_Melee_Contamination_Hit","source.TokenTime>","-","1","<"],true,null,null,null,null,null,null,null,null,"HealSelf"],
+    ["Heal",null,0.666667,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,["now","Radiation_Melee_Contamination_Hit","source.TokenTime>","-","1","<"],true,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,0.5],
     ["Damage","Energy",2.909272,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",2.909272,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,0.2,null,"Damage"],
     ["Damage","Energy",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
@@ -104,6 +104,15 @@ export const RadiationSiphon: Power = {
       "kind": "grant",
       "chance": 0.3199999928474426,
       "label": "Contaminated"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "expires": 10,
+      "maxCount": 3
     }
   ]
 };

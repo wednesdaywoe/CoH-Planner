@@ -56,7 +56,7 @@ export const LivingSpores: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,5]
   ],
   "requires": [
     "Defender_Buff.Nature_Affinity.Lifegiving_Spores",

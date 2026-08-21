@@ -122,5 +122,15 @@ export const SmashingBlow: Power = {
       "chance": 0.8500000238418579,
       "label": "Assassins Focus"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "chance": 0.8500000238418579,
+      "expires": 10,
+      "maxCount": 3
+    }
   ]
 };

@@ -69,9 +69,9 @@ export const PressOn: Power = {
   },
   "atoms": [
     ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-    ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],
     ["Meta",null,1,1,65,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"xpdebtprotection"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones",null,"silent_kill"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones",null,"silent_kill",null,60],
     ["DamageBuff","Smashing",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
     ["DamageBuff","Lethal",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
     ["DamageBuff","Fire",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Buff_Dmg"],

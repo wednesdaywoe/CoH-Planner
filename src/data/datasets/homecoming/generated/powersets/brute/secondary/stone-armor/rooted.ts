@@ -70,11 +70,9 @@ export const Rooted: Power = {
       "knockback": 0.75,
       "knockup": 0.75,
       "mezResistance": 0.75,
-      "movement": 0.75,
       "regenBuff": 0.75,
       "repel": 0.75,
       "sleep": 0.75,
-      "slow": 0.75,
       "stun": 0.75
     },
     "effectDuration": 0.75,
@@ -113,13 +111,6 @@ export const Rooted: Power = {
         "table": "Melee_Ones"
       }
     },
-    "movement": {
-      "jumpSpeed": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
-    },
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
@@ -132,14 +123,6 @@ export const Rooted: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
-    },
-    "slow": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 0.9,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      }
     },
     "stun": {
       "mag": 1,
@@ -162,9 +145,6 @@ export const Rooted: Power = {
     ["Endurance",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Jump",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GraniteRoot"],
-    ["Movement","Run",-0.9,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GraniteRoot"],
-    ["Movement","FlyMode",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GraniteRoot"],
     ["MezResist","Held",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["MezResist","Immobilized",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["MezResist","Stunned",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
@@ -182,6 +162,39 @@ export const Rooted: Power = {
     ["Movement","Run",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Movement","Jump",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Movement","JumpHeight",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
+    ["Movement","JumpHeight",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Movement","Jump",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kGraniteRoot","Source.Mode?"],true,null,null,null,null,null,null,null,null,"GraniteRoot",null,null,null,null,null,null,null,null,null,null,"graniteroot"],
+    ["Movement","Run",-0.9,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kGraniteRoot","Source.Mode?"],true,null,null,null,null,null,null,null,null,"GraniteRoot",null,null,null,null,null,null,null,null,null,null,"graniteroot"],
+    ["Movement","FlyMode",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kGraniteRoot","Source.Mode?"],true,null,null,null,null,null,null,null,null,"GraniteRoot",null,null,null,null,null,null,null,null,null,null,"graniteroot"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "graniteroot",
+      "label": "Granite Root",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 0.75,
+        "durations": {
+          "movement": 0.75,
+          "slow": 0.75
+        },
+        "movement": {
+          "jumpSpeed": {
+            "ignoreStrength": true,
+            "scale": 0.5,
+            "table": "Melee_Ones"
+          }
+        },
+        "slow": {
+          "runSpeed": {
+            "ignoreStrength": true,
+            "scale": 0.9,
+            "table": "Melee_Ones",
+            "toWho": "Self"
+          }
+        }
+      }
+    }
   ]
 };

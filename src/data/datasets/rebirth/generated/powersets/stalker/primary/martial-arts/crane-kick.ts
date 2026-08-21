@@ -82,5 +82,14 @@ export const CraneKick: Power = {
       "chance": 0.6000000238418579,
       "label": "Knockback"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "expires": 10,
+      "maxCount": 3
+    }
   ]
 };

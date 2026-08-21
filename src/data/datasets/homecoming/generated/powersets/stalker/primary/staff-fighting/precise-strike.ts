@@ -100,6 +100,16 @@ export const PreciseStrike: Power = {
       "label": "Smashing_Dmg"
     }
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "chance": 0.800000011920929,
+      "expires": 10,
+      "maxCount": 3
+    }
+  ],
   "requires": [
     "Stalker_Defense.Shield_Defense",
     "!"

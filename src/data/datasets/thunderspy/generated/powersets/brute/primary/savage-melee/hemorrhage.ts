@@ -69,18 +69,18 @@ export const Hemorrhage: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.81,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",1.11,1,4.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","5","<","&&"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".04","*",".33","+","@StdResult","*"],null,null,null,"Damage"],
+    ["Damage","Lethal",1.11,1,4.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","5","<","&&"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".04","*",".33","+","@StdResult","*"],null,null,null,"Damage",null,null,null,1],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt"],
     ["Damage","Fire",0.342,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Damage","Fire",0.1485,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FieryEmbrace"],
-    ["Damage","Lethal",1.35,1,5.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","4",">","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".04","*",".33","+","@StdResult","*"],null,null,null,"Damage"],
+    ["Damage","Fire",0.1485,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FieryEmbrace",null,null,null,1],
+    ["Damage","Lethal",1.35,1,5.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","4",">","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".04","*",".33","+","@StdResult","*"],null,null,null,"Damage",null,null,null,1,null,null,null,null,null,null,"savage_melee_blood_frenzy-5plus"],
     ["Damage","Lethal",0.957585,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",1,1,4.1,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","5","<","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".04","*",".34","+","@StdResult","*"],null,null,null,"Damage"],
-    ["Damage","Lethal",1.35,1,5.1,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","4",">","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".04","*",".34","+","@StdResult","*"],null,null,null,"Damage"],
+    ["Damage","Lethal",1,1,4.1,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","5","<","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".04","*",".34","+","@StdResult","*"],null,null,null,"Damage",null,null,null,1],
+    ["Damage","Lethal",1.35,1,5.1,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","4",">","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".04","*",".34","+","@StdResult","*"],null,null,null,"Damage",null,null,null,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","4",">","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
-    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.BloodDrink","source.ownPower?"],true,null,null,null,null,null,null,null,null,"HealSelf"]
+    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.BloodDrink","source.ownPower?"],true,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,1,null,null,null,null,null,null,"blooddrink"]
   ],
   "conditionalEffects": [
     {
@@ -115,6 +115,30 @@ export const Hemorrhage: Power = {
         "table": "Melee_HealSelf",
         "tickRate": 1
       }
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy",
+      "count": 1
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted",
+        "source.ownPower?",
+        "!",
+        "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy",
+        "source.ownPowerNum?",
+        "4",
+        ">",
+        "&&"
+      ],
+      "expires": 5,
+      "maxCount": 1
     }
   ],
   "damageTypes": [

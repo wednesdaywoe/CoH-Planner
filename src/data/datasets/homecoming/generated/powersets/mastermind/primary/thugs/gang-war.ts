@@ -44,12 +44,6 @@ export const GangWar: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods"]
-  ],
   "effects": {
     "summon": {
       "isPseudoPet": false,
@@ -58,5 +52,24 @@ export const GangWar: Power = {
       "duration": 60,
       "copyBoosts": true
     }
-  }
+  },
+  "atoms": [
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods",null,1],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods",null,1],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods",null,1],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods",null,1],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1.5,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,2,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,3,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,3.5,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,0.75,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"StreetCred",null,null,null,4.5,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,0.75,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"StreetCred",null,null,null,5,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,0.5,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"StreetCred",null,null,null,5.5,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,0.5,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"StreetCred",null,null,null,1,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,0.25,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"StreetCred",null,null,null,2.5,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,0.10000000149011612,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"StreetCred",null,null,null,4,null,null,null,null,null,60],
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,0.10000000149011612,null,true,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"StreetCred",null,null,null,6,null,null,null,null,null,60]
+  ]
 };

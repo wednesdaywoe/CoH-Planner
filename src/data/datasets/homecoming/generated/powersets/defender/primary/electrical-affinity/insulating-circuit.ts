@@ -82,7 +82,16 @@ export const InsulatingCircuit: Power = {
     }
   },
   "atoms": [
-    ["Absorb",null,2,1,30,"Ranged_Heal","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Absorb",null,2,1,30,"Ranged_Heal","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"BuildStatic"]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Shock_Therapy.Shock_Therapy_Static",
+      "count": 1,
+      "expires": 30,
+      "maxCount": 30
+    }
   ]
 };

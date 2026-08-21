@@ -91,14 +91,14 @@ export const TargetingDrone: Power = {
     ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["DamageBuff","Smashing",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true],
-    ["DamageBuff","Lethal",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true],
-    ["DamageBuff","Fire",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true],
-    ["DamageBuff","Cold",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true],
-    ["DamageBuff","Energy",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true],
-    ["DamageBuff","Negative",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true],
-    ["DamageBuff","Psionic",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true],
-    ["DamageBuff","Toxic",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true]
+    ["DamageBuff","Smashing",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"outofcombat"],
+    ["DamageBuff","Lethal",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"outofcombat"],
+    ["DamageBuff","Fire",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"outofcombat"],
+    ["DamageBuff","Cold",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"outofcombat"],
+    ["DamageBuff","Energy",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"outofcombat"],
+    ["DamageBuff","Negative",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"outofcombat"],
+    ["DamageBuff","Psionic",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"outofcombat"],
+    ["DamageBuff","Toxic",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kOutOfCombat","Source.Mode?"],true,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"outofcombat"]
   ],
   "conditionalEffects": [
     {

@@ -78,5 +78,14 @@ export const CallDepths: Power = {
     ["MaxHP",null,2,1,60,"Ranged_Heal","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Decay"],
     ["MaxEndurance",null,10,1,60,"Ranged_Ones","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Decay"],
     ["Regeneration",null,2,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Decay"]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Marine_Affinity.TidePool_WateryDomain",
+      "count": 1,
+      "expires": 6,
+      "maxCount": 1
+    }
   ]
 };

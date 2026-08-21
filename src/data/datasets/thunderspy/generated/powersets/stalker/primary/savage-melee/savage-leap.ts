@@ -56,12 +56,12 @@ export const SavageLeap: Power = {
     }
   },
   "atoms": [
-    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-    ["EntCreate",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.7],
+    ["EntCreate",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.625,null,null,null,null,null,4],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-    ["Heal",null,2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.BloodDrink","source.ownPower?"],true,null,null,null,null,null,null,null,null,"HealSelf"]
+    ["Heal",null,2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.BloodDrink","source.ownPower?"],true,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,1,null,null,null,null,null,null,"blooddrink"]
   ],
   "conditionalEffects": [
     {
@@ -79,6 +79,39 @@ export const SavageLeap: Power = {
         "table": "Melee_HealSelf",
         "tickRate": 1
       }
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker",
+      "count": 3,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted",
+        "source.ownPower?",
+        "!"
+      ],
+      "expires": 15,
+      "maxCount": 5
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy",
+      "count": 3,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted",
+        "source.ownPower?",
+        "!"
+      ],
+      "expires": 15,
+      "maxCount": 5
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "expires": 10,
+      "maxCount": 3
     }
   ],
   "damageTypes": [

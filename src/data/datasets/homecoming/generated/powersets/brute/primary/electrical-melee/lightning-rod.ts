@@ -131,7 +131,7 @@ export const LightningRod: Power = {
     }
   },
   "atoms": [
-    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,1,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
+    ["EntCreate",null,1,1,1,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.625,null,null,null,null,null,1]
   ]
 };

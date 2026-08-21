@@ -114,9 +114,8 @@ export const EntropyShield: Power = {
       "table": "Melee_Res_Boolean"
     },
     "taunt": {
-      "ignoreStrength": true,
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
+      "scale": 2.25,
+      "table": "Melee_Ones"
     }
   },
   "atoms": [

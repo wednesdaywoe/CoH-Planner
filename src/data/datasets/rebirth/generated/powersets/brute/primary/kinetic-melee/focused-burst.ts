@@ -103,5 +103,18 @@ export const FocusedBurst: Power = {
       "chance": 0.5,
       "label": "Knockback"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Power_Siphon",
+      "count": 1,
+      "condition": [
+        "kSiphonMode",
+        "source.Mode?"
+      ],
+      "expiresInGame": 10,
+      "maxCount": 5
+    }
   ]
 };

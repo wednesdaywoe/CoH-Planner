@@ -70,5 +70,14 @@ export const Aim: Power = {
     ["DamageBuff","Psionic",2.5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",2.5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["GlobalChanceMod",null,0.2,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing",
+      "count": 5,
+      "expires": 30,
+      "maxCount": 5
+    }
   ]
 };

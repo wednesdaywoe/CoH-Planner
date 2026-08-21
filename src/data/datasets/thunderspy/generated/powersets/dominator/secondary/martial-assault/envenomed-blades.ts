@@ -70,5 +70,14 @@ export const EnvenomedBlades: Power = {
       ],
       "enhanceable": false
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Envenomed_Blades",
+      "count": 1,
+      "expires": 40,
+      "maxCount": 1
+    }
   ]
 };

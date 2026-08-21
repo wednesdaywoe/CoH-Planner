@@ -80,14 +80,14 @@ export const DisruptingTorrent: Power = {
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"KAKDChance"],
     ["Regeneration",null,1,1,15,"Ranged_Ones","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","-.08","*",".1","-","@StdResult","*"],null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5","<"],null,null,null,null,null,null,null,null,null,"Ones"],
-    ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","1",">=","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?",".063","*","@StdResult","*"],null,null,null,"Damage"],
+    ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","1",">=","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?",".063","*","@StdResult","*"],null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"kinetic_assault_impulse-1plus"],
     ["Damage","Smashing",1.037488,1,0,"Ranged_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",0.558647,1,0,"Ranged_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","1",">=","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?",".079","*","@StdResult","*"],null,null,null,"Damage"],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"KAKDChance"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,0.1],
     ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
-    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,0.14000000059604645,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","Dominator_Assault.Kinetic_Assault.Coalescence","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
+    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,0.14000000059604645,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","Dominator_Assault.Kinetic_Assault.Coalescence","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,1]
   ],
   "conditionalEffects": [
     {
@@ -116,6 +116,33 @@ export const DisruptingTorrent: Power = {
       "kind": "effect-proc",
       "chance": 0.14000000059604645,
       "label": "Recharge_Power"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+        "source.ownPowerNum?",
+        "5",
+        "<"
+      ],
+      "expires": 30,
+      "maxCount": 5
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+        "source.ownPowerNum?",
+        "5",
+        ">="
+      ],
+      "delaySeconds": 0.1
     }
   ],
   "damageTypes": [

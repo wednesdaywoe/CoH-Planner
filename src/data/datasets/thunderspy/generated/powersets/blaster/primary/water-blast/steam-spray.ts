@@ -98,6 +98,15 @@ export const SteamSpray: Power = {
     ["DamageBuff","Psionic",0.073,1,10.03,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Fire",0.855913,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Tidal_Power",
+      "count": 1,
+      "expires": 15,
+      "maxCount": 3
+    }
+  ],
   "damageTypes": [
     "Fire"
   ]

@@ -80,5 +80,14 @@ export const RejuvenatingCircuit: Power = {
     ["Heal",null,1.55,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"BuildStatic"],
     ["Heal",null,0.41,1,0,"Ranged_Heal","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Shock_Therapy.Shock_Therapy_Static",
+      "count": 1,
+      "expires": 30,
+      "maxCount": 30
+    }
   ]
 };

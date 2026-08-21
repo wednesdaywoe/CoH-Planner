@@ -75,34 +75,34 @@ export const PaleBlade: Power = {
   "atoms": [
     ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Lethal",0.5,1,1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.20000000298023224,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt"],
     ["Damage","Fire",0.174015,1,1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FieryEmbrace"],
     ["Regeneration",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
-    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Meta",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Meta",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Damage","Toxic",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Meta",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
+    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1,null,null,null,null,null,null,"pale_self_buff_lash"],
+    ["Meta",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null",null,null,null,null,null,null,null,null,"pale_self_buff_lash"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,1,null,null,null,null,null,null,"pale_self_buff_lash"],
+    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1,null,null,null,null,null,null,"pale_self_buff_flay"],
+    ["Meta",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null",null,null,null,null,null,null,null,null,"pale_self_buff_flay"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,1,null,null,null,null,null,null,"pale_self_buff_flay"],
+    ["Damage","Toxic",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1,null,null,null,null,null,null,"pale_self_buff_rendflesh"],
+    ["Meta",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null",null,null,null,null,null,null,null,null,"pale_self_buff_rendflesh"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,1,null,null,null,null,null,null,"pale_self_buff_rendflesh"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.11599999666213989,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Lethal",0.667139,1,1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Cold",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones"],
-    ["Meta",null,0,1,3,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"],
-    ["DamageBuff","Smashing",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Dmg"],
-    ["DamageBuff","Lethal",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Dmg"],
-    ["DamageBuff","Fire",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Dmg"],
-    ["DamageBuff","Cold",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Dmg"],
-    ["DamageBuff","Energy",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Dmg"],
-    ["DamageBuff","Negative",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Dmg"],
-    ["DamageBuff","Toxic",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Dmg"],
-    ["DamageBuff","Psionic",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Dmg"]
+    ["Damage","Cold",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["Meta",null,0,1,3,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null",null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["DamageBuff","Smashing",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,1,null,null,null,null,null,null,null,"Buff_Dmg",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["DamageBuff","Lethal",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,1,null,null,null,null,null,null,null,"Buff_Dmg",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["DamageBuff","Fire",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,1,null,null,null,null,null,null,null,"Buff_Dmg",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["DamageBuff","Cold",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,1,null,null,null,null,null,null,null,"Buff_Dmg",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["DamageBuff","Energy",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,1,null,null,null,null,null,null,null,"Buff_Dmg",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["DamageBuff","Negative",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,1,null,null,null,null,null,null,null,"Buff_Dmg",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["DamageBuff","Toxic",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,1,null,null,null,null,null,null,null,"Buff_Dmg",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["DamageBuff","Psionic",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,1,null,null,null,null,null,null,null,"Buff_Dmg",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"]
   ],
   "conditionalEffects": [
     {
@@ -182,6 +182,38 @@ export const PaleBlade: Power = {
       "kind": "grant",
       "chance": 0.20000000298023224,
       "label": "Spread"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash",
+        "source.ownPower?"
+      ],
+      "delaySeconds": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay",
+        "source.ownPower?"
+      ],
+      "delaySeconds": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh",
+        "source.ownPower?"
+      ],
+      "delaySeconds": 1
     }
   ],
   "damageTypes": [

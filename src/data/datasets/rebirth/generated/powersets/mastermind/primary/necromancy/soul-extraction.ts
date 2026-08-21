@@ -49,12 +49,6 @@ export const SoulExtraction: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "atoms": [
-    ["Heal",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-    ["EntCreate",null,1,1,0,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","target>","Class_Minion_Henchman","eq"],true,null,null,null,null,null,null,null,null,"Levelminus"],
-    ["EntCreate",null,1,1,0,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","target>","Class_Lt_Henchman","eq"],true,null,null,null,null,null,null,null,null,"Levelminus"],
-    ["EntCreate",null,1,1,0,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","target>","Class_Boss_Henchman","eq"],true,null,null,null,null,null,null,null,null,"Levelminus"]
-  ],
   "effects": {
     "summon": {
       "isPseudoPet": false,
@@ -72,7 +66,14 @@ export const SoulExtraction: Power = {
           "entity": "MastermindPets_Ghost_Boss",
           "count": 1
         }
-      ]
+      ],
+      "duration": 300
     }
-  }
+  },
+  "atoms": [
+    ["Heal",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["EntCreate",null,1,1,300,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","target>","Class_Minion_Henchman","eq"],true,null,null,null,null,null,null,null,null,"Levelminus",null,null,null,null,null,null,null,null,null,300],
+    ["EntCreate",null,1,1,300,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","target>","Class_Lt_Henchman","eq"],true,null,null,null,null,null,null,null,null,"Levelminus",null,null,null,null,null,null,null,null,null,300],
+    ["EntCreate",null,1,1,300,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","target>","Class_Boss_Henchman","eq"],true,null,null,null,null,null,null,null,null,"Levelminus",null,null,null,null,null,null,null,null,null,300]
+  ]
 };

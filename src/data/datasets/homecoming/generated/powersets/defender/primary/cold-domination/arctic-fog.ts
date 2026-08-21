@@ -147,17 +147,17 @@ export const ArcticFog: Power = {
     }
   },
   "atoms": [
-    ["Defense","Ranged",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Defense","Melee",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Defense","AoE",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Defense","Smashing",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Defense","Lethal",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Defense","Fire",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Defense","Cold",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Defense","Energy",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Defense","Negative",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Defense","Psionic",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
-    ["Defense","Toxic",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle"],
+    ["Defense","Ranged",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Melee",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","AoE",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Smashing",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Lethal",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Fire",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Cold",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Energy",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Negative",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Psionic",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Toxic",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
     ["Stealth","Translucency",0.7,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Fire",2,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Cold",2,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
@@ -167,9 +167,9 @@ export const ArcticFog: Power = {
     ["Movement","Jump",0.6,1,0.75,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","JumpHeight",0.6,1,0.75,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,0.6,1,0.75,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Stealth","RadiusPvP",390,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","target.EventTimeSince>","10",">","HitByFoe","target.EventTimeSince>","10",">","&&","MissionObjectClick","target.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle"],
-    ["Stealth","RadiusPvE",35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["MissionObjectClick","target.EventTimeSince>","10",">"],null,null,true,null,"StealthToggle"],
-    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode"]
+    ["Stealth","RadiusPvP",390,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["Attacked","target.EventTimeSince>","10",">","HitByFoe","target.EventTimeSince>","10",">","&&","MissionObjectClick","target.EventTimeSince>","10",">","&&"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Stealth","RadiusPvE",35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat",["MissionObjectClick","target.EventTimeSince>","10",">"],null,null,true,null,"StealthToggle",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"StealthToggle",null,null,null,null,null,null,"set_mode",null,null,null,null,null,null,null,null,null,true]
   ],
   "setsModes": [
     "Hidden_Attack"

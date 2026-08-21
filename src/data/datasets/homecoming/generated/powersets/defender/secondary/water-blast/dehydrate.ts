@@ -120,8 +120,8 @@ export const Dehydrate: Power = {
     ["Damage","Smashing",0.5072,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Cold",1.5217,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Cold",0.0954,1,4.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Heal",null,0.4125,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","=="],true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","=="],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"]
+    ["Heal",null,0.4125,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","=="],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"tidal_power-3"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","=="],true,null,null,null,null,null,null,null,null,null,null,"revoke_power",null,null,null,null,null,null,null,null,"tidal_power-3"]
   ],
   "conditionalEffects": [
     {
@@ -140,6 +140,32 @@ export const Dehydrate: Power = {
         "duration": 3.1,
         "tickRate": 1
       }
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "temporary_powers.temporary_powers.tidal_power",
+      "count": 1,
+      "condition": [
+        "temporary_powers.temporary_powers.tidal_power",
+        "source.ownPowerNum?",
+        "3",
+        "=="
+      ]
+    },
+    {
+      "op": "grant",
+      "path": "temporary_powers.temporary_powers.tidal_power",
+      "count": 1,
+      "condition": [
+        "temporary_powers.temporary_powers.tidal_power",
+        "source.ownPowerNum?",
+        "2",
+        "<="
+      ],
+      "expires": 15,
+      "maxCount": 3
     }
   ]
 };

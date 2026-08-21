@@ -56,7 +56,7 @@ export const SummonDemons: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus"],
-    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","23",">"],true,null,null,null,null,null,null,null,null,"Levelminus"]
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus",null,null,null,3.5,null,null,null,null,null,99999],
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","23",">"],true,null,null,null,null,null,null,null,null,"Levelminus",null,null,null,6]
   ]
 };

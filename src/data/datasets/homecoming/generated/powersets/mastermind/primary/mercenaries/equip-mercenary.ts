@@ -64,6 +64,6 @@ export const EquipMercenary: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Commando","target.VillainName>"],true],
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Commando","target.VillainName>"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Commando","target.VillainName>"],true,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
-    ["Mez","Evade",100,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["MastermindPets_Soldier","target.VillainName>","MastermindPets_Medic","target.VillainName>","||","MastermindPets_Spec_Ops","target.VillainName>","||","MastermindPets_Commando","target.VillainName>","||"],true]
+    ["Mez","Evade",100,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true,null,null,null,null,["MastermindPets_Soldier","target.VillainName>","MastermindPets_Medic","target.VillainName>","||","MastermindPets_Spec_Ops","target.VillainName>","||","MastermindPets_Commando","target.VillainName>","||"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.5]
   ]
 };

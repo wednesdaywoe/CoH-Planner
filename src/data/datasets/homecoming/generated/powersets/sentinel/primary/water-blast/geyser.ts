@@ -106,7 +106,7 @@ export const Geyser: Power = {
   },
   "atoms": [
     ["Damage","Fire",1.126,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Damage","Fire",0.102,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","0","==","&&"]],
+    ["Damage","Fire",0.102,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","0","==","&&"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
     ["Damage","Smashing",0.928,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Smashing",0.928,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SentCrit,SentCritAoE"],
     ["Mez","Knockup",1.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6700000166893005,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -116,12 +116,12 @@ export const Geyser: Power = {
     ["Movement","Jump",0.33,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["Meta",null,1,188,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"WetStatus",null,"set_mode"],
-    ["Damage","Fire",0.108,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true],
-    ["Damage","Fire",0.115,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","==","&&"],true],
-    ["Damage","Fire",0.128,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","&&"],true],
-    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true],
-    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","==","&&"],true],
-    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","&&"],true],
+    ["Damage","Fire",0.108,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,null,null,"tidal_power-1"],
+    ["Damage","Fire",0.115,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,null,null,"tidal_power-2"],
+    ["Damage","Fire",0.128,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,null,null,"tidal_power-3"],
+    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"tidal_power-1"],
+    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"tidal_power-2"],
+    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"tidal_power-3"],
     ["Damage","Smashing",0.4538,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Fire",1.0589,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Fire",0.0756,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","1","==","&&"],true],
@@ -225,6 +225,13 @@ export const Geyser: Power = {
       "kind": "effect-proc",
       "chance": 0.6000000238418579,
       "label": "Stun"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "temporary_powers.temporary_powers.tidal_power",
+      "count": 1
     }
   ]
 };

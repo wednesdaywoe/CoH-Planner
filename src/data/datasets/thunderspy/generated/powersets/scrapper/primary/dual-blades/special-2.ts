@@ -67,8 +67,8 @@ export const Special2: Power = {
     ["Damage","Fire",0.765,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Lethal",1.725478,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",1.725478,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"BossCrit"],
-    ["Damage","Lethal",0.27,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Fire",0.09,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?"],true,null,null,null,null,null,null,0,null,"FieryEmbrace"]
+    ["Damage","Lethal",0.27,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5,null,null,null,null,null,null,"comboblade3"],
+    ["Damage","Fire",0.09,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.ComboBlade3","source.ownPower?"],true,null,null,null,null,null,null,0,null,"FieryEmbrace",null,null,null,0.5,null,null,null,null,null,null,"comboblade3"]
   ],
   "conditionalEffects": [
     {
@@ -103,6 +103,13 @@ export const Special2: Power = {
       "kind": "effect-proc",
       "chance": 0.15000000596046448,
       "label": "Lethal_Dmg"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade3",
+      "count": 1
     }
   ],
   "damageTypes": [

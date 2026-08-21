@@ -195,6 +195,22 @@ export const POWER_POOLS_RAW = {
         "icon": "experimentation_toxicdart.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -220,7 +236,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",0.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Toxic",0.1,1,2.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
+          ["Damage","Toxic",0.1,1,2.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5],
           ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&","arch","source>","Class_Tanker","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt","Class_Tanker"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true,null,null,null,null,["arch","source>","Class_Stalker","eq"],null,null,null,null,null,null,null,null,null,"Ones","Class_Stalker"],
           ["Damage","Lethal",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
@@ -354,7 +370,7 @@ export const POWER_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["EntCreate",null,1,1,14,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"]
+          ["EntCreate",null,1,1,14,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,0.5,null,null,null,null,null,14]
         ],
         "effects": {
           "accuracy": 1,
@@ -522,6 +538,22 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_boxing.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.800000011920929,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -559,7 +591,7 @@ export const POWER_POOLS_RAW = {
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.800000011920929,null,true,null,null,null,null,["arch","source>","Class_Stalker","eq"],null,null,null,null,null,null,null,null,null,"Ones","Class_Stalker"],
           ["Damage","Smashing",2.096,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",4,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
+          ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun",null,null,null,null,null,null,null,null,null,null,"domination"],
           ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvP",false,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
           ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
@@ -603,7 +635,25 @@ export const POWER_POOLS_RAW = {
             "scale": 4,
             "table": "Melee_Stun"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "domination",
+            "label": "Domination Active",
+            "scope": "global",
+            "defaultActive": false,
+            "casterArchetypes": [
+              "Class_Dominator"
+            ],
+            "effects": {
+              "stun": {
+                "mag": 2,
+                "scale": 6,
+                "table": "Melee_Stun"
+              }
+            }
+          }
+        ]
       },
       {
         "name": "Weapon Strike",
@@ -623,6 +673,22 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_boxing.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.800000011920929,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -660,7 +726,7 @@ export const POWER_POOLS_RAW = {
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.800000011920929,null,true,null,null,null,null,["arch","source>","Class_Stalker","eq"],null,null,null,null,null,null,null,null,null,"Ones","Class_Stalker"],
           ["Damage","Smashing",2.096,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",4,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
+          ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun",null,null,null,null,null,null,null,null,null,null,"domination"],
           ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvP",false,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
           ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
@@ -704,7 +770,25 @@ export const POWER_POOLS_RAW = {
             "scale": 4,
             "table": "Melee_Stun"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "domination",
+            "label": "Domination Active",
+            "scope": "global",
+            "defaultActive": false,
+            "casterArchetypes": [
+              "Class_Dominator"
+            ],
+            "effects": {
+              "stun": {
+                "mag": 2,
+                "scale": 6,
+                "table": "Melee_Stun"
+              }
+            }
+          }
+        ]
       },
       {
         "name": "Kick",
@@ -724,6 +808,21 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_kick.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -821,6 +920,21 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_kick.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -1076,6 +1190,22 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_crosspunch.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -1110,14 +1240,14 @@ export const POWER_POOLS_RAW = {
           ["RechargeTime",null,0.05,1,6,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["ToHit",null,0.05,1,6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Stunned",6,3,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Stunned",6,3,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.5],
           ["Damage","Smashing",1.3434,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage","Class_Scrapper"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&","arch","source>","Class_Tanker","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt","Class_Tanker"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true,null,null,null,null,["arch","source>","Class_Stalker","eq"],null,null,null,null,null,null,null,null,null,"Ones","Class_Stalker"],
           ["Damage","Smashing",1.97,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-          ["Mez","Stunned",4,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
-          ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvP",false,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
+          ["Mez","Stunned",4,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.5],
+          ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun",null,null,null,0.5,null,null,null,null,null,null,"domination"],
+          ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvP",false,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun",null,null,null,0.5],
           ["Damage","Smashing",1.3434,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Smashing",1.3434,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Smashing",1.3434,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
@@ -1162,7 +1292,25 @@ export const POWER_POOLS_RAW = {
             "scale": 0.05,
             "table": "Melee_Ones"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "domination",
+            "label": "Domination Active",
+            "scope": "global",
+            "defaultActive": false,
+            "casterArchetypes": [
+              "Class_Dominator"
+            ],
+            "effects": {
+              "stun": {
+                "mag": 3,
+                "scale": 6,
+                "table": "Melee_Stun"
+              }
+            }
+          }
+        ]
       },
       {
         "name": "Weapon Swing",
@@ -1182,6 +1330,22 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_crosspunch.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -1216,14 +1380,14 @@ export const POWER_POOLS_RAW = {
           ["RechargeTime",null,0.05,1,6,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["ToHit",null,0.05,1,6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Stunned",6,3,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Stunned",6,3,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.5],
           ["Damage","Smashing",1.3636,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage","Class_Scrapper"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&","arch","source>","Class_Tanker","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt","Class_Tanker"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true,null,null,null,null,["arch","source>","Class_Stalker","eq"],null,null,null,null,null,null,null,null,null,"Ones","Class_Stalker"],
           ["Damage","Smashing",2.171653,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-          ["Mez","Stunned",4,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
-          ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvP",false,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
+          ["Mez","Stunned",4,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.5],
+          ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun",null,null,null,0.5,null,null,null,null,null,null,"domination"],
+          ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvP",false,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun",null,null,null,0.5],
           ["Damage","Smashing",1.61,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Smashing",1.3636,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Smashing",1.61,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
@@ -1268,7 +1432,25 @@ export const POWER_POOLS_RAW = {
             "scale": 0.05,
             "table": "Melee_Ones"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "domination",
+            "label": "Domination Active",
+            "scope": "global",
+            "defaultActive": false,
+            "casterArchetypes": [
+              "Class_Dominator"
+            ],
+            "effects": {
+              "stun": {
+                "mag": 3,
+                "scale": 6,
+                "table": "Melee_Stun"
+              }
+            }
+          }
+        ]
       }
     ]
   },
@@ -1543,6 +1725,9 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_combatflight.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "FlightActive"
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -1681,6 +1866,22 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_arialassault.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -1755,6 +1956,9 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_travelflight.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "FlightActive"
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "Disable_Travel",
@@ -1848,6 +2052,9 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_groupfly.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "FlightActive"
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "Disable_Travel",
@@ -1945,7 +2152,6 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","OnlyAffectsSelf",4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Movement","FlyMode",4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FlightActive"],
           ["Defense","Melee",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Defense","Ranged",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Defense","AoE",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
@@ -1958,6 +2164,7 @@ export const POWER_POOLS_RAW = {
           ["Defense","Psionic",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Movement","Control",15,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Control"],
           ["Movement","Friction",15,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Friction"],
+          ["Movement","FlyMode",4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,null,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
           ["Defense","Melee",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Defense","Ranged",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Defense","AoE",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_Def"],
@@ -2025,10 +2232,6 @@ export const POWER_POOLS_RAW = {
             "onlyAffectsSelf": 0.75
           },
           "movement": {
-            "fly": {
-              "scale": 4,
-              "table": "Melee_Ones"
-            },
             "movementControl": {
               "scale": 15,
               "table": "Melee_Control"
@@ -2048,7 +2251,27 @@ export const POWER_POOLS_RAW = {
             "scale": 4,
             "table": "Melee_Ones"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "flightactive",
+            "label": "Flight Active",
+            "scope": "global",
+            "defaultActive": false,
+            "effects": {
+              "buffDuration": 0.75,
+              "durations": {
+                "movement": 0.75
+              },
+              "movement": {
+                "fly": {
+                  "scale": 4,
+                  "table": "Melee_Ones"
+                }
+              }
+            }
+          }
+        ]
       }
     ]
   },
@@ -2237,6 +2460,22 @@ export const POWER_POOLS_RAW = {
         "icon": "forceofwill_projectwill.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -2400,6 +2639,22 @@ export const POWER_POOLS_RAW = {
         "icon": "forceofwill_wallofforce.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -2524,8 +2779,8 @@ export const POWER_POOLS_RAW = {
           ["Defense","Energy",1.5,1,60,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Defense","Negative",1.5,1,60,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Defense","Psionic",1.5,1,60,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
-          ["Recovery",null,-1,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"GlobalCrash"],
-          ["Endurance",null,-0.25,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"GlobalCrash"]
+          ["Recovery",null,-1,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"GlobalCrash",null,null,null,60],
+          ["Endurance",null,-0.25,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"GlobalCrash",null,null,null,60]
         ],
         "effects": {
           "accuracy": 1,
@@ -2813,6 +3068,22 @@ export const POWER_POOLS_RAW = {
         "icon": "gadgetry_wristblaster.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Widow_Tarantula_Mode",
           "Peacebringer_Blaster_Mode",
@@ -2986,6 +3257,22 @@ export const POWER_POOLS_RAW = {
         "icon": "gadgetry_blasterbarrage.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -3247,7 +3534,7 @@ export const POWER_POOLS_RAW = {
           ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
           ["Stealth","RadiusPvP",389,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
           ["Stealth","Translucency",0.8,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
-          ["Meta",null,1,78,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones",null,"set_mode"]
+          ["Meta",null,1,78,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,["Attacked","HitByFoe","MissionObjectClick"],10,true,["Held","Stunned","Sleep"]]
         ],
         "effects": {
           "accuracy": 1,
@@ -3510,6 +3797,18 @@ export const POWER_POOLS_RAW = {
         "icon": "invisibility_phaseshift.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.NoPhase",
+            "count": 1,
+            "condition": [
+              "isPVPMap?"
+            ],
+            "expiresInGame": 60,
+            "maxCount": 1
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "Disable_Toggle"
@@ -4322,6 +4621,22 @@ export const POWER_POOLS_RAW = {
         "icon": "jump_jumpkick.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "HunterMode",
           "ProwlerMode",
@@ -4695,8 +5010,8 @@ export const POWER_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
+          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.7],
+          ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.625,null,null,null,null,null,4]
         ],
         "effects": {
           "accuracy": 1,
@@ -4871,7 +5186,7 @@ export const POWER_POOLS_RAW = {
           ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Fear"],
           ["Mez","Terrorized",10,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Fear"],
           ["Mez","Terrorized",5,1,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["arch","source>","Class_Controller","eq"],null,null,null,null,null,null,null,null,null,"Ones","Class_Controller"],
-          ["Mez","Terrorized",15,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kStealth","source>","0.5",">","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Fear"]
+          ["Mez","Terrorized",15,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kStealth","source>","0.5",">","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Fear",null,null,null,null,null,null,null,null,null,null,"domination"]
         ],
         "effects": {
           "accuracy": 1,
@@ -4885,7 +5200,25 @@ export const POWER_POOLS_RAW = {
             "scale": 10,
             "table": "Melee_Fear"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "domination",
+            "label": "Domination Active",
+            "scope": "global",
+            "defaultActive": false,
+            "casterArchetypes": [
+              "Class_Dominator"
+            ],
+            "effects": {
+              "fear": {
+                "mag": 3,
+                "scale": 15,
+                "table": "Melee_Fear"
+              }
+            }
+          }
+        ]
       },
       {
         "name": "Invoke Panic",
@@ -4923,7 +5256,7 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Fear"],
           ["Mez","Terrorized",5,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["arch","source>","Class_Controller","eq"],null,null,null,null,null,null,null,null,null,"Fear","Class_Controller"],
-          ["Mez","Terrorized",15,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kStealth","source>","0.5",">","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Fear"]
+          ["Mez","Terrorized",15,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kStealth","source>","0.5",">","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Fear",null,null,null,null,null,null,null,null,null,null,"domination"]
         ],
         "effects": {
           "accuracy": 1,
@@ -4938,7 +5271,25 @@ export const POWER_POOLS_RAW = {
             "scale": 10,
             "table": "Melee_Fear"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "domination",
+            "label": "Domination Active",
+            "scope": "global",
+            "defaultActive": false,
+            "casterArchetypes": [
+              "Class_Dominator"
+            ],
+            "effects": {
+              "fear": {
+                "mag": 3,
+                "scale": 15,
+                "table": "Melee_Fear"
+              }
+            }
+          }
+        ]
       },
       {
         "name": "Unrelenting",
@@ -4983,7 +5334,7 @@ export const POWER_POOLS_RAW = {
           ["DamageBuff","Negative",2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
           ["DamageBuff","Toxic",2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
           ["DamageBuff","Psionic",2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
-          ["Heal",null,0.5,1,0.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,2,1,null,null,null,null,null,null,["Cur.kHitPoints","source>","1","<"],true,null,null,null,null,null,null,null,null,"Ones"]
+          ["Heal",null,0.5,1,0.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,2,1,null,null,null,null,null,null,["Cur.kHitPoints","source>","1","<"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,null,"conditional"]
         ],
         "effects": {
           "accuracy": 2,
@@ -5252,7 +5603,7 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Heal",null,1.96,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["MezResist","Stunned",1.75,1,45,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],
-          ["Endurance",null,0.05,1,8.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,2,1,null,true,null,null,null,null,["Pool.Medicine.Field_Medic","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones"]
+          ["Endurance",null,0.05,1,8.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,2,1,null,true,null,null,null,null,["Pool.Medicine.Field_Medic","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,null,"field_medic"]
         ],
         "effects": {
           "accuracy": 1,
@@ -5507,18 +5858,18 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones"],
-          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones"],
-          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones"],
-          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones"],
-          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones"],
-          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones"],
-          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones"]
+          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,3],
+          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones",null,null,null,3],
+          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,6],
+          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones",null,null,null,6],
+          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,9],
+          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones",null,null,null,9],
+          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,12],
+          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones",null,null,null,12],
+          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,15],
+          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones",null,null,null,15],
+          ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,18],
+          ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones",null,null,null,18]
         ],
         "effects": {
           "accuracy": 1,
@@ -5557,6 +5908,22 @@ export const POWER_POOLS_RAW = {
         "icon": "sorcerypool_arcanebolt.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -5752,12 +6119,12 @@ export const POWER_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"]
+          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,5],
+          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,3],
+          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,6],
+          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,9],
+          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,12],
+          ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,15]
         ],
         "effects": {
           "accuracy": 1,
@@ -5814,8 +6181,8 @@ export const POWER_POOLS_RAW = {
           ["Resistance","Negative",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Psionic",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
-          ["Recovery",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"GlobalCrash"],
-          ["Endurance",null,-0.25,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"GlobalCrash"],
+          ["Recovery",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"GlobalCrash",null,null,null,60],
+          ["Endurance",null,-0.25,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"GlobalCrash",null,null,null,60],
           ["MezResist","Knockback",100,1,60,"Ranged_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["MezResist","Knockup",100,1,60,"Ranged_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockback",-10,1,60,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
@@ -5992,6 +6359,22 @@ export const POWER_POOLS_RAW = {
         "icon": "superspeed_flurry.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "HunterMode",
           "ProwlerMode",
@@ -6019,23 +6402,23 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Damage","Smashing",0.21,1,1.8,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],
-          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage","Class_Scrapper"],
+          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage","Class_Scrapper",null,null,1.8],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&","arch","source>","Class_Tanker","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt","Class_Tanker"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true,null,null,null,null,["arch","source>","Class_Stalker","eq"],null,null,null,null,null,null,null,null,null,"Ones","Class_Stalker"],
           ["Damage","Smashing",0.21,1,1.8,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",2,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Controller","eq","!","&&","arch","source>","Class_Dominator","eq","!","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
           ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["arch","source>","Class_Controller","eq","arch","source>","Class_Dominator","eq","||","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
-          ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
+          ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun",null,null,null,null,null,null,null,null,null,null,"domination"],
           ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvP",false,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&","arch","source>","Class_Dominator","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"],
-          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","arch","source>","Class_Controller","eq","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","arch","source>","Class_Controller","eq","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
+          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","eq","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.8],
+          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.8],
+          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq","kMeter","source>","0",">","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.8],
+          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.8],
+          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kHeld","target>","0",">","kSleep","target>","0",">","||","arch","source>","Class_Stalker","eq","&&","kMeter","source>",".9","<","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.8],
+          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.8],
+          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","eq","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.8],
+          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","arch","source>","Class_Controller","eq","&&","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.8],
+          ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","arch","source>","Class_Controller","eq","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.8],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","eq","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
         ],
         "effects": {
@@ -6060,7 +6443,25 @@ export const POWER_POOLS_RAW = {
             "scale": 4,
             "table": "Melee_Stun"
           }
-        }
+        },
+        "conditionalEffects": [
+          {
+            "id": "domination",
+            "label": "Domination Active",
+            "scope": "global",
+            "defaultActive": false,
+            "casterArchetypes": [
+              "Class_Dominator"
+            ],
+            "effects": {
+              "stun": {
+                "mag": 2,
+                "scale": 6,
+                "table": "Melee_Stun"
+              }
+            }
+          }
+        ]
       },
       {
         "name": "Hasten",
@@ -6089,7 +6490,7 @@ export const POWER_POOLS_RAW = {
           ["RechargeTime",null,0.7,1,120,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Endurance",null,-15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GlobalCrash"]
+          ["Endurance",null,-15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GlobalCrash",null,null,null,120]
         ],
         "effects": {
           "accuracy": 1,
@@ -6391,7 +6792,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
+          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17]
         ],
         "effects": {
           "accuracy": 1,
@@ -6455,12 +6856,12 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Teleport",2.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Meta",null,-10,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq"],null,null,null,null,null,null,null,null,null,"Ones","Class_Stalker","meter"],
-          ["Stealth","Translucency",0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,true,null,null,null,null,null,null,"Ones"],
-          ["Mez","Intangible",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,true,null,null,null,null,null,null,"Ones"]
+          ["Mez","Teleport",2.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17],
+          ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.3],
+          ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,1],
+          ["Meta",null,-10,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","eq"],null,null,null,null,null,null,null,null,null,"Ones","Class_Stalker","meter",null,1.17],
+          ["Stealth","Translucency",0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,true,null,null,null,null,null,null,"Ones",null,null,null,1.17],
+          ["Mez","Intangible",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,true,null,null,null,null,null,null,"Ones",null,null,null,1.17]
         ],
         "effects": {
           "accuracy": 1,
@@ -6612,7 +7013,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Teleport",3.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Teleport",3.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17],
           ["Movement","FlyMode",1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","Fly",-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","Control",-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
@@ -6701,9 +7102,9 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Stealth","Translucency",0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["AllyID","source>","hero","eq","praetorianprogress","source>","normal","eq","praetorianprogress","source>","Earth","eq","||","&&","praetoria","source.MapTeamArea>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["AllyID","source>","villain","eq","praetorianprogress","source>","normal","eq","praetorianprogress","source>","Earth","eq","||","&&","praetoria","source.MapTeamArea>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["praetorianprogress","source>","praetoria","eq","praetoria","source.MapTeamArea>","eq","||"],true,null,null,null,null,null,null,null,null,"Ones"]
+          ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["AllyID","source>","hero","eq","praetorianprogress","source>","normal","eq","praetorianprogress","source>","Earth","eq","||","&&","praetoria","source.MapTeamArea>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17],
+          ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["AllyID","source>","villain","eq","praetorianprogress","source>","normal","eq","praetorianprogress","source>","Earth","eq","||","&&","praetoria","source.MapTeamArea>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17],
+          ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["praetorianprogress","source>","praetoria","eq","praetoria","source.MapTeamArea>","eq","||"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17]
         ],
         "effects": {
           "accuracy": 1,
@@ -6860,6 +7261,22 @@ export const POWER_POOLS_RAW = {
         "icon": "utilitybelt_poisoneddagger.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -6885,7 +7302,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",1.04,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Toxic",0.1,1,2.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
+          ["Damage","Toxic",0.1,1,2.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.25],
           ["DamageBuff","Smashing",0.8,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
           ["DamageBuff","Lethal",0.8,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
           ["DamageBuff","Fire",0.8,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
@@ -6985,7 +7402,7 @@ export const POWER_POOLS_RAW = {
           ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
           ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
           ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedRunning"],
-          ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"ninja_run"],
+          ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"ninja_run",null,null,null,null,null,["Held","Stunned","Sleep"]],
           ["Meta",null,1,114,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
           ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,true,null,null,null,null,null,null,"Leap"],
           ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,true,null,null,null,null,null,null,"SpeedJumping"],
@@ -7046,6 +7463,22 @@ export const POWER_POOLS_RAW = {
         "icon": "utilitybelt_envenomedbarrage.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "grantEdges": [
+          {
+            "op": "grant",
+            "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+            "count": 1,
+            "condition": [
+              "arch",
+              "source>",
+              "Class_Stalker",
+              "eq"
+            ],
+            "chance": 0.8999999761581421,
+            "expires": 10,
+            "maxCount": 3
+          }
+        ],
         "modesDisallowed": [
           "Disable_Pool",
           "HunterMode",
@@ -7071,7 +7504,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Damage","Lethal",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
-          ["Damage","Toxic",0.16,1,2.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
+          ["Damage","Toxic",0.16,1,2.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.25],
           ["DamageBuff","Smashing",0.8,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
           ["DamageBuff","Lethal",0.8,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
           ["DamageBuff","Fire",0.8,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],

@@ -48,6 +48,6 @@ export const ForceFieldGenerator: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+    ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
   ]
 };

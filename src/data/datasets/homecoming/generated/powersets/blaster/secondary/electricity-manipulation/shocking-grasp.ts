@@ -121,5 +121,18 @@ export const ShockingGrasp: Power = {
       "chance": 0.30000001192092896,
       "label": "Endurance"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Shock_Therapy.Shock_Therapy_Static",
+      "count": 1,
+      "condition": [
+        "Blaster_Ranged.Electrical_Blast.Tesla_Cage",
+        "source.ownPower?"
+      ],
+      "expires": 30,
+      "maxCount": 30
+    }
   ]
 };

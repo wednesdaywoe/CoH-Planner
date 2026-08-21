@@ -54,6 +54,10 @@ export const ChemicalAmmunition: Power = {
   "requires": [
     "Corruptor_Ranged.Dual_Pistols.Swap_Ammo"
   ],
+  "setsModes": [
+    "Lethal",
+    "ToxicDamage"
+  ],
   "modesRequired": [
     "LethalAmmo"
   ]

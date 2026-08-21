@@ -116,5 +116,18 @@ export const ElectricFence: Power = {
       "chance": 0.20000000298023224,
       "label": "Recovery"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Shock_Therapy.Shock_Therapy_Static",
+      "count": 1,
+      "condition": [
+        "Blaster_Ranged.Electrical_Blast.Tesla_Cage",
+        "source.ownPower?"
+      ],
+      "expires": 30,
+      "maxCount": 30
+    }
   ]
 };

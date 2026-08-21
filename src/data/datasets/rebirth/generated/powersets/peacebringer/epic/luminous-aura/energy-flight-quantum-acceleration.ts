@@ -39,41 +39,65 @@ export const EnergyFlightQuantumAcceleration: Power = {
   "effects": {
     "buffDuration": 0.75,
     "durations": {
-      "movement": 0.75,
-      "movementCapBump": 0.75,
-      "slow": 0.75
-    },
-    "movement": {
-      "fly": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 2,
-        "suppressible": true,
-        "table": "Melee_Ones"
-      }
+      "movementCapBump": 0.75
     },
     "movementCapBump": {
       "flySpeed": {
         "scale": 1,
         "table": "Melee_Ones"
       }
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 1,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      }
     }
   },
   "atoms": [
-    ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+    ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,30],
     ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-    ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,true,null,null,null,null,0,null,"FlightActive"],
-    ["Movement","Fly",-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"GroupFlying"],
-    ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FlightActive"]
+    ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,true,null,null,null,null,0,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
+    ["Movement","Fly",-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kGroupFlying","Source.Mode?"],true,null,null,null,null,null,null,0,null,"GroupFlying",null,null,null,null,null,null,null,null,null,null,"groupflying"],
+    ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,0,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "flightactive",
+      "label": "Flight Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 0.75,
+        "durations": {
+          "movement": 0.75
+        },
+        "movement": {
+          "fly": {
+            "scale": 2,
+            "table": "Melee_Ones"
+          },
+          "flySpeed": {
+            "scale": 2,
+            "suppressible": true,
+            "table": "Melee_Ones"
+          }
+        }
+      }
+    },
+    {
+      "id": "groupflying",
+      "label": "Group Flying",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 0.75,
+        "durations": {
+          "slow": 0.75
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 1,
+            "table": "Melee_Ones",
+            "toWho": "Self"
+          }
+        }
+      }
+    }
   ],
   "requires": [
     "Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration"

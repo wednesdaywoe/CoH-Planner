@@ -92,7 +92,16 @@ export const EmpoweringCircuit: Power = {
     ["DamageBuff","Psionic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
     ["DamageBuff","Toxic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
     ["ToHit",null,1.2,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
-    ["Meta",null,0,0,0,"Ranged_Buff_Dmg","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
+    ["Meta",null,0,0,0,"Ranged_Buff_Dmg","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null",null,null,null,null,null,null,null,null,null,true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"BuildStatic"]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Shock_Therapy.Shock_Therapy_Static",
+      "count": 1,
+      "expires": 30,
+      "maxCount": 30
+    }
   ]
 };

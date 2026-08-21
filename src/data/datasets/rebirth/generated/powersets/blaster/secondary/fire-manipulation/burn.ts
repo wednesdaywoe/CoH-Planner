@@ -79,7 +79,7 @@ export const Burn: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level"],
+    ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,10],
     ["Mez","Immobilized",100,-15,0,"Melee_Res_Boolean","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],
     ["Damage","Fire",1.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["@ToHitRoll","@ToHit","<","@ForceHit","||","Entref","source>","Entref","target>","==","!","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["DamageBuff","Smashing",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.061,null,null,null,null,null,null,null,"Ones"],

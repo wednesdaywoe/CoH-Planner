@@ -98,5 +98,15 @@ export const StoneFist: Power = {
       "chance": 0.20000000298023224,
       "label": "Smashing_Dmg"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "chance": 0.699999988079071,
+      "expires": 10,
+      "maxCount": 3
+    }
   ]
 };

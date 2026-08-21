@@ -83,6 +83,16 @@ export const Swipe: Power = {
       "label": "Assassins Focus"
     }
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "chance": 0.5849999785423279,
+      "expires": 10,
+      "maxCount": 3
+    }
+  ],
   "requires": [
     "Stalker_Defense.Shield_Defense",
     "!"

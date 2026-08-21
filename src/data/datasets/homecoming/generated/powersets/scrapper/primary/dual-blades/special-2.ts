@@ -74,9 +74,9 @@ export const Special2: Power = {
     ["Damage","Lethal",1.3554,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Lethal",0.3456,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"PVP_MainTargetOnly"],
     ["Damage","Lethal",1.3554,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE"],
-    ["Damage","Lethal",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kDD_BonusDoTMode_2","Source.Mode?"],true],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusDoTMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"],
-    ["Damage","Fire",0.09,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,["kDD_BonusDoTMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,"FieryEmbrace"]
+    ["Damage","Lethal",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kDD_BonusDoTMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,null,null,"dd_bonusdotmode_2"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusDoTMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"cancel_mods",null,null,null,null,null,null,null,null,"dd_bonusdotmode_2"],
+    ["Damage","Fire",0.09,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,["kDD_BonusDoTMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,"FieryEmbrace",null,null,null,0.5]
   ],
   "conditionalEffects": [
     {

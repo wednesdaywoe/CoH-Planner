@@ -130,5 +130,18 @@ export const ThunderStrike: Power = {
       "chance": 0.800000011920929,
       "label": "Knockback"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Shock_Therapy.Shock_Therapy_Static",
+      "count": 1,
+      "condition": [
+        "Blaster_Ranged.Electrical_Blast.Tesla_Cage",
+        "source.ownPower?"
+      ],
+      "expires": 30,
+      "maxCount": 30
+    }
   ]
 };

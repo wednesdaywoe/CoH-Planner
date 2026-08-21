@@ -53,8 +53,8 @@ export const SummonDemonlings: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,99999,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus2"],
-    ["EntCreate",null,1,1,99999,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","5",">"],true,null,null,null,null,null,null,null,null,"Levelminus2"],
-    ["EntCreate",null,1,1,99999,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","17",">"],true,null,null,null,null,null,null,null,null,"Levelminus2"]
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus2",null,null,null,3.33,null,null,null,null,null,99999],
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","5",">"],true,null,null,null,null,null,null,null,null,"Levelminus2",null,null,null,3.83],
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","17",">"],true,null,null,null,null,null,null,null,null,"Levelminus2",null,null,null,4.33]
   ]
 };

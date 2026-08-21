@@ -77,6 +77,71 @@ export const ModerateOpening: Power = {
       "label": "Lethal_Dmg"
     }
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade1",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade1",
+        "source.ownPower?",
+        "!",
+        "Temporary_Powers.Temporary_Powers.ComboBlade2",
+        "source.ownPower?",
+        "!",
+        "&&",
+        "Temporary_Powers.Temporary_Powers.ComboBlade3",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade2",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade1",
+        "source.ownPower?"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade1",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade1",
+        "source.ownPower?"
+      ]
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade3",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade2",
+        "source.ownPower?",
+        "Temporary_Powers.Temporary_Powers.ComboBlade3",
+        "source.ownPower?",
+        "||"
+      ],
+      "expires": 6,
+      "maxCount": 1
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.ComboBlade2",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.ComboBlade2",
+        "source.ownPower?"
+      ]
+    }
+  ],
   "requires": [
     "Scrapper_Defense.Shield_Defense",
     "!"

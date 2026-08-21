@@ -154,6 +154,6 @@ export const TidePool: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,240,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1]
+    ["EntCreate",null,1,1,240,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
   ]
 };

@@ -56,7 +56,7 @@ export const Gremlins: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1]
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,99999],
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1]
   ]
 };

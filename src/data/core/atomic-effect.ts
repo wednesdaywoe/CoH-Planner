@@ -171,6 +171,24 @@ export interface AtomicEffect {
    */
   magnitudeExpression?: string;
   duration: number;
+  /**
+   * Seconds after the cast this mod BEGINS — the AttribMod's own `Delay` plus every
+   * enclosing effect group's, composed the way {@link requiresExpression} composes a
+   * nested gate. Absent (and encoded absent) when the whole chain is zero, which is
+   * the overwhelming majority.
+   *
+   * It is what separates a power's own effect from its CRASH. Rage states its +damage
+   * and +ToHit at delay 0 for 120 seconds and its −20% defense at `Delay 120` for 10;
+   * all three are `toWho: Self` rows of one power, and nothing else on them tells the
+   * buff phase from the crash. Read it before counting a self-directed penalty as sustained state — the
+   * whole caster-reaching −ToHit population of all three forks is a rez after-effect
+   * at delay 60–90 (DATA-GAP DEFDEBUFF-1).
+   *
+   * NOT a duration offset for the ordinary case: half the delayed population is sub-second
+   * animation timing (7.5k of the export's 14.7k delayed templates — a heal landing 0.25s
+   * into its own cast), so "delayed" alone does not mean "later phase"; the magnitude is.
+   */
+  delay?: number;
   ticks?: number;
   applicationPeriod?: number;
   stacking: Stacking;
@@ -294,6 +312,28 @@ export interface AtomicEffect {
    * slot's atoms. Verified bag-equal corpus-wide by `scripts/planb-shadow-pertarget.cjs`.
    */
   perTarget?: number;
+
+  /**
+   * This atom's share of a redirect chain's BASE contribution to its slot — the other arm of
+   * the branch {@link perTarget} covers, and PERFOE-2.
+   *
+   * `detectStackingEffects` walks an `Execute_Power` chain into another power's file and adds
+   * what it finds to the patch: as `perTarget` when the outer row targets `AnyAffected` or the
+   * redirect declares `number_allowed > 1`, and as `scale` otherwise. Fulcrum Shift and Kinetic
+   * Transfer take their base 4 from `Redirects.Kinetics.KineticTransferBuffSelf` that way,
+   * Siphon Power its 2 from `Redirects.Kinetics.SiphonPower`.
+   *
+   * STAMPED BY THE CONVERTER for exactly {@link perTarget}'s reason and by the same replay: the
+   * value is computed by walking a chain into a file this power does not own, the chain's own
+   * templates are parsed separately and never become this power's atoms, and the redirect's
+   * `number_allowed` is not on the wire — so nothing here can re-derive it. The replay matches
+   * by `(|scale|, table)`, and the two arms never claim the same template: a per-foe increment
+   * and a base one-shot differ in scale.
+   *
+   * Present ONLY on the atoms of such a chain's base arm; absent everywhere else. A consumer
+   * rebuilding the patched slot sums the DISTINCT stamps, the way it sums {@link perTarget}.
+   */
+  redirectBase?: number;
 
   /**
    * True when this atom is combat-SUPPRESSED — the game turns it off while the
@@ -429,6 +469,135 @@ export interface AtomicEffect {
    */
   metaAttrib?: string;
 
+  /**
+   * Event names that suppress this effect while they're recent, verbatim from the
+   * template's `suppress_events` tail, with {@link suppressSeconds} carrying the
+   * window. {@link suppressible} folds this same tail into one combat-suppression
+   * verdict; these fields are the tail itself, for the consumer that needs the
+   * clock rather than the verdict. RB5-d's per-cast walk is that consumer: Hide's
+   * meter suppresses on Attacked/Damaged at 8.0s, so an attack drops the meter for
+   * 8 seconds and a gapped rotation re-hides.
+   *
+   * Emitted ONLY on `Meta` atoms, like {@link metaAttrib} and on the same
+   * economics: 6,485 templates corpus-wide carry a suppress tail (mostly the
+   * generic mez/travel suppression the verdict already answers for) and the Meta
+   * population is ~256 templates across the three forks. A non-Meta consumer that
+   * ever needs the tail widens the scope at the `ingestTemplate` stamp site.
+   */
+  suppressEvents?: readonly string[];
+
+  /**
+   * The suppress window in seconds, one value per template. The export states a
+   * per-event duration; every emitted (Meta) template's events agree, and the
+   * converter THROWS on disagreement rather than collapsing it (the 7 known
+   * non-uniform templates, Illusion Invisibility's, are all non-Meta). Present
+   * exactly when {@link suppressEvents} is.
+   */
+  suppressSeconds?: number;
+
+  /**
+   * The suppress tail's `always` flag, uniform per emitted template and guarded
+   * like {@link suppressSeconds}. False on exactly one carrier today, inherent
+   * Engagement's `Set_Mode`. Present exactly when {@link suppressEvents} is.
+   */
+  suppressAlways?: boolean;
+
+  /**
+   * Event names that cancel this effect outright, verbatim from the template's
+   * `cancel_events` tail. Meta-scoped like {@link suppressEvents}. Placate's
+   * meter cancels on Attacked/Damaged/MissionObjectClick: the 10s re-hide dies
+   * the moment you act, which is the from-Hide position rule RB5-d schedules by.
+   */
+  cancelEvents?: readonly string[];
+
+  /**
+   * When the game applies this row, verbatim from the template's
+   * `application_type`. Six values corpus-wide: `OnTick` (180,345), `OnActivate`
+   * (8,793), `OnEnable`/`OnDisable` (1,806 each), `OnDeactivate` (294) and a lone
+   * `OnExpire`.
+   *
+   * Carried because it is a discriminator, not bookkeeping. `OnDeactivate` marks a
+   * toggle's shutdown burst — the rows that fire when the power turns OFF — and the
+   * bag has skipped them at its routing pass since it was written
+   * (`convert-powerset.cjs:5759`). The atom stream did not, so those rows rode the
+   * wire ungated and indistinguishable from a standing effect, and the movement
+   * reader had to reconstruct the verdict by matching `+X` against `−X` on the same
+   * axis (MOVEMAP-6). Emitting the field replaces that inference with the fact.
+   */
+  applicationType?: string;
+
+  /**
+   * The caster-side window this row opens, in seconds, when the row IS the power's
+   * summon: the pet's lifespan, stamped by the converter's own summon resolution
+   * (`extractSummon` / `rebuildTierConditionalSummon`, both through
+   * `resolvePetLifespan`).
+   *
+   * Distinct from {@link duration}, and the distinction is the whole point.
+   * `duration` says how long THIS row's entity lives; it cannot say which row
+   * constitutes the power's window, and the corpus holds three shapes that no rule
+   * over `duration` separates: Homecoming Soul Extraction (three tier-gated ghosts,
+   * exactly one materializes — an ungated-only read says the power summons nothing),
+   * Victory Rush (six rank-gated 2-second `PL_StaticObject`s carrying a buff, no pet
+   * kept — a gated-inclusive read invents a 2-second window), and Rebirth Soul
+   * Extraction (the raw template states no duration while the pet lives 300).
+   * Separating them at runtime means testing `Class_*_Henchman` in an `if`, which is
+   * Rule 0's ban; the converter already knows which template it read, so it says so
+   * here (DATA-GAP-REGISTER ENT-14).
+   *
+   * Present on a few hundred atoms corpus-wide and absent everywhere else, so it is
+   * the claim itself — a summon row without one is an entity the power creates but
+   * does not keep.
+   */
+  summonWindow?: number;
+
+  /**
+   * The `conditionalEffects` entry this atom belongs to, by that entry's `id` — the join
+   * between a per-power adjuster and the atoms it turns on. Absent means the atom belongs
+   * to no surviving entry, which is the ordinary case for a base atom AND for a
+   * {@link gated} one whose gate the conditional extractor does not surface (a PvP
+   * `enttype` pair, a chance-0 proc, an out-of-combat gate).
+   *
+   * STAMPED BY THE CONVERTER, like {@link gated} and its siblings, and for the same kind of
+   * reason: the id is not a property of the atom's gate alone. `_classifyGateExpression`
+   * folds the POWERSET key and the gate's referenced power name to mint it, then
+   * `extractConditionalEffects` discards the groups that project to no payload — so the
+   * set of ids that exist is a whole-power verdict, and an atom's membership in one cannot
+   * be recomputed from `requiresExpression` without re-implementing that classifier and
+   * its survivability filter. A second implementation of a gate classifier is exactly the
+   * drift the chain-window migration measured at a third of the corpus, and here it would
+   * fail SILENTLY — an entry that joins no atoms reports an empty key set rather than an
+   * error (Rule 1).
+   *
+   * Stamped on the group's own templates, so an atom carries it whether or not the entry
+   * ends up surfaced for this build's archetype: {@link casterArchetypes} answers that
+   * question separately, on the entry.
+   */
+  conditionalId?: string;
+
+  /**
+   * The template's `StackByAttribAndKey` flag, verbatim. The game keys the buff by
+   * (attrib, {@link stackKey}) instead of by casting power, so a re-application
+   * REFRESHES the existing mod rather than adding a second one — which is what lets
+   * Icy Bastion's toggle re-execute sixty times without stacking to +24,000% regen.
+   *
+   * A parser field like {@link stackKey}, NOT a converter verdict: it carries here as
+   * data and the rule is applied by the consumer. Absent means the flag was not set.
+   *
+   * Carried because the flag ALONE means refresh semantics, while the flag beside
+   * `stacking: 'Stack'`/`'Continuous'` means something else entirely — a per-target
+   * increment that `computeAoePerTargetPatches` folds separately, so the resource
+   * router must skip it or double-count it. The converter has read that pair off the
+   * raw template since the beginning; nothing on the wire could ask, so the atom mirror
+   * substituted "the row is Stack/Continuous AND its stackKey is non-empty" on the
+   * reasoning that a keyed row was the flag's surviving spelling. Reactive
+   * Regeneration falsified it: five flagged `Stack` templates with no stack key at all,
+   * so the proxy declined to skip and the projection wrote a `regenBuffUnenhanced` the
+   * bag never had (DATA-GAP-REGISTER STACK-5). 505 Homecoming templates carry the flag
+   * and 10 Thunderspy ones; Rebirth authors none (its neighbouring bit 19,
+   * `StackExactPower`, is on 3,108 templates, so the word is being read).
+   */
+  stackByAttribAndKey?: boolean;
+
   // --- provenance (debugging + DSH6 migration) ---
   sourceAttrib?: string;
 }
@@ -510,6 +679,49 @@ export const ATOM_TUPLE_FIELDS = [
   // out of another power's file carries one, so every atom that lives on its own power
   // stays byte-identical.
   'ownerTargets',
+  // `delay` appends last on the same trailing-null economics: about 6% of atoms carry a
+  // non-zero one, so every undelayed atom's encoding stays byte-identical. Appended
+  // rather than placed beside `duration`, where it belongs by meaning, because moving a
+  // field re-encodes the whole corpus for no gain.
+  'delay',
+  // The suppress/cancel event tails append after `delay`, Meta-scoped like
+  // `metaAttrib` and on the same economics: ~256 Meta templates across the three
+  // forks carry one, so every other atom's encoding stays byte-identical.
+  // `suppressible` folds the suppress tail to a verdict; RB5-d's per-cast walk
+  // needs the clock itself (Hide's 8s window, Placate's cancel list).
+  'suppressEvents',
+  'suppressSeconds',
+  'suppressAlways',
+  'cancelEvents',
+  // `applicationType` appends last on the same trailing-null economics, and it is the
+  // one field whose absence carries a MEANING rather than a silence: the encoder omits
+  // `OnTick`, so 94% of atoms keep a byte-identical encoding and only the ~13k
+  // event-applied rows pay the interior nulls.
+  //
+  // That is a compression convention and not a defaulted axis, but only because the
+  // export is never silent here — every template on all three forks states an
+  // `application_type` (measured: zero absent of 192,251). The converter ASSERTS that
+  // rather than trusting it, so the day a template arrives without one the build stops
+  // instead of quietly calling it standing. Absence on the wire therefore means "the
+  // export said OnTick", which is a fact; it never means "the export said nothing".
+  'applicationType',
+  // `summonWindow` appends last on the same trailing-null economics: only the rows the
+  // converter's summon resolution CLAIMS carry one (a few hundred corpus-wide against
+  // ~1k EntCreate atoms), so every other atom's encoding stays byte-identical.
+  'summonWindow',
+  // `conditionalId` appends last on the same trailing-null economics: only the atoms a
+  // surviving `conditionalEffects` entry claims carry one (~2.5k corpus-wide against
+  // ~190k), so every other atom's encoding stays byte-identical.
+  'conditionalId',
+  // `stackByAttribAndKey` appends last for the same reason: 515 templates across the
+  // three forks carry the flag (505 Homecoming, 10 Thunderspy, 0 Rebirth), so every
+  // unflagged atom's encoding stays byte-identical and the flagged few pay the interior
+  // nulls.
+  'stackByAttribAndKey',
+  // `redirectBase` appends last on the same trailing-null economics: only the atoms the
+  // Execute_Power redirect branch's BASE arm claims carry one (Homecoming's Kinetics family,
+  // 8 slot values corpus-wide), so every other atom's encoding stays byte-identical.
+  'redirectBase',
 ] as const satisfies ReadonlyArray<keyof AtomicEffect>;
 
 /** One atom, positionally encoded. A `null` at position `i` means the field
@@ -869,6 +1081,8 @@ export interface ExportGroup {
   is_pvp?: string;
   chance?: number;
   ppm?: number;
+  /** EffectGroup `Delay` in seconds — the ancestor half of {@link AtomicEffect.delay}. */
+  delay?: number;
   requires_expression?: string[];
   tags?: string[];
   templates?: ExportTemplate[];
@@ -883,7 +1097,11 @@ export interface ExportTemplate {
   magnitude?: number;
   magnitude_expression?: string;
   duration?: string | number;
+  /** AttribMod `Delay` in seconds — see {@link AtomicEffect.delay}. */
+  delay?: number;
   application_period?: number;
+  /** When the game applies the row — see {@link AtomicEffect.applicationType}. */
+  application_type?: string;
   tick_chance?: number;
   stack?: string;
   stack_key?: string;
@@ -891,6 +1109,12 @@ export interface ExportTemplate {
   flags?: string[];
   /** AttribMod-tail event gate records; only the event names reach the atom. */
   required_events?: Array<{ event: string; event_id?: number; duration?: number; always?: number }>;
+  /** AttribMod-tail suppression records: the event, its window in seconds, and the
+   *  `always` flag. Folded to the `suppressible` verdict for every atom; carried
+   *  whole (events + window) on Meta atoms only. */
+  suppress_events?: Array<{ event: string; event_id?: number; duration?: number; always?: number }>;
+  /** AttribMod-tail cancel-event names. Carried on Meta atoms only. */
+  cancel_events?: string[];
 }
 
 const PV_MAP: Record<string, PvMode> = { EITHER: 'Any', PVE_ONLY: 'PvE', PVP_ONLY: 'PvP' };
@@ -991,6 +1215,73 @@ function mapRequiredEvents(evs?: ExportTemplate['required_events']): string | un
   return evs.map((e) => e.event).join(',');
 }
 
+/** Every `application_type` the three exports state. Closed on purpose — an
+ *  unlisted value is a parse surprise, and the STACK-3 rule says a converter that
+ *  folds one into a plausible default ships the surprise as data. */
+const APPLICATION_TYPES = new Set([
+  'OnTick',
+  'OnActivate',
+  'OnEnable',
+  'OnDisable',
+  'OnDeactivate',
+  'OnExpire',
+]);
+
+/**
+ * Template `application_type` → the atom's field, omitting the standing case.
+ *
+ * `OnTick` encodes as absent (94% of atoms, and the wire comment on
+ * `ATOM_TUPLE_FIELDS` owns the economics). That is only sound while the export
+ * states the field on every template, so a missing one THROWS instead of being
+ * read as standing — the whole point of omitting a value is that its absence has
+ * one cause, and a silent export would give it two.
+ */
+function mapApplicationType(a?: string): string | undefined {
+  if (!a) throw new Error('[atoms] template states no application_type');
+  if (!APPLICATION_TYPES.has(a)) {
+    throw new Error(`[atoms] unrecognized application_type '${a}'`);
+  }
+  return a === 'OnTick' ? undefined : a;
+}
+
+/**
+ * Template `suppress_events` → the atom's whole-tail fields (Meta atoms only; the
+ * caller owns the scope). The export states duration and `always` per event and the
+ * atom carries one of each per template, so a template whose events disagree, or an
+ * event missing either field, THROWS rather than collapsing or defaulting (the
+ * STACK-3 rule: a converter default turns a data surprise into plausible data).
+ * Every emitted template today is uniform; the known non-uniform ones are non-Meta.
+ */
+function mapSuppressWindow(
+  evs?: ExportTemplate['suppress_events']
+): { events: readonly string[]; seconds: number; always: boolean } | undefined {
+  if (!evs || evs.length === 0) return undefined;
+  const seconds = new Set<number>();
+  const always = new Set<number>();
+  for (const e of evs) {
+    if (e.duration === undefined || e.always === undefined) {
+      throw new Error(
+        `[atoms] suppress_events entry '${e.event}' lacks duration or always; ` +
+          `refusing to default a field the wire carries`
+      );
+    }
+    seconds.add(e.duration);
+    always.add(e.always);
+  }
+  if (seconds.size > 1 || always.size > 1) {
+    throw new Error(
+      `[atoms] suppress_events disagree within one template (durations [${[...seconds]}], ` +
+        `always [${[...always]}]); the wire carries one window per atom ` +
+        `(suppressSeconds/suppressAlways), so widen it to per-event pairs before emitting this`
+    );
+  }
+  return {
+    events: evs.map((e) => e.event),
+    seconds: [...seconds][0],
+    always: [...always][0] !== 0,
+  };
+}
+
 /**
  * Template `stack` → {@link AtomicEffect.stacking}, one member of the game's
  * `StackTypeEnum` per `Common/entity/attribmod.h`.
@@ -1055,6 +1346,14 @@ export interface IngestContext {
   specialCase?: string;
   /** The group's `Tag` list, comma-joined — see {@link AtomicEffect.tags}. */
   tags?: string;
+  /**
+   * Seconds of `Delay` the enclosing group chain states, summed outermost-in — the
+   * ancestor half of {@link AtomicEffect.delay}, which adds the template's own. Only
+   * ~100 groups corpus-wide carry one (Placate's 0.05, Levitate's nested 0.1s), and no
+   * self-directed debuff does, so this half is carried for completeness rather than for
+   * a case that turns on it.
+   */
+  delay?: number;
 }
 
 /** Effect-group `Tag` array → the atom's {@link AtomicEffect.tags}. */
@@ -1086,6 +1385,13 @@ export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEff
   const attribType = mapAttribType(t.type);
   const toWho = mapToWho(t.target);
   const stacking = mapStacking(t.stack);
+  // Meta-scoped, so computed lazily: the guard inside THROWS on a non-uniform
+  // window, and a template no Meta atom carries must not fail the convert.
+  let suppressWindow: ReturnType<typeof mapSuppressWindow> | null = null;
+  const metaSuppress = () => {
+    suppressWindow ??= mapSuppressWindow(t.suppress_events);
+    return suppressWindow;
+  };
   const out: AtomicEffect[] = [];
   for (const attrib of t.attribs ?? []) {
     const bridged = bridgeAttrib(attrib, t.aspect, t.table);
@@ -1104,6 +1410,9 @@ export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEff
       // other optional strings. Read by the calc's expr VM, not by the bag.
       magnitudeExpression: t.magnitude_expression?.length ? t.magnitude_expression : undefined,
       duration: parseDuration(t.duration),
+      // The mod's own Delay plus the group chain's. Zero ⇒ absent: "starts with the
+      // cast" is the unstated case, and encoding a 0 would spend a slot on every atom.
+      delay: (t.delay ?? 0) + (ctx.delay ?? 0) || undefined,
       applicationPeriod: t.application_period || undefined,
       stacking,
       stackCap: t.stack_limit && t.stack_limit > 0 ? t.stack_limit : undefined,
@@ -1121,6 +1430,17 @@ export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEff
       // `Meta` is the ~44-marker bucket where the name is otherwise lost. Lowercased
       // so the value IS the `META_EFFECT` key that selected `Meta`.
       metaAttrib: bridged.effectType === 'Meta' ? attrib.toLowerCase() : undefined,
+      // The event tails, whole, on the same Meta scope as `metaAttrib` (the
+      // schema comments there and on the fields own the reasoning).
+      suppressEvents: bridged.effectType === 'Meta' ? metaSuppress()?.events : undefined,
+      suppressSeconds: bridged.effectType === 'Meta' ? metaSuppress()?.seconds : undefined,
+      suppressAlways: bridged.effectType === 'Meta' ? metaSuppress()?.always : undefined,
+      cancelEvents:
+        bridged.effectType === 'Meta' && t.cancel_events?.length ? t.cancel_events : undefined,
+      applicationType: mapApplicationType(t.application_type),
+      // Refresh-by-(attrib, key) semantics, and beside `Stack`/`Continuous` the mark of a
+      // per-target increment the resource router must not also route (STACK-5).
+      stackByAttribAndKey: (t.flags ?? []).includes('StackByAttribAndKey') || undefined,
       sourceAttrib: attrib,
     });
   }
@@ -1140,6 +1460,7 @@ export function ingestExportGroup(group: ExportGroup): AtomicEffect[] {
     procsPerMinute: group.ppm && group.ppm > 0 ? group.ppm : undefined,
     requiresExpression: group.requires_expression?.length ? group.requires_expression : undefined,
     tags: mapGroupTags(group.tags),
+    delay: group.delay || undefined,
   };
   return (group.templates ?? []).flatMap((t) => ingestTemplate(t, ctx));
 }

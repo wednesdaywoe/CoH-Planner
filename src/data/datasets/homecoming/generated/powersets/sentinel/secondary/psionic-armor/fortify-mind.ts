@@ -91,7 +91,7 @@ export const FortifyMind: Power = {
   },
   "atoms": [
     ["Absorb",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["MaxHP",null,1,1,45,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MaxHP",null,1,1,45,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
     ["Regeneration",null,0.5,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Endurance",null,0.2,1,45,"Melee_Ones","Res","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,1,null,true],
     ["Regeneration",null,0.2,1,45,"Melee_Ones","Res","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,1,null,true],
@@ -107,6 +107,15 @@ export const FortifyMind: Power = {
       "kind": "effect-proc",
       "chance": -2,
       "label": "Global_Chance_Mod"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Psionic_Armor.Monitor",
+      "count": 1,
+      "expiresInGame": 50,
+      "maxCount": 1
     }
   ]
 };

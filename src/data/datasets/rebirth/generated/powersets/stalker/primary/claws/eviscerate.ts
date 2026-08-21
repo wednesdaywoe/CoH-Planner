@@ -77,5 +77,15 @@ export const Eviscerate: Power = {
       "chance": 0.9433500170707703,
       "label": "Assassins Focus"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "chance": 0.9433500170707703,
+      "expires": 10,
+      "maxCount": 3
+    }
   ]
 };

@@ -360,7 +360,21 @@ export const WaterJet: Power = {
             "target>",
             "critter",
             "eq"
-          ]
+          ],
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          2
         ]
       ]
     }

@@ -57,9 +57,9 @@ export const AblativeCarapace: Power = {
     ["Absorb",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","source>","0.3","*","@Strength","*"],null,null,null,"Ones"],
     ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-    ["Absorb",null,0.09,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,null,null,null,null,null,null,null,null,"DefensiveAdaptation"],
-    ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,null,null,null,null,["Max.kHitPoints","source>","0.09","*","@Strength","*"],null,null,null,"DefensiveAdaptation"],
-    ["Regeneration",null,0.3,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kRestedAdaptation","Source.Mode?"],true,null,null,null,null,null,null,null,null,"EfficientAdaptation"]
+    ["Absorb",null,0.09,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,null,null,null,null,null,null,null,null,"DefensiveAdaptation",null,null,null,null,null,null,null,null,null,null,"defensiveadaptation"],
+    ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,null,null,null,null,["Max.kHitPoints","source>","0.09","*","@Strength","*"],null,null,null,"DefensiveAdaptation",null,null,null,null,null,null,null,null,null,null,"defensiveadaptation"],
+    ["Regeneration",null,0.3,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kRestedAdaptation","Source.Mode?"],true,null,null,null,null,null,null,null,null,"EfficientAdaptation",null,null,null,null,null,null,null,null,null,null,"restedadaptation"]
   ],
   "conditionalEffects": [
     {

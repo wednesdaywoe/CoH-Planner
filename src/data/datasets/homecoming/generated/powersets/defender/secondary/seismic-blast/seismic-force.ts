@@ -55,15 +55,15 @@ export const SeismicForce: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,5,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
-    ["DamageBuff","Smashing",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
-    ["DamageBuff","Lethal",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
-    ["DamageBuff","Fire",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
-    ["DamageBuff","Cold",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
-    ["DamageBuff","Energy",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
-    ["DamageBuff","Negative",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
-    ["DamageBuff","Psionic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
-    ["DamageBuff","Toxic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff"],
+    ["ToHit",null,5,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"SeismicForceBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["DamageBuff","Smashing",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["DamageBuff","Lethal",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["DamageBuff","Fire",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["DamageBuff","Cold",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["DamageBuff","Energy",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["DamageBuff","Negative",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["DamageBuff","Psionic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
+    ["DamageBuff","Toxic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"SeismicForceBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
     ["RechargePower",null,-1,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
     ["RechargePower",null,-1.75,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
     ["RechargePower",null,-2,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true],
@@ -75,5 +75,25 @@ export const SeismicForce: Power = {
     ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power"],
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSeismicPower","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"cancel_mods"]
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Defender_Ranged.Seismic_Blast.Shockwaves",
+      "count": 1,
+      "condition": [
+        "kSeismicPower",
+        "Source.Mode?"
+      ]
+    },
+    {
+      "op": "revoke",
+      "path": "Redirects.Seismic_Blast.Shockwaves_Buff",
+      "count": 1,
+      "condition": [
+        "kSeismicPower",
+        "Source.Mode?"
+      ]
+    }
   ]
 };

@@ -68,7 +68,7 @@ export const PackFrenzy: Power = {
     ["DamageBuff","Toxic",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["DamageBuff","Psionic",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
-    ["RechargeTime",null,0.25,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true,null,null,null,null,null,null,null,null,"Ones"]
+    ["RechargeTime",null,0.25,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","kProwlerMode","Source.Mode?","||"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,null,"huntermode"]
   ],
   "conditionalEffects": [
     {

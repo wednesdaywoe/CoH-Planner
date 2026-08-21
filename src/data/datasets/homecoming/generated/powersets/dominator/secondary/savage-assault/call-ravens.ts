@@ -88,7 +88,7 @@ export const CallRavens: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.241,1,3.1,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?",".014","*","1","+","@StdResult","*"]],
+    ["Damage","Lethal",0.241,1,3.1,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?",".014","*","1","+","@StdResult","*"],null,null,null,null,null,null,null,0.5],
     ["Defense","All",1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Run",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -96,7 +96,21 @@ export const CallRavens: Power = {
     ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"BuildFrenzy"],
-    ["Damage","Lethal",0.2514,1,3.1,"Ranged_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?",".014","*","1","+","@StdResult","*"]],
+    ["Damage","Lethal",0.2514,1,3.1,"Ranged_PvPDamage","Abs","Expression","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?",".014","*","1","+","@StdResult","*"],null,null,null,null,null,null,null,0.5],
     ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,"rage"]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker",
+      "count": 2,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted",
+        "source.ownPower?",
+        "!"
+      ],
+      "expires": 15,
+      "maxCount": 5
+    }
   ]
 };

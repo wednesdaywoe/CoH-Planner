@@ -53,12 +53,6 @@ export const SoulExtraction: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "atoms": [
-    ["Heal",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"MainTarget"],
-    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Lich","target.VillainName>"],true],
-    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Skeletal_Warrior","target.VillainName>"],true],
-    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Zombie","target.VillainName>"],true]
-  ],
   "effects": {
     "summon": {
       "isPseudoPet": false,
@@ -80,5 +74,11 @@ export const SoulExtraction: Power = {
       "duration": 30,
       "copyBoosts": true
     }
-  }
+  },
+  "atoms": [
+    ["Heal",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"MainTarget"],
+    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Lich","target.VillainName>"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30],
+    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Skeletal_Warrior","target.VillainName>"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30],
+    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Zombie","target.VillainName>"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30]
+  ]
 };

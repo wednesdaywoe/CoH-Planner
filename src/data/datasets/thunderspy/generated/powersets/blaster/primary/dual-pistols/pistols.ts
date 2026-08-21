@@ -65,41 +65,26 @@ export const Pistols: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.113,
       "table": "Ranged_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
-    "buffDuration": 10,
+    "buffDuration": 8.5,
     "damageBuff": {
       "ignoreStrength": true,
       "scale": 0.066,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "damageBuff": 8.5
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
     },
-    "immobilize": {
-      "mag": 0.75,
-      "scale": 10.1,
-      "table": "Ranged_Immobilize"
+    "durations": {
+      "damageBuff": 8.5,
+      "defenseDebuff": 8
     },
     "maxStacks": 2,
     "stacksLinear": [
@@ -108,26 +93,9 @@ export const Pistols: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Lethal"],
-    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Lethal"],
-    ["Damage","Fire",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FireDamage"],
-    ["Damage","Fire",0.113,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true,"FireDamageDoT"],
-    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ColdDamage"],
-    ["Movement","Run",0.15,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ColdDamage"],
-    ["Movement","Fly",0.15,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ColdDamage"],
-    ["Movement","JumpHeight",0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ColdDamage"],
-    ["Movement","Jump",0.15,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ColdDamage"],
-    ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ColdDamage"],
-    ["Mez","Immobilized",10.1,0.75,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ColdDamage"],
-    ["Damage","Toxic",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ToxicDamage"],
-    ["DamageBuff","Smashing",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ToxicDamage"],
-    ["DamageBuff","Lethal",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ToxicDamage"],
-    ["DamageBuff","Fire",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ToxicDamage"],
-    ["DamageBuff","Cold",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ToxicDamage"],
-    ["DamageBuff","Energy",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ToxicDamage"],
-    ["DamageBuff","Negative",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ToxicDamage"],
-    ["DamageBuff","Toxic",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ToxicDamage"],
-    ["DamageBuff","Psionic",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ToxicDamage"],
+    ["Damage","Lethal",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kLethal","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Lethal"],
+    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kLethal","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Lethal"],
+    ["Damage","Fire",0.113,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,true,"FireDamageDoT",null,null,null,0.5],
     ["DamageBuff","Smashing",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["DamageBuff","Lethal",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["DamageBuff","Fire",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -137,37 +105,62 @@ export const Pistols: Power = {
     ["DamageBuff","Toxic",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["DamageBuff","Psionic",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Lethal",0.98,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.98,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Lethal"],
-    ["Damage","Fire",0.98,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"FireDamage"],
-    ["Damage","Cold",0.98,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"ColdDamage"],
-    ["Mez","Immobilized",2,0.75,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"ColdDamage"],
-    ["Damage","Toxic",0.98,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"ToxicDamage"]
+    ["Damage","Lethal",0.98,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kLethal","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"Lethal"],
+    ["Damage","Fire",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kFireDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"FireDamage",null,null,null,null,null,null,null,null,null,null,"firedamage"],
+    ["Damage","Fire",0.98,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kFireDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"FireDamage"],
+    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"ColdDamage",null,null,null,null,null,null,null,null,null,null,"colddamage"],
+    ["Damage","Cold",0.98,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"ColdDamage"],
+    ["Movement","Run",0.15,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kColdDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ColdDamage",null,null,null,null,null,null,null,null,null,null,"colddamage"],
+    ["Movement","Fly",0.15,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kColdDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ColdDamage",null,null,null,null,null,null,null,null,null,null,"colddamage"],
+    ["Movement","JumpHeight",0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kColdDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ColdDamage",null,null,null,null,null,null,null,null,null,null,"colddamage"],
+    ["Movement","Jump",0.15,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kColdDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ColdDamage",null,null,null,null,null,null,null,null,null,null,"colddamage"],
+    ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kColdDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ColdDamage",null,null,null,null,null,null,null,null,null,null,"colddamage"],
+    ["Mez","Immobilized",10.1,0.75,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"ColdDamage",null,null,null,null,null,null,null,null,null,null,"colddamage"],
+    ["Mez","Immobilized",2,0.75,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kColdDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"ColdDamage"],
+    ["Damage","Toxic",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kToxicDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"],
+    ["Damage","Toxic",0.98,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kToxicDamage","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"ToxicDamage"],
+    ["DamageBuff","Smashing",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kToxicDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"],
+    ["DamageBuff","Lethal",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kToxicDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"],
+    ["DamageBuff","Fire",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kToxicDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"],
+    ["DamageBuff","Cold",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kToxicDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"],
+    ["DamageBuff","Energy",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kToxicDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"],
+    ["DamageBuff","Negative",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kToxicDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"],
+    ["DamageBuff","Toxic",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kToxicDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"],
+    ["DamageBuff","Psionic",0.8,1,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kToxicDamage","Source.Mode?"],true,null,null,null,null,null,null,null,null,"ToxicDamage",null,null,null,null,null,null,null,null,null,null,"toxicdamage"]
   ],
   "conditionalEffects": [
     {
-      "id": "lethalammo",
-      "label": "Standard Ammo",
+      "id": "firedamage",
+      "label": "Fire Damage",
       "scope": "global",
-      "defaultActive": true,
-      "group": "swap-ammo",
-      "effects": {
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 8
-        },
-        "buffDuration": 8
+      "defaultActive": false,
+      "damage": {
+        "type": "Fire",
+        "scale": 0.5,
+        "table": "Ranged_Damage"
       }
     },
     {
-      "id": "cryoammunition",
-      "label": "Cryo Ammo",
+      "id": "colddamage",
+      "label": "Cold Damage",
       "scope": "global",
       "defaultActive": false,
-      "group": "swap-ammo",
+      "damage": {
+        "type": "Cold",
+        "scale": 0.5,
+        "table": "Ranged_Damage"
+      },
       "effects": {
+        "buffDuration": 10,
+        "durations": {
+          "rechargeDebuff": 10,
+          "slow": 10
+        },
+        "immobilize": {
+          "mag": 0.75,
+          "scale": 10.1,
+          "table": "Ranged_Immobilize"
+        },
         "rechargeDebuff": {
           "ignoreStrength": true,
           "scale": 0.15,
@@ -191,21 +184,21 @@ export const Pistols: Power = {
             "scale": 0.15,
             "table": "Ranged_Slow"
           }
-        },
-        "durations": {
-          "rechargeDebuff": 10,
-          "slow": 10
-        },
-        "buffDuration": 10
+        }
       }
     },
     {
-      "id": "chemicalammunition",
-      "label": "Chemical Ammo",
+      "id": "toxicdamage",
+      "label": "Toxic Damage",
       "scope": "global",
       "defaultActive": false,
-      "group": "swap-ammo",
+      "damage": {
+        "type": "Toxic",
+        "scale": 0.5,
+        "table": "Ranged_Damage"
+      },
       "effects": {
+        "buffDuration": 10,
         "damageDebuff": {
           "ignoreStrength": true,
           "scale": 0.8,
@@ -213,8 +206,7 @@ export const Pistols: Power = {
         },
         "durations": {
           "damageDebuff": 10
-        },
-        "buffDuration": 10
+        }
       }
     }
   ],

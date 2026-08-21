@@ -70,7 +70,7 @@ export const ShortCircuit: Power = {
     ["Damage","Energy",0.18,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Endurance",null,-0.35,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Recovery",null,-1,1,10,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Electronic","target.HasTag?","&&"],true],
+    ["Damage","Energy",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Electronic","target.HasTag?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"vs-electronic"],
     ["Damage","Energy",0.18,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
     ["Endurance",null,3.9,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
     ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
@@ -92,6 +92,22 @@ export const ShortCircuit: Power = {
         "scale": 0.5,
         "table": "Ranged_Damage"
       }
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Shock_Therapy.Shock_Therapy_Static",
+      "count": 1,
+      "condition": [
+        "Defender_Ranged.Electrical_Blast.Tesla_Cage",
+        "source.ownPower?",
+        "Defender_Buff.Shock_Therapy",
+        "source.ownPower?",
+        "||"
+      ],
+      "expires": 30,
+      "maxCount": 30
     }
   ]
 };

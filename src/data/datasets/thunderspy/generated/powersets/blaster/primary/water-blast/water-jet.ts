@@ -715,7 +715,11 @@ export const WaterJet: Power = {
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.1
         ]
       ]
     }

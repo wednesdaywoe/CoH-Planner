@@ -266,6 +266,7 @@ export const GraniteArmor: Power = {
     "Suppress_FlyToggles",
     "Suppress_RunToggles",
     "Suppress_JumpToggles",
-    "Granite_Mode"
+    "Granite_Mode",
+    "GraniteRoot"
   ]
 };

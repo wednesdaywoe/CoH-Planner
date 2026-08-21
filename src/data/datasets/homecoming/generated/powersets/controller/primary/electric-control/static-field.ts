@@ -128,6 +128,6 @@ export const StaticField: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,25,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1]
+    ["EntCreate",null,1,1,25,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,25]
   ]
 };

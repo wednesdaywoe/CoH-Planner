@@ -84,7 +84,7 @@ export const TotalFocus: Power = {
     }
   },
   "atoms": [
-    ["Damage","Energy",0.6,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Energy",0.6,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.2],
     ["Damage","Energy",1.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Stunned",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -97,15 +97,15 @@ export const TotalFocus: Power = {
     ["DamageBuff","Negative",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Energy",1.1867,1,3,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","&&"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST"],
-    ["Damage","Energy",1.1867,1,3,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","&&"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST"],
-    ["Damage","Energy",0.5171,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Energy",1.1867,1,3,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","&&"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST",null,null,null,0.2],
+    ["Damage","Energy",1.1867,1,3,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","&&"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST",null,null,null,0.2],
+    ["Damage","Energy",0.5171,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.2],
     ["Damage","Energy",1.1724,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Smashing",0.8624,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Damage","Energy",1.023,1,3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST"],
+    ["Damage","Energy",1.023,1,3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST",null,null,null,0.2],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kSiphonMode","Source.Mode?"],true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kSiphonMode","Source.Mode?"],true]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kSiphonMode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.2]
   ],
   "specialEffects": [
     {
@@ -117,6 +117,31 @@ export const TotalFocus: Power = {
       "kind": "effect-proc",
       "chance": 0.10000000149011612,
       "label": "Energy_Dmg"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Power_Siphon",
+      "count": 1,
+      "condition": [
+        "kSiphonMode",
+        "Source.Mode?"
+      ],
+      "expiresInGame": 15,
+      "maxCount": 5
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Power_Siphon",
+      "count": 1,
+      "condition": [
+        "kSiphonMode",
+        "Source.Mode?"
+      ],
+      "delaySeconds": 0.2,
+      "expiresInGame": 15,
+      "maxCount": 5
     }
   ]
 };

@@ -63,7 +63,7 @@ export const Lich: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["RechargePower",null,50,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,null,99999],
+    ["RechargePower",null,50,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,3.17]
   ]
 };

@@ -71,5 +71,17 @@ export const WorldofPain: Power = {
       ],
       "enhanceable": false
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.World_of_Pain_Proc",
+      "count": 1,
+      "condition": [
+        "target.isFriend?"
+      ],
+      "expires": 60,
+      "maxCount": 1
+    }
   ]
 };

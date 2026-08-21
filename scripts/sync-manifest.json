@@ -142,14 +142,8 @@
     },
     {
       "path": "scripts/convert-epic-pools.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "9bf08c3a1499a10b13b564e2097a44dc4b2ab9dbe7d0d7e138cde0b635faa62a",
-        "beta": "a2b597efa8896d17dc71f9e134dc10e91d0b6bbd772e7062a1693f5a2414325f"
-      },
-      "reason": "Canonical passes `targets_affected` into `extractEffects` and emits `grantEdges` (WALK-1), stamps conditional ids, and calls two Thunderspy guards beta does not.",
-      "exit": "Port with `convert-powerset.cjs`; these converters share its exports and cannot move separately.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "9bf08c3a1499a10b13b564e2097a44dc4b2ab9dbe7d0d7e138cde0b635faa62a"
     },
     {
       "path": "scripts/convert-incarnate-effects.cjs",
@@ -163,25 +157,13 @@
     },
     {
       "path": "scripts/convert-pool-powers.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "ef385164bd1c3c6d0e83e474cad84b5f23ad55042f4a80913cf6dcea27cab108",
-        "beta": "80831fcccf77a7d3145607d272819b0a02ac8009bb93edc010076ca61a0e2440"
-      },
-      "reason": "Same as the epic-pool converter: canonical emits `grantEdges`, stamps conditional ids, and calls the Thunderspy applied-mez guard.",
-      "exit": "Port with `convert-powerset.cjs`.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "ef385164bd1c3c6d0e83e474cad84b5f23ad55042f4a80913cf6dcea27cab108"
     },
     {
       "path": "scripts/convert-powerset.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "ff7265df1778a52a8646f94abe5f13704401580cf018f46a998e5ea33af34a0d",
-        "beta": "ecb61b50386ad71f43065bb6525bf11234ade157468979646835f263853fa39c"
-      },
-      "reason": "The pipeline's two genuine forks in one file: 1,006 lines only canonical has and 292 only beta has. Canonical carries the register's gate-classification, caster-meter, chance-mod-selector, conditional-id-stamp, grant-edge and variant-mode work; beta carries `extractDualPistolsAmmo`, which branches on `dual_pistols` in a conditional and is a Rule 0 breach that only drift kept invisible. The three modules canonical's half requires (`_variant-modes.cjs`, `detect-caster-meters.cjs`, `detect-chance-mod-selectors.cjs`) were ported to beta on 2026-08-20, mechanically, along with the six per-dataset outputs the two detectors write. Both detectors reproduce canonical's committed outputs byte for byte on all three forks, so the structural blocker is gone and what is left is the reconciliation itself.",
-      "exit": "Reconcile function by function against the register. Delete `extractDualPistolsAmmo` rather than porting it, and source the ammo forms from the export. The module port landed 2026-08-20.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "9f1ae0f354f272c2492d35c5bc1f0b5209b0079e9072ab9a975c00b205f1d138"
     },
     {
       "path": "scripts/convert-salvage.cjs",
@@ -370,7 +352,159 @@
     {
       "path": "scripts/verify-sync.cjs",
       "status": "identical",
-      "sha256": "80ae0b924ea8283fd8c5a9be0115963d27f5f54a61a9ae0ee7ec65737857461d"
+      "sha256": "6a9431c26837c0ef6b8ac9764870fd3e8efbd81128a3cc243a5f5ba654a77442"
+    },
+    {
+      "path": "src/data/core/atom-query.ts",
+      "status": "identical",
+      "sha256": "7fa07e4c6c07ee8af8becd757816e59be86771048e793043b790a65e036fe9b9"
+    },
+    {
+      "path": "src/data/core/atomic-effect.ts",
+      "status": "identical",
+      "sha256": "2da662662d358ae2bac6dbe77b8b31cd8627c9993161b99de1c0c749cc6f669d"
+    },
+    {
+      "path": "src/data/dataset.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "34778a59c8b9cf532eceb3f53c66d9dd65033f47f5c1f5c68d95e0ed3355367f",
+        "beta": "b84eab63a8b246a6810b6c28e8b8f459a192963e15e6c6ede8b3b0497615a67e"
+      },
+      "reason": "The dataset loader, reached by `emit-enhancement-fixtures.cjs`. Forked both ways: 48 lines only canonical has, 67 only beta has. Beta's half is the live site's loading path (lazy chunks, the browser cache) and canonical's is the fixture emitter's, so the two grew apart around what a 'dataset' has to do rather than around a data question.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/data/enhancement-curves.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "e3d7aa3a47f6a33ced045ff71212bfd0471a3bc49d76bbb21141510466c75dff",
+        "beta": "ad3eac12eb552582f769d6400fd110e088c0afe4e4b6bbfa4cd74255428e7647"
+      },
+      "reason": "Six lines each way, the smallest of the twelve. Read by `emit-enhancement-fixtures.cjs` through `enhancement-values.ts`.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/data/io-sets.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "118ae7e63ca17a7e0ad74ae3917e8f8bf139a12ddc4cbcece0fdc63a1ddfdbc5",
+        "beta": "f8219beace33ae5c3bb95688c6beae5e5c224a43338036dfb231c4b3fea02494"
+      },
+      "reason": "31 lines only canonical has and 121 only beta has. The larger beta half is the piece-count-gated pseudo-row work BOOST-5 deleted on the canonical side, so this one has a known direction even though the diff is two-way.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/types/archetype.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "04d3693e891525e884639c621549af67f2e5eb381b72745d97e9343a8cc78964",
+        "beta": "579b1893712773e788e5016e51c9c79c23aef2920e2145d105082c4710676e6e"
+      },
+      "reason": "Type fork, 37 lines canonical / 25 beta. Pulled in through `@/types`, which every pipeline-loaded module imports.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/types/build.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "4725fdbc6e36b34c9ec94e7b569937055e71723bed33eda841b4af30ce54e56a",
+        "beta": "33925c63135c09da1d70ebcf1338a4ad14c1fa75de2c50d062dadf563598a5c3"
+      },
+      "reason": "Type fork, 17 lines canonical / 80 beta. The beta half is mostly UI state the rebuild models in Rust instead, which is a real divergence rather than staleness.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/types/common.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "1c4359e54234afa60a701b7cbffc9ec4bf52aaa76489300173d6fb0db24c7e70",
+        "beta": "5dea83125dae3dff783b22e6f936ba50ce60b70b417c6136a12104a12538726c"
+      },
+      "reason": "Type fork, 82 lines canonical / 76 beta \u2014 the most balanced of the twelve, and the one most likely to be two independent sets of additions rather than one side lagging.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/types/enhancement.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "f7d6fb8f0e4883c7032f6a4d49be979df986e73a353ea8e6f4cefb006c579cc9",
+        "beta": "3ad0c2d9d4d4c45c9bae86b7e975bb1cd28194008b0d30407c917dafd967129c"
+      },
+      "reason": "Type fork, 4 lines canonical / 15 beta.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/types/incarnate.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "936df6ddea97e9bfde41a9c0eb2a1a6c353808d15075f69c01df1eb5aa7a2d08",
+        "beta": "05ecff1f0157f78da8994f792fd690b6d22912728a9cbcae88bc47820cb561f7"
+      },
+      "reason": "Type fork, 4 lines each way.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/types/index.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "57389251a7cbfeeeb390f1789eac55d030a7ec5d3a411b3877044aabd1ae5c31",
+        "beta": "49b00c8094f212de7aa4fce68041d867faaf1d82061320ea2d74acbd125eb736"
+      },
+      "reason": "The barrel. Two lines only beta has, which are re-exports of types the rebuild does not carry; it closes when the files it re-exports do.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/types/power.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "06ca1ff5618fa5a16d0207a633aeab451ad869087adb112efed65743b1b77ea6",
+        "beta": "c135813895c6f1a6c6730c3d7a145e2f03b6cad17733fd4128a6eabf01e1d97d"
+      },
+      "reason": "The contract's shape, and the fork that matters most: 60 lines only canonical has (`damageTypes`, `procsOnlyOnMainTarget`, `procsAllowed`, `casterArchetypes`, the chain fields) and 185 only beta has (`petClass`, `ignoreStrength`, `special` damage, and until 2026-08-21 `displacedBy`). Both halves are real: each repo declared what its own consumer needed and neither carried the other's. Three of beta's are named already as UNFILED U6.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/types/shared.ts",
+      "status": "identical",
+      "sha256": "41cbf3a1fdddcdeccb63d6f67bb9a68c6f8f04a17e49685e750b6bd7db7e5761"
+    },
+    {
+      "path": "src/types/ui.ts",
+      "status": "identical",
+      "sha256": "3c6985cec460ca76a476df5160c332340b4ff425e3a1e4dfa0f2a66dca1787e5"
+    },
+    {
+      "path": "src/utils/calc-debug.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "22d3d36b0125f6d17c17030320e45d3134c5c5fd5501ac729fb4ace98befa4b5",
+        "beta": "485c3eea763da9b6ad9c1f970c0c7a599e0321b3b1e9b2159756ccd3bd2a230d"
+      },
+      "reason": "Twelve lines only beta has, a debug hook the rebuild never grew. One-directional, so it is the cheapest of the twelve to close.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
+    },
+    {
+      "path": "src/utils/calculations/enhancement-values.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "caeed2156c576a16208858adc4bdc95d68b921260e85112d311c0161f52eb58c",
+        "beta": "17f0a9084d46a7424beb9bda067f9e7be9fc7c1919c784c11725eb128b8e1fb5"
+      },
+      "reason": "The biggest fork on the list: 232 lines only canonical has, 391 only beta has. This is the enhancement math authored twice, which is the shape FORK-1 already flagged as having no file to compare \u2014 it needs a shared conformance corpus, not a copy.",
+      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
+      "gap": "FORK-2"
     }
   ]
 }

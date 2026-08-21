@@ -76,13 +76,24 @@ export const WhirlingHands: Power = {
     ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store_Assault","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,"revoke_power"],
-    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store_Assault","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease"]
+    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store_Assault","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,null,null,1.4]
   ],
   "specialEffects": [
     {
       "kind": "effect-proc",
       "chance": 0.30000001192092896,
       "label": "Stun"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Redirects.Energy_Melee.Energy_Store_Assault",
+      "count": 1,
+      "condition": [
+        "Redirects.Energy_Melee.Energy_Store_Assault",
+        "source.ownPower?"
+      ]
     }
   ]
 };

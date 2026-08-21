@@ -302,7 +302,7 @@ export const EMPArrow: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,240,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["EntCreate",null,1,1,240,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240],
     ["Heal",null,-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Absorb",null,-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Endurance",null,-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

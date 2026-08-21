@@ -79,7 +79,7 @@ export const ChainLightning: Power = {
     ["Endurance",null,-0.07,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["kLightningCat5","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"IncreaseStormStrength"],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"StormBrewing"],
-    ["Endurance",null,-0.035,1,4.4,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?"],true],
+    ["Endurance",null,-0.035,1,4.4,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"stormblast_instormcell"],
     ["Damage","Energy",0.324,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Damage","Energy",0.04,1,2.2,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,null,true],
     ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
@@ -102,6 +102,15 @@ export const ChainLightning: Power = {
           "table": "Ranged_EndDrain"
         }
       }
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing",
+      "count": 1,
+      "expires": 30,
+      "maxCount": 5
     }
   ]
 };

@@ -85,12 +85,12 @@ export const SummonWolves: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2,null,null,null,null,null,99999],
     ["Stealth","Translucency",0,1,2,"Ranged_Ones","Cur","Magnitude","SelfAndPets","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","SelfAndPets","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","SelfAndPets","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,0.5],
     ["Mez","Immobilized",3,500,0,"Melee_Ones","Cur","Duration","SelfAndPets","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","5",">"],true],
-    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","17",">"],true],
-    ["RechargePower",null,25,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","5",">"],true,null,null,null,null,null,null,null,null,null,null,null,null,3],
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["combatlevel","source>","17",">"],true,null,null,null,null,null,null,null,null,null,null,null,null,4],
+    ["RechargePower",null,25,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,1.97]
   ]
 };

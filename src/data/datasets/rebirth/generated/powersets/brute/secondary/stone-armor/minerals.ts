@@ -83,14 +83,33 @@ export const Minerals: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,["endurancecost","power.boosted>"],null,0,null,"GraniteActive"],
-    ["Defense","Psionic",2.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
-    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
-    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
-    ["Mez","Confused",-30,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
-    ["MezResist","Confused",2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
-    ["Defense","Psionic",2.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"GraniteDeactive"],
-    ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"GraniteDeactive"],
-    ["MezResist","Confused",5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"GraniteDeactive"]
+    ["Defense","Psionic",2.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kGranite_Armor_Mode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kGranite_Armor_Mode","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kGranite_Armor_Mode","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
+    ["Mez","Confused",-30,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kGranite_Armor_Mode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
+    ["MezResist","Confused",2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kGranite_Armor_Mode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kGranite_Armor_Mode","Source.Mode?"],true,null,null,null,null,["endurancecost","power.boosted>"],null,0,null,"GraniteActive",null,null,null,null,null,null,null,null,null,null,"granite_armor_mode"],
+    ["Defense","Psionic",2.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kGranite_Armor_Mode","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"GraniteDeactive"],
+    ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kGranite_Armor_Mode","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"GraniteDeactive"],
+    ["MezResist","Confused",5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","kGranite_Armor_Mode","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"GraniteDeactive"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "granite_armor_mode",
+      "label": "Granite Armor Mode",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 2,
+        "durations": {
+          "recoveryBuffUnenhanced": 2
+        },
+        "recoveryBuffUnenhanced": {
+          "ignoreStrength": true,
+          "scale": 1,
+          "table": "Melee_Ones"
+        }
+      }
+    }
   ]
 };

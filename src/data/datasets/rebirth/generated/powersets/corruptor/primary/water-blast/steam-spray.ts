@@ -93,5 +93,14 @@ export const SteamSpray: Power = {
       "chance": 0.8500000238418579,
       "label": "Fire_Dmg"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Tidal_Power",
+      "count": 1,
+      "expires": 15,
+      "maxCount": 3
+    }
   ]
 };

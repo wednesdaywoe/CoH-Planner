@@ -76,11 +76,11 @@ export const EssenceBoost: Power = {
   "atoms": [
     ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"HealSelf"],
     ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"HealSelf"],
-    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"HealSelf"],
+    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,1],
     ["Resistance","Toxic",2,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["MaxHP",null,2,1,120,"Melee_SSHealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?"],true,null,null,null,null,null,null,null,null,"HealSelf"],
-    ["MaxHP",null,2,1,120,"Melee_SSHealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?"],true,null,null,null,null,null,null,null,null,"HealSelf"],
-    ["Heal",null,4,1,0,"Melee_SSHealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?"],true,null,null,null,null,null,null,null,null,"HealSelf"]
+    ["MaxHP",null,2,1,120,"Melee_SSHealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?"],true,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,null,null,null,null,null,null,null,"peacebringer_tanker_mode"],
+    ["MaxHP",null,2,1,120,"Melee_SSHealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?"],true,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,null,null,null,null,null,null,null,"peacebringer_tanker_mode"],
+    ["Heal",null,4,1,0,"Melee_SSHealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?"],true,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,1,null,null,null,null,null,null,"peacebringer_tanker_mode"]
   ],
   "conditionalEffects": [
     {

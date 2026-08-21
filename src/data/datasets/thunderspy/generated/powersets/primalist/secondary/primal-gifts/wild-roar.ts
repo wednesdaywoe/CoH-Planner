@@ -48,13 +48,13 @@ export const WildRoar: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
-    ["Defense","All",1.5,1,30,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kProwlerMode","Source.Mode?"],true,null,null,null,null,null,null,null,null,"Debuff_Def"],
-    ["Defense","All",2.25,1,30,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?"],true,null,null,null,null,null,null,null,null,"NBInactive"],
-    ["Defense","All",3.375,1,30,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?"],true,null,null,null,null,null,null,0,true,"NBActive"],
-    ["Mez","Terrorized",12,4,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kProwlerMode","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Fear"],
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"rage",null,0.25],
+    ["Defense","All",1.5,1,30,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kProwlerMode","Source.Mode?"],true,null,null,null,null,null,null,null,null,"Debuff_Def",null,null,null,null,null,null,null,null,null,null,"prowlermode"],
+    ["Defense","All",2.25,1,30,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?"],true,null,null,null,null,null,null,null,null,"NBInactive",null,null,null,null,null,null,null,null,null,null,"huntermode"],
+    ["Defense","All",3.375,1,30,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?"],true,null,null,null,null,null,null,0,true,"NBActive",null,null,null,null,null,null,null,null,null,null,"huntermode"],
+    ["Mez","Terrorized",12,4,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kProwlerMode","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Fear",null,null,null,null,null,null,null,null,null,null,"prowlermode"],
     ["Mez","Terrorized",3,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kProwlerMode","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
-    ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kHunterMode","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Fear"],
+    ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kHunterMode","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Fear",null,null,null,null,null,null,null,null,null,null,"huntermode"],
     ["Mez","Terrorized",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kHunterMode","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
   ],
   "conditionalEffects": [

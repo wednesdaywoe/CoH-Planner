@@ -70,8 +70,8 @@ export const RisetotheChallenge: Power = {
       "perTarget": 0.25
     },
     "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
+      "scale": 1.25,
+      "table": "Melee_Ones"
     },
     "tohitDebuff": {
       "scale": 0.5,

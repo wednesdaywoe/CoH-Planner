@@ -55,13 +55,13 @@ export const Decoy: Power = {
     "maxStacks": 2
   },
   "atoms": [
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||"],null,null,null,null,null,null,null,null,null,"MirrorArmy"],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||"],null,null,null,null,null,null,null,null,null,"MirrorArmy"],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||"],null,null,null,null,null,null,null,null,null,"MirrorArmy"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||"],null,null,null,null,null,null,null,null,null,"MirrorArmy",null,null,null,0.1,null,null,null,null,null,60],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||"],null,null,null,null,null,null,null,null,null,"MirrorArmy",null,null,null,1],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||"],null,null,null,null,null,null,null,null,null,"MirrorArmy",null,null,null,2],
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||"],null,null,null,null,null,null,null,null,null,"MirrorArmy",null,"cancel_mods"],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||","!"],true,null,null,null,null,null,null,null,null,"PhantomArmy"],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||","!"],true,null,null,null,null,null,null,null,null,"PhantomArmy"],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||","!"],true,null,null,null,null,null,null,null,null,"PhantomArmy"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||","!"],true,null,null,null,null,null,null,null,null,"PhantomArmy",null,null,null,0.1],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||","!"],true,null,null,null,null,null,null,null,null,"PhantomArmy",null,null,null,1],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||","!"],true,null,null,null,null,null,null,null,null,"PhantomArmy",null,null,null,2],
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||","!"],true,null,null,null,null,null,null,null,null,"PhantomArmy",null,"cancel_mods"]
   ]
 };

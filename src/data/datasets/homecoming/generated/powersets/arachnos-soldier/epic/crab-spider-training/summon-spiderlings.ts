@@ -54,8 +54,8 @@ export const SummonSpiderlings: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,240,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,240,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,240,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+    ["EntCreate",null,1,1,240,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240],
+    ["EntCreate",null,1,1,240,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1],
+    ["EntCreate",null,1,1,240,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2]
   ]
 };

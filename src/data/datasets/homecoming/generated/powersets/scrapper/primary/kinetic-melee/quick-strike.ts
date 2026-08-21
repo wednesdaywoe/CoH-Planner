@@ -111,5 +111,18 @@ export const QuickStrike: Power = {
       "chance": 0.25,
       "label": "Knockback"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Power_Siphon",
+      "count": 1,
+      "condition": [
+        "kSiphonMode",
+        "Source.Mode?"
+      ],
+      "expiresInGame": 15,
+      "maxCount": 5
+    }
   ]
 };

@@ -101,5 +101,18 @@ export const SmashingBlow: Power = {
       "chance": 0.33000001311302185,
       "label": "Stun"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Power_Siphon",
+      "count": 1,
+      "condition": [
+        "kSiphonMode",
+        "Source.Mode?"
+      ],
+      "expiresInGame": 15,
+      "maxCount": 5
+    }
   ]
 };

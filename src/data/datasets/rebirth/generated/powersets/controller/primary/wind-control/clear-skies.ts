@@ -36,10 +36,10 @@ export const ClearSkies: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["ToHit",null,2.5,1,2.1,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kClearSkies","source.mode?"],true,null,null,null,null,null,null,null,null,"Buff_ToHit"],
-    ["RechargeTime",null,0.25,1,2.1,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kClearSkies","source.mode?"],true,null,null,null,null,null,null,null,null,"Ones"],
-    ["Recovery",null,0.25,1,2.1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kClearSkies","source.mode?"],true,null,null,null,null,null,null,null,null,"Ones"],
-    ["EnduranceDiscount",null,0.25,1,2.1,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kClearSkies","source.mode?"],true,null,null,null,null,null,null,null,null,"Ones"]
+    ["ToHit",null,2.5,1,2.1,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kClearSkies","source.mode?"],true,null,null,null,null,null,null,null,null,"Buff_ToHit",null,null,null,null,null,null,null,null,null,null,"clearskies"],
+    ["RechargeTime",null,0.25,1,2.1,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kClearSkies","source.mode?"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,null,"clearskies"],
+    ["Recovery",null,0.25,1,2.1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kClearSkies","source.mode?"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,null,"clearskies"],
+    ["EnduranceDiscount",null,0.25,1,2.1,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kClearSkies","source.mode?"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,null,"clearskies"]
   ],
   "conditionalEffects": [
     {

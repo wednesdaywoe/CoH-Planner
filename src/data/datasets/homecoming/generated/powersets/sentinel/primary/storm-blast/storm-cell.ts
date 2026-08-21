@@ -214,7 +214,7 @@ export const StormCell: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,60,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["EntCreate",null,1,1,60,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,60],
     ["Meta",null,1,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Meta",null,1,185,55,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",true,"Stack",2,null,null,0],
@@ -226,6 +226,19 @@ export const StormCell: Power = {
       "label": "Storm Cell Active",
       "scope": "global",
       "defaultActive": false
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing",
+      "count": 1,
+      "condition": [
+        "kStormCell",
+        "Source.Mode?"
+      ],
+      "expires": 30,
+      "maxCount": 5
     }
   ],
   "setsModes": [

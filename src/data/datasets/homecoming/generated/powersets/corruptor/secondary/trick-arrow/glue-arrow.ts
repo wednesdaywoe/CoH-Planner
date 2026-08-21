@@ -107,6 +107,6 @@ export const GlueArrow: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,60]
   ]
 };

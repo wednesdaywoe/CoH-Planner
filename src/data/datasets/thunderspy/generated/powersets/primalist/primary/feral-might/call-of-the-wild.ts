@@ -52,7 +52,7 @@ export const CalloftheWild: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,90,"Melee_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus"],
-    ["EntCreate",null,1,1,90,"Melee_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus"]
+    ["EntCreate",null,1,1,90,"Melee_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus",null,null,null,1,null,null,null,null,null,90],
+    ["EntCreate",null,1,1,90,"Melee_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus",null,null,null,2]
   ]
 };

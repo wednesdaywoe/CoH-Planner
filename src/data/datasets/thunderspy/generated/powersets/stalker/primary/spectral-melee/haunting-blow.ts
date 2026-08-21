@@ -90,6 +90,16 @@ export const HauntingBlow: Power = {
       "label": "Assassins Focus"
     }
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "chance": 0.800000011920929,
+      "expires": 10,
+      "maxCount": 3
+    }
+  ],
   "damageTypes": [
     "Negative",
     "Psionic"

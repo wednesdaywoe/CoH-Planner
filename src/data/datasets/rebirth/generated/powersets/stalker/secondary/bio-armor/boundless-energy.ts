@@ -91,9 +91,9 @@ export const BoundlessEnergy: Power = {
     ["Movement","Fly",0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Movement","JumpHeight",0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Movement","Jump",0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-    ["MaxHP",null,0.5625,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","source.Mode?"],true,null,null,null,null,null,null,null,null,"DefensiveAdaptation"],
-    ["Regeneration",null,0.195,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kRestedAdaptation","source.Mode?"],true,null,null,null,null,null,null,null,null,"EfficientAdaptation"],
-    ["Recovery",null,0.13,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kRestedAdaptation","source.Mode?"],true,null,null,null,null,null,null,null,null,"EfficientAdaptation"]
+    ["MaxHP",null,0.5625,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","source.Mode?"],true,null,null,null,null,null,null,null,null,"DefensiveAdaptation",null,null,null,null,null,null,null,null,null,null,"defensiveadaptation"],
+    ["Regeneration",null,0.195,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kRestedAdaptation","source.Mode?"],true,null,null,null,null,null,null,null,null,"EfficientAdaptation",null,null,null,null,null,null,null,null,null,null,"restedadaptation"],
+    ["Recovery",null,0.13,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kRestedAdaptation","source.Mode?"],true,null,null,null,null,null,null,null,null,"EfficientAdaptation",null,null,null,null,null,null,null,null,null,null,"restedadaptation"]
   ],
   "conditionalEffects": [
     {

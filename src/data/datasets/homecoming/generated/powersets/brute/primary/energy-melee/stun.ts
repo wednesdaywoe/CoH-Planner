@@ -97,5 +97,16 @@ export const Stun: Power = {
       "chance": 0.20000000298023224,
       "label": "Stun"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "Redirects.Energy_Melee.Energy_Store",
+        "source.ownPower?"
+      ]
+    }
   ]
 };

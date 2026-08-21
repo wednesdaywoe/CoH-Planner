@@ -88,15 +88,15 @@ export const EnergeticStrike: Power = {
     ["Damage","Energy",1.246,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Stunned",10,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5","<","&&"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5","<"],null,null,null,null,null,null,null,null,null,"Ones"],
-    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","1",">=","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?",".178","*","@StdResult","*"],null,null,null,"Damage"],
+    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","1",">=","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?",".178","*","@StdResult","*"],null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"kinetic_assault_impulse-1plus"],
     ["Damage","Smashing",2.89471,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",1.55869,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","1",">=","&&"],true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?",".2267","*","@StdResult","*"],null,null,null,"Damage"],
     ["Mez","Stunned",3,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5","<","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
-    ["Mez","Stunned",14,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","&&"],true,null,null,null,null,null,null,null,null,"Immobilize"],
+    ["Mez","Stunned",14,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","&&"],true,null,null,null,null,null,null,null,null,"Immobilize",null,null,null,null,null,null,null,null,null,null,"kinetic_assault_impulse-5plus"],
     ["Mez","Stunned",4,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,0.20000000298023224,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","Defender_Ranged.Kinetic_Assault.Coalescence","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,0.1,null,null,null,null,null,null,"kinetic_assault_impulse-5plus"],
+    ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,0.20000000298023224,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","Defender_Ranged.Kinetic_Assault.Coalescence","source.ownPower?","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,1,null,null,null,null,null,null,"kinetic_assault_impulse-5plus"]
   ],
   "conditionalEffects": [
     {
@@ -137,6 +137,33 @@ export const EnergeticStrike: Power = {
       "kind": "effect-proc",
       "chance": 0.20000000298023224,
       "label": "Recharge_Power"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+      "count": 2,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+        "source.ownPowerNum?",
+        "5",
+        "<"
+      ],
+      "expires": 30,
+      "maxCount": 5
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+        "source.ownPowerNum?",
+        "5",
+        ">="
+      ],
+      "delaySeconds": 0.1
     }
   ],
   "damageTypes": [

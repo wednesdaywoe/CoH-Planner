@@ -54,6 +54,10 @@ export const ChemicalAmmunition: Power = {
   "requires": [
     "Blaster_Ranged.Dual_Pistols.Swap_Ammo"
   ],
+  "setsModes": [
+    "Lethal",
+    "ToxicDamage"
+  ],
   "modesRequired": [
     "LethalAmmo"
   ]

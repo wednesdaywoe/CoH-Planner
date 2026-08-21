@@ -89,5 +89,20 @@ export const AquaBolt: Power = {
     ["Damage","Cold",0.8174,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Smashing",0.4026,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
     ["Damage","Cold",0.8174,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "temporary_powers.temporary_powers.tidal_power",
+      "count": 1,
+      "condition": [
+        "temporary_powers.temporary_powers.tidal_power",
+        "source.ownPowerNum?",
+        "2",
+        "<="
+      ],
+      "expires": 15,
+      "maxCount": 3
+    }
   ]
 };

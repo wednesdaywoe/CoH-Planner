@@ -23,15 +23,19 @@ const {
   extractEffects,
   extractDamage,
   extractFormVariants,
+  extractGrantEdges,
   extractQuickSnipeData,
   extractSnipeBaseTiming,
   assignModes,
   resolveThunderspyMovementTargets,
+  guardThunderspyOnesBuffs,
+  guardThunderspyAppliedMez,
   collectTemplatesDeep,
   collectAtomTemplates,
   collectBaseTemplates,
   encodeAtomsForEmit,
   extractConditionalEffects,
+  stampConditionalIds,
   detectStackingEffects,
   mergeStackingPatches,
   RAW_DATA_PATH,
@@ -41,6 +45,7 @@ const {
   normalizeIconPath,
   TARGET_TYPE_MAP,
   getStrengthsDisallowedIndex,
+  _readPowerFile,
 } = require('./convert-powerset.cjs');
 
 // Bin export writes epic pool powers under `<RAW_DATA_PATH>/epic/`.
@@ -259,7 +264,7 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     if (damage) effects.damage = damage;
 
     // All other effects
-    const extractedEffects = extractEffects(allTemplates);
+    const extractedEffects = extractEffects(allTemplates, undefined, rawJson.targets_affected);
     if (Object.keys(extractedEffects).length > 0) {
       for (const [key, value] of Object.entries(extractedEffects)) {
         effects[key] = value;
@@ -305,9 +310,24 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     power.formVariants = formVariants;
   }
 
+  // Caster-state writes (grant/revoke edges) — same stamp as the other partitions; called
+  // explicitly for the reason convert-pool-powers.cjs records at its own call.
+  const grantEdges = extractGrantEdges(rawJson);
+  if (grantEdges) {
+    power.grantEdges = grantEdges;
+  }
+
   // Plan B — emit the pre-projection atom list alongside the bag, exactly as
   // convert-powerset.cjs and convert-pool-powers.cjs do. Epic-pool powers went
   // without it until 2026-07-15, so every atom-native applier silently fell back to
+  // The conditional→atom join, stamped ahead of the atom emit for the reason
+  // convert-powerset.cjs gives at its own copy of this pass: `extractConditionalEffects`
+  // stamps `_conditionalId` on the surviving groups' templates, and `encodeAtomsForEmit`
+  // carries it onto the atom (AtomicEffect.conditionalId), so a stamp after the encode
+  // reaches nothing. `stampOnly` skips the `_perTargetIncrement` patch that makes the real
+  // extraction order-sensitive, and cannot change which groups survive.
+  stampConditionalIds(rawJson.effects, rawJson);
+
   // the bag for the whole epic/patron tier — safe, but invisible, and a Phase 3
   // blocker. Guarded on `atomTemplates`, NOT on the bag's `allTemplates` — see the
   // same block in convert-powerset.cjs. The base-set hard invariant is asserted
@@ -336,6 +356,16 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   if (rawJson.effects?.length) {
     const conditional = extractConditionalEffects(rawJson.effects, rawJson);
     if (conditional) power.conditionalEffects = conditional;
+  }
+
+  // Thunderspy: the two target-trap guards, which this partition had never run at all — the
+  // widest half of TWIN-2. The trap belongs to the BINARY (fork 6 drops aspect and the
+  // per-template target), so it reaches every converter that reads one, and an epic power is
+  // no less exposed than a powerset one. Hibernate and Rise of the Phoenix shipped a recovered
+  // `immobilize` on `["Self"]` powers because of it.
+  if (datasetId === 'thunderspy') {
+    guardThunderspyOnesBuffs(power, rawJson.targets_affected);
+    guardThunderspyAppliedMez(power, rawJson.targets_affected);
   }
 
   return power;
@@ -498,7 +528,8 @@ function convertEpicPool(poolId, existingPool) {
       continue;
     }
 
-    const rawJson = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    // Through the gate-stamping reader (COND-12), same reason as the pool converter.
+    const rawJson = _readPowerFile(filePath);
     if (availableLevels[i] === undefined) {
       throw new Error(
         `No available_level entry for ${fullName} in ${poolPath} index.json — `

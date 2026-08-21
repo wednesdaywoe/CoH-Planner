@@ -76,9 +76,9 @@ export const GroundZero: Power = {
   },
   "atoms": [
     ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Toxic",0.1,1,9.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Toxic",0.1,1,9.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
     ["Defense","All",2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Debuff_Def"],
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","&&"],true,null,null,null,null,null,null,null,null,"HealSelf"],
-    ["Heal",null,0.05,1,9.1,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","&&"],true,null,null,null,null,null,null,null,null,"HealSelf"]
+    ["Heal",null,0.05,1,9.1,"Melee_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","&&"],true,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,1]
   ]
 };

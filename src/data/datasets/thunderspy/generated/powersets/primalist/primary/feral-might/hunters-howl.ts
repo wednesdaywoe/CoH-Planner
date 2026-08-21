@@ -95,7 +95,7 @@ export const HuntersHowl: Power = {
     ["Movement","JumpHeight",1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"],null,null,null,"NBActive"],
     ["Movement","Jump",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".45","*",".45","+","@StdResult","*"],null,null,null,"NBActive"],
     ["ToHit",null,1,1,30,"Melee_DeBuff_ToHit","Cur","Expression","Target","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>","1.5","*","1.5","+","@StdResult","*"],null,null,null,"NBActive"],
-    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"rage"]
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"rage",null,0.25]
   ],
   "requires": [
     "Feral_Might.Feral_Might.Hunter_Form"

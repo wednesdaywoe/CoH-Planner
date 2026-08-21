@@ -107,5 +107,18 @@ export const BodyBlow: Power = {
       "chance": 0.20000000298023224,
       "label": "Stun"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Power_Siphon",
+      "count": 1,
+      "condition": [
+        "kSiphonMode",
+        "source.Mode?"
+      ],
+      "expiresInGame": 10,
+      "maxCount": 5
+    }
   ]
 };

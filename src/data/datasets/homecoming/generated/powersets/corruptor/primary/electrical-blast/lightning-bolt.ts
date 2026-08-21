@@ -71,5 +71,21 @@ export const LightningBolt: Power = {
     ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kEndurance%","target>","10","-","100","*","80","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Zapping"],
     ["Damage","Energy",1.8889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","&&"],true,null,null,null,null,null,null,null,null,"Scourge"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Corruptor_Ranged.Electrical_Blast.Tesla_Cage","source.ownPower?","Corruptor_Buff.Shock_Therapy","source.ownPower?","||"],true,null,null,null,null,null,null,null,null,"BuildStatic"]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Shock_Therapy.Shock_Therapy_Static",
+      "count": 1,
+      "condition": [
+        "Corruptor_Ranged.Electrical_Blast.Tesla_Cage",
+        "source.ownPower?",
+        "Corruptor_Buff.Shock_Therapy",
+        "source.ownPower?",
+        "||"
+      ],
+      "expires": 30,
+      "maxCount": 30
+    }
   ]
 };

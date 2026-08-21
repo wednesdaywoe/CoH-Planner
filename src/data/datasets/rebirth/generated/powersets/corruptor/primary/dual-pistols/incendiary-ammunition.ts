@@ -54,6 +54,10 @@ export const IncendiaryAmmunition: Power = {
   "requires": [
     "Corruptor_Ranged.Dual_Pistols.Swap_Ammo"
   ],
+  "setsModes": [
+    "FireDamage",
+    "Lethal"
+  ],
   "modesRequired": [
     "LethalAmmo"
   ]

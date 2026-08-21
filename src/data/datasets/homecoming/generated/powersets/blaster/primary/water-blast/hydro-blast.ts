@@ -113,5 +113,20 @@ export const HydroBlast: Power = {
       "chance": 0.20000000298023224,
       "label": "Knockback"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "temporary_powers.temporary_powers.tidal_power",
+      "count": 1,
+      "condition": [
+        "temporary_powers.temporary_powers.tidal_power",
+        "source.ownPowerNum?",
+        "2",
+        "<="
+      ],
+      "expires": 15,
+      "maxCount": 3
+    }
   ]
 };

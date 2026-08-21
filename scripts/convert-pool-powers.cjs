@@ -23,10 +23,12 @@ const {
   extractDamage,
   extractModeVariants,
   extractFormVariants,
+  extractGrantEdges,
   extractQuickSnipeData,
   extractSnipeBaseTiming,
   assignModes,
   guardThunderspyOnesBuffs,
+  guardThunderspyAppliedMez,
   resolveThunderspyMovementTargets,
   collectProcRollSites,
   normalizeIconPath,
@@ -35,12 +37,14 @@ const {
   collectBaseTemplates,
   encodeAtomsForEmit,
   extractConditionalEffects,
+  stampConditionalIds,
   RAW_DATA_PATH,
   BIN_BOOST_MAP,
   EFFECT_AREA_MAP,
   TARGET_TYPE_MAP,
   getStrengthsDisallowedIndex,
   deriveDormant,
+  _readPowerFile,
 } = require('./convert-powerset.cjs');
 
 // HC bin export writes pool powers under `<RAW_DATA_PATH>/pool/`. The legacy
@@ -223,6 +227,15 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     power.formVariants = formVariants;
   }
 
+  // Caster-state writes (grant/revoke edges) — the same stamp archetype powers get, called
+  // here explicitly because a shared extractor only reaches the partitions that ASK
+  // (CHAIN-1 bullet 1a: the pool converter never asked for the fast form, and Aid Other
+  // shipped a second slow).
+  const grantEdges = extractGrantEdges(rawJson);
+  if (grantEdges) {
+    power.grantEdges = grantEdges;
+  }
+
   // Game modes — the same four arrays archetype powers carry. The pools were left
   // without them, and the gap is load-bearing rather than cosmetic: every pool click
   // is `modes_disallowed` in the four Kheldian form modes, so a surface asking "can
@@ -306,7 +319,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
 
     // All other effects (combat-suppression now flows from template.suppress_events
     // populated by the binary parser — no .def-file lookup needed).
-    const extractedEffects = extractEffects(allTemplates, rawJson.name);
+    const extractedEffects = extractEffects(allTemplates, rawJson.name, rawJson.targets_affected);
     if (Object.keys(extractedEffects).length > 0) {
       // Merge extracted effects into the effects object
       // Map certain effect keys to legacy naming for the transformation layer
@@ -361,6 +374,14 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   //
   // Union of `allTemplates` (what the bag saw) with `collectAtomTemplates` (which adds
   // back the gated groups the bag's collector drops); the difference is stamped
+  // The conditional→atom join, stamped ahead of the atom emit for the reason
+  // convert-powerset.cjs gives at its own copy of this pass: `extractConditionalEffects`
+  // stamps `_conditionalId` on the surviving groups' templates, and `encodeAtomsForEmit`
+  // carries it onto the atom (AtomicEffect.conditionalId), so a stamp after the encode
+  // reaches nothing. `stampOnly` skips the `_perTargetIncrement` patch that makes the real
+  // extraction order-sensitive, and cannot change which groups survive.
+  stampConditionalIds(rawJson.effects, rawJson);
+
   // `gated: true`. Guarded on `atomTemplates`, NOT on the bag's `allTemplates` — see
   // the same block in convert-powerset.cjs for why (Victory Rush is this converter's
   // instance: every one of its effect groups is rank-gated, so the bag sees nothing
@@ -400,7 +421,13 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   // Thunderspy: veto the `Ones`-relabel false positives (resistance-as-recharge,
   // foe-attack self-buffs) the binary can't disambiguate. No-op elsewhere.
   if (datasetId === 'thunderspy') {
+    // Both Thunderspy target-trap guards, because the trap is a property of the BINARY and
+    // not of which converter read it: the aspect and per-template target the recovered slot
+    // needs are missing from every fork-6 power alike. The applied-mez half was called only by
+    // convert-powerset.cjs, so Rest, Hibernate and Rise of the Phoenix shipped 15 foe-control
+    // slots on self-only powers (TWIN-2).
     guardThunderspyOnesBuffs(power, rawJson.targets_affected);
+    guardThunderspyAppliedMez(power, rawJson.targets_affected);
   }
 
   return power;
@@ -484,7 +511,9 @@ function convertPool(poolId) {
       continue;
     }
 
-    const rawJson = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    // Through the gate-stamping reader: the flight family's carriers and movers live in the
+    // pools (COND-12), so a bare parse here would ship their groups ungated.
+    const rawJson = _readPowerFile(filePath);
     // -1 marks the auto-granted powers (Afterburner from Fly, Translocation
     // from Mystic Flight, Arcane Power from Arcane Bolt) — the planner's
     // `available < 0` filter keeps them out of the picker.

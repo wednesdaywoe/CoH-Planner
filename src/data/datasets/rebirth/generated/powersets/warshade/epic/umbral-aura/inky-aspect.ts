@@ -59,7 +59,7 @@ export const InkyAspect: Power = {
   "atoms": [
     ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Stun"],
     ["Damage","Special",0.1,1,0,"Melee_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?"],true,null,null,null,null,["endurancecost","power.boosted>"],null,null,null,"Ones"],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?"],true,null,null,null,null,["endurancecost","power.boosted>"],null,null,null,"Ones",null,null,null,null,null,null,null,null,null,null,"warshade_blaster_mode"],
     ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?","!","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Stun"]
   ],
   "conditionalEffects": [

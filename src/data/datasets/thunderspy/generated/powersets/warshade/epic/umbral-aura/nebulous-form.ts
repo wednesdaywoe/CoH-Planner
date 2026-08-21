@@ -103,6 +103,15 @@ export const NebulousForm: Power = {
     ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.NoPhase",
+      "count": 1,
+      "expiresInGame": 60,
+      "maxCount": 1
+    }
+  ],
   "modesDisallowed": [
     "Warshade_Blaster_Mode",
     "Warshade_Tanker_Mode"

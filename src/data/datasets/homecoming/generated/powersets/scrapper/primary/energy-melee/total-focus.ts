@@ -95,5 +95,47 @@ export const TotalFocus: Power = {
       "chance": 0.10000000149011612,
       "label": "Energy Store"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "enttype",
+        "target>",
+        "critter",
+        "eq"
+      ],
+      "chance": 0.10000000149011612,
+      "expires": 15,
+      "maxCount": 5
+    },
+    {
+      "op": "grant",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "enttype",
+        "target>",
+        "player",
+        "eq"
+      ],
+      "chance": 0.10000000149011612,
+      "expires": 15,
+      "maxCount": 5
+    },
+    {
+      "op": "grant",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "Redirects.Energy_Melee.Energy_Store",
+        "source.ownPower?",
+        "!"
+      ],
+      "expires": 15,
+      "maxCount": 5
+    }
   ]
 };

@@ -54,6 +54,10 @@ export const CryoAmmunition: Power = {
   "requires": [
     "Defender_Ranged.Dual_Pistols.Swap_Ammo"
   ],
+  "setsModes": [
+    "ColdDamage",
+    "Lethal"
+  ],
   "modesRequired": [
     "LethalAmmo"
   ]

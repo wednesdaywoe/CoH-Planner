@@ -98,13 +98,67 @@ function trackedScripts(root) {
     .filter((f) => f !== SELF_MANIFEST);
 }
 
+/**
+ * The `src/` modules the pipeline loads at RUNTIME, plus everything they import.
+ *
+ * `scripts/` alone is not the shared surface, and believing it was cost a day: the three
+ * converters were byte-identical in both repos and still produced different files, because
+ * `convert-powerset.cjs` pulls its atom encoder from `src/data/core/atomic-effect.ts` through
+ * `tsx` and that file had forked 309 lines. A guard that watches only the scripts reports green
+ * while the thing the scripts EXECUTE disagrees.
+ *
+ * Discovered rather than listed: the `require('../src/…')` edges are read out of the tracked
+ * scripts and the TypeScript imports are followed from there, so a script that starts loading a
+ * new module widens the guarded surface by itself. A hardcoded list would need remembering,
+ * which is the same failure one level up.
+ *
+ * Files under `generated/` or `datasets/` are dropped. They are data, they are enormous, and the
+ * regen-diff guard already owns them; what belongs here is the code that PRODUCES them.
+ */
+function pipelineSources(root) {
+  const tracked = new Set(
+    execFileSync('git', ['ls-files', 'src'], { cwd: root, encoding: 'utf8', maxBuffer: 256 * 1024 * 1024 }).split('\n').filter(Boolean)
+  );
+  const resolve = (spec, from) => {
+    let base;
+    if (spec.startsWith('@/')) base = `src/${spec.slice(2)}`;
+    else if (spec.startsWith('.')) base = path.posix.normalize(path.posix.join(path.posix.dirname(from), spec));
+    else return null;
+    for (const c of [base, `${base}.ts`, `${base}.tsx`, `${base}/index.ts`]) if (tracked.has(c)) return c;
+    return null;
+  };
+  const queue = [];
+  for (const f of trackedScripts(root)) {
+    if (!f.endsWith('.cjs')) continue;
+    const src = fs.readFileSync(path.join(root, f), 'utf8');
+    for (const m of src.matchAll(/require\('\.\.\/(src\/[^']+)'\)/g)) queue.push(m[1]);
+  }
+  const seen = new Set();
+  while (queue.length) {
+    const f = queue.pop();
+    if (seen.has(f) || !tracked.has(f)) continue;
+    seen.add(f);
+    const src = fs.readFileSync(path.join(root, f), 'utf8');
+    for (const m of src.matchAll(/from\s+'([^']+)'/g)) {
+      const r = resolve(m[1], f);
+      if (r && !seen.has(r)) queue.push(r);
+    }
+  }
+  return [...seen].filter((f) => !f.includes('/generated/') && !f.includes('/datasets/'));
+}
+
+/** Every path the two repos are expected to share: the scripts, and what the scripts execute. */
+function sharedSurface(root) {
+  return [...new Set([...trackedScripts(root), ...pipelineSources(root)])];
+}
+
 const errors = [];
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
 
 // -- --write: re-adjudicate against both trees -------------------------------------
 if (write) {
   const prior = new Map(manifest.entries.map((e) => [e.path, e]));
-  const shared = trackedScripts(rootFor('canonical')).filter((f) =>
+  const shared = sharedSurface(rootFor('canonical')).filter((f) =>
     fs.existsSync(path.join(rootFor('beta'), f))
   );
   manifest.entries = shared.sort().map((p) => {
@@ -161,7 +215,7 @@ for (const e of manifest.entries) {
 // for it. Solo runs cannot: the intersection is only knowable with both trees in hand.
 if (paired) {
   const listed = new Set(manifest.entries.map((e) => e.path));
-  const shared = trackedScripts(rootFor('canonical')).filter((f) =>
+  const shared = sharedSurface(rootFor('canonical')).filter((f) =>
     fs.existsSync(path.join(rootFor('beta'), f))
   );
   for (const p of shared)

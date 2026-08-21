@@ -67,8 +67,7 @@ export const BetaDecay: Power = {
       "perTarget": 0.025
     },
     "taunt": {
-      "ignoreStrength": true,
-      "scale": 1.1,
+      "scale": 1,
       "table": "Melee_InherentTaunt"
     },
     "tohitDebuff": {

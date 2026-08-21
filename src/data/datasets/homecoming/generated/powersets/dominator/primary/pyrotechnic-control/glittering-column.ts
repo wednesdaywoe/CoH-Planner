@@ -117,6 +117,6 @@ export const GlitteringColumn: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,7,"Melee_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
+    ["EntCreate",null,1,1,7,"Melee_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,7]
   ]
 };

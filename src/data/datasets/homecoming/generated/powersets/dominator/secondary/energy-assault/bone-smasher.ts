@@ -70,14 +70,14 @@ export const BoneSmasher: Power = {
     ["Damage","Smashing",0.784,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",1.176,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Mez","Stunned",12,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"Domination"],
+    ["Mez","Stunned",12,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"Domination",null,null,null,null,null,null,null,null,null,null,"domination"],
     ["Damage","Smashing",0.74,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Energy",1.11,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,"rage"],
     ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Stunned",1,1,0,"Melee_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Domination"],
-    ["Regeneration",null,-0.5,0,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store_Assault","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store_Assault","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,"revoke_power"],
+    ["Regeneration",null,-0.5,0,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store_Assault","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,null,null,null,null,null,null,null,null,null,"energy_store_assault"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store_Assault","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,"revoke_power",null,null,null,null,null,null,null,null,"energy_store_assault"],
     ["Heal",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store_Assault","source.ownPower?"],true,null,null,null,null,null,null,null,null,"ScheduleA"],
     ["Absorb",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store_Assault","source.ownPower?"],true,null,null,null,null,null,null,null,null,"ScheduleA"],
     ["Endurance",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store_Assault","source.ownPower?"],true,null,null,null,null,null,null,null,null,"ScheduleA"],
@@ -151,6 +151,35 @@ export const BoneSmasher: Power = {
       "kind": "grant",
       "chance": 0.20000000298023224,
       "label": "Energy Store Assault"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Redirects.Energy_Melee.Energy_Store_Assault",
+      "count": 1,
+      "condition": [
+        "Redirects.Energy_Melee.Energy_Store_Assault",
+        "source.ownPower?"
+      ]
+    },
+    {
+      "op": "grant",
+      "path": "Redirects.Energy_Melee.Energy_Store_Assault",
+      "count": 1,
+      "condition": [
+        "kStunned",
+        "target>",
+        "0",
+        ">",
+        "Redirects.Energy_Melee.Energy_Store_Assault",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
+      "chance": 0.20000000298023224,
+      "expires": 15,
+      "maxCount": 5
     }
   ]
 };

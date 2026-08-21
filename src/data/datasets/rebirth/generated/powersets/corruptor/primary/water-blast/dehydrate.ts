@@ -127,5 +127,31 @@ export const Dehydrate: Power = {
     ["Regeneration",null,0.6,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","2","<=","isPVPMap?","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["Regeneration",null,0.9,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","==","isPVPMap?","&&"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","3","=="],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"]
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Tidal_Power",
+      "count": 1,
+      "condition": [
+        "temporary_powers.temporary_powers.tidal_power",
+        "source.ownPowerNum?",
+        "2",
+        "<="
+      ],
+      "expires": 15,
+      "maxCount": 3
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Tidal_Power",
+      "count": 1,
+      "condition": [
+        "temporary_powers.temporary_powers.tidal_power",
+        "source.ownPowerNum?",
+        "3",
+        "=="
+      ]
+    }
   ]
 };

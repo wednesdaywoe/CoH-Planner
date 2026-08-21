@@ -48,101 +48,53 @@ export const GroupEnergyFlight: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 0.75,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
     "defenseBuff": {
       "aoe": {
-        "scale": 0.25,
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
       "cold": {
-        "scale": 0.25,
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
       "energy": {
-        "scale": 0.25,
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
       "fire": {
-        "scale": 0.25,
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
       "lethal": {
-        "scale": 0.25,
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
       "melee": {
-        "scale": 0.25,
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
       "negative": {
-        "scale": 0.25,
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
       "psionic": {
-        "scale": 0.25,
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
       "ranged": {
-        "scale": 0.25,
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
       "smashing": {
-        "scale": 0.25,
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75,
-      "movement": 0.75,
-      "slow": 0.75
-    },
-    "movement": {
-      "fly": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      },
-      "flySpeedUnenhanced": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "suppressible": true,
-        "table": "Melee_Ones"
-      },
-      "movementControl": {
-        "scale": 15,
-        "table": "Melee_Control"
-      },
-      "movementFriction": {
-        "scale": 15,
-        "table": "Melee_Friction"
-      }
-    },
-    "slow": {
-      "flySpeed": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      }
+      "defenseBuff": 0.75
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,["endurancecost","power.boosted>"],null,0,null,"ShapeshiftActive"],
-    ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Movement","Fly",-0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"GroupFlying"],
-    ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,true,null,null,null,null,0,null,"FlightActive"],
-    ["Movement","Fly",-0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"GroupFlying"],
     ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
@@ -153,22 +105,14 @@ export const GroupEnergyFlight: Power = {
     ["Defense","Energy",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Negative",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Psionic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
-    ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Movement","Control",15,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["Power_DisallowMoveControlFriction","target.TokenOwned?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Movement","Friction",15,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["Power_DisallowMoveControlFriction","target.TokenOwned?","!"],null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Movement","FlyMode",3.75,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Movement","Fly",0.2,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Meta",null,1,129,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
-    ["Meta",null,1,135,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+    ["Meta",null,1,129,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],
+    ["Meta",null,1,135,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kShapeshiftActive","Source.Mode?"],true,null,null,null,null,["endurancecost","power.boosted>"],null,0,null,"ShapeshiftActive",null,null,null,null,null,null,null,null,null,null,"shapeshiftactive"],
+    ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,0,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
+    ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,0,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
+    ["Movement","Fly",-0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kGroupFlying","Source.Mode?"],true,null,null,null,null,null,null,0,null,"GroupFlying",null,null,null,null,null,null,null,null,null,null,"groupflying"],
+    ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,true,null,null,null,null,0,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
+    ["Movement","Fly",-0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kGroupFlying","Source.Mode?"],true,null,null,null,null,null,null,0,null,"GroupFlying",null,null,null,null,null,null,null,null,null,null,"groupflying"],
     ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_Def"],
@@ -179,16 +123,105 @@ export const GroupEnergyFlight: Power = {
     ["Defense","Energy",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Negative",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Psionic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_Def"],
-    ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,0,null,"FlightActive"],
-    ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,0,null,"FlightActive"]
+    ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Movement","Control",15,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowMoveControlFriction","target.TokenOwned?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Movement","Friction",15,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowMoveControlFriction","target.TokenOwned?","!","kFlightActive","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"FlightActive"],
+    ["Movement","FlyMode",3.75,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,0,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
+    ["Movement","Fly",0.2,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,null,null,null,null,null,0,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "shapeshiftactive",
+      "label": "Shapeshift Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 2,
+        "durations": {
+          "recoveryBuffUnenhanced": 2
+        },
+        "recoveryBuffUnenhanced": {
+          "ignoreStrength": true,
+          "scale": 1,
+          "table": "Melee_Ones"
+        }
+      }
+    },
+    {
+      "id": "flightactive",
+      "label": "Flight Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 0.75,
+        "debuffResistance": {
+          "movement": {
+            "ignoreStrength": true,
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          }
+        },
+        "durations": {
+          "debuffResistance": 0.75,
+          "movement": 0.75
+        },
+        "movement": {
+          "fly": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "flySpeed": {
+            "scale": 0.5,
+            "table": "Melee_Ones"
+          },
+          "flySpeedUnenhanced": {
+            "ignoreStrength": true,
+            "scale": 0.5,
+            "suppressible": true,
+            "table": "Melee_Ones"
+          }
+        }
+      }
+    },
+    {
+      "id": "groupflying",
+      "label": "Group Flying",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 0.75,
+        "durations": {
+          "slow": 0.75
+        },
+        "slow": {
+          "flySpeed": {
+            "ignoreStrength": true,
+            "scale": 0.5,
+            "table": "Melee_Ones",
+            "toWho": "Self"
+          }
+        }
+      }
+    }
   ],
   "setsModes": [
     "AerobaticsOn",

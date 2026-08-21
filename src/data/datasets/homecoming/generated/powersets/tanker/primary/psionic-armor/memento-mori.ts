@@ -72,11 +72,11 @@ export const MementoMori: Power = {
     }
   },
   "atoms": [
-    ["RechargePower",null,290,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
-    ["MaxHP",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">"],null,null,null,null,"MementoMori",null,null,null,null,null,null,null,["Foe"]],
-    ["MaxHP",null,0.15,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">"],null,null,null,null,"MementoMori",null,null,null,null,null,null,null,["Foe"]],
-    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
-    ["Heal",null,0.2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["RechargePower",null,290,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],1.35],
+    ["MaxHP",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">"],null,null,null,null,"MementoMori",null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,null,true],
+    ["MaxHP",null,0.15,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">"],null,null,null,null,"MementoMori",null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,null,true],
+    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.25],
+    ["Heal",null,0.2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.25],
     ["Meta",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">"],null,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power",["Foe"]],
     ["Mez","Terrorized",5,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
   ]

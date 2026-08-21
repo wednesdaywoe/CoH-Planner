@@ -412,7 +412,11 @@ export const WaterJet: Power = {
           null,
           null,
           null,
-          "Ones"
+          "Ones",
+          null,
+          null,
+          null,
+          1.1
         ],
         [
           "GrantPower",
@@ -450,6 +454,21 @@ export const WaterJet: Power = {
           "Ones"
         ]
       ]
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Tidal_Power",
+      "count": 1,
+      "condition": [
+        "temporary_powers.temporary_powers.tidal_power",
+        "source.ownPowerNum?",
+        "2",
+        "<="
+      ],
+      "expires": 15,
+      "maxCount": 3
     }
   ]
 };

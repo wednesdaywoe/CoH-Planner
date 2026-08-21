@@ -78,17 +78,17 @@ export const Barrage: Power = {
   "atoms": [
     ["Damage","Energy",0.5,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Smashing",0.16,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>",".9","<","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit"],
+    ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>",".9","<","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit",null,null,null,0.3],
     ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","Redirects.Energy_Melee.Energy_Store","source.ownPower?","!","&&"]],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.800000011920929,null,true],
-    ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>","0",">","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit"],
+    ["Damage","Energy",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>","0",">","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit",null,null,null,0.3],
     ["Damage","Energy",0.4713,1,0.3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Smashing",0.3142,1,0.3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Energy",1.571,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>","0",">","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit"],
-    ["Damage","Energy",1.571,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","&&"],true],
+    ["Damage","Energy",1.571,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
     ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EnergyRelease"],
-    ["Regeneration",null,-1,0,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,"revoke_power"],
+    ["Regeneration",null,-1,0,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,null,null,null,null,null,null,null,null,null,"energy_store"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,"revoke_power",null,null,null,null,null,null,null,null,"energy_store"],
     ["Heal",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"ScheduleA"],
     ["Absorb",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"ScheduleA"],
     ["Endurance",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"ScheduleA"],
@@ -159,6 +159,25 @@ export const Barrage: Power = {
       "kind": "grant",
       "chance": 0.800000011920929,
       "label": "Assassins Focus"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "chance": 0.800000011920929,
+      "expires": 10,
+      "maxCount": 3
+    },
+    {
+      "op": "revoke",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "Redirects.Energy_Melee.Energy_Store",
+        "source.ownPower?"
+      ]
     }
   ]
 };

@@ -50,6 +50,6 @@ export const Discharge: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+    ["EntCreate",null,-1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,120]
   ]
 };

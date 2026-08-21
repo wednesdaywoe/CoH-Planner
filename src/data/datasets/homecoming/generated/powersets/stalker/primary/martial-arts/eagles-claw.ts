@@ -83,5 +83,14 @@ export const EaglesClaw: Power = {
       "chance": 0.15000000596046448,
       "label": "Smashing_Dmg"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "expires": 10,
+      "maxCount": 3
+    }
   ]
 };

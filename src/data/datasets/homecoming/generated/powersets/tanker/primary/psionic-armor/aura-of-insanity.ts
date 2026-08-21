@@ -116,7 +116,7 @@ export const AuraofInsanity: Power = {
   },
   "atoms": [
     ["Damage","Special",-0.05,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Damage","Psionic",0.05,1,3.75,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Psionic",0.05,1,3.75,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.2],
     ["Mez","Confused",2,2,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Confused",0.5,0.5,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.20000000298023224,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Stunned",2,2,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.25,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

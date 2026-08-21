@@ -42,7 +42,9 @@ import { decodeAtoms, landsOnCaster, type AtomicEffect, type EffectType } from '
  * reach the caster". That is the safe direction, and `scripts/planb-shadow-targets3.cjs`
  * asserts the corpus never relies on it.
  */
-type AtomSource = Pick<Power, 'atoms' | 'targetsAffected'>;
+type AtomSource = Pick<Power, 'atoms' | 'targetsAffected'> & Partial<Pick<Power, 'name'>>;
+// `name` is optional because a hand-built source is allowed to omit it; the one reader is a
+// Rule 1 throw, where a missing name costs a less specific message and nothing else.
 
 // ============================================================================
 // Access
@@ -770,17 +772,32 @@ export function resistanceSelfDebuffValue(
  * The eleven standard defense globals the calc totals: the three positions
  * (`defMelee`/`defRanged`/`defAoE`) and the eight damage types
  * (`defSmashing`…`defPsionic`). Restricting the defense helpers to these dodges
- * the same atom-bridge/bag labelling gaps the resistance restriction does — chiefly
- * `All` (from a `base_defense` template), which the bag stores as a SCALAR
- * `defenseBuff` ScaledEffect whose `Object.entries` yield `scale`/`table`, never a
- * `def<Type>` key, and for which there is no `defAll` global regardless. Every
- * excluded subType adds zero to a `def<Type>` total on BOTH sides, so the
- * restriction is behavior-preserving and makes the shadow a clean per-type equality.
+ * the atom-bridge/bag labelling gaps the resistance restriction does.
+ *
+ * `All` (from a `base_defense` template) is NOT a twelfth entry here: it is one
+ * value that lands on all eleven, and {@link defenseBuffByType} expands it so —
+ * but only at `aspect: Cur`, the one arm of the filter that must read the aspect
+ * (see {@link isAllCurDefense}). The bag stores such a row as a SCALAR
+ * `defenseBuffSuppressible` ScaledEffect with no `def<Type>` key, which is why the
+ * planb-shadow expands the scalar by the same rule before comparing (DEFALL-1).
  */
 const DEFENSE_STD_SUBTYPES = new Set([
   'Melee', 'Ranged', 'AoE',
   'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Toxic', 'Psionic',
 ]);
+
+/**
+ * The `All` arm of the defense-buff filter: a `Base_Defense` row at the attribute's
+ * live value. The aspect is checked HERE, where the typed arm never needs to, because
+ * `All` is the one defense subType whose other faces exist in bulk: `Defense/All` at
+ * `Res` is defense-debuff-resistance (BRIDGE-1's reclassification — 229 Homecoming
+ * atoms), and at `Str` it is defense strength (Adrenal Booster). Reading either as a
+ * defense value would ship Wolf Spider Armor's 0.3 as +30% defense — DEFALL-1's
+ * census is the warrant that `Cur` alone is the buff face.
+ */
+function isAllCurDefense(a: AtomicEffect): boolean {
+  return a.subType === 'All' && a.aspect === 'Cur';
+}
 
 /**
  * Reconstruct ONE defense type's `{ scale, perTarget }` from its atoms, mirroring
@@ -808,7 +825,14 @@ function defensePerTypeValue(
   power: AtomSource,
 ): { scale: number; table: string; perTarget?: number } | undefined {
   const base = group.filter(isBagBase);
-  const gatedIncr = group.filter((a) => a.gated && a.perTarget);
+  // A gated atom carrying a per-foe increment is Phalanx Fighting's: an untoggleable gate
+  // (`target != source`) that the conditional extractor never surfaces, so the converter's base
+  // per-foe pass reads it and the bag's slot holds its increment. An atom the extractor DID
+  // surface belongs to its `conditionalEffects` entry, where the extractor recomputes the per-foe
+  // scaling in the entry's own scope — crediting it to the base is Evolving Armor granting its
+  // Defensive-stance +Def in every stance. The stamp only reaches such an atom since PERFOE-1's
+  // conditional half, which is why this clause could be written without it and stay green.
+  const gatedIncr = group.filter((a) => a.gated && a.perTarget && !a.conditionalId);
   if (!base.length && !gatedIncr.length) return undefined;
   const baseIncr = base.filter((a) => a.perTarget);
   const increments = [...baseIncr, ...gatedIncr];
@@ -850,7 +874,7 @@ function defenseBuffByType(
 ): Record<string, { scale: number; table: string; perTarget?: number }> | undefined {
   const atoms = atomsOfType(power, 'Defense').filter(
     (a) =>
-      DEFENSE_STD_SUBTYPES.has(a.subType ?? '') &&
+      (DEFENSE_STD_SUBTYPES.has(a.subType ?? '') || isAllCurDefense(a)) &&
       !isDebuffAtom(a) &&
       !excludesCaster(a) &&
       !!a.suppressible === wantSuppressible,
@@ -865,7 +889,24 @@ function defenseBuffByType(
     // it is behavior-neutral — 0 contributes 0 to any total — and keeps the shadow a
     // clean equality. (The shadow checks BOTH directions, so a bag that DID keep a
     // scale-0 defense would still be caught.)
-    if (v && (v.scale !== 0 || v.perTarget)) out[type.toLowerCase()] = v;
+    if (!v || (v.scale === 0 && !v.perTarget)) continue;
+    // `All` is `Base_Defense` — one value on all eleven keys, not a twelfth key
+    // (DEFALL-1; the Rust twin routes through `defense_total_keys`). No corpus power
+    // carries an `All` base row beside a typed base row in one suppression half
+    // (Personal Force Field's typed siblings are PvP-gated and reconstruct to
+    // nothing), and this Record could not hold both — where the Rust twin's list
+    // form would sum them, one assignment here would silently swallow the other.
+    // Fail loud instead of shipping half a defense total (Rule 1).
+    const keys = type === 'All' ? [...DEFENSE_STD_SUBTYPES].map((t) => t.toLowerCase()) : [type.toLowerCase()];
+    for (const key of keys) {
+      if (key in out) {
+        throw new Error(
+          `defenseBuffByType: '${power.name ?? '<unnamed>'}' lands two defense-buff groups on '${key}' ` +
+          `(an All expansion beside a typed row?) — this Record cannot express their sum`,
+        );
+      }
+      out[key] = v;
+    }
   }
   return Object.keys(out).length ? out : undefined;
 }
@@ -910,8 +951,12 @@ export function defenseBuffSuppressibleValue(
  * The bag keeps that slot on purpose: the power card shows what allies receive.
  */
 export function defenseBuffIsTeamOnly(power: AtomSource): boolean {
+  // Same atom population as `defenseBuffByType` (incl. the `All`-at-`Cur` arm,
+  // DEFALL-1): this function disambiguates that filter's silence, so the two must
+  // read the same rows or a team-only `Base_Defense` power would be reported as a
+  // divergence instead of excused as an abstention.
   const defense = atomsOfType(power, 'Defense').filter(
-    (a) => DEFENSE_STD_SUBTYPES.has(a.subType ?? '') && !isDebuffAtom(a),
+    (a) => (DEFENSE_STD_SUBTYPES.has(a.subType ?? '') || isAllCurDefense(a)) && !isDebuffAtom(a),
   );
   return defense.length > 0 && defense.every(excludesCaster);
 }
@@ -940,8 +985,8 @@ export function defenseBuffIsTeamOnly(power: AtomSource): boolean {
  *
  * NB regen/recovery — the OTHER two `*Unenhanced` twins — are deliberately NOT handled
  * here: their bag values also depend on `foldResourceSlot`'s same-table SUM, a regen-only
- * `StackByAttribAndKey` skip, and a description-text target-trap filter, none of which is
- * on the wire atom. They got their own slice and their own helpers — see
+ * `StackByAttribAndKey` skip (the flag itself is on the wire since STACK-5, but the skip
+ * is still a rule the reader has to apply), and a description-text target-trap filter. They got their own slice and their own helpers — see
  * {@link regenBuffValue} / {@link recoveryBuffValue}, whose extra rules and two punts are
  * exactly that list.
  */
@@ -1028,7 +1073,16 @@ function resourceBuffValue(
   if (atoms.some((a) => a.attribType === 'Expression')) return undefined;
 
   const increments = atoms.filter((a) => a.perTarget);
-  const flat = atoms.filter((a) => !a.perTarget);
+  // The flat base must LAND ON THE CASTER to count toward his own totals — the resources
+  // family's PASS2B-1, the same exclusion `kbProtectionValue` below applies to offensive
+  // knockback. Without it the reader credits the caster with a foe debuff or a teammate buff
+  // written on a power he merely owns: Temporal Bomb's `Location` -Recovery patch read as
+  // +37.5% recovery, Valiance summed its `Self` +80% and its `target ≠ source` +60% into
+  // +140%. The apply loop's ally-only `targetType` skip cannot see either — both powers hit
+  // the caster with something. Increments are NOT filtered here: a per-foe increment is
+  // collected FROM foes and lands on the caster, and `selfIncrements` below asks the question
+  // where it credits him.
+  const flat = atoms.filter((a) => !a.perTarget && reachesCaster(a, power));
 
   // Per-target increments follow the FLAT BASE's slot, not their own
   // `ignoreStrength` — the converter patches whichever slot the base occupies
@@ -1188,23 +1242,19 @@ const SLOW_AXIS_TO_KEY: Record<string, string> = {
 /**
  * An atom from a `chance: 0` group that names no mode to be gated on.
  *
- * A chance-0 group is a mode-gate sentinel rather than a literal 0% (METHOD-1), and
- * `collectTemplatesDeep` deliberately keeps one that carries a payload: dropping it
- * wholesale would delete Evasive Maneuvers' fly speed and Rooted's run penalty, which
- * are real effects that apply in their mode. So they arrive here unstamped, in the
- * base list.
+ * A chance-0 group is a mode-gate sentinel rather than a literal 0% (METHOD-1). When this
+ * rule was written the corpus split 24 movement-routed sentinels into 8 that carried a
+ * group `Tag` naming their mode and 16 — every Rebirth fly power — that carried nothing,
+ * because the Parse6 export dropped the field the tag lives in; with those 16 left in,
+ * Rebirth's Fly read -5.2% where the game gives +161%.
  *
- * The corpus splits them cleanly. Of the 24 that reach the caster's movement routing,
- * 8 carry a group `Tag` naming the mode — `FlightActive` on Evasive Maneuvers and
- * Quantum Maneuvers, `GraniteRoot` on Rooted, all Homecoming — and 16 carry no tag, no
- * `Requires` and no special case at all. Those 16 are every Rebirth fly power, and a
- * sentinel that names no mode cannot be a gate on one.
- *
- * Dropping them moves no total on its own: each was either overwritten by a later
- * write into the same axis slot, or its whole slot goes empty and the bag fallback
- * answers with the same numbers. It exists for the split, which is what exposes them —
- * with the fly axis split and these left in, Rebirth's Fly reads -5.2% where the game
- * gives +161%.
+ * The population is now ZERO on all three forks (measured over the contract bundles,
+ * 2026-08-18): COND-11 put the Parse6 tags on the wire and COND-12's corpus-wide
+ * chance-mod pass gates every tagged sentinel on its minted mode, so a chance-0 atom
+ * either carries its gate and arrives `gated` (dropped by `baseAtoms` before this
+ * routing sees it) or does not exist. The rule stays as the backstop it always was: a
+ * sentinel that names no mode cannot be a gate on one, and a NEW one appearing means an
+ * export regressed — `planb-shadow-movement.cjs`'s abstention pin is what surfaces it.
  */
 function isUnmodedSentinel(a: AtomicEffect): boolean {
   return a.baseProbability === 0

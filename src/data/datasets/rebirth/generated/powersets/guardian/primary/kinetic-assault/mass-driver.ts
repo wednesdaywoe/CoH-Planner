@@ -100,25 +100,25 @@ export const MassDriver: Power = {
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Smashing",1.69,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5","<","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",0.91,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5","<","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.26,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Lethal",0.26,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5],
     ["Movement","JumpHeight",0.15,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","Jump",0.15,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["RechargeTime",null,0.15,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","Run",0.15,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","Fly",0.15,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5","<"],null,null,null,null,null,null,null,null,null,"Ones"],
-    ["Damage","Smashing",2.1125,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Energy",1.1375,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Smashing",2.1125,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"kinetic_assault_impulse-5plus"],
+    ["Damage","Energy",1.1375,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"kinetic_assault_impulse-5plus"],
     ["Damage","Smashing",1.5106,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5","<","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",0.8134,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5","<","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.2324,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
+    ["Damage","Lethal",0.2324,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5],
     ["Damage","Smashing",1.88825,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",1.01675,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Resistance","Smashing",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["Resistance","Lethal",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["Resistance","Energy",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Res_Dmg"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,0.14000000059604645,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","Guardian_Assault.Kinetic_Assault.Coalescence","source.ownPower?","&&"],true,null,null,null,null,null,null,0.14,null,"Ones"],
+    ["Resistance","Smashing",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"kinetic_assault_impulse-5plus"],
+    ["Resistance","Lethal",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"kinetic_assault_impulse-5plus"],
+    ["Resistance","Energy",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Res_Dmg",null,null,null,null,null,null,null,null,null,null,"kinetic_assault_impulse-5plus"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">="],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,0.1,null,null,null,null,null,null,"kinetic_assault_impulse-5plus"],
+    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,0.14000000059604645,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?","5",">=","Guardian_Assault.Kinetic_Assault.Coalescence","source.ownPower?","&&"],true,null,null,null,null,null,null,0.14,null,"Ones",null,null,null,1,null,null,null,null,null,null,"kinetic_assault_impulse-5plus"],
     ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"]
   ],
   "conditionalEffects": [
@@ -173,6 +173,33 @@ export const MassDriver: Power = {
       "kind": "effect-proc",
       "chance": 0.14000000059604645,
       "label": "Recharge_Power"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+        "source.ownPowerNum?",
+        "5",
+        "<"
+      ],
+      "expires": 30,
+      "maxCount": 5
+    },
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+        "source.ownPowerNum?",
+        "5",
+        ">="
+      ],
+      "delaySeconds": 0.1
     }
   ]
 };

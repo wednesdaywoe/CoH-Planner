@@ -61,10 +61,29 @@ export const TwilightShield: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,["endurancecost","power.boosted>"],null,0,null,"ShapeshiftActive"],
-    ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"]
+    ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kShapeshiftDeactive","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kShapeshiftDeactive","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kShapeshiftActive","Source.Mode?"],true,null,null,null,null,["endurancecost","power.boosted>"],null,0,null,"ShapeshiftActive",null,null,null,null,null,null,null,null,null,null,"shapeshiftactive"],
+    ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kShapeshiftDeactive","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","kShapeshiftDeactive","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "shapeshiftactive",
+      "label": "Shapeshift Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 2,
+        "durations": {
+          "recoveryBuffUnenhanced": 2
+        },
+        "recoveryBuffUnenhanced": {
+          "ignoreStrength": true,
+          "scale": 1,
+          "table": "Melee_Ones"
+        }
+      }
+    }
   ]
 };

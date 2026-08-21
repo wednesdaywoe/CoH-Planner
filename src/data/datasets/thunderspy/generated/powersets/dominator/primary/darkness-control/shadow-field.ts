@@ -54,8 +54,8 @@ export const ShadowField: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kStealth","source>","0.5","<="],null,null,null,null,null,null,null,null,null,"Level"],
-    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kStealth","source>","0.5",">"],true,null,null,null,null,null,null,null,null,"Level"]
+    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kStealth","source>","0.5","<="],null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,45],
+    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kStealth","source>","0.5",">"],true,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,null,"domination"]
   ],
   "conditionalEffects": [
     {

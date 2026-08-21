@@ -837,6 +837,39 @@ export interface ProcRollSite {
   procsOnlyOnMainTarget?: boolean;
 }
 
+/**
+ * A caster-state write the power performs: it grants or revokes copies of another power.
+ *
+ * The engine's own type is `coh_data::GrantEdge`; this is the wire shape the converter stamps,
+ * and nothing in the TypeScript twin reads it yet. It's declared because the generated files
+ * carry it on 987 powers, and an untyped key on a `Power` literal is a tsc error rather than a
+ * quiet extra field.
+ */
+export interface GrantEdge {
+  op: 'grant' | 'revoke';
+  /** The granted or revoked power's dotted export path, verbatim — the same spelling the
+   *  ownership gates read. */
+  path: string;
+  /** Copies added or removed. The game defaults an absent params count to 1 and the converter
+   *  resolves that default, so it is always present. */
+  count: number;
+  /** The effect group chain's composed gate, as the verbatim token array every other expression
+   *  on the wire uses (COND-8). Absent = unconditional. */
+  condition?: string[];
+  /** The group chain's composed roll, emitted only when it is below 1. */
+  chance?: number;
+  /** Seconds after activation the edge applies, group chain plus template delay. Absent = at
+   *  cast. A delayed edge is a crash-shaped state change (DELAY-1). */
+  delaySeconds?: number;
+  /** The granted record's own `lifetime`: wall-clock seconds from grant to removal. Absent =
+   *  the record authors no wall-clock limit. */
+  expires?: number;
+  /** The granted record's `lifetime_in_game`, the in-play seconds clock. */
+  expiresInGame?: number;
+  /** The granted record's `num_allowed` — the stack ceiling ownership counts test against. */
+  maxCount?: number;
+}
+
 // ============================================
 // POWER DEFINITION
 // ============================================
@@ -858,6 +891,9 @@ export interface Power {
    * does the latter with the same two powers). See INHERENT-6.
    */
   grantedBy?: string;
+  /** The caster-state writes this power performs (grant/revoke edges). Absent on the powers
+   *  that change no ownership. */
+  grantEdges?: GrantEdge[];
   /** Level available (0 = level 1, -1 = unlocked by prerequisite) */
   available: number;
   /** Tier within the powerset */

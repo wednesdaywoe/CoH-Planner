@@ -62,8 +62,8 @@ export const TimeBomb: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe","DeadVillain"]],
-    ["Meta",null,1,1,0,"Melee_Damage","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"script_notify",["Foe","DeadVillain"]],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe","DeadVillain"],1],
+    ["Meta",null,1,1,0,"Melee_Damage","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"script_notify",["Foe","DeadVillain"],1],
     ["EntCreate",null,-1,1,360,"Melee_Levels","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Blaster","eq"],null,null,null,null,null,null,null,null,null,null,"Class_Blaster",null,["Foe","DeadVillain"]],
     ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","source>","Class_Blaster","eq"],null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance","Class_Blaster",null,["Foe","DeadVillain"]],
     ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","source>","Class_Blaster","eq"],null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance","Class_Blaster",null,["Foe","DeadVillain"]],
@@ -127,7 +127,26 @@ export const TimeBomb: Power = {
           null,
           1,
           null,
-          true
+          true,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1
         ],
         [
           "Meta",
@@ -164,7 +183,9 @@ export const TimeBomb: Power = {
           null,
           null,
           null,
-          "script_notify"
+          "script_notify",
+          null,
+          1
         ],
         [
           "EntCreate",
@@ -899,7 +920,9 @@ export const TimeBomb: Power = {
           null,
           null,
           null,
-          "revoke_power"
+          "revoke_power",
+          null,
+          1
         ],
         [
           "DamageBuff",

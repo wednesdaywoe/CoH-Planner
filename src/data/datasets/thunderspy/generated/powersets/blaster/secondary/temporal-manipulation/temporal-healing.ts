@@ -99,8 +99,8 @@ export const TemporalHealing: Power = {
     ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"],
     ["Movement","Fly",0.1,1,10,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedFlying"],
     ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedJumping"],
-    ["Recovery",null,0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones"],
-    ["Absorb",null,0.3,1,3,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"HealSelf"]
+    ["Recovery",null,0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,null,"temporal_selection_buff"],
+    ["Absorb",null,0.3,1,3,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?"],true,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,null,null,null,null,null,null,null,"temporal_selection_buff"]
   ],
   "conditionalEffects": [
     {

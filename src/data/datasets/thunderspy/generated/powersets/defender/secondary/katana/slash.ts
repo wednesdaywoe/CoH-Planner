@@ -70,7 +70,7 @@ export const Slash: Power = {
     ["Defense","All",1,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,true,"Debuff_Def"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.10000000149011612,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.BulletCut","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Lethal",0.668821,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Defense","Ranged",2,1,5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.BulletCut","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Def"]
+    ["Defense","Ranged",2,1,5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.BulletCut","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Buff_Def",null,null,null,null,null,null,null,null,null,null,"bulletcut"]
   ],
   "conditionalEffects": [
     {
@@ -103,6 +103,21 @@ export const Slash: Power = {
       "kind": "grant",
       "chance": 0.10000000149011612,
       "label": "BulletCut"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.BulletCut",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.BulletCut",
+        "source.ownPower?",
+        "!"
+      ],
+      "chance": 0.10000000149011612,
+      "expires": 5,
+      "maxCount": 1
     }
   ],
   "damageTypes": [

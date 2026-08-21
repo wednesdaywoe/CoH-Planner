@@ -87,7 +87,7 @@ export const SniperRifle: Power = {
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["cur.kToHit","source>",".97",">="],true,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.5,null,"Knockback"],
     ["Damage","Lethal",4.254292,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Lethal",0.313,1,0,"Ranged_TempDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kRange_Finder_Mode","source.Mode?"],true,null,null,null,null,null,null,null,null,"TempDamage"]
+    ["Damage","Lethal",0.313,1,0,"Ranged_TempDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kRange_Finder_Mode","source.Mode?"],true,null,null,null,null,null,null,null,null,"TempDamage",null,null,null,null,null,null,null,null,null,null,"range_finder_mode"]
   ],
   "conditionalEffects": [
     {

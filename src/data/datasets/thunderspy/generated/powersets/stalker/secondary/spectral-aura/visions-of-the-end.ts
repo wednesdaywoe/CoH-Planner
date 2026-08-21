@@ -53,6 +53,22 @@ export const VisionsOfTheEnd: Power = {
     ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Meta",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null"]
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Visions_Of_The_End_Auto",
+      "count": 1,
+      "expires": 60,
+      "maxCount": 1
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Haunting_Haze_Auto",
+      "count": 1,
+      "expires": 60,
+      "maxCount": 1
+    }
+  ],
   "damageTypes": [
     "Psionic"
   ]

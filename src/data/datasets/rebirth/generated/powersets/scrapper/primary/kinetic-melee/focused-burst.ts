@@ -107,5 +107,18 @@ export const FocusedBurst: Power = {
       "chance": 0.10000000149011612,
       "label": "Energy_Dmg"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Power_Siphon",
+      "count": 1,
+      "condition": [
+        "kSiphonMode",
+        "source.Mode?"
+      ],
+      "expiresInGame": 10,
+      "maxCount": 5
+    }
   ]
 };

@@ -70,7 +70,8 @@ export const AgingTouch: Power = {
       },
       "runSpeed": {
         "scale": 0.1,
-        "table": "Melee_SpeedRunning"
+        "table": "Melee_SpeedRunning",
+        "perTarget": 0.1
       }
     },
     "rechargeBuff": {
@@ -81,12 +82,7 @@ export const AgingTouch: Power = {
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"
-    ],
-    "runSpeed": {
-      "scale": 0.1,
-      "table": "Melee_SpeedRunning",
-      "perTarget": 0.1
-    }
+    ]
   },
   "atoms": [
     ["Mez","Knockback",2.54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

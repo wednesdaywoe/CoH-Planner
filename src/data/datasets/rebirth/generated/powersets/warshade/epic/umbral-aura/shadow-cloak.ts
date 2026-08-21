@@ -123,22 +123,41 @@ export const ShadowCloak: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,null,null,null,null,null,null,["endurancecost","power.boosted>"],null,0,null,"ShapeshiftActive"],
-    ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Defense","Smashing",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Defense","Lethal",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Defense","Fire",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Defense","Cold",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Defense","Energy",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Defense","Negative",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Defense","Psionic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Stealth","RadiusPvP",389,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Mez","Immobilized",-10,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
-    ["MezResist","Immobilized",1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"]
+    ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Defense","Smashing",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Defense","Lethal",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Defense","Fire",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Defense","Cold",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Defense","Energy",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Defense","Negative",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Defense","Psionic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Stealth","RadiusPvP",389,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Mez","Immobilized",-10,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kShapeshiftDeactive","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kShapeshiftDeactive","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kShapeshiftActive","Source.Mode?"],true,null,null,null,null,["endurancecost","power.boosted>"],null,0,null,"ShapeshiftActive",null,null,null,null,null,null,null,null,null,null,"shapeshiftactive"],
+    ["MezResist","Immobilized",1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","kShapeshiftDeactive","Source.Mode?","!","&&"],true,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "shapeshiftactive",
+      "label": "Shapeshift Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 2,
+        "durations": {
+          "recoveryBuffUnenhanced": 2
+        },
+        "recoveryBuffUnenhanced": {
+          "ignoreStrength": true,
+          "scale": 1,
+          "table": "Melee_Ones"
+        }
+      }
+    }
   ]
 };

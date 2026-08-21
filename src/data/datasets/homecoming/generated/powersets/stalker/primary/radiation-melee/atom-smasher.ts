@@ -124,5 +124,14 @@ export const AtomSmasher: Power = {
       "chance": 0.3499999940395355,
       "label": "Contaminated"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "expires": 10,
+      "maxCount": 3
+    }
   ]
 };

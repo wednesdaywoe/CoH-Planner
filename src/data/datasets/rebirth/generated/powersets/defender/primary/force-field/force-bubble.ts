@@ -52,16 +52,11 @@ export const ForceBubble: Power = {
     },
     "durations": {
       "damageDebuff": 0.3,
-      "repel": 0.25,
       "slow": 0.3
     },
     "knockback": {
       "ignoreStrength": true,
       "scale": 0.1,
-      "table": "Ranged_Ones"
-    },
-    "repel": {
-      "scale": 10,
       "table": "Ranged_Ones"
     },
     "slow": {
@@ -85,7 +80,6 @@ export const ForceBubble: Power = {
     }
   },
   "atoms": [
-    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","critter","eq","&&","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,0,null,"ForceBubbleRepel"],
     ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","critter","eq","&&","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,0.01,null,"Ones"],
     ["Movement","Run",0.4,1,0.3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","Fly",0.4,1,0.3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Slow"],
@@ -99,7 +93,8 @@ export const ForceBubble: Power = {
     ["DamageBuff","Negative",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["cur.kUntouchable","target>","0","<=","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
     ["DamageBuff","Toxic",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["cur.kUntouchable","target>","0","<=","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
     ["DamageBuff","Psionic",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["cur.kUntouchable","target>","0","<=","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
-    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","player","eq","&&","@ToHitRoll",".10","+","@ToHit","<","&&","entref","target>","entref","source>","eq","!","&&"],true,null,null,null,null,null,null,0,null,"ForceBubbleRepel"],
+    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","player","eq","&&","@ToHitRoll",".10","+","@ToHit","<","&&","entref","target>","entref","source>","eq","!","&&","kForceBubbleRepel","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ForceBubbleRepel"],
+    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","critter","eq","&&","entref","target>","entref","source>","eq","!","&&","kForceBubbleRepel","Source.Mode?","&&"],true,null,null,null,null,null,null,0,null,"ForceBubbleRepel"],
     ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","player","eq","&&","entref","target>","entref","source>","eq","!","&&"],true,null,null,null,null,null,null,0.01,null,"Ones"],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","player","eq","&&","@ToHitRoll",".10","+","@ToHit",">=","&&","entref","target>","entref","source>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"],
     ["GlobalChanceMod",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,["entref","target>","entref","source>","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
@@ -110,5 +105,8 @@ export const ForceBubble: Power = {
       "chance": 0.009999999776482582,
       "label": "Knockback"
     }
+  ],
+  "setsModes": [
+    "RepulsionFieldEffects"
   ]
 };

@@ -94,6 +94,16 @@ export const ShadowPunch: Power = {
       "label": "Assassins Focus"
     }
   ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "chance": 0.6499999761581421,
+      "expires": 10,
+      "maxCount": 3
+    }
+  ],
   "damageTypes": [
     "Negative",
     "Smashing"

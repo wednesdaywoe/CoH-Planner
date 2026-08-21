@@ -83,5 +83,25 @@ export const PowerBolt: Power = {
       "chance": 0.20000000298023224,
       "label": "Assault"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Redirects.Energy_Melee.Energy_Store_Assault",
+      "count": 1,
+      "condition": [
+        "kStunned",
+        "target>",
+        "0",
+        ">",
+        "Redirects.Energy_Melee.Energy_Store_Assault",
+        "source.ownPower?",
+        "!",
+        "&&"
+      ],
+      "chance": 0.20000000298023224,
+      "expires": 15,
+      "maxCount": 5
+    }
   ]
 };

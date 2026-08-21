@@ -109,5 +109,110 @@ export const TotalFocus: Power = {
       "chance": 0.20000000298023224,
       "label": "Energy Store"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "expires": 10,
+      "maxCount": 3
+    },
+    {
+      "op": "grant",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "enttype",
+        "target>",
+        "critter",
+        "eq",
+        "kMeter",
+        "source>",
+        "0",
+        ">",
+        "&&"
+      ],
+      "expires": 15,
+      "maxCount": 5
+    },
+    {
+      "op": "grant",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "enttype",
+        "target>",
+        "critter",
+        "eq",
+        "kMeter",
+        "source>",
+        ".9",
+        "<",
+        "&&"
+      ],
+      "chance": 0.07000000029802322,
+      "expires": 15,
+      "maxCount": 5
+    },
+    {
+      "op": "grant",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "enttype",
+        "target>",
+        "player",
+        "eq",
+        "kMeter",
+        "source>",
+        "0",
+        ">",
+        "&&"
+      ],
+      "expires": 15,
+      "maxCount": 5
+    },
+    {
+      "op": "grant",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "enttype",
+        "target>",
+        "player",
+        "eq",
+        "kMeter",
+        "source>",
+        ".9",
+        "<",
+        "kHeld",
+        "target>",
+        "0",
+        ">",
+        "kSleep",
+        "target>",
+        "0",
+        ">",
+        "||",
+        "&&",
+        "&&"
+      ],
+      "chance": 0.20000000298023224,
+      "expires": 15,
+      "maxCount": 5
+    },
+    {
+      "op": "grant",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "Redirects.Energy_Melee.Energy_Store",
+        "source.ownPower?",
+        "!"
+      ],
+      "expires": 15,
+      "maxCount": 5
+    }
   ]
 };

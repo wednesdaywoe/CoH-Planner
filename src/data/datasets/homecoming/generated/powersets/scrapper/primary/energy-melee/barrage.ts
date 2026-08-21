@@ -81,8 +81,8 @@ export const Barrage: Power = {
     ["Damage","Smashing",0.1964,1,0.3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EnergyRelease"],
     ["Damage","Energy",1.571,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST"],
-    ["Regeneration",null,-1,0,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,"revoke_power"],
+    ["Regeneration",null,-1,0,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,null,null,null,null,null,null,null,null,null,"energy_store"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"EnergyRelease",null,"revoke_power",null,null,null,null,null,null,null,null,"energy_store"],
     ["Heal",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"ScheduleA"],
     ["Absorb",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"ScheduleA"],
     ["Endurance",null,-0.25,1,15,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Redirects.Energy_Melee.Energy_Store","source.ownPower?"],true,null,null,null,null,null,null,null,null,"ScheduleA"],
@@ -148,6 +148,17 @@ export const Barrage: Power = {
       "kind": "effect-proc",
       "chance": 0.10000000149011612,
       "label": "Energy_Dmg"
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "Redirects.Energy_Melee.Energy_Store",
+        "source.ownPower?"
+      ]
     }
   ]
 };

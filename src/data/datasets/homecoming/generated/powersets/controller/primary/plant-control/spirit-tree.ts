@@ -51,7 +51,7 @@ export const SpiritTree: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,60],
     ["EntCreate",null,1,1,60,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1]
   ]
 };

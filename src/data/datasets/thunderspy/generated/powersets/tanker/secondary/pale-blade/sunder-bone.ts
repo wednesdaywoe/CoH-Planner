@@ -77,21 +77,21 @@ export const SunderBone: Power = {
     ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.19599999487400055,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
-    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Lash","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Flay","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_RendFlesh","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Khloros","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_PaleBlade","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Fester","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Lash","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Flay","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_RendFlesh","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Khloros","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_PaleBlade","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Fester","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power"],
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones"],
-    ["Damage","Cold",2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage"]
+    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Lash","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"pale_enemy_lash"],
+    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Flay","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"pale_enemy_flay"],
+    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_RendFlesh","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"pale_enemy_rendflesh"],
+    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Khloros","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"pale_enemy_khloros"],
+    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_PaleBlade","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"pale_enemy_paleblade"],
+    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Fester","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.6,null,null,null,null,null,null,"pale_enemy_fester"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Lash","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,1,null,null,null,null,null,null,"pale_enemy_lash"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Flay","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,1,null,null,null,null,null,null,"pale_enemy_flay"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_RendFlesh","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,1,null,null,null,null,null,null,"pale_enemy_rendflesh"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Khloros","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,1,null,null,null,null,null,null,"pale_enemy_khloros"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_PaleBlade","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,1,null,null,null,null,null,null,"pale_enemy_paleblade"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Enemy_Fester","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,1,null,null,null,null,null,null,"pale_enemy_fester"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,1,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.5,null,null,null,null,null,null,"pale_self_buff_plaguebearer"],
+    ["Damage","Cold",2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"pale_self_buff_plaguebearer"]
   ],
   "conditionalEffects": [
     {
@@ -175,6 +175,30 @@ export const SunderBone: Power = {
         "scale": 2,
         "table": "Melee_Damage"
       }
+    }
+  ],
+  "grantEdges": [
+    {
+      "op": "revoke",
+      "path": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer",
+        "source.ownPower?"
+      ],
+      "delaySeconds": 1
+    },
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Pale_Perdition_Crash",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer",
+        "source.ownPower?"
+      ],
+      "delaySeconds": 0.5,
+      "expires": 15,
+      "maxCount": 1
     }
   ],
   "damageTypes": [

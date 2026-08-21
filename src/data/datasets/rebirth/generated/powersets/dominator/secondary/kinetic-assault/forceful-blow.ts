@@ -97,5 +97,20 @@ export const ForcefulBlow: Power = {
       "chance": 0.4000000059604645,
       "label": "Knock Up"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+      "count": 1,
+      "condition": [
+        "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse",
+        "source.ownPowerNum?",
+        "5",
+        "<"
+      ],
+      "expires": 30,
+      "maxCount": 5
+    }
   ]
 };

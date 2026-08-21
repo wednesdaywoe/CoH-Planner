@@ -60,9 +60,9 @@ export const DimensionShift: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","PvE",true,"Ignore",2,null,null,1],
-    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","PvE",true,"Ignore",2,null,null,1],
-    ["EntCreate",null,-1,1,3,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["EntCreate",null,-1,1,3,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","PvE",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,"OnActivate",20],
+    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","PvE",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,"OnActivate"],
+    ["EntCreate",null,-1,1,3,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,"OnActivate"],
+    ["EntCreate",null,-1,1,3,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.5,null,null,null,null,"OnActivate"]
   ]
 };

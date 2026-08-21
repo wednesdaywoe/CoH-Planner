@@ -119,5 +119,23 @@ export const Stun: Power = {
       "chance": 0.07000000029802322,
       "label": "Energy_Dmg"
     }
+  ],
+  "grantEdges": [
+    {
+      "op": "grant",
+      "path": "Temporary_Powers.Temporary_Powers.Assassins_Focus",
+      "count": 1,
+      "expires": 10,
+      "maxCount": 3
+    },
+    {
+      "op": "revoke",
+      "path": "Redirects.Energy_Melee.Energy_Store",
+      "count": 1,
+      "condition": [
+        "Redirects.Energy_Melee.Energy_Store",
+        "source.ownPower?"
+      ]
+    }
   ]
 };

@@ -278,7 +278,21 @@ export const WaterJet: Power = {
             "target>",
             "critter",
             "eq"
-          ]
+          ],
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          2
         ],
         [
           "Damage",
@@ -398,7 +412,11 @@ export const WaterJet: Power = {
           null,
           0,
           null,
-          "SentCrit"
+          "SentCrit",
+          null,
+          null,
+          null,
+          2
         ],
         [
           "Movement",
