@@ -45,7 +45,6 @@ import { getIncarnateTrees } from '@/data/incarnates';
 import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
 import { getRechargeBounds } from '@/data/at-tables';
 import { atomsOf } from '@/data/core/atom-query';
-import { landsOnCaster } from '@/data/core/atomic-effect';
 import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
@@ -777,18 +776,6 @@ function authoredSlotsAgree(a: unknown, b: unknown): boolean {
   );
 }
 
-/** The deepest stack the power's OWN atoms reach for a caster-side buff — `toWho` reaching the
- *  caster, `stack ∈ {Stack, RefreshToCount}`, `stackCap > 1` (the converter's `detectSelfStacking`
- *  qualification, read off the wire fields it rides on). 0 when nothing self-stacks. */
-function atomStackCap(power: Power | SelectedPower): number {
-  let cap = 0;
-  for (const atom of atomsOf(power)) {
-    if (!landsOnCaster(atom)) continue;
-    if (atom.stacking !== 'Stack' && atom.stacking !== 'RefreshToCount') continue;
-    if ((atom.stackCap ?? 0) > cap) cap = atom.stackCap ?? 0;
-  }
-  return cap;
-}
 
 /** A by-type label with its segment order removed. The segments are joined without a delimiter
  *  (`RunFlyJmpH…`), so they cannot be re-split reliably (COND-8: a joined string is for asking,
@@ -842,23 +829,21 @@ function byTypeFingerprint(label: string | null | undefined): string | null {
  *  aura's own scale-1 row, the TAUNT-1 own-beats-redirect rule). Rows the two datasets author
  *  IDENTICALLY keep failing hard, which is what preserves the gate's grip on resolution.
  *
- *  `stackEvidence` (the targets-hit sweep only) covers the one divergence that is neither drift
- *  nor an engine defect: the legacy `withTargetsHit` multiplies only keys its dataset's
- *  `stacksLinear` names, and that list is authored self-inconsistently — the converter's
- *  stacking classifier keys a `Range|Str` template to `specialBuff` while its extractor puts
- *  the VALUE on `rangeBuff`, so the list names a key the bag carries no value for and omits the
- *  key that has one (sentinel Aim; the same classifier-vs-router split PERFOE-1 measured at
- *  `debuffResistance`). The engine stacks atom-natively and needs no list. The adjudication
- *  demands the export-side proof: authored slots EQUAL, the key absent from the authored
- *  `stacksLinear`, the power's own atoms self-stacking ([`atomStackCap`] > 1), and the engine
- *  value equal to the beta value × min(N, cap) — a genuine stacking bug fails all four. */
+ *  There is no linear-self-stack adjudication any more, and the reason is worth keeping. The
+ *  legacy `withTargetsHit` multiplies only the keys its dataset's `stacksLinear` names, and
+ *  that list used to be authored self-inconsistently: the converter's stacking classifier was
+ *  a second hand-maintained copy of the routing rules, and it keyed a `Range|Str` template to
+ *  `specialBuff` while the extractor put the VALUE on `rangeBuff`, so sentinel Aim's list named
+ *  a key the bag had nothing under and omitted the one that did. Both datasets shipped it, so
+ *  the rows were adjudicated on atom evidence instead. STACK-6 closed it upstream — the keys
+ *  come from the router now — and the rows are plain greens, which is the bar the exit
+ *  condition set. A row that needs the old adjudication is a regression, not an exception. */
 function magnitudeDeltas(
   powerName: string,
   engineRows: GrantedMagnitude[],
   betaRows: Map<string, ResolvedMagnitude>,
   betaEffects: Record<string, unknown> | undefined,
   engineEffects?: Record<string, unknown>,
-  stackEvidence?: { targetsHit: number; power: Power | SelectedPower },
 ): { real: string[]; adjudicated: string[] } {
   const out: string[] = [];
   const adjudicated: string[] = [];
@@ -914,18 +899,6 @@ function magnitudeDeltas(
       }
       continue;
     }
-    // The linear self-stack divergence: authored slots EQUAL, so drift explains nothing, but
-    // the legacy multiply is gated on the authored `stacksLinear` list while the engine stacks
-    // off the atoms — see the function doc. All four evidence legs or the delta stands.
-    const stacksLinear = Array.isArray(betaEffects?.stacksLinear) ? (betaEffects!.stacksLinear as string[]) : [];
-    const stackCap = stackEvidence ? atomStackCap(stackEvidence.power) : 0;
-    const stackMultiple = stackEvidence ? Math.min(stackEvidence.targetsHit, stackCap) : 0;
-    const stackExplains = (tier: 'base' | 'enhanced' | 'final') =>
-      stackEvidence != null &&
-      !drift &&
-      stackCap > 1 &&
-      !stacksLinear.includes(effectKey) &&
-      withinTolerance(engine.value[tier], beta.tiers[tier] * stackMultiple);
     // PROD6C-3b's per-target SHAPE adjudication is gone (PROD6C-3j): the engine's converter now
     // exports the per-foe increment for a MaxHP-fraction absorb too, so the two shapes agree
     // under a dragged slider as they always did at one target. A row that grows on one side
@@ -934,8 +907,6 @@ function magnitudeDeltas(
       if (withinTolerance(engine.value[tier], beta.tiers[tier])) continue;
       if (drift) {
         adjudicated.push(`${key}.${tier}: ${driftNote}`);
-      } else if (stackExplains(tier)) {
-        adjudicated.push(`${key}.${tier}: engine ${engine.value[tier]} = beta ${beta.tiers[tier]} × ${stackMultiple} — the authored stacksLinear omits '${effectKey}' while the power's own atoms self-stack to ${stackCap}; the engine stacks atom-natively`);
       } else {
         out.push(`${powerName}.${key}.${tier}: engine ${engine.value[tier]} vs beta ${beta.tiers[tier]}`);
       }
@@ -1638,10 +1609,6 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           enginePower
             ? displayBag(enginePower as unknown as Power, targetsHit, shownPower(enginePower as unknown as Power, build, atId, rawGlobal))
             : undefined,
-          // The linear self-stack evidence (see the magnitudeDeltas doc): this sweep is the one
-          // place the slider is dragged, so it is the one place the legacy list-gated multiply
-          // and the engine's atom-native one can diverge.
-          { targetsHit, power },
         );
         deltas.push(...mags.real);
         adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));

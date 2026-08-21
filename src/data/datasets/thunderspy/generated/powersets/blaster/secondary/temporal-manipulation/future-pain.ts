@@ -93,7 +93,7 @@ export const FuturePain: Power = {
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",
-      "runSpeed"
+      "movement"
     ]
   },
   "atoms": [

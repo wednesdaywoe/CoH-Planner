@@ -60,7 +60,8 @@ export const DullPain: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "maxHPBuff"
+      "maxHPBuff",
+      "maxHPBuffUnenhanced"
     ]
   },
   "atoms": [

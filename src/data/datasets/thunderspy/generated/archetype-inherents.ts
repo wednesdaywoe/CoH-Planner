@@ -4018,7 +4018,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         },
         "maxStacks": 2,
         "stacksLinear": [
-          "fly"
+          "movement"
         ]
       },
       "atoms": [

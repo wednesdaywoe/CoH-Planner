@@ -84,7 +84,7 @@ export const WhiteDwarfStep: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "fly"
+      "movement"
     ]
   },
   "atoms": [

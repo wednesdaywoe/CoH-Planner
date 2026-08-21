@@ -78,10 +78,7 @@ export const Defibrillate: Power = {
         "table": "Melee_Ones"
       }
     },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "specialBuff"
-    ]
+    "maxStacks": 2
   },
   "atoms": [
     ["Heal",null,1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,3.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadPlayerFriend"]],

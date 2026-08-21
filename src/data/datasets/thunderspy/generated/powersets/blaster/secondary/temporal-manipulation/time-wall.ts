@@ -122,7 +122,7 @@ export const TimeWall: Power = {
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",
-      "runSpeed"
+      "movement"
     ]
   },
   "atoms": [

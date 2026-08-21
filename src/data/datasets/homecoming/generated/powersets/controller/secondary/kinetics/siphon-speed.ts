@@ -98,9 +98,8 @@ export const SiphonSpeed: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "flySpeed",
-      "rechargeBuff",
-      "runSpeed"
+      "movement",
+      "rechargeBuff"
     ]
   },
   "atoms": [

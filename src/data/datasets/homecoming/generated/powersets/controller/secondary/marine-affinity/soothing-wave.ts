@@ -59,10 +59,7 @@ export const SoothingWave: Power = {
     "durations": {
       "damageDebuff": 10
     },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "specialBuff"
-    ]
+    "maxStacks": 2
   },
   "atoms": [
     ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],

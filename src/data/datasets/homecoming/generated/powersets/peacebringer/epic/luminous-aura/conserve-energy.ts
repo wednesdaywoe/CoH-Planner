@@ -46,7 +46,7 @@ export const ConserveEnergy: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "specialBuff"
+      "enduranceDiscount"
     ]
   },
   "atoms": [

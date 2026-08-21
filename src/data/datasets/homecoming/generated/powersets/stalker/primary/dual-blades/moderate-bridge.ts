@@ -72,10 +72,7 @@ export const ModerateBridge: Power = {
     "durations": {
       "defenseDebuff": 10
     },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "specialBuff"
-    ]
+    "maxStacks": 2
   },
   "atoms": [
     ["Damage","Lethal",0.66,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

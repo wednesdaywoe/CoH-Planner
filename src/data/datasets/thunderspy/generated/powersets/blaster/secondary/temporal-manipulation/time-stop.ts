@@ -87,7 +87,7 @@ export const TimeStop: Power = {
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",
-      "runSpeed"
+      "movement"
     ]
   },
   "atoms": [

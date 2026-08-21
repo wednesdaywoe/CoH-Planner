@@ -100,8 +100,7 @@ export const KujiInRetsu: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "jumpHeight",
-      "runSpeed"
+      "movement"
     ]
   },
   "atoms": [

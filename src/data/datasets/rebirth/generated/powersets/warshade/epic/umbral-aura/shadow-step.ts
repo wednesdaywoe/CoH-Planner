@@ -86,7 +86,7 @@ export const ShadowStep: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "fly"
+      "movement"
     ]
   },
   "atoms": [

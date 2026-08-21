@@ -62,7 +62,7 @@ export const Aim: Power = {
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",
-      "specialBuff",
+      "rangeBuff",
       "tohitBuff"
     ]
   },

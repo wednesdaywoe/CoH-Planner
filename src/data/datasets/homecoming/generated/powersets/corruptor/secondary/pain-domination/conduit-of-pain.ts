@@ -105,7 +105,7 @@ export const ConduitofPain: Power = {
       "damageBuff",
       "rechargeBuff",
       "recoveryBuff",
-      "tohitBuff"
+      "tohitBuffUnenhanced"
     ]
   },
   "atoms": [

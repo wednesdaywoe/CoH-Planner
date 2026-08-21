@@ -8028,7 +8028,7 @@ export const POWER_POOLS_RAW = {
               },
               "maxStacks": 2,
               "stacksLinear": [
-                "fly"
+                "movement"
               ]
             },
             "shortHelp": "Ranged (Location), Self Teleport",
@@ -8110,7 +8110,7 @@ export const POWER_POOLS_RAW = {
               },
               "maxStacks": 2,
               "stacksLinear": [
-                "fly"
+                "movement"
               ]
             },
             "shortHelp": "Ranged (Location), Self Teleport",
@@ -8191,7 +8191,7 @@ export const POWER_POOLS_RAW = {
               },
               "maxStacks": 2,
               "stacksLinear": [
-                "fly"
+                "movement"
               ]
             },
             "shortHelp": "Ranged (Location), Self Teleport",

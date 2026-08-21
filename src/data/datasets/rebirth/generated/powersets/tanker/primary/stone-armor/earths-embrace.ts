@@ -69,7 +69,8 @@ export const EarthsEmbrace: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "maxHPBuff"
+      "maxHPBuff",
+      "maxHPBuffUnenhanced"
     ]
   },
   "atoms": [

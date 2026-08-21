@@ -85,7 +85,7 @@ export const BlackDwarfStep: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "fly"
+      "movement"
     ]
   },
   "atoms": [

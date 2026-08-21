@@ -6912,6 +6912,43 @@ function collectRedirectStackingTemplates(redirectName, visited = new Set(), dep
 }
 
 /**
+ * Which bag slots a stacking template's value actually lands in.
+ *
+ * `classifyTemplateForStacking` decides WHETHER a template stacks linearly; this decides
+ * WHERE the value it stacks is written, and the two are different questions with different
+ * right answers. The classifier is a second, hand-maintained copy of the routing rules, and a
+ * copy drifts: it named `specialBuff` for Sentinel Aim's `Range|Str` row that
+ * `projectAtomsToEffects` puts on `rangeBuff`, so the emitted `stacksLinear` named a key the
+ * bag had no value for and omitted the one that did. Nothing here could see it — the Rust
+ * engine stacks atom-natively off `StackFamily`, and its one reader of the list is a gate
+ * asking whether every key the corpus ships is MAPPED, which `specialBuff` is. So the defect
+ * lived entirely in a twin only legacy consumers resolve (STACK-6).
+ *
+ * So ask the router. Projecting the single template through the same function `extractEffects`
+ * runs returns the slots it writes, which is the answer by construction rather than by
+ * agreement. Admission stays the classifier's — the router happily names `stun`, `teleport`
+ * and every debuff slot for Self-targeted rows that are applications rather than buffs, and
+ * those do not multiply with stack count.
+ *
+ * A template the router writes nothing for contributes no key: the 114 Homecoming
+ * `Cancel_Mods`/`Execute_Power` rows the classifier's aspect=Strength branch swept into
+ * `specialBuff` are redirect and mod-cancel machinery, and there is no magnitude for a stack
+ * to multiply. `maxStacks` is deliberately left on the classifier's verdict, so a power whose
+ * only stacking row is one of those keeps the stack count it already shipped.
+ */
+const _STACKING_BAG_META_KEYS = new Set([
+  'durations', 'buffDuration', 'effectDuration', 'maxStacks', 'stacksLinear', 'stackCaps',
+  'onlyAffectsSelf', 'summon',
+]);
+function routedStackingKeys(template, ctx) {
+  if (!ctx) return null;
+  const bag = projectAtomsToEffects(
+    templatesToAtoms([template]), ctx.powerName, ctx.targetsAffected,
+  );
+  return Object.keys(bag).filter((k) => !_STACKING_BAG_META_KEYS.has(k));
+}
+
+/**
  * Detect self-stacking from `stack_limit` on caster-targeted templates.
  * Used when a power applies a buff to itself with a self-stacking StackType and
  * a stack_limit > 1 (e.g. Siphon Speed caster recharge/movement buffs,
@@ -6937,7 +6974,7 @@ function collectRedirectStackingTemplates(redirectName, visited = new Set(), dep
  *     the slider can range to maxStacks without over-multiplying the lower-cap key.
  * or null if no qualifying templates.
  */
-function detectSelfStacking(allTemplatesWithMeta, excludeKeys = new Set()) {
+function detectSelfStacking(allTemplatesWithMeta, excludeKeys = new Set(), bagCtx = null) {
   let maxStacks = 0;
   const stacksLinearSet = new Set();
   const capByKey = {};
@@ -6953,9 +6990,13 @@ function detectSelfStacking(allTemplatesWithMeta, excludeKeys = new Set()) {
     if (classifications.length === 0) continue;
 
     if (limit > maxStacks) maxStacks = limit;
-    for (const c of classifications) {
-      stacksLinearSet.add(c.effectKey);
-      capByKey[c.effectKey] = Math.max(capByKey[c.effectKey] || 0, limit);
+    // Admitted by the classifier, keyed by the router — see routedStackingKeys.
+    const routed = routedStackingKeys(template, bagCtx);
+    const keys = (routed ?? classifications.map(c => c.effectKey))
+      .filter(k => !excludeKeys.has(k));
+    for (const key of keys) {
+      stacksLinearSet.add(key);
+      capByKey[key] = Math.max(capByKey[key] || 0, limit);
     }
   }
 
@@ -7282,7 +7323,10 @@ function detectStackingEffects(rawJson) {
   // must not be BOTH perTarget and stacksLinear or the InfoPanel double-scales it
   // (Consume Psyche's regen/recovery are perTarget; without this they'd also be
   // stacksLinear → ~N² at 10 foes).
-  const selfStacking = detectSelfStacking(baseTemplatesWithMeta, new Set(Object.keys(patches)));
+  const selfStacking = detectSelfStacking(
+    baseTemplatesWithMeta, new Set(Object.keys(patches)),
+    { powerName: rawJson.name, targetsAffected: rawJson.targets_affected },
+  );
   let stacksLinear = null;
   let stackCaps = null;
   if (selfStacking) {
@@ -7317,6 +7361,22 @@ function mergeStackingPatches(effects, stackingResult) {
   if (stacksLinear && stacksLinear.length > 0) {
     const merged = new Set([...(effects.stacksLinear || []), ...stacksLinear]);
     effects.stacksLinear = [...merged].sort();
+    // `stacksLinear` is a list of keys in THIS bag, so a key the bag has no value for says
+    // nothing — there is no magnitude for a stack count to multiply. The keys are the
+    // router's now (see routedStackingKeys), which settles every disagreement about WHERE a
+    // template's value goes; what survives is a disagreement about WHICH templates exist.
+    // The stacking detector collects a superset of the bag's: `collectTemplatesDeep` drops
+    // PvP-only groups, PvE/PvP `enttype` twins, `_variantGate` carriers and the rest, while
+    // the detector filters on `_isBaseExcludedGate` alone. So Rebirth Fiery Embrace names
+    // `damageBuff` off rows the bag dropped as `isPVPMap?`-only, and Homecoming Charged
+    // Bolts names `enduranceGain` off the chance-gated Zapping self-row. Stating the field's
+    // own invariant here is the whole of that class as STACK-6 can see it; the collector
+    // difference itself is upstream and reaches `maxStacks` and the per-target patches too.
+    const kept = effects.stacksLinear.filter((k) => effects[k] !== undefined);
+    if (kept.length !== effects.stacksLinear.length) {
+      if (kept.length === 0) delete effects.stacksLinear;
+      else effects.stacksLinear = kept;
+    }
   }
 
   if (stackCaps && Object.keys(stackCaps).length > 0) {

@@ -165,10 +165,7 @@ export const IcyBastion: Power = {
       "scale": 0.75,
       "table": "Melee_Ones"
     },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "specialBuff"
-    ]
+    "maxStacks": 2
   },
   "atoms": [
     ["Regeneration",null,6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

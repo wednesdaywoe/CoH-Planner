@@ -79,10 +79,7 @@ export const Special1: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "specialBuff"
-    ]
+    "maxStacks": 2
   },
   "atoms": [
     ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

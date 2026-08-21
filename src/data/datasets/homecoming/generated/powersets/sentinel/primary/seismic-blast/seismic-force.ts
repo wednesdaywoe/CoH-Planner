@@ -61,7 +61,7 @@ export const SeismicForce: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "specialBuff"
+      "rangeBuff"
     ]
   },
   "atoms": [

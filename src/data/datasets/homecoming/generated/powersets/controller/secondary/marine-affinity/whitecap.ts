@@ -125,10 +125,7 @@ export const Whitecap: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "specialBuff"
-    ]
+    "maxStacks": 2
   },
   "atoms": [
     ["Resistance","Smashing",-1.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

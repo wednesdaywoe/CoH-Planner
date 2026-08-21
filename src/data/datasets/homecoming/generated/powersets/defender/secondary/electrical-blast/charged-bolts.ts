@@ -55,10 +55,7 @@ export const ChargedBolts: Power = {
       "scale": 0.07,
       "table": "Ranged_EndDrain"
     },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
+    "maxStacks": 2
   },
   "atoms": [
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

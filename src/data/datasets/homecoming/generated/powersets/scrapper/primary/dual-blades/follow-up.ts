@@ -70,7 +70,6 @@ export const FollowUp: Power = {
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",
-      "specialBuff",
       "tohitBuff"
     ]
   },

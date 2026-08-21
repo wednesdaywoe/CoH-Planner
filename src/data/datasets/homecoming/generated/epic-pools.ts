@@ -2487,7 +2487,7 @@ export const EPIC_POOLS_RAW = {
           },
           "maxStacks": 2,
           "stacksLinear": [
-            "specialBuff"
+            "enduranceDiscount"
           ]
         }
       },
@@ -5874,7 +5874,8 @@ export const EPIC_POOLS_RAW = {
           },
           "maxStacks": 2,
           "stacksLinear": [
-            "maxHPBuff"
+            "maxHPBuff",
+            "maxHPBuffUnenhanced"
           ]
         }
       },
@@ -6339,7 +6340,8 @@ export const EPIC_POOLS_RAW = {
           },
           "maxStacks": 2,
           "stacksLinear": [
-            "maxHPBuff"
+            "maxHPBuff",
+            "maxHPBuffUnenhanced"
           ]
         }
       },
@@ -11283,7 +11285,8 @@ export const EPIC_POOLS_RAW = {
           },
           "maxStacks": 2,
           "stacksLinear": [
-            "maxHPBuff"
+            "maxHPBuff",
+            "maxHPBuffUnenhanced"
           ]
         }
       },
@@ -15039,7 +15042,7 @@ export const EPIC_POOLS_RAW = {
           },
           "maxStacks": 2,
           "stacksLinear": [
-            "specialBuff"
+            "enduranceDiscount"
           ]
         }
       },
@@ -19143,7 +19146,8 @@ export const EPIC_POOLS_RAW = {
           },
           "maxStacks": 2,
           "stacksLinear": [
-            "maxHPBuff"
+            "maxHPBuff",
+            "maxHPBuffUnenhanced"
           ]
         }
       },
@@ -22582,7 +22586,7 @@ export const EPIC_POOLS_RAW = {
           },
           "maxStacks": 2,
           "stacksLinear": [
-            "specialBuff"
+            "enduranceDiscount"
           ]
         }
       },
@@ -23195,7 +23199,7 @@ export const EPIC_POOLS_RAW = {
           },
           "maxStacks": 2,
           "stacksLinear": [
-            "specialBuff"
+            "enduranceDiscount"
           ]
         }
       },
@@ -23680,7 +23684,7 @@ export const EPIC_POOLS_RAW = {
           },
           "maxStacks": 2,
           "stacksLinear": [
-            "specialBuff"
+            "enduranceDiscount"
           ]
         }
       },
@@ -33149,7 +33153,8 @@ export const EPIC_POOLS_RAW = {
           },
           "maxStacks": 2,
           "stacksLinear": [
-            "maxHPBuff"
+            "maxHPBuff",
+            "maxHPBuffUnenhanced"
           ]
         }
       }

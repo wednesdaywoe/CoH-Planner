@@ -93,8 +93,7 @@ export const Elude: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "jumpHeight",
-      "runSpeed"
+      "movement"
     ]
   },
   "atoms": [

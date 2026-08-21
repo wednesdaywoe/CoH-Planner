@@ -62,10 +62,7 @@ export const LightningBolt: Power = {
       "scale": 0.1,
       "table": "Ranged_EndDrain"
     },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
+    "maxStacks": 2
   },
   "atoms": [
     ["Endurance",null,-0.1,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

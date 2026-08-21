@@ -60,7 +60,8 @@ export const Serum: Power = {
     },
     "maxStacks": 2,
     "stacksLinear": [
-      "maxHPBuff"
+      "maxHPBuff",
+      "maxHPBuffUnenhanced"
     ]
   },
   "atoms": [

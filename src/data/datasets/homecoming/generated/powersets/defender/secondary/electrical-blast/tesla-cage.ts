@@ -82,10 +82,7 @@ export const TeslaCage: Power = {
       "scale": 1.1,
       "table": "Ranged_EndDrain"
     },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
+    "maxStacks": 2
   },
   "atoms": [
     ["Recovery",null,-1,1,8,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],

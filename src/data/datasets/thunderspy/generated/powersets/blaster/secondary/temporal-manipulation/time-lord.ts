@@ -82,9 +82,7 @@ export const TimeLord: Power = {
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",
-      "flySpeed",
-      "jumpSpeed",
-      "runSpeed"
+      "movement"
     ]
   },
   "atoms": [
