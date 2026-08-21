@@ -61,6 +61,11 @@
       "sha256": "f9271521c4efec560d08a894e0dde6216bc8a625fa1f0be03cea22bf364fe367"
     },
     {
+      "path": "scripts/_variant-modes.cjs",
+      "status": "identical",
+      "sha256": "06dcf9710cecb4dfbcba9cdee9ee757ffac8f77f81c6849a74ac3d20ce662664"
+    },
+    {
       "path": "scripts/audit-allowed-set-categories.cjs",
       "status": "forked",
       "sha256": {
@@ -174,14 +179,24 @@
         "canonical": "ff7265df1778a52a8646f94abe5f13704401580cf018f46a998e5ea33af34a0d",
         "beta": "ecb61b50386ad71f43065bb6525bf11234ade157468979646835f263853fa39c"
       },
-      "reason": "The pipeline's two genuine forks in one file: 1,006 lines only canonical has and 292 only beta has. Canonical carries the register's gate-classification, caster-meter, chance-mod-selector, conditional-id-stamp, grant-edge and variant-mode work; beta carries `extractDualPistolsAmmo`, which branches on `dual_pistols` in a conditional and is a Rule 0 breach that only drift kept invisible. Canonical's half cannot simply be copied: it requires `_variant-modes.cjs`, `detect-caster-meters.cjs` and `detect-chance-mod-selectors.cjs`, none of which exist in beta.",
-      "exit": "Port the three missing modules to beta, then reconcile function by function against the register; delete `extractDualPistolsAmmo` rather than porting it, and source the ammo forms from the export.",
+      "reason": "The pipeline's two genuine forks in one file: 1,006 lines only canonical has and 292 only beta has. Canonical carries the register's gate-classification, caster-meter, chance-mod-selector, conditional-id-stamp, grant-edge and variant-mode work; beta carries `extractDualPistolsAmmo`, which branches on `dual_pistols` in a conditional and is a Rule 0 breach that only drift kept invisible. The three modules canonical's half requires (`_variant-modes.cjs`, `detect-caster-meters.cjs`, `detect-chance-mod-selectors.cjs`) were ported to beta on 2026-08-20, mechanically, along with the six per-dataset outputs the two detectors write. Both detectors reproduce canonical's committed outputs byte for byte on all three forks, so the structural blocker is gone and what is left is the reconciliation itself.",
+      "exit": "Reconcile function by function against the register. Delete `extractDualPistolsAmmo` rather than porting it, and source the ammo forms from the export. The module port landed 2026-08-20.",
       "gap": "FORK-1"
     },
     {
       "path": "scripts/convert-salvage.cjs",
       "status": "identical",
       "sha256": "27d8f1995d321bb56ff1f5e2123c5b897bbb836af8433c5bbffec1a0fefae17a"
+    },
+    {
+      "path": "scripts/detect-caster-meters.cjs",
+      "status": "identical",
+      "sha256": "1ef8aef624b832ca58108bf2b1e72f0df6bc573f72a7e4b6fe1a52538caeb3d2"
+    },
+    {
+      "path": "scripts/detect-chance-mod-selectors.cjs",
+      "status": "identical",
+      "sha256": "aa1177e467456fae47fd683894eb81ea9f9e819dbbd58b7fb8c5e8076ea46853"
     },
     {
       "path": "scripts/dsh6-collapse-detector.cjs",

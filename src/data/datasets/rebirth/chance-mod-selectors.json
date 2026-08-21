@@ -1,0 +1,602 @@
+{
+ "selected": [
+  {
+   "tag": "CantWeaveOffTheGround",
+   "dir": "cut",
+   "movers": [
+    "Pool.Flight.Group_Fly",
+    "Pool.Leaping.Leap"
+   ],
+   "carriers": [
+    "Pool.Fighting.Weave"
+   ],
+   "rows": 21
+  },
+  {
+   "tag": "ColdDamage",
+   "dir": "raise",
+   "movers": [
+    "Blaster_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Cryo_Ammunition"
+   ],
+   "carriers": [
+    "Blaster_Ranged.Dual_Pistols.Bullet_Rain",
+    "Blaster_Ranged.Dual_Pistols.Dual_Wield",
+    "Blaster_Ranged.Dual_Pistols.Empty_Clips",
+    "Blaster_Ranged.Dual_Pistols.Executioners_Shot",
+    "Blaster_Ranged.Dual_Pistols.Hail_of_Bullets",
+    "Blaster_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Blaster_Ranged.Dual_Pistols.Pistols",
+    "Blaster_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Corruptor_Ranged.Dual_Pistols.Bullet_Rain",
+    "Corruptor_Ranged.Dual_Pistols.Dual_Wield",
+    "Corruptor_Ranged.Dual_Pistols.Empty_Clips",
+    "Corruptor_Ranged.Dual_Pistols.Executioners_Shot",
+    "Corruptor_Ranged.Dual_Pistols.Hail_of_Bullets",
+    "Corruptor_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Corruptor_Ranged.Dual_Pistols.Pistols",
+    "Corruptor_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Defender_Ranged.Dual_Pistols.Bullet_Rain",
+    "Defender_Ranged.Dual_Pistols.Dual_Wield",
+    "Defender_Ranged.Dual_Pistols.Empty_Clips",
+    "Defender_Ranged.Dual_Pistols.Executioners_Shot",
+    "Defender_Ranged.Dual_Pistols.Hail_of_Bullets",
+    "Defender_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Defender_Ranged.Dual_Pistols.Pistols",
+    "Defender_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Mission_Maker_Attacks.Dual_Pistols.Bullet_Rain",
+    "Mission_Maker_Attacks.Dual_Pistols.Dual_Wield",
+    "Mission_Maker_Attacks.Dual_Pistols.Empty_Clips",
+    "Mission_Maker_Attacks.Dual_Pistols.Executioners_Shot",
+    "Mission_Maker_Attacks.Dual_Pistols.Hail_of_Bullets",
+    "Mission_Maker_Attacks.Dual_Pistols.Piercing_Rounds",
+    "Mission_Maker_Attacks.Dual_Pistols.Pistols",
+    "Mission_Maker_Attacks.Dual_Pistols.Suppressive_Fire",
+    "Mission_Maker_Attacks.Dual_Pistols.Swap_Ammo"
+   ],
+   "rows": 209
+  },
+  {
+   "tag": "FeetCantTouchTheGround",
+   "dir": "cut",
+   "movers": [
+    "Pool.Flight.Combat_Flight",
+    "Pool.Flight.Fly",
+    "Pool.Flight.Group_Fly",
+    "Pool.Flight.Group_Fly_Free"
+   ],
+   "carriers": [
+    "Pool.Leaping.Combat_Jumping",
+    "Pool.Leaping.Leap"
+   ],
+   "rows": 61
+  },
+  {
+   "tag": "FireDamage",
+   "dir": "raise",
+   "movers": [
+    "Blaster_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition"
+   ],
+   "carriers": [
+    "Blaster_Ranged.Dual_Pistols.Bullet_Rain",
+    "Blaster_Ranged.Dual_Pistols.Dual_Wield",
+    "Blaster_Ranged.Dual_Pistols.Empty_Clips",
+    "Blaster_Ranged.Dual_Pistols.Executioners_Shot",
+    "Blaster_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Blaster_Ranged.Dual_Pistols.Pistols",
+    "Blaster_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Corruptor_Ranged.Dual_Pistols.Bullet_Rain",
+    "Corruptor_Ranged.Dual_Pistols.Dual_Wield",
+    "Corruptor_Ranged.Dual_Pistols.Empty_Clips",
+    "Corruptor_Ranged.Dual_Pistols.Executioners_Shot",
+    "Corruptor_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Corruptor_Ranged.Dual_Pistols.Pistols",
+    "Corruptor_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Defender_Ranged.Dual_Pistols.Bullet_Rain",
+    "Defender_Ranged.Dual_Pistols.Dual_Wield",
+    "Defender_Ranged.Dual_Pistols.Empty_Clips",
+    "Defender_Ranged.Dual_Pistols.Executioners_Shot",
+    "Defender_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Defender_Ranged.Dual_Pistols.Pistols",
+    "Defender_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Mission_Maker_Attacks.Dual_Pistols.Bullet_Rain",
+    "Mission_Maker_Attacks.Dual_Pistols.Dual_Wield",
+    "Mission_Maker_Attacks.Dual_Pistols.Empty_Clips",
+    "Mission_Maker_Attacks.Dual_Pistols.Executioners_Shot",
+    "Mission_Maker_Attacks.Dual_Pistols.Piercing_Rounds",
+    "Mission_Maker_Attacks.Dual_Pistols.Pistols",
+    "Mission_Maker_Attacks.Dual_Pistols.Suppressive_Fire",
+    "Mission_Maker_Attacks.Dual_Pistols.Swap_Ammo"
+   ],
+   "rows": 74
+  },
+  {
+   "tag": "FlightActive",
+   "dir": "raise",
+   "movers": [
+    "Inherent.Inherent.Combat_Flight",
+    "Inherent.Inherent.Energy_Flight",
+    "Peacebringer_Defensive.Luminous_Aura.Combat_Flight",
+    "Peacebringer_Defensive.Luminous_Aura.Energy_Flight",
+    "Peacebringer_Defensive.Luminous_Aura.Quantum_Flight",
+    "Pool.Flight.Combat_Flight",
+    "Pool.Flight.Fly",
+    "Pool.Gadgetry.Jetpack",
+    "Pool.Sorcery.Mystic_Flight"
+   ],
+   "carriers": [
+    "Peacebringer_Defensive.Luminous_Aura.Energy_Flight_Quantum_Acceleration",
+    "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight",
+    "Pool.Flight.Fly_Afterburner",
+    "Pool.Flight.Group_Fly"
+   ],
+   "rows": 60
+  },
+  {
+   "tag": "ForceBubbleRepel",
+   "dir": "raise",
+   "movers": [
+    "Controller_Buff.Force_Field.Repulsion_Field_New",
+    "Corruptor_Buff.Force_Field.Repulsion_Field_New",
+    "Defender_Buff.Force_Field.Repulsion_Field_New",
+    "Mastermind_Buff.Force_Field.Repulsion_Field_New"
+   ],
+   "carriers": [
+    "Controller_Buff.Force_Field.Force_Bubble",
+    "Corruptor_Buff.Force_Field.Force_Bubble",
+    "Defender_Buff.Force_Field.Force_Bubble",
+    "Mastermind_Buff.Force_Field.Force_Bubble"
+   ],
+   "rows": 8
+  },
+  {
+   "tag": "GroupFlying",
+   "dir": "raise",
+   "movers": [
+    "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight_Free",
+    "Pool.Flight.Group_Fly_Free"
+   ],
+   "carriers": [
+    "Peacebringer_Defensive.Luminous_Aura.Energy_Flight",
+    "Peacebringer_Defensive.Luminous_Aura.Energy_Flight_Quantum_Acceleration",
+    "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight",
+    "Pool.Flight.Fly",
+    "Pool.Flight.Fly_Afterburner",
+    "Pool.Flight.Group_Fly"
+   ],
+   "rows": 10
+  },
+  {
+   "tag": "Lethal",
+   "dir": "cut",
+   "movers": [
+    "Blaster_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Blaster_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Blaster_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Chemical_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Cryo_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition"
+   ],
+   "carriers": [
+    "Blaster_Ranged.Dual_Pistols.Bullet_Rain",
+    "Blaster_Ranged.Dual_Pistols.Dual_Wield",
+    "Blaster_Ranged.Dual_Pistols.Empty_Clips",
+    "Blaster_Ranged.Dual_Pistols.Executioners_Shot",
+    "Blaster_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Blaster_Ranged.Dual_Pistols.Pistols",
+    "Blaster_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Corruptor_Ranged.Dual_Pistols.Bullet_Rain",
+    "Corruptor_Ranged.Dual_Pistols.Dual_Wield",
+    "Corruptor_Ranged.Dual_Pistols.Empty_Clips",
+    "Corruptor_Ranged.Dual_Pistols.Executioners_Shot",
+    "Corruptor_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Corruptor_Ranged.Dual_Pistols.Pistols",
+    "Corruptor_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Defender_Ranged.Dual_Pistols.Bullet_Rain",
+    "Defender_Ranged.Dual_Pistols.Dual_Wield",
+    "Defender_Ranged.Dual_Pistols.Empty_Clips",
+    "Defender_Ranged.Dual_Pistols.Executioners_Shot",
+    "Defender_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Defender_Ranged.Dual_Pistols.Pistols",
+    "Defender_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Guardian_Assault.Gun_Fu.Dual_Wield",
+    "Guardian_Assault.Gun_Fu.Empty_Clips",
+    "Guardian_Assault.Gun_Fu.Piercing_Rounds",
+    "Guardian_Assault.Gun_Fu.Pistols",
+    "Mission_Maker_Attacks.Dual_Pistols.Bullet_Rain",
+    "Mission_Maker_Attacks.Dual_Pistols.Dual_Wield",
+    "Mission_Maker_Attacks.Dual_Pistols.Empty_Clips",
+    "Mission_Maker_Attacks.Dual_Pistols.Executioners_Shot",
+    "Mission_Maker_Attacks.Dual_Pistols.Piercing_Rounds",
+    "Mission_Maker_Attacks.Dual_Pistols.Pistols",
+    "Mission_Maker_Attacks.Dual_Pistols.Suppressive_Fire",
+    "Mission_Maker_Attacks.Dual_Pistols.Swap_Ammo"
+   ],
+   "rows": 112
+  },
+  {
+   "tag": "RepulsionFieldEffects",
+   "dir": "cut",
+   "movers": [
+    "Controller_Buff.Force_Field.Force_Bubble",
+    "Corruptor_Buff.Force_Field.Force_Bubble",
+    "Defender_Buff.Force_Field.Force_Bubble",
+    "Mastermind_Buff.Force_Field.Force_Bubble"
+   ],
+   "carriers": [
+    "Controller_Buff.Force_Field.Repulsion_Field_New",
+    "Corruptor_Buff.Force_Field.Repulsion_Field_New",
+    "Defender_Buff.Force_Field.Repulsion_Field_New",
+    "Mastermind_Buff.Force_Field.Repulsion_Field_New"
+   ],
+   "rows": 12
+  },
+  {
+   "tag": "ShapeshiftActive",
+   "dir": "raise",
+   "movers": [
+    "Peacebringer_Defensive.Luminous_Aura.White_Dwarf",
+    "Peacebringer_Offensive.Luminous_Blast.Bright_Nova",
+    "Warshade_Defensive.Umbral_Aura.Black_Dwarf",
+    "Warshade_Offensive.Umbral_Blast.Dark_Nova"
+   ],
+   "carriers": [
+    "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight",
+    "Peacebringer_Defensive.Luminous_Aura.Quantum_Shield",
+    "Peacebringer_Defensive.Luminous_Aura.Shining_Shield",
+    "Peacebringer_Defensive.Luminous_Aura.Thermal_Shield",
+    "Pool.Fighting.Tough",
+    "Pool.Fighting.Weave",
+    "Pool.Invisibility.Stealth",
+    "Pool.Leadership.Assault",
+    "Pool.Leadership.Defense",
+    "Pool.Leadership.Tactics",
+    "Pool.Leaping.Combat_Jumping",
+    "Pool.Leaping.Leap",
+    "Warshade_Defensive.Umbral_Aura.Gravity_Shield",
+    "Warshade_Defensive.Umbral_Aura.Penumbral_Shield",
+    "Warshade_Defensive.Umbral_Aura.Shadow_Cloak",
+    "Warshade_Defensive.Umbral_Aura.Twilight_Shield"
+   ],
+   "rows": 16
+  },
+  {
+   "tag": "ShapeshiftDeactive",
+   "dir": "cut",
+   "movers": [
+    "Peacebringer_Defensive.Luminous_Aura.White_Dwarf",
+    "Peacebringer_Offensive.Luminous_Blast.Bright_Nova",
+    "Warshade_Defensive.Umbral_Aura.Black_Dwarf",
+    "Warshade_Offensive.Umbral_Blast.Dark_Nova"
+   ],
+   "carriers": [
+    "Peacebringer_Defensive.Luminous_Aura.Quantum_Shield",
+    "Peacebringer_Defensive.Luminous_Aura.Shining_Shield",
+    "Peacebringer_Defensive.Luminous_Aura.Thermal_Shield",
+    "Pool.Fighting.Tough",
+    "Pool.Fighting.Weave",
+    "Pool.Flight.Group_Fly",
+    "Pool.Invisibility.Stealth",
+    "Pool.Leadership.Assault",
+    "Pool.Leadership.Defense",
+    "Pool.Leadership.Tactics",
+    "Pool.Leaping.Combat_Jumping",
+    "Pool.Leaping.Leap",
+    "Warshade_Defensive.Umbral_Aura.Gravity_Shield",
+    "Warshade_Defensive.Umbral_Aura.Penumbral_Shield",
+    "Warshade_Defensive.Umbral_Aura.Shadow_Cloak",
+    "Warshade_Defensive.Umbral_Aura.Twilight_Shield"
+   ],
+   "rows": 260
+  },
+  {
+   "tag": "StealthOn",
+   "dir": "cut",
+   "movers": [
+    "Brute_Defense.Energy_Aura.Energy_Cloak",
+    "Scrapper_Defense.Energy_Aura.Energy_Cloak"
+   ],
+   "carriers": [
+    "Brute_Defense.Energy_Aura.Entropy_Shield",
+    "Brute_Defense.Radiation_Armor.Beta_Decay",
+    "Guardian_Comp.Energy_Composition.Entropy_Shield",
+    "Scrapper_Defense.Energy_Aura.Entropy_Shield",
+    "Scrapper_Defense.Radiation_Armor.Beta_Decay",
+    "Stalker_Defense.Energy_Aura.Entropy_Shield",
+    "Tanker_Defense.Radiation_Armor.Beta_Decay"
+   ],
+   "rows": 18
+  },
+  {
+   "tag": "ToxicDamage",
+   "dir": "raise",
+   "movers": [
+    "Blaster_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Chemical_Ammunition"
+   ],
+   "carriers": [
+    "Blaster_Ranged.Dual_Pistols.Bullet_Rain",
+    "Blaster_Ranged.Dual_Pistols.Dual_Wield",
+    "Blaster_Ranged.Dual_Pistols.Empty_Clips",
+    "Blaster_Ranged.Dual_Pistols.Executioners_Shot",
+    "Blaster_Ranged.Dual_Pistols.Hail_of_Bullets",
+    "Blaster_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Blaster_Ranged.Dual_Pistols.Pistols",
+    "Blaster_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Corruptor_Ranged.Dual_Pistols.Bullet_Rain",
+    "Corruptor_Ranged.Dual_Pistols.Dual_Wield",
+    "Corruptor_Ranged.Dual_Pistols.Empty_Clips",
+    "Corruptor_Ranged.Dual_Pistols.Executioners_Shot",
+    "Corruptor_Ranged.Dual_Pistols.Hail_of_Bullets",
+    "Corruptor_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Corruptor_Ranged.Dual_Pistols.Pistols",
+    "Corruptor_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Defender_Ranged.Dual_Pistols.Bullet_Rain",
+    "Defender_Ranged.Dual_Pistols.Dual_Wield",
+    "Defender_Ranged.Dual_Pistols.Empty_Clips",
+    "Defender_Ranged.Dual_Pistols.Executioners_Shot",
+    "Defender_Ranged.Dual_Pistols.Hail_of_Bullets",
+    "Defender_Ranged.Dual_Pistols.Piercing_Rounds",
+    "Defender_Ranged.Dual_Pistols.Pistols",
+    "Defender_Ranged.Dual_Pistols.Suppressive_Fire",
+    "Mission_Maker_Attacks.Dual_Pistols.Bullet_Rain",
+    "Mission_Maker_Attacks.Dual_Pistols.Dual_Wield",
+    "Mission_Maker_Attacks.Dual_Pistols.Empty_Clips",
+    "Mission_Maker_Attacks.Dual_Pistols.Executioners_Shot",
+    "Mission_Maker_Attacks.Dual_Pistols.Hail_of_Bullets",
+    "Mission_Maker_Attacks.Dual_Pistols.Piercing_Rounds",
+    "Mission_Maker_Attacks.Dual_Pistols.Pistols",
+    "Mission_Maker_Attacks.Dual_Pistols.Suppressive_Fire",
+    "Mission_Maker_Attacks.Dual_Pistols.Swap_Ammo"
+   ],
+   "rows": 289
+  }
+ ],
+ "declined": [
+  {
+   "tag": "Contaminated",
+   "dir": "raise",
+   "movers": [
+    "Brute_Melee.Radiation_Melee.Fusion",
+    "Guardian_Assault.Radiation_Assault.Fusion",
+    "Scrapper_Melee.Radiation_Melee.Fusion",
+    "Tanker_Melee.Radiation_Melee.Fusion"
+   ],
+   "reason": "mover types [Click] — not all Toggle"
+  },
+  {
+   "tag": "FieryEmbrace",
+   "dir": "raise",
+   "movers": [
+    "Brute_Defense.Fiery_Aura.Fiery_Embrace",
+    "Scrapper_Defense.Fiery_Aura.Fiery_Embrace",
+    "Tanker_Defense.Fiery_Aura.Fiery_Embrace"
+   ],
+   "reason": "mover types [Click] — not all Toggle"
+  },
+  {
+   "tag": "GlobalCrash",
+   "dir": "cut",
+   "movers": [
+    "Pool.Manipulation.Unrelenting"
+   ],
+   "reason": "mover types [Click] — not all Toggle"
+  },
+  {
+   "tag": "GraniteActive",
+   "dir": "raise",
+   "movers": [
+    "Brute_Defense.Stone_Armor.Granite_Armor",
+    "Tanker_Defense.Stone_Armor.Granite_Armor"
+   ],
+   "reason": "claimed by a per-powerset COND-9 selector"
+  },
+  {
+   "tag": "GraniteDeactive",
+   "dir": "cut",
+   "movers": [
+    "Brute_Defense.Stone_Armor.Granite_Armor",
+    "Tanker_Defense.Stone_Armor.Granite_Armor"
+   ],
+   "reason": "claimed by a per-powerset COND-9 selector"
+  },
+  {
+   "tag": "InterfaceRegen",
+   "dir": "raise",
+   "movers": [
+    "Incarnate.Interface.Diamagnetic_Radial_Flawless_Interface",
+    "Incarnate.Interface.Diamagnetic_Total_Radial_Conversion"
+   ],
+   "reason": "mover types [Auto] — not all Toggle"
+  },
+  {
+   "tag": "InterfaceToHit",
+   "dir": "raise",
+   "movers": [
+    "Incarnate.Interface.Diamagnetic_Core_Flawless_Interface",
+    "Incarnate.Interface.Diamagnetic_Total_Core_Conversion"
+   ],
+   "reason": "mover types [Auto] — not all Toggle"
+  },
+  {
+   "tag": "NinjaAssault_BoostOff",
+   "dir": "cut",
+   "movers": [
+    "Dominator_Assault.Ninja_Assault.Chi_Strike",
+    "Guardian_Assault.Ninja_Assault.Chi_Strike"
+   ],
+   "reason": "mover types [Click] — not all Toggle"
+  },
+  {
+   "tag": "NinjaAssault_BoostOn",
+   "dir": "raise",
+   "movers": [
+    "Dominator_Assault.Ninja_Assault.Chi_Strike",
+    "Guardian_Assault.Ninja_Assault.Chi_Strike"
+   ],
+   "reason": "mover types [Click] — not all Toggle"
+  },
+  {
+   "tag": "PerfectionofBody",
+   "dir": "cut+raise",
+   "movers": [
+    "Brute_Melee.Staff_Fighting.Form_of_the_Body",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Body",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Body",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
+   ],
+   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+  },
+  {
+   "tag": "PerfectionofMind",
+   "dir": "cut+raise",
+   "movers": [
+    "Brute_Melee.Staff_Fighting.Form_of_the_Body",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Body",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Body",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
+   ],
+   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+  },
+  {
+   "tag": "PerfectionofSoul",
+   "dir": "cut+raise",
+   "movers": [
+    "Brute_Melee.Staff_Fighting.Form_of_the_Body",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Body",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Body",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
+   ],
+   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+  },
+  {
+   "tag": "PresenceHealHigh",
+   "dir": "cut",
+   "movers": [
+    "Brute_Defense.Energy_Aura.Overload",
+    "Brute_Defense.Invulnerability.Unstoppable",
+    "Brute_Defense.Radiation_Armor.Meltdown",
+    "Brute_Defense.Shield_Defense.One_with_the_Shield",
+    "Brute_Defense.Willpower.Strength_of_Will",
+    "Brute_Melee.Super_Strength.Rage",
+    "Epic.Charge_Mastery.Surge_of_Power",
+    "Epic.Dominator_Mu_Mastery.Surge_of_Power",
+    "Epic.Electrical_Mastery.Surge_of_Power",
+    "Epic.Field_Mastery.Foce_of_Nature",
+    "Epic.Force_Mastery.Foce_of_Nature",
+    "Epic.Power_Mastery.Force_of_Nature",
+    "Peacebringer_Defensive.Luminous_Aura.Light_Form",
+    "Pool.Force_of_Will.Unleash_Potential",
+    "Pool.Sorcery.Rune_of_Protection",
+    "Pool.Speed.Hasten",
+    "Scrapper_Defense.Energy_Aura.Overload",
+    "Scrapper_Defense.Invulnerability.Unstoppable",
+    "Scrapper_Defense.Radiation_Armor.Meltdown",
+    "Scrapper_Defense.Shield_Defense.One_with_the_Shield",
+    "Scrapper_Defense.Willpower.Strength_of_Will",
+    "Stalker_Defense.Energy_Aura.Overload",
+    "Stalker_Defense.Ninjitsu.Kuji-In_Retsu",
+    "Stalker_Defense.Radiation_Armor.Meltdown",
+    "Stalker_Defense.Willpower.Strength_of_Will",
+    "Tanker_Defense.Invulnerability.Unstoppable",
+    "Tanker_Defense.Radiation_Armor.Meltdown",
+    "Tanker_Defense.Shield_Defense.One_with_the_Shield",
+    "Tanker_Defense.Willpower.Strength_of_Will",
+    "Tanker_Melee.Super_Strength.Rage",
+    "Teamwork.Widow_Teamwork.Elude"
+   ],
+   "reason": "claimed by a per-powerset COND-9 selector"
+  },
+  {
+   "tag": "PresenceHealLow",
+   "dir": "raise",
+   "movers": [
+    "Brute_Defense.Energy_Aura.Overload",
+    "Brute_Defense.Invulnerability.Unstoppable",
+    "Brute_Defense.Radiation_Armor.Meltdown",
+    "Brute_Defense.Shield_Defense.One_with_the_Shield",
+    "Brute_Defense.Willpower.Strength_of_Will",
+    "Brute_Melee.Super_Strength.Rage",
+    "Epic.Charge_Mastery.Surge_of_Power",
+    "Epic.Dominator_Mu_Mastery.Surge_of_Power",
+    "Epic.Electrical_Mastery.Surge_of_Power",
+    "Epic.Field_Mastery.Foce_of_Nature",
+    "Epic.Force_Mastery.Foce_of_Nature",
+    "Epic.Power_Mastery.Force_of_Nature",
+    "Peacebringer_Defensive.Luminous_Aura.Light_Form",
+    "Pool.Force_of_Will.Unleash_Potential",
+    "Pool.Sorcery.Rune_of_Protection",
+    "Pool.Speed.Hasten",
+    "Scrapper_Defense.Energy_Aura.Overload",
+    "Scrapper_Defense.Invulnerability.Unstoppable",
+    "Scrapper_Defense.Radiation_Armor.Meltdown",
+    "Scrapper_Defense.Shield_Defense.One_with_the_Shield",
+    "Scrapper_Defense.Willpower.Strength_of_Will",
+    "Stalker_Defense.Energy_Aura.Overload",
+    "Stalker_Defense.Ninjitsu.Kuji-In_Retsu",
+    "Stalker_Defense.Radiation_Armor.Meltdown",
+    "Stalker_Defense.Willpower.Strength_of_Will",
+    "Tanker_Defense.Invulnerability.Unstoppable",
+    "Tanker_Defense.Radiation_Armor.Meltdown",
+    "Tanker_Defense.Shield_Defense.One_with_the_Shield",
+    "Tanker_Defense.Willpower.Strength_of_Will",
+    "Tanker_Melee.Super_Strength.Rage",
+    "Teamwork.Widow_Teamwork.Elude"
+   ],
+   "reason": "claimed by a per-powerset COND-9 selector"
+  },
+  {
+   "tag": "PreventiveMedicine",
+   "dir": "cut",
+   "movers": [
+    "Set_Bonus.Set_Bonus.Preventive_Medicine_Proc"
+   ],
+   "reason": "mover types [Auto] — not all Toggle"
+  },
+  {
+   "tag": "SpeedRefresh",
+   "dir": "cut",
+   "movers": [
+    "Blaster_Support.Martial_Manipulation.Burst_of_Speed",
+    "Guardian_Comp.Reconstructive_Healing.Pain_Absorption"
+   ],
+   "reason": "mover types [Click] — not all Toggle"
+  },
+  {
+   "tag": "VortexCritical",
+   "dir": "raise",
+   "movers": [
+    "Pets.Wind_Control_Vortex.Pressurization"
+   ],
+   "reason": "mover types [Auto] — not all Toggle"
+  }
+ ]
+}

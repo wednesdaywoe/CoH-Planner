@@ -1,0 +1,1657 @@
+{
+ "selected": [
+  {
+   "attrib": "Stealth",
+   "id": "domination",
+   "label": "Domination Active",
+   "power": "Inherent.Inherent.Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "categories": [
+    "dominator_assault",
+    "dominator_control"
+   ]
+  }
+ ],
+ "declined": [
+  {
+   "attrib": "Absorb",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "no gate anywhere reads kAbsorb source>"
+  },
+  {
+   "attrib": "Accuracy",
+   "power": "Inherent.Inherent.Spider_Conditioning",
+   "name": "Spider_Conditioning",
+   "archetypes": [
+    "Class_Arachnos_Soldier"
+   ],
+   "reason": "2 powers claim Accuracy (Inherent.Inherent.Spider_Conditioning, Inherent.Inherent.Widow_Conditioning)"
+  },
+  {
+   "attrib": "Accuracy",
+   "power": "Inherent.Inherent.Widow_Conditioning",
+   "name": "Widow_Conditioning",
+   "archetypes": [
+    "Class_Arachnos_Widow"
+   ],
+   "reason": "2 powers claim Accuracy (Inherent.Inherent.Spider_Conditioning, Inherent.Inherent.Widow_Conditioning)"
+  },
+  {
+   "attrib": "Area",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Area (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Area",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "4 powers claim Area (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Area",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Area (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Area",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Area (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Base_Defense",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "no gate anywhere reads kBase_Defense source>"
+  },
+  {
+   "attrib": "Cold_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "5 powers claim Cold_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Cold_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "5 powers claim Cold_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Cold_Dmg",
+   "power": "Inherent.Inherent.Gauntlet",
+   "name": "Gauntlet",
+   "archetypes": [
+    "Class_Tanker"
+   ],
+   "reason": "5 powers claim Cold_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Cold_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "5 powers claim Cold_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Cold_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "5 powers claim Cold_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Cold",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Cold (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Cold",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "4 powers claim Cold (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Cold",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Cold (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Cold",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Cold (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Confused",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Confused (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Confused",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Confused (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Confused",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "4 powers claim Confused (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Confused",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Confused (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "EnduranceDiscount",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "no gate anywhere reads kEnduranceDiscount source>"
+  },
+  {
+   "attrib": "Endurance",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "2 powers claim Endurance (Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Endurance",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "2 powers claim Endurance (Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Energy_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "5 powers claim Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Energy_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "5 powers claim Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Energy_Dmg",
+   "power": "Inherent.Inherent.Gauntlet",
+   "name": "Gauntlet",
+   "archetypes": [
+    "Class_Tanker"
+   ],
+   "reason": "5 powers claim Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Energy_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "5 powers claim Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Energy_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "5 powers claim Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Energy",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Energy (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Energy",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "4 powers claim Energy (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Energy",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Energy (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Energy",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Energy (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Fire_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "5 powers claim Fire_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Fire_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "5 powers claim Fire_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Fire_Dmg",
+   "power": "Inherent.Inherent.Gauntlet",
+   "name": "Gauntlet",
+   "archetypes": [
+    "Class_Tanker"
+   ],
+   "reason": "5 powers claim Fire_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Fire_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "5 powers claim Fire_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Fire_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "5 powers claim Fire_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Fire",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Fire (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Fire",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "4 powers claim Fire (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Fire",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Fire (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Fire",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Fire (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "FlyingSpeed",
+   "power": "Inherent.Inherent.Black_Dwarf_Step",
+   "name": "Black_Dwarf_Step",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim FlyingSpeed (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "FlyingSpeed",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim FlyingSpeed (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "FlyingSpeed",
+   "power": "Inherent.Inherent.Energy_Flight",
+   "name": "Energy_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim FlyingSpeed (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "FlyingSpeed",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim FlyingSpeed (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "FlyingSpeed",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "6 powers claim FlyingSpeed (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "FlyingSpeed",
+   "power": "Inherent.Inherent.White_Dwarf_Step",
+   "name": "White_Dwarf_Step",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim FlyingSpeed (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Fly",
+   "power": "Inherent.Inherent.Black_Dwarf_Step",
+   "name": "Black_Dwarf_Step",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim Fly (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Fly",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim Fly (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Fly",
+   "power": "Inherent.Inherent.Energy_Flight",
+   "name": "Energy_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim Fly (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Fly",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim Fly (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Fly",
+   "power": "Inherent.Inherent.Shadow_Step",
+   "name": "Shadow_Step",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim Fly (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Fly",
+   "power": "Inherent.Inherent.White_Dwarf_Step",
+   "name": "White_Dwarf_Step",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim Fly (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Global_Chance_Mod",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "2 powers claim Global_Chance_Mod (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight)"
+  },
+  {
+   "attrib": "Global_Chance_Mod",
+   "power": "Inherent.Inherent.Energy_Flight",
+   "name": "Energy_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "2 powers claim Global_Chance_Mod (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight)"
+  },
+  {
+   "attrib": "Grant_Power",
+   "power": "Inherent.Inherent.Defiance",
+   "name": "Defiance",
+   "archetypes": [
+    "Class_Blaster"
+   ],
+   "reason": "no gate anywhere reads kGrant_Power source>"
+  },
+  {
+   "attrib": "Heal_Dmg",
+   "power": "Inherent.Inherent.Black_Dwarf_Drain",
+   "name": "Black_Dwarf_Drain",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "3 powers claim Heal_Dmg (Inherent.Inherent.Black_Dwarf_Drain, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.White_Dwarf_Sublimation)"
+  },
+  {
+   "attrib": "Heal_Dmg",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "3 powers claim Heal_Dmg (Inherent.Inherent.Black_Dwarf_Drain, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.White_Dwarf_Sublimation)"
+  },
+  {
+   "attrib": "Heal_Dmg",
+   "power": "Inherent.Inherent.White_Dwarf_Sublimation",
+   "name": "White_Dwarf_Sublimation",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "3 powers claim Heal_Dmg (Inherent.Inherent.Black_Dwarf_Drain, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.White_Dwarf_Sublimation)"
+  },
+  {
+   "attrib": "Held",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Held (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Held",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Held (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Held",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "4 powers claim Held (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Held",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Held (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Immobilized",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Immobilized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Immobilized",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Immobilized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Immobilized",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "4 powers claim Immobilized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Immobilized",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Immobilized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Knockback",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "no gate anywhere reads kKnockback source>"
+  },
+  {
+   "attrib": "Knockup",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "no gate anywhere reads kKnockup source>"
+  },
+  {
+   "attrib": "Lethal_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "5 powers claim Lethal_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Lethal_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "5 powers claim Lethal_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Lethal_Dmg",
+   "power": "Inherent.Inherent.Gauntlet",
+   "name": "Gauntlet",
+   "archetypes": [
+    "Class_Tanker"
+   ],
+   "reason": "5 powers claim Lethal_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Lethal_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "5 powers claim Lethal_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Lethal_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "5 powers claim Lethal_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Lethal",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Lethal (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Lethal",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "4 powers claim Lethal (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Lethal",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Lethal (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Lethal",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Lethal (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Melee",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Melee (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Melee",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "4 powers claim Melee (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Melee",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Melee (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Melee",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Melee (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Meter",
+   "power": "Inherent.Inherent.Domination_Meter",
+   "name": "Domination_Meter",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "5 powers claim Meter (Inherent.Inherent.Domination_Meter, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Primal_Energy_Meter, Inherent.Inherent.Rage_Buff)"
+  },
+  {
+   "attrib": "Meter",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "5 powers claim Meter (Inherent.Inherent.Domination_Meter, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Primal_Energy_Meter, Inherent.Inherent.Rage_Buff)"
+  },
+  {
+   "attrib": "Meter",
+   "power": "Inherent.Inherent.Placate",
+   "name": "Placate",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "5 powers claim Meter (Inherent.Inherent.Domination_Meter, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Primal_Energy_Meter, Inherent.Inherent.Rage_Buff)"
+  },
+  {
+   "attrib": "Meter",
+   "power": "Inherent.Inherent.Primal_Energy_Meter",
+   "name": "Primal_Energy_Meter",
+   "archetypes": [
+    "Class_Primalist"
+   ],
+   "reason": "5 powers claim Meter (Inherent.Inherent.Domination_Meter, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Primal_Energy_Meter, Inherent.Inherent.Rage_Buff)"
+  },
+  {
+   "attrib": "Meter",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "5 powers claim Meter (Inherent.Inherent.Domination_Meter, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Primal_Energy_Meter, Inherent.Inherent.Rage_Buff)"
+  },
+  {
+   "attrib": "MovementControl",
+   "power": "Inherent.Inherent.Black_Dwarf_Step",
+   "name": "Black_Dwarf_Step",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "5 powers claim MovementControl (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "MovementControl",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "5 powers claim MovementControl (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "MovementControl",
+   "power": "Inherent.Inherent.Energy_Flight",
+   "name": "Energy_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "5 powers claim MovementControl (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "MovementControl",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "5 powers claim MovementControl (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "MovementControl",
+   "power": "Inherent.Inherent.White_Dwarf_Step",
+   "name": "White_Dwarf_Step",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "5 powers claim MovementControl (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "MovementFriction",
+   "power": "Inherent.Inherent.Black_Dwarf_Step",
+   "name": "Black_Dwarf_Step",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim MovementFriction (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "MovementFriction",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim MovementFriction (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "MovementFriction",
+   "power": "Inherent.Inherent.Energy_Flight",
+   "name": "Energy_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim MovementFriction (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "MovementFriction",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim MovementFriction (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "MovementFriction",
+   "power": "Inherent.Inherent.Shadow_Step",
+   "name": "Shadow_Step",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim MovementFriction (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "MovementFriction",
+   "power": "Inherent.Inherent.White_Dwarf_Step",
+   "name": "White_Dwarf_Step",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim MovementFriction (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Combat_Flight, Inherent.Inherent.Energy_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Negative_Energy_Dmg",
+   "power": "Inherent.Inherent.Black_Dwarf_Mire",
+   "name": "Black_Dwarf_Mire",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim Negative_Energy_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Negative_Energy_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim Negative_Energy_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Negative_Energy_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim Negative_Energy_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Negative_Energy_Dmg",
+   "power": "Inherent.Inherent.Gauntlet",
+   "name": "Gauntlet",
+   "archetypes": [
+    "Class_Tanker"
+   ],
+   "reason": "6 powers claim Negative_Energy_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Negative_Energy_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "6 powers claim Negative_Energy_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Negative_Energy_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "6 powers claim Negative_Energy_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Negative_Energy",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Negative_Energy (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Negative_Energy",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "4 powers claim Negative_Energy (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Negative_Energy",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Negative_Energy (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Negative_Energy",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Negative_Energy (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Null",
+   "power": "Inherent.Inherent.Defiance",
+   "name": "Defiance",
+   "archetypes": [
+    "Class_Blaster"
+   ],
+   "reason": "no gate anywhere reads kNull source>"
+  },
+  {
+   "attrib": "OnlyAffectsSelf",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "no gate anywhere reads kOnlyAffectsSelf source>"
+  },
+  {
+   "attrib": "Psionic_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "5 powers claim Psionic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Psionic_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "5 powers claim Psionic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Psionic_Dmg",
+   "power": "Inherent.Inherent.Gauntlet",
+   "name": "Gauntlet",
+   "archetypes": [
+    "Class_Tanker"
+   ],
+   "reason": "5 powers claim Psionic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Psionic_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "5 powers claim Psionic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Psionic_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "5 powers claim Psionic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Psionic",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "3 powers claim Psionic (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Psionic",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "3 powers claim Psionic (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Psionic",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "3 powers claim Psionic (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Primal_Energy_Dampen, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Domination_Boost",
+   "name": "Domination_Boost",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Primal_Energy_Dampen, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Domination_Dampen",
+   "name": "Domination_Dampen",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Primal_Energy_Dampen, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Domination_Rage",
+   "name": "Domination_Rage",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Primal_Energy_Dampen, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Primal_Energy_Dampen",
+   "name": "Primal_Energy_Dampen",
+   "archetypes": [
+    "Class_Primalist"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Primal_Energy_Dampen, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Rage",
+   "name": "Rage",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Primal_Energy_Dampen, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Rage_Dampen",
+   "name": "Rage_Dampen",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Primal_Energy_Dampen, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Rage_Strengthen",
+   "name": "Rage_Strengthen",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Primal_Energy_Dampen, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Ranged",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Ranged (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Ranged",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "4 powers claim Ranged (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Ranged",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Ranged (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Ranged",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Ranged (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "RechargeTime",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "2 powers claim RechargeTime (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance)"
+  },
+  {
+   "attrib": "RechargeTime",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "2 powers claim RechargeTime (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance)"
+  },
+  {
+   "attrib": "Recovery",
+   "power": "Inherent.Inherent.Placate",
+   "name": "Placate",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "no gate anywhere reads kRecovery source>"
+  },
+  {
+   "attrib": "Repel",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "no gate anywhere reads kRepel source>"
+  },
+  {
+   "attrib": "RunningSpeed",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "no gate anywhere reads kRunningSpeed source>"
+  },
+  {
+   "attrib": "Set_Mode",
+   "power": "Inherent.Inherent.Domination_Mode",
+   "name": "Domination_Mode",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "no gate anywhere reads kSet_Mode source>"
+  },
+  {
+   "attrib": "Sleep",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Sleep (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Sleep",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Sleep (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Sleep",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "4 powers claim Sleep (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Sleep",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Sleep (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Smashing_Dmg",
+   "power": "Inherent.Inherent.Black_Dwarf_Mire",
+   "name": "Black_Dwarf_Mire",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim Smashing_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Smashing_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim Smashing_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Smashing_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim Smashing_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Smashing_Dmg",
+   "power": "Inherent.Inherent.Gauntlet",
+   "name": "Gauntlet",
+   "archetypes": [
+    "Class_Tanker"
+   ],
+   "reason": "6 powers claim Smashing_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Smashing_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "6 powers claim Smashing_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Smashing_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "6 powers claim Smashing_Dmg (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Smashing",
+   "power": "Inherent.Inherent.Combat_Flight",
+   "name": "Combat_Flight",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Smashing (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Smashing",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "4 powers claim Smashing (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Smashing",
+   "power": "Inherent.Inherent.Quantum_Acceleration",
+   "name": "Quantum_Acceleration",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Smashing (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Smashing",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Smashing (Inherent.Inherent.Combat_Flight, Inherent.Inherent.Hide, Inherent.Inherent.Quantum_Acceleration, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "StealthRadius_PVE",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "2 powers claim StealthRadius_PVE (Inherent.Inherent.Hide, Inherent.Inherent.Placate)"
+  },
+  {
+   "attrib": "StealthRadius_PVE",
+   "power": "Inherent.Inherent.Placate",
+   "name": "Placate",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "2 powers claim StealthRadius_PVE (Inherent.Inherent.Hide, Inherent.Inherent.Placate)"
+  },
+  {
+   "attrib": "StealthRadius_PVP",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "2 powers claim StealthRadius_PVP (Inherent.Inherent.Hide, Inherent.Inherent.Placate)"
+  },
+  {
+   "attrib": "StealthRadius_PVP",
+   "power": "Inherent.Inherent.Placate",
+   "name": "Placate",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "2 powers claim StealthRadius_PVP (Inherent.Inherent.Hide, Inherent.Inherent.Placate)"
+  },
+  {
+   "attrib": "Stunned",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Stunned (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Stunned",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Stunned (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Stunned",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "4 powers claim Stunned (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Stunned",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Stunned (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Teleport",
+   "power": "Inherent.Inherent.Black_Dwarf_Step",
+   "name": "Black_Dwarf_Step",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Teleport (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Shadow_Slip, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Teleport",
+   "power": "Inherent.Inherent.Shadow_Slip",
+   "name": "Shadow_Slip",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Teleport (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Shadow_Slip, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Teleport",
+   "power": "Inherent.Inherent.Shadow_Step",
+   "name": "Shadow_Step",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Teleport (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Shadow_Slip, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Teleport",
+   "power": "Inherent.Inherent.White_Dwarf_Step",
+   "name": "White_Dwarf_Step",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Teleport (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Shadow_Slip, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Terrorized",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Terrorized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Terrorized",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Terrorized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Terrorized",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "4 powers claim Terrorized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "Terrorized",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Terrorized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination, Inherent.Inherent.Vigilance_PerTeamEndAdjustment)"
+  },
+  {
+   "attrib": "ToHit",
+   "power": "Inherent.Inherent.Black_Dwarf_Mire",
+   "name": "Black_Dwarf_Mire",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim ToHit (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Spider_Conditioning, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.Widow_Conditioning)"
+  },
+  {
+   "attrib": "ToHit",
+   "power": "Inherent.Inherent.Spider_Conditioning",
+   "name": "Spider_Conditioning",
+   "archetypes": [
+    "Class_Arachnos_Soldier"
+   ],
+   "reason": "4 powers claim ToHit (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Spider_Conditioning, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.Widow_Conditioning)"
+  },
+  {
+   "attrib": "ToHit",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim ToHit (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Spider_Conditioning, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.Widow_Conditioning)"
+  },
+  {
+   "attrib": "ToHit",
+   "power": "Inherent.Inherent.Widow_Conditioning",
+   "name": "Widow_Conditioning",
+   "archetypes": [
+    "Class_Arachnos_Widow"
+   ],
+   "reason": "4 powers claim ToHit (Inherent.Inherent.Black_Dwarf_Mire, Inherent.Inherent.Spider_Conditioning, Inherent.Inherent.Vigilance_PerTeamEndAdjustment, Inherent.Inherent.Widow_Conditioning)"
+  },
+  {
+   "attrib": "Toxic_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "5 powers claim Toxic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Toxic_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "5 powers claim Toxic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Toxic_Dmg",
+   "power": "Inherent.Inherent.Gauntlet",
+   "name": "Gauntlet",
+   "archetypes": [
+    "Class_Tanker"
+   ],
+   "reason": "5 powers claim Toxic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Toxic_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "5 powers claim Toxic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Toxic_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "5 powers claim Toxic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Translucency",
+   "power": "Inherent.Inherent.Black_Dwarf_Step",
+   "name": "Black_Dwarf_Step",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim Translucency (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Shadow_Slip, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Translucency",
+   "power": "Inherent.Inherent.Hide",
+   "name": "Hide",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "6 powers claim Translucency (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Shadow_Slip, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Translucency",
+   "power": "Inherent.Inherent.Placate",
+   "name": "Placate",
+   "archetypes": [
+    "Class_Stalker"
+   ],
+   "reason": "6 powers claim Translucency (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Shadow_Slip, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Translucency",
+   "power": "Inherent.Inherent.Shadow_Slip",
+   "name": "Shadow_Slip",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim Translucency (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Shadow_Slip, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Translucency",
+   "power": "Inherent.Inherent.Shadow_Step",
+   "name": "Shadow_Step",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "6 powers claim Translucency (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Shadow_Slip, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  },
+  {
+   "attrib": "Translucency",
+   "power": "Inherent.Inherent.White_Dwarf_Step",
+   "name": "White_Dwarf_Step",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "6 powers claim Translucency (Inherent.Inherent.Black_Dwarf_Step, Inherent.Inherent.Hide, Inherent.Inherent.Placate, Inherent.Inherent.Shadow_Slip, Inherent.Inherent.Shadow_Step, Inherent.Inherent.White_Dwarf_Step)"
+  }
+ ]
+}
