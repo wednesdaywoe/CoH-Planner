@@ -12,15 +12,37 @@
  * it via `source>`, pushes `.97`, then `>=` pops both and pushes the comparison).
  *
  * A token this can't resolve — a target-relative reader (`target.isFriend?`, `enttype
- * target>`, `distance`), a cosmetic `@`-constant (`@CustomFX`), or anything else outside the
- * recognized set — throws immediately and aborts evaluation. `evaluateCondition` catches
- * that and returns `false`. This mirrors canonical's own documented semantics exactly:
- * `coh_math::expr`'s `Value::truthy()` on a value it can't resolve returns
- * `EvalError::Indeterminate` rather than `false`, and the ONE caller both fixes here read from
- * (`effective::fast_form_selected` / `with_form_variant`) treats anything short of a definite
- * `Ok(true)` as "the redirect doesn't fire, the base record stands" — so collapsing
- * "definitely false" and "can't tell" into one `false` return is the same conservative
- * outcome the engine reaches, not an invented simplification.
+ * target>`, `distance`), or a source reader whose attribute a static build has no value for
+ * (`kMeter source>`) — pushes UNKNOWN rather than aborting, and unknown propagates through
+ * the operators the way canonical's `Value::Unknown` does (EXPR-1). `evaluateConditionTri`
+ * reports a program that ends unknown as `undefined`, canonical's `EvalError::Indeterminate`.
+ *
+ * Propagation is Kleene, not merely sticky, and the difference is load-bearing: `&&`/`||`
+ * absorb an unknown when the definite sibling settles it, so `kBoostRange Source.Mode?
+ * distance 7 > &&` is definitely FALSE with the mode off even though no planner can value
+ * `distance`. Everything else carries the unknown outward — a comparison or an `eq` with an
+ * unknown operand is unknown, and `!unknown` is unknown, since negation has no absorbing
+ * operand. A symbol where a number or a boolean belongs stays a hard fault, as it is there:
+ * Kleene absorbs unknowns, never grammar faults. Both faults and unknowns surface here as the
+ * one `undefined`, which is what the engine's callers do with `Err(_)` either way.
+ *
+ * Whether "can't tell" may be folded into "no" is the CALLER's question, not this module's,
+ * and the two callers answer it differently (U8):
+ *
+ * - Asking one condition, `fast_form_selected`-style, the fold is sound: the engine is
+ *   `matches!(eval_bool(…), Ok(true))`, so a definite no and an unanswerable gate both leave
+ *   the base record standing. `evaluateCondition` is that fold, and `quickSnipe` uses it.
+ * - Walking an ORDERED list, it is not. `with_form_variant` matches three ways — `Ok(true)`
+ *   selects and stops, `Ok(false)` moves on, `Err(_)` returns None and abandons the walk. Fold
+ *   the third into the second and the walk keeps going, so a constant-true fallback parked
+ *   behind an unanswerable branch gets selected. That is Assassin's Strike: `kMeter` is
+ *   rotation state no static build can answer, and a constant-true `1` sits right behind it.
+ *   `applyFormVariant` therefore reads the tri-valued form and stops where the engine stops.
+ *
+ * This module was two-valued until 2026-08-21, and the fold looked correct because it was
+ * checked against `fast_form_selected` — the caller for which it IS correct. Kleene came in
+ * with it: while every unknown collapsed to `false` the absorbing cases reached the same
+ * answer by luck, and only a caller that ACTS on unknown can tell the two apart.
  */
 
 export interface ConditionContext {
@@ -46,42 +68,93 @@ export interface ConditionContext {
   currentToHit: number;
 }
 
-class Unresolved extends Error {}
+/** A grammar fault: a symbol where a number or boolean belongs, a stack that won't reduce.
+ *  Distinct from UNKNOWN, which is a well-formed program whose value a build can't supply. */
+class Malformed extends Error {}
+
+/** Canonical's `Value::Unknown` — a value the context can't supply, riding the stack so the
+ *  operators can absorb or propagate it rather than aborting at the reader. */
+const UNKNOWN: unique symbol = Symbol('unknown');
+
+type Val = number | string | typeof UNKNOWN;
 
 const NUMBER_TOKEN = /^-?\.?\d/;
 
-function truthy(v: number | string): boolean {
-  if (typeof v !== 'number') throw new Unresolved(`symbol ${v} used as a boolean`);
+/** Three-valued truth: `undefined` for unknown. A symbol has no truth value — that's a fault. */
+function kleeneTruth(v: Val): boolean | undefined {
+  if (v === UNKNOWN) return undefined;
+  if (typeof v !== 'number') throw new Malformed(`symbol ${v} used as a boolean`);
   return v !== 0;
 }
 
-function asNumber(v: number | string): number {
-  if (typeof v !== 'number') throw new Unresolved(`symbol ${v} used as a number`);
+function asNumber(v: Val): number {
+  if (typeof v !== 'number') throw new Malformed(`${String(v)} used as a number`);
   return v;
 }
 
-function asSymbol(v: number | string): string {
-  if (typeof v !== 'string') throw new Unresolved(`number ${v} used as a symbol`);
+function asSymbol(v: Val): string {
+  if (typeof v !== 'string') throw new Malformed(`${String(v)} used as a symbol`);
   return v;
 }
 
-function pop(stack: (number | string)[]): number | string {
-  const v = stack.pop();
-  if (v === undefined) throw new Unresolved('stack underflow');
-  return v;
+function pop(stack: Val[]): Val {
+  if (stack.length === 0) throw new Malformed('stack underflow');
+  return stack.pop() as Val;
 }
 
 function boolNum(b: boolean): number {
   return b ? 1 : 0;
 }
 
+/** Arity for the readers this corpus actually holds, transcribed from canonical's
+ *  `reader_arity` for exactly those tokens. A `>`/`?` token absent here is NOT assumed to be a
+ *  nullary reader: it falls through as a symbol and faults at the first operator that pops it,
+ *  so a newly-shipped reader breaks loudly instead of silently eating an operand. Keyed
+ *  case-folded because the export spells the same reader three ways (`Source.Mode?`,
+ *  `source.mode?`). */
+const READER_ARITY: ReadonlyMap<string, number> = new Map([
+  ['source>', 1],
+  ['target>', 1],
+  ['source.ownpower?', 1],
+  ['source.ownpowernum?', 1],
+  ['source.mode?', 1],
+  ['target.isfriend?', 0],
+  ['distance', 0],
+]);
+
+/** Read a reader against `ctx`, or UNKNOWN where a static build has no answer. The
+ *  target-relative readers are unknown by construction — a totals calculation has no one
+ *  target — which is canonical's `SourceContext` verdict for the same tokens. */
+function readReader(reader: string, operands: Val[], ctx: ConditionContext): Val {
+  switch (reader) {
+    case 'source.mode?':
+      return boolNum(ctx.liveModes.has(asSymbol(operands[0]).toLowerCase()));
+    case 'source.ownpower?':
+      return boolNum(ctx.ownsPower(asSymbol(operands[0])));
+    case 'source.ownpowernum?':
+      return ctx.ownedPowerCount(asSymbol(operands[0]));
+    case 'source>': {
+      // The one source attribute a build can value. `kMeter` and friends are live rotation
+      // state, unknown here exactly as they are in the engine's gate context.
+      const attribute = asSymbol(operands[0]);
+      return attribute.toLowerCase() === 'cur.ktohit' ? ctx.currentToHit : UNKNOWN;
+    }
+    default:
+      // `target>`, `target.isFriend?`, `distance` — well-formed, unanswerable.
+      return UNKNOWN;
+  }
+}
+
 /** Evaluate one postfix condition against `ctx`, as the token list the wire holds (COND-8:
  *  tokens arrive pre-split and are never re-split, so multi-word tokens survive intact).
- *  Returns `false` for a definite no AND for anything this evaluator can't resolve — see the
- *  module doc for why that collapse is the correct, conservative behavior here. */
-export function evaluateCondition(condition: readonly string[], ctx: ConditionContext): boolean {
+ *  `undefined` is "can't tell" — the program is unknown, or it is malformed. Callers that walk
+ *  an ordered list must handle it separately from `false`; see the module doc. */
+export function evaluateConditionTri(
+  condition: readonly string[],
+  ctx: ConditionContext,
+): boolean | undefined {
   const tokens = condition.filter(Boolean);
-  const stack: (number | string)[] = [];
+  const stack: Val[] = [];
   try {
     for (const token of tokens) {
       const lower = token.toLowerCase();
@@ -92,27 +165,58 @@ export function evaluateCondition(condition: readonly string[], ctx: ConditionCo
       switch (lower) {
         case '&&':
         case '||': {
-          const b = truthy(pop(stack));
-          const a = truthy(pop(stack));
-          stack.push(boolNum(lower === '&&' ? a && b : a || b));
+          // Kleene. The absorbing operand settles the result whatever the sibling is, so this
+          // is checked before either operand's truth is demanded — which is also what keeps a
+          // symbol sibling from raising a fault the pre-Kleene machine never reached.
+          const b = pop(stack);
+          const a = pop(stack);
+          const absorbing = lower === '||';
+          if (a === UNKNOWN || b === UNKNOWN) {
+            const known = a === UNKNOWN ? b : a;
+            const settles = known !== UNKNOWN && typeof known === 'number' && (known !== 0) === absorbing;
+            stack.push(settles ? boolNum(absorbing) : UNKNOWN);
+            break;
+          }
+          const [ta, tb] = [kleeneTruth(a), kleeneTruth(b)];
+          stack.push(boolNum(lower === '&&' ? Boolean(ta && tb) : Boolean(ta || tb)));
           break;
         }
-        case '!':
-          stack.push(boolNum(!truthy(pop(stack))));
+        // Negation has no absorbing operand, so `!unknown` is unknown.
+        case '!': {
+          const truth = kleeneTruth(pop(stack));
+          stack.push(truth === undefined ? UNKNOWN : boolNum(!truth));
           break;
-        // `==` is numeric-only (canonical's `Op::NumberEqual`) — a symbol operand aborts
+        }
+        // `==` is numeric-only (canonical's `Op::NumberEqual`) — a symbol operand faults
         // rather than coercing. `eq` (below) is the separate symbol-or-number comparator.
-        case '==': {
-          const b = asNumber(pop(stack));
-          const a = asNumber(pop(stack));
-          stack.push(boolNum(a === b));
+        // Both, and the ordered comparisons, carry an unknown operand outward BEFORE the
+        // symbol fault, matching canonical's arm order.
+        case '==':
+        case '>=':
+        case '>':
+        case '<': {
+          const b = pop(stack);
+          const a = pop(stack);
+          if (a === UNKNOWN || b === UNKNOWN) {
+            stack.push(UNKNOWN);
+            break;
+          }
+          const [x, y] = [asNumber(a), asNumber(b)];
+          const result =
+            lower === '==' ? x === y : lower === '>=' ? x >= y : lower === '>' ? x > y : x < y;
+          stack.push(boolNum(result));
           break;
         }
         // Symbol-or-number equality, case-insensitive for symbols — the export carries
-        // casing variants of the same identity (`Class_Scrapper` / `class_scrapper`).
+        // casing variants of the same identity (`Class_Scrapper` / `class_scrapper`). A
+        // number against a symbol is a definite no, not a fault.
         case 'eq': {
           const b = pop(stack);
           const a = pop(stack);
+          if (a === UNKNOWN || b === UNKNOWN) {
+            stack.push(UNKNOWN);
+            break;
+          }
           const result =
             typeof a === 'number' && typeof b === 'number'
               ? a === b
@@ -122,61 +226,33 @@ export function evaluateCondition(condition: readonly string[], ctx: ConditionCo
           stack.push(boolNum(result));
           break;
         }
-        case '>=': {
-          const b = asNumber(pop(stack));
-          const a = asNumber(pop(stack));
-          stack.push(boolNum(a >= b));
-          break;
-        }
-        case '>': {
-          const b = asNumber(pop(stack));
-          const a = asNumber(pop(stack));
-          stack.push(boolNum(a > b));
-          break;
-        }
-        case '<': {
-          const b = asNumber(pop(stack));
-          const a = asNumber(pop(stack));
-          stack.push(boolNum(a < b));
-          break;
-        }
-        case 'source.mode?': {
-          const modeId = asSymbol(pop(stack));
-          stack.push(boolNum(ctx.liveModes.has(modeId.toLowerCase())));
-          break;
-        }
-        case 'source.ownpower?': {
-          const path = asSymbol(pop(stack));
-          stack.push(boolNum(ctx.ownsPower(path)));
-          break;
-        }
-        case 'source.ownpowernum?': {
-          const path = asSymbol(pop(stack));
-          stack.push(ctx.ownedPowerCount(path));
-          break;
-        }
-        case 'source>': {
-          const attribute = asSymbol(pop(stack));
-          if (attribute.toLowerCase() !== 'cur.ktohit') {
-            throw new Unresolved(`unsupported source> attribute ${attribute}`);
+        default: {
+          const arity = READER_ARITY.get(lower);
+          if (arity === undefined) {
+            // Not a reader this grammar knows: a power path, a mode id, a `@`-constant. All
+            // of them are operands. `@CustomFX Crabpack eq` is a symbol comparison that reads
+            // definitely false, not something unresolvable — treating it as a fault was what
+            // made the Arachnos cloak variants diverge from the engine.
+            stack.push(token);
+            break;
           }
-          stack.push(ctx.currentToHit);
-          break;
+          const operands: Val[] = [];
+          for (let i = 0; i < arity; i += 1) operands.unshift(pop(stack));
+          stack.push(readReader(lower, operands, ctx));
         }
-        default:
-          // Any other reader/constant this evaluator doesn't recognize (`target.isFriend?`,
-          // `enttype`, `target>`, `distance`, `@CustomFX`, …) is out of scope — abort rather
-          // than silently guessing. A plain bareword with no special punctuation (a power
-          // path, a mode id) falls through as a symbol operand instead.
-          if (token.startsWith('@') || lower.includes('target')) {
-            throw new Unresolved(`unsupported token ${token}`);
-          }
-          stack.push(token);
       }
     }
-    return stack.length > 0 && truthy(stack[stack.length - 1]);
+    if (stack.length === 0) throw new Malformed('empty expression');
+    return kleeneTruth(stack[stack.length - 1]);
   } catch (err) {
-    if (err instanceof Unresolved) return false;
+    if (err instanceof Malformed) return undefined;
     throw err;
   }
+}
+
+/** `evaluateConditionTri` with "can't tell" folded into "no". Correct only where a single
+ *  condition is being asked and an unanswerable gate should leave the base record standing —
+ *  the `fast_form_selected` shape. A caller walking an ordered list wants the tri-valued form. */
+export function evaluateCondition(condition: readonly string[], ctx: ConditionContext): boolean {
+  return evaluateConditionTri(condition, ctx) === true;
 }

@@ -31,7 +31,7 @@ import { applyQuickSnipe } from '@/utils/quick-snipe';
 import { selectActiveConditionals, type ATInherentState } from '@/utils/conditional-effects';
 import { applyActiveConditionals, type ApplyConditionalsResult } from './powerDisplayUtils';
 import { stanceAdjusterOverrides, getArchetype } from '@/data';
-import { evaluateCondition, type ConditionContext } from '@/utils/conditionExpr';
+import { evaluateCondition, evaluateConditionTri, type ConditionContext } from '@/utils/conditionExpr';
 import type { Power } from '@/types/power';
 import type { Build } from '@/types/build';
 import type { ArchetypeId } from '@/types/archetype';
@@ -136,11 +136,29 @@ function toConditionContext(state: EffectivePowerState): ConditionContext {
  * `condition`/`internalName` are excluded from the merge for the same reason
  * `applyModeRedirect` keeps the base identity: slots, enhancements and the picker entry live
  * on the base power, and every variant shares them.
+ *
+ * The walk is three-valued, matching `effective::with_form_variant` branch for branch: true
+ * selects and stops, false moves to the next variant, and a condition the build can't answer
+ * ABANDONS the walk with the base standing. That last branch is the whole point (U8). The
+ * variants are ordered and the later ones are fallbacks, so treating "can't tell" as "no" walks
+ * straight past the unanswerable gate into a fallback the game would never have reached —
+ * which is how Assassin's Strike picked its Quick form off an unbound `kMeter`.
  */
 export function applyFormVariant(power: Power, ctx: ConditionContext): Power {
   const variants = power.formVariants;
   if (!variants?.length) return power;
-  const match = variants.find((v) => evaluateCondition(v.condition, ctx));
+  let match: (typeof variants)[number] | undefined;
+  for (const variant of variants) {
+    // A variant with no condition at all is skipped, not treated as unknown: the engine's
+    // `json_tokens` returns None there and the loop simply continues.
+    if (!variant.condition) continue;
+    const verdict = evaluateConditionTri(variant.condition, ctx);
+    if (verdict === undefined) return power;
+    if (verdict) {
+      match = variant;
+      break;
+    }
+  }
   if (!match) return power;
   const { condition: _condition, internalName: _internalName, ...overrides } = match;
   return { ...power, ...overrides };
