@@ -1166,7 +1166,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       console.error(`\n[PROD6B-1 projection parity] ${server} (${powers.length} powers)\n    ${deltas.join('\n    ')}`);
     }
     expect(deltas).toEqual([]);
-  }, 30000); // dataset load + per-power calculators over a full build exceed the 5s default
+  }, 120000); // dataset load + per-power calculators over a full build; matches the suite's
+  // --testTimeout, for the same reason as serverParity.ts: 30000 was chosen to beat vitest's 5s
+  // default and silently became a ceiling under the suite's 120s once npm test set one.
 
   // The 6B-1 fixture is one archetype, whose powers are almost all attacks — it never reaches the
   // by-type expansion (defense/resistance), mez protection, absorb, mez duration or knockback

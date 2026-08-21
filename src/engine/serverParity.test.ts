@@ -285,7 +285,11 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
       console.error(`\n[PROD5 parity] ${server} (${powerCount} powers)\n  stats:\n    ${statDeltas.join('\n    ')}\n  global:\n    ${globalDeltas.join('\n    ')}`);
     }
     expect({ statDeltas, globalDeltas }).toEqual({ statDeltas: [], globalDeltas: [] });
-  }, 30000); // dataset load (large TS modules) + a full legacy calc exceed the 5s default
+  }, 120000); // dataset load (large TS modules) + a full legacy calc; matches the suite's
+  // --testTimeout so a bare `npx vitest run <file>` gets the same budget CI does. It read 30000
+  // when the only thing to beat was vitest's 5s default, and once npm test started passing
+  // 120000 that number stopped being a floor and became a ceiling below it — this test then
+  // failed on a GitHub-hosted runner while passing everywhere faster.
 
   // PROD6B-2c. Mez protection used to read its `Res_Boolean` table at a fixed level 50 on both
   // sides, on the claim that protection doesn't scale while leveling. It does — the tables vary
