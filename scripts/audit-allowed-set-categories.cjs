@@ -46,9 +46,10 @@ const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
 // export input and the generated/override output trees. Previously these were
 // hardcoded to the pre-migration HC layout (`exported_powers/`,
 // `src/data/generated/powersets`), which no longer exists — so the audit
-// silently skipped EVERY power on EVERY dataset ("no generated .ts"). That dead
-// guardrail is why the Thunderspy "KB"/SumoBoostName Melee pollution went
-// uncaught. RAW_DATA_PATH is imported from convert-powerset.cjs so the export
+// silently skipped EVERY power on EVERY dataset ("no generated .ts") — a dead
+// guardrail, which is how Thunderspy's Subaluwa set spent months handing "Melee
+// Damage" to 1,387 ranged attacks off a mis-read category.
+// RAW_DATA_PATH is imported from convert-powerset.cjs so the export
 // root resolves identically to the converter (HC → `exported_powers/`, others →
 // `exported_powers/<id>/`).
 const datasetId = parseDatasetArg();
@@ -63,10 +64,10 @@ const ONLY_INVARIANTS = args.includes('--invariants');
 const ONLY_FALLBACK = args.includes('--fallback');
 // --gate: CI mode. Exits non-zero ONLY on high-confidence "contradiction"
 // invariants (a genuine ranged attack carrying single-target Melee, or vice
-// versa) — the broad-pollution signature of a malformed boostset like the
-// Thunderspy "KB" placeholder set. Suppresses the noisy informational sections
-// (augmentation-drift, inference fallback, heuristic missing-category checks)
-// so CI logs show only the actionable failures.
+// versa) — the signature of one category landing across the wrong pool.
+// Suppresses the noisy informational sections (augmentation-drift, inference
+// fallback, heuristic missing-category checks) so CI logs show only the
+// actionable failures.
 const GATE = args.includes('--gate');
 const LIMIT = SHOW_ALL || GATE ? Infinity : 30;
 
@@ -284,10 +285,11 @@ function checkInvariants(powerJson, archetypeId, composed) {
       }
     }
     // A genuine single-target ranged attack must not carry the single-target
-    // "Melee Damage" category — that pairing is impossible in-game and is the
-    // exact signature of the Thunderspy "KB" placeholder-set pollution (a
-    // Knockback set mis-tagged ECMelee that handed "Melee Damage" to ~1387
-    // ranged blasts). We check only the SINGLE-TARGET flavor on SINGLE-TARGET
+    // "Melee Damage" category — that pairing is impossible in-game, and it is what
+    // a whole category landing on the wrong pool looks like from the power's side
+    // (Thunderspy's Subaluwa, read as ECMelee over a 1,905-power universal pool,
+    // handed "Melee Damage" to ~1387 ranged blasts). We check only the
+    // SINGLE-TARGET flavor on SINGLE-TARGET
     // powers: "Melee AoE Damage" is legitimate on melee cones (Breath of Fire,
     // range 15) and location-teleport PBAoEs (Lightning Rod, Savage Leap) that
     // also carry a Range boost, so those must not trip this. Leap/Execute_Power
@@ -384,13 +386,13 @@ for (const category of fs.readdirSync(RAW_DATA).sort()) {
 
       // INVARIANTS — physical sanity checks on the composed (final) value,
       // run for EVERY power regardless of whether it had authoritative data.
-      // Authoritative data is reversed from boostsets.bin, which can itself be
-      // malformed: Thunderspy ships a placeholder "KB" set mis-tagged ECMelee
-      // over a 1905-power junk pool, which handed "Melee Damage" to ~1387
-      // ranged attacks. The drift check can't catch that (composed == the bad
-      // authoritative value), so these invariants — e.g. "a ranged attack must
-      // not carry a Melee flavor" — are the backstop. Previously gated to
-      // inference-fallback powers only, which is precisely why KB went uncaught.
+      // Authoritative data is reversed from boostsets.bin, and a category read
+      // off the wrong field is authoritative-looking: Thunderspy's Subaluwa,
+      // taken as ECMelee over a 1,905-power universal pool, handed "Melee Damage"
+      // to ~1387 ranged attacks. The drift check can't catch that (composed ==
+      // the bad authoritative value), so these invariants — e.g. "a ranged attack
+      // must not carry a Melee flavor" — are the backstop. Previously gated to
+      // inference-fallback powers only, which is precisely why it went uncaught.
       const issues = checkInvariants(pJson, catInfo.archetype, composed);
       if (issues.length > 0) {
         invariantRows.push({
@@ -492,8 +494,9 @@ printRows(
 if (contradictionRows.length === 0) {
   console.log('\nGATE PASS — no malformed-boostset category contradictions.');
 } else {
-  console.log(`\nGATE FAIL — ${contradictionRows.length} contradiction(s). A boostset is ` +
-              `likely mis-categorized (see _boostsets.py placeholder handling).`);
+  console.log(`\nGATE FAIL — ${contradictionRows.length} contradiction(s). A boostset's ` +
+              `category is reaching a pool it does not belong to (see _resolve_category ` +
+              `in _boostsets.py).`);
 }
 
 process.exit(contradictionRows.length > 0 ? 1 : 0);

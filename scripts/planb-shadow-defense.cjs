@@ -22,10 +22,14 @@
  *
  * Scope: the ELEVEN standard defense globals — the three positions (Melee/Ranged/
  * AoE) and eight damage types (Smashing…Psionic), the only defense types the calc
- * totals. `All` (from a `base_defense` template) the bag stores as a SCALAR
- * `defenseBuff` ScaledEffect (never a `def<Type>` key) and has no `defAll` global,
- * so both sides add zero — comparing it would only measure a shape difference. See
- * `DEFENSE_STD_SUBTYPES` in atom-query.ts.
+ * totals. `All` (from a `base_defense` template) is one value on all eleven, and
+ * since DEFALL-1 the atom readers expand it so. The bag cannot: it stores such a
+ * row as a SCALAR ScaledEffect (`{scale, table}`, never a `def<Type>` key). That
+ * is a GRADED divergence, not an excused one — `expandScalarAll` rewrites the bag
+ * slot by the same stated rule (the scalar's value must appear on all eleven keys)
+ * and the comparison stays exact, so only the DECISION to expand is exempt from
+ * the shadow; the values are not. A bag slot that mixes a scalar with typed keys
+ * fits neither shape and fails loudly. See `DEFENSE_STD_SUBTYPES` in atom-query.ts.
  *
  * Exit code is nonzero on any divergence — this GATES, like planb-shadow-resistance.
  *
@@ -97,17 +101,39 @@ const eq = (a, b) => (!a && !b) || (a && b && a.scale === b.scale && a.perTarget
 const stats = {
   powers: 0,
   buffTypes: 0, buffAgree: 0, buffPerTarget: 0, buffForkResolved: 0, buffTeamOnly: 0,
-  suppTypes: 0, suppAgree: 0, suppPerTarget: 0,
+  suppTypes: 0, suppAgree: 0, suppPerTarget: 0, scalarAllExpanded: 0,
 };
 const findings = [];
+
+/**
+ * The DEFALL-1 graded divergence: a bag defense slot holding a `base_defense` row is
+ * a SCALAR ScaledEffect (`{scale, table}`), while the atom readers expand that row
+ * onto all eleven standard keys. Rewrite the bag by the same stated rule — the
+ * scalar's value on every key — so the per-type comparison stays exact. Only the
+ * decision to expand is exempt from the shadow; the values are not (each of the
+ * eleven must still match the atom side, both directions). A slot carrying BOTH a
+ * scalar `scale` and a `def<Type>` key fits neither the scalar nor the typed shape,
+ * so it fails loudly rather than being half-expanded.
+ */
+function expandScalarAll(name, slot) {
+  if (typeof slot?.scale !== 'number') return slot; // typed (or absent) — untouched
+  if (STD_TYPES.some((t) => t in slot)) {
+    throw new Error(
+      `planb-shadow-defense: '${name}' bag defense slot mixes a scalar with typed keys ` +
+      `(${Object.keys(slot).join(',')}) — neither shape's rule covers it`,
+    );
+  }
+  stats.scalarAllExpanded++;
+  return Object.fromEntries(STD_TYPES.map((t) => [t, slot]));
+}
 
 function checkPower(dataset, power, genPath) {
   const name = power.name || genPath;
   if (POWER_FILTER && !name.toLowerCase().includes(POWER_FILTER.toLowerCase())) return;
   stats.powers++;
   const eff = power.effects || {};
-  const bagBuff = typeof eff.defenseBuff === 'object' ? eff.defenseBuff : {};
-  const bagSupp = typeof eff.defenseBuffSuppressible === 'object' ? eff.defenseBuffSuppressible : {};
+  const bagBuff = expandScalarAll(name, typeof eff.defenseBuff === 'object' ? eff.defenseBuff : {});
+  const bagSupp = expandScalarAll(name, typeof eff.defenseBuffSuppressible === 'object' ? eff.defenseBuffSuppressible : {});
   const atomBuff = defenseBuffValue(power) || {};
   const atomSupp = defenseBuffSuppressibleValue(power) || {};
 
@@ -154,6 +180,7 @@ console.log(`  buff type-slots:     ${stats.buffTypes}  (of which per-target: ${
 console.log(`  buff agree:          ${stats.buffAgree}  (archetype-fork resolved: ${stats.buffForkResolved}; team-only abstentions: ${stats.buffTeamOnly})`);
 console.log(`  suppress type-slots: ${stats.suppTypes}  (of which per-target: ${stats.suppPerTarget})`);
 console.log(`  suppress agree:      ${stats.suppAgree}`);
+console.log(`  scalar-All expanded: ${stats.scalarAllExpanded}  (DEFALL-1 graded divergence: bag base_defense scalar → 11 keys)`);
 console.log(`  diverge:             ${findings.length}`);
 
 for (const f of findings.slice(0, 50)) {

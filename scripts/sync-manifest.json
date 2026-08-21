@@ -67,14 +67,8 @@
     },
     {
       "path": "scripts/audit-allowed-set-categories.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "acb93bc85f72ef08466ecd8e665938e4d1d51cfe531628a83a7238f19423b96e",
-        "beta": "ef56d3b8957be01d73fa120a5415877b19e081046264e1225e7b545d0fa96726"
-      },
-      "reason": "Divergence is in the failure message only: the two name different internals of `_boostsets.py` (`placeholder handling` in beta, `_resolve_category` in canonical) because the extractors they describe have themselves diverged.",
-      "exit": "Settle after the boostset extractor is reconciled; the message should name whichever function actually exists.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "acb93bc85f72ef08466ecd8e665938e4d1d51cfe531628a83a7238f19423b96e"
     },
     {
       "path": "scripts/audit-converter-twins.cjs",
@@ -245,14 +239,8 @@
     },
     {
       "path": "scripts/planb-shadow-defense.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "545903830dced077cb50488e21188f49dc96f80dd9174821d19cdf7c55506f8f",
-        "beta": "b8bf488345c6ca97c0cbfe8db1ceaf0db35232118612b0c4dc265bf0d14725f2"
-      },
-      "reason": "Canonical added `expandScalarAll`, which expands a scalar defense bag slot across the standard types and throws when a slot mixes a scalar with typed keys. Beta has neither the expansion nor the throw.",
-      "exit": "Port the expansion; it is a fail-loud rule and beta is the repo that ships numbers.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "545903830dced077cb50488e21188f49dc96f80dd9174821d19cdf7c55506f8f"
     },
     {
       "path": "scripts/planb-shadow-maxhp.cjs",
@@ -261,14 +249,8 @@
     },
     {
       "path": "scripts/planb-shadow-movement.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "338560a5d3b9fad285cd3740f33aa81523129e7deaf229b5f787641cdfb9cd03",
-        "beta": "6aa1c4de2e1e1d982f203c53779d126881f5c083a026ad30e3bf9fcda383877a"
-      },
-      "reason": "Beta pins two Rebirth expected values canonical does not carry (Aerobatics and Solar Glide fly speed). Which side is right is unadjudicated: either canonical dropped two real pins or beta pinned two values its own shadow pass no longer produces.",
-      "exit": "Measure both powers against the Rebirth export and keep the side the data agrees with.",
-      "gap": "FORK-1"
+      "status": "identical",
+      "sha256": "338560a5d3b9fad285cd3740f33aa81523129e7deaf229b5f787641cdfb9cd03"
     },
     {
       "path": "scripts/planb-shadow-pertarget.cjs",

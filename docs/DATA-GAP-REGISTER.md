@@ -23,10 +23,10 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
-- **FORK-1** — the four converters and the `gateText` cluster are reconciled (2026-08-21); this
-  repo's three un-ported call sites had been reading a COND-8 token array as comma-joined text, so
-  its converter gate skipped the PvE half of every `isPVPMap?` split; waiting on the 6 remaining
-  forked scripts
+- **FORK-1** — the four converters, the `gateText` cluster and the three shadow ports are
+  reconciled (2026-08-21); the two shadows were red on this repo's own data at HEAD and green on the
+  port, so the fork was in the script and not the data; waiting on the disposition of the 3
+  remaining forked scripts, two of which only canonical runs
 - **FORK-2** — the guard watched `scripts/` while the pipeline also EXECUTES twelve forked `src/`
   modules; the manifest now covers them and ten are reconciled, waiting on `types/build.ts`'s four
   remaining clusters and `calc-debug.ts`, plus the two the closure of `dataset.ts` pulled onto the
@@ -270,7 +270,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   had forked, `convert-powerset.cjs` by 714 lines in BOTH directions, and the beta still shipped a
   `dual_pistols` proper noun in a converter conditional plus the hand table MAXBOOST-1 retired; a
   hash manifest now adjudicates every shared path, the three converters are reconciled and PAR2
-  crossed to canonical, and 12 forked scripts remain
+  crossed to canonical, and 3 forked scripts remain
 - [ ] **FORK-2** — `convert-powerset.cjs` loads its atom encoder from `src/` at runtime, so three
   byte-identical converters still emitted different files; twelve `src/` modules the pipeline
   executes had forked in BOTH directions and no guard watched any of them, because the manifest

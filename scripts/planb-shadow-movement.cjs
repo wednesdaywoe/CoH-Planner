@@ -168,13 +168,6 @@ const axisEntries = (list, axis) =>
  * The count is of entries that survive `norm` (a scale-0 entry reaches no total).
  */
 const EXPECTED_SPLITS = {
-  // FLYPOOL-1's pairing re-cut these two from abstentions: the bag's flySpeed axis
-  // now holds the enhanceable row (its IS twin moved to flySpeedUnenhanced), which
-  // matches one of the pair the atoms state, so the sweep sees the split it always
-  // should have. Afterburner and Quantum Acceleration re-classified as plain agree
-  // the same way, so all four left EXPECTED_ABSTENTIONS together.
-  'rebirth|Aerobatics|flySpeed': 2,
-  'rebirth|Solar Glide|flySpeed': 2,
   'homecoming|Sprint|runSpeed': 2,
   'homecoming|Prestige Power Slide|runSpeed': 2,
   'homecoming|Prestige Power Rush|runSpeed': 2,
@@ -211,20 +204,18 @@ const EXPECTED_SPLITS = {
 /**
  * Axes the atom side deliberately reads as EMPTY where the bag states a value.
  *
- * Every movement atom these four powers carry sits in a `chance: 0` group naming no mode
- * — no tag, no `Requires`, no special case — and `isUnmodedSentinel` drops them all, so
- * the axis resolves to nothing. The reader still ANSWERS (an empty list, not `undefined`),
- * so the bag does not get a second go; see the seam note on `movementBuffValue`.
+ * Empty since COND-12. The four entries this held — Rebirth's Aerobatics, Solar Glide,
+ * Afterburner and Quantum Acceleration fly axes — were `chance: 0` groups whose tags the
+ * Parse6 export used to drop, so they read as mode-less sentinels and the atom side
+ * silenced the axis while the bag still held a value. With the tags on the wire (COND-11)
+ * and the corpus-wide chance-mod pass gating their groups on the minted `kFlightActive`
+ * mode (COND-12), BOTH sides now read the axis as conditional: the bag's collector drops
+ * the mode-gated group and the base atom reader drops the `gated` atom, so the axis is
+ * empty-vs-empty and needs no pin. The rows themselves still exist, gated — a build
+ * running a flight toggle gets them through the mode machinery, not through base.
  *
- * All four are Rebirth's Kheldian/pool group-flight family, and the register already
- * records that Rebirth's Group Fly gives its caster zero. Three of them landed on zero
- * anyway — Aerobatics, Solar Glide and Afterburner state a balanced sentinel pair that
- * cancelled. Quantum Acceleration is the one whose number moves: its sentinels are `+2`
- * against `-1`, so the collapse left +100% on a power whose every speed row, and whose
- * `FlyMode` grant itself, is a bare sentinel. Zero puts it back with its siblings.
- *
- * Pinned by name in both directions: a NEW one is an axis whose whole contribution has
- * quietly become a sentinel, and a LOST one is the sentinel rule regressing.
+ * The pin mechanism stays: a NEW entry is an axis whose whole contribution has quietly
+ * become a sentinel the bag still spends, and it must be read, not re-pinned by reflex.
  */
 /**
  * The kFly flight-MODE kills, pinned by name and magnitude.
@@ -241,8 +232,9 @@ const EXPECTED_SPLITS = {
  * longer states a `fly` axis, so this pin is EMPTY, and its live direction is the
  * `NEW kFly mode kill, never read` check below: an entry reappearing here means the
  * extractor has resumed folding the mode axis into `slow`. The retired population
- * (Geode/Granite/Hibernate/Icy Bastion at 10000, Granite/Rooted at 10) is in the
- * MOVEMAP-7 census, the rebuild's docs/gaps/stat-routing.md.
+ * (Geode/Granite/Hibernate/Icy Bastion at 10000, Parse6 Granite/Rooted at 10; HC
+ * Rooted already gone via COND-12's `kGraniteRoot` gating) is in the MOVEMAP-7
+ * census, docs/gaps/stat-routing.md.
  */
 const EXPECTED_MODE_KILLS = {};
 
