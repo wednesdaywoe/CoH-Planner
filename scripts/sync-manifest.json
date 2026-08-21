@@ -473,14 +473,8 @@
     },
     {
       "path": "src/utils/calculations/enhancement-values.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "17a07c9dc68c93da3edcac2e0aed91248d6fbe30d366639f9863f2dee80b1951",
-        "beta": "6405bbc031286b2d02e10bb08a2e1e9736b7d7d70a1bd56c159ec18aef2b4ecb"
-      },
-      "reason": "The enhancement math authored twice, and still the biggest fork on the list at 159 lines only canonical has and 355 only beta has. Three functions came off it on 2026-08-21 and are now byte-identical: `getMultiAspectModifier`, `getSetRarityMultiplier` and `getEffectiveAspectCount`, adjudicated by the corpus in `src/data/io-sets-aspect-count-corpus.test.ts` rather than by copying a side. The rest is unadjudicated and needs the same treatment, function by function.",
-      "exit": "Reconcile against the register, canonical's copy leading, and land the result in both repos in one step. Until then the pipeline's answer is the one canonical's copy gives, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "5e2e823ae8c20995f1e887ff65dd75ff7a6a818be4af7c0aacebe4cc20110c5c"
     }
   ]
 }

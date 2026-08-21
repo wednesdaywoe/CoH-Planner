@@ -2,31 +2,39 @@
  * City of Heroes - Enhancement Value Calculation System
  *
  * Parses IO set piece values and calculates enhancement bonuses
- * with Enhancement Diversification (ED) applied
+ * with Enhancement Diversification (ED) applied.
+ *
+ * Curve data (ED thresholds, schedule assignment, per-level strength,
+ * multi-aspect scale, boost combine curve) comes from the active dataset's
+ * generated enhancement-curves module via `@/data/enhancement-curves` —
+ * emitted from the binary export and staleness-guarded against it.
  */
 
 import type { Enhancement, EnhancementStatType } from '@/types';
 import { getEnhancementCurves } from '@/data/enhancement-curves';
+import type { EnhancementSchedule, OriginTier } from '@/data/enhancement-curves';
 import { isCalcDebugEnabled, debugGroup, debugGroupEnd, debugFormula } from '@/utils/calc-debug';
+
+export type { EnhancementSchedule, OriginTier };
 
 // ============================================
 // SHARED CONSTANTS
 // ============================================
 
 /**
- * Each boost level adds 5% to enhancement value.
- *
- * @deprecated The game does not have one "+5% per level" rule — it ships THREE
- * effectiveness curves in three separate bins, and this constant is only ever
- * right for the first four entries of two of them. Read the dataset's curves via
- * {@link enhancementLevelMultiplier} instead. Kept exported because it is still
- * an honest description of the `boosters` curve's slope on every shipped dataset.
+ * Multiplier an enhancement's values gain at +`boostLevel` combine boosts —
+ * the `boosters` combine curve (`boost_effect_boosters.bin`). A boost level
+ * outside the curve doesn't exist in-game, so it surfaces as an error.
  */
-export const BOOST_MULTIPLIER_PER_LEVEL = 0.05;
-
-// ============================================
-// ENHANCEMENT LEVEL EFFECTIVENESS
-// ============================================
+export function getBoostMultiplier(boostLevel: number): number {
+  const { boosters } = getEnhancementCurves().boostEffectiveness;
+  if (!Number.isInteger(boostLevel) || boostLevel < 0 || boostLevel >= boosters.length) {
+    throw new Error(
+      `Boost level must be an integer in 0..${boosters.length - 1}, got ${boostLevel}`,
+    );
+  }
+  return boosters[boostLevel];
+}
 
 /**
  * The two axes an enhancement's stored level offset can sit on.
@@ -35,17 +43,15 @@ export const BOOST_MULTIPLIER_PER_LEVEL = 0.05;
  * (`boost_effect_boosters.bin` vs `boost_effect_above.bin` /
  * `boost_effect_below.bin`), and no enhancement has both:
  *
- *  - `booster` — Enhancement Booster combines, IOs only. 0..+5.
+ *  - `booster` — Enhancement Booster combines, IOs only, unsigned.
  *  - `relative` — the enhancement's level minus the character's combat level,
- *    which is what an SO/DO/TO (and a Hamidon-class special) actually carries.
- *    Signed: the negative half is a real, common state.
+ *    which is what an SO/DO/TO or a Hamidon-class special carries. Signed.
  *
- * They were collapsed into one `boost` field because on Homecoming they are
- * numerically IDENTICAL over 0..+3 (`[1, 1.05, 1.10, 1.15]` either way) — the
- * entire range the app could previously express. They diverge only below even,
- * which is exactly the half that was dropped everywhere: the Mids importer
- * floored `MinusOne/Two/Three` to 0, the registry factories dropped any value
- * `<= 0`, and no UI could produce one.
+ * Both sides of the twin previously read `boosters` for every type. That was
+ * invisible because on Homecoming the two curves are numerically IDENTICAL over
+ * 0..+3 — the whole range an unsigned field could express. They diverge only
+ * below even (`below` falls at -10% per level, not -5%), and on Thunderspy,
+ * whose above/below curves are flat 1.0 while its boosters curve is not.
  */
 export type EnhancementLevelAxis = 'booster' | 'relative';
 
@@ -79,10 +85,12 @@ export function enhancementLevelRange(
 
 /**
  * Effectiveness multiplier for a slot's stored level offset, off the dataset's
- * curves. Out-of-domain values clamp to the curve's end rather than throwing:
- * a Mids file may legitimately carry `PlusFive` on an SO, and a hand-edited or
- * older save may carry anything at all. Clamping is what the game does at the
- * ends of these tables, and a dropped slot would silently understate a build.
+ * curves.
+ *
+ * Clamps at the ends of the curve rather than throwing, unlike
+ * {@link getBoostMultiplier}: a Mids file can legitimately carry `PlusFive` on
+ * an SO (past `above`'s four entries) and an older save can carry anything, so
+ * an out-of-domain offset is ordinary input rather than a data defect.
  */
 export function enhancementLevelMultiplier(
   slot: Pick<Enhancement, 'type' | 'boost'>,
@@ -90,8 +98,8 @@ export function enhancementLevelMultiplier(
 ): number {
   const offset = Math.trunc(slot.boost || 0);
   const { above, below, boosters } = curves.boostEffectiveness;
-  // The booster axis is unsigned — there is no such thing as a negative combine,
-  // so a negative there is a corrupt value, not a penalty to honour.
+  // The booster axis is unsigned — there is no such thing as a negative
+  // combine, so a negative there is a corrupt value, not a penalty to honour.
   const [curve, step] =
     enhancementLevelAxis(slot.type) === 'booster'
       ? [boosters, Math.max(0, offset)]
@@ -165,152 +173,111 @@ export function applyExemplarScaling(
 // ============================================
 
 /**
- * Enhancement schedule types
- * Different aspects follow different value schedules
- */
-export type EnhancementSchedule = 'A' | 'B' | 'C' | 'D';
-
-/**
- * Map aspect types to ED schedules
+ * Engine aspect key → `dim_returns` boost-type name.
  *
- * Schedule A (33.33% SO): Accuracy, Confusion, Damage, Defense Debuff, Endurance Modification,
- *   Endurance Reduction, Fear, Fly, Healing, Hold Duration, Immobilization Duration, Jumping,
- *   Recharge Time, Run Speed, Sleep, Slow, Stun, Taunt
- * Schedule B (20% SO): Defense Buff, Range Increase, Resist Damage, To Hit Buff, To Hit Debuff
- * Schedule C (40% SO): Interrupt Time
- * Schedule D (60% SO): Knockback Distance
+ * The schedule assignment is binary data: `dim_returns.bin` keys each ED
+ * threshold set by boost type, with a default entry covering every type it
+ * doesn't name. This map is the engine-side translation from normalized
+ * aspect keys (the range of `normalizeAspectName`) to that boost-type
+ * vocabulary; `null` marks aspects whose boost type has no named entry, so
+ * they take the default bucket — the default entry IS the data, not a
+ * fallback. An aspect key missing from this map entirely is a programming
+ * error and fails loud in `getAspectSchedule`.
  */
-const ASPECT_SCHEDULE_MAP: Record<string, EnhancementSchedule> = {
-  // Schedule A (33.33% SO)
-  absorb: 'A',
-  accuracy: 'A',
-  confuse: 'A',
-  damage: 'A',
-  defenseDebuff: 'A',
-  endurance: 'A',
-  enduranceMod: 'A',
-  fear: 'A',
-  fly: 'A',
-  heal: 'A',
-  hold: 'A',
-  immobilize: 'A',
-  jump: 'A',
-  recharge: 'A',
-  run: 'A',
-  sleep: 'A',
-  slow: 'A',
-  stun: 'A',
-  taunt: 'A',
+export const ASPECT_BOOST_TYPE: Record<string, string | null> = {
+  absorb: null,
+  accuracy: null,
+  confuse: null,
+  damage: null,
+  defenseDebuff: null,
+  endurance: null,
+  enduranceMod: null,
+  fear: null,
+  fly: null,
+  heal: null,
+  hold: null,
+  immobilize: null,
+  intangible: null,
+  jump: null,
+  mezDuration: null,
+  recharge: null,
+  run: null,
+  sleep: null,
+  slow: null,
+  stun: null,
+  taunt: null,
 
-  // Schedule B (20% SO)
-  defense: 'B',
-  defenseBuff: 'B',
-  range: 'B',
-  resistance: 'B',
-  tohit: 'B',
-  tohitBuff: 'B',
-  tohitDebuff: 'B',
+  defense: 'Buff_Defense',
+  defenseBuff: 'Buff_Defense',
+  tohit: 'Buff_ToHit',
+  tohitBuff: 'Buff_ToHit',
+  tohitDebuff: 'Debuff_ToHit',
+  range: 'Range',
+  resistance: 'Res_Damage',
 
-  // Schedule C (40% SO)
-  interrupt: 'C',
+  interrupt: 'Interrupt',
 
-  // Schedule D (60% SO)
-  knockback: 'D',
+  knockback: 'Knockback',
 };
 
 /**
- * Get the enhancement schedule for a given aspect
+ * Get the enhancement schedule for a normalized aspect key.
+ *
+ * Mirrors the game's dim_returns lookup: a named boost type reads its
+ * schedule from the dataset's `boostTypeSchedules`; a type the dataset
+ * doesn't name (including every `null`-mapped aspect) takes the dataset's
+ * default entry. An aspect outside the engine vocabulary throws — an
+ * unknown aspect must surface, never silently enhance on the default
+ * schedule.
  */
 export function getAspectSchedule(normalizedAspect: string): EnhancementSchedule {
-  return ASPECT_SCHEDULE_MAP[normalizedAspect] || 'A';
+  const boostType = ASPECT_BOOST_TYPE[normalizedAspect];
+  if (boostType === undefined) {
+    throw new Error(
+      `Unknown enhancement aspect "${normalizedAspect}" — not in the engine aspect vocabulary`,
+    );
+  }
+  const { boostTypeSchedules, defaultSchedule } = getEnhancementCurves();
+  if (boostType === null) return defaultSchedule;
+  return boostTypeSchedules[boostType] ?? defaultSchedule;
+}
+
+/**
+ * TO/DO/SO enhancement percentage for one aspect. The origin boost families
+ * sit on flat Ones class tables, so a tier's value depends only on the
+ * aspect's ED schedule — read per dataset from the curves' origin-tier grid
+ * (Thunderspy rebalances the TO/DO ladders). A flat per-tier value would be
+ * wrong in both directions: Schedule-B aspects enhance less (defense SO 20,
+ * not 33.3), C/D more (interrupt SO 40, knockback SO 60).
+ */
+export function getOriginTierValue(tier: OriginTier, normalizedAspect: string): number {
+  const { originTiers } = getEnhancementCurves();
+  return originTiers[tier][getAspectSchedule(normalizedAspect)] * 100;
 }
 
 // ============================================
 // IO EFFECTIVENESS BY LEVEL
 // ============================================
 
-/**
- * IO enhancement values by level for each schedule
- * Based on Maths.txt "Level-Based IO Effectiveness" table
- */
-const IO_EFFECTIVENESS: Record<EnhancementSchedule, Record<number, number>> = {
-  A: {
-    10: 0.117,
-    15: 0.192,
-    20: 0.256,
-    25: 0.32,
-    30: 0.348,
-    35: 0.367,
-    40: 0.386,
-    45: 0.405,
-    50: 0.424,
-    53: 0.435,
-  },
-  B: {
-    10: 0.07,
-    15: 0.115,
-    20: 0.154,
-    25: 0.192,
-    30: 0.209,
-    35: 0.22,
-    40: 0.232,
-    45: 0.243,
-    50: 0.255,
-    53: 0.261,
-  },
-  C: {
-    10: 0.14,
-    15: 0.231,
-    20: 0.308,
-    25: 0.385,
-    30: 0.418,
-    35: 0.441,
-    40: 0.464,
-    45: 0.486,
-    50: 0.509,
-    53: 0.523,
-  },
-  D: {
-    10: 0.21,
-    15: 0.346,
-    20: 0.462,
-    25: 0.577,
-    30: 0.627,
-    35: 0.661,
-    40: 0.695,
-    45: 0.73,
-    50: 0.764,
-    53: 0.784,
-  },
-};
+/** Enhancements exist at levels 10..53 (level-50 cap + 3 combine levels);
+ * lookups clamp here. A dataset whose strength curve ends earlier (the fork
+ * exports carry 50 levels) caps at its last defined level. */
+const IO_MIN_LEVEL = 10;
+const IO_MAX_LEVEL = 53;
 
 /**
- * Get IO enhancement value at a specific level for a given schedule
+ * Enhancement strength of one boost at `level` for a schedule — a direct
+ * read of the dataset's per-level strength curve (the `Melee_Boosts_*`
+ * named class-modifier tables). Levels are integers in-game; a fractional
+ * level is a caller bug and fails loud.
  */
 export function getIOValueAtLevel(level: number, schedule: EnhancementSchedule = 'A'): number {
-  const clampedLevel = Math.max(10, Math.min(53, level));
-  const ioValues = IO_EFFECTIVENESS[schedule];
-
-  // If exact level exists, return it
-  if (ioValues[clampedLevel]) {
-    return ioValues[clampedLevel];
+  if (!Number.isInteger(level)) {
+    throw new Error(`Enhancement level must be an integer, got ${level}`);
   }
-
-  // Otherwise interpolate between levels
-  const levels = [10, 15, 20, 25, 30, 35, 40, 45, 50, 53];
-  let lowerLevel = levels[0];
-  let upperLevel = levels[1];
-
-  for (let i = 0; i < levels.length - 1; i++) {
-    if (levels[i] <= clampedLevel && levels[i + 1] > clampedLevel) {
-      lowerLevel = levels[i];
-      upperLevel = levels[i + 1];
-      break;
-    }
-  }
-
-  const ratio = (clampedLevel - lowerLevel) / (upperLevel - lowerLevel);
-  return ioValues[lowerLevel] + (ioValues[upperLevel] - ioValues[lowerLevel]) * ratio;
+  const curve = getEnhancementCurves().schedules[schedule].strengthByBoostLevel;
+  const clampedLevel = Math.max(IO_MIN_LEVEL, Math.min(IO_MAX_LEVEL, curve.length, level));
+  return curve[clampedLevel - 1];
 }
 
 // ============================================
@@ -320,7 +287,7 @@ export function getIOValueAtLevel(level: number, schedule: EnhancementSchedule =
 /**
  * Map of aspect names to normalized internal keys
  */
-const ASPECT_NAME_MAP: Record<string, string> = {
+export const ASPECT_NAME_MAP: Record<string, string> = {
   // Abbreviations
   Acc: 'accuracy',
   Dmg: 'damage',
@@ -344,16 +311,6 @@ const ASPECT_NAME_MAP: Record<string, string> = {
   Fear: 'fear',
   KB: 'knockback',
   Slow: 'slow',
-
-  // `boosts_allowed` / IO-set-piece vocabulary that has no other spelling here.
-  // Each was absent, and an absent name is not an inert one: every caller
-  // (`parseAspectsToBonuses`, `accumulateRawSlotBonuses`) SKIPS the aspect, so an
-  // Immobilize IO contributed nothing at all while its tooltip read +42.4%.
-  // 109 HC powers allow `Immobilize`, and 51 set pieces carry one of these four.
-  Immobilize: 'immobilize',
-  Terrorize: 'fear',
-  Threat: 'taunt',
-  InterruptTime: 'interrupt',
 
   // EnhancementStatType values (used by generic IOs, origin enhancements, and specials)
   EnduranceReduction: 'endurance',
@@ -385,6 +342,7 @@ const ASPECT_NAME_MAP: Record<string, string> = {
   'To Hit Debuff': 'tohitDebuff',
   'Hold Duration': 'hold',
   'Stun Duration': 'stun',
+  Immobilize: 'immobilize',
   'Immobilization Duration': 'immobilize',
   'Sleep Duration': 'sleep',
   Confusion: 'confuse',
@@ -402,6 +360,12 @@ const ASPECT_NAME_MAP: Record<string, string> = {
   Taunt: 'taunt',
   'Interrupt Time': 'interrupt',
   'Activation Acceleration': 'interrupt',
+  // The set-piece spellings of aspects the powers name differently. An absent name is not an
+  // inert one — every caller SKIPS the aspect — so each of these was a piece that enhanced
+  // nothing at all while still being offered and still reading a value.
+  Terrorize: 'fear',
+  Threat: 'taunt',
+  InterruptTime: 'interrupt',
 };
 
 /**
@@ -467,48 +431,29 @@ export function genericIOValueAtLevel(stat: string, level: number): number | nul
 // ============================================
 
 /**
- * ED thresholds by schedule
- */
-const ED_THRESHOLDS: Record<EnhancementSchedule, { t1: number; t2: number; t3: number }> = {
-  A: { t1: 0.7, t2: 0.9, t3: 1.0 },
-  B: { t1: 0.4, t2: 0.5, t3: 0.6 },
-  C: { t1: 0.8, t2: 1.0, t3: 1.2 },
-  D: { t1: 1.2, t2: 1.5, t3: 1.8 },
-};
-
-/**
- * Apply Enhancement Diversification to a bonus value
- * ED reduces effectiveness of enhancements beyond certain thresholds
+ * Apply Enhancement Diversification to a bonus value.
  *
- * The formula applies diminishing returns in 4 tiers:
- * - Tier 1 (0 to t1): 100% effective (no penalty)
- * - Tier 2 (t1 to t2): 90% effective
- * - Tier 3 (t2 to t3): 70% effective
- * - Tier 4 (beyond t3): 15% effective
- *
- * These values match Homecoming/i25+ game behavior. VERIFIED against the HC
- * binary `dim_returns.bin` (2026-06-06): its 8 ED schedule records carry exactly
- * these four distinct threshold sets (A 0.7/0.9/1.0, B 0.4/0.5/0.6, C 0.8/1.0/1.2,
- * D 1.2/1.5/1.8) and the 0.9 / 0.7 / 0.15 tier multipliers — no drift.
+ * Diminishing returns in four tiers, thresholds and per-tier effectiveness
+ * from the dataset's dim_returns data: full value to t1, then each slice
+ * beyond a threshold counts at that tier's effectiveness (90% / 70% / 15%
+ * on all three committed datasets).
  */
 export function applyED(value: number, schedule: EnhancementSchedule = 'A'): number {
-  const { t1, t2, t3 } = ED_THRESHOLDS[schedule];
+  const curves = getEnhancementCurves();
+  const [t1, t2, t3] = curves.schedules[schedule].edThresholds;
+  const [tier2Effectiveness, tier3Effectiveness, tier4Effectiveness] = curves.tierEffectiveness;
 
   if (value <= t1) {
-    // No penalty
     return value;
   } else if (value <= t2) {
-    // Slight penalty (90% effective)
-    return t1 + (value - t1) * 0.9;
+    return t1 + (value - t1) * tier2Effectiveness;
   } else if (value <= t3) {
-    // Moderate penalty (70% effective)
-    const tier2 = t1 + (t2 - t1) * 0.9;
-    return tier2 + (value - t2) * 0.7;
+    const tier2 = t1 + (t2 - t1) * tier2Effectiveness;
+    return tier2 + (value - t2) * tier3Effectiveness;
   } else {
-    // Heavy penalty (15% effective)
-    const tier2 = t1 + (t2 - t1) * 0.9;
-    const tier3 = tier2 + (t3 - t2) * 0.7;
-    return tier3 + (value - t3) * 0.15;
+    const tier2 = t1 + (t2 - t1) * tier2Effectiveness;
+    const tier3 = tier2 + (t3 - t2) * tier3Effectiveness;
+    return tier3 + (value - t3) * tier4Effectiveness;
   }
 }
 
@@ -676,9 +621,9 @@ const UNIVERSAL_TRAVEL_KEYS = ['run', 'fly', 'jump', 'range'] as const;
  * place per enhancement rather than patching every data source — and per
  * enhancement, so a piece that already lists Absorb is never counted twice.
  *
- * `absorb` is the aspect the absorb magnitude reads, which is what lets an
- * Absorb-ONLY boost (the Cardiac/Resilient Radial Alpha) land without also
- * inflating heals. Mutates and returns `bonuses`.
+ * `absorb` is the aspect the absorb magnitude reads (engine `apply.rs`), which
+ * is what lets an Absorb-ONLY boost (the Cardiac/Resilient Radial Alpha) land
+ * without also inflating heals. Mutates and returns `bonuses`.
  */
 function mirrorHealToAbsorb<T extends Record<string, number>>(bonuses: T): T {
   if (bonuses.heal !== undefined && bonuses.absorb === undefined) {
@@ -720,10 +665,8 @@ export function parseIOSetPieceValues(
   aspects.forEach((aspect) => {
     if (aspect.trim() === 'Mez') {
       // Universal-mez expansion (see UNIVERSAL_MEZ_KEYS comment above).
-      // All six mez types share Schedule A, so one lookup feeds all keys.
-      const baseValue = getIOValueAtLevel(level, 'A');
-      const value = baseValue * modifier;
       for (const key of UNIVERSAL_MEZ_KEYS) {
+        const value = getIOValueAtLevel(level, getAspectSchedule(key)) * modifier;
         bonuses[key] = (bonuses[key] ?? 0) + value;
       }
       return;
@@ -900,7 +843,6 @@ function accumulateRawSlotBonuses(
   slots.forEach((slot) => {
     if (!slot) return;
 
-    // Boost multiplier: each boost level adds 5% to enhancement value
     const boostMultiplier = enhancementLevelMultiplier(slot);
 
     if (slot.type === 'io-set' && getIOSet) {
@@ -974,11 +916,13 @@ function accumulateRawSlotBonuses(
         addEnhancementBonuses(rawBonuses, slotBonuses);
       }
     } else if (slot.type === 'origin') {
-      // TO/DO/SO
-      const aspect = slot.stat as string;
-      const normalized = normalizeAspectName(aspect);
-      if (normalized && slot.value) {
-        addEnhancementBonuses(rawBonuses, { [normalized]: (slot.value / 100) * boostMultiplier });
+      // TO/DO/SO — value derived from tier + aspect schedule (per dataset),
+      // not the stamped display value, so a persisted build can't carry
+      // stale flat-tier numbers into the math.
+      const normalized = normalizeAspectName(slot.stat as string);
+      if (normalized) {
+        const value = getOriginTierValue(slot.tier, normalized);
+        addEnhancementBonuses(rawBonuses, { [normalized]: (value / 100) * boostMultiplier });
       }
     }
   });

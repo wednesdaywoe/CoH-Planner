@@ -22,8 +22,8 @@ import type {
   OriginEnhancement,
   SpecialEnhancementDef,
 } from '@/types';
-import { HAMIDON_ENHANCEMENTS, TITAN_ENHANCEMENTS, HYDRA_ENHANCEMENTS, DSYNC_ENHANCEMENTS, PRESTIGE_ENHANCEMENTS, COMMON_IO_TYPES, ORIGIN_TIERS } from './enhancements';
-import { genericIOValueAtLevel } from '@/utils/calculations/enhancement-values';
+import { HAMIDON_ENHANCEMENTS, TITAN_ENHANCEMENTS, HYDRA_ENHANCEMENTS, DSYNC_ENHANCEMENTS, PRESTIGE_ENHANCEMENTS, COMMON_IO_TYPES } from './enhancements';
+import { genericIOValueAtLevel, getOriginTierValue, normalizeAspectName } from '@/utils/calculations/enhancement-values';
 import { resolvePath } from '@/utils/paths';
 
 // ============================================
@@ -483,7 +483,10 @@ export function createOriginEnhancement(
   origin?: string,
   boost?: number,
 ): OriginEnhancement {
-  const tierInfo = ORIGIN_TIERS.find((t) => t.short === tier);
+  const normalized = normalizeAspectName(stat);
+  if (!normalized) {
+    throw new Error(`Origin enhancement stat "${stat}" is outside the engine aspect vocabulary`);
+  }
   return {
     type: 'origin',
     id: `origin-${tier}-${stat}`,
@@ -493,7 +496,10 @@ export function createOriginEnhancement(
     origin: tier === 'SO' ? (origin as OriginEnhancement['origin']) : undefined,
     boost: storedLevelOffset(boost),
     stat,
-    value: tierInfo?.value ?? 0,
+    // Per aspect, not per tier: the flat ORIGIN_TIERS number is Schedule A's, and a
+    // Defense SO is 20% where a Knockback SO is 60%. Stamped from the same reader the
+    // math uses so the picker cannot show a number the total disagrees with.
+    value: getOriginTierValue(tier, normalized),
   };
 }
 

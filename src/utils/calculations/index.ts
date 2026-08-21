@@ -24,13 +24,14 @@ export {
 // Enhancement values
 export {
   getAspectSchedule,
+  getOriginTierValue,
   getIOValueAtLevel,
   normalizeAspectName,
   readAspectDisplayValue,
   genericIOValueAtLevel,
   applyED,
   parseIOSetPieceValues,
-  BOOST_MULTIPLIER_PER_LEVEL,
+  getBoostMultiplier,
   enhancementLevelMultiplier,
   enhancementLevelAxis,
   enhancementLevelRange,

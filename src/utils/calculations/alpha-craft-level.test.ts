@@ -47,8 +47,10 @@ describe('Alpha combine reads the slot craft level', () => {
   beforeAll(async () => { await loadDataset('homecoming'); }, 120_000);
 
   // The reported case, by name and by number: a three-aspect piece from a 10–50 set,
-  // crafted at 30, on a level-50 character with an Alpha. Schedule-A strength at L30 is
-  // 0.348 and at L50 0.424; the three-aspect modifier halves both.
+  // crafted at 30, on a level-50 character with an Alpha. Schedule-A strength is 0.34810 at
+  // L30 and 0.42380 at L50, read off the dataset's own curve; the three-aspect modifier
+  // halves both. These were 0.348 / 0.424 while the values came from a rounded Maths.txt
+  // table — close enough to look right, and wrong by up to 1.3 points at other levels.
   it('values a down-crafted piece at its craft level, not the build level', () => {
     const artillery = getAllIOSets()['Artillery'] ?? Object.values(getAllIOSets()).find((s) => s.name === 'Artillery');
     expect(artillery, 'Artillery is in the Homecoming bundle').toBeTruthy();
@@ -61,8 +63,8 @@ describe('Alpha combine reads the slot craft level', () => {
     const at30 = combineWithAlphaED(slotted(artillery!, piece!, 30), 50, getIOSet, alpha, bypass);
     const at50 = combineWithAlphaED(slotted(artillery!, piece!, 50), 50, getIOSet, alpha, bypass);
 
-    expect(at30.recharge).toBeCloseTo(0.174, 4);
-    expect(at50.recharge).toBeCloseTo(0.212, 4);
+    expect(at30.recharge).toBeCloseTo(0.17405, 5);
+    expect(at50.recharge).toBeCloseTo(0.21190, 5);
   });
 
   // The invariant behind the number: Alpha changes what is ADDED to a power's aspects, never
