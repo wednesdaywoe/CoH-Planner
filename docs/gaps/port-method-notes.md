@@ -1,12 +1,17 @@
 ---
 project: coh-sidekick-beta
 kind: gap
-title: Method notes
+title: Port method notes
 relates:
   - ../ISSUE-REGISTER.md
 ---
 
-# Method notes
+# Port method notes
+
+Beta-side method for the engine port. Named `port-method-notes.md` rather than `method-notes.md`
+because canonical holds a different document under that name — its data-gap METHOD-1..6 catalogue,
+which `DATA-GAP-REGISTER.md` links to by relative path. Two disjoint documents sharing one path
+meant every register link resolved to whichever repo the reader happened to be in.
 
 ## Ruling out "it's a regression" before filing anything
 

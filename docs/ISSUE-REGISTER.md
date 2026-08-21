@@ -74,7 +74,7 @@ trees had drifted wholesale (canonical's BOOST-5). The port landed 2026-08-20.
 
 ## Method notes
 
-[Full detail](gaps/method-notes.md) — cross-repo investigation method: how to tell a beta-side
+[Full detail](gaps/port-method-notes.md) — cross-repo investigation method: how to tell a beta-side
 display gap from an engine regression, and the cwd trap that nearly produced a false negative
 while doing it.
 

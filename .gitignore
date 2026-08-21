@@ -79,7 +79,7 @@ texture_library2/
 tools/mids-oracle/.oracle_cache/
 # Thunderspy Mids' Reborn DB reference drop (44MB binaries + icon dumps).
 # Reference asset only — useful icons are already extracted into
-# public/img/powers/ via scripts/extract-thunderspy-icons.py. Not app data.
+# public/img/powers/ via scripts/attic/extract-thunderspy-icons.py. Not app data.
 #
 # ANCHORED to the repo root, and it must stay that way. An unanchored
 # `Thunderspy/` matches at any depth, and `core.ignorecase` is true on macOS
@@ -114,3 +114,9 @@ tools/bin-crawler/**/static/cache/
 # means CI cannot even check it out without a secret. Committing them is what makes this repo
 # self-sufficient: deploy and CI both need only Node. Refresh them with `npm run build:engine`
 # and commit the result whenever the engine changes.
+
+# Understand-Anything scratch: the tool moves superseded batch/graph JSON into a
+# timestamped trash dir. 132 files of it were committed once, and it is the reason
+# scripts/verify-sync.cjs scopes its wiring grep — an unscoped grep matched half of
+# scripts/ inside tool scratch and was permanently red.
+.ua/.trash-*/

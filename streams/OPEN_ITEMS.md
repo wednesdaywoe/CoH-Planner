@@ -345,7 +345,7 @@ per-field evidence trail:
   (`banishedpantheon_*`, `tsoo_*`), enhancement (`e_icon_*`), archetype
   (`archetypeicon_*`) icons absent from every local Sweet Tea pigg. Sourceable
   from HC texture piggs via `--assets-dir <…/Homecoming/assets/live>`. See
-  `scripts/extract-thunderspy-icons.py`. *(Also tracked in `streams/TODOs`.)*
+  `scripts/attic/extract-thunderspy-icons.py`. *(Also tracked in `streams/TODOs`.)*
 - **TSPY3 — 92 powerset records (1.4%) fail to parse** — Likely a fourth rare
   layout variant. "Not investigated."
 - **TSPY4 — populate `pet-lifespans.json` / `self-destruct-delays.json`** [L] —

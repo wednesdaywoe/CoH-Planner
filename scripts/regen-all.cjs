@@ -20,8 +20,6 @@
  *     in the .pigg archives. Python/pigg dependency; writes io-sets-raw.ts, not
  *     generated/. Regenerate manually when boostsets change. (The old
  *     convert-io-sets.js / extract-rebirth-io-sets.cjs predecessors are retired.)
- *   - reconvert-redirect-powersets.cjs — a stale one-off migration (old `powers/`
- *     layout); redirect powersets are handled by convert-all-powersets normally.
  */
 
 const { execSync } = require('child_process');

@@ -117,7 +117,7 @@ The conversion pipeline is guarded by a structural validation harness documented
 | Script | Purpose |
 |--------|---------|
 | `bulk-import-mids.ts` | Bulk-imports a directory of Mids `.mxd` files as shared builds (supports `--author-name` for attribution). See `README-bulk-import-mids.md`. |
-| `env-loader.ts`, `env-shim.ts`, `register-env-loader.mjs` | Load `.env` vars into Node-side TypeScript scripts that need Vite-style `VITE_*` env access. |
+| `env-loader.ts`, `register-env-loader.mjs` | Load `.env` vars into Node-side TypeScript scripts that need Vite-style `VITE_*` env access. (`env-shim.ts` was a third, standalone preload; `env-loader.ts` carries the same shim inline and nothing imports the file, so it is in `scripts/attic/`.) |
 
 > **Note on script hygiene:** historically this directory accumulated `fix-*`, `patch-*`, and one-shot migration scripts that applied corrections to generated data. Those have all been removed in favor of fixing the upstream data pipeline. If you need to apply a one-time correction in future, prefer regenerating from current `.pigg` data via Bin Crawler over committing a one-shot patch script — those scripts are usually non-idempotent and rot quickly.
 

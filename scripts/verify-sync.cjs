@@ -17,8 +17,10 @@
  * two unequal statuses must name a reason and a gap id, and either repo editing a shared file
  * without re-adjudicating turns this red.
  *
- * Paths only one repo runs are declared instead, in `canonicalOnly`, and checked from the other
- * direction: the beta must neither hold the file nor name it anywhere tracked.
+ * Paths only one repo runs are declared instead, in `canonicalOnly` or `betaOnly`, and checked
+ * from the other direction: that repo must neither hold the file nor name it anywhere tracked.
+ * A retired script is checked the same way — `scripts/attic/X` in one repo and a live
+ * `scripts/X` in the other is one file at two paths, so it pairs with nothing.
  *
  * Two modes, because only one repo can see the other. Beta is public and canonical's CI already
  * checks it out (see the beta-engine-staleness job), but canonical is private and beta's CI
@@ -104,7 +106,16 @@ if (write && !paired) throw new Error('--write needs --sibling: it records both 
  * a fork under FORK-1's opening census. Measuring it while it agrees costs nothing and means the
  * first disagreement is the thing that reports, rather than a later census discovering an old one.
  */
-const TRACKED_ROOTS = ['scripts', 'tools/bin-crawler'];
+const TRACKED_ROOTS = ['scripts', 'tools/bin-crawler', 'docs'];
+
+/**
+ * `docs` joined on 2026-08-21, and it is not symmetric the way the other two are: canonical holds
+ * 58 files there and the beta 9, so only the intersection is ever adjudicated. That intersection
+ * is the point. `docs/DATA-GAP-REGISTER.md` is hand-mirrored between the repos — both sides commit
+ * to it, and the beta's converters cite its ids by name — and it had lagged canonical by two
+ * commits, showing FORK-2 open in one repo and closed in the other. That is the FORK-1 shape
+ * exactly, in the file that tells you what is open.
+ */
 
 /** Tracked files under the shared trees, relative to the repo root. */
 function trackedScripts(root) {
@@ -260,11 +271,13 @@ for (const e of manifest.entries) {
  *
  * Scoped rather than corpus-wide, for two reasons that pull the same way. The question this
  * answers is whether the repo runs the script, and the places a script gets run from are the
- * scripts themselves, the modules they load, the npm scripts, and CI. And the beta has a
- * committed `.ua/.trash-*` dump that names half of `scripts/` in tool scratch JSON; an
- * unscoped grep is permanently red on it, which is the way a gate stops being read.
+ * scripts themselves, the modules they load, the npm scripts, and CI. The scoping earned itself
+ * on a committed `.ua/.trash-*` dump in the beta that named half of `scripts/` in tool scratch
+ * JSON: an unscoped grep was permanently red on it, which is how a gate stops being read. That
+ * dump is deleted and gitignored now and the scope stays, because scratch will do it again.
  *
  * The two files that exist to DESCRIBE the declaration are excluded, or it would report itself.
+ * Other prose that merely names a script is handled per declaration, in `mentions`.
  */
 const WIRING_PATHS = ['scripts', 'src', 'package.json', '.github'];
 const SELF_GUARD = 'scripts/verify-sync.cjs';
@@ -283,7 +296,7 @@ function referencesTo(root, needle) {
 }
 
 /**
- * Scripts only canonical runs, declared rather than shared.
+ * Scripts only ONE repo runs, declared rather than shared.
  *
  * Most of canonical's audits were never on the shared surface at all — they exist here, the beta
  * has no copy, and nothing noticed because the manifest discovers its entries from the paths the
@@ -293,38 +306,97 @@ function referencesTo(root, needle) {
  * neither could run — both read a `*-baseline.json` the beta does not have, so `--gate` was an
  * ENOENT away from the first line it mattered on.
  *
- * So the rule the other audits already follow gets written down: a script only canonical runs is
+ * So the rule the other audits already follow gets written down: a script only one repo runs is
  * not shared surface. And written down is not enough on its own, because the reason those two
  * became drift is that a convention nobody measures decays into one. This is the measurement. A
- * declaration goes stale in two directions and both are errors: the script disappearing from
- * canonical, and the beta growing the file back or naming it anywhere tracked. The second is the
- * live one — the day the beta wires one of these in, it is shared surface again, and nothing else
- * here would say so.
+ * declaration goes stale in two directions and both are errors: the script disappearing from the
+ * repo that owns it, and the other repo growing the file back or naming it anywhere tracked. The
+ * second is the live one — the day the other repo wires one of these in, it is shared surface
+ * again, and nothing else here would say so.
+ *
+ * It runs in both directions because the beta owns scripts too, and assuming otherwise cost the
+ * pair a silent fork: `push-changelog-discord.ts` and `delete-user-shared-builds.ts` are wired
+ * into the beta's package.json and the beta runs them, while canonical kept archived copies in
+ * `scripts/attic/`. The changelog pusher then gained id-keyed dedup and unknown-flag rejection in
+ * the beta, canonical's copy stayed 100 lines behind, and nothing said so — the attic move had
+ * already taken the file off the path this manifest keys on.
  */
-for (const d of manifest.canonicalOnly ?? []) {
-  if (!d.reason)
-    errors.push(`${d.path}: declared canonical-only with no reason — same door as a fork`);
+const OWNED = [
+  ['canonicalOnly', 'canonical', 'beta'],
+  ['betaOnly', 'beta', 'canonical'],
+];
+for (const [key, owner, other] of OWNED) {
+  for (const d of manifest[key] ?? []) {
+    if (!d.reason)
+      errors.push(`${d.path}: declared ${owner}-only with no reason — same door as a fork`);
 
-  if (paired || selfRole === 'canonical') {
-    if (!fs.existsSync(path.join(rootFor('canonical'), d.path)))
-      errors.push(`${d.path}: declared canonical-only and absent from canonical — a stale declaration`);
-  }
+    if (paired || selfRole === owner) {
+      if (!fs.existsSync(path.join(rootFor(owner), d.path)))
+        errors.push(
+          `${d.path}: declared ${owner}-only and absent from ${owner} — a stale declaration`
+        );
+    }
 
-  if (paired || selfRole === 'beta') {
-    const betaRoot = rootFor('beta');
-    if (fs.existsSync(path.join(betaRoot, d.path)))
-      errors.push(
-        `${d.path}: declared canonical-only but present in beta — either that copy is dead and ` +
-          `should go, or the declaration is wrong and this is shared surface`
-      );
-    const refs = referencesTo(betaRoot, path.basename(d.path));
-    if (refs.length)
-      errors.push(
-        `${d.path}: declared canonical-only, and beta names it in ${refs.join(', ')} — a script ` +
-          `beta RUNS is shared surface, so re-adjudicate it as an entry`
-      );
+    if (paired || selfRole === other) {
+      const otherRoot = rootFor(other);
+      if (fs.existsSync(path.join(otherRoot, d.path)))
+        errors.push(
+          `${d.path}: declared ${owner}-only but present in ${other} — either that copy is dead ` +
+            `and should go, or the declaration is wrong and this is shared surface`
+        );
+      // Not "names it nowhere" but "names it exactly where the declaration says". A path that
+      // only DESCRIBES the script — a doc comment, an archive README — is a mention, not wiring,
+      // and there is no way to tell those apart by reading the grep hit. So they are enumerated
+      // instead, and the check is set equality: a mention the declaration did not predict is the
+      // error, and so is a declared mention that has since gone. A bare exclusion list would go
+      // quiet on the first NEW reference, which is the only one that matters.
+      const declared = new Set(d.mentions ?? []);
+      const refs = referencesTo(otherRoot, path.basename(d.path));
+      const undeclared = refs.filter((f) => !declared.has(f));
+      if (undeclared.length)
+        errors.push(
+          `${d.path}: declared ${owner}-only, and ${other} names it in ${undeclared.join(', ')} ` +
+            `— if ${other} RUNS it there, this is shared surface and owes an entry; if that is ` +
+            `prose about the declaration, add the path to "mentions"`
+        );
+      const gone = [...declared].filter((f) => !refs.includes(f));
+      if (gone.length)
+        errors.push(
+          `${d.path}: declared ${owner}-only with mentions in ${gone.join(', ')}, and ${other} ` +
+            `no longer names them there — a stale allowance is how the next real one gets waved ` +
+            `through`
+        );
+    }
   }
 }
+
+/**
+ * A retired script in one repo may not have a live twin in the other.
+ *
+ * Every check above keys on the path, so moving a file into `scripts/attic/` unpairs it: the same
+ * file then sits at two different paths, matches no entry, and is graded by neither side. Seven
+ * dead scripts sat in that gap for a month and `push-changelog-discord.ts` drifted 100 lines
+ * inside it. The attic is mirrored now — both repos hold the same seven — and this is what keeps
+ * it that way. Retiring a script is a decision about the pair, so it happens in both repos, or
+ * the file belongs to one of them and the declaration above is where that gets said.
+ */
+const ATTIC = 'scripts/attic/';
+if (paired) {
+  for (const role of ['canonical', 'beta']) {
+    const otherRole = role === 'canonical' ? 'beta' : 'canonical';
+    for (const f of trackedScripts(rootFor(role))) {
+      if (!f.startsWith(ATTIC) || f.endsWith('README.md')) continue;
+      const live = `scripts/${f.slice(ATTIC.length)}`;
+      if (fs.existsSync(path.join(rootFor(otherRole), live)))
+        errors.push(
+          `${f}: retired in ${role}, still live at ${live} in ${otherRole} — one file at two ` +
+            `paths pairs with nothing and is graded by neither; retire it in both repos, or ` +
+            `declare it ${otherRole}Only and drop the archived copy`
+        );
+    }
+  }
+}
+
 
 // A shared path nobody adjudicated is the original failure in miniature, so paired runs look
 // for it. Solo runs cannot: the intersection is only knowable with both trees in hand.
@@ -358,9 +430,11 @@ if (errors.length) {
 } else {
   const count = (s) => manifest.entries.filter((e) => e.status === s).length;
   const canonicalOnly = (manifest.canonicalOnly ?? []).length;
+  const betaOnly = (manifest.betaOnly ?? []).length;
   console.log(
     `ok: ${manifest.entries.length} shared paths verified ${paired ? 'paired' : `solo (${selfRole})`}, ` +
       `${count('identical')} identical, ${count('forked')} forked and declared, ` +
-      `${count('per-repo')} per-repo by declaration; ${canonicalOnly} canonical-only`
+      `${count('per-repo')} per-repo by declaration; ` +
+      `${canonicalOnly} canonical-only, ${betaOnly} beta-only`
   );
 }

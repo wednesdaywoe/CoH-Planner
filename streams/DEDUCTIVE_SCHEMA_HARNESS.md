@@ -292,7 +292,7 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
         comparator `scripts/dsh6-shadow-project.cjs` are all removed now that the projection
         is the sole routing path and the shadow compare has no audience. `extractEffects` is
         now just `templatesToAtoms → projectAtomsToEffects → extractSummon`. The atom-ingest
-        cross-check `scripts/dsh6-shadow-atoms.cjs` survives (it validates `templatesToAtoms`
+        cross-check `scripts/attic/dsh6-shadow-atoms.cjs` survives (it validates `templatesToAtoms`
         against the reference encoder — independent of the deleted legacy). Regen
         byte-identical; 901 tests; gates ×3 green.
     needs: DEDUCTIVE_SCHEMA_HARNESS#DSH6

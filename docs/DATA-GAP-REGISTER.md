@@ -19,13 +19,11 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**1 open, of 184 entries.** When an entry is open it is listed here with what it's waiting on.
+**0 open, of 184 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
-- **FORK-2** — the guard watched `scripts/` while the pipeline also EXECUTES twelve forked `src/`
-  modules; the manifest now covers them and thirteen of fourteen are reconciled — only
-  `types/build.ts` is left, on its four remaining clusters
+*Nothing open. The next finding gets a row in its section and a narrative in [gaps/](gaps/).*
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -43,7 +41,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   emitted powers against their own export records
 - [x] **ACCOLADE-2** — the accolade converter was the one tree that never called `assignModes`, so
   the Labyrinth pair's `modes_required` zone gate was dropped and a buff you only have in one zone
-  presented as permanent; the picker now warns from the field
+  presented as permanent; the picker now warns from the field, in both UIs
 - [x] **ICON-1** — one mis-keyed override gave the base Winter's Gift the SUPERIOR artwork on all
   three forks and left Rebirth's `superior_winters_gift` on a filename the extractor fabricated,
   `ssuperior_winters_gift.png`, 404ing from the day the set was added while the base set's own
@@ -267,12 +265,12 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   hash manifest now adjudicates 142 shared paths including `tools/bin-crawler`, every script is
   identical or declared, and `regen-all.cjs` is per-repo because the driver was already identical
   and only the stage and gate rosters differ
-- [ ] **FORK-2** — `convert-powerset.cjs` loads its atom encoder from `src/` at runtime, so three
+- [x] **FORK-2** — `convert-powerset.cjs` loads its atom encoder from `src/` at runtime, so three
   byte-identical converters still emitted different files; twelve `src/` modules the pipeline
-  executes had forked in BOTH directions and no guard watched any of them, because the manifest
-  discovered its surface from `git ls-files scripts` alone; 13 of 14 reconciled, and the hand-typed
-  leveling schedule matched the export everywhere a player had checked it while gating Thunderspy's
-  pools at 4 where `schedules.bin` says 1
+  executes had forked in BOTH directions, unwatched, because the manifest read its surface from
+  `git ls-files scripts` alone; the hand-typed leveling schedule gated Thunderspy's pools at 4
+  where `schedules.bin` says 1, and the last fork's form model was two proper-noun enums served
+  by a community mapping the parser had already made retirable
 - [x] **FIXTURE-1** — the manually-emitted gate fixtures (procs, movement, set-bonus) drifted on
   sampling identity and labels only, no values; all three re-emitted, gates green, and the
   emitters now run in `npm run regen` so the drift class is closed

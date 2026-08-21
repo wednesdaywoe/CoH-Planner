@@ -16,7 +16,31 @@
       "gap": "FORK-1"
     }
   ],
+  "betaOnly": [
+    {
+      "path": "scripts/push-changelog-discord.ts",
+      "reason": "Wired into beta's package.json as changelog:push and read by src/data/changelog-manual.ts; it posts the beta site's changelog to a Discord webhook, and canonical has no such entry point. Canonical kept an archived copy under scripts/attic/ and it went 100 lines stale — the beta gained id-keyed dedup and unknown-flag rejection in cc193fb3f8, canonical never had it, and the attic move had already taken the file off the path this manifest keys on.",
+      "gap": "FORK-2",
+      "mentions": [
+        "scripts/attic/README.md",
+        "src/data/changelog-manual.ts"
+      ]
+    },
+    {
+      "path": "scripts/delete-user-shared-builds.ts",
+      "reason": "Wired into beta's package.json as delete-user-builds. It cleans up shared builds in beta's Supabase backend, which canonical does not have. Canonical's archived copy was still byte-identical and would have drifted the way its sibling did.",
+      "gap": "FORK-2",
+      "mentions": [
+        "scripts/attic/README.md"
+      ]
+    }
+  ],
   "entries": [
+    {
+      "path": "docs/DATA-GAP-REGISTER.md",
+      "status": "identical",
+      "sha256": "bac62b78893f0b67426764ab9dad50b73c6474dd7ff420c58c102b41b3f24aaf"
+    },
     {
       "path": "scripts/README-bulk-import-mids.md",
       "status": "identical",
@@ -76,6 +100,46 @@
       "path": "scripts/_variant-modes.cjs",
       "status": "identical",
       "sha256": "06dcf9710cecb4dfbcba9cdee9ee757ffac8f77f81c6849a74ac3d20ce662664"
+    },
+    {
+      "path": "scripts/attic/README.md",
+      "status": "identical",
+      "sha256": "2a11303ce4ab0b31a8341d833f77b2e635c07e1b46e81aa0fc24ae28631da4a2"
+    },
+    {
+      "path": "scripts/attic/dsh6-shadow-atoms.cjs",
+      "status": "identical",
+      "sha256": "ccd4378e24fafd9d0fda75e290bc466eaabfd5d0393a77a62fa51a47d9a5d20a"
+    },
+    {
+      "path": "scripts/attic/env-shim.ts",
+      "status": "identical",
+      "sha256": "bf01b6854b8d39e40118e426b91052e11851eb6e19aca7d8bf77159753568606"
+    },
+    {
+      "path": "scripts/attic/extract-genesis-icons.py",
+      "status": "identical",
+      "sha256": "d35b82c18269037db35451a5269a80a3d394e05dc429b7d817742330f44e3f36"
+    },
+    {
+      "path": "scripts/attic/extract-thunderspy-icons.py",
+      "status": "identical",
+      "sha256": "eed7cd2bf93d0c1a92bf1b1425c4c7dbc8b6074bc90db8f8d943889562ac5008"
+    },
+    {
+      "path": "scripts/attic/migrate-to-layered.cjs",
+      "status": "identical",
+      "sha256": "fba9ba9e80e096209dd271099ce594ab13bc672140d219cb01b7631e75a66fbf"
+    },
+    {
+      "path": "scripts/attic/planb-shadow-tohit.cjs",
+      "status": "identical",
+      "sha256": "bf4484f86a42dd64c4956a614a957a9b2faa7199f17f77748dee358ad155b464"
+    },
+    {
+      "path": "scripts/attic/reconvert-redirect-powersets.cjs",
+      "status": "identical",
+      "sha256": "9507324bbd8af74729af88be043f26d96303282beca3cdd81f73e80a76ba12cb"
     },
     {
       "path": "scripts/audit-allowed-set-categories.cjs",
@@ -228,6 +292,11 @@
       "sha256": "6fe6dd74c8c2719514da9ae98e1d6e101925ab9908c81e3420324bcc7a10c7da"
     },
     {
+      "path": "scripts/lint-register-shape.cjs",
+      "status": "identical",
+      "sha256": "8464c611bd988439c09efc3716d3c6e87bbbc1d35ccbcc56a890805b2a1aa08a"
+    },
+    {
       "path": "scripts/planb-shadow-bag.cjs",
       "status": "identical",
       "sha256": "14e5c5b08d8f838d30c998888b59ce517ee0a2c60e19f13ab7468570a5c31711"
@@ -272,7 +341,7 @@
       "status": "per-repo",
       "sha256": {
         "canonical": "36eea36cb33750e352b5c58a1c496f38f154d939dbfc9c7f3597e9b7b216ada8",
-        "beta": "43a61ba55338f1fed290a600a6cc95e8c56af3cd428d0a6919c5c66ffbb66b24"
+        "beta": "9b7c235bcd1e24069407fa9d90b68bc43ad585df9ab328d51a93eb47d5d4eb2d"
       },
       "reason": "The stage roster and the gate roster ARE the repo's identity — which converters exist and which gates it can currently pass — so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 14 (24 until FORK-2 retired the two form-variant generators), not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
       "exit": null,
@@ -291,7 +360,7 @@
     {
       "path": "scripts/verify-sync.cjs",
       "status": "identical",
-      "sha256": "0cde95dd8dc9233a837742f98ff99b18faa59ec0abcdca8b6ff90f431584e4dd"
+      "sha256": "7d5e799c08cf2927fe2eb25d0550c57f0d8c82f895432f957e502347adf73e76"
     },
     {
       "path": "src/data/core/atom-query.ts",
