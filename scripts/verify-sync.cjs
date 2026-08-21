@@ -12,8 +12,10 @@
  *
  * So this guard does not try to keep the copies equal. It makes an unequal pair impossible to
  * be UNAWARE of, which is the failure that actually happened. Every shared path is adjudicated
- * in sync-manifest.json as `identical` or `forked`, a fork must name a reason and a gap id, and
- * either repo editing a shared file without re-adjudicating turns this red.
+ * in sync-manifest.json as `identical`, `forked` (should converge, hasn't yet — owes an exit) or
+ * `per-repo` (two files on purpose — owes an argument and must NOT carry an exit). Each of the
+ * two unequal statuses must name a reason and a gap id, and either repo editing a shared file
+ * without re-adjudicating turns this red.
  *
  * Paths only one repo runs are declared instead, in `canonicalOnly`, and checked from the other
  * direction: the beta must neither hold the file nor name it anywhere tracked.
@@ -93,9 +95,20 @@ const rootFor = (role) => (role === selfRole ? ROOT : siblingRoot);
 
 if (write && !paired) throw new Error('--write needs --sibling: it records both repos');
 
-/** Tracked files under scripts/, relative to the repo root. */
+/**
+ * The tracked trees both repos are expected to hold in common.
+ *
+ * `tools/bin-crawler` joined `scripts/` on 2026-08-21 at zero drift — 69 files, same roster, every
+ * hash equal. That is the whole argument for adding it. It is the parser, so a fork there is the
+ * one this register ranks above everything else, and the manifest wrongly believed it already had
+ * a fork under FORK-1's opening census. Measuring it while it agrees costs nothing and means the
+ * first disagreement is the thing that reports, rather than a later census discovering an old one.
+ */
+const TRACKED_ROOTS = ['scripts', 'tools/bin-crawler'];
+
+/** Tracked files under the shared trees, relative to the repo root. */
 function trackedScripts(root) {
-  return execFileSync('git', ['ls-files', 'scripts'], { cwd: root, encoding: 'utf8' })
+  return execFileSync('git', ['ls-files', ...TRACKED_ROOTS], { cwd: root, encoding: 'utf8' })
     .split('\n')
     .filter(Boolean)
     .filter((f) => f !== SELF_MANIFEST);
@@ -173,9 +186,12 @@ if (write) {
     const beta = sha(path.join(rootFor('beta'), p));
     const was = prior.get(p);
     if (canonical === beta) return { path: p, status: 'identical', sha256: canonical };
+    // A `per-repo` declaration survives --write; anything else differing is a fork, including a
+    // path that was per-repo and has since converged (it comes back as `identical` above, and
+    // re-declaring it is then a deliberate act rather than a carried-forward one).
     return {
       path: p,
-      status: 'forked',
+      status: was?.status === 'per-repo' ? 'per-repo' : 'forked',
       sha256: { canonical, beta },
       reason: was?.reason ?? null,
       exit: was?.exit ?? null,
@@ -189,8 +205,11 @@ if (write) {
   );
 }
 
+const STATUSES = ['identical', 'forked', 'per-repo'];
+
 // -- verify -------------------------------------------------------------------------
 for (const e of manifest.entries) {
+  if (!STATUSES.includes(e.status)) errors.push(`${e.path}: unknown status "${e.status}"`);
   if (e.status === 'identical' && typeof e.sha256 !== 'string')
     errors.push(`${e.path}: status "identical" but no single sha256`);
   if (e.status === 'forked') {
@@ -201,6 +220,24 @@ for (const e of manifest.entries) {
       );
     if (!e.gap)
       errors.push(`${e.path}: forked with no gap id — an undeclared fork is debt, not precedent`);
+  }
+  // `forked` and `per-repo` are the same shape and opposite claims. A fork says the two copies
+  // OUGHT to be one file and are not yet, so it owes an exit condition. A per-repo entry says
+  // they are two files on purpose and no exit is coming, so it owes the argument instead — which
+  // is the part worth being unable to skip, because "we decided not to converge this" and "we
+  // never got round to converging this" are indistinguishable once the reason is missing.
+  if (e.status === 'per-repo') {
+    if (!e.reason)
+      errors.push(
+        `${e.path}: per-repo with no reason — the same door as a fork, and the reason IS the ` +
+          `whole declaration: nothing else here will ever ask about this path again`
+      );
+    if (!e.gap) errors.push(`${e.path}: per-repo with no gap id`);
+    if (e.exit)
+      errors.push(
+        `${e.path}: per-repo with an exit condition — a path with an exit is a fork that hasn't ` +
+          `been closed, not a declaration`
+      );
   }
 
   const roles = paired ? ['canonical', 'beta'] : [selfRole];
@@ -319,9 +356,11 @@ if (errors.length) {
   console.error(`\n${errors.length} error(s) — the shared pipeline drifted unadjudicated.`);
   if (gate) process.exit(1);
 } else {
-  const forked = manifest.entries.filter((e) => e.status === 'forked').length;
+  const count = (s) => manifest.entries.filter((e) => e.status === s).length;
+  const canonicalOnly = (manifest.canonicalOnly ?? []).length;
   console.log(
     `ok: ${manifest.entries.length} shared paths verified ${paired ? 'paired' : `solo (${selfRole})`}, ` +
-      `${manifest.entries.length - forked} identical, ${forked} forked and declared`
+      `${count('identical')} identical, ${count('forked')} forked and declared, ` +
+      `${count('per-repo')} per-repo by declaration; ${canonicalOnly} canonical-only`
   );
 }

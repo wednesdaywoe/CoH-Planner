@@ -264,13 +264,13 @@
     },
     {
       "path": "scripts/regen-all.cjs",
-      "status": "forked",
+      "status": "per-repo",
       "sha256": {
         "canonical": "07753433e1b37b2bde881de994316efe13e30621cc7ca21a59d40017a70d42d6",
         "beta": "60631540d61772348d4a3b2c8771b7ad401d9a354bc14b50f2de6a7b91ef07ab"
       },
-      "reason": "The two pipelines genuinely differ in scope. Canonical drives six stages beta has no scripts for (enhancement curves, special enhancements, boost index, leveling schedule, chance-mod selectors, caster meters); beta drives `generate-powerset-index.cjs`, which the Rust app does not need. This may be a permanent scoped fork rather than drift.",
-      "exit": "Decide whether the driver is shared at all. If the stage lists must differ, split the shared stage table out and let each repo own only its driver.",
+      "reason": "The stage roster and the gate roster ARE the repo's identity — which converters exist and which gates it can currently pass — so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 13, not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
+      "exit": null,
       "gap": "FORK-1"
     },
     {
@@ -286,7 +286,7 @@
     {
       "path": "scripts/verify-sync.cjs",
       "status": "identical",
-      "sha256": "876249e730dacf5489aaeefa91edbdd16f5e8f5eb29db51aa6ef9a7e6b71708c"
+      "sha256": "0cde95dd8dc9233a837742f98ff99b18faa59ec0abcdca8b6ff90f431584e4dd"
     },
     {
       "path": "src/data/core/atom-query.ts",
@@ -411,6 +411,351 @@
       "path": "src/utils/calculations/enhancement-values.ts",
       "status": "identical",
       "sha256": "5e2e823ae8c20995f1e887ff65dd75ff7a6a818be4af7c0aacebe4cc20110c5c"
+    },
+    {
+      "path": "tools/bin-crawler/audit_stack_alignment.py",
+      "status": "identical",
+      "sha256": "7c6ee584baf36763ea7251e028dc09abb2d7c74a284d6d39b52a796de5b86b8c"
+    },
+    {
+      "path": "tools/bin-crawler/bin-crawler.bat",
+      "status": "identical",
+      "sha256": "2a4fc8d286a3847ab6ebb02a9bed49fd8bb7916b426828b696ccd0add5c0893d"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/__init__.py",
+      "status": "identical",
+      "sha256": "b89f4ce4b56afc7d03c81c39847a064993f7fa02e505de08d4e9c856184467d3"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/__main__.py",
+      "status": "identical",
+      "sha256": "ad0de6e746360893a2287665665d3756ad8e8a6facb6fa148e42a847a49cc1c8"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/_export_fingerprint.py",
+      "status": "identical",
+      "sha256": "771b105ea9b09b972558101ea9296bef6e2297467c608690168784e4a11868ad"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/assets_dir.py",
+      "status": "identical",
+      "sha256": "22cf609f5ac7eb4e3ccefa40b422319b9ce0b57a8ea5fc8564feccad276fcc01"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/assets_sources.json",
+      "status": "identical",
+      "sha256": "bc9310214ddf5c97114c1b8c42e64dfbbe3d175903e3b13f340b865cf5c2d8cd"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/assets_sources.py",
+      "status": "identical",
+      "sha256": "91cd939b52b194fde9613f831d44fe908d969d57894a399bd882e0b43755473f"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/diff_exports.py",
+      "status": "identical",
+      "sha256": "9165d462560eb3181c3d5bd7a5488c061cf4e6f20967d4721011d8f3ca457bb6"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/export_classes.py",
+      "status": "identical",
+      "sha256": "a95556b7a04f954063965091be35818ac46e74fd105092e4c1bb56a43429b89e"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/export_entities.py",
+      "status": "identical",
+      "sha256": "155e7a80faf5cf6a60d7080408bc3008c724696918948ca0e91e52898135f496"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/export_incarnate_recipes.py",
+      "status": "identical",
+      "sha256": "bfe50c5b68ce9346079439b8494ce705734b01bd203125a5ba3cdf1da2c9f2b7"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/export_powers.py",
+      "status": "identical",
+      "sha256": "1210430a013efa6ed579bba4b2eb7ec84958c86631b0ad13a391f1365a6a1225"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/export_salvage.py",
+      "status": "identical",
+      "sha256": "2ccaf5cfd0caebc97f4ba2cdc81245e318e1cbaad29ec9e965335d982707f853"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/__init__.py",
+      "status": "identical",
+      "sha256": "e92cc8f61721c3d6751368745c1a574e3b2b7ca82ee9e06e13b033a213bc5f83"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_attrib_names.py",
+      "status": "identical",
+      "sha256": "021c611fc472668bf0aa7af1d739f9907f80e47739da043c0c22baf95ae21c23"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_boostsets.py",
+      "status": "identical",
+      "sha256": "eeca7c3eec3a0b8782e350058192f0d16d3271da8eb2bc25aee260c77a221cc7"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_classes.py",
+      "status": "identical",
+      "sha256": "dd9b2c152267c55b8bd57014d755b4380fc72d6540edc177f951c966398766f4"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_dataclasses.py",
+      "status": "identical",
+      "sha256": "4779cf46a13ad68c357a1c59073a08900548941ddafdf3931ef376d9d8ef1d2c"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_dim_returns.py",
+      "status": "identical",
+      "sha256": "2767e802c323a5e8383474d89489fce619ba5709d4799521605403aac577b4be"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_entities.py",
+      "status": "identical",
+      "sha256": "a82af65ef2dc5d2f4f61dc1064aa5729d2d02172ba22ced4e542f9ce378ecff5"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_enums.py",
+      "status": "identical",
+      "sha256": "e1a9af3d9453aa29d9662128949d6b9fd29028982cf24a653d1628d0508b4b57"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_gate_default.py",
+      "status": "identical",
+      "sha256": "725caaa2a76f54c2121153e7d1ba60ac2b927a4195dc2e27e6a62979a6ea130b"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_messages.py",
+      "status": "identical",
+      "sha256": "5284efa256561e965a76fb2eb09435c9504249792b76ae5de0695e177248855a"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_pigg.py",
+      "status": "identical",
+      "sha256": "07757dd2ebfe42be715fcd2d38cf5427bad4c26f8867486df6e5dc6b80e787dd"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_powercats.py",
+      "status": "identical",
+      "sha256": "2e3d533d582d640ebe6ef2f20411286dfc882dc6b1de8218118639e1ad7342f0"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_powers.py",
+      "status": "identical",
+      "sha256": "cfe65580cbfa6f0dd0db42456f8c9feb1f20aa143708a4377d79530a02252cdd"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_powersets.py",
+      "status": "identical",
+      "sha256": "2b553df8ffdedbf56fafc3c9e9bedb80221c576d5859eb14bbe738e4b0df9118"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_reader.py",
+      "status": "identical",
+      "sha256": "0fd885893da9c9ed63dd111bd7258c96c11def4c7314748ab4c743022664805f"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_recipes.py",
+      "status": "identical",
+      "sha256": "fb02439aec2998eb91cda3e837f2d05a25fd1ecfeb12432fb4ea3ee6b04b28dd"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_requires.py",
+      "status": "identical",
+      "sha256": "bd57cabcf59d8c2d101644bc39f5424c34a69d9745584d1f820618f31f442e88"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_salvage.py",
+      "status": "identical",
+      "sha256": "17dd1ee9a0bf4d7e949b989ec98ad5b91333a684b05a6e67239383debf164eac"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/parser/_schedules.py",
+      "status": "identical",
+      "sha256": "dc18dc2574566dbcfb5c9bc9ef6f943993e0ca1f0d46cb646c007c076d788625"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/preflight.py",
+      "status": "identical",
+      "sha256": "f561304eb68f7ce5f4b6182f3de37ee94a19fca4bcc22d3c1b1043ba389d19e1"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/server.py",
+      "status": "identical",
+      "sha256": "5d9d47ec5f02c0c61c0c2f98e2e8f41432b424bcc3e096ab897535b5b6ef0655"
+    },
+    {
+      "path": "tools/bin-crawler/bin_crawler/static/index.html",
+      "status": "identical",
+      "sha256": "6505439073f4ca8548c8aaed0c8023fa7e1066f8ef776849fac77724a15e85d9"
+    },
+    {
+      "path": "tools/bin-crawler/bincrawler_icon.af",
+      "status": "identical",
+      "sha256": "55ece5fca893189d18c589720c9c9cd8cb03db3dbbc1b1b973f29d665f737c50"
+    },
+    {
+      "path": "tools/bin-crawler/bincrawler_icon.png",
+      "status": "identical",
+      "sha256": "c8934fef31292fdfa97e9c8bd9008f47c0e3cadb4dcacc72894620f2b038f921"
+    },
+    {
+      "path": "tools/bin-crawler/dump_template_bytes.py",
+      "status": "identical",
+      "sha256": "9e416d99f8f0b9ba907a096863347971f8a2878aaee1f1b225ae3921445ad8b6"
+    },
+    {
+      "path": "tools/bin-crawler/probe_chain_fields.py",
+      "status": "identical",
+      "sha256": "ad9c4dd8a1a7b9ecad97c988a24eb2f9d99353f23cd3ad2d440307ffc75d478a"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_attrib_ceilings.py",
+      "status": "identical",
+      "sha256": "47356957e6c500cdf37efe573573daf8b51a84b5e1ee1985d83a8c66c6d94830"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_attribmod_flags.py",
+      "status": "identical",
+      "sha256": "c0a13b3c590d6fd8045eb71a4fb30267daac12081f041faa1449739f49fbaf76"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_available_levels.py",
+      "status": "identical",
+      "sha256": "a247b0abbac75ca766ff0c8ab995062544f20e563f04a40a4c30849e384dd028"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_boostsets_record_layout.py",
+      "status": "identical",
+      "sha256": "f63c8391723c5b5cc453f7a346fa849f338b5c4a0318a87246e850fdeee4e421"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_defense_floor.py",
+      "status": "identical",
+      "sha256": "0288b5bfc481b51689bfcbf27aee19dbbee8f14fc0858a0f4231edc17c7ab02f"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_delayed_requires.py",
+      "status": "identical",
+      "sha256": "88083880aa6b1c61bf73225c3a1c10bc46067307295555e8e36d7a3a5b043a72"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_diff_sweeps.py",
+      "status": "identical",
+      "sha256": "8c5846c971f2db071f80679e8b58466951130e3635d416f2e459a981940ab96e"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_entity_commandability.py",
+      "status": "identical",
+      "sha256": "f2896de0bde5f0bf900db6490937c134b3246528969bbdb6a56f1dd319201d75"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_fork_event_enum.py",
+      "status": "identical",
+      "sha256": "643ae811b77092f058167e033cd26375f316a9402bf2ea98e18bf1138ce1d47e"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_gate_default.py",
+      "status": "identical",
+      "sha256": "cba23360c32dd65e6443aeb1e12188c0723d812ec95e8c6d4b89fce0695175c1"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_gate_token_array.py",
+      "status": "identical",
+      "sha256": "442dc5df1a0553e85fd7ffa2f09fec0a9870412143ab4c498d20f99b8b2a0e85"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_main_target_only.py",
+      "status": "identical",
+      "sha256": "256ba13732cad097136c671dffdc76c55023a969243d4fd067919c70d63ce90f"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_parse6_aspect.py",
+      "status": "identical",
+      "sha256": "906c707d441ed1196c3c0f92b65964112d6b75054f3982a0f63336c7b444fcaf"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_parse6_chance.py",
+      "status": "identical",
+      "sha256": "8013a731350b82e86a772a1d38e2d1cc8ab1d430d94e291286a2ebaa8ced2ecb"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_parse6_tail_reaches_every_template.py",
+      "status": "identical",
+      "sha256": "035612c24273370962d2582b87e75f049a39be443d84a3d95452aa16356a6b2e"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_preflight_manifest_lookup.py",
+      "status": "identical",
+      "sha256": "20617134de88cf7124ac0f404dbd05189f2d6f779ce9e3d1c84f2f64e6110537"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_recipes_record_layout.py",
+      "status": "identical",
+      "sha256": "2dfcb3e2bb82c84e61a4248f5243fdbf7f97329dceefdce26e3aa3dcced9a139"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_requires_scope.py",
+      "status": "identical",
+      "sha256": "56dfd06a1cf7a6c14cdb7bdc28a5eb1aef071360a02f4d9fe19490cf2e690d2f"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_schedules.py",
+      "status": "identical",
+      "sha256": "8b7530987d015d28d1eb8046ee1a4076690ddf691d29dff20f5596e74ae207ca"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_special_attrib_band_base.py",
+      "status": "identical",
+      "sha256": "5cf8b5ac3f075b95d40cd01118d4004d2ab09097086f3ead0096cb8e7b894cac"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_special_attribs.py",
+      "status": "identical",
+      "sha256": "6de88799592f6167b71651e2eb83ab542d73f310d74cd4c74166c9d9cc2df1d4"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_strengths_disallowed.py",
+      "status": "identical",
+      "sha256": "fc0a6e336bd66d6d3eaf1b156976589ba5c1f0614224714fb54155b4c3f17f2e"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_thunderspy_band_precedence.py",
+      "status": "identical",
+      "sha256": "8248d30ecc3e5ff247ead085f98b6d23b0a6bd6fcd0d24ccb533089554f57216"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_thunderspy_chance.py",
+      "status": "identical",
+      "sha256": "da5a295b3cef52a7d7d16867d8b4048c22ff22d8b598714fc18c54e8054b4bed"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_thunderspy_entcreate_attach.py",
+      "status": "identical",
+      "sha256": "c81f41b89d0dd32c22c9216d6c32b0ce9bc7c0aea43c2bfaef07672044195d22"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_thunderspy_movement.py",
+      "status": "identical",
+      "sha256": "9c6cc8e86cc807da21a37bdbed67ec241dee3cc781aa5236d150cda3a3a0ef2d"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_thunderspy_params.py",
+      "status": "identical",
+      "sha256": "2d1924b8cea6ad7153bb86cf7cb5ac7cadb7dbb0adf49016c3ebf1ca771b5db9"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_thunderspy_typing.py",
+      "status": "identical",
+      "sha256": "e2186a0f89c40da046c13f6d771a316fc56e92cbb2aef41d40412ba0df02b678"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_wrapper_targets_are_exported.py",
+      "status": "identical",
+      "sha256": "7d520796b457937aa15a26b013fe2bcc348b6ae874d76e38cc63ab83f948323a"
     }
   ]
 }
