@@ -7,7 +7,7 @@
   "canonicalOnly": [
     {
       "path": "scripts/audit-converter-twins.cjs",
-      "reason": "Wired into canonical's regen-all.cjs and package.json as audit:twins. The beta held a copy it never referenced and could not have run \u2014 the --gate leg reads scripts/audit-twins-baseline.json, which the beta does not carry.",
+      "reason": "Wired into canonical's regen-all.cjs and package.json as audit:twins. The beta held a copy it never referenced and could not have run — the --gate leg reads scripts/audit-twins-baseline.json, which the beta does not carry.",
       "gap": "FORK-1"
     },
     {
@@ -271,10 +271,10 @@
       "path": "scripts/regen-all.cjs",
       "status": "per-repo",
       "sha256": {
-        "canonical": "07753433e1b37b2bde881de994316efe13e30621cc7ca21a59d40017a70d42d6",
+        "canonical": "36eea36cb33750e352b5c58a1c496f38f154d939dbfc9c7f3597e9b7b216ada8",
         "beta": "43a61ba55338f1fed290a600a6cc95e8c56af3cd428d0a6919c5c66ffbb66b24"
       },
-      "reason": "The stage roster and the gate roster ARE the repo's identity \u2014 which converters exist and which gates it can currently pass \u2014 so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 14, not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
+      "reason": "The stage roster and the gate roster ARE the repo's identity — which converters exist and which gates it can currently pass — so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 14 (24 until FORK-2 retired the two form-variant generators), not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
       "exit": null,
       "gap": "FORK-1"
     },
@@ -345,14 +345,8 @@
     },
     {
       "path": "src/types/build.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "4725fdbc6e36b34c9ec94e7b569937055e71723bed33eda841b4af30ce54e56a",
-        "beta": "e9692408504b8b69cc848fe86db7f64180ddedb2ea0c93f11c0c1b61b389d06e"
-      },
-      "reason": "Four clusters, all beta-ahead, none reaching a converter \u2014 the file is on the shared surface only because types/index.ts re-exports it. The one that matters is activeModes against the twin's kheldianForm/primalistForm: the twin's two form enums are backed by hand-authored per-fork variant tables (Rebirth's is a community mapping standing in for unparsed Parse6, and Homecoming's is empty), where the beta reads the export's modeVariants. The other three are app state the twin was never vendored: mutedOverCapStats, startForm/fullShiftAnimations, DEFAULT_BUILD_NAME.",
-      "exit": "The form model closes by porting the beta's modeVariants read into the twin and retiring the four hand tables with their two generators; the other three close by vendoring. Until then the pipeline's answer is canonical's copy, because that is the copy the converters were reconciled against.",
-      "gap": "FORK-2"
+      "status": "identical",
+      "sha256": "e9692408504b8b69cc848fe86db7f64180ddedb2ea0c93f11c0c1b61b389d06e"
     },
     {
       "path": "src/types/common.ts",
