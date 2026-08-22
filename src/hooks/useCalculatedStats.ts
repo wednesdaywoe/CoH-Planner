@@ -335,7 +335,7 @@ export function useCalculationContext(): CalculationContext {
   const exemplarMode = useUIStore((state) => state.exemplarMode);
   const exemplarLevel = useUIStore((state) => state.exemplarLevel);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
-  const incarnateLevelShiftActive = useUIStore((state) => state.incarnateLevelShiftActive);
+  const incarnateLevelShift = useUIStore((state) => state.incarnateLevelShift);
   const procSettings = useUIStore((state) => state.procSettings);
   const procsEnabled = useUIStore((state) => state.includeProcDamageInDPS);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
@@ -361,7 +361,7 @@ export function useCalculationContext(): CalculationContext {
   // instance built its own `options` object (a fresh ref per `useMemo`), the calc
   // cache would miss on every instance and every consumer would re-run the engine.
   return useMemo(() => {
-    const deps = [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden, whatIfBuffs] as const;
+    const deps = [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShift, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden, whatIfBuffs] as const;
     return sharedContextMemo.get(deps, () => ({
       exemplarMode,
       incarnateActive,
@@ -372,7 +372,7 @@ export function useCalculationContext(): CalculationContext {
         targetLevelOffset,
         vigilanceTeamSize,
         furyLevel,
-        incarnateLevelShiftActive,
+        incarnateLevelShift,
         combatMode,
         globalAdjusters,
         mechanicAdjusters,
@@ -382,7 +382,7 @@ export function useCalculationContext(): CalculationContext {
         whatIfBuffs,
       },
     }));
-  }, [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden, whatIfBuffs]);
+  }, [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShift, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden, whatIfBuffs]);
 }
 
 /**

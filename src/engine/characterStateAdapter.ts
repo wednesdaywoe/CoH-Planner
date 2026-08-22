@@ -13,8 +13,9 @@
  * Fail-loud (the rebuild mandate): inputs the engine has no equivalent for do NOT get
  * silently dropped. `destinyTime` passes through to `combat.destiny_time` (the engine scrubs
  * the diminishing Destiny timeline itself; null → its sustained-floor default). A disabled
- * `incarnateLevelShiftActive` warns (the engine derives level-shift from the equipped incarnate
- * and can't suppress it independently). Conditional adjusters (`globalAdjusters` /
+ * `incarnateLevelShift` passes through to `combat.incarnate_level_shift` as a CEILING the engine
+ * spends down the loadout's earned shifts (null → all of them). It used to warn and drop, because
+ * the engine applied every shift unconditionally; LSHIFT-1 gave it the ceiling. Conditional adjusters (`globalAdjusters` /
  * `mechanicAdjusters`) reach the engine two ways: for the per-power DISPLAY projection they are
  * forwarded as `combat.global_conditionals` / `per_power_conditionals` / `power_state` — the last
  * two a partition of the beta's one mechanic map, re-addressed per pick (PROD6C-3k), and for
@@ -117,6 +118,10 @@ export interface CharacterStateCombatContext {
   hit_points_percent: number;
   exemplar_level: number | null;
   destiny_time: number | null;
+  /** The incarnate level-shift ceiling: how many of the loadout's EARNED shifts to spend.
+   *  `null` = all of them. The engine spends it down the grants (Alpha first) rather than
+   *  clamping the sum, so each slot's breakdown row still states what it contributed. */
+  incarnate_level_shift: number | null;
   hidden: boolean;
   global_conditionals: Record<string, boolean>;
   per_power_conditionals: Record<string, boolean>;
@@ -168,7 +173,9 @@ export interface AdapterCalcContext {
   exemplarMode: boolean;
   exemplarLevel: number;
   incarnateActive: IncarnateActiveState;
-  incarnateLevelShiftActive: boolean;
+  /** How many of the loadout's earned incarnate level shifts to read the build with; `null` =
+   *  all of them. A ceiling, not a magnitude — the engine spends it down the earned grants. */
+  incarnateLevelShift: number | null;
   targetsHitValues: Record<string, number>;
   targetLevelOffset: number;
   vigilanceTeamSize: number;
@@ -477,13 +484,6 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
       );
     }
   }
-  if (ctx.incarnateLevelShiftActive === false) {
-    // Minor gap, not fatal: the engine derives level-shift from the equipped incarnate
-    // (WS16 hardcoded-on) and cannot suppress it independently, so the build's totals
-    // will include the level shift the user tried to toggle off.
-    console.warn('characterStateAdapter: incarnateLevelShiftActive=false is not honored — the engine applies level-shift whenever a shift-granting incarnate is equipped');
-  }
-
   const mechanics = partitionMechanicAdjusters(build, ctx.mechanicAdjusters);
 
   return {
@@ -520,6 +520,11 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
       // default); a number → that exact second. The engine reads the same timeline the beta's
       // getDestinyEffectsAtTime does, so null↔None and n↔Some(n) match the beta path exactly.
       destiny_time: ctx.destinyTime,
+      // Level-shift ceiling: null → the engine spends every shift the loadout earned (the
+      // prior fixed behaviour), a number → it spends that much down the earned grants,
+      // Alpha first. It cannot exceed them, so this never conjures a shift the build has
+      // not earned. Forwarded rather than warned since LSHIFT-1.
+      incarnate_level_shift: ctx.incarnateLevelShift,
       // The three DISPLAY-side inputs (PROD6C-3k): they resolve the effective power each
       // per-power projection describes and change no dashboard total, which is why forwarding
       // the toggle maps here does not disturb the classification above.

@@ -241,6 +241,7 @@ export {
   getInterfaceEffects,
   getJudgementEffects,
   getLoreEffects,
+  getLevelShiftGrants,
   getGenesisEffects,
   getIncarnateEffects,
   formatEffectPercent,

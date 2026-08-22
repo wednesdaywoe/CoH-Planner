@@ -760,8 +760,11 @@ export interface CalculationOptions {
   vigilanceTeamSize?: number;
   /** Fury level for Brutes (0-100) */
   furyLevel?: number;
-  /** Whether incarnate level shifts are applied (default: true, independent from per-slot toggles) */
-  incarnateLevelShiftActive?: boolean;
+  /** How many of the loadout's EARNED incarnate level shifts to read the build with;
+   *  `null`/undefined = all of them. A ceiling the engine spends down the earned grants
+   *  (Alpha first), never a magnitude it can exceed. Independent of the per-slot stat
+   *  toggles — equipping a shifting slot is what earns the shift. */
+  incarnateLevelShift?: number | null;
   /** Seconds after cast to evaluate the (diminishing) Destiny buff at. `null` =
    *  the equipped power's sustained floor (default); 0 = additive peak; `undefined`
    *  = legacy flat peak values. Only affects Destiny powers that diminish over
@@ -810,7 +813,7 @@ export function calculateCharacterTotals(
     exemplarMode,
     exemplarLevel: options?.exemplarLevel ?? 50,
     incarnateActive: incarnateActive ?? { alpha: false, destiny: false, hybrid: false, interface: false, judgement: false, lore: false, genesis: false },
-    incarnateLevelShiftActive: options?.incarnateLevelShiftActive ?? true,
+    incarnateLevelShift: options?.incarnateLevelShift ?? null,
     targetsHitValues: options?.targetsHitValues ?? {},
     targetLevelOffset: options?.targetLevelOffset ?? 0,
     vigilanceTeamSize: options?.vigilanceTeamSize ?? 0,
