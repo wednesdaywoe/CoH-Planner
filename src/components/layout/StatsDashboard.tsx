@@ -47,6 +47,41 @@ const DASHBOARD_SECTIONS: { name: string; categories: StatCategory[] }[] = [
 ];
 export type { StatDefinition, StatValue, CompoundStatValue, MezStatValue };
 
+/** A stat's ceiling, and which of the two kinds it is. They are not interchangeable, and a
+ *  bare number cannot distinguish them: `hard` binds (the engine clamped the value, so the
+ *  ceiling and the total are the same number), `soft` does not (the value runs past it and
+ *  the surplus does real work). Keeping the kind on the value is what stops a display from
+ *  quietly reporting a threshold as a total. */
+export type StatCap = { value: number; kind: 'hard' | 'soft' };
+
+/** The ceiling to show on a stat tile, or `undefined` for a stat with none.
+ *
+ *  The kind is not cosmetic. Resistance's cap is a clamp the engine already applied
+ *  (`finalize.rs`), so the ceiling and the total are the same number. Defense's 45% is a
+ *  threshold the engine deliberately leaves unbound — guarded there by
+ *  `resistance_cap_binds_but_defense_softcap_does_not` — because defense past the softcap
+ *  is real and load-bearing: it is what holds you at the softcap through a foe's +ToHit and
+ *  a ToHit-debuff cascade. A ceiling carried as a bare number cannot tell the two apart,
+ *  and the tile rendered `45.00%` over the user's actual total. */
+export function statCapFor(
+  statId: string,
+  defenseCap: number,
+  resistanceCap: number,
+): StatCap | undefined {
+  if (statId.startsWith('def') || statId.startsWith('defense_')) {
+    return { value: defenseCap, kind: 'soft' };
+  }
+  if (statId.startsWith('res_')) return { value: resistanceCap, kind: 'hard' };
+  return undefined;
+}
+
+/** Whether the ceiling should be rendered IN PLACE OF the total. Only a hard cap may:
+ *  past it the surplus is genuinely discarded, so the ceiling is the total. A softcap
+ *  replaces nothing. */
+export function capReplacesTotal(cap: StatCap | undefined, numericValue: number | undefined): boolean {
+  return cap !== undefined && numericValue !== undefined && numericValue >= cap.value && cap.kind === 'hard';
+}
+
 // Dashboard stat id → movement base/cap key. These four render as mph (or feet)
 // rather than a raw %, projected through applyMovementBuff so the active
 // travel-toggle cap applies.
@@ -290,10 +325,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         const def = STAT_DEFINITIONS[config.stat];
         const value = resolveStatValue(config.stat, def, stats, globalBonuses, baseHP, maxHPCap);
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
-        // Attach cap for defense/resistance stats
-        let cap: number | undefined;
-        if (config.stat.startsWith('def') || config.stat.startsWith('defense_')) cap = defenseCap;
-        else if (config.stat.startsWith('res_')) cap = resistanceCap;
+        const cap = statCapFor(config.stat, defenseCap, resistanceCap);
 
         // Movement stats display in mph/ft on the face; surface the underlying
         // % buff (and capped state) on hover so the user can see the input.
@@ -897,8 +929,11 @@ interface StatItemProps {
   onTrack?: () => void;
   /** HP cap for this archetype (only for HP stat) */
   hpCap?: number;
-  /** Stat cap as percentage (e.g. 75 for resistance, 45 for defense) */
-  cap?: number;
+  /** Stat ceiling as a percentage, with which kind of ceiling it is. `hard` is a clamp the
+   *  engine already applied (resistance, 75/90) — the value cannot exceed it, so the tile
+   *  reads the ceiling. `soft` is a threshold only (defense, 45) — the value legitimately
+   *  runs past it and the tile must show the real total. */
+  cap?: StatCap;
   /** When true, suppress the Rule-of-5 over-cap warning ring for this tile
    *  (the stat's over-cap warnings are muted). Softcap/hardcap display and the
    *  numeric total are unaffected. */
@@ -913,8 +948,8 @@ interface StatItemProps {
 function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', totalBaseOffset = 0, formatTotal, formatBreakdownSource, rawValue, className = '', tracked, onTrack, hpCap, cap, overCapMuted, simulated }: StatItemProps) {
   const hasCapped = !overCapMuted && (breakdown?.sources.some(s => s.capped) ?? false);
   const numericValue = typeof rawValue === 'number' ? rawValue : undefined;
-  const isAtCap = cap !== undefined && numericValue !== undefined && numericValue >= cap;
-  const overCap = isAtCap ? numericValue - cap : 0;
+  const isAtCap = cap !== undefined && numericValue !== undefined && numericValue >= cap.value;
+  const overCap = isAtCap ? numericValue - cap.value : 0;
   // When a stat hits its AT cap (Defense / Resistance / etc.), keep its
   // native color (defense purple, resistance orange) and signal "capped"
   // by underlining the value rather than recoloring to orange. The
@@ -925,7 +960,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
   // secondary parts. The secondary renders smaller and dimmer so it stays
   // out of the way and truncates first if the column is tight. Full value
   // is preserved in the tooltip.
-  const renderedValue = isAtCap ? `${cap.toFixed(2)}%` : value;
+  const renderedValue = capReplacesTotal(cap, numericValue) ? `${cap!.value.toFixed(2)}%` : value;
   const parenMatch = typeof renderedValue === 'string'
     ? renderedValue.match(/^(.*?)\s+\(([^)]+)\)$/)
     : null;
@@ -993,7 +1028,9 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
         {tooltip && <div className="text-slate-400 text-[10px]">{tooltip}</div>}
         {isAtCap && numericValue !== undefined && (
           <div className="text-orange-400 text-[10px]">
-            Capped at {cap}% — actual total {numericValue.toFixed(2)}% (over by {overCap.toFixed(2)}%)
+            {cap.kind === 'hard'
+              ? `At the ${cap.value}% cap — further ${label.toLowerCase()} is discarded.`
+              : `Over the ${cap.value}% softcap by ${overCap.toFixed(2)}%. The surplus still counts: it holds you at the softcap through a foe's +ToHit and a ToHit-debuff cascade.`}
           </div>
         )}
 
