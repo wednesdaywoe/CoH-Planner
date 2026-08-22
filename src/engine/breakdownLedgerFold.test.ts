@@ -64,7 +64,7 @@ const CTX: AdapterCalcContext = {
   exemplarMode: false,
   exemplarLevel: 50,
   incarnateActive: { alpha: true, destiny: true, hybrid: true, interface: true, judgement: true, lore: true, genesis: true },
-  incarnateLevelShiftActive: true,
+  incarnateLevelShift: null,
   targetsHitValues: {},
   targetLevelOffset: 0,
   vigilanceTeamSize: 0,

@@ -320,8 +320,22 @@ interface UIState {
   /** Incarnate active state - which incarnate slots are active for stat calculations */
   incarnateActive: IncarnateActiveState;
 
-  /** Whether incarnate level shifts are applied (independent from per-slot stat toggles) */
-  incarnateLevelShiftActive: boolean;
+  /** How many of the loadout's EARNED incarnate level shifts to read the build with, or
+   *  `null` for all of them. Independent of the per-slot stat toggles: equipping a shifting
+   *  slot is what earns the shift, and this says how much of it the content grants.
+   *
+   *  A full Alpha/Destiny/Lore loadout has earned +3, but only incarnate-flagged content
+   *  grants all three; everywhere else the same character fights at a smaller shift, and
+   *  reading the build at +3 overstates every purple-patch number. Which content grants what
+   *  is a game rule that appears nowhere in the export, so the planner does not derive it —
+   *  the player says. Deliberately NOT wired to `contentMode`: that would move a number for a
+   *  reason nothing on screen states.
+   *
+   *  A CEILING, not a magnitude — the engine spends it down the earned grants and can never
+   *  exceed them, so a value above what is equipped simply reads as "all of them". Replaces
+   *  the boolean `incarnateLevelShiftActive`, which had a setter, a persisted slot and no UI
+   *  that ever called it, and which the engine has ignored since the adapter landed. */
+  incarnateLevelShift: number | null;
 
   /** Seconds after cast to evaluate the diminishing Destiny buff at. `null` = auto
    *  = the equipped power's sustained floor (the conservative default a perma-
@@ -668,7 +682,8 @@ interface UIActions {
   toggleIncarnateActive: (slotId: ToggleableIncarnateSlot) => void;
   setIncarnateActive: (slotId: ToggleableIncarnateSlot, active: boolean) => void;
   resetIncarnateActive: () => void;
-  toggleIncarnateLevelShift: () => void;
+  /** Set the incarnate level-shift ceiling (`null` = every earned shift). */
+  setIncarnateLevelShift: (shift: number | null) => void;
   /** Set the Destiny time-slider position (seconds after cast; `null` = auto floor). */
   setDestinyTime: (seconds: number | null) => void;
 
@@ -983,7 +998,7 @@ export const useUIStore = create<UIStore>()(
       colorTheme: DEFAULT_COLOR_THEME,
       colorMode: DEFAULT_COLOR_MODE,
       incarnateActive: createDefaultIncarnateActiveState(),
-      incarnateLevelShiftActive: true,
+      incarnateLevelShift: null,
       destinyTime: null,
       dominationActive: false,
       scourgeActive: false,
@@ -1660,10 +1675,8 @@ export const useUIStore = create<UIStore>()(
       resetIncarnateActive: () =>
         set({ incarnateActive: createDefaultIncarnateActiveState() }),
 
-      toggleIncarnateLevelShift: () =>
-        set((state) => ({
-          incarnateLevelShiftActive: !state.incarnateLevelShiftActive,
-        })),
+      setIncarnateLevelShift: (shift) =>
+        set({ incarnateLevelShift: shift === null ? null : Math.max(0, shift) }),
 
       setDestinyTime: (seconds) =>
         set({ destinyTime: seconds === null ? null : Math.max(0, seconds) }),
@@ -1945,7 +1958,7 @@ export const useUIStore = create<UIStore>()(
           // A new build must never open already simulating (WHAT-IF-BUFFS-PLAN WIF15).
           whatIfBuffs: {},
           incarnateActive: createDefaultIncarnateActiveState(),
-          incarnateLevelShiftActive: true,
+          incarnateLevelShift: null,
           destinyTime: 0,
           dominationActive: false,
           scourgeActive: false,
@@ -2003,7 +2016,7 @@ export const useUIStore = create<UIStore>()(
         colorTheme: state.colorTheme,
         colorMode: state.colorMode,
         incarnateActive: state.incarnateActive,
-        incarnateLevelShiftActive: state.incarnateLevelShiftActive,
+        incarnateLevelShift: state.incarnateLevelShift,
         destinyTime: state.destinyTime,
         dominationActive: state.dominationActive,
         scourgeActive: state.scourgeActive,

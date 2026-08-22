@@ -3542,7 +3542,7 @@ export function legacyCalculateCharacterTotals(
         targetLevelOffset: options?.targetLevelOffset,
         vigilanceTeamSize: options?.vigilanceTeamSize,
         furyLevel: options?.furyLevel,
-        incarnateLevelShiftActive: options?.incarnateLevelShiftActive,
+        incarnateLevelShift: options?.incarnateLevelShift,
       }
     );
   }
@@ -3745,7 +3745,18 @@ export function legacyCalculateCharacterTotals(
   // Step 9: Apply incarnate bonuses (Destiny, Hybrid - direct stats)
   // Note: Alpha bonuses were already applied in Step 7 as enhancement bonuses
   if (_debug) debugGroup('Step 9: Incarnate Bonuses');
-  applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown, options?.incarnateLevelShiftActive ?? true, incarnatesSuppressed, options?.destinyTime);
+  // This file is frozen, so it never learned LSHIFT-1's ceiling: it applies every earned shift
+  // or none. The two settings it CAN express map onto its boolean; anything between them throws
+  // rather than quietly answering the nearest one it knows — a lossy map here would make the
+  // parity gate green while the two sides read different level shifts, which is the exact class
+  // of silent divergence this oracle exists to catch.
+  const levelShiftCeiling = options?.incarnateLevelShift ?? null;
+  if (levelShiftCeiling !== null && levelShiftCeiling !== 0) {
+    throw new Error(
+      `legacy-totals.oracle: incarnateLevelShift=${levelShiftCeiling} is a partial ceiling this frozen oracle cannot express (it knows only all-or-nothing). Compare against the engine with null or 0.`,
+    );
+  }
+  applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown, levelShiftCeiling === null, incarnatesSuppressed, options?.destinyTime);
   if (_debug) debugGroupEnd();
 
   // Step 9.1: Apply archetype inherent damage bonuses (Vigilance, Fury)

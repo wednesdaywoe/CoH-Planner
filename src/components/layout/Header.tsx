@@ -11,7 +11,7 @@ import { useHistoryStore } from '@/stores/historyStore';
 import { useOnboardingStore, useOnboardingCurrentStep } from '@/stores/onboardingStore';
 import { supabase } from '@/lib/supabase';
 import { isPairable } from '@/data/power-requires';
-import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel, STANCE_GROUPS, findStanceParent, activeStanceOptionId } from '@/data';
+import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel, STANCE_GROUPS, findStanceParent, activeStanceOptionId, getLevelShiftGrants } from '@/data';
 import type { StanceGroup } from '@/data';
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { selectableModes, modeLabel } from '@/utils/mode-suppression';
@@ -1121,6 +1121,27 @@ function SettingsPopover() {
   const setTargetLevelOffset = useUIStore((s) => s.setTargetLevelOffset);
   const contentMode = useUIStore((s) => s.contentMode);
   const setContentMode = useUIStore((s) => s.setContentMode);
+  const incarnateLevelShift = useUIStore((s) => s.incarnateLevelShift);
+  const setIncarnateLevelShift = useUIStore((s) => s.setIncarnateLevelShift);
+
+  // The shifts this loadout has earned, and where the stored ceiling sits among them. One
+  // derivation feeding the whole control, so the readout and the two buttons cannot disagree
+  // about which slots are being spent.
+  const levelShiftGrants = useMemo(() => getLevelShiftGrants(build?.incarnates), [build?.incarnates]);
+  const levelShiftEarned = levelShiftGrants.reduce((sum, grant) => sum + grant.shift, 0);
+  // Unset READS as every earned shift. Clamped because a ceiling outlives the loadout that set
+  // it: unequipping Lore must not leave the build pinned above what it now earns.
+  const levelShiftApplied = Math.min(Math.max(incarnateLevelShift ?? levelShiftEarned, 0), levelShiftEarned);
+  // The reachable settings — 0, then each running total. Spending is Alpha-first, so index N
+  // means "the first N grants apply".
+  const levelShiftPrefixes = useMemo(() => {
+    const prefixes = [0];
+    for (const grant of levelShiftGrants) prefixes.push(prefixes[prefixes.length - 1] + grant.shift);
+    return prefixes;
+  }, [levelShiftGrants]);
+  // The last prefix at or below the stored ceiling, so a ceiling from a since-changed loadout
+  // resolves to the nearest reachable setting rather than to none of them.
+  const levelShiftIndex = Math.max(0, levelShiftPrefixes.filter((prefix) => prefix <= levelShiftApplied).length - 1);
   const showSlotLevels = useUIStore((s) => s.showSlotLevels);
   const toggleShowSlotLevels = useUIStore((s) => s.toggleShowSlotLevels);
   const showProcPotential = useUIStore((s) => s.showProcPotential);
@@ -1312,6 +1333,58 @@ function SettingsPopover() {
               </div>
             </Tooltip>
           </div>
+
+          {/* Incarnate Level Shift — how many of the loadout's EARNED shifts to read the build
+              with. Beside Content, and deliberately NOT driven by it: which content grants which
+              slot's shift is a game rule that appears nowhere in the exported data, so the
+              planner does not derive it. Coupling the two would move every purple-patch number
+              for a reason nothing on screen states.
+
+              Absent when the loadout has earned no shift — a control that moves no total should
+              not be on screen.
+
+              The step is a GRANT, not a magnitude of one: the reachable settings are the grant
+              list's prefix sums, so a slot that ever shifts by something other than 1 still
+              steps correctly. `getLevelShiftGrants` is the same list the engine spends. */}
+          {levelShiftGrants.length > 0 && (
+            <div className="space-y-1">
+              <Tooltip content="How many of your incarnate level shifts to apply. A full Alpha/Destiny/Lore loadout earns +3, but only incarnate content grants all of them — outside it you fight at a smaller shift, and reading the build at +3 overstates hit chance and every damage number scaled by the level difference.">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs text-gray-400">Level Shift</label>
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => setIncarnateLevelShift(levelShiftPrefixes[levelShiftIndex - 1] ?? 0)}
+                      disabled={levelShiftIndex === 0}
+                      className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+                    >
+                      &minus;
+                    </button>
+                    <span className="text-sm font-bold text-[var(--color-link)] w-8 text-center">
+                      +{levelShiftApplied}
+                    </span>
+                    <button
+                      onClick={() => {
+                        const raised = levelShiftPrefixes[levelShiftIndex + 1] ?? levelShiftEarned;
+                        // Stepping back up to the full shift stores null, not the number, so a
+                        // build that later equips another shifting slot picks the new shift up
+                        // instead of staying pinned by a ceiling set when it had fewer.
+                        setIncarnateLevelShift(raised < levelShiftEarned ? raised : null);
+                      }}
+                      disabled={levelShiftIndex + 1 >= levelShiftPrefixes.length}
+                      className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </Tooltip>
+              <div className="text-[10px] text-slate-500">
+                {levelShiftIndex === 0
+                  ? `none of +${levelShiftEarned} earned`
+                  : `${levelShiftGrants.slice(0, levelShiftIndex).map((g) => g.slotId).join(', ')} — of +${levelShiftEarned} earned`}
+              </div>
+            </div>
+          )}
 
           {/* Toggles */}
           <div className="space-y-2">

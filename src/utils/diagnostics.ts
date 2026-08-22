@@ -68,7 +68,7 @@ export function getDiagnosticsSnapshot(): DiagnosticsSnapshot {
     useArcanaTime: ui.useArcanaTime,
     damageDisplayMode: ui.damageDisplayMode,
     incarnateActive: ui.incarnateActive,
-    incarnateLevelShiftActive: ui.incarnateLevelShiftActive,
+    incarnateLevelShift: ui.incarnateLevelShift,
     selectedBranch: ui.selectedBranch,
     powerViewMode: ui.powerViewMode,
     targetsHitValues: pickNonZero(ui.targetsHitValues),

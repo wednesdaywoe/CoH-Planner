@@ -12,7 +12,7 @@
  * Judgement/Lore are clickable attacks/pets (not passive stats)
  */
 
-import type { IncarnateSlotId } from '@/types';
+import type { IncarnateBuildState, IncarnateSlotId, SelectedIncarnatePower } from '@/types';
 import { getActiveDataset } from './dataset';
 
 // The raw generated incarnate tables ride in the active dataset's dynamic
@@ -711,4 +711,37 @@ export function formatEffectValue(value: number, isPercent = true): string {
     return `${sign}${(value * 100).toFixed(1)}%`;
   }
   return `${sign}${value.toFixed(2)}`;
+}
+
+/** One equipped slot's level-shift grant: which slot, what is in it, and how far it shifts. */
+export interface LevelShiftGrant {
+  slotId: 'alpha' | 'destiny' | 'lore';
+  powerId: string;
+  displayName: string;
+  shift: number;
+}
+
+/**
+ * The level shifts the equipped loadout has earned, in SPEND order.
+ *
+ * The beta half of the engine's `incarnates::level_shift_grants`, and it must agree with it:
+ * the engine spends the user's ceiling down this same list, so a control offering a step the
+ * engine won't spend would show a number the totals never take. Order is load-bearing rather
+ * than cosmetic — Alpha leads because it is the slot the game unlocks first and the one a
+ * player reading their build at a single shift is holding.
+ *
+ * Filtered on non-zero, so a slot that grants no shift is absent rather than present at 0.
+ * Deliberately NOT gated by the per-slot stat toggles: equipping a shifting slot is what earns
+ * the shift, which is the rule the engine's pass keeps too.
+ */
+export function getLevelShiftGrants(incarnates: IncarnateBuildState | undefined): LevelShiftGrant[] {
+  if (!incarnates) return [];
+  const grants: LevelShiftGrant[] = [];
+  const push = (slotId: LevelShiftGrant['slotId'], pick: SelectedIncarnatePower | null, shift: number | undefined) => {
+    if (pick && shift) grants.push({ slotId, powerId: pick.powerId, displayName: pick.displayName, shift });
+  };
+  push('alpha', incarnates.alpha, getAlphaEffects(incarnates.alpha?.powerId ?? '')?.levelShift);
+  push('destiny', incarnates.destiny, getDestinyEffects(incarnates.destiny?.powerId ?? '')?.levelShift);
+  push('lore', incarnates.lore, getLoreEffects(incarnates.lore?.powerId ?? '')?.levelShift);
+  return grants;
 }

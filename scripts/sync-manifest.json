@@ -7,7 +7,7 @@
   "canonicalOnly": [
     {
       "path": "scripts/audit-converter-twins.cjs",
-      "reason": "Wired into canonical's regen-all.cjs and package.json as audit:twins. The beta held a copy it never referenced and could not have run — the --gate leg reads scripts/audit-twins-baseline.json, which the beta does not carry.",
+      "reason": "Wired into canonical's regen-all.cjs and package.json as audit:twins. The beta held a copy it never referenced and could not have run \u2014 the --gate leg reads scripts/audit-twins-baseline.json, which the beta does not carry.",
       "gap": "FORK-1"
     },
     {
@@ -19,7 +19,7 @@
   "betaOnly": [
     {
       "path": "scripts/push-changelog-discord.ts",
-      "reason": "Wired into beta's package.json as changelog:push and read by src/data/changelog-manual.ts; it posts the beta site's changelog to a Discord webhook, and canonical has no such entry point. Canonical kept an archived copy under scripts/attic/ and it went 100 lines stale — the beta gained id-keyed dedup and unknown-flag rejection in cc193fb3f8, canonical never had it, and the attic move had already taken the file off the path this manifest keys on.",
+      "reason": "Wired into beta's package.json as changelog:push and read by src/data/changelog-manual.ts; it posts the beta site's changelog to a Discord webhook, and canonical has no such entry point. Canonical kept an archived copy under scripts/attic/ and it went 100 lines stale \u2014 the beta gained id-keyed dedup and unknown-flag rejection in cc193fb3f8, canonical never had it, and the attic move had already taken the file off the path this manifest keys on.",
       "gap": "FORK-2",
       "mentions": [
         "scripts/attic/README.md",
@@ -343,7 +343,7 @@
         "canonical": "36eea36cb33750e352b5c58a1c496f38f154d939dbfc9c7f3597e9b7b216ada8",
         "beta": "9b7c235bcd1e24069407fa9d90b68bc43ad585df9ab328d51a93eb47d5d4eb2d"
       },
-      "reason": "The stage roster and the gate roster ARE the repo's identity — which converters exist and which gates it can currently pass — so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 14 (24 until FORK-2 retired the two form-variant generators), not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
+      "reason": "The stage roster and the gate roster ARE the repo's identity \u2014 which converters exist and which gates it can currently pass \u2014 so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 14 (24 until FORK-2 retired the two form-variant generators), not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
       "exit": null,
       "gap": "FORK-1"
     },
@@ -390,7 +390,7 @@
     {
       "path": "src/data/incarnate-effects.ts",
       "status": "identical",
-      "sha256": "040f4f31411cb016d82405c56f675052112a45054258d551cbf1cfe95836cb1b"
+      "sha256": "384c1504ed27c12317e1aafb010608ed2a220b85e820cba6f7edd50300684199"
     },
     {
       "path": "src/data/io-sets.ts",
