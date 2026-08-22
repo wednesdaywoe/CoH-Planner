@@ -13,7 +13,6 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "description": "Black Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. Black Dwarf Smite can also bring down fliers, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.  Damage: Light. Recharge: Fast.",
-  "targetType": "Foe (Alive)",
   "effects": {
     "rechargeDebuff": {
       "scale": 0.2,

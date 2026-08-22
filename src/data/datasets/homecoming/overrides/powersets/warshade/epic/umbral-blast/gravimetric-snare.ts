@@ -13,7 +13,6 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "description": "You can hurl Gravimetric fibers to Snare your foes. Gravimetric Snare can Immobilize a single target and crush them. The target's attack rate and movement speed are also slowed, even if they resist the Immobilization effect.  Damage: Light. Recharge: Fast.",
-  "targetType": "Foe (Alive)",
   "effects": {
     "rechargeDebuff": {
       "scale": 0.2,

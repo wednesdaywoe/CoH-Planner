@@ -12,6 +12,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's defense. This power is only available while in Bright Nova Form.  Damage: Minor. Recharge: Very Fast.",
-  "targetType": "Foe (Alive)"
+  "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's defense. This power is only available while in Bright Nova Form.  Damage: Minor. Recharge: Very Fast."
 };

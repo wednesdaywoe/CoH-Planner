@@ -12,6 +12,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "description": "A much more powerful, yet slower version of Gleaming Bolt. Gleaming Blast sends a focused blast of Kheldian energy at a foe that can knock them back and reduce their Defense.  Damage: Moderate. Recharge: Moderate.",
-  "targetType": "Foe (Alive)"
+  "description": "A much more powerful, yet slower version of Gleaming Bolt. Gleaming Blast sends a focused blast of Kheldian energy at a foe that can knock them back and reduce their Defense.  Damage: Moderate. Recharge: Moderate."
 };

@@ -20,6 +20,5 @@ export const overrides: Partial<Power> = {
     "Range",
     "Recharge",
     "Taunt"
-  ],
-  "targetType": "Foe (Alive)"
+  ]
 };

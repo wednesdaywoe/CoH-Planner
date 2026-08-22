@@ -13,7 +13,6 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes drained in this manner have their attack and movement speed reduced. This power is only available while in Black Dwarf Form.  Damage: Light. Recharge: Slow.",
-  "targetType": "Foe (Alive)",
   "effects": {
     "rechargeDebuff": {
       "scale": 0.2,

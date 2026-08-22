@@ -24,6 +24,5 @@ export const overrides: Partial<Power> = {
   "stats": {
     "range": 7
   },
-  "targetType": "Foe (Alive)",
   "effects": {}
 };

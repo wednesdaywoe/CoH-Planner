@@ -12,12 +12,10 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "internalName": "Cs_Venom_Grenade",
   "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect. Damage: Moderate",
   "allowedSetCategories": [
     "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
-  ],
-  "targetType": "Foe (Alive)"
+  ]
 };

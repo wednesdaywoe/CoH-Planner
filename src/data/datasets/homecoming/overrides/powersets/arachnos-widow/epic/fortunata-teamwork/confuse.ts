@@ -14,6 +14,5 @@ import type { Power } from '@/types';
 export const overrides: Partial<Power> = {
   "allowedSetCategories": [
     "Confuse"
-  ],
-  "targetType": "Foe (Alive)"
+  ]
 };

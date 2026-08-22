@@ -12,7 +12,6 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "internalName": "Frt_Mask_Presence",
   "allowedSetCategories": [
     "Defense Sets"
   ],

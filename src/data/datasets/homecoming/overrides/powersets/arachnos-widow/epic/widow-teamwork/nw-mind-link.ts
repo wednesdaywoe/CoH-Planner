@@ -12,7 +12,6 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "internalName": "Nw_Mind_Link",
   "allowedSetCategories": [
     "Defense Sets",
     "To Hit Buff"

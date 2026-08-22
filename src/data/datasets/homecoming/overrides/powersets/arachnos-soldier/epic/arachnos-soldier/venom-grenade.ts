@@ -18,6 +18,5 @@ export const overrides: Partial<Power> = {
     "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
-  ],
-  "targetType": "Foe (Alive)"
+  ]
 };

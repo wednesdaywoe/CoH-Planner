@@ -11,7 +11,4 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  "internalName": "Frt_Psychic_Scream",
-  "targetType": "Foe (Alive)"
-};
+export const overrides: Partial<Power> = {};

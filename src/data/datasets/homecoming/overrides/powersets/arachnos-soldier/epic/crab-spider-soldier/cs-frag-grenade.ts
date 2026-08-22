@@ -12,7 +12,6 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "internalName": "Cs_Frag_Grenade",
   "description": "Launches a Frag Grenade at long range from your Crab Spider backpack. The explosion from this grenade affects all within the blast and can knock them back. Damage: Moderate",
   "shortHelp": "Ranged(Targeted AoE), Moderate DMG(Lethal/Fire), Foe Knockback",
   "allowedSetCategories": [
@@ -20,6 +19,5 @@ export const overrides: Partial<Power> = {
     "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
-  ],
-  "targetType": "Foe (Alive)"
+  ]
 };

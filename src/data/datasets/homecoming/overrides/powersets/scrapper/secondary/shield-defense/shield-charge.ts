@@ -6,6 +6,4 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  targetType: 'Foe',
-};
+export const overrides: Partial<Power> = {};

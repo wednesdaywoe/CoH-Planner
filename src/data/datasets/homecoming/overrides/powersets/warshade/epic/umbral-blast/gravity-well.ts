@@ -13,7 +13,6 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "description": "Mastery over the forces of gravity and dark matter allows you to capture a single foe and crush them in a Gravity Well. The target is Held helpless, while he is crushed by the massive gravimetric forces. The target's attack rate and movement speed are also slowed, even if they resists the Hold effect.  Damage: Extreme. Recharge: Slow.",
-  "targetType": "Foe (Alive)",
   "effects": {
     "rechargeDebuff": {
       "scale": 0.3,

@@ -13,7 +13,6 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "description": "A much more powerful, yet slower version of Dark Nova Bolt. Dark Nova Blast sends focused negative Nictus energy at a foe. This attack can knock down foes and will leave the targets' attack and movement speed slowed. This power is only available while in Dark Nova Form.  Damage: Light. Recharge: Fast.",
-  "targetType": "Foe (Alive)",
   "effects": {
     "rechargeDebuff": {
       "scale": 0.2,

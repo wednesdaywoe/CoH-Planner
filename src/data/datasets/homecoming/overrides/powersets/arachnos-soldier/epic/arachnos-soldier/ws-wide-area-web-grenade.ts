@@ -12,12 +12,10 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "internalName": "Ws_Wide_Area_Web_Grenade",
   "shortHelp": "Ranged (Targeted AoE), Immobilize, -Fly, -Recharge",
   "allowedSetCategories": [
     "Immobilize"
   ],
-  "targetType": "Foe (Alive)",
   "effects": {
     "rechargeDebuff": {
       "scale": 0.5,

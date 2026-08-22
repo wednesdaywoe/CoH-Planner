@@ -34,7 +34,6 @@ export const overrides: Partial<Power> = {
     "radius": 15,
     "maxTargets": 16
   },
-  "targetType": "Foe (Alive)",
   "effects": {
     "stun": {
       "mag": 3,

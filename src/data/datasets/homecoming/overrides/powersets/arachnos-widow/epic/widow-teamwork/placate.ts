@@ -15,7 +15,6 @@ export const overrides: Partial<Power> = {
   "allowedSetCategories": [
     "Threat Duration"
   ],
-  "targetType": "Foe (Alive)",
   "effects": {
     "stealth": {
       "stealthPvE": {
