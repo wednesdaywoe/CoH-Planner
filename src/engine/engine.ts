@@ -16,9 +16,11 @@
 
 import __wbg_init, { load_dataset, what_if_vocabulary, type DatasetHandle } from './wasm/coh_wasm';
 import wasmUrl from './wasm/coh_wasm_bg.wasm?url';
+import type { DatasetId } from '@/data/dataset';
 import { ENGINE_BUNDLE_VERSIONS } from './bundleVersions.generated';
 
-export type ServerId = 'homecoming' | 'rebirth' | 'thunderspy';
+// One roster. A restated union here is a dataset the engine facade silently cannot name.
+export type ServerId = DatasetId;
 
 let wasmReady: Promise<void> | null = null;
 const handles = new Map<ServerId, DatasetHandle>();

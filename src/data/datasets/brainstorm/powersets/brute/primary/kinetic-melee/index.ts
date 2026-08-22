@@ -1,0 +1,47 @@
+/**
+ * Kinetic Melee Powerset
+ * Kinetic Melee features a mix of fast light attacks and slow heavy attacks, including some with range. All attacks in this set reduce the damage strength of enemies who are hit.
+ *
+ * Archetype: brute
+ * Category: primary
+ * Source: brute_melee/kinetic_attack
+ */
+
+import type { Powerset } from '@/types';
+
+import { QuickStrike as QuickStrike } from './quick-strike';
+import { BodyBlow as BodyBlow } from './body-blow';
+import { SmashingBlow as SmashingBlow } from './smashing-blow';
+import { PowerSiphon as PowerSiphon } from './power-siphon';
+import { RepulsingTorrent as RepulsingTorrent } from './repulsing-torrent';
+import { Taunt as Taunt } from './taunt';
+import { Burst as Burst } from './burst';
+import { FocusedBurst as FocusedBurst } from './focused-burst';
+import { TotalFocus as TotalFocus } from './total-focus';
+
+export const powerset: Powerset = {
+  id: 'brute/kinetic-melee',
+  setPath: 'Brute_Melee.Kinetic_Attack',
+  name: 'Kinetic Melee',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
+  description: "Kinetic Melee features a mix of fast light attacks and slow heavy attacks, including some with range. All attacks in this set reduce the damage strength of enemies who are hit.",
+  icon: 'kinetic_attack_set.ico',
+  archetype: 'brute',
+  category: 'primary',
+  powers: [
+    QuickStrike,
+    BodyBlow,
+    SmashingBlow,
+    PowerSiphon,
+    RepulsingTorrent,
+    Taunt,
+    Burst,
+    FocusedBurst,
+    TotalFocus,
+  ],
+};
+
+export default powerset;

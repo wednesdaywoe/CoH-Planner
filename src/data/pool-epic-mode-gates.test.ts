@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { loadDataset, getActiveDataset } from '@/data/dataset';
+import { loadDataset, getActiveDataset, isHomecomingGame } from '@/data/dataset';
 import { getAllPowerPools, getPowerPool } from '@/data/power-pools';
 import { getAllEpicPools } from '@/data/epic-pools';
 import type { Power } from '@/types';
@@ -37,7 +37,7 @@ import type { Power } from '@/types';
  * of hiding behind the other two.
  */
 
-const DATASETS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const DATASETS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 /** The five fields the converter stamps at the top level of a power. */
 const MODE_FIELDS = [
@@ -219,7 +219,7 @@ describe.each(DATASETS)('pool + epic mode gating survives the facade — %s', (d
         `modesSuspended=${suspendCarriers.length} modeVariants=${variantCarriers.length}`,
     );
 
-    if (datasetId !== 'homecoming') {
+    if (!isHomecomingGame(datasetId)) {
       expect(suspendCarriers.length, `${datasetId} modesSuspended carriers`).toBe(0);
       expect(variantCarriers.length, `${datasetId} modeVariants carriers`).toBe(0);
       return;

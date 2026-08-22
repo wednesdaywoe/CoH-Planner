@@ -3,6 +3,7 @@ import { describe, it, expect } from 'vitest';
 import { SPECIAL_ENHANCEMENTS as HOMECOMING } from './datasets/homecoming/generated/special-enhancements';
 import { SPECIAL_ENHANCEMENTS as REBIRTH } from './datasets/rebirth/generated/special-enhancements';
 import { SPECIAL_ENHANCEMENTS as THUNDERSPY } from './datasets/thunderspy/generated/special-enhancements';
+import { SPECIAL_ENHANCEMENTS as BRAINSTORM } from './datasets/brainstorm/generated/special-enhancements';
 import type { SpecialEnhancementsData } from './datasets/homecoming/generated/special-enhancements';
 import { normalizeAspectName } from '@/utils/calculations/enhancement-values';
 
@@ -51,6 +52,7 @@ const DATASETS: Array<{ id: string; data: SpecialEnhancementsData }> = [
   { id: 'homecoming', data: HOMECOMING },
   { id: 'rebirth', data: REBIRTH },
   { id: 'thunderspy', data: THUNDERSPY },
+  { id: 'brainstorm', data: BRAINSTORM },
 ];
 
 describe.each(DATASETS)('special-enhancement registries: $id', ({ id, data }) => {

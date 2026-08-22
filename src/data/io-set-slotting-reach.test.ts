@@ -128,7 +128,7 @@ describe.each(DATASETS)('IO set slotting reach — %s', (dataset, registry) => {
  * the export: a power offers set categories only if its own
  * `allowed_set_categories` (boostsets.bin reversed) grants them.
  */
-describe.each(['homecoming', 'rebirth', 'thunderspy'])(
+describe.each(['homecoming', 'rebirth', 'thunderspy', 'brainstorm'])(
   'pool/epic categories are raw-backed — %s',
   (dataset) => {
     const exportRoot =

@@ -20,8 +20,10 @@ import { createRequire } from 'node:module';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import type { DatasetId } from '@/data/dataset';
 
-export type ServerId = 'homecoming' | 'rebirth' | 'thunderspy';
+// One roster. A restated union here is a dataset the engine facade silently cannot name.
+export type ServerId = DatasetId;
 
 const here = dirname(fileURLToPath(import.meta.url));
 const NODE_ENGINE = join(here, 'wasm-node', 'coh_wasm.cjs');
@@ -37,7 +39,7 @@ const handles = new Map<ServerId, EngineHandle>();
 
 /** True when `build:engine` has produced both halves this module needs. */
 export function engineArtifactsPresent(server?: ServerId): boolean {
-  const servers: ServerId[] = server ? [server] : ['homecoming', 'rebirth', 'thunderspy'];
+  const servers: ServerId[] = server ? [server] : ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'];
   return existsSync(NODE_ENGINE) && servers.every((s) => existsSync(join(BUNDLE_DIR, `${s}.json.gz`)));
 }
 

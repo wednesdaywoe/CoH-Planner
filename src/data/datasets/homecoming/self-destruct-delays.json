@@ -44,5 +44,6 @@
   "Villain_Pets.Poison_Poison_Gas.Self_Destruct": 30,
   "Villain_Pets.Shade.Self_Destruct": 60,
   "Villain_Pets.Traps_Poison_Gas.Self_Destruct": 30,
+  "Villain_Pets.Traps_Trip_Mine.Self_Destruct": 0.25,
   "Villain_Pets.Vines.Self_Destruct": 60
 }

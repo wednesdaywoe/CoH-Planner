@@ -22,7 +22,7 @@ import { getAllPowersets } from '@/data/powersets';
  * for it.
  */
 
-const FORKS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const FORKS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 const declaredFields = (iface: string) => readDeclared('src/types/power.ts', iface);
 

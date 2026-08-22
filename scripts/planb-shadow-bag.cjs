@@ -60,7 +60,7 @@ const POWER_FILTER = argVal('--power');
  *  first would silently narrow a corpus-wide gate to a single dataset. */
 const DATASETS = (() => {
   const picked = argv.flatMap((a, i) => (a === '--dataset' && argv[i + 1] ? [argv[i + 1]] : []));
-  return picked.length ? picked : ['homecoming', 'rebirth', 'thunderspy'];
+  return picked.length ? picked : require('./_dataset-paths.cjs').ALL_DATASETS;
 })();
 
 const EPS = 1e-4;

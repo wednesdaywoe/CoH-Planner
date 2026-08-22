@@ -1,0 +1,47 @@
+/**
+ * Stone Armor Powerset
+ * You can transform your skin into various forms of rock and stone. Stone Armor is one of the few Scrapper Defensive Power Sets that offers defense to Psionics.
+ *
+ * Archetype: scrapper
+ * Category: secondary
+ * Source: scrapper_defense/stone_armor
+ */
+
+import type { Powerset } from '@/types';
+
+import { StoneArmor as StoneArmor } from './stone-armor';
+import { StoneSkin as StoneSkin } from './stone-skin';
+import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
+import { MudPots as MudPots } from './mud-pots';
+import { Rooted as Rooted } from './rooted';
+import { CrystalArmor as CrystalArmor } from './crystal-armor';
+import { MineralArmor as MineralArmor } from './mineral-armor';
+import { BrimstoneArmor as BrimstoneArmor } from './brimstone-armor';
+import { Geode as Geode } from './geode';
+
+export const powerset: Powerset = {
+  id: 'scrapper/stone-armor',
+  setPath: 'Scrapper_Defense.Stone_Armor',
+  name: 'Stone Armor',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
+  description: "You can transform your skin into various forms of rock and stone. Stone Armor is one of the few Scrapper Defensive Power Sets that offers defense to Psionics.",
+  icon: 'stone_armor_set.ico',
+  archetype: 'scrapper',
+  category: 'secondary',
+  powers: [
+    StoneArmor,
+    StoneSkin,
+    EarthsEmbrace,
+    MudPots,
+    Rooted,
+    CrystalArmor,
+    MineralArmor,
+    BrimstoneArmor,
+    Geode,
+  ],
+};
+
+export default powerset;

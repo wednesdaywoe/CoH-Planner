@@ -53,7 +53,7 @@ const argVal = (f) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] :
 const POWER_FILTER = argVal('--power');
 const DATASETS = (() => {
   const picked = argv.flatMap((a, i) => (a === '--dataset' && argv[i + 1] ? [argv[i + 1]] : []));
-  return picked.length ? picked : ['homecoming', 'rebirth', 'thunderspy'];
+  return picked.length ? picked : require('./_dataset-paths.cjs').ALL_DATASETS;
 })();
 
 const r4 = (n) => Math.round((n || 0) * 1e4) / 1e4;
@@ -176,14 +176,17 @@ console.log(`  of which per-target: ${stats.perTargetPowers}`);
 console.log(`  agree:               ${stats.agree}`);
 console.log(`  defiance-rejected:   ${stats.defianceRejected} (graded as empty-atoms + bag-holds)`);
 console.log(`  N=1 recovered:       ${stats.recoveredN1} (Fulcrum Shift's redirect-delivered self increment — TARGETS-3)`);
-// Both ways: Fulcrum Shift is on all four Kinetics archetypes of Homecoming and nowhere else
-// (the Parse6 forks author it without the redirect chain), so a fork appearing or dropping
-// out here is the join moving, not the data.
-const EXPECTED_N1_RECOVERIES = ['homecoming|Fulcrum Shift'];
+// Both ways: the redirect chain that delivers the caster's own increment is a Parse7
+// authoring, so only the HC-lineage datasets recover it, 4 Kinetics ATs each. The Parse6
+// forks author Fulcrum Shift without it. A dataset appearing or dropping out here is the
+// join moving, not the data.
+const EXPECTED_N1_RECOVERIES = ['homecoming|Fulcrum Shift', 'brainstorm|Fulcrum Shift'];
 const n1PinFailures = [
   ...Object.keys(recoveredSeen).filter((k) => !EXPECTED_N1_RECOVERIES.includes(k))
     .map((k) => `NEW N=1 recovery, never read: ${k}`),
-  ...EXPECTED_N1_RECOVERIES.filter((k) => !recoveredSeen[k])
+  // Only datasets this run actually swept can be reported lost. Without the guard a
+  // single-dataset invocation fails on every fork it was never asked to look at.
+  ...EXPECTED_N1_RECOVERIES.filter((k) => DATASETS.includes(k.split('|')[0]) && !recoveredSeen[k])
     .map((k) => `LOST N=1 recovery: ${k} — the caster's own increment is being dropped again`),
 ];
 for (const line of n1PinFailures) console.log(`  [PIN] ${line}`);
@@ -196,8 +199,14 @@ for (const f of findings.slice(0, 40)) {
 }
 if (findings.length > 40) console.log(`\n  ... and ${findings.length - 40} more`);
 
-if (findings.length || n1PinFailures.length) {
+if (findings.length) {
   console.log('\nFAIL — atom-derived tohitBuff/damageBuff diverges from the bag. Fix before migrating the applier.');
+  process.exit(1);
+}
+// Separate banner: the pin can fire on a clean corpus, and a reader who sees "diverges"
+// above `diverge: 0` reaches for the wrong half of the gate.
+if (n1PinFailures.length) {
+  console.log('\nFAIL — the N=1 recovery roster moved. No divergence; see the [PIN] lines above.');
   process.exit(1);
 }
 

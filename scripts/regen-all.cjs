@@ -35,7 +35,7 @@ const datasets = (() => {
   // same as HC/Rebirth) so the regen-diff CI guard covers it too — closing the
   // "converter fix regenerated some datasets, not others" staleness class
   // (the DSH8 Clarion leak).
-  return ['homecoming', 'rebirth', 'thunderspy'];
+  return require('./_dataset-paths.cjs').ALL_DATASETS;
 })();
 
 // Steps in dependency order. The two that write under generated/ vs the layered

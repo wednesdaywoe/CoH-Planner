@@ -469,6 +469,11 @@ export interface DebuffResistance {
   recovery?: NumberOrScaled; // Recovery debuff resistance
   perception?: NumberOrScaled; // Perception debuff resistance
   range?: NumberOrScaled; // Range debuff resistance
+  // Accuracy debuff resistance. Carried, not totalled — nothing accumulates it yet, the
+  // same standing as `range` above. Brainstorm's Light Affinity (Lightfield, Spotlight) is
+  // the first export to state one, so dropping the key would lose a real row rather than
+  // decline an unused one.
+  accuracy?: NumberOrScaled;
 }
 
 // ============================================

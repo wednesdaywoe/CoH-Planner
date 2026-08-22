@@ -1,0 +1,47 @@
+/**
+ * Psionic Armor Powerset
+ * You use your psionic powers to shield yourself reducing incoming damage, as well as steal your foes own psyche and use it against them, be it by empowering your own regenerative powers, weakening their defenses or completely subduing their will.
+ *
+ * Archetype: scrapper
+ * Category: secondary
+ * Source: scrapper_defense/psionic_armor
+ */
+
+import type { Powerset } from '@/types';
+
+import { PsychicWall as PsychicWall } from './psychic-wall';
+import { PsionicShield as PsionicShield } from './psionic-shield';
+import { MaskPresence as MaskPresence } from './mask-presence';
+import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
+import { DevourPsyche as DevourPsyche } from './devour-psyche';
+import { FortifyMind as FortifyMind } from './fortify-mind';
+import { Precognition as Precognition } from './precognition';
+import { AuraofInsanity as AuraofInsanity } from './aura-of-insanity';
+import { MementoMori as MementoMori } from './memento-mori';
+
+export const powerset: Powerset = {
+  id: 'scrapper/psionic-armor',
+  setPath: 'Scrapper_Defense.Psionic_Armor',
+  name: 'Psionic Armor',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
+  description: "You use your psionic powers to shield yourself reducing incoming damage, as well as steal your foes own psyche and use it against them, be it by empowering your own regenerative powers, weakening their defenses or completely subduing their will.",
+  icon: 'dark_armor_set.ico',
+  archetype: 'scrapper',
+  category: 'secondary',
+  powers: [
+    PsychicWall,
+    PsionicShield,
+    MaskPresence,
+    ImpenetrableMind,
+    DevourPsyche,
+    FortifyMind,
+    Precognition,
+    AuraofInsanity,
+    MementoMori,
+  ],
+};
+
+export default powerset;

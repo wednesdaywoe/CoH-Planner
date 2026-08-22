@@ -294,7 +294,20 @@ export interface InherentRules {
 // DATASET INTERFACE
 // ============================================
 
-export type DatasetId = 'homecoming' | 'rebirth' | 'thunderspy';
+export type DatasetId = 'homecoming' | 'rebirth' | 'thunderspy' | 'brainstorm';
+
+/**
+ * Is this the Homecoming game, on either of its rings?
+ *
+ * The TypeScript twin of `DatasetId::is_homecoming()` in `crates/coh_data/src/database.rs`.
+ * Homecoming and Brainstorm are one game two shards apart; Rebirth and Thunderspy are separate
+ * forks. A fact that follows from WHICH GAME the bytes are — the Labyrinth accolades, the
+ * suspended pool modes — holds on both rings, and `id === 'homecoming'` silently answers "no"
+ * for the other one.
+ */
+export function isHomecomingGame(id: DatasetId): boolean {
+  return id === 'homecoming' || id === 'brainstorm';
+}
 
 export interface Dataset {
   id: DatasetId;
@@ -501,6 +514,8 @@ export async function loadDataset(id: DatasetId): Promise<Dataset> {
           return (await import('./datasets/rebirth')).default;
         case 'thunderspy':
           return (await import('./datasets/thunderspy')).default;
+        case 'brainstorm':
+          return (await import('./datasets/brainstorm')).default;
         default: {
           const _exhaustive: never = id;
           throw new Error(`Unknown dataset: ${_exhaustive}`);
@@ -523,5 +538,8 @@ export function getAllDatasetMetadata(): Array<{ id: DatasetId; displayName: str
     { id: 'homecoming', displayName: 'Homecoming' },
     { id: 'rebirth', displayName: 'Rebirth' },
     { id: 'thunderspy', displayName: 'Thunderspy' },
+    // Homecoming's open beta. Named for the server so a user reading the picker
+    // knows which shard they are planning against, not merely that it is "beta".
+    { id: 'brainstorm', displayName: 'HC Brainstorm' },
   ];
 }

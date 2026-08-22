@@ -1,0 +1,47 @@
+/**
+ * Cold Domination Powerset
+ * Cold Domination powers allow you to manipulate cold and ice to protect your allies and weaken your enemies.
+ *
+ * Archetype: defender
+ * Category: primary
+ * Source: defender_buff/cold_domination
+ */
+
+import type { Powerset } from '@/types';
+
+import { Infrigidate as Infrigidate } from './infrigidate';
+import { IceShield as IceShield } from './ice-shield';
+import { SnowStorm as SnowStorm } from './snow-storm';
+import { GlacialShield as GlacialShield } from './glacial-shield';
+import { Frostwork as Frostwork } from './frostwork';
+import { ArcticFog as ArcticFog } from './arctic-fog';
+import { Benumb as Benumb } from './benumb';
+import { Sleet as Sleet } from './sleet';
+import { HeatLoss as HeatLoss } from './heat-loss';
+
+export const powerset: Powerset = {
+  id: 'defender/cold-domination',
+  setPath: 'Defender_Buff.Cold_Domination',
+  name: 'Cold Domination',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
+  description: "Cold Domination powers allow you to manipulate cold and ice to protect your allies and weaken your enemies.",
+  icon: 'cold_domination_set.ico',
+  archetype: 'defender',
+  category: 'primary',
+  powers: [
+    Infrigidate,
+    IceShield,
+    SnowStorm,
+    GlacialShield,
+    Frostwork,
+    ArcticFog,
+    Benumb,
+    Sleet,
+    HeatLoss,
+  ],
+};
+
+export default powerset;

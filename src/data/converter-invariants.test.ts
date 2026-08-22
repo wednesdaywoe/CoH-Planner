@@ -126,7 +126,7 @@ describe('generated-data invariants (committed; CI-runnable, no raw data)', () =
     let scanned = 0;
     let pvp = 0;
 
-    for (const ds of ['homecoming', 'rebirth', 'thunderspy']) {
+    for (const ds of ['homecoming', 'rebirth', 'thunderspy', 'brainstorm']) {
       for (const f of walkTs(path.join(DATASETS_DIR, ds, 'generated'))) {
         for (const m of read(f).matchAll(ATOM_LINE)) {
           let atom: unknown[];

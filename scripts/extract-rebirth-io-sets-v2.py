@@ -56,10 +56,12 @@ EXPORT_DIRS = {
     'homecoming': PROJECT_ROOT / 'exported_powers',
     'rebirth':    PROJECT_ROOT / 'exported_powers' / 'rebirth',
     'thunderspy': PROJECT_ROOT / 'exported_powers' / 'thunderspy',
+    'brainstorm': PROJECT_ROOT / 'exported_powers' / 'brainstorm',
 }
 OUTPUT_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'rebirth' / 'io-sets-raw.ts'
 HC_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'homecoming' / 'io-sets-raw.ts'
 THUNDERSPY_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'thunderspy' / 'io-sets-raw.ts'
+BRAINSTORM_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'brainstorm' / 'io-sets-raw.ts'
 
 
 def _load_hc_sets() -> dict[str, dict]:
@@ -2043,6 +2045,21 @@ DATASET_CONFIG = {
             ' * what the binary can\'t reproduce: the cupids_crush / overwhelming_force\n'
             ' * universal-damage sets. Bonus VALUES are binary-sourced throughout,\n'
             ' * PvP tiers included (BONUS-REQ-1).\n'
+        ),
+    },
+    'brainstorm': {
+        'export_dir': EXPORT_DIRS['brainstorm'],
+        'output': BRAINSTORM_IO_SETS_PATH,
+        'server': 'HC Brainstorm',
+        # The same override pass as Homecoming, because it is the same game one shard over.
+        # The bonus VALUES still come from brainstorm's own boostsets.bin, which is the half
+        # that matters: BOOST-5 closed on shared sets shipping FORK-OWN tiers, and a beta that
+        # rebalances a set must show its own numbers rather than live's.
+        'apply_overrides': _apply_homecoming_overrides,
+        'extra_notes': (
+            ' * Homecoming\'s open beta. Same hand overrides as Homecoming (the cupids_crush /\n'
+            ' * overwhelming_force universal-damage sets); every bonus value is read from this\n'
+            ' * shard\'s own boostsets.bin, so a set i28p4 retunes shows the retuned tier.\n'
         ),
     },
     'thunderspy': {

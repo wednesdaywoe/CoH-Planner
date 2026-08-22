@@ -2,6 +2,7 @@
  * Build type definitions - represents a complete character build
  */
 
+import type { DatasetId } from '@/data/dataset';
 import type { Origin, ProgressionMode } from './common';
 import type { Archetype, ArchetypeId } from './archetype';
 import type { SelectedPower } from './power';
@@ -131,7 +132,7 @@ export interface Build {
    * build. Older builds without this field migrate to `'homecoming'`.
    * See `src/data/dataset.ts` and `MULTI_DATASET_PLAN.md`.
    */
-  serverId: 'homecoming' | 'rebirth' | 'thunderspy';
+  serverId: DatasetId;
 
   /** Selected archetype */
   archetype: ArchetypeSelection;
@@ -262,7 +263,7 @@ export interface ProcOverride {
  */
 export const DEFAULT_BUILD_NAME = 'Untitled Build';
 
-export function createEmptyBuild(serverId: 'homecoming' | 'rebirth' | 'thunderspy' = 'homecoming'): Build {
+export function createEmptyBuild(serverId: DatasetId = 'homecoming'): Build {
   return {
     name: DEFAULT_BUILD_NAME,
     serverId,
@@ -331,7 +332,7 @@ export interface SlimBuildData {
   name: string;
   /** Dataset / server identifier. Optional for backward compat — older
    * exports predate multi-dataset support and default to `'homecoming'`. */
-  serverId?: 'homecoming' | 'rebirth' | 'thunderspy';
+  serverId?: DatasetId;
   archetype: { id: string | null; name: string };
   level: number;
   primary: { id: string | null; name: string; powers: { name: string; level: number; slots: unknown[] }[] };

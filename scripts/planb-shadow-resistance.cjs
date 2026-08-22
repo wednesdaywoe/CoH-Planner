@@ -46,7 +46,7 @@ const argVal = (f) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] :
 const POWER_FILTER = argVal('--power');
 const DATASETS = (() => {
   const picked = argv.flatMap((a, i) => (a === '--dataset' && argv[i + 1] ? [argv[i + 1]] : []));
-  return picked.length ? picked : ['homecoming', 'rebirth', 'thunderspy'];
+  return picked.length ? picked : require('./_dataset-paths.cjs').ALL_DATASETS;
 })();
 
 const STD_TYPES = ['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'toxic', 'psionic'];
@@ -145,11 +145,13 @@ console.log(`  self agree:          ${stats.selfAgree}`);
 console.log(`  self recovered:      ${stats.selfRecovered}  (Rest's AnyAffected crash, dropped by the bag's recipient test — TARGETS-3)`);
 // Both ways: a fork that stopped recovering Rest's crash is the join regressing, and this
 // gate would otherwise read the silence as agreement.
-const EXPECTED_SELF_RECOVERIES = ['homecoming|Rest', 'rebirth|Rest', 'thunderspy|Rest'];
+const EXPECTED_SELF_RECOVERIES = ['homecoming|Rest', 'rebirth|Rest', 'thunderspy|Rest', 'brainstorm|Rest'];
 const recoveryPinFailures = [
   ...Object.keys(selfRecoveriesSeen).filter((k) => !EXPECTED_SELF_RECOVERIES.includes(k))
     .map((k) => `NEW self recovery, never read: ${k}`),
-  ...EXPECTED_SELF_RECOVERIES.filter((k) => !selfRecoveriesSeen[k])
+  // Only datasets this run swept can be reported lost. Without the guard a single-dataset
+  // invocation fails on every fork it was never asked to look at.
+  ...EXPECTED_SELF_RECOVERIES.filter((k) => DATASETS.includes(k.split('|')[0]) && !selfRecoveriesSeen[k])
     .map((k) => `LOST self recovery: ${k} — the caster's crash is being dropped again`),
 ];
 for (const line of recoveryPinFailures) console.log(`  [PIN] ${line}`);
@@ -162,8 +164,14 @@ for (const f of findings.slice(0, 50)) {
 }
 if (findings.length > 50) console.log(`\n  ... and ${findings.length - 50} more`);
 
-if (findings.length || recoveryPinFailures.length) {
+if (findings.length) {
   console.log('\nFAIL — atom-derived resistance diverges from the bag. Fix before migrating the applier.');
+  process.exit(1);
+}
+// Separate banner: the pin can fire on a clean corpus, and a reader who sees "diverges"
+// above `diverge: 0` reaches for the wrong half of the gate.
+if (recoveryPinFailures.length) {
+  console.log('\nFAIL — the self-recovery roster moved. No divergence; see the [PIN] lines above.');
   process.exit(1);
 }
 console.log('\nOK — atom-derived resistance buff + self-penalty reproduce the bag corpus-wide (8 standard types).');

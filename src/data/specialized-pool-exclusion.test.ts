@@ -24,7 +24,7 @@ import { getAllPowerPools, getExcludedPools, POOL_EXCLUSION_GROUPS } from '@/dat
 
 const SPECIALIZED = ['experimentation', 'force_of_will', 'gadgetry', 'sorcery', 'utility_belt'];
 
-const FORKS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const FORKS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 describe('the Specialized pools are mutually exclusive', () => {
   it('names exactly the five pools the export gates', () => {

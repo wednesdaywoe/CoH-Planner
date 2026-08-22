@@ -59,7 +59,7 @@ import type { SelectedIncarnatePower } from '@/types/incarnate';
 
 const require = createRequire(import.meta.url);
 
-const SERVERS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const SERVERS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 type Server = (typeof SERVERS)[number];
 
 const NODE_ENGINE = join(__dirname, 'wasm-node', 'coh_wasm.cjs');

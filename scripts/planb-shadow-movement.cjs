@@ -94,7 +94,7 @@ const argVal = (f) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] :
 const POWER_FILTER = argVal('--power');
 const DATASETS = (() => {
   const picked = argv.flatMap((a, i) => (a === '--dataset' && argv[i + 1] ? [argv[i + 1]] : []));
-  return picked.length ? picked : ['homecoming', 'rebirth', 'thunderspy'];
+  return picked.length ? picked : require('./_dataset-paths.cjs').ALL_DATASETS;
 })();
 
 const r4 = (n) => Math.round((n || 0) * 1e4) / 1e4;
@@ -174,6 +174,15 @@ const EXPECTED_SPLITS = {
   'homecoming|Prestige Power Surge|runSpeed': 2,
   'homecoming|Prestige Power Dash|runSpeed': 2,
   'homecoming|Prestige Power Quick|runSpeed': 2,
+  // Brainstorm's six mirror Homecoming's because the powers ARE Homecoming's: every
+  // one of these files is byte-identical across the two datasets, atoms and bag alike.
+  // A mirror on that footing, not on the shape looking familiar.
+  'brainstorm|Sprint|runSpeed': 2,
+  'brainstorm|Prestige Power Slide|runSpeed': 2,
+  'brainstorm|Prestige Power Rush|runSpeed': 2,
+  'brainstorm|Prestige Power Surge|runSpeed': 2,
+  'brainstorm|Prestige Power Dash|runSpeed': 2,
+  'brainstorm|Prestige Power Quick|runSpeed': 2,
   'rebirth|Sprint|runSpeed': 2,
   'rebirth|Prestige Power Slide|runSpeed': 2,
   'rebirth|Prestige Power Rush|runSpeed': 2,
@@ -253,6 +262,10 @@ const EXPECTED_ABSTENTIONS = {};
  *
  * Pinned both ways. A LOST entry means the join stopped declining an ally buff, and a NEW
  * one is a power whose caster just lost movement he may be entitled to.
+ *
+ * No Thunderspy rows, and that absence is read rather than pending: tspy rebalanced Speed
+ * Boost to `['Friend', 'Self']`, so the caster IS entitled and the axis agrees outright; its
+ * Enforced Morale states no movement at all, and neither Parse6 fork has Temporal Bomb.
  */
 const EXPECTED_ALLY_ONLY = {
   'homecoming|Speed Boost|runSpeed': true,
@@ -263,6 +276,16 @@ const EXPECTED_ALLY_ONLY = {
   'homecoming|Enforced Morale|jumpHeight': true,
   'homecoming|Temporal Bomb|runSpeed': true,
   'homecoming|Temporal Bomb|flySpeed': true,
+  // Same five powers on Brainstorm, same verdict, same identity check as the splits
+  // above: targetType, targetsAffected, atoms and bag all byte-identical to HC's.
+  'brainstorm|Speed Boost|runSpeed': true,
+  'brainstorm|Speed Boost|flySpeed': true,
+  'brainstorm|Enforced Morale|runSpeed': true,
+  'brainstorm|Enforced Morale|flySpeed': true,
+  'brainstorm|Enforced Morale|jumpSpeed': true,
+  'brainstorm|Enforced Morale|jumpHeight': true,
+  'brainstorm|Temporal Bomb|runSpeed': true,
+  'brainstorm|Temporal Bomb|flySpeed': true,
   'rebirth|Speed Boost|runSpeed': true,
   'rebirth|Speed Boost|flySpeed': true,
   'rebirth|Enforced Morale|runSpeed': true,
@@ -298,6 +321,13 @@ const EXPECTED_CASTER_RECOVERIES = {
   'homecoming|Team Teleport|flySpeed': true,
   'homecoming|Team Teleport|movementControl': true,
   'homecoming|Team Teleport|movementFriction': true,
+  'brainstorm|Rest|runSpeed': true,
+  'brainstorm|Rest|flySpeed': true,
+  'brainstorm|Rest|jumpSpeed': true,
+  'brainstorm|Rest|jumpHeight': true,
+  'brainstorm|Team Teleport|flySpeed': true,
+  'brainstorm|Team Teleport|movementControl': true,
+  'brainstorm|Team Teleport|movementFriction': true,
   'thunderspy|Team Teleport|flySpeed': true,
   'thunderspy|Team Teleport|movementControl': true,
   'thunderspy|Team Teleport|movementFriction': true,

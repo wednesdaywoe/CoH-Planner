@@ -50,7 +50,7 @@ const POWER_FILTER = argVal('--power');
 const SHOW_PUNTS = argv.includes('--show-punts');
 const DATASETS = (() => {
   const picked = argv.flatMap((a, i) => (a === '--dataset' && argv[i + 1] ? [argv[i + 1]] : []));
-  return picked.length ? picked : ['homecoming', 'rebirth', 'thunderspy'];
+  return picked.length ? picked : require('./_dataset-paths.cjs').ALL_DATASETS;
 })();
 
 const r4 = (n) => Math.round((n || 0) * 1e4) / 1e4;

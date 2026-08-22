@@ -18,8 +18,8 @@ const path = require('path');
 
 const REPO = path.resolve(__dirname, '..');
 
-/** The three fork subtrees that nest under the Homecoming export root. */
-const FORK_SUBTREES = new Set(['homecoming', 'rebirth', 'thunderspy']);
+/** The fork subtrees that nest under the Homecoming export root. */
+const FORK_SUBTREES = new Set(require('./_dataset-paths.cjs').ALL_DATASETS);
 
 /**
  * The converter module, loaded per dataset — `RAW_DATA_PATH` and the redirect resolver are

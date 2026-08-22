@@ -46,7 +46,7 @@ function run(dataset: string): { sc3Checked: number; sc3Missing: number; sc4Unac
 }
 
 describe('SC-3/SC-4/SC-5 converter self-checks', () => {
-  for (const ds of ['homecoming', 'rebirth', 'thunderspy']) {
+  for (const ds of ['homecoming', 'rebirth', 'thunderspy', 'brainstorm']) {
     it(`${ds}: SC-3/4/5 all clean`, () => {
       const r = run(ds);
       expect(r.sc3Missing, `${ds} SC-3 missing resistible`).toBe(0);

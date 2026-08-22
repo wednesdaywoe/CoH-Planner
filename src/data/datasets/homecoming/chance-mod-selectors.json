@@ -5,28 +5,41 @@
    "dir": "raise",
    "movers": [
     "Inherent.Inherent.Combat_Flight",
+    "Inherent.Inherent.Combat_Flight",
+    "Inherent.Inherent.Energy_Flight",
     "Inherent.Inherent.Energy_Flight",
     "Peacebringer_Defensive.Luminous_Aura.Combat_Flight",
+    "Peacebringer_Defensive.Luminous_Aura.Combat_Flight",
+    "Peacebringer_Defensive.Luminous_Aura.Energy_Flight",
     "Peacebringer_Defensive.Luminous_Aura.Energy_Flight",
     "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight",
+    "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight",
+    "Peacebringer_Defensive.Luminous_Aura.Quantum_Flight",
     "Peacebringer_Defensive.Luminous_Aura.Quantum_Flight",
     "Pool.Flight.Combat_Flight",
+    "Pool.Flight.Combat_Flight",
+    "Pool.Flight.Fly",
     "Pool.Flight.Fly",
     "Pool.Flight.Group_Fly",
+    "Pool.Flight.Group_Fly",
     "Pool.Gadgetry.Jetpack",
+    "Pool.Gadgetry.Jetpack",
+    "Pool.Sorcery.Mystic_Flight",
     "Pool.Sorcery.Mystic_Flight"
    ],
    "carriers": [
     "Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration",
     "Pool.Flight.Afterburner"
    ],
-   "rows": 2
+   "rows": 4
   },
   {
    "tag": "GraniteRoot",
    "dir": "raise",
    "movers": [
     "Brute_Defense.Stone_Armor.Granite_Armor",
+    "Brute_Defense.Stone_Armor.Granite_Armor",
+    "Tanker_Defense.Stone_Armor.Granite_Armor",
     "Tanker_Defense.Stone_Armor.Granite_Armor"
    ],
    "carriers": [
@@ -34,7 +47,7 @@
     "Scrapper_Defense.Stone_Armor.Rooted",
     "Tanker_Defense.Stone_Armor.Rooted"
    ],
-   "rows": 3
+   "rows": 6
   }
  ],
  "declined": [
@@ -43,6 +56,8 @@
    "dir": "cut",
    "movers": [
     "Pool.Sorcery.Arcane_Proc",
+    "Pool.Sorcery.Arcane_Proc",
+    "Vanguard.HERO1.Arcane_Proc",
     "Vanguard.HERO1.Arcane_Proc"
    ],
    "reason": "mover types [Auto] — not all Toggle"
@@ -52,8 +67,12 @@
    "dir": "raise",
    "movers": [
     "Brute_Melee.Savage_Melee.Blood_Thirst",
+    "Brute_Melee.Savage_Melee.Blood_Thirst",
+    "Mission_Maker_Attacks.Savage_Melee.Blood_Thirst",
     "Mission_Maker_Attacks.Savage_Melee.Blood_Thirst",
     "Scrapper_Melee.Savage_Melee.Blood_Thirst",
+    "Scrapper_Melee.Savage_Melee.Blood_Thirst",
+    "Tanker_Melee.Savage_Melee.Blood_Thirst",
     "Tanker_Melee.Savage_Melee.Blood_Thirst"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -63,9 +82,14 @@
    "dir": "raise",
    "movers": [
     "Blaster_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Blaster_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Cryo_Ammunition",
     "Corruptor_Ranged.Dual_Pistols.Cryo_Ammunition",
     "Defender_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Cryo_Ammunition",
     "Sentinel_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Sentinel_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Cryo_Ammunition",
     "Temporary_Powers.Temporary_Powers.Cryo_Ammunition"
    ],
    "reason": "claimed by a per-powerset COND-9 selector"
@@ -75,10 +99,16 @@
    "dir": "raise",
    "movers": [
     "Brute_Melee.Radiation_Melee.Fusion",
+    "Brute_Melee.Radiation_Melee.Fusion",
+    "Dominator_Assault.Radioactive_Assault.Fusion",
     "Dominator_Assault.Radioactive_Assault.Fusion",
     "Mission_Maker_Attacks.Radiation_Melee.Fusion",
+    "Mission_Maker_Attacks.Radiation_Melee.Fusion",
+    "Mission_Maker_Attacks.Radioactive_Assault.Fusion",
     "Mission_Maker_Attacks.Radioactive_Assault.Fusion",
     "Scrapper_Melee.Radiation_Melee.Fusion",
+    "Scrapper_Melee.Radiation_Melee.Fusion",
+    "Tanker_Melee.Radiation_Melee.Fusion",
     "Tanker_Melee.Radiation_Melee.Fusion"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -88,7 +118,10 @@
    "dir": "raise",
    "movers": [
     "Mastermind_Pets.Jonin_2.Hide",
+    "Mastermind_Pets.Jonin_2.Hide",
     "Mastermind_Pets.Jonin_2.Placate",
+    "Mastermind_Pets.Jonin_2.Placate",
+    "Mastermind_Summon.Ninjas.Smoke_Flash",
     "Mastermind_Summon.Ninjas.Smoke_Flash"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -97,6 +130,7 @@
    "tag": "Domination",
    "dir": "cut",
    "movers": [
+    "Inherent.Inherent.Domination_Rage",
     "Inherent.Inherent.Domination_Rage"
    ],
    "reason": "mover types [Auto] — not all Toggle"
@@ -105,6 +139,7 @@
    "tag": "DominationSuppression",
    "dir": "cut",
    "movers": [
+    "Inherent.Inherent.Domination",
     "Inherent.Inherent.Domination"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -114,6 +149,8 @@
    "dir": "raise",
    "movers": [
     "Redirects.Energy_Melee.Energy_Store",
+    "Redirects.Energy_Melee.Energy_Store",
+    "Redirects.Energy_Melee.Energy_Store_Assault",
     "Redirects.Energy_Melee.Energy_Store_Assault"
    ],
    "reason": "mover types [Auto] — not all Toggle"
@@ -123,7 +160,10 @@
    "dir": "raise",
    "movers": [
     "Brute_Defense.Fiery_Aura.Fiery_Embrace",
+    "Brute_Defense.Fiery_Aura.Fiery_Embrace",
     "Scrapper_Defense.Fiery_Aura.Fiery_Embrace",
+    "Scrapper_Defense.Fiery_Aura.Fiery_Embrace",
+    "Tanker_Defense.Fiery_Aura.Fiery_Embrace",
     "Tanker_Defense.Fiery_Aura.Fiery_Embrace"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -133,9 +173,14 @@
    "dir": "raise",
    "movers": [
     "Blaster_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Blaster_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Incendiary_Ammunition",
     "Corruptor_Ranged.Dual_Pistols.Incendiary_Ammunition",
     "Defender_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Incendiary_Ammunition",
     "Sentinel_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Sentinel_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition",
     "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition"
    ],
    "reason": "claimed by a per-powerset COND-9 selector"
@@ -145,7 +190,10 @@
    "dir": "cut",
    "movers": [
     "Scrapper_Defense.Stone_Armor.Geode",
+    "Scrapper_Defense.Stone_Armor.Geode",
     "Sentinel_Defense.Stone_Armor.Geode",
+    "Sentinel_Defense.Stone_Armor.Geode",
+    "Stalker_Defense.Stone_Armor.Geode",
     "Stalker_Defense.Stone_Armor.Geode"
    ],
    "carriers": [
@@ -153,19 +201,20 @@
     "Sentinel_Defense.Stone_Armor.Geode",
     "Stalker_Defense.Stone_Armor.Geode"
    ],
-   "rows": 3,
+   "rows": 6,
    "reason": "self-referential — every carrier is a mover of the same tag (first-application timing)"
   },
   {
    "tag": "initAbsorb",
    "dir": "cut",
    "movers": [
+    "Pool.Sorcery.Spirit_Ward",
     "Pool.Sorcery.Spirit_Ward"
    ],
    "carriers": [
     "Pool.Sorcery.Spirit_Ward"
    ],
-   "rows": 1,
+   "rows": 2,
    "reason": "self-referential — every carrier is a mover of the same tag (first-application timing)"
   },
   {
@@ -173,6 +222,8 @@
    "dir": "raise",
    "movers": [
     "Incarnate.Interface.Diamagnetic_Radial_Flawless_Interface",
+    "Incarnate.Interface.Diamagnetic_Radial_Flawless_Interface",
+    "Incarnate.Interface.Diamagnetic_Total_Radial_Conversion",
     "Incarnate.Interface.Diamagnetic_Total_Radial_Conversion"
    ],
    "reason": "mover types [Auto] — not all Toggle"
@@ -182,6 +233,8 @@
    "dir": "raise",
    "movers": [
     "Incarnate.Interface.Diamagnetic_Core_Flawless_Interface",
+    "Incarnate.Interface.Diamagnetic_Core_Flawless_Interface",
+    "Incarnate.Interface.Diamagnetic_Total_Core_Conversion",
     "Incarnate.Interface.Diamagnetic_Total_Core_Conversion"
    ],
    "reason": "mover types [Auto] — not all Toggle"
@@ -191,19 +244,34 @@
    "dir": "cut",
    "movers": [
     "Blaster_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Blaster_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Blaster_Ranged.Dual_Pistols.Cryo_Ammunition",
     "Blaster_Ranged.Dual_Pistols.Cryo_Ammunition",
     "Blaster_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Blaster_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Chemical_Ammunition",
     "Corruptor_Ranged.Dual_Pistols.Chemical_Ammunition",
     "Corruptor_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Incendiary_Ammunition",
     "Corruptor_Ranged.Dual_Pistols.Incendiary_Ammunition",
     "Defender_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Cryo_Ammunition",
     "Defender_Ranged.Dual_Pistols.Cryo_Ammunition",
     "Defender_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Incendiary_Ammunition",
+    "Sentinel_Ranged.Dual_Pistols.Chemical_Ammunition",
     "Sentinel_Ranged.Dual_Pistols.Chemical_Ammunition",
     "Sentinel_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Sentinel_Ranged.Dual_Pistols.Cryo_Ammunition",
+    "Sentinel_Ranged.Dual_Pistols.Incendiary_Ammunition",
     "Sentinel_Ranged.Dual_Pistols.Incendiary_Ammunition",
     "Temporary_Powers.Temporary_Powers.Chemical_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Chemical_Ammunition",
     "Temporary_Powers.Temporary_Powers.Cryo_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Cryo_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition",
     "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition"
    ],
    "reason": "claimed by a per-powerset COND-9 selector"
@@ -213,9 +281,14 @@
    "dir": "raise",
    "movers": [
     "Brute_Defense.Psionic_Armor.Fortify_Mind",
+    "Brute_Defense.Psionic_Armor.Fortify_Mind",
+    "Scrapper_Defense.Psionic_Armor.Fortify_Mind",
     "Scrapper_Defense.Psionic_Armor.Fortify_Mind",
     "Sentinel_Defense.Psionic_Armor.Fortify_Mind",
+    "Sentinel_Defense.Psionic_Armor.Fortify_Mind",
     "Stalker_Defense.Psionic_Armor.Fortify_Mind",
+    "Stalker_Defense.Psionic_Armor.Fortify_Mind",
+    "Tanker_Defense.Psionic_Armor.Fortify_Mind",
     "Tanker_Defense.Psionic_Armor.Fortify_Mind"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -225,9 +298,14 @@
    "dir": "raise",
    "movers": [
     "Brute_Defense.Psionic_Armor.Fortify_Mind",
+    "Brute_Defense.Psionic_Armor.Fortify_Mind",
+    "Scrapper_Defense.Psionic_Armor.Fortify_Mind",
     "Scrapper_Defense.Psionic_Armor.Fortify_Mind",
     "Sentinel_Defense.Psionic_Armor.Fortify_Mind",
+    "Sentinel_Defense.Psionic_Armor.Fortify_Mind",
     "Stalker_Defense.Psionic_Armor.Fortify_Mind",
+    "Stalker_Defense.Psionic_Armor.Fortify_Mind",
+    "Tanker_Defense.Psionic_Armor.Fortify_Mind",
     "Tanker_Defense.Psionic_Armor.Fortify_Mind"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -236,6 +314,7 @@
    "tag": "MaxPsyche",
    "dir": "raise",
    "movers": [
+    "Redirects.Psionic_Armor.Monitor_Psyche",
     "Redirects.Psionic_Armor.Monitor_Psyche"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -244,6 +323,7 @@
    "tag": "MaxPsycheFullDuration",
    "dir": "raise",
    "movers": [
+    "Redirects.Psionic_Armor.Monitor_Psyche",
     "Redirects.Psionic_Armor.Monitor_Psyche"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -253,8 +333,12 @@
    "dir": "raise",
    "movers": [
     "Redirects.Pool_Teleportation.Shadow_Step",
+    "Redirects.Pool_Teleportation.Shadow_Step",
+    "Redirects.Pool_Teleportation.Shadow_Step_LowEnd",
     "Redirects.Pool_Teleportation.Shadow_Step_LowEnd",
     "Redirects.Pool_Teleportation.Teleport",
+    "Redirects.Pool_Teleportation.Teleport",
+    "Redirects.Pool_Teleportation.Teleport_LowEnd",
     "Redirects.Pool_Teleportation.Teleport_LowEnd"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -264,13 +348,22 @@
    "dir": "cut+raise",
    "movers": [
     "Brute_Melee.Staff_Fighting.Form_of_the_Body",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Body",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Mind",
     "Brute_Melee.Staff_Fighting.Form_of_the_Mind",
     "Brute_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Body",
     "Scrapper_Melee.Staff_Fighting.Form_of_the_Body",
     "Scrapper_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Soul",
     "Scrapper_Melee.Staff_Fighting.Form_of_the_Soul",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Body",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Body",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Soul",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
    "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
@@ -280,13 +373,22 @@
    "dir": "cut+raise",
    "movers": [
     "Brute_Melee.Staff_Fighting.Form_of_the_Body",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Body",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Mind",
     "Brute_Melee.Staff_Fighting.Form_of_the_Mind",
     "Brute_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Body",
     "Scrapper_Melee.Staff_Fighting.Form_of_the_Body",
     "Scrapper_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Soul",
     "Scrapper_Melee.Staff_Fighting.Form_of_the_Soul",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Body",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Body",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Soul",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
    "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
@@ -296,13 +398,22 @@
    "dir": "cut+raise",
    "movers": [
     "Brute_Melee.Staff_Fighting.Form_of_the_Body",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Body",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Mind",
     "Brute_Melee.Staff_Fighting.Form_of_the_Mind",
     "Brute_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Brute_Melee.Staff_Fighting.Form_of_the_Soul",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Body",
     "Scrapper_Melee.Staff_Fighting.Form_of_the_Body",
     "Scrapper_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Scrapper_Melee.Staff_Fighting.Form_of_the_Soul",
     "Scrapper_Melee.Staff_Fighting.Form_of_the_Soul",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Body",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Body",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
+    "Tanker_Melee.Staff_Fighting.Form_of_the_Soul",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
    "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
@@ -312,6 +423,8 @@
    "dir": "cut",
    "movers": [
     "Peacebringer_Defensive.Luminous_Aura.Light_Form",
+    "Peacebringer_Defensive.Luminous_Aura.Light_Form",
+    "Teamwork.Widow_Teamwork.Elude",
     "Teamwork.Widow_Teamwork.Elude"
    ],
    "reason": "claimed by a per-powerset COND-9 selector"
@@ -321,6 +434,8 @@
    "dir": "raise",
    "movers": [
     "Peacebringer_Defensive.Luminous_Aura.Light_Form",
+    "Peacebringer_Defensive.Luminous_Aura.Light_Form",
+    "Teamwork.Widow_Teamwork.Elude",
     "Teamwork.Widow_Teamwork.Elude"
    ],
    "reason": "claimed by a per-powerset COND-9 selector"
@@ -329,6 +444,7 @@
    "tag": "PreventiveMedicine",
    "dir": "cut",
    "movers": [
+    "Set_Bonus.Global_Bonus.Preventive_Medicine_Proc",
     "Set_Bonus.Global_Bonus.Preventive_Medicine_Proc"
    ],
    "reason": "mover types [Auto] — not all Toggle"
@@ -338,6 +454,8 @@
    "dir": "cut",
    "movers": [
     "Pool.Teleportation.Teleport_Foe",
+    "Pool.Teleportation.Teleport_Foe",
+    "Warshade_Offensive.Umbral_Blast.Starless_Step",
     "Warshade_Offensive.Umbral_Blast.Starless_Step"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -346,6 +464,7 @@
    "tag": "QuickJaunt",
    "dir": "cut",
    "movers": [
+    "Pool.Experimentation.Jaunt",
     "Pool.Experimentation.Jaunt"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -354,6 +473,7 @@
    "tag": "ReactiveRegeneration",
    "dir": "raise",
    "movers": [
+    "Redirects.Regeneration.Instant_Regeneration",
     "Redirects.Regeneration.Instant_Regeneration"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -362,6 +482,7 @@
    "tag": "SeismicStress",
    "dir": "cut",
    "movers": [
+    "Redirects.Seismic_Blast.Seismic_Stress_Release",
     "Redirects.Seismic_Blast.Seismic_Stress_Release"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -371,18 +492,23 @@
    "dir": "raise",
    "movers": [
     "Brute_Melee.Sonic_Melee.Attune",
+    "Brute_Melee.Sonic_Melee.Attune",
+    "Scrapper_Melee.Sonic_Melee.Attune",
     "Scrapper_Melee.Sonic_Melee.Attune",
     "Stalker_Melee.Sonic_Melee.Attune",
+    "Stalker_Melee.Sonic_Melee.Attune",
+    "Tanker_Melee.Sonic_Melee.Attune",
     "Tanker_Melee.Sonic_Melee.Attune"
    ],
    "carriers": [],
    "rows": 0,
-   "reason": "every carrier row already states a shared mover mode (35 rows)"
+   "reason": "every carrier row already states a shared mover mode (70 rows)"
   },
   {
    "tag": "SpeedRefresh",
    "dir": "cut",
    "movers": [
+    "Blaster_Support.Martial_Manipulation.Burst_of_Speed",
     "Blaster_Support.Martial_Manipulation.Burst_of_Speed"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -391,6 +517,7 @@
    "tag": "StreetCredActive",
    "dir": "cut",
    "movers": [
+    "Temporary_Powers.Temporary_Powers.Street_Cred",
     "Temporary_Powers.Temporary_Powers.Street_Cred"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -399,6 +526,7 @@
    "tag": "StreetCredMonitor",
    "dir": "raise",
    "movers": [
+    "Temporary_Powers.Temporary_Powers.Street_Cred",
     "Temporary_Powers.Temporary_Powers.Street_Cred"
    ],
    "reason": "mover types [Click] — not all Toggle"
@@ -407,6 +535,7 @@
    "tag": "TBomb",
    "dir": "raise",
    "movers": [
+    "Redirects.Gadgets.Temporal_BubbleFX",
     "Redirects.Gadgets.Temporal_BubbleFX"
    ],
    "reason": "mover types [Auto] — not all Toggle"
@@ -416,9 +545,14 @@
    "dir": "raise",
    "movers": [
     "Blaster_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Blaster_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Corruptor_Ranged.Dual_Pistols.Chemical_Ammunition",
     "Corruptor_Ranged.Dual_Pistols.Chemical_Ammunition",
     "Defender_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Defender_Ranged.Dual_Pistols.Chemical_Ammunition",
     "Sentinel_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Sentinel_Ranged.Dual_Pistols.Chemical_Ammunition",
+    "Temporary_Powers.Temporary_Powers.Chemical_Ammunition",
     "Temporary_Powers.Temporary_Powers.Chemical_Ammunition"
    ],
    "reason": "claimed by a per-powerset COND-9 selector"
@@ -428,20 +562,27 @@
    "dir": "raise",
    "movers": [
     "Pool.Experimentation.Speed_of_Sound",
+    "Pool.Experimentation.Speed_of_Sound",
+    "Pool.Force_of_Will.Mighty_Leap",
     "Pool.Force_of_Will.Mighty_Leap",
     "Pool.Invisibility.Invisibility",
+    "Pool.Invisibility.Invisibility",
+    "Pool.Leaping.Long_Jump",
     "Pool.Leaping.Long_Jump",
     "Pool.Speed.Super_Speed",
+    "Pool.Speed.Super_Speed",
+    "Prestige.Prestige_Travel.Prestige_Athletic_Run",
     "Prestige.Prestige_Travel.Prestige_Athletic_Run"
    ],
    "carriers": [],
    "rows": 0,
-   "reason": "every carrier row is payload-less FX (1 rows)"
+   "reason": "every carrier row is payload-less FX (2 rows)"
   },
   {
    "tag": "VortexCritical",
    "dir": "raise",
    "movers": [
+    "Pets.Wind_Control_Vortex.Pressurization",
     "Pets.Wind_Control_Vortex.Pressurization"
    ],
    "reason": "mover types [Auto] — not all Toggle"

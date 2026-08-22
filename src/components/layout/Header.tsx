@@ -341,6 +341,9 @@ const DATASET_BADGE_VARIANT: Record<DatasetId, BadgeVariant> = {
   homecoming: 'cyan',
   rebirth: 'purple',
   thunderspy: 'warning',
+  // Brainstorm is the open beta: unreleased numbers that will not match anyone's
+  // in-game build. `danger` is the point — it should not read as an ordinary server.
+  brainstorm: 'danger',
 };
 
 function DatasetBadge() {

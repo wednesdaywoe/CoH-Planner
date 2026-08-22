@@ -1,0 +1,15 @@
+/**
+ * Particle Acceleration — COMPOSED EXPORT
+ *
+ * The planner imports from here. No hand-written overrides exist for this
+ * power, so it re-exports the auto-generated base directly. To add an
+ * override: create the parallel overrides/<power>.ts with a non-empty
+ * `overrides` object and re-run the converter. See src/data/README.md.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense radiation_armor
+ */
+import type { Power } from '@/types';
+import { ParticleAcceleration as base } from '@/data/datasets/brainstorm/generated/powersets/sentinel/secondary/radiation-armor/particle-acceleration';
+
+export const ParticleAcceleration: Power = base;

@@ -24,7 +24,7 @@ import {
  * have passed throughout.
  */
 
-const DATASETS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const DATASETS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 function tieredEntities() {
   return Object.entries(PET_ENTITIES).filter(([, e]) => (e.upgradeTiers ?? []).length > 0);

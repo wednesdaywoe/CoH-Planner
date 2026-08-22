@@ -17,7 +17,7 @@ import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 
-describe.each(['homecoming', 'rebirth', 'thunderspy'])(
+describe.each(['homecoming', 'rebirth', 'thunderspy', 'brainstorm'])(
   'pool/epic categories are raw-backed — %s',
   (dataset) => {
     const exportRoot =

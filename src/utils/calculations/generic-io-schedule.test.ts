@@ -43,7 +43,7 @@ const NON_ENHANCEMENT_ASPECTS = new Set([
   'KnockToKnockDown',
 ]);
 
-const DATASET_IDS: DatasetId[] = ['homecoming', 'rebirth', 'thunderspy'];
+const DATASET_IDS: DatasetId[] = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'];
 
 describe.each(DATASET_IDS)('Generic IO schedules (%s)', (datasetId) => {
   beforeAll(async () => {

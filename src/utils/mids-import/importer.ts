@@ -80,6 +80,9 @@ const MIDS_FULL_PATH_REMAP: Record<DatasetId, Record<string, string>> = {
   },
   // No known Mids path remaps for Thunderspy yet.
   thunderspy: {},
+  // Brainstorm is Homecoming one release ahead, and Mids ships no Brainstorm database,
+  // so nothing here yet — a remap would arrive with a pool rework, same as Rebirth's.
+  brainstorm: {},
 };
 
 function remapMidsPath(path: string, server: DatasetId | null): string {

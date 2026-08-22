@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { execFileSync } from 'node:child_process';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -22,7 +23,11 @@ const REPO = fileURLToPath(new URL('../../..', import.meta.url));
 const DETECTOR = path.join(REPO, 'scripts', 'dsh8-incarnate-collapse-detector.cjs');
 
 function runDetector(dataset: string): { collapses: number; groups: number; checked: number } {
-  const out = execFileSync('node', [DETECTOR, '--dataset', dataset], {
+  // Redirect the detector's worklist side-effect file to tmp — this gate reads
+  // stdout only, and writing the committed worklist would dirty the tree with
+  // whichever dataset ran last.
+  const worklist = path.join(os.tmpdir(), `dsh8-worklist-${dataset}-${process.pid}.json`);
+  const out = execFileSync('node', [DETECTOR, '--dataset', dataset, '--worklist', worklist], {
     cwd: REPO, encoding: 'utf-8', timeout: 60_000,
   });
   const m = out.match(/HIGH-confidence collapses:\s*(\d+)\s*\((\d+)\s*groups\)/);
@@ -32,7 +37,7 @@ function runDetector(dataset: string): { collapses: number; groups: number; chec
 }
 
 describe('DSH8 incarnate collapse detector — gate', () => {
-  for (const ds of ['homecoming', 'rebirth', 'thunderspy']) {
+  for (const ds of ['homecoming', 'rebirth', 'thunderspy', 'brainstorm']) {
     it(`${ds}: zero high-confidence multi-type collapses in Hybrid + Destiny`, () => {
       const r = runDetector(ds);
       expect(r.collapses, `${ds} high-confidence collapse groups: ${r.groups}`).toBe(0);

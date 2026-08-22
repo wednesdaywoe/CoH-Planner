@@ -1,0 +1,247 @@
+{
+  "name": "Mirror_Image",
+  "full_name": "Controller_Buff.Light_Affinity.Mirror_Image",
+  "short_name": "Mirror_Image",
+  "type": "Click",
+  "display_name": "Radiance",
+  "display_fullname": "Controller Buff Light Affinity Mirror Image",
+  "display_help": "You concentrate your powers, and emit even more powerful beams of light from yourself! While under the effects of Radiance, you and your allies will immediately recover Endurance.<br><br>Additionally, all your Beams will become <color #fcfc95>Radiant Beams</color>, greatly buffing the Damage and ToHit of allies and lowering the Damage, ToHit, and Defense of enemies within the Radiant Light.",
+  "display_short_help": "Self +Special, Ally (+DMG, +ToHit, +End) Foe (-DMG, -ToHit, -Def)",
+  "icon": "lightaffinity_prism.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "free": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 255,
+  "radius": 25.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.17,
+  "recharge_time": 90.0,
+  "activate_period": 2.5,
+  "endurance_cost": 5.2,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self",
+    "Friend"
+  ],
+  "targets_affected": [
+    "Self",
+    "Friend"
+  ],
+  "boosts_allowed": [
+    "Recovery",
+    "EnduranceDiscount",
+    "Recharge",
+    "Buff_ToHit"
+  ],
+  "allowed_set_categories": [
+    "Endurance Modification",
+    "To Hit Buff"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": [],
+  "activate_requires": [],
+  "target_requires": [],
+  "slot_requires": [],
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": [],
+      "tags": [
+        "Buff"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Endurance"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 20.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "Your {PowerName} grants you {Damage} points of endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
+        }
+      ]
+    }
+  ],
+  "activation_effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": [],
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "20 seconds",
+          "magnitude": 77.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112,
+          "mode_name": "Chain_Jolt_Mode"
+        },
+        {
+          "attribs": [
+            "Execute_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 0.0,
+          "duration": "0 seconds",
+          "magnitude": 0.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "power_names": [
+              "Redirects.Light_Affinity.Prism"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "CopyBoosts"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 4
+        },
+        {
+          "attribs": [
+            "Execute_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 0.0,
+          "duration": "0 seconds",
+          "magnitude": 0.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "power_names": [
+              "Redirects.Light_Affinity.Radiance_Buff",
+              "Redirects.Light_Affinity.Radiance_Debuff"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "CopyBoosts"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 4
+        }
+      ]
+    }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
+  "available_level": 3,
+  "powerset": "Controller_Buff.Light_Affinity"
+}

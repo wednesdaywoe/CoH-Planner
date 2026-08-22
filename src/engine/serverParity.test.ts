@@ -36,7 +36,7 @@ import type { Power, SelectedPower } from '@/types/power';
 // wasm-node is a CommonJS module that instantiates the .wasm synchronously from its own dir.
 const require = createRequire(import.meta.url);
 
-const SERVERS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const SERVERS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 type Server = (typeof SERVERS)[number];
 
 // The engine artifacts are generated and gitignored — the web target, the Node target this test
@@ -234,6 +234,10 @@ const ADJUDICATED: Record<Server, Set<string>> = {
   homecoming: new Set(['recharge']),
   rebirth: new Set(),
   thunderspy: new Set(['maxhp']),
+  // Brainstorm needs no exemption: measured 2026-08-22, engine and legacy agree on every
+  // graded stat. Its generated tree came through the current converter, which carries the
+  // per-target self-recharge homecoming's older tree drops.
+  brainstorm: new Set(),
 };
 
 function diff(server: Server, a: Record<string, number>, b: Record<string, number>): string[] {

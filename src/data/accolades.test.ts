@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { loadDataset } from './dataset';
+import type { DatasetId } from '@/data/dataset';
+import { loadDataset, isHomecomingGame } from './dataset';
 import { getAccolades, accoladeId, accoladeFaction, accoladeRequiredModes } from './accolades';
 import { maxHPBuffValue } from './core/atom-query';
 import type { AccoladePower } from './accolades';
@@ -88,6 +89,15 @@ describe('the accolade roster is each fork\'s own', () => {
       'the_atlas_medallion', 'super_patriot', 'freedom_phalanx_reserve', 'task_force_commander',
       'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader', 'iron_man',
     ],
+    // Brainstorm is the Homecoming install one shard over, so it carries Homecoming's
+    // twelve — the Labyrinth pair included. Written out rather than aliased to the entry
+    // above: this table exists to catch a fork silently shipping another server's roster,
+    // and an alias would make that impossible to see for the one pair that differs.
+    brainstorm: [
+      'the_atlas_medallion', 'super_patriot', 'freedom_phalanx_reserve', 'task_force_commander',
+      'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader',
+      'iron_man', 'labyrinth_conqueror', 'mazebreaker',
+    ],
     thunderspy: [
       'the_atlas_medallion', 'super_patriot', 'freedom_phalanx_reserve', 'task_force_commander',
       'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader', 'iron_man',
@@ -95,7 +105,7 @@ describe('the accolade roster is each fork\'s own', () => {
   };
 
   it.each(Object.keys(EXPECTED))('%s offers exactly its own stat accolades', async (dataset) => {
-    await loadDataset(dataset as 'homecoming' | 'rebirth' | 'thunderspy');
+    await loadDataset(dataset as DatasetId);
     expect(getAccolades().map(accoladeId).sort()).toEqual([...EXPECTED[dataset]].sort());
   });
 
@@ -114,17 +124,21 @@ describe('the accolade roster is each fork\'s own', () => {
   });
 
   it('gates no other accolade on any fork', async () => {
-    for (const fork of ['homecoming', 'rebirth', 'thunderspy'] as const) {
+    for (const fork of ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const) {
       await loadDataset(fork);
       const gated = getAccolades()
         .filter((p) => accoladeRequiredModes(p).length > 0)
         .map(accoladeId)
         .sort();
-      expect(gated, fork).toEqual(fork === 'homecoming' ? ['labyrinth_conqueror', 'mazebreaker'] : []);
+      // The Labyrinth pair is the Homecoming GAME's, so both its rings gate; the other
+      // two forks have no Labyrinth of Fog and gate nothing.
+      expect(gated, fork).toEqual(
+        isHomecomingGame(fork) ? ['labyrinth_conqueror', 'mazebreaker'] : [],
+      );
     }
   });
 
-  it('the Labyrinth of Fog pair is Homecoming-only', () => {
+  it('the Labyrinth of Fog pair is the Homecoming game\'s, on both its rings', () => {
     for (const fork of ['rebirth', 'thunderspy']) {
       expect(EXPECTED[fork]).not.toContain('labyrinth_conqueror');
       expect(EXPECTED[fork]).not.toContain('mazebreaker');

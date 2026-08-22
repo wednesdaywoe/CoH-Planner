@@ -1,0 +1,47 @@
+/**
+ * Electrical Blast Powerset
+ * Electrical Blast endows you with ranged electrical attack powers. Electrical powers can drain foes' Endurance and can often temporarily halt their Endurance recovery. This can be quite effective against higher level foes and Bosses. As you drain endurance, Electrical Blast powers can even sometimes Shock targets do deal bonus damage, hinder recovery, and transfer this Endurance back to you.
+ *
+ * Archetype: sentinel
+ * Category: primary
+ * Source: sentinel_ranged/electrical_blast
+ */
+
+import type { Powerset } from '@/types';
+
+import { ChargedBolts as ChargedBolts } from './charged-bolts';
+import { LightningBolt as LightningBolt } from './lightning-bolt';
+import { BallLightning as BallLightning } from './ball-lightning';
+import { ZappingBolt as ZappingBolt } from './zapping-bolt';
+import { Aim as Aim } from './aim';
+import { TeslaCage as TeslaCage } from './tesla-cage';
+import { VoltaicSentinel as VoltaicSentinel } from './voltaic-sentinel';
+import { ShortCircuit as ShortCircuit } from './short-circuit';
+import { ThunderousBlast as ThunderousBlast } from './thunderous-blast';
+
+export const powerset: Powerset = {
+  id: 'sentinel/electrical-blast',
+  setPath: 'Sentinel_Ranged.Electrical_Blast',
+  name: 'Electrical Blast',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
+  description: "Electrical Blast endows you with ranged electrical attack powers. Electrical powers can drain foes' Endurance and can often temporarily halt their Endurance recovery. This can be quite effective against higher level foes and Bosses. As you drain endurance, Electrical Blast powers can even sometimes Shock targets do deal bonus damage, hinder recovery, and transfer this Endurance back to you.",
+  icon: 'electrical_blast_set.ico',
+  archetype: 'sentinel',
+  category: 'primary',
+  powers: [
+    ChargedBolts,
+    LightningBolt,
+    BallLightning,
+    ZappingBolt,
+    Aim,
+    TeslaCage,
+    VoltaicSentinel,
+    ShortCircuit,
+    ThunderousBlast,
+  ],
+};
+
+export default powerset;

@@ -19,11 +19,17 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**0 open, of 184 entries.** When an entry is open it is listed here with what it's waiting on.
+**2 open, of 201 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
-*Nothing open. The next finding gets a row in its section and a narrative in [gaps/](gaps/).*
+- **PROCCAT-1** — `proc-data.ts`'s hand-authored `setCategory`, 52 of 184 rows resolving to no
+  fork's set. Inert: nothing reads the field. Waiting on the derive-at-use rewrite against
+  `io-sets.json`'s `type`. [Detail](gaps/procs-ppm.md)
+
+- **DEBUFFRES-1** — an accuracy debuff resistance the export states and no total accumulates,
+  carried in the type and reached by nothing. Waiting on a totals slot and a routed sub-key, or
+  a measurement that the game applies nothing. [Detail](gaps/stat-routing.md)
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -133,6 +139,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 - [x] **ENT-12** — a pet's own protection and debuff resistance reached no total
 - [x] **ENT-13** — a `chance: 0` effect group is a mode-gate sentinel, published as a probability
 - [x] **ENT-14** — the wire `EntCreate` atom carries neither the pet lifespan nor an entity key; `summonWindow` now says which row IS the power's window
+- [x] **ENT-16** — a summon whose `EntCreate` states redirect powers rather than an `entity_def` was walked by nothing; the converter now resolves it to the entity that declares exactly those powers
 - [x] **ENT-15** — the `activation_effects` buff-dedup filter dropped a summon's create-entity rows before they could become atoms
 - [x] **SHELL-1** — opaque-shell pseudo-pet summons were unresolved
 
@@ -140,7 +147,13 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Procs + PPM
 
-[Full detail](gaps/procs-ppm.md) — 8 of 8 closed
+[Full detail](gaps/procs-ppm.md) — 8 of 9 closed
+
+- [ ] **PROCCAT-1** — `proc-data.ts`'s hand-authored `setCategory` stands in front of the `type`
+  each fork's `io-sets.json` owns; 52 of 184 match no fork, ~40 vocabulary drift and ~12 flatly
+  wrong (Superior Frozen Blast typed Melee, the four travel sets flattened to Universal Travel).
+  Inert — no code reads it, so no gate can grade it. Derive at the point of use and delete the
+  field rather than hand-correct rows; re-census CROSS-FORK or 19 Rebirth-only sets read as defects
 
 - [x] **HC-4** — procs in `ExecutePower` wrappers roll on the parent; settled by live measurement
 - [x] **PPM-1** — the auto/toggle proc period is the piece's field, not the host power's
@@ -201,14 +214,26 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Stat routing + caps
 
-[Full detail](gaps/stat-routing.md) — 48 of 48 closed
+[Full detail](gaps/stat-routing.md) — 51 of 51 closed
 
+- [ ] **DEBUFFRES-1** — Brainstorm's Light Affinity states an accuracy debuff resistance
+  (`Lightfield`/`Spotlight`, `Ranged_Res_Boolean` at IgnoreStrength) that nothing accumulates: the
+  type carries the key so the export's row is not dropped, but no total, stat definition or
+  `ROUTED_SUBTYPES` entry reaches it — the standing `range` has held unmeasured. Waiting on a
+  totals slot and a routed sub-key, or a measurement that the game applies nothing
+- [x] **MOVE-4** — `planb-shadow-movement`'s three pin tables key on `<dataset>|<power>|<axis>` and never gained Brainstorm rows, so 30 movement and 7 slow slots the TARGETS-3 buckets already answer for on Homecoming fell through to `diverge` and held `npm run regen` shut; the five powers are byte-identical across the two datasets so the pins mirror, and `audit-dataset-roster` now bracket-matches composite keys its bare `homecoming:` anchor could not see
 - [x] **STACK-6** — `stacksLinear` was keyed by a second, hand-maintained copy of the routing rules, so it named `specialBuff` for sentinel Aim's `Range|Str` row the router puts on `rangeBuff` — a key with no value beside an omitted key that has one; the key comes from `projectAtomsToEffects` now and admission stays the classifier's, 166 swaps and 17 collector-superset orphans gone, and the beta's stacking adjudication retires with it
 - [x] **MOVEMAP-7** — the display `slow` slot carried the kFly mode row folded in as a slow magnitude on all three forks (487 rows); the extractor now skips the mode axis in debuff slots, matching the atom readers, with the census and both guards in the narrative
 - [x] **FLYPOOL-1** — the export walk settled for the engine: shown fly = enhanceable Cur row × the AT flying table (HC's in-game +160.91% calibrates); the legacy 83/80 was the IgnoreStrength Ones row clobbering the enhanceable one in the twin's one-slot axis — the converter now pairs `<axis>Unenhanced`, and the beta rows went green
 - [x] **MOVEMAP-5** — the per-target stacking pass writes a movement axis to a TOP-LEVEL bag key while the routing pass writes the same atom to `effects.movement[axis]`; the classifier now returns a subKey, `MovementValue` carries `per_target`, and the scalar-slot block (ATOM-BAG-4(a)) is dropped
 - [x] **MOVEMAP-6** — the self `aspect=Maximum` run-cap "raise" is a toggle's `OnDeactivate` mirror the bag's ROUTING pass drops and the atom could not see; `applicationType` now reaches the wire, `is_cancelled_pair` is retired and ATOM-BAG-4(b) landed with it
 - [x] **ATOM-BAG-7** — a `StealthRadius` row on the `Str` face is the Assassin's Strike reveal, not a radius; `|−1|` shipped as +1 ft of stealth on both axes for 34 powers in three forks, 33 of them invisible to the bag-removal census because the atom path reproduced the error, and the one it named was a hand override; the `?? bag.stealth()` arm is retired with it and the census is now zero everywhere
+- [x] **DISPLAYONLY-1** — an effect group tagged `DisplayOnly` is a tooltip twin quoting a number the
+  power causes elsewhere; nothing in the pipeline read the tag, so Brainstorm Disruption Strike's
+  −2.5 res debuff — stated at `AnyAffected` on a `["Self"]` toggle, the exact shape of Rest's real
+  crash — landed as a phantom self penalty on all 8 types in the live applier. `isDisplayOnly` /
+  `is_display_only` now drop the row from both totals entry points on both routes, and only there
+- [x] **ATOM-BAG-9** — the converter folded an `Enhancement`-face control row into the `effects.taunt`/`effects.placate` slot the engine reads as RESISTANCE, and wrote the caster's `effects.rangeBuff` from an ally-only `aspect=Str` Range row; both now key on face and recipient, in the converter AND its `window_slots.rs` display twin, which kept the old rules until the presence gate said so; 4 slots over 3 powers left the bag, both residual lists empty by census
 - [x] **ATOM-BAG-8** — ATOM-BAG-5's converter half, which left `planb-shadow-resources` red and `npm run regen` blocked ahead of `emit-contract`: the bag summed a power's caster rows and its `target ≠ source` rows into one regen/recovery slot, stating a number nobody receives (Valiance 1.4, Pack Master 5.4); the projection now carries the bag-side `reachesCaster` and splits a MIXED queue to its caster half, while a wholly non-caster slot is left as authored because the engine already reads no bag here and the power card renders this one
 - [x] **APPTYPE-1** — the shutdown-burst rule was movement-only, and whether the mode/grant readers spent an `OnDeactivate` row was unmeasured; the census found the mode reader consumes no atom (static `setsModes` + `Source.Mode?`), the grant reader's one spend is the adaptation stances' same-cast net-zero revoke, and `GrantPower`/`set_mode` on `OnDeactivate` is inert in every bundle — both carriers correctly inert, pinned by `deactivation_burst_census`
 
@@ -257,8 +282,69 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 18 of 19 closed
+[Full detail](gaps/pipeline-provenance.md) — 27 of 28 closed
 
+- [x] **BRAIN-9** — the fourth dataset landed in canonical and stopped there: 19 shared-surface
+  files drifted unadjudicated pending the beta-repo port, and the port found the rosters an audit
+  keyed on collection literals cannot see — a REGEX in `vite.config.ts` named the per-dataset
+  chunks, so brainstorm's was named after its facade module, missed `globIgnores`, and failed the
+  beta build trying to precache 20 MB; chunk names now capture the directory, and
+  `ServerId`/`Build.serverId` read `DatasetId` rather than restate it
+- [x] **BRAIN-1** — Homecoming's open beta was a ring only readable, never exportable, so the
+  Brainstorm server's players had nowhere to plan i28p4; the ring is now the `brainstorm` dataset,
+  removed from `homecoming` because two datasets claiming one tree misroute the recipe export, and
+  the export reads clean at 11,307 player powers with every powerset change the notes name present
+  and gated
+- [x] **BRAIN-5** — adding a dataset failed loudly in Rust and silently everywhere else: 20 script
+  rosters, 22 Rust corpus gates and 29 vendored TS tests carried a hand-copied three and reported
+  PASS while sweeping three of four, and three gates asked `dataset == Homecoming` to mean "the
+  Homecoming game" and so answered no for its other ring; rosters now read one source,
+  `is_homecoming()` says what those sites meant, and `audit-dataset-roster.cjs` flags a literal
+  naming all but one
+- [x] **BRAIN-3** — the conditional-coverage gate ran nowhere, so Brawl's Fighting-pool synergy
+  shipped with no toggle able to reach it on three forks (the fifth capability
+  `convert-powerset.cjs` never handed a sibling), while the gate bare-parsed each export where
+  every converter reads through `_readPowerFile` — hiding Thunderspy's Quantum Acceleration on
+  both sides at once; three converters ported, every drifted pin adjudicated rather than
+  re-pinned on sight, and pool/epic `predicted == shipped` now asserted
+- [x] **BRAIN-2** — censusing all 250 keyed override slots against both forks' own generated
+  output found them agreeing on 249; the one that drifted, Mastermind Traps Caltrops, restates
+  Homecoming's `allowedSetCategories` verbatim and on Brainstorm dropped the Knockback the newer
+  export grants, taking Knockback sets off the power in the picker, and the regen's set-category
+  audit had been printing the row as informational since the dataset was added
+- [x] **OVERRIDE-5** — censusing the rest of the layer found no key the export does not already
+  own: 130 `description`/`shortHelp` slots from a second text source, 89 `allowedSetCategories`
+  that restated or reordered the derived list, six VEAT/Kheldian slots contradicting the binary,
+  a lone `maxSlots` 6 among 57 derived zeroes, and a Slice `excludes` the export states as a
+  `requires` gate on all eight members; the layer is empty and guarded
+- [x] **HELPTEXT-1** — the converters handled the client's `<br>`/`<color>` markup three ways:
+  `convert-powerset` deleted each tag with nothing in its place, gluing the sentences either side
+  of a break on 3,135 Homecoming powers, while the pool, epic, inherent, basic-inherent and
+  accolade converters passed it through and shipped 440 raw `<br>` and 130 `<color` into the
+  contract; all seven emitters now share one `helpText`, and the view layer's paragraph splitter
+  reads the newlines it leaves
+- [x] **BRAIN-4** — the three powersets the notes did not name were not three powerset changes:
+  Energy Blast did not change, Electrical Melee's 26 files are description text, and both sets'
+  remaining deltas are Taunt/Confront, changed on 65 of 65 copies game-wide as the announced PvP
+  pass; the one mechanical change, Scrapper Lightning Clap gaining `ScrapperCrit_AoE`, is
+  announced on LIVE twice (2026-03-11, 2026-06-23) and absent from a live build dated after both
+  — the beta is where the fix lands
+- [x] **BRAIN-8** — all four TS-oracle fixture corpora stayed three-dataset, so nothing
+  cross-checked the Rust engine on Brainstorm; three emitters were widened but never re-run, and
+  their roster-audit allowlist rows still named a blocker false of this repo. Only
+  `movement_gate`'s per-dataset floor could say so, and cargo's fail-fast truncated the run before two
+  sibling gates with the same floor ran. Emitters re-run, allowlist rows deleted, and
+  two hand-rolled `&str`-to-`DatasetId` inverses replaced by a roster-derived `from_wire`
+- [x] **BRAIN-7** — fourteen per-dataset expectation tables across nine gate files were typed
+  `[(DatasetId, …); 3]` and iterated over THEMSELVES, so Brainstorm was graded by none of them and
+  all stayed green vacuously; the roster audit matched only the bare `[DatasetId; N]` arity form
+  and the tuple form is the majority shape. Arity now covers both as a gate finding, the fourteen
+  are typed `DatasetId::ALL.len()`, and every new row's delta from Homecoming is read and named
+- [x] **BRAIN-6** — the display slot-presence gate's hand adjudication table listed three datasets
+  and never went stale-checked, so Brainstorm's two ENT-14 `summon` rows were missing while a
+  `Thunderous_Blast` row whose divergence had already been fixed was still held open; the gate now
+  asserts every adjudicated row still matches something, and `audit-dataset-roster.cjs` reached
+  none of this because its bracket-span scan capped at 400 chars and the table is longer
 - [x] **FORK-1** — the two repos hand-copy `scripts/` and nobody had measured the copies: 17 of 49
   had forked, `convert-powerset.cjs` by 714 lines in BOTH directions, and the beta still shipped a
   `dual_pistols` proper noun in a converter conditional plus the hand table MAXBOOST-1 retired; a

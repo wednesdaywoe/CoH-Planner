@@ -35,7 +35,7 @@ import {
  *     read as +20%.
  */
 
-const DATASETS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const DATASETS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 describe.each(DATASETS)('pet effect display (%s)', (datasetId) => {
   beforeAll(async () => {

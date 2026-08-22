@@ -1,180 +1,160 @@
 import { describe, it, expect } from 'vitest';
-import { readFileSync, readdirSync } from 'node:fs';
-import { join, relative, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { readFileSync, existsSync } from 'node:fs';
+import { relative } from 'node:path';
+import {
+  REPO_ROOT,
+  SURFACES,
+  canonicalSource,
+  matchesRegisteredRoot,
+  type Dataset,
+} from './export-manifests';
 
 /**
- * Export-provenance guard — the which-tree-did-this-come-from gate.
+ * Export-provenance guard — which assets tree did these bytes come from?
  *
- * Homecoming ships data through several asset rings (live, open beta, closed
- * beta). Only `live` may ever reach users: a beta export is unreleased,
- * still-moving numbers that will not match anyone's in-game build. Nothing
- * about beta data LOOKS wrong, though — it is internally self-consistent, so it
- * passes the staleness fingerprint, converter validation and the contract
- * totals alike. Reviewing a refresh diff cannot catch it either; the diff is
- * thousands of plausible number changes (DATA-GAP-REGISTER PROV-1/PROV-2).
+ * DATA-GAP-REGISTER PROV-1. Homecoming publishes several shards under one
+ * `assets/` root, and they are divergent BRANCHES rather than points on one
+ * timeline. An export taken from the wrong shard is therefore wrong in both
+ * directions at once — missing shipped fixes while carrying unreleased content
+ * — and because it is internally self-consistent it passes every check that
+ * reads only the export: the staleness guard compares exporter fingerprints,
+ * converter validation and contract totals read the export as ground truth.
+ * That is the FLAGS-2 shape the mandate names, a bad read UPSTREAM of the
+ * export becoming authoritative data.
  *
- * What does distinguish it: every exporter stamps its output with a
- * `source` block naming the shard it read. This asserts that every committed
- * manifest names its dataset's `exportable_ring` — so a beta export cannot be
- * merged without turning CI red, no matter how ordinary its numbers look.
- *
- * `scripts/refresh-from-channel.cjs` already refuses to APPLY a non-exportable
- * ring, and `resolve_export_source` refuses to stamp one. This is the backstop
- * for the paths those two do not cover: a hand-run exporter, an older export
- * predating the gate, or a tree copied in by hand.
- *
- * Matching is on the ring's SUBPATH, not on absolute paths, because the
- * committed manifest may have been stamped on a different workstation than the
- * one running this test. Roots vary per machine; ring subpaths do not. See
- * bin_crawler/assets_sources.json.
+ * It shipped once (`8a32f60c42`): Homecoming exported from `assets/beta`
+ * instead of `assets/live`, reverting a fix Sidekick had already published and
+ * carrying an unreleased revamp, with every suite green. The honest diff DID
+ * surface all 11 deltas — they were then explained away — so the diff alone was
+ * never the guard. This is: the exporter now records the shard it read, and
+ * here that record is held to the one shard users may see.
  */
 
-const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const EXPORT_ROOT = join(REPO_ROOT, 'exported_powers');
-const REGISTRY_PATH = join(
-  REPO_ROOT, 'tools', 'bin-crawler', 'bin_crawler', 'assets_sources.json',
+const SCHEMA = 'bin-crawler-export-manifest/2';
+
+interface SourceFile {
+  name: string;
+  bytes: number;
+  modified: string;
+  sha256: string;
+}
+interface Provenance {
+  assets_dir: string;
+  shard: string;
+  sources: SourceFile[];
+}
+
+function readManifest(path: string): Record<string, unknown> {
+  expect(
+    existsSync(path),
+    `Missing ${relative(REPO_ROOT, path)} — re-run its exporter to stamp it.`,
+  ).toBe(true);
+  return JSON.parse(readFileSync(path, 'utf-8'));
+}
+
+/** Every (dataset, surface, manifest) triple the map declares. */
+const ENTRIES = SURFACES.flatMap((surface) =>
+  Object.entries(surface.manifests).map(([dataset, manifestPath]) => ({
+    dataset: dataset as Dataset,
+    tree: surface.tree,
+    manifestPath: manifestPath as string,
+    reexport: surface.reexport(dataset, dataset === 'homecoming' ? '' : `/${dataset}`),
+  })),
 );
 
-type Ring = { subpath: string; note?: string };
-type Root = { host: string; path: string };
-type DatasetEntry = {
-  exportable_ring: string;
-  roots: Root[];
-  rings: Record<string, Ring>;
-};
+describe.each(ENTRIES)('export-provenance ($dataset, $tree)', (entry) => {
+  const manifest = readManifest(entry.manifestPath);
+  const where = relative(REPO_ROOT, entry.manifestPath);
 
-const registry: { datasets: Record<string, DatasetEntry> } = JSON.parse(
-  readFileSync(REGISTRY_PATH, 'utf-8'),
-);
-
-/** Committed export dir per dataset — mirrors EXPORT_ROOTS in convert-pet-entities.cjs. */
-const DATASET_DIRS: Array<[string, string]> = [
-  ['rebirth', join(EXPORT_ROOT, 'rebirth')],
-  ['thunderspy', join(EXPORT_ROOT, 'thunderspy')],
-  // homecoming is the fallback: it lives flat at the export root.
-];
-
-const posix = (p: string) => p.split('\\').join('/');
-
-/** Which dataset a manifest belongs to — the nested forks win over HC's flat root. */
-function datasetFor(manifestPath: string): string {
-  for (const [dataset, dir] of DATASET_DIRS) {
-    if (posix(manifestPath).startsWith(posix(dir) + '/')) return dataset;
-  }
-  return 'homecoming';
-}
-
-/**
- * Every manifest under exported_powers/, found by walking rather than by a
- * hardcoded list: a new sub-export (a fifth exporter, a new fork) is covered
- * the moment it lands, instead of silently sitting outside the guard.
- */
-function findManifests(dir: string): string[] {
-  const out: string[] = [];
-  for (const ent of readdirSync(dir, { withFileTypes: true })) {
-    const full = join(dir, ent.name);
-    if (ent.isDirectory()) out.push(...findManifests(full));
-    else if (ent.name.endsWith('_export_manifest.json')) out.push(full);
-  }
-  return out;
-}
-
-/**
- * Does `assetsDir` sit at <some registered root>/<subpath>?
- *
- * Compared by suffix against the home-relative tail of each root, so a manifest
- * stamped as /home/jiiwii/.wine/…/assets/live and one stamped as
- * /Users/brian/Library/…/assets/live both satisfy their own machine's root
- * without this test knowing whose home directory either is.
- */
-function matchesRegisteredRoot(assetsDir: string, entry: DatasetEntry, subpath: string): boolean {
-  const actual = posix(assetsDir).replace(/\/+$/, '');
-  return entry.roots.some((root) => {
-    const rootPath = posix(root.path);
-    const tail = rootPath.startsWith('~/') ? rootPath.slice(2) : rootPath;
-    const expected = `${tail}/${subpath}`;
-    return rootPath.startsWith('~/')
-      ? actual.endsWith(`/${expected}`) || actual === expected
-      : actual === expected;
-  });
-}
-
-describe('export-provenance guard (committed exports ↔ exportable ring)', () => {
-  const manifests = findManifests(EXPORT_ROOT);
-
-  it('finds the committed manifests to check', () => {
+  it('records provenance at all (manifest predates PROV-1 otherwise)', () => {
     expect(
-      manifests.length,
-      `No *_export_manifest.json under exported_powers/ — either the exports are ` +
-        `missing or the exporters stopped stamping them, and this guard is inert.`,
-    ).toBeGreaterThan(0);
+      manifest.schema,
+      `${where} is a pre-provenance manifest. It cannot say which assets tree ` +
+        `produced this export, which is the whole of PROV-1. Re-export: ${entry.reexport}`,
+    ).toBe(SCHEMA);
+    expect(manifest.source, `${where} has no 'source' block.`).toBeTypeOf('object');
   });
 
-  it('every dataset in the registry has at least one committed manifest', () => {
-    const covered = new Set(manifests.map(datasetFor));
-    for (const dataset of Object.keys(registry.datasets)) {
-      expect(
-        covered.has(dataset),
-        `${dataset} is registered but has no committed manifest — its export is ` +
-          `unguarded. Export it, or drop it from assets_sources.json.`,
-      ).toBe(true);
+  const canonical = canonicalSource(entry.dataset);
+
+  it(`was read from the ${canonical.shard} ring`, () => {
+    const source = manifest.source as Provenance;
+    expect(
+      source.shard,
+      `${where} was exported from the '${source.shard}' ring (${source.assets_dir}), ` +
+        `but ${entry.dataset} may only ship bytes from '${canonical.shard}'. ` +
+        `A wrong-ring export is a divergent BRANCH, not merely stale — it drops shipped ` +
+        `fixes and carries unreleased content at the same time. Re-export: ${entry.reexport}`,
+    ).toBe(canonical.shard);
+  });
+
+  /**
+   * The ring NAME does not identify a tree — PROV-2. A stale snapshot copied out
+   * of a live install keeps its basename, so `bins/…/tspy` and the real `tspy`
+   * are indistinguishable by ring alone, and the snapshot shipped a month-old
+   * corpus while passing the check above. The path around the ring is what
+   * separates them: a copy sits under no registered root.
+   *
+   * Matching is root-relative rather than one absolute path, because a committed
+   * manifest may have been stamped on a different workstation than the one
+   * running this test. Roots vary per machine; ring subpaths do not.
+   */
+  it('was read from a registered install, not a copy of one', () => {
+    const source = manifest.source as Provenance;
+    expect(
+      matchesRegisteredRoot(source.assets_dir ?? '', entry.dataset, canonical.subpath),
+      `${where} records assets_dir '${source.assets_dir}', which is not ` +
+        `<a registered root>/${canonical.subpath} for ${entry.dataset}. A copy of an ` +
+        `install keeps its ring name but goes stale in place.\n` +
+        `  Registered roots: ${canonical.roots.map((r) => `${r.host} (${r.path})`).join(', ')}\n` +
+        `  Either this was exported from an unregistered tree — the exact thing the ` +
+        `registry exists to prevent — or this machine's root is missing from ` +
+        `assets_sources.json. Re-export with --source ${entry.dataset}.`,
+    ).toBe(true);
+  });
+
+  it('names the source files it read, with a digest for each', () => {
+    const { sources } = manifest.source as Provenance;
+    expect(Array.isArray(sources) && sources.length > 0, `${where} lists no sources.`).toBe(true);
+    for (const file of sources) {
+      expect(file.sha256, `${where}: ${file.name} has no sha256`).toMatch(/^[0-9a-f]{64}$/);
+      expect(file.bytes, `${where}: ${file.name} is empty`).toBeGreaterThan(0);
+      expect(file.modified, `${where}: ${file.name} has no mtime`).toMatch(
+        /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/,
+      );
     }
   });
+});
 
-  for (const manifestPath of manifests) {
-    const rel = posix(relative(REPO_ROOT, manifestPath));
-    const dataset = datasetFor(manifestPath);
-
-    it(`${rel} was read from ${dataset}'s exportable ring`, () => {
-      const entry = registry.datasets[dataset];
-      expect(entry, `${dataset} is not in assets_sources.json`).toBeDefined();
-
-      const expectedRing = entry.exportable_ring;
-      const expectedSubpath = entry.rings[expectedRing]?.subpath;
-      expect(
-        expectedSubpath,
-        `${dataset}'s exportable_ring '${expectedRing}' names no subpath in the registry.`,
-      ).toBeDefined();
-
-      const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
-      const source = manifest.source;
-      expect(
-        source,
-        `${rel} has no 'source' block, so where its bytes came from is unknowable. ` +
-          `Re-export ${dataset} with a current exporter, which stamps one.`,
-      ).toBeDefined();
-
-      // Name the offending ring when we can, so the failure explains itself.
-      const ringBySubpath = new Map(
-        Object.entries(entry.rings).map(([name, r]) => [r.subpath, name]),
-      );
-      const actualRing = ringBySubpath.get(source.shard);
-      const culprit = actualRing
-        ? `the '${actualRing}' ring (${entry.rings[actualRing].note ?? ''})`
-        : `an unregistered shard`;
-
-      expect(
-        source.shard,
-        `${rel} was exported from ${culprit}, not ${dataset}'s exportable ring ` +
-          `'${expectedRing}' (subpath '${expectedSubpath}').\n` +
-          `  Committed data must come from the ring users are on. Beta numbers are ` +
-          `unreleased and still moving, and nothing downstream can tell them apart — ` +
-          `they are internally consistent and pass every other gate.\n` +
-          `  Fix: re-export ${dataset} from its exportable ring ` +
-          `(node scripts/refresh-from-channel.cjs${dataset === 'homecoming' ? '' : ` --dataset ${dataset}`}) ` +
-          `and commit that instead.`,
-      ).toBe(expectedSubpath);
-
-      expect(
-        matchesRegisteredRoot(source.assets_dir ?? '', entry, expectedSubpath),
-        `${rel} records assets_dir '${source.assets_dir}', which is not ` +
-          `<a registered root>/${expectedSubpath} for ${dataset}.\n` +
-          `  Registered roots: ${entry.roots.map((r) => `${r.host} (${r.path})`).join(', ')}\n` +
-          `  Either it was exported from an unregistered tree — the exact thing the ` +
-          `registry exists to prevent — or this machine's root is missing from ` +
-          `assets_sources.json.`,
-      ).toBe(true);
-    });
+/**
+ * A dataset's surfaces are exported from one assets tree, so they must agree on
+ * the bytes they read. Disagreement means the trees were built from different
+ * game builds — the half-migrated state a per-tree check cannot see, since each
+ * tree is individually self-consistent.
+ */
+describe('export-provenance cross-surface agreement', () => {
+  const byDataset = new Map<Dataset, typeof ENTRIES>();
+  for (const entry of ENTRIES) {
+    byDataset.set(entry.dataset, [...(byDataset.get(entry.dataset) ?? []), entry]);
   }
+
+  it.each([...byDataset.keys()])('%s: every surface read the same bytes', (dataset) => {
+    const entries = byDataset.get(dataset)!;
+    const fingerprints = entries.map((entry) => {
+      const { sources } = readManifest(entry.manifestPath).source as Provenance;
+      return {
+        tree: entry.tree,
+        digest: sources.map((f) => `${f.name}:${f.sha256}`).join('|'),
+      };
+    });
+    const [first, ...rest] = fingerprints;
+    for (const other of rest) {
+      expect(
+        other.digest,
+        `${dataset}: ${other.tree} was exported from different source bytes than ` +
+          `${first.tree}. The surfaces come from one assets tree, so this means they ` +
+          `were built from different game builds — re-export ${dataset}'s surfaces together.`,
+      ).toBe(first.digest);
+    }
+  });
 });

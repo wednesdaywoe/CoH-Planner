@@ -1,0 +1,716 @@
+{
+ "selected": [],
+ "declined": [
+  {
+   "attrib": "Cold_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Cold_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Cold_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Cold_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Cold_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "4 powers claim Cold_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Cold_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Cold_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Confused",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "3 powers claim Confused (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Confused",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "3 powers claim Confused (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Confused",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "3 powers claim Confused (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "EnduranceDiscount",
+   "power": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+   "name": "Vigilance_PerTeamEndAdjustment",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "no gate anywhere reads kEnduranceDiscount source>"
+  },
+  {
+   "attrib": "Endurance",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "no gate anywhere reads kEndurance source>"
+  },
+  {
+   "attrib": "Energy_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Energy_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Energy_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "4 powers claim Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Energy_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Fire_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Fire_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Fire_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Fire_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Fire_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "4 powers claim Fire_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Fire_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Fire_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Grant_Power",
+   "power": "Inherent.Inherent.Gauntlet",
+   "name": "Gauntlet",
+   "archetypes": [
+    "Class_Tanker"
+   ],
+   "reason": "2 powers claim Grant_Power (Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Proc_Grant)"
+  },
+  {
+   "attrib": "Grant_Power",
+   "power": "Inherent.Inherent.Rage_Proc_Grant",
+   "name": "Rage_Proc_Grant",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "2 powers claim Grant_Power (Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Proc_Grant)"
+  },
+  {
+   "attrib": "Held",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "3 powers claim Held (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Held",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "3 powers claim Held (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Held",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "3 powers claim Held (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Immobilized",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "3 powers claim Immobilized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Immobilized",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "3 powers claim Immobilized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Immobilized",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "3 powers claim Immobilized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Knockback",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "no gate anywhere reads kKnockback source>"
+  },
+  {
+   "attrib": "Knockup",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "no gate anywhere reads kKnockup source>"
+  },
+  {
+   "attrib": "Lethal_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Lethal_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Lethal_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Lethal_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Lethal_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "4 powers claim Lethal_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Lethal_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Lethal_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Meter",
+   "power": "Inherent.Inherent.Domination_Meter",
+   "name": "Domination_Meter",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "3 powers claim Meter (Inherent.Inherent.Domination_Meter, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage_Buff)"
+  },
+  {
+   "attrib": "Meter",
+   "power": "Inherent.Inherent.Opportunity_Meter",
+   "name": "Opportunity_Meter",
+   "archetypes": [
+    "Class_Sentinel"
+   ],
+   "reason": "3 powers claim Meter (Inherent.Inherent.Domination_Meter, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage_Buff)"
+  },
+  {
+   "attrib": "Meter",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "3 powers claim Meter (Inherent.Inherent.Domination_Meter, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage_Buff)"
+  },
+  {
+   "attrib": "Negative_Energy_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Negative_Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Negative_Energy_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Negative_Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Negative_Energy_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "4 powers claim Negative_Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Negative_Energy_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Negative_Energy_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Null",
+   "power": "Inherent.Inherent.Defiance",
+   "name": "Defiance",
+   "archetypes": [
+    "Class_Blaster"
+   ],
+   "reason": "no gate anywhere reads kNull source>"
+  },
+  {
+   "attrib": "PerceptionRadius",
+   "power": "Inherent.Inherent.Opportunity_Meter",
+   "name": "Opportunity_Meter",
+   "archetypes": [
+    "Class_Sentinel"
+   ],
+   "reason": "no gate anywhere reads kPerceptionRadius source>"
+  },
+  {
+   "attrib": "Psionic_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Psionic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Psionic_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Psionic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Psionic_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "4 powers claim Psionic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Psionic_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Psionic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Domination_Boost",
+   "name": "Domination_Boost",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Domination_Dampen",
+   "name": "Domination_Dampen",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Domination_Rage",
+   "name": "Domination_Rage",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Opportunity_Meter",
+   "name": "Opportunity_Meter",
+   "archetypes": [
+    "Class_Sentinel"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Rage",
+   "name": "Rage",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Rage_Dampen",
+   "name": "Rage_Dampen",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "Rage",
+   "power": "Inherent.Inherent.Rage_Strengthen",
+   "name": "Rage_Strengthen",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "8 powers claim Rage (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Boost, Inherent.Inherent.Domination_Dampen, Inherent.Inherent.Domination_Rage, Inherent.Inherent.Opportunity_Meter, Inherent.Inherent.Rage, Inherent.Inherent.Rage_Dampen, Inherent.Inherent.Rage_Strengthen)"
+  },
+  {
+   "attrib": "RechargeTime",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "2 powers claim RechargeTime (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance)"
+  },
+  {
+   "attrib": "RechargeTime",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "2 powers claim RechargeTime (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance)"
+  },
+  {
+   "attrib": "Repel",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "no gate anywhere reads kRepel source>"
+  },
+  {
+   "attrib": "Revoke_Power",
+   "power": "Inherent.Inherent.Gauntlet",
+   "name": "Gauntlet",
+   "archetypes": [
+    "Class_Tanker"
+   ],
+   "reason": "2 powers claim Revoke_Power (Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Proc_Grant)"
+  },
+  {
+   "attrib": "Revoke_Power",
+   "power": "Inherent.Inherent.Rage_Proc_Grant",
+   "name": "Rage_Proc_Grant",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "2 powers claim Revoke_Power (Inherent.Inherent.Gauntlet, Inherent.Inherent.Rage_Proc_Grant)"
+  },
+  {
+   "attrib": "Set_Mode",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "3 powers claim Set_Mode (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Mode, Inherent.Inherent.Opportunity_Meter)"
+  },
+  {
+   "attrib": "Set_Mode",
+   "power": "Inherent.Inherent.Domination_Mode",
+   "name": "Domination_Mode",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "3 powers claim Set_Mode (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Mode, Inherent.Inherent.Opportunity_Meter)"
+  },
+  {
+   "attrib": "Set_Mode",
+   "power": "Inherent.Inherent.Opportunity_Meter",
+   "name": "Opportunity_Meter",
+   "archetypes": [
+    "Class_Sentinel"
+   ],
+   "reason": "3 powers claim Set_Mode (Inherent.Inherent.Domination, Inherent.Inherent.Domination_Mode, Inherent.Inherent.Opportunity_Meter)"
+  },
+  {
+   "attrib": "Sleep",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "3 powers claim Sleep (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Sleep",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "3 powers claim Sleep (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Sleep",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "3 powers claim Sleep (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Smashing_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Smashing_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Smashing_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Smashing_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Smashing_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "4 powers claim Smashing_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Smashing_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Smashing_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Stunned",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "3 powers claim Stunned (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Stunned",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "3 powers claim Stunned (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Stunned",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "3 powers claim Stunned (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Terrorized",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "3 powers claim Terrorized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Terrorized",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "3 powers claim Terrorized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "Terrorized",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "3 powers claim Terrorized (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Domination)"
+  },
+  {
+   "attrib": "ToHit",
+   "power": "Inherent.Inherent.Domination",
+   "name": "Domination",
+   "archetypes": [
+    "Class_Dominator"
+   ],
+   "reason": "2 powers claim ToHit (Inherent.Inherent.Domination, Inherent.Inherent.Opportunity_Meter)"
+  },
+  {
+   "attrib": "ToHit",
+   "power": "Inherent.Inherent.Opportunity_Meter",
+   "name": "Opportunity_Meter",
+   "archetypes": [
+    "Class_Sentinel"
+   ],
+   "reason": "2 powers claim ToHit (Inherent.Inherent.Domination, Inherent.Inherent.Opportunity_Meter)"
+  },
+  {
+   "attrib": "Toxic_Dmg",
+   "power": "Inherent.Inherent.Cosmic_Balance",
+   "name": "Cosmic_Balance",
+   "archetypes": [
+    "Class_Peacebringer"
+   ],
+   "reason": "4 powers claim Toxic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Toxic_Dmg",
+   "power": "Inherent.Inherent.Dark_Sustenance",
+   "name": "Dark_Sustenance",
+   "archetypes": [
+    "Class_Warshade"
+   ],
+   "reason": "4 powers claim Toxic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Toxic_Dmg",
+   "power": "Inherent.Inherent.Rage_Buff",
+   "name": "Rage_Buff",
+   "archetypes": [
+    "Class_Brute"
+   ],
+   "reason": "4 powers claim Toxic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  },
+  {
+   "attrib": "Toxic_Dmg",
+   "power": "Inherent.Inherent.Vigilance",
+   "name": "Vigilance",
+   "archetypes": [
+    "Class_Defender"
+   ],
+   "reason": "4 powers claim Toxic_Dmg (Inherent.Inherent.Cosmic_Balance, Inherent.Inherent.Dark_Sustenance, Inherent.Inherent.Rage_Buff, Inherent.Inherent.Vigilance)"
+  }
+ ]
+}

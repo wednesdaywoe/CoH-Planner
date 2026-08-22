@@ -25,7 +25,7 @@ import { getPetClassStats, getPetBaseStats, getPetClassAttribs } from './pet-sta
  *     character sheet.
  */
 
-const DATASETS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const DATASETS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 const declaredClasses = (): Map<string, string[]> => {
   const byClass = new Map<string, string[]>();

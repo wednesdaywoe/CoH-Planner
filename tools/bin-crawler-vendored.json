@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "473070b364b3f56621d98e8c7ff761adfb43b019",
-  "synced_from_subject": "BOOST-3 closed — a set's aspect label reads GroupName, not Category",
-  "synced_from_date": "2026-08-19T20:10:23-04:00",
-  "tree_fingerprint": "b86e46069c1236118d2873c948dacec3c72a90341a714d4b5c9c63268b8f56ba",
-  "export_manifest_digest": "17c2e576a48a962796ef0f0078ab11bb0174d32674dc9dbcde6657a376817b96",
-  "export_manifest_count": 10
+  "synced_from_commit": "daa30e67a487e0afc5e231e68baad707d455b48f",
+  "synced_from_subject": "Help-text markup, the gate nothing called, and five Brainstorm-exposed closes",
+  "synced_from_date": "2026-08-22T14:12:33-04:00",
+  "tree_fingerprint": "c0887479dca542d6a42cf8f96bb617bbeb6de8f73340a0114e2392afc7b60031",
+  "export_manifest_digest": "9b4250aee4bd8835414a5d8226dfcf90b185e654fe16091f7a0f4bb2df71381b",
+  "export_manifest_count": 14
 }

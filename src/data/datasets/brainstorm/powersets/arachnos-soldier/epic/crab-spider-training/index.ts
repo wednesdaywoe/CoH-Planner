@@ -1,0 +1,37 @@
+/**
+ * Crab Spider Training Powerset
+ * Crab Spiders are heavy infantry in the Arachnos Organization, with a wide array of ranged and melee combat skills.
+ *
+ * Archetype: arachnos-soldier
+ * Category: epic
+ * Source: training_gadgets/crab_spider_training
+ */
+
+import type { Powerset } from '@/types';
+
+import { CrabSpiderArmor as CrabSpiderArmor } from './crab-spider-armor';
+import { Fortification as Fortification } from './fortification';
+import { Serum as Serum } from './serum';
+import { SummonSpiderlings as SummonSpiderlings } from './summon-spiderlings';
+
+export const powerset: Powerset = {
+  id: 'arachnos-soldier/crab-spider-training',
+  setPath: 'Training_Gadgets.Crab_Spider_Training',
+  name: 'Crab Spider Training',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 23,
+  specializeRequires: ["Arachnos_Soldiers.Bane_Spider_Soldier","powerset?","Training_Gadgets.Bane_Spider_Training","powerset?","||","!"],
+  description: "Crab Spiders are heavy infantry in the Arachnos Organization, with a wide array of ranged and melee combat skills.",
+  icon: 'crab_spider_training_set.ico',
+  archetype: 'arachnos-soldier',
+  category: 'epic',
+  powers: [
+    CrabSpiderArmor,
+    Fortification,
+    Serum,
+    SummonSpiderlings,
+  ],
+};
+
+export default powerset;

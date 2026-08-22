@@ -56,6 +56,17 @@ const evalMagnitudeExpression = (expr: string | readonly string[], ctx: object) 
 
 const EXPORT_ROOT = fileURLToPath(new URL('../../exported_powers', import.meta.url));
 
+// Homecoming lives flat at the export root; every other dataset sits in a named subdir.
+// The sweep is Homecoming-only, so those subdirs are skipped — derived from ALL_DATASETS
+// rather than listed, because a hand-written skip list goes quiet on the next fork added.
+// Brainstorm proved it: unlisted, it swept as if it were Homecoming and doubled every count
+// under a pin that reads as coverage.
+const FORK_DIRS: ReadonlySet<string> = new Set(
+  (require('../../scripts/_dataset-paths.cjs').ALL_DATASETS as string[]).filter(
+    (d) => d !== 'homecoming',
+  ),
+);
+
 /** The blaster/corruptor/defender ToHit ramp prefix — every snipe program starts here. */
 const RAMP_BCD = 'cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 +';
 /** The dominator ramp: a DIFFERENT reference point (0.75 at neutral ToHit, not 1.0). */
@@ -345,7 +356,7 @@ describe('corpus sweep — nothing outside the snipe programs folds', () => {
     const walk = (dir: string, top: string | null): string[] => {
       const out: string[] = [];
       for (const e of fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
-        if (top === null && (e.name === 'rebirth' || e.name === 'thunderspy' || e.name === 'tables')) continue;
+        if (top === null && (FORK_DIRS.has(e.name) || e.name === 'tables')) continue;
         const p = path.join(dir, e.name);
         if (e.isDirectory()) out.push(...walk(p, top ?? e.name));
         else if (e.name.endsWith('.json') && e.name !== 'index.json') out.push(p);
@@ -413,7 +424,7 @@ describe('corpus sweep — nothing outside the snipe programs folds', () => {
   });
 
   it('the sweep actually covered the corpus (a zero here is an INVALID run)', () => {
-    // Homecoming only (rebirth/thunderspy/tables are skipped); ~14,976 / ~459 today.
+    // Homecoming only (the fork subdirs and tables/ are skipped); ~14,976 / ~459 today.
     expect(gated).toBeGreaterThan(14000);
     expect(withExpression).toBeGreaterThan(400);
     // The ramp-only programs must be SEEN and resolved to 1 — not merely bailed on.

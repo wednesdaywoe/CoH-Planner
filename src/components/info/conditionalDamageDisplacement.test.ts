@@ -34,7 +34,7 @@ import { atomsOf } from '@/data/core/atom-query';
 import { applyActiveConditionals } from './powerDisplayUtils';
 import type { ConditionalEffect, Power, ScaledDamageEntry } from '@/types/power';
 
-const SERVERS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const SERVERS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 /** Damage rows as an array, whatever shape the power stores them in. */
 function damageRows(damage: Power['damage']): ScaledDamageEntry[] {

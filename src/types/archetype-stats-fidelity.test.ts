@@ -24,7 +24,7 @@ import { declaredFields } from './declared-fields';
  * to red something.
  */
 
-const FORKS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const FORKS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 const TYPE_FILE = 'src/types/archetype.ts';
 
 /** cap-at-50 over the class's own base, which is the only way a percentage exists here. */

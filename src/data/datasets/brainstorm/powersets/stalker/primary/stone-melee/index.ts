@@ -1,0 +1,47 @@
+/**
+ * Stone Melee Powerset
+ * You can use the powers of earth and stone to do battle with your foes. Stone Melee allows you to strike with fists of stone, summon earthen weapons, and even quake the very ground itself.
+ *
+ * Archetype: stalker
+ * Category: primary
+ * Source: stalker_melee/stone_melee
+ */
+
+import type { Powerset } from '@/types';
+
+import { StoneFist as StoneFist } from './stone-fist';
+import { StoneMallet as StoneMallet } from './stone-mallet';
+import { Fault as Fault } from './fault';
+import { AssassinsRockslide as AssassinsRockslide } from './assassins-rockslide';
+import { BuildUp as BuildUp } from './build-up';
+import { Placate as Placate } from './placate';
+import { HeavyMallet as HeavyMallet } from './heavy-mallet';
+import { HurlBoulder as HurlBoulder } from './hurl-boulder';
+import { Tremor as Tremor } from './tremor';
+
+export const powerset: Powerset = {
+  id: 'stalker/stone-melee',
+  setPath: 'Stalker_Melee.Stone_Melee',
+  name: 'Stone Melee',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
+  description: "You can use the powers of earth and stone to do battle with your foes. Stone Melee allows you to strike with fists of stone, summon earthen weapons, and even quake the very ground itself.",
+  icon: 'stone_melee_set.ico',
+  archetype: 'stalker',
+  category: 'primary',
+  powers: [
+    StoneFist,
+    StoneMallet,
+    Fault,
+    AssassinsRockslide,
+    BuildUp,
+    Placate,
+    HeavyMallet,
+    HurlBoulder,
+    Tremor,
+  ],
+};
+
+export default powerset;

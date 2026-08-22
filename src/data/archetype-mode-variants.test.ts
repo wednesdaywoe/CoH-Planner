@@ -36,7 +36,7 @@ import type { Power } from '@/types';
  *     per-fork totals below encode that difference deliberately.
  */
 
-const DATASETS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const DATASETS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 /**
  * Carrier counts per fork, pinned in both directions.
@@ -53,6 +53,9 @@ const EXPECTED_CARRIERS: Record<(typeof DATASETS)[number], number> = {
   rebirth: 22,
   // 7 Primalist form shells + 5 Titan Weapons.
   thunderspy: 12,
+  // Homecoming's twelve, measured on the i28p4 beta: neither new powerset redirects,
+  // so Sonic Aura and Light Affinity add no carrier.
+  brainstorm: 12,
 };
 
 /**

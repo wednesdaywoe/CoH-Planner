@@ -180,7 +180,7 @@ describe('shouldShowToggle — real generated data', () => {
     expect(shouldShowToggle(power!)).toBe(false);
   });
 
-  it.each(['homecoming', 'rebirth', 'thunderspy'])('%s / Aid Self keeps its toggle', (dataset) => {
+  it.each(['homecoming', 'rebirth', 'thunderspy', 'brainstorm'])('%s / Aid Self keeps its toggle', (dataset) => {
     const power = findPower(dataset, 'Aid Self');
     expect(power, `Aid Self not found in ${dataset} — fixture stale`).not.toBeNull();
     expect(shouldShowToggle(power!)).toBe(true);

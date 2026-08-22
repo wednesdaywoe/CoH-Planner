@@ -30,7 +30,7 @@ import { resolvePowerMagnitudes } from './resolvePowerMagnitudes';
 import { EFFECT_RESOLUTION } from '@/data/generated/effect-registry.generated';
 import type { PowerEffects } from '@/types';
 
-const SERVERS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const SERVERS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 /** Any value but the 1.0 both sides are pinned to; a reached row's numbers scale by it. */
 const SENTINEL_MODIFIER = 3.0;

@@ -1,0 +1,47 @@
+/**
+ * Arsenal Control Powerset
+ * Armed with a state-of-the-art multipurpose rifle, you are able to deliver a wide variety of payloads to control your enemies and render them incapable of responding.
+ *
+ * Archetype: dominator
+ * Category: primary
+ * Source: dominator_control/arsenal_control
+ */
+
+import type { Powerset } from '@/types';
+
+import { Tranquilizer as Tranquilizer } from './tranquilizer';
+import { CryoFreezeRay as CryoFreezeRay } from './cryo-freeze-ray';
+import { SleepGrenade as SleepGrenade } from './sleep-grenade';
+import { LiquidNitrogen as LiquidNitrogen } from './liquid-nitrogen';
+import { CloakingDevice as CloakingDevice } from './cloaking-device';
+import { SmokeGrenade as SmokeGrenade } from './smoke-grenade';
+import { FlashBang as FlashBang } from './flash-bang';
+import { TearGas as TearGas } from './tear-gas';
+import { GunDrone as GunDrone } from './gun-drone';
+
+export const powerset: Powerset = {
+  id: 'dominator/arsenal-control',
+  setPath: 'Dominator_Control.Arsenal_Control',
+  name: 'Arsenal Control',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
+  description: "Armed with a state-of-the-art multipurpose rifle, you are able to deliver a wide variety of payloads to control your enemies and render them incapable of responding.",
+  icon: 'assault_rifle_set.ico',
+  archetype: 'dominator',
+  category: 'primary',
+  powers: [
+    Tranquilizer,
+    CryoFreezeRay,
+    SleepGrenade,
+    LiquidNitrogen,
+    CloakingDevice,
+    SmokeGrenade,
+    FlashBang,
+    TearGas,
+    GunDrone,
+  ],
+};
+
+export default powerset;

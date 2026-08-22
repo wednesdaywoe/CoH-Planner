@@ -22,11 +22,19 @@ import {
  * See streams/DEDUCTIVE_SCHEMA_HARNESS.md.
  */
 
+const ALL_DATASET_IDS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
+
 const EXPORT_ROOT = fileURLToPath(new URL('../../exported_powers', import.meta.url));
 
 function hcFiles(): string[] {
   const out: string[] = [];
-  const skipTop = new Set(['rebirth', 'thunderspy', 'tables']);
+  // Every dataset that nests under the Homecoming export root, derived rather than typed:
+  // this walk is Homecoming's alone, and a hand list silently adopts the next dataset's
+  // tree as HC's the day it lands (BRAIN-5).
+  const skipTop = new Set<string>([
+    ...ALL_DATASET_IDS.filter((id) => id !== 'homecoming'),
+    'tables',
+  ]);
   const walk = (dir: string, top: string | null) => {
     for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
       if (top === null && skipTop.has(e.name)) continue;

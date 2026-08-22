@@ -21,7 +21,7 @@ import { isPairable, pairingStarvation, setKey, setKeyFromId } from '@/data/powe
  * fork's content and moves when a fork adds a weapon set.
  */
 
-const FORKS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const FORKS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 /** Every (primary, secondary) pair for one archetype prefix, as the dropdowns would offer them. */
 function pairsFor(archetype: string) {

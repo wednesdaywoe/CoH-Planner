@@ -76,9 +76,24 @@ export function atomsOf(power: AtomSource): readonly AtomicEffect[] {
   return atoms;
 }
 
+/**
+ * A row the client prints but never applies. Brainstorm's Disruption Strike states a
+ * −2.5 resistance debuff at `AnyAffected` on a `["Self"]` power, which every recipient
+ * test resolves as the caster (TARGETS-3), so untagged it lands as a phantom self
+ * penalty on all 8 types. Rest's real −10 crash has that exact shape, and the group's
+ * `DisplayOnly` tag is the only thing telling the two apart.
+ *
+ * Asked token-wise against the comma-joined `tags` string, so a future `NotDisplayOnly`
+ * can't match. Totals-only: `atomsOf` stays complete, since printing the row is the
+ * whole reason it exists.
+ */
+export function isDisplayOnly(a: AtomicEffect): boolean {
+  return a.tags !== undefined && `,${a.tags},`.includes(',DisplayOnly,');
+}
+
 /** The power's atoms of one effectType, in list order. */
 export function atomsOfType(power: AtomSource, effectType: EffectType): AtomicEffect[] {
-  return atomsOf(power).filter((a) => a.effectType === effectType);
+  return atomsOf(power).filter((a) => a.effectType === effectType && !isDisplayOnly(a));
 }
 
 /**
@@ -109,7 +124,7 @@ export function atomsOfType(power: AtomSource, effectType: EffectType): AtomicEf
  * is how the shadow gates check it instead of scoring two silences as a match.
  */
 export function baseAtoms(power: AtomSource): AtomicEffect[] {
-  return atomsOf(power).filter(isBagBase);
+  return atomsOf(power).filter((a) => isBagBase(a) && !isDisplayOnly(a));
 }
 
 /**

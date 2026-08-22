@@ -321,9 +321,15 @@ export default defineConfig({
         // manualChunks would, and would re-pull the ~100 KB of small modules
         // still statically imported from datasets/* back into the eager entry).
         // Each dataset's index.ts is the facade module of its own dynamic chunk.
+        //
+        // The directory name is captured rather than listed. A listed roster misses the
+        // next dataset silently and expensively: brainstorm fell out, so its chunk was
+        // named after its facade module (`index-*.js`), globIgnores did not match it, and
+        // workbox tried to precache 20 MB of dataset — failing the build at the SW step
+        // with a message that names the chunk but not the cause.
         chunkFileNames: (chunkInfo) => {
           const id = chunkInfo.facadeModuleId
-          const m = id?.match(/[/\\]datasets[/\\](homecoming|rebirth|thunderspy)[/\\]index\.ts$/)
+          const m = id?.match(/[/\\]datasets[/\\]([^/\\]+)[/\\]index\.ts$/)
           return m ? `assets/dataset-${m[1]}-[hash].js` : 'assets/[name]-[hash].js'
         },
       },

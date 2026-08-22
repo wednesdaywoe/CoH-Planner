@@ -64,7 +64,7 @@ const argVal = (f) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] :
 const POWER_FILTER = argVal('--power');
 const DATASETS = (() => {
   const picked = argv.flatMap((a, i) => (a === '--dataset' && argv[i + 1] ? [argv[i + 1]] : []));
-  return picked.length ? picked : ['homecoming', 'rebirth', 'thunderspy'];
+  return picked.length ? picked : require('./_dataset-paths.cjs').ALL_DATASETS;
 })();
 
 // The 11 standard defense globals (positions + damage types), lowercase-keyed as

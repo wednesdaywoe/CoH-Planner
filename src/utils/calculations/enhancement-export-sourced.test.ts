@@ -33,7 +33,7 @@ import type { EnhancementSchedule } from './enhancement-values';
  * export, it is a copy that has not drifted yet, and the next fork is what moves it.
  */
 
-const FORKS = ['homecoming', 'rebirth', 'thunderspy'] as const;
+const FORKS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 const SCHEDULES: EnhancementSchedule[] = ['A', 'B', 'C', 'D'];
 
 /** The rounded table the twin used to carry, kept as the thing we must NOT match. */

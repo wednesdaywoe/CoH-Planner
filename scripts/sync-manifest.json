@@ -53,7 +53,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "bac62b78893f0b67426764ab9dad50b73c6474dd7ff420c58c102b41b3f24aaf"
+      "sha256": "82179e85acfee2daf9936e08f65a16b80c676a3c87c24d81410adec3a398d3e8"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -68,7 +68,7 @@
     {
       "path": "scripts/_dataset-paths.cjs",
       "status": "identical",
-      "sha256": "4144d8ab157f2f0e32062ea3fd4559eb1de68859c5e83252ba00f7835f7fc224"
+      "sha256": "0ff12fbc9bf40c7fef69fdc7e8d2b076fea9f5192aaa9f5d982c91f19940b6da"
     },
     {
       "path": "scripts/_dim-returns.cjs",
@@ -88,7 +88,7 @@
     {
       "path": "scripts/_export-join.cjs",
       "status": "identical",
-      "sha256": "f0d8843e55cf5ea1e5ba9c479ec8cc5bd89cf4e8b0be59b3bc89eedec4d5b349"
+      "sha256": "763b7c5f898fc7ef77e5b5d1ebd6713d78228c1c9c0b9e73c8e59b1574c4e58f"
     },
     {
       "path": "scripts/_gate-default.cjs",
@@ -159,6 +159,11 @@
       "path": "scripts/audit-allowed-set-categories.cjs",
       "status": "identical",
       "sha256": "5a85158aae65fea8372378944e96d3b0d6f5c637d24a799fcaf7ac8f156b64e9"
+    },
+    {
+      "path": "scripts/audit-dataset-roster.cjs",
+      "status": "identical",
+      "sha256": "30ac87cca2e0e583abe2e5133ee7bbb35528d737a0144fd53daa762f58b41ccc"
     },
     {
       "path": "scripts/bridge-attrib-one.cjs",
@@ -268,7 +273,7 @@
     {
       "path": "scripts/dsh8-incarnate-collapse-worklist.json",
       "status": "identical",
-      "sha256": "a50f4a08d51ae3b16bafd122af8265a27c2e576f92c82c052a17c82b050b2cc3"
+      "sha256": "c602ad5492e01710b1dc6bf6f1bfa1bc8aa33762d31428d4b170d71279e23cf8"
     },
     {
       "path": "scripts/env-loader.ts",
@@ -288,7 +293,7 @@
     {
       "path": "scripts/extract-rebirth-io-sets-v2.py",
       "status": "identical",
-      "sha256": "fa3b580fd825f2a8c879dc9afac4a37d8dfec7f3c2689b1a2d20c6be0544df05"
+      "sha256": "168f637e9c3abfb340ef33f308e51c4ac5a869a78850a67a3bf27d8b36ed3439"
     },
     {
       "path": "scripts/generate-archetypes.cjs",
@@ -313,37 +318,37 @@
     {
       "path": "scripts/planb-shadow-bag.cjs",
       "status": "identical",
-      "sha256": "14e5c5b08d8f838d30c998888b59ce517ee0a2c60e19f13ab7468570a5c31711"
+      "sha256": "352b18d9b1879752e20d3959d66309127648fe4e9643f8179dbd3f17457454ae"
     },
     {
       "path": "scripts/planb-shadow-defense.cjs",
       "status": "identical",
-      "sha256": "545903830dced077cb50488e21188f49dc96f80dd9174821d19cdf7c55506f8f"
+      "sha256": "db8c284e1c9b62092e6163c0eda51934a6924d1ecd6b416000db1ee260e52483"
     },
     {
       "path": "scripts/planb-shadow-maxhp.cjs",
       "status": "identical",
-      "sha256": "c6012b575daa878fc8f6960767a73f70dbee54971424d76c3a5771f7bc00006c"
+      "sha256": "2c0d7ce0f630da4a5d7345884b7e976cc157f28a316e1affb1f9b4fc622f93b3"
     },
     {
       "path": "scripts/planb-shadow-movement.cjs",
       "status": "identical",
-      "sha256": "338560a5d3b9fad285cd3740f33aa81523129e7deaf229b5f787641cdfb9cd03"
+      "sha256": "e36f29a9bd8dc4a126a432b21dd8871361cec665235082dcc20ba91ac84e897c"
     },
     {
       "path": "scripts/planb-shadow-pertarget.cjs",
       "status": "identical",
-      "sha256": "cdfc468c46eb9c08b76cc4c0fb2daa3cefea06cd4ea22990e8b0e1d38c03f0a9"
+      "sha256": "88f5687723c5ebacca240d72d85f773d950d0ac9b0016e314575fc706991b0d9"
     },
     {
       "path": "scripts/planb-shadow-resistance.cjs",
       "status": "identical",
-      "sha256": "62afc94b41d278f25ae0c440e3102386b0794cbf9f81e925c8dd325860347dbe"
+      "sha256": "e5e7917b54914856fdc52aec62ae091a47ada93930db22860d4382e16994c017"
     },
     {
       "path": "scripts/planb-shadow-resources.cjs",
       "status": "identical",
-      "sha256": "7ff01825ae64713287485532acc9ca214377a061cec3460d46f59253e810ad9e"
+      "sha256": "f29f86000b288bed0a77da9fc7dbe303614fb1aa6c4491c7ea7c8c583c47fc05"
     },
     {
       "path": "scripts/planb-shadow-sweep.cjs",
@@ -354,8 +359,8 @@
       "path": "scripts/regen-all.cjs",
       "status": "per-repo",
       "sha256": {
-        "canonical": "36eea36cb33750e352b5c58a1c496f38f154d939dbfc9c7f3597e9b7b216ada8",
-        "beta": "4ece2e5cf296216cc66b0cd95c4278a49d4c2c7b590259f28676db792509acbb"
+        "canonical": "7979d22ae799df0b26c83610b70b0126252f714d7dc0b3de22e241559f08ebe2",
+        "beta": "d46098283b99ef618925b0cbc727aa93b80d0932405f3b5db0325387a36af8f8"
       },
       "reason": "The stage roster and the gate roster ARE the repo's identity — which converters exist and which gates it can currently pass — so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 14 (24 until FORK-2 retired the two form-variant generators), not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
       "exit": null,
@@ -379,7 +384,7 @@
     {
       "path": "src/data/core/atom-query.ts",
       "status": "identical",
-      "sha256": "7fa07e4c6c07ee8af8becd757816e59be86771048e793043b790a65e036fe9b9"
+      "sha256": "52743245170a0c7b4c8fdddc8e6be9713cf19dedf9ed2b6f0d93be851b98f741"
     },
     {
       "path": "src/data/core/atomic-effect.ts",
@@ -389,7 +394,7 @@
     {
       "path": "src/data/dataset.ts",
       "status": "identical",
-      "sha256": "9b1bc36659d29d772efaacf727e668192ae87828796e488a4bd8092c33dcb29a"
+      "sha256": "06ce098ea926457543553556ccc991a5e6109769e6f1b5cda2e97e3549ed8708"
     },
     {
       "path": "src/data/enhancement-curves.ts",
@@ -429,7 +434,7 @@
     {
       "path": "src/types/build.ts",
       "status": "identical",
-      "sha256": "e9692408504b8b69cc848fe86db7f64180ddedb2ea0c93f11c0c1b61b389d06e"
+      "sha256": "8baf36e4847d3005285a5fd55507f9dedccb91ff26c8e40e0789cc2f5059380e"
     },
     {
       "path": "src/types/common.ts",
@@ -454,7 +459,7 @@
     {
       "path": "src/types/power.ts",
       "status": "identical",
-      "sha256": "d5ed9ef9181de348f59839f69607862bcf686172e5dd5ef83b30368eee8e2af9"
+      "sha256": "25806f4af6e3ddc4f5b415b06985378f04ed09783d87c577dd66ead967b348fe"
     },
     {
       "path": "src/types/shared.ts",
@@ -509,7 +514,7 @@
     {
       "path": "tools/bin-crawler/bin_crawler/assets_sources.json",
       "status": "identical",
-      "sha256": "bc9310214ddf5c97114c1b8c42e64dfbbe3d175903e3b13f340b865cf5c2d8cd"
+      "sha256": "16af8bdcb99a34e50d469aa5ce49510762b99dbee928ecd63a5599b1e850cc2b"
     },
     {
       "path": "tools/bin-crawler/bin_crawler/assets_sources.py",

@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { AT_TABLES as HC_AT, getTableValue as hcGet } from './datasets/homecoming/at-tables';
 import { AT_TABLES as RB_AT, getTableValue as rbGet } from './datasets/rebirth/at-tables';
 import { AT_TABLES as TS_AT, getTableValue as tsGet } from './datasets/thunderspy/at-tables';
+import { AT_TABLES as BS_AT, getTableValue as bsGet } from './datasets/brainstorm/at-tables';
 
 /**
  * AT-table archetype COVERAGE — every archetype that ships generated powersets
@@ -31,6 +32,7 @@ const DATASETS = [
   { id: 'homecoming', tables: HC_AT, get: hcGet },
   { id: 'rebirth', tables: RB_AT, get: rbGet },
   { id: 'thunderspy', tables: TS_AT, get: tsGet },
+  { id: 'brainstorm', tables: BS_AT, get: bsGet },
 ] as const;
 
 /** Powerset dir name (e.g. "arachnos-soldier") → AT_TABLES key. They already match. */

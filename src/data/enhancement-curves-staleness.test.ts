@@ -8,6 +8,7 @@ import type { EnhancementCurvesData, EnhancementSchedule } from './datasets/home
 import { ENHANCEMENT_CURVES as HOMECOMING_CURVES } from './datasets/homecoming/generated/enhancement-curves';
 import { ENHANCEMENT_CURVES as REBIRTH_CURVES } from './datasets/rebirth/generated/enhancement-curves';
 import { ENHANCEMENT_CURVES as THUNDERSPY_CURVES } from './datasets/thunderspy/generated/enhancement-curves';
+import { ENHANCEMENT_CURVES as BRAINSTORM_CURVES } from './datasets/brainstorm/generated/enhancement-curves';
 
 /**
  * Enhancement-curves staleness guard (SOURCE-1 SW3) — generated == export,
@@ -64,6 +65,7 @@ const DATASETS: Array<{ id: string; module: EnhancementCurvesData }> = [
   { id: 'homecoming', module: HOMECOMING_CURVES },
   { id: 'rebirth', module: REBIRTH_CURVES },
   { id: 'thunderspy', module: THUNDERSPY_CURVES },
+  { id: 'brainstorm', module: BRAINSTORM_CURVES },
 ];
 
 function exportRoot(datasetId: string): string {

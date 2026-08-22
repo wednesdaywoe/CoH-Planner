@@ -29,6 +29,7 @@ import type { Build, PowersetSelection, PoolSelection, ProcOverride } from '@/ty
 import type { SelectedPower, ConditionalEffect } from '@/types/power';
 import type { Enhancement } from '@/types/enhancement';
 import type { IncarnateActiveState } from '@/types/incarnate';
+import type { DatasetId } from '@/data/dataset';
 import { getPowerset } from '@/data/powersets';
 import { getPowerPool } from '@/data/power-pools';
 import { getEpicPool } from '@/data/epic-pools';
@@ -133,7 +134,7 @@ export interface CharacterStateCombatContext {
 
 export interface CharacterState {
   name: string;
-  dataset: 'homecoming' | 'rebirth' | 'thunderspy';
+  dataset: DatasetId;
   archetype: { id: string | null; name: string };
   level: number;
   primary: CharacterStatePowerset;

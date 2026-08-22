@@ -1,0 +1,47 @@
+/**
+ * Kinetic Melee Powerset
+ * Kinetic Melee features a mix of fast light attacks and slow heavy attacks, including some with range. All attacks in this set except Assassin's Strike reduce the damage strength of enemies who are hit.
+ *
+ * Archetype: stalker
+ * Category: primary
+ * Source: stalker_melee/kinetic_attack
+ */
+
+import type { Powerset } from '@/types';
+
+import { QuickStrike as QuickStrike } from './quick-strike';
+import { BodyBlow as BodyBlow } from './body-blow';
+import { SmashingBlow as SmashingBlow } from './smashing-blow';
+import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
+import { BuildUp as BuildUp } from './build-up';
+import { Placate as Placate } from './placate';
+import { Burst as Burst } from './burst';
+import { FocusedBurst as FocusedBurst } from './focused-burst';
+import { TotalFocus as TotalFocus } from './total-focus';
+
+export const powerset: Powerset = {
+  id: 'stalker/kinetic-melee',
+  setPath: 'Stalker_Melee.Kinetic_Attack',
+  name: 'Kinetic Melee',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
+  description: "Kinetic Melee features a mix of fast light attacks and slow heavy attacks, including some with range. All attacks in this set except Assassin's Strike reduce the damage strength of enemies who are hit.",
+  icon: 'kinetic_attack_set.ico',
+  archetype: 'stalker',
+  category: 'primary',
+  powers: [
+    QuickStrike,
+    BodyBlow,
+    SmashingBlow,
+    AssassinsStrike,
+    BuildUp,
+    Placate,
+    Burst,
+    FocusedBurst,
+    TotalFocus,
+  ],
+};
+
+export default powerset;

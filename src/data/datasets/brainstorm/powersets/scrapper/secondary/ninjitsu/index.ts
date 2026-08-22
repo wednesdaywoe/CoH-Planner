@@ -1,0 +1,47 @@
+/**
+ * Ninjitsu Powerset
+ * Ninjitsu is the secret art of Ninja. Many Ninjitsu powers emphasize acute senses that allow you to react deftly to avoid danger. Others focus on the ability to hide in plain sight. Still others rely on the ancient art of Kuji Kiri, and the pure focus of the mind to accomplish the impossible.
+ *
+ * Archetype: scrapper
+ * Category: secondary
+ * Source: scrapper_defense/ninjitsu
+ */
+
+import type { Powerset } from '@/types';
+
+import { NinjaReflexes as NinjaReflexes } from './ninja-reflexes';
+import { DangerSense as DangerSense } from './danger-sense';
+import { ShinobiIri as ShinobiIri } from './shinobi-iri';
+import { KujiInRin as KujiInRin } from './kuji-in-rin';
+import { SeishintekiKyoyo as SeishintekiKyoyo } from './seishinteki-kyoyo';
+import { KujiInSha as KujiInSha } from './kuji-in-sha';
+import { BoRyaku as BoRyaku } from './bo-ryaku';
+import { BlindingPowder as BlindingPowder } from './blinding-powder';
+import { KujiInRetsu as KujiInRetsu } from './kuji-in-retsu';
+
+export const powerset: Powerset = {
+  id: 'scrapper/ninjitsu',
+  setPath: 'Scrapper_Defense.Ninjitsu',
+  name: 'Ninjitsu',
+  buyRequires: [],
+  buyRequiresFailed: "",
+  specializeAt: 0,
+  specializeRequires: [],
+  description: "Ninjitsu is the secret art of Ninja. Many Ninjitsu powers emphasize acute senses that allow you to react deftly to avoid danger. Others focus on the ability to hide in plain sight. Still others rely on the ancient art of Kuji Kiri, and the pure focus of the mind to accomplish the impossible.",
+  icon: 'ninjitsu_set.ico',
+  archetype: 'scrapper',
+  category: 'secondary',
+  powers: [
+    NinjaReflexes,
+    DangerSense,
+    ShinobiIri,
+    KujiInRin,
+    SeishintekiKyoyo,
+    KujiInSha,
+    BoRyaku,
+    BlindingPowder,
+    KujiInRetsu,
+  ],
+};
+
+export default powerset;
