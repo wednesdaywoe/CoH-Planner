@@ -14,7 +14,7 @@ export const PowerBoost: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted.Recharge: Slow.",
+  "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted.\n\nRecharge: Slow.",
   "shortHelp": "Self +Special",
   "icon": "energymanipulation_powerboost.png",
   "powerType": "Click",

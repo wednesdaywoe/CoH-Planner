@@ -14,7 +14,7 @@ export const CallJounin: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "You can summon one to two highly skilled Jounin Ninja (depending on your level). Jounin Ninja are master assassins and expert swordsmen. They possess superior reflexes and jumping skill. Like all Henchmen, Jounin can be trained in even deadlier Ninjitsu techniques and weapons.You may only have 2 Jounin under your control at any given time. If you attempt to summon more Jounin, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
+  "description": "You can summon one to two highly skilled Jounin Ninja (depending on your level). Jounin Ninja are master assassins and expert swordsmen. They possess superior reflexes and jumping skill. Like all Henchmen, Jounin can be trained in even deadlier Ninjitsu techniques and weapons.\n\nYou may only have 2 Jounin under your control at any given time. If you attempt to summon more Jounin, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
   "shortHelp": "Summon Jounin",
   "icon": "ninjas_calljounin.png",
   "powerType": "Click",

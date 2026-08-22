@@ -14,7 +14,7 @@ export const BuildUp: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.Notes: If you select this power, you may not also select Follow Up.",
+  "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.\n\nNotes: If you select this power, you may not also select Follow Up.",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "nightwidowtraining_buildup.png",
   "powerType": "Click",

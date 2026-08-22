@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Assail your foes with powers drawn from the abyss. Darkness Manipulation offers powers that can both control and heavily damage their targets while reducing their chance to hit.',
+  description: "Assail your foes with powers drawn from the abyss. Darkness Manipulation offers powers that can both control and heavily damage their targets while reducing their chance to hit.",
   icon: 'darkness_manipulation_set.ico',
   archetype: 'blaster',
   category: 'secondary',

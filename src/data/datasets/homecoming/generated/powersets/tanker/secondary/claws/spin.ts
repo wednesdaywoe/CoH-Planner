@@ -14,7 +14,7 @@ export const Spin: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "You spin around in a circle, attacking everyone within melee range with a Strike attack.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "You spin around in a circle, attacking everyone within melee range with a Strike attack.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "PBAoE Melee, DMG(Lethal)",
   "icon": "claws_spinningclawsattack.png",
   "powerType": "Click",

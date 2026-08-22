@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You can control the essence of fire to entrap, scorch, and manipulate your foes with smoke and flame.',
+  description: "You can control the essence of fire to entrap, scorch, and manipulate your foes with smoke and flame.",
   icon: 'fire_control_set.ico',
   archetype: 'dominator',
   category: 'primary',

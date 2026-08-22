@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Your powers are conjured from the depths of the netherworld and beyond.  You wield demonic hellfires that serve as your tools of destruction.  You are capable of manifesting infernal powers that act as long extensions of hellfire.  These powers can tear down even the toughest foes.',
+  description: "Your powers are conjured from the depths of the netherworld and beyond.  You wield demonic hellfires that serve as your tools of destruction.  You are capable of manifesting infernal powers that act as long extensions of hellfire.  These powers can tear down even the toughest foes.",
   icon: 'demon_summoning_set.ico',
   archetype: 'guardian',
   category: 'primary',

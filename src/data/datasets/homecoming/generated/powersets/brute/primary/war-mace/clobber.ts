@@ -14,7 +14,7 @@ export const Clobber: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "You Clobber your foe with a massive swing of your mace. This attack deals exceptional damage and can leave most opponents disoriented for a period of time.Damage: Superior.Recharge: Slow.",
+  "description": "You Clobber your foe with a massive swing of your mace. This attack deals exceptional damage and can leave most opponents disoriented for a period of time.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Melee, Superior DMG(Smashing), Disorient",
   "icon": "mace_clobber.png",
   "powerType": "Click",

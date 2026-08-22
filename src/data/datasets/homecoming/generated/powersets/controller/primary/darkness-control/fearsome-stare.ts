@@ -14,7 +14,7 @@ export const FearsomeStare: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "Instills tremendous Fear within a cone area in front of you, causing all affected targets to tremble in Terror uncontrollably.Recharge: Slow.",
+  "description": "Instills tremendous Fear within a cone area in front of you, causing all affected targets to tremble in Terror uncontrollably.\n\nRecharge: Slow.",
   "shortHelp": "Ranged (Cone), Foe Fear, -To Hit",
   "icon": "darknesscontrol_fearsomestare.png",
   "powerType": "Click",

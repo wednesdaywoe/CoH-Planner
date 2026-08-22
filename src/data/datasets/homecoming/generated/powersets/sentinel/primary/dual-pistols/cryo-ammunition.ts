@@ -14,7 +14,7 @@ export const CryoAmmunition: Power = {
   "available": -1,
   "autoIssue": true,
   "free": true,
-  "description": "While this toggle is active you will be equipped with 'Cryo Rounds'. Most of your Dual Pistol attacks will have their secondary damage converted to cold damage and inflict a minor slow effect on the target.Cryo Rounds are more aerodynamic, being able to travel a greater distance.In order to earn this power, you must purchase the Swap Ammo power.",
+  "description": "While this toggle is active you will be equipped with 'Cryo Rounds'. Most of your Dual Pistol attacks will have their secondary damage converted to cold damage and inflict a minor slow effect on the target.\n\nCryo Rounds are more aerodynamic, being able to travel a greater distance.\n\nIn order to earn this power, you must purchase the Swap Ammo power.",
   "shortHelp": "Toggle: Ammo Change (Cold), Special",
   "icon": "dualpistols_cryoammo.png",
   "powerType": "Toggle",

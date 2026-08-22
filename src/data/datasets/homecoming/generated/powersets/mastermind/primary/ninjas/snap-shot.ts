@@ -14,7 +14,7 @@ export const SnapShot: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.Sensei's Guidance:Hitting with this power will grant your Ninja Henchman +3% Critical Hit chance for 30 seconds. This does not stack from the same power.",
+  "description": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.\n\nSensei's Guidance:\nHitting with this power will grant your Ninja Henchman +3% Critical Hit chance for 30 seconds. This does not stack from the same power.",
   "shortHelp": "Ranged, DMG(Lethal)",
   "icon": "ninjas_quickshot.png",
   "powerType": "Click",

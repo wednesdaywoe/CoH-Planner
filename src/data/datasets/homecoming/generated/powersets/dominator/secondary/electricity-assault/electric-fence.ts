@@ -14,7 +14,7 @@ export const ElectricFence: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You can quickly hurl small bolts of electricity at foes, dealing some damage and draining some Endurance. Some of this Endurance may transfer back to you. Charged Bolts deals light damage but recharges quickly.Damage: Light.Recharge: Fast.",
+  "description": "You can quickly hurl small bolts of electricity at foes, dealing some damage and draining some Endurance. Some of this Endurance may transfer back to you. Charged Bolts deals light damage but recharges quickly.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Energy), Foe -End",
   "icon": "electricalassault_chargedbolts.png",
   "powerType": "Click",

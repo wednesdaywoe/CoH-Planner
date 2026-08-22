@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You have the ability to control heat and Thermal Radiation.  This allows you to protect allies from harm, heal them or increase their abilities.  You can also weaken your enemies.',
+  description: "You have the ability to control heat and Thermal Radiation.  This allows you to protect allies from harm, heal them or increase their abilities.  You can also weaken your enemies.",
   icon: 'thermal_radiation_set.ico',
   archetype: 'corruptor',
   category: 'secondary',

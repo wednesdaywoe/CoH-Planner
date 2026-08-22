@@ -14,7 +14,7 @@ export const TimeCrawl: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You're able to dramatically slow the time around a single enemy, reducing their movement speed and attack rate. Time is slowed to such an extreme that their wounds will take longer to heal, reducing their regeneration rate. Time Crawl applies the Delayed effect on its target. Debuff and control effects from other Time Manipulation powers are increased on targets affected by Delayed.Recharge: Slow.",
+  "description": "You're able to dramatically slow the time around a single enemy, reducing their movement speed and attack rate. Time is slowed to such an extreme that their wounds will take longer to heal, reducing their regeneration rate. Time Crawl applies the Delayed effect on its target. Debuff and control effects from other Time Manipulation powers are increased on targets affected by Delayed.\n\nRecharge: Slow.",
   "shortHelp": "Ranged Foe, -Speed, -Recharge, -Regen, Special",
   "icon": "timemanipulation_timecrawl.png",
   "powerType": "Click",

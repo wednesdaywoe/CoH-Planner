@@ -14,7 +14,7 @@ export const IceBolt: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Ice Bolt quickly pelts an enemy with small icy daggers; their chill Slows a foe's attacks and movement for a time. Fast, but little damage.Damage: Light.Recharge: Fast.",
+  "description": "Ice Bolt quickly pelts an enemy with small icy daggers; their chill Slows a foe's attacks and movement for a time. Fast, but little damage.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "iceassault_bolt.png",
   "powerType": "Click",

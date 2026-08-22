@@ -55,7 +55,7 @@ const {
   extractGrantEdges,
   _readPowerFile,
 } = require('./convert-powerset.cjs');
-const { displayText } = require('./_display-text.cjs');
+const { displayText, helpText } = require('./_display-text.cjs');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
 const { gateTokens } = require('./_gate-tokens.cjs');
 
@@ -289,7 +289,7 @@ function convertBasicInherent(rawJson, entry, granter) {
   power.isLocked = entry.locked;
   power.category = entry.category;
 
-  power.description = displayText(rawJson.display_help) || '';
+  power.description = helpText(rawJson.display_help) || '';
   if (displayText(rawJson.display_short_help)) {
     power.shortHelp = rawJson.display_short_help.replace(/ /g, ' ');
   }

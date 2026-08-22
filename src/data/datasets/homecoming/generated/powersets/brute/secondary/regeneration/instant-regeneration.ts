@@ -14,7 +14,7 @@ export const InstantRegeneration: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "When you activate this power, you can regenerate your health at an astounding rate. This boost becomes stronger every time you take damage, as it scales you also become resistant to regeneration and recovery debuffs as well as endurance drain.This power is mutually exclusive from Instant Healing.",
+  "description": "When you activate this power, you can regenerate your health at an astounding rate. This boost becomes stronger every time you take damage, as it scales you also become resistant to regeneration and recovery debuffs as well as endurance drain.\n\nThis power is mutually exclusive from Instant Healing.",
   "shortHelp": "Toggle: Self +Regeneration, +Res(-Regeneration, -End, -Recovery)",
   "icon": "regeneration_instanthealing.png",
   "powerType": "Toggle",

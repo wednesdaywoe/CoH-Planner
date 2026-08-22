@@ -14,7 +14,7 @@ export const LightOpening: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A quick swipe with your blades. Does minor lethal damage, but has a quick recharge rate. This attack is needed for the Attack Vitals combination attack.Attack Vitals: Power Slice > Nimble Slash > Vengeful Slice.",
+  "description": "A quick swipe with your blades. Does minor lethal damage, but has a quick recharge rate. This attack is needed for the Attack Vitals combination attack.\n\nAttack Vitals: Power Slice > Nimble Slash > Vengeful Slice.",
   "shortHelp": "Melee, Light DMG(Lethal)",
   "icon": "dualblades_lightopening.png",
   "powerType": "Click",

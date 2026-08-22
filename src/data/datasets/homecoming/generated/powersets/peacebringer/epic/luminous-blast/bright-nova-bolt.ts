@@ -14,7 +14,7 @@ export const BrightNovaBolt: Power = {
   "available": 3,
   "autoIssue": true,
   "free": true,
-  "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's defense. This power is only available while in Bright Nova Form.Damage: Minor.Recharge: Very Fast.",
+  "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's defense. This power is only available while in Bright Nova Form.\n\nDamage: Minor.\nRecharge: Very Fast.",
   "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
   "icon": "luminousblast_gleamingbolt.png",
   "powerType": "Click",

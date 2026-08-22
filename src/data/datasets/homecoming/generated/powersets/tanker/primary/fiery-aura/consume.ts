@@ -14,7 +14,7 @@ export const Consume: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "You can drain body heat from all nearby foes, and even from the air itself, increasing your health, resistance against endurance drain, as well as replenishing your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.Notes: This power has adaptive recharge. It has a base recharge of 10 seconds and each affected foe will increase the recharge by 5 seconds for a maximum total of 60 seconds.",
+  "description": "You can drain body heat from all nearby foes, and even from the air itself, increasing your health, resistance against endurance drain, as well as replenishing your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.\n\nNotes: This power has adaptive recharge. It has a base recharge of 10 seconds and each affected foe will increase the recharge by 5 seconds for a maximum total of 60 seconds.",
   "shortHelp": "PBAoE, DMG(Fire), Self +End, +Max HP",
   "icon": "flamingshield_consume.png",
   "powerType": "Click",

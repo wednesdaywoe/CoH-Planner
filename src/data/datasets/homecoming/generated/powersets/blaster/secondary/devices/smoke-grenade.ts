@@ -14,7 +14,7 @@ export const SmokeGrenade: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "The Smoke Grenade envelops all those in the affected area in a cloud of smoke. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit.Recharge: Slow.",
+  "description": "The Smoke Grenade envelops all those in the affected area in a cloud of smoke. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit.\n\nRecharge: Slow.",
   "shortHelp": "Ranged (Target AoE), Foe -Perception, -To Hit",
   "icon": "gadgets_smokegrenade.png",
   "powerType": "Click",

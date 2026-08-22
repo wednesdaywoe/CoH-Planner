@@ -57,7 +57,7 @@ const RAW_POWERS_PATH = (() => {
   return oldLayout;
 })();
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
-const { displayText } = require('./_display-text.cjs');
+const { displayText, helpText } = require('./_display-text.cjs');
 const { gateTokens } = require('./_gate-tokens.cjs');
 const datasetId = parseDatasetArg();
 
@@ -172,7 +172,7 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   power.free = rawJson.free === true;
 
   // Description & help
-  power.description = displayText(rawJson.display_help) || '';
+  power.description = helpText(rawJson.display_help) || '';
   // An unresolved message-store key is not text — see `_display-text.cjs`.
   if (displayText(rawJson.display_short_help)) {
     power.shortHelp = rawJson.display_short_help.replace(/\u00a0/g, ' ');
@@ -501,7 +501,7 @@ function convertEpicPool(poolId, existingPool) {
     name: poolIndex.display_name || (existingPool ? existingPool.name : poolId),
     displayName: poolIndex.display_name || (existingPool ? existingPool.displayName : poolId),
     archetype: fallbackArchetype,
-    description: poolIndex.display_help || (existingPool ? existingPool.description : ''),
+    description: helpText(poolIndex.display_help) || (existingPool ? existingPool.description : ''),
     icon: poolIndex.icon || (existingPool ? existingPool.icon : ''),
     requires: poolIndex.requires || [],
     minLevel: existingPool ? existingPool.minLevel : 35,

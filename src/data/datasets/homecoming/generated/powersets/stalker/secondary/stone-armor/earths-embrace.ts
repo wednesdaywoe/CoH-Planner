@@ -14,7 +14,7 @@ export const EarthsEmbrace: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "You are so connected to the Earth, you can draw upon its power to add to your health. Activating this power increases your maximum Hit Points and grants you resistance to Toxic Damage.Recharge: Long.",
+  "description": "You are so connected to the Earth, you can draw upon its power to add to your health. Activating this power increases your maximum Hit Points and grants you resistance to Toxic Damage.\n\nRecharge: Long.",
   "shortHelp": "Self +HP, Res(Toxic)",
   "icon": "stonearmor_earthsembrace.png",
   "powerType": "Click",

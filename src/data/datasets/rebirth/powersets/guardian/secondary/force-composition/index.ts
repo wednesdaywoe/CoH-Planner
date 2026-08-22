@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Mastery of Force Composition allows you to manipulate potent force fields and throw concussive blasts, shielding yourself and your allies while hampering your foes.',
+  description: "Mastery of Force Composition allows you to manipulate potent force fields and throw concussive blasts, shielding yourself and your allies while hampering your foes.",
   icon: 'fiery_aura_set.ico',
   archetype: 'guardian',
   category: 'secondary',

@@ -14,7 +14,7 @@ export const TeslaCage: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "Tesla Cage confines the target in an electrical prison. The target is overwhelmed by the electrical charge and is left helpless and can be attacked. The target is drained of some Endurance and some of that Endurance may be transferred back to you.Taking this power allows you to build Static with each activation of other electrical blast attacks. As Static builds, you can unleash it with Tesla Cage as electricity will jump off your main target and shock others nearby!",
+  "description": "Tesla Cage confines the target in an electrical prison. The target is overwhelmed by the electrical charge and is left helpless and can be attacked. The target is drained of some Endurance and some of that Endurance may be transferred back to you.\n\nTaking this power allows you to build Static with each activation of other electrical blast attacks. As Static builds, you can unleash it with Tesla Cage as electricity will jump off your main target and shock others nearby!",
   "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
   "icon": "electricalbolt_telsacage.png",
   "powerType": "Click",

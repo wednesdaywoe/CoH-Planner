@@ -14,7 +14,7 @@ export const Tremor: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "You can cause a localized earthquake immediately around you. This will deal moderate damage to every foe in melee range, while knocking them down.Damage: Light.Recharge: Slow.",
+  "description": "You can cause a localized earthquake immediately around you. This will deal moderate damage to every foe in melee range, while knocking them down.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE, Light DMG(Smashing), Knockback",
   "icon": "stonemelee_tremor.png",
   "powerType": "Click",

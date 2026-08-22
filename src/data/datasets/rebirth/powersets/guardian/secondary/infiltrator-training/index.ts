@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You have superb training as an Infiltrator. Your intrusion skills allow you to deftly evade attacks and move behind enemy lines unseen, while your weapons training gives you mastery of a variety of debilitating tools and gadgets to wreak havoc on your unsuspecting foes.',
+  description: "You have superb training as an Infiltrator. Your intrusion skills allow you to deftly evade attacks and move behind enemy lines unseen, while your weapons training gives you mastery of a variety of debilitating tools and gadgets to wreak havoc on your unsuspecting foes.",
   icon: 'ice_armor_set.ico',
   archetype: 'guardian',
   category: 'secondary',

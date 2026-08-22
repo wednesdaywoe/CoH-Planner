@@ -14,7 +14,7 @@ export const ConservePower: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "You can channel a tremendous amount of energy through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers, boost your regeneration dramatically, and make you resistant to Stuns for a short time.Recharge: Long.",
+  "description": "You can channel a tremendous amount of energy through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers, boost your regeneration dramatically, and make you resistant to Stuns for a short time.\n\nRecharge: Long.",
   "shortHelp": "Self Endurance Discount, Heal, +Regen, Res(Stun)",
   "icon": "energymanipulation_conservepower.png",
   "powerType": "Click",

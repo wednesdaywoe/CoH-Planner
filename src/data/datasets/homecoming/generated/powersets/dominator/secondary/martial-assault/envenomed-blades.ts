@@ -14,7 +14,7 @@ export const EnvenomedBlades: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "You add a toxic venom to all of your attacks for a moderate duration. All damaging powers gain bonus Toxic damage. You also gain a moderate bonus to your chance to hit.Recharge: Long.",
+  "description": "You add a toxic venom to all of your attacks for a moderate duration. All damaging powers gain bonus Toxic damage. You also gain a moderate bonus to your chance to hit.\n\nRecharge: Long.",
   "shortHelp": "Self +Toxic Damage on all attacks, +ToHit",
   "icon": "martialassault_envenomedblades.png",
   "powerType": "Click",

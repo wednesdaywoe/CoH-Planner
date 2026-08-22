@@ -30,7 +30,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'An advanced variant of Bio Armor, Organic Armor provides very similar capabilities as Bio Armor, but its adaptations are more varied.',
+  description: "An advanced variant of Bio Armor, Organic Armor provides very similar capabilities as Bio Armor, but its adaptations are more varied.",
   icon: 'bio_organic_armor_set.ico',
   archetype: 'scrapper',
   category: 'secondary',

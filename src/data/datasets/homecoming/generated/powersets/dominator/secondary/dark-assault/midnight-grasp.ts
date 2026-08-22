@@ -14,7 +14,7 @@ export const MidnightGrasp: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.Damage: Superior.Recharge: Slow.",
+  "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "darknessassault_midnightgrasp.png",
   "powerType": "Click",

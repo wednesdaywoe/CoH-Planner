@@ -14,7 +14,7 @@ export const ChainLightning: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "Calls a bolt of lightning from the clouds to strike your target, which then chains outward to additional enemies. Creatures unfortunate enough to be struck will be dealt Energy damage and be sapped of some endurance.While in a Storm Cell, the main target of Chain Lightning will experience additional endurance drain over time.",
+  "description": "Calls a bolt of lightning from the clouds to strike your target, which then chains outward to additional enemies. Creatures unfortunate enough to be struck will be dealt Energy damage and be sapped of some endurance.\n\nWhile in a Storm Cell, the main target of Chain Lightning will experience additional endurance drain over time.",
   "shortHelp": "Ranged Chain, DoT(Energy), Foe -End",
   "icon": "stormblast_chainlightning.png",
   "powerType": "Click",

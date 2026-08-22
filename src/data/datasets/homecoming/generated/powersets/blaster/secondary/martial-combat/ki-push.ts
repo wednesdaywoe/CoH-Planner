@@ -14,7 +14,7 @@ export const KiPush: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You smash your foe with a burst of Ki Energy, sending them flying through the air in slow motion.Damage: Light.Recharge: Fast.",
+  "description": "You smash your foe with a burst of Ki Energy, sending them flying through the air in slow motion.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Melee, Light DMG(Smash), Foe Repel, KB",
   "icon": "martialmanipulation_kipush.png",
   "powerType": "Click",

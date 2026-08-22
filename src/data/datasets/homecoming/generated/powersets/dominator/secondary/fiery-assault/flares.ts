@@ -14,7 +14,7 @@ export const Flares: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A quick attack that throws Flares at the target.Damage: Light.Recharge: Very Fast.",
+  "description": "A quick attack that throws Flares at the target.\n\nDamage: Light.\nRecharge: Very Fast.",
   "shortHelp": "Ranged, Light DMG(Fire)",
   "icon": "fireassault_flare.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const CauterizingBlaze: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "While active, you are surrounded by flames cauterize your wounds healing you a small amount every few seconds. These flames also moderately boost the damage of all your Fire attacks, as well as slightly boost the damage of all your other non-fire based attacks.",
+  "description": "While active, you are surrounded by flames cauterize your wounds healing you a small amount every few seconds.\n\nThese flames also moderately boost the damage of all your Fire attacks, as well as slightly boost the damage of all your other non-fire based attacks.",
   "shortHelp": "Toggle: Self +Heal Over Time, +DMG",
   "icon": "flamingshield_cauterizing.png",
   "powerType": "Toggle",

@@ -14,7 +14,7 @@ export const TimesJuncture: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You create a time dilation field around you causing enemies who get too close to be slowed to a crawl, their movement speed, damage and chance to hit will be decreased substantially. Enemies affected by Delayed have these affects increased.Recharge: Moderate.",
+  "description": "You create a time dilation field around you causing enemies who get too close to be slowed to a crawl, their movement speed, damage and chance to hit will be decreased substantially. Enemies affected by Delayed have these affects increased.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: PBAoE Foe (-Damage, -Speed, -To Hit)",
   "icon": "timemanipulation_timesjuncture.png",
   "powerType": "Toggle",

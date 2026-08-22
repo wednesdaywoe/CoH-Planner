@@ -14,7 +14,7 @@ export const ExecutionersShot: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "Executioner's Shot is a deadly ranged attack. Foes struck by this attack will suffer lethal damage and will likely be knocked back by the impact of this attack. Targets struck by Executioner's Shot while no special ammunition is equipped will have their defenses reduced for a short time.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to:*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.*A minor damage over time effect if 'Incendiary Ammo' is loaded.*A -damage effect if 'Chemical Ammo' is loaded.",
+  "description": "Executioner's Shot is a deadly ranged attack. Foes struck by this attack will suffer lethal damage and will likely be knocked back by the impact of this attack. Targets struck by Executioner's Shot while no special ammunition is equipped will have their defenses reduced for a short time.\n\nChanging your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.\n\nAdditionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to:\n\n*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.\n*A minor damage over time effect if 'Incendiary Ammo' is loaded.\n*A -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "Ranged, DMG(Lethal/Special), Foe -Defense, Knockback/Special",
   "icon": "dualpistols_executionersshot.png",
   "powerType": "Click",

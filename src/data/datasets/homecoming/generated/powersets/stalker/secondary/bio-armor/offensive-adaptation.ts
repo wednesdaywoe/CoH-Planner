@@ -14,7 +14,7 @@ export const OffensiveAdaptation: Power = {
   "available": -1,
   "autoIssue": true,
   "free": true,
-  "description": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to sprout spines and become much lighter. While active Hardened Carapace increases your damage slightly, Environmental Modification grants you a moderate to hit buff, and debuff effects from DNA Siphon and Parasitic Aura are increased moderately. Genetic Corruption will have its chance to put enemies to sleep increased. Additionally, many of your damaging powers will inflict a minor amount of additional Toxic damage. While Offensive Adaptation is active your Defense and Damage Resistance is reduced slightly. Offensive Adaptation costs no endurance.Recharge: Fast.",
+  "description": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to sprout spines and become much lighter. While active Hardened Carapace increases your damage slightly, Environmental Modification grants you a moderate to hit buff, and debuff effects from DNA Siphon and Parasitic Aura are increased moderately. Genetic Corruption will have its chance to put enemies to sleep increased. Additionally, many of your damaging powers will inflict a minor amount of additional Toxic damage. While Offensive Adaptation is active your Defense and Damage Resistance is reduced slightly. Offensive Adaptation costs no endurance.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Bio Armor Offensive Mode",
   "icon": "bioorganicarmor_offensiveadaptation.png",
   "powerType": "Toggle",

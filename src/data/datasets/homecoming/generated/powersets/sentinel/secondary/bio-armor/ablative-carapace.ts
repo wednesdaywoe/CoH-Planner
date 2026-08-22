@@ -14,7 +14,7 @@ export const AblativeCarapace: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "When needed, you're able to cause your Bio Armor to gain a thick, but brittle outer layer that will absorb a large amount of damage before breaking off. Ablative Carapace will grant a moderate amount of damage absorption and a high amount of regeneration for a short time.*This power doesn't grant any bonuses to Offensive Adaptation.*While Efficient Adaptation is active, this power grants a slightly larger regeneration buff.*While Defensive Adaptation is active, this power grants a bonus to damage absorption.Bonuses granted from Adaptations are unenhanceable.",
+  "description": "When needed, you're able to cause your Bio Armor to gain a thick, but brittle outer layer that will absorb a large amount of damage before breaking off. Ablative Carapace will grant a moderate amount of damage absorption and a high amount of regeneration for a short time.\n\n*This power doesn't grant any bonuses to Offensive Adaptation.\n*While Efficient Adaptation is active, this power grants a slightly larger regeneration buff.\n*While Defensive Adaptation is active, this power grants a bonus to damage absorption.\n\nBonuses granted from Adaptations are unenhanceable.",
   "shortHelp": "Self, +Absorption, +Regeneration",
   "icon": "bioorganicarmor_ablativecarapace.png",
   "powerType": "Click",

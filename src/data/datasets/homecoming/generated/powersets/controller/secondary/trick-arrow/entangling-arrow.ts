@@ -14,7 +14,7 @@ export const EntanglingArrow: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You entangle a targeted foe causing their reflexes to become slowed and sluggish. This grounds them and causes them to have decreased movement speed and damage resistance. Weaker foes will also be immobilized.Recharge: Fast.",
+  "description": "You entangle a targeted foe causing their reflexes to become slowed and sluggish. This grounds them and causes them to have decreased movement speed and damage resistance. Weaker foes will also be immobilized.\n\nRecharge: Fast.",
   "shortHelp": "Ranged, Target Immobilize, -Res(All), -Fly, Slow",
   "icon": "trickarrow_immobilize.png",
   "powerType": "Click",

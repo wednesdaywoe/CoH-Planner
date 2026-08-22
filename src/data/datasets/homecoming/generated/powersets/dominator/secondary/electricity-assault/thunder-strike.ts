@@ -14,7 +14,7 @@ export const ThunderStrike: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.Damage: Light.Recharge: Slow.",
+  "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "Ranged (Cone), Light DMG(Energy), -END",
   "icon": "electricalassault_staticdischarge.png",
   "powerType": "Click",

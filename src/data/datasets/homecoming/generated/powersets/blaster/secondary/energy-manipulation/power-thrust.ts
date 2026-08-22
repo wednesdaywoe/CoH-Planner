@@ -14,7 +14,7 @@ export const PowerThrust: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A focused attack that violently shoves the target and sends them flying. Deals minimal damage, but can be very effective.Damage: Minor.Recharge: Fast.",
+  "description": "A focused attack that violently shoves the target and sends them flying. Deals minimal damage, but can be very effective.\n\nDamage: Minor.\nRecharge: Fast.",
   "shortHelp": "Melee, Minor DMG(Energy/Smash), Foe Knockback",
   "icon": "energymanipulation_powerthrust.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const Bayonet: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "Your weapon includes a bayonet attachment which you can use to stab at your enemies for lethal damage as well as causing them to bleed losing health over time.Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.",
+  "description": "Your weapon includes a bayonet attachment which you can use to stab at your enemies for lethal damage as well as causing them to bleed losing health over time.\n\nNotes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.",
   "shortHelp": "Melee, DMG(Lethal), DoT(Lethal)",
   "icon": "arachnossoldier_bayonet.png",
   "powerType": "Click",

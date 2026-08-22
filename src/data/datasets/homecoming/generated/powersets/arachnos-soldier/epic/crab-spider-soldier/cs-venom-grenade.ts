@@ -14,7 +14,7 @@ export const CSVenomGrenade: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.Notes: If you take this power you cannot also take the Wolf Spider version.",
+  "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.\n\nNotes: If you take this power you cannot also take the Wolf Spider version.",
   "shortHelp": "Ranged(Targeted AoE), DoT(Toxic), -Res(All)",
   "icon": "crabspider_venomgrenade.png",
   "powerType": "Click",

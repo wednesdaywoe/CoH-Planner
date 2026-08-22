@@ -14,7 +14,7 @@ export const GlintingEye: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.Damage: Moderate.Recharge: Fast.",
+  "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.\n\nDamage: Moderate.\nRecharge: Fast.",
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
   "icon": "luminousblast_glintingeye.png",
   "powerType": "Click",

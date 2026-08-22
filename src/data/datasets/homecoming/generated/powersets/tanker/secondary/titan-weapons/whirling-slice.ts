@@ -14,7 +14,7 @@ export const WhirlingSlice: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You perform a powerful Whirling Smash that deals Moderate Smashing damage, and can knock an opponent down.Notes: Whirling Smash requires Momentum in order to be activated.Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "You perform a powerful Whirling Smash that deals Moderate Smashing damage, and can knock an opponent down.\n\nNotes: Whirling Smash requires Momentum in order to be activated.\n\nThanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "PBAoE Melee, DMG(Smashing), Knockdown, Requires Momentum",
   "icon": "titanweapons_whirlingslice.png",
   "powerType": "Click",

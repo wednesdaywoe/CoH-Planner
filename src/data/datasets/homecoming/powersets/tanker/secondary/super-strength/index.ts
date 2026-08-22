@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Super Strength gives you combat powers derived from your super-human physical strength. Super Strength powers tend to knock foes back.',
+  description: "Super Strength gives you combat powers derived from your super-human physical strength. Super Strength powers tend to knock foes back.",
   icon: 'super_strength_set.ico',
   archetype: 'tanker',
   category: 'secondary',

@@ -14,7 +14,7 @@ export const LightningField: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You can send a large blast of electrical energy at a foe, dealing high damage and draining some Endurance. Some of this Endurance may transfer back to you. Lightning Bolt deals more damage than Charged Bolts, but recharges more slowly.Damage: Moderate.Recharge: Moderate.",
+  "description": "You can send a large blast of electrical energy at a foe, dealing high damage and draining some Endurance. Some of this Endurance may transfer back to you. Lightning Bolt deals more damage than Charged Bolts, but recharges more slowly.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -End",
   "icon": "electricalassault_lightningbolt.png",
   "powerType": "Click",

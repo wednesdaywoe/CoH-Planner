@@ -14,7 +14,7 @@ export const RepulsingTorrent: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "Repulsing Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "Repulsing Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
   "icon": "kineticattack_repulsingtorrent.png",
   "powerType": "Click",

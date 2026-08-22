@@ -14,7 +14,7 @@ export const PiercingRounds: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "You fire your pistols with deadly precision in a very narrow cone, piercing up to three enemies. Piercing Rounds deals Superior lethal damage and reduces targets' Damage Resistance for a short time.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic, and a secondary effect will be included in this attack:*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.*A minor damage over time effect if 'Incendiary Ammo' is loaded.*A -damage effect if 'Chemical Ammo' is loaded.",
+  "description": "You fire your pistols with deadly precision in a very narrow cone, piercing up to three enemies. Piercing Rounds deals Superior lethal damage and reduces targets' Damage Resistance for a short time.\n\nChanging your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic, and a secondary effect will be included in this attack:\n\n*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.\n*A minor damage over time effect if 'Incendiary Ammo' is loaded.\n*A -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "Narrow Ranged (Cone), DMG(Lethal/Special), Foes -Res(All)/Special",
   "icon": "dualpistols_piercingrounds.png",
   "powerType": "Click",

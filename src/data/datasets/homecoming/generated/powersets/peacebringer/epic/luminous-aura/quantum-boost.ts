@@ -14,7 +14,7 @@ export const QuantumBoost: Power = {
   "available": -1,
   "autoIssue": true,
   "free": true,
-  "description": "Quantum Acceleration greatly increases your fly speed and maximum fly speed for a short period of time.Notes: Quantum Acceleration is unaffected by Recharge Time changes.Recharge: Slow.",
+  "description": "Quantum Acceleration greatly increases your fly speed and maximum fly speed for a short period of time.\n\nNotes: Quantum Acceleration is unaffected by Recharge Time changes.\n\nRecharge: Slow.",
   "shortHelp": "Self +FlySpeed (Special)",
   "icon": "luminousaura_quantumacceleration.png",
   "powerType": "Toggle",

@@ -14,7 +14,7 @@ export const Combustion: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "Your mastery of fire allows you to violently raise the temperature around yourself in an attempt to spontaneously combust any nearby foes and set them ablaze, dealing damage over time.Damage: Light.Recharge: Slow.",
+  "description": "Your mastery of fire allows you to violently raise the temperature around yourself in an attempt to spontaneously combust any nearby foes and set them ablaze, dealing damage over time.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE, Moderate DoT(Fire)",
   "icon": "fireassault_combustion.png",
   "powerType": "Click",

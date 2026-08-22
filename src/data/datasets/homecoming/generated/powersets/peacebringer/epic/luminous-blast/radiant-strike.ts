@@ -14,7 +14,7 @@ export const RadiantStrike: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "The Radiant Strike is a slow melee attack, but makes up for it with superior damage. Radiant Strike releases Kheldian light on impact, which can Knock Back foes, bring down fliers, and reduce a target's Defense.Damage: High.Recharge: Moderate.",
+  "description": "The Radiant Strike is a slow melee attack, but makes up for it with superior damage. Radiant Strike releases Kheldian light on impact, which can Knock Back foes, bring down fliers, and reduce a target's Defense.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DMG(Smash/Energy), Foe -DEF, Knockback, -Fly",
   "icon": "luminousblast_radiantstrike.png",
   "powerType": "Click",

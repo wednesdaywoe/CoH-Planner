@@ -14,7 +14,7 @@ export const Vortex: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "You can create a true Vortex cloud to assist you in battle. This Vortex will build Pressure along with you as you use your powers. This will allow its attacks to have a chance, proportional to current pressure, for critical damage. However, at higher pressures, the Vortex will be unable to use some of its powers. The Manipulation of Pressure on this pet through the use of Vacuum upon it will grant you the Clear Skies buff. Both this power and Vacuum are required to automatically unlock Clear Skies.Recharge: Long.",
+  "description": "You can create a true Vortex cloud to assist you in battle. This Vortex will build Pressure along with you as you use your powers. This will allow its attacks to have a chance, proportional to current pressure, for critical damage. However, at higher pressures, the Vortex will be unable to use some of its powers. The Manipulation of Pressure on this pet through the use of Vacuum upon it will grant you the Clear Skies buff. Both this power and Vacuum are required to automatically unlock Clear Skies.\n\nRecharge: Long.",
   "shortHelp": "Summon Vortex",
   "icon": "windcontrol_vortex.png",
   "powerType": "Click",

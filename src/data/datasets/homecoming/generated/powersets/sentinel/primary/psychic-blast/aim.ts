@@ -14,7 +14,7 @@ export const Aim: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and range.Recharge: Long.",
+  "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and range.\n\nRecharge: Long.",
   "shortHelp": "Self +To Hit, +DMG, +Range",
   "icon": "psychicblast_aim.png",
   "powerType": "Click",

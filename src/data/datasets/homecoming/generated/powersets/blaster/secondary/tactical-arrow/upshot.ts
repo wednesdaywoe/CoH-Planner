@@ -14,7 +14,7 @@ export const Upshot: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit and recharge time of all your powers for 10 seconds.Recharge: Long.",
+  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit and recharge time of all your powers for 10 seconds.\n\nRecharge: Long.",
   "shortHelp": "Self +DMG, +ToHit, +Recharge",
   "icon": "tacticalarrow_buildup.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const BlazingBolt: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "A long range beam of fire that blasts your foes. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Damage: Extreme.Recharge: Slow.",
+  "description": "A long range beam of fire that blasts your foes. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Sniper, Extreme DMG(Fire)",
   "icon": "fireassault_blazingbolt.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const Pummel: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You can smash your opponents in close combat with the butt of your sub-machine gun to deal minor smashing damage. Pummel has a high chance to disorient your foe for a brief time.Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.",
+  "description": "You can smash your opponents in close combat with the butt of your sub-machine gun to deal minor smashing damage. Pummel has a high chance to disorient your foe for a brief time.\n\nNotes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.",
   "shortHelp": "Melee, DMG(Smash), Foe Disorient",
   "icon": "arachnossoldier_pummel.png",
   "powerType": "Click",

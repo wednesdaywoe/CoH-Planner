@@ -14,7 +14,7 @@ export const ModerateOpening: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You perform a deadly Strike with your blades. This is a basic attack that deals a moderate amount of lethal damage. This power begins the Attack Vitals combination attack and is needed for the Weaken combination attack.Attack Vitals: Power Slice > Nimble Slash > Vengeful Slice.Weaken: Sweeping Strike > Power Slice > One Thousand Cuts.",
+  "description": "You perform a deadly Strike with your blades. This is a basic attack that deals a moderate amount of lethal damage. This power begins the Attack Vitals combination attack and is needed for the Weaken combination attack.\n\nAttack Vitals: Power Slice > Nimble Slash > Vengeful Slice.\nWeaken: Sweeping Strike > Power Slice > One Thousand Cuts.",
   "shortHelp": "Melee, Light DMG(Lethal)",
   "icon": "dualblades_moderateopening.png",
   "powerType": "Click",

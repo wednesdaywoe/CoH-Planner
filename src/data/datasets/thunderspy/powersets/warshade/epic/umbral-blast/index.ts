@@ -31,7 +31,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Masters of the void, Warshades can manipulate dark energy, gravity and matter to blast and dominate their foes.  The gravimetric nature of most Umbral Blast powers often slows the targets attack and movement speed.',
+  description: "Masters of the void, Warshades can manipulate dark energy, gravity and matter to blast and dominate their foes.  The gravimetric nature of most Umbral Blast powers often slows the targets attack and movement speed.",
   icon: 'umbral_blast_set.ico',
   archetype: 'warshade',
   category: 'epic',

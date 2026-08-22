@@ -14,7 +14,7 @@ export const EquipMercenary: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "Equip your Mercenary Henchmen with more advanced munitions and weaponry. This power permanently bestows new weapons and abilities to all Mercenary Henchman. The powers gained are unique and dependent upon the type of Mercenary Henchman.Your Mercenary Henchmen will also become more resistant to damage. This power only works on your Mercenary Henchmen and you can only Equip your Mercenary Henchmen once with this power.",
+  "description": "Equip your Mercenary Henchmen with more advanced munitions and weaponry. This power permanently bestows new weapons and abilities to all Mercenary Henchman. The powers gained are unique and dependent upon the type of Mercenary Henchman.\n\nYour Mercenary Henchmen will also become more resistant to damage. This power only works on your Mercenary Henchmen and you can only Equip your Mercenary Henchmen once with this power.",
   "shortHelp": "Ranged, Equip Mercenary Henchman",
   "icon": "paramilitary_equipsoldier.png",
   "powerType": "Click",

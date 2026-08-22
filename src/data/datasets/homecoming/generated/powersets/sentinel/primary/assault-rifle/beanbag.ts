@@ -14,7 +14,7 @@ export const Beanbag: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Fires a single non lethal rubber bullet that can seriously Disorient a target. Deals average damage but renders most targets unable to attack for a good while.Damage: Moderate.Recharge: Fast.",
+  "description": "Fires a single non lethal rubber bullet that can seriously Disorient a target. Deals average damage but renders most targets unable to attack for a good while.\n\nDamage: Moderate.\nRecharge: Fast.",
   "shortHelp": "Ranged, DMG(Smash), Foe Disorient",
   "icon": "assaultweapons_shotgunbeanbag.png",
   "powerType": "Click",

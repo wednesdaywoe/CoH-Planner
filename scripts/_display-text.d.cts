@@ -6,3 +6,4 @@
 export declare const MESSAGE_STORE_KEY: RegExp;
 export declare function isUnresolvedMessageKey(value: unknown): boolean;
 export declare function displayText(value: unknown): string | undefined;
+export declare function helpText(value: unknown): string | undefined;

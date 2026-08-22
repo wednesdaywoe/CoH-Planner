@@ -14,7 +14,7 @@ export const Deflection: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Your incredible agility allows you to position your shield to protect yourself from incoming ranged damage. While Battle Agility is active you will benefit from increased Ranged and AoE defense as well as some moderate protection from Defense Debuffs. Battle Agility also adds an Elusivity defense bonus to Ranged and AOE Attacks in PVP zones.Recharge: Fast.",
+  "description": "Your incredible agility allows you to position your shield to protect yourself from incoming ranged damage. While Battle Agility is active you will benefit from increased Ranged and AoE defense as well as some moderate protection from Defense Debuffs. Battle Agility also adds an Elusivity defense bonus to Ranged and AOE Attacks in PVP zones.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Self +DEF(Ranged, AoE), +Res(Defense Debuff)",
   "icon": "shielddefense_deflection.png",
   "powerType": "Toggle",

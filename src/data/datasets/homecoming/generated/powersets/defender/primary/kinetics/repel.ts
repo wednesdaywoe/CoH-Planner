@@ -14,7 +14,7 @@ export const Repel: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "Repel creates a zone of kinetic energy that violently repels nearby foes. Each villain that is repelled costs additional Endurance.Recharge: Slow.",
+  "description": "Repel creates a zone of kinetic energy that violently repels nearby foes. Each villain that is repelled costs additional Endurance.\n\nRecharge: Slow.",
   "shortHelp": "Toggle: Self AoE Knockback",
   "icon": "kineticboost_repel.png",
   "powerType": "Toggle",

@@ -14,7 +14,7 @@ export const PowerBlast: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock them back. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode.Damage: High.Recharge: Moderate.",
+  "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock them back. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Ranged, High DMG(Energy/Smash), Foe Knockback, Chance for Energy Focus",
   "icon": "energyassault_powerblast.png",
   "powerType": "Click",

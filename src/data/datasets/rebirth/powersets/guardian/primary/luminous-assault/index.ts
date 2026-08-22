@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Masters of light, energy, and matter. Luminous Assault wielders can manipulate light energy to devastate their opponents. Luminous Assault bombards the foe with great force and power often knocking them down and reducing their defenses.',
+  description: "Masters of light, energy, and matter. Luminous Assault wielders can manipulate light energy to devastate their opponents. Luminous Assault bombards the foe with great force and power often knocking them down and reducing their defenses.",
   icon: 'luminous_blast_set.ico',
   archetype: 'guardian',
   category: 'primary',

@@ -14,7 +14,7 @@ export const UmbraBeast: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "You conjure up one of the most fearsome creatures of the Netherworld, the Umbra Beast. This creature will fight beside its summoner using its brutal claw, bite and darkness attacks.Recharge: Long.",
+  "description": "You conjure up one of the most fearsome creatures of the Netherworld, the Umbra Beast. This creature will fight beside its summoner using its brutal claw, bite and darkness attacks.\n\nRecharge: Long.",
   "shortHelp": "Summon Umbra Beast",
   "icon": "darknesscontrol_umbrabeast.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const Lunge: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You can lunge forward, stabbing and poisoning a foe with the large Spine on your arm. Lunge deals moderate damage. Spine poison deals additional Toxic damage and Slows affected foes.Hitting with this power will invigorate you and increase the potency of your poison damage over time for a while. This power will be highlighted when you no longer have this buff.",
+  "description": "You can lunge forward, stabbing and poisoning a foe with the large Spine on your arm. Lunge deals moderate damage. Spine poison deals additional Toxic damage and Slows affected foes.\n\nHitting with this power will invigorate you and increase the potency of your poison damage over time for a while. This power will be highlighted when you no longer have this buff.",
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic) -SPD, -Recharge",
   "icon": "quills_lunge.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const WhirlingSword: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "PBAoE Melee, DMG(Lethal), Foe -Def",
   "icon": "katana_whirlingsword.png",
   "powerType": "Click",

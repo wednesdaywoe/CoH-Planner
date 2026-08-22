@@ -14,7 +14,7 @@ export const Resurgence: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You heal yourself through pure perseverance. The effects of Resurgence also leave you resistant to Toxic Damage for a while. Should you fall in battle within 35 seconds of using this power, you can stand up and fight again.If used after defeat, this power can Revive yourself from the brink of death, although it will incur a 300 second cooldown. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 20 seconds. Additionally, for 90 seconds, attack rate and endurance recovery will be improved. You will also have 15 seconds of immunity to most damage.",
+  "description": "You heal yourself through pure perseverance. The effects of Resurgence also leave you resistant to Toxic Damage for a while. Should you fall in battle within 35 seconds of using this power, you can stand up and fight again.\n\nIf used after defeat, this power can Revive yourself from the brink of death, although it will incur a 300 second cooldown. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 20 seconds. Additionally, for 90 seconds, attack rate and endurance recovery will be improved. You will also have 15 seconds of immunity to most damage.",
   "shortHelp": "Self Heal, Res(Fire, Cold, Energy, Negative, Toxic, Psionic), Self Rez, Special",
   "icon": "willpower_reconstruction.png",
   "powerType": "Click",

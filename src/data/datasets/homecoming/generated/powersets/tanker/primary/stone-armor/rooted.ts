@@ -14,7 +14,7 @@ export const Rooted: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "While this power is active, you merge with the Earth and draw forth its power to become resistant to Knockback, Sleep, Hold, Disorient and Endurance Drain effects, and increase your Hit Point Regeneration rate. Rooted also grants you resistance to Defense DeBuffs.Recharge: Fast.",
+  "description": "While this power is active, you merge with the Earth and draw forth its power to become resistant to Knockback, Sleep, Hold, Disorient and Endurance Drain effects, and increase your Hit Point Regeneration rate. Rooted also grants you resistance to Defense DeBuffs.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Self +Res(Knockback, Sleep, Disorient, Hold, End Drain, DeBuff DEF), +Regeneration",
   "icon": "stonearmor_rooted.png",
   "powerType": "Toggle",

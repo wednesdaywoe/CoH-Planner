@@ -14,7 +14,7 @@ export const IcePatch: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You emanate a patch of ice around you, which causes foes that step onto it to slip and fall down. This effect lasts until the ice melts. You must be near the ground to activate this power.Recharge: Slow.",
+  "description": "You emanate a patch of ice around you, which causes foes that step onto it to slip and fall down. This effect lasts until the ice melts. You must be near the ground to activate this power.\n\nRecharge: Slow.",
   "shortHelp": "Location (PBAoE), Foe Knockdown",
   "icon": "icemanipulation_icepatch.png",
   "powerType": "Click",

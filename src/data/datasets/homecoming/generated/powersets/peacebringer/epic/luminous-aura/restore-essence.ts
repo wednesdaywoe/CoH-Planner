@@ -14,7 +14,7 @@ export const RestoreEssence: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "Should you fall in battle, you can Restore your Essence and bring yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds.Recharge: Very Long.",
+  "description": "Should you fall in battle, you can Restore your Essence and bring yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds.\n\nRecharge: Very Long.",
   "shortHelp": "Self Rez",
   "icon": "luminousaura_restoreessence.png",
   "powerType": "Click",

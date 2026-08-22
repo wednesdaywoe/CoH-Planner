@@ -14,7 +14,7 @@ export const HurlBoulder: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals high damage, and can knock foes back and even drop them out of the air if they are flying.Damage: Moderate.Recharge: Moderate.",
+  "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals high damage, and can knock foes back and even drop them out of the air if they are flying.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Ranged, Moderate DMG(Smashing), Foe Knockback, -Fly",
   "icon": "stonemelee_hurlboulder.png",
   "powerType": "Click",

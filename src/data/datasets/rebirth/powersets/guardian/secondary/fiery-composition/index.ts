@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Focusing heat and flame lets those armed with Fiery Composition protect themselves and their allies from harm while also weakening their enemies.',
+  description: "Focusing heat and flame lets those armed with Fiery Composition protect themselves and their allies from harm while also weakening their enemies.",
   icon: 'fiery_aura_set.ico',
   archetype: 'guardian',
   category: 'secondary',

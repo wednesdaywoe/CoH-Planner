@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Through manipulation of latent energy present all around you, you create powerful blasts and forceful blows that can prove devastating to your opponents. As you manipulate this energy, you will accumulate Impulse. Each stack of Impulse grants you a scaling recharge buff. Impulse is also used to empower Disrupting Torrent, Kinetic Shockwave, Energetic Strike and Mass Driver.',
+  description: "Through manipulation of latent energy present all around you, you create powerful blasts and forceful blows that can prove devastating to your opponents. As you manipulate this energy, you will accumulate Impulse. Each stack of Impulse grants you a scaling recharge buff. Impulse is also used to empower Disrupting Torrent, Kinetic Shockwave, Energetic Strike and Mass Driver.",
   icon: 'kinetic_assault_set.ico',
   archetype: 'dominator',
   category: 'secondary',

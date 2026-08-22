@@ -14,7 +14,7 @@ export const WebGrenade: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Upon impact, the Toxic Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize and corrode most targets, dealing moderate Toxic damage. This device does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.Damage: Light.Recharge: Fast.",
+  "description": "Upon impact, the Toxic Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize and corrode most targets, dealing moderate Toxic damage. This device does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Moderate DoT(Toxic), Target Immobilize, -Recharge, -Fly",
   "icon": "gadgets_webgrenade.png",
   "powerType": "Click",

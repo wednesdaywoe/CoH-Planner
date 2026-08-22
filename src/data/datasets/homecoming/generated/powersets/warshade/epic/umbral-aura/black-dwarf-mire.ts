@@ -14,7 +14,7 @@ export const BlackDwarfMire: Power = {
   "available": 19,
   "autoIssue": true,
   "free": true,
-  "description": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy.Damage: Light.Recharge: Slow.",
+  "description": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC",
   "icon": "umbralaura_blackdwarfmire.png",
   "powerType": "Click",

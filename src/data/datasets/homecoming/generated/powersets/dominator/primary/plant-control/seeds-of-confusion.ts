@@ -14,7 +14,7 @@ export const SeedsofConfusion: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "You throw a handful of seeds from a rare Baffle plant at your foes. The seeds spread out in a wide cone and release a dusty chaff that contain a number of alkaloids and hallucinogenic compounds. Foes that come into contact with these seeds become violently confused and will turn and attack each other, ignoring you and all your allies. You will not receive any Experience Points for foes defeated entirely by Confused enemies.Notes: This power has adaptive recharge. It has a base recharge of 6 seconds and each affected foe will increase the recharge by 6.5 seconds for a maximum total of 110 seconds.",
+  "description": "You throw a handful of seeds from a rare Baffle plant at your foes. The seeds spread out in a wide cone and release a dusty chaff that contain a number of alkaloids and hallucinogenic compounds. Foes that come into contact with these seeds become violently confused and will turn and attack each other, ignoring you and all your allies. You will not receive any Experience Points for foes defeated entirely by Confused enemies.\n\nNotes: This power has adaptive recharge. It has a base recharge of 6 seconds and each affected foe will increase the recharge by 6.5 seconds for a maximum total of 110 seconds.",
   "shortHelp": "Ranged (Cone), Foe Confuse",
   "icon": "plantcontrol_seedsconfusion.png",
   "powerType": "Click",

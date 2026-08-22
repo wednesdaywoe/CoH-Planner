@@ -14,7 +14,7 @@ export const Farsight: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You give your allies a brief glimpse of the future and what is to come. This provides you and your team a moderate increase to your chance to hit and defense for a short period of time.Recharge: Long.",
+  "description": "You give your allies a brief glimpse of the future and what is to come. This provides you and your team a moderate increase to your chance to hit and defense for a short period of time.\n\nRecharge: Long.",
   "shortHelp": "PBAoE Team, +To-Hit, +Defense(All), +Perception",
   "icon": "timemanipulation_farsight.png",
   "powerType": "Click",

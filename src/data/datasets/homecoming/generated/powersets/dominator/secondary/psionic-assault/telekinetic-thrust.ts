@@ -14,7 +14,7 @@ export const TelekineticThrust: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "A focused attack of intense mental power that violently sends a nearby foe flying and deals a high amount of Psionic and Smashing damage.Damage: Moderate.Recharge: Moderate.",
+  "description": "A focused attack of intense mental power that violently sends a nearby foe flying and deals a high amount of Psionic and Smashing damage.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Melee, Moderate DMG(Psionic/Smash), Foe Knockback",
   "icon": "psionicassault_telekineticthrust.png",
   "powerType": "Click",

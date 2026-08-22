@@ -14,7 +14,7 @@ export const Gravestone: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "Create a giant pillar of stone, creating a Gravestone around your target, dealing extreme damage and limiting their ability to jump and fly for a short time.Gravestone grants two stacks of Seismic Pressure.",
+  "description": "Create a giant pillar of stone, creating a Gravestone around your target, dealing extreme damage and limiting their ability to jump and fly for a short time.\n\nGravestone grants two stacks of Seismic Pressure.",
   "shortHelp": "Ranged, DMG(Smash), Foe -Jump, -Fly",
   "icon": "seismicblast_gravestone.png",
   "powerType": "Click",

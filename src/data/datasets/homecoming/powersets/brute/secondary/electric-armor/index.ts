@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Your entire body is basically a powerful capacitor. You can store and release massive amounts of electricity that can absorb damage directed at you. Electric Armor offer better than average resistance to just about all types of damage, including Psionic, but has no healing abilities or resistance to Toxic. Electric Armor also offers superior resistance to Energy damage and Endurance Drain.',
+  description: "Your entire body is basically a powerful capacitor. You can store and release massive amounts of electricity that can absorb damage directed at you. Electric Armor offer better than average resistance to just about all types of damage, including Psionic, but has no healing abilities or resistance to Toxic. Electric Armor also offers superior resistance to Energy damage and Endurance Drain.",
   icon: 'electric_armor_set.ico',
   archetype: 'brute',
   category: 'secondary',

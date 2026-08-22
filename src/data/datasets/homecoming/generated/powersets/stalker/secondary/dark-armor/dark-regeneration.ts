@@ -14,7 +14,7 @@ export const DarkRegeneration: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You can tap the dark essence of the Netherworld to drain a small amount of life from all enemies nearby, thus healing yourself. The more foes affected, the more you will be healed.This power is mutually exclusive from Obscure Sustenance.",
+  "description": "You can tap the dark essence of the Netherworld to drain a small amount of life from all enemies nearby, thus healing yourself. The more foes affected, the more you will be healed.\n\nThis power is mutually exclusive from Obscure Sustenance.",
   "shortHelp": "PBAoE DMG(Negative), Self +HP",
   "icon": "darkarmor_darkregeneration.png",
   "powerType": "Click",

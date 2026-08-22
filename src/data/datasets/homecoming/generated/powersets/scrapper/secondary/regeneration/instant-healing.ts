@@ -14,7 +14,7 @@ export const InstantHealing: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "When you activate this power, you can regenerate your health at an astounding rate. This boost to your Regeneration Rate lasts about a minute and takes a long time to recharge once used.This power is mutually exclusive from Reactive Regeneration.",
+  "description": "When you activate this power, you can regenerate your health at an astounding rate. This boost to your Regeneration Rate lasts about a minute and takes a long time to recharge once used.\n\nThis power is mutually exclusive from Reactive Regeneration.",
   "shortHelp": "Click: Self +Regeneration",
   "icon": "regeneration_instanthealing.png",
   "powerType": "Click",

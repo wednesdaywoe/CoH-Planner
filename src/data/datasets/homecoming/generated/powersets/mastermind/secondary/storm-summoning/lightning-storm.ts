@@ -14,7 +14,7 @@ export const LightningStorm: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "You can create a massive Lightning Storm that will strike any foe that approaches you. Lightning from this storm can knock down and damage all nearby foes, and can even instill panic. Lightning bolts will continue to fall as long as the storm remains.Recharge: Long.",
+  "description": "You can create a massive Lightning Storm that will strike any foe that approaches you. Lightning from this storm can knock down and damage all nearby foes, and can even instill panic. Lightning bolts will continue to fall as long as the storm remains.\n\nRecharge: Long.",
   "shortHelp": "Create Storm: Ranged, High DMG(Energy), Foe -End",
   "icon": "stormsummoning_lightningstorm.png",
   "powerType": "Click",

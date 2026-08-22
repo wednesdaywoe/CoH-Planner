@@ -14,7 +14,7 @@ export const AimedShot: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot.Sensei's Guidance:Hitting with this power will grant your Ninja Henchman +3% Critical Hit chance for 30 seconds. This does not stack from the same power.",
+  "description": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot.\n\nSensei's Guidance:\nHitting with this power will grant your Ninja Henchman +3% Critical Hit chance for 30 seconds. This does not stack from the same power.",
   "shortHelp": "Ranged, DMG(Lethal)",
   "icon": "ninjas_standardshot.png",
   "powerType": "Click",

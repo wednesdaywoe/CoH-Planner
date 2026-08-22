@@ -14,7 +14,7 @@ export const Jawbreaker: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "This upward swing attempts to shatter your opponent's jaw, and has a chance to send him flying upwards into the air.Damage: High.Recharge: Moderate.",
+  "description": "This upward swing attempts to shatter your opponent's jaw, and has a chance to send him flying upwards into the air.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DMG(Smashing), Knockup",
   "icon": "mace_jawbreaker.png",
   "powerType": "Click",

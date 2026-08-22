@@ -14,7 +14,7 @@ export const ThermalShield: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "When you toggle on Thermal Shield, you emit tendrils of Kheldian energy that give you resistance to Fire and Cold damage.Recharge: Very Fast.",
+  "description": "When you toggle on Thermal Shield, you emit tendrils of Kheldian energy that give you resistance to Fire and Cold damage.\n\nRecharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Fire, Cold)",
   "icon": "luminousaura_thermalshield.png",
   "powerType": "Toggle",

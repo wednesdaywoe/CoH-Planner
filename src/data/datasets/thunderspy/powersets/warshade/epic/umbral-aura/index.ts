@@ -30,7 +30,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Warshades can generate Dark Fields to give themselves incredible defensive capabilities.',
+  description: "Warshades can generate Dark Fields to give themselves incredible defensive capabilities.",
   icon: 'umbral_aura_set.ico',
   archetype: 'warshade',
   category: 'epic',

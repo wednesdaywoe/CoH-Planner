@@ -14,7 +14,7 @@ export const RangedShot: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "A perfectly aimed and fast shot that blasts your foes.Damage: High.Recharge: Slow.",
+  "description": "A perfectly aimed and fast shot that blasts your foes.\n\nDamage: High.\nRecharge: Slow.",
   "shortHelp": "Ranged, High DMG(Lethal)",
   "icon": "archery_heavy.png",
   "powerType": "Click",

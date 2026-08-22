@@ -14,7 +14,7 @@ export const SweepingStrike: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down.Notes: Titan Sweep is unaffected by Arc changes.",
+  "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down.\n\nNotes: Titan Sweep is unaffected by Arc changes.",
   "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockdown",
   "icon": "titanweapons_sweepingstrike.png",
   "powerType": "Click",
@@ -92,7 +92,7 @@ export const SweepingStrike: Power = {
         }
       },
       "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockdown",
-      "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down.Notes: Titan Sweep (Fast) is unaffected by Arc changes.",
+      "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down.\n\nNotes: Titan Sweep (Fast) is unaffected by Arc changes.",
       "effectArea": "Cone",
       "targetType": "Foe",
       "powerType": "Click",

@@ -14,7 +14,7 @@ export const AcidArrow: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "This arrow explodes in a small shower of acid on impact. This acid eats through armor, causing damage over time, reducing target's Defense as well as their resistance to debuffs, while making it harder for them to be healed.Damage: Minor.Recharge: Slow.",
+  "description": "This arrow explodes in a small shower of acid on impact. This acid eats through armor, causing damage over time, reducing target's Defense as well as their resistance to debuffs, while making it harder for them to be healed.\n\nDamage: Minor.\nRecharge: Slow.",
   "shortHelp": "Ranged AoE Minor DoT(Toxic), Foe -Res(Special), Res(Heal), -DEF",
   "icon": "trickarrow_debuffdefense.png",
   "powerType": "Click",

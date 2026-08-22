@@ -14,7 +14,7 @@ export const IceBlast: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.Damage: Light.Recharge: Fast.",
+  "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "iceassault_iceblast.png",
   "powerType": "Click",

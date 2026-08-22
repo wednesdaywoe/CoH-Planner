@@ -14,7 +14,7 @@ export const SerpentsReach: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "You fully extend your staff and release a burst of energy to lash out at a distant target and deal Smashing damage with a good chance to knock your target down. This power builds one level of Perfection of Body.Notes: Serpent's Reach is unaffected by Range changes.",
+  "description": "You fully extend your staff and release a burst of energy to lash out at a distant target and deal Smashing damage with a good chance to knock your target down. This power builds one level of Perfection of Body.\n\nNotes: Serpent's Reach is unaffected by Range changes.",
   "shortHelp": "Ranged, DMG(Smash), Foe Knockdown",
   "icon": "stafffighting_serpentsreach.png",
   "powerType": "Click",

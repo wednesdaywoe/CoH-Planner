@@ -14,7 +14,7 @@ export const Buckshot: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "Good at close range. Fires a cone of Buckshot pellets and can knock some foes down.Damage: Moderate.Recharge: Moderate.",
+  "description": "Good at close range. Fires a cone of Buckshot pellets and can knock some foes down.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Ranged (Cone), DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_shotgunbuckshot.png",
   "powerType": "Click",

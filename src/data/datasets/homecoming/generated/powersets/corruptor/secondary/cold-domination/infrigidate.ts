@@ -14,7 +14,7 @@ export const Infrigidate: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Fires a frigid beam of cold at a single target. This beam dramatically reduces the target's attack rate, movement speed and Defense. Infrigidate draws so much heat out of the target that the damage of any of its Fire attacks will be reduced.Recharge: Slow.",
+  "description": "Fires a frigid beam of cold at a single target. This beam dramatically reduces the target's attack rate, movement speed and Defense. Infrigidate draws so much heat out of the target that the damage of any of its Fire attacks will be reduced.\n\nRecharge: Slow.",
   "shortHelp": "Ranged Foe -Speed, -Recharge, -DEF, -DMG (Fire)",
   "icon": "colddomination_infrigidate.png",
   "powerType": "Click",

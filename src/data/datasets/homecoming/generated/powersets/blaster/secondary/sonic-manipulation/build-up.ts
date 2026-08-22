@@ -14,7 +14,7 @@ export const BuildUp: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit. Moderately increases the duration of mez effects. Moderately increases the chance for Sound Manipulation powers to induce migraines.Recharge: Long.",
+  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit. Moderately increases the duration of mez effects. Moderately increases the chance for Sound Manipulation powers to induce migraines.\n\nRecharge: Long.",
   "shortHelp": "Self +DMG, +To Hit, +Special",
   "icon": "sonicmanipulation_buildup.png",
   "powerType": "Click",

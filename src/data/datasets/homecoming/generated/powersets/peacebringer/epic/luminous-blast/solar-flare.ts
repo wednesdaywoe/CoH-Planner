@@ -14,7 +14,7 @@ export const SolarFlare: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "You channel the might of your Kheldian energy into the very Earth itself. The ground erupts and cracks with luminous energy, blasting all nearby foes, knocking them back and reducing their Defense.Damage: Moderate.Recharge: Slow.",
+  "description": "You channel the might of your Kheldian energy into the very Earth itself. The ground erupts and cracks with luminous energy, blasting all nearby foes, knocking them back and reducing their Defense.\n\nDamage: Moderate.\nRecharge: Slow.",
   "shortHelp": "PBAoE Melee, Moderate DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_solarflare.png",
   "powerType": "Click",

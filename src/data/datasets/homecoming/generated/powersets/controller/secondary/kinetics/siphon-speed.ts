@@ -14,7 +14,7 @@ export const SiphonSpeed: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "You can Siphon the speed from a targeted foe, Slowing their movement and attack rate while boosting your own.Recharge: Slow.",
+  "description": "You can Siphon the speed from a targeted foe, Slowing their movement and attack rate while boosting your own.\n\nRecharge: Slow.",
   "shortHelp": "Ranged, Foe -Speed, -Recharge, Self +Speed, +Recharge",
   "icon": "kineticboost_siphonspeed.png",
   "powerType": "Click",

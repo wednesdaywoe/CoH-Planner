@@ -14,7 +14,7 @@ export const BoneSmasher: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "This melee attack can be slow, but it compensates by dealing a good amount of damage and having a good chance to Disorient the target. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode. This power will weaken the target's secondary effects if used while in Energy Focus mode.Damage: High.Recharge: Moderate.",
+  "description": "This melee attack can be slow, but it compensates by dealing a good amount of damage and having a good chance to Disorient the target. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode. This power will weaken the target's secondary effects if used while in Energy Focus mode.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DMG(Smash/Energy), Disorient, Special, Chance for Energy Focus",
   "icon": "energyassault_bonesmasher.png",
   "powerType": "Click",

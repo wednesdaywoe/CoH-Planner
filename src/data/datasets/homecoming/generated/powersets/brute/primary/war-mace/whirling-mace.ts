@@ -14,7 +14,7 @@ export const WhirlingMace: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "You swing your mace in a circle all around you, attacking everyone in melee range. Your Whirling Mace deals moderate damage, and has a chance to Disorient every foe you hit.Damage: Light.Recharge: Slow.",
+  "description": "You swing your mace in a circle all around you, attacking everyone in melee range. Your Whirling Mace deals moderate damage, and has a chance to Disorient every foe you hit.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE Melee, Light DMG(Smashing), Minor Disorient",
   "icon": "mace_whirlingmace.png",
   "powerType": "Click",

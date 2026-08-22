@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Ice Composition users have mastered chilling themselves and the air around them to protect their allies, protect themselves, and weaken adversaries.',
+  description: "Ice Composition users have mastered chilling themselves and the air around them to protect their allies, protect themselves, and weaken adversaries.",
   icon: 'ice_armor_set.ico',
   archetype: 'guardian',
   category: 'secondary',

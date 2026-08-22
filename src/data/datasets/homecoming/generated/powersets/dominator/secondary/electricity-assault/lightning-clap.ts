@@ -14,7 +14,7 @@ export const LightningClap: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "A focused electrical blast that can travel great distances with high Accuracy. Zapp drains Endurance, some of which may transfer back to you. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Damage: Extreme.Recharge: Slow.",
+  "description": "A focused electrical blast that can travel great distances with high Accuracy. Zapp drains Endurance, some of which may transfer back to you. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Sniper, Extreme DMG(Energy), Foe -End",
   "icon": "electricalassault_zapp.png",
   "powerType": "Click",

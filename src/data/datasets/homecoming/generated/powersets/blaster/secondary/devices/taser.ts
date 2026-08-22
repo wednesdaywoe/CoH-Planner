@@ -14,7 +14,7 @@ export const Taser: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "The High Voltage Taser is an overcharged stun-gun, releasing a high-voltage, high-amperage electrical charge that can Disorient most opponents with major tissue damage. The Taser has a very short range.Damage: High.Recharge: Moderate.",
+  "description": "The High Voltage Taser is an overcharged stun-gun, releasing a high-voltage, high-amperage electrical charge that can Disorient most opponents with major tissue damage. The Taser has a very short range.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DMG(Energy), Foe Disorient",
   "icon": "gadgets_taser.png",
   "powerType": "Click",

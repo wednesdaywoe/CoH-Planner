@@ -14,7 +14,7 @@ export const SirensSong: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You send forth a subsonic pulse which causes your foes to fall unconscious and take energy damage. Your foes will remain unconscious for a good while, but will awaken if disturbed.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required against AVs and players, as well as to make secondary effects apply.",
+  "description": "You send forth a subsonic pulse which causes your foes to fall unconscious and take energy damage. Your foes will remain unconscious for a good while, but will awaken if disturbed.\n\nNotes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required against AVs and players, as well as to make secondary effects apply.",
   "shortHelp": "Ranged (Cone), Minor DMG(Energy), Foe Sleep",
   "icon": "sonicblast_sleep.png",
   "powerType": "Click",

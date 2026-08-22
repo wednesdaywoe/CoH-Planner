@@ -14,7 +14,7 @@ export const IceArrow: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "This arrow can freeze a single foe in a block of ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be Held, but all affected targets will be Slowed.Damage: Minor.Recharge: Slow.",
+  "description": "This arrow can freeze a single foe in a block of ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be Held, but all affected targets will be Slowed.\n\nDamage: Minor.\nRecharge: Slow.",
   "shortHelp": "Ranged, DoT(Cold), Foe Hold, -SPD, -Recharge",
   "icon": "tacticalarrow_hold.png",
   "powerType": "Click",

@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Ice Blast allows you to use the power of ice against your foes, with a tendency to Slow their attacks and movement.',
+  description: "Ice Blast allows you to use the power of ice against your foes, with a tendency to Slow their attacks and movement.",
   icon: 'ice_blast_set.ico',
   archetype: 'corruptor',
   category: 'primary',

@@ -14,7 +14,7 @@ export const Fissure: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "This powerful stomp can crack the earth itself, damaging a nearby targeted foe and any foes around it. This Fissure can only affect foes on the ground, dealing moderate smashing damage and possibly throwing them into the air or disorienting them.Damage: Light.Recharge: Slow.",
+  "description": "This powerful stomp can crack the earth itself, damaging a nearby targeted foe and any foes around it. This Fissure can only affect foes on the ground, dealing moderate smashing damage and possibly throwing them into the air or disorienting them.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "Close (Targeted AoE), Light DMG(Smash), Foe Knockback, Disorient",
   "icon": "earthassault_fissure.png",
   "powerType": "Click",

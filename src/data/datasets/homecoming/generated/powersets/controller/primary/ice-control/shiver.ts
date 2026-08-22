@@ -14,7 +14,7 @@ export const Shiver: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "You blast forth a wide cone of chilling air that dramatically slows the enemies' movement and attack rate and might leave nearby foes trembling.Notes: The Fear component applies only to enemies in the center area of effect.",
+  "description": "You blast forth a wide cone of chilling air that dramatically slows the enemies' movement and attack rate and might leave nearby foes trembling.\n\nNotes: The Fear component applies only to enemies in the center area of effect.",
   "shortHelp": "Ranged (Cone), Foe Fear, -SPD, -Recharge",
   "icon": "iceformation_shiver.png",
   "powerType": "Click",

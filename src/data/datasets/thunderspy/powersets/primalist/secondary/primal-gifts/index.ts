@@ -30,7 +30,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Primalists have imbued themselves with the raw power of nature. They can use this energy to aid allies, weaken foes as well as being able to shield themselves from harm.',
+  description: "Primalists have imbued themselves with the raw power of nature. They can use this energy to aid allies, weaken foes as well as being able to shield themselves from harm.",
   icon: 'primal_gift_set.ico',
   archetype: 'primalist',
   category: 'secondary',

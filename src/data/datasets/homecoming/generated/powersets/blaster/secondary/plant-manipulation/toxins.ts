@@ -14,7 +14,7 @@ export const Toxins: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "You use your power over plants to coat all your attacks with powerful toxins for a few seconds, all your attacks will now do extra toxic damage and be more accurate.Recharge: Long.",
+  "description": "You use your power over plants to coat all your attacks with powerful toxins for a few seconds, all your attacks will now do extra toxic damage and be more accurate.\n\nRecharge: Long.",
   "shortHelp": "Self +ToHit, +DMG(Special)",
   "icon": "plantmanipulation_toxins.png",
   "powerType": "Click",

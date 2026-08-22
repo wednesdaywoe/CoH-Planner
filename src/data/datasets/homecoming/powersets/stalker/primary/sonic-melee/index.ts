@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Sonic Melee lets you use the power of sound waves to damage your foes with devastating close range sonic attacks that can inflict Migraines, debuffing their resistance to multiple debuffs, and holding foes for a short duration. This can be dramatically increased by using Sound Booster. With the ability to Attune your frequency to your target\'s, your single target attacks can trigger powerful reverberating damage over time, helping you quickly bring enemies to their knees.',
+  description: "Sonic Melee lets you use the power of sound waves to damage your foes with devastating close range sonic attacks that can inflict Migraines, debuffing their resistance to multiple debuffs, and holding foes for a short duration. This can be dramatically increased by using Sound Booster. With the ability to Attune your frequency to your target's, your single target attacks can trigger powerful reverberating damage over time, helping you quickly bring enemies to their knees.",
   icon: 'sonic_manipulation_set.ico',
   archetype: 'stalker',
   category: 'primary',

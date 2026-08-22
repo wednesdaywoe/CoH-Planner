@@ -14,7 +14,7 @@ export const BrightNovaBlast: Power = {
   "available": 3,
   "autoIssue": true,
   "free": true,
-  "description": "A much more powerful, yet slower version of Bright Nova Bolt. Bright Nova Blast sends a focused blast of Kheldian energy at a foe that can knock him back and reduce his defense. This power is only available while in Bright Nova Form.Damage: Light.Recharge: Fast.",
+  "description": "A much more powerful, yet slower version of Bright Nova Bolt. Bright Nova Blast sends a focused blast of Kheldian energy at a foe that can knock him back and reduce his defense. This power is only available while in Bright Nova Form.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_gleamingblast.png",
   "powerType": "Click",

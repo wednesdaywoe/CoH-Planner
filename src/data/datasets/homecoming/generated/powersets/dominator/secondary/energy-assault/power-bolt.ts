@@ -14,7 +14,7 @@ export const PowerBolt: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A quick attack that rapidly hurls small bolts of energy at foes, sometimes knocking them down. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode.Damage: Light.Recharge: Fast.",
+  "description": "A quick attack that rapidly hurls small bolts of energy at foes, sometimes knocking them down. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Energy/Smash), Foe Knockback, Chance for Energy Focus",
   "icon": "energyassault_powerbolt.png",
   "powerType": "Click",

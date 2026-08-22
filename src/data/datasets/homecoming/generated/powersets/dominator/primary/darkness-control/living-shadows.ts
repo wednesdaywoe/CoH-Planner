@@ -14,7 +14,7 @@ export const LivingShadows: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "You extend and animate your own shadow causing it to entangle all foes within a long cone pattern in front of you, rendering all affected foes immobilized.Damage: Minor.Recharge: Moderate.",
+  "description": "You extend and animate your own shadow causing it to entangle all foes within a long cone pattern in front of you, rendering all affected foes immobilized.\n\nDamage: Minor.\nRecharge: Moderate.",
   "shortHelp": "Ranged (Cone), Minor DoT(Negative), Foe Immobilize, -To Hit, -Fly",
   "icon": "darknesscontrol_livingshadows.png",
   "powerType": "Click",

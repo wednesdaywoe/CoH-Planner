@@ -14,7 +14,7 @@ export const AbyssalEmpowerment: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "Abyssal Empowerment will permanently unseal the most powerful powers in your Demon Henchmen's infernal repertoire. The Empowered Demons will gain new abilities and powers. The powers gained are unique and dependent upon the type of Demon Henchman that is Empowered.Abyssal Empowerment only works on your Demon Henchmen and you can only Empower your Demon Henchmen once with this power.",
+  "description": "Abyssal Empowerment will permanently unseal the most powerful powers in your Demon Henchmen's infernal repertoire. The Empowered Demons will gain new abilities and powers. The powers gained are unique and dependent upon the type of Demon Henchman that is Empowered.\n\nAbyssal Empowerment only works on your Demon Henchmen and you can only Empower your Demon Henchmen once with this power.",
   "shortHelp": "Ranged, Empower Demon Henchman",
   "icon": "demonsummoning_abyssalempowerment.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const BuildUp: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.Recharge: Long.",
+  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.\n\nRecharge: Long.",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "electricalassault_buildup.png",
   "powerType": "Click",

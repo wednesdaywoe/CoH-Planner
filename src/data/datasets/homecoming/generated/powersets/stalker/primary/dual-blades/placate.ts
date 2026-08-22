@@ -14,7 +14,7 @@ export const Placate: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "Allows you to trick a foe to no longer attack you. A successful Placate will also Hide you. This Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit or Assassination. However, if you attack a Placated Foe, he will be able to attack you back. This power is the finishing move in the Empower combination attack.Empower: Build Up > Assassin’s Blades > Placate.",
+  "description": "Allows you to trick a foe to no longer attack you. A successful Placate will also Hide you. This Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit or Assassination. However, if you attack a Placated Foe, he will be able to attack you back. This power is the finishing move in the Empower combination attack.\n\nEmpower: Build Up > Assassin’s Blades > Placate.",
   "shortHelp": "Ranged, Foe Placate, Self Stealth/Hide",
   "icon": "dualblades_placate.png",
   "powerType": "Click",

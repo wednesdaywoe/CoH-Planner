@@ -14,7 +14,7 @@ export const KeeningWinds: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "You create a sphere of variable speed winds that generate strong friction within the turbulence of the air. This creates odd echoes and sounds that confuse foes caught within the burst. The loss of confidence your foes suffer due their confusion causes them to lose endurance over a few seconds, while you gain endurance due to a boost in confidence you enjoy from seeing your foes struggle. This power builds Pressure.Damage: None.Recharge: Long.",
+  "description": "You create a sphere of variable speed winds that generate strong friction within the turbulence of the air. This creates odd echoes and sounds that confuse foes caught within the burst. The loss of confidence your foes suffer due their confusion causes them to lose endurance over a few seconds, while you gain endurance due to a boost in confidence you enjoy from seeing your foes struggle. This power builds Pressure.\n\nDamage: None.\nRecharge: Long.",
   "shortHelp": "Ranged (Targeted AoE), Confuse(Foe), EndDrain(Foe), +End(Self)",
   "icon": "windcontrol_keeningwinds.png",
   "powerType": "Click",

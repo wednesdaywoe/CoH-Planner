@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You can engulf yourself in protective flames. Fiery Aura offers superior resistance to Fire damage, but weak resistance to Cold damage and no protection to Knockback. Fiery Aura is the most offensive of the Brute\'s defensive Power Sets, offering some damage output.',
+  description: "You can engulf yourself in protective flames. Fiery Aura offers superior resistance to Fire damage, but weak resistance to Cold damage and no protection to Knockback. Fiery Aura is the most offensive of the Brute's defensive Power Sets, offering some damage output.",
   icon: 'fiery_aura_set.ico',
   archetype: 'brute',
   category: 'secondary',

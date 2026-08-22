@@ -14,7 +14,7 @@ export const TimeStop: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You trap your target within the flow of time causing them to be held helpless. Even those resistant to the effects of Time Stop's hold will still have their regeneration rate and healing effects reduced for a brief period. Targets affected by the Delayed effect will suffer from a more powerful hold, however its benefits are brief.Recharge: Slow.",
+  "description": "You trap your target within the flow of time causing them to be held helpless. Even those resistant to the effects of Time Stop's hold will still have their regeneration rate and healing effects reduced for a brief period. Targets affected by the Delayed effect will suffer from a more powerful hold, however its benefits are brief.\n\nRecharge: Slow.",
   "shortHelp": "Ranged, Foe Hold, -Regen, -Heal",
   "icon": "timemanipulation_timestop.png",
   "powerType": "Click",

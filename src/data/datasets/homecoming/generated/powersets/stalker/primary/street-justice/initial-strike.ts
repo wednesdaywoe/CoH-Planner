@@ -14,7 +14,7 @@ export const InitialStrike: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You deliver a pair of lightning fast blows to your opponent in an effort to throw them off balance. Initial Strike deals Light Smashing damage and has a small chance to disorient your target. Initial Strike is a Combo Builder and adds 1 Combo Level.Damage: Light.Recharge: Very Fast.",
+  "description": "You deliver a pair of lightning fast blows to your opponent in an effort to throw them off balance. Initial Strike deals Light Smashing damage and has a small chance to disorient your target. Initial Strike is a Combo Builder and adds 1 Combo Level.\n\nDamage: Light.\nRecharge: Very Fast.",
   "shortHelp": "Melee, Light DMG(Smash), Foe Disorient, Combo Builder",
   "icon": "brawling_initialstrike.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const RadiationTherapy: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "You concentrate your energies to harness the healing powers of radiation to mend your wounds and rebuild your endurance. Each nearby foe will increase the health and endurance you recover, with the first one yielding full strength and all seconday ones yielding 30% of the effect. Affected foes will have their regeneration rates substantially reduced for a short time.Notes: This power has adaptive recharge. It has a base recharge of 25 seconds, the first target hit will increase its recharge by 9.5 with additional targets adding 2.8 seconds for a maximum total of 60 seconds.",
+  "description": "You concentrate your energies to harness the healing powers of radiation to mend your wounds and rebuild your endurance. Each nearby foe will increase the health and endurance you recover, with the first one yielding full strength and all seconday ones yielding 30% of the effect. Affected foes will have their regeneration rates substantially reduced for a short time.\n\nNotes: This power has adaptive recharge. It has a base recharge of 25 seconds, the first target hit will increase its recharge by 9.5 with additional targets adding 2.8 seconds for a maximum total of 60 seconds.",
   "shortHelp": "PBAoE, Minor DMG(Energy), Minor DoT(Toxic), Foe -Regen, Self +HP, +End, Res(-Regen)",
   "icon": "radiationarmor_radiationtherapy.png",
   "powerType": "Click",

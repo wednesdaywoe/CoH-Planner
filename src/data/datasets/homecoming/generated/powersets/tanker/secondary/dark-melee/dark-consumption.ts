@@ -14,7 +14,7 @@ export const DarkConsumption: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "PBAoE DMG(Negative), Self +End",
   "icon": "shadowfighting_darkconsumption.png",
   "powerType": "Click",

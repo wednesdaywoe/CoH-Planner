@@ -14,7 +14,7 @@ export const PsychicShockwave: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "Psychic Shockwave is a devastating Psionic attack that wracks the minds of all nearby foes. Affected foes may have a reduced attack rate and may be left Disoriented.Damage: Light.Recharge: Slow.",
+  "description": "Psychic Shockwave is a devastating Psionic attack that wracks the minds of all nearby foes. Affected foes may have a reduced attack rate and may be left Disoriented.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE, Light DMG(Psionic), Foe Disorient -Recharge",
   "icon": "psionicassault_psionicshockwave.png",
   "powerType": "Click",

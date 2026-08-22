@@ -14,7 +14,7 @@ export const FistfulofArrows: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "You fire a fistful of arrows at foes in a cone in front of you. Good at close range.Damage: Moderate.Recharge: Moderate.",
+  "description": "You fire a fistful of arrows at foes in a cone in front of you. Good at close range.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Ranged (Cone), Moderate DMG(Lethal)",
   "icon": "archery_conearrow.png",
   "powerType": "Click",

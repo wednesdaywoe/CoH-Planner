@@ -14,7 +14,7 @@ export const Gust: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You create a chaotic change in atmospheric pressure, causing a sudden gust of wind to deliver a small amount of Smashing damage and knock your foe out of the sky. While in a Storm Cell, targets experience additional Smashing damage over time.",
+  "description": "You create a chaotic change in atmospheric pressure, causing a sudden gust of wind to deliver a small amount of Smashing damage and knock your foe out of the sky.\n\nWhile in a Storm Cell, targets experience additional Smashing damage over time.",
   "shortHelp": "Ranged, DMG(Smash), -Fly",
   "icon": "stormblast_gust.png",
   "powerType": "Click",

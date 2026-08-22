@@ -14,7 +14,7 @@ export const Whitecap: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "You summon a burst of water underfoot that hurls from your present location to a location of your choosing. When you splash down, any enemies in the surrounding area will be swept off their feet, and will experience a damage resistance debuff for a period of time. Enemies close to where you splash down will receive harsher debuffs for a brief time.If you direct a Whitecap on targets inside a Tide Pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
+  "description": "You summon a burst of water underfoot that hurls from your present location to a location of your choosing. When you splash down, any enemies in the surrounding area will be swept off their feet, and will experience a damage resistance debuff for a period of time. Enemies close to where you splash down will receive harsher debuffs for a brief time.\n\nIf you direct a Whitecap on targets inside a Tide Pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Cold), Foe Knockdown, -Resist(All), Self Teleport, Special",
   "icon": "marineaffinity_whitecap.png",
   "powerType": "Click",

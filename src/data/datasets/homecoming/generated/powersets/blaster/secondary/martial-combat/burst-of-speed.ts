@@ -14,7 +14,7 @@ export const BurstofSpeed: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "Channeling physical Ki inwards, you move more quickly than can be seen for an instant, allowing you to move instantly to a targeted location and strike at targets within melee range. You can use this Burst of Speed up to 3 times before it needs to recharge.Recharge: Long.",
+  "description": "Channeling physical Ki inwards, you move more quickly than can be seen for an instant, allowing you to move instantly to a targeted location and strike at targets within melee range. You can use this Burst of Speed up to 3 times before it needs to recharge.\n\nRecharge: Long.",
   "shortHelp": "Location AoE Moderate DMG (Smash), Self Teleport",
   "icon": "martialmanipulation_burstofspeed.png",
   "powerType": "Click",

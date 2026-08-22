@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Organic Composition users can surround themselves in the forces of nature, enabling them to shield their bodies from harm. Their command over the environment allows them to call forth primal energies to hinder their foes and aid themselves and their allies.  Some of their powers place a Bloom effect on themselves and their allies.  Each stack of Bloom boosts healing effects on the affected targets by 4% for 30 seconds.  Bloom can stack up to 5 times.',
+  description: "Organic Composition users can surround themselves in the forces of nature, enabling them to shield their bodies from harm. Their command over the environment allows them to call forth primal energies to hinder their foes and aid themselves and their allies.  Some of their powers place a Bloom effect on themselves and their allies.  Each stack of Bloom boosts healing effects on the affected targets by 4% for 30 seconds.  Bloom can stack up to 5 times.",
   icon: 'bio_organic_armor_set.ico',
   archetype: 'guardian',
   category: 'secondary',

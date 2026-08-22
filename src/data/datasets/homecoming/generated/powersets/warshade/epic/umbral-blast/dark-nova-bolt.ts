@@ -14,7 +14,7 @@ export const DarkNovaBolt: Power = {
   "available": 3,
   "autoIssue": true,
   "free": true,
-  "description": "A very quick, but low damage attack that lowers your target's attack and movement speed. This power is only available while in Dark Nova Form.Damage: Minor.Recharge: Very Fast.",
+  "description": "A very quick, but low damage attack that lowers your target's attack and movement speed. This power is only available while in Dark Nova Form.\n\nDamage: Minor.\nRecharge: Very Fast.",
   "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_shadowbolt.png",
   "powerType": "Click",

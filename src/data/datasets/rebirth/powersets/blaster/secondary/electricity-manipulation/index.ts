@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Electricity Manipulation empowers you with various electrical melee attack and support powers. Electricity Manipulation powers can drain foes\' Endurance and temporarily halt their Endurance recovery.  Some powers return a portion of drained Endurance to you.',
+  description: "Electricity Manipulation empowers you with various electrical melee attack and support powers. Electricity Manipulation powers can drain foes' Endurance and temporarily halt their Endurance recovery.  Some powers return a portion of drained Endurance to you.",
   icon: 'electricity_manipulation_set.ico',
   archetype: 'blaster',
   category: 'secondary',

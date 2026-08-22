@@ -14,7 +14,7 @@ export const TimeBomb: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "You can place a Temporal Bomb on the ground. The Temporal Bomb will detonate once the power is activated a second time, resulting in a massive explosion that can damage all nearby foes and send them flying, as well as create a Temporal Bubble that speeds up yourself and allies, while slowing down all enemies inside. If used while targeting an enemy in melee range, you can attach the Temporal Bomb to them instead!The Temporal Bomb is small, and almost impossible to detect.",
+  "description": "You can place a Temporal Bomb on the ground. The Temporal Bomb will detonate once the power is activated a second time, resulting in a massive explosion that can damage all nearby foes and send them flying, as well as create a Temporal Bubble that speeds up yourself and allies, while slowing down all enemies inside. If used while targeting an enemy in melee range, you can attach the Temporal Bomb to them instead!\n\nThe Temporal Bomb is small, and almost impossible to detect.",
   "shortHelp": "Place Bomb: PBAoE, DMG(Lethal/Fire), Foe Knockback, Special",
   "icon": "traps_remotebomb.png",
   "powerType": "Click",
@@ -154,7 +154,7 @@ export const TimeBomb: Power = {
         "castTime": 2.77
       },
       "shortHelp": "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
-      "description": "You can place a Remote Bomb on the ground. The Remote Bomb will detonate once the power is activated a second time, resulting in a massive explosion that can devastate all nearby foes and send them flying. If used while targeting an enemy in melee range, you can attach the Remote Bomb to them instead!The Remote Bomb is small, and almost impossible to detect. However, it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Remote Bomb will still detonate.Damage: Extreme.Recharge: Very Long.",
+      "description": "You can place a Remote Bomb on the ground. The Remote Bomb will detonate once the power is activated a second time, resulting in a massive explosion that can devastate all nearby foes and send them flying. If used while targeting an enemy in melee range, you can attach the Remote Bomb to them instead!\n\nThe Remote Bomb is small, and almost impossible to detect. However, it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Remote Bomb will still detonate.\n\nDamage: Extreme.\nRecharge: Very Long.",
       "effectArea": "SingleTarget",
       "targetType": "Self",
       "powerType": "Click",
@@ -893,7 +893,7 @@ export const TimeBomb: Power = {
         "recharge": 150
       },
       "shortHelp": "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
-      "description": "You can place a Remote Bomb on the ground. The Remote Bomb will detonate once the power is activated a second time, resulting in a massive explosion that can devastate all nearby foes and send them flying. If used while targeting an enemy in melee range, you can attach the Remote Bomb to them instead!The Remote Bomb is small, and almost impossible to detect. However, it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Remote Bomb will still detonate.Damage: Extreme.Recharge: Very Long.",
+      "description": "You can place a Remote Bomb on the ground. The Remote Bomb will detonate once the power is activated a second time, resulting in a massive explosion that can devastate all nearby foes and send them flying. If used while targeting an enemy in melee range, you can attach the Remote Bomb to them instead!\n\nThe Remote Bomb is small, and almost impossible to detect. However, it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Remote Bomb will still detonate.\n\nDamage: Extreme.\nRecharge: Very Long.",
       "effectArea": "Map",
       "targetType": "Self",
       "powerType": "Click",
@@ -1380,7 +1380,7 @@ export const TimeBomb: Power = {
         "castTime": 2.77
       },
       "shortHelp": "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
-      "description": "You can place a Remote Bomb on the ground. The Remote Bomb will detonate once the power is activated a second time, resulting in a massive explosion that can devastate all nearby foes and send them flying. If used while targeting an enemy in melee range, you can attach the Remote Bomb to them instead!The Remote Bomb is small, and almost impossible to detect. However, it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Remote Bomb will still detonate.Damage: Extreme.Recharge: Very Long.",
+      "description": "You can place a Remote Bomb on the ground. The Remote Bomb will detonate once the power is activated a second time, resulting in a massive explosion that can devastate all nearby foes and send them flying. If used while targeting an enemy in melee range, you can attach the Remote Bomb to them instead!\n\nThe Remote Bomb is small, and almost impossible to detect. However, it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Remote Bomb will still detonate.\n\nDamage: Extreme.\nRecharge: Very Long.",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
       "powerType": "Click",

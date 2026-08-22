@@ -14,7 +14,7 @@ export const InnerWill: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "When pushed to your limit, you can tap into an inner reserve of power, allowing you to overcome impossible odds. When you are below half health, below half endurance, or the victim of any status effect, you may activate Inner Will. Inner Will cancels any status effects currently affecting you, increases your resistance to status effects by 100%, and increases the power of your own status effect-inducing powers. Inner Will also heals you for a moderate amount when activated.Recharge: Long.",
+  "description": "When pushed to your limit, you can tap into an inner reserve of power, allowing you to overcome impossible odds. When you are below half health, below half endurance, or the victim of any status effect, you may activate Inner Will. Inner Will cancels any status effects currently affecting you, increases your resistance to status effects by 100%, and increases the power of your own status effect-inducing powers. Inner Will also heals you for a moderate amount when activated.\n\nRecharge: Long.",
   "shortHelp": "Self Heal, Special",
   "icon": "martialmanipulation_innerwill.png",
   "powerType": "Click",

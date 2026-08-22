@@ -14,7 +14,7 @@ export const LightningStrike: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "You channel your storm powers into a direct hit, jolting the enemy with a bolt of lightning that deals Energy damage and saps some endurance.While in a Storm Cell, targets have a chance to be stunned.",
+  "description": "You channel your storm powers into a direct hit, jolting the enemy with a bolt of lightning that deals Energy damage and saps some endurance.\n\nWhile in a Storm Cell, targets have a chance to be stunned.",
   "shortHelp": "Ranged, DMG(Energy), Foe -End, Special",
   "icon": "stormblast_lightningstrike.png",
   "powerType": "Click",

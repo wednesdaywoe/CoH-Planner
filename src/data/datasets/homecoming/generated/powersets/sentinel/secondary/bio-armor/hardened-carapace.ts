@@ -14,7 +14,7 @@ export const HardenedCarapace: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "With a little concentration you can cause your skin to become hard as stone, boosting your constitution to reject toxins. While active, this power will boost your resistance to Lethal, Smashing and Toxic damage, and grant protection to Disorient and Sleep effects.*While Offensive Adaptation is active, this power will grant a minor boost to damage.*While Defensive Adaptation is active, Hardened Carapace will grant additional resistance to Lethal, Smashing and Toxic damage.*While Efficient Adaptation is active, Hardened Carapace will grant an Endurance Discount.Bonuses granted from Adaptations are unenhanceable.",
+  "description": "With a little concentration you can cause your skin to become hard as stone, boosting your constitution to reject toxins. While active, this power will boost your resistance to Lethal, Smashing and Toxic damage, and grant protection to Disorient and Sleep effects.\n\n*While Offensive Adaptation is active, this power will grant a minor boost to damage.\n*While Defensive Adaptation is active, Hardened Carapace will grant additional resistance to Lethal, Smashing and Toxic damage.\n*While Efficient Adaptation is active, Hardened Carapace will grant an Endurance Discount.\n\nBonuses granted from Adaptations are unenhanceable.",
   "shortHelp": "Self Toggle, +Res(Lethal, Smash, Toxic, Disorient, Sleep), +Special",
   "icon": "bioorganicarmor_hardenedskin.png",
   "powerType": "Toggle",

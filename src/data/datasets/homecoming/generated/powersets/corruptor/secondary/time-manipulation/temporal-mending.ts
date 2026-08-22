@@ -14,7 +14,7 @@ export const TemporalMending: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You mend the wounds of yourself and nearby allies by placing your bodies in a past or future state where they are far less injured. Temporal Mending will immediately heal its targets and continue to heal them for an equal amount over the next 6 seconds. Additionally, affected allies will gain some resistance to slow effects and regeneration debuffs. Allies affected by the Accelerated effect will receive additional healing from this power.Recharge: Slow.",
+  "description": "You mend the wounds of yourself and nearby allies by placing your bodies in a past or future state where they are far less injured. Temporal Mending will immediately heal its targets and continue to heal them for an equal amount over the next 6 seconds. Additionally, affected allies will gain some resistance to slow effects and regeneration debuffs. Allies affected by the Accelerated effect will receive additional healing from this power.\n\nRecharge: Slow.",
   "shortHelp": "PBAoE, Ally +Heal, Heal Over Time, +Res(Slow, Regen Debuff)",
   "icon": "timemanipulation_temporalmending.png",
   "powerType": "Click",

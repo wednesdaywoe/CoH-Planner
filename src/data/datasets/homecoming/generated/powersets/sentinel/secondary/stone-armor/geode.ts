@@ -14,7 +14,7 @@ export const Geode: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "When you activate this power, you encase yourself in various protective mineral layers that can absorb incoming damage while you heal and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot stay in this Geode for more than 30 seconds. If enemies inflict enough damage, they can break you out of this effect.If Brimstone Armor is owned, this power will also grant Geothermal Power every 5 seconds, increasing the damage inflicted by Brimstone's Fire by 8% per stack.Recharge: Long.",
+  "description": "When you activate this power, you encase yourself in various protective mineral layers that can absorb incoming damage while you heal and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot stay in this Geode for more than 30 seconds. If enemies inflict enough damage, they can break you out of this effect.\n\nIf Brimstone Armor is owned, this power will also grant Geothermal Power every 5 seconds, increasing the damage inflicted by Brimstone's Fire by 8% per stack.\n\nRecharge: Long.",
   "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
   "icon": "stonearmor_geode.png",
   "powerType": "Toggle",
@@ -68,7 +68,6 @@ export const Geode: Power = {
       "mezResistance": 0.2,
       "recoveryBuff": 0.2,
       "regenBuff": 0.2,
-      "taunt": 0.2,
       "untouchable": 0.2
     },
     "knockback": {
@@ -107,11 +106,6 @@ export const Geode: Power = {
         "Redirects.Stone_Armor.Geode",
         "Redirects.Stone_Armor.Geode_Scaling"
       ]
-    },
-    "taunt": {
-      "ignoreStrength": true,
-      "scale": 999,
-      "table": "Melee_Ones"
     },
     "untouchable": {
       "ignoreStrength": true,

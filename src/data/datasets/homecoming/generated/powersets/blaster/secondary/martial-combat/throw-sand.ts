@@ -14,7 +14,7 @@ export const ThrowSand: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You grab some nearby debris and fling it towards a nearby foe, obstructing their vision and dazing them.Recharge: Long.",
+  "description": "You grab some nearby debris and fling it towards a nearby foe, obstructing their vision and dazing them.\n\nRecharge: Long.",
   "shortHelp": "Ranged (Cone), Foe Disorient, -Perception",
   "icon": "martialmanipulations_throwsand.png",
   "powerType": "Click",

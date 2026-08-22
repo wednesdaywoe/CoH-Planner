@@ -14,7 +14,7 @@ export const GraviticEmanation: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "Gravitic Emanation sends bolts of dark Nictus energy to multiple targets within a cone area in front of the caster. Gravitic Emanation deals only minor Negative Energy damage to each affected foe, but knocks them back, leaving them Disoriented and with reduced attack rate and movement speed.Damage: Minor.Recharge: Slow.",
+  "description": "Gravitic Emanation sends bolts of dark Nictus energy to multiple targets within a cone area in front of the caster. Gravitic Emanation deals only minor Negative Energy damage to each affected foe, but knocks them back, leaving them Disoriented and with reduced attack rate and movement speed.\n\nDamage: Minor.\nRecharge: Slow.",
   "shortHelp": "Ranged (Cone), Minor DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
   "icon": "umbralblast_graviticemanation.png",
   "powerType": "Click",

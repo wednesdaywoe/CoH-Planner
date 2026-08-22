@@ -14,7 +14,7 @@ export const ModerateOpening: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You perform a deadly Strike with your blades. This is a basic attack that deals a moderate amount of lethal damage. This power is needed for the Sweep combination attack.Sweep: One Thousand Cuts > Power Slice > Typhoon's Edge.",
+  "description": "You perform a deadly Strike with your blades. This is a basic attack that deals a moderate amount of lethal damage. This power is needed for the Sweep combination attack.\n\nSweep: One Thousand Cuts > Power Slice > Typhoon's Edge.",
   "shortHelp": "Melee, DMG(Lethal)",
   "icon": "dualblades_moderateopening.png",
   "powerType": "Click",

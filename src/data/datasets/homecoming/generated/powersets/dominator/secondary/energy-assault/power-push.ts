@@ -14,7 +14,7 @@ export const PowerPush: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "Power Push deals a high amount of Energy and Smashing damage and sends the target flying for a great distance. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode.Damage: Moderate.Recharge: Moderate.",
+  "description": "Power Push deals a high amount of Energy and Smashing damage and sends the target flying for a great distance. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Ranged Moderate DMG(Energy/Smash), Foe High Knockback, Chance for Energy Focus",
   "icon": "energyassault_powerpush.png",
   "powerType": "Click",

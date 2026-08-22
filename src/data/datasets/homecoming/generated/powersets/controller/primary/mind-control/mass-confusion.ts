@@ -14,7 +14,7 @@ export const MassConfusion: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "You can cause Mass Confusion within a group of foes, creating chaos. All affected foes within the area will turn and attack each other, ignoring all your allies. If you Confuse your foes before they noticed you, your presence will continue to go unnoticed.Notes: You will receive diminishedany Experience Points for foes defeated entirely by Confused enemies. This power has adaptive recharge. It has a base recharge of 8 seconds and each affected foe will increase the recharge by 14.5 seconds for a maximum total of 240 seconds.",
+  "description": "You can cause Mass Confusion within a group of foes, creating chaos. All affected foes within the area will turn and attack each other, ignoring all your allies. If you Confuse your foes before they noticed you, your presence will continue to go unnoticed.\n\nNotes:\nYou will receive diminishedany Experience Points for foes defeated entirely by Confused enemies.\n\nThis power has adaptive recharge. It has a base recharge of 8 seconds and each affected foe will increase the recharge by 14.5 seconds for a maximum total of 240 seconds.",
   "shortHelp": "Ranged (Targeted AoE), Foe Confuse",
   "icon": "mentalcontrol_confuse.png",
   "powerType": "Click",

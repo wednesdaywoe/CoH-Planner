@@ -14,7 +14,7 @@ export const Hailstones: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You cause the air around the foe to rapidly condense, causing hailstones to crash down, dealing Cold damage. There is a chance that an especially large chunk of hail will form, knocking the target down. While in a Storm Cell, targets are much more likely to get knocked down by large chunks of hail.",
+  "description": "You cause the air around the foe to rapidly condense, causing hailstones to crash down, dealing Cold damage. There is a chance that an especially large chunk of hail will form, knocking the target down.\n\nWhile in a Storm Cell, targets are much more likely to get knocked down by large chunks of hail.",
   "shortHelp": "Ranged, DMG(Cold), Chance for Knockdown",
   "icon": "stormblast_hailstones.png",
   "powerType": "Click",

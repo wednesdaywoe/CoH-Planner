@@ -14,7 +14,7 @@ export const Moonbeam: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You release a burst of negative energy to foes around you dealing moderate Negative Energy damage, reducing their chance to hit and sapping their health over time.Damage: Light.Recharge: Slow.",
+  "description": "You release a burst of negative energy to foes around you dealing moderate Negative Energy damage, reducing their chance to hit and sapping their health over time.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE, Light DMG(Negative), Foe -To Hit, Minor DoT(Negative)",
   "icon": "darknessassault_deathshroud.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const Dazzle: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Incapacitates a distant foe with a brilliant explosion of pyrotechnic energy. The target is left helpless for the duration.This power has a chance of Blasting Off targets into the air.",
+  "description": "Incapacitates a distant foe with a brilliant explosion of pyrotechnic energy. The target is left helpless for the duration.\n\nThis power has a chance of Blasting Off targets into the air.",
   "shortHelp": "Ranged, Moderate DMG (Fire, Energy), Foe Hold, Chance for Blast Off",
   "icon": "pyrotechnic_dazzle.png",
   "powerType": "Click",

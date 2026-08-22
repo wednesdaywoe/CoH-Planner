@@ -14,7 +14,7 @@ export const Special1: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "Unleashes a series of strong attacks on your foe, dealing high lethal damage and knocking them down. This power is needed for the Attack Vitals combination attack.Attack Vitals: Ablating Strike > Vengeful Slice > Sweeping Strike.",
+  "description": "Unleashes a series of strong attacks on your foe, dealing high lethal damage and knocking them down. This power is needed for the Attack Vitals combination attack.\n\nAttack Vitals: Ablating Strike > Vengeful Slice > Sweeping Strike.",
   "shortHelp": "Melee, DMG(Lethal), Knockdown",
   "icon": "dualblades_special1.png",
   "powerType": "Click",

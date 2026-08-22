@@ -14,7 +14,7 @@ export const BrightNovaScatter: Power = {
   "available": 3,
   "autoIssue": true,
   "free": true,
-  "description": "Bright Nova Scatter sends bolts of Kheldian light energy to multiple targets at once within a cone area in front of the caster. Bright Nova Scatter deals moderate energy damage to each affected target and reduces their defense. This power is only available while in Bright Nova Form.Damage: Light.Recharge: Slow.",
+  "description": "Bright Nova Scatter sends bolts of Kheldian light energy to multiple targets at once within a cone area in front of the caster. Bright Nova Scatter deals moderate energy damage to each affected target and reduces their defense. This power is only available while in Bright Nova Form.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "Ranged (Cone), Light DMG(Energy), Foe -DEF",
   "icon": "luminousblast_protonscatter.png",
   "powerType": "Click",

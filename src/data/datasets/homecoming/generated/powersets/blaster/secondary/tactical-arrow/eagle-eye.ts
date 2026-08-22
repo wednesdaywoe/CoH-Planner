@@ -14,7 +14,7 @@ export const EagleEye: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You have developed an incredible eyesight. Your accuracy is dramatically improved and your perception increased allowing you to better see distant and stealthy foes. You have also become resistant to powers that debuff your accuracy or chance to hit. In addition to being more accurate, your training also allows you to regenerate health and recovery endurance at an accelerated rate while this power is active. However, only half of this regeneration bonus is enhanceable.Recharge: Moderate.",
+  "description": "You have developed an incredible eyesight. Your accuracy is dramatically improved and your perception increased allowing you to better see distant and stealthy foes. You have also become resistant to powers that debuff your accuracy or chance to hit. In addition to being more accurate, your training also allows you to regenerate health and recovery endurance at an accelerated rate while this power is active. However, only half of this regeneration bonus is enhanceable.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Self +ACC, +Perception, +Res(DeBuff ToHit), +Regeneration, +Recovery",
   "icon": "tacticalarrow_eagleeye.png",
   "powerType": "Toggle",

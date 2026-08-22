@@ -14,7 +14,7 @@ export const SoulExtraction: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "You can extract the souls from your Undead Henchmen and summon their spectral essence to do your bidding. The power of each soul is dependent upon the type of undead Henchman you extract it from, however it will always be one level lower than you. Unlike your other Henchman, these extracted Souls are only loosely bound to your control and will quickly move on to the next world. These Souls cannot gain new powers with Enchanted Undead or Dark Empowerment. If a Soul's original body is defeated then the Soul will also be defeated. If you activate Soul Extraction again while a Soul is active, it will simply be replaced.",
+  "description": "You can extract the souls from your Undead Henchmen and summon their spectral essence to do your bidding. The power of each soul is dependent upon the type of undead Henchman you extract it from, however it will always be one level lower than you. Unlike your other Henchman, these extracted Souls are only loosely bound to your control and will quickly move on to the next world.\n\nThese Souls cannot gain new powers with Enchanted Undead or Dark Empowerment. If a Soul's original body is defeated then the Soul will also be defeated. If you activate Soul Extraction again while a Soul is active, it will simply be replaced.",
   "shortHelp": "Summon Ghost (Special)",
   "icon": "necromancy_soulextraction.png",
   "powerType": "Click",

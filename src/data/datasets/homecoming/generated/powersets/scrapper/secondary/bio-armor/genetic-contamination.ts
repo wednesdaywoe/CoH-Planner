@@ -14,7 +14,7 @@ export const GeneticContamination: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You're capable of breaking down the genetic material of your foes with a powerful toxin that is produced by your Bio Armor. Nearby foes affected by this poison will suffer toxic damage over time as well as dealing reduced damage. While Defensive Adaptation is active this power's damage debuff is increased in effectiveness.Damage: Minor.Recharge: Fast.",
+  "description": "You're capable of breaking down the genetic material of your foes with a powerful toxin that is produced by your Bio Armor. Nearby foes affected by this poison will suffer toxic damage over time as well as dealing reduced damage. While Defensive Adaptation is active this power's damage debuff is increased in effectiveness.\n\nDamage: Minor.\nRecharge: Fast.",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Toxic), -Damage(All)",
   "icon": "bioorganicarmor_geneticcontamination.png",
   "powerType": "Toggle",

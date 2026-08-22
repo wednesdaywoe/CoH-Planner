@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Sonic Attack lets you use the power of sound waves to damage and weaken your foes.',
+  description: "Sonic Attack lets you use the power of sound waves to damage and weaken your foes.",
   icon: 'sonic_attack_set.ico',
   archetype: 'corruptor',
   category: 'primary',

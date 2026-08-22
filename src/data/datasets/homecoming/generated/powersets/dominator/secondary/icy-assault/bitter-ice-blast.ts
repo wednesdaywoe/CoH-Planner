@@ -14,7 +14,7 @@ export const BitterIceBlast: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "A slower yet more powerful version of Ice Blast, Bitter Ice Blast deals much more damage and can also reduce your enemy's chance to hit. Like other Ice Blast powers, Bitter Ice Blast can Slow a target's movement and attack speed.Damage: High.Recharge: Slow.",
+  "description": "A slower yet more powerful version of Ice Blast, Bitter Ice Blast deals much more damage and can also reduce your enemy's chance to hit. Like other Ice Blast powers, Bitter Ice Blast can Slow a target's movement and attack speed.\n\nDamage: High.\nRecharge: Slow.",
   "shortHelp": "Ranged, High DMG(Cold/Smash), Foe -Recharge, -SPD, -To Hit",
   "icon": "iceassault_bitterblast.png",
   "powerType": "Click",

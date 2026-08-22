@@ -14,7 +14,7 @@ export const Pulsar: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "Generates a brilliant pulse of Kheldian light around you that stuns nearby foes. Affected foes are Disoriented and unable to defend themselves.Recharge: Slow.",
+  "description": "Generates a brilliant pulse of Kheldian light around you that stuns nearby foes. Affected foes are Disoriented and unable to defend themselves.\n\nRecharge: Slow.",
   "shortHelp": "PBAoE, Foe Disorient",
   "icon": "luminousblast_pulsar.png",
   "powerType": "Click",

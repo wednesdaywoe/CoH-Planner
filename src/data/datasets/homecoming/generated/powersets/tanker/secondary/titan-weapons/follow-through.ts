@@ -14,7 +14,7 @@ export const FollowThrough: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "You Follow Through with a massive attack dealing Superior Smashing damage, knocking your opponent down and possibly stunning them.Notes: Follow Through requires Momentum in order to be activated.",
+  "description": "You Follow Through with a massive attack dealing Superior Smashing damage, knocking your opponent down and possibly stunning them.\n\nNotes: Follow Through requires Momentum in order to be activated.",
   "shortHelp": "Melee, DMG(Smashing), Knockdown, Stun, Requires Momentum",
   "icon": "titanweapons_followthrough.png",
   "powerType": "Click",

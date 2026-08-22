@@ -14,7 +14,7 @@ export const Detonator: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "A good Mastermind always plans ahead, but a great one knows when to make a strategic sacrifice. You have equipped all your Henchmen with explosives. When the time is right, select a Henchman and set off the Detonator. Recharge: Very Long.",
+  "description": "A good Mastermind always plans ahead, but a great one knows when to make a strategic sacrifice. You have equipped all your Henchmen with explosives. When the time is right, select a Henchman and set off the Detonator.\n\nRecharge: Very Long.",
   "shortHelp": "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_aoemassivedamage.png",
   "powerType": "Click",

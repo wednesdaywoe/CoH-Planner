@@ -14,7 +14,7 @@ export const ThunderKick: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You can perform a strong Thunder Kick that hits so hard it can Disorient your target.Damage: Moderate.Recharge: Moderate.",
+  "description": "You can perform a strong Thunder Kick that hits so hard it can Disorient your target.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Melee, Moderate DMG(Smash), Minor Disorient",
   "icon": "martialassault_thunderkick.png",
   "powerType": "Click",

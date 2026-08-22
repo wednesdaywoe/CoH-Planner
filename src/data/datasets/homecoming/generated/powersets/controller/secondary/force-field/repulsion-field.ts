@@ -14,7 +14,7 @@ export const RepulsionField: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "This Toggle power creates a field that keeps all foes at bay, protecting all allies inside from melee or short ranged attacks. More powerful foes may be able to penetrate the Repulsion Field, but may slip and get knocked down and forced back if they try.Enemies that get too close will be violently knocked away. In PvP, Each villain that is knocked away costs you additional Endurance.Note: Slotting Knockback to Knockdown enhancement in this power will disable Repel.",
+  "description": "This Toggle power creates a field that keeps all foes at bay, protecting all allies inside from melee or short ranged attacks. More powerful foes may be able to penetrate the Repulsion Field, but may slip and get knocked down and forced back if they try.\n\nEnemies that get too close will be violently knocked away. In PvP, Each villain that is knocked away costs you additional Endurance.\n\nNote: Slotting Knockback to Knockdown enhancement in this power will disable Repel.",
   "shortHelp": "Toggle: PBAoE Knockback",
   "icon": "forcefield_repulsionfield.png",
   "powerType": "Toggle",

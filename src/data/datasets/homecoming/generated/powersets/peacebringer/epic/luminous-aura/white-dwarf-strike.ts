@@ -14,7 +14,7 @@ export const WhiteDwarfStrike: Power = {
   "available": 19,
   "autoIssue": true,
   "free": true,
-  "description": "The White Dwarf Strike is a moderate melee attack that releases Kheldian light on impact, which can Knock Down foes, and reduce a target's Defense. This power is only available while in White Dwarf Form.Damage: Light.Recharge: Very Fast.",
+  "description": "The White Dwarf Strike is a moderate melee attack that releases Kheldian light on impact, which can Knock Down foes, and reduce a target's Defense. This power is only available while in White Dwarf Form.\n\nDamage: Light.\nRecharge: Very Fast.",
   "shortHelp": "Melee, Light DMG(Smash/Energy), Foe -DEF, Knockback",
   "icon": "luminousaura_whitedwarfstrike.png",
   "powerType": "Click",

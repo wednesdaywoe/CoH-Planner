@@ -14,7 +14,7 @@ export const LowKick: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "You execute a quick but powerful kick targeting your foe's leg in an attempt to cripple their movement. Shin Breaker deals Superior Smashing damage and moderately reduces your target's movement speed and defense for a short time. Shin Breaker is a Combo Builder and adds 1 Combo Level.Damage: Superior.Recharge: Moderate.",
+  "description": "You execute a quick but powerful kick targeting your foe's leg in an attempt to cripple their movement. Shin Breaker deals Superior Smashing damage and moderately reduces your target's movement speed and defense for a short time. Shin Breaker is a Combo Builder and adds 1 Combo Level.\n\nDamage: Superior.\nRecharge: Moderate.",
   "shortHelp": "Melee, Superior DMG(Smash), Foe -Speed, -Defense, Combo Builder",
   "icon": "brawling_lowkick.png",
   "powerType": "Click",

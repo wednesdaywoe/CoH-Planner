@@ -14,7 +14,7 @@ export const BuildUp: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.Recharge: Long.",
+  "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.\n\nRecharge: Long.",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "mace_buildup.png",
   "powerType": "Click",

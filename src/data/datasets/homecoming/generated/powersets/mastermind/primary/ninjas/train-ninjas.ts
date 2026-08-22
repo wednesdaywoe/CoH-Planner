@@ -14,7 +14,7 @@ export const TrainNinjas: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "Train your Ninja Henchmen with more advanced techniques and weaponry. This power permanently bestows new powers and abilities to all of your Ninja Henchman. The powers gained are unique and dependent upon the type of Ninja Henchman. Your Ninja Henchman will also become more evasive against all forms of positional attacks and gain 3% more Critical Hit chance. This power only works on your Ninja Henchmen and you can only Train your Ninja Henchmen once with this power.",
+  "description": "Train your Ninja Henchmen with more advanced techniques and weaponry. This power permanently bestows new powers and abilities to all of your Ninja Henchman. The powers gained are unique and dependent upon the type of Ninja Henchman.\n\nYour Ninja Henchman will also become more evasive against all forms of positional attacks and gain 3% more Critical Hit chance. This power only works on your Ninja Henchmen and you can only Train your Ninja Henchmen once with this power.",
   "shortHelp": "Ranged, Train Ninja Henchman",
   "icon": "ninjas_trainninjas.png",
   "powerType": "Click",

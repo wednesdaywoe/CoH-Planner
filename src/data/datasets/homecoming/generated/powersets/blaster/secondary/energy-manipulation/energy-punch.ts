@@ -14,7 +14,7 @@ export const EnergyPunch: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Powerful focused punch that may Disorient your opponent!Damage: High.Recharge: Moderate.",
+  "description": "Powerful focused punch that may Disorient your opponent!\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DMG(Smash/Energy), Foe Disorient",
   "icon": "energymanipulation_energypunch.png",
   "powerType": "Click",

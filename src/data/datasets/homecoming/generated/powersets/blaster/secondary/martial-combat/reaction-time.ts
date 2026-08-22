@@ -14,7 +14,7 @@ export const ReactionTime: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You attune yourself to the world around you, moving with preternatural speed. All enemies nearby move slowly and have reduced recharge, and you can absorb small amounts of damage every 2 seconds. When Reaction Time is deactivated, you gain a burst of speed for a short duration, increasing your own recharge and move speed.Recharge: Moderate.",
+  "description": "You attune yourself to the world around you, moving with preternatural speed. All enemies nearby move slowly and have reduced recharge, and you can absorb small amounts of damage every 2 seconds. When Reaction Time is deactivated, you gain a burst of speed for a short duration, increasing your own recharge and move speed.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle (PBAoE), Self Absorb over Time, +Recovery, Foe –Rech, - Move, Special",
   "icon": "martialmanipulation_reactiontime.png",
   "powerType": "Toggle",

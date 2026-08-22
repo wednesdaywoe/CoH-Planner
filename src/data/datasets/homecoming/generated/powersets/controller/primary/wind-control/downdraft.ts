@@ -14,7 +14,7 @@ export const Downdraft: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You gather air above your target before forcefully pressurizing it into a downward flowing vortex. The force of the downdraft prevents your target from moving, effectively holding them in place and preventing flight. The force of the downdraft leaves the target winded, reducing their movement and attack speeds for a short time while they recover. This power builds Pressure.Damage: High.Recharge: Moderate.",
+  "description": "You gather air above your target before forcefully pressurizing it into a downward flowing vortex. The force of the downdraft prevents your target from moving, effectively holding them in place and preventing flight. The force of the downdraft leaves the target winded, reducing their movement and attack speeds for a short time while they recover. This power builds Pressure.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Ranged, Hold(Foe), -Movement(Foe), -Rech(Foe), -Fly(Foe), Pressure Builder (Self)",
   "icon": "windcontrol_downdraft.png",
   "powerType": "Click",

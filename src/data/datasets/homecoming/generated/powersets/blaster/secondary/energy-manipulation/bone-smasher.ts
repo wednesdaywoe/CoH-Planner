@@ -14,7 +14,7 @@ export const BoneSmasher: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "The Bone Smasher is a slow attack, but makes up for it with a good amount of damage. Has a greater chance to Disorient than Energy Punch.Damage: Superior.Recharge: Slow.",
+  "description": "The Bone Smasher is a slow attack, but makes up for it with a good amount of damage. Has a greater chance to Disorient than Energy Punch.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Melee, Superior DMG(Smash/Energy), Foe Disorient",
   "icon": "energymanipulation_bonesmasher.png",
   "powerType": "Click",

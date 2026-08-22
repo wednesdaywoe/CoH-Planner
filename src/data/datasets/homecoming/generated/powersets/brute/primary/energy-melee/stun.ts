@@ -14,7 +14,7 @@ export const Stun: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "You focus your internal energy on your fists and release it once you hit your target unleashing an energy wave that hurts and disorients multiple enemies. This power will hit up to 5 additional foes if used while in Energy Focus mode.Notes: Power Crash is unaffected by Arc changes.",
+  "description": "You focus your internal energy on your fists and release it once you hit your target unleashing an energy wave that hurts and disorients multiple enemies. This power will hit up to 5 additional foes if used while in Energy Focus mode.\n\nNotes: Power Crash is unaffected by Arc changes.",
   "shortHelp": "Melee (Cone), DMG(Smash/Energy), Foe Disorient, Special",
   "icon": "powerpunch_powercrash.png",
   "powerType": "Click",

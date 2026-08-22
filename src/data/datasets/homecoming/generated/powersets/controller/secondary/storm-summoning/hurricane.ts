@@ -14,7 +14,7 @@ export const Hurricane: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You can summon a Hurricane. The wind and rain from this massive storm reduce the range and chance to hit of nearby foes. The massive winds of this storm continuously force foes away from you.Recharge: Moderate.",
+  "description": "You can summon a Hurricane. The wind and rain from this massive storm reduce the range and chance to hit of nearby foes. The massive winds of this storm continuously force foes away from you.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: PBAoE, Foe -Range, -To Hit, Repel, Knockback",
   "icon": "stormsummoning_hurricane.png",
   "powerType": "Toggle",

@@ -14,7 +14,7 @@ export const GenomicEvolution: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "Your body has evolved to protect you from all damage types. As a result you receive a moderate bonus to damage resistance against all types.*While Offensive Adaptation is active you gain increased range buff.*While Defensive Adaptation is active you gain a bonus to damage resistance.*While Efficient Adaptation is active you gain a power bonus to your max endurance.Bonuses granted from Adaptations are unenhanceable.This power is always active and cost no endurance.",
+  "description": "Your body has evolved to protect you from all damage types. As a result you receive a moderate bonus to damage resistance against all types.\n\n*While Offensive Adaptation is active you gain increased range buff.\n*While Defensive Adaptation is active you gain a bonus to damage resistance.\n*While Efficient Adaptation is active you gain a power bonus to your max endurance.\n\nBonuses granted from Adaptations are unenhanceable.\n\nThis power is always active and cost no endurance.",
   "shortHelp": "Auto: +Res(All), +Special",
   "icon": "bioorganicarmor_genomicevolution.png",
   "powerType": "Auto",

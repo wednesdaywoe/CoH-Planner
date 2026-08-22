@@ -14,7 +14,7 @@ export const ChillingEmbrace: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their damage and movement speed. The low air temperatures may also deal some damage over time to the snared foes.Recharge: Very Fast.",
+  "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their damage and movement speed. The low air temperatures may also deal some damage over time to the snared foes.\n\nRecharge: Very Fast.",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Cold), Foe -Recharge, -Speed",
   "icon": "iceassault_chillingembrace.png",
   "powerType": "Toggle",

@@ -14,7 +14,7 @@ export const FuturePain: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You lay your hands on your foe dig into his future timeline for the most painful experience the foe will ever go through and plant those memories on his present mind inflicting great psionic damage. The visions of this pain may be enough to make your foe cower in fear. Targets affected by the Delayed effect will suffer a more terrifying experience.Damage: Extreme.Recharge: Slow.",
+  "description": "You lay your hands on your foe dig into his future timeline for the most painful experience the foe will ever go through and plant those memories on his present mind inflicting great psionic damage. The visions of this pain may be enough to make your foe cower in fear. Targets affected by the Delayed effect will suffer a more terrifying experience.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Melee, DMG(Psionic), Foe Fear",
   "icon": "timemanipulation_futurepain.png",
   "powerType": "Click",

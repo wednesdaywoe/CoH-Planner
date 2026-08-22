@@ -14,7 +14,7 @@ export const PhotonSeekers: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You manifest 3 spheres of light from your Kheldian essence. These spheres will follow you until they detect an enemy target. The Photon Seekers will then zero in on their targets and detonate on impact. The explosion is small but devastating and may affect multiple foes if they are near the target.Recharge: Long.",
+  "description": "You manifest 3 spheres of light from your Kheldian essence. These spheres will follow you until they detect an enemy target. The Photon Seekers will then zero in on their targets and detonate on impact. The explosion is small but devastating and may affect multiple foes if they are near the target.\n\nRecharge: Long.",
   "shortHelp": "Summon Drones: Ranged Special, High DMG(Energy)",
   "icon": "luminousblast_photonseekers.png",
   "powerType": "Click",

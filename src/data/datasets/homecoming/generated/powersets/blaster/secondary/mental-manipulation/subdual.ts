@@ -14,7 +14,7 @@ export const Subdual: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Subdual deals moderate Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.Damage: Light.Recharge: Fast.",
+  "description": "Subdual deals moderate Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Moderate DOT(Psionic), Foe Immobilize",
   "icon": "mentalcontrol_subdue.png",
   "powerType": "Click",

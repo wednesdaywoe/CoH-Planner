@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You are able to harness the power of the atom to defeat foes at both close and far ranges. Radiation Assault attacks have a chance to inflict the Contaminated state on a target for a moderate amount of time. Powers that deal greater damage, have a longer recharge time and animation time have a greater chance to inflict Contaminated. Single target attacks hitting Contaminated targets causes a portion of that power\'s damage to also hit nearby foes. Radiation Assault attacks primarily deal smashing and energy damage, but this set is also capable of dealing some toxic damage.',
+  description: "You are able to harness the power of the atom to defeat foes at both close and far ranges. Radiation Assault attacks have a chance to inflict the Contaminated state on a target for a moderate amount of time. Powers that deal greater damage, have a longer recharge time and animation time have a greater chance to inflict Contaminated. Single target attacks hitting Contaminated targets causes a portion of that power's damage to also hit nearby foes. Radiation Assault attacks primarily deal smashing and energy damage, but this set is also capable of dealing some toxic damage.",
   icon: 'radiation_blast_set.ico',
   archetype: 'guardian',
   category: 'primary',

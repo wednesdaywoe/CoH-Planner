@@ -14,7 +14,7 @@ export const CrowdControl: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "You swing your mace in a wide arc in front of you. This attack strikes all foes within melee range, deals them serious damage and minor Toxic damage over time, and knocks them down.Notes: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.",
+  "description": "You swing your mace in a wide arc in front of you. This attack strikes all foes within melee range, deals them serious damage and minor Toxic damage over time, and knocks them down.\n\nNotes: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.",
   "shortHelp": "Melee (Cone), DMG(Smash), Minor DoT(Toxic), Foe Knockback",
   "icon": "banespider_crowdcontrol.png",
   "powerType": "Click",

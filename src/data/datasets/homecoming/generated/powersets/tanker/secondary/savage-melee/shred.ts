@@ -14,7 +14,7 @@ export const Shred: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You rapidly slash at your foes several times causing a moderate amount of damage to all enemies in front of you and reduce their defense. Shred also causes minor lethal damage over time. This power grants 1 stack of Blood Frenzy.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
+  "description": "You rapidly slash at your foes several times causing a moderate amount of damage to all enemies in front of you and reduce their defense. Shred also causes minor lethal damage over time. This power grants 1 stack of Blood Frenzy.\n\nNotes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Melee (Cone), Foe DoT (Lethal), -Def(All), Self +1 Blood Frenzy",
   "icon": "savagemelee_shred.png",
   "powerType": "Click",

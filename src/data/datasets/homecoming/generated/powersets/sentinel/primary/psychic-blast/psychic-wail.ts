@@ -14,7 +14,7 @@ export const PsychicWail: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes which deals Extreme Psionic damage. Those that survive will have a severely reduced attack rate and may be left Disoriented.Damage: Superior.Recharge: Long.",
+  "description": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes which deals Extreme Psionic damage. Those that survive will have a severely reduced attack rate and may be left Disoriented.\n\nDamage: Superior.\nRecharge: Long.",
   "shortHelp": "PBAoE, Superior DMG(Psionic), Foe Disorient -Recharge",
   "icon": "psychicblast_psychicwail.png",
   "powerType": "Click",

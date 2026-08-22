@@ -14,7 +14,7 @@ export const PowerBurst: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "A devastating attack that can knock your target off their feet. This power will inflict bonus damage if used while in Energy Focus mode.Damage: Superior.Recharge: Slow.",
+  "description": "A devastating attack that can knock your target off their feet. This power will inflict bonus damage if used while in Energy Focus mode.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Ranged, Superior DMG(Energy/Smash), Foe Knockback, Special",
   "icon": "energyassault_powerburst.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const TacticalUpgrade: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "Permanently Upgrade the most advanced tactical weapons and gear to all of your Mercenary Henchman. The Tactically Upgraded Mercenaries will gain powers, weapons and munitions. The powers gained are unique and dependent upon the type of Mercenary Henchman that is Upgraded.Your Mercenary Henchmen will also become more evasive towards Ranged and AoE attacks. This power only works on your Mercenary Henchmen and you can only Upgrade your Mercenary Henchmen once with this power.",
+  "description": "Permanently Upgrade the most advanced tactical weapons and gear to all of your Mercenary Henchman. The Tactically Upgraded Mercenaries will gain powers, weapons and munitions. The powers gained are unique and dependent upon the type of Mercenary Henchman that is Upgraded.\n\nYour Mercenary Henchmen will also become more evasive towards Ranged and AoE attacks. This power only works on your Mercenary Henchmen and you can only Upgrade your Mercenary Henchmen once with this power.",
   "shortHelp": "Ranged, Upgrade Mercenary Henchman",
   "icon": "paramilitary_tacticalupgrade.png",
   "powerType": "Click",

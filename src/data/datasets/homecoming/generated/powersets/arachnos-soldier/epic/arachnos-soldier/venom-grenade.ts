@@ -14,7 +14,7 @@ export const VenomGrenade: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.Notes: If you take this power you cannot also take the Crab Spider version.",
+  "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.\n\nNotes: If you take this power you cannot also take the Crab Spider version.",
   "shortHelp": "Ranged (Targeted AoE), DoT(Toxic), Foe -Res(All)",
   "icon": "arachnossoldier_venomgrenade.png",
   "powerType": "Click",
@@ -192,7 +192,7 @@ export const VenomGrenade: Power = {
         }
       },
       "shortHelp": "Ranged (Targeted AoE), DoT(Toxic), Foe -Res(All)",
-      "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.Notes: If you take this power you cannot also take the Wolf Spider version.Damage: Light.Recharge: Slow.",
+      "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.\n\nNotes: If you take this power you cannot also take the Wolf Spider version.\n\nDamage: Light.\nRecharge: Slow.",
       "effectArea": "AoE",
       "targetType": "Foe",
       "powerType": "Click",
@@ -488,7 +488,7 @@ export const VenomGrenade: Power = {
         }
       },
       "shortHelp": "Ranged (Targeted AoE), DoT(Toxic), Foe -Res(All)",
-      "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.Notes: If you take this power you cannot also take the Crab Spider version.Damage: Light.Recharge: Slow.",
+      "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.\n\nNotes: If you take this power you cannot also take the Crab Spider version.\n\nDamage: Light.\nRecharge: Slow.",
       "effectArea": "AoE",
       "targetType": "Foe",
       "powerType": "Click",

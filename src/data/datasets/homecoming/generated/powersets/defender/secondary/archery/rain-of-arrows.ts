@@ -14,7 +14,7 @@ export const RainofArrows: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "You unleash a Rain of Arrows on a targeted location, damaging foes within a large area.Damage: Extreme (DoT).Recharge: Long.",
+  "description": "You unleash a Rain of Arrows on a targeted location, damaging foes within a large area.\n\nDamage: Extreme (DoT).\nRecharge: Long.",
   "shortHelp": "Ranged (Location AoE), DoT(Lethal)",
   "icon": "archery_rainofarrows.png",
   "powerType": "Click",

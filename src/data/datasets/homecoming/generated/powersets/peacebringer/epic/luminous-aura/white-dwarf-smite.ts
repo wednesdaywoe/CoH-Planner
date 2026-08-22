@@ -14,7 +14,7 @@ export const WhiteDwarfSmite: Power = {
   "available": 19,
   "autoIssue": true,
   "free": true,
-  "description": "White Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. White Dwarf Smite can also bring down fliers, and reduce their defense. This power is only available while in White Dwarf Form.Damage: Light.Recharge: Fast.",
+  "description": "White Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. White Dwarf Smite can also bring down fliers, and reduce their defense. This power is only available while in White Dwarf Form.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Melee, Light DMG(Energy/Smash), Foe -DEF, -Fly, Disorient",
   "icon": "luminousaura_whitedwarfsmite.png",
   "powerType": "Click",

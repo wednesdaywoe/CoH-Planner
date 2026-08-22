@@ -14,6 +14,20 @@
       "path": "scripts/audit-coverage-census.cjs",
       "reason": "Wired into canonical's regen-all.cjs and package.json as audit:census. Same shape as the twins ratchet: an unreferenced beta copy whose --gate leg reads scripts/audit-census-baseline.json, absent there.",
       "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/audit-override-staleness.cjs",
+      "reason": "Wired into canonical's regen-all.cjs and package.json as audit:override-staleness. Cross-fork by construction: it grades every dataset's override layer against that dataset's own generated twin, and the beta carries neither the four-dataset tree nor the generated layer to compare.",
+      "gap": "BRAIN-2"
+    },
+    {
+      "path": "scripts/convert-inherents.cjs",
+      "reason": "Canonical-only converter for the archetype inherents tree, wired into regen-all.cjs. The beta has never carried the file, so the manifest's present-in-both check never fired on it and its absence was undeclared rather than adjudicated — found while routing every display_help emitter through helpText. Both names of it in the beta are prose in comments (the convert-side twin, the family it omits), not a require.",
+      "gap": "HELPTEXT-1",
+      "mentions": [
+        "scripts/convert-accolades.cjs",
+        "scripts/detect-chance-mod-selectors.cjs"
+      ]
     }
   ],
   "betaOnly": [
@@ -64,12 +78,12 @@
     {
       "path": "scripts/_display-text.cjs",
       "status": "identical",
-      "sha256": "df6371abe6baabc406e848b6fc0cc15fc7276480b2c10efd268ffab42f41e105"
+      "sha256": "886293472dcfee0d43662bded23775b3874f71ef29167ba042439a9e15fedbf6"
     },
     {
       "path": "scripts/_display-text.d.cts",
       "status": "identical",
-      "sha256": "1996ecbb8b924903b877c88fc21623fffd8b51a55df90f023dca3208b56fc816"
+      "sha256": "fb359ffdebd93d16e1161acbb4ab7b46847587265749bd9e1215d558c9cec4a9"
     },
     {
       "path": "scripts/_export-join.cjs",
@@ -144,7 +158,7 @@
     {
       "path": "scripts/audit-allowed-set-categories.cjs",
       "status": "identical",
-      "sha256": "acb93bc85f72ef08466ecd8e665938e4d1d51cfe531628a83a7238f19423b96e"
+      "sha256": "5a85158aae65fea8372378944e96d3b0d6f5c637d24a799fcaf7ac8f156b64e9"
     },
     {
       "path": "scripts/bridge-attrib-one.cjs",
@@ -159,7 +173,7 @@
     {
       "path": "scripts/convert-accolades.cjs",
       "status": "identical",
-      "sha256": "21ab049b97f7f3fa871b7cdca44e8b77e7a1c49b94c4c66e7efa339c505b9556"
+      "sha256": "fb3fdc6442785708786500fd6b234b3bd04b28749ed92755acf0243c61b054a0"
     },
     {
       "path": "scripts/convert-all-powersets.cjs",
@@ -174,7 +188,7 @@
     {
       "path": "scripts/convert-basic-inherents.cjs",
       "status": "identical",
-      "sha256": "b5fff947bb41e60ec006dc9020a75200b9248967162276e1700f2ce9d4218eb7"
+      "sha256": "4531b1529ee280b2a4d7d8b04962f5a1b96d82dcbd2eff533ee751b48de97106"
     },
     {
       "path": "scripts/convert-enhancement-curves.cjs",
@@ -184,7 +198,7 @@
     {
       "path": "scripts/convert-epic-pools.cjs",
       "status": "identical",
-      "sha256": "9bf08c3a1499a10b13b564e2097a44dc4b2ab9dbe7d0d7e138cde0b635faa62a"
+      "sha256": "846b35661d854415ce09299426fdd456bf1563cc89e150f2ae2732a819b4274b"
     },
     {
       "path": "scripts/convert-incarnate-effects.cjs",
@@ -204,12 +218,12 @@
     {
       "path": "scripts/convert-pool-powers.cjs",
       "status": "identical",
-      "sha256": "ef385164bd1c3c6d0e83e474cad84b5f23ad55042f4a80913cf6dcea27cab108"
+      "sha256": "c032845a843a062b3b2ac94849c66b4a231dc483df9a534306e5df604dc7d3ba"
     },
     {
       "path": "scripts/convert-powerset.cjs",
       "status": "identical",
-      "sha256": "9f1ae0f354f272c2492d35c5bc1f0b5209b0079e9072ab9a975c00b205f1d138"
+      "sha256": "b6cf6d19514414fd59404edd3cbbe859a8e904a69c544179e44e926c0fa834f5"
     },
     {
       "path": "scripts/convert-salvage.cjs",

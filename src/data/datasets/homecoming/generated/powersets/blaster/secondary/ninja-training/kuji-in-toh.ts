@@ -14,7 +14,7 @@ export const KujiInToh: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "Kuji-In Toh invokes the power of Toh, or harmony with the universe. Focusing your inner power, you can make your body regenerate and recover endurance for a while. You also gain resistance to psionic attacks and fear protection.Recharge: Long.",
+  "description": "Kuji-In Toh invokes the power of Toh, or harmony with the universe. Focusing your inner power, you can make your body regenerate and recover endurance for a while. You also gain resistance to psionic attacks and fear protection.\n\nRecharge: Long.",
   "shortHelp": "Self +Regen, +Recovery, Res(Psionic, Fear)",
   "icon": "ninjatools_toh.png",
   "powerType": "Click",

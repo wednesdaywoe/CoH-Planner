@@ -14,7 +14,7 @@ export const CSFragGrenade: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "Launches an M30 Grenade at long range from an arm of your backpack. The explosion from this grenade affects all within the blast and can knock them back.Notes: If you take this power, you cannot take the Wolf Spider version.",
+  "description": "Launches an M30 Grenade at long range from an arm of your backpack. The explosion from this grenade affects all within the blast and can knock them back.\n\nNotes: If you take this power, you cannot take the Wolf Spider version.",
   "shortHelp": "Ranged(Targeted AoE), DMG(Lethal/Fire), Foe Knockback",
   "icon": "crabspider_fraggrenade.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const StoneMallet: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Your control over the earth allows you to form a mallet of solid stone. This Stone Mallet deals heavy damage, and can knock down weak foes.Damage: Moderate.Recharge: Moderate.",
+  "description": "Your control over the earth allows you to form a mallet of solid stone. This Stone Mallet deals heavy damage, and can knock down weak foes.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Melee, Moderate DMG(Smash), Knockback",
   "icon": "earthassault_stonemallet.png",
   "powerType": "Click",

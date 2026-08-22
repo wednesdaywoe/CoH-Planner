@@ -14,7 +14,7 @@ export const ArcofDestruction: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down. Arc of Destruction may only be used while on the ground.Notes: Arc of Destruction is unaffected by Arc changes.",
+  "description": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down. Arc of Destruction may only be used while on the ground.\n\nNotes: Arc of Destruction is unaffected by Arc changes.",
   "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockback",
   "icon": "titanweapons_arcofdestruction.png",
   "powerType": "Click",

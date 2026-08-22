@@ -14,7 +14,7 @@ export const BrimstoneArmor: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "While this power is active, your skin becomes encrusted in cracked magma. Brimstone Armor makes you highly resistant to Fire, Cold and Toxic damage, and helps your attacks set enemies on fire, delivering damage over time.Cannot be active at the same time as Granite Armor.Recharge: Fast.",
+  "description": "While this power is active, your skin becomes encrusted in cracked magma. Brimstone Armor makes you highly resistant to Fire, Cold and Toxic damage, and helps your attacks set enemies on fire, delivering damage over time.\n\nCannot be active at the same time as Granite Armor.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Toxic), +Special",
   "icon": "stonearmor_magmaarmor.png",
   "powerType": "Toggle",

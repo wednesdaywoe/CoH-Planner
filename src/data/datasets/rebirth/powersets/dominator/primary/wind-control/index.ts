@@ -29,7 +29,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Through manipulation of pressure, you are able to channel the force of wind to bind, weaken and crush your opponents.',
+  description: "Through manipulation of pressure, you are able to channel the force of wind to bind, weaken and crush your opponents.",
   icon: 'wind_control_set.ico',
   archetype: 'dominator',
   category: 'primary',

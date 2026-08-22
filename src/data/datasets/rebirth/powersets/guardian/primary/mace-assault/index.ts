@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You can wield a Nullifier Mace, a high tech mace that is as good at blasting enemies as it is at smashing them to pieces.',
+  description: "You can wield a Nullifier Mace, a high tech mace that is as good at blasting enemies as it is at smashing them to pieces.",
   icon: 'weapon_mastery_set.ico',
   archetype: 'guardian',
   category: 'primary',

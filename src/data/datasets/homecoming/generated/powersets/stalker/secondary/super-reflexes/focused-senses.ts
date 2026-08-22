@@ -14,7 +14,7 @@ export const FocusedSenses: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You become more evasive against ranged attacks while you have Focused Senses activated. This will increase your Defense versus ranged attacks as long as it is active. Your Improved Senses also allow you to perceive stealthy foes as well as resist Defense DeBuffs. Focused Senses also adds Psionic Defense and an Elusivity defense bonus to Psionic and Ranged Attacks in PVP zones.Recharge: Fast.",
+  "description": "You become more evasive against ranged attacks while you have Focused Senses activated. This will increase your Defense versus ranged attacks as long as it is active. Your Improved Senses also allow you to perceive stealthy foes as well as resist Defense DeBuffs. Focused Senses also adds Psionic Defense and an Elusivity defense bonus to Psionic and Ranged Attacks in PVP zones.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Self +DEF(Ranged), +Perception, Res(DeBuff DEF)",
   "icon": "superreflexes_focusedsenses.png",
   "powerType": "Toggle",

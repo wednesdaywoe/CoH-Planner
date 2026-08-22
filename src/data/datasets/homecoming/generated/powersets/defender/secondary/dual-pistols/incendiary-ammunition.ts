@@ -14,7 +14,7 @@ export const IncendiaryAmmunition: Power = {
   "available": -1,
   "autoIssue": true,
   "free": true,
-  "description": "While this toggle is active you will be equipped with 'Incendiary Rounds.' Most of your Dual Pistol attacks will have their secondary damage converted to fire damage and inflict a minor damage over time effect.In order to earn this power, you must purchase the Swap Ammo power.",
+  "description": "While this toggle is active you will be equipped with 'Incendiary Rounds.' Most of your Dual Pistol attacks will have their secondary damage converted to fire damage and inflict a minor damage over time effect.\n\nIn order to earn this power, you must purchase the Swap Ammo power.",
   "shortHelp": "Toggle: Ammo Change (Fire), Special",
   "icon": "dualpistols_incendiaryammo.png",
   "powerType": "Toggle",

@@ -14,7 +14,7 @@ export const WhirlingHands: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "By focusing your energy into the muscles in your arms, you can launch a dizzying flurry of attacks against every foe in melee range. Some foes may be hit hard enough to be Disoriented as well. This power will recharge instantly if used while in Energy Focus mode.Damage: Light.Recharge: Slow.",
+  "description": "By focusing your energy into the muscles in your arms, you can launch a dizzying flurry of attacks against every foe in melee range. Some foes may be hit hard enough to be Disoriented as well. This power will recharge instantly if used while in Energy Focus mode.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE Melee, Light DMG(Smash/Energy), Special",
   "icon": "energyassault_whirlinghands.png",
   "powerType": "Click",

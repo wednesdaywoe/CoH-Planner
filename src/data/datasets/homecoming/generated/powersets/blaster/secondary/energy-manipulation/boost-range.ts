@@ -14,7 +14,7 @@ export const BoostRange: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You can boost your powers to increase the range of your next few attacks.Recharge: Slow.",
+  "description": "You can boost your powers to increase the range of your next few attacks.\n\nRecharge: Slow.",
   "shortHelp": "Self Range Increase",
   "icon": "energymanipulation_boostrange.png",
   "powerType": "Click",

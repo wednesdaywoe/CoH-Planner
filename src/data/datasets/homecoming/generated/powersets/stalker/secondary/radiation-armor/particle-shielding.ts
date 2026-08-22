@@ -14,7 +14,7 @@ export const ParticleShielding: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You channel a tremendous amount of radiation into a barrier around you. For a short time you will have a strong absorption shield in addition to a regeneration and recovery buff.Recharge: Long.",
+  "description": "You channel a tremendous amount of radiation into a barrier around you. For a short time you will have a strong absorption shield in addition to a regeneration and recovery buff.\n\nRecharge: Long.",
   "shortHelp": "Self, +Absorb, +Regeneration",
   "icon": "radiationarmor_particleshielding.png",
   "powerType": "Click",

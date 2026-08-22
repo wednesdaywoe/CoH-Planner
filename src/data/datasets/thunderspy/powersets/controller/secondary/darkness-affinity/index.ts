@@ -1,6 +1,6 @@
 /**
  * Darkness Affinity Powerset
- * P2881268957
+ * undefined
  *
  * Archetype: controller
  * Category: secondary
@@ -28,7 +28,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'P2881268957',
+  description: "",
   icon: 'darkness_affinity_set.ico',
   archetype: 'controller',
   category: 'secondary',

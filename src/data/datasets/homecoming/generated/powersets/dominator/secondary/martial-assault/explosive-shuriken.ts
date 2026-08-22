@@ -14,7 +14,7 @@ export const ExplosiveShuriken: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "You rig a shuriken with a powerful explosive, then send it flying towards your enemies.Damage: Superior.Recharge: Slow.",
+  "description": "You rig a shuriken with a powerful explosive, then send it flying towards your enemies.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Ranged, Superior DMG(Fire), Minor Splash Damage (Fire DoT)",
   "icon": "martialassault_explosiveshuriken.png",
   "powerType": "Click",

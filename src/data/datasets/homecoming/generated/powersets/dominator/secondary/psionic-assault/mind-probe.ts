@@ -14,7 +14,7 @@ export const MindProbe: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wrecks havoc on your foes synapses, dealing high Psionic Damage while reducing their attack speed.Damage: High.Recharge: Moderate.",
+  "description": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wrecks havoc on your foes synapses, dealing high Psionic Damage while reducing their attack speed.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mindprobe.png",
   "powerType": "Click",

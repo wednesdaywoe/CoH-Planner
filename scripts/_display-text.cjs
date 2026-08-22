@@ -43,4 +43,26 @@ function displayText(value) {
   return isUnresolvedMessageKey(value) ? undefined : value;
 }
 
-module.exports = { displayText, isUnresolvedMessageKey, MESSAGE_STORE_KEY };
+/**
+ * A `display_help` string as text, with the client's markup resolved.
+ *
+ * The bins store help exactly as the client renders it: `<br>` breaks and `<color #fcfc95>`
+ * runs. Deleting every tag with nothing in its place glues the sentences either side of a
+ * break together — "...losing health over time.Notes: This power will deal critical damage"
+ * — which is what 3,135 Homecoming descriptions shipped. A `<br>` is an authored break, so
+ * it becomes a newline; every other tag is client presentation and goes. An unterminated
+ * `<` is text, not a tag, and survives (`crates/app/src/view/power_view.rs::paragraphs`
+ * makes the same call on the reading side).
+ */
+function helpText(value) {
+  const text = displayText(value);
+  if (text === undefined) return undefined;
+  return text
+    .replace(/<\s*br\s*\/?\s*>/gi, '\n')
+    .replace(/<[^>]+>/g, '')
+    .replace(/[ \t]+(?=\n)/g, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+module.exports = { displayText, helpText, isUnresolvedMessageKey, MESSAGE_STORE_KEY };

@@ -14,7 +14,7 @@ export const Special1: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "Unleashes a series of strong attacks on your foe, dealing high lethal damage and knocking them down. This power is the finishing move for the Attack Vitals combination attack.Attack Vitals: Power Slice > Nimble Slash > Vengeful Slice.",
+  "description": "Unleashes a series of strong attacks on your foe, dealing high lethal damage and knocking them down. This power is the finishing move for the Attack Vitals combination attack.\n\nAttack Vitals: Power Slice > Nimble Slash > Vengeful Slice.",
   "shortHelp": "Melee, DMG(Lethal), Knockdown",
   "icon": "dualblades_special1.png",
   "powerType": "Click",

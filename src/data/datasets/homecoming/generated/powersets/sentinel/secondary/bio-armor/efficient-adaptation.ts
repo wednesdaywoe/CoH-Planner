@@ -14,7 +14,7 @@ export const EfficientAdaptation: Power = {
   "available": -1,
   "autoIssue": true,
   "free": true,
-  "description": "Efficient AdaptationBy activating this power you cause your Bio Armor to spontaneously mutate, causing it to become evenly distributed along your body. While active Hardened Carapace grants a minor Endurance Discount, Inexhaustible and Parasitic Leech will grant additional regeneration and recovery, Ablative Carapace grants a bonus to regeneration, Rebuild DNA grants a massive bonus to recovery, Athletic Regulation will increase your run and flight speeds, and Genomic Evolution will increase your maximum endurance.Efficient Adaptation costs no endurance.",
+  "description": "Efficient Adaptation\n\nBy activating this power you cause your Bio Armor to spontaneously mutate, causing it to become evenly distributed along your body. While active Hardened Carapace grants a minor Endurance Discount, Inexhaustible and Parasitic Leech will grant additional regeneration and recovery, Ablative Carapace grants a bonus to regeneration, Rebuild DNA grants a massive bonus to recovery, Athletic Regulation will increase your run and flight speeds, and Genomic Evolution will increase your maximum endurance.\n\nEfficient Adaptation costs no endurance.",
   "shortHelp": "Toggle: Bio Armor Efficient Mode",
   "icon": "bioorganicarmor_efficientadaptation.png",
   "powerType": "Toggle",

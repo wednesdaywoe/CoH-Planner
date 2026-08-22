@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You can call forth and control the power of plants and flora to manipulate your foes, inflict damage and protect yourself. Animate and control vines, roots and spores to entrap, attack with deadly thorns and empower your attacks with powerful toxins.',
+  description: "You can call forth and control the power of plants and flora to manipulate your foes, inflict damage and protect yourself. Animate and control vines, roots and spores to entrap, attack with deadly thorns and empower your attacks with powerful toxins.",
   icon: 'plant_manipulation_set.ico',
   archetype: 'blaster',
   category: 'secondary',

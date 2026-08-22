@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You Channel radiant light to smite your enemies or heal your friends. Unholy creatures such as undead, ghosts and demons take aditional damage from the purity of your powers.',
+  description: "You Channel radiant light to smite your enemies or heal your friends. Unholy creatures such as undead, ghosts and demons take aditional damage from the purity of your powers.",
   icon: 'luminous_blast_set.ico',
   archetype: 'defender',
   category: 'secondary',

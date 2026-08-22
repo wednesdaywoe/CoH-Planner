@@ -14,7 +14,7 @@ export const ModerateBridge: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "You Slash at your foe with your blades, dealing a good amount of lethal damage. This attack can reduce a target's Defense, making him easier to hit. This power is needed for the Empower and Weaken combination attacks, and is the beginning of the Attack Vitals combination attack.Empower: Nimble Slash > Ablating Strike > Blinding Feint.Weaken: Nimble Slash > Ablating Strike > Typhoon's Edge.Attack Vitals: Ablating Strike > Vengeful Slice > Sweeping Strike.",
+  "description": "You Slash at your foe with your blades, dealing a good amount of lethal damage. This attack can reduce a target's Defense, making him easier to hit. This power is needed for the Empower and Weaken combination attacks, and is the beginning of the Attack Vitals combination attack.\n\nEmpower: Nimble Slash > Ablating Strike > Blinding Feint.\nWeaken: Nimble Slash > Ablating Strike > Typhoon's Edge.\nAttack Vitals: Ablating Strike > Vengeful Slice > Sweeping Strike.",
   "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
   "icon": "dualblades_moderatebridge.png",
   "powerType": "Click",

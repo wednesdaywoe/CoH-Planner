@@ -14,7 +14,7 @@ export const ThornBarrage: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "A devastating attack, Thorn Barrage unleashes your Thorns at high velocity causing severe damage at range. The impact of this attack can knock most foes on their back. Thorn poison deals additional Toxic damage and can reduce your foes Defense.Damage: Extreme.Recharge: Slow.",
+  "description": "A devastating attack, Thorn Barrage unleashes your Thorns at high velocity causing severe damage at range. The impact of this attack can knock most foes on their back. Thorn poison deals additional Toxic damage and can reduce your foes Defense.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Ranged, Extreme DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_thornbarrage.png",
   "powerType": "Click",

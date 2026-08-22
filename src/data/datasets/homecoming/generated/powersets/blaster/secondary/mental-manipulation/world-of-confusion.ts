@@ -14,7 +14,7 @@ export const WorldofConfusion: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies.Recharge: Moderate.",
+  "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse",
   "icon": "mentalcontrol_worldofconfusion.png",
   "powerType": "Toggle",

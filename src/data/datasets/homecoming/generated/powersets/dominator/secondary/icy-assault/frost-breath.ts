@@ -14,7 +14,7 @@ export const FrostBreath: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range.Damage: Moderate.Recharge: Slow.",
+  "description": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range.\n\nDamage: Moderate.\nRecharge: Slow.",
   "shortHelp": "Close (Cone), Moderate DoT(Cold), Foe -Recharge, -SPD",
   "icon": "iceassault_frost.png",
   "powerType": "Click",

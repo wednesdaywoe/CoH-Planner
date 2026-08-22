@@ -14,7 +14,7 @@ export const RangedShot: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "A long range shot that blasts your foes. Like most sniper attacks, this power has a bonus to Accuracy, but is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Damage: High.Recharge: Slow.",
+  "description": "A long range shot that blasts your foes. Like most sniper attacks, this power has a bonus to Accuracy, but is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.\n\nDamage: High.\nRecharge: Slow.",
   "shortHelp": "Sniper, High DMG(Lethal)",
   "icon": "archery_sniperarrow.png",
   "powerType": "Click",

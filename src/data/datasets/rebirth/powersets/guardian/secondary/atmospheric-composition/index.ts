@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Atmospheric Composition users can harness the wind, weather, and lightning to wreak havoc on their foes and protect themselves and their allies.',
+  description: "Atmospheric Composition users can harness the wind, weather, and lightning to wreak havoc on their foes and protect themselves and their allies.",
   icon: 'electric_armor_set.ico',
   archetype: 'guardian',
   category: 'secondary',

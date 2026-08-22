@@ -14,7 +14,7 @@ export const HighLow: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "Unleashes a flurry of attacks on all foes in a cone in front of you, dealing moderate lethal damage to each foe hit. This power is the finishing move for the Weaken combination attack.Weaken: Sweeping Strike > Power Slice > One Thousand Cuts.",
+  "description": "Unleashes a flurry of attacks on all foes in a cone in front of you, dealing moderate lethal damage to each foe hit. This power is the finishing move for the Weaken combination attack.\n\nWeaken: Sweeping Strike > Power Slice > One Thousand Cuts.",
   "shortHelp": "Melee (Cone), DMG(Lethal), Foe Knockback",
   "icon": "dualblades_highlow.png",
   "powerType": "Click",

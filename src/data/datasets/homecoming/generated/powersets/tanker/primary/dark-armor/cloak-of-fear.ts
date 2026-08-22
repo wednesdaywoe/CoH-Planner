@@ -14,7 +14,7 @@ export const CloakofFear: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "You can wrap yourself in a nightmarish Cloak of Fear. Foes close to you are treated to visions most horrific, lowering their damage ouptupt and forcing them to tremble in terror, only attacking if attacked, and even then, with a reduced chance to hit. Feeding on your enemies fear will increase your protection against knockback effects.Notes: Mez enhancements on this power enhance its magnitude instead of its duration.",
+  "description": "You can wrap yourself in a nightmarish Cloak of Fear. Foes close to you are treated to visions most horrific, lowering their damage ouptupt and forcing them to tremble in terror, only attacking if attacked, and even then, with a reduced chance to hit. Feeding on your enemies fear will increase your protection against knockback effects.\n\nNotes: Mez enhancements on this power enhance its magnitude instead of its duration.",
   "shortHelp": "Toggle: PBAoE Self +Res(Knockback), Foe Fear, -ACC",
   "icon": "darkarmor_fearfulaura.png",
   "powerType": "Toggle",

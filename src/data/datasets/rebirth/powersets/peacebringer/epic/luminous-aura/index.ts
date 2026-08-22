@@ -41,7 +41,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Peacebringers can generate Luminous Aura to grant themselves incredible defensive capabilities.',
+  description: "Peacebringers can generate Luminous Aura to grant themselves incredible defensive capabilities.",
   icon: 'luminous_aura_set.ico',
   archetype: 'peacebringer',
   category: 'epic',

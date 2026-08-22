@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Electricity leaps and sparks at your command.  You can use raw electrical power to paralyze, knockdown and drain the endurance of foes.',
+  description: "Electricity leaps and sparks at your command.  You can use raw electrical power to paralyze, knockdown and drain the endurance of foes.",
   icon: 'electric_control_set.ico',
   archetype: 'controller',
   category: 'primary',

@@ -14,7 +14,7 @@ export const SparklingField: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "Immobilizes a group of foes one by one in a chain formation, dealing Fire and Energy damage over time to each enemy in the chain. More resilient foes may require multiple casts to Immobilize. Sparkling Chain is slower and less damaging than Sparkling Cage, but can capture multiple targets.This power has a chance of Blasting Off targets into the air. This chance is greater on the initial target of Sparkling Chain.",
+  "description": "Immobilizes a group of foes one by one in a chain formation, dealing Fire and Energy damage over time to each enemy in the chain. More resilient foes may require multiple casts to Immobilize. Sparkling Chain is slower and less damaging than Sparkling Cage, but can capture multiple targets.\n\nThis power has a chance of Blasting Off targets into the air. This chance is greater on the initial target of Sparkling Chain.",
   "shortHelp": "Ranged Chain AoE, Minor DoT(Fire, Energy), Foe Immobilize, Chance for Blast Off",
   "icon": "pyrotechnic_sparklingfield.png",
   "powerType": "Click",

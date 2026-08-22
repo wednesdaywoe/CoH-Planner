@@ -14,7 +14,7 @@ export const StarlessStep: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "You can Teleport moderate distances extremely quickly. These quick teleports surprise foes, giving your next attack a small ToHit advantage. This power can be used up to 3 times in a row before it starts recharging. Note that Starless is unaffected by Range changes.Notes: Starless Step is unaffected by Range changes.Recharge: Fast.",
+  "description": "You can Teleport moderate distances extremely quickly. These quick teleports surprise foes, giving your next attack a small ToHit advantage. This power can be used up to 3 times in a row before it starts recharging. Note that Starless is unaffected by Range changes.\n\nNotes: Starless Step is unaffected by Range changes.\n\nRecharge: Fast.",
   "shortHelp": "Ranged (Location), Self Teleport, ToHit",
   "icon": "umbralblast_starlessstep.png",
   "powerType": "Click",

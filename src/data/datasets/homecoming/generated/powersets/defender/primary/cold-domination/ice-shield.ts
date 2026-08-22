@@ -14,7 +14,7 @@ export const IceShield: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Casts a rock hard Ice Shield on one of your allies and grants them Defense to Melee, Lethal attacks and damage resistance to Cold and Fire damage. You cannot stack multiple Ice Shields on the same target, however the shield can be improved by another ally using the same power. Can also be used in conjunction with your Glacial Shield. You cannot use this power on yourself.Recharge: Very Fast.",
+  "description": "Casts a rock hard Ice Shield on one of your allies and grants them Defense to Melee, Lethal attacks and damage resistance to Cold and Fire damage. You cannot stack multiple Ice Shields on the same target, however the shield can be improved by another ally using the same power. Can also be used in conjunction with your Glacial Shield. You cannot use this power on yourself.\n\nRecharge: Very Fast.",
   "shortHelp": "Ranged, Ally +DEF(Melee, Smash, Lethal), Res(Cold, Fire)",
   "icon": "colddomination_iceshield.png",
   "powerType": "Click",

@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Blast your enemies with an array of offensive psionic powers. Your psionic damaging attacks have a chance to grant you Insight into your enemies. While you have Insight, your psionic damage powers cause additional psionic damage over time. Few living beings can resist their effects. Creatures without minds, however, like machines and robots, are much more resistant.',
+  description: "Blast your enemies with an array of offensive psionic powers. Your psionic damaging attacks have a chance to grant you Insight into your enemies. While you have Insight, your psionic damage powers cause additional psionic damage over time. Few living beings can resist their effects. Creatures without minds, however, like machines and robots, are much more resistant.",
   icon: 'psionic_assault_set.ico',
   archetype: 'guardian',
   category: 'primary',

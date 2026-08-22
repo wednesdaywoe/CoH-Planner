@@ -14,7 +14,7 @@ export const TripMine: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You can place a Trip Mine on the ground. Any villains that pass near the Trip Mine will cause it to explode, severely damaging all nearby foes and sending them flying. The Trip Mine is almost impossible to detect, but it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Trip Mine will detonate.Damage: Superior.Recharge: Slow.",
+  "description": "You can place a Trip Mine on the ground. Any villains that pass near the Trip Mine will cause it to explode, severely damaging all nearby foes and sending them flying. The Trip Mine is almost impossible to detect, but it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Trip Mine will detonate.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Place Mine: PBAoE, Superior DMG(Lethal/Fire), Foe Knockback",
   "icon": "gadgets_mine.png",
   "powerType": "Click",

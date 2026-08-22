@@ -14,7 +14,7 @@ export const InkyAspect: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "Inky Aspect allows you to sacrifice some of your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use.Recharge: Moderate.",
+  "description": "Inky Aspect allows you to sacrifice some of your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use.\n\nRecharge: Moderate.",
   "shortHelp": "PBAoE, Foe Disorient, Self -HP",
   "icon": "umbralaura_inkyaspect.png",
   "powerType": "Toggle",

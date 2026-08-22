@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Despite their reputations, Mercenaries are extremely loyal and dedicated soldiers.  They are the best at what they do, and they always follow orders, exactly what a Mastermind needs.  Mercenaries typically use conventional weapons and all Mercenaries have body armor that gives them resistance to smashing and lethal damage and their training makes them resistant to Confusion and Placate. Their Medic fills the gap by mending wounds and keeping the soldiers in the fight.',
+  description: "Despite their reputations, Mercenaries are extremely loyal and dedicated soldiers.  They are the best at what they do, and they always follow orders, exactly what a Mastermind needs.  Mercenaries typically use conventional weapons and all Mercenaries have body armor that gives them resistance to smashing and lethal damage and their training makes them resistant to Confusion and Placate. Their Medic fills the gap by mending wounds and keeping the soldiers in the fight.",
   icon: 'mercenaries_set.ico',
   archetype: 'mastermind',
   category: 'primary',

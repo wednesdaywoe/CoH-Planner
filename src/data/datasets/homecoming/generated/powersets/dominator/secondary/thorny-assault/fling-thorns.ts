@@ -14,7 +14,7 @@ export const FlingThorns: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You can throw dozens of Thorns in a wide cone in front of you, impaling foes caught within the area. These Thorns deals moderate damage, and poisons any targets it hits. Thorn poison deals additional Toxic damage and can reduce your foes' Defense.Damage: Light.Recharge: Moderate.",
+  "description": "You can throw dozens of Thorns in a wide cone in front of you, impaling foes caught within the area. These Thorns deals moderate damage, and poisons any targets it hits. Thorn poison deals additional Toxic damage and can reduce your foes' Defense.\n\nDamage: Light.\nRecharge: Moderate.",
   "shortHelp": "Ranged (Cone), Light DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_flingthorns.png",
   "powerType": "Click",

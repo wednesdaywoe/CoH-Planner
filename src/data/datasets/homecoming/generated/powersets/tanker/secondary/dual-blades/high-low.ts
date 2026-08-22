@@ -14,7 +14,7 @@ export const HighLow: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "Unleashes a flurry of attacks on all foes in a cone in front of you, dealing moderate lethal damage to each foe hit. This power is the opening move for the Sweep combination attack.Sweep: One Thousand Cuts > Power Slice > Typhoon's Edge.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "Unleashes a flurry of attacks on all foes in a cone in front of you, dealing moderate lethal damage to each foe hit. This power is the opening move for the Sweep combination attack.\n\nSweep: One Thousand Cuts > Power Slice > Typhoon's Edge.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Melee (Cone), DMG(Lethal), Foe Knockback",
   "icon": "dualblades_highlow.png",
   "powerType": "Click",

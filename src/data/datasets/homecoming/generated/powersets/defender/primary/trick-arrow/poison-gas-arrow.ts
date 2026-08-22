@@ -14,7 +14,7 @@ export const PoisonGasArrow: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "This arrow carries a capsule cloud of poisonous gas, which explodes on impact and weakens all foes in its vicinity. Affected foes damage potential will be severely reduced. Some foes will react badly to the poison and choke for a time, though they will react if attacked.Recharge: Slow.",
+  "description": "This arrow carries a capsule cloud of poisonous gas, which explodes on impact and weakens all foes in its vicinity. Affected foes damage potential will be severely reduced. Some foes will react badly to the poison and choke for a time, though they will react if attacked.\n\nRecharge: Slow.",
   "shortHelp": "Ranged AoE, Foe -DMG, Sleep",
   "icon": "trickarrow_debuffdamage.png",
   "powerType": "Click",

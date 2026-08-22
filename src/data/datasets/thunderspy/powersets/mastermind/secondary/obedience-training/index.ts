@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Demand compliance from your foes and friends alike with Obedience Training. Most powers are short range, but provide key tactical advantages in battle.',
+  description: "Demand compliance from your foes and friends alike with Obedience Training. Most powers are short range, but provide key tactical advantages in battle.",
   icon: 'obediencetraining_praise.ico',
   archetype: 'mastermind',
   category: 'secondary',

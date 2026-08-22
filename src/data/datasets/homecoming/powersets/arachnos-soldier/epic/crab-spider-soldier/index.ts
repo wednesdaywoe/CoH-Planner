@@ -28,7 +28,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 23,
   specializeRequires: ["Arachnos_Soldiers.Bane_Spider_Soldier","powerset?","Training_Gadgets.Bane_Spider_Training","powerset?","||","!"],
-  description: 'Crab Spiders are heavy infantry in the Arachnos Organization, with a wide array of ranged and melee combat skills.',
+  description: "Crab Spiders are heavy infantry in the Arachnos Organization, with a wide array of ranged and melee combat skills.",
   icon: 'crab_spider_soldier_set.ico',
   archetype: 'arachnos-soldier',
   category: 'epic',

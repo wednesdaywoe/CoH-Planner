@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Your mastery of Military Assault allows you to destroy your enemies with brutal precision. Blast your foes with powerful attacks from your military grade Assault Rifle and pummel them with brutal close quarters combat techniques. Your attacks can also inflict a variety of debilitating effects on your foes, including stunning them, reducing their defense, knocking them down, or slowing their movement.',
+  description: "Your mastery of Military Assault allows you to destroy your enemies with brutal precision. Blast your foes with powerful attacks from your military grade Assault Rifle and pummel them with brutal close quarters combat techniques. Your attacks can also inflict a variety of debilitating effects on your foes, including stunning them, reducing their defense, knocking them down, or slowing their movement.",
   icon: 'assault_rifle_set.ico',
   archetype: 'dominator',
   category: 'secondary',

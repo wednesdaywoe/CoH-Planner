@@ -14,7 +14,7 @@ export const Hide: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Hidden Flame makes you almost impossible to detect. When properly 'Hidden\", a Stalker can pull off Critical hits with his attacks, and even land a massive 'Assassin's Strike' with an Assassin's power. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. Unlike most stealth powers, Hidden Flame can be used at the same time as other Concealment powers, giving you even greater stealth capability. No Endurance cost.Hidden Flame also adds a chance for additional Fire damage over time to your attacks.",
+  "description": "Hidden Flame makes you almost impossible to detect. When properly 'Hidden\", a Stalker can pull off Critical hits with his attacks, and even land a massive 'Assassin's Strike' with an Assassin's power. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. Unlike most stealth powers, Hidden Flame can be used at the same time as other Concealment powers, giving you even greater stealth capability. No Endurance cost.\n\nHidden Flame also adds a chance for additional Fire damage over time to your attacks.",
   "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
   "icon": "flamingshield_hide.png",
   "powerType": "Toggle",

@@ -14,7 +14,7 @@ export const RadiationSiphon: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You pummel your foe with a deadly smashing attack dealing High Energy and Smashing damage and reducing their defense. Hitting Contaminated targets will also heal you for a large amount of health over 3 seconds and remove the Contaminated effect from the target. However, uncontaminated targets have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: Superior.Recharge: Slow.",
+  "description": "You pummel your foe with a deadly smashing attack dealing High Energy and Smashing damage and reducing their defense. Hitting Contaminated targets will also heal you for a large amount of health over 3 seconds and remove the Contaminated effect from the target. However, uncontaminated targets have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Melee, Superior DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
   "icon": "radioactiveassault_radiationsiphon.png",
   "powerType": "Click",

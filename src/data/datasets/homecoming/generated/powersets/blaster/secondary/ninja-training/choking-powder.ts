@@ -14,7 +14,7 @@ export const ChokingPowder: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "Toss a fistful of toxic powder at an enemy’s face. This powder will temporarily close the affected foe’s throat making them choke and struggle to grasp for air.Damage: Light.Recharge: Slow.",
+  "description": "Toss a fistful of toxic powder at an enemy’s face. This powder will temporarily close the affected foe’s throat making them choke and struggle to grasp for air.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "Ranged, Moderate DoT(Toxic), Foe Hold",
   "icon": "ninjatools_hold.png",
   "powerType": "Click",

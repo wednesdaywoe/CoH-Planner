@@ -14,7 +14,7 @@ export const LightningClap: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You can clap your hands together to release a violent Lightning Clap at your target. The Lightning Clap does energy damage to your main target and can knock down most nearby foes, Disorienting many of them.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "You can clap your hands together to release a violent Lightning Clap at your target. The Lightning Clap does energy damage to your main target and can knock down most nearby foes, Disorienting many of them.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Melee AoE, Foe Damage, Disorient, Knockdown",
   "icon": "electricmelee_taoestun.png",
   "powerType": "Click",

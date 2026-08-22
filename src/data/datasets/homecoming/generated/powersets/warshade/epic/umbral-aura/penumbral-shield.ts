@@ -14,7 +14,7 @@ export const PenumbralShield: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "When you toggle on Penumbral Shield, you become highly resistant to Fire, Cold, and Toxic damage.Recharge: Very Fast.",
+  "description": "When you toggle on Penumbral Shield, you become highly resistant to Fire, Cold, and Toxic damage.\n\nRecharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Toxic)",
   "icon": "umbralaura_penumbralshield.png",
   "powerType": "Toggle",

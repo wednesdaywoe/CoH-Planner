@@ -14,7 +14,7 @@ export const PsychicScream: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.Damage: Light.Recharge: Slow.",
+  "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "Ranged (Cone), Light DMG(Psionic), Foe -Recharge",
   "icon": "psionicassault_psychicscream.png",
   "powerType": "Click",

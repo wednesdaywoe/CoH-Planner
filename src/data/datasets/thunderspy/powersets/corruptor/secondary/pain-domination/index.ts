@@ -28,7 +28,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Pain Domination gives a character the ability to manipulate, nullify and amplify pain.  Ultimately this grants the user powerful healing, buffing and debuffing powers.  It\'s healing output is unmatched!',
+  description: "Pain Domination gives a character the ability to manipulate, nullify and amplify pain.  Ultimately this grants the user powerful healing, buffing and debuffing powers.  It's healing output is unmatched!",
   icon: 'pain_domination_set.ico',
   archetype: 'corruptor',
   category: 'secondary',

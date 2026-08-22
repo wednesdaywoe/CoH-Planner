@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Storm Blast conjures violent weather to attack your foes. The use of your storm attacks will empower your created storm cells.',
+  description: "Storm Blast conjures violent weather to attack your foes. The use of your storm attacks will empower your created storm cells.",
   icon: 'storm_summoning_set.ico',
   archetype: 'blaster',
   category: 'primary',

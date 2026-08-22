@@ -14,7 +14,7 @@ export const TotalFocus: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "Total Focus is complete mastery over Energy Melee. This melee attack is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. This power will enter Energy Focus mode.Damage: Extreme.Recharge: Slow.",
+  "description": "Total Focus is complete mastery over Energy Melee. This melee attack is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. This power will enter Energy Focus mode.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient, +Energy Focus",
   "icon": "energyassault_totalfocus.png",
   "powerType": "Click",

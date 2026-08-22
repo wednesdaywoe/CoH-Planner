@@ -14,7 +14,7 @@ export const Pistols: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Quickly fires a round from one of your heavy automatic pistols. Damage is average, but the fire rate is very fast. If standard ammo is used, Pistols will also reduce the target's Defense.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.Additionally, changing your ammunition type will also change the secondary effect of this attack from -Defense to:*A -minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.*A -minor damage over time effect if 'Incendiary Ammo' is loaded.*A -damage debuff effect if 'Chemical Ammo' is loaded.",
+  "description": "Quickly fires a round from one of your heavy automatic pistols. Damage is average, but the fire rate is very fast. If standard ammo is used, Pistols will also reduce the target's Defense.\n\nChanging your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.\n\nAdditionally, changing your ammunition type will also change the secondary effect of this attack from -Defense to:\n\n*A -minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.\n*A -minor damage over time effect if 'Incendiary Ammo' is loaded.\n*A -damage debuff effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "Ranged, DMG(Lethal/Special), Foe -Defense",
   "icon": "dualpistols_pistols.png",
   "powerType": "Click",

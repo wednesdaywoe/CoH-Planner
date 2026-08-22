@@ -14,7 +14,7 @@ export const DawnStrike: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "You can explode in a tremendous blast of Kheldian energy, sending nearby foes flying and reducing their defense. Dawn Strike deals massive damage to all nearby foes.Damage: Extreme.Recharge: Long.",
+  "description": "You can explode in a tremendous blast of Kheldian energy, sending nearby foes flying and reducing their defense. Dawn Strike deals massive damage to all nearby foes.\n\nDamage: Extreme.\nRecharge: Long.",
   "shortHelp": "PBAoE, Extreme DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_dawnstrike.png",
   "powerType": "Click",

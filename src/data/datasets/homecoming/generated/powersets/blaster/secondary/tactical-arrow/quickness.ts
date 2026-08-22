@@ -14,7 +14,7 @@ export const Quickness: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "Years of training have made you extremely agile and quick on your feet. This power slightly increases your defense, attack rate and movement speed, in addition of protecting you from knockback.Recharge: Moderate.",
+  "description": "Years of training have made you extremely agile and quick on your feet. This power slightly increases your defense, attack rate and movement speed, in addition of protecting you from knockback.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Self +Recharge, +DEF(All), +SPD, +Res(Slow, Knockback)",
   "icon": "tacticalarrow_quickness.png",
   "powerType": "Toggle",

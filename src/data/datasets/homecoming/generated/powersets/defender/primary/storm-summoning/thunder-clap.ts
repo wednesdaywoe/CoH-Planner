@@ -14,7 +14,7 @@ export const ThunderClap: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "You can call forth a tremendous Thunder Clap that will Disorient most foes in a large area around you.Recharge: Slow.",
+  "description": "You can call forth a tremendous Thunder Clap that will Disorient most foes in a large area around you.\n\nRecharge: Slow.",
   "shortHelp": "PBAoE, Foe Disorient",
   "icon": "stormsummoning_thunderclap.png",
   "powerType": "Click",

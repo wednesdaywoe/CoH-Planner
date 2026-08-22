@@ -14,7 +14,7 @@ export const FrozenAura: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "Your mastery of cold enables you to dramatically lower the temperature immediately around you. Foes near you when you perform a Frozen Aura will be caught in a fragile casing of ice. Frozen foes will break free if attacked. Frozen Aura deals no significant damage.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.Damage: Moderate.Recharge: Slow.",
+  "description": "Your mastery of cold enables you to dramatically lower the temperature immediately around you. Foes near you when you perform a Frozen Aura will be caught in a fragile casing of ice. Frozen foes will break free if attacked. Frozen Aura deals no significant damage.\n\nNotes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.\n\nDamage: Moderate.\nRecharge: Slow.",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smashing), Foe Sleep",
   "icon": "icemanipulation_frozenaura.png",
   "powerType": "Click",

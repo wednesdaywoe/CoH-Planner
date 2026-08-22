@@ -14,7 +14,7 @@ export const Transfusion: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Transfusion drains an enemy of some Endurance and reduces the target's Regeneration rate, and transfers that energy, in the form of Hit Points, to all allies near the affected foe. You can use Transfusion to heal yourself as well as your allies.Recharge: Moderate.",
+  "description": "Transfusion drains an enemy of some Endurance and reduces the target's Regeneration rate, and transfers that energy, in the form of Hit Points, to all allies near the affected foe. You can use Transfusion to heal yourself as well as your allies.\n\nRecharge: Moderate.",
   "shortHelp": "Ranged, Foe -End, -Regen, Team Heal",
   "icon": "kineticboost_transfusion.png",
   "powerType": "Click",

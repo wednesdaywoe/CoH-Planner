@@ -14,7 +14,7 @@ export const HeatLoss: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "Heat Loss drains the heat from your enemies and transfers that energy to your allies in the form of Endurance. All foes near the selected target may experience a Heat Loss, which will drain their Endurance, Slow them, and reduce their Damage Resistance. Each enemy target that is successfully drained of Heat will expel that energy to all your nearby allies, granting them Endurance and a boost to their Endurance Recovery. Some Endurance and Recovery will also be transferred directly to you and any allies near you.Recharge: Very Long.",
+  "description": "Heat Loss drains the heat from your enemies and transfers that energy to your allies in the form of Endurance. All foes near the selected target may experience a Heat Loss, which will drain their Endurance, Slow them, and reduce their Damage Resistance. Each enemy target that is successfully drained of Heat will expel that energy to all your nearby allies, granting them Endurance and a boost to their Endurance Recovery. Some Endurance and Recovery will also be transferred directly to you and any allies near you.\n\nRecharge: Very Long.",
   "shortHelp": "Ranged (Foe AoE), Foe -RES, -END, Slow; Team +END, +Recovery",
   "icon": "colddomination_heatloss.png",
   "powerType": "Click",

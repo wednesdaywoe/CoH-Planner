@@ -14,7 +14,7 @@ export const EMPArrow: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "This arrow can unleash a massive electrostatic discharge on impact. This ESD can affect machines, and is even powerful enough to affect synaptic brain patterns. It will stun all foes in its radius. Additionally, most machines and robots will be held and take moderate high damage.Recharge: Long.",
+  "description": "This arrow can unleash a massive electrostatic discharge on impact. This ESD can affect machines, and is even powerful enough to affect synaptic brain patterns. It will stun all foes in its radius. Additionally, most machines and robots will be held and take moderate high damage.\n\nRecharge: Long.",
   "shortHelp": "Ranged (Targeted AoE), Foe Disorient, -End, Special vs. Robots",
   "icon": "tacticalarrow_stun.png",
   "powerType": "Click",

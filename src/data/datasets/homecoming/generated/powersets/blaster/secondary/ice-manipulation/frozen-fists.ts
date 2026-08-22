@@ -14,7 +14,7 @@ export const FrozenFists: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Frozen Fists encrusts your hands in ice, giving them the ability to quickly inflict moderate damage on villains. The foe's attack and movement speed is Slowed, due to the chills caused by the cold blows.Damage: Moderate.Recharge: Moderate.",
+  "description": "Frozen Fists encrusts your hands in ice, giving them the ability to quickly inflict moderate damage on villains. The foe's attack and movement speed is Slowed, due to the chills caused by the cold blows.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Melee, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "icemanipulation_frozenfist.png",
   "powerType": "Click",

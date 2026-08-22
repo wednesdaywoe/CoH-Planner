@@ -14,7 +14,7 @@ export const EssenceBoost: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You can activate this power to increase your maximum Hit Points for a short time. Essence Boost also grants you resistance to Toxic Damage.Recharge: Very Long.",
+  "description": "You can activate this power to increase your maximum Hit Points for a short time. Essence Boost also grants you resistance to Toxic Damage.\n\nRecharge: Very Long.",
   "shortHelp": "Self Heal, +Max HP, Res (Toxic)",
   "icon": "luminousaura_essenceboost.png",
   "powerType": "Click",

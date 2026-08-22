@@ -14,7 +14,7 @@ export const RimeIce: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Activating this power covers you in a thick layer of rime. The rime can absorb the impact of a limited number of enemy attacks, the lingering moisture increasing your regeneration rate. Rime also grants you resistance to Toxic Damage.This power is mutually exclusive from Hoarfrost",
+  "description": "Activating this power covers you in a thick layer of rime. The rime can absorb the impact of a limited number of enemy attacks, the lingering moisture increasing your regeneration rate. Rime also grants you resistance to Toxic Damage.\n\nThis power is mutually exclusive from Hoarfrost",
   "shortHelp": "Self +Regen, +Absorb, Res(Toxic)",
   "icon": "icearmor_rime.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const Brine: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "You coat an enemy in an extremely salinated layer of deep-sea brine that reduces your foe's resistance to damage and maximum hitpoints.If Shifting Tides is active, Brine will consume up to 3 stacks upon use to reduce its base recharge by 15 seconds per stack.",
+  "description": "You coat an enemy in an extremely salinated layer of deep-sea brine that reduces your foe's resistance to damage and maximum hitpoints.\n\nIf Shifting Tides is active, Brine will consume up to 3 stacks upon use to reduce its base recharge by 15 seconds per stack.",
   "shortHelp": "Ranged, Foe -Resist(All), -MaxHP",
   "icon": "marineaffinity_brine.png",
   "powerType": "Click",

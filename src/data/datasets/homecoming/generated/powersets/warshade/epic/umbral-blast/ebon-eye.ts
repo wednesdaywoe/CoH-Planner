@@ -14,7 +14,7 @@ export const EbonEye: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You can emit a beam of dark energy from your eyes, dealing moderate Negative Energy damage. Ebon Eye can also slow your target's attack rate and movement speed. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.Damage: Moderate.Recharge: Fast.",
+  "description": "You can emit a beam of dark energy from your eyes, dealing moderate Negative Energy damage. Ebon Eye can also slow your target's attack rate and movement speed. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.\n\nDamage: Moderate.\nRecharge: Fast.",
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_eboneye.png",
   "powerType": "Click",

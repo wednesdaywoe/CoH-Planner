@@ -14,7 +14,7 @@ export const DistortionField: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "You can choose an area to slow the flow of time down to a crawl. Enemies who enter the field will have their attack rate and speed slowed dramatically. In addition, affected enemies might become held as they are frozen in time. Targets affected by Time Crawl will have the chance to be held increased.Recharge: Slow.",
+  "description": "You can choose an area to slow the flow of time down to a crawl. Enemies who enter the field will have their attack rate and speed slowed dramatically. In addition, affected enemies might become held as they are frozen in time. Targets affected by Time Crawl will have the chance to be held increased.\n\nRecharge: Slow.",
   "shortHelp": "Ranged (Location AoE), Foe(-Recharge, -Speed), Chance for Hold",
   "icon": "timemanipulation_distortionfield.png",
   "powerType": "Click",

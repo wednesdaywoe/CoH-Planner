@@ -14,7 +14,7 @@ export const TelekineticThrust: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "A focused attack of intense mental power that violently sends a nearby foe flying. Deals minimal damage, but can be very effective.Damage: Superior.Recharge: Slow.",
+  "description": "A focused attack of intense mental power that violently sends a nearby foe flying. Deals minimal damage, but can be very effective.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Melee, Superior DMG(Psionic/Smash), Foe Knockback",
   "icon": "psionicassault_telekineticthrust.png",
   "powerType": "Click",

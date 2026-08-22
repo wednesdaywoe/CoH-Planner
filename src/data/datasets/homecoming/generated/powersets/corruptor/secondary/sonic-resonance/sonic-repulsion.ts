@@ -14,7 +14,7 @@ export const SonicRepulsion: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You create a powerful sonic resonance around an ally, repelling all foes nearby. You will lose endurance for each target repelled.Recharge: Moderate.",
+  "description": "You create a powerful sonic resonance around an ally, repelling all foes nearby. You will lose endurance for each target repelled.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Ranged (Target Ally AoE), Foe Knockback",
   "icon": "sonicdebuff_teamknockback.png",
   "powerType": "Toggle",

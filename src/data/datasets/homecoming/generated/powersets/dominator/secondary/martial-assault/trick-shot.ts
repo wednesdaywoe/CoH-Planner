@@ -14,7 +14,7 @@ export const TrickShot: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You take careful aim and bounce a thrown shuriken between multiple targets.Notes: Trick Shot is unaffected by Range changes.Damage: Light.Recharge: Moderate.",
+  "description": "You take careful aim and bounce a thrown shuriken between multiple targets.\n\nNotes: Trick Shot is unaffected by Range changes.\n\nDamage: Light.\nRecharge: Moderate.",
   "shortHelp": "Ranged, Chain Light DMG(Lethal)",
   "icon": "martialassault_trickshot.png",
   "powerType": "Click",

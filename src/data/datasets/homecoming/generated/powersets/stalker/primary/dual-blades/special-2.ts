@@ -14,7 +14,7 @@ export const Special2: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "You make a sweeping strike with your blades, hitting all foes in a cone in front of you and dealing moderate lethal damage to each. This power is the opening move for the Weaken combination attack.Weaken: Sweeping Strike > Power Slice > One Thousand Cuts.",
+  "description": "You make a sweeping strike with your blades, hitting all foes in a cone in front of you and dealing moderate lethal damage to each. This power is the opening move for the Weaken combination attack.\n\nWeaken: Sweeping Strike > Power Slice > One Thousand Cuts.",
   "shortHelp": "Melee (Cone), DMG(Lethal)",
   "icon": "dualblades_special2.png",
   "powerType": "Click",

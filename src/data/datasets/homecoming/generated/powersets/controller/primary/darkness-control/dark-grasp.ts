@@ -14,7 +14,7 @@ export const DarkGrasp: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You cause your target's shadow to wholly envelop them, leaving them held and rendered helpless while suffering from moderate negative energy damage. Even if the target is powerful enough to resist the power's hold effect they will have their chance to hit reduced.Damage: High.Recharge: Moderate.",
+  "description": "You cause your target's shadow to wholly envelop them, leaving them held and rendered helpless while suffering from moderate negative energy damage. Even if the target is powerful enough to resist the power's hold effect they will have their chance to hit reduced.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Ranged, High DMG(Negative), Foe Hold, -To Hit",
   "icon": "darknesscontrol_darkgrasp.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const HavokPunch: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with greater damage and a chance to knock the target off their feet. Havoc Punch can drain some Endurance from your target and may overload its synapses, leaving them writhing for a moment. A portion of the drained Endurance may be given back to you. Disturbing an overloaded target will disperse the electrical charge and release him.Damage: High.Recharge: Moderate.",
+  "description": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with greater damage and a chance to knock the target off their feet. Havoc Punch can drain some Endurance from your target and may overload its synapses, leaving them writhing for a moment. A portion of the drained Endurance may be given back to you. Disturbing an overloaded target will disperse the electrical charge and release him.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DMG(Smash/Energy), Foe Sleep, -End, Knock Back",
   "icon": "electricalassault_havocpunch.png",
   "powerType": "Click",

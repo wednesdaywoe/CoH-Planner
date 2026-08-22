@@ -14,7 +14,7 @@ export const ShiningShield: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "When you toggle on your Shining Shield, you create an energy barrier that grants you high resistance to Smashing and Lethal damage.Recharge: Very Fast.",
+  "description": "When you toggle on your Shining Shield, you create an energy barrier that grants you high resistance to Smashing and Lethal damage.\n\nRecharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
   "icon": "luminousaura_shiningshield.png",
   "powerType": "Toggle",

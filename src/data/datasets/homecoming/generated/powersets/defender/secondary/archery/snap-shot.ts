@@ -14,7 +14,7 @@ export const SnapShot: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.Damage: Minor.Recharge: Very Fast.",
+  "description": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.\n\nDamage: Minor.\nRecharge: Very Fast.",
   "shortHelp": "Ranged, Minor DMG(Lethal)",
   "icon": "archery_quickarrow.png",
   "powerType": "Click",

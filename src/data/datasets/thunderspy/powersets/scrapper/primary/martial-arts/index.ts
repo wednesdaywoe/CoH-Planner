@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'A compilation of various fighting techniques from around the world, Martial Arts makes you a master in the art of hand to hand combat. Martial Artists tend to be very accurate with their strikes. Like all scrapper powers, all Martial Arts attacks can sometimes land a critical hit for double damage.',
+  description: "A compilation of various fighting techniques from around the world, Martial Arts makes you a master in the art of hand to hand combat. Martial Artists tend to be very accurate with their strikes. Like all scrapper powers, all Martial Arts attacks can sometimes land a critical hit for double damage.",
   icon: 'martial_arts_set.ico',
   archetype: 'scrapper',
   category: 'primary',

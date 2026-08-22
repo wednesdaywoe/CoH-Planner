@@ -14,7 +14,7 @@ export const Ripper: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You can unleash a spectacular slashing maneuver that attacks all foes in a wide arc directly in front of you. Ripper deals massive damage and poisons multiple targets. It can even knock foes down. Thorn poison deals additional Toxic damage and can reduce your foes Defense.Damage: Superior.Recharge: Slow.",
+  "description": "You can unleash a spectacular slashing maneuver that attacks all foes in a wide arc directly in front of you. Ripper deals massive damage and poisons multiple targets. It can even knock foes down. Thorn poison deals additional Toxic damage and can reduce your foes Defense.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), DoT(Toxic) -DEF, Knockback, -SPD",
   "icon": "thornyassault_ripper.png",
   "powerType": "Click",

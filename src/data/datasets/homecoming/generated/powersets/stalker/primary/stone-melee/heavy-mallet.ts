@@ -14,7 +14,7 @@ export const HeavyMallet: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "A more impressive form of Stone Mallet, the Seismic Mallet deals more damage, but is slower to swing. It has a greater chance of knocking down opponents, in addition to a chance for hold.Damage: Superior.Recharge: Slow.",
+  "description": "A more impressive form of Stone Mallet, the Seismic Mallet deals more damage, but is slower to swing. It has a greater chance of knocking down opponents, in addition to a chance for hold.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Melee, Superior DMG(Smashing), Knockback, Hold",
   "icon": "stonemelee_heavymallet.png",
   "powerType": "Click",

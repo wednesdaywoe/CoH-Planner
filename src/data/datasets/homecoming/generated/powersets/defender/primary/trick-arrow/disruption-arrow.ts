@@ -14,7 +14,7 @@ export const DisruptionArrow: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "This arrow plants a sonic resonator at a target location. The vibrations of the resonator weaken the Damage Resistance and Max Endurance of all nearby foes.Recharge: Slow.",
+  "description": "This arrow plants a sonic resonator at a target location. The vibrations of the resonator weaken the Damage Resistance and Max Endurance of all nearby foes.\n\nRecharge: Slow.",
   "shortHelp": "Ranged (Location AoE), -Res(All), -MaxEnd",
   "icon": "trickarrow_debuffdamres.png",
   "powerType": "Click",

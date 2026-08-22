@@ -14,7 +14,7 @@ export const Stun: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. If this power is used under the effects of Boost Range, this power will become a ranged stun instead. If this power is used under the effect of Power Boost, it will become an AoE stun, but it will recharge in 90 seconds instead of 12. Both these effects can be combined for the power to become a ranged AoE stun.Damage: Minor.Recharge: Slow.",
+  "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. If this power is used under the effects of Boost Range, this power will become a ranged stun instead. If this power is used under the effect of Power Boost, it will become an AoE stun, but it will recharge in 90 seconds instead of 12. Both these effects can be combined for the power to become a ranged AoE stun.\n\nDamage: Minor.\nRecharge: Slow.",
   "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient, Special",
   "icon": "energymanipulation_stun.png",
   "powerType": "Click",
@@ -118,7 +118,7 @@ export const Stun: Power = {
         }
       },
       "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
-      "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. Note that Stun is unaffected by Range changes. Note that Stun (Expanded) is unaffected by Range changes.Notes: Stun (Extended+Expanded) is unaffected by Range changes.Damage: Minor.Recharge: Long.",
+      "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. Note that Stun is unaffected by Range changes. Note that Stun (Expanded) is unaffected by Range changes.\n\nNotes: Stun (Extended+Expanded) is unaffected by Range changes.\n\nDamage: Minor.\nRecharge: Long.",
       "effectArea": "AoE",
       "targetType": "Foe",
       "powerType": "Click",
@@ -602,7 +602,7 @@ export const Stun: Power = {
         }
       },
       "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
-      "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. Note that Stun is unaffected by Range changes. Note that Stun (Ranged) is unaffected by Range changes.Notes: Stun (Extended) is unaffected by Range changes.Damage: Minor.Recharge: Slow.",
+      "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. Note that Stun is unaffected by Range changes. Note that Stun (Ranged) is unaffected by Range changes.\n\nNotes: Stun (Extended) is unaffected by Range changes.\n\nDamage: Minor.\nRecharge: Slow.",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
       "powerType": "Click",
@@ -1084,7 +1084,7 @@ export const Stun: Power = {
         }
       },
       "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
-      "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents.Damage: Minor.Recharge: Long.",
+      "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents.\n\nDamage: Minor.\nRecharge: Long.",
       "effectArea": "AoE",
       "targetType": "Foe",
       "powerType": "Click",

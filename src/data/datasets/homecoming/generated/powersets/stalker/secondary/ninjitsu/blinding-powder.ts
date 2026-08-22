@@ -14,7 +14,7 @@ export const BlindingPowder: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "Smoke bomb's flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.During the chaos, your chances to critically hit are improved.",
+  "description": "Smoke bomb's flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.\n\nDuring the chaos, your chances to critically hit are improved.",
   "shortHelp": "PBAoE, Foe Placate, -To Hit, Sleep, Confuse, -Perception, +Special",
   "icon": "ninjitsu_smokeflash.png",
   "powerType": "Click",

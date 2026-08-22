@@ -14,7 +14,7 @@ export const ScrambleThoughts: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "Painfully scrambles the synapses of a targeted foe, leaving them dramatically Disoriented for a short duration. Deals a little Psionic Damage.Damage: Extreme.Recharge: Slow.",
+  "description": "Painfully scrambles the synapses of a targeted foe, leaving them dramatically Disoriented for a short duration. Deals a little Psionic Damage.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Ranged, Extreme DMG(Psionic), Foe Disorient",
   "icon": "psychicblast_scramblethoughts.png",
   "powerType": "Click",

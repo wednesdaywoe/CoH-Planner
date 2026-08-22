@@ -14,7 +14,7 @@ export const Slice: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You Slice your sword in a wide arc, attacking all enemies in front of you reducing their defense and damage resistance.Every 15 seconds, you can perform a more powerful, Rending Slice on your main target.This power is mutually exclusive from Boomerang Slice.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
+  "description": "You Slice your sword in a wide arc, attacking all enemies in front of you reducing their defense and damage resistance.\n\nEvery 15 seconds, you can perform a more powerful, Rending Slice on your main target.\n\nThis power is mutually exclusive from Boomerang Slice.\n\nNotes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Melee (Cone), DMG(Lethal), Foe -DEF, -Res(Dmg)",
   "icon": "sword_slice.png",
   "powerType": "Click",

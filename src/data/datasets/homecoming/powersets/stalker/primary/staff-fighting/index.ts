@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You have mastered the art of staff fighting, allowing you to strike at your foes in great sweeping arcs. Staff Fighting provides a good amount of control effects as well as some self buffs. Your melee attacks build stacks of Perfection of Body. Once you have three stacks of this power using Eye of the Storm or Sky Splitter will result in a more powerful effect and will consume all 3 stacks of Perfection of Body.',
+  description: "You have mastered the art of staff fighting, allowing you to strike at your foes in great sweeping arcs. Staff Fighting provides a good amount of control effects as well as some self buffs. Your melee attacks build stacks of Perfection of Body. Once you have three stacks of this power using Eye of the Storm or Sky Splitter will result in a more powerful effect and will consume all 3 stacks of Perfection of Body.",
   icon: 'staff_fighting_set.ico',
   archetype: 'stalker',
   category: 'primary',

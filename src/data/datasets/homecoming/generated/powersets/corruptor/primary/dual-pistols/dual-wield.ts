@@ -14,7 +14,7 @@ export const DualWield: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Dual Wield fires both pistols in rapid succession at its desired target. This power is slower than Pistols, but deals more damage, and the target may get knocked back by the force of the impact.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to:*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.*A minor damage over time effect if 'Incendiary Ammo' is loaded.*A -damage effect if 'Chemical Ammo' is loaded.",
+  "description": "Dual Wield fires both pistols in rapid succession at its desired target. This power is slower than Pistols, but deals more damage, and the target may get knocked back by the force of the impact.\n\nChanging your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.\n\nAdditionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to:\n\n*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.\n*A minor damage over time effect if 'Incendiary Ammo' is loaded.\n*A -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "Ranged, DMG(Lethal/Special), Foe Knockback/Special",
   "icon": "dualpistols_dualwield.png",
   "powerType": "Click",

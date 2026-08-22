@@ -14,7 +14,7 @@ export const Stalagmite: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "You can cause a Stalagmite to erupt under an enemy dealing minimal Lethal damage, and Disorienting them for a good while. You must be on the ground to activate this power.If affected by Seismic Shockwaves, this power will halt the shockwaves and deal extreme damage.Stalagmite grants two stacks of Seismic Pressure.",
+  "description": "You can cause a Stalagmite to erupt under an enemy dealing minimal Lethal damage, and Disorienting them for a good while. You must be on the ground to activate this power.\n\nIf affected by Seismic Shockwaves, this power will halt the shockwaves and deal extreme damage.\n\nStalagmite grants two stacks of Seismic Pressure.",
   "shortHelp": "Ranged, DMG(Smash), Foe Disorient, Special",
   "icon": "seismicblast_stalagmite.png",
   "powerType": "Click",
@@ -99,7 +99,7 @@ export const Stalagmite: Power = {
         }
       },
       "shortHelp": "Ranged, DMG(Smash), Foe Disorient, Special",
-      "description": "You can cause a Stalagmite to erupt under an enemy dealing minimal Lethal damage, and Disorienting them for a good while. You must be on the ground to activate this power.If affected by Seismic Shockwaves, this power will halt the shockwaves and deal extreme damage.Stalagmite grants one stack of Seismic Pressure.",
+      "description": "You can cause a Stalagmite to erupt under an enemy dealing minimal Lethal damage, and Disorienting them for a good while. You must be on the ground to activate this power.\n\nIf affected by Seismic Shockwaves, this power will halt the shockwaves and deal extreme damage.\n\nStalagmite grants one stack of Seismic Pressure.",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
       "powerType": "Click",

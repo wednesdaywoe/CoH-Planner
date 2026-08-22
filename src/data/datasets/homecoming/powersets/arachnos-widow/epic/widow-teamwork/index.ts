@@ -25,7 +25,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 23,
   specializeRequires: ["Widow_Training.Fortunata_Training","powerset?","Teamwork.Fortunata_Teamwork","powerset?","||","!"],
-  description: 'Night Widows receive advanced Teamwork Training, couple with advanced defensive techniques of their own.',
+  description: "Night Widows receive advanced Teamwork Training, couple with advanced defensive techniques of their own.",
   icon: 'widow_teamwork_set.ico',
   archetype: 'arachnos-widow',
   category: 'epic',

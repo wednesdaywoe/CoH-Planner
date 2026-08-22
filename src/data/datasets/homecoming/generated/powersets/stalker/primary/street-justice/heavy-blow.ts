@@ -14,7 +14,7 @@ export const HeavyBlow: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You strike your foe with a powerful punch dealing Moderate Smashing damage. Heavy Blow has a fair chance to knock the target off its feet. Heavy Blow is a Combo Builder and adds 1 Combo Level.Damage: Moderate.Recharge: Fast.",
+  "description": "You strike your foe with a powerful punch dealing Moderate Smashing damage. Heavy Blow has a fair chance to knock the target off its feet. Heavy Blow is a Combo Builder and adds 1 Combo Level.\n\nDamage: Moderate.\nRecharge: Fast.",
   "shortHelp": "Melee, Moderate DMG(Smash), Foe Knockdown, Combo Builder",
   "icon": "brawling_heavyblow.png",
   "powerType": "Click",

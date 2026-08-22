@@ -14,7 +14,7 @@ export const Possess: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "You cause your targeted foe to be possessed by a dark entity from the Netherworld causing them to be confused for a short period of time. While confused they will be unable to tell the difference between friend or foe and will attack nearby allies.Recharge: Moderate.",
+  "description": "You cause your targeted foe to be possessed by a dark entity from the Netherworld causing them to be confused for a short period of time. While confused they will be unable to tell the difference between friend or foe and will attack nearby allies.\n\nRecharge: Moderate.",
   "shortHelp": "Ranged, Target Confuse",
   "icon": "darknesscontrol_possess.png",
   "powerType": "Click",

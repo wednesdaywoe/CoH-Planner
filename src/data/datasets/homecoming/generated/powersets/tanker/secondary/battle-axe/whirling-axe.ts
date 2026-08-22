@@ -14,7 +14,7 @@ export const WhirlingAxe: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You spin your Battle Axe in a huge circle, attacking all nearby foes. This attack deals moderate damage to any foe it hits, draws them into melee range and can knock them down.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "You spin your Battle Axe in a huge circle, attacking all nearby foes. This attack deals moderate damage to any foe it hits, draws them into melee range and can knock them down.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "PBAoE Melee, DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_whirlingaxe.png",
   "powerType": "Click",

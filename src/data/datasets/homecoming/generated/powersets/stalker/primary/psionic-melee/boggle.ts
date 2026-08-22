@@ -14,7 +14,7 @@ export const Boggle: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "You flood your foe's mind with doubt causing them to become confused for a brief time. Confused foes will attack their allies. Boggle will also place the \"Boggled\" effect on your target for a short time. Attacking a Boggled target will increase your chance of gaining Insight.This power will have a highlight ring if you currently have no targets under the \"Boggled\" effect.Notes: Boggle is unaffected by Range changes.",
+  "description": "You flood your foe's mind with doubt causing them to become confused for a brief time. Confused foes will attack their allies. Boggle will also place the \"Boggled\" effect on your target for a short time. Attacking a Boggled target will increase your chance of gaining Insight.\n\nThis power will have a highlight ring if you currently have no targets under the \"Boggled\" effect.\n\nNotes: Boggle is unaffected by Range changes.",
   "shortHelp": "Short Ranged, Target Confuse, +Special",
   "icon": "psionicmelee_boggle.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const Gale: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You can call forth a tremendous gust of Gale force winds that knock down foes and deal some Smashing damage in a wide cone area.Damage: Minor.Recharge: Moderate.",
+  "description": "You can call forth a tremendous gust of Gale force winds that knock down foes and deal some Smashing damage in a wide cone area.\n\nDamage: Minor.\nRecharge: Moderate.",
   "shortHelp": "Ranged (Cone), Minor DMG(Smash), Foe Knockback",
   "icon": "stormsummoning_gale.png",
   "powerType": "Click",

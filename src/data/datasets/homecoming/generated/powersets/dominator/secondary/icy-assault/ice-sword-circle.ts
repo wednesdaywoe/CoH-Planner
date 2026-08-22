@@ -14,7 +14,7 @@ export const IceSwordCircle: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "Mastery of your Ice Sword has enabled you to make an attack on every foe within melee distance. This will slash and chill your enemies, dealing moderate damage and slowing all affected targets' movement and attack speed.Damage: Light.Recharge: Slow.",
+  "description": "Mastery of your Ice Sword has enabled you to make an attack on every foe within melee distance. This will slash and chill your enemies, dealing moderate damage and slowing all affected targets' movement and attack speed.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE Melee, Light DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "iceassault_iceswordcircle.png",
   "powerType": "Click",

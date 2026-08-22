@@ -14,7 +14,7 @@ export const BSBash: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You Bash with your mace dealing moderate Smashing damage and minor Toxic damage over time.Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.",
+  "description": "You Bash with your mace dealing moderate Smashing damage and minor Toxic damage over time.\n\nNotes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.",
   "shortHelp": "Melee, DMG(Smash), Minor DoT(Toxic), Foe Disorient",
   "icon": "banespider_bash.png",
   "powerType": "Click",

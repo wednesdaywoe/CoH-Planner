@@ -14,7 +14,7 @@ export const ChillingRay: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "Chilling Ray encases your foe in a frail block of ice, holding them helpless in place for a while. The block of ice will break if attacked.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.",
+  "description": "Chilling Ray encases your foe in a frail block of ice, holding them helpless in place for a while. The block of ice will break if attacked.\n\nNotes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.",
   "shortHelp": "Ranged, DMG(Cold), Foe Sleep",
   "icon": "iceblast_freezeray.png",
   "powerType": "Click",

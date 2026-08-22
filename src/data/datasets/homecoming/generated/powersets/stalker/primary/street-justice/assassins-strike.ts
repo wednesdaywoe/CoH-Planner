@@ -14,7 +14,7 @@ export const AssassinsStrike: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "A signature Stalker attack. This attack does superior smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Assassin's Strike builds 2 Combo Levels. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.Damage: Extreme.Recharge: Slow.",
+  "description": "A signature Stalker attack. This attack does superior smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Assassin's Strike builds 2 Combo Levels. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Melee, Extreme DMG(Smash), Combo Builder",
   "icon": "brawling_assassinsstrike.png",
   "powerType": "Click",
@@ -97,7 +97,7 @@ export const AssassinsStrike: Power = {
         }
       ],
       "shortHelp": "Melee, Superior DMG(Smash), Combo Builder",
-      "description": "A signature Stalker attack. This attack does superior smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Assassin's Strike builds 2 Combo Levels. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.Damage: Superior.Recharge: Slow.",
+      "description": "A signature Stalker attack. This attack does superior smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Assassin's Strike builds 2 Combo Levels. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.\n\nDamage: Superior.\nRecharge: Slow.",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
       "powerType": "Click",
@@ -771,7 +771,7 @@ export const AssassinsStrike: Power = {
         }
       ],
       "shortHelp": "Melee, Extreme DMG(Smash), Combo Builder",
-      "description": "A signature Stalker attack. This attack does superior smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Assassin's Strike builds 2 Combo Levels. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.Damage: Extreme.Recharge: Slow.",
+      "description": "A signature Stalker attack. This attack does superior smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Assassin's Strike builds 2 Combo Levels. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.\n\nDamage: Extreme.\nRecharge: Slow.",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
       "powerType": "Click",

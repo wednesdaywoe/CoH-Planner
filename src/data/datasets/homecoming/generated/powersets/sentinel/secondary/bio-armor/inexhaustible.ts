@@ -14,7 +14,7 @@ export const Inexhaustible: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Your body constantly evolves and addresses weaknesses. As a result you receive a moderate bonus to maximum hit points, regeneration, and recovery, as well as gaining a measure of Slow and Endurance Drain Resistance. Half of this power's maximum hit point increase is unenhanceable.*This power doesn't grant any bonuses to Offensive Adaptation.*While Defensive Adaptation is active you gain a small amount of additional maximum hit points.*While Efficient Adaptation is active, this power grants a small bonus to recovery and regeneration.Bonuses granted from Adaptations are unenhanceable.This power is always active and costs no endurance.",
+  "description": "Your body constantly evolves and addresses weaknesses. As a result you receive a moderate bonus to maximum hit points, regeneration, and recovery, as well as gaining a measure of Slow and Endurance Drain Resistance. Half of this power's maximum hit point increase is unenhanceable.\n\n*This power doesn't grant any bonuses to Offensive Adaptation.\n*While Defensive Adaptation is active you gain a small amount of additional maximum hit points.\n*While Efficient Adaptation is active, this power grants a small bonus to recovery and regeneration.\n\nBonuses granted from Adaptations are unenhanceable.\n\nThis power is always active and costs no endurance.",
   "shortHelp": "Auto: +Max HP, +Regen, +Recovery, +Res(Slow, End Drain), +Special",
   "icon": "bioorganicarmor_inexhaustible.png",
   "powerType": "Auto",

@@ -14,7 +14,7 @@ export const BattleAgility: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "When you activate this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Repel, Knockback, Hold and Defense Debuff effects for a short duration.Recharge: Long.",
+  "description": "When you activate this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Repel, Knockback, Hold and Defense Debuff effects for a short duration.\n\nRecharge: Long.",
   "shortHelp": "Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback, Defense Debuff)",
   "icon": "shielddefense_battleagility.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const Quasar: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "You can explode in a tremendous blast of Negative Energy, sending nearby foes flying. The Quasar deals massive damage to all nearby foes. Affected foes will be knocked down and their attack rate and movement speed will be slowed.Damage: Extreme.Recharge: Long.",
+  "description": "You can explode in a tremendous blast of Negative Energy, sending nearby foes flying. The Quasar deals massive damage to all nearby foes. Affected foes will be knocked down and their attack rate and movement speed will be slowed.\n\nDamage: Extreme.\nRecharge: Long.",
   "shortHelp": "PBAoE, Extreme DMG(Negative), Foe -Recharge, -SPD, Knockback",
   "icon": "umbralblast_quasar.png",
   "powerType": "Click",

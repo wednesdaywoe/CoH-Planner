@@ -14,7 +14,7 @@ export const O2Boost: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Saturates the air around a targeted ally with rich oxygen, healing their wounds. The O2 Boost can protect a targeted ally from Sleep, Stun and Endurance Drain effects as well as increase perception. You cannot use this power on yourself.Recharge: Fast.",
+  "description": "Saturates the air around a targeted ally with rich oxygen, healing their wounds. The O2 Boost can protect a targeted ally from Sleep, Stun and Endurance Drain effects as well as increase perception. You cannot use this power on yourself.\n\nRecharge: Fast.",
   "shortHelp": "Ally Heal, +Res(Disorient, Sleep, End Drain), +Perception",
   "icon": "stormsummoning_o2boost.png",
   "powerType": "Click",

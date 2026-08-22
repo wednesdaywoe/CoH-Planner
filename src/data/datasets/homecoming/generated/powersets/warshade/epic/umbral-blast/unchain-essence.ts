@@ -14,7 +14,7 @@ export const UnchainEssence: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "The Warshade can release the energy of a defeated foe and cause a massive Negative Energy explosion that can devastate any remaining foes. This power can only be activated by targeting a defeated foe.Damage: Superior.Recharge: Long.",
+  "description": "The Warshade can release the energy of a defeated foe and cause a massive Negative Energy explosion that can devastate any remaining foes. This power can only be activated by targeting a defeated foe.\n\nDamage: Superior.\nRecharge: Long.",
   "shortHelp": "Ranged (Targeted AoE Special), Superior DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
   "icon": "umbralblast_unchainessence.png",
   "powerType": "Click",

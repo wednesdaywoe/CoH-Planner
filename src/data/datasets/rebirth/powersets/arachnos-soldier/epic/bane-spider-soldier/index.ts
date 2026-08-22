@@ -28,7 +28,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 23,
   specializeRequires: ["Arachnos_Soldiers.Crab_Spider_Soldier","powerset?","Training_Gadgets.Crab_Spider_Training","Powerset?","||","!"],
-  description: 'Bane Spiders are the commandos of the Arachnos organization, providing excellent stealth and offensive capabilities.',
+  description: "Bane Spiders are the commandos of the Arachnos organization, providing excellent stealth and offensive capabilities.",
   icon: 'bane_spider_soldier_set.ico',
   archetype: 'arachnos-soldier',
   category: 'epic',

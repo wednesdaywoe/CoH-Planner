@@ -14,7 +14,7 @@ export const WillDomination: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "This powerful attack deals Psionic damage, and is so painful it usually renders its target unconscious. The victim is asleep, and will wake if disturbed.Damage: High.Recharge: Moderate.",
+  "description": "This powerful attack deals Psionic damage, and is so painful it usually renders its target unconscious. The victim is asleep, and will wake if disturbed.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Ranged, High DMG(Psionic), Foe Sleep",
   "icon": "psychicblast_willdomination.png",
   "powerType": "Click",

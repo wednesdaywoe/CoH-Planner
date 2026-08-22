@@ -14,7 +14,7 @@ export const Spin: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "Spin does moderate lethal damage to all foes within an 8' radius of you, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.Notes: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.",
+  "description": "Spin does moderate lethal damage to all foes within an 8' radius of you, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.\n\nNotes: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.",
   "shortHelp": "PBAoE Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "widowtraining_spin.png",
   "powerType": "Click",

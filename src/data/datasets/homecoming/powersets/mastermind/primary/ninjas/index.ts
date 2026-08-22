@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You are known by many names... Sensei, Shogun, Kage, Lord. What you are is a Master of the most deadly assassins the world has ever seen... You are a Ninja Master. Command your Ninja Henchmen and even train them in new weapons and techniques. Ninjas have superior reflexes and can even super leap. Their training makes them highly resistant to Confusion. Ninja Henchmen cannot be resurrected.',
+  description: "You are known by many names... Sensei, Shogun, Kage, Lord. What you are is a Master of the most deadly assassins the world has ever seen... You are a Ninja Master. Command your Ninja Henchmen and even train them in new weapons and techniques. Ninjas have superior reflexes and can even super leap. Their training makes them highly resistant to Confusion. Ninja Henchmen cannot be resurrected.",
   icon: 'ninjas_set.ico',
   archetype: 'mastermind',
   category: 'primary',

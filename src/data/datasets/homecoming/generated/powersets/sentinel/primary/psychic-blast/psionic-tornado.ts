@@ -14,7 +14,7 @@ export const PsionicTornado: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed.Damage: Light.Recharge: Slow.",
+  "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
   "icon": "psychicblast_psionictornado.png",
   "powerType": "Click",

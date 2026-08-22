@@ -14,7 +14,7 @@ export const AgainstallOdds: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "The harder pressed you are in combat the greater your offensive abilities become. Each enemy that stands toe-to-toe with you in combat will grant you a damage bonus. The first foe you engage in melee grants the highest damage bonus, and up to 10 foes can contribute to this effect. Each foe in melee range also suffers from reduced damage as your shield deflects a portion of their damage.Recharge: Moderate.",
+  "description": "The harder pressed you are in combat the greater your offensive abilities become. Each enemy that stands toe-to-toe with you in combat will grant you a damage bonus. The first foe you engage in melee grants the highest damage bonus, and up to 10 foes can contribute to this effect. Each foe in melee range also suffers from reduced damage as your shield deflects a portion of their damage.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Self +DMG, Foe -DMG",
   "icon": "shielddefense_againstallodds.png",
   "powerType": "Toggle",

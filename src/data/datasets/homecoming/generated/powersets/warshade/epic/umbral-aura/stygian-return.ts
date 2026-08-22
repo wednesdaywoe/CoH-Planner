@@ -14,7 +14,7 @@ export const StygianReturn: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "Should you fall in battle, your Stygian Return can drain the life force of all foes around you to bring yourself back from the brink of death. The more foes nearby, the more Ht Points and Endurance are restored to you. Stygian Return will actually leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds. There must be at least one foe nearby to fuel the Transfer and revive yourself.Damage: Light.Recharge: Very Long.",
+  "description": "Should you fall in battle, your Stygian Return can drain the life force of all foes around you to bring yourself back from the brink of death. The more foes nearby, the more Ht Points and Endurance are restored to you. Stygian Return will actually leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds. There must be at least one foe nearby to fuel the Transfer and revive yourself.\n\nDamage: Light.\nRecharge: Very Long.",
   "shortHelp": "Self Rez, Special",
   "icon": "umbralaura_stygianreturn.png",
   "powerType": "Click",

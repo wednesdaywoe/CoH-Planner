@@ -14,7 +14,7 @@ export const SnowStorm: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes. The torrent winds of the Snow Storm are enough to bring down flying foes.Recharge: Moderate.",
+  "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes. The torrent winds of the Snow Storm are enough to bring down flying foes.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly",
   "icon": "stormsummoning_snowstorm.png",
   "powerType": "Toggle",

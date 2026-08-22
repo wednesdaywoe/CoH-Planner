@@ -14,7 +14,7 @@ export const RockShards: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You launch a volley of stone shards at your target in a sweeping cone. These shards stab into the target, causing lethal damage. They will also continue to suffer additional lethal damage over time.If affected by Seismic Shockwaves, this power will halt the shockwaves, the up front damage will be increased and damage over time accelerated, foes will be knocked down, range will be increased to 60ft and arc to 40 degrees.Rock Shards grants two stacks of Seismic Pressure.",
+  "description": "You launch a volley of stone shards at your target in a sweeping cone. These shards stab into the target, causing lethal damage. They will also continue to suffer additional lethal damage over time.\n\nIf affected by Seismic Shockwaves, this power will halt the shockwaves, the up front damage will be increased and damage over time accelerated, foes will be knocked down, range will be increased to 60ft and arc to 40 degrees.\n\nRock Shards grants two stacks of Seismic Pressure.",
   "shortHelp": "Ranged Cone, DMG(Smash), -Defense, Special",
   "icon": "seismicblast_rockshards.png",
   "powerType": "Click",
@@ -113,7 +113,7 @@ export const RockShards: Power = {
         }
       },
       "shortHelp": "Ranged Cone, DMG(Smash), -Defense, Special",
-      "description": "You launch a volley of stone shards at your target in a sweeping cone. These shards stab into the target, causing lethal damage. They will also continue to suffer aditional lethal damage over time.If affected by Seismic Shockwaves, this power will halt the shockwaves, the up front damage will be increased and damage over time accelerated, foes will be knocked down, range will be increased to 60ft and arc to 40 degrees.Rock Shards grants one stack of Seismic Pressure.",
+      "description": "You launch a volley of stone shards at your target in a sweeping cone. These shards stab into the target, causing lethal damage. They will also continue to suffer aditional lethal damage over time.\n\nIf affected by Seismic Shockwaves, this power will halt the shockwaves, the up front damage will be increased and damage over time accelerated, foes will be knocked down, range will be increased to 60ft and arc to 40 degrees.\n\nRock Shards grants one stack of Seismic Pressure.",
       "effectArea": "Cone",
       "targetType": "Foe",
       "powerType": "Click",

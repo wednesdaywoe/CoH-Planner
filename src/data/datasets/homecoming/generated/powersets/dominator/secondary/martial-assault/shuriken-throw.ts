@@ -14,7 +14,7 @@ export const ShurikenThrow: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You impale your foe with a thrown shuriken, dealing moderate Lethal damage.Damage: Light.Recharge: Fast.",
+  "description": "You impale your foe with a thrown shuriken, dealing moderate Lethal damage.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Lethal)",
   "icon": "martialassault_shurikenthrow.png",
   "powerType": "Click",

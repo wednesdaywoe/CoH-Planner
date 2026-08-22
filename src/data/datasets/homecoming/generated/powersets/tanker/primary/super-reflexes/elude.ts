@@ -14,7 +14,7 @@ export const Elude: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "You can improve your reflexes, making yourself so quick you can Elude almost any attack, be it ranged, melee, or area effect. Your running speed, jumping height, and Endurance Recovery are also increased. Elude also grants you high resistance to Defense DeBuffs. When Elude wears off, you are left drained of all Endurance and unable to recover Endurance for a while.Recharge: Extremely Long.",
+  "description": "You can improve your reflexes, making yourself so quick you can Elude almost any attack, be it ranged, melee, or area effect. Your running speed, jumping height, and Endurance Recovery are also increased. Elude also grants you high resistance to Defense DeBuffs. When Elude wears off, you are left drained of all Endurance and unable to recover Endurance for a while.\n\nRecharge: Extremely Long.",
   "shortHelp": "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special",
   "icon": "superreflexes_elude.png",
   "powerType": "Click",

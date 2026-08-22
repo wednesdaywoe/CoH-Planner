@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Claws are bones or blades that extend from your hands and cause Lethal damage. The lightweight, natural feel of claws gives this power set a reduced Endurance cost and faster attack rate than other Stalker melee sets.  Like all Stalker primary attack powers, Claw attacks can land a Critical Hit for double damage, if you are properly Hidden or if your target is Slept or Held.',
+  description: "Claws are bones or blades that extend from your hands and cause Lethal damage. The lightweight, natural feel of claws gives this power set a reduced Endurance cost and faster attack rate than other Stalker melee sets.  Like all Stalker primary attack powers, Claw attacks can land a Critical Hit for double damage, if you are properly Hidden or if your target is Slept or Held.",
   icon: 'claws_set.ico',
   archetype: 'stalker',
   category: 'primary',

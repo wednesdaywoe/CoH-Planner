@@ -14,7 +14,7 @@ export const DefensiveSweep: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You take a defensive stance and strike your opponents. Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks.Notes: Defensive Sweep is unaffected by Arc changes.",
+  "description": "You take a defensive stance and strike your opponents. Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks.\n\nNotes: Defensive Sweep is unaffected by Arc changes.",
   "shortHelp": "Melee(Cone), DMG(Smashing), Self +DEF(Melee, Smash)",
   "icon": "titanweapons_defensivesweep.png",
   "powerType": "Click",

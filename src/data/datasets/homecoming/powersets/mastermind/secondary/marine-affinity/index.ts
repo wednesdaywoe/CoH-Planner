@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Command the various powers of the ocean to buff your allies, and wash away your enemies.',
+  description: "Command the various powers of the ocean to buff your allies, and wash away your enemies.",
   icon: 'nature_affinity_set.ico',
   archetype: 'mastermind',
   category: 'secondary',

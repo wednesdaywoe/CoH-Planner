@@ -14,7 +14,7 @@ export const GleamingBolt: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's Defense. This power can be used while in Dwarf form, although only at a reduced range. While in dwarf form, this power will inflict a stronger Defense debuff, in addition to taunt its target.Damage: Minor.Recharge: Very Fast.",
+  "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's Defense. This power can be used while in Dwarf form, although only at a reduced range. While in dwarf form, this power will inflict a stronger Defense debuff, in addition to taunt its target.\n\nDamage: Minor.\nRecharge: Very Fast.",
   "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
   "icon": "luminousblast_gleamingbolt.png",
   "powerType": "Click",

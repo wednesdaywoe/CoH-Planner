@@ -14,7 +14,7 @@ export const Eviscerate: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
+  "description": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you.\n\nNotes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Melee (Cone), DMG(Lethal), Foe -DEF",
   "icon": "claws_evicerate.png",
   "powerType": "Click",

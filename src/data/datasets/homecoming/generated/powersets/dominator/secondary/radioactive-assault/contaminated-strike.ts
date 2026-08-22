@@ -14,7 +14,7 @@ export const ContaminatedStrike: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You charge your fist with harmful radioactive particles and quickly strike your foe dealing Light Energy and Smashing damage as well as reducing their defense. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: High.Recharge: Moderate.",
+  "description": "You charge your fist with harmful radioactive particles and quickly strike your foe dealing Light Energy and Smashing damage as well as reducing their defense. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DMG(Energy/Smash), Foe -Def, Special",
   "icon": "radioactiveassault_contaminatedstrike.png",
   "powerType": "Click",

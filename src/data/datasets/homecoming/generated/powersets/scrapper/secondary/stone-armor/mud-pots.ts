@@ -14,7 +14,7 @@ export const MudPots: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "While this power is active, you draw upon the geothermal power of the Earth to create a bubbling pool of hot mud around you. All foes in melee range will become snared and entrapped in the mud, Immobilizing some and slowing others. The boiling heat from Mud Pots may also deal some damage over time to the snared foes.Damage: Minor(DoT).Recharge: Fast.",
+  "description": "While this power is active, you draw upon the geothermal power of the Earth to create a bubbling pool of hot mud around you. All foes in melee range will become snared and entrapped in the mud, Immobilizing some and slowing others. The boiling heat from Mud Pots may also deal some damage over time to the snared foes.\n\nDamage: Minor(DoT).\nRecharge: Fast.",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Fire), Foe Immobilize, -SPD",
   "icon": "stonearmor_clay.png",
   "powerType": "Toggle",

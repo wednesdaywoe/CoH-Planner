@@ -14,7 +14,7 @@ export const ImmobilizingDart: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Immobilizing Darts do minor toxic damage over time and weakens your foe's legs. They will either be entirely unable to move, or severely slowed down.Damage: Minor.Recharge: Fast.",
+  "description": "Immobilizing Darts do minor toxic damage over time and weakens your foe's legs. They will either be entirely unable to move, or severely slowed down.\n\nDamage: Minor.\nRecharge: Fast.",
   "shortHelp": "Ranged, Minor DoT(Toxic), Foe Immobilize",
   "icon": "ninjatools_immob.png",
   "powerType": "Click",

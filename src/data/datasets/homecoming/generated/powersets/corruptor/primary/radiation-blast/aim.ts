@@ -14,7 +14,7 @@ export const Aim: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "Greatly increases your chance to hit with attacks for a few seconds. Slightly increases damage.Recharge: Long.",
+  "description": "Greatly increases your chance to hit with attacks for a few seconds. Slightly increases damage.\n\nRecharge: Long.",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "radiationburst_aim.png",
   "powerType": "Click",

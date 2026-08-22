@@ -14,7 +14,7 @@ export const TouchofFear: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit. Additionally, drawing upon this connection to the Netherworld causes you to rapidly regenerate health and recover endurance for a short time.Notes: Touch of the Beyond is unaffected by Range changes.",
+  "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit. Additionally, drawing upon this connection to the Netherworld causes you to rapidly regenerate health and recover endurance for a short time.\n\nNotes: Touch of the Beyond is unaffected by Range changes.",
   "shortHelp": "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
   "icon": "darknessmanipulation_touchoffear.png",
   "powerType": "Click",
@@ -120,7 +120,7 @@ export const TouchofFear: Power = {
         ]
       },
       "shortHelp": "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
-      "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit. Additionally, drawing upon this connection to the Netherworld causes you to rapidly regenerate health and recover endurance for a short time.Notes: Touch of the Beyond is unaffected by Range changes.Recharge: Moderate.",
+      "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit. Additionally, drawing upon this connection to the Netherworld causes you to rapidly regenerate health and recover endurance for a short time.\n\nNotes: Touch of the Beyond is unaffected by Range changes.\n\nRecharge: Moderate.",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
       "powerType": "Click",

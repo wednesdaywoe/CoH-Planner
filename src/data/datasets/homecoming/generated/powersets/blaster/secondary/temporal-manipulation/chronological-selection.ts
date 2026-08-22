@@ -14,7 +14,7 @@ export const ChronologicalSelection: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "You distort time around you, selecting a period of time where your abilities are at your highest. Your damage, attack rate and chance to hit are dramatically increased for a brief period. This power places the Accelerated effect on you. While this is in effect, the target has any healing and healing over time effects from Temporal Healing or Time Lord significantly increased.Recharge: Long.",
+  "description": "You distort time around you, selecting a period of time where your abilities are at your highest. Your damage, attack rate and chance to hit are dramatically increased for a brief period. This power places the Accelerated effect on you. While this is in effect, the target has any healing and healing over time effects from Temporal Healing or Time Lord significantly increased.\n\nRecharge: Long.",
   "shortHelp": "Self +DMG, +Recharge, +ToHit, Special",
   "icon": "timemanipulation_chronologicalselection.png",
   "powerType": "Click",

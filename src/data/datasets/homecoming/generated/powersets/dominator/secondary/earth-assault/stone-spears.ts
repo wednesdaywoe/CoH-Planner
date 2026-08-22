@@ -14,7 +14,7 @@ export const StoneSpears: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Stone Spears erupt from the ground at the feet of your target. This attack can only be used against targets on the ground, and does moderate lethal damage.Damage: Light.Recharge: Fast.",
+  "description": "Stone Spears erupt from the ground at the feet of your target. This attack can only be used against targets on the ground, and does moderate lethal damage.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Lethal), Foe Knock Up",
   "icon": "earthassault_stonespears.png",
   "powerType": "Click",

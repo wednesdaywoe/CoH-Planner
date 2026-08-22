@@ -14,7 +14,7 @@ export const ViciousSlash: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You tear at your foe with both hands dealing high lethal damage and causing minor lethal damage over time. Foes struck by this attack have a high chance to be knocked down. Vicious Slash grants 2 stacks of Blood Frenzy.Damage: Superior.Recharge: Slow.",
+  "description": "You tear at your foe with both hands dealing high lethal damage and causing minor lethal damage over time. Foes struck by this attack have a high chance to be knocked down. Vicious Slash grants 2 stacks of Blood Frenzy.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Melee, DMG(Lethal), Foe DoT (Lethal), Knockdown, Self +2 Blood Frenzy",
   "icon": "savagemelee_viciousslash.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const Bash: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You perform a Bashing attack with your mace that deals moderate damage, and can sometimes Disorient your opponent.Damage: Light.Recharge: Fast.",
+  "description": "You perform a Bashing attack with your mace that deals moderate damage, and can sometimes Disorient your opponent.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Melee, Light DMG(Smashing), Minor Disorient",
   "icon": "mace_bash.png",
   "powerType": "Click",

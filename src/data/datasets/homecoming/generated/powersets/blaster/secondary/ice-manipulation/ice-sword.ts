@@ -14,7 +14,7 @@ export const IceSword: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You create a blade of solid ice that deals higher damage then Frozen Fists. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.Damage: High.Recharge: Moderate.",
+  "description": "You create a blade of solid ice that deals higher damage then Frozen Fists. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "icemanipulation_icesword.png",
   "powerType": "Click",

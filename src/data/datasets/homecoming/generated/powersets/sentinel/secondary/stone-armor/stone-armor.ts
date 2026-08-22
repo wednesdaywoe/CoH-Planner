@@ -14,7 +14,7 @@ export const StoneArmor: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Your skin becomes stone while this power is active. Rock Armor protects you from Smashing and Lethal attacks. They are less likely to land and affect you. Stone Armor also grants you resistance to Defense DeBuffs.Recharge: Fast.",
+  "description": "Your skin becomes stone while this power is active. Rock Armor protects you from Smashing and Lethal attacks. They are less likely to land and affect you. Stone Armor also grants you resistance to Defense DeBuffs.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Self +DEF(Lethal, Smash), Res(DeBuff DEF)",
   "icon": "stonearmor_stonearmor.png",
   "powerType": "Toggle",

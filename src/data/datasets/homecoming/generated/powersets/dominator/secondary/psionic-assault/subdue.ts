@@ -14,7 +14,7 @@ export const Subdue: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "Subdue deals high Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.Damage: Moderate.Recharge: Moderate.",
+  "description": "Subdue deals high Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Immobilize",
   "icon": "psionicassault_subdue.png",
   "powerType": "Click",

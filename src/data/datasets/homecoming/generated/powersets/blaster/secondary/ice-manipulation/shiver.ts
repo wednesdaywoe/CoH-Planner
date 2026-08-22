@@ -14,7 +14,7 @@ export const Shiver: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes.Recharge: Slow.",
+  "description": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes.\n\nRecharge: Slow.",
   "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
   "icon": "icemanipulation_shiver.png",
   "powerType": "Click",

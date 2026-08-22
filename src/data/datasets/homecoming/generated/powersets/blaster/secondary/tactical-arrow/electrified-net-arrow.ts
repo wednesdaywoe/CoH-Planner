@@ -14,7 +14,7 @@ export const ElectrifiedNetArrow: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Upon impact, the Electrified Net Arrow releases an electrically charged net that can Immobilize most targets. This device deals electric damage over time but does not prevent targets from attacking. The Electrified Net Arrow can bring down flying entities, halts jumping and slows all of their actions.Damage: Moderate.Recharge: Fast.",
+  "description": "Upon impact, the Electrified Net Arrow releases an electrically charged net that can Immobilize most targets. This device deals electric damage over time but does not prevent targets from attacking. The Electrified Net Arrow can bring down flying entities, halts jumping and slows all of their actions.\n\nDamage: Moderate.\nRecharge: Fast.",
   "shortHelp": "Ranged, DoT(Energy), Foe Immobilize, -Fly, -Recharge, -SPD, -Jump",
   "icon": "tacticalarrow_immobilize.png",
   "powerType": "Click",

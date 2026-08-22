@@ -14,7 +14,7 @@ export const GoldenDragonfly: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "You perform a devastating Golden Dragonfly attack that deals a massive amount of damage and can even knock a foe down to the ground and reduce their Defense. The power of this attack can actually extend a short distance through multiple foes.Damage: Extreme.Recharge: Slow.",
+  "description": "You perform a devastating Golden Dragonfly attack that deals a massive amount of damage and can even knock a foe down to the ground and reduce their Defense. The power of this attack can actually extend a short distance through multiple foes.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Melee, Extreme DMG(Lethal), Foe Knockback, -DEF",
   "icon": "ninjatools_goldendragonfly.png",
   "powerType": "Click",

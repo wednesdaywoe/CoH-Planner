@@ -14,7 +14,7 @@ export const Frost: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You create a short cone of Frost in front of you that can deal some damage and Slow a foe's speed, due to their uncontrollable shivering.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "You create a short cone of Frost in front of you that can deal some damage and Slow a foe's speed, due to their uncontrollable shivering.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
   "icon": "icyonslaught_frost.png",
   "powerType": "Click",

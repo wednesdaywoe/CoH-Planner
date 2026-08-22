@@ -14,7 +14,7 @@ export const GatherShadows: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "By collecting shadows from your surroundings you boost your damage and the secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved. The effects of Gather Shadows last a short while, and only the next couple of attacks will be boosted.Recharge: Long.",
+  "description": "By collecting shadows from your surroundings you boost your damage and the secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved. The effects of Gather Shadows last a short while, and only the next couple of attacks will be boosted.\n\nRecharge: Long.",
   "shortHelp": "Self +Special, +Dmg(All)",
   "icon": "darknessassault_gathershadows.png",
   "powerType": "Click",

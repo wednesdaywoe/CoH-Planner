@@ -14,7 +14,7 @@ export const Impale: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "You can throw a small cluster of large Thorns at a targeted foe. These Thorns carry a large amount of the toxin. In addition to dealing Toxic damage, a successful attack can slow a target, preventing Running, Jumping or Flying. Most foes will likely be completely Immobilized, unable to run.Damage: High.Recharge: Moderate.",
+  "description": "You can throw a small cluster of large Thorns at a targeted foe. These Thorns carry a large amount of the toxin. In addition to dealing Toxic damage, a successful attack can slow a target, preventing Running, Jumping or Flying. Most foes will likely be completely Immobilized, unable to run.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Ranged, High DMG(Lethal), DoT(Toxic), Immobilize, -DEF, -SPD, -Fly, -Jump",
   "icon": "thornyassault_impale.png",
   "powerType": "Click",

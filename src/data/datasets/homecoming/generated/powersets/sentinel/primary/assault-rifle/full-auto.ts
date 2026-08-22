@@ -14,7 +14,7 @@ export const FullAuto: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "Opens up your assault rifle on Full Auto to lay down a massive spray of bullets at your target. Although very slow to reload, damage from this attack is massive, shredding all targets within the cone of effect. There's a chance you may land a lucky shot for extra damage.Damage: Superior.Recharge: Long.",
+  "description": "Opens up your assault rifle on Full Auto to lay down a massive spray of bullets at your target. Although very slow to reload, damage from this attack is massive, shredding all targets within the cone of effect. There's a chance you may land a lucky shot for extra damage.\n\nDamage: Superior.\nRecharge: Long.",
   "shortHelp": "Ranged (Cone), DoT(Lethal), +Special",
   "icon": "assaultweapons_arfullauto.png",
   "powerType": "Click",

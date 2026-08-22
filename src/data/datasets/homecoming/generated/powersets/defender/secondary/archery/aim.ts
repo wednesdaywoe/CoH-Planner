@@ -14,7 +14,7 @@ export const Aim: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage.Recharge: Long.",
+  "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage.\n\nRecharge: Long.",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "archery_aim.png",
   "powerType": "Click",

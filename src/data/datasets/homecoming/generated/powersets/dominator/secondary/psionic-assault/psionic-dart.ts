@@ -14,7 +14,7 @@ export const PsionicDart: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed.Damage: Light.Recharge: Very Fast.",
+  "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed.\n\nDamage: Light.\nRecharge: Very Fast.",
   "shortHelp": "Ranged, Light DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mentaldart.png",
   "powerType": "Click",

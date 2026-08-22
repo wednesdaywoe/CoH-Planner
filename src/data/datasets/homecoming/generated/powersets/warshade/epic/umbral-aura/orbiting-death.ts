@@ -14,7 +14,7 @@ export const OrbitingDeath: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You surround yourself with orbiting particles and dark matter that will continually cause Negative Energy damage to any nearby foes.Damage: Minor(DoT).Recharge: Fast.",
+  "description": "You surround yourself with orbiting particles and dark matter that will continually cause Negative Energy damage to any nearby foes.\n\nDamage: Minor(DoT).\nRecharge: Fast.",
   "shortHelp": "Toggle: PBAoE Minor DoT(Negative)",
   "icon": "umbralaura_orbitingdeath.png",
   "powerType": "Toggle",

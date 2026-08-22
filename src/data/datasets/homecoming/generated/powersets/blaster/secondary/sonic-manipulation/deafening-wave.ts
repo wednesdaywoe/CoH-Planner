@@ -14,7 +14,7 @@ export const DeafeningWave: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "You create a large field of sonic waves, causing damage to all foes around you. It has a moderate chance of causing migraines, leaving them shaking in pain and helpless.Damage: Light.Recharge: Slow.",
+  "description": "You create a large field of sonic waves, causing damage to all foes around you. It has a moderate chance of causing migraines, leaving them shaking in pain and helpless.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
   "icon": "sonicmanipulation_deafeningcry.png",
   "powerType": "Click",

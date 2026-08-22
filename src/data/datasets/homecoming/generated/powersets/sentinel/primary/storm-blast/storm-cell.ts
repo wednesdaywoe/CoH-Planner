@@ -14,7 +14,7 @@ export const StormCell: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "You conjure a storm in the area that defines the boundaries of your stormy powers. Rain from this power will slightly lower a foe's movement and chance to hit. The use of your Storm Blast attacks may create high winds and lightning within the storm cell, delivering stronger debuffs and causing damage. Additionally, Storm Blast attacks will be enhanced when used against foes victimized by Storm Cell.",
+  "description": "You conjure a storm in the area that defines the boundaries of your stormy powers. Rain from this power will slightly lower a foe's movement and chance to hit.\n\nThe use of your Storm Blast attacks may create high winds and lightning within the storm cell, delivering stronger debuffs and causing damage. Additionally, Storm Blast attacks will be enhanced when used against foes victimized by Storm Cell.",
   "shortHelp": "Ranged (Location AoE), Foe -Recharge, -SPD, +Wet, Special",
   "icon": "stormblast_stormcell.png",
   "powerType": "Click",

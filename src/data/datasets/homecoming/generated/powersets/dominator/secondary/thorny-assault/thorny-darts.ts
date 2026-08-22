@@ -14,7 +14,7 @@ export const ThornyDarts: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Hurls small Thorny Darts at your foes. Thorny Darts deal moderate damage. Poison from the Darts deals additional Toxic damage and can reduce your foes Defense.Damage: Light.Recharge: Fast.",
+  "description": "Hurls small Thorny Darts at your foes. Thorny Darts deal moderate damage. Poison from the Darts deals additional Toxic damage and can reduce your foes Defense.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_darts.png",
   "powerType": "Click",

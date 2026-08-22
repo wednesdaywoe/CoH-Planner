@@ -14,7 +14,7 @@ export const Incinerator: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "Sprays a target with accelerant from your flamethrower, igniting it and causing extreme damage over time. Also sets the location on fire if the target is grounded, inflicting damage to additional foes that step in the area.Damage: Extreme.Recharge: Slow.",
+  "description": "Sprays a target with accelerant from your flamethrower, igniting it and causing extreme damage over time. Also sets the location on fire if the target is grounded, inflicting damage to additional foes that step in the area.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Ranged, DoT(Fire), Location AoE, DoT(Fire)",
   "icon": "assaultweapons_dot.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const PsionicLance: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "This extremely long range Psionic attack has a bonus to Accuracy, and can Slow a target's attack rate. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Damage: Extreme.Recharge: Slow.",
+  "description": "This extremely long range Psionic attack has a bonus to Accuracy, and can Slow a target's attack rate. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Sniper, Extreme DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_psioniclance.png",
   "powerType": "Click",

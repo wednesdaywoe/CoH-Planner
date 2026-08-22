@@ -51,6 +51,7 @@ const {
   extractGrantEdges,
 } = require('./convert-powerset.cjs');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
+const { helpText } = require('./_display-text.cjs');
 const { gateTokens } = require('./_gate-tokens.cjs');
 
 const datasetId = parseDatasetArg();
@@ -82,7 +83,7 @@ function convertAccoladePower(rawJson) {
   power.autoIssue = rawJson.auto_issue === true;
   power.free = rawJson.free === true;
 
-  power.description = rawJson.display_help || '';
+  power.description = helpText(rawJson.display_help) || '';
   if (rawJson.display_short_help) {
     power.shortHelp = rawJson.display_short_help.replace(/ /g, ' ');
   }

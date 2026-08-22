@@ -14,7 +14,7 @@ export const StunningShot: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "You fire a blunt, weighted arrow at your target's chest. The Stunning Shot inflicts high damage and has a good chance of stunning your foe.Damage: Moderate.Recharge: Moderate.",
+  "description": "You fire a blunt, weighted arrow at your target's chest. The Stunning Shot inflicts high damage and has a good chance of stunning your foe.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Ranged Disorient, Moderate DMG(Smashing)",
   "icon": "archery_stunarrow.png",
   "powerType": "Click",

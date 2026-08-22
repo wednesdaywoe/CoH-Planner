@@ -14,7 +14,7 @@ export const SpeedBoost: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "You can hasten a targeted ally and its nearby allies. The allies' movement speed, attack rate, and Endurance recovery are all greatly increased and they gain resistance to Slow effects. You cannot use this power on yourself.Recharge: Very Fast.",
+  "description": "You can hasten a targeted ally and its nearby allies. The allies' movement speed, attack rate, and Endurance recovery are all greatly increased and they gain resistance to Slow effects. You cannot use this power on yourself.\n\nRecharge: Very Fast.",
   "shortHelp": "Ranged, Allies +SPD, +Recharge, +Recovery, Res Slow",
   "icon": "kineticboost_speedboost.png",
   "powerType": "Click",

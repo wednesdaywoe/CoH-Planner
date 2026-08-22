@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Wield the trusty power of the shotgun. Combine your shots to cripple your foes! Most attacks are targetless cones.',
+  description: "Wield the trusty power of the shotgun. Combine your shots to cripple your foes! Most attacks are targetless cones.",
   icon: 'battle_axe_set.ico',
   archetype: 'tanker',
   category: 'secondary',

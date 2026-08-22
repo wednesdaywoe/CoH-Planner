@@ -14,7 +14,7 @@ export const TemporalHealing: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You mend your wounds by placing your bodies in a past or future state where they are far less injured. Temporal Mending will immediately absorb damage as it's inflicted. Additionally, you will gain some resistance to slow effects and regeneration debuffs. If you are affected by the Accelerated effect, you absorb even more damage from this power.Recharge: Moderate.",
+  "description": "You mend your wounds by placing your bodies in a past or future state where they are far less injured. Temporal Mending will immediately absorb damage as it's inflicted. Additionally, you will gain some resistance to slow effects and regeneration debuffs. If you are affected by the Accelerated effect, you absorb even more damage from this power.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Self +Absorb, +Recovery, +Resist(Slow, Regen Debuff)",
   "icon": "timemanipulation_temporalhealing.png",
   "powerType": "Toggle",

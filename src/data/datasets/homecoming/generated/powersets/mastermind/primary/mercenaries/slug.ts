@@ -14,7 +14,7 @@ export const Slug: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "Fires a single Slug at a targeted foe. Firing a single Slug is slower than firing a Burst, but deals more damage, is longer range, and can knock down foes.Focus Fire:The target struck by this attack will take 3.33% increased damage from any Mercenary Henchmen regardless of their owners for 30 seconds. This does effect does not stack from the same power or from multiple Masterminds.",
+  "description": "Fires a single Slug at a targeted foe. Firing a single Slug is slower than firing a Burst, but deals more damage, is longer range, and can knock down foes.\n\nFocus Fire:\nThe target struck by this attack will take 3.33% increased damage from any Mercenary Henchmen regardless of their owners for 30 seconds. This does effect does not stack from the same power or from multiple Masterminds.",
   "shortHelp": "Ranged, DMG(Lethal), Foe Knockback",
   "icon": "paramilitary_assaultrifleslug.png",
   "powerType": "Click",

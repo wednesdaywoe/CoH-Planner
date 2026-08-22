@@ -14,7 +14,7 @@ export const CallDepths: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "Becoming a conduit of the ocean itself, you acclimate your allies to the incredible forces of the deep! This boosts the maximum hit points, maximum endurance, regeneration, and attack range of all nearby allies. Some of these effects will decay over time to a lower value.If Power of the Depths is activated inside a Tide Pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
+  "description": "Becoming a conduit of the ocean itself, you acclimate your allies to the incredible forces of the deep! This boosts the maximum hit points, maximum endurance, regeneration, and attack range of all nearby allies. Some of these effects will decay over time to a lower value.\n\nIf Power of the Depths is activated inside a Tide Pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
   "shortHelp": "PBAoE, Team +MaxHP, +MaxEnd, +Regen, +Range",
   "icon": "marineaffinity_powerofthedepths.png",
   "powerType": "Click",

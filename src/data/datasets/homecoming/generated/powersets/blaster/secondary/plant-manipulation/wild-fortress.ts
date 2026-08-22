@@ -14,7 +14,7 @@ export const WildFortress: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You encase yourself in a protective barrier that will absorb a moderate amount of damage. Additionally, you will recover endurance faster and be resistant to toxic damage and have confusion protection.Recharge: Moderate.",
+  "description": "You encase yourself in a protective barrier that will absorb a moderate amount of damage. Additionally, you will recover endurance faster and be resistant to toxic damage and have confusion protection.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Self +Absorb, +Recovery, +Resist(Toxic, Confuse)",
   "icon": "plantmanipulation_wildfortress.png",
   "powerType": "Toggle",

@@ -14,7 +14,7 @@ export const EquipThugs: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "Equip your Thug Henchmen with better ammo, weapons and training. This power permanently bestows new weapons and abilities to all of your Thug Henchman. The powers gained are unique and dependent upon the type of Thug Henchman.This power only works on your Thug Henchmen and you can only Equip your Thug Henchmen once with this power.",
+  "description": "Equip your Thug Henchmen with better ammo, weapons and training. This power permanently bestows new weapons and abilities to all of your Thug Henchman. The powers gained are unique and dependent upon the type of Thug Henchman.\n\nThis power only works on your Thug Henchmen and you can only Equip your Thug Henchmen once with this power.",
   "shortHelp": "Ranged, Equip Thug Henchman",
   "icon": "thugs_equipthugs.png",
   "powerType": "Click",

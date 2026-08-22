@@ -14,7 +14,7 @@ export const ShadowBolt: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. This power can be used while in Dwarf form, although only at a reduced range. While in dwarf form, this power will inflict a stronger attack and movement debuff, in addition to taunt its target.Damage: Minor.Recharge: Very Fast.",
+  "description": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. This power can be used while in Dwarf form, although only at a reduced range. While in dwarf form, this power will inflict a stronger attack and movement debuff, in addition to taunt its target.\n\nDamage: Minor.\nRecharge: Very Fast.",
   "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_shadowbolt.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const Gloom: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "Gloom slowly drains a target of life, while reducing their chance to hit. Slower than Dark Blast, but deals more damage over time.Damage: Moderate.Recharge: Moderate.",
+  "description": "Gloom slowly drains a target of life, while reducing their chance to hit. Slower than Dark Blast, but deals more damage over time.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Ranged, High DoT(Negative), Foe -To Hit",
   "icon": "darknessassault_gloom.png",
   "powerType": "Click",

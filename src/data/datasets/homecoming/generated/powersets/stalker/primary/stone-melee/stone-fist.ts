@@ -14,7 +14,7 @@ export const StoneFist: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Your stone covered fists attack swiftly for moderate damage, and may Disorient your opponent.Damage: Light.Recharge: Fast.",
+  "description": "Your stone covered fists attack swiftly for moderate damage, and may Disorient your opponent.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Melee Light DMG(Smashing), Foe Minor Disorient",
   "icon": "stonemelee_stonefist.png",
   "powerType": "Click",

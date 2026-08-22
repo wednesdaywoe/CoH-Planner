@@ -14,7 +14,7 @@ export const M30Grenade: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "Launches a Grenade at long range from beneath the barrel of your Assault Rifle. This explosion affects all within the blast radius, and can knock them back.Focus Fire:The main target struck by this attack will take 3.33% increased damage from any Mercenary Henchmen regardless of their owners for 30 seconds. This does effect does not stack from the same power or from multiple Masterminds.",
+  "description": "Launches a Grenade at long range from beneath the barrel of your Assault Rifle. This explosion affects all within the blast radius, and can knock them back.\n\nFocus Fire:\nThe main target struck by this attack will take 3.33% increased damage from any Mercenary Henchmen regardless of their owners for 30 seconds. This does effect does not stack from the same power or from multiple Masterminds.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Lethal/Fire), Knockback",
   "icon": "paramilitary_assaultriflegrenade.png",
   "powerType": "Click",

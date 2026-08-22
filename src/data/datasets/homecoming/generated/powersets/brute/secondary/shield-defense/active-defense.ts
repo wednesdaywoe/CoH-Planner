@@ -14,7 +14,7 @@ export const ActiveDefense: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Your mastery of the shield allows you to easily deflect melee attacks, and attacks that do get through your ironclad defenses tend to do less damage. While Deflection is active the user will gain defense to melee attacks and some minor resistance to lethal and smashing damage. Deflection also adds Psionic Defense and an Elusivity defense bonus to Psionic and Melee Attacks in PVP zones.Recharge: Fast.",
+  "description": "Your mastery of the shield allows you to easily deflect melee attacks, and attacks that do get through your ironclad defenses tend to do less damage. While Deflection is active the user will gain defense to melee attacks and some minor resistance to lethal and smashing damage. Deflection also adds Psionic Defense and an Elusivity defense bonus to Psionic and Melee Attacks in PVP zones.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Self +DEF(Melee), +Res(Lethal, Smashing)",
   "icon": "shielddefense_activedefense.png",
   "powerType": "Toggle",

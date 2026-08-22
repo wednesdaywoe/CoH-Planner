@@ -14,7 +14,7 @@ export const ObsidianShield: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "You can create a special Obsidian Shield that grants good resistance to Psionic damage. With your mind enshrouded in darkness you are protected from Sleep, Fear, Hold and Disorient attacks.Recharge: Fast.",
+  "description": "You can create a special Obsidian Shield that grants good resistance to Psionic damage. With your mind enshrouded in darkness you are protected from Sleep, Fear, Hold and Disorient attacks.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Self +Res(Psionic, Sleep, Hold, Disorient, Fear)",
   "icon": "darkarmor_obsidianshield.png",
   "powerType": "Toggle",

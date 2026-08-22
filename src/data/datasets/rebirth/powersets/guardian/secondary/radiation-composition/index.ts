@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Radiation Composition powers emanate from your body, empowering and shielding you from harm.  This energy allows you to manipulate atomic particles and waves to protect your allies and weaken your enemies.  You abilities also allow you to heal from your wounds and even absorb damage.',
+  description: "Radiation Composition powers emanate from your body, empowering and shielding you from harm.  This energy allows you to manipulate atomic particles and waves to protect your allies and weaken your enemies.  You abilities also allow you to heal from your wounds and even absorb damage.",
   icon: 'radiation_armor_set.ico',
   archetype: 'guardian',
   category: 'secondary',

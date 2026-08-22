@@ -14,7 +14,7 @@ export const BlackDwarfStrike: Power = {
   "available": 19,
   "autoIssue": true,
   "free": true,
-  "description": "The Black Dwarf Strike is a moderate melee attack that releases Nictus Dark Energy on impact, which can Knock Down foes, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.Damage: Light.Recharge: Very Fast.",
+  "description": "The Black Dwarf Strike is a moderate melee attack that releases Nictus Dark Energy on impact, which can Knock Down foes, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.\n\nDamage: Light.\nRecharge: Very Fast.",
   "shortHelp": "Melee, Light DMG(Smash/Negative), Foe -Recharge, -SPD, Knockback",
   "icon": "umbralaura_blackdwarfstrike.png",
   "powerType": "Click",

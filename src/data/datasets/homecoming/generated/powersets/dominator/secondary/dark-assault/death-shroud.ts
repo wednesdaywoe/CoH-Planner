@@ -14,7 +14,7 @@ export const DeathShroud: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Damage: Extreme.Recharge: Slow.",
+  "description": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Sniper, Extreme DMG(Negative), Target -To Hit",
   "icon": "darknessassault_moonbeam.png",
   "powerType": "Click",

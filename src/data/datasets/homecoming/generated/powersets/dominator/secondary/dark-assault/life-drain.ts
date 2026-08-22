@@ -14,7 +14,7 @@ export const LifeDrain: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You can tap the power of the Netherworld to steal some life from a target foe and reduce their chance to hit. Some of that stolen life is transferred to you in the form of Hit Points.Damage: Moderate.Recharge: Moderate.",
+  "description": "You can tap the power of the Netherworld to steal some life from a target foe and reduce their chance to hit. Some of that stolen life is transferred to you in the form of Hit Points.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Ranged, Moderate DMG(Negative), Target -To Hit, Self +HP",
   "icon": "darknessassault_lifedrain.png",
   "powerType": "Click",

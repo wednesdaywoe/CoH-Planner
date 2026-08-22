@@ -14,7 +14,7 @@ export const ChillingEmbrace: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their movement speed and damage. The air around your body becomes so cold that attacks deflect off of it, granting you absorption, while your body becomes extremely energy efficient, granting you bonus Recovery.Recharge: Moderate.",
+  "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their movement speed and damage. The air around your body becomes so cold that attacks deflect off of it, granting you absorption, while your body becomes extremely energy efficient, granting you bonus Recovery.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: PBAoE, Foe -Recharge, -Speed, -DMG, Self +Absorb over Time, +Recovery",
   "icon": "icemanipulation_chillingembrace.png",
   "powerType": "Toggle",

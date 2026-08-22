@@ -14,7 +14,7 @@ export const FollowUp: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "You perform a feint attack that deals light damage. After this attack hits, it gives you a large bonus to your chance to hit and damage for a brief time. This power is the finishing move in the Empower combination attack.Empower: Nimble Slash > Ablating Strike > Blinding Feint.",
+  "description": "You perform a feint attack that deals light damage. After this attack hits, it gives you a large bonus to your chance to hit and damage for a brief time. This power is the finishing move in the Empower combination attack.\n\nEmpower: Nimble Slash > Ablating Strike > Blinding Feint.",
   "shortHelp": "Melee, DMG(Lethal), Self +DMG, +To Hit",
   "icon": "dualblades_followup.png",
   "powerType": "Click",

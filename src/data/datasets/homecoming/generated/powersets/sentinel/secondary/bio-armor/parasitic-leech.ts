@@ -14,7 +14,7 @@ export const ParasiticLeech: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "You release a wave of parasites around you that draw out your enemies' genetic material. These parasites dramatically increase your survivability by gaining damage absorption while boosting your regeneration and recovery rate for a short time. Affected foes will be infected and have reduced regeneration for a short while.*While Offensive Adaptation is active, this power will apply a stronger regeneration debuff.*While Defensive Adaptation is active, this power will grant a small amount of additional damage absorption and inflict a damage debuff.*While Efficient Adaptation is active, this power will grant additional regeneration and recovery per target hit.",
+  "description": "You release a wave of parasites around you that draw out your enemies' genetic material. These parasites dramatically increase your survivability by gaining damage absorption while boosting your regeneration and recovery rate for a short time. Affected foes will be infected and have reduced regeneration for a short while.\n\n*While Offensive Adaptation is active, this power will apply a stronger regeneration debuff.\n*While Defensive Adaptation is active, this power will grant a small amount of additional damage absorption and inflict a damage debuff.\n*While Efficient Adaptation is active, this power will grant additional regeneration and recovery per target hit.",
   "shortHelp": "PBAoE, Self +Absorb, +Regeneration, +Recovery, Foe -DMG",
   "icon": "bioorganicarmor_parasiticleech.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const Cinders: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "Incapacitates foes around the caster by whirling Cinders around them. The targets are left helpless, choking on the soot.Notes: This power has adaptive recharge. It has a base recharge of 8 seconds and each affected foe will increase the recharge by 14.5 seconds for a maximum total of 240 seconds.",
+  "description": "Incapacitates foes around the caster by whirling Cinders around them. The targets are left helpless, choking on the soot.\n\nNotes: This power has adaptive recharge. It has a base recharge of 8 seconds and each affected foe will increase the recharge by 14.5 seconds for a maximum total of 240 seconds.",
   "shortHelp": "PBAoE, Foe Hold",
   "icon": "firetrap_cinders.png",
   "powerType": "Click",

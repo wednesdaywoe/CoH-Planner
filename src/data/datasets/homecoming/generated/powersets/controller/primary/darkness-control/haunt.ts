@@ -14,7 +14,7 @@ export const Haunt: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "You summon a pair of Shades from the Netherworld to harass your target foe. Shades deal moderate damage and they terrorize their victims.Recharge: Long.",
+  "description": "You summon a pair of Shades from the Netherworld to harass your target foe. Shades deal moderate damage and they terrorize their victims.\n\nRecharge: Long.",
   "shortHelp": "Foe Targeted, Summon Shades",
   "icon": "darknesscontrol_haunt.png",
   "powerType": "Click",

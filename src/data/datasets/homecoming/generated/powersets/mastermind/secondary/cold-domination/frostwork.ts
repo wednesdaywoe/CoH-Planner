@@ -14,7 +14,7 @@ export const Frostwork: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "Covers an ally in a thick layer of Frost. The frost can absorb the impact from enemy attacks, effectively increasing your ally's maximum Hit Points for a short time. Frostwork also grants your ally resistance to Toxic Damage.Recharge: Slow.",
+  "description": "Covers an ally in a thick layer of Frost. The frost can absorb the impact from enemy attacks, effectively increasing your ally's maximum Hit Points for a short time. Frostwork also grants your ally resistance to Toxic Damage.\n\nRecharge: Slow.",
   "shortHelp": "Target +Max HP, Res(Toxic)",
   "icon": "colddomination_frostwork.png",
   "powerType": "Click",

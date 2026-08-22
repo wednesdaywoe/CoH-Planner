@@ -14,7 +14,7 @@ export const FieryEmbrace: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "Significantly boosts the damage of all your Fire attacks for quite a while. Also increases the damage of all your other non-fire based attacks for a short while.Recharge: Long.",
+  "description": "Significantly boosts the damage of all your Fire attacks for quite a while. Also increases the damage of all your other non-fire based attacks for a short while.\n\nRecharge: Long.",
   "shortHelp": "Self +DMG",
   "icon": "fireassault_fieryembrace.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const SonicCage: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "Encases the target in an impenetrable field of sonic waves. The target cannot attack or be attacked.Recharge: Slow.",
+  "description": "Encases the target in an impenetrable field of sonic waves. The target cannot attack or be attacked.\n\nRecharge: Slow.",
   "shortHelp": "Ranged, Foe Capture (Special)",
   "icon": "sonicdebuff_hold.png",
   "powerType": "Click",

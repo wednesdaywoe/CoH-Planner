@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Radiation Emission powers allow you to manipulate atomic particles and waves to protect your allies and weaken your enemies.',
+  description: "Radiation Emission powers allow you to manipulate atomic particles and waves to protect your allies and weaken your enemies.",
   icon: 'radiation_emission_set.ico',
   archetype: 'controller',
   category: 'secondary',

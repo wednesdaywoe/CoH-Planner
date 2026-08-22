@@ -14,7 +14,7 @@ export const MentalStrike: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You project psionic energy around your fist and strike at your foe dealing light Psionic and Smashing damage. Affected foes will have their recharge rate reduced. Mental Strike has a small chance to grant you Insight. While you have Insight, Mental Strike will deal additional minor psionic damage over time.Damage: Light.Recharge: Very Fast.",
+  "description": "You project psionic energy around your fist and strike at your foe dealing light Psionic and Smashing damage. Affected foes will have their recharge rate reduced. Mental Strike has a small chance to grant you Insight. While you have Insight, Mental Strike will deal additional minor psionic damage over time.\n\nDamage: Light.\nRecharge: Very Fast.",
   "shortHelp": "Melee, Light DMG(Psionic/Smash), Foe -Rech; Self +Insight",
   "icon": "psionicmelee_mentalstrike.png",
   "powerType": "Click",

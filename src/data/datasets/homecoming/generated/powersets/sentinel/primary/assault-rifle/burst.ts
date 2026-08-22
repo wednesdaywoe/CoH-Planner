@@ -14,7 +14,7 @@ export const Burst: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Quickly fires a Burst of rounds at a single target at very long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense.Damage: Moderate.Recharge: Fast.",
+  "description": "Quickly fires a Burst of rounds at a single target at very long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense.\n\nDamage: Moderate.\nRecharge: Fast.",
   "shortHelp": "Ranged, DMG(Lethal), Foe -DEF",
   "icon": "assaultweapons_arburst.png",
   "powerType": "Click",

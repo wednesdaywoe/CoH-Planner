@@ -14,7 +14,7 @@ export const SeismicSmash: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright.Damage: Extreme.Recharge: Slow.",
+  "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Melee, Extreme DMG(Smash), Foe Hold",
   "icon": "earthassault_seismicsmash.png",
   "powerType": "Click",

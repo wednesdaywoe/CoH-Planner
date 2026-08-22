@@ -14,7 +14,7 @@ export const DeathShroud: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You become a focus point for the Netherworld, allowing its Negative Energy to seep from your body. This will continuously damage all foes in melee range.Damage: Minor(DoT).Recharge: Fast.",
+  "description": "You become a focus point for the Netherworld, allowing its Negative Energy to seep from your body. This will continuously damage all foes in melee range.\n\nDamage: Minor(DoT).\nRecharge: Fast.",
   "shortHelp": "Toggle: PBAoE Minor DoT(Negative)",
   "icon": "darkarmor_touchofdeath.png",
   "powerType": "Toggle",

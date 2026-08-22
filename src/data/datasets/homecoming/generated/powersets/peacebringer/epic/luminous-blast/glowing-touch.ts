@@ -14,7 +14,7 @@ export const GlowingTouch: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "Heals a single targeted ally at moderate range. You cannot use this power to heal yourself.Recharge: Fast.",
+  "description": "Heals a single targeted ally at moderate range. You cannot use this power to heal yourself.\n\nRecharge: Fast.",
   "shortHelp": "Ally Heal",
   "icon": "luminousblast_glowingtouch.png",
   "powerType": "Click",

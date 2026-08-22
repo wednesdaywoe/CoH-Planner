@@ -14,7 +14,7 @@ export const FreezingTouch: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "This Freezing Touch will encase a single foe in a block of ice. This will deal minor damage as well as freezing them in their tracks, leaving them cold and helpless.Damage: High.Recharge: Moderate.",
+  "description": "This Freezing Touch will encase a single foe in a block of ice. This will deal minor damage as well as freezing them in their tracks, leaving them cold and helpless.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DMG(Cold), Foe Hold",
   "icon": "icemanipulation_freezingtouch.png",
   "powerType": "Click",

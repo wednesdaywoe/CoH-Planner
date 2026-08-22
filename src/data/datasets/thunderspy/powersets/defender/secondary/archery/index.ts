@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'The ancient art of Archery allows you to use a Bow and Arrow to great effect.  This power set has an inherent bonus to Accuracy.',
+  description: "The ancient art of Archery allows you to use a Bow and Arrow to great effect.  This power set has an inherent bonus to Accuracy.",
   icon: 'archery_set.ico',
   archetype: 'defender',
   category: 'secondary',

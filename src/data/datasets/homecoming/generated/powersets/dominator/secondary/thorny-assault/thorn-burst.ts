@@ -14,7 +14,7 @@ export const ThornBurst: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You can explode dozens of Thorns in all directions around you. These Thorns only travel a short distance, but they can deal moderate damage and poison any target close to you. Toxic damage from the thorns can reduce the Defense of affected foes.Damage: Light.Recharge: Slow.",
+  "description": "You can explode dozens of Thorns in all directions around you. These Thorns only travel a short distance, but they can deal moderate damage and poison any target close to you. Toxic damage from the thorns can reduce the Defense of affected foes.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE Melee, Light DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_thornburst.png",
   "powerType": "Click",

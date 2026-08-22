@@ -14,7 +14,7 @@ export const DisruptionField: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "You set up a constant wave of sonic energy around an ally, weakening the Damage Resistance of all nearby foes.Recharge: Moderate.",
+  "description": "You set up a constant wave of sonic energy around an ally, weakening the Damage Resistance of all nearby foes.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Ranged (Target Ally AoE), Foe -Res",
   "icon": "sonicdebuff_teamdebuffdamres.png",
   "powerType": "Toggle",

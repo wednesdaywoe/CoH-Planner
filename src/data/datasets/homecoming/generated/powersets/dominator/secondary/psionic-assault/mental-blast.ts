@@ -14,7 +14,7 @@ export const MentalBlast: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "This basic attack does high Psionic damage, and can slightly reduce a target's attack speed.Damage: Moderate.Recharge: Moderate.",
+  "description": "This basic attack does high Psionic damage, and can slightly reduce a target's attack speed.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mentalblast.png",
   "powerType": "Click",

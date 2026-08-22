@@ -14,7 +14,7 @@ export const MaimingSlash: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You execute a savage slash at your foe's lower body causing moderate lethal damage and minor damage over time. The foe will also have their movement speed reduced moderately. Maiming Slash grants 1 stack of Blood Frenzy.Damage: Moderate.Recharge: Fast.",
+  "description": "You execute a savage slash at your foe's lower body causing moderate lethal damage and minor damage over time. The foe will also have their movement speed reduced moderately. Maiming Slash grants 1 stack of Blood Frenzy.\n\nDamage: Moderate.\nRecharge: Fast.",
   "shortHelp": "Melee, DMG(Lethal), DoT (Lethal), Foe -Speed, +1 Blood Frenzy",
   "icon": "savagemelee_maimingslash.png",
   "powerType": "Click",

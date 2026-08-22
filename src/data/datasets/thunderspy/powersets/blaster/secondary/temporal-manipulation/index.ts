@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'By gazing into the flow of time you are able to manipulate time itself. Time Manipulation allows the wielder to inflict crippling debuffs, accelerating yourself, and exhaust your foes by showing them their doomed future.',
+  description: "By gazing into the flow of time you are able to manipulate time itself. Time Manipulation allows the wielder to inflict crippling debuffs, accelerating yourself, and exhaust your foes by showing them their doomed future.",
   icon: 'time_manipulation_set.ico',
   archetype: 'blaster',
   category: 'secondary',

@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Spectral Aura allows you to step between the veil of life and death to protect yourself and hinder your Foes.  Many Spectral Aura powers cause additional effects when used on feared foes.',
+  description: "Spectral Aura allows you to step between the veil of life and death to protect yourself and hinder your Foes.  Many Spectral Aura powers cause additional effects when used on feared foes.",
   icon: 'dark_armor_set.ico',
   archetype: 'stalker',
   category: 'secondary',

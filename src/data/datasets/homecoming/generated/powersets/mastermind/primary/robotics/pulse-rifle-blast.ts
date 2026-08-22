@@ -14,7 +14,7 @@ export const PulseRifleBlast: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "This Pulse Rifle can fire a long range laser pulse that deals Energy damage.Laser Burn:Targets struck by this attack will have their Regeneration debuffed for 30 seconds.",
+  "description": "This Pulse Rifle can fire a long range laser pulse that deals Energy damage.\n\nLaser Burn:\nTargets struck by this attack will have their Regeneration debuffed for 30 seconds.",
   "shortHelp": "Ranged, DMG(Energy), -Regen",
   "icon": "robotics_laserrifleburst.png",
   "powerType": "Click",

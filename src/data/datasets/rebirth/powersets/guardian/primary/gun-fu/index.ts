@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You are a master of the Gun Fu fighting style. You seamlessly blend sophisticated martial arts perfectly with your skills as a shootist to strike down foes with either hand or bullet.',
+  description: "You are a master of the Gun Fu fighting style. You seamlessly blend sophisticated martial arts perfectly with your skills as a shootist to strike down foes with either hand or bullet.",
   icon: 'dual_pistols_set.ico',
   archetype: 'guardian',
   category: 'primary',

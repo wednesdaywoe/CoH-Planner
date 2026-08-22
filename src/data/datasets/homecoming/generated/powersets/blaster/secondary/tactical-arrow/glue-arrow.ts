@@ -14,7 +14,7 @@ export const GlueArrow: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "This arrow carries a cartridge of intensely sticky glue, which explodes on impact. The glue slows the movement and attack rates of any foes in the area.Recharge: Long.",
+  "description": "This arrow carries a cartridge of intensely sticky glue, which explodes on impact. The glue slows the movement and attack rates of any foes in the area.\n\nRecharge: Long.",
   "shortHelp": "Ranged (Targeted AoE), DoT(Toxic), Foe -SPD, -Recharge, -Fly, -Jump",
   "icon": "tacticalarrow_slow.png",
   "powerType": "Click",

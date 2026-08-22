@@ -14,7 +14,7 @@ export const DarkEmpowerment: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "Dark Empowerment will permanently bestow the most powerful and darkest new powers and abilities to all of your Undead Henchman. The Empowered Undead will gain new abilities and powers. The powers gained are unique and dependent upon the type of Undead Henchman that is Empowered, but all Henchmen will gain additional Hit Points, and the power to steal life force from enemies they attack!Dark Empowerment only works on your Undead Henchmen and you can only Empower your Undead Henchmen once with this power.",
+  "description": "Dark Empowerment will permanently bestow the most powerful and darkest new powers and abilities to all of your Undead Henchman. The Empowered Undead will gain new abilities and powers. The powers gained are unique and dependent upon the type of Undead Henchman that is Empowered, but all Henchmen will gain additional Hit Points, and the power to steal life force from enemies they attack!\n\nDark Empowerment only works on your Undead Henchmen and you can only Empower your Undead Henchmen once with this power.",
   "shortHelp": "Ranged, Empower Undead Henchman",
   "icon": "necromancy_darkempowerment.png",
   "powerType": "Click",

@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Strike your foes with manifested whips and swords. Each strike manifests a psychokinetic sword that will fight alongside you for a short time',
+  description: "Strike your foes with manifested whips and swords. Each strike manifests a psychokinetic sword that will fight alongside you for a short time",
   icon: 'psionic_assault_set.ico',
   archetype: 'dominator',
   category: 'secondary',

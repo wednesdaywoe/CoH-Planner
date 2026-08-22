@@ -14,7 +14,7 @@ export const ModerateBridge: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "You Slash at your foe with your blades, dealing a good amount of lethal damage. This attack can reduce a target's Defense, making them easier to hit. This power is the finishing move of the Sweep combination attack.Sweep: Build Up > Assassin’s Blades > Ablating Strike.",
+  "description": "You Slash at your foe with your blades, dealing a good amount of lethal damage. This attack can reduce a target's Defense, making them easier to hit. This power is the finishing move of the Sweep combination attack.\n\nSweep: Build Up > Assassin’s Blades > Ablating Strike.",
   "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
   "icon": "dualblades_moderatebridge.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const TargetingDrone: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit, slightly increase the damage you deal, and increase your perception, allowing you to better see stealthy foes. If not engaged in combat, this power will give a large damage buff to your opening attack. Targeting Drone also grants you resistance to powers that debuff your chance to hit.Recharge: Moderate.",
+  "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit, slightly increase the damage you deal, and increase your perception, allowing you to better see stealthy foes. If not engaged in combat, this power will give a large damage buff to your opening attack. Targeting Drone also grants you resistance to powers that debuff your chance to hit.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Self +To Hit, +Damage, +Perception, Res(DeBuff To Hit)",
   "icon": "gadgets_targetingdrone.png",
   "powerType": "Toggle",

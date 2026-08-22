@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Spectral Melee allows you to focus the ghostly powers to defeat your foes. Your foes cower in fear from repeated exposure to your attacks, striking a fully feared target manifests a haunting spirit to assist you for a short time.',
+  description: "Spectral Melee allows you to focus the ghostly powers to defeat your foes. Your foes cower in fear from repeated exposure to your attacks, striking a fully feared target manifests a haunting spirit to assist you for a short time.",
   icon: 'dark_melee_set.ico',
   archetype: 'stalker',
   category: 'primary',

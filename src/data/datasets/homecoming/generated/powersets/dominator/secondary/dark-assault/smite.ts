@@ -14,7 +14,7 @@ export const Smite: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You wrap your fists with Negative Energy channeled from the Netherworld and Smite your foe with a powerful blow. Smite clouds the target's vision, lowering their chance to hit for a short time.Damage: Moderate.Recharge: Moderate.",
+  "description": "You wrap your fists with Negative Energy channeled from the Netherworld and Smite your foe with a powerful blow. Smite clouds the target's vision, lowering their chance to hit for a short time.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Melee, Moderate DMG(Smash/Negative), Foe -To Hit",
   "icon": "darknessassault_smite.png",
   "powerType": "Click",

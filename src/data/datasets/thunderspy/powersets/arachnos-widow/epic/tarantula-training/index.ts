@@ -26,7 +26,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 23,
   specializeRequires: ["Widow_Training.Night_Widow_Training","powerset?","Teamwork.Widow_Teamwork","powerset?","||","Widow_Training.Fortunata_Training","powerset?","Teamwork.Fortunata_Teamwork","powerset?","||","||","!"],
-  description: 'Tarantula Training',
+  description: "Tarantula Training",
   icon: 'tarantula_training_set.png',
   archetype: 'arachnos-widow',
   category: 'epic',

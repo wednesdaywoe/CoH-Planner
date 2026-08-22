@@ -14,7 +14,7 @@ export const BuildUp: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit. This power is the opening move for the Empower and Sweep combination attacks.Empower: Build Up > Assassin’s Blades > Placate.Sweep: Build Up > Assassin’s Blades > Ablating Strike.",
+  "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit. This power is the opening move for the Empower and Sweep combination attacks.\n\nEmpower: Build Up > Assassin’s Blades > Placate.\nSweep: Build Up > Assassin’s Blades > Ablating Strike.",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "dualblades_buildup.png",
   "powerType": "Click",

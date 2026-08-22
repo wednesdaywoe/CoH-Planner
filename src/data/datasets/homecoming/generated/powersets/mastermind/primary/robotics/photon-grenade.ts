@@ -14,7 +14,7 @@ export const PhotonGrenade: Power = {
   "available": 7,
   "autoIssue": false,
   "free": false,
-  "description": "Launches an Energy Grenade at long range from your Pulse Rifle. The energy from this explosion can Disorient some targets in the affected area and debuffs their regeneration.Laser Burn:Targets struck by this attack will have their Regeneration debuffed for 30 seconds.",
+  "description": "Launches an Energy Grenade at long range from your Pulse Rifle. The energy from this explosion can Disorient some targets in the affected area and debuffs their regeneration.\n\nLaser Burn:\nTargets struck by this attack will have their Regeneration debuffed for 30 seconds.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Disorient, -Regen",
   "icon": "robotics_laserriflestungrenade.png",
   "powerType": "Click",

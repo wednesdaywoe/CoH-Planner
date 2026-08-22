@@ -14,7 +14,7 @@ export const RiseofthePhoenix: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Phoenix Rising will leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.You can also use this power even if you have not been defeated, with weakend effects. The closer you are to being defeated, the stronger the effects will be.",
+  "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Phoenix Rising will leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.\n\nYou can also use this power even if you have not been defeated, with weakend effects. The closer you are to being defeated, the stronger the effects will be.",
   "shortHelp": "Self Heal, MaxHP, Rez, Special",
   "icon": "flamingshield_riseofthephoenix.png",
   "powerType": "Click",

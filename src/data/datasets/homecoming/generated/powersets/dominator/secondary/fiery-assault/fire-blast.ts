@@ -14,7 +14,7 @@ export const FireBlast: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.Damage: High.Recharge: Moderate.",
+  "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Ranged, High DMG(Fire)",
   "icon": "fireassault_fireblast.png",
   "powerType": "Click",

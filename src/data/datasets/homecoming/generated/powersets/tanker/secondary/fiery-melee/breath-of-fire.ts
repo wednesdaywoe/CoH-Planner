@@ -14,7 +14,7 @@ export const BreathofFire: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "This allows you to spew forth fire from your mouth, burning all foes within its narrow cone. This is a very accurate attack that can deal good damage at a close range.Your main target will be burned by intense heat for bonus damage.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "This allows you to spew forth fire from your mouth, burning all foes within its narrow cone. This is a very accurate attack that can deal good damage at a close range.\n\nYour main target will be burned by intense heat for bonus damage.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Close (Cone) DoT (Fire)",
   "icon": "fieryfray_breathingfire.png",
   "powerType": "Click",

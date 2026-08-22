@@ -14,7 +14,7 @@ export const GravimetricSnare: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "You can hurl Gravimetric fibers to Snare your foes. Gravimetric Snare can Immobilize a single target and crush them. The target's attack rate and movement speed are also slowed, even if they resist the Immobilization effect.Damage: Light.Recharge: Fast.",
+  "description": "You can hurl Gravimetric fibers to Snare your foes. Gravimetric Snare can Immobilize a single target and crush them. The target's attack rate and movement speed are also slowed, even if they resist the Immobilization effect.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Moderate DOT(Negative), Foe Immobilize, -Recharge, -SPD",
   "icon": "umbralblast_gravimetricsnare.png",
   "powerType": "Click",

@@ -105,7 +105,7 @@ export const EnergyTransfer: Power = {
         }
       },
       "shortHelp": "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
-      "description": "Mastery of Energy Melee culminates with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. This power will execute extremely quickly if under Energy Focus mode.Damage: Extreme.Recharge: Moderate.",
+      "description": "Mastery of Energy Melee culminates with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. This power will execute extremely quickly if under Energy Focus mode.\n\nDamage: Extreme.\nRecharge: Moderate.",
       "effectArea": "SingleTarget",
       "targetType": "Foe",
       "powerType": "Click",

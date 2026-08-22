@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Dark Armor allows you to tap into the powers of the Netherworld for protection.  Many Dark Armor powers drain your foes to strengthen you.  Dark Armor offers very good resistance to Negative Energy damage, and is one of the only defensive sets that offer some resistance to Psionic damage.  However. its resistance to Energy is weak and it offers no protection to Knockback.',
+  description: "Dark Armor allows you to tap into the powers of the Netherworld for protection.  Many Dark Armor powers drain your foes to strengthen you.  Dark Armor offers very good resistance to Negative Energy damage, and is one of the only defensive sets that offer some resistance to Psionic damage.  However. its resistance to Energy is weak and it offers no protection to Knockback.",
   icon: 'dark_armor_set.ico',
   archetype: 'scrapper',
   category: 'secondary',

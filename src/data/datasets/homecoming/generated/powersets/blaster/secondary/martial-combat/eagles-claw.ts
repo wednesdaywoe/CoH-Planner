@@ -14,7 +14,7 @@ export const EaglesClaw: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "You can perform a devastating kick that can severely Disorient most opponents. Eagle's Claw strikes so powerfully that it weakens your target's resolve, reducing their Range and Recharge for several seconds after attacking, and has an additional chance to cause your target to bleed for Lethal damage over time.Damage: Extreme.Recharge: Slow.",
+  "description": "You can perform a devastating kick that can severely Disorient most opponents. Eagle's Claw strikes so powerfully that it weakens your target's resolve, reducing their Range and Recharge for several seconds after attacking, and has an additional chance to cause your target to bleed for Lethal damage over time.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Melee, Extreme DMG(Smash), DoT(Lethal), Foe Minor Disorient, +Special",
   "icon": "martialmanipulation_eaglesclaw.png",
   "powerType": "Click",

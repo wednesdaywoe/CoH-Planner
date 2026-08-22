@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Dark Composition wielders focus the dark energies of the Netherworld to protect themselves and weaken their foes.',
+  description: "Dark Composition wielders focus the dark energies of the Netherworld to protect themselves and weaken their foes.",
   icon: 'dark_armor_set.ico',
   archetype: 'guardian',
   category: 'secondary',

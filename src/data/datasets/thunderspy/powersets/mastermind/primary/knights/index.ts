@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Knights are quick to pledge their loyalty to a just cause  and a honorable leader. The Knights have been scattered for centuries but have begun to reunite under a single banner. Unlike other Masterminds this one leads the charge inspiring the knights around him.',
+  description: "Knights are quick to pledge their loyalty to a just cause  and a honorable leader. The Knights have been scattered for centuries but have begun to reunite under a single banner. Unlike other Masterminds this one leads the charge inspiring the knights around him.",
   icon: 'knights_set.ico',
   archetype: 'mastermind',
   category: 'primary',

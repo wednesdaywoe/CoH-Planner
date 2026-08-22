@@ -14,7 +14,7 @@ export const StormKick: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You can unleash a roundhouse kick that pummels your foe for moderate damage, knocking them down. Storm Kick has an additional chance to cause your target to bleed for Lethal damage over time.Damage: Moderate.Recharge: Fast.",
+  "description": "You can unleash a roundhouse kick that pummels your foe for moderate damage, knocking them down. Storm Kick has an additional chance to cause your target to bleed for Lethal damage over time.\n\nDamage: Moderate.\nRecharge: Fast.",
   "shortHelp": "Melee, Moderate DMG(Smash), DoT(Lethal), Foe Knockdown",
   "icon": "martialmanipulation_stormkick.png",
   "powerType": "Click",

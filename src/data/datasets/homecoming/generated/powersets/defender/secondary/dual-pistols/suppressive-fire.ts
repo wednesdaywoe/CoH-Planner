@@ -14,7 +14,7 @@ export const SuppressiveFire: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "Suppressive Fire allows the user to quickly stun their target for a short time and deal a very minor amount of Lethal damage.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.Additionally, changing your ammunition type will also change the secondary effect of this attack from Disorient effect to a Hold effect if 'Cryo Ammo', 'Incendiary Ammo' or 'Chemical Ammo' are loaded. Damage and duration of the hold will variate by ammo type.",
+  "description": "Suppressive Fire allows the user to quickly stun their target for a short time and deal a very minor amount of Lethal damage.\n\nChanging your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.\n\nAdditionally, changing your ammunition type will also change the secondary effect of this attack from Disorient effect to a Hold effect if 'Cryo Ammo', 'Incendiary Ammo' or 'Chemical Ammo' are loaded. Damage and duration of the hold will variate by ammo type.",
   "shortHelp": "Ranged, DMG(Lethal/Special), Foe Disorient/Special",
   "icon": "dualpistols_suppressivefire.png",
   "powerType": "Click",

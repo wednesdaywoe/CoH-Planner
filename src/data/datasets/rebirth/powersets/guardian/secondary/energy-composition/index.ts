@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Energy Composition users can surround themselves with powerful defensive energy auras. Their mastery of energy allows them to manipulate and transfer energy from foes to protect themselves and their allies.',
+  description: "Energy Composition users can surround themselves with powerful defensive energy auras. Their mastery of energy allows them to manipulate and transfer energy from foes to protect themselves and their allies.",
   icon: 'energy_aura_set.ico',
   archetype: 'guardian',
   category: 'secondary',

@@ -14,7 +14,7 @@ export const Tornado: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "Conjures up a funnel cloud at a targeted location. The Tornado will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Tornado is a menacing sight, and can even cause panic among your foes.Recharge: Slow.",
+  "description": "Conjures up a funnel cloud at a targeted location. The Tornado will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Tornado is a menacing sight, and can even cause panic among your foes.\n\nRecharge: Slow.",
   "shortHelp": "Summon Tornado: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
   "icon": "stormsummoning_tornado.png",
   "powerType": "Click",

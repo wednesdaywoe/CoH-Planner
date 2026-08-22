@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Masters of the void, Umbral Assault wielders can manipulate dark energy, gravity and matter to blast and dominate their foes.  The gravimetric nature of most Umbral Assault powers often slows the targets attack and movement speed.',
+  description: "Masters of the void, Umbral Assault wielders can manipulate dark energy, gravity and matter to blast and dominate their foes.  The gravimetric nature of most Umbral Assault powers often slows the targets attack and movement speed.",
   icon: 'umbral_blast_set.ico',
   archetype: 'guardian',
   category: 'primary',

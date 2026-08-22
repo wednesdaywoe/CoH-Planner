@@ -14,7 +14,7 @@ export const ReformEssence: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself.Recharge: Slow.",
+  "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself.\n\nRecharge: Slow.",
   "shortHelp": "Self Heal",
   "icon": "luminousaura_reformessence.png",
   "powerType": "Click",

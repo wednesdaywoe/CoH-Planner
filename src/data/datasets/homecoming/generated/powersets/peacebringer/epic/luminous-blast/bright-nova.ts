@@ -14,7 +14,7 @@ export const BrightNova: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "Kheldians are masters of energy and matter. A Peacebringer can transform into a flying energy beast known as a Bright Nova. When you choose this power, you will have access to 4 very powerful ranged attacks that can only be used while in this form. You will not be able to use any other powers while in Bright Nova form. Bright Nova can fly, has increased Accuracy, and improved Endurance Recovery, but has no defense.Recharge: Very Fast.",
+  "description": "Kheldians are masters of energy and matter. A Peacebringer can transform into a flying energy beast known as a Bright Nova. When you choose this power, you will have access to 4 very powerful ranged attacks that can only be used while in this form. You will not be able to use any other powers while in Bright Nova form. Bright Nova can fly, has increased Accuracy, and improved Endurance Recovery, but has no defense.\n\nRecharge: Very Fast.",
   "shortHelp": "Toggle: Shapeshift, Special",
   "icon": "luminousblast_brightnova.png",
   "powerType": "Toggle",

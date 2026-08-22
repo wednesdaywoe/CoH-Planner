@@ -14,7 +14,7 @@ export const FireBreath: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You can breathe forth a torrent of fire that burns all foes within its narrow cone. Very accurate and very deadly at medium range.Damage: Moderate.Recharge: Slow.",
+  "description": "You can breathe forth a torrent of fire that burns all foes within its narrow cone. Very accurate and very deadly at medium range.\n\nDamage: Moderate.\nRecharge: Slow.",
   "shortHelp": "Close (Cone), Moderate DoT(Fire)",
   "icon": "fireassault_breathoffire.png",
   "powerType": "Click",

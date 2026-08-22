@@ -14,7 +14,7 @@ export const PowerBoost: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "Boosts the damage and secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes and more, are all improved. The effects of Power Up last a short while, and only the next couple of attacks will be boosted.Recharge: Long.",
+  "description": "Boosts the damage and secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes and more, are all improved. The effects of Power Up last a short while, and only the next couple of attacks will be boosted.\n\nRecharge: Long.",
   "shortHelp": "Self +Special, +Dmg(All)",
   "icon": "earthassault_powerboost.png",
   "powerType": "Click",

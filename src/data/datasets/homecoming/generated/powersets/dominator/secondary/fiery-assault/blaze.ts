@@ -14,7 +14,7 @@ export const Blaze: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "A devastating flame attack.Damage: Superior.Recharge: Slow.",
+  "description": "A devastating flame attack.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Ranged, Superior DMG(Fire)",
   "icon": "fireassault_blaze.png",
   "powerType": "Click",

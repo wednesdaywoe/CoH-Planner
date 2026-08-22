@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You have total control over the power of water. Water Control grants you superior control over large groups and the ability to deal a good amount of damage to single targets. Your powers have a chance to inflict Drowning on a target, while under this effect, Deluge, Suffocate, Hypothermia, Turbulent Aura and Tidal Wave will deal more damage and these powers\' secondary effects are enhanced.',
+  description: "You have total control over the power of water. Water Control grants you superior control over large groups and the ability to deal a good amount of damage to single targets. Your powers have a chance to inflict Drowning on a target, while under this effect, Deluge, Suffocate, Hypothermia, Turbulent Aura and Tidal Wave will deal more damage and these powers' secondary effects are enhanced.",
   icon: 'water_control_set.ico',
   archetype: 'controller',
   category: 'primary',

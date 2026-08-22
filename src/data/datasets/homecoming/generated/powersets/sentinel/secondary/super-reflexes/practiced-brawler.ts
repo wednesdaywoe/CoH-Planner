@@ -14,7 +14,7 @@ export const PracticedBrawler: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "Your training has allowed you to become a Practiced Brawler, tuning you into a perfect fighting machine. You gain a resistance to Knockback, Disorient, Hold, Sleep, and Immobilization powers for a short duration. This power can not be taken if you take Master Brawler.Recharge: Long.",
+  "description": "Your training has allowed you to become a Practiced Brawler, tuning you into a perfect fighting machine. You gain a resistance to Knockback, Disorient, Hold, Sleep, and Immobilization powers for a short duration. This power can not be taken if you take Master Brawler.\n\nRecharge: Long.",
   "shortHelp": "Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize)",
   "icon": "superreflexes_practicedbrawler.png",
   "powerType": "Click",

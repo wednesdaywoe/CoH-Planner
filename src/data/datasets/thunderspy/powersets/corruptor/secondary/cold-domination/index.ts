@@ -28,7 +28,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Cold Domination powers allow you to manipulate cold and ice to protect your allies and weaken your enemies.',
+  description: "Cold Domination powers allow you to manipulate cold and ice to protect your allies and weaken your enemies.",
   icon: 'cold_domination_set.ico',
   archetype: 'corruptor',
   category: 'secondary',

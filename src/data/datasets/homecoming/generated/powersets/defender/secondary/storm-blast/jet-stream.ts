@@ -14,7 +14,7 @@ export const JetStream: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You call forth a cone of rapidly moving air that repels enemies, causing Smashing damage. Enemies who are within a Storm Cell will not be repelled, but instead will be knocked down.",
+  "description": "You call forth a cone of rapidly moving air that repels enemies, causing Smashing damage.\n\nEnemies who are within a Storm Cell will not be repelled, but instead will be knocked down.",
   "shortHelp": "Ranged (Cone), DMG(Smashing), Foe Knockdown or Repel",
   "icon": "stormblast_jetstream.png",
   "powerType": "Click",

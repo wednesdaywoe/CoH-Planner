@@ -14,7 +14,7 @@ export const DarkMatterDetonation: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "You hurl a blast of Dark Matter that violently explodes on impact, damaging all foes near the target. All affected targets' have their attack rate and movement speed slowed. Some foes may be knocked down.Damage: Light.Recharge: Slow.",
+  "description": "You hurl a blast of Dark Matter that violently explodes on impact, damaging all foes near the target. All affected targets' have their attack rate and movement speed slowed. Some foes may be knocked down.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "Ranged (Targeted AoE), Light DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_darkmatterdetonation.png",
   "powerType": "Click",

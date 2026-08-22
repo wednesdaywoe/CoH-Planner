@@ -14,7 +14,7 @@ export const PulseRifleBurst: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "This high powered laser pulse from your Pulse Rifle takes more energy to fire, but causes much more damage than a standard pulse and has a very good chance to send your foes flying.Laser Burn:Targets struck by this attack will have their Regeneration debuffed for 30 seconds.",
+  "description": "This high powered laser pulse from your Pulse Rifle takes more energy to fire, but causes much more damage than a standard pulse and has a very good chance to send your foes flying.\n\nLaser Burn:\nTargets struck by this attack will have their Regeneration debuffed for 30 seconds.",
   "shortHelp": "Ranged, DMG(Energy), Foe Knockback, -Regen",
   "icon": "robotics_laserrifleblast.png",
   "powerType": "Click",

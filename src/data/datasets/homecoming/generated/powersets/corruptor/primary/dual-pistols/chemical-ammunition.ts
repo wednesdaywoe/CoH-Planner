@@ -14,7 +14,7 @@ export const ChemicalAmmunition: Power = {
   "available": -1,
   "autoIssue": true,
   "free": true,
-  "description": "While this toggle is active you will be equipped with 'Chemical Rounds.' Most of your Dual Pistol attacks will have their secondary damage converted to toxic damage and inflict a minor damage debuff effect on the target.In order to earn this power, you must purchase the Swap Ammo power.",
+  "description": "While this toggle is active you will be equipped with 'Chemical Rounds.' Most of your Dual Pistol attacks will have their secondary damage converted to toxic damage and inflict a minor damage debuff effect on the target.\n\nIn order to earn this power, you must purchase the Swap Ammo power.",
   "shortHelp": "Toggle: Ammo Change (Toxic), Special",
   "icon": "dualpistols_chemicalammo.png",
   "powerType": "Toggle",

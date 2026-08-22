@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'With Temporal Reaction you gaze into the flow of time allowing you to react deftly to avoid danger.  Regardless of what comes at you, Temporal Reaction simply allows you to avoid the attack.  Wielders of Temporal Reaction are able to manipulate time itself to inflict crippling debuffs, while buffing and healing allies.',
+  description: "With Temporal Reaction you gaze into the flow of time allowing you to react deftly to avoid danger.  Regardless of what comes at you, Temporal Reaction simply allows you to avoid the attack.  Wielders of Temporal Reaction are able to manipulate time itself to inflict crippling debuffs, while buffing and healing allies.",
   icon: 'time_manipulation_set.ico',
   archetype: 'guardian',
   category: 'secondary',

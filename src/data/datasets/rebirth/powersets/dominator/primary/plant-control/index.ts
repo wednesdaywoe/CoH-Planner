@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You can call forth and control the power of plants and flora to control your foes. Animate and control vines, roots and spores to entrap, entwine and utterly dominate your foes.  Many Plant Control powers are only effective if the target is near the ground.',
+  description: "You can call forth and control the power of plants and flora to control your foes. Animate and control vines, roots and spores to entrap, entwine and utterly dominate your foes.  Many Plant Control powers are only effective if the target is near the ground.",
   icon: 'plant_control_set.ico',
   archetype: 'dominator',
   category: 'primary',

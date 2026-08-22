@@ -14,7 +14,7 @@ export const DragonsTail: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "This low spinning kick deals less damage than Thunder Kick, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.Damage: Light.Recharge: Slow.",
+  "description": "This low spinning kick deals less damage than Thunder Kick, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.\n\nDamage: Light.\nRecharge: Slow.",
   "shortHelp": "PBAoE Melee, Light DMG(Smash), Foe Knockdown",
   "icon": "martialmanipulation_dragonstail.png",
   "powerType": "Click",

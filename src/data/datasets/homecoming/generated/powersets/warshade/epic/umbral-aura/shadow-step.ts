@@ -14,7 +14,7 @@ export const ShadowStep: Power = {
   "available": 0,
   "autoIssue": true,
   "free": true,
-  "description": "You can Teleport long distances. Once at your destination, you will be stuck in between dimensions for up to 15s. While in this state, you will not be affected by gravity, and be able to execute additional teleportation jumps at a discounted endurance cost.Moving or taking any non-teleport action, though, will snap you back into reality, and you will once more be affected by gravity. Shadow Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
+  "description": "You can Teleport long distances. Once at your destination, you will be stuck in between dimensions for up to 15s. While in this state, you will not be affected by gravity, and be able to execute additional teleportation jumps at a discounted endurance cost.\n\nMoving or taking any non-teleport action, though, will snap you back into reality, and you will once more be affected by gravity.\n\nShadow Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
   "shortHelp": "Ranged (Location), Self Teleport",
   "icon": "umbralaura_teleportself.png",
   "powerType": "Click",

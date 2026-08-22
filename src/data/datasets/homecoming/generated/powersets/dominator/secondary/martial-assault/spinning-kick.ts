@@ -14,7 +14,7 @@ export const SpinningKick: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "You perform a high spinning reverse roundhouse kick, smashing anything in front of you with devastating force. You can activate this ability at any time, no matter what you have targeted; it will strike enemies directly in front of your character, rather than enemies near your target.Damage: Light.Recharge: Moderate.",
+  "description": "You perform a high spinning reverse roundhouse kick, smashing anything in front of you with devastating force. You can activate this ability at any time, no matter what you have targeted; it will strike enemies directly in front of your character, rather than enemies near your target.\n\nDamage: Light.\nRecharge: Moderate.",
   "shortHelp": "Melee Cone, Light DMG(Smash), Knockdown",
   "icon": "martialassault_spinningkick.png",
   "powerType": "Click",

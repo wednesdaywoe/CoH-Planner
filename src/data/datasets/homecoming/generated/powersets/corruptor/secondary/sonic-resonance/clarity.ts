@@ -14,7 +14,7 @@ export const Clarity: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "By bouncing a carefully pitched sound wave off an ally's ear drum, you can free him from any Disorient, Hold, Sleep, Confusion, Fear, and Immobilize effects, and leave them resistant to such effects for a good while. Protection will improve with multiple applications and as you advance in level. Clarity also provides your ally's enhanced perception.Recharge: Fast.",
+  "description": "By bouncing a carefully pitched sound wave off an ally's ear drum, you can free him from any Disorient, Hold, Sleep, Confusion, Fear, and Immobilize effects, and leave them resistant to such effects for a good while. Protection will improve with multiple applications and as you advance in level. Clarity also provides your ally's enhanced perception.\n\nRecharge: Fast.",
   "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confusion), +Perception",
   "icon": "sonicdebuff_dispel.png",
   "powerType": "Click",

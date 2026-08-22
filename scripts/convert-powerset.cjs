@@ -12,7 +12,7 @@ const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs
 const { isPvpOnlyGroup } = require('./_pv-scope.cjs');
 const { isBaseCase, casterArchetypes } = require('./_gate-default.cjs');
 const { derivePlayerClassTokens } = require('./_player-classes.cjs');
-const { displayText } = require('./_display-text.cjs');
+const { displayText, helpText } = require('./_display-text.cjs');
 const {
   gateTokens, gateText, isAlwaysCondition, composeGates,
 } = require('./_gate-tokens.cjs');
@@ -98,6 +98,68 @@ const SELF_DESTRUCT_DELAYS_PATH = datasetPath(datasetId, 'self-destruct-delays.j
 const SELF_DESTRUCT_DELAYS = fs.existsSync(SELF_DESTRUCT_DELAYS_PATH)
   ? JSON.parse(fs.readFileSync(SELF_DESTRUCT_DELAYS_PATH, 'utf-8'))
   : {};
+
+// Entity name -> the powers that entity declares, from convert-pet-entities.cjs (ENT-16).
+//
+// An `EntCreate` that states no `entity_def` names redirect POWERS instead, and the summoning
+// power says nothing about which entity owns them. Reading it as "no entity" cost the whole
+// payload: Brainstorm's reworked Poison Trap surfaced none of its -1000% Regen, because a name
+// list nothing can resolve is walked by nothing downstream. The entity states the mapping
+// itself, so the join is data on both sides -- no naming convention in the middle, which is the
+// only form Rule 0 permits.
+const ENTITY_POWERS_PATH = datasetPath(datasetId, 'pet-entity-powers.json');
+const ENTITY_POWERS = fs.existsSync(ENTITY_POWERS_PATH)
+  ? JSON.parse(fs.readFileSync(ENTITY_POWERS_PATH, 'utf-8'))
+  : {};
+
+// The index is keyed on the entity's declared set, sorted and joined. The join is for ASKING
+// one question -- "does any entity declare exactly these powers?" -- and the key is never split
+// back apart (COND-8).
+//
+// Equality of the WHOLE set, not "some power matches": generic powers are shared across
+// hundreds of entities (`Pets.ResistAll.ResistAll` alone appears on most of them), so an
+// any-member match resolves Meteor to a Lore pet. Set equality resolves 7 summons on
+// Homecoming and 11 on Brainstorm with nothing ambiguous, and declines every genuine
+// redirect-shell pseudo-pet -- which is correct, because no entity declares those powers.
+const ENTITY_BY_DECLARED_POWERS = new Map();
+const AMBIGUOUS_DECLARED_POWERS = new Map();
+for (const [entity, powers] of Object.entries(ENTITY_POWERS)) {
+  const key = [...powers].sort().join('\n');
+  const claimed = AMBIGUOUS_DECLARED_POWERS.get(key);
+  if (claimed) {
+    claimed.push(entity);
+  } else if (ENTITY_BY_DECLARED_POWERS.has(key)) {
+    AMBIGUOUS_DECLARED_POWERS.set(key, [ENTITY_BY_DECLARED_POWERS.get(key), entity]);
+    ENTITY_BY_DECLARED_POWERS.delete(key);
+  } else {
+    ENTITY_BY_DECLARED_POWERS.set(key, entity);
+  }
+}
+
+/**
+ * The entity a redirect-power `EntCreate` summons, or null when no entity declares that set.
+ *
+ * Null is the common and correct answer: most entity-less `EntCreate`s are pseudo-pet shells
+ * (`Redirects.Fiery_Aura.Phoenix`, `Pets.Sleet_Epic.Sleet`) that have no entity file at all, and
+ * inventing one for them would be worse than the gap this closes.
+ *
+ * A set two entities both declare throws rather than picking one. It has never happened on any
+ * of the four datasets, which is exactly why it must not resolve silently to whichever entity
+ * the index saw first -- a soft answer here would ship one pet's payload under another pet's
+ * name, and nothing downstream could tell.
+ */
+function resolveEntityFromRedirects(redirects) {
+  if (!redirects || redirects.length === 0) return null;
+  const key = [...redirects].sort().join('\n');
+  const ambiguous = AMBIGUOUS_DECLARED_POWERS.get(key);
+  if (ambiguous) {
+    throw new Error(
+      `convert-powerset: redirect set [${redirects.join(', ')}] is declared by more than one `
+        + `entity (${ambiguous.join(', ')}) -- the summon cannot be resolved to one pet.`,
+    );
+  }
+  return ENTITY_BY_DECLARED_POWERS.get(key) || null;
+}
 
 /**
  * Resolve the pet/pseudopet lifespan for an EntCreate template. Three-stage
@@ -6895,15 +6957,19 @@ function projectAtomsToEffects(atoms, powerName, targetsAffected) {
             recordDuration('rangeDebuff');
           }
           // else: foe-side debuff, dropped for caster-stat purposes
-        } else if (isSelfTargeting) {
-          effects.rangeBuff = makeEffect();
-          recordDuration('rangeBuff');
-        } else if (aspect === 'strength') {
-          // ally/team +Range (Power of the Depths) — see extractEffects
+        } else if (reachesCaster(a, targetsAffected, powerName)) {
+          // ATOM-BAG-9. This slot claims what the power adds to the CASTER's range, so
+          // the question is the power's recipients, not the row's aspect. The
+          // `aspect === 'strength'` disjunct this replaces was written for Power of the
+          // Depths, whose `['Friend', 'Self']` reaches the caster anyway — so it agreed
+          // with the reader on every power in the corpus until Brainstorm shipped
+          // Magnify, a `['Friend']`-only carrier the aspect test credits and
+          // `range_buff_value` declines. TARGETS-3 retired the disjunct on the reading
+          // side and never came back for the converter.
           effects.rangeBuff = makeEffect();
           recordDuration('rangeBuff');
         }
-        // else: positive non-Strength Range on a non-Self target — skip.
+        // else: positive Range the power hands to somebody the caster is not — skip.
       } else if (modType === 'enduranceDiscount') {
         effects.enduranceDiscount = makeEffect();
         recordDuration('enduranceDiscount');
@@ -6965,6 +7031,19 @@ function projectAtomsToEffects(atoms, powerName, targetsAffected) {
           effects.mezResistance[ctrlType] = makeEffect();
         }
         recordDuration('mezResistance');
+      } else if (a.effectType !== 'Mez') {
+        // ATOM-BAG-9. These slots are the "Additional mez resistance" pair, and the
+        // applier reads them as taunt/placate RESISTANCE off a `Mez`-face row. An
+        // `Enhancement`-face row carries the same attrib NAME meaning the opposite
+        // direction — a buff to the recipient's taunt STRENGTH — and a named slot has
+        // nowhere to record which face it came from. Skipped rather than routed: the
+        // bag cannot represent the distinction, so writing it here would state the
+        // wrong one. Geode's -999 and Spotlight's 0.3333 pair are the whole population.
+        //
+        // NOT a taunt/placate special case. The face is the discriminator for every
+        // key this branch writes; those two are simply where the corpus has a
+        // non-`Mez` carrier today. `MezResist` rows never reach here — they are all
+        // aspect Res and leave through the branch above.
       } else {
         // TAUNT-1: one slot, several rows — the power's own control row beats a
         // redirect-collected one. `_ownerTargetsAffected` presence is the collection
@@ -8579,7 +8658,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
     // "costs no power pick" flag; powers_load.c:950 forces AutoIssue ⟹ Free.
     autoIssue: powerJson.auto_issue === true,
     free: powerJson.free === true,
-    description: displayText(powerJson.display_help)?.replace(/<[^>]+>/g, '').trim(),
+    description: helpText(powerJson.display_help),
     // An unresolved message-store key is not text — see `_display-text.cjs`.
     shortHelp: displayText(powerJson.display_short_help),
     icon: normalizeIconPath(ICON_OVERRIDES[powerJson.icon] || powerJson.icon),
@@ -8939,6 +9018,27 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
     // (Storm Cell, Category Five, Freezing Rain, …) so the runtime can surface
     // their DoT + debuffs. See PSEUDO-PET-POWER-RESOLUTION.md.
     attachResolvedPseudoPets(powerJson, power.effects);
+
+    // LAST, deliberately: only a summon that still has no pointer of any kind gets one from
+    // the entity that declares its redirect powers (ENT-16).
+    //
+    // Every earlier path is left alone, and the shell path above is why. It points a location
+    // pseudo-pet at its `priority_list` name precisely BECAUSE that name resolves to nothing in
+    // the entity table -- the synthesized `resolvedEntities` list is the payload, and a real
+    // entity name alongside it would have the runtime render both, counting the same powers
+    // twice. Resolving early did exactly that to Static Field, Carrion Creepers and Shocking
+    // Grasp, whose shells happen to be backed by a real entity as well.
+    //
+    // So the population this fills is the one nothing else answers for: a summon whose export
+    // states redirect powers, no `entity_def`, and no shell the pseudo-pet resolver recognized.
+    // Fourteen such summons on Homecoming, eighteen on Brainstorm, none on Rebirth or
+    // Thunderspy; of those, only Brainstorm's four Poison Traps resolve, because the rest
+    // redirect to powers no entity declares.
+    const summon = power.effects?.summon;
+    if (summon && !summon.entity && !summon.entities) {
+      const resolvedEntity = resolveEntityFromRedirects(summon.powers);
+      if (resolvedEntity) summon.entity = resolvedEntity;
+    }
 
   }
 
@@ -9471,7 +9571,7 @@ export const ${exportName}: Power = base;
   // Write index file
   const indexContent = `/**
  * ${indexJson.display_name} Powerset
- * ${indexJson.display_help?.replace(/<[^>]+>/g, '').trim()}
+ * ${helpText(indexJson.display_help)?.replace(/\n+/g, ' ')}
  *
  * Archetype: ${categoryInfo.archetype}
  * Category: ${categoryInfo.type}
@@ -9490,7 +9590,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: ${JSON.stringify(indexJson.buy_requires_failed || '')},
   specializeAt: ${indexJson.specialize_at || 0},
   specializeRequires: ${JSON.stringify(indexJson.specialize_requires || [])},
-  description: '${indexJson.display_help?.replace(/<[^>]+>/g, '').replace(/'/g, "\\'")}',
+  description: ${JSON.stringify(helpText(indexJson.display_help) ?? '')},
   icon: '${indexJson.icon}',
   archetype: '${categoryInfo.archetype}',
   category: '${categoryInfo.type}',

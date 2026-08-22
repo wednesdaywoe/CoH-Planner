@@ -14,7 +14,7 @@ export const ShiftingTides: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "Select either a friend or foe to create a field of shifting tides around them.When attacked, foes within the shifting tides will provide you and your allies a stacking Rising Tide buff that increases ToHit, Damage, and Recharge. Enemies may also take bonus damage, with the odds increasing per stack.",
+  "description": "Select either a friend or foe to create a field of shifting tides around them.\n\nWhen attacked, foes within the shifting tides will provide you and your allies a stacking Rising Tide buff that increases ToHit, Damage, and Recharge. Enemies may also take bonus damage, with the odds increasing per stack.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Team +DMG, +ToHit, +Recharge, Special Damage",
   "icon": "marineaffinity_shiftingtides.png",
   "powerType": "Toggle",

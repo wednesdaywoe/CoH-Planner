@@ -14,7 +14,7 @@ export const AthleticRegulation: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "Your body is continually regulating your athletic capabilities to best fit your current need. You also gain a small amount of defense debuff resistance.*While Offensive Adaptation is active you gain increased movement speed. *While Defensive Adaptation is active you are more resistant to run and fly speed debuffs. *While Efficient Adaptation is active all your run and fly powers have their speeds boosted.Bonuses granted from Adaptations are unenhanceable.This power is always on and permanently increases your movement speed, regardless your Adaptation.",
+  "description": "Your body is continually regulating your athletic capabilities to best fit your current need. You also gain a small amount of defense debuff resistance.\n\n*While Offensive Adaptation is active you gain increased movement speed.\n*While Defensive Adaptation is active you are more resistant to run and fly speed debuffs.\n*While Efficient Adaptation is active all your run and fly powers have their speeds boosted.\n\nBonuses granted from Adaptations are unenhanceable.\n\nThis power is always on and permanently increases your movement speed, regardless your Adaptation.",
   "shortHelp": "Auto: Self +SPD, +Special",
   "icon": "bioorganicarmor_athleticaugmentation.png",
   "powerType": "Auto",

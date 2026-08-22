@@ -14,7 +14,7 @@ export const WhirlingMace: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You swing your mace in a circle all around you, attacking everyone in melee range. Your Whirling Mace deals moderate damage, and has a chance to Disorient every foe you hit.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "You swing your mace in a circle all around you, attacking everyone in melee range. Your Whirling Mace deals moderate damage, and has a chance to Disorient every foe you hit.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "PBAoE Melee, Light DMG(Smash), Minor Disorient",
   "icon": "mace_whirlingmace.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const SunlessMire: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "Sunless Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit.Damage: Light.Recharge: Long.",
+  "description": "Sunless Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit.\n\nDamage: Light.\nRecharge: Long.",
   "shortHelp": "PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +To Hit",
   "icon": "umbralblast_sunlessmire.png",
   "powerType": "Click",

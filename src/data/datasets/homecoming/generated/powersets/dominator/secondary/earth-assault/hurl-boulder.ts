@@ -14,7 +14,7 @@ export const HurlBoulder: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals moderate damage, and can knock foes back and even drop them out of the air if they are flying.Damage: High.Recharge: Slow.",
+  "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals moderate damage, and can knock foes back and even drop them out of the air if they are flying.\n\nDamage: High.\nRecharge: Slow.",
   "shortHelp": "Ranged, High DMG(Smash), Foe Knockback, -Fly",
   "icon": "earthassault_hurlboulder.png",
   "powerType": "Click",

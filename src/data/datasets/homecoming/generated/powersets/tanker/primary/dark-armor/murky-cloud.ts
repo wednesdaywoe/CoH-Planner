@@ -14,7 +14,7 @@ export const MurkyCloud: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks, as well as Endurance Drain effects.Recharge: Fast.",
+  "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks, as well as Endurance Drain effects.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative, End Drain)",
   "icon": "darkarmor_defractingcloud.png",
   "powerType": "Toggle",

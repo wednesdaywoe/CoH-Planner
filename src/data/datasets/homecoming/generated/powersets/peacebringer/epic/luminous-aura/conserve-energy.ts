@@ -14,7 +14,7 @@ export const ConserveEnergy: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You can focus for a moment to Conserve your Energy. After activating this power, you expend less Endurance on all other powers for a while.Recharge: Very Long.",
+  "description": "You can focus for a moment to Conserve your Energy. After activating this power, you expend less Endurance on all other powers for a while.\n\nRecharge: Very Long.",
   "shortHelp": "Self Endurance Discount",
   "icon": "luminousaura_conserveenergy.png",
   "powerType": "Click",

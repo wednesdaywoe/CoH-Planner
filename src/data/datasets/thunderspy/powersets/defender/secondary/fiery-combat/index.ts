@@ -31,7 +31,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Fiery Combat allows you to attack with fire, and even conjure up flaming melee weapons. with a tendency to set them ablaze for added damage over time.',
+  description: "Fiery Combat allows you to attack with fire, and even conjure up flaming melee weapons. with a tendency to set them ablaze for added damage over time.",
   icon: 'fire_blast_set.ico',
   archetype: 'defender',
   category: 'secondary',

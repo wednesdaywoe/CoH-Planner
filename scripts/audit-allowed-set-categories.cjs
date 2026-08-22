@@ -62,12 +62,13 @@ const SHOW_ALL = args.includes('--all');
 const ONLY_DRIFT = args.includes('--drift');
 const ONLY_INVARIANTS = args.includes('--invariants');
 const ONLY_FALLBACK = args.includes('--fallback');
-// --gate: CI mode. Exits non-zero ONLY on high-confidence "contradiction"
-// invariants (a genuine ranged attack carrying single-target Melee, or vice
-// versa) — the signature of one category landing across the wrong pool.
-// Suppresses the noisy informational sections (augmentation-drift, inference
-// fallback, heuristic missing-category checks) so CI logs show only the
-// actionable failures.
+// --gate: CI mode. Exits non-zero on two high-confidence classes: the
+// "contradiction" invariants (a genuine ranged attack carrying single-target
+// Melee, or vice versa — the signature of one category landing across the wrong
+// pool), and an override masking the export's own authoritative list (BRAIN-2).
+// Suppresses the noisy informational sections (un-overridden augmentation
+// drift, inference fallback, heuristic missing-category checks) so CI logs show
+// only the actionable failures.
 const GATE = args.includes('--gate');
 const LIMIT = SHOW_ALL || GATE ? Infinity : 30;
 
@@ -442,6 +443,24 @@ const CONTRADICTION_ALLOWLIST = new Set([
   'rebirth:warshade_offensive/umbral-blast/gravimetric-snare',
 ]);
 
+// BRAIN-2 gate — an override whose `allowedSetCategories` contradicts the export's
+// own `allowed_set_categories` is a hand list outranking the authoritative one.
+// Separated from the un-overridden drift bucket because the two have different
+// causes: an un-overridden diff on Thunderspy is usually the converter's
+// deliberate per-AT augmentation (expected, hence informational), while an
+// overridden one is `withOverrides` replacing the whole array with a copy that
+// the export has since moved past. That is how Brainstorm inherited Homecoming's
+// verbatim Caltrops copy — inert on the fork it was authored for, and on
+// Brainstorm it took the Knockback the newer export grants back off the power.
+//
+// What this cannot see: the 8 powers per dataset whose export carries no
+// `allowed_set_categories` field at all (Kheldian/Widow/Bane passives —
+// Quantum Flight, Fate Sealed, Mental Training and the rest). Their generated
+// layer omits the field, the override supplies it, and there is no
+// authoritative value to grade it against. They are counted in the scan line's
+// "fell back to inference".
+const staleOverrideRows = driftRows.filter(r => r.hasOverride);
+
 const contradictionRows = invariantRows.filter(r =>
   r.issues.some(i => CONTRADICTION_MARKERS.some(m => i.includes(m))) &&
   !CONTRADICTION_ALLOWLIST.has(`${datasetId}:${r.category}/${r.powerset}/${r.power}`));
@@ -491,12 +510,27 @@ printRows(
   r => `  ${r.category}/${r.powerset}/${r.power}\n    - ` +
        r.issues.filter(i => CONTRADICTION_MARKERS.some(m => i.includes(m))).join('\n    - '),
 );
-if (contradictionRows.length === 0) {
-  console.log('\nGATE PASS — no malformed-boostset category contradictions.');
+printRows(
+  'GATE — override masks the authoritative category list (fails CI)',
+  staleOverrideRows,
+  r => `  ${r.category}/${r.powerset}/${r.power}` +
+       (r.missing.length ? `\n    + export has, override drops: ${r.missing.join(', ')}` : '') +
+       (r.extra.length   ? `\n    - override adds, export lacks: ${r.extra.join(', ')}` : ''),
+);
+if (contradictionRows.length === 0 && staleOverrideRows.length === 0) {
+  console.log('\nGATE PASS — no malformed-boostset category contradictions, ' +
+              'no override masking the authoritative list.');
 } else {
-  console.log(`\nGATE FAIL — ${contradictionRows.length} contradiction(s). A boostset's ` +
-              `category is reaching a pool it does not belong to (see _resolve_category ` +
-              `in _boostsets.py).`);
+  if (contradictionRows.length > 0) {
+    console.log(`\nGATE FAIL — ${contradictionRows.length} contradiction(s). A boostset's ` +
+                `category is reaching a pool it does not belong to (see _resolve_category ` +
+                `in _boostsets.py).`);
+  }
+  if (staleOverrideRows.length > 0) {
+    console.log(`\nGATE FAIL — ${staleOverrideRows.length} override(s) masking the export's ` +
+                `own allowed_set_categories. Empty the override's array rather than ` +
+                `re-stating the new value; the generated layer already carries it.`);
+  }
 }
 
-process.exit(contradictionRows.length > 0 ? 1 : 0);
+process.exit(contradictionRows.length > 0 || staleOverrideRows.length > 0 ? 1 : 0);

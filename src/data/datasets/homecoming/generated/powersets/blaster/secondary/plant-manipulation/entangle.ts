@@ -14,7 +14,7 @@ export const Entangle: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Immobilizes your target by Entangling their feet in a twisted mass of thorny roots. The roots do smashing and lethal damage to the target over time. More resilient foes may require multiple applications to Immobilize. Entangle can immobilize flying targets, if they are near the ground when attacked.Damage: Moderate.Recharge: Fast.",
+  "description": "Immobilizes your target by Entangling their feet in a twisted mass of thorny roots. The roots do smashing and lethal damage to the target over time. More resilient foes may require multiple applications to Immobilize. Entangle can immobilize flying targets, if they are near the ground when attacked.\n\nDamage: Moderate.\nRecharge: Fast.",
   "shortHelp": "Ranged, DoT(Smash/Lethal), Foe Immobilize, -Fly",
   "icon": "plantmanipulation_entangle.png",
   "powerType": "Click",

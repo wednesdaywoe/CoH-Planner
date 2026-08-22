@@ -14,7 +14,7 @@ export const GreaterIceSword: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "Ice Slash allows the user to create a blade of solid ice and strike a foe for high damage. Being hit by Ice Slash will Slow a foes' attack and movement speed, due to the intense chill.Damage: Superior.Recharge: Slow.",
+  "description": "Ice Slash allows the user to create a blade of solid ice and strike a foe for high damage. Being hit by Ice Slash will Slow a foes' attack and movement speed, due to the intense chill.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Melee, Superior DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "iceassault_iceswordcleave.png",
   "powerType": "Click",

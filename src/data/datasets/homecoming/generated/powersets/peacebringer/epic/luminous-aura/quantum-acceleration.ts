@@ -14,7 +14,7 @@ export const QuantumAcceleration: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "While Energy Flight, Combat Flight or Group Energy Flight are active, Quantum Maneuvers increases fly speed and movement control. It will also grant resistance against knockback and protection against -Fly and Immobilization.Quantum Maneuvers' flight speed buff stacks with other flight powers, and isn't suppressed by combat.Notes: Quantum Maneuvers provides a moderate amount of Defense even while on the ground, but this defense is lost if you attack, buff allies, give an order to pets or interact with a mission objective.Recharge: Moderate.",
+  "description": "While Energy Flight, Combat Flight or Group Energy Flight are active, Quantum Maneuvers increases fly speed and movement control. It will also grant resistance against knockback and protection against -Fly and Immobilization.\n\nQuantum Maneuvers' flight speed buff stacks with other flight powers, and isn't suppressed by combat.\n\nNotes: Quantum Maneuvers provides a moderate amount of Defense even while on the ground, but this defense is lost if you attack, buff allies, give an order to pets or interact with a mission objective.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Self +FlySpeed, Res(-Fly, Immobilize), +Def(All), +Flight Control",
   "icon": "luminousaura_lightofreason.png",
   "powerType": "Toggle",

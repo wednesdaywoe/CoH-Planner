@@ -14,7 +14,7 @@ export const Fusion: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "Fusion boosts your damage and chance to hit moderately and also causes your next few attacks to have a 100% chance to inflict Contaminated on your enemies.Recharge: Long.",
+  "description": "Fusion boosts your damage and chance to hit moderately and also causes your next few attacks to have a 100% chance to inflict Contaminated on your enemies.\n\nRecharge: Long.",
   "shortHelp": "Self +DMG, +To Hit, Special",
   "icon": "radioactiveassault_buildup.png",
   "powerType": "Click",

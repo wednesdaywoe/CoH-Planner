@@ -14,7 +14,7 @@ export const FocusedFighting: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You become more evasive to melee attacks while you have Focused Fighting activated. This will increase your Defense versus melee as long as it is active. Your Focus also offers you resistance to Confuse effects and DeBuffs to Defense. Focused Fighting also adds an Elusivity defense bonus to Melee Attacks in PVP zones.Recharge: Fast.",
+  "description": "You become more evasive to melee attacks while you have Focused Fighting activated. This will increase your Defense versus melee as long as it is active. Your Focus also offers you resistance to Confuse effects and DeBuffs to Defense. Focused Fighting also adds an Elusivity defense bonus to Melee Attacks in PVP zones.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Self +DEF(Melee), Res(Confuse, DeBuff DEF)",
   "icon": "superreflexes_focusedfighting.png",
   "powerType": "Toggle",

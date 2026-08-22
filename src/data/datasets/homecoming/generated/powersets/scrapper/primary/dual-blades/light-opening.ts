@@ -14,7 +14,7 @@ export const LightOpening: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A quick swipe with your blades. Does minor lethal damage, but has a quick recharge rate. This attack begins both the Empower and Weaken combination attacks.Empower: Nimble Slash > Ablating Strike > Blinding Feint.Weaken: Nimble Slash > Ablating Strike > Typhoon's Edge.",
+  "description": "A quick swipe with your blades. Does minor lethal damage, but has a quick recharge rate. This attack begins both the Empower and Weaken combination attacks.\n\nEmpower: Nimble Slash > Ablating Strike > Blinding Feint.\nWeaken: Nimble Slash > Ablating Strike > Typhoon's Edge.",
   "shortHelp": "Melee, DMG(Lethal)",
   "icon": "dualblades_lightopening.png",
   "powerType": "Click",

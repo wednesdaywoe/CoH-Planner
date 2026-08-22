@@ -14,7 +14,7 @@ export const Special2: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "You make a sweeping strike with your blades, hitting all foes in a cone in front of you and dealing superior lethal damage to each. This power is the finishing move for the Attack Vitals combination attack.Attack Vitals: Ablating Strike > Vengeful Slice > Sweeping Strike.",
+  "description": "You make a sweeping strike with your blades, hitting all foes in a cone in front of you and dealing superior lethal damage to each. This power is the finishing move for the Attack Vitals combination attack.\n\nAttack Vitals: Ablating Strike > Vengeful Slice > Sweeping Strike.",
   "shortHelp": "Melee (Cone), DMG(Lethal)",
   "icon": "dualblades_special2.png",
   "powerType": "Click",

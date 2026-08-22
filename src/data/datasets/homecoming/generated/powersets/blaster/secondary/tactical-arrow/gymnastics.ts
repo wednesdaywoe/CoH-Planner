@@ -14,7 +14,7 @@ export const Gymnastics: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "On impact, this arrow creates an oil slick that Slows foes in the area and may cause them to slip and fall. The oil slick is very flammable and may burst into flames if fire is used near it.Recharge: Long.",
+  "description": "On impact, this arrow creates an oil slick that Slows foes in the area and may cause them to slip and fall. The oil slick is very flammable and may burst into flames if fire is used near it.\n\nRecharge: Long.",
   "shortHelp": "Ranged (Location AoE), Foe Knockdown, -SPD, -Jump, +Special",
   "icon": "tacticalarrow_knockdown.png",
   "powerType": "Click",

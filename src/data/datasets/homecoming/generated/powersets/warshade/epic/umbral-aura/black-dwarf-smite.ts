@@ -14,7 +14,7 @@ export const BlackDwarfSmite: Power = {
   "available": 19,
   "autoIssue": true,
   "free": true,
-  "description": "Black Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. Black Dwarf Smite can also bring down fliers, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.Damage: Light.Recharge: Fast.",
+  "description": "Black Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. Black Dwarf Smite can also bring down fliers, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Melee, Light DMG(Negative/Smash), Foe -Recharge, -SPD, -Fly, Disorient",
   "icon": "umbralaura_blackdwarfsmite.png",
   "powerType": "Click",

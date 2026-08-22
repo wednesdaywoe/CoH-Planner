@@ -14,7 +14,7 @@ export const Mesmerize: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Mesmerize painfully assails a target with psychic energy, rendering him unconscious. The target will remain asleep for some time, but will awaken if attacked.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.",
+  "description": "Mesmerize painfully assails a target with psychic energy, rendering him unconscious. The target will remain asleep for some time, but will awaken if attacked.\n\nNotes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.",
   "shortHelp": "Ranged, Light DMG(Psionic), Foe Deep Sleep",
   "icon": "mentalcontrol_hypnotize.png",
   "powerType": "Click",

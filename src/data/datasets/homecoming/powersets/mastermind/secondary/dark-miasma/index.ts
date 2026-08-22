@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Focus the dark power of the Netherworld to weaken your foes. Dark Miasma focuses on draining your opponent.',
+  description: "Focus the dark power of the Netherworld to weaken your foes. Dark Miasma focuses on draining your opponent.",
   icon: 'dark_miasma_set.ico',
   archetype: 'mastermind',
   category: 'secondary',

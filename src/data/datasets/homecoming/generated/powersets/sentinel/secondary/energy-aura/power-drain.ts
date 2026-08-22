@@ -14,7 +14,7 @@ export const PowerDrain: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "Power Drain leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.Recharge: Long.",
+  "description": "Power Drain leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.\n\nRecharge: Long.",
   "shortHelp": "Autohit: PBAoE, Self +End, Foe -End, -Recovery",
   "icon": "energyaura_drain.png",
   "powerType": "Click",

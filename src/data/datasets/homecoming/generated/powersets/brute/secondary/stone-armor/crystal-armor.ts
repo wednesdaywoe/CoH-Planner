@@ -14,7 +14,7 @@ export const CrystalArmor: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "While this power is active, your skin becomes encrusted in various quartz crystals. Crystal Armor makes Energy and Negative Energy attacks less likely to hit. This power also grants you an Endurance recovery buff and resistance to Defense DeBuffs.Crystal Armor also adds an Elusivity defense bonus to Energy and Negative Energy Attacks in PVP zones.Cannot be active at the same time as Granite Armor.Recharge: Fast.",
+  "description": "While this power is active, your skin becomes encrusted in various quartz crystals. Crystal Armor makes Energy and Negative Energy attacks less likely to hit. This power also grants you an Endurance recovery buff and resistance to Defense DeBuffs.\n\nCrystal Armor also adds an Elusivity defense bonus to Energy and Negative Energy Attacks in PVP zones.\n\nCannot be active at the same time as Granite Armor.\n\nRecharge: Fast.",
   "shortHelp": "Toggle: Self +Recovery, +DEF(Energy, Negative), Res(DeBuff DEF)",
   "icon": "stonearmor_crystalarmor.png",
   "powerType": "Toggle",

@@ -14,7 +14,7 @@ export const Transference: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "Transference drains an enemy of some of their Endurance and transfers that Endurance to all allies near the affected foe. You can use Transference to recover Endurance for yourself as well as your allies.Recharge: Slow.",
+  "description": "Transference drains an enemy of some of their Endurance and transfers that Endurance to all allies near the affected foe. You can use Transference to recover Endurance for yourself as well as your allies.\n\nRecharge: Slow.",
   "shortHelp": "Ranged (Targeted AoE), Target -End, Team +Recovery, Special",
   "icon": "kineticboost_transferance.png",
   "powerType": "Click",

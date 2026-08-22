@@ -14,7 +14,7 @@ export const MasterfulThrow: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You take careful aim and let loose an extremely accurate, extremely forceful blade. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Damage: Extreme.Recharge: Slow.",
+  "description": "You take careful aim and let loose an extremely accurate, extremely forceful blade. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.\n\nDamage: Extreme.\nRecharge: Slow.",
   "shortHelp": "Sniper, Extreme DMG(Lethal), Foe -To Hit",
   "icon": "martialassault_masterfulthrow.png",
   "powerType": "Click",

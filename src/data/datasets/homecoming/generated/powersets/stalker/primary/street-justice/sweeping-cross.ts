@@ -14,7 +14,7 @@ export const SweepingCross: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. Sweeping Cross deals High Smashing damage and can disorient foes. Sweeping Cross is a Finisher and sets your current Combo Level to 0. It will deal additional damage and have a greater chance to disorient dependent upon the current Combo Level. At Combo Level 3, Sweeping Cross will also have a chance to knock down the affected targets. Critical damage is unaffected by your Combo Level.Damage: High.Recharge: Moderate.",
+  "description": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. Sweeping Cross deals High Smashing damage and can disorient foes. Sweeping Cross is a Finisher and sets your current Combo Level to 0. It will deal additional damage and have a greater chance to disorient dependent upon the current Combo Level. At Combo Level 3, Sweeping Cross will also have a chance to knock down the affected targets. Critical damage is unaffected by your Combo Level.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee (Cone), High DMG(Smash), Foe Disorient, Finisher",
   "icon": "brawling_sweepingcross.png",
   "powerType": "Click",

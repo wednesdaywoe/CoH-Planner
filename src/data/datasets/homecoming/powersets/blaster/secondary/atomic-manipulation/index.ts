@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You have complete control over atomic particles and waves, and can use them to disable and weaken your enemies, as well as boost your own power. Many of your powers have the ability to surround your targets with negatrons or positrons. Should you combine both of these in a single target, it will result in Electron-Positron annihilation producing a burst of Gamma Rays which will inflict a small amount of damage, and in addition debuff the target\'s damage output and accuracy. Enemies also have a small chance of being stunned or confused.',
+  description: "You have complete control over atomic particles and waves, and can use them to disable and weaken your enemies, as well as boost your own power. Many of your powers have the ability to surround your targets with negatrons or positrons. Should you combine both of these in a single target, it will result in Electron-Positron annihilation producing a burst of Gamma Rays which will inflict a small amount of damage, and in addition debuff the target's damage output and accuracy. Enemies also have a small chance of being stunned or confused.",
   icon: 'radiation_manipulation_set.ico',
   archetype: 'blaster',
   category: 'secondary',

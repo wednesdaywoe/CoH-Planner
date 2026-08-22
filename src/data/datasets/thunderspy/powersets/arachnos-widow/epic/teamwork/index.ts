@@ -23,7 +23,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Those who enter the Widow training program are given crash courses in Teamwork, Tactical Analysis and Coordination of Assets.',
+  description: "Those who enter the Widow training program are given crash courses in Teamwork, Tactical Analysis and Coordination of Assets.",
   icon: 'teamwork_set.ico',
   archetype: 'arachnos-widow',
   category: 'epic',

@@ -14,7 +14,7 @@ export const AoEBridge: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "You spin around in a circle, attacking everyone within melee range with a striking attack. This attack is the finishing move in both the Weaken and Sweep combination attacks.Weaken: Nimble Slash > Ablating Strike > Typhoon's Edge.Sweep: One Thousand Cuts > Power Slice > Typhoon's Edge.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
+  "description": "You spin around in a circle, attacking everyone within melee range with a striking attack. This attack is the finishing move in both the Weaken and Sweep combination attacks.\n\nWeaken: Nimble Slash > Ablating Strike > Typhoon's Edge.\nSweep: One Thousand Cuts > Power Slice > Typhoon's Edge.\n\nNotes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "PBAoE Melee, DMG(Lethal)",
   "icon": "dualblades_aoebridge.png",
   "powerType": "Click",

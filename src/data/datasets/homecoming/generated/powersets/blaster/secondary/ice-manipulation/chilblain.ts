@@ -14,7 +14,7 @@ export const Chilblain: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Immobilizes your target in an icy trap. Deals some damage over time and slightly Slows the target's attack and movement speed. Useful for keeping villains at bay.Damage: Light.Recharge: Fast.",
+  "description": "Immobilizes your target in an icy trap. Deals some damage over time and slightly Slows the target's attack and movement speed. Useful for keeping villains at bay.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "icemanipulation_chillblains.png",
   "powerType": "Click",

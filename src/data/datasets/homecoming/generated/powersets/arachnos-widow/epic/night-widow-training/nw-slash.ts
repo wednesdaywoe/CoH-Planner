@@ -14,7 +14,7 @@ export const NWSlash: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "Slash does extreme lethal damage to your foe, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.",
+  "description": "Slash does extreme lethal damage to your foe, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.\n\nNotes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.",
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "nightwidowtraining_slash.png",
   "powerType": "Click",

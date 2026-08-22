@@ -29,7 +29,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Channel the ambient power hidden in the natural life around you to defend yourself and your allies.',
+  description: "Channel the ambient power hidden in the natural life around you to defend yourself and your allies.",
   icon: 'dark_armor_set.ico',
   archetype: 'tanker',
   category: 'primary',

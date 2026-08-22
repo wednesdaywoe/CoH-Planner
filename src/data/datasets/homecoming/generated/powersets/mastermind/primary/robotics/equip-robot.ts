@@ -14,7 +14,7 @@ export const EquipRobot: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "Equip your Robots with the latest gear and weaponry. This power permanently bestows new powers and abilities to all of your Robot Henchman. The powers gained are unique and dependent upon the type of Robot Henchman that is Equipped.Your Robot Henchmen will also become more resistant to damage. This power only works on your Robot Henchmen and you can only Equip your Robot Henchmen once with this power.",
+  "description": "Equip your Robots with the latest gear and weaponry. This power permanently bestows new powers and abilities to all of your Robot Henchman. The powers gained are unique and dependent upon the type of Robot Henchman that is Equipped.\n\nYour Robot Henchmen will also become more resistant to damage. This power only works on your Robot Henchmen and you can only Equip your Robot Henchmen once with this power.",
   "shortHelp": "Ranged, Equip Robot Henchman",
   "icon": "robotics_equiprobot.png",
   "powerType": "Click",

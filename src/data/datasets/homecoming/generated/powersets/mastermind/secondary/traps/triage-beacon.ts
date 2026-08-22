@@ -14,7 +14,7 @@ export const TriageBeacon: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You can plant a Triage Beacon into the ground. The Beacon is immobile, but it emits a powerful healing aura. The Regeneration Rate of you, or your allies, will be greatly increased as long as you are near the Triage Beacon. The Beacon is invulnerable.Recharge: Long.",
+  "description": "You can plant a Triage Beacon into the ground. The Beacon is immobile, but it emits a powerful healing aura. The Regeneration Rate of you, or your allies, will be greatly increased as long as you are near the Triage Beacon. The Beacon is invulnerable.\n\nRecharge: Long.",
   "shortHelp": "Place Beacon: PBAoE +Regen",
   "icon": "traps_droppedaoebuffregen.png",
   "powerType": "Click",

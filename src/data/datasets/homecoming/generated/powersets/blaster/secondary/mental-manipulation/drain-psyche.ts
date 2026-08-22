@@ -14,7 +14,7 @@ export const DrainPsyche: Power = {
   "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You Drain the Psyche of nearby foes, thus weakening their Hit Point Regeneration and Endurance Recovery and boosting your own.Recharge: Long.",
+  "description": "You Drain the Psyche of nearby foes, thus weakening their Hit Point Regeneration and Endurance Recovery and boosting your own.\n\nRecharge: Long.",
   "shortHelp": "PBAoE Foe -Regen, -Recovery; Self +Regen, +Recovery",
   "icon": "psionicassault_psychicsiphon.png",
   "powerType": "Click",

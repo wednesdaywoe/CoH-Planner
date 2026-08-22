@@ -14,7 +14,7 @@ export const Shockwaves: Power = {
   "available": 0,
   "autoIssue": false,
   "free": true,
-  "description": "While on the ground, nearby enemies might be knocked down and some of your attacks are empowered.This power is only for short periods of times after being triggered by Seismic Pressure.",
+  "description": "While on the ground, nearby enemies might be knocked down and some of your attacks are empowered.\n\nThis power is only for short periods of times after being triggered by Seismic Pressure.",
   "shortHelp": "Foe Knock Down, Self Special",
   "icon": "seismic_power.png",
   "powerType": "Auto",

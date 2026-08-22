@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Trick Arrows are tipped with an odd variety of payloads, which if used strategically, can dramatically alter a battle site.',
+  description: "Trick Arrows are tipped with an odd variety of payloads, which if used strategically, can dramatically alter a battle site.",
   icon: 'trick_arrow_set.ico',
   archetype: 'controller',
   category: 'secondary',

@@ -14,7 +14,7 @@ export const DarkBlast: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's chance to hit.Damage: Light.Recharge: Fast.",
+  "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's chance to hit.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Negative), Foe -To Hit",
   "icon": "darknessassault_darkblast.png",
   "powerType": "Click",

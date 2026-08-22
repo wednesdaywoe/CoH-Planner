@@ -14,7 +14,7 @@ export const FragGrenade: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "Launches a Frag Grenade at long range from under the barrel of your rifle. The explosion from this grenade affects all within the blast and can knock them back.Notes: If you take this power, you cannot take the Crab Spider version.",
+  "description": "Launches a Frag Grenade at long range from under the barrel of your rifle. The explosion from this grenade affects all within the blast and can knock them back.\n\nNotes: If you take this power, you cannot take the Crab Spider version.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Lethal), Foe Knockback",
   "icon": "arachnossoldier_fraggrenade.png",
   "powerType": "Click",
@@ -109,7 +109,7 @@ export const FragGrenade: Power = {
         }
       },
       "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Lethal), Foe Knockback",
-      "description": "Launches an M30 Grenade at long range from an arm of your backpack. The explosion from this grenade affects all within the blast and can knock them back.Notes: If you take this power, you cannot take the Wolf Spider version.Damage: Light.Recharge: Slow.",
+      "description": "Launches an M30 Grenade at long range from an arm of your backpack. The explosion from this grenade affects all within the blast and can knock them back.\n\nNotes: If you take this power, you cannot take the Wolf Spider version.\n\nDamage: Light.\nRecharge: Slow.",
       "effectArea": "AoE",
       "targetType": "Foe",
       "powerType": "Click",
@@ -244,7 +244,7 @@ export const FragGrenade: Power = {
         }
       },
       "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Lethal), Foe Knockback",
-      "description": "Launches a Frag Grenade at long range from your Nullifier Mace. The explosion from this grenade affects all within the blast and can knock them back.Notes: If you take this power, you cannot take the Crab Spider version.Damage: Light.Recharge: Slow.",
+      "description": "Launches a Frag Grenade at long range from your Nullifier Mace. The explosion from this grenade affects all within the blast and can knock them back.\n\nNotes: If you take this power, you cannot take the Crab Spider version.\n\nDamage: Light.\nRecharge: Slow.",
       "effectArea": "AoE",
       "targetType": "Foe",
       "powerType": "Click",

@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'With Earth Assault, you can damage foes with the very ground they walk upon. You can conjure stone weapons, hurl boulders, and even cause magma to erupt from the ground.',
+  description: "With Earth Assault, you can damage foes with the very ground they walk upon. You can conjure stone weapons, hurl boulders, and even cause magma to erupt from the ground.",
   icon: 'earth_assault_set.ico',
   archetype: 'dominator',
   category: 'secondary',

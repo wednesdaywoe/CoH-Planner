@@ -14,7 +14,7 @@ export const Burst: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Quickly fires a Burst of rounds at a single target at very long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense.Focus Fire:The target struck by this attack will take 3.33% increased damage from any Mercenary Henchmen regardless of their owners for 30 seconds. This does effect does not stack from the same power or from multiple Masterminds.",
+  "description": "Quickly fires a Burst of rounds at a single target at very long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense.\n\nFocus Fire:\nThe target struck by this attack will take 3.33% increased damage from any Mercenary Henchmen regardless of their owners for 30 seconds. This does effect does not stack from the same power or from multiple Masterminds.",
   "shortHelp": "Ranged, DoT (Lethal) Foe -DEF",
   "icon": "paramilitary_assaultrifleburst.png",
   "powerType": "Click",

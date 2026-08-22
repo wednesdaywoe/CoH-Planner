@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Fire Blast allows you to blast fire at foes, with a tendency to set them ablaze for added damage over time.',
+  description: "Fire Blast allows you to blast fire at foes, with a tendency to set them ablaze for added damage over time.",
   icon: 'fire_blast_set.ico',
   archetype: 'blaster',
   category: 'primary',

@@ -14,7 +14,7 @@ export const EnchantUndead: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "Enchant Undead will permanently bestow new powers and abilities to all of your Undead Henchman. The powers gained are unique and dependent upon the type of Undead Henchman that is Enchanted, but all henchmen will gain Resistances to most forms of crowd control and a variety of damage types.Enchant Undead only works on your Undead Henchmen and you can only Enchant your Undead Henchmen once with this power.",
+  "description": "Enchant Undead will permanently bestow new powers and abilities to all of your Undead Henchman. The powers gained are unique and dependent upon the type of Undead Henchman that is Enchanted, but all henchmen will gain Resistances to most forms of crowd control and a variety of damage types.\n\nEnchant Undead only works on your Undead Henchmen and you can only Enchant your Undead Henchmen once with this power.",
   "shortHelp": "Ranged, Enchant Undead Henchman",
   "icon": "necromancy_enchantundead.png",
   "powerType": "Click",

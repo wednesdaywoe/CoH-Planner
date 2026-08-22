@@ -14,7 +14,7 @@ export const TameBeasts: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "Tame Beasts will permanently teach the most deadly and ferocious powers to all of your Beast Henchmen. The Tamed Beasts will gain new abilities and powers. The powers gained are unique and dependent upon the type of Beast Henchman that is Tamed.Tame Beasts only works on your Beast Henchmen and you can only Tame your Beast Henchmen once with this power.",
+  "description": "Tame Beasts will permanently teach the most deadly and ferocious powers to all of your Beast Henchmen. The Tamed Beasts will gain new abilities and powers. The powers gained are unique and dependent upon the type of Beast Henchman that is Tamed.\n\nTame Beasts only works on your Beast Henchmen and you can only Tame your Beast Henchmen once with this power.",
   "shortHelp": "Ranged, Upgrade Beast Henchmen",
   "icon": "beastmastery_tamebeasts.png",
   "powerType": "Click",

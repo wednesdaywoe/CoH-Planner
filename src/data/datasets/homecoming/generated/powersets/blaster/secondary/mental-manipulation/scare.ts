@@ -14,7 +14,7 @@ export const Scare: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You entwine a single foe within their deepest fears and cause them to helplessly tremble for a brief while.Recharge: Slow.",
+  "description": "You entwine a single foe within their deepest fears and cause them to helplessly tremble for a brief while.\n\nRecharge: Slow.",
   "shortHelp": "Ranged, Foe Fear",
   "icon": "mentalcontrol_scare.png",
   "powerType": "Click",

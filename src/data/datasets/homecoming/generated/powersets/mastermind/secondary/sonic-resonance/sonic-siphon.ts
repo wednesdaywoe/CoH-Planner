@@ -14,7 +14,7 @@ export const SonicSiphon: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "By setting up a constant vibration within the body of your foe, you weaken their Damage Resistance. Affected targets will take more damage from successful attacks.Recharge: Slow.",
+  "description": "By setting up a constant vibration within the body of your foe, you weaken their Damage Resistance. Affected targets will take more damage from successful attacks.\n\nRecharge: Slow.",
   "shortHelp": "Ranged, Foe -Res(All)",
   "icon": "sonicdebuff_debuffdamres.png",
   "powerType": "Click",

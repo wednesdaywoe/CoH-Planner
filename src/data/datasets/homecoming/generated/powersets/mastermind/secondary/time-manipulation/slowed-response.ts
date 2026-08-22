@@ -14,7 +14,7 @@ export const SlowedResponse: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You manipulate time around a targeted foe causing their reflexes to become slowed and sluggish. This causes them to have decreased defense and damage resistance. A target affected by Time Crawl will suffer from a more powerful effect.Recharge: Long.",
+  "description": "You manipulate time around a targeted foe causing their reflexes to become slowed and sluggish. This causes them to have decreased defense and damage resistance. A target affected by Time Crawl will suffer from a more powerful effect.\n\nRecharge: Long.",
   "shortHelp": "Ranged (Targeted AoE), Foe -Defense, -Resistance",
   "icon": "timemanipulation_slowedresponse.png",
   "powerType": "Click",

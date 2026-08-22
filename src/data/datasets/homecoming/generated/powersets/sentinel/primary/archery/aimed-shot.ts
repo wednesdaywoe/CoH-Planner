@@ -14,7 +14,7 @@ export const AimedShot: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot.Damage: Light.Recharge: Fast.",
+  "description": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Lethal)",
   "icon": "archery_mediumarrow.png",
   "powerType": "Click",

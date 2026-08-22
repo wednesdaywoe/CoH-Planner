@@ -14,7 +14,7 @@ export const ProtectorBots: Power = {
   "available": 11,
   "autoIssue": false,
   "free": false,
-  "description": "You can summon one to two powerful Protector Bots (depending on your level). Protector Bots can defend your army by placing Force Fields on you and your allies. They can even be equipped to repair your other Robot Henchmen. Make no mistake though, the best defense is a good offense, and Protector Bots are well equipped with energy weapons.You may only have 2 Protector Bots under your control at any given time. If you attempt to summon more Protector Bots, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
+  "description": "You can summon one to two powerful Protector Bots (depending on your level). Protector Bots can defend your army by placing Force Fields on you and your allies. They can even be equipped to repair your other Robot Henchmen. Make no mistake though, the best defense is a good offense, and Protector Bots are well equipped with energy weapons.\n\nYou may only have 2 Protector Bots under your control at any given time. If you attempt to summon more Protector Bots, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
   "shortHelp": "Summon Protector Bot",
   "icon": "robotics_constructprotectorbot.png",
   "powerType": "Click",

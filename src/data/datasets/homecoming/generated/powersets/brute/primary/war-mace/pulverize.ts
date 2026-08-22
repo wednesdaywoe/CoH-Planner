@@ -14,7 +14,7 @@ export const Pulverize: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "You attempt to Pulverize your opponent. This attack is slower than Bash but causes more damage. It also has a chance of Disorienting your opponent for a brief time.Damage: Moderate.Recharge: Moderate.",
+  "description": "You attempt to Pulverize your opponent. This attack is slower than Bash but causes more damage. It also has a chance of Disorienting your opponent for a brief time.\n\nDamage: Moderate.\nRecharge: Moderate.",
   "shortHelp": "Melee, Moderate DMG(Smashing), Minor Disorient",
   "icon": "mace_pulverize.png",
   "powerType": "Click",

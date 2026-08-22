@@ -14,7 +14,7 @@ export const Cloudburst: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "Unleashes a cloud that drops a torrent of freezing rain on your target, causing Cold damage. While in a Storm Cell, targets experience Recharge, ToHit, and Movement speed debuffs.",
+  "description": "Unleashes a cloud that drops a torrent of freezing rain on your target, causing Cold damage.\n\nWhile in a Storm Cell, targets experience Recharge, ToHit, and Movement speed debuffs.",
   "shortHelp": "Ranged, DoT(Cold), +Wet, Special",
   "icon": "stormblast_cloudburst.png",
   "powerType": "Click",

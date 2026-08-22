@@ -26,7 +26,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Those who enter the Soldier training program are given crash courses in Teamwork, Tactical Analysis and Coordination of Assets.',
+  description: "Those who enter the Soldier training program are given crash courses in Teamwork, Tactical Analysis and Coordination of Assets.",
   icon: 'training_and_gadgets_set.ico',
   archetype: 'arachnos-soldier',
   category: 'epic',

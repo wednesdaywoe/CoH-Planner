@@ -14,7 +14,7 @@ export const Tremor: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You can cause a localized earthquake immediately around you. This will deal moderate damage to every foe in melee range, while knocking them back.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "description": "You can cause a localized earthquake immediately around you. This will deal moderate damage to every foe in melee range, while knocking them back.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "PBAoE, DMG(Smash), Knockback",
   "icon": "stonemelee_tremor.png",
   "powerType": "Click",

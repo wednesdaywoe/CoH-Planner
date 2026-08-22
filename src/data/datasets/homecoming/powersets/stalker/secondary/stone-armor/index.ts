@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'You can transform your skin into various forms of rock and stone. Stone Armor is one of the few Stalker Defensive Power Sets that offers defense to Psionics.',
+  description: "You can transform your skin into various forms of rock and stone. Stone Armor is one of the few Stalker Defensive Power Sets that offers defense to Psionics.",
   icon: 'stone_armor_set.ico',
   archetype: 'stalker',
   category: 'secondary',

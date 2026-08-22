@@ -24,7 +24,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 23,
   specializeRequires: ["Widow_Training.Tarantula_Training","powerset?","Teamwork.Tarantula_Teamwork","powerset?","||","Widow_Training.Fortunata_Training","powerset?","Teamwork.Fortunata_Teamwork","powerset?","||","||","!"],
-  description: 'With powers of Stealth, and heightened combat skills, coupled with strong mental attacks, the Night Widows of Arachnos are extremely dangerous.',
+  description: "With powers of Stealth, and heightened combat skills, coupled with strong mental attacks, the Night Widows of Arachnos are extremely dangerous.",
   icon: 'night_widow_training_set.ico',
   archetype: 'arachnos-widow',
   category: 'epic',

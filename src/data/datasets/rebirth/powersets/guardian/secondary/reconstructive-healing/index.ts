@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'Reconstructive Healing lets you regenerate more quickly from damage and effects. Your Hit Point Regeneration can become so incredibly fast, that your wounds heal almost instantly.  Reconstructive Healing gives you the ability to heal and aid allies as well.',
+  description: "Reconstructive Healing lets you regenerate more quickly from damage and effects. Your Hit Point Regeneration can become so incredibly fast, that your wounds heal almost instantly.  Reconstructive Healing gives you the ability to heal and aid allies as well.",
   icon: 'regeneration_set.ico',
   archetype: 'guardian',
   category: 'secondary',

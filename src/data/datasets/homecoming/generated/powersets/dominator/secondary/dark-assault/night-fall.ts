@@ -14,7 +14,7 @@ export const NightFall: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit.Damage: Moderate.Recharge: Slow.",
+  "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit.\n\nDamage: Moderate.\nRecharge: Slow.",
   "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe -To Hit",
   "icon": "darknessassault_nightfall.png",
   "powerType": "Click",

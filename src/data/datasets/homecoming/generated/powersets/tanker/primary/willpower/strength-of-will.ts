@@ -14,7 +14,7 @@ export const StrengthofWill: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "When you activate this power, you not only become extremely resistant to most damage, but also to Disorient, Immobilization, Hold, Knockback, Repel and Sleep effects. Strength of Will costs little Endurance to activate and increases your recovery for its duration, but when it wears off you are left exhausted, and substantially drained of Endurance.Notes: Strength of Will is unaffected by Recharge Time changes.Recharge: Very Long.",
+  "description": "When you activate this power, you not only become extremely resistant to most damage, but also to Disorient, Immobilization, Hold, Knockback, Repel and Sleep effects. Strength of Will costs little Endurance to activate and increases your recovery for its duration, but when it wears off you are left exhausted, and substantially drained of Endurance.\n\nNotes: Strength of Will is unaffected by Recharge Time changes.\n\nRecharge: Very Long.",
   "shortHelp": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG), +Recovery",
   "icon": "willpower_strengthofwill.png",
   "powerType": "Click",

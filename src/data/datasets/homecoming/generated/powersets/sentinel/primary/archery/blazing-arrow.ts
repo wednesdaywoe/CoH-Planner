@@ -14,7 +14,7 @@ export const BlazingArrow: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "You fire a Blazing Arrow at your foe, dealing some Lethal damage and causing them to catch on fire and burn.Damage: Superior.Recharge: Moderate.",
+  "description": "You fire a Blazing Arrow at your foe, dealing some Lethal damage and causing them to catch on fire and burn.\n\nDamage: Superior.\nRecharge: Moderate.",
   "shortHelp": "Ranged, Superior DMG(Lethal), Minor DoT(Fire)",
   "icon": "archery_flamingarrow.png",
   "powerType": "Click",

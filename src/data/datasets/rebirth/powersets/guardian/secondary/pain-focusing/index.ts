@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   buyRequiresFailed: "",
   specializeAt: 0,
   specializeRequires: [],
-  description: 'It takes more than a little pain to keep you down! Pain Focusing uses your willpower to master overwhelming pain. With it, you can channel your pain to protect your allies, yourself, and weaken adversaries.',
+  description: "It takes more than a little pain to keep you down! Pain Focusing uses your willpower to master overwhelming pain. With it, you can channel your pain to protect your allies, yourself, and weaken adversaries.",
   icon: 'pain_domination_set.ico',
   archetype: 'guardian',
   category: 'secondary',

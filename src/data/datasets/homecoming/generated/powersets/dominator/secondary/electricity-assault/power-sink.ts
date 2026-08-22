@@ -14,7 +14,7 @@ export const PowerSink: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave.Damage: Superior.Recharge: Slow.",
+  "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Melee (AoE), Superior DMG(Smash, Energy), Foe Disorient, Knockback",
   "icon": "electricalassault_thunderstrike.png",
   "powerType": "Click",

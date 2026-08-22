@@ -14,7 +14,7 @@ export const GravityShield: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "When you toggle on Gravity Shield, you become highly resistant to Smashing and Lethal damage, deflecting away such physical attacks.Recharge: Very Fast.",
+  "description": "When you toggle on Gravity Shield, you become highly resistant to Smashing and Lethal damage, deflecting away such physical attacks.\n\nRecharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
   "icon": "umbralaura_gravityshield.png",
   "powerType": "Toggle",

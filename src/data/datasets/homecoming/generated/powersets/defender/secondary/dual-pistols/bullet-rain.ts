@@ -14,7 +14,7 @@ export const BulletRain: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "You fire your pistols faster than the human eye can follow, causing your bullet trajectory to arc, dealing moderate Lethal damage and possibly knocking your foes back.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to:*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.*A minor damage over time effect if 'Incendiary Ammo' is loaded.*A -damage effect if 'Chemical Ammo' is loaded.",
+  "description": "You fire your pistols faster than the human eye can follow, causing your bullet trajectory to arc, dealing moderate Lethal damage and possibly knocking your foes back.\n\nChanging your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.\n\nAdditionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to:\n\n*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.\n*A minor damage over time effect if 'Incendiary Ammo' is loaded.\n*A -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Lethal/Special), Knockback/Special",
   "icon": "dualpistols_explosiveclip.png",
   "powerType": "Click",

@@ -14,7 +14,7 @@ export const FlashArrow: Power = {
   "available": 15,
   "autoIssue": false,
   "free": false,
-  "description": "This arrow explodes in a dazzling flash of light and sound. The targets are so blinded that they can hardly see a thing. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit.Recharge: Slow.",
+  "description": "This arrow explodes in a dazzling flash of light and sound. The targets are so blinded that they can hardly see a thing. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit.\n\nRecharge: Slow.",
   "shortHelp": "Ranged (Targeted AoE), Foe -Perception, -ToHit",
   "icon": "tacticalarrow_blind.png",
   "powerType": "Click",

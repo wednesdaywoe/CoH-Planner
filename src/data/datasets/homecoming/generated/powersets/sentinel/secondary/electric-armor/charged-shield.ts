@@ -14,7 +14,7 @@ export const ChargedShield: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "When you toggle on this power, you charge up every particle in your body increasing your regeneration rate and increasing your max endurance. Recharge: Moderate.",
+  "description": "When you toggle on this power, you charge up every particle in your body increasing your regeneration rate and increasing your max endurance.\n\nRecharge: Moderate.",
   "shortHelp": "Toggle: Self +Regen, +MaxEnd",
   "icon": "electricarmor_chargedshield.png",
   "powerType": "Toggle",

@@ -14,7 +14,7 @@ export const OnewiththeShield: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "When you activate this power, you gain strong resistance against most types of damage and also to Disorient, Immobilization, Hold, Knockback, Repel and Sleep effects. One with the Shield costs little Endurance to activate and increases your recovery and maximum hit points for its duration, but when it wears off you are left exhausted, and substantially drained of Endurance.Notes: One with the Shield is unaffected by Recharge Time changes.Recharge: Very Long.",
+  "description": "When you activate this power, you gain strong resistance against most types of damage and also to Disorient, Immobilization, Hold, Knockback, Repel and Sleep effects. One with the Shield costs little Endurance to activate and increases your recovery and maximum hit points for its duration, but when it wears off you are left exhausted, and substantially drained of Endurance.\n\nNotes: One with the Shield is unaffected by Recharge Time changes.\n\nRecharge: Very Long.",
   "shortHelp": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG but Psi), +Recovery, +Max HP",
   "icon": "shielddefense_onewiththeshield.png",
   "powerType": "Click",

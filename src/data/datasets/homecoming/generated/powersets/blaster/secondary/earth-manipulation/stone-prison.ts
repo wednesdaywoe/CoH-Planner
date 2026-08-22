@@ -14,7 +14,7 @@ export const StonePrison: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Immobilizes a single target within an earthy formation and deals some Smashing damage over time. Some more resilient foes may require multiple attacks to Immobilize. Stone Prison can also reduce a target's Defense.Damage: Light.Recharge: Fast.",
+  "description": "Immobilizes a single target within an earthy formation and deals some Smashing damage over time. Some more resilient foes may require multiple attacks to Immobilize. Stone Prison can also reduce a target's Defense.\n\nDamage: Light.\nRecharge: Fast.",
   "shortHelp": "Ranged, Moderate DoT(Smash), Foe Immobilize, -DEF, -Fly",
   "icon": "earthmanip_stoneprison.png",
   "powerType": "Click",

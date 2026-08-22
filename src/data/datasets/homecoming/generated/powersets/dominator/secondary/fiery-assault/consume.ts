@@ -14,7 +14,7 @@ export const Consume: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.Damage: Minor.Recharge: Long.",
+  "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.\n\nDamage: Minor.\nRecharge: Long.",
   "shortHelp": "PBAoE DMG(Fire), Self +End",
   "icon": "fireassault_consume.png",
   "powerType": "Click",

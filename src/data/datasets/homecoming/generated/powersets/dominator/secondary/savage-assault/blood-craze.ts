@@ -14,7 +14,7 @@ export const BloodCraze: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You go into a blood craze, making you quickly shrug aside some of the damage received. Blood Craze will immediately heal you for a small amount and cause you to heal for a moderate amount of health over time.Recharge: Long.",
+  "description": "You go into a blood craze, making you quickly shrug aside some of the damage received. Blood Craze will immediately heal you for a small amount and cause you to heal for a moderate amount of health over time.\n\nRecharge: Long.",
   "shortHelp": "Self +HP, +Health over Time",
   "icon": "savagemelee_bloodthirst.png",
   "powerType": "Click",

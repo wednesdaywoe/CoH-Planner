@@ -14,7 +14,7 @@ export const StygianCircle: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "You can tap into your Nictus power to drain the remaining essence of all nearby defeated foes to heal yourself, and recover Endurance. The more defeated foes affected, the more you will be healed. Additionally, the more powerful the defeated foes you drain, the more health you will recover.Recharge: Slow.",
+  "description": "You can tap into your Nictus power to drain the remaining essence of all nearby defeated foes to heal yourself, and recover Endurance. The more defeated foes affected, the more you will be healed. Additionally, the more powerful the defeated foes you drain, the more health you will recover.\n\nRecharge: Slow.",
   "shortHelp": "PBAoE Self +HP (Special), +End",
   "icon": "umbralaura_stygiancircle.png",
   "powerType": "Click",

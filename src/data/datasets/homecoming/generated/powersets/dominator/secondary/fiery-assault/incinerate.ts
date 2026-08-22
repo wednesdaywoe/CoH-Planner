@@ -14,7 +14,7 @@ export const Incinerate: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Intense concentration can allow you to Incinerate an opponent at melee range. This will set your foe ablaze, dealing damage over time.Damage: High.Recharge: Moderate.",
+  "description": "Intense concentration can allow you to Incinerate an opponent at melee range. This will set your foe ablaze, dealing damage over time.\n\nDamage: High.\nRecharge: Moderate.",
   "shortHelp": "Melee, High DoT(Fire)",
   "icon": "fireassault_incinerate.png",
   "powerType": "Click",

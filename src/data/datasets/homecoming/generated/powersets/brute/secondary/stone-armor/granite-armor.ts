@@ -14,7 +14,7 @@ export const GraniteArmor: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "When you activate this power, you are transformed into a massive bulk of unyielding Granite. Your incredible mass makes you almost completely invulnerable and resistant to most effects, including Defense DeBuffs. However, you also become quite heavy, cannot fly, your attack and movement speed are Slowed and you do less damage.Cannot be active at the same time as other Armors in this set, Fly powers, Sprint, Super Speed, or Jump powers.Recharge: Moderate.",
+  "description": "When you activate this power, you are transformed into a massive bulk of unyielding Granite. Your incredible mass makes you almost completely invulnerable and resistant to most effects, including Defense DeBuffs. However, you also become quite heavy, cannot fly, your attack and movement speed are Slowed and you do less damage.\n\nCannot be active at the same time as other Armors in this set, Fly powers, Sprint, Super Speed, or Jump powers.\n\nRecharge: Moderate.",
   "shortHelp": "Self, +Res(All but Psionics), +DEF(All but Psionics), -SPD, -Recharge, -DMG, -Special",
   "icon": "stonearmor_granite.png",
   "powerType": "Toggle",
