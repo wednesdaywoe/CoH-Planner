@@ -173,7 +173,7 @@
     {
       "path": "scripts/convert-accolades.cjs",
       "status": "identical",
-      "sha256": "fb3fdc6442785708786500fd6b234b3bd04b28749ed92755acf0243c61b054a0"
+      "sha256": "da09c639be15f952cce9b0765b1493deac06470a7354209db98472a3e7abd8e4"
     },
     {
       "path": "scripts/convert-all-powersets.cjs",
@@ -188,7 +188,7 @@
     {
       "path": "scripts/convert-basic-inherents.cjs",
       "status": "identical",
-      "sha256": "4531b1529ee280b2a4d7d8b04962f5a1b96d82dcbd2eff533ee751b48de97106"
+      "sha256": "6205cc7fdfd733362a4735994f8f3dde24cb854f6a06dbcd791f1b68798363ed"
     },
     {
       "path": "scripts/convert-enhancement-curves.cjs",
@@ -213,7 +213,7 @@
     {
       "path": "scripts/convert-pet-entities.cjs",
       "status": "identical",
-      "sha256": "a40b21c96695b0ca4a0790e63c5b8eb996061054384c9ad59b6cddffb6f6d0a9"
+      "sha256": "66e55ff8be01672bbd41c7e94334409c4a1ef8c44a7bd7a0d50c50cf59b5ef66"
     },
     {
       "path": "scripts/convert-pool-powers.cjs",
@@ -355,7 +355,7 @@
       "status": "per-repo",
       "sha256": {
         "canonical": "36eea36cb33750e352b5c58a1c496f38f154d939dbfc9c7f3597e9b7b216ada8",
-        "beta": "9b7c235bcd1e24069407fa9d90b68bc43ad585df9ab328d51a93eb47d5d4eb2d"
+        "beta": "4ece2e5cf296216cc66b0cd95c4278a49d4c2c7b590259f28676db792509acbb"
       },
       "reason": "The stage roster and the gate roster ARE the repo's identity — which converters exist and which gates it can currently pass — so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 14 (24 until FORK-2 retired the two form-variant generators), not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
       "exit": null,

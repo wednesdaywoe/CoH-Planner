@@ -68,6 +68,10 @@ const STEPS = [
   // prestige sprints → generated/basic-inherents.ts. Read by levels.ts, which
   // used to spell them out by hand and hand every fork Homecoming's copy.
   { script: 'convert-basic-inherents.cjs',    args: [],          generated: true },
+  // Accolade powers -> generated/accolades.ts. Absent from this table until 2026-08-22, so a
+  // converter change reached the script and never the output: HELPTEXT-1 shipped with the
+  // accolade descriptions still carrying raw `<br>`/`<color>` markup.
+  { script: 'convert-accolades.cjs',          args: [],          generated: true },
   { script: 'convert-pool-powers.cjs',        args: ['--apply'], generated: true },
   { script: 'convert-epic-pools.cjs',         args: ['--apply'], generated: true },
   { script: 'convert-incarnate-effects.cjs',  args: [],          generated: true },

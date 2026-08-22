@@ -57,10 +57,10 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     "atoms": [
       ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
       ["Damage","Smashing",0.36,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Controller","eq","kTerrorized","target>","0",">","kImmobilized","target>","0",">","||","kHeld","target>","0",">","||","kStunned","target>","0",">","||","Sleep","target.EventTimeSince>","3","<=","||","&&"],true,null,null,null,null,null,null,null,null,"Containment"],
-      ["RechargeTime",null,-0.1,1,10,"Melee_Ones","Str","Expression","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,["Pool.Fighting.Boxing","source.ownPower?","Pool.Fighting.Kick","source.ownPower?","||"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?","Pool.Fighting.Boxing","source.ownPowerNum?","+","*"],null,0.1,true],
-      ["ToHit",null,-0.1,1,10,"Melee_Ones","Cur","Expression","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,["Pool.Fighting.Boxing","source.ownPower?","Pool.Fighting.Kick","source.ownPower?","||"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?","Pool.Fighting.Boxing","source.ownPowerNum?","+","*"],null,0.1,true],
-      ["Regeneration",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,0.1,true],
-      ["Recovery",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,0.1,true],
+      ["RechargeTime",null,-0.1,1,10,"Melee_Ones","Str","Expression","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,["Pool.Fighting.Boxing","source.ownPower?","Pool.Fighting.Kick","source.ownPower?","||"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?","Pool.Fighting.Boxing","source.ownPowerNum?","+","*"],null,0.1,true,null,null,null,null,null,null,null,null,null,null,null,"boxing"],
+      ["ToHit",null,-0.1,1,10,"Melee_Ones","Cur","Expression","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,["Pool.Fighting.Boxing","source.ownPower?","Pool.Fighting.Kick","source.ownPower?","||"],true,null,null,null,null,["@StdResult","Pool.Fighting.Kick","source.ownPowerNum?","Pool.Fighting.Boxing","source.ownPowerNum?","+","*"],null,0.1,true,null,null,null,null,null,null,null,null,null,null,null,"boxing"],
+      ["Regeneration",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,0.1,true,null,null,null,null,null,null,null,null,null,null,null,"cross_punch"],
+      ["Recovery",null,-0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,67,1,null,true,null,null,null,null,["Pool.Fighting.Cross_Punch","source.ownPower?"],true,null,null,null,null,null,null,0.1,true,null,null,null,null,null,null,null,null,null,null,null,"cross_punch"],
       ["Mez","Knockback",3,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&","enttype","target>","player","eq","&&"],true],
       ["Mez","Knockback",3,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&","enttype","target>","critter","eq","&&"],true],
       ["Mez","Knockback",0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,["isPVPMap?","!","FourOne","source.owned?","&&"],true],
@@ -98,6 +98,62 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
         "table": "Melee_Damage"
       }
     },
+    "conditionalEffects": [
+      {
+        "id": "boxing",
+        "label": "Boxing",
+        "scope": "global",
+        "defaultActive": false,
+        "ownedPower": {
+          "path": "Pool.Fighting.Boxing",
+          "count": 1
+        },
+        "effects": {
+          "buffDuration": 10,
+          "durations": {
+            "rechargeDebuff": 10,
+            "tohitDebuff": 10
+          },
+          "rechargeDebuff": {
+            "ignoreStrength": true,
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "tohitDebuff": {
+            "ignoreStrength": true,
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          }
+        }
+      },
+      {
+        "id": "cross_punch",
+        "label": "Cross Punch",
+        "scope": "global",
+        "defaultActive": false,
+        "ownedPower": {
+          "path": "Pool.Fighting.Cross_Punch",
+          "count": 1
+        },
+        "effects": {
+          "buffDuration": 10,
+          "durations": {
+            "recoveryDebuff": 10,
+            "regenDebuff": 10
+          },
+          "recoveryDebuff": {
+            "ignoreStrength": true,
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "regenDebuff": {
+            "ignoreStrength": true,
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          }
+        }
+      }
+    ],
     "targetsAffected": [
       "Foe"
     ]

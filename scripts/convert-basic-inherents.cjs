@@ -43,6 +43,8 @@ const {
   collectBaseTemplates,
   collectAtomTemplates,
   encodeAtomsForEmit,
+  extractConditionalEffects,
+  stampConditionalIds,
   assignModes,
   resolveThunderspyMovementTargets,
   guardThunderspyOnesBuffs,
@@ -369,6 +371,13 @@ function convertBasicInherent(rawJson, entry, granter) {
     }
   }
 
+  // The conditional→atom join, stamped ahead of the atom emit for the reason
+  // convert-powerset.cjs gives at its own copy: `extractConditionalEffects` writes
+  // `_conditionalId` onto the surviving groups' templates and `encodeAtomsForEmit` carries it
+  // onto the atom, so a stamp placed after the encode reaches nothing. `stampOnly` skips the
+  // `_perTargetIncrement` patch and cannot change which groups survive.
+  stampConditionalIds(rawJson.effects, rawJson);
+
   {
     const atomTemplates = [
       ...new Set([...allTemplates, ...collectAtomTemplates(rawJson.effects || [])]),
@@ -380,6 +389,22 @@ function convertBasicInherent(rawJson, entry, granter) {
   }
 
   power.effects = effects;
+
+  // Conditional bonus effects (Mechanic Adjusters) — the positive state gates the base
+  // collector filters out, surfaced as toggles. Called AFTER the atom emit, because
+  // `extractConditionalEffects` stamps `_perTargetIncrement` on the templates it patches and
+  // `encodeAtomsForEmit` copies that stamp onto the atom; running it first would put a
+  // conditional group's per-foe increment on the base atoms.
+  //
+  // This converter shipped no conditionals at all until BRAIN-3 — the fifth instance of a
+  // capability built in convert-powerset.cjs and never handed to a sibling. Brawl's entire
+  // Fighting-pool synergy sat gated in the export with no toggle able to reach it: the
+  // Boxing-or-Kick -recharge/-tohit pair and Cross Punch's -regen/-recovery, on Homecoming,
+  // Rebirth and Brainstorm alike. Thunderspy's Brawl states neither.
+  if (rawJson.effects?.length) {
+    const conditional = extractConditionalEffects(rawJson.effects, rawJson);
+    if (conditional) power.conditionalEffects = conditional;
+  }
 
   // Caster-state writes (grant/revoke edges) — the stamp every partition gets, called
   // explicitly for the audit-grant-edges.cjs reason: an extractor reaches only the

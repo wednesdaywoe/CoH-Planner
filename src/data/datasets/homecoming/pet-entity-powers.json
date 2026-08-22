@@ -1,0 +1,4351 @@
+{
+  "IncarnatePets_Barrier_Rez_Double": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Barrier_Rez.Barrier_Rez_Double"
+  ],
+  "IncarnatePets_Barrier_Rez_Double_Wide": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Barrier_Rez.Barrier_Rez_Double_Wide"
+  ],
+  "IncarnatePets_Barrier_Rez_Single": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Barrier_Rez.Barrier_Rez_Single"
+  ],
+  "IncarnatePets_Fate_Arachnos_Boss": [
+    "Incarnate.Lore_Pet_Arachnos_Boss.Venom_Burst",
+    "Incarnate.Lore_Pet_Arachnos_Boss.Toxic_Claws",
+    "Incarnate.Lore_Pet_Arachnos_Boss.Claw_Pierce",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Fate_Arachnos_Support_Protected": [
+    "Incarnate.Lore_Pet_Arachnos_Support.Mind_Link",
+    "Incarnate.Lore_Pet_Arachnos_Support.Soothe",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Fate_Cimeroran_Boss": [
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Push_Back",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Slash",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Slice",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Hack",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Pilum",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Fate_Cimeroran_LT": [
+    "Incarnate.Lore_Pet_Cimeroran_LT.Slash",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Slice",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Hack",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Pilum",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Fate_Clockwork_LT": [
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast_Barrage",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Stunner",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Fate_Clockwork_Support_Attacks": [
+    "Incarnate.Lore_Pet_Clockwork_Support.Nano_Repair",
+    "Incarnate.Lore_Pet_Clockwork_Support.Field_Projector",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast"
+  ],
+  "IncarnatePets_Fate_Drones_Boss": [
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Blast",
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Spray",
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Burst",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Fate_IDF_Boss": [
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Punch",
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Vortex",
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Blast",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Fate_IDF_Support": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Fate_Lights_LT": [
+    "Incarnate.Lore_Pet_Lights_LT.Northern_Lights_Bolt",
+    "Incarnate.Lore_Pet_Lights_LT.Northern_Lights_Scatter",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Fate_Lights_Support": [
+    "Incarnate.Lore_Pet_Lights_Support.Glowing_Touch",
+    "Incarnate.Lore_Pet_Lights_Support.Assault",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Fate_Longbow_Boss_Buff": [
+    "Incarnate.Lore_Pet_Longbow_Boss.Grenade",
+    "Incarnate.Lore_Pet_Longbow_Boss.Plasma_Blast",
+    "Incarnate.Lore_Pet_Longbow_Boss.Energy_Barrage",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Fate_Longbow_LT_Buff": [
+    "Incarnate.Lore_Pet_Longbow_LT.Burst",
+    "Incarnate.Lore_Pet_Longbow_LT.Slug",
+    "Incarnate.Lore_Pet_Longbow_LT.M30_Grenade",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Fate_Rikti_LT": [
+    "Incarnate.Lore_Pet_Rikti_LT.Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_LT.Greater_Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_LT.Rikti_Pistol",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Fate_Vanguard_LT": [
+    "Incarnate.Lore_Pet_Vanguard_LT.Bayonet",
+    "Incarnate.Lore_Pet_Vanguard_LT.Burst",
+    "Incarnate.Lore_Pet_Vanguard_LT.Willie_Pete_Round",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Fate_Vanguard_Support_Protected": [
+    "Incarnate.Lore_Pet_Vanguard_Support.Assault",
+    "Incarnate.Lore_Pet_Vanguard_Support.Twilight_Grasp",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Incandescent_Destiny_Shield": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Destiny_Silent.Incandescence"
+  ],
+  "IncarnatePets_Incandescent_Destiny_Shield_Wide": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Destiny_Silent.Incandescence_Wide"
+  ],
+  "IncarnatePets_Ion_Core_Final_Judgement_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Core_Final_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Core_Final_Judgement_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Core_Final_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Core_Final_Judgement_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Core_Final_Judgement_Jump3"
+  ],
+  "IncarnatePets_Ion_Core_Final_Judgement_Jump4": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Core_Final_Judgement_Jump4"
+  ],
+  "IncarnatePets_Ion_Core_Judgement_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Core_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Core_Judgement_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Core_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Core_Judgement_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Core_Judgement_Jump3"
+  ],
+  "IncarnatePets_Ion_Judgement_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Judgement_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Judgement_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Judgement_Jump3"
+  ],
+  "IncarnatePets_Ion_Partial_Core_Judgement_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Partial_Core_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Partial_Core_Judgement_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Partial_Core_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Partial_Core_Judgement_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Partial_Core_Judgement_Jump3"
+  ],
+  "IncarnatePets_Ion_Partial_Core_Verdict_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Ion_Judgement.Ion_Partial_Core_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Partial_Core_Verdict_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Ion_Judgement.Ion_Partial_Core_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Partial_Core_Verdict_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Ion_Judgement.Ion_Partial_Core_Judgement_Jump3"
+  ],
+  "IncarnatePets_Ion_Partial_Radial_Judgement_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Partial_Radial_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Partial_Radial_Judgement_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Partial_Radial_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Partial_Radial_Judgement_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Partial_Radial_Judgement_Jump3"
+  ],
+  "IncarnatePets_Ion_Partial_Radial_Judgement_Jump4": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Partial_Radial_Judgement_Jump4"
+  ],
+  "IncarnatePets_Ion_Radial_Final_Judgement_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Radial_Final_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Radial_Final_Judgement_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Radial_Final_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Radial_Final_Judgement_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Radial_Final_Judgement_Jump3"
+  ],
+  "IncarnatePets_Ion_Radial_Final_Judgement_Jump4": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Radial_Final_Judgement_Jump4"
+  ],
+  "IncarnatePets_Ion_Radial_Judgement_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Radial_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Radial_Judgement_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Radial_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Radial_Judgement_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Radial_Judgement_Jump3"
+  ],
+  "IncarnatePets_Ion_Total_Core_Judgement_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Total_Core_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Total_Core_Judgement_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Total_Core_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Total_Core_Judgement_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Total_Core_Judgement_Jump3"
+  ],
+  "IncarnatePets_Ion_Total_Core_Verdict_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Ion_Judgement.Ion_Total_Core_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Total_Core_Verdict_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Ion_Judgement.Ion_Total_Core_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Total_Core_Verdict_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Ion_Judgement.Ion_Total_Core_Judgement_Jump3"
+  ],
+  "IncarnatePets_Ion_Total_Radial_Judgement_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Total_Radial_Judgement_Jump1"
+  ],
+  "IncarnatePets_Ion_Total_Radial_Judgement_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Total_Radial_Judgement_Jump2"
+  ],
+  "IncarnatePets_Ion_Total_Radial_Judgement_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.Ion_Judgement.Ion_Total_Radial_Judgement_Jump3"
+  ],
+  "IncarnatePets_Lore_Arachnos_Boss": [
+    "Incarnate.Lore_Pet_Arachnos_Boss.Venom_Burst",
+    "Incarnate.Lore_Pet_Arachnos_Boss.Toxic_Claws",
+    "Incarnate.Lore_Pet_Arachnos_Boss.Claw_Pierce",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Arachnos_Boss_Buff": [
+    "Incarnate.Lore_Pet_Arachnos_Boss.Venom_Burst",
+    "Incarnate.Lore_Pet_Arachnos_Boss.Toxic_Claws",
+    "Incarnate.Lore_Pet_Arachnos_Boss.Claw_Pierce",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Arachnos_LT": [
+    "Incarnate.Lore_Pet_Arachnos_LT.Bash",
+    "Incarnate.Lore_Pet_Arachnos_LT.Pulverize",
+    "Incarnate.Lore_Pet_Arachnos_LT.Mace_Beam",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Arachnos_LT_Buff": [
+    "Incarnate.Lore_Pet_Arachnos_LT.Bash",
+    "Incarnate.Lore_Pet_Arachnos_LT.Pulverize",
+    "Incarnate.Lore_Pet_Arachnos_LT.Mace_Beam",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Arachnos_Support": [
+    "Incarnate.Lore_Pet_Arachnos_Support.Mind_Link",
+    "Incarnate.Lore_Pet_Arachnos_Support.Soothe",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Arachnos_Support_Attacks": [
+    "Incarnate.Lore_Pet_Arachnos_Support.Mind_Link",
+    "Incarnate.Lore_Pet_Arachnos_Support.Soothe",
+    "Incarnate.Lore_Pet_Arachnos_Support_Attack.Mental_Blast",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Arachnos_Support_Protected": [
+    "Incarnate.Lore_Pet_Arachnos_Support.Mind_Link",
+    "Incarnate.Lore_Pet_Arachnos_Support.Soothe",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Banished_Boss": [
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Smash",
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Beam",
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Blast",
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Enervation",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Banished_Boss_Buff": [
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Smash",
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Beam",
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Blast",
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Enervation",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Banished_LT": [
+    "Incarnate.Lore_Pet_Banished_LT.Frigid_Slash",
+    "Incarnate.Lore_Pet_Banished_LT.Frigid_Slice",
+    "Incarnate.Lore_Pet_Banished_LT.Frigid_Burst",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Banished_LT_Buff": [
+    "Incarnate.Lore_Pet_Banished_LT.Frigid_Slash",
+    "Incarnate.Lore_Pet_Banished_LT.Frigid_Slice",
+    "Incarnate.Lore_Pet_Banished_LT.Frigid_Burst",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Banished_Support": [
+    "Incarnate.Lore_Pet_Banished_Support.Frigid_Storm",
+    "Incarnate.Lore_Pet_Banished_Support.Frigid_Burst",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Banished_Support_Attacks": [
+    "Incarnate.Lore_Pet_Banished_Support.Frigid_Storm",
+    "Incarnate.Lore_Pet_Banished_Support.Frigid_Burst",
+    "Incarnate.Lore_Pet_Banished_Support_Attack.Frigid_Blast",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Banished_Support_Protected": [
+    "Incarnate.Lore_Pet_Banished_Support.Frigid_Storm",
+    "Incarnate.Lore_Pet_Banished_Support.Frigid_Burst",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Carnival_Boss": [
+    "Incarnate.Lore_Pet_Carnival_Boss.Telekinetic_Blast",
+    "Incarnate.Lore_Pet_Carnival_Boss.Mental_Blast",
+    "Incarnate.Lore_Pet_Carnival_Boss.Psionic_Tornado",
+    "Incarnate.Lore_Pet_Carnival_Boss.Tenebrous_Tentacles",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Carnival_Boss_Buff": [
+    "Incarnate.Lore_Pet_Carnival_Boss.Telekinetic_Blast",
+    "Incarnate.Lore_Pet_Carnival_Boss.Mental_Blast",
+    "Incarnate.Lore_Pet_Carnival_Boss.Psionic_Tornado",
+    "Incarnate.Lore_Pet_Carnival_Boss.Tenebrous_Tentacles",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Carnival_LT": [
+    "Incarnate.Lore_Pet_Carnival_LT.Hurl",
+    "Incarnate.Lore_Pet_Carnival_LT.Punch",
+    "Incarnate.Lore_Pet_Carnival_LT.Haymaker",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Carnival_LT_Buff": [
+    "Incarnate.Lore_Pet_Carnival_LT.Hurl",
+    "Incarnate.Lore_Pet_Carnival_LT.Punch",
+    "Incarnate.Lore_Pet_Carnival_LT.Haymaker",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Carnival_Support": [
+    "Incarnate.Lore_Pet_Carnival_Support.Cauterize",
+    "Incarnate.Lore_Pet_Carnival_Support.Forge",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Carnival_Support_Attacks": [
+    "Incarnate.Lore_Pet_Carnival_Support.Cauterize",
+    "Incarnate.Lore_Pet_Carnival_Support.Forge",
+    "Incarnate.Lore_Pet_Carnival_Support_Attack.Spit_Fire",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Carnival_Support_Protected": [
+    "Incarnate.Lore_Pet_Carnival_Support.Cauterize",
+    "Incarnate.Lore_Pet_Carnival_Support.Forge",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Cimeroran_Boss": [
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Push_Back",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Slash",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Slice",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Hack",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Pilum",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Cimeroran_Boss_Buff": [
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Push_Back",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Slash",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Slice",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Hack",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Pilum",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Cimeroran_LT": [
+    "Incarnate.Lore_Pet_Cimeroran_LT.Slash",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Slice",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Hack",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Pilum",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Cimeroran_LT_Buff": [
+    "Incarnate.Lore_Pet_Cimeroran_LT.Slash",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Slice",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Hack",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Pilum",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Cimeroran_Support": [
+    "Incarnate.Lore_Pet_Cimeroran_Support.Healing_Aura",
+    "Incarnate.Lore_Pet_Cimeroran_Support.Heal_Other",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Cimeroran_Support_Attacks": [
+    "Incarnate.Lore_Pet_Cimeroran_Support.Healing_Aura",
+    "Incarnate.Lore_Pet_Cimeroran_Support.Heal_Other",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Pilum"
+  ],
+  "IncarnatePets_Lore_Cimeroran_Support_Protected": [
+    "Incarnate.Lore_Pet_Cimeroran_Support.Healing_Aura",
+    "Incarnate.Lore_Pet_Cimeroran_Support.Heal_Other",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Clockwork_AntimatterRayBurn": [
+    "Pets.ResistAll.ResistAll",
+    "Incarnate.AntiMatterRayBurn.Anti-Matter_Particles"
+  ],
+  "IncarnatePets_Lore_Clockwork_Boss": [
+    "Incarnate.Lore_Pet_Clockwork_Boss.Particle_Blast",
+    "Incarnate.Lore_Pet_Clockwork_Boss.Anti-Matter_Ray",
+    "Incarnate.Lore_Pet_Clockwork_Boss.Anti-Matter_Beam",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Clockwork_Boss_Buff": [
+    "Incarnate.Lore_Pet_Clockwork_Boss.Particle_Blast",
+    "Incarnate.Lore_Pet_Clockwork_Boss.Anti-Matter_Ray",
+    "Incarnate.Lore_Pet_Clockwork_Boss.Anti-Matter_Beam",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Clockwork_LT": [
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast_Barrage",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Stunner",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Clockwork_LT_Buff": [
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast_Barrage",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Stunner",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Clockwork_Support": [
+    "Incarnate.Lore_Pet_Clockwork_Support.Nano_Repair",
+    "Incarnate.Lore_Pet_Clockwork_Support.Field_Projector",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Clockwork_Support_Attacks": [
+    "Incarnate.Lore_Pet_Clockwork_Support.Nano_Repair",
+    "Incarnate.Lore_Pet_Clockwork_Support.Field_Projector",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast"
+  ],
+  "IncarnatePets_Lore_Clockwork_Support_Protected": [
+    "Incarnate.Lore_Pet_Clockwork_Support.Nano_Repair",
+    "Incarnate.Lore_Pet_Clockwork_Support.Field_Projector",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Demons_Boss": [
+    "Incarnate.Lore_Pet_Demons_Boss.Come_Hither",
+    "Incarnate.Lore_Pet_Demons_Boss.Blackclaw",
+    "Incarnate.Lore_Pet_Demons_Boss.Hellish_Bolts",
+    "Incarnate.Lore_Pet_Demons_Boss.Fire_Ball",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Demons_Boss_Buff": [
+    "Incarnate.Lore_Pet_Demons_Boss.Come_Hither",
+    "Incarnate.Lore_Pet_Demons_Boss.Blackclaw",
+    "Incarnate.Lore_Pet_Demons_Boss.Hellish_Bolts",
+    "Incarnate.Lore_Pet_Demons_Boss.Fire_Ball",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Demons_LT": [
+    "Incarnate.Lore_Pet_Demons_LT.Fire_Smash",
+    "Incarnate.Lore_Pet_Demons_LT.Fire_Sword",
+    "Incarnate.Lore_Pet_Demons_LT.Fire_Blast",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Demons_LT_Buff": [
+    "Incarnate.Lore_Pet_Demons_LT.Fire_Smash",
+    "Incarnate.Lore_Pet_Demons_LT.Fire_Sword",
+    "Incarnate.Lore_Pet_Demons_LT.Fire_Blast",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Demons_Support": [
+    "Incarnate.Lore_Pet_Demons_Support.Chill_of_the_Night",
+    "Incarnate.Lore_Pet_Demons_Support.Twilight_Grasp",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Demons_Support_Attacks": [
+    "Incarnate.Lore_Pet_Demons_Support.Chill_of_the_Night",
+    "Incarnate.Lore_Pet_Demons_Support.Twilight_Grasp",
+    "Incarnate.Lore_Pet_Demons_Support_Attack.Gloom",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Demons_Support_Protected": [
+    "Incarnate.Lore_Pet_Demons_Support.Chill_of_the_Night",
+    "Incarnate.Lore_Pet_Demons_Support.Twilight_Grasp",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Drones_Boss": [
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Blast",
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Spray",
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Burst",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Drones_Boss_Buff": [
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Blast",
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Spray",
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Burst",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Drones_LT": [
+    "Incarnate.Lore_Pet_Drones_LT.Plasma_Cannon_Blast",
+    "Incarnate.Lore_Pet_Drones_LT.Plasma_Cannon_Spray",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Drones_LT_Buff": [
+    "Incarnate.Lore_Pet_Drones_LT.Plasma_Cannon_Blast",
+    "Incarnate.Lore_Pet_Drones_LT.Plasma_Cannon_Spray",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Drones_Support": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Drones_Support_Attacks": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Drones_LT.Plasma_Cannon_Blast",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Drones_Support_Protected": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Elementals_Boss": [
+    "Incarnate.Lore_Pet_Elementals_Boss.Lightning_Bolt",
+    "Incarnate.Lore_Pet_Elementals_Boss.Charged_Bolts",
+    "Incarnate.Lore_Pet_Elementals_Boss.Ball_Lightning",
+    "Incarnate.Lore_Pet_Elementals_Boss.Short_Circuit",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Elementals_Boss_Buff": [
+    "Incarnate.Lore_Pet_Elementals_Boss.Lightning_Bolt",
+    "Incarnate.Lore_Pet_Elementals_Boss.Charged_Bolts",
+    "Incarnate.Lore_Pet_Elementals_Boss.Ball_Lightning",
+    "Incarnate.Lore_Pet_Elementals_Boss.Short_Circuit",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Elementals_LT": [
+    "Incarnate.Lore_Pet_Elementals_LT.Lightning_Bolt",
+    "Incarnate.Lore_Pet_Elementals_LT.Charged_Bolts",
+    "Incarnate.Lore_Pet_Elementals_LT.Ball_Lightning",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Elementals_LT_Buff": [
+    "Incarnate.Lore_Pet_Elementals_LT.Lightning_Bolt",
+    "Incarnate.Lore_Pet_Elementals_LT.Charged_Bolts",
+    "Incarnate.Lore_Pet_Elementals_LT.Ball_Lightning",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Elementals_Support": [
+    "Incarnate.Lore_Pet_Elementals_Support.O2_Boost",
+    "Incarnate.Lore_Pet_Elementals_Support.Hurricane",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Elementals_Support_Attacks": [
+    "Incarnate.Lore_Pet_Elementals_Support.O2_Boost",
+    "Incarnate.Lore_Pet_Elementals_Support.Hurricane",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Elementals_LT.Lightning_Bolt"
+  ],
+  "IncarnatePets_Lore_Elementals_Support_Protected": [
+    "Incarnate.Lore_Pet_Elementals_Support.O2_Boost",
+    "Incarnate.Lore_Pet_Elementals_Support.Hurricane",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_IDF_Boss": [
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Punch",
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Vortex",
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Blast",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_IDF_Boss_Buff": [
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Punch",
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Vortex",
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Blast",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_IDF_LT": [
+    "Incarnate.Lore_Pet_IDF_LT.Plasma_Blast",
+    "Incarnate.Lore_Pet_IDF_LT.Plasma_Burst",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_IDF_LT_Buff": [
+    "Incarnate.Lore_Pet_IDF_LT.Plasma_Blast",
+    "Incarnate.Lore_Pet_IDF_LT.Plasma_Burst",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_IDF_Support": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_IDF_Support_Attacks": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_IDF_LT.Plasma_Blast"
+  ],
+  "IncarnatePets_Lore_IDF_Support_Protected": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Knives_Boss": [
+    "Incarnate.Lore_Pet_Knives_Boss.Focused_Shot",
+    "Incarnate.Lore_Pet_Knives_Boss.Dual_Shot",
+    "Incarnate.Lore_Pet_Knives_Boss.Weakening_Shot",
+    "Incarnate.Lore_Pet_Knives_Boss.Paralytic_Shot",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Knives_Boss_Buff": [
+    "Incarnate.Lore_Pet_Knives_Boss.Focused_Shot",
+    "Incarnate.Lore_Pet_Knives_Boss.Dual_Shot",
+    "Incarnate.Lore_Pet_Knives_Boss.Weakening_Shot",
+    "Incarnate.Lore_Pet_Knives_Boss.Paralytic_Shot",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Knives_LT": [
+    "Incarnate.Lore_Pet_Knives_LT.Shockwave_Slice",
+    "Incarnate.Lore_Pet_Knives_LT.Wearying_Strike",
+    "Incarnate.Lore_Pet_Knives_LT.Wrathful_Blade",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Knives_LT_Buff": [
+    "Incarnate.Lore_Pet_Knives_LT.Shockwave_Slice",
+    "Incarnate.Lore_Pet_Knives_LT.Wearying_Strike",
+    "Incarnate.Lore_Pet_Knives_LT.Wrathful_Blade",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Knives_Support": [
+    "Incarnate.Lore_Pet_Knives_Support.Adrenalin_Boost",
+    "Incarnate.Lore_Pet_Knives_Support.Rallying_Cry",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Knives_Support_Attacks": [
+    "Incarnate.Lore_Pet_Knives_Support.Adrenalin_Boost",
+    "Incarnate.Lore_Pet_Knives_Support.Rallying_Cry",
+    "Incarnate.Lore_Pet_Knives_Support_Attack.Concussive_Blow",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Knives_Support_Protected": [
+    "Incarnate.Lore_Pet_Knives_Support.Adrenalin_Boost",
+    "Incarnate.Lore_Pet_Knives_Support.Rallying_Cry",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Lights_Boss": [
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Bolt",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Blast",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Scatter",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Detonation",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Lights_Boss_Buff": [
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Bolt",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Blast",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Scatter",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Detonation",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Lights_LT": [
+    "Incarnate.Lore_Pet_Lights_LT.Northern_Lights_Bolt",
+    "Incarnate.Lore_Pet_Lights_LT.Northern_Lights_Scatter",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Lights_LT_Buff": [
+    "Incarnate.Lore_Pet_Lights_LT.Northern_Lights_Bolt",
+    "Incarnate.Lore_Pet_Lights_LT.Northern_Lights_Scatter",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Lights_Support": [
+    "Incarnate.Lore_Pet_Lights_Support.Glowing_Touch",
+    "Incarnate.Lore_Pet_Lights_Support.Assault",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Lights_Support_Attacks": [
+    "Incarnate.Lore_Pet_Lights_Support.Glowing_Touch",
+    "Incarnate.Lore_Pet_Lights_Support.Assault",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Lights_LT.Northern_Lights_Bolt",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Lights_Support_Protected": [
+    "Incarnate.Lore_Pet_Lights_Support.Glowing_Touch",
+    "Incarnate.Lore_Pet_Lights_Support.Assault",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "IncarnatePets_Lore_Longbow_Boss": [
+    "Incarnate.Lore_Pet_Longbow_Boss.Grenade",
+    "Incarnate.Lore_Pet_Longbow_Boss.Plasma_Blast",
+    "Incarnate.Lore_Pet_Longbow_Boss.Energy_Barrage",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Longbow_Boss_Buff": [
+    "Incarnate.Lore_Pet_Longbow_Boss.Grenade",
+    "Incarnate.Lore_Pet_Longbow_Boss.Plasma_Blast",
+    "Incarnate.Lore_Pet_Longbow_Boss.Energy_Barrage",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Longbow_LT": [
+    "Incarnate.Lore_Pet_Longbow_LT.Burst",
+    "Incarnate.Lore_Pet_Longbow_LT.Slug",
+    "Incarnate.Lore_Pet_Longbow_LT.M30_Grenade",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Longbow_LT_Buff": [
+    "Incarnate.Lore_Pet_Longbow_LT.Burst",
+    "Incarnate.Lore_Pet_Longbow_LT.Slug",
+    "Incarnate.Lore_Pet_Longbow_LT.M30_Grenade",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Longbow_Support": [
+    "Incarnate.Lore_Pet_Longbow_Support.Heal_Other",
+    "Incarnate.Lore_Pet_Longbow_Support.Healing_Aura",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Longbow_Support_Attacks": [
+    "Incarnate.Lore_Pet_Longbow_Support.Heal_Other",
+    "Incarnate.Lore_Pet_Longbow_Support.Healing_Aura",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Longbow_LT.Burst"
+  ],
+  "IncarnatePets_Lore_Longbow_Support_Protected": [
+    "Incarnate.Lore_Pet_Longbow_Support.Heal_Other",
+    "Incarnate.Lore_Pet_Longbow_Support.Healing_Aura",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Nemesis_Boss": [
+    "Incarnate.Lore_Pet_Nemesis_Boss.Pummel",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Storm_Cannon",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Flamethrower",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Explode",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Nemesis_Boss_Buff": [
+    "Incarnate.Lore_Pet_Nemesis_Boss.Pummel",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Storm_Cannon",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Flamethrower",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Explode",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Nemesis_LT": [
+    "Incarnate.Lore_Pet_Nemesis_LT.Lance_Rifle",
+    "Incarnate.Lore_Pet_Nemesis_LT.Lance",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Nemesis_LT_Buff": [
+    "Incarnate.Lore_Pet_Nemesis_LT.Lance_Rifle",
+    "Incarnate.Lore_Pet_Nemesis_LT.Lance",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Nemesis_Support": [
+    "Incarnate.Lore_Pet_Nemesis_Support.Triage",
+    "Incarnate.Lore_Pet_Nemesis_Support.Healing_Aura",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Nemesis_Support_Attacks": [
+    "Incarnate.Lore_Pet_Nemesis_Support.Triage",
+    "Incarnate.Lore_Pet_Nemesis_Support.Healing_Aura",
+    "Incarnate.Lore_Pet_Nemesis_Support_Attack.Nemesis_Rifle",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Nemesis_Support_Protected": [
+    "Incarnate.Lore_Pet_Nemesis_Support.Triage",
+    "Incarnate.Lore_Pet_Nemesis_Support.Healing_Aura",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Phantoms_Boss": [
+    "Incarnate.Lore_Pet_Phantoms_Boss.Greater_Ice_Sword",
+    "Incarnate.Lore_Pet_Phantoms_Boss.Fire_Blast",
+    "Incarnate.Lore_Pet_Phantoms_Boss.Fire_Sword_Circle",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Phantoms_Boss_Buff": [
+    "Incarnate.Lore_Pet_Phantoms_Boss.Greater_Ice_Sword",
+    "Incarnate.Lore_Pet_Phantoms_Boss.Fire_Blast",
+    "Incarnate.Lore_Pet_Phantoms_Boss.Fire_Sword_Circle",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Phantoms_LT": [
+    "Incarnate.Lore_Pet_Phantoms_LT.Fire_Blast",
+    "Incarnate.Lore_Pet_Phantoms_LT.Fire_Sword",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Phantoms_LT_Buff": [
+    "Incarnate.Lore_Pet_Phantoms_LT.Fire_Blast",
+    "Incarnate.Lore_Pet_Phantoms_LT.Fire_Sword",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Phantoms_Support": [
+    "Incarnate.Lore_Pet_Phantoms_Support.Heal_Other",
+    "Incarnate.Lore_Pet_Phantoms_Support.Adrenalin_Boost",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Phantoms_Support_Attacks": [
+    "Incarnate.Lore_Pet_Phantoms_Support.Heal_Other",
+    "Incarnate.Lore_Pet_Phantoms_Support.Adrenalin_Boost",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Phantoms_LT.Fire_Blast"
+  ],
+  "IncarnatePets_Lore_Phantoms_Support_Protected": [
+    "Incarnate.Lore_Pet_Phantoms_Support.Heal_Other",
+    "Incarnate.Lore_Pet_Phantoms_Support.Adrenalin_Boost",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Rikti_Boss": [
+    "Incarnate.Lore_Pet_Rikti_Boss.Greater_Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_Boss.Mental_Blast",
+    "Incarnate.Lore_Pet_Rikti_Boss.Mesmerize",
+    "Incarnate.Lore_Pet_Rikti_Boss.Total_Domination",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Rikti_Boss_Buff": [
+    "Incarnate.Lore_Pet_Rikti_Boss.Greater_Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_Boss.Mental_Blast",
+    "Incarnate.Lore_Pet_Rikti_Boss.Mesmerize",
+    "Incarnate.Lore_Pet_Rikti_Boss.Total_Domination",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Rikti_LT": [
+    "Incarnate.Lore_Pet_Rikti_LT.Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_LT.Greater_Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_LT.Rikti_Pistol",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Rikti_LT_Buff": [
+    "Incarnate.Lore_Pet_Rikti_LT.Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_LT.Greater_Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_LT.Rikti_Pistol",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Rikti_Support": [
+    "Incarnate.Lore_Pet_Rikti_Support.Radiation_Emission",
+    "Incarnate.Lore_Pet_Rikti_Support.Accelerate_Metabolism",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Rikti_Support_Attacks": [
+    "Incarnate.Lore_Pet_Rikti_Support.Radiation_Emission",
+    "Incarnate.Lore_Pet_Rikti_Support.Accelerate_Metabolism",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap",
+    "Incarnate.Lore_Pet_Rikti_LT.Rikti_Pistol"
+  ],
+  "IncarnatePets_Lore_Rikti_Support_Protected": [
+    "Incarnate.Lore_Pet_Rikti_Support.Radiation_Emission",
+    "Incarnate.Lore_Pet_Rikti_Support.Accelerate_Metabolism",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Rularuu_Boss": [
+    "Incarnate.Lore_Pet_Rularuu_Boss.Quill_Blast",
+    "Incarnate.Lore_Pet_Rularuu_Boss.Chomp",
+    "Incarnate.Lore_Pet_Rularuu_Boss.Paralytic_Gaze",
+    "Incarnate.Lore_Pet_Rularuu_Boss.Optic_Blast",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Rularuu_Boss_Buff": [
+    "Incarnate.Lore_Pet_Rularuu_Boss.Quill_Blast",
+    "Incarnate.Lore_Pet_Rularuu_Boss.Chomp",
+    "Incarnate.Lore_Pet_Rularuu_Boss.Paralytic_Gaze",
+    "Incarnate.Lore_Pet_Rularuu_Boss.Optic_Blast",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Rularuu_LT": [
+    "Incarnate.Lore_Pet_Rularuu_LT.Pummel",
+    "Incarnate.Lore_Pet_Rularuu_LT.Scatter_Shards",
+    "Incarnate.Lore_Pet_Rularuu_LT.Sinew",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Rularuu_LT_Buff": [
+    "Incarnate.Lore_Pet_Rularuu_LT.Pummel",
+    "Incarnate.Lore_Pet_Rularuu_LT.Scatter_Shards",
+    "Incarnate.Lore_Pet_Rularuu_LT.Sinew",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Rularuu_Support": [
+    "Incarnate.Lore_Pet_Rularuu_Support.Crystal_of_Vigor",
+    "Incarnate.Lore_Pet_Rularuu_Support.Heal_Other",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Rularuu_Support_Attacks": [
+    "Incarnate.Lore_Pet_Rularuu_Support.Crystal_of_Vigor",
+    "Incarnate.Lore_Pet_Rularuu_Support.Heal_Other",
+    "Incarnate.Lore_Pet_Rularuu_Support_Attack.Energy_Blast",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Rularuu_Support_Protected": [
+    "Incarnate.Lore_Pet_Rularuu_Support.Crystal_of_Vigor",
+    "Incarnate.Lore_Pet_Rularuu_Support.Heal_Other",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Seers_Boss": [
+    "Incarnate.Lore_Pet_Seers_Boss.Levitate",
+    "Incarnate.Lore_Pet_Seers_Boss.Mental_Blast",
+    "Incarnate.Lore_Pet_Seers_Boss.Dominate",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Seers_Boss_Buff": [
+    "Incarnate.Lore_Pet_Seers_Boss.Levitate",
+    "Incarnate.Lore_Pet_Seers_Boss.Mental_Blast",
+    "Incarnate.Lore_Pet_Seers_Boss.Dominate",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Seers_LT": [
+    "Incarnate.Lore_Pet_Seers_LT.Mental_Blast",
+    "Incarnate.Lore_Pet_Seers_LT.Dominate_Mind",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Seers_LT_Buff": [
+    "Incarnate.Lore_Pet_Seers_LT.Mental_Blast",
+    "Incarnate.Lore_Pet_Seers_LT.Dominate_Mind",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Seers_Support": [
+    "Incarnate.Lore_Pet_Seers_Support.Soothe_Mind",
+    "Incarnate.Lore_Pet_Seers_Support.Fortitude",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Seers_Support_Attacks": [
+    "Incarnate.Lore_Pet_Seers_Support.Soothe_Mind",
+    "Incarnate.Lore_Pet_Seers_Support.Fortitude",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Seers_LT.Mental_Blast"
+  ],
+  "IncarnatePets_Lore_Seers_Support_Protected": [
+    "Incarnate.Lore_Pet_Seers_Support.Soothe_Mind",
+    "Incarnate.Lore_Pet_Seers_Support.Fortitude",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Talons_Boss": [
+    "Incarnate.Lore_Pet_Talons_Boss.Seasons_End",
+    "Incarnate.Lore_Pet_Talons_Boss.Harvest_Blades",
+    "Incarnate.Lore_Pet_Talons_Boss.Seasonal_Shift",
+    "Incarnate.Lore_Pet_Talons_Boss.Autumnal_Equinox",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Talons_Boss_Buff": [
+    "Incarnate.Lore_Pet_Talons_Boss.Seasons_End",
+    "Incarnate.Lore_Pet_Talons_Boss.Harvest_Blades",
+    "Incarnate.Lore_Pet_Talons_Boss.Seasonal_Shift",
+    "Incarnate.Lore_Pet_Talons_Boss.Autumnal_Equinox",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Talons_LT": [
+    "Incarnate.Lore_Pet_Talons_LT.Snap_Shot",
+    "Incarnate.Lore_Pet_Talons_LT.Ice_Arrow",
+    "Incarnate.Lore_Pet_Talons_LT.Screech",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Talons_LT_Buff": [
+    "Incarnate.Lore_Pet_Talons_LT.Snap_Shot",
+    "Incarnate.Lore_Pet_Talons_LT.Ice_Arrow",
+    "Incarnate.Lore_Pet_Talons_LT.Screech",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Talons_Support": [
+    "Incarnate.Lore_Pet_Talons_Support.Seductive_Song",
+    "Incarnate.Lore_Pet_Talons_Support.Debilitating_Song",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Talons_Support_Attacks": [
+    "Incarnate.Lore_Pet_Talons_Support.Seductive_Song",
+    "Incarnate.Lore_Pet_Talons_Support.Debilitating_Song",
+    "Incarnate.Lore_Pet_Talons_Support_Attack.Exhausting_Song",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Talons_Support_Protected": [
+    "Incarnate.Lore_Pet_Talons_Support.Seductive_Song",
+    "Incarnate.Lore_Pet_Talons_Support.Debilitating_Song",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Tsoo_Boss": [
+    "Incarnate.Lore_Pet_Tsoo_Boss.Mercurial_Blow",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Precise_Strike",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Serpents_Reach",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Eye_of_the_Storm",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Tsoo_Boss_Buff": [
+    "Incarnate.Lore_Pet_Tsoo_Boss.Mercurial_Blow",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Precise_Strike",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Serpents_Reach",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Eye_of_the_Storm",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Tsoo_LT": [
+    "Incarnate.Lore_Pet_Tsoo_LT.Hand_Clap",
+    "Incarnate.Lore_Pet_Tsoo_LT.Punch",
+    "Incarnate.Lore_Pet_Tsoo_LT.Shuriken",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Tsoo_LT_Buff": [
+    "Incarnate.Lore_Pet_Tsoo_LT.Hand_Clap",
+    "Incarnate.Lore_Pet_Tsoo_LT.Punch",
+    "Incarnate.Lore_Pet_Tsoo_LT.Shuriken",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Tsoo_Support": [
+    "Incarnate.Lore_Pet_Tsoo_Support.O2_Boost",
+    "Incarnate.Lore_Pet_Tsoo_Support.Hurricane",
+    "Incarnate.Lore_Pet_Tsoo_Support.Teleport",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Tsoo_Support_Attacks": [
+    "Incarnate.Lore_Pet_Tsoo_Support.O2_Boost",
+    "Incarnate.Lore_Pet_Tsoo_Support.Hurricane",
+    "Incarnate.Lore_Pet_Tsoo_Support.Teleport",
+    "Incarnate.Lore_Pet_Tsoo_Support_Attack.Petrifying_Gaze",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Tsoo_Support_Protected": [
+    "Incarnate.Lore_Pet_Tsoo_Support.O2_Boost",
+    "Incarnate.Lore_Pet_Tsoo_Support.Hurricane",
+    "Incarnate.Lore_Pet_Tsoo_Support.Teleport",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Vanguard_Boss": [
+    "Incarnate.Lore_Pet_Vanguard_Boss.Life_Drain",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Freezing_Sphere",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Ice_Blast",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Ball_Lightning",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Vanguard_Boss_Buff": [
+    "Incarnate.Lore_Pet_Vanguard_Boss.Life_Drain",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Freezing_Sphere",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Ice_Blast",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Ball_Lightning",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Vanguard_LT": [
+    "Incarnate.Lore_Pet_Vanguard_LT.Bayonet",
+    "Incarnate.Lore_Pet_Vanguard_LT.Burst",
+    "Incarnate.Lore_Pet_Vanguard_LT.Willie_Pete_Round",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Vanguard_LT_Buff": [
+    "Incarnate.Lore_Pet_Vanguard_LT.Bayonet",
+    "Incarnate.Lore_Pet_Vanguard_LT.Burst",
+    "Incarnate.Lore_Pet_Vanguard_LT.Willie_Pete_Round",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Vanguard_Support": [
+    "Incarnate.Lore_Pet_Vanguard_Support.Assault",
+    "Incarnate.Lore_Pet_Vanguard_Support.Twilight_Grasp",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Vanguard_Support_Attacks": [
+    "Incarnate.Lore_Pet_Vanguard_Support.Assault",
+    "Incarnate.Lore_Pet_Vanguard_Support.Twilight_Grasp",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Life_Drain"
+  ],
+  "IncarnatePets_Lore_Vanguard_Support_Protected": [
+    "Incarnate.Lore_Pet_Vanguard_Support.Assault",
+    "Incarnate.Lore_Pet_Vanguard_Support.Twilight_Grasp",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Warworks_Boss": [
+    "Incarnate.Lore_Pet_Warworks_Boss.Swipe",
+    "Incarnate.Lore_Pet_Warworks_Boss.Cross_Cut",
+    "Incarnate.Lore_Pet_Warworks_Boss.Plasma_Eye_Beams",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Warworks_Boss_Buff": [
+    "Incarnate.Lore_Pet_Warworks_Boss.Swipe",
+    "Incarnate.Lore_Pet_Warworks_Boss.Cross_Cut",
+    "Incarnate.Lore_Pet_Warworks_Boss.Plasma_Eye_Beams",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Warworks_LT": [
+    "Incarnate.Lore_Pet_Warworks_LT.Plasma_Full_Auto",
+    "Incarnate.Lore_Pet_Warworks_LT.Plasma_Rifle_Burst",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Warworks_LT_Buff": [
+    "Incarnate.Lore_Pet_Warworks_LT.Plasma_Full_Auto",
+    "Incarnate.Lore_Pet_Warworks_LT.Plasma_Rifle_Burst",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
+  ],
+  "IncarnatePets_Lore_Warworks_Support": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "IncarnatePets_Lore_Warworks_Support_Attacks": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_IDF_LT.Plasma_Blast"
+  ],
+  "IncarnatePets_Lore_Warworks_Support_Protected": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Rularuu.Reflections.Resistance",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Fly"
+  ],
+  "MastermindPets_Assault_Bot": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Assault.Plasma_Blast",
+    "Mastermind_Pets.Assault.Smash",
+    "Mastermind_Pets.Assault.Conserve_Power",
+    "Mastermind_Pets.Assault.Super_Leap"
+  ],
+  "MastermindPets_Cold_Demonling": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Cold_Demonling.Resistance",
+    "Mastermind_Pets.Cold_Demonling.Ice_Bolt",
+    "Mastermind_Pets.Cold_Demonling.Claw_Rake",
+    "Mastermind_Pets.Cold_Demonling.Super_Leap"
+  ],
+  "MastermindPets_Commando": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Commando.Resistance",
+    "Mastermind_Pets.Commando.Brawl",
+    "Mastermind_Pets.Commando.Burst",
+    "Mastermind_Pets.Commando.Slug",
+    "Mastermind_Pets.Commando.Super_Leap"
+  ],
+  "MastermindPets_Demon_Prince": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Demon_Prince.Resistance",
+    "Mastermind_Pets.Demon_Prince.Ice_Blast",
+    "Mastermind_Pets.Demon_Prince.Shiver",
+    "Mastermind_Pets.Demon_Prince.Super_Leap"
+  ],
+  "MastermindPets_Dire_Wolf": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Dire_Wolf.Resistance",
+    "Mastermind_Pets.Dire_Wolf.Vicious_Bite",
+    "Mastermind_Pets.Dire_Wolf.PM_Vicious_Bite",
+    "Mastermind_Pets.Dire_Wolf.Super_Leap",
+    "Mastermind_Pets.Dire_Wolf.Wild_Charge",
+    "Mastermind_Pets.Dire_Wolf.Chilling_Howl",
+    "Mastermind_Pets.Dire_Wolf.PM_Chilling_Howl"
+  ],
+  "MastermindPets_Droid": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Droid.Super_Leap",
+    "Mastermind_Pets.Droid.Laser_Burst",
+    "Mastermind_Pets.Droid.Smash"
+  ],
+  "MastermindPets_Ember_Demon": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Ember_Demon.Resistance",
+    "Mastermind_Pets.Ember_Demon.Fire_Blast",
+    "Mastermind_Pets.Ember_Demon.Shield_of_Hellfire",
+    "Mastermind_Pets.Ember_Demon.Ember_Shield_Owner",
+    "Mastermind_Pets.Ember_Demon.Super_Leap"
+  ],
+  "MastermindPets_Fiery_Demonling": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Fiery_Demonling.Resistance",
+    "Mastermind_Pets.Fiery_Demonling.Flares",
+    "Mastermind_Pets.Fiery_Demonling.Claw_Rake",
+    "Mastermind_Pets.Fiery_Demonling.Super_Leap"
+  ],
+  "MastermindPets_Genin": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Genin.Thunder_Kick",
+    "Mastermind_Pets.Genin.Shuriken",
+    "Mastermind_Pets.Genin.Super_Leap",
+    "Mastermind_Pets.Genin.Resistance"
+  ],
+  "MastermindPets_Ghost_Boss": [
+    "Mastermind_Pets.Ghosts_2.Resistance",
+    "Mastermind_Pets.Ghosts_2.Phase_Shift",
+    "Mastermind_Pets.Ghosts_2.Self_Destruct",
+    "Mastermind_Pets.Ghosts_2.Ghastly_Blast",
+    "Mastermind_Pets.Ghosts_2.Fly",
+    "Mastermind_Pets.Ghosts_2.Life_Drain",
+    "Mastermind_Pets.Ghosts_2.Enchant",
+    "Mastermind_Pets.Ghosts_2.Necroplasmic_Grasp",
+    "Mastermind_Pets.Ghosts_2.Empower"
+  ],
+  "MastermindPets_Ghost_Lt": [
+    "Mastermind_Pets.Ghosts_1.Resistance",
+    "Mastermind_Pets.Ghosts_1.Phase_Shift",
+    "Mastermind_Pets.Ghosts_1.Self_Destruct",
+    "Mastermind_Pets.Ghosts_1.Ghastly_Blast",
+    "Mastermind_Pets.Ghosts_1.Fly",
+    "Mastermind_Pets.Ghosts_1.Life_Drain",
+    "Mastermind_Pets.Ghosts_1.Enchant",
+    "Mastermind_Pets.Ghosts_1.Necroplasmic_Grasp",
+    "Mastermind_Pets.Ghosts_1.Empower"
+  ],
+  "MastermindPets_Ghost_Minion": [
+    "Mastermind_Pets.Ghosts.Resistance",
+    "Mastermind_Pets.Ghosts.Phase_Shift",
+    "Mastermind_Pets.Ghosts.Self_Destruct",
+    "Mastermind_Pets.Ghosts.Ghastly_Blast",
+    "Mastermind_Pets.Ghosts.Fly",
+    "Mastermind_Pets.Ghosts.Life_Drain",
+    "Mastermind_Pets.Ghosts.Enchant",
+    "Mastermind_Pets.Ghosts.Necroplasmic_Grasp",
+    "Mastermind_Pets.Ghosts.Empower"
+  ],
+  "MastermindPets_Hellfire_Demonling": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Hellfire_Demonling.Resistance",
+    "Mastermind_Pets.Hellfire_Demonling.Corruption",
+    "Mastermind_Pets.Hellfire_Demonling.Claw_Rake",
+    "Mastermind_Pets.Hellfire_Demonling.Super_Leap"
+  ],
+  "MastermindPets_Hellfire_Gargoyle": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Hellfire_Gargoyle.Resistance",
+    "Mastermind_Pets.Hellfire_Gargoyle.Claw_Rake",
+    "Mastermind_Pets.Hellfire_Gargoyle.Claw_Slash",
+    "Mastermind_Pets.Hellfire_Gargoyle.Corruption",
+    "Mastermind_Pets.Hellfire_Gargoyle.Super_Leap"
+  ],
+  "MastermindPets_Howler_Wolf": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Howler_Wolf.Resistance",
+    "Mastermind_Pets.Howler_Wolf.Vicious_Bite",
+    "Mastermind_Pets.Howler_Wolf.PM_Vicious_Bite",
+    "Mastermind_Pets.Howler_Wolf.Super_Leap",
+    "Mastermind_Pets.Howler_Wolf.Wild_Charge"
+  ],
+  "MastermindPets_Howler_Wolf_Alpha": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Alpha_Wolf.Resistance",
+    "Mastermind_Pets.Alpha_Wolf.Vicious_Bite",
+    "Mastermind_Pets.Alpha_Wolf.PM_Vicious_Bite",
+    "Mastermind_Pets.Alpha_Wolf.Super_Leap",
+    "Mastermind_Pets.Alpha_Wolf.Wild_Charge"
+  ],
+  "MastermindPets_Jonin": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Jonin.Hack",
+    "Mastermind_Pets.Jonin.Slash",
+    "Mastermind_Pets.Jonin.Caltrops",
+    "Mastermind_Pets.Jonin.Super_Leap",
+    "Mastermind_Pets.Jonin.Resistance"
+  ],
+  "MastermindPets_Lich": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Lich.Dark_Blast",
+    "Mastermind_Pets.Lich.Torrent",
+    "Mastermind_Pets.Lich.Super_Leap"
+  ],
+  "MastermindPets_Lioness": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Lioness.Resistance",
+    "Mastermind_Pets.Lioness.Claw_Rake",
+    "Mastermind_Pets.Lioness.PM_Claw_Rake",
+    "Mastermind_Pets.Lioness.Vicious_Bite",
+    "Mastermind_Pets.Lioness.PM_Vicious_Bite",
+    "Mastermind_Pets.Lioness.Super_Leap",
+    "Mastermind_Pets.Lioness.Wild_Charge"
+  ],
+  "MastermindPets_Living_Hellfire": [
+    "Mastermind_Pets.Living_Hellfire.Resistance",
+    "Mastermind_Pets.Living_Hellfire.Self_Destruct",
+    "Mastermind_Pets.Living_Hellfire.Claw_Rake"
+  ],
+  "MastermindPets_Maintenance_Bot": [
+    "Mastermind_Pets.Repair_Drone.Resistance",
+    "Mastermind_Pets.Repair_Drone.Repair",
+    "Mastermind_Pets.Repair_Drone.Super_Leap",
+    "Mastermind_Pets.Repair_Drone.Explode"
+  ],
+  "MastermindPets_Medic": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Medic.Resistance",
+    "Mastermind_Pets.Medic.Brawl",
+    "Mastermind_Pets.Medic.Med_Kit",
+    "Mastermind_Pets.Medic.SMG_Burst",
+    "Mastermind_Pets.Medic.Super_Leap"
+  ],
+  "MastermindPets_Oni": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Oni.Fire_Sword_Slash",
+    "Mastermind_Pets.Oni.Fire_Blast",
+    "Mastermind_Pets.Oni.Super_Leap",
+    "Mastermind_Pets.Oni.Resistance"
+  ],
+  "MastermindPets_Protector_Bot": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Protector.Laser_Burst",
+    "Mastermind_Pets.Protector.Force_Shield",
+    "Mastermind_Pets.Protector.Super_Leap"
+  ],
+  "MastermindPets_Skeletal_Warrior": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Skeleton.Hack",
+    "Mastermind_Pets.Skeleton.Slash",
+    "Mastermind_Pets.Skeleton.Dark_Blast",
+    "Mastermind_Pets.Skeleton.Super_Leap"
+  ],
+  "MastermindPets_Soldier": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Soldier.Resistance",
+    "Mastermind_Pets.Soldier.Brawl",
+    "Mastermind_Pets.Soldier.ASMG_Burst",
+    "Mastermind_Pets.Soldier.Super_Leap"
+  ],
+  "MastermindPets_Spec_Ops": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Spec_Ops.Resistance",
+    "Mastermind_Pets.Spec_Ops.Brawl",
+    "Mastermind_Pets.Spec_Ops.SCAR_Burst",
+    "Mastermind_Pets.Spec_Ops.SCAR_Heavy_Burst",
+    "Mastermind_Pets.Spec_Ops.Web_Grenade",
+    "Mastermind_Pets.Spec_Ops.Super_Leap"
+  ],
+  "MastermindPets_Thug": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Thug_Minion.Resistance",
+    "Mastermind_Pets.Thug_Minion.Brawl",
+    "Mastermind_Pets.Thug_Minion.Pistol",
+    "Mastermind_Pets.Thug_Minion.Super_Leap"
+  ],
+  "MastermindPets_Thug_Arsonist": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Thug_Arsonist.Resistance",
+    "Mastermind_Pets.Thug_Arsonist.Super_Leap",
+    "Mastermind_Pets.Thug_Arsonist.Brawl",
+    "Mastermind_Pets.Thug_Arsonist.Molotov_Cocktail"
+  ],
+  "MastermindPets_Thug_Boss": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Thug_Boss.Resistance",
+    "Mastermind_Pets.Thug_Boss.Jab",
+    "Mastermind_Pets.Thug_Boss.Punch",
+    "Mastermind_Pets.Thug_Boss.Fury",
+    "Mastermind_Pets.Thug_Boss.Fury_Buff",
+    "Mastermind_Pets.Thug_Boss.Rage_Dampen",
+    "Mastermind_Pets.Thug_Boss.Super_Leap"
+  ],
+  "MastermindPets_Thug_Lt": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Thug_Lt.Resistance",
+    "Mastermind_Pets.Thug_Lt.Brawl",
+    "Mastermind_Pets.Thug_Lt.Burst",
+    "Mastermind_Pets.Thug_Lt.Heavy_Burst",
+    "Mastermind_Pets.Thug_Lt.Maneuvers",
+    "Mastermind_Pets.Thug_Lt.Super_Leap"
+  ],
+  "MastermindPets_Zombie": [
+    "Mastermind_Pets.Materialization.Materialization",
+    "Mastermind_Pets.Zombie.Zombie_Brawl",
+    "Mastermind_Pets.Zombie.Super_Leap"
+  ],
+  "Pets_Air_Bomb": [
+    "Pets.Air_Bomb.Air_Bomb"
+  ],
+  "Pets_Anniversary_Circle_Guide": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Anniversary_Freakshow_Tank": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Anniversary_Hellions_Thug": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Anniversary_Rikti_Boss": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Anniversary_Rikti_Minion": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Anniversary_Skulls_Thug": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Anniversary_Thorn_Wielder": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Anniversary_Trolls_Thug": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Anniversary_Vahzilok_Cadavar": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Arachnos_BackUp_Pet": [
+    "Pets.Crab_Spider.Resistance",
+    "Pets.Crab_Spider.Slice",
+    "Pets.Crab_Spider.Longfang",
+    "Pets.Crab_Spider.Channelgun",
+    "Pets.Crab_Spider.Suppression"
+  ],
+  "Pets_Arachnos_Corrosive_Blast": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Experimentation_Corrosive_Vial_Arachnos.Corrosive_Vial_Splat"
+  ],
+  "Pets_Arachnos_Drone_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Arachnos_Heavy_Pet": [
+    "V_Arachnos.Arachnobot_Heavy.Venom_Burst",
+    "V_Arachnos.Arachnobot_Heavy.Venom_Bolt",
+    "V_Arachnos.Arachnobot_Heavy.Web_Spitter",
+    "V_Arachnos.Arachnobot_Heavy.Cocoon",
+    "V_Arachnos.Arachnobot_Heavy.Toxic_Claws",
+    "V_Arachnos.Arachnobot_Heavy.Claw_Pierce",
+    "V_Arachnos.Arachnobot_Heavy.Armored_Exoskeleton",
+    "V_Arachnos.Arachnobot_Heavy.Disruptor_Blast",
+    "V_Arachnos.Arachnobot_Heavy.Disruptor_Tesla",
+    "V_Arachnos.Arachnobot_Heavy.Disruptor_Bolt",
+    "V_Arachnos.Arachnobot_Heavy.Static_Overload",
+    "V_Arachnos.Arachnobot_Heavy.Power_Jumping"
+  ],
+  "Pets_Arakhn_Twilight": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Twilight.Twilight"
+  ],
+  "Pets_Badge_Tracker": [
+    "Pets.FaerieResists.Resistance"
+  ],
+  "Pets_Bane_Spider_Boss": [
+    "V_Arachnos.Bane_Spider_Boss.Bash",
+    "V_Arachnos.Bane_Spider_Boss.Pulverize",
+    "V_Arachnos.Bane_Spider_Boss.Clobber",
+    "V_Arachnos.Bane_Spider_Boss.Whirling_Mace",
+    "V_Arachnos.Bane_Spider_Boss.Crowd_Control",
+    "V_Arachnos.Bane_Spider_Boss.Poisonous_Ray_Burst",
+    "V_Arachnos.Bane_Spider_Boss.Mace_Beam_Volley",
+    "V_Arachnos.Bane_Spider_Boss.Mace_Beam_Blast",
+    "V_Arachnos.Bane_Spider_Boss.Wide_Area_Web_Grenade",
+    "V_Arachnos.Bane_Spider_Boss.Web_Cocoon",
+    "V_Arachnos.Bane_Spider_Minion.Bane_Spider_Armor"
+  ],
+  "Pets_BasePortal_Door": [
+    "Objects.Inherent.Resistance",
+    "Objects.Tough.Resistance",
+    "Objects.BasePortal.PortalFX",
+    "Objects.BasePortal.KillPortals",
+    "Pets.Team_Transport.Self_Destruct"
+  ],
+  "Pets_Battle_Orb_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Beth_Jonsson_Astral": [
+    "Cabal.Cabal_Sorceress_Boss_Resists.Resistance",
+    "Cabal.Cabal_Boss_Melee.Static_Discharge",
+    "Cabal.Cabal_Maven_Lt_Defender.Lightning_Bolt",
+    "Cabal.Cabal_Maven_Lt_Defender.Snow_Storm",
+    "Cabal.Cabal_Maven_Lt_Movement.Fly",
+    "Cabal.Cabal_Maven_Lt_Movement.Fly_fx",
+    "Cabal.Cabal_Maven_Lt_Movement.Positioning",
+    "Cabal.White_Magic.Healing_Aura",
+    "Cabal.White_Magic.Heal_Other",
+    "Cabal.White_Magic.Clear_Mind",
+    "Cabal.White_Magic.Adrenalin_Boost",
+    "Cabal.Astral_Form.Astral_Form"
+  ],
+  "Pets_BigTrampoline": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.BounceWorld.Immobilize"
+  ],
+  "Pets_BlackWolf_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Blackwing_Drone_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Blast_Radius": [
+    "Pets.ResistAll.ResistAll",
+    "V_Miscellaneous.Blast_Radius.Blast_Radius",
+    "V_Miscellaneous.Blast_Radius.Immobilize",
+    "V_Miscellaneous.Blast_Radius.Self_Destruct"
+  ],
+  "Pets_Blind": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Blind.Blind"
+  ],
+  "Pets_Blizzard": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Blizzard.Blizzard",
+    "Pets.Blizzard.Avoid",
+    "Pets.Blizzard.Snow"
+  ],
+  "Pets_Blizzard_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Defender_Blizzard.Blizzard",
+    "Pets.Defender_Blizzard.Avoid",
+    "Pets.Defender_Blizzard.Snow"
+  ],
+  "Pets_Blizzard_Sentinel": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Blizzard_Sentinel.Blizzard",
+    "Pets.Blizzard_Sentinel.Avoid",
+    "Pets.Blizzard_Sentinel.Snow"
+  ],
+  "Pets_Blue_Wisp_Pet": [
+    "Pets.FaerieResists.Resistance",
+    "Objects.Highly_Vulnerable.Resistance",
+    "Pets.LightFaerie.Blessing_of_Light"
+  ],
+  "Pets_Bomb": [
+    "Pets.Bomb.Resistance",
+    "Pets.Bomb.Time_Bomb"
+  ],
+  "Pets_Bomb_Controller": [
+    "Pets.Bomb_Controller.Resistance",
+    "Pets.Bomb_Controller.Time_Bomb"
+  ],
+  "Pets_Bomb_Corruptor": [
+    "Pets.Bomb_Corruptor.Resistance",
+    "Pets.Bomb_Corruptor.Time_Bomb"
+  ],
+  "Pets_Bomb_Defender": [
+    "Pets.Bomb_Defender.Resistance",
+    "Pets.Bomb_Defender.Time_Bomb"
+  ],
+  "Pets_Bomb_Temporal": [
+    "Pets.Bomb_Temporal.Resistance",
+    "Pets.Bomb_Temporal.Temporal_Bubble",
+    "Pets.Bomb_Temporal.Temporal_Bubble_Debuff"
+  ],
+  "Pets_Bomb_Temporal_Defender": [
+    "Pets.Bomb_Temporal_Defender.Resistance",
+    "Pets.Bomb_Temporal_Defender.Temporal_Bubble",
+    "Pets.Bomb_Temporal_Defender.Temporal_Bubble_Debuff"
+  ],
+  "Pets_Bonfire": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Bonfire.Bonfire"
+  ],
+  "Pets_Bouncer": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.BounceWorld.Immobilize"
+  ],
+  "Pets_Bumper": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.BounceWorld.Immobilize"
+  ],
+  "Pets_Burn": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Burn.Burn"
+  ],
+  "Pets_Burst_of_Speed": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Martial_Manipulation_Burst.Burst_of_Speed"
+  ],
+  "Pets_Caltrops": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Caltrops.Caltrops"
+  ],
+  "Pets_Camera_Drone_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_CatherineWheel": [
+    "Redirects.Pyrotechnic_Control.CatherineWheel_Skin",
+    "Redirects.Pyrotechnic_Control.CatherineWheel_RocketTwirl",
+    "Redirects.Pyrotechnic_Control.CatherineWheel_TwinklingBlast",
+    "Redirects.Pyrotechnic_Control.CatherineWheel_VibrantBolt",
+    "Redirects.Pyrotechnic_Control.CatherineWheel_GlitterFlare",
+    "Redirects.Pyrotechnic_Control.CatherineWheel_InterceptAura"
+  ],
+  "Pets_CatherineWheel_Controller": [
+    "Redirects.Pyrotechnic_Control.CatherineWheel_Skin",
+    "Redirects.Pyrotechnic_Control.CatherineWheel_RocketTwirl",
+    "Redirects.Pyrotechnic_Control.CatherineWheel_TwinklingBlast",
+    "Redirects.Pyrotechnic_Control.CatherineWheel_VibrantBolt",
+    "Redirects.Pyrotechnic_Control.CatherineWheel_GlitterFlare",
+    "Redirects.Pyrotechnic_Control.CatherineWheel_InterceptAura"
+  ],
+  "Pets_Chain_Confuse_Controller_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Confuse_Controller_Jump1.Charge"
+  ],
+  "Pets_Chain_Confuse_Controller_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Confuse_Controller_Jump2.Charge"
+  ],
+  "Pets_Chain_Confuse_Controller_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Confuse_Controller_Jump3.Charge"
+  ],
+  "Pets_Chain_Confuse_Dominator_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Confuse_Dominator_Jump1.Charge"
+  ],
+  "Pets_Chain_Confuse_Dominator_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Confuse_Dominator_Jump2.Charge"
+  ],
+  "Pets_Chain_Confuse_Dominator_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Confuse_Dominator_Jump3.Charge"
+  ],
+  "Pets_Chain_Induction_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Induction_Jump1.Charge"
+  ],
+  "Pets_Chain_Induction_Jump1_Scrapper": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Induction_Jump1_Scrapper.Charge"
+  ],
+  "Pets_Chain_Induction_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Induction_Jump2.Charge"
+  ],
+  "Pets_Chain_Induction_Jump2_Scrapper": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Induction_Jump2_Scrapper.Charge"
+  ],
+  "Pets_Chain_Induction_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Induction_Jump3.Charge"
+  ],
+  "Pets_Chain_Induction_Jump3_Scrapper": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Induction_Jump3_Scrapper.Charge"
+  ],
+  "Pets_Chain_Induction_Jump4": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Induction_Jump4.Charge"
+  ],
+  "Pets_Chain_Induction_Jump4_Scrapper": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Induction_Jump4_Scrapper.Charge"
+  ],
+  "Pets_Chain_Jolt_Controller_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Jolt_Controller_Jump1.Charge"
+  ],
+  "Pets_Chain_Jolt_Controller_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Jolt_Controller_Jump2.Charge"
+  ],
+  "Pets_Chain_Jolt_Controller_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Jolt_Controller_Jump3.Charge"
+  ],
+  "Pets_Chain_Jolt_Dominator_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Jolt_Dominator_Jump1.Charge"
+  ],
+  "Pets_Chain_Jolt_Dominator_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Jolt_Dominator_Jump2.Charge"
+  ],
+  "Pets_Chain_Jolt_Dominator_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Jolt_Dominator_Jump3.Charge"
+  ],
+  "Pets_Chain_Jolt_Gremlin_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Jolt_Gremlin_Jump1.Charge"
+  ],
+  "Pets_Chain_Jolt_Gremlin_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Jolt_Gremlin_Jump2.Charge"
+  ],
+  "Pets_Chain_Jolt_Gremlin_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Jolt_Gremlin_Jump3.Charge"
+  ],
+  "Pets_Chain_Stun_Controller_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Chain_Stun_Controller_Jump1.Charge"
+  ],
+  "Pets_Chain_Stun_Dominator_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Chain_Stun_Dominator_Jump1.Charge"
+  ],
+  "Pets_ChargeCone": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.ChargeCone.Shield_Charge"
+  ],
+  "Pets_ChargeImpact": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.ChargeImpact.Shield_Charge"
+  ],
+  "Pets_Cherub_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Clockwork_Pet": [
+    "Inherent.Fitness.Swift",
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Corruptor_Blizzard": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Corruptor_Blizzard.Blizzard",
+    "Pets.Corruptor_Blizzard.Avoid",
+    "Pets.Corruptor_Blizzard.Snow"
+  ],
+  "Pets_Corruptor_FlameThrower": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Corruptor_FlameThrower.Flame_Thrower",
+    "Pets.Corruptor_FlameThrower.Avoid"
+  ],
+  "Pets_Corruptor_IceStorm": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Corruptor_IceStorm.IceStorm",
+    "Pets.Corruptor_IceStorm.Avoid"
+  ],
+  "Pets_Corruptor_RainofFire": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Corruptor_RainofFire.RainofFire",
+    "Pets.Corruptor_RainofFire.Avoid"
+  ],
+  "Pets_Coyote_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Creeper_Entangle": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Creeper_Entangle.Entangle",
+    "Villain_Pets.Creeper_Entangle.Self_Destruct"
+  ],
+  "Pets_Creeper_FX": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Creeper_FX.CreeperFX"
+  ],
+  "Pets_Creeper_Patch": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Creeper_Patch.Carrion_Creepers",
+    "Villain_Pets.Creeper_Patch.Vines",
+    "Villain_Pets.Creeper_Patch.Bramble",
+    "Villain_Pets.Creeper_Patch.FX"
+  ],
+  "Pets_Creeper_Vine": [
+    "Villain_Pets.Creeper_Vine.Vine_Smash",
+    "Villain_Pets.Creeper_Vine.Vine_Thorns",
+    "Villain_Pets.Creeper_Vine.Self_Destruct",
+    "Villain_Pets.Creeper_Vine.Resistance"
+  ],
+  "Pets_Cured_Token_Counter": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Lost_Cure_Counter.Lost_Cured",
+    "Pets.Lost_Cure_Counter.Self_Destruct"
+  ],
+  "Pets_DarkFairy_Pet": [
+    "Pets.FaerieResists.Resistance",
+    "Objects.Highly_Vulnerable.Resistance",
+    "Pets.DarkFaerie.Dark_Blessing"
+  ],
+  "Pets_DarkServant": [
+    "Pets.DarkServant.Chill_of_the_Night",
+    "Pets.DarkServant.Twilight_Grasp",
+    "Pets.DarkServant.Petrifying_Gaze",
+    "Pets.DarkServant.Darkest_Night",
+    "Pets.DarkServant.Tenebrous_Tentacles",
+    "Pets.DarkServant.Resistance"
+  ],
+  "Pets_Decoy": [
+    "Pets.Decoy.Decoy",
+    "Pets.Decoy.Fire_Sword",
+    "Pets.Decoy.Ice_Sword",
+    "Pets.Decoy.Punch",
+    "Pets.Decoy.Hurl",
+    "Pets.Decoy.Power_Bolt",
+    "Pets.Decoy.Fire_Blast",
+    "Pets.Decoy.Ice_Blast",
+    "Pets.Decoy.Lightning_Bolt"
+  ],
+  "Pets_DecoyPhantasm": [
+    "Pets.DecoyPhantasm.Power_Bolt",
+    "Pets.DecoyPhantasm.Energy_Torrent",
+    "Pets.DecoyPhantasm.Translucency",
+    "Pets.DecoyPhantasm.Fly"
+  ],
+  "Pets_DecoyPhantasm_Dominator": [
+    "Pets.DecoyPhantasm_Dominator.Power_Bolt",
+    "Pets.DecoyPhantasm_Dominator.Energy_Torrent",
+    "Pets.DecoyPhantasm_Dominator.Translucency",
+    "Pets.DecoyPhantasm_Dominator.Fly"
+  ],
+  "Pets_Decoy_Dominator": [
+    "Pets.Decoy_Dominator.Decoy",
+    "Pets.Decoy_Dominator.Punch",
+    "Pets.Decoy_Dominator.Energy_Punch",
+    "Pets.Decoy_Dominator.Ice_Sword",
+    "Pets.Decoy_Dominator.Hurl",
+    "Pets.Decoy_Dominator.Power_Bolt",
+    "Pets.Decoy_Dominator.Ice_Blast",
+    "Pets.Decoy_Dominator.Lightning_Bolt",
+    "Pets.Decoy_Dominator.Hydro_Blast"
+  ],
+  "Pets_Defender_RainofFire": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Defender_RainofFire.RainofFire",
+    "Pets.Defender_RainofFire.Avoid"
+  ],
+  "Pets_Defenders_Bastion_Proc": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Defenders_Bastion_Proc.Defenders_Bastion"
+  ],
+  "Pets_Demon_Pet": [
+    "Inherent.Fitness.Swift",
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Dimension_Shift": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.DimensionShift.Dimension_Shift",
+    "Pets.DimensionShift.Dimension_Shift_Ally"
+  ],
+  "Pets_Dimension_Shift_Phased": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.DimensionShift.Dimension_Shift",
+    "Pets.DimensionShift.Dimension_Shift_Ally",
+    "Pets.DimensionShift.Self_Phase"
+  ],
+  "Pets_Direwolf_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_DisintegrateSpread": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.DisintegrateSpread.Disintegrate_Spread"
+  ],
+  "Pets_DistortionField_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.DistortionField_Controller.Distortion_Field"
+  ],
+  "Pets_DistortionField_Corruptor": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.DistortionField_Corruptor.Distortion_Field"
+  ],
+  "Pets_DistortionField_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.DistortionField_Defender.Distortion_Field"
+  ],
+  "Pets_DistortionField_Mastermind": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.DistortionField_Mastermind.Distortion_Field"
+  ],
+  "Pets_Dominating_Grasp_Pet": [
+    "Villain_Pets.Dominating_Grasp.Blazing_Aura",
+    "Villain_Pets.Dominating_Grasp.Resistance",
+    "Villain_Pets.Dominating_Grasp.Self_Destruct"
+  ],
+  "Pets_Dust_Devil1": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.Dust_Devil.Destroy_All",
+    "Pets.Dust_Devil.Positioning",
+    "Pets.Dust_Devil.Self_Destruct",
+    "V_Arachnos.Dust_Devil_Speed_1.Movement_Speed"
+  ],
+  "Pets_Earthquake": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Earthquake.Earthquake"
+  ],
+  "Pets_Embraced_IceStorm": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Embraced_IceStorm.IceStorm"
+  ],
+  "Pets_Embraced_Lightning_Rod_Brute": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Embraced_Lightning_Rod_Brute.Lightning_Rod"
+  ],
+  "Pets_Embraced_Lightning_Rod_Scrapper": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Embraced_Lightning_Rod_Scrapper.Lightning_Rod"
+  ],
+  "Pets_Embraced_Lightning_Rod_Tanker": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Embraced_Lightning_Rod_Tanker.Lightning_Rod"
+  ],
+  "Pets_Embraced_Quicksand": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Embraced_Quicksand.Quicksand"
+  ],
+  "Pets_Enflame_Pet": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Enflame.Enflame",
+    "Pets.Enflame.Self_Destruct",
+    "Pets.Enflame.Fly"
+  ],
+  "Pets_Enslaved_Specter": [
+    "Mastermind_Pets.Zombie_Minion.Resistance",
+    "Mastermind_Pets.Zombie_Minion.Zombie_Brawl",
+    "Mastermind_Pets.Zombie_Minion.Super_Leap",
+    "Mastermind_Pets.Zombie_Minion.Fade",
+    "Mastermind_Pets.Zombie_Minion.SummonArmor"
+  ],
+  "Pets_Enslaved_Specter2": [
+    "Mastermind_Pets.Zombie_Minion.Resistance",
+    "Mastermind_Pets.Zombie_Minion.Zombie_Brawl",
+    "Mastermind_Pets.Zombie_Minion.Super_Leap",
+    "Mastermind_Pets.Zombie_Minion.Fade",
+    "Mastermind_Pets.Zombie_Minion.SummonArmor"
+  ],
+  "Pets_Enslaved_Specter3": [
+    "Mastermind_Pets.Zombie_Minion.Resistance",
+    "Mastermind_Pets.Zombie_Minion.Zombie_Brawl",
+    "Mastermind_Pets.Zombie_Minion.Super_Leap",
+    "Mastermind_Pets.Zombie_Minion.Fade",
+    "Mastermind_Pets.Zombie_Minion.SummonArmor"
+  ],
+  "Pets_Epic_FreezingRain": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Epic_FreezingRain.FreezingRain",
+    "Pets.Epic_FreezingRain.Avoid"
+  ],
+  "Pets_Epic_IceStorm": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Epic_IceStorm.IceStorm",
+    "Pets.Epic_IceStorm.Avoid"
+  ],
+  "Pets_Epic_Quicksand": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Epic_Quicksand.Quicksand"
+  ],
+  "Pets_Experimentation_Corrosive_Vial": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Experimentation_Corrosive_Vial.Corrosive_Vial_Splat"
+  ],
+  "Pets_Experimentation_Corrosive_Vial_Crey": [
+    "Pets.ResistAll.ResistAll",
+    "Crey.Corrosive_Blood.Corrosive_Blood"
+  ],
+  "Pets_Explode": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Vahzilok_Explode.Explode"
+  ],
+  "Pets_Fairy_Pet": [
+    "Pets.FaerieResists.Resistance",
+    "Objects.Highly_Vulnerable.Resistance",
+    "Pets.LightFaerie.Blessing_of_Light"
+  ],
+  "Pets_Fallout": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Fallout.Fallout"
+  ],
+  "Pets_Fallout_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Fallout_Controller.Fallout"
+  ],
+  "Pets_Field_Workbench": [
+    "Pets.FaerieResists.Resistance"
+  ],
+  "Pets_FireImp": [
+    "Pets.Imp.Brawl",
+    "Pets.Imp.Resist_Fire"
+  ],
+  "Pets_FireImp_Controller": [
+    "Pets.Imp.Brawl",
+    "Pets.Imp.Resist_Fire"
+  ],
+  "Pets_FireImp_Serpent_Drummer": [
+    "Pets.Imp.Brawl",
+    "Pets.Imp.Resist_Fire"
+  ],
+  "Pets_FireImp_Small": [
+    "Pets.Imp.Brawl",
+    "Pets.Imp.Resist_Fire"
+  ],
+  "Pets_FlameThrower": [
+    "Pets.ResistAll.ResistAll"
+  ],
+  "Pets_Fly_Trap": [
+    "Villain_Pets.Fly_Trap.Entangle",
+    "Villain_Pets.Fly_Trap.Thorny_Darts",
+    "Villain_Pets.Fly_Trap.Fling_Thorns",
+    "Villain_Pets.Fly_Trap.Bite",
+    "Villain_Pets.Fly_Trap.Resistance"
+  ],
+  "Pets_Fly_Trap_Controller": [
+    "Villain_Pets.Fly_Trap.Entangle",
+    "Villain_Pets.Fly_Trap.Thorny_Darts",
+    "Villain_Pets.Fly_Trap.Fling_Thorns",
+    "Villain_Pets.Fly_Trap.Bite",
+    "Villain_Pets.Fly_Trap.Resistance"
+  ],
+  "Pets_Freaklok_Boom": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Freaklok_Boom.Freaklok_Explosion",
+    "Pets.Freaklok_Boom.Freaklok_Explosion_Fire"
+  ],
+  "Pets_Freaklok_Fire": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Freaklok_Fire.Freaklok_Fire"
+  ],
+  "Pets_Freaklok_Gas": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Freaklok_Gas.Freaklok_Gas"
+  ],
+  "Pets_Freaklok_Glue": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Freaklok_Glue.Freaklok_Glue"
+  ],
+  "Pets_FreezingRain": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.FreezingRain.FreezingRain",
+    "Pets.FreezingRain.Avoid"
+  ],
+  "Pets_FreezingRain_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.FreezingRain_Controller.FreezingRain",
+    "Pets.FreezingRain_Controller.Avoid"
+  ],
+  "Pets_Frost_Knight_Pet": [
+    "DevouringEarth.Mini_WeakenedHamidon_Powers.Electrolytic_Bolt"
+  ],
+  "Pets_GalvanicSentinel": [
+    "Redirects.Shock_Therapy.Galvanic_Sentinel_Fly",
+    "Redirects.Shock_Therapy.Galvanic_Sentinel_Discharge",
+    "Redirects.Shock_Therapy.Galvanic_Sentinel_Resist"
+  ],
+  "Pets_GermanShepherd_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Gremlin": [
+    "Pets.Gremlin.Electric_Brawl",
+    "Pets.Gremlin.Charged_Brawl",
+    "Pets.Gremlin.Jolting_Chain",
+    "Pets.Gremlin.Shock",
+    "Pets.Gremlin.Resist_Energy"
+  ],
+  "Pets_Gremlin_Controller": [
+    "Pets.Gremlin.Electric_Brawl",
+    "Pets.Gremlin.Charged_Brawl",
+    "Pets.Gremlin.Jolting_Chain",
+    "Pets.Gremlin.Shock",
+    "Pets.Gremlin.Resist_Energy"
+  ],
+  "Pets_GunDrone_Tri": [
+    "Pets.GunDrone.Gattling_Gun",
+    "Pets.GunDrone.Auto_Turret",
+    "Pets.GunDrone.Explode",
+    "Pets.GunDrone.Taunt"
+  ],
+  "Pets_GunDrone_Tri_Controller": [
+    "Pets.GunDrone.Gattling_Gun",
+    "Pets.GunDrone.Auto_Turret",
+    "Pets.GunDrone.Explode",
+    "Pets.GunDrone.Taunt"
+  ],
+  "Pets_Hamidon_Bud_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_HeatLossBuff": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.HeatLossBuff.Heat_Loss"
+  ],
+  "Pets_HeatLossBuff_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.HeatLossBuff_Defender.Heat_Loss"
+  ],
+  "Pets_HeatLossDebuff": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.HeatLossDebuff.Heat_Loss"
+  ],
+  "Pets_HeatLossDebuff_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.HeatLossDebuff_Defender.Heat_Loss"
+  ],
+  "Pets_Hero_Clone_Power_Boss_Female": [
+    "Crey.Crey_Boss_Hero_Clone_Power.Energy_Punch",
+    "Crey.Crey_Boss_Hero_Clone_Power.Whirling_Hands",
+    "Crey.Crey_Boss_Hero_Clone_Power.Bone_Smasher",
+    "Crey.Crey_Boss_Hero_Clone_Power.Total_Focus",
+    "Crey.Crey_Boss_Hero_Clone_Power.Power_Bolt",
+    "Crey.Crey_Boss_Hero_Clone_Power.Power_Blast",
+    "Crey.Crey_Boss_Hero_Clone_Power.Energy_Torrent",
+    "Crey.Crey_Boss_Hero_Clone_Power.Explosive_Blast",
+    "Crey.Crey_Boss_Hero_Clone_Power.Dull_Pain",
+    "Crey.Crey_Boss_Hero_Clone_Power.Moment_of_Glory",
+    "Crey.Crey_Boss_Hero_Clone_Power.Weakness",
+    "Crey.Crey_Boss_Hero_Clone_Movement.Fly",
+    "Crey.Crey_Boss_Hero_Clone_Movement.Fly_fx"
+  ],
+  "Pets_Hibernate": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Hibernate.Glacier"
+  ],
+  "Pets_High_Explosives": [
+    "Pets.High_Explosives.High_Explosives",
+    "Pets.High_Explosives.Self_Destruct",
+    "Pets.High_Explosives.Resistance"
+  ],
+  "Pets_High_Explosives_Tech": [
+    "Pets.High_Explosives_Tech.High_Explosives",
+    "Pets.High_Explosives_Tech.Self_Destruct",
+    "Pets.High_Explosives_Tech.Resistance"
+  ],
+  "Pets_Holiday_Snowman_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Howling": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Howling.Howling"
+  ],
+  "Pets_HowlingVillain": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.HowlingVillain.Howling"
+  ],
+  "Pets_I24_RogueSummon_Colleague": [
+    "RoguesGallery.Colleague.Ring_of_Fire",
+    "RoguesGallery.Colleague.Char",
+    "RoguesGallery.Colleague.Cinders",
+    "RoguesGallery.Colleague.Bonfire",
+    "RoguesGallery.Colleague.Fire_Imps",
+    "RoguesGallery.Colleague.Power_Bolt",
+    "RoguesGallery.Colleague.Power_Blast",
+    "RoguesGallery.Colleague.Power_Burst",
+    "GenericVillains.Flight.Fly",
+    "GenericVillains.Flight.Fly_FX"
+  ],
+  "Pets_I24_RogueSummon_Network": [
+    "RoguesGallery.Network.Single_Shot",
+    "RoguesGallery.Network.Charged_Shot",
+    "RoguesGallery.Network.Cutting_Beam",
+    "RoguesGallery.Network.Piercing_Beam",
+    "RoguesGallery.Network.Overcharge",
+    "RoguesGallery.Network.Web_Grenade",
+    "RoguesGallery.Network.Smoke_Grenade",
+    "RoguesGallery.Network.Targeting_Drone"
+  ],
+  "Pets_I24_RogueSummon_SecondMeasure": [
+    "RoguesGallery.Second_Measure.Hack",
+    "RoguesGallery.Second_Measure.Slash",
+    "RoguesGallery.Second_Measure.Shuriken",
+    "RoguesGallery.Second_Measure.Assassins_Blade",
+    "RoguesGallery.Second_Measure.Placate",
+    "RoguesGallery.Second_Measure.Head_Splitter",
+    "RoguesGallery.Second_Measure.Hide",
+    "RoguesGallery.Second_Measure.Dark_Regeneration",
+    "RoguesGallery.Second_Measure.Cloak_of_Fear"
+  ],
+  "Pets_IceElemental": [
+    "Pets.Ice_Elemental.Ice_Swing",
+    "Pets.Ice_Elemental.Ice_Bolt",
+    "Pets.Ice_Elemental.Freezing_Touch",
+    "Pets.Ice_Elemental.Resistance"
+  ],
+  "Pets_IcePatch": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.IcePatch.IcePatch"
+  ],
+  "Pets_IceSlick": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.IceSlick.IceSlick"
+  ],
+  "Pets_IceStorm": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.IceStorm.IceStorm",
+    "Pets.IceStorm.Avoid"
+  ],
+  "Pets_IceStorm_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.IceStorm_Defender.IceStorm",
+    "Pets.IceStorm_Defender.Avoid"
+  ],
+  "Pets_IceStorm_Sentinel": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.IceStorm_Sentinel.IceStorm",
+    "Pets.IceStorm_Sentinel.Avoid"
+  ],
+  "Pets_Infected_Explosion": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Infected_Explosion.Infected_Explosion"
+  ],
+  "Pets_JackFrost": [
+    "Pets.Jack.Jacks_Ice_Sword",
+    "Pets.Jack.Jacks_Ice_Bolt",
+    "Pets.Jack.Jacks_Freezing_Touch",
+    "Pets.Jack.Jacks_Greater_Ice_Sword",
+    "Pets.Jack.Chilling_Embrace",
+    "Pets.Jack.Resistance"
+  ],
+  "Pets_JackFrost_Controller": [
+    "Pets.Jack.Jacks_Ice_Sword",
+    "Pets.Jack.Jacks_Ice_Bolt",
+    "Pets.Jack.Jacks_Freezing_Touch",
+    "Pets.Jack.Jacks_Greater_Ice_Sword",
+    "Pets.Jack.Chilling_Embrace",
+    "Pets.Jack.Resistance"
+  ],
+  "Pets_Kheldian_Mini_Black_Dwarf": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Kheldian_Mini_Bright_Nova": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Kheldian_Mini_Dark_Nova": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Kheldian_Mini_White_Dwarf": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_KineticTransferBuff": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.KineticTransferBuff.KineticTransfer"
+  ],
+  "Pets_KineticTransferBuffSelf": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.KineticTransferBuffSelf.KineticTransfer"
+  ],
+  "Pets_KineticTransferBuffSelf_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.KineticTransferBuffSelf_Controller.KineticTransfer"
+  ],
+  "Pets_KineticTransferBuff_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.KineticTransferBuff_Controller.KineticTransfer"
+  ],
+  "Pets_KineticTransferDebuff": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.KineticTransferDebuff.KineticTransfer"
+  ],
+  "Pets_KineticTransferDebuff_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.KineticTransferDebuff_Controller.KineticTransfer"
+  ],
+  "Pets_Knight_Errant": [
+    "PaladinEvent.Paladin.Resistance",
+    "PaladinEvent.Paladin.Lightning_Bolt",
+    "PaladinEvent.Paladin.Tesla_Cage",
+    "PaladinEvent.Paladin.Lightning_Field",
+    "PaladinEvent.Paladin.Ball_Lightning",
+    "PaladinEvent.Paladin.Mace"
+  ],
+  "Pets_Leprechaun_Mini_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Lifegiving_Spores_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Lifegiving_Spores_Controller.Lifegiving_Spores"
+  ],
+  "Pets_Lifegiving_Spores_Corruptor": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Lifegiving_Spores_Corruptor.Lifegiving_Spores"
+  ],
+  "Pets_Lifegiving_Spores_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Lifegiving_Spores_Defender.Lifegiving_Spores"
+  ],
+  "Pets_Lifegiving_Spores_Mastermind": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Lifegiving_Spores_Mastermind.Lifegiving_Spores"
+  ],
+  "Pets_Lifter": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.BounceWorld.Immobilize"
+  ],
+  "Pets_Liger_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_LightDrone1": [
+    "Pets.ResistAll.ResistAll",
+    "Kheldian_Pets.Energy_Drone1.Impact",
+    "Kheldian_Pets.Energy_Drone1.Self_Destruct",
+    "Kheldian_Pets.Energy_Drone1.Fly"
+  ],
+  "Pets_LightDrone2": [
+    "Pets.ResistAll.ResistAll",
+    "Kheldian_Pets.Energy_Drone2.Impact",
+    "Kheldian_Pets.Energy_Drone2.Self_Destruct",
+    "Kheldian_Pets.Energy_Drone2.Fly"
+  ],
+  "Pets_LightDrone3": [
+    "Pets.ResistAll.ResistAll",
+    "Kheldian_Pets.Energy_Drone3.Impact",
+    "Kheldian_Pets.Energy_Drone3.Self_Destruct",
+    "Kheldian_Pets.Energy_Drone3.Fly"
+  ],
+  "Pets_LightningStorm": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.LightningStorm.Lightning",
+    "Pets.LightningStorm.Immobilize",
+    "Pets.LightningStorm.Fly"
+  ],
+  "Pets_LightningStorm_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.LightningStorm_Controller.Lightning",
+    "Pets.LightningStorm_Controller.Immobilize",
+    "Pets.LightningStorm_Controller.Fly"
+  ],
+  "Pets_LightningStorm_NPC": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.LightningStorm_NPC.Lightning",
+    "Pets.LightningStorm_NPC.Immobilize",
+    "Pets.LightningStorm_NPC.Fly"
+  ],
+  "Pets_Lightning_Rod": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Lightning_Rod.Lightning_Rod"
+  ],
+  "Pets_Lightning_Rod_Brute": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Lightning_Rod_Brute.Lightning_Rod"
+  ],
+  "Pets_Lightning_Rod_Scrapper": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Lightning_Rod_Scrapper.Lightning_Rod"
+  ],
+  "Pets_Lightning_Rod_Stalker": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Lightning_Rod_Stalker.Lightning_Rod"
+  ],
+  "Pets_Lightning_Rod_Tanker": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Lightning_Rod_Tanker.Lightning_Rod"
+  ],
+  "Pets_Lion_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Lioness_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Liquefy": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Liquefy.Liquefy",
+    "Pets.Liquefy.LiquefyShock"
+  ],
+  "Pets_Liquefy_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Liquefy_Defender.Liquefy"
+  ],
+  "Pets_Liquefy_MM": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Liquefy_MM.Liquefy"
+  ],
+  "Pets_LiquidNitrogen": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.LiquidNitrogen.Liquid_Nitrogen",
+    "Pets.LiquidNitrogen.Liquid_Nitrogen_Info"
+  ],
+  "Pets_Living_Hellfire": [
+    "Mastermind_Pets.Living_Hellfire.Resistance",
+    "Mastermind_Pets.Living_Hellfire.Self_Destruct",
+    "Mastermind_Pets.Living_Hellfire.Claw_Rake"
+  ],
+  "Pets_Longbow_Heavy_Pet": [
+    "Pets.Longbow_Heavy.Tear_Gas",
+    "Pets.Longbow_Heavy.Grenade",
+    "Pets.Longbow_Heavy.Plasma_Blast",
+    "Pets.Longbow_Heavy.Seeker_Drones",
+    "Pets.Longbow_Heavy.Energy_Barrage",
+    "Pets.Longbow_Heavy.Air_Bomb",
+    "Pets.Longbow_Heavy.Resistances"
+  ],
+  "Pets_Lost_Cure": [
+    "NPC_Pets.Civilian_Panic.Panic",
+    "NPC_Pets.Civilian_Panic.Resistance"
+  ],
+  "Pets_Lt_Wailer_Queen": [
+    "V_Wailers.Minion.Shriek",
+    "V_Wailers.Minion.Slash"
+  ],
+  "Pets_Lua_Helper": [
+    "Pets.FaerieResists.Resistance"
+  ],
+  "Pets_MMTwilight": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.MMTwilight.Twilight"
+  ],
+  "Pets_MM_Thug_Arsonist_Burn": [
+    "Pets.ResistAll.ResistAll",
+    "Mastermind_Pets.Arsonist_Burn.Fire",
+    "Mastermind_Pets.Arsonist_Burn.Avoid"
+  ],
+  "Pets_Maestro_Shade_Cantata": [
+    "Villain_Pets.Shade.Shadow_Punch",
+    "Villain_Pets.Shade.Resistance",
+    "Villain_Pets.Shade.Scare",
+    "Villain_Pets.Shade.Self_Destruct",
+    "Pets.DarkServant.Darkest_Night"
+  ],
+  "Pets_Maestro_Shade_Diminuendo": [
+    "Villain_Pets.Shade.Shadow_Punch",
+    "Villain_Pets.Shade.Resistance",
+    "Villain_Pets.Shade.Scare",
+    "Villain_Pets.Shade.Self_Destruct",
+    "Pets.IceSlick.IceSlick"
+  ],
+  "Pets_MekMan_Pet": [
+    "Inherent.Fitness.Swift",
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Mine": [
+    "Pets.Mine.Trip_Mine",
+    "Pets.Mine.Self_Destruct",
+    "Pets.Mine.Resistance"
+  ],
+  "Pets_MiniSignature_AchlysGeneral_Fang": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignature_AchlysGeneral_Hammer": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignature_AchlysGeneral_Hunter": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignature_AchlysGeneral_Watcher": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignature_DealerOfDeath": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignature_Nemesis": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Adamastor": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_ArachnosFlyer": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_AvatarAchyls": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Babbage": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Caleb": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_ClockworkPaladin": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_CouncilWarWalker": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Deathsurge": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Eochai": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_FogBenefactor": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_FogMinotaur": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_HamidonSeedling": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Hero1": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_JackInIrons": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Jurassik": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Kraken": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_KronosTitan": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Lusca": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_PEACEKeeper": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Recluse": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Sally": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Scrapyard": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Statesman": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Tyrant": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_UkonGrai": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Mini_Nemesis_Horse": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Minion_Target": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.Target.Resistance"
+  ],
+  "Pets_MonkeyGas": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.MonkeyGas.Monkey_Gas"
+  ],
+  "Pets_MonkeyGasDevolution": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.MonkeyGasDevolution.Monkey_Gas"
+  ],
+  "Pets_Mystic_Lantern_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Nemefish_Wellspring": [
+    "Redirects.Marine_Affinity.Wellspring_Skin",
+    "Redirects.Nemesis_Warhulk_Marine.Barrier_Reef"
+  ],
+  "Pets_NemesisBang": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.NemesisBang.Explode"
+  ],
+  "Pets_Nemesis_Drone": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_NewTest": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.TestBurn.Burn"
+  ],
+  "Pets_Nightstalker_Jackal_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Nightstalker_Panther_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Nightstalker_Wodan_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_OilSlickBurn": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.OilSlickBurn.Fire",
+    "Pets.OilSlickBurn.Avoid",
+    "Pets.OilSlickBurn.Self_Destruct",
+    "Pets.OilSlickBurn.Resistance"
+  ],
+  "Pets_OilSlickBurn_Blaster": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.OilSlickBurn_Blaster.Fire",
+    "Pets.OilSlickBurn_Blaster.Avoid",
+    "Pets.OilSlickBurn_Blaster.Self_Destruct",
+    "Pets.OilSlickBurn_Blaster.Resistance"
+  ],
+  "Pets_OilSlickBurn_Corruptor": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.OilSlickBurn_Corruptor.Fire",
+    "Villain_Pets.OilSlickBurn_Corruptor.Avoid",
+    "Villain_Pets.OilSlickBurn_Corruptor.Self_Destruct",
+    "Villain_Pets.OilSlickBurn_Corruptor.Resistance"
+  ],
+  "Pets_OilSlickOil": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.OilSlickOil.Oil_Slick",
+    "Pets.OilSlickOil.Generate_Target",
+    "Pets.OilSlickOil.Res_Target"
+  ],
+  "Pets_OilSlickOil_Blaster": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.OilSlickOil_Blaster.Oil_Slick",
+    "Pets.OilSlickOil_Blaster.Generate_Target",
+    "Pets.OilSlickOil_Blaster.Res_Target"
+  ],
+  "Pets_OilSlickOil_Corruptor": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.OilSlickOil_Corruptor.Oil_Slick"
+  ],
+  "Pets_OilSlickTarget": [
+    "Pets.OilSlickTarget.Ignited_Oil",
+    "Pets.OilSlickTarget.Lower_Threat",
+    "Pets.OilSlickTarget.Resistance",
+    "Pets.OilSlickTarget.Stealth"
+  ],
+  "Pets_OilSlickTarget_Blaster": [
+    "Pets.OilSlickTarget_Blaster.Ignited_Oil",
+    "Pets.OilSlickTarget_Blaster.Lower_Threat",
+    "Pets.OilSlickTarget_Blaster.Resistance",
+    "Pets.OilSlickTarget_Blaster.Stealth"
+  ],
+  "Pets_OilSlickTarget_Corruptor": [
+    "Villain_Pets.OilSlickTarget_Corruptor.Ignited_Oil",
+    "Villain_Pets.OilSlickTarget_Corruptor.Lower_Threat",
+    "Villain_Pets.OilSlickTarget_Corruptor.Resistance",
+    "Villain_Pets.OilSlickTarget_Corruptor.Stealth"
+  ],
+  "Pets_Omega_Bomb": [
+    "Pets.ResistAll.ResistAll",
+    "Kheldian_Pets.Omega_Bomb.Explosion",
+    "Kheldian_Pets.Omega_Bomb.Taunt",
+    "Kheldian_Pets.Omega_Bomb.Fly"
+  ],
+  "Pets_Omega_Bomb_HM": [
+    "Pets.ResistAll.ResistAll",
+    "Kheldian_Pets.Omega_Bomb_HM.Explosion",
+    "Kheldian_Pets.Omega_Bomb_HM.Taunt",
+    "Kheldian_Pets.Omega_Bomb_HM.Fly"
+  ],
+  "Pets_Ouroboros_Door_Hero": [
+    "Objects.Inherent.Resistance",
+    "Objects.Tough.Resistance",
+    "Objects.OuroPortal.KillPortals",
+    "Objects.OuroPortal.KillPortalsAura",
+    "Pets.Team_Transport.Self_Destruct"
+  ],
+  "Pets_Ouroboros_Door_Villain": [
+    "Objects.Inherent.Resistance",
+    "Objects.Tough.Resistance"
+  ],
+  "Pets_Overpowering_Presence_Pet": [
+    "Pets.Overpowering_Presence.Shocking_Aura",
+    "Pets.Overpowering_Presence.Resistance",
+    "Pets.Overpowering_Presence.Self_Destruct"
+  ],
+  "Pets_PPD_BackUp_Pet": [
+    "Pets.PPD_Hard_Suit.Laser_Burst",
+    "Pets.PPD_Hard_Suit.Laser_Spray",
+    "Pets.PPD_Hard_Suit.Energy_Punch",
+    "Pets.PPD_Hard_Suit.Bone_Smasher",
+    "Pets.PPD_Hard_Suit.Resistances"
+  ],
+  "Pets_Patron_Powers_Arachnobot_Blaster": [
+    "Villain_Pets.Arachnobot_Blaster.Energy_Pulse",
+    "Villain_Pets.Arachnobot_Blaster.Energy_Blast",
+    "Villain_Pets.Arachnobot_Blaster.Sweep_Area",
+    "Villain_Pets.Arachnobot_Blaster.Claw",
+    "Villain_Pets.Arachnobot_Blaster.Web",
+    "Villain_Pets.Arachnobot_Blaster.Self_Destruct",
+    "Villain_Pets.Arachnobot_Blaster.Resistance",
+    "Villain_Pets.Arachnobot_Blaster.Power_Jumping"
+  ],
+  "Pets_Patron_Powers_Arachnobot_Disrupter": [
+    "Villain_Pets.Arachnobot_Disrupter.Disruptor_Bolt",
+    "Villain_Pets.Arachnobot_Disrupter.Disruptor_Blast",
+    "Villain_Pets.Arachnobot_Disrupter.Disruptor_Tesla",
+    "Villain_Pets.Arachnobot_Disrupter.Claw",
+    "Villain_Pets.Arachnobot_Disrupter.Web_Spitter",
+    "Villain_Pets.Arachnobot_Disrupter.Self_Destruct",
+    "Villain_Pets.Arachnobot_Disrupter.Resistance",
+    "Villain_Pets.Arachnobot_Disrupter.Power_Jumping"
+  ],
+  "Pets_Patron_Powers_Arachnobot_Spiderling": [
+    "Villain_Pets.Arachnobot_Spiderling.Chain_Gun",
+    "Villain_Pets.Arachnobot_Spiderling.Claw",
+    "Villain_Pets.Arachnobot_Spiderling.Resistance",
+    "Villain_Pets.Arachnobot_Spiderling.Self_Destruct",
+    "Villain_Pets.Arachnobot_Spiderling.Power_Jumping"
+  ],
+  "Pets_Patron_Powers_Blood_Widow": [
+    "Villain_Pets.Blood_Widow.Combat_Training",
+    "Villain_Pets.Blood_Widow.Foresight",
+    "Villain_Pets.Blood_Widow.Self_Destruct",
+    "Villain_Pets.Blood_Widow.Poison_Dart",
+    "Villain_Pets.Blood_Widow.Lunge",
+    "Villain_Pets.Blood_Widow.Swipe",
+    "Villain_Pets.Blood_Widow.Strike",
+    "Villain_Pets.Blood_Widow.Follow_Up",
+    "Villain_Pets.Blood_Widow.Dart_Burst",
+    "Villain_Pets.Blood_Widow.Spin"
+  ],
+  "Pets_Patron_Powers_Blue_Corolax": [
+    "Villain_Pets.Corolax_Blue_Hybrid.Resistance",
+    "Villain_Pets.Corolax_Blue_Hybrid.Self_Destruct",
+    "Villain_Pets.Corolax_Blue_Hybrid.Brawl",
+    "Villain_Pets.Corolax_Blue_Hybrid.Coral_Club",
+    "Villain_Pets.Corolax_Blue_Hybrid.Coral_Club_Slash",
+    "Villain_Pets.Corolax_Blue_Hybrid.Urchin_Spray",
+    "Villain_Pets.Corolax_Blue_Hybrid.Spiny_Urchins",
+    "Villain_Pets.Corolax_Blue_Hybrid.Wave_of_Cold"
+  ],
+  "Pets_Patron_Powers_Coral_Guardian_Sentinel": [
+    "Villain_Pets.Coral_Guardian_Sentinel.Resistance",
+    "Villain_Pets.Coral_Guardian_Sentinel.Self_Destruct",
+    "Villain_Pets.Coral_Guardian_Sentinel.Heavy_Coral_Hammer",
+    "Villain_Pets.Coral_Guardian_Sentinel.Heavy_Stunning_Blow",
+    "Villain_Pets.Coral_Guardian_Sentinel.Coral_Dart",
+    "Villain_Pets.Coral_Guardian_Sentinel.Coral_Spray",
+    "Villain_Pets.Coral_Guardian_Sentinel.Water_Spray",
+    "Villain_Pets.Coral_Guardian_Sentinel.Stone_Prison"
+  ],
+  "Pets_Patron_Powers_Coral_Guardian_Warder": [
+    "Villain_Pets.Coral_Guardian_Warder.Resistance",
+    "Villain_Pets.Coral_Guardian_Warder.Self_Destruct",
+    "Villain_Pets.Coral_Guardian_Warder.Coral_Hammer",
+    "Villain_Pets.Coral_Guardian_Warder.Stunning_Blow",
+    "Villain_Pets.Coral_Guardian_Warder.Coral_Dart",
+    "Villain_Pets.Coral_Guardian_Warder.Coral_Spray",
+    "Villain_Pets.Coral_Guardian_Warder.Water_Spray",
+    "Villain_Pets.Coral_Guardian_Warder.Fossilize"
+  ],
+  "Pets_Patron_Powers_Fortunata_Mistress": [
+    "Villain_Pets.Fortunata_Mistress.Combat_Training",
+    "Villain_Pets.Fortunata_Mistress.Foresight",
+    "Villain_Pets.Fortunata_Mistress.Self_Destruct",
+    "Villain_Pets.Fortunata_Mistress.Telekinetic_Blast",
+    "Villain_Pets.Fortunata_Mistress.Subdue",
+    "Villain_Pets.Fortunata_Mistress.Dominate",
+    "Villain_Pets.Fortunata_Mistress.Scramble_Thoughts",
+    "Villain_Pets.Fortunata_Mistress.Psychic_Wail"
+  ],
+  "Pets_Patron_Powers_Fortunata_Seer": [
+    "Villain_Pets.Fortunata_Seer.Combat_Training",
+    "Villain_Pets.Fortunata_Seer.Foresight",
+    "Villain_Pets.Fortunata_Seer.Self_Destruct",
+    "Villain_Pets.Fortunata_Seer.Tactical_Training_Leadership",
+    "Villain_Pets.Fortunata_Seer.Telekinetic_Blast",
+    "Villain_Pets.Fortunata_Seer.Psychic_Scream",
+    "Villain_Pets.Fortunata_Seer.Mental_Blast",
+    "Villain_Pets.Fortunata_Seer.Psionic_Lance",
+    "Villain_Pets.Fortunata_Seer.Subdue"
+  ],
+  "Pets_Patron_Powers_Mu_Adept": [
+    "Villain_Pets.Mu_Adept.Resistance",
+    "Villain_Pets.Mu_Adept.Self_Destruct",
+    "Villain_Pets.Mu_Adept.Lightning_Bolt",
+    "Villain_Pets.Mu_Adept.Lightning_Blast",
+    "Villain_Pets.Mu_Adept.Cage_of_Lightning",
+    "Villain_Pets.Mu_Adept.Shocking_Bolt",
+    "Villain_Pets.Mu_Adept.EM_Pulse",
+    "Villain_Pets.Mu_Adept.Fly"
+  ],
+  "Pets_Patron_Powers_Mu_Guardian": [
+    "Villain_Pets.Mu_Guardian.Resistance",
+    "Villain_Pets.Mu_Guardian.Self_Destruct",
+    "Villain_Pets.Mu_Guardian.Lightning_Bolt",
+    "Villain_Pets.Mu_Guardian.Lightning_Blast",
+    "Villain_Pets.Mu_Guardian.Sentinel_of_Lightning",
+    "Villain_Pets.Mu_Guardian.Touch_of_the_Storm",
+    "Villain_Pets.Mu_Guardian.EM_Pulse",
+    "Villain_Pets.Mu_Guardian.Fly"
+  ],
+  "Pets_Patron_Powers_Mu_Striker": [
+    "Villain_Pets.Mu_Striker.Resistance",
+    "Villain_Pets.Mu_Striker.Self_Destruct",
+    "Villain_Pets.Mu_Striker.Lightning_Bolt",
+    "Villain_Pets.Mu_Striker.Lightning_Blast",
+    "Villain_Pets.Mu_Striker.Static_Discharge",
+    "Villain_Pets.Mu_Striker.Ball_Lightning",
+    "Villain_Pets.Mu_Striker.EM_Pulse",
+    "Villain_Pets.Mu_Striker.Fly"
+  ],
+  "Pets_Patron_Powers_Night_Widow": [
+    "Villain_Pets.Night_Widow.Mask_Presence",
+    "Villain_Pets.Night_Widow.Self_Destruct",
+    "Villain_Pets.Night_Widow.Combat_Training",
+    "Villain_Pets.Night_Widow.Foresight",
+    "Villain_Pets.Night_Widow.Smoke_Grenade",
+    "Villain_Pets.Night_Widow.Mental_Blast",
+    "Villain_Pets.Night_Widow.Swipe",
+    "Villain_Pets.Night_Widow.Lunge",
+    "Villain_Pets.Night_Widow.Strike",
+    "Villain_Pets.Night_Widow.Slash"
+  ],
+  "Pets_Patron_Powers_Red_Corolax": [
+    "Villain_Pets.Corolax_Red_Hybrid.Resistance",
+    "Villain_Pets.Corolax_Red_Hybrid.Self_Destruct",
+    "Villain_Pets.Corolax_Red_Hybrid.Punch",
+    "Villain_Pets.Corolax_Red_Hybrid.Haymaker",
+    "Villain_Pets.Corolax_Red_Hybrid.Subdue",
+    "Villain_Pets.Corolax_Red_Hybrid.Scramble_Thoughts",
+    "Villain_Pets.Corolax_Red_Hybrid.Psychic_Coral_Blast"
+  ],
+  "Pets_Patron_Powers_Toxic_Tarantula": [
+    "Villain_Pets.Toxic_Tarantula.Venom_Bolt",
+    "Villain_Pets.Toxic_Tarantula.Venom_Burst",
+    "Villain_Pets.Toxic_Tarantula.Toxic_Claw_Pierce",
+    "Villain_Pets.Toxic_Tarantula.Toxic_Claw_Shred",
+    "Villain_Pets.Toxic_Tarantula.Web",
+    "Villain_Pets.Toxic_Tarantula.Self_Destruct",
+    "Villain_Pets.Toxic_Tarantula.Armored_Exoskeleton"
+  ],
+  "Pets_Patron_Powers_Water_Spout": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Villain_Pets.Water_Spout.Water_Spout",
+    "Villain_Pets.Water_Spout.Water_Wet",
+    "Villain_Pets.Water_Spout.Water_Spout_Attack",
+    "Villain_Pets.Water_Spout.Water_Spout_Fear",
+    "Villain_Pets.Water_Spout.Self_Destruct",
+    "Villain_Pets.Water_Spout.Invisible"
+  ],
+  "Pets_Patron_Powers_Water_Spout_Stalker": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Villain_Pets.Water_Spout_Stalker.Water_Spout",
+    "Villain_Pets.Water_Spout_Stalker.Water_Wet",
+    "Villain_Pets.Water_Spout_Stalker.Water_Spout_Attack",
+    "Villain_Pets.Water_Spout_Stalker.Water_Spout_Fear",
+    "Villain_Pets.Water_Spout_Stalker.Self_Destruct",
+    "Villain_Pets.Water_Spout_Stalker.Invisible"
+  ],
+  "Pets_Phantasm": [
+    "Pets.Phantasm.Power_Bolt",
+    "Pets.Phantasm.Energy_Torrent",
+    "Pets.Phantasm.Resistance",
+    "Pets.Phantasm.DecoyPhantasm",
+    "Pets.Phantasm.Fly"
+  ],
+  "Pets_Phantasm_Controller": [
+    "Pets.Phantasm.Power_Bolt",
+    "Pets.Phantasm.Energy_Torrent",
+    "Pets.Phantasm.Resistance",
+    "Pets.Phantasm.DecoyPhantasm",
+    "Pets.Phantasm.Fly"
+  ],
+  "Pets_Phoenix": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Phoenix.Phoenix"
+  ],
+  "Pets_Plant_Beast": [
+    "DevouringEarth.Devouring_Earth_All_Melee.Pummel",
+    "DevouringEarth.Devouring_Earth_Plant_Ranged.Thorn_Blast",
+    "DevouringEarth.Devouring_Earth_Plant_Ranged.Spur",
+    "DevouringEarth.Devouring_Earth_Plant_Defense.Resistance"
+  ],
+  "Pets_PoisonGasArrow": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.PoisonGasArrow.PoisonGasArrow"
+  ],
+  "Pets_Poison_Poison_Gas": [
+    "Villain_Pets.Poison_Poison_Gas.Poison_Trap",
+    "Villain_Pets.Poison_Poison_Gas.Initial_Poison_Gas",
+    "Villain_Pets.Poison_Poison_Gas.Self_Destruct"
+  ],
+  "Pets_Poison_Trap": [
+    "Villain_Pets.Poison_Trap.Self_Destruct",
+    "Villain_Pets.Poison_Trap.Resistance"
+  ],
+  "Pets_Police_ContestedArea_Drone": [
+    "Pets.Guard.TransLocation_Beam",
+    "Pets.Guard.Resistance",
+    "Pets.Guard.Perception"
+  ],
+  "Pets_Police_Drone": [
+    "Pets.Guard.TransLocation_Beam",
+    "Pets.Guard.Resistance",
+    "Pets.Guard.Perception"
+  ],
+  "Pets_Police_Drone_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Power_Drone_Pet": [
+    "Pets.FaerieResists.Resistance",
+    "Objects.Highly_Vulnerable.Resistance",
+    "Pets.DarkFaerie.Dark_Blessing"
+  ],
+  "Pets_Power_Oscillator_Pet": [
+    "Pets.FaerieResists.Resistance",
+    "Objects.Highly_Vulnerable.Resistance",
+    "Pets.DarkFaerie.Dark_Blessing"
+  ],
+  "Pets_Power_Surge": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Power_Surge.EM_Pulse"
+  ],
+  "Pets_PraetorianPD_BackUp_Pet": [
+    "Pets.PPD_Sergeant.Force_Maul",
+    "Pets.PPD_Sergeant.Force_Wave",
+    "Pets.PPD_Sergeant.Force_Brawl",
+    "Pets.PPD_Sergeant.Force_Blast",
+    "Pets.PPD_Sergeant.Resistances"
+  ],
+  "Pets_Protector_Traps_Seeker1": [
+    "Villain_Pets.Traps_Seeker1.FlashPulse",
+    "Villain_Pets.Traps_Seeker1.Self_Destruct",
+    "Villain_Pets.Traps_Seeker1.Fly"
+  ],
+  "Pets_Protector_Traps_Seeker2": [
+    "Villain_Pets.Traps_Seeker2.FlashPulse",
+    "Villain_Pets.Traps_Seeker2.Self_Destruct",
+    "Villain_Pets.Traps_Seeker2.Fly"
+  ],
+  "Pets_Protector_Traps_Seeker3": [
+    "Villain_Pets.Traps_Seeker3.FlashPulse",
+    "Villain_Pets.Traps_Seeker3.Self_Destruct",
+    "Villain_Pets.Traps_Seeker3.Fly"
+  ],
+  "Pets_Psionic_Nexus": [
+    "Pets.PsionicNexus.Psionic_Link_Self",
+    "Pets.PsionicNexus.Self_Destruct",
+    "Pets.PsionicNexus.Telekinetic_Blast",
+    "Pets.PsionicNexus.Subdue",
+    "Pets.PsionicNexus.Will_Domination",
+    "Pets.PsionicNexus.Scramble_Thoughts"
+  ],
+  "Pets_PsychicAnomaly": [
+    "Redirects.Mind_Control.Resistance",
+    "Redirects.Mind_Control.Levitate_Anomaly",
+    "Redirects.Mind_Control.Mesmerize_Anomaly"
+  ],
+  "Pets_PsychicAnomaly_Controller": [
+    "Redirects.Mind_Control.Resistance",
+    "Redirects.Mind_Control.Levitate_Anomaly",
+    "Redirects.Mind_Control.Mesmerize_Anomaly"
+  ],
+  "Pets_Pusher": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.BounceWorld.Immobilize"
+  ],
+  "Pets_Quicksand": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Quicksand.Quicksand"
+  ],
+  "Pets_RadiationCloud": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.RadiationCloud_Visual.Radiation_Cloud"
+  ],
+  "Pets_Radiation_Melee_Irradiated_Ground_Pet": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Radiation_Melee.Irradiated_Ground",
+    "Pets.Radiation_Melee.Self_Destruct"
+  ],
+  "Pets_RainofArrows": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.RainofArrows.RainofArrows",
+    "Pets.RainofArrows.Avoid"
+  ],
+  "Pets_RainofArrows_Corruptor": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.RainofArrows_Corruptor.RainofArrows",
+    "Villain_Pets.RainofArrows_Corruptor.Avoid"
+  ],
+  "Pets_RainofArrows_Critter": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.RainofArrows_Critter.RainofArrows",
+    "Pets.RainofArrows_Critter.Avoid"
+  ],
+  "Pets_RainofArrows_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.RainofArrows_Defender.RainofArrows",
+    "Pets.RainofArrows_Defender.Avoid"
+  ],
+  "Pets_RainofArrows_Sentinel": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.RainofArrows_Sentinel.RainofArrows",
+    "Pets.RainofArrows_Sentinel.Avoid"
+  ],
+  "Pets_RainofArrows_Visual": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.RainofArrows_Visual.RainofArrows"
+  ],
+  "Pets_RainofFire": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.RainofFire.RainofFire",
+    "Pets.RainofFire.Avoid"
+  ],
+  "Pets_RainofFire_Sentinel": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.RainofFire_Sentinel.RainofFire",
+    "Pets.RainofFire_Sentinel.Avoid"
+  ],
+  "Pets_Recall_Marker": [
+    "Pets.ResistAll.ResistAll"
+  ],
+  "Pets_RedCap_Pet": [
+    "Inherent.Fitness.Swift",
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Red_Wisp_Pet": [
+    "Pets.FaerieResists.Resistance",
+    "Objects.Highly_Vulnerable.Resistance",
+    "Pets.DarkFaerie.Dark_Blessing"
+  ],
+  "Pets_Resistance_BackUp_Pet": [
+    "Pets.Resistance_Rifle.Power_Punch",
+    "Pets.Resistance_Rifle.Single_Shot",
+    "Pets.Resistance_Rifle.Heavy_Burst",
+    "Pets.Resistance_Rifle.Covering_Fire",
+    "Pets.Resistance_Rifle.Resistances"
+  ],
+  "Pets_Reverberant": [
+    "Pets.Reverberant.Resistance"
+  ],
+  "Pets_Reverberant_Controller": [
+    "Pets.Reverberant.Resistance"
+  ],
+  "Pets_Rikti_Drone": [
+    "Rikti.Rikti_Drone_Ranged.Drone_Blast",
+    "Rikti.Rikti_Drone_Movement.Fly",
+    "Rikti.Rikti_Drone_Movement.Fly_fx",
+    "Rikti.Rikti_Drone_Defense.Resistance"
+  ],
+  "Pets_Rikti_Drone_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Rikti_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Rikti_Vulture_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Sap": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Caltrops.Caltrops"
+  ],
+  "Pets_Savage_Melee_Savage_Leap": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Savage_Melee_Savage_Leap.Savage_Leap"
+  ],
+  "Pets_Scourging_Blast_Proc": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Scourging_Blast_Proc.Scourging_Blast"
+  ],
+  "Pets_Shade": [
+    "Villain_Pets.Shade.Shadow_Punch",
+    "Villain_Pets.Shade.Resistance",
+    "Villain_Pets.Shade.Scare",
+    "Villain_Pets.Shade.Self_Destruct"
+  ],
+  "Pets_Shadow_Field_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Shadow_Field.Shadow_Field",
+    "Villain_Pets.Shadow_Field.Shadow_Field_Hold_Controller"
+  ],
+  "Pets_Shadow_Field_Dominator": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Shadow_Field_Dominator.Shadow_Field",
+    "Villain_Pets.Shadow_Field_Dominator.Shadow_Field_Hold"
+  ],
+  "Pets_Shadow_Field_Dominator_Domination": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Shadow_Field_Dominator_Domination.Shadow_Field",
+    "Villain_Pets.Shadow_Field_Dominator_Domination.Shadow_Field_Hold"
+  ],
+  "Pets_Shield_Charge_Brute": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Shield_Charge_AoE.Shield_Charge_AoE_Brute"
+  ],
+  "Pets_Shield_Charge_Council": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Shield_Charge_AoE5.Shield_Charge_AoE_Council"
+  ],
+  "Pets_Shield_Charge_Scrapper": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Shield_Charge_AoE3.Shield_Charge_AoE_Scrapper"
+  ],
+  "Pets_Shield_Charge_Stalker": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Shield_Charge_AoE4.Shield_Charge_AoE_Scrapper"
+  ],
+  "Pets_Shield_Charge_Tanker": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Shield_Charge_AoE2.Shield_Charge_AoE_Tanker"
+  ],
+  "Pets_Shield_Drone_Pet": [
+    "Pets.FaerieResists.Resistance",
+    "Objects.Highly_Vulnerable.Resistance",
+    "Pets.LightFaerie.Blessing_of_Light"
+  ],
+  "Pets_Shield_Oscillator_Pet": [
+    "Pets.FaerieResists.Resistance",
+    "Objects.Highly_Vulnerable.Resistance",
+    "Pets.LightFaerie.Blessing_of_Light"
+  ],
+  "Pets_ShockCont": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.ShockCont.Liquefy"
+  ],
+  "Pets_ShockDef": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.ShockDef.Liquefy"
+  ],
+  "Pets_ShockMM": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.ShockMM.Liquefy"
+  ],
+  "Pets_SignatureSummon_BackAlleyBrawler": [
+    "Signature_Summon.Back_Alley_Brawler.Back_Alley_Power_Punch",
+    "Signature_Summon.Back_Alley_Brawler.Jab",
+    "Signature_Summon.Back_Alley_Brawler.Punch",
+    "Signature_Summon.Back_Alley_Brawler.Hurl",
+    "Signature_Summon.Back_Alley_Brawler.Foot_Stomp",
+    "Signature_Summon.Back_Alley_Brawler.Dull_Pain",
+    "Signature_Summon.Back_Alley_Brawler.Super_Leap",
+    "Signature_Summon.Back_Alley_Brawler.Resistance"
+  ],
+  "Pets_SignatureSummon_BlackScorpion": [
+    "Signature_Summon.Black_Scorpion.Punch",
+    "Signature_Summon.Black_Scorpion.Haymaker",
+    "Signature_Summon.Black_Scorpion.Hammer_Punch",
+    "Signature_Summon.Black_Scorpion.Arm_Blast",
+    "Signature_Summon.Black_Scorpion.Tail_Blast",
+    "Signature_Summon.Black_Scorpion.Tail_Lash",
+    "Signature_Summon.Black_Scorpion.Super_Leap",
+    "Signature_Summon.Black_Scorpion.Resistance"
+  ],
+  "Pets_SignatureSummon_GhostWidow": [
+    "Signature_Summon.Ghost_Widow.Life_Drain",
+    "Signature_Summon.Ghost_Widow.Dark_Blast",
+    "Signature_Summon.Ghost_Widow.Gloom",
+    "Signature_Summon.Ghost_Widow.Soul_Tentacles",
+    "Signature_Summon.Ghost_Widow.Soul_Storm",
+    "Signature_Summon.Ghost_Widow.Dark_Obliteration",
+    "Signature_Summon.Ghost_Widow.Twilight_Grasp",
+    "Signature_Summon.Ghost_Widow.Resistance",
+    "Signature_Summon.Ghost_Widow.Fly",
+    "Signature_Summon.Ghost_Widow.Fly_fx"
+  ],
+  "Pets_SignatureSummon_LordRecluse": [
+    "Signature_Summon.Lord_Recluse.Energy_Punch",
+    "Signature_Summon.Lord_Recluse.Energy_Smash",
+    "Signature_Summon.Lord_Recluse.Spider_Strike",
+    "Signature_Summon.Lord_Recluse.Channelgun",
+    "Signature_Summon.Lord_Recluse.Suppression",
+    "Signature_Summon.Lord_Recluse.Super_Leap",
+    "Signature_Summon.Lord_Recluse.Summon_Minion",
+    "Signature_Summon.Lord_Recluse.Resistance"
+  ],
+  "Pets_SignatureSummon_Manticore": [
+    "Signature_Summon.Manticore.Fistful_of_Arrows",
+    "Signature_Summon.Manticore.Blazing_Arrow",
+    "Signature_Summon.Manticore.Explosive_Arrow",
+    "Signature_Summon.Manticore.Teleport_Arrow",
+    "Signature_Summon.Manticore.Ice_Arrow",
+    "Signature_Summon.Manticore.Poison_Gas_Arrow",
+    "Signature_Summon.Manticore.Acid_Arrow",
+    "Signature_Summon.Manticore.Super_Leap",
+    "Signature_Summon.Manticore.Resistance"
+  ],
+  "Pets_SignatureSummon_Positron": [
+    "Signature_Summon.Positron.Neutrino_Bolt",
+    "Signature_Summon.Positron.Irradiate",
+    "Signature_Summon.Positron.Electron_Haze",
+    "Signature_Summon.Positron.Cosmic_Burst",
+    "Signature_Summon.Positron.Neutron_Bomb",
+    "Signature_Summon.Positron.Enervating__Field",
+    "Signature_Summon.Positron.Lingering_Radiation",
+    "Signature_Summon.Positron.Resistance",
+    "Signature_Summon.Positron.Fly",
+    "Signature_Summon.Positron.Fly_fx"
+  ],
+  "Pets_SignatureSummon_Recluse_Pet": [
+    "Signature_Summon.Bane_Spider_Minion.Body_Armor",
+    "Signature_Summon.Bane_Spider_Minion.Bash",
+    "Signature_Summon.Bane_Spider_Minion.Pulverize",
+    "Signature_Summon.Bane_Spider_Minion.Mace_Beam",
+    "Signature_Summon.Bane_Spider_Minion.Web_Grenade",
+    "V_Arachnos.Drop_Zone_FX.SummonFX"
+  ],
+  "Pets_SignatureSummon_Scirocco": [
+    "Signature_Summon.Scirocco.Hack",
+    "Signature_Summon.Scirocco.Slice",
+    "Signature_Summon.Scirocco.Cage_of_Lightning",
+    "Signature_Summon.Scirocco.Static_Discharge",
+    "Signature_Summon.Scirocco.Lightning_Blast",
+    "Signature_Summon.Scirocco.Ball_Lightning",
+    "Signature_Summon.Scirocco.Dust_Devils",
+    "Signature_Summon.Scirocco.Resistance",
+    "Signature_Summon.Scirocco.Fly",
+    "Signature_Summon.Scirocco.Fly_fx"
+  ],
+  "Pets_SignatureSummon_Statesman": [
+    "Signature_Summon.Statesman.Jab",
+    "Signature_Summon.Statesman.Punch",
+    "Signature_Summon.Statesman.Haymaker",
+    "Signature_Summon.Statesman.Hurl",
+    "Signature_Summon.Statesman.Hammer_of_Justice",
+    "Signature_Summon.Statesman.Zeus_Lightning_Bolt",
+    "Signature_Summon.Statesman.Resistance",
+    "Signature_Summon.Statesman.Fly",
+    "Signature_Summon.Statesman.Fly_fx"
+  ],
+  "Pets_Singularity": [
+    "Pets.Singularity.Repel",
+    "Pets.Singularity.Gravitational_Pull",
+    "Pets.Singularity.Crush",
+    "Pets.Singularity.Lift",
+    "Pets.Singularity.Gravity_Distortion",
+    "Pets.Singularity.Resistance"
+  ],
+  "Pets_Singularity_Controller": [
+    "Pets.Singularity.Repel",
+    "Pets.Singularity.Gravitational_Pull",
+    "Pets.Singularity.Crush",
+    "Pets.Singularity.Lift",
+    "Pets.Singularity.Gravity_Distortion",
+    "Pets.Singularity.Resistance"
+  ],
+  "Pets_SiphonPower": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.SiphonPower.SiphonPower"
+  ],
+  "Pets_SiphonPower_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.SiphonPower_Controller.SiphonPower"
+  ],
+  "Pets_Sleet": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Sleet.Sleet",
+    "Villain_Pets.Sleet.Avoid"
+  ],
+  "Pets_Sleet_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Sleet_Defender.Sleet",
+    "Pets.Sleet_Defender.Avoid"
+  ],
+  "Pets_SmallTrampoline": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.BounceWorld.Immobilize"
+  ],
+  "Pets_SnowAngel": [
+    "Pets.ResistAllFast.ResistAll",
+    "Pets.Snowangel.Snowangel"
+  ],
+  "Pets_SonicDebuffArrow": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.SonicDebuffArrow.SonicDebuffArrow"
+  ],
+  "Pets_SonicDebuffArrow_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.SonicDebuffArrow_Controller.SonicDebuffArrow"
+  ],
+  "Pets_SoulAbsorptionBuff": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.SoulAbsorptionBuff.Soul_Absorption"
+  ],
+  "Pets_Spectre": [
+    "CircleOfThorns.Circle_Spectre.Smite",
+    "CircleOfThorns.Circle_Spectre.Siphon_Life",
+    "CircleOfThorns.Circle_Spectre.Gloom",
+    "CircleOfThorns.Circle_Spectres_Defense.Resistance",
+    "CircleOfThorns.Circle_Spectres_Defense.Ethereal",
+    "CircleOfThorns.Circle_Spectres_Defense.Fly",
+    "DevouringEarth.Summon_FX.SummonFX"
+  ],
+  "Pets_Spider_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Spirit_Tree": [
+    "Villain_Pets.Spirit_Tree.Spirit_Tree_Taunt",
+    "Villain_Pets.Spirit_Tree.Resistance"
+  ],
+  "Pets_Spring_Attack": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Spring_Attack.Spring_Attack"
+  ],
+  "Pets_Static_Field_Controller": [
+    "Pets.Static_Field_Controller.Static_Field"
+  ],
+  "Pets_Static_Field_Dominator": [
+    "Villain_Pets.Static_Field_Dominator.Static_Field"
+  ],
+  "Pets_Static_Field_End_Recovery_Controller": [
+    "Pets.Static_Field_End_Recovery_Controller.Endurance_Recovered"
+  ],
+  "Pets_Static_Field_End_Recovery_Dominator": [
+    "Villain_Pets.Static_Field_End_Recovery_Dominator.Endurance_Recovered"
+  ],
+  "Pets_StickyArrow": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.StickyArrow.StickyArrow",
+    "Pets.StickyArrow.Self_Destruct"
+  ],
+  "Pets_StickyArrow_Blaster": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.StickyArrow_Blaster.StickyArrow",
+    "Pets.StickyArrow_Blaster.StickyToxin",
+    "Pets.StickyArrow_Blaster.Self_Destruct"
+  ],
+  "Pets_Stone": [
+    "Pets.Stone.Stone_Fist",
+    "Pets.Stone.Seismic_Smash",
+    "Pets.Stone.Hurl_Boulder",
+    "Pets.Stone.Resistance"
+  ],
+  "Pets_Stone_Controller": [
+    "Pets.Stone.Stone_Fist",
+    "Pets.Stone.Seismic_Smash",
+    "Pets.Stone.Hurl_Boulder",
+    "Pets.Stone.Resistance"
+  ],
+  "Pets_Summoned_Gears": [
+    "Clockwork.Clockwork_Mini_Powers.Resistance",
+    "Clockwork.Clockwork_Mini_Powers.Charged_Brawl",
+    "Clockwork.Clockwork_Mini_Powers.Charged_Bolts",
+    "Clockwork.Clockwork_Summon_FX.SummonFX"
+  ],
+  "Pets_Superior_Defenders_Bastion_Proc": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Superior_Defenders_Bastion_Proc.Superior_Defenders_Bastion"
+  ],
+  "Pets_Superior_Scourging_Blast_Proc": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Superior_Scourging_Blast_Proc.Superior_Scourging_Blast"
+  ],
+  "Pets_Superior_Vigilant_Assault_Proc": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Superior_Vigilant_Assault_Proc.Superior_Vigilant_Assault"
+  ],
+  "Pets_TPFoeTaunt": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.TPFoeTaunt.TPFoeTaunt"
+  ],
+  "Pets_TarPatch": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.TarPatch.Tar"
+  ],
+  "Pets_Tarantula_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Target": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.Target.Resistance"
+  ],
+  "Pets_Team_Transporter_Hero": [
+    "Objects.Inherent.Resistance",
+    "Objects.Tough.Resistance",
+    "Pets.Team_Transport.Team_Transport_Powers",
+    "Pets.Team_Transport.Self_Destruct"
+  ],
+  "Pets_Team_Transporter_Praetorian": [
+    "Objects.Inherent.Resistance",
+    "Objects.Tough.Resistance",
+    "Pets.Team_Transport.Team_Transport_Powers",
+    "Pets.Team_Transport.Self_Destruct"
+  ],
+  "Pets_Team_Transporter_Villain": [
+    "Objects.Inherent.Resistance",
+    "Objects.Tough.Resistance",
+    "Pets.Team_Transport.Team_Transport_Powers",
+    "Pets.Team_Transport.Self_Destruct"
+  ],
+  "Pets_Tech_Lab_Buff_Accuracy": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_Buff_Acc.Keen_Sight"
+  ],
+  "Pets_Tech_Lab_Buff_Damage": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_Buff_Dam.Strengthen"
+  ],
+  "Pets_Tech_Lab_Buff_Recovery": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_Buff_Recovery.Stimulated"
+  ],
+  "Pets_Tech_Lab_Buff_Regeneration": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_Buff_Regeneration.Invigorate"
+  ],
+  "Pets_Tech_Lab_Damage": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_Damage.Explosion"
+  ],
+  "Pets_Tech_Lab_Debuff_Accuracy": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_DeBuff_Acc.Woozy"
+  ],
+  "Pets_Tech_Lab_Debuff_Damage": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_DeBuff_Dam.Weaken"
+  ],
+  "Pets_Tech_Lab_Debuff_Recovery": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_DeBuff_Recovery.Lethargic"
+  ],
+  "Pets_Tech_Lab_Debuff_Regeneration": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_DeBuff_Regeneration.Sick"
+  ],
+  "Pets_Tech_Lab_Haste": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_Haste.Haste"
+  ],
+  "Pets_Tech_Lab_Slow": [
+    "Pets.Tech_Lab_Inherent.Resistance",
+    "Pets.Tech_Lab_Slow.Slow"
+  ],
+  "Pets_Terror": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.Terror.Translucency",
+    "Pets.Terror.Cloak_of_Fear",
+    "Pets.Terror.Terrify"
+  ],
+  "Pets_Test_AV": [
+    "Mission_Maker_Attacks.Fiery_Melee.Scorch",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Sword",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Blast",
+    "Mission_Maker_Attacks.Fiery_Melee.Cremate",
+    "Mission_Maker_Attacks.Fiery_Melee.Build_Up",
+    "Mission_Maker_Attacks.Fiery_Melee.Incinerate",
+    "Mission_Maker_Attacks.Fiery_Melee.Breath_of_Fire",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Sword_Circle",
+    "Mission_Maker_Attacks.Fiery_Melee.Greater_Fire_Sword"
+  ],
+  "Pets_Test_Boss": [
+    "Mission_Maker_Attacks.Fiery_Melee.Scorch",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Sword",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Blast",
+    "Mission_Maker_Attacks.Fiery_Melee.Cremate",
+    "Mission_Maker_Attacks.Fiery_Melee.Build_Up",
+    "Mission_Maker_Attacks.Fiery_Melee.Incinerate",
+    "Mission_Maker_Attacks.Fiery_Melee.Breath_of_Fire",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Sword_Circle",
+    "Mission_Maker_Attacks.Fiery_Melee.Greater_Fire_Sword"
+  ],
+  "Pets_Test_Lt": [
+    "Mission_Maker_Attacks.Fiery_Melee.Scorch",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Sword",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Blast",
+    "Mission_Maker_Attacks.Fiery_Melee.Cremate",
+    "Mission_Maker_Attacks.Fiery_Melee.Build_Up",
+    "Mission_Maker_Attacks.Fiery_Melee.Incinerate",
+    "Mission_Maker_Attacks.Fiery_Melee.Breath_of_Fire",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Sword_Circle",
+    "Mission_Maker_Attacks.Fiery_Melee.Greater_Fire_Sword"
+  ],
+  "Pets_Test_Minion": [
+    "Mission_Maker_Attacks.Fiery_Melee.Scorch",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Sword",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Blast",
+    "Mission_Maker_Attacks.Fiery_Melee.Cremate",
+    "Mission_Maker_Attacks.Fiery_Melee.Build_Up",
+    "Mission_Maker_Attacks.Fiery_Melee.Incinerate",
+    "Mission_Maker_Attacks.Fiery_Melee.Breath_of_Fire",
+    "Mission_Maker_Attacks.Fiery_Melee.Fire_Sword_Circle",
+    "Mission_Maker_Attacks.Fiery_Melee.Greater_Fire_Sword"
+  ],
+  "Pets_Thorntrops": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Thorntrops.Thorntrops"
+  ],
+  "Pets_Thug_Pose_01": [
+    "Mastermind_Pets.Thug_Pose.Resistance",
+    "Mastermind_Pets.Thug_Pose.Self_Destruct",
+    "Mastermind_Pets.Thug_Pose_Brawl.Brawl"
+  ],
+  "Pets_Thug_Pose_02": [
+    "Mastermind_Pets.Thug_Pose.Resistance",
+    "Mastermind_Pets.Thug_Pose.Self_Destruct",
+    "Mastermind_Pets.Thug_Pose_Knife.Knife"
+  ],
+  "Pets_Thug_Pose_03": [
+    "Mastermind_Pets.Thug_Pose.Resistance",
+    "Mastermind_Pets.Thug_Pose.Self_Destruct",
+    "Mastermind_Pets.Thug_Pose_Bat.Baseball_Bat"
+  ],
+  "Pets_Thug_Pose_04": [
+    "Mastermind_Pets.Thug_Pose.Resistance",
+    "Mastermind_Pets.Thug_Pose.Self_Destruct",
+    "Mastermind_Pets.Thug_Pose_Sledgehammer.Sledgehammer"
+  ],
+  "Pets_Thug_Pose_05": [
+    "Mastermind_Pets.Thug_Pose.Resistance",
+    "Mastermind_Pets.Thug_Pose.Self_Destruct",
+    "Mastermind_Pets.Thug_Pose_Axe.Fireman_Axe"
+  ],
+  "Pets_Thug_Pose_06": [
+    "Mastermind_Pets.Thug_Pose.Resistance",
+    "Mastermind_Pets.Thug_Pose.Self_Destruct",
+    "Mastermind_Pets.Thug_Pose_Revolver.Revolver"
+  ],
+  "Pets_Thug_Pose_07": [
+    "Mastermind_Pets.Thug_Pose.Resistance",
+    "Mastermind_Pets.Thug_Pose.Self_Destruct",
+    "Mastermind_Pets.Thug_Pose_Pipe.Pipe"
+  ],
+  "Pets_Thug_Pose_08": [
+    "Mastermind_Pets.Thug_Pose.Resistance",
+    "Mastermind_Pets.Thug_Pose.Self_Destruct",
+    "Mastermind_Pets.Thug_Pose_Rock.Rock"
+  ],
+  "Pets_Thug_Pose_09": [
+    "Mastermind_Pets.Thug_Pose.Resistance",
+    "Mastermind_Pets.Thug_Pose.Self_Destruct",
+    "Mastermind_Pets.Thug_Pose_Pistol.Automatic_Pistol"
+  ],
+  "Pets_ThunderStrikePunch": [
+    "Pets.ThunderStrikePunch.Thunder_Strike",
+    "Pets.ResistAll.ResistAll"
+  ],
+  "Pets_Tornado": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.Tornado.Tornado",
+    "Pets.Tornado.Tornado_Attack",
+    "Pets.Tornado.Tornado_Fear",
+    "Pets.Tornado.Invisible"
+  ],
+  "Pets_Transference": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Transference.Transference"
+  ],
+  "Pets_Transference_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Transference_Controller.Transference"
+  ],
+  "Pets_Transfusion": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Transfusion.Transfusion"
+  ],
+  "Pets_Transfusion_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Transfusion_Controller.Transfusion"
+  ],
+  "Pets_Traps_Acid_Mortar": [
+    "Villain_Pets.Traps_Acid_Mortar.Acid_Mortar",
+    "Villain_Pets.Traps_Acid_Mortar.Resistance"
+  ],
+  "Pets_Traps_Acid_Mortar_Controller": [
+    "Pets.Traps_Acid_Mortar_Controller.Acid_Mortar",
+    "Pets.Traps_Acid_Mortar_Controller.Resistance"
+  ],
+  "Pets_Traps_Acid_Mortar_Defender": [
+    "Pets.Traps_Acid_Mortar_Defender.Acid_Mortar",
+    "Pets.Traps_Acid_Mortar_Defender.Resistance"
+  ],
+  "Pets_Traps_FF_Generator": [
+    "Villain_Pets.Traps_FF_Generator.Dispersion_Bubble",
+    "Villain_Pets.Traps_FF_Generator.Fly",
+    "Villain_Pets.Traps_FF_Generator.Resistance"
+  ],
+  "Pets_Traps_FF_Generator_Defender": [
+    "Pets.Traps_FF_Generator_Defender.Dispersion_Bubble",
+    "Pets.Traps_FF_Generator_Defender.Fly",
+    "Pets.Traps_FF_Generator_Defender.Resistance"
+  ],
+  "Pets_Traps_Mine": [
+    "Villain_Pets.Traps_Trip_Mine.Trip_Mine",
+    "Villain_Pets.Traps_Trip_Mine.Self_Destruct",
+    "Villain_Pets.Traps_Trip_Mine.Resistance"
+  ],
+  "Pets_Traps_Mine_Controller": [
+    "Pets.Traps_Trip_Mine_Controller.Trip_Mine",
+    "Pets.Traps_Trip_Mine_Controller.Self_Destruct",
+    "Pets.Traps_Trip_Mine_Controller.Resistance"
+  ],
+  "Pets_Traps_Mine_Defender": [
+    "Pets.Traps_Trip_Mine_Defender.Trip_Mine",
+    "Pets.Traps_Trip_Mine_Defender.Self_Destruct",
+    "Pets.Traps_Trip_Mine_Defender.Resistance"
+  ],
+  "Pets_Traps_Poison_Gas": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Traps_Poison_Gas.Poison_Gas",
+    "Villain_Pets.Traps_Poison_Gas.Initial_Poison_Gas",
+    "Villain_Pets.Traps_Poison_Gas.Self_Destruct"
+  ],
+  "Pets_Traps_Poison_Gas_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Traps_Poison_Gas_Defender.Poison_Gas",
+    "Pets.Traps_Poison_Gas_Defender.Initial_Poison_Gas",
+    "Pets.Traps_Poison_Gas_Defender.Self_Destruct"
+  ],
+  "Pets_Traps_Poison_Trap": [
+    "Villain_Pets.Traps_Poison_Trap.Self_Destruct",
+    "Villain_Pets.Traps_Poison_Trap.Resistance"
+  ],
+  "Pets_Traps_Poison_Trap_Defender": [
+    "Pets.Traps_Poison_Trap_Defender.Self_Destruct",
+    "Pets.Traps_Poison_Trap_Defender.Resistance"
+  ],
+  "Pets_Traps_Seeker1": [
+    "Villain_Pets.Traps_Seeker1.FlashPulse",
+    "Villain_Pets.Traps_Seeker1.Self_Destruct",
+    "Villain_Pets.Traps_Seeker1.Fly"
+  ],
+  "Pets_Traps_Seeker1_Controller": [
+    "Pets.Traps_Seeker1_Controller.FlashPulse",
+    "Pets.Traps_Seeker1_Controller.Self_Destruct",
+    "Pets.Traps_Seeker1_Controller.Fly"
+  ],
+  "Pets_Traps_Seeker1_Defender": [
+    "Pets.Traps_Seeker1_Defender.FlashPulse",
+    "Pets.Traps_Seeker1_Defender.Self_Destruct",
+    "Pets.Traps_Seeker1_Defender.Fly"
+  ],
+  "Pets_Traps_Seeker2": [
+    "Villain_Pets.Traps_Seeker2.FlashPulse",
+    "Villain_Pets.Traps_Seeker2.Self_Destruct",
+    "Villain_Pets.Traps_Seeker2.Fly"
+  ],
+  "Pets_Traps_Seeker2_Controller": [
+    "Pets.Traps_Seeker2_Controller.FlashPulse",
+    "Pets.Traps_Seeker2_Controller.Self_Destruct",
+    "Pets.Traps_Seeker2_Controller.Fly"
+  ],
+  "Pets_Traps_Seeker2_Defender": [
+    "Pets.Traps_Seeker2_Defender.FlashPulse",
+    "Pets.Traps_Seeker2_Defender.Self_Destruct",
+    "Pets.Traps_Seeker2_Defender.Fly"
+  ],
+  "Pets_Traps_Seeker3": [
+    "Villain_Pets.Traps_Seeker3.FlashPulse",
+    "Villain_Pets.Traps_Seeker3.Self_Destruct",
+    "Villain_Pets.Traps_Seeker3.Fly"
+  ],
+  "Pets_Traps_Seeker3_Defender": [
+    "Pets.Traps_Seeker3_Defender.FlashPulse",
+    "Pets.Traps_Seeker3_Defender.Self_Destruct",
+    "Pets.Traps_Seeker3_Defender.Fly"
+  ],
+  "Pets_Traps_TimeBomb": [
+    "Villain_Pets.Traps_TimeBomb.Time_Bomb",
+    "Villain_Pets.Traps_TimeBomb.Self_Destruct",
+    "Villain_Pets.Traps_TimeBomb.Resistance"
+  ],
+  "Pets_Traps_TimeBomb_Defender": [
+    "Pets.Traps_TimeBomb_Defender.Time_Bomb",
+    "Pets.Traps_TimeBomb_Defender.Self_Destruct",
+    "Pets.Traps_TimeBomb_Defender.Resistance"
+  ],
+  "Pets_Traps_Triage_Beacon": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Traps_Triage_Beacon.Triage_Beacon",
+    "Villain_Pets.Traps_Acid_Mortar.Resistance"
+  ],
+  "Pets_Trick_Shot_Jump1": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Trick_Shot_Jump1.Bounce"
+  ],
+  "Pets_Trick_Shot_Jump2": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Trick_Shot_Jump2.Bounce"
+  ],
+  "Pets_Trick_Shot_Jump3": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Trick_Shot_Jump3.Bounce"
+  ],
+  "Pets_Trick_Shot_Jump4": [
+    "Pets.ResistAll.ResistAll",
+    "Villain_Pets.Trick_Shot_Jump4.Bounce"
+  ],
+  "Pets_Turret": [
+    "Pets.Turret.Gattling_Gun",
+    "Pets.Turret.Auto_Turret",
+    "Pets.Turret.Explode",
+    "Pets.Turret.Taunt"
+  ],
+  "Pets_Twilight": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Twilight.Twilight"
+  ],
+  "Pets_Umbra_Beast": [
+    "Villain_Pets.Umbra_Beast.Claw_Rake",
+    "Villain_Pets.Umbra_Beast.Claw_Swipe",
+    "Villain_Pets.Umbra_Beast.Umbra_Swipe",
+    "Villain_Pets.Umbra_Beast.Shadowy_Binds",
+    "Villain_Pets.Umbra_Beast.Resistance",
+    "Villain_Pets.Umbra_Beast.Terrifying_Roar"
+  ],
+  "Pets_Umbra_Beast_Controller": [
+    "Villain_Pets.Umbra_Beast.Claw_Rake",
+    "Villain_Pets.Umbra_Beast.Claw_Swipe",
+    "Villain_Pets.Umbra_Beast.Umbra_Swipe",
+    "Villain_Pets.Umbra_Beast.Shadowy_Binds",
+    "Villain_Pets.Umbra_Beast.Resistance",
+    "Villain_Pets.Umbra_Beast.Terrifying_Roar"
+  ],
+  "Pets_V_DarkServant": [
+    "Pets.DarkServant.Chill_of_the_Night",
+    "Pets.DarkServant.Twilight_Grasp",
+    "Pets.DarkServant.Petrifying_Gaze",
+    "Pets.DarkServant.Darkest_Night",
+    "Pets.DarkServant.Tenebrous_Tentacles",
+    "Pets.DarkServant.Resistance"
+  ],
+  "Pets_Vanguard_Heavy_Pet": [
+    "Vanguard.Vanguard_Heavy.Tear_Gas",
+    "Vanguard.Vanguard_Heavy.Grenade",
+    "Vanguard.Vanguard_Heavy.Plasma_Blast",
+    "Vanguard.Vanguard_Heavy.Seeker_Drones",
+    "Vanguard.Vanguard_Heavy.Energy_Barrage",
+    "Vanguard.Vanguard_Heavy.Air_Bomb",
+    "Vanguard.Vanguard_Heavy.Resistances",
+    "Vanguard.Heavy_Boost.Heavy_Boost"
+  ],
+  "Pets_Vanguard_Mini_Pet": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_VictoryRush_AV": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Pool_Leadership_VictoryRush.VictoryRush_AV"
+  ],
+  "Pets_VictoryRush_BS": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Pool_Leadership_VictoryRush.VictoryRush_BS"
+  ],
+  "Pets_VictoryRush_Base": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Pool_Leadership_VictoryRush.VictoryRush_Base"
+  ],
+  "Pets_VictoryRush_EB": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Pool_Leadership_VictoryRush.VictoryRush_EB"
+  ],
+  "Pets_VictoryRush_LT": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Pool_Leadership_VictoryRush.VictoryRush_LT"
+  ],
+  "Pets_VictoryRush_MN": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Pool_Leadership_VictoryRush.VictoryRush_MN"
+  ],
+  "Pets_Vigilant_Assault_Proc": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Vigilant_Assault_Proc.Vigilant_Assault"
+  ],
+  "Pets_Volcanicgas": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.VolcanicGasses.Volcanic_Gasses",
+    "Pets.VolcanicGasses.Volcanic_Ground"
+  ],
+  "Pets_Volcanicgeyser": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.VolcanicGeyser.Thermal_Vents",
+    "Pets.VolcanicGeyser.Resistance"
+  ],
+  "Pets_VoltaicSentinel": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.VoltaicSentinel.Electrical_Bolt",
+    "Pets.VoltaicSentinel.Electrical_Field"
+  ],
+  "Pets_VoltaicSentinel_Corruptor": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.VoltaicSentinel_Corruptor.Electrical_Bolt",
+    "Pets.VoltaicSentinel_Corruptor.Electrical_Field"
+  ],
+  "Pets_VoltaicSentinel_Critter": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.VoltaicSentinel_Critter.Electrical_Bolt",
+    "Pets.VoltaicSentinel_Critter.Electrical_Field"
+  ],
+  "Pets_VoltaicSentinel_Defender": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.VoltaicSentinel_Defender.Electrical_Bolt",
+    "Pets.VoltaicSentinel_Defender.Electrical_Field"
+  ],
+  "Pets_VoltaicSentinel_Dominator": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.VoltaicSentinel_Dominator.Electrical_Bolt",
+    "Pets.VoltaicSentinel_Dominator.Electrical_Field"
+  ],
+  "Pets_VoltaicSentinel_Sentinel": [
+    "Pets.ResistAll_NoFly.ResistAll",
+    "Pets.VoltaicSentinel.Electrical_Bolt",
+    "Pets.VoltaicSentinel.Electrical_Field"
+  ],
+  "Pets_Warburg_Afterglow": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Warburg_Afterglow.Aftereffects"
+  ],
+  "Pets_Warburg_Biological": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Warburg_Biological.Warburg_Biological"
+  ],
+  "Pets_Warburg_Chemical": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Warburg_Chemical.Warburg_Chemical"
+  ],
+  "Pets_Warburg_Nuclear": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Warburg_Nuclear.Warburg_Nuclear"
+  ],
+  "Pets_Warshade_Extraction": [
+    "Kheldian_Pets.Warshade_Extraction.Shadow_Bolt",
+    "Kheldian_Pets.Warshade_Extraction.Shadow_Blast",
+    "Kheldian_Pets.Warshade_Extraction.Gravitic_Emanation",
+    "Kheldian_Pets.Warshade_Extraction.Self_Destruct",
+    "Kheldian_Pets.Warshade_Extraction.Fly"
+  ],
+  "Pets_Warwolf": [
+    "Council.Nightwolf_Melee.Claw_Swipe",
+    "Council.Nightwolf_Melee.Hurl",
+    "Council.Nightwolf_Movement.Wolf_Jumping",
+    "Council.Nightwolf_Defense.Resistance",
+    "Council.Nightwolf_Defense.Pack_Tactics",
+    "Pets.TempPower_Warwolf_Wistel_Pet.Metamorphosis"
+  ],
+  "Pets_Warwolf_UndeadSurvivalKit": [
+    "Council.Nightwolf_Melee.Claw_Swipe",
+    "Council.Nightwolf_Melee.Hurl",
+    "Council.Nightwolf_Movement.Wolf_Jumping",
+    "Council.Nightwolf_Defense.Resistance",
+    "Council.Nightwolf_Defense.Pack_Tactics",
+    "Pets.TempPower_Warwolf_Wistel_Pet.Metamorphosis"
+  ],
+  "Pets_Wellemental_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Wellspring": [
+    "Redirects.Marine_Affinity.Wellspring_Skin",
+    "Redirects.Marine_Affinity.Wellspring_Barrier"
+  ],
+  "Pets_Wellspring_Def": [
+    "Redirects.Marine_Affinity.Wellspring_Skin",
+    "Redirects.Marine_Affinity.Wellspring_Barrier_Def"
+  ],
+  "Pets_Whirlpool_Blaster": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Whirlpool_Blaster.Whirlpool",
+    "Pets.Whirlpool_Blaster.Avoid"
+  ],
+  "Pets_Whirlpool_Corruptor": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Whirlpool_Corruptor.Whirlpool",
+    "Pets.Whirlpool_Corruptor.Avoid"
+  ],
+  "Pets_Whirlpool_Defender": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Whirlpool_Defender.Whirlpool",
+    "Pets.Whirlpool_Defender.Avoid"
+  ],
+  "Pets_Whirlpool_Sentinel": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Whirlpool_Sentinel.Whirlpool",
+    "Pets.Whirlpool_Sentinel.Avoid"
+  ],
+  "Pets_WindControl_HailOfDebris": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Wind_Control_HailOfDebris.Hail_of_Debris"
+  ],
+  "Pets_WindControl_Vacuum_Controller": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Wind_Control_Vacuum_Controller.Vacuum_Over_Time",
+    "Pets.Wind_Control_Vacuum_Controller.Vacuum_Hold"
+  ],
+  "Pets_WindControl_Vacuum_Dominator": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Wind_Control_Vacuum_Dominator.Vacuum_Over_Time",
+    "Pets.Wind_Control_Vacuum_Dominator.Vacuum_Hold_Domination"
+  ],
+  "Pets_WindControl_Vortex": [
+    "Pets.Wind_Control_Vortex.Blast_of_Debris",
+    "Pets.Wind_Control_Vortex.Whirlwind",
+    "Pets.Wind_Control_Vortex.Hail_of_Debris",
+    "Pets.Wind_Control_Vortex.Crash_of_Thunder",
+    "Pets.Wind_Control_Vortex.Pressurization",
+    "Pets.Wind_Control_Vortex.Resistance",
+    "GenericVillains.Flight.Fly",
+    "GenericVillains.Flight.Fly_FX"
+  ],
+  "Pets_WindControl_Vortex_Controller": [
+    "Pets.Wind_Control_Vortex.Blast_of_Debris",
+    "Pets.Wind_Control_Vortex.Whirlwind",
+    "Pets.Wind_Control_Vortex.Hail_of_Debris",
+    "Pets.Wind_Control_Vortex.Crash_of_Thunder",
+    "Pets.Wind_Control_Vortex.Pressurization",
+    "Pets.Wind_Control_Vortex.Resistance",
+    "GenericVillains.Flight.Fly",
+    "GenericVillains.Flight.Fly_FX"
+  ],
+  "Pets_WindUpTest": [
+    "NPC_Pets.TestCritter.Lightning_Bolt",
+    "NPC_Pets.TestCritter.TheTell",
+    "NPC_Pets.TestCritter.Ball_Lightning"
+  ],
+  "Pets_Wolf_Pet": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_Zapper": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.BounceWorld.Immobilize"
+  ],
+  "Pets_Zombie": [
+    "Mastermind_Pets.Zombie_2.Resistance",
+    "Mastermind_Pets.Zombie.Zombie_Brawl",
+    "Mastermind_Pets.Zombie_2.Projectile_Vomit",
+    "Mastermind_Pets.Zombie_2.Zombie_Vomit"
+  ],
+  "Pets_Zoombie_Explode": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Zoombie_Explode.Explode"
+  ]
+}

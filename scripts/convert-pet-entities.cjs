@@ -25,6 +25,7 @@ const EXPORT_ROOTS = {
   homecoming: path.join(__dirname, '../exported_powers'),
   rebirth: path.join(__dirname, '../exported_powers/rebirth'),
   thunderspy: path.join(__dirname, '../exported_powers/thunderspy'),
+  brainstorm: path.join(__dirname, '../exported_powers/brainstorm'),
 };
 const ROOT = EXPORT_ROOTS[datasetId];
 if (!ROOT || !fs.existsSync(ROOT)) {
@@ -69,6 +70,21 @@ const SIDECAR_LIFESPANS_PATH = datasetPath(datasetId, 'pet-lifespans.json');
 // can't reach them. Built by scanning every `self_destruct.json` in the bin
 // export, regardless of which category it lives in.
 const SIDECAR_SELF_DESTRUCT_PATH = datasetPath(datasetId, 'self-destruct-delays.json');
+
+// Sidecar JSON of entity name -> the fully-qualified powers that entity DECLARES
+// (`defaults.power_full_names`, verbatim and in export order). Consumed by
+// convert-powerset.cjs to answer the one question the summoning power cannot answer
+// alone: an `EntCreate` that states no `entity_def` names redirect POWERS instead, and
+// the only thing that says which entity those powers belong to is the entity's own
+// declaration. Both halves are data, so the join needs no naming convention — which is
+// the point, because turning `Villain_Pets.Traps_Poison_Trap.Self_Destruct` into
+// `Pets_Traps_Poison_Trap` by string surgery would be inventing one (ENT-16).
+//
+// The whole index ships rather than the summons-that-need-it subset: which summons need
+// it is a fact about the powers tree, and this script does not read the powers tree for
+// entity purposes. A filtered index would go quietly wrong the cycle a new power starts
+// using the form.
+const SIDECAR_ENTITY_POWERS_PATH = datasetPath(datasetId, 'pet-entity-powers.json');
 
 // Damage type attributes we care about
 const DAMAGE_ATTRIBS = new Set([
@@ -1667,7 +1683,28 @@ function processEntity(entityFilePath, upgradeMap) {
     oneShot: detectOneShot(abilities, selfDestructDelay) || undefined,
     createsEntities: createsEntities.length > 0 ? createsEntities : undefined,
     upgradeTiers: upgradeTiers.length > 0 ? upgradeTiers : undefined,
+    // Verbatim, not the classified `abilities` above: the sidecar's whole job is to match
+    // a summon's redirect list against what the entity declares, and `abilities` has
+    // already dropped every power this script's effect vocabulary did not recognize.
+    // Matching against a filtered list would fail on exactly the pets whose powers are
+    // least understood. Not emitted into pet-entities.ts — `generateTypeScript` names the
+    // fields it writes, so this stays a build-time fact.
+    declaredPowers: powerFullNames,
   };
+}
+
+/**
+ * A committed artifact must be a function of the export, not of the order the filesystem
+ * happened to hand back its files.
+ *
+ * Both sidecars below were built by inserting into an object as a directory walk reached each
+ * file, so their key order was `readdir`'s. That is stable on one machine and not across two:
+ * regenerating `self-destruct-delays.json` with no change to the export moved two Defender
+ * entries to the end of the file, which reads in a diff exactly like data moving. Sorting makes
+ * the diff say only what actually changed.
+ */
+function sortedByKey(obj) {
+  return Object.fromEntries(Object.keys(obj).sort().map((k) => [k, obj[k]]));
 }
 
 /**
@@ -1733,7 +1770,7 @@ function main() {
       lifespans[name] = entity.lifespan;
     }
   }
-  fs.writeFileSync(SIDECAR_LIFESPANS_PATH, JSON.stringify(lifespans, null, 2) + '\n');
+  fs.writeFileSync(SIDECAR_LIFESPANS_PATH, JSON.stringify(sortedByKey(lifespans), null, 2) + '\n');
   console.log(`Wrote ${SIDECAR_LIFESPANS_PATH} (${Object.keys(lifespans).length} entries)`);
 
   // Build the Self_Destruct delay map by walking every category for
@@ -1751,8 +1788,20 @@ function main() {
     const fullName = data && data.full_name;
     if (fullName) selfDestructDelays[fullName] = delay;
   }
-  fs.writeFileSync(SIDECAR_SELF_DESTRUCT_PATH, JSON.stringify(selfDestructDelays, null, 2) + '\n');
+  fs.writeFileSync(SIDECAR_SELF_DESTRUCT_PATH, JSON.stringify(sortedByKey(selfDestructDelays), null, 2) + '\n');
   console.log(`Wrote ${SIDECAR_SELF_DESTRUCT_PATH} (${Object.keys(selfDestructDelays).length} entries)`);
+
+  // Entity -> declared powers, sorted by entity name so the committed file is a function of
+  // the export alone and not of readdir order. Entities that declare nothing are omitted:
+  // they can never be the answer to a redirect-list lookup, and an empty list would match
+  // an empty redirect list, which is a summon that names no powers at all.
+  const entityPowers = {};
+  for (const name of Object.keys(entities).sort()) {
+    const declared = entities[name].declaredPowers || [];
+    if (declared.length > 0) entityPowers[name] = declared;
+  }
+  fs.writeFileSync(SIDECAR_ENTITY_POWERS_PATH, JSON.stringify(entityPowers, null, 2) + '\n');
+  console.log(`Wrote ${SIDECAR_ENTITY_POWERS_PATH} (${Object.keys(entityPowers).length} entries)`);
 
   // Print summary for our 3 target entities
   const targets = ['Pets_Tornado', 'Pets_LightningStorm', 'Pets_Gremlin_Controller'];
