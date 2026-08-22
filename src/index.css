@@ -195,6 +195,28 @@
 }
 
 /* Base styles */
+
+/* Keep the document's scrollbar track reserved at all times.
+ *
+ * The POWER INFO panel sits in normal page flow, so its content sets the page height and
+ * every hover changes it — measured over one powerset, the document ran 1118 / 1149 / 1201
+ * / 1214 / 1257 / 1386 px as the pointer moved. On any viewport inside that band the
+ * scrollbar appears and disappears under the mouse, and the whole app jerks 15px left and
+ * back on each change. The five modals that set `body { overflow: hidden }` to lock scroll
+ * do the same thing on open and close.
+ *
+ * `scrollbar-gutter: stable` is the modern spelling and is what you would reach for first.
+ * It does not work here: on this page it computes as `stable` and reserves nothing, though
+ * it behaves correctly on a bare document in the same browser. `overflow-y: scroll` is the
+ * older form, and it holds — including while a modal has body scroll locked, so it covers
+ * the modal case too. Both were measured against the running app, not assumed.
+ *
+ * The cost is a permanently visible (inert) track on viewports tall enough not to need one.
+ * That is the trade: a constant 15px strip against the app moving under the pointer. */
+html {
+  overflow-y: scroll;
+}
+
 body {
   @apply bg-gray-900 text-gray-100;
   font-family: var(--font-sans);
