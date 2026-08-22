@@ -32,6 +32,10 @@ What it cannot grade: the JS and Rust consumers. Those fail loud instead —
 Reads the committed `exported_powers/` trees only — no .bin / .pigg needed.
 """
 
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import _forks  # derived dataset roster; see test_export_roster.py
+
 import json
 import os
 import sys
@@ -44,7 +48,7 @@ FORKS = {
     "rebirth": os.path.join(REPO, "exported_powers", "rebirth"),
     "thunderspy": os.path.join(REPO, "exported_powers", "thunderspy"),
 }
-_NESTED = ("exported_powers/rebirth/", "exported_powers/thunderspy/")
+_NESTED = tuple(f"exported_powers/{d}/" for d in _forks.NESTED_DIRS)
 
 # Every gate field the export carries as a token array. Most are `list[str]` on a
 # dataclass in `parser/_dataclasses.py`; three (`condition_expression`,

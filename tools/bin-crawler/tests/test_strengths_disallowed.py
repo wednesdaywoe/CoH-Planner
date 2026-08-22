@@ -23,6 +23,10 @@ Run directly:  python3 tools/bin-crawler/tests/test_strengths_disallowed.py
 or under pytest (functions are named test_*).
 """
 
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import _forks  # derived dataset roster; see test_export_roster.py
+
 import json
 import os
 
@@ -34,7 +38,7 @@ _EXPORTS = {
 }
 # Homecoming's tree is the root, so a plain walk of it descends into the other
 # two forks and into the boost-piece trees no power lives in.
-_NOT_POWERS = {"rebirth", "thunderspy", "boosts", "set_bonus", "tables", "entities"}
+_NOT_POWERS = set(_forks.NESTED_DIRS) | {"boosts", "set_bonus", "tables", "entities"}
 
 
 def _all_powers(fork: str):

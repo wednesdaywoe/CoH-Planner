@@ -19,7 +19,7 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**2 open, of 201 entries.** When an entry is open it is listed here with what it's waiting on.
+**3 open, of 204 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
@@ -30,6 +30,11 @@ doesn't accumulate closure prose.
 - **DEBUFFRES-1** — an accuracy debuff resistance the export states and no total accumulates,
   carried in the type and reached by nothing. Waiting on a totals slot and a routed sub-key, or
   a measurement that the game applies nothing. [Detail](gaps/stat-routing.md)
+
+- **BRAIN-11** — the 14 bin-crawler parser guards prune Brainstorm from the Homecoming walk but
+  still iterate a three-fork roster, so a shipped dataset's parser output is graded by none of
+  them. Waiting on per-fork expectations measured for Brainstorm, starting with the villaindef
+  `Level` element width `test_entity_commandability` has no row for. [Detail](gaps/pipeline-provenance.md)
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -282,8 +287,23 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 27 of 28 closed
+[Full detail](gaps/pipeline-provenance.md) — 29 of 31 closed
 
+- [ ] **BRAIN-11** — the 14 bin-crawler parser guards iterate a three-fork roster, so Brainstorm's
+  parser output is graded by none of them. Open: needs per-fork expectations measured for
+  Brainstorm, starting with the villaindef `Level` element width
+- [x] **BRAIN-12** — Brainstorm shipped unselectable: the server picker's `SERVER_OPTIONS`, the
+  `?serverId=` parser and the per-server build store each restated the roster and each stayed
+  three-dataset, and all three sat on the roster audit's allow-list, excused by a blocker
+  (`build:engine` had not yet emitted `brainstorm.json.gz`) that the dataset itself had cleared
+  and nobody re-checked; `DatasetId` is now derived from a `DATASET_IDS` const array all three
+  read, and the allow-list rows are gone
+- [x] **BRAIN-10** — a sixth roster shape, in Python: 14 bin-crawler parser guards pruned
+  `("rebirth", "thunderspy")` from the Homecoming walk, so Brainstorm's tree was swept as
+  Homecoming's; only 2 went red and 12 counted it silently, one reporting 96,371 Homecoming
+  templates for 47,905. The roster now derives from `assets_sources.json` plus the tree layout
+  (`tests/_forks.py`), `test_export_roster.py` fails on an unrostered export tree or a
+  hand-written fork list, and CI stopped aborting the loop on the first failure
 - [x] **BRAIN-9** — the fourth dataset landed in canonical and stopped there: 19 shared-surface
   files drifted unadjudicated pending the beta-repo port, and the port found the rosters an audit
   keyed on collection literals cannot see — a REGEX in `vite.config.ts` named the per-dataset

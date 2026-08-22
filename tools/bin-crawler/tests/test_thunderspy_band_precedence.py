@@ -20,6 +20,10 @@ Run directly:  python3 tools/bin-crawler/tests/test_thunderspy_band_precedence.p
 or under pytest (functions are named test_*).
 """
 
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import _forks  # derived dataset roster; see test_export_roster.py
+
 import json
 import os
 
@@ -46,7 +50,7 @@ def _attribs_by_power(fork):
     base = os.path.join(_EXPORT, _FORK_DIR[fork])
     for root, _dirs, files in os.walk(base):
         rel = os.path.relpath(root, _EXPORT).split(os.sep)
-        if fork == "homecoming" and rel[0] in ("rebirth", "thunderspy"):
+        if fork == "homecoming" and rel[0] in _forks.NESTED_DIRS:
             continue
         for name in files:
             if not name.endswith(".json"):
@@ -148,7 +152,7 @@ def test_drop_toggles_never_names_a_power():
         del powers  # the per-power attrib sets can't see params; re-walk instead
         for root, _dirs, files in os.walk(base):
             rel = os.path.relpath(root, _EXPORT).split(os.sep)
-            if fork == "homecoming" and rel[0] in ("rebirth", "thunderspy"):
+            if fork == "homecoming" and rel[0] in _forks.NESTED_DIRS:
                 continue
             for name in files:
                 if not name.endswith(".json"):

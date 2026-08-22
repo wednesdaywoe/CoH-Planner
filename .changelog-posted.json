@@ -725,6 +725,51 @@
       "id": "grant-cover-team-only",
       "date": "2026-08-12",
       "preview": "Shield Defense: Grant Cover was adding its defense to your own totals on every s"
+    },
+    {
+      "id": "hc-brainstorm-dataset",
+      "date": "2026-08-22",
+      "preview": "HC Brainstorm is now a server option. I will try to keep it current but Open Bet"
+    },
+    {
+      "id": "incarnate-level-shift-ceiling",
+      "date": "2026-08-22",
+      "preview": "New Level Shift control in the header, available one your incarnate loadout has "
+    },
+    {
+      "id": "veat-recased-power-keys",
+      "date": "2026-08-22",
+      "preview": "Arachnos Soldiers and Widows: 22 powers were tripping the \"not in the Homecoming"
+    },
+    {
+      "id": "power-description-line-breaks",
+      "date": "2026-08-22",
+      "preview": "Power descriptions were running sentences together where the game puts a line br"
+    },
+    {
+      "id": "accolade-description-markup",
+      "date": "2026-08-22",
+      "preview": "Accolade descriptions were showing the game's own markup as literal text (raw <b"
+    },
+    {
+      "id": "brawl-fighting-pool-synergy",
+      "date": "2026-08-22",
+      "preview": "Homecoming and Rebirth: Brawl's Fighting-pool synergy was in the game data but n"
+    },
+    {
+      "id": "geode-spurious-taunt-resistance",
+      "date": "2026-08-22",
+      "preview": "Geode was granting taunt resistance it does not have, on the Scrapper, Stalker a"
+    },
+    {
+      "id": "defense-softcap-real-total",
+      "date": "2026-08-22",
+      "preview": "The defense tiles stopped counting at 45.00%. At the softcap the dashboard showe"
+    },
+    {
+      "id": "info-panel-scrollbar-shift",
+      "date": "2026-08-22",
+      "preview": "The whole app jumped a little to the left and back as you moved the mouse across"
     }
   ]
 }

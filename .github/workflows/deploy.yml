@@ -34,13 +34,16 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # The 3-dataset bundle (HC + Rebirth + Thunderspy) exceeds Node's
-          # default ~2GB heap during `vite build` — raise it (runners have 16GB).
-          # Without this the build OOMs and the Pages deploy silently skips.
-          # Bumped 6144 -> 10240 on 2026-07-17: the converter atom-array work
-          # grew the bundle+sourcemaps past 6.2GB, OOMing the build at the old
-          # ceiling. 10GB leaves ~6GB headroom for the OS on a 16GB runner.
-          NODE_OPTIONS: --max-old-space-size=10240
+          # `vite build` needs far more than Node's default ~2GB heap, and going
+          # over doesn't fail the deploy loudly: the build OOMs and the Pages
+          # step silently skips.
+          #
+          # 10240 was sized for three datasets. Brainstorm made it four and the
+          # build measured 9.72GB peak RSS against that 10GB ceiling, so it was
+          # passing on roughly 3% headroom. 14336 restores room for a fifth
+          # dataset and still leaves ~1.5GB for the OS on a 16GB runner.
+          # Re-measure before adding another dataset rather than raising blind.
+          NODE_OPTIONS: --max-old-space-size=14336
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
           VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}

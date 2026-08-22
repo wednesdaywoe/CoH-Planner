@@ -42,6 +42,10 @@ Run directly:  python3 tools/bin-crawler/tests/test_parse6_aspect.py
 or under pytest (functions are named test_*).
 """
 
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import _forks  # derived dataset roster; see test_export_roster.py
+
 import json
 import os
 
@@ -49,7 +53,7 @@ _REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", "..
 _EXPORT = os.path.join(_REPO, "exported_powers")
 
 # Nested fork trees, skipped when walking the Homecoming root.
-_FORK_DIRS = {"rebirth", "thunderspy"}
+_FORK_DIRS = set(_forks.NESTED_DIRS)
 
 _FORKS = {
     "homecoming": _EXPORT,

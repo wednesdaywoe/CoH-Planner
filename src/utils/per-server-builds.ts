@@ -15,6 +15,7 @@
  * store wires them into its persist `migrate`/`merge`/`partialize`.
  */
 
+import { DATASET_IDS } from '@/data/dataset';
 import type { Build } from '@/types';
 import { createEmptyBuild } from '@/types';
 
@@ -36,7 +37,7 @@ export interface PerServerPersistedState {
   buildsByServer: Partial<Record<ServerId, StoredBuild>>;
 }
 
-const KNOWN_SERVERS: readonly ServerId[] = ['homecoming', 'rebirth', 'thunderspy'];
+const KNOWN_SERVERS: readonly ServerId[] = DATASET_IDS;
 
 export function isKnownServerId(v: unknown): v is ServerId {
   return typeof v === 'string' && (KNOWN_SERVERS as readonly string[]).includes(v);

@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import * as Sentry from '@sentry/react'
 import './index.css'
 import App from './App'
-import { loadDataset, type DatasetId } from '@/data/dataset'
+import { loadDataset, DATASET_IDS, type DatasetId } from '@/data/dataset'
 
 // Register window.cohDebug for calculation debug logging + fallback warnings
 import '@/utils/calc-debug'
@@ -135,7 +135,7 @@ if ('launchQueue' in window) {
 //      dataset loads first and we don't flash the wrong one.
 //   3. Default to Homecoming.
 function bootServerId(): DatasetId {
-  const KNOWN: readonly DatasetId[] = ['homecoming', 'rebirth', 'thunderspy'];
+  const KNOWN: readonly DatasetId[] = DATASET_IDS;
   const isKnown = (v: unknown): v is DatasetId =>
     typeof v === 'string' && (KNOWN as readonly string[]).includes(v);
   try {

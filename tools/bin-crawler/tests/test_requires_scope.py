@@ -32,6 +32,10 @@ Reads the committed `exported_powers/` trees only — no .bin / .pigg needed.
 Run directly:  python3 tools/bin-crawler/tests/test_requires_scope.py
 or under pytest (functions are named test_*).
 """
+
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import _forks  # derived dataset roster; see test_export_roster.py
 import json
 import os
 import sys
@@ -68,7 +72,7 @@ _SELF_EXCLUSION = 'entref target> entref source> eq !'
 def _files(base, fork):
     for dirpath, dirnames, fnames in os.walk(base):
         if fork == 'homecoming' and dirpath == base:
-            dirnames[:] = [d for d in dirnames if d not in ('rebirth', 'thunderspy')]
+            dirnames[:] = [d for d in dirnames if d not in _forks.NESTED_DIRS]
         for f in fnames:
             if f.endswith('.json'):
                 yield os.path.join(dirpath, f)

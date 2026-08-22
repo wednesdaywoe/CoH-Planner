@@ -61,14 +61,16 @@ EXPORTED = REPO_ROOT / "exported_powers"
 
 sys.path.insert(0, str(REPO_ROOT / "tools" / "bin-crawler"))
 
-# Homecoming ships at the tree root; the other forks are nested.
-ENTITY_DIRS = {
-    "homecoming": EXPORTED / "entities",
-    "rebirth": EXPORTED / "rebirth" / "entities",
-    "thunderspy": EXPORTED / "thunderspy" / "entities",
-}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _forks  # derived dataset roster; see test_export_roster.py
 
+# Which forks this grades. Brainstorm exports entities too but has no row in
+# LEVEL_INTS, so widening this needs its element width measured first (ENT-17).
 DECODED_FORKS = ("homecoming", "rebirth", "thunderspy")
+
+# Paths derived, so the root/nested split stays a fact about the tree rather
+# than a literal that a fourth dataset silently invalidates.
+ENTITY_DIRS = {fork: Path(_forks.FORKS[fork]) / "entities" for fork in DECODED_FORKS}
 
 # Homecoming widened `ParseVillainLevelDef`'s `Level` into a range and writes two
 # leading ints; the forks keep the stock i24 single `Level` and write one. This

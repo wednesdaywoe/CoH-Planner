@@ -56,14 +56,12 @@ const ALLOWLIST = {
   // told to expect rather than the one on disk. An allowance that names a blocker is only worth
   // what re-checking the blocker costs; this one was never re-checked, and the four fixture
   // corpora stayed three-dataset until `movement_gate`'s per-dataset floor said so out loud.
-  // The beta's own runtime and its engine loader. Both live in the beta repo and are only
-  // vendored here, and the loader additionally looks for `public/engine/contract/<id>.json.gz`,
-  // which `build:engine` has not yet produced for brainstorm. Widening them here would point
-  // the beta at a bundle that does not exist. They move in the beta repo when that half lands,
-  // and the vendored copies follow it.
-  'src/utils/per-server-builds.ts': 'beta runtime; the beta repo owns the server list',
-  'src/main.tsx': 'beta runtime; the beta repo owns the server list',
-  'src/components/layout/Header.tsx': 'beta runtime; the beta repo owns the server picker',
+  // Three beta-runtime rows used to sit here, excused because `build:engine` had not yet
+  // produced `public/engine/contract/brainstorm.json.gz` and widening them would have pointed
+  // the beta at a missing bundle. The bundle landed with the dataset and nobody re-checked the
+  // allowance, so the server picker stayed three-dataset and Brainstorm shipped unselectable.
+  // All three read DATASET_IDS now. This is the paragraph above, happening again: an allowance
+  // is only worth what re-checking its blocker costs.
   'src/utils/per-server-builds.test.ts': 'grades the beta runtime list above, so it moves with it',
   // The Mids oracle was retired as an authority (register: "Mids retired as an authority",
   // 2026-07-19). Its CLI still resolves the three datasets it was built against; pointing it at

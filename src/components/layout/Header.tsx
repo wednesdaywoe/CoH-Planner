@@ -13,6 +13,7 @@ import { supabase } from '@/lib/supabase';
 import { isPairable } from '@/data/power-requires';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel, STANCE_GROUPS, findStanceParent, activeStanceOptionId, getLevelShiftGrants } from '@/data';
 import type { StanceGroup } from '@/data';
+import { getAllDatasetMetadata } from '@/data/dataset';
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { selectableModes, modeLabel } from '@/utils/mode-suppression';
 import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
@@ -46,13 +47,13 @@ const ORIGIN_OPTIONS = [
   { value: 'Technology', label: 'Technology' },
 ];
 
-// Rebirth and Thunderspy are both enabled — each has a parsed data tree,
-// scalar tables, AT inherents, and (for Thunderspy) the custom Primalist AT.
-const SERVER_OPTIONS = [
-  { value: 'homecoming', label: 'Homecoming' },
-  { value: 'rebirth', label: 'Rebirth' },
-  { value: 'thunderspy', label: 'Thunderspy' },
-];
+// Every shipped dataset, read from the one roster rather than restated. This list was
+// hand-written and stayed three-dataset after Brainstorm shipped, so the server it added
+// was never offered.
+const SERVER_OPTIONS = getAllDatasetMetadata().map(({ id, displayName }) => ({
+  value: id,
+  label: displayName,
+}));
 
 // Archetype dropdown options. Mostly server-agnostic, but the lineup
 // differs per dataset: HC has Sentinel; Rebirth has Guardian (not yet

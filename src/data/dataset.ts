@@ -294,7 +294,17 @@ export interface InherentRules {
 // DATASET INTERFACE
 // ============================================
 
-export type DatasetId = 'homecoming' | 'rebirth' | 'thunderspy' | 'brainstorm';
+/**
+ * Every dataset the planner ships, as a runtime value.
+ *
+ * A bare union can't be iterated, so anything needing the whole set had to restate it, and three
+ * copies (the server picker, the `?serverId=` parser, the per-server build store) were still
+ * three-dataset after Brainstorm shipped. The picker one meant Brainstorm was unselectable.
+ * Derive `DatasetId` from this rather than writing the union out again.
+ */
+export const DATASET_IDS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
+
+export type DatasetId = (typeof DATASET_IDS)[number];
 
 /**
  * Is this the Homecoming game, on either of its rings?
@@ -534,12 +544,15 @@ export async function loadDataset(id: DatasetId): Promise<Dataset> {
  * before committing to a dataset.
  */
 export function getAllDatasetMetadata(): Array<{ id: DatasetId; displayName: string }> {
-  return [
-    { id: 'homecoming', displayName: 'Homecoming' },
-    { id: 'rebirth', displayName: 'Rebirth' },
-    { id: 'thunderspy', displayName: 'Thunderspy' },
-    // Homecoming's open beta. Named for the server so a user reading the picker
-    // knows which shard they are planning against, not merely that it is "beta".
-    { id: 'brainstorm', displayName: 'HC Brainstorm' },
-  ];
+  return DATASET_IDS.map((id) => ({ id, displayName: DATASET_DISPLAY_NAMES[id] }));
 }
+
+/** Typed `Record<DatasetId, …>`, so a new dataset fails the build until it's named here. */
+const DATASET_DISPLAY_NAMES: Record<DatasetId, string> = {
+  homecoming: 'Homecoming',
+  rebirth: 'Rebirth',
+  thunderspy: 'Thunderspy',
+  // Named for the server, so a user reading the picker knows which shard they're
+  // planning against rather than only that it's "beta".
+  brainstorm: 'HC Brainstorm',
+};

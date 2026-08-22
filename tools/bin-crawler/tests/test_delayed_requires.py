@@ -28,6 +28,10 @@ Run directly:  python3 tools/bin-crawler/tests/test_delayed_requires.py
 or under pytest (functions are named test_*).
 """
 
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import _forks  # derived dataset roster; see test_export_roster.py
+
 import json
 import os
 
@@ -38,7 +42,7 @@ _EXPORTS = {
     "thunderspy": os.path.join(_REPO, "exported_powers", "thunderspy"),
 }
 _FORK_ROOTS = {os.path.join(_REPO, "exported_powers", fork)
-               for fork in ("rebirth", "thunderspy")}
+               for fork in _forks.NESTED_DIRS}
 
 # The 11 members of `StackTypeEnum` and the 2 of `CasterStackTypeEnum`. An
 # unmapped raw exports as `Unknown(<raw>)`, which is what the misalignment
