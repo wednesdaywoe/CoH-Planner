@@ -46,6 +46,21 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-08-22',
+
+    items: [
+      { id: 'hc-brainstorm-dataset', message: 'HC Brainstorm is now a server option, alongside Homecoming, Rebirth and Thunderspy. It\'s Homecoming\'s open beta shard, so its numbers are unreleased and will not match anyone\'s live in-game build — the header badge is deliberately red rather than an ordinary server colour to keep that visible while you plan', type: 'feat' },
+      { id: 'incarnate-level-shift-ceiling', message: 'New Level Shift control in the header, shown once your incarnate loadout has earned a shift. A full Alpha/Destiny/Lore loadout earns +3, but only incarnate content grants all of it — everywhere else you fight at a smaller shift, and the planner was reading every build at the full amount, overstating hit chance and every number scaled by the level difference. Step it down and the readout names which slots are still spending. It cannot exceed what your loadout earned, and it does not derive itself from the Content setting: which content grants which slot\'s shift is a game rule that appears nowhere in the exported data, so it stays your call rather than a number moving for a reason nothing on screen states', type: 'feat' },
+      { id: 'veat-recased-power-keys', message: 'Arachnos Soldiers and Widows: 22 powers banner as "not in the Homecoming data" and contribute nothing to your totals, while their cards, slots and toggles all render normally. Mask Presence, Mind Link and Psychic Wail are the reported ones; it also covers every Night Widow pick, Crab Frag, Venom Grenade and Wide Area Web Grenade. Sidekick had been re-casing those powers\' internal names, so the key your build saved never matched the one the engine looks up. Resetting the build or clearing the cache would not have helped — the bad key was minted fresh on every pick', type: 'fix' },
+      { id: 'power-description-line-breaks', message: 'Power descriptions were running sentences together where the game puts a line break — "…losing health over time.Notes: This power will deal critical damage". About 3,135 Homecoming descriptions were affected. Breaks are now kept', type: 'fix' },
+      { id: 'accolade-description-markup', message: 'Accolade descriptions were showing the game\'s own markup as literal text (raw <br> and <color #fcfc95> tags mid-sentence). No generated description on any server carries client markup now', type: 'fix' },
+      { id: 'brawl-fighting-pool-synergy', message: 'Homecoming and Rebirth: Brawl\'s Fighting-pool synergy was in the game data but nothing could switch it on. Its -recharge/-tohit with Boxing or Kick, and its -regen/-recovery with Cross Punch, now appear as toggles under the power\'s Mechanic Adjusters. Thunderspy\'s Brawl does not have these, so it gains nothing', type: 'fix' },
+      { id: 'geode-spurious-taunt-resistance', message: 'Geode was granting taunt resistance it does not have, on the Scrapper, Stalker and Sentinel copies. Two opposite effects share one name in the game data and Sidekick was reading the wrong one', type: 'fix' },
+      { id: 'defense-softcap-real-total', message: 'The defense tiles stopped counting at 45.00% — once you reached the softcap the dashboard showed 45.00% no matter how much defense you actually had. It now shows your real total, and the tooltip says how far over you are and why the surplus still matters (it is what holds you at the softcap through a foe\'s +ToHit and a ToHit-debuff cascade). Resistance\'s 75/90% cap is a real ceiling and still reads as one', type: 'fix' },
+      { id: 'info-panel-scrollbar-shift', message: 'The whole app jumped a little to the left and back as you moved the mouse across powers. Longer info panels made the page tall enough to need a scrollbar and short ones did not, so the browser added and removed it under the pointer. The scrollbar track is now always reserved', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-08-20',
 
     items: [
