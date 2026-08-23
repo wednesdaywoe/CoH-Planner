@@ -398,6 +398,12 @@ export interface ResolvedPseudoPetEffect {
   /** The damage types a `ResistanceBuff` row names, lower-cased. One modifier moves every
    *  type it names at one scale; a row naming none folds into no total at all (ENT-9). */
   resistanceTypes?: string[];
+  /** The defense positions and damage types a `DefenseBuff` row names, lower-cased. Same
+   *  shape and same reason as `resistanceTypes`: one modifier, every position it names. */
+  defenseTypes?: string[];
+  /** Which face of Absorb an `Absorb` row moves (`Maximum`, `Current`). Absorb is a pool
+   *  with a cap, and a row raising the cap is not a row filling it (ENT-17). */
+  absorbAspect?: string;
 }
 
 /** One redirect power resolved into a pseudo-pet ability (PetAbility-shaped). */

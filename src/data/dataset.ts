@@ -307,6 +307,20 @@ export const DATASET_IDS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm']
 export type DatasetId = (typeof DATASET_IDS)[number];
 
 /**
+ * Is this string one of the ids the planner ships?
+ *
+ * The one home for the question, because every place that asked it inline wrote the roster out
+ * again and the fourth copy (`hydrateBuild`'s serverId fallback) was still three-dataset after
+ * Brainstorm shipped: a Brainstorm save re-stamped itself Homecoming on open, so the engine
+ * computed the build against live while the header badge read the loaded dataset and said
+ * Brainstorm. Answers about the id ALONE — whether the dataset is loaded is a different
+ * question, and `getActiveDataset` owns it.
+ */
+export function isDatasetId(value: unknown): value is DatasetId {
+  return typeof value === 'string' && (DATASET_IDS as readonly string[]).includes(value);
+}
+
+/**
  * Is this the Homecoming game, on either of its rings?
  *
  * The TypeScript twin of `DatasetId::is_homecoming()` in `crates/coh_data/src/database.rs`.

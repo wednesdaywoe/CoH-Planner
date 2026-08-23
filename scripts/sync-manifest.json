@@ -53,7 +53,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "20668c1f982aaaf03f52fb21cc7cc9520320b70a06185ac2bbd7f99c677df983"
+      "sha256": "a361011b374041634517baa079ca0feca9aec37684f72331692cb82e5f5c53ae"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -404,7 +404,7 @@
     {
       "path": "src/data/dataset.ts",
       "status": "identical",
-      "sha256": "a3ae4d051e962b2231eec5fef55088819c90e1124862109f87985a6fe4c40bfc"
+      "sha256": "109f41c5a8c216e5a02be58136618b52c432ae335d4154ce637913e190ec085d"
     },
     {
       "path": "src/data/enhancement-curves.ts",
@@ -469,7 +469,7 @@
     {
       "path": "src/types/power.ts",
       "status": "identical",
-      "sha256": "25806f4af6e3ddc4f5b415b06985378f04ed09783d87c577dd66ead967b348fe"
+      "sha256": "58bdb9804c9a936416bf72fa2e56b4d78f65ff47f75acbe795b269f014edcebd"
     },
     {
       "path": "src/types/shared.ts",

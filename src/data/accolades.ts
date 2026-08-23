@@ -19,26 +19,32 @@
  */
 
 import type { Power } from '@/types';
-import { getActiveDataset } from './dataset';
+import { getActiveDataset, type DatasetId } from './dataset';
 import { ACCOLADES_POWERSET as HOMECOMING_ACCOLADES } from './datasets/homecoming/generated/accolades';
 import { ACCOLADES_POWERSET as REBIRTH_ACCOLADES } from './datasets/rebirth/generated/accolades';
 import { ACCOLADES_POWERSET as THUNDERSPY_ACCOLADES } from './datasets/thunderspy/generated/accolades';
+import { ACCOLADES_POWERSET as BRAINSTORM_ACCOLADES } from './datasets/brainstorm/generated/accolades';
 
 /** A generated accolade power carries the hero/villain gate the main Power shape omits. */
 export type AccoladePower = Power & { activateRequires?: string[] };
 
 export type AccoladeFaction = 'hero' | 'villain' | 'any';
 
+/**
+ * One entry per dataset, and no `default` arm: the switch this replaced fell through to
+ * Homecoming, so Brainstorm — which HAS its own generated accolades — silently read live's.
+ * A record typed on `DatasetId` cannot compile with a dataset missing, which is the only
+ * shape that grows when the roster does.
+ */
+const ACCOLADES_BY_DATASET: Record<DatasetId, unknown> = {
+  homecoming: HOMECOMING_ACCOLADES,
+  rebirth: REBIRTH_ACCOLADES,
+  thunderspy: THUNDERSPY_ACCOLADES,
+  brainstorm: BRAINSTORM_ACCOLADES,
+};
+
 function activeAccoladePowerset(): { powers: AccoladePower[] } {
-  switch (getActiveDataset().id) {
-    case 'rebirth':
-      return REBIRTH_ACCOLADES as unknown as { powers: AccoladePower[] };
-    case 'thunderspy':
-      return THUNDERSPY_ACCOLADES as unknown as { powers: AccoladePower[] };
-    case 'homecoming':
-    default:
-      return HOMECOMING_ACCOLADES as unknown as { powers: AccoladePower[] };
-  }
+  return ACCOLADES_BY_DATASET[getActiveDataset().id] as { powers: AccoladePower[] };
 }
 
 /**

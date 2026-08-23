@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import * as Sentry from '@sentry/react'
 import './index.css'
 import App from './App'
-import { loadDataset, DATASET_IDS, type DatasetId } from '@/data/dataset'
+import { loadDataset, isDatasetId, type DatasetId } from '@/data/dataset'
 
 // Register window.cohDebug for calculation debug logging + fallback warnings
 import '@/utils/calc-debug'
@@ -135,12 +135,9 @@ if ('launchQueue' in window) {
 //      dataset loads first and we don't flash the wrong one.
 //   3. Default to Homecoming.
 function bootServerId(): DatasetId {
-  const KNOWN: readonly DatasetId[] = DATASET_IDS;
-  const isKnown = (v: unknown): v is DatasetId =>
-    typeof v === 'string' && (KNOWN as readonly string[]).includes(v);
   try {
     const param = new URLSearchParams(window.location.search).get('serverId');
-    if (isKnown(param)) return param;
+    if (isDatasetId(param)) return param;
     const raw = localStorage.getItem('coh-planner-build');
     if (!raw) return 'homecoming';
     const parsed = JSON.parse(raw);
@@ -148,7 +145,7 @@ function bootServerId(): DatasetId {
     // legacy single-slot `build.serverId` for stores that haven't migrated yet
     // (bootServerId runs against raw localStorage, before persist migrate).
     const id = parsed?.state?.activeServerId ?? parsed?.state?.build?.serverId;
-    return isKnown(id) ? id : 'homecoming';
+    return isDatasetId(id) ? id : 'homecoming';
   } catch {
     return 'homecoming';
   }

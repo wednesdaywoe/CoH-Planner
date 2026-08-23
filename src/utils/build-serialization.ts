@@ -21,6 +21,7 @@ import type {
   SlimBuildData,
 } from '@/types';
 import { createEmptyIncarnateBuildState } from '@/types';
+import { isDatasetId } from '@/data/dataset';
 import {
   getArchetype,
   getPowerset,
@@ -248,9 +249,28 @@ function getBranchPowerDefs(
 }
 
 /**
- * Reconstruct a full Build from a v2 slim export.
+ * One thing the file named that the dataset being hydrated against does not carry.
+ *
+ * Hydration is TOLERANT by design — an unresolved power is kept as a minimal `SelectedPower`
+ * so the pick survives, and an unresolved enhancement leaves its slot empty. Tolerant and
+ * SILENT are different things, though: opening a build against a dataset that was never its
+ * own is a legitimate act (porting a Homecoming build to Brainstorm to see what the next
+ * patch does to it), and the user is owed a list of what did not come across.
  */
-export function hydrateBuild(slim: Record<string, any>): Build {
+export interface HydrationNote {
+  /** Where it was found, in the user's terms — "Primary", "Fire Blast", "Slot 3". */
+  context: string;
+  /** What could not be resolved, named as the file spells it. */
+  detail: string;
+}
+
+/**
+ * Reconstruct a full Build from a v2 slim export.
+ *
+ * Pass `notes` to collect what this dataset could not carry. Optional because most callers
+ * hydrate against the build's own dataset, where the list is always empty.
+ */
+export function hydrateBuild(slim: Record<string, any>, notes?: HydrationNote[]): Build {
   // Archetype
   const archetypeId = slim.archetype?.id ?? null;
   const archetype = archetypeId ? getArchetype(archetypeId) : null;
@@ -266,21 +286,24 @@ export function hydrateBuild(slim: Record<string, any>): Build {
   const primaryId = slim.primary?.id ?? null;
   const primaryDef = primaryId ? getPowerset(primaryId) : null;
   const allPrimaryDefs = [...(primaryDef?.powers ?? []), ...getBranchPowerDefs(archetype, 'primary')];
-  const primaryPowers = hydratePowers(slim.primary?.powers ?? [], allPrimaryDefs, primaryId ?? '');
+  if (primaryId && !primaryDef) notes?.push({ context: 'Primary', detail: primaryId });
+  const primaryPowers = hydratePowers(slim.primary?.powers ?? [], allPrimaryDefs, primaryId ?? '', notes);
 
   // Secondary powerset (include branch powers for VEATs)
   const secondaryId = slim.secondary?.id ?? null;
   const secondaryDef = secondaryId ? getPowerset(secondaryId) : null;
   const allSecondaryDefs = [...(secondaryDef?.powers ?? []), ...getBranchPowerDefs(archetype, 'secondary')];
-  const secondaryPowers = hydratePowers(slim.secondary?.powers ?? [], allSecondaryDefs, secondaryId ?? '');
+  if (secondaryId && !secondaryDef) notes?.push({ context: 'Secondary', detail: secondaryId });
+  const secondaryPowers = hydratePowers(slim.secondary?.powers ?? [], allSecondaryDefs, secondaryId ?? '', notes);
 
   // Pools
   const pools: PoolSelection[] = (slim.pools ?? []).map((slimPool: SlimPoolSelection) => {
     const poolDef = getPowerPool(slimPool.id);
+    if (!poolDef) notes?.push({ context: 'Pool', detail: slimPool.id });
     return {
       id: slimPool.id,
       name: poolDef?.name ?? slimPool.id,
-      powers: hydratePowers(slimPool.powers, poolDef?.powers ?? [], slimPool.id),
+      powers: hydratePowers(slimPool.powers, poolDef?.powers ?? [], slimPool.id, notes),
     };
   });
 
@@ -288,10 +311,11 @@ export function hydrateBuild(slim: Record<string, any>): Build {
   let epicPool: PoolSelection | null = null;
   if (slim.epicPool) {
     const epicDef = getEpicPool(slim.epicPool.id);
+    if (!epicDef) notes?.push({ context: 'Epic pool', detail: slim.epicPool.id });
     epicPool = {
       id: slim.epicPool.id,
       name: epicDef?.name ?? slim.epicPool.id,
-      powers: hydratePowers(slim.epicPool.powers, epicDef?.powers ?? [], slim.epicPool.id),
+      powers: hydratePowers(slim.epicPool.powers, epicDef?.powers ?? [], slim.epicPool.id, notes),
     };
   }
 
@@ -349,12 +373,13 @@ export function hydrateBuild(slim: Record<string, any>): Build {
 
   return {
     name: slim.name ?? 'Imported Build',
-    // Dataset identifier — older exports predate the multi-dataset
-    // migration and don't carry this field; default to Homecoming so
-    // legacy builds keep loading the same data they were authored
-    // against.
-    serverId: (slim.serverId === 'rebirth' || slim.serverId === 'thunderspy'
-      ? slim.serverId : 'homecoming') as Build['serverId'],
+    // Dataset identifier — older exports predate the multi-dataset migration and don't carry
+    // this field; default to Homecoming so legacy builds keep loading the same data they were
+    // authored against. Anything the planner ships is kept as written: this fallback used to
+    // name the forks inline and never grew a Brainstorm arm, so a Brainstorm save came back
+    // stamped Homecoming and the engine — which keys on THIS field — computed the build
+    // against live while the header badge, reading the loaded dataset, still said Brainstorm.
+    serverId: isDatasetId(slim.serverId) ? slim.serverId : 'homecoming',
     archetype: archetypeSelection,
     level: slim.level ?? 50,
     progressionMode: slim.progressionMode ?? 'auto',
@@ -394,7 +419,12 @@ export function hydrateBuild(slim: Record<string, any>): Build {
 /**
  * Hydrate an array of slim powers by matching against powerset definitions.
  */
-function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], powerSetId: string): SelectedPower[] {
+function hydratePowers(
+  slimPowers: SlimPower[],
+  powerDefs: readonly Power[],
+  powerSetId: string,
+  notes?: HydrationNote[],
+): SelectedPower[] {
   const hydrated = slimPowers.map((slim) => {
     // Find the matching power definition. Lookup order:
     //   1. exact internalName (fast path)
@@ -428,7 +458,12 @@ function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], pow
     const unslottable = def?.maxSlots === 0;
     const slots: (Enhancement | null)[] = unslottable
       ? []
-      : slim.slots.map((s: SlimEnhancement | null) => (s ? hydrateEnhancement(s) : null));
+      : slim.slots.map((s: SlimEnhancement | null) => {
+          if (!s) return null;
+          const enh = hydrateEnhancement(s);
+          if (!enh) notes?.push({ context: slim.name, detail: enhancementLabel(s) });
+          return enh;
+        });
 
     // Ensure at least one slot
     if (slots.length === 0 && !unslottable) slots.push(null);
@@ -449,6 +484,7 @@ function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], pow
     }
 
     // Fallback: minimal SelectedPower when definition not found
+    notes?.push({ context: powerSetId || 'Build', detail: slim.name });
     return {
       name: slim.name,
       internalName: slim.name.replace(/\s+/g, '_'),
@@ -482,6 +518,22 @@ function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], pow
     seen.add(p.internalName);
     return true;
   });
+}
+
+/**
+ * What to call an enhancement in a note, given only the wire record that could not resolve.
+ * The set's real display name lives in the dataset that does not have it, so the id it was
+ * saved under is the most specific thing that can honestly be said.
+ */
+function enhancementLabel(slim: SlimEnhancement): string {
+  switch (slim.type) {
+    case 'io-set':
+      return `${slim.setId} #${slim.pieceNum}`;
+    case 'special':
+      return `${slim.category} ${slim.id}`;
+    default:
+      return slim.type;
+  }
 }
 
 /**

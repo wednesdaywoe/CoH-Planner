@@ -19,7 +19,7 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**0 open, of 209 entries.** When an entry is open it is listed here with what it's waiting on.
+**0 open, of 211 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
@@ -292,8 +292,17 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 32 of 33 closed
+[Full detail](gaps/pipeline-provenance.md) — 34 of 35 closed
 
+- [x] **FORKSTAMP-1** — `hydrateBuild` named its fork roster inline and never grew a Brainstorm
+  arm, so a Brainstorm save re-stamped itself Homecoming on open: the engine keys its calculation
+  on that field while the badge reads the loaded dataset, giving live numbers under the beta's
+  label; the roster now has one home and a round-trip over `DATASET_IDS` reds on a fork any
+  reader forgets
+- [x] **FORKPORT-1** — a file could only be read on the fork it was saved on: both planners
+  reloaded onto the file's own dataset, so "what does my live build look like on Brainstorm" was
+  unaskable; each now parks the file and offers both opens, and a port re-stamps the build with the
+  fork it was read against rather than rebuilding FORKSTAMP-1 by hand
 - [x] **ROSTER-1** — 23 powersets across Homecoming and its Brainstorm beta converted cleanly,
   shipped in the contract, passed every corpus gate and could be picked by nobody, because the
   archetype rosters that decide what the Build Identity menu offers are hand-maintained lists no

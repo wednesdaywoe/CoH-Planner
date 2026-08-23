@@ -15,7 +15,7 @@
  * store wires them into its persist `migrate`/`merge`/`partialize`.
  */
 
-import { DATASET_IDS } from '@/data/dataset';
+import { isDatasetId } from '@/data/dataset';
 import type { Build } from '@/types';
 import { createEmptyBuild } from '@/types';
 
@@ -37,10 +37,9 @@ export interface PerServerPersistedState {
   buildsByServer: Partial<Record<ServerId, StoredBuild>>;
 }
 
-const KNOWN_SERVERS: readonly ServerId[] = DATASET_IDS;
-
+/** A server id is a dataset id; `isDatasetId` is the roster, this is the name storage calls it. */
 export function isKnownServerId(v: unknown): v is ServerId {
-  return typeof v === 'string' && (KNOWN_SERVERS as readonly string[]).includes(v);
+  return isDatasetId(v);
 }
 
 /** Serialize a build's `sets` `Set`-valued `pieces` to arrays for JSON storage. */

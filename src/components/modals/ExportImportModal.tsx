@@ -16,7 +16,9 @@ import type { GameImportResult } from '@/utils/game-importer';
 import { shareBuild, getSharedBuild, getOwnedBuildIds, getOwnerToken, getMyBuilds, RateLimitError, formatRateLimitMessage, rateLimitHint } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
 import type { SharedBuild } from '@/types/shared';
-import { getAllDatasetMetadata } from '@/data/dataset';
+import { getActiveDataset, getAllDatasetMetadata, type DatasetId } from '@/data/dataset';
+import type { HydrationNote } from '@/utils/build-serialization';
+import { crossDatasetChoice } from '@/utils/build-open-route';
 import { generatePopmenu } from '@/utils/export-popmenu';
 import { openPrintView } from '@/utils/export-print';
 import { exportToMids } from '@/utils/mids-export';
@@ -57,6 +59,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [importText, setImportText] = useState('');
   const [importError, setImportError] = useState<string | null>(null);
   const [importSuccess, setImportSuccess] = useState(false);
+  // A file from another server, held until the user says which of the two opens they meant.
+  // Held as the raw text: the port has to hydrate the ORIGINAL payload, not anything this
+  // dataset has already resolved it into.
+  const [crossDataset, setCrossDataset] = useState<{ text: string; from: DatasetId } | null>(null);
+  const [portNotes, setPortNotes] = useState<HydrationNote[] | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Forum-export modal state — opens a sibling dialog rather than
@@ -322,6 +329,12 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
       return;
     }
 
+    const fromOtherServer = crossDatasetChoice(importText, getActiveDataset().id);
+    if (fromOtherServer) {
+      setCrossDataset({ text: importText, from: fromOtherServer });
+      return;
+    }
+
     try {
       const success = importBuild(importText);
       if (success) {
@@ -339,6 +352,31 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     }
   };
 
+  /**
+   * Finish a cross-server open the user has now answered.
+   *
+   * `onItsOwnServer` reloads onto the file's dataset and never returns here — the page is
+   * replaced. The port stays and reports, because what a port could not carry is the whole
+   * reason it needs a receipt.
+   */
+  const resolveCrossDataset = (intoLoadedDataset: boolean) => {
+    if (!crossDataset) return;
+    const { text } = crossDataset;
+    setCrossDataset(null);
+    try {
+      if (!importBuild(text, { intoLoadedDataset })) {
+        setImportError('Failed to import build. Please check the format.');
+        return;
+      }
+    } catch {
+      setImportError('Invalid build data. Please check the format.');
+      return;
+    }
+    if (!intoLoadedDataset) return; // the reload is already underway
+    setImportText('');
+    setPortNotes(useBuildStore.getState().lastImportNotes);
+  };
+
   const handleImportFromFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -349,6 +387,12 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     const reader = new FileReader();
     reader.onload = (e) => {
       const content = e.target?.result as string;
+      const fromOtherServer = crossDatasetChoice(content, getActiveDataset().id);
+      if (fromOtherServer) {
+        setCrossDataset({ text: content, from: fromOtherServer });
+        if (fileInputRef.current) fileInputRef.current.value = '';
+        return;
+      }
       try {
         const success = importBuild(content);
         if (success) {
@@ -1115,6 +1159,52 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   )}
                 </div>
 
+                {crossDataset && (
+                  <div className="bg-[var(--color-warning)]/15 border border-[var(--color-warning)]/50 rounded p-3 text-sm text-[var(--color-warning-fg)] space-y-2">
+                    <p>
+                      This build was saved on <strong>{serverLabel(crossDataset.from)}</strong>,
+                      and <strong>{getActiveDataset().displayName}</strong> is loaded.
+                    </p>
+                    <p className="text-xs opacity-80">
+                      Reading it here keeps every pick, but anything{' '}
+                      {getActiveDataset().displayName} does not carry contributes nothing to the
+                      totals — you'll get a list of what those are.
+                    </p>
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      <Button variant="primary" size="sm" onClick={() => resolveCrossDataset(false)}>
+                        Open on {serverLabel(crossDataset.from)}
+                      </Button>
+                      <Button variant="secondary" size="sm" onClick={() => resolveCrossDataset(true)}>
+                        Read it on {getActiveDataset().displayName}
+                      </Button>
+                      <Button variant="ghost" size="sm" onClick={() => setCrossDataset(null)}>
+                        Cancel
+                      </Button>
+                    </div>
+                  </div>
+                )}
+                {portNotes && (
+                  <div className="bg-[var(--color-success)]/15 border border-[var(--color-success)]/50 rounded p-3 text-sm text-[var(--color-success-fg)] space-y-1">
+                    <p>
+                      Build read on {getActiveDataset().displayName}
+                      {portNotes.length === 0
+                        ? ' — everything in it resolved.'
+                        : `. ${portNotes.length} ${portNotes.length === 1 ? 'entry' : 'entries'} this dataset does not carry:`}
+                    </p>
+                    {portNotes.length > 0 && (
+                      <ul className="text-xs opacity-90 list-disc pl-5 max-h-32 overflow-y-auto">
+                        {portNotes.map((note, i) => (
+                          <li key={`${note.context}-${note.detail}-${i}`}>
+                            {note.context}: {note.detail}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    <Button variant="ghost" size="sm" onClick={() => { setPortNotes(null); onClose(); }}>
+                      Done
+                    </Button>
+                  </div>
+                )}
                 {importError && (
                   <div className="bg-red-900/20 border border-red-700/50 rounded p-3 text-sm text-red-300">
                     {importError}

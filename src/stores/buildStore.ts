@@ -57,9 +57,9 @@ import {
   pruneProcOverridesForRemovedPowers,
   reindexProcOverridesForRemovedSlot,
 } from '@/data/proc-data';
-import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
+import { slimBuild, hydrateBuild, type HydrationNote } from '@/utils/build-serialization';
 import { encodeImportFragment } from '@/utils/import-url';
-import { getActiveDataset, getAllDatasetMetadata } from '@/data/dataset';
+import { getActiveDataset, getAllDatasetMetadata, isDatasetId } from '@/data/dataset';
 import { toCanonicalStatKey } from '@/data/set-bonus-groups';
 import { showDatasetSwitchOverlay } from '@/utils/dataset-switch-overlay';
 import {
@@ -103,6 +103,15 @@ interface BuildState {
    * carried through `partialize` untouched. See {@link file://./../utils/per-server-builds.ts}.
    */
   _inactiveServerBuilds: Partial<Record<Build['serverId'], StoredBuild>>;
+
+  /**
+   * What the last opened file named that the dataset it was read against does not carry.
+   *
+   * Only a cross-dataset open can fill this: read against its own server a build resolves
+   * whole. Held in the store rather than returned because `importBuild`'s boolean is what
+   * every caller and gate reads, and a receipt is for the one caller that offered the port.
+   */
+  lastImportNotes: HydrationNote[];
 }
 
 interface BuildActions {
@@ -297,7 +306,16 @@ interface BuildActions {
 
   // Import/Export
   exportBuild: () => string;
-  importBuild: (json: string) => boolean;
+  /**
+   * Read a build file into the planner.
+   *
+   * A file whose server is not the one loaded normally reloads onto ITS server (the active
+   * dataset is a boot-time singleton). `intoLoadedDataset` says the user asked for the other
+   * act — read this build against the dataset already loaded, e.g. a live Homecoming build
+   * opened on Brainstorm to see what the next patch does to it. Whatever the target dataset
+   * does not carry is kept in the build and returned as notes, never dropped silently.
+   */
+  importBuild: (json: string, options?: { intoLoadedDataset?: boolean }) => boolean;
   importMidsBuild: (build: Build) => void;
   resetBuild: () => void;
   clearPowers: () => void;
@@ -1662,6 +1680,7 @@ export const useBuildStore = create<BuildStore>()(
       build: createEmptyBuild(),
       _hasHydrated: false,
       _inactiveServerBuilds: {},
+      lastImportNotes: [],
 
       // Hydration tracking
       setHasHydrated: (value) => set({ _hasHydrated: value }),
@@ -3032,7 +3051,7 @@ export const useBuildStore = create<BuildStore>()(
         return JSON.stringify(exportData, null, 2);
       },
 
-      importBuild: (json) => {
+      importBuild: (json, options) => {
         historyCheckpoint();
         try {
           const data = JSON.parse(json);
@@ -3060,9 +3079,21 @@ export const useBuildStore = create<BuildStore>()(
           // so the store's serverId would be stale and re-trigger the reload —
           // an infinite loop. getActiveDataset().id reflects what's actually
           // loaded and, post-reload, already matches the imported build.
-          const targetServerId: Build['serverId'] =
-            (data.build?.serverId as Build['serverId']) ?? 'homecoming';
-          if (typeof window !== 'undefined' && targetServerId !== getActiveDataset().id) {
+          //
+          // Read through `isDatasetId` for the same reason `bootServerId` does: an id this
+          // build does not ship is about to become `?serverId=<id>`, boot answers Homecoming
+          // for it, and the re-import compares the raw id against Homecoming again — a reload
+          // that never converges. Resolving it here to what boot will actually load makes the
+          // comparison terminate.
+          const targetServerId: Build['serverId'] = isDatasetId(data.build?.serverId)
+            ? data.build.serverId
+            : 'homecoming';
+          // `intoLoadedDataset` is the user answering the other way at the prompt: read this
+          // build HERE. Skipping the reload is the whole of it, plus the re-stamp below —
+          // a ported build that kept its old serverId would compute against the server it
+          // came from while every label named the one on screen.
+          const port = options?.intoLoadedDataset === true;
+          if (!port && typeof window !== 'undefined' && targetServerId !== getActiveDataset().id) {
             const label =
               getAllDatasetMetadata().find((d) => d.id === targetServerId)?.displayName
               ?? targetServerId;
@@ -3075,11 +3106,13 @@ export const useBuildStore = create<BuildStore>()(
 
           let build: Build;
 
+          const notes: HydrationNote[] = [];
+
           if (data.version === 2 || data.version === 3 || data.version === 4) {
             // v2/v3/v4 slim format — reconstruct full Build from identity + build-specific fields
             //   v3 adds internalName to SlimPower; v2 uses display name fallback
             //   v4 adds `serverId` for multi-dataset support; v2/v3 default to 'homecoming'
-            build = hydrateBuild(data.build);
+            build = hydrateBuild(data.build, notes);
           } else {
             // v1 (legacy) — full Build object, just convert Set serialization
             const setsEntries = Object.entries(data.build.sets || {}) as [
@@ -3135,7 +3168,12 @@ export const useBuildStore = create<BuildStore>()(
           // held for the outgoing build would resurface as someone else's.
           useUIStore.getState().clearCompareSlottingCopies();
 
-          set({ build });
+          // A ported build belongs to the dataset it was read against, whatever the file
+          // said. `serverId` is what the engine calculates against, so leaving the file's
+          // own id here is the split-brain this port exists to avoid.
+          if (port) build.serverId = getActiveDataset().id;
+
+          set({ build, lastImportNotes: port ? notes : [] });
           return true;
         } catch (e) {
           console.error('Failed to import build:', e);
