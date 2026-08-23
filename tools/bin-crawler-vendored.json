@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "8139338839168254d178de0c76afa8c4cdeb6962",
-  "synced_from_subject": "BRAIN-11 closes: the bin-crawler guards grade Brainstorm, measured not copied",
-  "synced_from_date": "2026-08-22T20:55:23-04:00",
-  "tree_fingerprint": "858d132f14ec00929739c832f4d8e42af6ad267fff6c66766bcc292519e1694e",
+  "synced_from_commit": "da7f991438f871cc8ee211890c0572a85cefac57",
+  "synced_from_subject": "DEBUFFRES-1 closes: the game resists by attrib offset, so there was no allowlist to be outside of",
+  "synced_from_date": "2026-08-23T08:55:57-04:00",
+  "tree_fingerprint": "10d9d85e37f3bad1b291ae47cff4294afdb72695b8418c1d6d478d4897b41f78",
   "export_manifest_digest": "9b4250aee4bd8835414a5d8226dfcf90b185e654fe16091f7a0f4bb2df71381b",
   "export_manifest_count": 14
 }
