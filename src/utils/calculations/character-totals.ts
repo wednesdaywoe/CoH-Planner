@@ -99,6 +99,11 @@ export interface GlobalBonuses {
   debuffResistToHit: number;
   debuffResistRegeneration: number;
   debuffResistPerception: number;
+  // Accuracy/range debuff resistance (DEBUFFRES-1). ENGINE-ONLY: the legacy calc's
+  // `debuffResMapping` names neither, so it leaves both at 0 and `serverParity` lists them
+  // UNMAPPED. Declared here because the field set is the shared shape both sides fill.
+  debuffResistAccuracy: number;
+  debuffResistRange: number;
   // Special
   healOther: number;
   // Healing Received — Res(Heal) buff (percent). Positive = more healing
@@ -275,6 +280,8 @@ export function createEmptyGlobalBonuses(): GlobalBonuses {
     debuffResistToHit: 0,
     debuffResistRegeneration: 0,
     debuffResistPerception: 0,
+    debuffResistAccuracy: 0,
+    debuffResistRange: 0,
     healOther: 0,
     healReceived: 0,
     threatLevel: 0,

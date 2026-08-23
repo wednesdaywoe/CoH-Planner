@@ -129,6 +129,9 @@ export interface CalculatedStats {
     tohit: number;
     regeneration: number;
     perception: number;
+    // DEBUFFRES-1. Off `global`, not `charStats`: neither has a CharacterStats twin.
+    accuracy: number;
+    range: number;
   };
 
   // Global modifiers from set bonuses
@@ -233,6 +236,8 @@ export function convertToLegacyStats(
       tohit: charStats.debuffResistToHit,
       regeneration: charStats.debuffResistRegeneration,
       perception: charStats.debuffResistPerception,
+      accuracy: global.debuffResistAccuracy,
+      range: global.debuffResistRange,
     },
 
     // Global modifiers

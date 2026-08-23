@@ -53,6 +53,7 @@ export const DETAILED_STATS: string[] = [
   'prot_hold', 'prot_stun', 'prot_immob', 'prot_sleep', 'prot_confuse', 'prot_fear', 'prot_kb', 'prot_repel', 'prot_teleport',
   'mezres_hold', 'mezres_stun', 'mezres_immob', 'mezres_sleep', 'mezres_confuse', 'mezres_fear', 'mezres_kb', 'mezres_taunt', 'mezres_placate',
   'debuff_slow', 'debuff_defense', 'debuff_recharge', 'debuff_endurance', 'debuff_recovery', 'debuff_tohit', 'debuff_regen', 'debuff_perception',
+  'debuff_accuracy', 'debuff_range',
 ];
 
 // ============================================

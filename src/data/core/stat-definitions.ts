@@ -667,6 +667,24 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     tooltip: 'Resistance to perception debuffs',
     breakdownKey: 'debuffResistPerception',
   },
+  debuff_accuracy: {
+    id: 'debuff_accuracy',
+    label: 'Accuracy',
+    getValue: (stats) => stats.debuffResistance.accuracy,
+    format: (v) => `${pct2(Number(v))}%`,
+    color: STAT_COLORS.debuffResistance,
+    tooltip: 'Resistance to accuracy debuffs',
+    breakdownKey: 'debuffResistAccuracy',
+  },
+  debuff_range: {
+    id: 'debuff_range',
+    label: 'Range',
+    getValue: (stats) => stats.debuffResistance.range,
+    format: (v) => `${pct2(Number(v))}%`,
+    color: STAT_COLORS.debuffResistance,
+    tooltip: 'Resistance to range debuffs',
+    breakdownKey: 'debuffResistRange',
+  },
 
   // ============================================
   // INDIVIDUAL DEFENSE (for Detailed Totals)
@@ -1234,7 +1252,7 @@ export const STAT_SECTIONS: { category: StatCategory; stats: string[] }[] = [
   { category: 'resistance', stats: ['res_smashing', 'res_lethal', 'res_fire', 'res_cold', 'res_energy', 'res_negative', 'res_psionic', 'res_toxic'] },
   { category: 'status-protection', stats: ['mez_hold', 'mez_stun', 'mez_immob', 'mez_sleep', 'mez_confuse', 'mez_fear', 'mez_kb', 'prot_hold', 'prot_stun', 'prot_immob', 'prot_sleep', 'prot_confuse', 'prot_fear', 'prot_kb', 'prot_repel', 'prot_teleport'] },
   { category: 'status-resistance', stats: ['mezres_hold', 'mezres_stun', 'mezres_immob', 'mezres_sleep', 'mezres_confuse', 'mezres_fear', 'mezres_kb', 'mezres_taunt', 'mezres_placate'] },
-  { category: 'debuff-resistance', stats: ['debuff_slow', 'debuff_defense', 'debuff_recharge', 'debuff_endurance', 'debuff_recovery', 'debuff_tohit', 'debuff_regen', 'debuff_perception'] },
+  { category: 'debuff-resistance', stats: ['debuff_slow', 'debuff_defense', 'debuff_recharge', 'debuff_endurance', 'debuff_recovery', 'debuff_tohit', 'debuff_regen', 'debuff_perception', 'debuff_accuracy', 'debuff_range'] },
 ];
 
 /** statId → section category, derived from STAT_SECTIONS. */

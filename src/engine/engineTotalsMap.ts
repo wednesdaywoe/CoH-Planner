@@ -41,6 +41,7 @@ export interface EngineBonuses {
   protection_confuse: number; protection_fear: number; protection_knockback: number;
   debuff_resist_slow: number; debuff_resist_defense: number; debuff_resist_recharge: number; debuff_resist_endurance: number;
   debuff_resist_recovery: number; debuff_resist_to_hit: number; debuff_resist_regeneration: number; debuff_resist_perception: number;
+  debuff_resist_accuracy: number; debuff_resist_range: number;
   heal_other: number; heal_received: number;
   stealth_radius_pve: number; stealth_radius_pvp: number; perception_radius: number;
   mez_resist_taunt: number; mez_resist_placate: number;
@@ -732,6 +733,9 @@ export function mapGlobal(b: EngineBonuses, s: EngineStats): GlobalBonuses {
     debuffResistRecharge: b.debuff_resist_recharge, debuffResistEndurance: b.debuff_resist_endurance,
     debuffResistRecovery: b.debuff_resist_recovery, debuffResistToHit: b.debuff_resist_to_hit,
     debuffResistRegeneration: b.debuff_resist_regeneration, debuffResistPerception: b.debuff_resist_perception,
+    // DEBUFFRES-1. Accumulator-only on the engine side too — no `CharacterStats` twin, so unlike
+    // the eight above these have no `mapStats` line.
+    debuffResistAccuracy: b.debuff_resist_accuracy, debuffResistRange: b.debuff_resist_range,
     healOther: b.heal_other, healReceived: b.heal_received, threatLevel: 0,
     stealthRadiusPvE: b.stealth_radius_pve, stealthRadiusPvP: b.stealth_radius_pvp, perceptionRadius: b.perception_radius,
     protRepel: 0, protTeleport: 0,

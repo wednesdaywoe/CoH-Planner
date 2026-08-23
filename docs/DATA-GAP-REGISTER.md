@@ -19,13 +19,11 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**1 open, of 205 entries.** When an entry is open it is listed here with what it's waiting on.
+**0 open, of 205 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
-- **DEBUFFRES-1** — an accuracy debuff resistance the export states and no total accumulates,
-  carried in the type and reached by nothing. Waiting on a totals slot and a routed sub-key, or
-  a measurement that the game applies nothing. [Detail](gaps/stat-routing.md)
+Nothing open. The next finding gets a row below and a pointer here.
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -210,13 +208,13 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Stat routing + caps
 
-[Full detail](gaps/stat-routing.md) — 51 of 51 closed
+[Full detail](gaps/stat-routing.md) — 52 of 52 closed
 
-- [ ] **DEBUFFRES-1** — Brainstorm's Light Affinity states an accuracy debuff resistance
-  (`Lightfield`/`Spotlight`, `Ranged_Res_Boolean` at IgnoreStrength) that nothing accumulates: the
-  type carries the key so the export's row is not dropped, but no total, stat definition or
-  `ROUTED_SUBTYPES` entry reaches it — the standing `range` has held unmeasured. Waiting on a
-  totals slot and a routed sub-key, or a measurement that the game applies nothing
+- [x] **DEBUFFRES-1** — Brainstorm's Light Affinity states an accuracy debuff resistance and
+  Regeneration's Revive a range one, and neither reached a total: the type carried both keys while
+  no global, stat definition or `ROUTED_SUBTYPES` entry did; `mod_Process` resists by the attrib's
+  own offset, so the game applies both, and the pair now has fields, routes, guards and dashboard
+  rows on every fork
 - [x] **MOVE-4** — `planb-shadow-movement`'s three pin tables key on `<dataset>|<power>|<axis>` and never gained Brainstorm rows, so 30 movement and 7 slow slots the TARGETS-3 buckets already answer for on Homecoming fell through to `diverge` and held `npm run regen` shut; the five powers are byte-identical across the two datasets so the pins mirror, and `audit-dataset-roster` now bracket-matches composite keys its bare `homecoming:` anchor could not see
 - [x] **STACK-6** — `stacksLinear` was keyed by a second, hand-maintained copy of the routing rules, so it named `specialBuff` for sentinel Aim's `Range|Str` row the router puts on `rangeBuff` — a key with no value beside an omitted key that has one; the key comes from `projectAtomsToEffects` now and admission stays the classifier's, 166 swaps and 17 collector-superset orphans gone, and the beta's stacking adjudication retires with it
 - [x] **MOVEMAP-7** — the display `slow` slot carried the kFly mode row folded in as a slow magnitude on all three forks (487 rows); the extractor now skips the mode axis in debuff slots, matching the atom readers, with the census and both guards in the narrative

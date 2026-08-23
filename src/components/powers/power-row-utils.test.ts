@@ -21,8 +21,17 @@ import { shouldShowToggle, ROUTED_SUBTYPES } from './power-row-utils';
 const MEZ_RES_TOTALS = ['hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear', 'knockback'];
 const DEBUFF_RES_TOTALS = [
   'movement', 'defense', 'recharge', 'endurance', 'recovery', 'tohit',
-  'regeneration', 'perception',
+  'regeneration', 'perception', 'accuracy', 'range',
 ];
+
+/**
+ * Subtypes the ENGINE routes that the frozen oracle never did, so the UI list is deliberately
+ * wider than `debuffResMapping`. Adding to the oracle is not an option (PROD7 froze it), and
+ * narrowing the UI to match would put a toggle-suppressing lie on Light Affinity — so the drift
+ * check below runs one-directional over these and exact over everything else. A new engine route
+ * that nobody declares here still reds.
+ */
+const ENGINE_ONLY_DEBUFF_RES = ['accuracy', 'range'];
 
 function readOracle(): string {
   const p = fileURLToPath(
@@ -50,9 +59,18 @@ describe('shouldShowToggle — routability of sub-keyed resistance containers', 
     expect([...ROUTED_SUBTYPES.mezResistance].sort()).toEqual(
       mappingKeys(oracle, 'mezResMapping').sort(),
     );
-    expect([...ROUTED_SUBTYPES.debuffResistance].sort()).toEqual(
-      mappingKeys(oracle, 'debuffResMapping').sort(),
+    const oracleDebuffRes = mappingKeys(oracle, 'debuffResMapping');
+    // Oracle → UI is still exact: a subtype the oracle routes and the UI does not is the original
+    // Fold Space bug in reverse, and no freeze excuses it.
+    expect(oracleDebuffRes.sort()).toEqual(
+      [...ROUTED_SUBTYPES.debuffResistance]
+        .filter((k) => !ENGINE_ONLY_DEBUFF_RES.includes(k))
+        .sort(),
     );
+    // UI → oracle diverges only by the declared engine-only pair.
+    expect(
+      [...ROUTED_SUBTYPES.debuffResistance].filter((k) => !oracleDebuffRes.includes(k)).sort(),
+    ).toEqual([...ENGINE_ONLY_DEBUFF_RES].sort());
     // And pin the expected content, so a matched-but-wrong pair of edits is caught.
     expect([...ROUTED_SUBTYPES.mezResistance].sort()).toEqual([...MEZ_RES_TOTALS].sort());
     expect([...ROUTED_SUBTYPES.debuffResistance].sort()).toEqual([...DEBUFF_RES_TOTALS].sort());

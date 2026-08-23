@@ -271,6 +271,8 @@ export const TRACKED_STATS_WITHOUT_SET_BONUSES: readonly string[] = [
   'debuffResistRecovery',
   'debuffResistRegeneration',
   'debuffResistToHit',
+  'debuffResistAccuracy',
+  'debuffResistRange',
 ];
 
 /**

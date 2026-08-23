@@ -215,7 +215,15 @@ const SWEEP_LEVEL = 25;
 // dashboard's END COST and NET END, so excusing them hid a live 0 on every build from the
 // engine swap (2026-07-23) until the engine grew them. They are graded now — this list is for
 // fields with no consumer, not for fields with no implementation.
-const UNMAPPED = new Set(['threatLevel', 'protRepel', 'protTeleport', 'enduranceDiscount']);
+// `debuffResistAccuracy`/`debuffResistRange`: engine-only fields (DEBUFFRES-1). The legacy calc's
+// `debuffResMapping` names neither key, so it reads 0 wherever the export states one — Light
+// Affinity's accuracy, Regeneration's Revive/Dismiss Pain's range. Nothing to compare, so they sit
+// here rather than under ADJUDICATED; the engine side is graded in the rebuild by
+// `route_sweep::accuracy_and_range_debuff_resistance_reach_their_totals`.
+const UNMAPPED = new Set([
+  'threatLevel', 'protRepel', 'protTeleport', 'enduranceDiscount',
+  'debuffResistAccuracy', 'debuffResistRange',
+]);
 
 // Stats (lowercased key) where the engine intentionally supersedes the legacy calc — the engine
 // reads a faithful effect the beta's older converter drops. These are validated, not defects:

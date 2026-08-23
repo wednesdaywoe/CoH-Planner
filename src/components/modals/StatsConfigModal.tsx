@@ -235,6 +235,8 @@ const SETTINGS_STATS: StatToggle[] = [
   { stat: 'debuff_tohit', label: 'ToHit' },
   { stat: 'debuff_regen', label: 'Regen' },
   { stat: 'debuff_perception', label: 'Perception' },
+  { stat: 'debuff_accuracy', label: 'Accuracy' },
+  { stat: 'debuff_range', label: 'Range' },
 ];
 
 // Toggle sections, with each section's stats grouped + ordered from the shared

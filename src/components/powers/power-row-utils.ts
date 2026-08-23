@@ -64,7 +64,9 @@ const ALLY_ONLY_TARGETS = new Set(['ally', 'ally (alive)']);
  *
  * These lists mirror `mezResMapping` / `debuffResMapping` in
  * `src/utils/calculations/legacy-totals.oracle.ts` (and their Rust twins in
- * `coh_math`); `power-row-utils.test.ts` pins them in sync.
+ * `coh_math`); `power-row-utils.test.ts` pins them in sync. The oracle is frozen, so where the
+ * engine routes a subtype the oracle never did, the list follows the ENGINE and the test names
+ * the divergence: `accuracy`/`range` are the engine's own (DEBUFFRES-1).
  *
  * Note this is deliberately a routability test, not a `toWho` test: Aid Self also
  * stamps `toWho: 'Target'` on its `mezResistance.stun`, but it is a self-cast
@@ -76,7 +78,7 @@ export const ROUTED_SUBTYPES: Record<string, Set<string>> = {
   ]),
   debuffResistance: new Set([
     'movement', 'defense', 'recharge', 'endurance', 'recovery', 'tohit',
-    'regeneration', 'perception',
+    'regeneration', 'perception', 'accuracy', 'range',
   ]),
 };
 
