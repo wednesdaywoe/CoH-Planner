@@ -53,7 +53,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "bbd44db3a60c054ae5811b8e128454524d2a68fead9ee8ae5ef82c3021119816"
+      "sha256": "151e3eaf3543187c36fd1cfcc2ab029cabc1bffe0ade37c78baf5e526e69431f"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -288,7 +288,7 @@
     {
       "path": "scripts/extract-proc-data.py",
       "status": "identical",
-      "sha256": "158872ed8025553f6d91eb4d201a78bd1194b670cc837a65e763b637c6aec250"
+      "sha256": "dd776d1a7987c493d8198d589958a35ebc6541603b5ed61a91d9fadae15942e4"
     },
     {
       "path": "scripts/extract-rebirth-io-sets-v2.py",

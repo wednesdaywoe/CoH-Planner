@@ -559,7 +559,7 @@ def parse_hand_damage() -> list[dict]:
     txt = PROC_DATA_TS.read_text(encoding='utf-8')
     out = []
     for m in re.finditer(
-        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
+        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*'
         r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"[^"]+",\s*\n\s*ppm:[^\n]*\n\s*'
         r'mechanics:\s*"Damage\s*\(', txt):
         out.append({'key': m.group(1), 'setName': m.group(2)})
@@ -607,7 +607,7 @@ def parse_hand_other() -> list[dict]:
     txt = PROC_DATA_TS.read_text(encoding='utf-8')
     out = []
     for m in re.finditer(
-        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
+        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*'
         r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"([^"]+)",\s*\n\s*ppm:[^\n]*\n\s*'
         r'mechanics:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*pvpNotes:[^\n]*\n\s*type:\s*"Proc"', txt):
         mech = m.group(4)
@@ -729,7 +729,7 @@ def parse_hand_entries() -> list[dict]:
     """Parse every PROC_DATABASE entry, whatever its type (key + setName)."""
     txt = PROC_DATA_TS.read_text(encoding='utf-8')
     return [{'key': m.group(1), 'setName': m.group(2)} for m in re.finditer(
-        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
+        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*'
         r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"[^"]+",', txt)]
 
 
@@ -738,7 +738,7 @@ def parse_hand_ppm() -> list[dict]:
     txt = PROC_DATA_TS.read_text(encoding='utf-8')
     out = []
     for m in re.finditer(
-        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
+        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*'
         r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"[^"]+",\s*\n\s*ppm:\s*([0-9.]+),', txt):
         out.append({'key': m.group(1), 'setName': m.group(2), 'ppm': float(m.group(3))})
     return out
@@ -749,13 +749,48 @@ def parse_hand_globals() -> list[dict]:
     txt = PROC_DATA_TS.read_text(encoding='utf-8')
     entries = []
     for m in re.finditer(
-        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
+        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*'
         r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"([^"]+)",\s*\n\s*ppm:\s*([^,]+),\s*\n\s*'
         r'mechanics:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*pvpNotes:[^\n]*\n\s*type:\s*"(Global|Proc120s)"',
         txt):
         entries.append({'key': m.group(1), 'setName': m.group(2), 'ioName': m.group(3),
                         'ppm': m.group(4).strip(), 'mechanics': m.group(5), 'type': m.group(6)})
     return entries
+
+
+# The five parse_hand_* readers anchor on the entry's exact field ORDER, so a
+# field added, removed or reordered in proc-data.ts silently drops rows instead
+# of failing. That is how PROCCAT-1's deleted `setCategory` could have gone
+# unnoticed: every reader would have matched nothing and emitted empty generated
+# files. Count against an independent read of the literal keys and stop loud.
+# The one Proc reached by neither the damage nor the other reader is pinned: a
+# comment sits between its fields, where those two regexes expect `ppm:`.
+COMMENT_BLOCKS_THE_READER = {'Superior Overpowering Presence: Recharge/Chance for Energy Font'}
+
+
+def check_hand_shape() -> None:
+    txt = PROC_DATA_TS.read_text(encoding='utf-8')
+    body = txt.split('export const PROC_DATABASE', 1)[1]
+    keys = re.findall(r'^  "((?:[^"\\]|\\.)*)": \{', body, re.M)
+    types = re.findall(r'^    type: "(\w+)",', body, re.M)
+    always_on = sum(1 for t in types if t in ('Global', 'Proc120s'))
+
+    entries = {e['key'] for e in parse_hand_entries()}
+    if entries != set(keys):
+        raise SystemExit(f'proc-data.ts shape changed: parse_hand_entries reads '
+                         f'{len(entries)} of {len(keys)} entries, missing '
+                         f'{sorted(set(keys) - entries)[:5]}')
+    if len(parse_hand_globals()) != always_on:
+        raise SystemExit(f'proc-data.ts shape changed: parse_hand_globals reads '
+                         f'{len(parse_hand_globals())} of {always_on} Global/Proc120s entries')
+    read = {e['key'] for e in parse_hand_damage()} | {e['key'] for e in parse_hand_other()}
+    unread = set(keys) - read - {e['key'] for e in parse_hand_globals()}
+    if unread != COMMENT_BLOCKS_THE_READER:
+        raise SystemExit(f'proc-data.ts shape changed: Procs read by neither the damage '
+                         f'nor the other reader are {sorted(unread)}, pinned '
+                         f'{sorted(COMMENT_BLOCKS_THE_READER)}')
+    print(f'  shape ok: {len(keys)} entries, {always_on} always-on, '
+          f'{len(COMMENT_BLOCKS_THE_READER)} pinned unread')
 
 
 def sid(n: str) -> str:
@@ -845,6 +880,7 @@ def _emit_ppm(path: Path, ppm: dict[str, float]) -> None:
 
 def main() -> int:
     emit = '--check' not in sys.argv[1:]
+    check_hand_shape()
     print(f'Loading HC bins from {HC_ASSETS}…')
     r = BinResolver(HC_ASSETS)
     sets = parse_boostsets(r.read('boostsets.bin'))

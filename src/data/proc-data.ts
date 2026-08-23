@@ -107,8 +107,6 @@ export interface ProcEffect {
 }
 
 export interface ProcData {
-  /** Set category (e.g., "Ranged Damage", "Holds") */
-  setCategory: string;
   /** IO Set name */
   setName: string;
   /** Proc IO name */
@@ -149,7 +147,6 @@ export interface ProcData {
 export const PROC_DATABASE: Record<string, ProcData> = {
   // Buff Procs
   "Chance for Build Up": {
-    setCategory: "Ranged Damage",
     setName: "Decimation",
     ioName: "Chance for Build Up",
     ppm: 1,
@@ -161,7 +158,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Gaussian's Synchronized Fire-Control: Chance for Build Up": {
-    setCategory: "To Hit Buff",
     setName: "Gaussian's Synchronized Fire-Control",
     ioName: "Chance for Build Up",
     ppm: 1,
@@ -173,7 +169,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Chance for Endurance Buff": {
-    setCategory: "Endurance Modification",
     setName: "Performance Shifter",
     ioName: "Chance for Endurance Buff",
     ppm: 1.5,
@@ -185,7 +180,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for +HP & +End": {
-    setCategory: "Healing",
     setName: "Panacea",
     ioName: "Chance for +HP & +End",
     ppm: 3,
@@ -197,7 +191,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Theft of Essence: Chance for Endurance Buff": {
-    setCategory: "Accurate Healing",
     setName: "Theft of Essence",
     ioName: "Chance for Endurance Buff",
     ppm: 3.5,
@@ -209,7 +202,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Heal Self": {
-    setCategory: "Sleep",
     setName: "Call of the Sandman",
     ioName: "Chance for Heal Self",
     ppm: 2,
@@ -221,7 +213,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Entropic Chaos: Chance for Heal Self": {
-    setCategory: "Ranged Damage",
     setName: "Entropic Chaos",
     ioName: "Chance for Heal Self",
     ppm: 3,
@@ -233,7 +224,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Power Transfer: Chance for Heal Self": {
-    setCategory: "Endurance Modification",
     setName: "Power Transfer",
     ioName: "Chance for Heal Self",
     ppm: 3,
@@ -245,7 +235,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for +Absorb": {
-    setCategory: "Holds",
     setName: "Entomb",
     ioName: "Chance for +Absorb",
     ppm: 2,
@@ -257,7 +246,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Entomb: Chance for +Absorb": {
-    setCategory: "Holds",
     setName: "Superior Entomb",
     ioName: "Chance for +Absorb",
     ppm: 3,
@@ -270,7 +258,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   },
   // Preventive Medicine (Healing set) - Global IO, health-threshold trigger
   "+Absorb/Chance for +Absorb": {
-    setCategory: "Healing",
     setName: "Preventive Medicine",
     ioName: "Chance for +Absorb",
     ppm: null,
@@ -283,7 +270,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   },
   // Gauntleted Fist (Tanker ATO) - Absorb proc
   "Gauntleted Fist: Recharge/Chance for +Absorb": {
-    setCategory: "Tanker Archetype Sets",
     setName: "Gauntleted Fist",
     ioName: "Chance for +Absorb",
     ppm: 2,
@@ -295,7 +281,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Gauntleted Fist: Recharge/Chance for +Absorb": {
-    setCategory: "Tanker Archetype Sets",
     setName: "Superior Gauntleted Fist",
     ioName: "Chance for +Absorb",
     ppm: 3,
@@ -308,7 +293,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   },
   // Sentinel's Ward (Sentinel ATO) - Absorb proc
   "Sentinel's Ward: Recharge/Chance for +Absorb": {
-    setCategory: "Sentinel Archetype Sets",
     setName: "Sentinel's Ward",
     ioName: "Chance for +Absorb",
     ppm: 5,
@@ -320,7 +304,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Sentinel's Ward: Recharge/Chance for +Absorb": {
-    setCategory: "Sentinel Archetype Sets",
     setName: "Superior Sentinel's Ward",
     ioName: "Chance for +Absorb",
     ppm: 6,
@@ -333,7 +316,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   },
   // Vigilant Assault (Defender ATO) - PBAoE Absorb proc
   "Vigilant Assault: Recharge/Chance for +Absorb": {
-    setCategory: "Defender Archetype Sets",
     setName: "Vigilant Assault",
     ioName: "Chance for Minor PBAoE +Absorb",
     ppm: 4,
@@ -345,7 +327,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Vigilant Assault: Recharge/Chance for +Absorb": {
-    setCategory: "Defender Archetype Sets",
     setName: "Superior Vigilant Assault",
     ioName: "Chance for Minor PBAoE +Absorb",
     ppm: 5,
@@ -357,7 +338,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Chance for Recharge Buff": {
-    setCategory: "Knockback",
     setName: "Force Feedback",
     ioName: "Chance for Recharge Buff",
     ppm: 2,
@@ -369,7 +349,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Soulbound Allegiance: Chance for Build Up": {
-    setCategory: "Pet Damage",
     setName: "Soulbound Allegiance",
     ioName: "Chance for Build Up",
     ppm: 3,
@@ -383,7 +362,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
 
   // Damage Procs
   "Chance for Fire Damage": {
-    setCategory: "Melee AoE Damage",
     setName: "Armageddon",
     ioName: "Chance for Fire Damage",
     ppm: 4.5,
@@ -395,7 +373,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Bombardment: Chance for Fire Damage": {
-    setCategory: "Ranged AoE Damage",
     setName: "Bombardment",
     ioName: "Chance for Fire Damage",
     ppm: 3.5,
@@ -407,7 +384,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Cold Damage": {
-    setCategory: "Slow Movement",
     setName: "Ice Mistral's Torment",
     ioName: "Chance for Cold Damage",
     ppm: 3.5,
@@ -419,7 +395,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Energy Damage": {
-    setCategory: "Confuse",
     setName: "Cacophony",
     ioName: "Chance for Energy Damage",
     ppm: 3.5,
@@ -431,7 +406,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Eradication: Chance for Energy Damage": {
-    setCategory: "Melee AoE Damage",
     setName: "Eradication",
     ioName: "Chance for Energy Damage",
     ppm: 3.5,
@@ -443,7 +417,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Positron's Blast: Chance for Energy Damage": {
-    setCategory: "Ranged AoE Damage",
     setName: "Positron's Blast",
     ioName: "Chance for Energy Damage",
     ppm: 3.5,
@@ -455,7 +428,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Lethal Damage": {
-    setCategory: "Melee Damage",
     setName: "Mako's Bite",
     ioName: "Chance for Lethal Damage",
     ppm: 3.5,
@@ -467,7 +439,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Scirocco's Dervish: Chance for Lethal Damage": {
-    setCategory: "Melee AoE Damage",
     setName: "Scirocco's Dervish",
     ioName: "Chance for Lethal Damage",
     ppm: 3.5,
@@ -479,7 +450,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Shield Breaker: Chance for Lethal Damage": {
-    setCategory: "Accurate Defense Debuff",
     setName: "Shield Breaker",
     ioName: "Chance for Lethal Damage",
     ppm: 3.5,
@@ -491,7 +461,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Trap of the Hunter: Chance for Lethal Damage": {
-    setCategory: "Immobilize",
     setName: "Trap of the Hunter",
     ioName: "Chance for Lethal Damage",
     ppm: 3.5,
@@ -503,7 +472,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Javelin Volley: Chance for Lethal Damage": {
-    setCategory: "Ranged AoE Damage",
     setName: "Javelin Volley",
     ioName: "Chance for Lethal Damage",
     ppm: 3.5,
@@ -515,7 +483,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Gladiator's Net: Chance for Lethal Damage": {
-    setCategory: "Holds",
     setName: "Gladiator's Net",
     ioName: "Chance for Lethal Damage",
     ppm: 3.5,
@@ -527,7 +494,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Negative Energy Damage": {
-    setCategory: "Ranged Damage",
     setName: "Apocalypse",
     ioName: "Chance for Negative Energy Damage",
     ppm: 4.5,
@@ -539,7 +505,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Hecatomb: Chance for Negative Energy Damage": {
-    setCategory: "Melee Damage",
     setName: "Hecatomb",
     ioName: "Chance for Negative Energy Damage",
     ppm: 4.5,
@@ -551,7 +516,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Touch of Death: Chance for Negative Energy Damage": {
-    setCategory: "Melee Damage",
     setName: "Touch of Death",
     ioName: "Chance for Negative Energy Damage",
     ppm: 3.5,
@@ -563,7 +527,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Touch of the Nictus: Chance for Negative Energy Damage": {
-    setCategory: "Accurate Healing",
     setName: "Touch of the Nictus",
     ioName: "Chance for Negative Energy Damage",
     ppm: 3.5,
@@ -575,7 +538,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Cloud Senses: Chance for Negative Energy Damage": {
-    setCategory: "Accurate To Hit Debuff",
     setName: "Cloud Senses",
     ioName: "Chance for Negative Energy Damage",
     ppm: 3.5,
@@ -587,7 +549,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Touch of Lady Grey: Chance for Negative Energy Damage": {
-    setCategory: "Defense Debuff",
     setName: "Touch of Lady Grey",
     ioName: "Chance for Negative Energy Damage",
     ppm: 3.5,
@@ -599,7 +560,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Psionic Damage": {
-    setCategory: "Holds",
     setName: "Ghost Widow's Embrace",
     ioName: "Chance for Psionic Damage",
     ppm: 3.5,
@@ -611,7 +571,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Glimpse of the Abyss: Chance for Psionic Damage": {
-    setCategory: "Fear",
     setName: "Glimpse of the Abyss",
     ioName: "Chance for Psionic Damage",
     ppm: 3.5,
@@ -623,7 +582,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Malaise's Illusions: Chance for Psionic Damage": {
-    setCategory: "Confuse",
     setName: "Malaise's Illusions",
     ioName: "Chance for Psionic Damage",
     ppm: 3.5,
@@ -635,7 +593,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Perfect Zinger: Chance for Psionic Damage": {
-    setCategory: "Threat Duration",
     setName: "Perfect Zinger",
     ioName: "Chance for Psionic Damage",
     ppm: 3.5,
@@ -647,7 +604,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Psionic DoT": {
-    setCategory: "Holds",
     setName: "Neuronic Shutdown",
     ioName: "Chance for Psionic DoT",
     ppm: 3.5,
@@ -659,7 +615,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Smashing Damage": {
-    setCategory: "Holds",
     setName: "Unbreakable Constraint",
     ioName: "Chance for Smashing Damage",
     ppm: 4.5,
@@ -671,7 +626,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Explosive Strike: Chance for Smashing Damage": {
-    setCategory: "Knockback",
     setName: "Explosive Strike",
     ioName: "Chance for Smashing Damage",
     ppm: 3.5,
@@ -683,7 +637,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Impeded Swiftness: Chance for Smashing Damage": {
-    setCategory: "Slow Movement",
     setName: "Impeded Swiftness",
     ioName: "Chance for Smashing Damage",
     ppm: 3.5,
@@ -695,7 +648,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Obliteration: Chance for Smashing Damage": {
-    setCategory: "Melee AoE Damage",
     setName: "Obliteration",
     ioName: "Chance for Smashing Damage",
     ppm: 3.5,
@@ -707,7 +659,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Gladiator's Strike: Chance for Smashing Damage": {
-    setCategory: "Melee Damage",
     setName: "Gladiator's Strike",
     ioName: "Chance for Smashing Damage",
     ppm: 3.5,
@@ -719,7 +670,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Toxic Damage": {
-    setCategory: "Sniper Attacks",
     setName: "Sting of the Manticore",
     ioName: "Chance for Toxic Damage",
     ppm: 3.5,
@@ -731,7 +681,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Gladiator's Javelin: Chance for Toxic Damage": {
-    setCategory: "Ranged Damage",
     setName: "Gladiator's Javelin",
     ioName: "Chance for Toxic Damage",
     ppm: 3.5,
@@ -745,7 +694,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
 
   // Debuff Procs
   "Chance for -Res Debuff": {
-    setCategory: "Defense Debuff",
     setName: "Achilles' Heel",
     ioName: "Chance for -Res Debuff",
     ppm: 3.5,
@@ -757,7 +705,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Fury of the Gladiator: Chance for -Res Debuff": {
-    setCategory: "Melee AoE Damage",
     setName: "Fury of the Gladiator",
     ioName: "Chance for -Res Debuff",
     ppm: 3.5,
@@ -769,7 +716,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Annihilation: Chance for -Res Debuff": {
-    setCategory: "Ranged AoE Damage",
     setName: "Annihilation",
     ioName: "Chance for -Res Debuff",
     ppm: 3,
@@ -781,7 +727,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Recharge Slow": {
-    setCategory: "To Hit Debuff",
     setName: "Dark Watcher's Despair",
     ioName: "Chance for Recharge Slow",
     ppm: 3.5,
@@ -793,7 +738,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Induced Coma: Chance for Recharge Slow": {
-    setCategory: "Sleep",
     setName: "Induced Coma",
     ioName: "Chance for Recharge Slow",
     ppm: 3.5,
@@ -805,7 +749,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Pacing of the Turtle: Chance for Recharge Slow": {
-    setCategory: "Slow Movement",
     setName: "Pacing of the Turtle",
     ioName: "Chance for Recharge Slow",
     ppm: 3.5,
@@ -817,7 +760,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Basilisk's Gaze: Chance for Recharge Slow": {
-    setCategory: "Holds",
     setName: "Basilisk's Gaze",
     ioName: "Chance for Recharge Slow",
     ppm: 3.5,
@@ -829,7 +771,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Winter's Bite: Chance for Recharge Slow": {
-    setCategory: "Ranged Damage",
     setName: "Winter's Bite",
     ioName: "Chance for Recharge Slow",
     ppm: 4,
@@ -841,7 +782,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Chance for Recovery Debuff": {
-    setCategory: "To Hit Debuff",
     setName: "Deflated Ego",
     ioName: "Chance for Recovery Debuff",
     ppm: 3.5,
@@ -853,7 +793,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for ToHit Debuff": {
-    setCategory: "Stuns",
     setName: "Absolute Amazement",
     ioName: "Chance for ToHit Debuff",
     ppm: 4.5,
@@ -865,7 +804,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Chance for End Drain": {
-    setCategory: "Ranged Damage",
     setName: "Tempest",
     ioName: "Chance for End Drain",
     ppm: 3.5,
@@ -879,7 +817,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
 
   // Control Procs
   "Chance for Hold": {
-    setCategory: "Ranged Damage",
     setName: "Devastation",
     ioName: "Chance for Hold",
     ppm: 3,
@@ -891,7 +828,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Lockdown: Chance for Hold Mag 2": {
-    setCategory: "Holds",
     setName: "Lockdown",
     ioName: "Chance for Hold Mag 2",
     ppm: 2.5,
@@ -903,7 +839,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Gravitational Anchor: Chance for Hold": {
-    setCategory: "Immobilize",
     setName: "Gravitational Anchor",
     ioName: "Chance for Hold",
     ppm: 3.5,
@@ -915,7 +850,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Blistering Cold: Chance for Hold": {
-    setCategory: "Melee Damage",
     setName: "Blistering Cold",
     ioName: "Chance for Hold",
     ppm: 3,
@@ -927,7 +861,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Chance for Stun": {
-    setCategory: "Stuns",
     setName: "Stupefy",
     ioName: "Chance for Stun",
     ppm: 3.5,
@@ -939,7 +872,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Disorient": {
-    setCategory: "Threat Duration",
     setName: "Triumphant Insult",
     ioName: "Chance for Disorient",
     ppm: 2,
@@ -951,7 +883,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Unspeakable Terror: Chance for Disorient": {
-    setCategory: "Fear",
     setName: "Unspeakable Terror",
     ioName: "Chance for Disorient",
     ppm: 3,
@@ -963,7 +894,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Energy Manipulator: Chance for Disorient": {
-    setCategory: "Endurance Modification",
     setName: "Energy Manipulator",
     ioName: "Chance for Disorient",
     ppm: 2,
@@ -975,7 +905,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Debilitative Action: Chance for Disorient": {
-    setCategory: "Immobilize",
     setName: "Debilitative Action",
     ioName: "Chance for Disorient",
     ppm: 3,
@@ -987,7 +916,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Pounding Slugfest: Chance for Disorient": {
-    setCategory: "Melee Damage",
     setName: "Pounding Slugfest",
     ioName: "Chance for Disorient",
     ppm: 2.5,
@@ -999,7 +927,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Immobilize": {
-    setCategory: "Stuns",
     setName: "Razzle Dazzle",
     ioName: "Chance for Immobilize",
     ppm: 3.5,
@@ -1011,7 +938,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Frozen Blast: Chance for Immobilize": {
-    setCategory: "Ranged AoE Damage",
     setName: "Frozen Blast",
     ioName: "Chance for Immobilize",
     ppm: 2.5,
@@ -1023,7 +949,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Chance for Knockdown": {
-    setCategory: "Melee Damage",
     setName: "Kinetic Combat",
     ioName: "Chance for Knockdown",
     ppm: 3,
@@ -1035,7 +960,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Avalanche: Chance for Knockdown": {
-    setCategory: "Melee AoE Damage",
     setName: "Avalanche",
     ioName: "Chance for Knockdown",
     ppm: 2.5,
@@ -1047,7 +971,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Ragnarok: Chance for Knockdown": {
-    setCategory: "Ranged AoE Damage",
     setName: "Ragnarok",
     ioName: "Chance for Knockdown",
     ppm: 3.5,
@@ -1059,7 +982,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Chance for Knockback": {
-    setCategory: "Stuns",
     setName: "Stupefy",
     ioName: "Chance for Knockback",
     ppm: 3.5,
@@ -1071,7 +993,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Chance for Confusion": {
-    setCategory: "Confuse",
     setName: "Coercive Persuasion",
     ioName: "Chance for Confusion",
     ppm: 4.5,
@@ -1083,7 +1004,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Chance for Placate": {
-    setCategory: "Sleep",
     setName: "Fortunata Hypnosis",
     ioName: "Chance for Placate",
     ppm: 4.5,
@@ -1097,7 +1017,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
 
   // Global IOs
   "Max HP": {
-    setCategory: "Resist Damage",
     setName: "Unbreakable Guard",
     ioName: "Max HP",
     ppm: null,
@@ -1109,7 +1028,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Buff Recharge": {
-    setCategory: "Defense",
     setName: "Luck of the Gambler",
     ioName: "Buff Recharge",
     ppm: null,
@@ -1121,7 +1039,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Buff Run Speed": {
-    setCategory: "Defense",
     setName: "Gift of the Ancients",
     ioName: "Buff Run Speed",
     ppm: null,
@@ -1133,7 +1050,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Synapse's Shock: Buff Run Speed": {
-    setCategory: "Endurance Modification",
     setName: "Synapse's Shock",
     ioName: "Buff Run Speed",
     ppm: null,
@@ -1145,7 +1061,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Damage Resistance/+Def(All)": {
-    setCategory: "Resist Damage",
     setName: "Steadfast Protection",
     ioName: "Damage Resistance/+Def(All)",
     ppm: null,
@@ -1157,7 +1072,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "+Def(All)": {
-    setCategory: "Resist Damage",
     setName: "Gladiator's Armor",
     ioName: "+Def(All)",
     ppm: null,
@@ -1169,7 +1083,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Teleportation Protection, +Res(All)": {
-    setCategory: "Defense",
     setName: "Shield Wall",
     ioName: "Teleportation Protection, +Res(All)",
     ppm: null,
@@ -1181,7 +1094,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Scaling +Res(All)": {
-    setCategory: "Defense",
     setName: "Reactive Defenses",
     ioName: "Scaling +Res(All)",
     ppm: null,
@@ -1193,7 +1105,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Protection from Knockback": {
-    setCategory: "Universal Travel",
     setName: "Blessing of the Zephyr",
     ioName: "Protection from Knockback",
     ppm: null,
@@ -1205,7 +1116,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Karma: Protection from Knockback": {
-    setCategory: "Defense",
     setName: "Karma",
     ioName: "Protection from Knockback",
     ppm: null,
@@ -1217,7 +1127,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Steadfast Protection: Knockback Protection": {
-    setCategory: "Resist Damage",
     setName: "Steadfast Protection",
     ioName: "Knockback Protection",
     ppm: null,
@@ -1229,7 +1138,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Aegis: Psionic and Mez Resistance": {
-    setCategory: "Resist Damage",
     setName: "Aegis",
     ioName: "Psionic and Mez Resistance",
     ppm: null,
@@ -1241,7 +1149,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Impervium Armor: +Res(Psionic)": {
-    setCategory: "Resist Damage",
     setName: "Impervium Armor",
     ioName: "+Res(Psionic)",
     ppm: null,
@@ -1253,7 +1160,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Resist Speed and Recharge Debuffs": {
-    setCategory: "Universal Travel",
     setName: "Winter's Gift",
     ioName: "Resist Speed and Recharge Debuffs",
     ppm: null,
@@ -1267,7 +1173,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
 
   // Proc120s
   "Buff Recovery & Regeneration": {
-    setCategory: "Healing",
     setName: "Numina's Convalescence",
     ioName: "Buff Recovery & Regeneration",
     ppm: null,
@@ -1279,7 +1184,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Buff Recovery": {
-    setCategory: "Healing",
     setName: "Miracle",
     ioName: "Buff Recovery",
     ppm: null,
@@ -1291,7 +1195,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Buff Regeneration": {
-    setCategory: "Healing",
     setName: "Regenerative Tissue",
     ioName: "Buff Regeneration",
     ppm: null,
@@ -1303,7 +1206,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Impervious Skin: +Regeneration/+Res Mez(All)": {
-    setCategory: "Resist Damage",
     setName: "Impervious Skin",
     ioName: "+Regeneration/+Res Mez(All)",
     ppm: null,
@@ -1315,7 +1217,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Buff Stealth": {
-    setCategory: "Running",
     setName: "Celerity",
     ioName: "Buff Stealth",
     ppm: null,
@@ -1327,7 +1228,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Buff ToHit": {
-    setCategory: "Defense",
     setName: "Kismet",
     ioName: "Buff ToHit",
     ppm: null,
@@ -1339,7 +1239,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Convert Knockback to Knockdown": {
-    setCategory: "Knockback",
     setName: "Sudden Acceleration",
     ioName: "Convert Knockback to Knockdown",
     ppm: null,
@@ -1353,7 +1252,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
 
   // Archetype Enhancement Procs
   "Critical Hit Bonus": {
-    setCategory: "Archetype Enhancement",
     setName: "Scrapper's Strike",
     ioName: "Critical Hit Bonus",
     ppm: null,
@@ -1372,7 +1270,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // @Redlynne). Pet-targeted globals are skipped by the player calc (they buff
   // pets), so they display only; Kheldian's Grace is a SELF global that applies.
   "Superior Scrapper's Strike: Critical Hit Bonus": {
-    setCategory: "Archetype Enhancement",
     setName: "Superior Scrapper's Strike",
     ioName: "Critical Hit Bonus",
     ppm: null,
@@ -1384,7 +1281,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Command of the Mastermind: Pet Defense Bonus": {
-    setCategory: "Archetype Enhancement",
     setName: "Command of the Mastermind",
     ioName: "Pet Defense Bonus",
     ppm: null,
@@ -1396,7 +1292,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Command of the Mastermind: Pet Defense Bonus": {
-    setCategory: "Archetype Enhancement",
     setName: "Superior Command of the Mastermind",
     ioName: "Pet Defense Bonus",
     ppm: null,
@@ -1408,7 +1303,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Kheldian's Grace: Resistance Bonus": {
-    setCategory: "Archetype Enhancement",
     setName: "Kheldian's Grace",
     ioName: "Resistance Bonus",
     ppm: null,
@@ -1420,7 +1314,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Kheldian's Grace: Resistance Bonus": {
-    setCategory: "Archetype Enhancement",
     setName: "Superior Kheldian's Grace",
     ioName: "Resistance Bonus",
     ppm: null,
@@ -1432,7 +1325,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Mark of Supremacy: Pet Resistance Bonus": {
-    setCategory: "Archetype Enhancement",
     setName: "Mark of Supremacy",
     ioName: "Pet Resistance Bonus",
     ppm: null,
@@ -1444,7 +1336,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Mark of Supremacy: Pet Resistance Bonus": {
-    setCategory: "Archetype Enhancement",
     setName: "Superior Mark of Supremacy",
     ioName: "Pet Resistance Bonus",
     ppm: null,
@@ -1456,7 +1347,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Spider's Bite: Pet Toxic Bonus": {
-    setCategory: "Archetype Enhancement",
     setName: "Spider's Bite",
     ioName: "Pet Toxic Bonus",
     ppm: null,
@@ -1468,7 +1358,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Spider's Bite: Pet Toxic Bonus": {
-    setCategory: "Archetype Enhancement",
     setName: "Superior Spider's Bite",
     ioName: "Pet Toxic Bonus",
     ppm: null,
@@ -1480,7 +1369,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Chance for Critical Hit": {
-    setCategory: "Archetype Enhancement",
     setName: "Critical Strikes",
     ioName: "Chance for Critical Hit",
     ppm: 2,
@@ -1492,7 +1380,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Chance for Hide": {
-    setCategory: "Archetype Enhancement",
     setName: "Stalker's Guile",
     ioName: "Chance for Hide",
     ppm: 4,
@@ -1504,7 +1391,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Chance to Recharge Build Up": {
-    setCategory: "Archetype Enhancement",
     setName: "Assassin's Mark",
     ioName: "Chance to Recharge Build Up",
     ppm: null,
@@ -1516,7 +1402,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Chance for Minor PBAoE Heal": {
-    setCategory: "Archetype Enhancement",
     setName: "Defender's Bastion",
     ioName: "Chance for Minor PBAoE Heal",
     ppm: 4,
@@ -1528,7 +1413,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Chance for +RES(ALL)": {
-    setCategory: "Archetype Enhancement",
     setName: "Might of the Tanker",
     ioName: "Chance for +RES(ALL)",
     ppm: 5,
@@ -1540,7 +1424,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Chance for +Fury": {
-    setCategory: "Archetype Enhancement",
     setName: "Brute's Fury",
     ioName: "Chance for +Fury",
     ppm: 4,
@@ -1552,7 +1435,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Chance for +Damage": {
-    setCategory: "Archetype Enhancement",
     setName: "Ascendancy of the Dominator",
     ioName: "Chance for +Damage",
     ppm: 5,
@@ -1564,7 +1446,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Chance for Fiery Orb": {
-    setCategory: "Archetype Enhancement",
     setName: "Dominating Grasp",
     ioName: "Chance for Fiery Orb",
     ppm: 1,
@@ -1576,7 +1457,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Chance for Energy Font": {
-    setCategory: "Archetype Enhancement",
     setName: "Overpowering Presence",
     ioName: "Chance for Energy Font",
     ppm: 1,
@@ -1592,7 +1472,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // Missing ATOs — Superior variants
   // ============================================
   "Superior Ascendancy of the Dominator: Recharge/Chance for +Dam(All)": {
-    setCategory: "Dominator Archetype Sets",
     setName: "Superior Ascendancy of the Dominator",
     ioName: "Recharge/Chance for +Dam(All)",
     ppm: 3,
@@ -1604,7 +1483,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Blaster's Wrath: Recharge/Chance for Fire Damage": {
-    setCategory: "Blaster Archetype Sets",
     setName: "Blaster's Wrath",
     ioName: "Recharge/Chance for Fire Damage",
     ppm: 4,
@@ -1616,7 +1494,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Blaster's Wrath: Recharge/Chance for Fire Damage": {
-    setCategory: "Blaster Archetype Sets",
     setName: "Superior Blaster's Wrath",
     ioName: "Recharge/Chance for Fire Damage",
     ppm: 5,
@@ -1628,7 +1505,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Defiant Barrage: Recharge/Chance for Mez Protection,Resistance": {
-    setCategory: "Blaster Archetype Sets",
     setName: "Defiant Barrage",
     ioName: "Recharge/Chance for Mez Protection,Resistance",
     ppm: 3,
@@ -1640,7 +1516,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Defiant Barrage: Recharge/Chance for Mez Protection,Resistance": {
-    setCategory: "Blaster Archetype Sets",
     setName: "Superior Defiant Barrage",
     ioName: "Recharge/Chance for Mez Protection,Resistance",
     ppm: 4,
@@ -1652,7 +1527,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Essence Transfer: Recharge/Chance for +Health": {
-    setCategory: "Kheldian Archetype Sets",
     setName: "Essence Transfer",
     ioName: "Recharge/Chance for +Health",
     ppm: null,
@@ -1664,7 +1538,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Essence Transfer: Recharge/Chance for +Health": {
-    setCategory: "Kheldian Archetype Sets",
     setName: "Superior Essence Transfer",
     ioName: "Recharge/Chance for +Health",
     ppm: null,
@@ -1676,7 +1549,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Malice of the Corruptor: Recharge/Chance for Negative Energy Damage": {
-    setCategory: "Corruptor Archetype Sets",
     setName: "Malice of the Corruptor",
     ioName: "Recharge/Chance for Negative Energy Damage",
     ppm: 4,
@@ -1688,7 +1560,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Malice of the Corruptor: Recharge/Chance for Negative Energy Damage": {
-    setCategory: "Corruptor Archetype Sets",
     setName: "Superior Malice of the Corruptor",
     ioName: "Recharge/Chance for Negative Energy Damage",
     ppm: 5,
@@ -1700,7 +1571,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Scourging Blast: Recharge/Chance for +Endurance,+Health": {
-    setCategory: "Corruptor Archetype Sets",
     setName: "Scourging Blast",
     ioName: "Recharge/Chance for +Endurance,+Health",
     ppm: 2,
@@ -1712,7 +1582,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Scourging Blast: Recharge/Chance for +Endurance,+Health": {
-    setCategory: "Corruptor Archetype Sets",
     setName: "Superior Scourging Blast",
     ioName: "Recharge/Chance for +Endurance,+Health",
     ppm: 3,
@@ -1724,7 +1593,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Will of the Controller: Recharge/Chance for Psionic Damage": {
-    setCategory: "Controller Archetype Sets",
     setName: "Will of the Controller",
     ioName: "Recharge/Chance for Psionic Damage",
     ppm: 4,
@@ -1736,7 +1604,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Will of the Controller: Recharge/Chance for Psionic Damage": {
-    setCategory: "Controller Archetype Sets",
     setName: "Superior Will of the Controller",
     ioName: "Recharge/Chance for Psionic Damage",
     ppm: 5,
@@ -1753,7 +1620,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // by user verification as 2.5 (wiki uncertainty noted — confirm if
   // tested directly in-game).
   "Endless Nightmare: Recharge/Chance for Fear, Psionic Damage": {
-    setCategory: "Sleep",
     setName: "Endless Nightmare",
     ioName: "Recharge/Chance for Fear, Psionic Damage",
     ppm: 2.5,
@@ -1765,7 +1631,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Endless Nightmare: Recharge/Chance for Fear, Psionic Damage": {
-    setCategory: "Sleep",
     setName: "Superior Endless Nightmare",
     ioName: "Recharge/Chance for Fear, Psionic Damage",
     ppm: 2.5,
@@ -1777,7 +1642,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Unrelenting Fury: Recharge/Chance for +End Discount,+Regeneration": {
-    setCategory: "Brute Archetype Sets",
     setName: "Unrelenting Fury",
     ioName: "Recharge/Chance for +End Discount,+Regeneration",
     ppm: 6,
@@ -1789,7 +1653,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Unrelenting Fury: Recharge/Chance for +End Discount,+Regeneration": {
-    setCategory: "Brute Archetype Sets",
     setName: "Superior Unrelenting Fury",
     ioName: "Recharge/Chance for +End Discount,+Regeneration",
     ppm: 7,
@@ -1801,7 +1664,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Opportunity Strikes: Recharge/Chance for +Opportunity": {
-    setCategory: "Sentinel Archetype Sets",
     setName: "Opportunity Strikes",
     ioName: "Recharge/Chance for +Opportunity",
     ppm: 1,
@@ -1813,7 +1675,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Opportunity Strikes: Recharge/Chance for +Opportunity": {
-    setCategory: "Sentinel Archetype Sets",
     setName: "Superior Opportunity Strikes",
     ioName: "Recharge/Chance for +Opportunity",
     ppm: 1,
@@ -1829,7 +1690,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // Missing ATO Superior variants for existing base procs
   // ============================================
   "Superior Critical Strikes: Recharge/Chance for +Critical Hit%": {
-    setCategory: "Scrapper Archetype Sets",
     setName: "Superior Critical Strikes",
     ioName: "Recharge/Chance for +Critical Hit%",
     ppm: null,
@@ -1841,7 +1701,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Stalker's Guile: Recharge/Chance for Hidden Status": {
-    setCategory: "Stalker Archetype Sets",
     setName: "Superior Stalker's Guile",
     ioName: "Recharge/Chance for Hidden Status",
     ppm: 3,
@@ -1853,7 +1712,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Assassin's Mark: Recharge/Chance for Recharge Power": {
-    setCategory: "Stalker Archetype Sets",
     setName: "Superior Assassin's Mark",
     ioName: "Recharge/Chance for Recharge Power",
     ppm: 2,
@@ -1865,7 +1723,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Defender's Bastion: Recharge/Chance for +Health": {
-    setCategory: "Defender Archetype Sets",
     setName: "Superior Defender's Bastion",
     ioName: "Recharge/Chance for +Health",
     ppm: 3,
@@ -1877,7 +1734,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Might of the Tanker: Recharge/Chance for +Res(All)": {
-    setCategory: "Tanker Archetype Sets",
     setName: "Superior Might of the Tanker",
     ioName: "Recharge/Chance for +Res(All)",
     ppm: 3,
@@ -1889,7 +1745,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Brute's Fury: Recharge/Chance for +Rage": {
-    setCategory: "Brute Archetype Sets",
     setName: "Superior Brute's Fury",
     ioName: "Recharge/Chance for +Rage",
     ppm: 4,
@@ -1901,7 +1756,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Dominating Grasp: Recharge/Chance for Fiery Orb": {
-    setCategory: "Dominator Archetype Sets",
     setName: "Superior Dominating Grasp",
     ioName: "Recharge/Chance for Fiery Orb",
     ppm: 1,
@@ -1913,7 +1767,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Overpowering Presence: Recharge/Chance for Energy Font": {
-    setCategory: "Controller Archetype Sets",
     setName: "Superior Overpowering Presence",
     ioName: "Recharge/Chance for Energy Font",
     // Superior ATO procs run +1 PPM over their non-superior version (cf.
@@ -1928,7 +1781,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Dominion of Arachnos: Recharge/Chance for -Dam(All)/Chance for Terror": {
-    setCategory: "Arachnos Archetype Sets",
     setName: "Dominion of Arachnos",
     ioName: "Recharge/Chance for -Dam(All)/Chance for Terror",
     ppm: 4,
@@ -1940,7 +1792,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Exclusive"
   },
   "Superior Dominion of Arachnos: Recharge/Chance for -Dam(All)/Chance for Terror": {
-    setCategory: "Arachnos Archetype Sets",
     setName: "Superior Dominion of Arachnos",
     ioName: "Recharge/Chance for -Dam(All)/Chance for Terror",
     ppm: 5,
@@ -1956,7 +1807,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // Missing Winter set Superior variants
   // ============================================
   "Superior Avalanche: Recharge/Chance for Knockback": {
-    setCategory: "Targeted AoE Damage",
     setName: "Superior Avalanche",
     ioName: "Recharge/Chance for Knockback",
     ppm: 3,
@@ -1968,7 +1818,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Blistering Cold: Recharge/Chance for Hold": {
-    setCategory: "Ranged Damage",
     setName: "Superior Blistering Cold",
     ioName: "Recharge/Chance for Hold",
     ppm: 3,
@@ -1980,7 +1829,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Frozen Blast: Recharge/Chance for Immobilize": {
-    setCategory: "Melee Damage",
     setName: "Superior Frozen Blast",
     ioName: "Recharge/Chance for Immobilize",
     ppm: 3,
@@ -1992,7 +1840,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Winter's Bite: Recharge/Chance for -Recharge,Slow": {
-    setCategory: "Slow Movement",
     setName: "Superior Winter's Bite",
     ioName: "Recharge/Chance for -Recharge,Slow",
     ppm: 3,
@@ -2008,7 +1855,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // Missing standard set procs
   // ============================================
   "Cupid's Crush: Damage/Chance for Confuse": {
-    setCategory: "Universal Damage Sets",
     setName: "Cupid's Crush",
     ioName: "Damage/Chance for Confuse",
     ppm: 2.5,
@@ -2020,7 +1866,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Overwhelming Force: Damage/Chance for Knockdown/Knockback to Knockdown": {
-    setCategory: "Universal Damage Sets",
     setName: "Overwhelming Force",
     ioName: "Damage/Chance for Knockdown/Knockback to Knockdown",
     ppm: 2.5,
@@ -2032,7 +1877,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Analyze Weakness: Chance for +ToHit": {
-    setCategory: "Accurate Defense Debuff",
     setName: "Analyze Weakness",
     ioName: "Chance for +ToHit",
     ppm: 2,
@@ -2044,7 +1888,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Siphon Insight: Chance for +ToHit": {
-    setCategory: "Accurate To Hit Debuff",
     setName: "Siphon Insight",
     ioName: "Chance for +ToHit",
     ppm: 2,
@@ -2060,7 +1903,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // Missing global/travel procs
   // ============================================
   "Call to Arms: +Def(All)": {
-    setCategory: "Pet Damage",
     setName: "Call to Arms",
     ioName: "+Def(All)",
     ppm: null,
@@ -2072,7 +1914,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Commanding Presence: +Resist Threat": {
-    setCategory: "Pet Damage",
     setName: "Commanding Presence",
     ioName: "+Resist Threat",
     ppm: null,
@@ -2084,7 +1925,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Edict of the Master: +Def(All)": {
-    setCategory: "Pet Damage",
     setName: "Edict of the Master",
     ioName: "+Def(All)",
     ppm: null,
@@ -2096,7 +1936,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Expedient Reinforcement: +Res(All)": {
-    setCategory: "Pet Damage",
     setName: "Expedient Reinforcement",
     ioName: "+Res(All)",
     ppm: null,
@@ -2108,7 +1947,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Sovereign Right: +Res(All)": {
-    setCategory: "Pet Damage",
     setName: "Sovereign Right",
     ioName: "+Res(All)",
     ppm: null,
@@ -2120,7 +1958,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Freebird: +Stealth": {
-    setCategory: "Universal Travel",
     setName: "Freebird",
     ioName: "+Stealth",
     ppm: null,
@@ -2132,7 +1969,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Time & Space Manipulation: +Stealth": {
-    setCategory: "Universal Travel",
     setName: "Time & Space Manipulation",
     ioName: "+Stealth",
     ppm: null,
@@ -2144,7 +1980,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Unbounded Leap: +Stealth": {
-    setCategory: "Leaping",
     setName: "Unbounded Leap",
     ioName: "+Stealth",
     ppm: null,
@@ -2156,7 +1991,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Rectified Reticle: +Perception": {
-    setCategory: "Ranged Damage",
     setName: "Rectified Reticle",
     ioName: "+Perception",
     ppm: null,
@@ -2168,7 +2002,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Warp: Range/+Perception": {
-    setCategory: "Universal Travel",
     setName: "Warp",
     ioName: "Range/+Perception",
     ppm: null,
@@ -2180,7 +2013,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Launch: Jump/+Jump Height/+Max Jump Height": {
-    setCategory: "Universal Travel",
     setName: "Launch",
     ioName: "Jump/+Jump Height/+Max Jump Height",
     ppm: null,
@@ -2192,7 +2024,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Thrust: Run/+Run Speed": {
-    setCategory: "Universal Travel",
     setName: "Thrust",
     ioName: "Run/+Run Speed",
     ppm: null,
@@ -2208,7 +2039,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // Rebirth: Witchcraft (Halloween event Sleep set)
   // ============================================
   "Witchcraft: Chance for -Res Debuff": {
-    setCategory: "Sleep",
     setName: "Witchcraft",
     ioName: "Chance for -Res Debuff",
     ppm: 3.5,
@@ -2220,7 +2050,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Witchcraft: Chance for -Res Debuff": {
-    setCategory: "Sleep",
     setName: "Superior Witchcraft",
     ioName: "Chance for -Res Debuff",
     ppm: 6,
@@ -2242,7 +2071,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // To be superseded by binary-sourced proc effects. See [[proc-piece-name-misresolution]].
   // ============================================
   "Imperial Might: Chance for Knockdown": {
-    setCategory: "Knockback",
     setName: "Imperial Might",
     ioName: "Chance for Knockdown",
     ppm: null,
@@ -2254,7 +2082,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: ""
   },
   "Absolute Resolution: Chance for Energy Damage": {
-    setCategory: "Guardian ATO",
     setName: "Absolute Resolution",
     ioName: "Chance for Energy Damage",
     ppm: null,
@@ -2266,7 +2093,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Absolute Resolution: Chance for Energy Damage": {
-    setCategory: "Guardian ATO",
     setName: "Superior Absolute Resolution",
     ioName: "Chance for Energy Damage",
     ppm: null,
@@ -2278,7 +2104,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Guardian's Gift: Chance for PBAoE Resolve": {
-    setCategory: "Guardian ATO",
     setName: "Guardian's Gift",
     ioName: "Chance for PBAoE Resolve",
     ppm: null,
@@ -2290,7 +2115,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Guardian's Gift: Chance for PBAoE Resolve": {
-    setCategory: "Guardian ATO",
     setName: "Superior Guardian's Gift",
     ioName: "Chance for PBAoE Resolve",
     ppm: null,
@@ -2302,7 +2126,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "The Haunting: Chance to Summon Haunts": {
-    setCategory: "Fear",
     setName: "The Haunting",
     ioName: "Chance to Summon Haunts",
     ppm: null,
@@ -2314,7 +2137,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Haunting: Chance to Summon Haunts": {
-    setCategory: "Fear",
     setName: "Superior Haunting",
     ioName: "Chance to Summon Haunts",
     ppm: null,
@@ -2326,7 +2148,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Vampire's Bite: Chance for Heal": {
-    setCategory: "Halloween",
     setName: "Vampire's Bite",
     ioName: "Chance for Heal",
     ppm: null,
@@ -2338,7 +2159,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Vampire's Bite: Chance for Heal": {
-    setCategory: "Halloween",
     setName: "Superior Vampire's Bite",
     ioName: "Chance for Heal",
     ppm: null,
@@ -2350,7 +2170,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Return From The Grave: Chance for Self Resurrect": {
-    setCategory: "Brute ATO",
     setName: "Return From The Grave",
     ioName: "Chance for Self Resurrect",
     ppm: null,
@@ -2362,7 +2181,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Return From The Grave: Chance for Self Resurrect": {
-    setCategory: "Brute ATO",
     setName: "Superior Return From The Grave",
     ioName: "Chance for Self Resurrect",
     ppm: null,
@@ -2374,7 +2192,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Superior Winter's Gift: Slow Resistance": {
-    setCategory: "Universal Travel",
     setName: "Superior Winter's Gift",
     ioName: "Slow Resistance",
     ppm: null,
@@ -2386,7 +2203,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
   "Inexhaustibility: Chance for Heal/Endurance/Regen": {
-    setCategory: "Rest",
     setName: "Inexhaustibility",
     ioName: "Chance for Heal, Endurance, Regeneration",
     ppm: null,
@@ -2403,7 +2219,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // piece is "Resistance/Global Damage Bonus" (see extract-rebirth-io-sets-v2.py
   // REBIRTH_PIECE_PATCHES); findProcData resolves it via the set-name fallback.
   "Liberty's Belt: Resistance/Global Damage Bonus": {
-    setCategory: "Resist Damage",
     setName: "Liberty's Belt",
     ioName: "Resistance/Global Damage Bonus",
     ppm: null,
@@ -2422,7 +2237,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   // shape the set-bonus extractor can't reach — hence hand-curated, like
   // Liberty's Belt above. Effect in proc-residual-effects.ts.
   "Synapse's Agility: Endurance Drain Resistance (20%)": {
-    setCategory: "Universal Travel",
     setName: "Synapse's Agility",
     ioName: "Endurance Drain Resistance (20%)",
     ppm: null,

@@ -19,13 +19,9 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**2 open, of 205 entries.** When an entry is open it is listed here with what it's waiting on.
+**1 open, of 205 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
-
-- **PROCCAT-1** — `proc-data.ts`'s hand-authored `setCategory`, 52 of 184 rows resolving to no
-  fork's set. Inert: nothing reads the field. Waiting on the derive-at-use rewrite against
-  `io-sets.json`'s `type`. [Detail](gaps/procs-ppm.md)
 
 - **DEBUFFRES-1** — an accuracy debuff resistance the export states and no total accumulates,
   carried in the type and reached by nothing. Waiting on a totals slot and a routed sub-key, or
@@ -147,13 +143,13 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Procs + PPM
 
-[Full detail](gaps/procs-ppm.md) — 8 of 9 closed
+[Full detail](gaps/procs-ppm.md) — 9 of 9 closed
 
-- [ ] **PROCCAT-1** — `proc-data.ts`'s hand-authored `setCategory` stands in front of the `type`
-  each fork's `io-sets.json` owns; 52 of 184 match no fork, ~40 vocabulary drift and ~12 flatly
-  wrong (Superior Frozen Blast typed Melee, the four travel sets flattened to Universal Travel).
-  Inert — no code reads it, so no gate can grade it. Derive at the point of use and delete the
-  field rather than hand-correct rows; re-census CROSS-FORK or 19 Rebirth-only sets read as defects
+- [x] **PROCCAT-1** — `proc-data.ts` gave each of 184 procs a hand-authored `setCategory` in front
+  of the `type` each fork's registry owns, wrong in 52 and read by nothing; the field is deleted in
+  both repos and out of all four contracts, the extractor's five order-anchored readers now fail
+  loud on a shape change, and a cross-fork guard grades the `setName` join a derive-at-use depends
+  on plus the 17 sets whose type the forks spell differently
 
 - [x] **HC-4** — procs in `ExecutePower` wrappers roll on the parent; settled by live measurement
 - [x] **PPM-1** — the auto/toggle proc period is the piece's field, not the host power's
@@ -285,20 +281,11 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 [Full detail](gaps/pipeline-provenance.md) — 31 of 32 closed
 
 - [x] **BRAIN-11** — the bin-crawler guards and ten engine corpus rosters iterated a three-fork
-  roster, so a shipped dataset's decode and its numbers were graded by none of them; rosters now
-  derive from `_forks`/`DatasetId::ALL` and every per-fork expectation was measured rather than
-  copied from Homecoming, including the villaindef `Level` width (two-int over 723 elements) that
-  was the stated exit condition. Brainstorm reads in family with Homecoming everywhere, above it
-  by the open beta's extra content and below it nowhere
+  roster, so a shipped dataset's decode and its numbers were graded by none of them; rosters derive
+  from `_forks`/`DatasetId::ALL` now and every per-fork expectation was measured, not copied
 - [x] **BRAIN-13** — the advisory bucket gates now, and its own reader was miscounting it: a
-  600-char window cut a table off before rows that sit behind their provenance comment, which is
-  what a measured row looks like. Of the 30 real ones, three floor tables were passing Brainstorm
-  against a `?? 1` default, two shadow gates crashed on the missing key, a two-fork sweep was
-  reporting a fork-wide defect as two-fork, and four bin-crawler tests hand-restated the path
-  table one line under the `_forks` import that replaces it. Absences that are real carry a
-  `dataset-absent` marker beside the table, with a mutation-verified tripwire for the day one
-  outlives its cause — and the audit itself, which had shipped wired to nothing, now runs in
-  `regen-all`
+  600-char window cut tables off before the rows that sit behind a provenance comment; real
+  absences carry a `dataset-absent` marker, and the audit itself now runs in `regen-all`
 - [x] **BRAIN-12** — Brainstorm shipped unselectable: the server picker's `SERVER_OPTIONS`, the
   `?serverId=` parser and the per-server build store each restated the roster and each stayed
   three-dataset, and all three sat on the roster audit's allow-list, excused by a blocker
