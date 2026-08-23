@@ -69,6 +69,33 @@ const ALLOWLIST = {
   'tools/mids-oracle/diff_enh_oracle.py': 'retired oracle; no Brainstorm cross-check is intended',
 };
 
+/**
+ * Keyed TABLES whose reason cannot be written inline, file → why.
+ *
+ * Separate from ALLOWLIST above, and deliberately so. That one excuses a file's roster
+ * literals; folding it onto the keyed tables as well would excuse a file for one shape
+ * because it was adjudicated for another — `per-server-builds.test.ts` is allowlisted for
+ * the beta runtime list it grades, and blanketing that over its round-trip scenario would
+ * drop that table's stale-marker tripwire without saying so.
+ *
+ * Membership here is not "this table is fine". It is "the reason physically cannot live
+ * next to the table", which so far means exactly one thing: the file's BYTES are load-bearing.
+ */
+const ADVISORY_ALLOWLIST = {
+  // `_STRENGTH_ATTRIB_RESOLVER` is keyed on the detected binary FLAVOR, not on a dataset id,
+  // and its four keys are exactly what `detect_dataset_flavor` can return — complete by
+  // construction, and a `brainstorm` key would be a value the lookup can never ask for.
+  //
+  // The reason lives here rather than as a `dataset-absent` marker in the file, where every
+  // other one of these sits, because `_export_fingerprint` hashes every parser source plus
+  // the exporter entry module and each dataset's `_export_manifest.json` records the result.
+  // A comment added to that file makes all four committed export trees read STALE and demands
+  // a re-export from `.pigg` archives CI does not have. Measured, not assumed — the marker was
+  // written there first and reddened `export-staleness.test.ts` on every dataset.
+  'tools/bin-crawler/bin_crawler/export_powers.py':
+    'flavor-keyed, not dataset-keyed; and its bytes are in the export fingerprint',
+};
+
 const SCAN_DIRS = ['scripts', 'src', 'crates', 'tools'];
 const SKIP_DIRS = new Set(['node_modules', 'target', 'generated', 'datasets', '.git', 'attic']);
 const EXTS = new Set(['.js', '.cjs', '.mjs', '.ts', '.tsx', '.rs', '.py']);
@@ -113,7 +140,10 @@ function rostersIn(text, rust) {
         .map((v) => VARIANTS.get(v[1]))
         .filter(Boolean);
       const gap = ALL_DATASETS.filter((d) => !named.includes(d));
-      if (named.length >= 2 && gap.length) tupleTables.push({ line, missing: gap });
+      const scope = preambleAbove(text, m.index) + span;
+      if (named.length >= 2 && (gap.length || HAS_MARKER.test(scope))) {
+        tupleTables.push({ line, missing: gap, scope });
+      }
       continue;
     }
     const names = new Set();
@@ -189,15 +219,102 @@ function wildcardArmsIn(text) {
   return out;
 }
 
+/**
+ * The span a table occupies, bracket-matched from its opening `{` / `[`.
+ *
+ * This used to be a flat 600-char slice, and the cut is what made a third of the advisory
+ * bucket false. A table whose last dataset row sits behind a comment paragraph — which is
+ * exactly what a MEASURED row looks like, since the measurement has to be written down
+ * somewhere — falls outside the window and reports as missing. `audit-conditional-coverage`'s
+ * `EXPECTED` carried a brainstorm row measured off the i28p4 beta and was reported missing it
+ * for eight lines of provenance. `rostersIn` learned this and got a generous span; this reader
+ * kept the cut, and every advisory it emitted had to be hand-checked against the file.
+ *
+ * Returns null when no close bracket is found inside CAP, and the caller reports THAT rather
+ * than dropping the table. A runaway span reads every dataset as present and goes quiet, which
+ * is the direction that hides findings.
+ */
+const SPAN_CAP = 20000;
+function balancedSpan(text, start) {
+  const open = text[start], close = open === '{' ? '}' : ']';
+  let depth = 0;
+  const limit = Math.min(text.length, start + SPAN_CAP);
+  for (let i = start; i < limit; i++) {
+    if (text[i] === open) depth++;
+    else if (text[i] === close && --depth === 0) return text.slice(start, i);
+  }
+  return null;
+}
+
+/**
+ * A table's own written reason for not naming a dataset, in the form the audit can read:
+ *
+ *   // dataset-absent: thunderspy — tspy rebalanced Speed Boost to ['Friend','Self']
+ *
+ * The bucket these live in used to be advisory, which is a silent skip with a label on it, and
+ * the register carries that lesson three times over. Making it gate needs a way to tell an
+ * absence somebody MEASURED from one nobody has looked at, and prose alone cannot do that: half
+ * these tables already carried a perfectly good reason in the comment above them, and the audit
+ * reported them exactly like the ones that carried nothing.
+ *
+ * The marker is deliberately not an allowlist keyed by file and line. A line number drifts on
+ * the next edit, and a reason kept in another file is a reason the next editor of the table does
+ * not see — which is how `per-server-builds.test.ts` stayed three-dataset behind an allowance
+ * written twelve lines above the rows it excused (BRAIN-12).
+ *
+ * Read from the table's span AND from the comment block immediately above it, because that is
+ * where a reason is naturally written. The preamble walk stops at the first line that is not a
+ * comment or blank, so a marker never leaks from one table to the next.
+ */
+const MARKER = /dataset-absent:\s*([a-z, ]+?)\s*(?:—|--|-)\s*(\S)/g;
+/**
+ * Non-global twin, used to decide whether a table is worth REPORTING even when it is
+ * complete. Without this the stale check is unreachable: a table that gains its last
+ * dataset stops being emitted at all, so the marker excusing the row it just gained is
+ * never looked at again. Measured — the tripwire was written, and did not fire.
+ */
+const HAS_MARKER = /dataset-absent:/;
+
+/** The contiguous comment block directly above `index`, or ''. */
+function preambleAbove(text, index) {
+  const lines = text.slice(0, index).split('\n');
+  lines.pop();
+  const kept = [];
+  for (let i = lines.length - 1; i >= 0; i--) {
+    const t = lines[i].trim();
+    if (t === '' || t.startsWith('//') || t.startsWith('*') || t.startsWith('/*') || t.startsWith('#')) {
+      kept.unshift(lines[i]);
+    } else break;
+  }
+  return kept.join('\n');
+}
+
+/** Datasets a span (plus its preamble) declares deliberately absent. */
+function adjudicatedIn(scope) {
+  const named = new Set();
+  for (const m of scope.matchAll(MARKER)) {
+    for (const d of m[1].split(',').map((x) => x.trim())) {
+      if (ALL_DATASETS.includes(d)) named.add(d);
+    }
+  }
+  return named;
+}
+
 /** Tables keyed by dataset name — advisory: a missing key is a different defect. */
 function keyedTablesIn(text) {
   const out = [];
   for (const m of text.matchAll(/[{[]\s*(?:\/\/[^\n]*\n\s*)*['"]?homecoming['"]?\s*:/g)) {
-    const span = text.slice(m.index, m.index + 600);
+    const line = text.slice(0, m.index).split('\n').length;
+    const span = balancedSpan(text, m.index);
+    if (span === null) {
+      out.push({ line, missing: [`table span unclosed within ${SPAN_CAP} chars — unread`] });
+      continue;
+    }
     const present = ALL_DATASETS.filter((d) => new RegExp(`['"]?${d}['"]?\\s*:`).test(span));
     const missing = ALL_DATASETS.filter((d) => !present.includes(d));
-    if (present.length >= 2 && missing.length) {
-      out.push({ line: text.slice(0, m.index).split('\n').length, missing });
+    const scope = preambleAbove(text, m.index) + span;
+    if (present.length >= 2 && (missing.length || HAS_MARKER.test(scope))) {
+      out.push({ line, missing, scope });
     }
   }
   return out;
@@ -210,27 +327,21 @@ function keyedTablesIn(text) {
  * planb-shadow-movement's three TARGETS-3 tables sat a dataset behind while its two
  * sibling gates were flagged and widened (MOVE-4).
  *
- * Scoped to a bracket-matched `const NAME = { ... }` / `[ ... ]` so the whole table is
- * one span (the sibling gates pin theirs as arrays). The
- * 600-char window `keyedTablesIn` uses would cut a long pin table in half and report
- * every prefix past the cut as missing.
+ * Scoped to a bracket-matched `const NAME = { ... }` / `[ ... ]` so the whole table is one
+ * span (the sibling gates pin theirs as arrays), which is the same `balancedSpan` the keyed
+ * reader above now uses.
  */
 function compositeKeyedTablesIn(text) {
   const out = [];
   for (const m of text.matchAll(/const\s+\w+\s*=\s*[{[]/g)) {
     const start = m.index + m[0].length - 1;
-    const open = text[start], close = open === '{' ? '}' : ']';
-    let depth = 0, end = -1;
-    for (let i = start; i < text.length; i++) {
-      if (text[i] === open) depth++;
-      else if (text[i] === close && --depth === 0) { end = i; break; }
-    }
-    if (end < 0) continue;
-    const span = text.slice(start, end);
+    const span = balancedSpan(text, start);
+    if (span === null) continue;
     const present = ALL_DATASETS.filter((d) => new RegExp(`['"\`]${d}\\|`).test(span));
     const missing = ALL_DATASETS.filter((d) => !present.includes(d));
-    if (present.length >= 2 && missing.length) {
-      out.push({ line: text.slice(0, m.index).split('\n').length, missing });
+    const scope = preambleAbove(text, m.index) + span;
+    if (present.length >= 2 && (missing.length || HAS_MARKER.test(scope))) {
+      out.push({ line: text.slice(0, m.index).split('\n').length, missing, scope });
     }
   }
   return out;
@@ -254,34 +365,88 @@ for (const dir of SCAN_DIRS) {
       if (ALLOWLIST[rel]) continue;
       findings.push({ rel, ...hit });
     }
-    for (const hit of tupleTables) advisories.push({ rel, ...hit });
+    if (!ADVISORY_ALLOWLIST[rel]) for (const hit of tupleTables) advisories.push({ rel, ...hit });
     if (rust) {
       for (const hit of wildcardArmsIn(text)) {
         if (!ALLOWLIST[rel]) findings.push({ rel, ...hit, missing: ['`_ =>` arm over datasets'] });
       }
     }
-    for (const hit of keyedTablesIn(text)) advisories.push({ rel, ...hit });
-    for (const hit of compositeKeyedTablesIn(text)) advisories.push({ rel, ...hit });
+    if (!ADVISORY_ALLOWLIST[rel]) {
+      for (const hit of keyedTablesIn(text)) advisories.push({ rel, ...hit });
+      for (const hit of compositeKeyedTablesIn(text)) advisories.push({ rel, ...hit });
+    }
   }
 }
 
-console.log(`roster: ${ALL_DATASETS.join(', ')}`);
-console.log(`allowlisted files: ${Object.keys(ALLOWLIST).length}`);
-for (const [file, why] of Object.entries(ALLOWLIST)) console.log(`  ${file} — ${why}`);
+/**
+ * Sort the keyed tables by what their own text says about the gap. Three buckets, and only the
+ * first two are silent: a declared absence, a table that has since GAINED the row its marker
+ * excuses, and a gap nobody has written anything about.
+ *
+ * The stale bucket is the tripwire, and it is the reason a marker beats an allowlist. A reason
+ * that outlives its cause is the failure this file's header describes twice — the fixture
+ * emitters and the beta runtime rows both sat behind an allowance whose blocker had been gone
+ * for weeks. A marker naming a dataset the table now carries is that state, detectable.
+ */
+const declared = [];
+const stale = [];
+const undeclared = [];
+for (const a of advisories) {
+  const named = adjudicatedIn(a.scope || '');
+  const unexplained = a.missing.filter((d) => !named.has(d));
+  const present = ALL_DATASETS.filter((d) => !a.missing.includes(d));
+  const outlived = [...named].filter((d) => present.includes(d));
+  if (outlived.length) stale.push({ ...a, outlived });
+  if (unexplained.length) undeclared.push({ ...a, unexplained });
+  else if (!outlived.length && a.missing.length) declared.push({ ...a, named: [...named] });
+}
 
-console.log(`\nkeyed tables missing a dataset (advisory, ${advisories.length}):`);
-for (const a of advisories) console.log(`  ${a.rel}:${a.line}  missing ${a.missing.join(', ')}`);
+console.log(`roster: ${ALL_DATASETS.join(', ')}`);
+console.log(`allowlisted files: ${Object.keys(ALLOWLIST).length} roster, `
+  + `${Object.keys(ADVISORY_ALLOWLIST).length} keyed-table`);
+for (const [file, why] of Object.entries(ALLOWLIST)) console.log(`  roster      ${file} — ${why}`);
+for (const [file, why] of Object.entries(ADVISORY_ALLOWLIST)) {
+  console.log(`  keyed table ${file} — ${why}`);
+}
+
+console.log(`\nkeyed tables with a declared absence (${declared.length}):`);
+for (const a of declared) console.log(`  ${a.rel}:${a.line}  ${a.named.join(', ')} — declared absent`);
+if (!declared.length) console.log('  none');
+
+console.log(`\nkeyed tables missing a dataset, undeclared (${undeclared.length}):`);
+for (const a of undeclared) console.log(`  ${a.rel}:${a.line}  missing ${a.unexplained.join(', ')}`);
+if (!undeclared.length) console.log('  none — every keyed table names the whole set or says why not.');
+
+console.log(`\nstale \`dataset-absent\` markers (${stale.length}):`);
+for (const a of stale) {
+  console.log(`  ${a.rel}:${a.line}  declares ${a.outlived.join(', ')} absent, but the table has it`);
+}
+if (!stale.length) console.log('  none');
 
 console.log(`\npartial rosters (${findings.length}):`);
 for (const f of findings) console.log(`  ${f.rel}:${f.line}  missing ${f.missing.join(', ')}`);
-
 if (!findings.length) console.log('  none — every roster literal names the whole set.');
 
-if (GATE && findings.length) {
-  console.error(
-    `\nGATE FAIL — ${findings.length} literal roster(s) name a subset of the datasets. ` +
-      `Point them at ALL_DATASETS / DatasetId::ALL, or allowlist each with its reason.`,
-  );
+const failures = findings.length + undeclared.length + stale.length;
+if (GATE && failures) {
+  if (findings.length) {
+    console.error(
+      `\nGATE FAIL — ${findings.length} literal roster(s) name a subset of the datasets. ` +
+        `Point them at ALL_DATASETS / DatasetId::ALL, or allowlist each with its reason.`,
+    );
+  }
+  if (undeclared.length) {
+    console.error(
+      `GATE FAIL — ${undeclared.length} keyed table(s) miss a dataset with nothing written ` +
+        `about why. Measure the row, or mark it \`dataset-absent: <id> — <reason>\`.`,
+    );
+  }
+  if (stale.length) {
+    console.error(
+      `GATE FAIL — ${stale.length} \`dataset-absent\` marker(s) name a dataset the table now ` +
+        `carries. The reason outlived its cause; delete the marker.`,
+    );
+  }
   process.exit(1);
 }
 console.log(GATE ? '\nGATE PASS' : '');

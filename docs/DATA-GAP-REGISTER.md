@@ -19,7 +19,7 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**3 open, of 205 entries.** When an entry is open it is listed here with what it's waiting on.
+**2 open, of 205 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
@@ -30,11 +30,6 @@ doesn't accumulate closure prose.
 - **DEBUFFRES-1** — an accuracy debuff resistance the export states and no total accumulates,
   carried in the type and reached by nothing. Waiting on a totals slot and a routed sub-key, or
   a measurement that the game applies nothing. [Detail](gaps/stat-routing.md)
-
-- **BRAIN-13** — 32 per-dataset expectation tables across the audit scripts and the vendored TS
-  data guards still carry no Brainstorm row. The audit reports them as advisory, so none of them
-  fails CI. Waiting on a measured row each, and on a decision whether the bucket should gate.
-  [Detail](gaps/pipeline-provenance.md)
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -287,7 +282,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 30 of 32 closed
+[Full detail](gaps/pipeline-provenance.md) — 31 of 32 closed
 
 - [x] **BRAIN-11** — the bin-crawler guards and ten engine corpus rosters iterated a three-fork
   roster, so a shipped dataset's decode and its numbers were graded by none of them; rosters now
@@ -295,8 +290,15 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   copied from Homecoming, including the villaindef `Level` width (two-int over 723 elements) that
   was the stated exit condition. Brainstorm reads in family with Homecoming everywhere, above it
   by the open beta's extra content and below it nowhere
-- [ ] **BRAIN-13** — 32 per-dataset expectation tables in the audit scripts and vendored TS guards
-  carry no Brainstorm row, and the audit files them as advisory so none of them fails CI
+- [x] **BRAIN-13** — the advisory bucket gates now, and its own reader was miscounting it: a
+  600-char window cut a table off before rows that sit behind their provenance comment, which is
+  what a measured row looks like. Of the 30 real ones, three floor tables were passing Brainstorm
+  against a `?? 1` default, two shadow gates crashed on the missing key, a two-fork sweep was
+  reporting a fork-wide defect as two-fork, and four bin-crawler tests hand-restated the path
+  table one line under the `_forks` import that replaces it. Absences that are real carry a
+  `dataset-absent` marker beside the table, with a mutation-verified tripwire for the day one
+  outlives its cause — and the audit itself, which had shipped wired to nothing, now runs in
+  `regen-all`
 - [x] **BRAIN-12** — Brainstorm shipped unselectable: the server picker's `SERVER_OPTIONS`, the
   `?serverId=` parser and the per-server build store each restated the roster and each stayed
   three-dataset, and all three sat on the roster audit's allow-list, excused by a blocker

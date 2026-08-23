@@ -268,6 +268,9 @@ const EXPECTED_ABSTENTIONS = {};
  * Enforced Morale states no movement at all, and neither Parse6 fork has Temporal Bomb.
  */
 const EXPECTED_ALLY_ONLY = {
+  // dataset-absent: thunderspy — tspy rebalanced Speed Boost to ['Friend','Self'], so its
+  // caster IS entitled and the axis agrees outright; its Enforced Morale states no movement
+  // at all, and neither Parse6 fork has Temporal Bomb. Read, not pending.
   'homecoming|Speed Boost|runSpeed': true,
   'homecoming|Speed Boost|flySpeed': true,
   'homecoming|Enforced Morale|runSpeed': true,

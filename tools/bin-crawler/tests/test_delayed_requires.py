@@ -36,11 +36,12 @@ import json
 import os
 
 _REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-_EXPORTS = {
-    "homecoming": os.path.join(_REPO, "exported_powers"),
-    "rebirth": os.path.join(_REPO, "exported_powers", "rebirth"),
-    "thunderspy": os.path.join(_REPO, "exported_powers", "thunderspy"),
-}
+# The roster and its roots both come from `_forks`, which derives them from
+# `assets_sources.json` and the tree layout. This used to be a hand copy sitting one line
+# under the `_forks` import that exists to replace it — the fork list was derived and the
+# PATHS to the same forks were not, so a new dataset was pruned from the root walk and then
+# never swept on its own.
+_EXPORTS = _forks.FORKS
 _FORK_ROOTS = {os.path.join(_REPO, "exported_powers", fork)
                for fork in _forks.NESTED_DIRS}
 
@@ -102,7 +103,10 @@ def test_every_fork_reads_the_field():
     two forks put on the group, and the parser lifts that same string onto the
     synthetic group as well.
     """
-    floors = {"homecoming": 180, "rebirth": 20000, "thunderspy": 55}  # 210 / 24792 / 63
+    # Brainstorm measured 2026-08-22: 215, two above Homecoming's 210 and the same order,
+    # which is what a Homecoming-lineage build one release ahead should read.
+    floors = {"homecoming": 180, "rebirth": 20000, "thunderspy": 55,
+              "brainstorm": 185}  # 210 / 24792 / 63 / 215
     for fork, floor in floors.items():
         found = _gated(fork)
         assert len(found) >= floor, (

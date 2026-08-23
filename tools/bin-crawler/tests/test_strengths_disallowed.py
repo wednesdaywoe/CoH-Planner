@@ -31,11 +31,12 @@ import json
 import os
 
 _REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-_EXPORTS = {
-    "homecoming": os.path.join(_REPO, "exported_powers"),
-    "rebirth": os.path.join(_REPO, "exported_powers", "rebirth"),
-    "thunderspy": os.path.join(_REPO, "exported_powers", "thunderspy"),
-}
+# The roster and its roots both come from `_forks`, which derives them from
+# `assets_sources.json` and the tree layout. This used to be a hand copy sitting one line
+# under the `_forks` import that exists to replace it — the fork list was derived and the
+# PATHS to the same forks were not, so a new dataset was pruned from the root walk and then
+# never swept on its own.
+_EXPORTS = _forks.FORKS
 # Homecoming's tree is the root, so a plain walk of it descends into the other
 # two forks and into the boost-piece trees no power lives in.
 _NOT_POWERS = set(_forks.NESTED_DIRS) | {"boosts", "set_bonus", "tables", "entities"}

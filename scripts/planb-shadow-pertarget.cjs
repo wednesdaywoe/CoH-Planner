@@ -180,7 +180,12 @@ console.log(`  N=1 recovered:       ${stats.recoveredN1} (Fulcrum Shift's redire
 // authoring, so only the HC-lineage datasets recover it, 4 Kinetics ATs each. The Parse6
 // forks author Fulcrum Shift without it. A dataset appearing or dropping out here is the
 // join moving, not the data.
-const EXPECTED_N1_RECOVERIES = ['homecoming|Fulcrum Shift', 'brainstorm|Fulcrum Shift'];
+const EXPECTED_N1_RECOVERIES = [
+  // dataset-absent: rebirth, thunderspy — the redirect chain that delivers the caster's own
+  // increment is a Parse7 authoring, and the Parse6 forks author Fulcrum Shift without it.
+  'homecoming|Fulcrum Shift',
+  'brainstorm|Fulcrum Shift',
+];
 const n1PinFailures = [
   ...Object.keys(recoveredSeen).filter((k) => !EXPECTED_N1_RECOVERIES.includes(k))
     .map((k) => `NEW N=1 recovery, never read: ${k}`),

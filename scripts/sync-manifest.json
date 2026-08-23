@@ -53,7 +53,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "4c3b315b2cefb4508b5aee88e4d156a95d1b8d9d3922cca135f3ec09af42b333"
+      "sha256": "bbd44db3a60c054ae5811b8e128454524d2a68fead9ee8ae5ef82c3021119816"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -163,7 +163,7 @@
     {
       "path": "scripts/audit-dataset-roster.cjs",
       "status": "identical",
-      "sha256": "f219e4edb0502b13c490018ece9f3a5bd53a8a6e64835dce030fb77478939974"
+      "sha256": "53c244093c50bb083d90787e8142141c8984edf89b539ef1f8dea7f04fb4a7f4"
     },
     {
       "path": "scripts/bridge-attrib-one.cjs",
@@ -288,7 +288,7 @@
     {
       "path": "scripts/extract-proc-data.py",
       "status": "identical",
-      "sha256": "864694d86fa8ec89d21cc00b9acdb6722941baa54486db3f0717a76ca8f82b0c"
+      "sha256": "158872ed8025553f6d91eb4d201a78bd1194b670cc837a65e763b637c6aec250"
     },
     {
       "path": "scripts/extract-rebirth-io-sets-v2.py",
@@ -333,12 +333,12 @@
     {
       "path": "scripts/planb-shadow-movement.cjs",
       "status": "identical",
-      "sha256": "e36f29a9bd8dc4a126a432b21dd8871361cec665235082dcc20ba91ac84e897c"
+      "sha256": "ce68a0e652a7991b15f109ef7b21ee32e749617f81eb5b0f6b1eda5175bc238c"
     },
     {
       "path": "scripts/planb-shadow-pertarget.cjs",
       "status": "identical",
-      "sha256": "88f5687723c5ebacca240d72d85f773d950d0ac9b0016e314575fc706991b0d9"
+      "sha256": "56fbc5de1ffdd4f6e80869f89305d2bffa52a9419aac168e50e4ede0f9fe256d"
     },
     {
       "path": "scripts/planb-shadow-resistance.cjs",
@@ -359,7 +359,7 @@
       "path": "scripts/regen-all.cjs",
       "status": "per-repo",
       "sha256": {
-        "canonical": "7979d22ae799df0b26c83610b70b0126252f714d7dc0b3de22e241559f08ebe2",
+        "canonical": "ed2b5a1bb2bac0fee4c299d78e2057f40f914d4722767c8d6208424c4a04e56c",
         "beta": "d46098283b99ef618925b0cbc727aa93b80d0932405f3b5db0325387a36af8f8"
       },
       "reason": "The stage roster and the gate roster ARE the repo's identity — which converters exist and which gates it can currently pass — so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 14 (24 until FORK-2 retired the two form-variant generators), not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
@@ -714,7 +714,7 @@
     {
       "path": "tools/bin-crawler/tests/test_delayed_requires.py",
       "status": "identical",
-      "sha256": "9c7831c5aa206ea2da21a316ef138230c4a9879f79298ed3b24a79d2244d30f3"
+      "sha256": "ea4b661a3b525ab10eaf3520885a91f9caa081e2b7637f3ca6c8807ca1fa58d2"
     },
     {
       "path": "tools/bin-crawler/tests/test_diff_sweeps.py",
@@ -749,7 +749,7 @@
     {
       "path": "tools/bin-crawler/tests/test_main_target_only.py",
       "status": "identical",
-      "sha256": "fe5d81d1e89ca31feb007af505ce5b1af60f85c64cf7eac0083fd09019ccd4dd"
+      "sha256": "092dc5f70540e3ab41036ef4cfd76f0d4456c528d17faf633023221b2c126903"
     },
     {
       "path": "tools/bin-crawler/tests/test_parse6_aspect.py",
@@ -759,7 +759,7 @@
     {
       "path": "tools/bin-crawler/tests/test_parse6_chance.py",
       "status": "identical",
-      "sha256": "3e5f2e177dc53ed04b816aafe3575706be1a7a7d34668db1792aa785fe771103"
+      "sha256": "5258985ccf15dba5213265cb7d65b9bbf2aeed93ee1013559c2e03312a64fb35"
     },
     {
       "path": "tools/bin-crawler/tests/test_parse6_tail_reaches_every_template.py",
@@ -799,7 +799,7 @@
     {
       "path": "tools/bin-crawler/tests/test_strengths_disallowed.py",
       "status": "identical",
-      "sha256": "d0cea6ce87da607115f750b93d9940524b63e7495f291108adcbfa02aaaf3b3d"
+      "sha256": "9262c26a7cf4f27741bb5cb75db0615b9a0c013559aa0dfdaf4398e50f35d497"
     },
     {
       "path": "tools/bin-crawler/tests/test_thunderspy_band_precedence.py",

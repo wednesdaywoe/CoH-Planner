@@ -651,7 +651,13 @@ def infer_proc_category(mech: str) -> str:
 # `boostsets.json` with the identical `boostlists[].boosts` shape, and a boost power
 # per directory — so the fallback reads them rather than leaving the entry unsourced.
 EXPORT_ROOT = PROJECT_ROOT / 'exported_powers'
-EXPORT_FORKS = {'homecoming': '', 'rebirth': 'rebirth', 'thunderspy': 'thunderspy'}
+# Brainstorm joined the fallback pool 2026-08-22. Measured: all six generated files come out
+# byte-identical, and `activate period` still reports 0 sets disagreeing — so this fork's boost
+# tree agrees with the others everywhere the fallback reaches, and adds no conflict for
+# `export_proc_boosts_by_set` to drop a set over. The roster is complete so a future divergence
+# surfaces as a diff instead of never being asked about.
+EXPORT_FORKS = {'homecoming': '', 'rebirth': 'rebirth', 'thunderspy': 'thunderspy',
+                'brainstorm': 'brainstorm'}
 
 
 @lru_cache(maxsize=1)

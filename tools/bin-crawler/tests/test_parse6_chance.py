@@ -26,11 +26,12 @@ import json
 import os
 
 _REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-_EXPORTS = {
-    "homecoming": os.path.join(_REPO, "exported_powers"),
-    "rebirth": os.path.join(_REPO, "exported_powers", "rebirth"),
-    "thunderspy": os.path.join(_REPO, "exported_powers", "thunderspy"),
-}
+# The roster and its roots both come from `_forks`, which derives them from
+# `assets_sources.json` and the tree layout. This used to be a hand copy sitting one line
+# under the `_forks` import that exists to replace it — the fork list was derived and the
+# PATHS to the same forks were not, so a new dataset was pruned from the root walk and then
+# never swept on its own.
+_EXPORTS = _forks.FORKS
 # Homecoming's tree is the root, so a plain walk of it descends into the other
 # two forks and into the boost-piece trees no power lives in.
 _NOT_POWERS = set(_forks.NESTED_DIRS) | {"boosts", "set_bonus", "tables", "entities"}
@@ -122,7 +123,9 @@ def test_every_fork_ships_inert_effects():
     exact counts: what this guards is a field reverting to a default, and a
     default shows up as a column that is entirely one value — which is how both
     this gap and Thunderspy's (RB5-b2) survived a corpus gate the first time."""
-    floors = {"homecoming": 900, "rebirth": 1500, "thunderspy": 1500}
+    # Brainstorm measured 2026-08-22: 1,379 inert groups against Homecoming's 1,377.
+    floors = {"homecoming": 900, "rebirth": 1500, "thunderspy": 1500,
+              "brainstorm": 900}  # 1377 / 2043 / 2213 / 1379
     for fork, floor in floors.items():
         inert = sum(
             1
