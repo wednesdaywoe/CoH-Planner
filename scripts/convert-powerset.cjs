@@ -2112,6 +2112,24 @@ const PSEUDOPET_DEBUFF_ATTRIBS = {
   base_defense: 'DefenseDebuff',
 };
 
+// Scalar ally-buff attribs — the twin of `convert-pet-entities.cjs`'s
+// `BUFF_SCALAR_ATTRIBS`. Every one of these also keys `PSEUDOPET_DEBUFF_ATTRIBS` or
+// `classifyPseudoPetSlow` in its other direction, so only the table tells the two apart.
+const PSEUDOPET_BUFF_SCALAR_ATTRIBS = {
+  regeneration: 'RegenBuff',
+  recovery: 'RecoveryBuff',
+  tohit: 'ToHitBuff',
+  rechargetime: 'RechargeBuff',
+};
+
+// A debuff states its direction in the SIGN or in the TABLE, and either alone is
+// incomplete: a foe -ToHit is a POSITIVE scale on a `*_Debuff_ToHit` table, and a foe
+// -Recharge rides a `*_Slow` table. Same test as `convert-pet-entities.cjs`'s
+// `isDebuffTable`; takes an already-lowercased table name.
+function isPseudoPetDebuffTable(tableLower) {
+  return tableLower.includes('debuff') || tableLower.endsWith('_slow');
+}
+
 // The slow family — the movement axes and recharge — is classified by aspect and
 // direction rather than by attrib name, because the name cannot tell the three faces
 // apart: a Current/Strength-aspect speed debuff, a Maximum-aspect movement CAP debuff,
@@ -2159,6 +2177,49 @@ const PSEUDOPET_RESIST_ONLY_APPLIED = {
   regeneration: 'RegenDebuff', rechargetime: 'RechargeDebuff',
 };
 
+// Every attrib the ally-buff vocabulary above can name. Used only by the tripwire below,
+// which is why it is a union of the maps rather than a map of its own: a family added to one
+// of them joins the watched space automatically, instead of going quiet here.
+function isAllyBuffAttrib(attribLower) {
+  return DEFENSE_POSITIONS[attribLower] !== undefined
+    || DAMAGE_TYPES[attribLower] !== undefined
+    || PSEUDOPET_BUFF_SCALAR_ATTRIBS[attribLower] !== undefined
+    || attribLower === 'absorb';
+}
+
+// Ally-buff-shaped rows this route classified as NOTHING (ENT-17). A dropped row leaves no
+// trace in the export, so no gate downstream can see it and the count has to be taken here,
+// at the one place that knows a row arrived and left with no verdict. Shaped, not blanket:
+// this route drops Set_Mode, Grant_Power and damage-at-Absolute on purpose, and a tripwire
+// firing on those is noise nobody reads.
+const pseudoPetAllyBuffDrops = [];
+process.on('exit', () => {
+  if (pseudoPetAllyBuffDrops.length === 0) return;
+  console.error(
+    `  [pseudo-pet] ${pseudoPetAllyBuffDrops.length} ally-buff-shaped template(s) classified to`
+    + ' nothing — a buff a summon delivers that no total will ever see:');
+  for (const row of pseudoPetAllyBuffDrops.slice(0, 20)) console.error(`    ${row}`);
+  process.exitCode = 1;
+});
+
+function classifyPseudoPetEffect(template) {
+  const out = classifyPseudoPetEffectRow(template);
+  if (out.length === 0 && template.target !== 'Self') {
+    const tableL = (template.table || '').toLowerCase();
+    const attribsL = (template.attribs || []).map((a) => (a || '').toLowerCase());
+    const buffShaped = (template.scale || 0) > 0
+      && tableL && !isPseudoPetDebuffTable(tableL)
+      && ['Current', 'Maximum', 'Resistance'].includes(template.aspect)
+      && attribsL.some(isAllyBuffAttrib);
+    if (buffShaped) {
+      pseudoPetAllyBuffDrops.push(
+        `${template.attribs.join('+')} aspect=${template.aspect} scale=${template.scale} `
+        + `table=${template.table}`);
+    }
+  }
+  return out;
+}
+
 /**
  * Classify a single (already deep-collected, AT-deduped, PvP-excluded) template
  * into pseudo-pet effects. Returns an ARRAY of {type, scale?, table?, magnitude?,
@@ -2170,7 +2231,7 @@ const PSEUDOPET_RESIST_ONLY_APPLIED = {
  * all carry it, Glue Arrow's slow does not. Both display; only the unmarked one takes
  * the summoner's slotting (ENT-4).
  */
-function classifyPseudoPetEffect(template) {
+function classifyPseudoPetEffectRow(template) {
   if (!template.attribs || template.attribs.length === 0) return [];
   // Foe-facing only — Self templates are pet self-buffs (ResistAll survivability,
   // self-root immob that keeps a pseudo-pet stationary, etc.).
@@ -2216,6 +2277,35 @@ function classifyPseudoPetEffect(template) {
       if (key && !resistanceTypes.includes(key.toLowerCase())) resistanceTypes.push(key.toLowerCase());
     }
     return [withScale(resistanceTypes.length ? { type: 'ResistanceBuff', resistanceTypes } : { type: 'ResistanceBuff' })];
+  }
+  // +Defense BUFF: a `*_Buff_Def` table at aspect=Current, positive scale. The table
+  // carries the direction, not the sign — a foe -Def rides `*_Debuff_Def` at a positive
+  // scale, which the DefenseDebuff branch below owns. Every position and damage type the
+  // template names collapses into ONE effect, because one modifier moves all of them at
+  // one scale; `buff_pets::aura_keys` then writes a `def<Type>` total per named type and
+  // nothing at all for a row that names none.
+  if ((scale || 0) > 0 && aspectL === 'current' && /_buff_def$/.test(tableL) && !isPseudoPetDebuffTable(tableL)) {
+    const defenseTypes = [];
+    for (const a of attribsL) {
+      const key = DEFENSE_POSITIONS[a] || DAMAGE_TYPES[a];
+      if (key && !defenseTypes.includes(key.toLowerCase())) defenseTypes.push(key.toLowerCase());
+    }
+    if (defenseTypes.length) return [withScale({ type: 'DefenseBuff', defenseTypes })];
+  }
+  // ABSORB: the `Absorb` attrib, either aspect. Carried for provenance the way the entity
+  // route carries it; the calc resolves a non-Expression Maximum absorb as flat.
+  if ((scale || 0) > 0 && attribsL.includes('absorb')) {
+    return [withScale({ type: 'Absorb', absorbAspect: template.aspect })];
+  }
+  // Scalar ally buffs (+Regen / +Recovery / +ToHit / +Recharge): aspect=Current, positive
+  // scale, on a table that is neither a debuff nor a slow. The table gate is what separates
+  // an ally +ToHit aura from the many foe -ToHit patches (Liquefy, Earthquake, Seekers)
+  // that store their debuff as a POSITIVE scale on a `*_Debuff_ToHit` table — and it is why
+  // this must run before the foe map below, which holds `tohit` and `recovery` in their
+  // debuff direction and would otherwise publish an ally buff as the debuff it is not.
+  if ((scale || 0) > 0 && aspectL === 'current' && !isPseudoPetDebuffTable(tableL)) {
+    const scalars = attribsL.map((a) => PSEUDOPET_BUFF_SCALAR_ATTRIBS[a]).filter(Boolean);
+    if (scalars.length) return scalars.map((type) => withScale({ type }));
   }
   // Mez / knock PROTECTION: aspect=Current, NEGATIVE scale, mez/knock attrib is a
   // protection magnitude (reduces incoming control), NOT offensive control. Value

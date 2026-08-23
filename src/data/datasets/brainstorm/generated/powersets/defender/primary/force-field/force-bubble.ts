@@ -85,6 +85,12 @@ export const ForceBubble: Power = {
                   "type": "DefenseDebuffResist",
                   "scale": 0.5,
                   "table": "Ranged_Res_Boolean"
+                },
+                {
+                  "type": "Absorb",
+                  "absorbAspect": "Maximum",
+                  "scale": 0.1,
+                  "table": "Melee_HealSelf"
                 }
               ],
               "recharge": 0,

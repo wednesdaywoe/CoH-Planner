@@ -19,7 +19,7 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**0 open, of 207 entries.** When an entry is open it is listed here with what it's waiting on.
+**0 open, of 209 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
@@ -128,7 +128,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pets + summoned entities
 
-[Full detail](gaps/pets-entities.md) — 15 of 15 closed
+[Full detail](gaps/pets-entities.md) — 16 of 16 closed
 
 - [x] **ENT-1** — Rebirth pet commandability was guessed from the class name
 - [x] **ENT-2** — the villaindef level element was read at Homecoming's width on both forks
@@ -145,6 +145,12 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 - [x] **ENT-14** — the wire `EntCreate` atom carries neither the pet lifespan nor an entity key; `summonWindow` now says which row IS the power's window
 - [x] **ENT-16** — a summon whose `EntCreate` states redirect powers rather than an `entity_def` was walked by nothing; the converter now resolves it to the entity that declares exactly those powers
 - [x] **ENT-15** — the `activation_effects` buff-dedup filter dropped a summon's create-entity rows before they could become atoms
+- [x] **ENT-17** — the inline pseudo-pet route classified an ally +Defense, +Absorb or scalar
+  +Regen/+Recovery/+ToHit/+Recharge aura as nothing at all, where its entity-route twin has read all
+  four families since ENT-9, so a buff a summon delivers reached no total and left no trace to
+  audit; the three families the corpus actually holds now emit through the same vocabulary the fold
+  already spends, and a converter-side tripwire fails the regen on the next ally-buff-shaped row
+  that classifies to nothing
 - [x] **SHELL-1** — opaque-shell pseudo-pet summons were unresolved
 
 ---
@@ -286,8 +292,14 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 31 of 32 closed
+[Full detail](gaps/pipeline-provenance.md) — 32 of 33 closed
 
+- [x] **ROSTER-1** — 23 powersets across Homecoming and its Brainstorm beta converted cleanly,
+  shipped in the contract, passed every corpus gate and could be picked by nobody, because the
+  archetype rosters that decide what the Build Identity menu offers are hand-maintained lists no
+  regen step refreshes: Sonic Melee, Wind Control and the Stalker's Stone Armor on live, plus
+  Light Affinity and Sonic Aura on the beta; the rosters now name every converted set and a
+  two-directional join grades them on all four forks
 - [x] **BRAIN-11** — the bin-crawler guards and ten engine corpus rosters iterated a three-fork
   roster, so a shipped dataset's decode and its numbers were graded by none of them; rosters derive
   from `_forks`/`DatasetId::ALL` now and every per-fork expectation was measured, not copied

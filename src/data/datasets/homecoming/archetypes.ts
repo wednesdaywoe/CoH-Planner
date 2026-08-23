@@ -120,6 +120,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'controller/plant-control',
       'controller/pyrotechnic-control',
       'controller/symphony-control',
+      'controller/wind-control',
     ],
     secondarySets: [
       'controller/cold-domination',
@@ -222,6 +223,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     },
     primarySets: [
       'scrapper/battle-axe',
+      'scrapper/sonic-melee',
       'scrapper/street-justice',
       'scrapper/broad-sword',
       'scrapper/claws',
@@ -304,6 +306,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     ],
     secondarySets: [
       'tanker/battle-axe',
+      'tanker/sonic-melee',
       'tanker/street-justice',
       'tanker/broad-sword',
       'tanker/claws',
@@ -409,6 +412,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     },
     primarySets: [
       'brute/battle-axe',
+      'brute/sonic-melee',
       'brute/street-justice',
       'brute/broad-sword',
       'brute/claws',
@@ -552,6 +556,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'dominator/plant-control',
       'dominator/pyrotechnic-control',
       'dominator/symphony-control',
+      'dominator/wind-control',
     ],
     secondarySets: [
       'dominator/arsenal-assault',
@@ -641,6 +646,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
+      'stalker/sonic-melee',
       'stalker/street-justice',
       'stalker/broad-sword',
       'stalker/claws',
@@ -673,6 +679,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'stalker/radiation-armor',
       'stalker/regeneration',
       'stalker/shield-defense',
+      'stalker/stone-armor',
       'stalker/super-reflexes',
       'stalker/willpower',
     ],

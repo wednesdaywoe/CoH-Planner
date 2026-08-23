@@ -71,6 +71,24 @@ export const SanctuaryofLight: Power = {
               "damage": [],
               "effects": [
                 {
+                  "type": "DefenseBuff",
+                  "defenseTypes": [
+                    "ranged",
+                    "melee",
+                    "aoe",
+                    "smashing",
+                    "lethal",
+                    "fire",
+                    "cold",
+                    "energy",
+                    "negative",
+                    "psionic",
+                    "toxic"
+                  ],
+                  "scale": 1.5,
+                  "table": "Ranged_Buff_Def"
+                },
+                {
                   "type": "ResistanceBuff",
                   "resistanceTypes": [
                     "smashing",

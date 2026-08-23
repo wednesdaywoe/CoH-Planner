@@ -151,10 +151,17 @@ describe.each(DATASETS)('redirect-power summons resolve their entity — %s', (d
    * the named entity happens to hold. Resolving early did exactly that to Static Field, Carrion
    * Creepers and Shocking Grasp, whose shells happen to be backed by real entities too.
    *
-   * Sentinel Whirlpool is the standing exception and the reason the precedence exists: it
-   * carries both blocks for the SAME pet, identical row for row, so either source answers the
-   * same (ENT-8). Those three Rust comments each assert it is the only such power in any fork;
-   * that claim has lived only in prose, and this is what makes it go red when it stops holding.
+   * Two powers may carry both, for opposite reasons, and each needs its own warrant:
+   *
+   *  - Sentinel Whirlpool, the reason the precedence exists: both blocks hold the SAME pet,
+   *    identical row for row, so either source answers the same (ENT-8).
+   *  - Spirit Tree, since ENT-17: the blocks are DISJOINT. The entity is real and holds a taunt
+   *    and the tree's own resistances; the ally +Regen the power exists for lives only in the
+   *    synthesized list. `buff_pets` reads whichever actually folded a row rather than whichever
+   *    is present, so the aura lands and Whirlpool still doesn't double.
+   *
+   * A third entry is a finding, not a line to add: it means a payload was replaced rather than
+   * complemented.
    */
   it('pairs a synthesized ability list with a real entity only where ENT-8 says it may', () => {
     const entities = new Set([...byKey.values()].flat());
@@ -165,7 +172,11 @@ describe.each(DATASETS)('redirect-power summons resolve their entity — %s', (d
       .sort();
     expect(both).toEqual(
       dataset === 'homecoming' || dataset === 'brainstorm'
-        ? ['powersets/sentinel/primary/water-blast/whirlpool.ts → Pets_Whirlpool_Sentinel']
+        ? [
+            'powersets/controller/primary/plant-control/spirit-tree.ts → Pets_Spirit_Tree',
+            'powersets/dominator/primary/plant-control/spirit-tree.ts → Pets_Spirit_Tree',
+            'powersets/sentinel/primary/water-blast/whirlpool.ts → Pets_Whirlpool_Sentinel',
+          ]
         : [],
     );
   });
