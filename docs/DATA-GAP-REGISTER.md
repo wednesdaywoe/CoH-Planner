@@ -19,7 +19,7 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**3 open, of 204 entries.** When an entry is open it is listed here with what it's waiting on.
+**3 open, of 205 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
@@ -31,10 +31,10 @@ doesn't accumulate closure prose.
   carried in the type and reached by nothing. Waiting on a totals slot and a routed sub-key, or
   a measurement that the game applies nothing. [Detail](gaps/stat-routing.md)
 
-- **BRAIN-11** — the 14 bin-crawler parser guards prune Brainstorm from the Homecoming walk but
-  still iterate a three-fork roster, so a shipped dataset's parser output is graded by none of
-  them. Waiting on per-fork expectations measured for Brainstorm, starting with the villaindef
-  `Level` element width `test_entity_commandability` has no row for. [Detail](gaps/pipeline-provenance.md)
+- **BRAIN-13** — 32 per-dataset expectation tables across the audit scripts and the vendored TS
+  data guards still carry no Brainstorm row. The audit reports them as advisory, so none of them
+  fails CI. Waiting on a measured row each, and on a decision whether the bucket should gate.
+  [Detail](gaps/pipeline-provenance.md)
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -287,11 +287,16 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 29 of 31 closed
+[Full detail](gaps/pipeline-provenance.md) — 30 of 32 closed
 
-- [ ] **BRAIN-11** — the 14 bin-crawler parser guards iterate a three-fork roster, so Brainstorm's
-  parser output is graded by none of them. Open: needs per-fork expectations measured for
-  Brainstorm, starting with the villaindef `Level` element width
+- [x] **BRAIN-11** — the bin-crawler guards and ten engine corpus rosters iterated a three-fork
+  roster, so a shipped dataset's decode and its numbers were graded by none of them; rosters now
+  derive from `_forks`/`DatasetId::ALL` and every per-fork expectation was measured rather than
+  copied from Homecoming, including the villaindef `Level` width (two-int over 723 elements) that
+  was the stated exit condition. Brainstorm reads in family with Homecoming everywhere, above it
+  by the open beta's extra content and below it nowhere
+- [ ] **BRAIN-13** — 32 per-dataset expectation tables in the audit scripts and vendored TS guards
+  carry no Brainstorm row, and the audit files them as advisory so none of them fails CI
 - [x] **BRAIN-12** — Brainstorm shipped unselectable: the server picker's `SERVER_OPTIONS`, the
   `?serverId=` parser and the per-server build store each restated the roster and each stayed
   three-dataset, and all three sat on the roster audit's allow-list, excused by a blocker

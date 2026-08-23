@@ -12,7 +12,7 @@ null-terminated entry, and the join erased the boundary the split then had to
 guess. Nothing shipped a wrong NUMBER — the mis-split expressions failed loud as
 `UNPARSED` — but the export was stating a gate the game does not carry.
 
-What this grades, over the committed export of all three forks:
+What this grades, over the committed export of every fork:
 
 * **Shape.** No gate field anywhere is a string. Re-introducing a join at any of
   the fifteen sites puts a `str` where a list belongs and this goes red.
@@ -21,9 +21,9 @@ What this grades, over the committed export of all three forks:
   two tokens, so this is the assertion that a rejoin-equivalent regression
   cannot slip past — the shape check above would still pass on a
   join-then-resplit producer.
-* **Non-vacuity.** The population is measured, not assumed: 50 groups over 12
-  powers, all Homecoming. If a future export stops carrying them the census
-  moves and this says so, rather than passing on an empty sweep.
+* **Non-vacuity.** The population is measured, not assumed: 102 groups over 25
+  powers, all on the Homecoming game (live and Brainstorm). If a future export stops
+  carrying them the census moves and this says so, rather than passing on an empty sweep.
 
 What it cannot grade: the JS and Rust consumers. Those fail loud instead —
 `scripts/_gate-tokens.cjs` THROWS on a string rather than splitting it, and
@@ -43,11 +43,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 
-FORKS = {
-    "homecoming": os.path.join(REPO, "exported_powers"),
-    "rebirth": os.path.join(REPO, "exported_powers", "rebirth"),
-    "thunderspy": os.path.join(REPO, "exported_powers", "thunderspy"),
-}
+FORKS = dict(_forks.FORKS)
 _NESTED = tuple(f"exported_powers/{d}/" for d in _forks.NESTED_DIRS)
 
 # Every gate field the export carries as a token array. Most are `list[str]` on a
@@ -72,25 +68,31 @@ GATE_FIELDS = frozenset({
     "target_requires",
 })
 
-# The measured COND-8 population: every gate token in any fork's export that
-# contains a space, with how many times it occurs. All twelve are Homecoming
-# costume-FX values, and all twelve are what a join/split pair destroys.
+# The measured COND-8 population: every gate token in any fork's export that contains a
+# space, with how many times it occurs. All twelve are costume-FX values, carried only by
+# the Homecoming game — Homecoming itself and its Brainstorm ring, nothing on the Parse6
+# forks — and all twelve are what a join/split pair destroys.
+#
+# Brainstorm roughly doubles each count because it is the same game one ring ahead. Its
+# only divergence is `Minimal FX`, 16 against Homecoming's 14, and that asymmetry is the
+# point of summing rather than asserting a doubling: a ring gaining a costume option must
+# read as a moved census, not as a broken boundary.
 EXPECTED_MULTIWORD = {
-    "All Original": 3,
-    "All Tintable": 12,
-    "Always Glow": 2,
-    "Color Tintable": 11,
-    "Color Tintable Alt": 2,
-    "Color Tintable Minimal": 2,
-    "Minimal FX": 14,
-    "Overgrowth Original": 6,
-    "Overgrowth Tintable": 6,
-    "Sepia Tone": 2,
-    "Undefined Evil": 14,
-    "Undefined Silver": 14,
+    "All Original": 6,
+    "All Tintable": 24,
+    "Always Glow": 4,
+    "Color Tintable": 22,
+    "Color Tintable Alt": 4,
+    "Color Tintable Minimal": 4,
+    "Minimal FX": 30,
+    "Overgrowth Original": 12,
+    "Overgrowth Tintable": 12,
+    "Sepia Tone": 4,
+    "Undefined Evil": 28,
+    "Undefined Silver": 28,
 }
-EXPECTED_GROUPS = 50   # effect groups (and other gate carriers) holding one
-EXPECTED_POWERS = 12   # power files holding one
+EXPECTED_GROUPS = 102  # effect groups (and other gate carriers) holding one
+EXPECTED_POWERS = 25   # power files holding one
 
 _failures: list[str] = []
 
@@ -201,9 +203,11 @@ def test_multi_word_tokens_survive_as_one_token():
     would come back as `Minimal` and `FX`, which reads as a well-formed list of
     the right TYPE — so shape alone would not see it.
     """
-    found = dict(STATS["homecoming"]["multiword"])
-    for fork in ("rebirth", "thunderspy"):
-        for token, count in STATS[fork]["multiword"].items():
+    # Summed over every fork in the roster, the same set `carriers` and `powers` below count.
+    # Naming three forks here while those summed STATS.values() would grade two populations.
+    found = {}
+    for stat in STATS.values():
+        for token, count in stat["multiword"].items():
             found[token] = found.get(token, 0) + count
 
     check(found == EXPECTED_MULTIWORD,

@@ -43,20 +43,16 @@ import sys
 REPO = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                      '..', '..', '..'))
 EXPORT = os.path.join(REPO, 'exported_powers')
-FORKS = {
-    'homecoming': EXPORT,
-    'rebirth': os.path.join(EXPORT, 'rebirth'),
-    'thunderspy': os.path.join(EXPORT, 'thunderspy'),
-}
+FORKS = dict(_forks.FORKS)
 
 # Total effect groups per fork. Floors, not equalities — a fork gaining powers
-# must not red this. Measured 2026-08-02: 37280 / 81913 / 51699.
-GROUP_FLOOR = {'homecoming': 35000, 'rebirth': 78000, 'thunderspy': 49000}
+# must not red this. Measured 2026-08-02: 37280 / 81913 / 51699; Brainstorm 38176 (2026-08-23).
+GROUP_FLOOR = {'homecoming': 35000, 'rebirth': 78000, 'thunderspy': 49000, 'brainstorm': 36000}
 
 # Records where the structural verdict DISAGREES with the old substring test.
 # This is the anti-revert floor: swap `entity_scope` back for a token scan and
-# these go to zero. Measured 2026-08-02: 220 / 338 / 303.
-FLIP_FLOOR = {'homecoming': 200, 'rebirth': 320, 'thunderspy': 285}
+# these go to zero. Measured 2026-08-02: 220 / 338 / 303; Brainstorm 221 (2026-08-23).
+FLIP_FLOOR = {'homecoming': 200, 'rebirth': 320, 'thunderspy': 285, 'brainstorm': 200}
 
 VOCAB = {'EITHER', 'PVE_ONLY', 'PVP_ONLY'}
 

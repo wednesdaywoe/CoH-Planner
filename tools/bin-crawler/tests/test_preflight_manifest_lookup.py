@@ -24,6 +24,10 @@ to compare against, which is what silently went missing.
 Reads the committed manifests only — no .bin / .pigg needed.
 """
 
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import _forks  # derived dataset roster; see test_export_roster.py
+
 import os
 import sys
 
@@ -33,7 +37,7 @@ sys.path.insert(0, os.path.join(REPO, "tools", "bin-crawler"))
 
 from bin_crawler.preflight import _MANIFEST_SUBTREES, _committed_digests  # noqa: E402
 
-DATASETS = ("homecoming", "rebirth", "thunderspy")
+DATASETS = tuple(_forks.DATASETS)
 
 # The repo root is where the old relative path happened to work, so a test that
 # only ran from there would have passed against the bug. `tools/bin-crawler` is

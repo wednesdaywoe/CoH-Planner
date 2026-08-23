@@ -46,7 +46,7 @@ from bin_crawler.parser._enums import EVENT_NAME, EVENT_NAME_PARSE6  # noqa: E40
 _REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 _EXPORT = os.path.join(_REPO, "exported_powers")
 
-_FORK_DIR = {"homecoming": "", "rebirth": "rebirth", "thunderspy": "thunderspy"}
+_FORK_DIR = _forks.FORK_SUBDIR
 _FORKS = tuple(_FORK_DIR)
 
 

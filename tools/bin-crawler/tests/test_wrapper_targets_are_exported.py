@@ -31,7 +31,7 @@ import os
 _REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 _EXPORT = os.path.join(_REPO, "exported_powers")
 
-_FORK_DIR = {"homecoming": "", "rebirth": "rebirth", "thunderspy": "thunderspy"}
+_FORK_DIR = _forks.FORK_SUBDIR
 
 # The two spellings of the same delegation. Rebirth authors no `Execute_Power`
 # template at all and Homecoming/Thunderspy author no `Power_Redirect` one, so a
@@ -39,9 +39,10 @@ _FORK_DIR = {"homecoming": "", "rebirth": "rebirth", "thunderspy": "thunderspy"}
 # (DATA-GAP WRAP-2).
 _WRAPPER_ATTRIBS = ("Execute_Power", "Power_Redirect")
 
-# Floors, not targets: what each fork carries today, rounded down. They exist so a
-# walk that stops finding wrappers fails instead of passing over nothing.
-_MINIMUM_REFERENCES = {"homecoming": 300, "rebirth": 100, "thunderspy": 50}
+# Floors, not targets: roughly half what each fork carries today, rounded to a round
+# number. They exist so a walk that stops finding wrappers fails instead of passing over
+# nothing. Measured: HC 593, Rebirth 235, Thunderspy 76, Brainstorm 699.
+_MINIMUM_REFERENCES = {"homecoming": 300, "rebirth": 100, "thunderspy": 50, "brainstorm": 350}
 
 
 def _load_fork(fork):

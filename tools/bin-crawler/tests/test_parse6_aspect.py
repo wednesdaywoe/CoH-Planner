@@ -55,11 +55,7 @@ _EXPORT = os.path.join(_REPO, "exported_powers")
 # Nested fork trees, skipped when walking the Homecoming root.
 _FORK_DIRS = set(_forks.NESTED_DIRS)
 
-_FORKS = {
-    "homecoming": _EXPORT,
-    "rebirth": os.path.join(_EXPORT, "rebirth"),
-    "thunderspy": os.path.join(_EXPORT, "thunderspy"),
-}
+_FORKS = dict(_forks.FORKS)
 
 # The whole `ATTRIB_MOD_ASPECT` table (`parser/_enums.py`). Anything else is a
 # decode failure, which the parser surfaces as `Unknown(<raw>)`.
@@ -79,8 +75,10 @@ _FLOORS = {
     "homecoming":  (17000,   550, 7500, 4300, 12000,  190,    20,      80),
     "rebirth":     (23000,   430, 21000, 12000, 15000, 110,     6,     200),
     "thunderspy":  (16000,   460, 9000, 4200, 15000,  130,     2,      80),
+    "brainstorm":  (17000,   590, 7700, 4500, 13000,  190,    20,      80),
 }
 # measured: HC   Cur 19427 Max 609 Str 8629 Res 4813 Abs 14427 · move-Max 211 · cap 23 · bid 108
+#           BS   Cur 19552 Max 662 Str 8689 Res 5041 Abs 14522 · move-Max 213 · cap 23 · bid 108
 #           RB   Cur 25757 Max 473 Str 24305 Res 13658 Abs 17720 · move-Max 124 · cap  8 · bid 282
 #           TS   Cur 18672 Max 512 Str 10261 Res 4676 Abs 17563 · move-Max 146 · cap  3 · bid 106
 

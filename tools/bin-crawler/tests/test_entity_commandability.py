@@ -64,9 +64,8 @@ sys.path.insert(0, str(REPO_ROOT / "tools" / "bin-crawler"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import _forks  # derived dataset roster; see test_export_roster.py
 
-# Which forks this grades. Brainstorm exports entities too but has no row in
-# LEVEL_INTS, so widening this needs its element width measured first (ENT-17).
-DECODED_FORKS = ("homecoming", "rebirth", "thunderspy")
+# Which forks this grades.
+DECODED_FORKS = tuple(_forks.DATASETS)
 
 # Paths derived, so the root/nested split stays a fact about the tree rather
 # than a literal that a fourth dataset silently invalidates.
@@ -76,7 +75,9 @@ ENTITY_DIRS = {fork: Path(_forks.FORKS[fork]) / "entities" for fork in DECODED_F
 # leading ints; the forks keep the stock i24 single `Level` and write one. This
 # does NOT track the container — Thunderspy ships a Parse7 villaindef over the
 # one-int element, which is exactly why the width is detected per file.
-LEVEL_INTS = {"homecoming": 2, "rebirth": 1, "thunderspy": 1}
+# Brainstorm measured 2026-08-23: two-int on every level element, same as the live ring it
+# forks from. Asserted, not assumed — a one-int Brainstorm reds the widened check below.
+LEVEL_INTS = {"homecoming": 2, "rebirth": 1, "thunderspy": 1, "brainstorm": 2}
 
 
 def load(fork: str) -> list[dict]:
@@ -290,6 +291,6 @@ if __name__ == "__main__":
     test_the_level_element_width_is_read_per_file()
     test_a_level_element_that_underconsumes_is_refused()
     test_an_undecidable_villaindef_is_refused_rather_than_guessed()
-    print("OK — entity commandability is read from the tail on all three forks, "
+    print("OK — entity commandability is read from the tail on every fork, "
           "the levels element is read at each file's own width, and both parser "
           "tripwires the corpus cannot exercise are graded by construction.")

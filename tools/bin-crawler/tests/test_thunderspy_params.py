@@ -37,7 +37,7 @@ _EXPORT = os.path.join(_REPO, "exported_powers")
 # Homecoming (0 of 607) exactly as on Thunderspy (0 of 439).
 _POWER_ATTRIBS = ("Grant_Power", "Revoke_Power", "Execute_Power", "Recharge_Power")
 
-_FORK_DIR = {"homecoming": "", "rebirth": "rebirth", "thunderspy": "thunderspy"}
+_FORK_DIR = _forks.FORK_SUBDIR
 
 
 def _powers(fork):

@@ -35,7 +35,7 @@ import os
 _REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 _EXPORT = os.path.join(_REPO, "exported_powers")
 
-_FORK_DIR = {"homecoming": "", "rebirth": "rebirth", "thunderspy": "thunderspy"}
+_FORK_DIR = _forks.FORK_SUBDIR
 
 
 def _powers(fork):
@@ -84,7 +84,7 @@ def _census(fork):
     return counts
 
 
-_FORKS = ("homecoming", "rebirth", "thunderspy")
+_FORKS = tuple(_forks.DATASETS)
 _CENSUS = {fork: _census(fork) for fork in _FORKS}
 
 

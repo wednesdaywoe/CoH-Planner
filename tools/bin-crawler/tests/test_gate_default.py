@@ -59,11 +59,7 @@ def _toks(text):
     """
     return text.split()
 
-FORKS = {
-    "homecoming": os.path.join(REPO, "exported_powers"),
-    "rebirth": os.path.join(REPO, "exported_powers", "rebirth"),
-    "thunderspy": os.path.join(REPO, "exported_powers", "thunderspy"),
-}
+FORKS = dict(_forks.FORKS)
 _NESTED = set(_forks.NESTED_DIRS)
 
 

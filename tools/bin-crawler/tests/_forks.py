@@ -44,6 +44,10 @@ FORKS = {
 # Directory names to prune when walking the root dataset's tree.
 NESTED_DIRS = frozenset(NESTED)
 
+# dataset -> its subdirectory under the export root, empty for the root dataset. The shape the
+# sweeping tests want when they build a path per fork.
+FORK_SUBDIR = {d: ("" if d == ROOT_DATASET else d) for d in DATASETS}
+
 # Trees under the export root that belong to the root dataset rather than being
 # datasets. They carry an `_export_manifest.json` like a fork root does, so the
 # roster guard would otherwise read them as an unregistered dataset.

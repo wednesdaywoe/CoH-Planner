@@ -53,7 +53,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "596235e82955b22c42250ba5852392a1adf5b64784a5f6f8ab42f51c723c03ca"
+      "sha256": "4c3b315b2cefb4508b5aee88e4d156a95d1b8d9d3922cca135f3ec09af42b333"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -684,12 +684,12 @@
     {
       "path": "tools/bin-crawler/tests/_forks.py",
       "status": "identical",
-      "sha256": "54d4401bf62d7386bb76307a00aacd18e78b0195b0771382daae0243add0c9e7"
+      "sha256": "c41161d5e50775ff22bff870be3bb70160a7e991aa0bb96caf253bb01277e1a2"
     },
     {
       "path": "tools/bin-crawler/tests/test_attrib_ceilings.py",
       "status": "identical",
-      "sha256": "47356957e6c500cdf37efe573573daf8b51a84b5e1ee1985d83a8c66c6d94830"
+      "sha256": "18beeb2c193f0fd7b52d4b377792614ce2f7606ada5a91ed0e55c2429f7feaa2"
     },
     {
       "path": "tools/bin-crawler/tests/test_attribmod_flags.py",
@@ -704,12 +704,12 @@
     {
       "path": "tools/bin-crawler/tests/test_boostsets_record_layout.py",
       "status": "identical",
-      "sha256": "f63c8391723c5b5cc453f7a346fa849f338b5c4a0318a87246e850fdeee4e421"
+      "sha256": "4b4c37342064c09bb19ea56833ed54723775639676e043be9483c833decaa4f8"
     },
     {
       "path": "tools/bin-crawler/tests/test_defense_floor.py",
       "status": "identical",
-      "sha256": "0288b5bfc481b51689bfcbf27aee19dbbee8f14fc0858a0f4231edc17c7ab02f"
+      "sha256": "0f9824bef7940770c198d240bf4e52ca8b62ef7974c441dc568c5683b41c8092"
     },
     {
       "path": "tools/bin-crawler/tests/test_delayed_requires.py",
@@ -724,7 +724,7 @@
     {
       "path": "tools/bin-crawler/tests/test_entity_commandability.py",
       "status": "identical",
-      "sha256": "d9ad6799539b067a0ad063346c9ae2a00b5511632ace60dc600fcf7efe8500d2"
+      "sha256": "90753eb470f9179495748a713c500388b0ca9ae2bbada1b7ca6a0d17a7b96f29"
     },
     {
       "path": "tools/bin-crawler/tests/test_export_roster.py",
@@ -734,17 +734,17 @@
     {
       "path": "tools/bin-crawler/tests/test_fork_event_enum.py",
       "status": "identical",
-      "sha256": "9fc3f8e48f5c56d226ee63a803bd8460083378ec525e699ea3a373a1ca2f72db"
+      "sha256": "9f07141114711af2edb28ae8dcebdbae979744725b97fb4448c3cf0222286f7e"
     },
     {
       "path": "tools/bin-crawler/tests/test_gate_default.py",
       "status": "identical",
-      "sha256": "23cb876be33a4691e1ae2bff92ad9fc5c34e6506ee2f1fc61741132ae498f3a5"
+      "sha256": "b229240c4136d80b7bc509ef59173da618a20d64af74d9e892ef4f291fb3edf2"
     },
     {
       "path": "tools/bin-crawler/tests/test_gate_token_array.py",
       "status": "identical",
-      "sha256": "fb1f7194b7c467f6e8b40c415c77114a50e2716c7d8f1df438861023b4ab270c"
+      "sha256": "6ee9527c57e08bc9b8ab4475db1a02c8d6a542df370e480b3a71606eeddbf4e9"
     },
     {
       "path": "tools/bin-crawler/tests/test_main_target_only.py",
@@ -754,7 +754,7 @@
     {
       "path": "tools/bin-crawler/tests/test_parse6_aspect.py",
       "status": "identical",
-      "sha256": "d4e91b360b8fc970803aba2128930923ef6574d6105dcca7359296849d8f9e83"
+      "sha256": "fee9a8c7d6d6cf2353f1f212cff30abafe5bdea1335db6cddd1e6a2536929486"
     },
     {
       "path": "tools/bin-crawler/tests/test_parse6_chance.py",
@@ -764,22 +764,22 @@
     {
       "path": "tools/bin-crawler/tests/test_parse6_tail_reaches_every_template.py",
       "status": "identical",
-      "sha256": "33241b224960704330b8fddf4414373c0aef92abec158148d153e2150af36358"
+      "sha256": "49bb81823e54da7c0a5b303e70dd7bee759283da5d6b012168b7c0bc8a11e6bb"
     },
     {
       "path": "tools/bin-crawler/tests/test_preflight_manifest_lookup.py",
       "status": "identical",
-      "sha256": "20617134de88cf7124ac0f404dbd05189f2d6f779ce9e3d1c84f2f64e6110537"
+      "sha256": "d7e8543ef603e449b4b08d8756ec72f8673fc471adf72ef1d1728474c5e206eb"
     },
     {
       "path": "tools/bin-crawler/tests/test_recipes_record_layout.py",
       "status": "identical",
-      "sha256": "2dfcb3e2bb82c84e61a4248f5243fdbf7f97329dceefdce26e3aa3dcced9a139"
+      "sha256": "a9769bda27ccc9a0787005d7a98e536d4af105d36e808dceba183562afde9246"
     },
     {
       "path": "tools/bin-crawler/tests/test_requires_scope.py",
       "status": "identical",
-      "sha256": "57fd66d9451d7dcb8c79afc611c37e62e9a61f3dcbbe384e779239d5041d6af7"
+      "sha256": "ac08a3150851c39cd33a902fdaee058103e79c16239b2752ccf4cbd68e078b20"
     },
     {
       "path": "tools/bin-crawler/tests/test_schedules.py",
@@ -804,7 +804,7 @@
     {
       "path": "tools/bin-crawler/tests/test_thunderspy_band_precedence.py",
       "status": "identical",
-      "sha256": "b1f438238ad580e62f36ffb3fd3b3e43bf973254967f5f19994d68fee48375eb"
+      "sha256": "c3608deb9781b876853529c10ceb6ea7f40da8478fb3018f9944b2bb0961997d"
     },
     {
       "path": "tools/bin-crawler/tests/test_thunderspy_chance.py",
@@ -814,7 +814,7 @@
     {
       "path": "tools/bin-crawler/tests/test_thunderspy_entcreate_attach.py",
       "status": "identical",
-      "sha256": "49b9987fa8d11d0d553b11cda3a882dec04a26950bc6d16b8133680a01fb9f29"
+      "sha256": "6b572ba060ef90793bb4abced05d44ea9b07f13881627fa77c140b31259622a5"
     },
     {
       "path": "tools/bin-crawler/tests/test_thunderspy_movement.py",
@@ -824,7 +824,7 @@
     {
       "path": "tools/bin-crawler/tests/test_thunderspy_params.py",
       "status": "identical",
-      "sha256": "66bce04fe7c0af1ef09721289bf06bbd2fd6a6251e9970ff3419dc162afe000b"
+      "sha256": "3a813c4da976581bd025f1276de1b581778e246a9dc383177ae22a8fa6c63947"
     },
     {
       "path": "tools/bin-crawler/tests/test_thunderspy_typing.py",
@@ -834,7 +834,7 @@
     {
       "path": "tools/bin-crawler/tests/test_wrapper_targets_are_exported.py",
       "status": "identical",
-      "sha256": "528c6c5ef40a427a2fef74cb609ef550983103e35f72ae8b2a13dbbb4799f096"
+      "sha256": "d3b98215b8120231c31f4acb4753c6db389c5852d6ab3daaa5e871dc156d3728"
     }
   ]
 }

@@ -30,7 +30,7 @@ import os
 _REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 _EXPORT = os.path.join(_REPO, "exported_powers")
 
-_FORK_DIR = {"homecoming": "", "rebirth": "rebirth", "thunderspy": "thunderspy"}
+_FORK_DIR = _forks.FORK_SUBDIR
 
 # The disputed raws that have carriers, each with the fork that can adjudicate it.
 # `Drop_Toggles` is Rebirth's to answer: Homecoming authors none at all, so its

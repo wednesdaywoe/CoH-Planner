@@ -28,6 +28,10 @@ Run directly:  python3 tools/bin-crawler/tests/test_attrib_ceilings.py
 or under pytest (functions are named test_*).
 """
 
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import _forks  # derived dataset roster; see test_export_roster.py
+
 import json
 import os
 
@@ -140,7 +144,7 @@ def _check_oracle(archetype: str, attribs: dict) -> None:
 
 
 def test_every_player_archetype_carries_every_ceiling():
-    for dataset in ("homecoming", "rebirth", "thunderspy"):
+    for dataset in _forks.DATASETS:
         archetypes = _player_archetypes(dataset)
         assert len(archetypes) == 15, (
             f"{dataset}: {len(archetypes)} player archetypes, expected 15 — "
@@ -151,7 +155,7 @@ def test_every_player_archetype_carries_every_ceiling():
 
 
 def test_regeneration_and_recovery_reproduce_the_published_caps():
-    for dataset in ("homecoming", "rebirth", "thunderspy"):
+    for dataset in _forks.DATASETS:
         graded = 0
         for archetype, record in _player_archetypes(dataset).items():
             if archetype in _PUBLISHED_REGENERATION_CAP_PERCENT:
@@ -197,7 +201,7 @@ def test_the_to_hit_ceiling_is_per_level_and_fork_invariant():
     archetype of every fork authors the same curve, which is what makes a
     per-AT divergence a finding rather than noise."""
     curves = set()
-    for dataset in ("homecoming", "rebirth", "thunderspy"):
+    for dataset in _forks.DATASETS:
         for archetype, record in _player_archetypes(dataset).items():
             row = record["attribs"]["to_hit_cap"]
             assert row[0] < row[_LEVELS - 1], (
@@ -216,7 +220,7 @@ def test_max_endurance_ceiling_sits_above_its_base_row():
     AttribMaxTable row (a flat 100) and the ceiling is the AttribMaxMaxTable row
     over it (120 rising to 365). Reading one table for both would make the cap
     equal the base and silently forbid every +MaxEnd buff."""
-    for dataset in ("homecoming", "rebirth", "thunderspy"):
+    for dataset in _forks.DATASETS:
         for archetype, record in _player_archetypes(dataset).items():
             attribs = record["attribs"]
             base, cap = attribs["max_endurance"], attribs["max_endurance_cap"]
@@ -248,7 +252,7 @@ def test_every_player_archetype_carries_the_travel_floor():
     """
     expected = {"run_speed": 0.1, "fly_speed": 0.1,
                 "jump_speed": 0.0, "jump_height": 0.0}
-    for dataset in ("homecoming", "rebirth", "thunderspy"):
+    for dataset in _forks.DATASETS:
         for archetype, record in _player_archetypes(dataset).items():
             attribs = record["attribs"]
             floor = attribs.get("movement_floor")
@@ -275,7 +279,7 @@ def test_no_mez_ceiling_is_invented():
     """A deliberate absence, not an omission: the mez rows are a flat 1.0 bound
     on the mez STATE and protection has no per-archetype ceiling at all, so
     there is nothing here to export. See CAPS-1."""
-    for dataset in ("homecoming", "rebirth", "thunderspy"):
+    for dataset in _forks.DATASETS:
         for archetype, record in _player_archetypes(dataset).items():
             present = [k for k in _MEZ_KEYS_THAT_MUST_NOT_EXIST
                        if k in record["attribs"]]

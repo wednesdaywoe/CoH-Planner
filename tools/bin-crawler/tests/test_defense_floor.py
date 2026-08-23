@@ -36,11 +36,15 @@ Run directly:  python3 tools/bin-crawler/tests/test_defense_floor.py
 or under pytest (functions are named test_*).
 """
 
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import _forks  # derived dataset roster; see test_export_roster.py
+
 import json
 import os
 
 _REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-_DATASETS = ("homecoming", "rebirth", "thunderspy")
+_DATASETS = tuple(_forks.DATASETS)
 
 # Every player archetype of every dataset authors this floor, and it is the same
 # number on all 45 — which is what makes a per-class divergence a finding.

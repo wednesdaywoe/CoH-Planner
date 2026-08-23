@@ -44,7 +44,7 @@ import os
 _REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 _EXPORT = os.path.join(_REPO, "exported_powers")
 
-_FORK_DIR = {"homecoming": "", "rebirth": "rebirth", "thunderspy": "thunderspy"}
+_FORK_DIR = _forks.FORK_SUBDIR
 
 
 def _powers(fork):
@@ -109,7 +109,7 @@ def test_create_entity_count_is_in_family_with_the_other_forks():
     1.83× Homecoming; the forks otherwise sit within 10% of each other.
     """
     counts = {fork: sum(1 for _ in _entity_templates(fork))
-              for fork in ("homecoming", "rebirth", "thunderspy")}
+              for fork in _forks.DATASETS}
     reference = counts["homecoming"]
     assert reference, "no Homecoming Create_Entity templates — export missing?"
     ratio = counts["thunderspy"] / reference
