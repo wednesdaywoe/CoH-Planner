@@ -19,6 +19,7 @@ function defaultCtx(overrides: Partial<AdapterCalcContext> = {}): AdapterCalcCon
     furyLevel: 75,
     combatMode: false,
     destinyTime: null,
+    hybridTargetsHit: null,
     globalAdjusters: {},
     mechanicAdjusters: {},
     dominationActive: false,

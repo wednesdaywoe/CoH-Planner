@@ -8,3 +8,5 @@ export { IncarnateModal } from './IncarnateModal';
 export { IncarnateCraftingModal } from './IncarnateCraftingModal';
 export { IncarnatePowerTree } from './IncarnatePowerTree';
 export { DestinyTimeSlider } from './DestinyTimeSlider';
+export { HybridTargetsSlider } from './HybridTargetsSlider';
+export { DescriptionNote } from './DescriptionNote';

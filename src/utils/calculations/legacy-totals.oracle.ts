@@ -3050,8 +3050,10 @@ function applyIncarnateBonuses(
         applyHybridStatBlock(hybridEffects.frontLoaded, powerName, global, breakdown);
       }
 
-      // Layer 3: Per-target bonuses — not applied yet (needs slider infrastructure)
-      // When slider is added: applyHybridStatBlock(scaled perTarget, `${powerName} (per-target)`, ...)
+      // Layer 3: Per-target bonuses — deliberately NOT applied here. The engine gained this
+      // layer with HYBRID-PT-1 and reads a foe count off the combat context; this file is the
+      // frozen oracle and gains no feature the engine gains, so it stays at the pre-slider
+      // behaviour. The two agree wherever the foe count is absent, which is every fixture.
     }
   }
 

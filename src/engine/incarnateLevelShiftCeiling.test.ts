@@ -49,6 +49,7 @@ const ctx = (incarnateLevelShift: number | null): AdapterCalcContext => ({
   furyLevel: 0,
   combatMode: false,
   destinyTime: null,
+  hybridTargetsHit: null,
   globalAdjusters: {},
   mechanicAdjusters: {},
   dominationActive: false,

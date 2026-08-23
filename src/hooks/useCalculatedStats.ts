@@ -351,6 +351,7 @@ export function useCalculationContext(): CalculationContext {
   const globalAdjusters = useUIStore((state) => state.globalAdjusters);
   const mechanicAdjusters = useUIStore((state) => state.mechanicAdjusters);
   const destinyTime = useUIStore((state) => state.destinyTime);
+  const hybridTargetsHit = useUIStore((state) => state.hybridTargetsHit);
   // Display-only projection inputs (PROD6C-3k): they resolve each power's effective form.
   const dominationActive = useUIStore((state) => state.dominationActive);
   const stalkerHidden = useUIStore((state) => state.stalkerHidden);
@@ -366,7 +367,7 @@ export function useCalculationContext(): CalculationContext {
   // instance built its own `options` object (a fresh ref per `useMemo`), the calc
   // cache would miss on every instance and every consumer would re-run the engine.
   return useMemo(() => {
-    const deps = [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShift, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden, whatIfBuffs] as const;
+    const deps = [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShift, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, hybridTargetsHit, dominationActive, stalkerHidden, whatIfBuffs] as const;
     return sharedContextMemo.get(deps, () => ({
       exemplarMode,
       incarnateActive,
@@ -382,12 +383,13 @@ export function useCalculationContext(): CalculationContext {
         globalAdjusters,
         mechanicAdjusters,
         destinyTime,
+        hybridTargetsHit,
         dominationActive,
         stalkerHidden,
         whatIfBuffs,
       },
     }));
-  }, [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShift, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden, whatIfBuffs]);
+  }, [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShift, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, hybridTargetsHit, dominationActive, stalkerHidden, whatIfBuffs]);
 }
 
 /**

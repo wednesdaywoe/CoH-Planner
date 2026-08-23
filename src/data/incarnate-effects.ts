@@ -424,9 +424,12 @@ function genesisEffectsRegistry(): Record<string, GenesisEffects> {
 // ============================================
 
 /**
- * Normalize power ID for lookup (remove slot prefix, convert to lowercase with underscores)
+ * Normalize power ID for lookup (remove slot prefix, convert to lowercase with underscores).
+ *
+ * Exported because the incarnate effect tables and `description-notes.ts` key on the same form,
+ * and a second copy of the rule would drift from this one.
  */
-function normalizePowerId(powerId: string): string {
+export function normalizePowerId(powerId: string): string {
   // Remove common prefixes
   let normalized = powerId
     .toLowerCase()

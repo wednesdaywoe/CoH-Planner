@@ -246,6 +246,7 @@ export {
   getIncarnateEffects,
   formatEffectPercent,
   formatEffectValue,
+  normalizePowerId as normalizeIncarnatePowerId,
 } from './incarnate-effects';
 export type {
   AlphaEffects,
@@ -400,3 +401,7 @@ export type {
   GroupedEffect,
   GroupedEffects,
 } from './effect-registry';
+
+// Adjudicated description notes — where a power's in-game text and the planner's data disagree.
+export { DESCRIPTION_NOTES, getDescriptionNote } from './description-notes';
+export type { DescriptionNote } from './description-notes';

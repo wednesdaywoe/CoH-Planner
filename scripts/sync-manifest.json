@@ -53,7 +53,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "9f686494e560beefa88e0d27dac50b9f8ddc16d1853d2c48ad35cb3dd0b5fbc3"
+      "sha256": "4bc51d8614b68b5963a5249d4df998e6d5280214acd49254623785ec84af91e0"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -166,6 +166,16 @@
       "sha256": "53c244093c50bb083d90787e8142141c8984edf89b539ef1f8dea7f04fb4a7f4"
     },
     {
+      "path": "scripts/audit-description-divergence.cjs",
+      "status": "identical",
+      "sha256": "c9a11d275348eeccb399ade448d62eabdca175e7acfa278a0cec556aae7cba66"
+    },
+    {
+      "path": "scripts/audit-description-divergence.d.cts",
+      "status": "identical",
+      "sha256": "b85b3134e3b3220fa7c63463ad0820859b4a96c77b3f5d6a15be7ba5ec4b8562"
+    },
+    {
       "path": "scripts/bridge-attrib-one.cjs",
       "status": "identical",
       "sha256": "eeac16a0a94576c5a96f0280e14e1977f4b5e5968f54233e18bdaeb5243db2d0"
@@ -208,7 +218,7 @@
     {
       "path": "scripts/convert-incarnate-effects.cjs",
       "status": "identical",
-      "sha256": "42c047655636ba5087837ff14a0348c750c3537f6486443759ba7b849b772157"
+      "sha256": "d5a0dd98346aff5154c13409bb97dc5c8333b0cc637ef9c1f8a0ecc17e4faf95"
     },
     {
       "path": "scripts/convert-leveling-schedule.cjs",
@@ -409,7 +419,7 @@
     {
       "path": "src/data/incarnate-effects.ts",
       "status": "identical",
-      "sha256": "384c1504ed27c12317e1aafb010608ed2a220b85e820cba6f7edd50300684199"
+      "sha256": "e614ce3a32b29918f9f5a07da65910f48027b4398891baba23eebf56e1ff3c48"
     },
     {
       "path": "src/data/io-sets.ts",

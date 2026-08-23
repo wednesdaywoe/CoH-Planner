@@ -855,7 +855,6 @@ function extractHybrid() {
 
     const powerId = f.replace('.json', '');
     const displayName = data.display_name || powerId;
-    const helpText = data.display_help || '';
 
     // Determine tree from filename
     let tree = 'unknown';
@@ -864,9 +863,22 @@ function extractHybrid() {
     else if (powerId.startsWith('melee')) tree = 'melee';
     else if (powerId.startsWith('control')) tree = 'control';
 
-    // Extract max enemies from help text
-    const maxMatch = helpText.match(/maximum strength at (\d+) enem/i);
-    const maxTargets = maxMatch ? parseInt(maxMatch[1]) : 0;
+    // The per-foe cap, read off the power rather than its tooltip. `max_targets_hit`
+    // counts every entity the sphere can land on, and the caster is one of them
+    // whenever `Self` is affected, so the FOE ceiling is one less: Melee Core
+    // Embodiment's 10 is 9 enemies plus you. A hybrid that affects no `Foe` has no
+    // per-foe layer to cap (Assault/Control are `Self` only; Support's 255 is the
+    // uncapped leaguemate spread), which is why the discriminator is the target list
+    // and not the number.
+    //
+    // Was a scrape of `display_help` for "maximum strength at N enemies" until
+    // HYBRID-PT-1. Prose agrees with this read on all 9 melee tiers across all four
+    // forks — that agreement is what `hybrid-per-target-cap.test.ts` grades — but a
+    // tooltip is not a field, and this cap now sets a slider's range.
+    const affects = data.targets_affected || [];
+    const maxTargets = affects.includes('Foe')
+      ? Math.max(0, (data.max_targets_hit || 0) - (affects.includes('Self') ? 1 : 0))
+      : 0;
 
     // Categorize effects by requires_expression
     const frontLoaded = {}; // Self-only (fixed baseline when toggle is on)

@@ -342,6 +342,12 @@ interface UIState {
    *  Destiny build relies on); 0 = additive peak (Mids-style time slider). */
   destinyTime: number | null;
 
+  /** How many foes are standing inside an active Melee Hybrid's sphere. The Melee line
+   *  stacks its Regen + Resistance (Core) or Regen + Defense (Radial) buff once per nearby
+   *  enemy, up to a ceiling the equipped tier states (4, 7 or 9) and the engine clamps to.
+   *  0 = solo, the default: a build's totals should not assume a crowd. */
+  hybridTargetsHit: number;
+
   /** Domination active state - for Dominators to see enhanced mez values */
   dominationActive: boolean;
 
@@ -686,6 +692,9 @@ interface UIActions {
   setIncarnateLevelShift: (shift: number | null) => void;
   /** Set the Destiny time-slider position (seconds after cast; `null` = auto floor). */
   setDestinyTime: (seconds: number | null) => void;
+  /** Set how many foes are in the Melee Hybrid's sphere (clamped at 0; the engine applies
+   *  the equipped tier's own ceiling). */
+  setHybridTargetsHit: (foes: number) => void;
 
   // Domination Active State (Dominator inherent)
   toggleDomination: () => void;
@@ -1000,6 +1009,7 @@ export const useUIStore = create<UIStore>()(
       incarnateActive: createDefaultIncarnateActiveState(),
       incarnateLevelShift: null,
       destinyTime: null,
+      hybridTargetsHit: 0,
       dominationActive: false,
       scourgeActive: false,
       furyLevel: 75, // Default to 75 fury (reasonable combat average)
@@ -1681,6 +1691,8 @@ export const useUIStore = create<UIStore>()(
       setDestinyTime: (seconds) =>
         set({ destinyTime: seconds === null ? null : Math.max(0, seconds) }),
 
+      setHybridTargetsHit: (foes) => set({ hybridTargetsHit: Math.max(0, Math.round(foes)) }),
+
       // Domination Active State
       toggleDomination: () =>
         set((state) => ({
@@ -1960,6 +1972,7 @@ export const useUIStore = create<UIStore>()(
           incarnateActive: createDefaultIncarnateActiveState(),
           incarnateLevelShift: null,
           destinyTime: 0,
+          hybridTargetsHit: 0,
           dominationActive: false,
           scourgeActive: false,
           furyLevel: 0,
@@ -2018,6 +2031,7 @@ export const useUIStore = create<UIStore>()(
         incarnateActive: state.incarnateActive,
         incarnateLevelShift: state.incarnateLevelShift,
         destinyTime: state.destinyTime,
+        hybridTargetsHit: state.hybridTargetsHit,
         dominationActive: state.dominationActive,
         scourgeActive: state.scourgeActive,
         furyLevel: state.furyLevel,
@@ -2199,6 +2213,7 @@ export const useIsIncarnateSlotActive = (slotId: ToggleableIncarnateSlot) =>
 
 /** Select the Destiny time-slider position (seconds after cast). */
 export const useDestinyTime = () => useUIStore((state) => state.destinyTime);
+export const useHybridTargetsHit = () => useUIStore((state) => state.hybridTargetsHit);
 
 /** Select domination active state */
 export const useDominationActive = () => useUIStore((state) => state.dominationActive);

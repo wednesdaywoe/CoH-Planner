@@ -66,7 +66,10 @@ function destinyHealEntry(fx: DestinyEffects, archetypeId?: string, level?: numb
   return { label: 'Heal', value: hp ? `~${Math.round(hp)} HP` : 'on cast' };
 }
 
-const HYBRID_LABELS: Record<string, string> = {
+/** Shared with `HybridTargetsSlider`, which reads the same per-foe layer this tooltip lists —
+ *  one vocabulary for one set of stat keys, so a slider readout cannot label a stat differently
+ *  from the tooltip the player just hovered. */
+export const HYBRID_LABELS: Record<string, string> = {
   damage: 'Damage', regeneration: 'Regeneration', recovery: 'Recovery',
   enduranceDiscount: 'End Discount', statusResistance: 'Status Resistance',
   resSmashing: 'Res (S)', resLethal: 'Res (L)', resFire: 'Res (F)',

@@ -19,7 +19,7 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**0 open, of 205 entries.** When an entry is open it is listed here with what it's waiting on.
+**0 open, of 207 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
@@ -32,8 +32,18 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Sets, boosts, incarnates, inherents
 
-[Full detail](gaps/sets-boosts-incarnates.md) — 24 of 25 closed
+[Full detail](gaps/sets-boosts-incarnates.md) — 26 of 27 closed
 
+- [x] **HYBRID-2** — Homecoming and its Brainstorm beta dropped the Melee Hybrid's status-protection
+  rows at Total Radial Graft and both T4 Embodiments while the tooltip still promises them, where
+  Rebirth and Thunderspy keep the rows and read true; adjudicated as an upstream removal, not a
+  parse gap, on a 408-power census of the same packed-mez shape plus a same-family control, and
+  pinned by a tripwire that fires whichever side moves
+- [x] **HYBRID-PT-1** — the Melee Hybrid's per-foe ceiling was scraped out of its tooltip prose
+  rather than read off the power, and the per-enemy layer that ceiling caps reached no total on
+  either calc; the cap now derives from `max_targets_hit` minus the caster's own slot (byte-identical
+  output on all four forks), and the layer stacks against a foe-count input the beta exposes as a
+  slider
 - [x] **INHERENT-9** — the basic-inherent converter dropped the same four mode arrays ACCOLADE-2
   closed, so Sprint, Rest, Brawl and the prestige travel toggles published none of the Kheldian
   form gating the game gives them on every fork; the call landed with the script's FORK-1

@@ -118,6 +118,9 @@ export interface CharacterStateCombatContext {
   hit_points_percent: number;
   exemplar_level: number | null;
   destiny_time: number | null;
+  /** How many foes are inside an active Melee Hybrid's sphere. `null` reads as none, which
+   *  applies nothing — the behaviour the pass had before the layer was wired. */
+  hybrid_targets_hit: number | null;
   /** The incarnate level-shift ceiling: how many of the loadout's EARNED shifts to spend.
    *  `null` = all of them. The engine spends it down the grants (Alpha first) rather than
    *  clamping the sum, so each slot's breakdown row still states what it contributed. */
@@ -182,6 +185,9 @@ export interface AdapterCalcContext {
   furyLevel: number;
   combatMode: boolean;
   destinyTime: number | null;
+  /** Foes inside the Melee Hybrid's sphere, 0-N by tier. A live preview input like
+   *  `destinyTime`, never persisted with the build. */
+  hybridTargetsHit: number | null;
   globalAdjusters: Record<string, boolean>;
   mechanicAdjusters: Record<string, boolean>;
   /** Header Domination toggle — an AT-inherent mechanic the conditional `domination` id reads
@@ -520,6 +526,11 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
       // default); a number → that exact second. The engine reads the same timeline the beta's
       // getDestinyEffectsAtTime does, so null↔None and n↔Some(n) match the beta path exactly.
       destiny_time: ctx.destinyTime,
+      // Melee Hybrid foe count: null → no foes, so the per-foe layer contributes nothing and
+      // the totals read as they did while that layer was cut. The engine clamps the number to
+      // the equipped tier's own ceiling, so a stale value from a bigger tier cannot overstate
+      // a smaller one.
+      hybrid_targets_hit: ctx.hybridTargetsHit,
       // Level-shift ceiling: null → the engine spends every shift the loadout earned (the
       // prior fixed behaviour), a number → it spends that much down the earned grants,
       // Alpha first. It cannot exceed them, so this never conjures a shift the build has

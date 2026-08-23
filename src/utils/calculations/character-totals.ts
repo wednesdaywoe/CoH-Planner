@@ -777,6 +777,10 @@ export interface CalculationOptions {
    *  = legacy flat peak values. Only affects Destiny powers that diminish over
    *  time (Mids-style time slider). */
   destinyTime?: number | null;
+  /** How many foes are inside an active Melee Hybrid's sphere — the per-foe layer's only
+   *  input. `undefined`/0 = solo, which applies nothing. The engine clamps it to the
+   *  equipped tier's own ceiling (4, 7 or 9), so this never has to know which tier is on. */
+  hybridTargetsHit?: number;
   /** Combat mode: suppress defenseBuffSuppressible from stealth/travel powers */
   combatMode?: boolean;
   /** Active global Mechanic Adjuster state — caster-state toggles shared across
@@ -827,6 +831,7 @@ export function calculateCharacterTotals(
     furyLevel: options?.furyLevel ?? 75,
     combatMode: options?.combatMode ?? false,
     destinyTime: options?.destinyTime ?? null,
+    hybridTargetsHit: options?.hybridTargetsHit ?? null,
     globalAdjusters: options?.globalAdjusters ?? {},
     mechanicAdjusters: options?.mechanicAdjusters ?? {},
     dominationActive: options?.dominationActive ?? false,

@@ -18,9 +18,12 @@ import {
   resolveTreeRow,
   sortRarePowers,
   STANDARD_TREE_LAYOUT,
+  normalizeIncarnatePowerId,
 } from '@/data';
+import { getActiveDataset } from '@/data/dataset';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getIncarnateEffectData } from './IncarnateEffectsTooltip';
+import { DescriptionNote } from './DescriptionNote';
 
 // ============================================
 // T4 RIGHT-CLICK CYCLING: T3 PAIR DEFINITIONS
@@ -133,6 +136,7 @@ function InfoPanel({ power, slotId }: InfoPanelProps) {
             {power.shortHelp && (
               <div className="text-gray-400 leading-snug mt-0.5">{power.shortHelp}</div>
             )}
+            <DescriptionNote subject={`incarnate:${normalizeIncarnatePowerId(power.id)}`} dataset={getActiveDataset().id} />
             {effectData && (
               <div className="text-cyan-400 font-semibold mt-1">{effectData.header}</div>
             )}

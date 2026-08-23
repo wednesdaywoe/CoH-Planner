@@ -131,6 +131,7 @@ const CTX: AdapterCalcContext = {
   furyLevel: 75,
   combatMode: false,
   destinyTime: null,
+  hybridTargetsHit: null,
   globalAdjusters: {},
   mechanicAdjusters: {},
   dominationActive: false,
