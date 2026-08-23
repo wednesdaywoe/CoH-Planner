@@ -1,6 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { statCapFor, capReplacesTotal, type StatCap } from './StatsDashboard';
+import { statCapFor, capReplacesTotal, type StatCap } from './stat-caps';
 import { STAT_DEFINITIONS, STAT_CATEGORY } from '@/data/core/stat-definitions';
+import { DETAILED_STATS } from '@/utils/detailed-totals';
+import { getDefenseSoftcap } from '@/data/datasets/homecoming/purple-patch';
+import { ARCHETYPES } from '@/data/datasets/homecoming/archetypes';
 
 // The dashboard once carried a stat's ceiling as a bare number and rendered it in place of
 // the total whenever the total reached it. That is correct for resistance and wrong for
@@ -85,5 +88,48 @@ describe('stat ceilings carry their kind', () => {
     // The asymmetry the pin exists to remember.
     expect(statCapFor('defense_smashing', DEF_CAP, RES_CAP)?.kind).toBe('soft');
     expect(statCapFor('resist_smashing', DEF_CAP, RES_CAP)).toBeUndefined();
+  });
+
+  // The dashboard tile was fixed first and the two other ceiling surfaces — the Detailed
+  // Totals sheet and the exported build poster — kept a bare number, sourced from the
+  // ARCHETYPE's `defenseCap`. That is the even-level row only, so the sheet and the tile
+  // beside it disagreed the moment a user set Target Level to +6. Both now read the same
+  // `getDefenseSoftcap`, and this is the divergence that makes the difference observable.
+  it('the archetype defense cap is not the softcap, once the target level moves', () => {
+    const atCap = (ARCHETYPES.blaster?.stats.defenseCap ?? 0) * 100;
+    expect(atCap).toBe(45);
+    expect(getDefenseSoftcap(0, 'standard')).toBe(atCap);
+    // Where a surface pinned to the archetype value is provably wrong:
+    expect(getDefenseSoftcap(6, 'standard')).toBe(50);
+    expect(getDefenseSoftcap(0, 'incarnate')).toBe(59);
+  });
+
+  // The sheet and the poster build their rows from DETAILED_STATS, a different roster from
+  // the dashboard's. Grade it too, so a defense row added to one roster and not the other
+  // cannot pick up the wrong kind — or a hard cap, which would let a meter present a
+  // threshold as a total.
+  it('every ceiling on the detailed sheet carries the right kind', () => {
+    const DEF = 50; // a softcap that is NOT the archetype's 45, so a fallback would show
+    const RES = 75;
+    const defense = DETAILED_STATS.filter((id) => STAT_CATEGORY[id] === 'defense');
+    const resistance = DETAILED_STATS.filter((id) => STAT_CATEGORY[id] === 'resistance');
+    expect(defense.length).toBeGreaterThan(0);
+    expect(resistance.length).toBeGreaterThan(0);
+
+    for (const id of defense) {
+      const cap = statCapFor(id, DEF, RES);
+      expect(cap, id).toEqual({ value: DEF, kind: 'soft' });
+      expect(capReplacesTotal(cap, 77.5), id).toBe(false);
+    }
+    for (const id of resistance) {
+      expect(statCapFor(id, DEF, RES), id).toEqual({ value: RES, kind: 'hard' });
+    }
+    for (const id of DETAILED_STATS) {
+      const got = statCapFor(id, DEF, RES);
+      if (got === undefined) continue;
+      expect(STAT_CATEGORY[id], `${id} was given a ${got.kind} cap`).toBe(
+        got.kind === 'hard' ? 'resistance' : 'defense',
+      );
+    }
   });
 });

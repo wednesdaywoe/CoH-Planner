@@ -18,6 +18,7 @@ import { resolvePath } from '@/utils/paths';
 import { getBuildPowers, getInherentPowers, getSelectedIncarnates, isPowerSlotted } from '@/utils/build-powers';
 import type { SelectedIncarnatePower } from '@/types/incarnate';
 import { isNonZeroStat, type StatSection } from '@/utils/detailed-totals';
+import { capDescription, type StatCap } from '@/data/core/stat-caps';
 import { SlottedEnhancementIcon } from '@/components/powers/SlottedEnhancementIcon';
 import type { ExportImageOptions } from './exportOptions';
 import type { SetBonus } from '@/types/enhancement';
@@ -145,17 +146,19 @@ function IncarnateTile({ inc }: { inc: SelectedIncarnatePower }) {
 // TOTALS
 // ============================================
 
-function MiniCapBar({ value, cap }: { value: number; cap: number }) {
-  const maxDisplay = cap * 1.3;
-  const cappedPct = (Math.min(value, cap) / maxDisplay) * 100;
-  const overflowPct = (Math.max(0, value - cap) / maxDisplay) * 100;
+/** The poster's compact ceiling bar. Same reading as the sheet's CapMeter: the second segment
+ *  is what sits past the ceiling, which for a softcap is defense the build really has. */
+function MiniCapBar({ value, cap }: { value: number; cap: StatCap }) {
+  const maxDisplay = cap.value * 1.3;
+  const cappedPct = (Math.min(value, cap.value) / maxDisplay) * 100;
+  const overflowPct = (Math.max(0, value - cap.value) / maxDisplay) * 100;
   return (
-    <div className="h-[4px] mt-[2px] bg-slate-700/80 rounded-full overflow-hidden relative">
+    <div className="h-[4px] mt-[2px] bg-slate-700/80 rounded-full overflow-hidden relative" title={capDescription(cap)}>
       <div className="absolute inset-y-0 left-0 rounded-full bg-emerald-500/80" style={{ width: `${cappedPct}%` }} />
       {overflowPct > 0 && (
         <div className="absolute inset-y-0 rounded-full bg-amber-500/70" style={{ left: `${cappedPct}%`, width: `${overflowPct}%` }} />
       )}
-      <div className="absolute inset-y-0 w-px bg-slate-300/50" style={{ left: `${(cap / maxDisplay) * 100}%` }} />
+      <div className="absolute inset-y-0 w-px bg-slate-300/50" style={{ left: `${(cap.value / maxDisplay) * 100}%` }} />
     </div>
   );
 }
@@ -178,7 +181,7 @@ function StatSectionCard({ section }: { section: StatSection }) {
                   {stat.format(stat.value)}
                 </span>
               </div>
-              {showBar && <MiniCapBar value={stat.value as number} cap={stat.cap as number} />}
+              {showBar && <MiniCapBar value={stat.value as number} cap={stat.cap as StatCap} />}
             </div>
           );
         })}

@@ -17,6 +17,8 @@ import type { StatValue, MezStatValue } from '@/data/stat-definitions';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import type { CharacterCalculationResult } from '@/utils/calculations/character-totals';
 import { computeAllStats, type StatRow } from '@/utils/detailed-totals';
+import { capDescription, type StatCap } from '@/data/core/stat-caps';
+import { getDefenseSoftcap } from '@/data/purple-patch';
 import type { Build } from '@/types/build';
 import type { SharedBuild } from '@/types/shared';
 
@@ -214,18 +216,21 @@ function BreakdownPanel({
   );
 }
 
-/** Bar meter showing value relative to AT cap, with overflow in a separate color */
-function CapMeter({ value, cap }: { value: number; cap: number }) {
-  // Max display range: slightly beyond cap to show overflow context
-  const maxDisplay = cap * 1.3;
-  const capped = Math.min(value, cap);
-  const overflow = Math.max(0, value - cap);
+/** Bar meter showing a value against its ceiling, with anything past the ceiling drawn as a
+ *  separate segment. The number above the bar is always the real total — the segment split is
+ *  the only thing the ceiling changes here, and for a softcap that second segment is defense
+ *  the build genuinely has, not overflow being discarded. */
+function CapMeter({ value, cap }: { value: number; cap: StatCap }) {
+  // Max display range: slightly beyond the ceiling so the surplus has room to draw.
+  const maxDisplay = cap.value * 1.3;
+  const capped = Math.min(value, cap.value);
+  const overflow = Math.max(0, value - cap.value);
   const cappedPct = (capped / maxDisplay) * 100;
   const overflowPct = (overflow / maxDisplay) * 100;
-  const isCapped = value >= cap;
+  const isCapped = value >= cap.value;
 
   return (
-    <div className="flex items-center gap-1.5 mt-0.5 px-1">
+    <div className="flex items-center gap-1.5 mt-0.5 px-1" title={capDescription(cap)}>
       <div className="flex-1 h-[6px] bg-slate-700/80 rounded-full overflow-hidden relative">
         {/* Capped portion */}
         <div
@@ -242,11 +247,11 @@ function CapMeter({ value, cap }: { value: number; cap: number }) {
         {/* Cap marker line */}
         <div
           className="absolute inset-y-0 w-px bg-slate-300/50"
-          style={{ left: `${(cap / maxDisplay) * 100}%` }}
+          style={{ left: `${(cap.value / maxDisplay) * 100}%` }}
         />
       </div>
       <span className="text-[9px] text-slate-500 tabular-nums flex-shrink-0 w-8 text-right">
-        {cap}%
+        {cap.value}%
       </span>
     </div>
   );
@@ -344,6 +349,11 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
   const calcResult = useCharacterCalculation();
   const build = useBuildStore((s) => s.build);
   const rechargeMidsStyle = useUIStore((s) => s.rechargeMidsStyle);
+  // The same softcap the dashboard tile reads, so the sheet and the tile beside it cannot
+  // disagree about where the threshold sits.
+  const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
+  const contentMode = useUIStore((s) => s.contentMode);
+  const defenseSoftcap = getDefenseSoftcap(targetLevelOffset, contentMode);
 
   const health = getBaselineHealth(build.archetype?.id ?? undefined, build.level);
   const baseHP = health.baseHealth;
@@ -359,17 +369,17 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
 
   // Compute stats for current build
   const currentBuildStats = useMemo(
-    () => computeAllStats(stats, globalBonuses, breakdowns, baseHP, maxHPCap, build.archetype?.id ?? undefined, rechargeMidsStyle),
-    [stats, globalBonuses, breakdowns, baseHP, maxHPCap, build.archetype?.id, rechargeMidsStyle],
+    () => computeAllStats(stats, globalBonuses, breakdowns, baseHP, maxHPCap, build.archetype?.id ?? undefined, rechargeMidsStyle, defenseSoftcap),
+    [stats, globalBonuses, breakdowns, baseHP, maxHPCap, build.archetype?.id, rechargeMidsStyle, defenseSoftcap],
   );
 
   // Compute stats for loaded builds
   const loadedBuildStats = useMemo(
     () =>
       loadedBuilds.map((lb) =>
-        computeAllStats(lb.legacyStats, lb.calcResult.globalBonuses, lb.calcResult.breakdown, lb.baseHP, lb.maxHPCap, lb.build.archetype?.id ?? undefined, rechargeMidsStyle),
+        computeAllStats(lb.legacyStats, lb.calcResult.globalBonuses, lb.calcResult.breakdown, lb.baseHP, lb.maxHPCap, lb.build.archetype?.id ?? undefined, rechargeMidsStyle, defenseSoftcap),
       ),
-    [loadedBuilds, rechargeMidsStyle],
+    [loadedBuilds, rechargeMidsStyle, defenseSoftcap],
   );
 
   // Handle file load

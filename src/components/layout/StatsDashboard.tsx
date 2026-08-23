@@ -11,6 +11,7 @@ import { getBaselineHealth } from '@/utils/calculations/stats';
 import { formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data';
 import { getDefenseSoftcap } from '@/data/purple-patch';
+import { statCapFor, capReplacesTotal, type StatCap } from '@/data/core/stat-caps';
 import { isOverCapMuted } from '@/data/set-bonus-groups';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, WhatIfBuffsModal, AnnouncementModal, BuildImageModal } from '@/components/modals';
@@ -46,41 +47,6 @@ const DASHBOARD_SECTIONS: { name: string; categories: StatCategory[] }[] = [
   { name: 'Debuff Resistance', categories: ['debuff-resistance'] },
 ];
 export type { StatDefinition, StatValue, CompoundStatValue, MezStatValue };
-
-/** A stat's ceiling, and which of the two kinds it is. They are not interchangeable, and a
- *  bare number cannot distinguish them: `hard` binds (the engine clamped the value, so the
- *  ceiling and the total are the same number), `soft` does not (the value runs past it and
- *  the surplus does real work). Keeping the kind on the value is what stops a display from
- *  quietly reporting a threshold as a total. */
-export type StatCap = { value: number; kind: 'hard' | 'soft' };
-
-/** The ceiling to show on a stat tile, or `undefined` for a stat with none.
- *
- *  The kind is not cosmetic. Resistance's cap is a clamp the engine already applied
- *  (`finalize.rs`), so the ceiling and the total are the same number. Defense's 45% is a
- *  threshold the engine deliberately leaves unbound — guarded there by
- *  `resistance_cap_binds_but_defense_softcap_does_not` — because defense past the softcap
- *  is real and load-bearing: it is what holds you at the softcap through a foe's +ToHit and
- *  a ToHit-debuff cascade. A ceiling carried as a bare number cannot tell the two apart,
- *  and the tile rendered `45.00%` over the user's actual total. */
-export function statCapFor(
-  statId: string,
-  defenseCap: number,
-  resistanceCap: number,
-): StatCap | undefined {
-  if (statId.startsWith('def') || statId.startsWith('defense_')) {
-    return { value: defenseCap, kind: 'soft' };
-  }
-  if (statId.startsWith('res_')) return { value: resistanceCap, kind: 'hard' };
-  return undefined;
-}
-
-/** Whether the ceiling should be rendered IN PLACE OF the total. Only a hard cap may:
- *  past it the surplus is genuinely discarded, so the ceiling is the total. A softcap
- *  replaces nothing. */
-export function capReplacesTotal(cap: StatCap | undefined, numericValue: number | undefined): boolean {
-  return cap !== undefined && numericValue !== undefined && numericValue >= cap.value && cap.kind === 'hard';
-}
 
 // Dashboard stat id → movement base/cap key. These four render as mph (or feet)
 // rather than a raw %, projected through applyMovementBuff so the active

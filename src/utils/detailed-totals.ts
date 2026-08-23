@@ -15,6 +15,7 @@ import { STAT_DEFINITIONS, resolveStatValue, groupStatsBySection } from '@/data/
 import type { StatValue, MezStatValue, StatCategory } from '@/data/stat-definitions';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
+import { statCapFor, type StatCap } from '@/data/core/stat-caps';
 
 // ============================================
 // SECTIONS & STATS
@@ -78,8 +79,10 @@ export interface StatRow {
    *  string without a leading "+"). Status resistance uses it to show negative
    *  duration reductions. */
   formatBreakdownSource?: (raw: number) => string;
-  /** Cap value as a percentage (e.g. 90 for 90%). Present for defense/resistance stats. */
-  cap?: number;
+  /** The stat's ceiling and which kind it is. Present for defense/resistance stats. The kind
+   *  travels with the number because the two are not interchangeable: resistance's is a clamp
+   *  the engine already applied, defense's is a threshold the total legitimately runs past. */
+  cap?: StatCap;
 }
 
 export interface StatSection {
@@ -97,11 +100,16 @@ export function computeAllStats(
   breakdowns: Map<string, DashboardStatBreakdown>,
   baseHP: number,
   maxHPCap: number,
-  archetypeId?: string,
-  rechargeMidsStyle: boolean = true,
+  archetypeId: string | undefined,
+  rechargeMidsStyle: boolean,
+  /** The practical defense softcap for the caster's combat context — `getDefenseSoftcap`
+   *  against the build's target-level offset and content mode. Passed in rather than derived
+   *  because it depends on UI state this module deliberately cannot read, and because the
+   *  archetype's own 45% is the even-level row only: at +6 the softcap is 50%, and the sheet
+   *  must not disagree with the dashboard tile beside it. */
+  defenseSoftcap: number,
 ): StatSection[] {
   const at = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
-  const defenseCap = (at?.stats.defenseCap ?? 0.45) * 100;
   const resistanceCap = (at?.stats.resistanceCap ?? 0.75) * 100;
 
   return groupStatsBySection(DETAILED_STATS, (id) => id, DETAILED_SECTIONS).map((section) => ({
@@ -115,10 +123,8 @@ export function computeAllStats(
 
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
 
-        // Attach cap for defense/resistance stats
-        let cap: number | undefined;
-        if (id.startsWith('def_') || id.startsWith('defense_')) cap = defenseCap;
-        else if (id.startsWith('res_')) cap = resistanceCap;
+        // Attach the ceiling — same decision the dashboard tile makes, from the same place.
+        const cap = statCapFor(id, defenseSoftcap, resistanceCap);
 
         // Recharge display mode: opt out of the Mids-style 100% base offset
         // and revert to bonus-only "+X%" rendering. Mirrors the override in

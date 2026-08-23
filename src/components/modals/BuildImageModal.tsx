@@ -12,6 +12,7 @@ import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import { useCalculatedStats, useCharacterCalculation, useActiveSetBonuses } from '@/hooks';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { computeAllStats } from '@/utils/detailed-totals';
+import { getDefenseSoftcap } from '@/data/purple-patch';
 import { renderNodeToPng, downloadBlob, copyPngToClipboard, slugifyFilename } from '@/utils/export-image';
 import { BuildImageCard, CARD_WIDTH } from '@/components/export-image/BuildImageCard';
 import {
@@ -63,6 +64,11 @@ export function BuildImageModal({ isOpen, onClose }: BuildImageModalProps) {
   const colorTheme = useUIStore((s) => s.colorTheme);
   const colorMode = useUIStore((s) => s.colorMode);
   const rechargeMidsStyle = useUIStore((s) => s.rechargeMidsStyle);
+  // Same softcap the dashboard and the totals sheet read — a poster that disagreed with the
+  // planner it was exported from would be the worst place to disagree.
+  const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
+  const contentMode = useUIStore((s) => s.contentMode);
+  const defenseSoftcap = getDefenseSoftcap(targetLevelOffset, contentMode);
   const showToast = useUIStore((s) => s.showToast);
 
   const stats = useCalculatedStats();
@@ -96,8 +102,9 @@ export function BuildImageModal({ isOpen, onClose }: BuildImageModalProps) {
       h.maxHealth,
       build.archetype?.id ?? undefined,
       rechargeMidsStyle,
+      defenseSoftcap,
     );
-  }, [stats, calcResult, build.archetype?.id, build.level, rechargeMidsStyle]);
+  }, [stats, calcResult, build.archetype?.id, build.level, rechargeMidsStyle, defenseSoftcap]);
 
   // Track the off-screen card's true height so the preview box can size to the
   // scaled card (transform: scale doesn't shrink the layout box, so without this
