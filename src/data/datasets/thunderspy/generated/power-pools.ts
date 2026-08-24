@@ -105,6 +105,14 @@ export const POWER_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 120,
+          "endurance": 10.4,
+          "castTime": 1.2
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","Stunned",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],
           ["Mez","Sleep",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],
@@ -234,6 +242,28 @@ export const POWER_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.64,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 2.3,
+            "tickRate": 0.25
+          }
+        ],
         "atoms": [
           ["Damage","Lethal",0.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",0.1,1,2.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5],
@@ -309,6 +339,12 @@ export const POWER_POOLS_RAW = {
           "Running",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "endurance": 0.182,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedRunning"],
           ["Meta",null,1,110,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
@@ -369,6 +405,14 @@ export const POWER_POOLS_RAW = {
           "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 60,
+          "endurance": 20.8,
+          "castTime": 1.2
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["EntCreate",null,1,1,14,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,0.5,null,null,null,null,null,14]
         ],
@@ -418,6 +462,13 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 5.2,
+          "castTime": 1.3
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,1,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
           ["DamageBuff","Smashing",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
@@ -489,6 +540,14 @@ export const POWER_POOLS_RAW = {
         ],
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "stats": {
+          "accuracy": 1,
+          "range": 300,
+          "recharge": 4,
+          "endurance": 13,
+          "castTime": 1
+        },
+        "effectArea": "Location",
         "atoms": [
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
         ],
@@ -581,6 +640,19 @@ export const POWER_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 6,
+          "endurance": 6.864,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 1.32,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",4,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.3499999940395355,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],
@@ -716,6 +788,19 @@ export const POWER_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 6,
+          "endurance": 6.864,
+          "castTime": 1.23
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 1.32,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",4,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.3499999940395355,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],
@@ -850,6 +935,19 @@ export const POWER_POOLS_RAW = {
           "Melee Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 10,
+          "endurance": 10.192,
+          "castTime": 1.33
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 1.96,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -962,6 +1060,19 @@ export const POWER_POOLS_RAW = {
           "Melee Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 10,
+          "endurance": 10.192,
+          "castTime": 1.83
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 1.96,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -1042,6 +1153,14 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.1137,
+          "castTime": 3.1,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
@@ -1097,6 +1216,14 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.1137,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -1235,6 +1362,22 @@ export const POWER_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "radius": 9,
+          "arc": 1.5707963705062866,
+          "recharge": 10,
+          "endurance": 10.66,
+          "castTime": 1.67,
+          "maxTargets": 5
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Smashing",
+          "scale": 1.3434,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",1.3434,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["RechargeTime",null,0.05,1,6,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -1375,6 +1518,22 @@ export const POWER_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 8,
+          "radius": 8,
+          "arc": 3.1415927410125732,
+          "recharge": 12,
+          "endurance": 11.856,
+          "castTime": 2,
+          "maxTargets": 5
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Smashing",
+          "scale": 1.3636,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",1.3636,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["RechargeTime",null,0.05,1,6,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -1505,6 +1664,11 @@ export const POWER_POOLS_RAW = {
           "Fly",
           "Run Speed"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"],
           ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedFlying"]
@@ -1555,6 +1719,11 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [
           "Jump"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","JumpHeight",0.06,1,10.25,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Leap"],
           ["Movement","Jump",0.5,1,10.25,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedJumping"]
@@ -1612,6 +1781,11 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Regeneration",null,0.4,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["MezResist","Sleep",1.75,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"]
@@ -1678,6 +1852,11 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Recovery",null,0.25,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
         ],
@@ -1749,6 +1928,12 @@ export const POWER_POOLS_RAW = {
           "Flight",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "endurance": 0.0975,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -1904,6 +2089,19 @@ export const POWER_POOLS_RAW = {
           "Melee Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 8,
+          "endurance": 8.528,
+          "castTime": 1.5
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 1.64,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Movement","FlyMode",-1.6,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
@@ -1979,6 +2177,12 @@ export const POWER_POOLS_RAW = {
           "Flight",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "endurance": 0.182,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","Fly",1,1,0.75,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -2075,6 +2279,15 @@ export const POWER_POOLS_RAW = {
           "Flight",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 60,
+          "endurance": 1.3,
+          "castTime": 2.03,
+          "activatePeriod": 2,
+          "maxTargets": 255
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Movement","FlyMode",1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Control"],
@@ -2149,6 +2362,13 @@ export const POWER_POOLS_RAW = {
           "Flight",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 30,
+          "endurance": 0.2275,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","OnlyAffectsSelf",4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -2368,6 +2588,14 @@ export const POWER_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 30,
+          "endurance": 7.8,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",-1.5,1,15,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",-1.5,1,15,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
@@ -2501,6 +2729,26 @@ export const POWER_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.64,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Psionic",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",0.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
@@ -2580,6 +2828,12 @@ export const POWER_POOLS_RAW = {
           "Leaping",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "endurance": 0.182,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Leap"],
           ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedJumping"],
@@ -2680,6 +2934,29 @@ export const POWER_POOLS_RAW = {
           "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 1.0471975803375244,
+          "recharge": 15,
+          "endurance": 14.352,
+          "castTime": 1.23,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.181818,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Psionic",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",0.181818,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -2763,6 +3040,13 @@ export const POWER_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 600,
+          "endurance": 2.6,
+          "castTime": 0.73
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["RechargeTime",null,0.5,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Regeneration",null,1.5,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -2895,6 +3179,15 @@ export const POWER_POOLS_RAW = {
         ],
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "stats": {
+          "accuracy": 1,
+          "radius": 10,
+          "recharge": 10,
+          "endurance": 11.7,
+          "castTime": 2.1,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Knockback",0.1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockback",0.1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
@@ -3006,6 +3299,14 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Slow Movement"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 4,
+          "endurance": 7.8,
+          "castTime": 1.47
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["RechargeTime",null,0.4,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
           ["Movement","Run",0.4,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
@@ -3104,6 +3405,21 @@ export const POWER_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "castTime": 1
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.41,
+          "table": "Ranged_Damage",
+          "duration": 0.9,
+          "tickRate": 0.25
+        },
         "atoms": [
           ["Damage","Energy",0.41,1,0.9,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Regeneration",null,-0.33,1,10,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
@@ -3185,6 +3501,12 @@ export const POWER_POOLS_RAW = {
           "Flight",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "endurance": 0.182,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","FlyMode",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","Fly",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -3296,6 +3618,22 @@ export const POWER_POOLS_RAW = {
           "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 15.184,
+          "castTime": 3,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Energy",
+          "scale": 1.35,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1.35,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
@@ -3374,6 +3712,13 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 180,
+          "endurance": 10.4,
+          "castTime": 1.27
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Absorb",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,["Max.kHitPoints","source>","0.20","*","@Strength","*"],null,null,null,"Ones"],
@@ -3425,6 +3770,13 @@ export const POWER_POOLS_RAW = {
         ],
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 120,
+          "endurance": 6.5,
+          "castTime": 1.27
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","Fly",1,1,30,"Ranged_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",4,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -3510,6 +3862,14 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 20,
+          "endurance": 0.05,
+          "castTime": 0.73,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
           ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
@@ -3684,6 +4044,16 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 20,
+          "recharge": 3,
+          "endurance": 15.6,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Defense","Melee",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["Defense","Ranged",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
@@ -3819,6 +4189,14 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 180,
+          "endurance": 0.325,
+          "castTime": 0.5,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Stealth","Translucency",0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
           ["Stealth","RadiusPvE",20,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
@@ -3892,6 +4270,15 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 20,
+          "recharge": 120,
+          "endurance": 9.75,
+          "castTime": 1.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Placate",15,4,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Resistance","Smashing",-1.5,1,15,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
@@ -3990,6 +4377,14 @@ export const POWER_POOLS_RAW = {
           "Defense Sets",
           "Running"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 20,
+          "endurance": 0.05,
+          "castTime": 0.73,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -4139,6 +4534,16 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 60,
+          "recharge": 15,
+          "endurance": 0.54,
+          "castTime": 1,
+          "activatePeriod": 2,
+          "maxTargets": 255
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Defense","Melee",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["Defense","Ranged",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
@@ -4233,6 +4638,16 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 60,
+          "recharge": 15,
+          "endurance": 0.54,
+          "castTime": 1,
+          "activatePeriod": 2,
+          "maxTargets": 255
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["DamageBuff","Smashing",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
           ["DamageBuff","Lethal",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -4305,6 +4720,16 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 60,
+          "recharge": 15,
+          "endurance": 0.54,
+          "castTime": 1,
+          "activatePeriod": 2,
+          "maxTargets": 255
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["ToHit",null,1,1,2.25,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
           ["Perception",null,1.5,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],
@@ -4399,6 +4824,20 @@ export const POWER_POOLS_RAW = {
           "Healing",
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 100,
+          "recharge": 300,
+          "castTime": 1.17,
+          "maxTargets": 255
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Heal",
+          "scale": 1,
+          "table": "Melee_Heal"
+        },
         "atoms": [
           ["Defense","Melee",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kVengeance_Mode","target.mode?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Defense","Ranged",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kVengeance_Mode","target.mode?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
@@ -4570,6 +5009,15 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 100,
+          "recharge": 180,
+          "endurance": 9.75,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["rank","target>","Class_Minion_Small","eq","rank","target>","Class_Minion_Small_Agressive","eq","||","rank","target>","Class_Minion_Turret","eq","||","rank","target>","Class_Minion_Fire","eq","||","rank","target>","Class_Minion_Swarm","eq","||","rank","target>","Class_Minion_Henchman","eq","||","rank","target>","Class_Minion_OilSlickTarget","eq","||","rank","target>","Class_Minion_Monument","eq","||","rank","target>","Class_Minion_UnkillableNPC","eq","||","rank","target>","Class_Minion_PraetorianSmall","eq","||","rank","target>","Class_Minion_Practice","eq","||"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["rank","target>","Class_Minion_PraetorianGrunt","eq","rank","target>","Class_Minion_Grunt","eq","||"],true,null,null,null,null,null,null,null,null,"Ones"],
@@ -4660,6 +5108,19 @@ export const POWER_POOLS_RAW = {
           "Melee Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 8,
+          "endurance": 8.528,
+          "castTime": 1.5
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 1.64,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockup",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Knockback"],
@@ -4727,6 +5188,12 @@ export const POWER_POOLS_RAW = {
           "Leaping",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "endurance": 0.0325,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -4857,6 +5324,12 @@ export const POWER_POOLS_RAW = {
           "Leaping",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "endurance": 0.182,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","JumpHeight",1.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Leap"],
           ["Movement","Jump",1.25,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedJumping"],
@@ -4925,6 +5398,14 @@ export const POWER_POOLS_RAW = {
           "Knockback",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.26,
+          "castTime": 0.67,
+          "activatePeriod": 1
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","Knockback",-7,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",-7,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
@@ -5009,6 +5490,14 @@ export const POWER_POOLS_RAW = {
           "PBAoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 90,
+          "endurance": 13.52,
+          "castTime": 1.5
+        },
+        "effectArea": "Location",
         "atoms": [
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.7],
           ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.625,null,null,null,null,null,4]
@@ -5080,6 +5569,14 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Taunt"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 60,
+          "recharge": 60,
+          "endurance": 6.5,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","Placate",10,3,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Placate",5,3,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
@@ -5130,6 +5627,15 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Taunt"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 15,
+          "recharge": 10,
+          "castTime": 1.67,
+          "maxTargets": 5
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Taunt",8,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Taunt"],
           ["Mez","Taunt",4,4,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Taunt"]
@@ -5182,6 +5688,14 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Fear"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 16,
+          "endurance": 10,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Fear"],
           ["Mez","Terrorized",10,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Fear"],
@@ -5253,6 +5767,15 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Fear"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 20,
+          "recharge": 60,
+          "endurance": 18,
+          "castTime": 1.97,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Fear"],
           ["Mez","Terrorized",5,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["arch","source>","Class_Controller","eq"],null,null,null,null,null,null,null,null,null,"Fear","Class_Controller"],
@@ -5322,6 +5845,19 @@ export const POWER_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 2,
+          "recharge": 360,
+          "castTime": 1.97
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Heal",
+          "scale": 0.02,
+          "table": "Melee_Ones",
+          "duration": 30,
+          "tickRate": 1
+        },
         "atoms": [
           ["Heal",null,0.02,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["RechargeTime",null,0.2,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -5434,6 +5970,20 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "recharge": 10,
+          "endurance": 6.5,
+          "castTime": 2,
+          "interruptTime": 1
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Heal",
+          "scale": 1.96,
+          "table": "Ranged_Heal"
+        },
         "quickSnipe": {
           "condition": [
             "Pool.Medicine.Field_Medic",
@@ -5504,6 +6054,14 @@ export const POWER_POOLS_RAW = {
           "Recharge",
           "ToHit Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "recharge": 12,
+          "endurance": 13,
+          "castTime": 2.93
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["DamageBuff","Smashing",1,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
           ["DamageBuff","Lethal",1,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
@@ -5600,6 +6158,19 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 20,
+          "endurance": 13,
+          "castTime": 2,
+          "interruptTime": 1
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Heal",
+          "scale": 1.96,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["Heal",null,1.96,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["MezResist","Stunned",1.75,1,45,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],
@@ -5686,6 +6257,22 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 15,
+          "recharge": 180,
+          "endurance": 32.5,
+          "castTime": 7.33,
+          "interruptTime": 4
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Heal",
+          "scale": 1,
+          "table": "Ranged_Ones",
+          "duration": 0.5,
+          "tickRate": 1
+        },
         "atoms": [
           ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Meta",null,1,1,15,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"xpdebtprotection"]
@@ -5732,6 +6319,13 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 300,
+          "endurance": 19.5,
+          "castTime": 3.33
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Heal",null,0.25,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["HealResistance",null,-0.25,1,60,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
@@ -5855,6 +6449,14 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 30,
+          "endurance": 7.8,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Absorb",null,0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Absorb",null,1,1,3,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.3","*","@Strength","*"],null,null,null,"Ones"],
@@ -5949,6 +6551,19 @@ export const POWER_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "castTime": 2.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 1.64,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.67,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Knockback"],
@@ -6023,6 +6638,12 @@ export const POWER_POOLS_RAW = {
           "Flight",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "endurance": 0.182,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","FlyMode",1,1,0.75,"Ranged_Ones","Cur","Magnitude","SelfAndPets","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","Fly",1,1,0.75,"Ranged_Ones","Cur","Magnitude","SelfAndPets","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -6118,6 +6739,14 @@ export const POWER_POOLS_RAW = {
           "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 90,
+          "endurance": 5.2,
+          "castTime": 2.07
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,5],
           ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,3],
@@ -6172,6 +6801,13 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 300,
+          "endurance": 2.6,
+          "castTime": 2.03
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
@@ -6311,6 +6947,13 @@ export const POWER_POOLS_RAW = {
         ],
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "stats": {
+          "accuracy": 1,
+          "range": 300,
+          "endurance": 10,
+          "castTime": 2
+        },
+        "effectArea": "Location",
         "atoms": [
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
         ],
@@ -6399,6 +7042,24 @@ export const POWER_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "radius": 9,
+          "arc": 1.5707963705062866,
+          "recharge": 12,
+          "endurance": 11.856,
+          "castTime": 2,
+          "maxTargets": 5
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Smashing",
+          "scale": 0.21,
+          "table": "Melee_Damage",
+          "duration": 1.8,
+          "tickRate": 0.25
+        },
         "atoms": [
           ["Damage","Smashing",0.21,1,1.8,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],
@@ -6486,6 +7147,12 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 450,
+          "castTime": 0.73
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["RechargeTime",null,0.7,1,120,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -6546,6 +7213,12 @@ export const POWER_POOLS_RAW = {
           "Running",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "endurance": 0.182,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","Run",1.25,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedRunning"],
           ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
@@ -6618,6 +7291,16 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 8,
+          "recharge": 20,
+          "endurance": 0.325,
+          "castTime": 1,
+          "activatePeriod": 0.5,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SummerIOTornado"],
           ["Movement","Run",-0.3,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -6678,6 +7361,13 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 1800,
+          "endurance": 48.75,
+          "castTime": 1
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -6790,6 +7480,15 @@ export const POWER_POOLS_RAW = {
           "Teleport",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 10000,
+          "recharge": 6,
+          "endurance": 15,
+          "castTime": 5.93,
+          "interruptTime": 4
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17]
@@ -6854,6 +7553,15 @@ export const POWER_POOLS_RAW = {
           "Teleport",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 200,
+          "recharge": 20,
+          "endurance": 15,
+          "castTime": 3.17,
+          "interruptTime": 2
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Teleport",2.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17],
@@ -6936,6 +7644,13 @@ export const POWER_POOLS_RAW = {
           "Teleport",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 300,
+          "endurance": 13,
+          "castTime": 2
+        },
+        "effectArea": "Location",
         "atoms": [
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",1,1,2,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -7011,6 +7726,15 @@ export const POWER_POOLS_RAW = {
           "Teleport",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 25,
+          "radius": 30,
+          "endurance": 20,
+          "castTime": 1.67,
+          "maxTargets": 255
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Teleport",3.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Power_DisallowTeamTeleport","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17],
@@ -7100,6 +7824,14 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 300,
+          "endurance": 26,
+          "castTime": 12,
+          "interruptTime": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Stealth","Translucency",0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["AllyID","source>","hero","eq","praetorianprogress","source>","normal","eq","praetorianprogress","source>","Earth","eq","||","&&","praetoria","source.MapTeamArea>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17],
@@ -7217,6 +7949,14 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 7.28,
+          "castTime": 1.87
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","Immobilized",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -7299,6 +8039,28 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "castTime": 1
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 1.04,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 2.5,
+            "tickRate": 0.5
+          }
         ],
         "atoms": [
           ["Damage","Lethal",1.04,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
@@ -7396,6 +8158,12 @@ export const POWER_POOLS_RAW = {
           "Running",
           "Universal Travel"
         ],
+        "stats": {
+          "accuracy": 1,
+          "endurance": 0.182,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Leap"],
           ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedJumping"],
@@ -7502,6 +8270,31 @@ export const POWER_POOLS_RAW = {
           "Targeted AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.6981317400932312,
+          "recharge": 16,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.2,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.16,
+            "table": "Ranged_Damage",
+            "duration": 2.5,
+            "tickRate": 0.5
+          }
+        ],
         "atoms": [
           ["Damage","Lethal",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",0.16,1,2.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.25],
@@ -7592,6 +8385,27 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 90,
+          "endurance": 7.8,
+          "castTime": 0.73
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Heal",
+            "scale": 1,
+            "table": "Melee_HealSelf"
+          },
+          {
+            "type": "Heal",
+            "scale": 1,
+            "table": "Melee_HealSelf",
+            "duration": 9.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["100","kHitPoints%","source>","-","100","/","1","+","@StdResult","*"],null,null,null,"HealSelf"],
           ["Heal",null,1,1,9.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,["100","kHitPoints%","source>","-","1000","/",".1","+","@StdResult","*"],null,null,null,"HealSelf"]
@@ -7647,6 +8461,12 @@ export const POWER_POOLS_RAW = {
         ],
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 60,
+          "endurance": 6.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Movement","JumpHeight",0.3,1,30,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Leap"],
           ["Movement","Jump",0.66,1,30,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"SpeedJumping"],

@@ -37,6 +37,11 @@ export const ACCOLADES_POWERSET = {
         "eq"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
@@ -80,6 +85,11 @@ export const ACCOLADES_POWERSET = {
         "eq"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
@@ -123,6 +133,11 @@ export const ACCOLADES_POWERSET = {
         "eq"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxHP",null,1,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
@@ -166,6 +181,11 @@ export const ACCOLADES_POWERSET = {
         "eq"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
@@ -209,6 +229,11 @@ export const ACCOLADES_POWERSET = {
         "eq"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
@@ -253,6 +278,20 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Foe",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1.5,
+        "range": 80,
+        "recharge": 600,
+        "castTime": 2.33
+      },
+      "effectArea": "SingleTarget",
+      "damage": {
+        "type": "Cold",
+        "scale": 0.2,
+        "table": "Ranged_Tempdamage",
+        "duration": 9.2,
+        "tickRate": 2
+      },
       "atoms": [
         ["Damage","Cold",0.2,1,9.2,"Ranged_Tempdamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
         ["Movement","Run",0.3,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -323,6 +362,12 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "recharge": 600,
+        "castTime": 0.67
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Resistance","Smashing",0.3,1,60,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["Resistance","Lethal",0.3,1,60,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -439,6 +484,12 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "recharge": 600,
+        "castTime": 1.17
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Enhancement","Confused",0.66,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["Enhancement","Terrorized",0.66,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -510,6 +561,12 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "recharge": 600,
+        "castTime": 0.73
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Recovery",null,8,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
         ["ToHit",null,0.25,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -575,6 +632,11 @@ export const ACCOLADES_POWERSET = {
         "eq"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
@@ -618,6 +680,11 @@ export const ACCOLADES_POWERSET = {
         "eq"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxHP",null,1,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
@@ -661,6 +728,11 @@ export const ACCOLADES_POWERSET = {
         "eq"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
@@ -705,6 +777,20 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Foe",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1.5,
+        "range": 80,
+        "recharge": 600,
+        "castTime": 1.87
+      },
+      "effectArea": "SingleTarget",
+      "damage": {
+        "type": "Energy",
+        "scale": 0.2,
+        "table": "Ranged_Tempdamage",
+        "duration": 9.2,
+        "tickRate": 2
+      },
       "atoms": [
         ["Damage","Energy",0.2,1,9.2,"Ranged_Tempdamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
         ["Movement","Run",0.3,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -775,6 +861,12 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "recharge": 600,
+        "castTime": 3
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Resistance","Smashing",0.3,1,60,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["Resistance","Lethal",0.3,1,60,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -891,6 +983,12 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "recharge": 600,
+        "castTime": 1.17
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Enhancement","Confused",0.66,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["Enhancement","Terrorized",0.66,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -968,6 +1066,11 @@ export const ACCOLADES_POWERSET = {
         "eq"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
@@ -1005,6 +1108,12 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "recharge": 600,
+        "castTime": 0.73
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Recovery",null,8,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
         ["ToHit",null,0.25,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -1070,6 +1179,11 @@ export const ACCOLADES_POWERSET = {
         "eq"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxHP",null,1,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["MaxEndurance",null,10,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
@@ -1114,6 +1228,11 @@ export const ACCOLADES_POWERSET = {
         "0"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power",null,1],
         ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
@@ -1157,6 +1276,12 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "recharge": 600,
+        "castTime": 0.73
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Resistance","Psionic",0.075,1,60,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["Defense","Psionic",0.25,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -1208,6 +1333,12 @@ export const ACCOLADES_POWERSET = {
         "!"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "recharge": 600,
+        "castTime": 2
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Stealth","Translucency",0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
         ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1.17],
@@ -1283,6 +1414,13 @@ export const ACCOLADES_POWERSET = {
         "&&"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "range": 10,
+        "recharge": 600,
+        "activatePeriod": 1
+      },
+      "effectArea": "Location",
       "atoms": [
         ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"OnActivate",99999],
         ["Meta",null,1,170,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
@@ -1319,6 +1457,11 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "recharge": 600
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Mez","Knockup",-7.5,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
         ["Mez","Knockback",-7.5,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -1439,6 +1582,11 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
@@ -1483,6 +1631,11 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "activatePeriod": 10
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
@@ -1517,6 +1670,10 @@ export const ACCOLADES_POWERSET = {
       "powerType": "Auto",
       "targetType": "Self",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Meta",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null",null,1.5]
       ],
@@ -1553,6 +1710,19 @@ export const ACCOLADES_POWERSET = {
         "!"
       ],
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "recharge": 3,
+        "endurance": 3.25,
+        "castTime": 1.83
+      },
+      "effectArea": "SingleTarget",
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.036,
+        "table": "Melee_Tempdamage"
+      },
       "atoms": [
         ["Damage","Smashing",0.036,1,0,"Melee_Tempdamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","group","target>","MastermindPets","eq","!","&&","group","target>","Pets","eq","!","&&"]],
         ["Movement","Run",0,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true]
@@ -1589,6 +1759,14 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetType": "Foe",
       "allowedEnhancements": [],
+      "stats": {
+        "accuracy": 1,
+        "range": 100,
+        "recharge": 10,
+        "endurance": 6.5,
+        "castTime": 1.5
+      },
+      "effectArea": "SingleTarget",
       "atoms": [
         ["Meta",null,100,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,"view_attributes"]
       ],

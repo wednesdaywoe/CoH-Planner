@@ -60,6 +60,7 @@ const {
 const { displayText, helpText } = require('./_display-text.cjs');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
 const { gateTokens } = require('./_gate-tokens.cjs');
+const { powerStats } = require('./_power-stats.cjs');
 
 const datasetId = parseDatasetArg();
 const dryRun = process.argv.includes('--dry-run');
@@ -335,26 +336,20 @@ function convertBasicInherent(rawJson, entry, granter) {
     power.allowedSetCategories = [...rawJson.allowed_set_categories].sort();
   }
 
-  power.stats = {
-    accuracy: rawJson.accuracy,
-    recharge: rawJson.recharge_time,
-    endurance: rawJson.endurance_cost,
-    castTime: rawJson.activation_time,
-    interruptTime: rawJson.interrupt_time,
-    // A toggle's drain is endurance / activatePeriod. Both engines divide here
-    // and nowhere else, which is why this converter emits the per-tick figure
-    // the record states rather than the per-second one the hand table stored.
-    activatePeriod: rawJson.activate_period,
-  };
-  for (const key of Object.keys(power.stats)) {
-    if (!power.stats[key]) delete power.stats[key];
-  }
+  // Shared mint, so this partition publishes the same object as an archetype power. It gains
+  // the reach fields the hand-written block here omitted (range/radius/arc/maxTargets): Brawl
+  // states a range and a target cap, and nothing was reading them off the record.
+  power.stats = powerStats(rawJson);
 
   // Thunderspy movement target-trap: resolve empty movement-template targets
   // from targets_affected before any collector reads them. Load-bearing here —
   // Thunderspy's Sprint carries the whole travel band the other forks put on
   // Ninja Run.
   resolveThunderspyMovementTargets(rawJson);
+
+  if (rawJson.effect_area && rawJson.effect_area !== 'None') {
+    power.effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
+  }
 
   const effects = {};
   if (rawJson.effect_area && rawJson.effect_area !== 'None') {
@@ -364,7 +359,10 @@ function convertBasicInherent(rawJson, entry, granter) {
   const { templates: allTemplates } = collectBaseTemplates(rawJson);
   if (allTemplates.length > 0) {
     const damage = extractDamage(allTemplates);
-    if (damage) effects.damage = damage;
+    if (damage) {
+      power.damage = damage;
+      effects.damage = damage;
+    }
     const extracted = extractEffects(allTemplates, rawJson.name, rawJson.targets_affected);
     for (const [key, value] of Object.entries(extracted)) {
       effects[key] = value;

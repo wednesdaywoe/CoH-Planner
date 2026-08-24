@@ -13,6 +13,7 @@ const { isPvpOnlyGroup } = require('./_pv-scope.cjs');
 const { isBaseCase, casterArchetypes } = require('./_gate-default.cjs');
 const { derivePlayerClassTokens } = require('./_player-classes.cjs');
 const { displayText, helpText } = require('./_display-text.cjs');
+const { powerStats } = require('./_power-stats.cjs');
 const {
   gateTokens, gateText, isAlwaysCondition, composeGates,
 } = require('./_gate-tokens.cjs');
@@ -8827,33 +8828,9 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
     power.maxTargetsExpression = powerJson.max_targets_expression;
   }
 
-  // Basic stats
-  power.stats = {
-    accuracy: powerJson.accuracy,
-    range: powerJson.range,
-    radius: powerJson.radius,
-    arc: powerJson.arc,
-    recharge: powerJson.recharge_time,
-    endurance: powerJson.endurance_cost,
-    castTime: powerJson.activation_time,
-    // Interruptible channel (Trip Mine, Rest, Aid Self, rez powers, and the
-    // single-form snipes on servers that bake it onto the base power rather
-    // than a Normal redirect). 0 for the vast majority; dropped below when 0.
-    interruptTime: powerJson.interrupt_time,
-    activatePeriod: powerJson.activate_period,
-    maxTargets: powerJson.max_targets_hit,
-  };
-
-  // Animation root/lock time — only surface when it diverges from castTime
-  // (the common case is root == full activation, which tells us nothing new).
-  if (powerJson.time_to_root != null && powerJson.time_to_root !== powerJson.activation_time) {
-    power.stats.timeToRoot = powerJson.time_to_root;
-  }
-
-  // Remove zero/null values
-  Object.keys(power.stats).forEach(key => {
-    if (!power.stats[key]) delete power.stats[key];
-  });
+  // Basic stats. Shared mint (`_power-stats.cjs`) so the pool/epic/accolade/inherent
+  // partitions publish the same object rather than the export's own field names.
+  power.stats = powerStats(powerJson);
 
   // Allowed enhancements (always include, even if empty, for type safety).
   // Accept both CoD2's descriptive names (via BOOST_TYPE_MAP) and the

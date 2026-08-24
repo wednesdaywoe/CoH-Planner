@@ -59,6 +59,7 @@ const RAW_POWERS_PATH = (() => {
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
 const { displayText, helpText } = require('./_display-text.cjs');
 const { gateTokens } = require('./_gate-tokens.cjs');
+const { powerStats } = require('./_power-stats.cjs');
 const datasetId = parseDatasetArg();
 
 // All datasets write under `src/data/datasets/<id>/`.
@@ -278,6 +279,14 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   // travel powers (Super Speed, Fly, Combat Jumping, Hover, Super Jump) actually live.
   resolveThunderspyMovementTargets(rawJson);
 
+  // Execution stats and the two power-level display fields, in the shape an archetype power
+  // publishes. The legacy copies under `effects` below stay until the bag's execution keys are
+  // deleted (atom-migration, display item job 2).
+  power.stats = powerStats(rawJson);
+  if (rawJson.effect_area && rawJson.effect_area !== 'None') {
+    power.effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
+  }
+
   // Effects object (legacy format: stats mixed in with effects)
   const effects = {};
 
@@ -315,7 +324,10 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   if (allTemplates.length > 0) {
     // Damage
     const damage = extractDamage(allTemplates);
-    if (damage) effects.damage = damage;
+    if (damage) {
+      power.damage = damage;
+      effects.damage = damage;
+    }
 
     // All other effects (combat-suppression now flows from template.suppress_events
     // populated by the binary parser — no .def-file lookup needed).
@@ -357,8 +369,19 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   if (quickSnipe) {
     power.quickSnipe = quickSnipe;
     const base = extractSnipeBaseTiming(rawJson);
-    if (base?.castTime != null) effects.activationTime = base.castTime;
-    if (base?.interruptTime != null) effects.interruptTime = base.interruptTime;
+    // Into `stats` AND the legacy bag keys, for as long as both shapes ship. The mint above
+    // reads the redirect SHELL's timing, which is the fast anim; the base is the slow form's.
+    if (base?.castTime != null) {
+      power.stats.castTime = base.castTime;
+      effects.activationTime = base.castTime;
+    }
+    if (base?.interruptTime != null) {
+      power.stats.interruptTime = base.interruptTime;
+      effects.interruptTime = base.interruptTime;
+    }
+    // A root time carried over from the (unread) shell would contradict the base cast.
+    if (base?.timeToRoot != null) power.stats.timeToRoot = base.timeToRoot;
+    else delete power.stats.timeToRoot;
   }
 
   // Plan B — emit the pre-projection atom list alongside the bag, exactly as

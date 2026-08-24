@@ -418,7 +418,9 @@ const FITNESS_POOL_BY_NAME = new Map(
  * power only ever affects its caster (authored `Target kCaster`), so its
  * `Res(Sleep)` is the caster's own and belongs in the player's mezResistSleep.
  */
-function fitnessPoolCalcFields(internalName: string): Pick<Power, 'atoms' | 'effects'> {
+function fitnessPoolCalcFields(
+  internalName: string,
+): Pick<Power, 'atoms' | 'effects' | 'stats' | 'effectArea'> {
   const pool = FITNESS_POOL_BY_NAME.get(internalName);
   if (!pool) {
     throw new Error(`INHERENT_FITNESS_POWERS: no generated Fitness pool power named ${internalName}`);
@@ -426,6 +428,11 @@ function fitnessPoolCalcFields(internalName: string): Pick<Power, 'atoms' | 'eff
   return {
     atoms: pool.atoms as EncodedAtom[],
     effects: pool.effects as unknown as Power['effects'],
+    // The execution stats came with the bag until the pool converter minted them (atom-migration
+    // job 2); lifting them here is what keeps these four out of the legacy shape.
+    stats: pool.stats as Power['stats'],
+    effectArea: pool.effectArea as Power['effectArea'],
+    // No `damage`: none of the four deals any, so the generated Fitness powers carry no such key.
   };
 }
 

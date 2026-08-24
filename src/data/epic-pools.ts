@@ -88,6 +88,11 @@ interface LegacyEpicPower {
   setsModes?: string[];
   modesSuspended?: string[];
   modeVariants?: Record<string, Partial<Power>>;
+  // Minted by the converter in the archetype-power shape, and top-level for the same reason the
+  // mode gates are: `pickMinted` carries them.
+  stats?: Power['stats'];
+  effectArea?: Power['effectArea'];
+  damage?: Power['damage'];
 }
 
 interface LegacyEpicPool {
@@ -158,6 +163,26 @@ function pickModeGates(legacy: LegacyEpicPower): ModeGates {
 }
 
 /**
+ * The fields the converter now mints at the top level, in the shape an archetype power
+ * publishes (`scripts/_power-stats.cjs`, atom-migration job 2). Both shapes ship while the bag's
+ * execution keys are still written, so a `stats` here sits beside the renamed copies below and
+ * states the same numbers. Carried by list for the reason `pickModeGates` exists: this transform
+ * is a top-level whitelist, and a field it does not name reaches no consumer.
+ */
+const MINTED_FIELDS = ['stats', 'effectArea', 'damage'] as const;
+
+type Minted = Pick<Power, (typeof MINTED_FIELDS)[number]>;
+
+function pickMinted(legacy: LegacyEpicPower): Minted {
+  const minted: Record<string, unknown> = {};
+  for (const field of MINTED_FIELDS) {
+    const value = legacy[field];
+    if (value !== undefined) minted[field] = value;
+  }
+  return minted as Minted;
+}
+
+/**
  * Transform legacy epic power to typed Power
  */
 function transformEpicPower(legacy: LegacyEpicPower): Power {
@@ -201,6 +226,7 @@ function transformEpicPower(legacy: LegacyEpicPower): Power {
     requires: legacy.requires,
     ...(legacy.quickSnipe ? { quickSnipe: legacy.quickSnipe } : {}),
     ...pickModeGates(legacy),
+    ...pickMinted(legacy),
     effects: {
       // Stats (renamed from legacy format)
       accuracy,

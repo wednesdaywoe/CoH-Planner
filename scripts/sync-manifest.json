@@ -53,7 +53,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "a361011b374041634517baa079ca0feca9aec37684f72331692cb82e5f5c53ae"
+      "sha256": "8a729789f8a00e7d65dbcdcf80c2a3c8fec5ff58d3c24e0418a52838e872e3f4"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -104,6 +104,11 @@
       "path": "scripts/_player-classes.cjs",
       "status": "identical",
       "sha256": "48057852e5f7cf4dd10fc8c7508c0a32041b3b500e118d852a355b0587549cb9"
+    },
+    {
+      "path": "scripts/_power-stats.cjs",
+      "status": "identical",
+      "sha256": "b8f6fa8fd1eeaeab1511aa1757765d779604f84665bcb242750e7aff353af5b8"
     },
     {
       "path": "scripts/_pv-scope.cjs",
@@ -188,7 +193,7 @@
     {
       "path": "scripts/convert-accolades.cjs",
       "status": "identical",
-      "sha256": "da09c639be15f952cce9b0765b1493deac06470a7354209db98472a3e7abd8e4"
+      "sha256": "fe333313156c65ba3453ecd3922d85177f7f4fa31072f63852441349696cae3b"
     },
     {
       "path": "scripts/convert-all-powersets.cjs",
@@ -203,7 +208,7 @@
     {
       "path": "scripts/convert-basic-inherents.cjs",
       "status": "identical",
-      "sha256": "6205cc7fdfd733362a4735994f8f3dde24cb854f6a06dbcd791f1b68798363ed"
+      "sha256": "389e3d1abb54c24c13bacef75a41d321fad91883ff98b09ec564b9444292c1b3"
     },
     {
       "path": "scripts/convert-enhancement-curves.cjs",
@@ -213,7 +218,7 @@
     {
       "path": "scripts/convert-epic-pools.cjs",
       "status": "identical",
-      "sha256": "846b35661d854415ce09299426fdd456bf1563cc89e150f2ae2732a819b4274b"
+      "sha256": "2fc1a2e92b35048e5e0274c9f59880a1a848d1eaa4ae879b8f0b9e650c9dc880"
     },
     {
       "path": "scripts/convert-incarnate-effects.cjs",
@@ -233,12 +238,12 @@
     {
       "path": "scripts/convert-pool-powers.cjs",
       "status": "identical",
-      "sha256": "c032845a843a062b3b2ac94849c66b4a231dc483df9a534306e5df604dc7d3ba"
+      "sha256": "008f9f1d795ccb03d5e8b843342fb252f640de53c3ba61b33d6e469d804ce3eb"
     },
     {
       "path": "scripts/convert-powerset.cjs",
       "status": "identical",
-      "sha256": "5d300476bb65732c4a7dd0d0595322d42cbee00d4dc5ab76a9e79ae204e712ab"
+      "sha256": "d205ac8df4402d43e63d279c750c4ebebbe58438326ffc406e4e5b78f61b5020"
     },
     {
       "path": "scripts/convert-salvage.cjs",
@@ -414,7 +419,7 @@
     {
       "path": "src/data/epic-pools.ts",
       "status": "identical",
-      "sha256": "6807b01b0f307dc077652699bbae8fdf40ad458ee4f21614777fcaeb831b9d58"
+      "sha256": "f0848d9a874cbc78571f3d7ce8e87322d9910069675b00c2a2885c129d2f7ca7"
     },
     {
       "path": "src/data/incarnate-effects.ts",
@@ -434,7 +439,7 @@
     {
       "path": "src/data/power-pools.ts",
       "status": "identical",
-      "sha256": "7ff783ea9106d3ca53d51141f3e7de73b73fbe11d2f8c4d4d1443c8520592f0f"
+      "sha256": "0c8e3d6a342021ba5c444abba74a975aaaac98198718b29367cf786e550a0563"
     },
     {
       "path": "src/types/archetype.ts",

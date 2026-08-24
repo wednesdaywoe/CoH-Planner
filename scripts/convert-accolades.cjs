@@ -55,6 +55,7 @@ const {
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
 const { helpText } = require('./_display-text.cjs');
 const { gateTokens } = require('./_gate-tokens.cjs');
+const { powerStats } = require('./_power-stats.cjs');
 
 const datasetId = parseDatasetArg();
 const dryRun = process.argv.includes('--dry-run');
@@ -120,6 +121,14 @@ function convertAccoladePower(rawJson) {
   // Thunderspy movement-template target-trap (no-op for non-movement powers).
   resolveThunderspyMovementTargets(rawJson);
 
+  // Execution stats and the two power-level display fields, in the shape an archetype power
+  // publishes. The legacy copies under `effects` below stay until the bag's execution keys are
+  // deleted (atom-migration, display item job 2).
+  power.stats = powerStats(rawJson);
+  if (rawJson.effect_area && rawJson.effect_area !== 'None') {
+    power.effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
+  }
+
   const effects = {};
   if (rawJson.accuracy) effects.accuracy = rawJson.accuracy;
   if (rawJson.recharge_time) effects.recharge = rawJson.recharge_time;
@@ -135,7 +144,10 @@ function convertAccoladePower(rawJson) {
   const { templates: allTemplates } = collectBaseTemplates(rawJson);
   if (allTemplates.length > 0) {
     const damage = extractDamage(allTemplates);
-    if (damage) effects.damage = damage;
+    if (damage) {
+      power.damage = damage;
+      effects.damage = damage;
+    }
     const extracted = extractEffects(allTemplates, rawJson.name, rawJson.targets_affected);
     for (const [key, value] of Object.entries(extracted)) effects[key] = value;
   }

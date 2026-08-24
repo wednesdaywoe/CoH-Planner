@@ -19,7 +19,7 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**0 open, of 211 entries.** When an entry is open it is listed here with what it's waiting on.
+**0 open, of 212 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
@@ -292,8 +292,13 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 34 of 35 closed
+[Full detail](gaps/pipeline-provenance.md) — 35 of 36 closed
 
+- [x] **PARTSTAT-1** — four converters wrote a power's execution stats into the `effects` bag
+  under the export's own field names, and the loader's rename reached only two of them: every
+  accolade and archetype inherent projected with no cast time and no endurance cost (82 and 30
+  across the four forks), and no partition power had the top-level `effectArea` its card's tag row
+  reads; one shared mint now serves all six converters, graded against the export record
 - [x] **FORKSTAMP-1** — `hydrateBuild` named its fork roster inline and never grew a Brainstorm
   arm, so a Brainstorm save re-stamped itself Homecoming on open: the engine keys its calculation
   on that field while the badge reads the loaded dataset, giving live numbers under the beta's

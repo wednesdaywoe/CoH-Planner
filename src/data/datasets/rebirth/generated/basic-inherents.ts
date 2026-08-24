@@ -51,8 +51,15 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     ],
     "stats": {
       "accuracy": 1,
+      "range": 7,
       "recharge": 2,
       "castTime": 0.83
+    },
+    "effectArea": "SingleTarget",
+    "damage": {
+      "type": "Smashing",
+      "scale": 0.36,
+      "table": "Melee_Damage"
     },
     "atoms": [
       ["Damage","Smashing",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
@@ -167,6 +174,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "endurance": 0.1462,
       "activatePeriod": 0.5
     },
+    "effectArea": "SingleTarget",
     "atoms": [
       ["Movement","Run",0.5,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
       ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -236,6 +244,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "interruptTime": 6,
       "activatePeriod": 0.2
     },
+    "effectArea": "SingleTarget",
     "atoms": [
       ["Regeneration",null,19,1,0.55,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
       ["Recovery",null,4.25,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -425,6 +434,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "endurance": 0.2275,
       "activatePeriod": 0.5
     },
+    "effectArea": "SingleTarget",
     "atoms": [
       ["Meta",null,1,122,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],
       ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Leap"],
@@ -515,6 +525,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "endurance": 0.2275,
       "activatePeriod": 0.5
     },
+    "effectArea": "SingleTarget",
     "atoms": [
       ["Meta",null,1,122,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],
       ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Leap"],
@@ -609,6 +620,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "endurance": 0.1462,
       "activatePeriod": 0.5
     },
+    "effectArea": "SingleTarget",
     "atoms": [
       ["Movement","Run",0.5,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
       ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -683,6 +695,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "endurance": 0.1462,
       "activatePeriod": 0.5
     },
+    "effectArea": "SingleTarget",
     "atoms": [
       ["Movement","Run",0.5,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
       ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -756,6 +769,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "endurance": 0.1462,
       "activatePeriod": 0.5
     },
+    "effectArea": "SingleTarget",
     "atoms": [
       ["Movement","Run",0.5,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
       ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -829,6 +843,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "endurance": 0.1462,
       "activatePeriod": 0.5
     },
+    "effectArea": "SingleTarget",
     "atoms": [
       ["Movement","Run",0.5,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
       ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -902,6 +917,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       "endurance": 0.1462,
       "activatePeriod": 0.5
     },
+    "effectArea": "SingleTarget",
     "atoms": [
       ["Movement","Run",0.5,1,0.8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
       ["Movement","Run",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

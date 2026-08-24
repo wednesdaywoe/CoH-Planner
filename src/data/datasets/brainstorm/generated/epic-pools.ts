@@ -72,6 +72,30 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Cold",
+            "scale": 0.1724,
+            "table": "Ranged_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          },
+          {
+            "type": "Fire",
+            "scale": 0.0776,
+            "table": "Ranged_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          }
+        ],
         "atoms": [
           ["Damage","Cold",0.1724,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -190,6 +214,26 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.87
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Cold",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -300,6 +344,26 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Cold",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.5357,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -396,6 +460,17 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Slow Movement"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 2.356194496154785,
+          "recharge": 24,
+          "endurance": 12.48,
+          "castTime": 2.17,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
         "atoms": [
           ["Movement","JumpHeight",0.65,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["RechargeTime",null,0.65,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -491,6 +566,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 2,
+          "range": 60,
+          "recharge": 120,
+          "endurance": 15.6,
+          "castTime": 2.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,15],
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"]
@@ -569,6 +652,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Fire",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Cold",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -652,6 +743,17 @@ export const EPIC_POOLS_RAW = {
           "Fear",
           "To Hit Debuff"
         ],
+        "stats": {
+          "accuracy": 0.8,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.7853981852531433,
+          "recharge": 100,
+          "endurance": 8.528,
+          "castTime": 2.03,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
         "atoms": [
           ["Mez","Terrorized",15,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["ToHit",null,1.5,1,20,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -718,6 +820,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Confuse"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.33
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","Confused",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Heal",null,-0.3,1,30,"Melee_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -935,6 +1045,16 @@ export const EPIC_POOLS_RAW = {
           "Range",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 20,
+          "recharge": 240,
+          "endurance": 13,
+          "castTime": 1.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Repel",1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Mez","Immobilized",3,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -1027,6 +1147,21 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 15,
+          "radius": 15,
+          "recharge": 600,
+          "endurance": 0.52,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Heal",
+          "scale": 0.4,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["MaxEndurance",null,-1,1,60,"Ranged_EndDrain","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["MaxEndurance",null,1,1,60,"Ranged_EndDrain","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
@@ -1144,6 +1279,23 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Toxic",
+          "scale": 0.0837,
+          "table": "Ranged_Damage",
+          "duration": 5.2,
+          "tickRate": 2
+        },
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -1253,6 +1405,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 2,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -1347,6 +1507,22 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.6108652353286743,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2,
+          "maxTargets": 16
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Energy",
+          "scale": 1.1489,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1.1489,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -1414,6 +1590,14 @@ export const EPIC_POOLS_RAW = {
           "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 3.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,240,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240],
           ["EntCreate",null,1,1,240,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -1476,6 +1660,21 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Toxic",
+          "scale": 0.1169,
+          "table": "Melee_Damage",
+          "duration": 7.1,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -1603,6 +1802,22 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 15.184,
+          "castTime": 2.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.96,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",0.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -1692,6 +1907,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -1777,6 +2000,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.17
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -1836,6 +2067,23 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.0837,
+          "table": "Ranged_Damage",
+          "duration": 7.1,
+          "tickRate": 1
+        },
         "atoms": [
           ["Damage","Energy",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -1924,6 +2172,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.15,
+          "table": "Ranged_Damage",
+          "duration": 6.3,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.15,1,6.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -2034,6 +2297,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Fire",
+          "scale": 0.1897,
+          "table": "Melee_Damage",
+          "duration": 9.2,
+          "tickRate": 2
+        },
         "atoms": [
           ["Damage","Fire",0.1897,1,9.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -2113,6 +2391,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Fire",
+          "scale": 0.22,
+          "table": "Melee_Damage",
+          "duration": 4.2,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Fire",0.22,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -2184,6 +2477,30 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 3.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          }
         ],
         "atoms": [
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -2262,6 +2579,16 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "radius": 10,
+          "recharge": 200,
+          "endurance": 18.2,
+          "castTime": 1.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Defense","All",2,1,40,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Resistance","Smashing",-3,1,40,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -2372,6 +2699,37 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.1977,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.7008,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 2.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",0.1977,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Fire",0.7008,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -2467,6 +2825,13 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 600,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
         ],
@@ -2524,6 +2889,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,0.5,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -2611,6 +2984,36 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -2701,6 +3104,11 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
@@ -2762,6 +3170,34 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 11.856,
+          "castTime": 1.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.2874,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.6706,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.432,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.2874,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -2860,6 +3296,11 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["MaxEndurance",null,5,1,10.25,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1]
         ],
@@ -2910,6 +3351,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,0.5,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -2998,6 +3447,26 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["arch","source>","Class_Stalker","==","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -3076,6 +3545,11 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
@@ -3137,6 +3611,34 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 11.856,
+          "castTime": 1.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.2874,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.6706,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.958,
+            "table": "Melee_InherentDamage"
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.2874,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -3256,6 +3758,40 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 13,
+          "endurance": 7.28,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.84,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.14,
+            "table": "Ranged_Damage",
+            "duration": 3.2,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.378,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.063,
+            "table": "Ranged_Damage",
+            "duration": 3.2,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Lethal",0.84,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -3386,6 +3922,43 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 2.37,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.1673,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.0753,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.0377,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Negative",0.1673,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -3478,6 +4051,43 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1.6,
+          "maxTargets": 16
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Toxic",
+            "scale": 0.7,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 4.25,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.315,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.045,
+            "table": "Ranged_Damage",
+            "duration": 4.25,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Toxic",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Toxic",0.1,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -3565,6 +4175,43 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2.33,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Cold",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Cold",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 4.25,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.225,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.045,
+            "table": "Ranged_Damage",
+            "duration": 4.25,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -3756,6 +4403,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -3848,6 +4503,26 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 12,
+          "endurance": 6.864,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 1.32,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.594,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Energy",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",0.7,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -3938,6 +4613,32 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Toxic",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 5.2,
+            "tickRate": 2
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.0377,
+            "table": "Ranged_Damage",
+            "duration": 5.2,
+            "tickRate": 2
+          }
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -4044,6 +4745,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,0.5,1,10.5,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["ToHit",null,2,1,0.75,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -4131,6 +4840,28 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -4208,6 +4939,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 3.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -4299,6 +5038,26 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 12,
+          "endurance": 6.864,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 1.32,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.594,
+            "table": "Ranged_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Energy",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -4409,6 +5168,32 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.0377,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Energy",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -4504,6 +5289,42 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1.07,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.3,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.18,
+            "table": "Ranged_Damage",
+            "duration": 3.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.135,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.081,
+            "table": "Ranged_Damage",
+            "duration": 3.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Energy",0.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -4604,6 +5425,29 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 15.184,
+          "castTime": 2.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.96,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.432,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Energy",0.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -4694,6 +5538,14 @@ export const EPIC_POOLS_RAW = {
           "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.17
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -4786,6 +5638,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 16,
+          "endurance": 8.528,
+          "castTime": 1.1
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.22,
+            "table": "Ranged_Damage",
+            "duration": 3.6,
+            "tickRate": 0.5
+          },
+          {
+            "type": "Fire",
+            "scale": 0.099,
+            "table": "Ranged_Damage",
+            "duration": 3.6,
+            "tickRate": 0.5
+          }
         ],
         "atoms": [
           ["Damage","Negative",0.22,1,3.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -4883,6 +5759,38 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 20,
+          "endurance": 10.192,
+          "castTime": 1.67,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Negative",
+            "scale": 0.135,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.045,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Negative",0.1,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
           ["Damage","Negative",0.135,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -4967,6 +5875,17 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "radius": 15,
+          "recharge": 20,
+          "endurance": 0.26,
+          "castTime": 1.67,
+          "activatePeriod": 0.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["DamageBuff","Smashing",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
           ["DamageBuff","Lethal",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -5052,6 +5971,28 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.9,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.405,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Negative",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -5127,6 +6068,14 @@ export const EPIC_POOLS_RAW = {
           "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -5200,6 +6149,22 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 15.184,
+          "castTime": 2.17,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.958,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",0.958,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Endurance",null,-5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -5267,6 +6232,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.15,
+          "table": "Melee_Damage",
+          "duration": 6.3,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.15,1,6.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -5360,6 +6340,28 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "radius": 10,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 2.53,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 2.98,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.42,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -5455,6 +6457,13 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 1000,
+          "endurance": 2.6,
+          "castTime": 1.96
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -5573,6 +6582,15 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Stuns"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 25,
+          "recharge": 180,
+          "endurance": 20.18,
+          "castTime": 2.93,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Stunned",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Endurance",null,-50,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -5679,6 +6697,19 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Cold",
+          "scale": 1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -5769,6 +6800,21 @@ export const EPIC_POOLS_RAW = {
           "Sleep",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 25,
+          "recharge": 90,
+          "endurance": 15.6,
+          "castTime": 2.37,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Cold",
+          "scale": 0.2,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
           ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -5834,6 +6880,18 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 540,
+          "endurance": 14.56,
+          "castTime": 0.73
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Heal",
+          "scale": 3,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -5915,6 +6973,14 @@ export const EPIC_POOLS_RAW = {
           "Defense Sets",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.73,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -6005,6 +7071,14 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 0.13,
+          "castTime": 0.07,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "grantEdges": [
           {
             "op": "grant",
@@ -6138,6 +7212,17 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Slow Movement"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 25,
+          "recharge": 20,
+          "endurance": 0.26,
+          "castTime": 2.03,
+          "activatePeriod": 0.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Movement","Run",0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Movement","Fly",0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
@@ -6234,6 +7319,28 @@ export const EPIC_POOLS_RAW = {
           "Sleep",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 25,
+          "recharge": 90,
+          "endurance": 15.6,
+          "castTime": 2.37,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Cold",
+            "scale": 0.1,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
           ["Damage","Lethal",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -6309,6 +7416,18 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 540,
+          "endurance": 14.56,
+          "castTime": 0.73
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Heal",
+          "scale": 3,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -6390,6 +7509,14 @@ export const EPIC_POOLS_RAW = {
           "Defense Sets",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.73,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -6480,6 +7607,14 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 0.13,
+          "castTime": 0.07,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "grantEdges": [
           {
             "op": "grant",
@@ -6613,6 +7748,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Fire",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Cold",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -6697,6 +7840,19 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Negative",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["ToHit",null,0.75,1,6,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -6768,6 +7924,22 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 30,
+          "endurance": 14.352,
+          "castTime": 1.03,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Negative",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",5,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -6849,6 +8021,28 @@ export const EPIC_POOLS_RAW = {
           "Melee Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 30,
+          "endurance": 11.96,
+          "castTime": 2.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 2.21,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Melee_Damage",
+            "duration": 3.1,
+            "tickRate": 0.75
+          }
         ],
         "atoms": [
           ["Damage","Negative",2.21,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -6935,6 +8129,21 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 15,
+          "radius": 15,
+          "recharge": 600,
+          "endurance": 2.6,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Heal",
+          "scale": 0.4,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["MaxEndurance",null,-1,1,60,"Ranged_EndDrain","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["MaxEndurance",null,1,1,60,"Ranged_EndDrain","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
@@ -7050,6 +8259,28 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 24,
+          "endurance": 11.856,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.05,
+            "table": "Ranged_Damage",
+            "duration": 9.3,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Energy",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -7190,6 +8421,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 2,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -7284,6 +8523,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Energy",
+          "scale": 1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -7346,6 +8600,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,0.5,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -7438,6 +8700,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 3.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -7510,6 +8780,20 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 20,
+          "recharge": 360,
+          "endurance": 0.52,
+          "castTime": 2.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Fire",
+          "scale": 0.4,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,20,null,null,null,null,null,null,null,null,null,null,null,0.25],
           ["Recovery",null,0.05,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05,null,null,null,null,null,null,null,null,null,null,null,0.25],
@@ -7583,6 +8867,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Fire",
+          "scale": 0.22,
+          "table": "Ranged_Damage",
+          "duration": 4.2,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Fire",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -7646,6 +8945,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 1.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -7731,6 +9038,19 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 300,
+          "castTime": 1.5
+        },
+        "effectArea": "Location",
+        "damage": {
+          "type": "Heal",
+          "scale": 5,
+          "table": "Melee_HealSelf",
+          "duration": 0.5,
+          "tickRate": 1
+        },
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
           ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5],
@@ -7816,6 +9136,30 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 7,
+          "recharge": 24,
+          "endurance": 12.688,
+          "castTime": 1.37
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 2.44,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.2,
+            "table": "Melee_Damage",
+            "duration": 4.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          }
         ],
         "atoms": [
           ["Damage","Fire",2.44,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -7923,6 +9267,31 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 2.37,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.1673,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Negative",0.1673,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -8018,6 +9387,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -8095,6 +9472,14 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 0.13,
+          "castTime": 0.07,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "grantEdges": [
           {
             "op": "grant",
@@ -8217,6 +9602,28 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.87
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.2,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Lethal",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -8301,6 +9708,14 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -8395,6 +9810,23 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Toxic",
+          "scale": 0.0837,
+          "table": "Ranged_Damage",
+          "duration": 5.2,
+          "tickRate": 2
+        },
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -8510,6 +9942,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 2,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -8599,6 +10039,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,0.5,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -8688,6 +10136,21 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Toxic",
+          "scale": 0.1169,
+          "table": "Melee_Damage",
+          "duration": 7.1,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -8792,6 +10255,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 3.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -8879,6 +10350,15 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 10,
+          "recharge": 120,
+          "endurance": 13,
+          "castTime": 2.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Endurance",null,-0.35,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
@@ -8964,6 +10444,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -9045,6 +10533,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.15,
+          "table": "Ranged_Damage",
+          "duration": 6.3,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.15,1,6.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -9132,6 +10635,18 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 10.4,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Heal",
+          "scale": 2.5,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["EnduranceDiscount",null,0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -9209,6 +10724,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.17
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -9301,6 +10824,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.11,
+          "table": "Ranged_Damage",
+          "duration": 10,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",0.11,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -9382,6 +10920,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -9457,6 +11003,13 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 120,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Heal",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
           ["Absorb",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
@@ -9654,6 +11207,20 @@ export const EPIC_POOLS_RAW = {
           "To Hit Buff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "radius": 10,
+          "recharge": 240,
+          "endurance": 15.6,
+          "castTime": 2.37,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Negative",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["ToHit",null,0.2,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.2],
@@ -9753,6 +11320,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -9826,6 +11401,22 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Stuns"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 12,
+          "recharge": 16,
+          "endurance": 0.156,
+          "castTime": 1.17,
+          "activatePeriod": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Special",
+          "scale": 0.1521,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Special",0.1521,1,0,"Melee_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -9894,6 +11485,20 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 8,
+          "recharge": 360,
+          "endurance": 0.52,
+          "castTime": 1.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.8,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,null,null,null,null,0.25],
@@ -9953,6 +11558,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -10037,6 +11650,28 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 25,
+          "recharge": 450,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Heal",
+            "scale": 3,
+            "table": "Melee_Heal",
+            "duration": 0.5,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -10144,6 +11779,21 @@ export const EPIC_POOLS_RAW = {
           "To Hit Buff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 60,
+          "radius": 15,
+          "recharge": 120,
+          "endurance": 15.6,
+          "castTime": 2.37,
+          "maxTargets": 5
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.4,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Negative",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["ToHit",null,0.2,1,15,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.2],
@@ -10260,6 +11910,29 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 30,
+          "endurance": 14.352,
+          "castTime": 1.03,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.4533,
+            "table": "Melee_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",5,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -10353,6 +12026,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Negative",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -10424,6 +12110,26 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.5357,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -10506,6 +12212,33 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.3490658700466156,
+          "recharge": 20,
+          "endurance": 13.104,
+          "castTime": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Melee_Damage",
+            "duration": 2.8,
+            "tickRate": 0.30000001192092896
+          },
+          {
+            "type": "Fire",
+            "scale": 0.0495,
+            "table": "Melee_Damage",
+            "duration": 2.8,
+            "tickRate": 0.30000001192092896
+          }
         ],
         "atoms": [
           ["Damage","Negative",0.11,1,2.8,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -10597,6 +12330,43 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 7.197,
+          "castTime": 1.67,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.0837,
+            "table": "Melee_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Negative",
+            "scale": 0.113,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.0171,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.0368,
+            "table": "Melee_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Negative",0.0837,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -10723,6 +12493,20 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 20,
+          "recharge": 360,
+          "endurance": 0.52,
+          "castTime": 2.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Fire",
+          "scale": 0.4,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,20,null,null,null,null,null,null,null,null,null,null,null,0.25],
           ["Recovery",null,0.05,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05,null,null,null,null,null,null,null,null,null,null,null,0.25],
@@ -10795,6 +12579,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Fire",
+          "scale": 0.22,
+          "table": "Ranged_Damage",
+          "duration": 4.2,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Fire",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -10856,6 +12655,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 1.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -10941,6 +12748,19 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 300,
+          "castTime": 1.5
+        },
+        "effectArea": "Location",
+        "damage": {
+          "type": "Heal",
+          "scale": 5,
+          "table": "Melee_HealSelf",
+          "duration": 0.5,
+          "tickRate": 1
+        },
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
           ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5],
@@ -11026,6 +12846,30 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 7,
+          "recharge": 24,
+          "endurance": 12.688,
+          "castTime": 1.37
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 2.44,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.2,
+            "table": "Melee_Damage",
+            "duration": 4.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          }
         ],
         "atoms": [
           ["Damage","Fire",2.44,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -11113,6 +12957,14 @@ export const EPIC_POOLS_RAW = {
           "Defense Sets",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.73,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -11208,6 +13060,21 @@ export const EPIC_POOLS_RAW = {
           "Sleep",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 25,
+          "recharge": 90,
+          "endurance": 15.6,
+          "castTime": 2.37,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Cold",
+          "scale": 0.2,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
@@ -11272,6 +13139,18 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 540,
+          "endurance": 14.56,
+          "castTime": 0.73
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Heal",
+          "scale": 3,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -11347,6 +13226,13 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 180,
+          "endurance": 5.2,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["DamageBuff","Smashing",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -11428,6 +13314,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -11496,6 +13390,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Fire",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Cold",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -11576,6 +13478,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Slow Movement"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 7.8,
+          "castTime": 3.1
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,45,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]
         ],
@@ -11632,6 +13542,17 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "radius": 15,
+          "recharge": 20,
+          "endurance": 0.26,
+          "castTime": 1.67,
+          "activatePeriod": 0.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["DamageBuff","Smashing",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
           ["DamageBuff","Lethal",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -11719,6 +13640,22 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 30,
+          "endurance": 14.352,
+          "castTime": 1.03,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Negative",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",5,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -11793,6 +13730,21 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 15,
+          "radius": 15,
+          "recharge": 600,
+          "endurance": 0.52,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Heal",
+          "scale": 0.4,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["MaxEndurance",null,-2,1,60,"Ranged_EndDrain","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["MaxEndurance",null,2,1,60,"Ranged_EndDrain","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,2],
@@ -11915,6 +13867,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.3,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 20.8,
+          "castTime": 1.17
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30]
         ],
@@ -11988,6 +13948,31 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1.6,
+          "maxTargets": 16
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Toxic",
+            "scale": 0.7,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 4.25,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Toxic",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Toxic",0.1,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -12059,6 +14044,14 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 0.13,
+          "castTime": 0.07,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "grantEdges": [
           {
             "op": "grant",
@@ -12176,6 +14169,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -12256,6 +14257,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -12344,6 +14353,28 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 24,
+          "endurance": 11.856,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.05,
+            "table": "Ranged_Damage",
+            "duration": 9.3,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Energy",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -12484,6 +14515,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 2,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -12578,6 +14617,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Energy",
+          "scale": 1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -12640,6 +14694,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 30,
+          "endurance": 0.13,
+          "castTime": 2.03,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
           ["Defense","Ranged",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
@@ -12829,6 +14891,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 3.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -12916,6 +14986,15 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 10,
+          "recharge": 120,
+          "endurance": 13,
+          "castTime": 2.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Endurance",null,-0.35,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
@@ -13001,6 +15080,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -13079,6 +15166,30 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1.07,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.3,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.18,
+            "table": "Ranged_Damage",
+            "duration": 3.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Energy",0.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -13164,6 +15275,13 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 1000,
+          "endurance": 2.6,
+          "castTime": 1.96
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -13287,6 +15405,14 @@ export const EPIC_POOLS_RAW = {
           "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.17
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -13377,6 +15503,20 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 8,
+          "recharge": 360,
+          "endurance": 0.52,
+          "castTime": 1.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.8,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,null,null,null,null,0.25],
@@ -13455,6 +15595,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -13540,6 +15688,21 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.9,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Negative",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -13609,6 +15772,20 @@ export const EPIC_POOLS_RAW = {
           "To Hit Buff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "radius": 10,
+          "recharge": 240,
+          "endurance": 15.6,
+          "castTime": 2.37,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Negative",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["ToHit",null,0.2,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.2],
@@ -13702,6 +15879,14 @@ export const EPIC_POOLS_RAW = {
           "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -13778,6 +15963,30 @@ export const EPIC_POOLS_RAW = {
           "Immobilize",
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "castTime": 1.23
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.1724,
+            "table": "Ranged_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          },
+          {
+            "type": "Fire",
+            "scale": 0.0776,
+            "table": "Ranged_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.1724,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -13867,6 +16076,15 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Sleep"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 30,
+          "recharge": 90,
+          "endurance": 15.6,
+          "castTime": 1.07,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Sleep",15,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -13936,6 +16154,26 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Ranged_Damage"
+          }
         ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -14014,6 +16252,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Slow Movement"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 90,
+          "recharge": 60,
+          "endurance": 7.8,
+          "castTime": 3.1
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]
         ],
@@ -14070,6 +16316,28 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Stuns",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.8985,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.405,
+            "table": "Ranged_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Lethal",0.8985,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -14170,6 +16438,22 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 15.184,
+          "castTime": 2.17,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.958,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",0.958,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Endurance",null,-5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -14237,6 +16521,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.1,
+          "table": "Ranged_Damage",
+          "duration": 4.2,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.1,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -14317,6 +16616,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -14393,6 +16700,13 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 1000,
+          "endurance": 2.6,
+          "castTime": 1.96
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -14511,6 +16825,15 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Stuns"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 40,
+          "recharge": 800,
+          "endurance": 20.8,
+          "castTime": 2.93,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Stunned",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Endurance",null,-50,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -14630,6 +16953,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.1724,
+          "table": "Ranged_Damage",
+          "duration": 8.2,
+          "tickRate": 2
+        },
         "atoms": [
           ["Damage","Energy",0.1724,1,8.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -14719,6 +17057,28 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "radius": 10,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 2.53,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 2.98,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.42,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -14816,6 +17176,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -14897,6 +17265,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.1,
+          "table": "Ranged_Damage",
+          "duration": 4.2,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.1,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -14979,6 +17362,15 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 12,
+          "recharge": 120,
+          "endurance": 13,
+          "castTime": 2.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Endurance",null,-33,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
@@ -15058,6 +17450,13 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 600,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
         ],
@@ -15115,6 +17514,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,0.5,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -15203,6 +17610,36 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Melee_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -15288,6 +17725,11 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
@@ -15349,6 +17791,34 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 11.856,
+          "castTime": 1.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.2874,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.6706,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.432,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.2874,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -15440,6 +17910,11 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["MaxEndurance",null,5,1,10.25,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1]
         ],
@@ -15490,6 +17965,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,0.5,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -15578,6 +18061,36 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Melee_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Defense","All",2,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -15663,6 +18176,11 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
@@ -15724,6 +18242,34 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 11.856,
+          "castTime": 1.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.2874,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.6706,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.432,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.2874,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -15817,6 +18363,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -15890,6 +18444,26 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.2,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.8,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.8,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -15961,6 +18535,29 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 11.856,
+          "castTime": 1.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.2874,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.6706,
+            "table": "Ranged_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.2874,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -16037,6 +18634,28 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1.67,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.4,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.4,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -16108,6 +18727,13 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 1000,
+          "endurance": 2.6,
+          "castTime": 3.1
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Resistance","Lethal",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -16236,6 +18862,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 1.1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 3.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          }
+        ],
         "atoms": [
           ["Damage","Fire",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"FireBlastBonusDoT",null,null,null,0.5],
@@ -16303,6 +18953,37 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.15,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.9,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 2.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -16380,6 +19061,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 1.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -16465,6 +19154,19 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 300,
+          "castTime": 1.5
+        },
+        "effectArea": "Location",
+        "damage": {
+          "type": "Heal",
+          "scale": 5,
+          "table": "Melee_HealSelf",
+          "duration": 0.5,
+          "tickRate": 1
+        },
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
           ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5],
@@ -16550,6 +19252,20 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 20,
+          "recharge": 360,
+          "endurance": 0.52,
+          "castTime": 2.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Fire",
+          "scale": 0.4,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,20,null,null,null,null,null,null,null,null,null,null,null,0.25],
           ["Recovery",null,0.05,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05,null,null,null,null,null,null,null,null,null,null,null,0.25],
@@ -16639,6 +19355,14 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 120,
+          "endurance": 26,
+          "castTime": 2.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,15]
         ],
@@ -16692,6 +19416,37 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.15,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.9,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 2.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -16769,6 +19524,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 1.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -16854,6 +19617,19 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 300,
+          "castTime": 1.5
+        },
+        "effectArea": "Location",
+        "damage": {
+          "type": "Heal",
+          "scale": 5,
+          "table": "Melee_HealSelf",
+          "duration": 0.5,
+          "tickRate": 1
+        },
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
           ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5],
@@ -16938,6 +19714,16 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "radius": 10,
+          "recharge": 200,
+          "endurance": 18.2,
+          "castTime": 1.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Defense","All",2,1,40,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Resistance","Smashing",-3,1,40,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -17066,6 +19852,14 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 120,
+          "endurance": 13,
+          "castTime": 3.07
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]
         ],
@@ -17125,6 +19919,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Fire",
+          "scale": 0.22,
+          "table": "Ranged_Damage",
+          "duration": 4.2,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Fire",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -17186,6 +19995,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 1.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -17268,6 +20085,16 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "radius": 10,
+          "recharge": 200,
+          "endurance": 18.2,
+          "castTime": 1.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Defense","All",2,1,40,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Resistance","Smashing",-3,1,40,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -17381,6 +20208,19 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 300,
+          "castTime": 1.5
+        },
+        "effectArea": "Location",
+        "damage": {
+          "type": "Heal",
+          "scale": 5,
+          "table": "Melee_HealSelf",
+          "duration": 0.5,
+          "tickRate": 1
+        },
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
           ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5],
@@ -17478,6 +20318,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 30,
+          "endurance": 0.13,
+          "castTime": 2.03,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
           ["Defense","Ranged",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
@@ -17656,6 +20504,16 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 9,
+          "recharge": 40,
+          "endurance": 0.325,
+          "castTime": 2.03,
+          "activatePeriod": 0.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Knockback",3,0,0.5,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
           ["Mez","Knockback",3,0,0.5,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
@@ -17713,6 +20571,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -17789,6 +20655,21 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 70,
+          "radius": 10,
+          "recharge": 60,
+          "endurance": 16.9,
+          "castTime": 1.67,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Smashing",
+          "scale": 0.7818,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",0.7818,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Mez","Knockback",9,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -17919,6 +20800,13 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 1000,
+          "endurance": 2.6,
+          "castTime": 3.1
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Resistance","Lethal",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -18049,6 +20937,14 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 120,
+          "endurance": 13,
+          "castTime": 3.07
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]
         ],
@@ -18105,6 +21001,30 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 1.1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 3.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          }
         ],
         "atoms": [
           ["Damage","Fire",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -18172,6 +21092,37 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.15,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.9,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 2.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -18251,6 +21202,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Fire",
+          "scale": 0.1,
+          "table": "Melee_Damage",
+          "duration": 4.2,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Fire",0.1,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -18318,6 +21284,19 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 300,
+          "castTime": 1.5
+        },
+        "effectArea": "Location",
+        "damage": {
+          "type": "Heal",
+          "scale": 5,
+          "table": "Melee_HealSelf",
+          "duration": 0.5,
+          "tickRate": 1
+        },
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
           ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5],
@@ -18420,6 +21399,19 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Cold",
+          "scale": 1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -18510,6 +21502,14 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 0.13,
+          "castTime": 0.07,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "grantEdges": [
           {
             "op": "grant",
@@ -18629,6 +21629,14 @@ export const EPIC_POOLS_RAW = {
           "Defense Sets",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.73,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -18721,6 +21729,24 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.5235987901687622,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2.67,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Cold",
+          "scale": 0.7,
+          "table": "Ranged_Damage",
+          "duration": 0.6,
+          "tickRate": 0.5
+        },
         "atoms": [
           ["Damage","Cold",0.7,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -18818,6 +21844,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 2,
+          "range": 60,
+          "recharge": 120,
+          "endurance": 15.6,
+          "castTime": 2.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,15]
         ],
@@ -18894,6 +21928,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 120,
+          "endurance": 18.1272,
+          "castTime": 2.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,15,"Melee_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,15]
         ],
@@ -18952,6 +21994,14 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 0.13,
+          "castTime": 0.07,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "grantEdges": [
           {
             "op": "grant",
@@ -19071,6 +22121,14 @@ export const EPIC_POOLS_RAW = {
           "Defense Sets",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.73,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -19160,6 +22218,18 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 540,
+          "endurance": 14.56,
+          "castTime": 0.73
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Heal",
+          "scale": 3,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -19243,6 +22313,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 2,
+          "range": 60,
+          "recharge": 120,
+          "endurance": 15.6,
+          "castTime": 2.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,15]
         ],
@@ -19311,6 +22389,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 1.17,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Fire",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Cold",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -19393,6 +22479,21 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "castTime": 1.2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.1724,
+          "table": "Ranged_Damage",
+          "duration": 9.2,
+          "tickRate": 2
+        },
         "atoms": [
           ["Damage","Negative",0.1724,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -19468,6 +22569,16 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Stuns"
         ],
+        "stats": {
+          "accuracy": 0.8,
+          "range": 70,
+          "radius": 20,
+          "recharge": 180,
+          "endurance": 20.18,
+          "castTime": 1.07,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Stunned",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
@@ -19521,6 +22632,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Confuse"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.33
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","Confused",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Heal",null,-0.3,1,30,"Melee_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -19748,6 +22867,21 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 15,
+          "radius": 15,
+          "recharge": 600,
+          "endurance": 0.52,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Heal",
+          "scale": 0.4,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["MaxEndurance",null,-2,1,60,"Ranged_EndDrain","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["MaxEndurance",null,2,1,60,"Ranged_EndDrain","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,2],
@@ -19867,6 +23001,31 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 2.37,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.1673,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Negative",0.1673,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -19963,6 +23122,31 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1.6,
+          "maxTargets": 16
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Toxic",
+            "scale": 0.7,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 4.25,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Toxic",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Toxic",0.1,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -20038,6 +23222,19 @@ export const EPIC_POOLS_RAW = {
           "Melee Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 13.199999809265137,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 2.23
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 3.56,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Held",10,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -20103,6 +23300,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -20181,6 +23386,28 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.87
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.2,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -20291,6 +23518,23 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Toxic",
+          "scale": 0.0837,
+          "table": "Ranged_Damage",
+          "duration": 5.2,
+          "tickRate": 2
+        },
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -20400,6 +23644,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 2,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -20494,6 +23746,22 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.6108652353286743,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2,
+          "maxTargets": 16
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Energy",
+          "scale": 1.1489,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1.1489,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -20551,6 +23819,13 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 120,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Heal",null,0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
           ["Absorb",null,0.44,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
@@ -20751,6 +24026,21 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Toxic",
+          "scale": 0.1169,
+          "table": "Melee_Damage",
+          "duration": 7.1,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -20878,6 +24168,22 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 15.184,
+          "castTime": 2.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.96,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",0.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -20967,6 +24273,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -21051,6 +24365,28 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "radius": 10,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 2.53,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 2.98,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.42,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -21151,6 +24487,23 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.0837,
+          "table": "Ranged_Damage",
+          "duration": 7.1,
+          "tickRate": 1
+        },
         "atoms": [
           ["Damage","Energy",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -21239,6 +24592,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.15,
+          "table": "Ranged_Damage",
+          "duration": 6.3,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.15,1,6.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -21365,6 +24733,24 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.3490658700466156,
+          "recharge": 20,
+          "endurance": 13.104,
+          "castTime": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.11,
+          "table": "Ranged_Damage",
+          "duration": 2.8,
+          "tickRate": 0.30000001192092896
+        },
         "atoms": [
           ["Damage","Negative",0.11,1,2.8,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -21449,6 +24835,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -21529,6 +24923,21 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Stuns"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 12,
+          "recharge": 16,
+          "endurance": 0.156,
+          "castTime": 1.17,
+          "activatePeriod": 2,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Special",
+          "scale": 0.1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Special",0.1,1,0,"Melee_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -21594,6 +25003,31 @@ export const EPIC_POOLS_RAW = {
           "Immobilize",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 1.67,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Negative",
+            "scale": 0.113,
+            "table": "Ranged_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Negative",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -21675,6 +25109,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.11,
+          "table": "Ranged_Damage",
+          "duration": 10,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",0.11,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -21759,6 +25208,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 100,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Psionic",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Psionic",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["RechargeTime",null,0.3,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -21836,6 +25298,21 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 175,
+          "recharge": 24,
+          "endurance": 14.352,
+          "castTime": 3,
+          "interruptTime": 2,
+          "timeToRoot": 1
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Psionic",
+          "scale": 3.56,
+          "table": "Melee_Damage"
+        },
         "quickSnipe": {
           "condition": [
             "kEngaged",
@@ -21929,6 +25406,22 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 24,
+          "endurance": 11.856,
+          "castTime": 1.87,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Psionic",
+          "scale": 1.04,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["RechargeTime",null,0.5,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Damage","Psionic",1.04,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -21999,6 +25492,11 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["EnduranceDiscount",null,0.125,1,10.25,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
@@ -22069,6 +25567,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 2
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","TargetOnly","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -22135,6 +25641,11 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",1.25,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",1.25,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -22232,6 +25743,19 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Cold",
+          "scale": 1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -22332,6 +25856,21 @@ export const EPIC_POOLS_RAW = {
           "Sleep",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "radius": 15,
+          "recharge": 90,
+          "endurance": 15.6,
+          "castTime": 1.87,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Smashing",
+          "scale": 0.1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.26],
           ["Damage","Smashing",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -22395,6 +25934,14 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 45,
+          "endurance": 8.528,
+          "castTime": 1.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Meta",null,100,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"view_attributes"],
           ["Resistance","Smashing",-2,1,20,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -22506,6 +26053,30 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 150,
+          "radius": 20,
+          "recharge": 240,
+          "endurance": 18.2,
+          "castTime": 3.87,
+          "interruptTime": 2,
+          "maxTargets": 16,
+          "timeToRoot": 1.87
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 1.49,
+            "table": "Ranged_Damage"
+          }
         ],
         "quickSnipe": {
           "condition": [
@@ -22620,6 +26191,13 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 600,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
         ],
@@ -22681,6 +26259,13 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 10.4,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,1,1,12.5,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["DamageBuff","Smashing",8,1,12.5,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -22894,6 +26479,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -22965,6 +26558,13 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 1000,
+          "endurance": 2.6,
+          "castTime": 3.1
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Resistance","Lethal",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -23078,6 +26678,26 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 7,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 2.53
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 2.56,
+            "table": "Melee_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",2.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -23169,6 +26789,26 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.2,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.8,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.8,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -23233,6 +26873,13 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 600,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
         ],
@@ -23291,6 +26938,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -23365,6 +27020,29 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 11.856,
+          "castTime": 1.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.2874,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.6706,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",0.2874,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.6706,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -23433,6 +27111,13 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 120,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Heal",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
           ["Absorb",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"PowerBoost",null,null,null,null,"PowerBoostA",null,null,null,null,null,null,null,null,null,null,null,true],
@@ -23649,6 +27334,31 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 7,
+          "recharge": 20,
+          "endurance": 15.288,
+          "castTime": 2.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 1.56,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 3,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Special",
+            "scale": 3,
+            "table": "Melee_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",3,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -23718,6 +27428,13 @@ export const EPIC_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 600,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
         ],
@@ -23776,6 +27493,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -23849,6 +27574,29 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 11.856,
+          "castTime": 1.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.2874,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.6706,
+            "table": "Ranged_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.2874,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -23926,6 +27674,28 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1.67,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.4,
+            "table": "Ranged_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -24014,6 +27784,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 100,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Psionic",
+          "scale": 1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["RechargeTime",null,0.3,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -24077,6 +27860,13 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 360,
+          "endurance": 15.6,
+          "castTime": 0.73
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","Confused",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
           ["Mez","Terrorized",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
@@ -24182,6 +27972,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -24260,6 +28058,22 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 12,
+          "recharge": 15,
+          "endurance": 0.52,
+          "castTime": 1.67,
+          "activatePeriod": 4,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Psionic",
+          "scale": 0.12,
+          "table": "Ranged_Damage",
+          "tickRate": 2
+        },
         "atoms": [
           ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
           ["Mez","Confused",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["@ToHitRoll","0.25","+","@ToHit","<","enttype","target>","player","eq","&&"],true],
@@ -24323,6 +28137,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 100,
+          "radius": 15,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 1.83,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Psionic",
+          "scale": 1.1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Psionic",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockup",1.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -24412,6 +28241,15 @@ export const EPIC_POOLS_RAW = {
           "Defense Sets",
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 35,
+          "recharge": 300,
+          "endurance": 12.2304,
+          "castTime": 3.67,
+          "maxTargets": 255
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["ToHit",null,0.33,1,90,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["Resistance","Psionic",2,1,90,"Melee_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
@@ -24532,6 +28370,13 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 360,
+          "endurance": 15.6,
+          "castTime": 0.73
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Mez","Confused",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
           ["Mez","Terrorized",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
@@ -24637,6 +28482,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -24715,6 +28568,22 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 12,
+          "recharge": 15,
+          "endurance": 0.52,
+          "castTime": 1.67,
+          "activatePeriod": 4,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Psionic",
+          "scale": 0.12,
+          "table": "Ranged_Damage",
+          "tickRate": 2
+        },
         "atoms": [
           ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
           ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","@ToHitRoll","0.25","+","@ToHit","<","&&"],true],
@@ -24793,6 +28662,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 100,
+          "radius": 15,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 1.83,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Psionic",
+          "scale": 1.1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["RechargeTime",null,0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["Damage","Psionic",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -24888,6 +28772,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.1
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Psionic",
+          "scale": 1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -24954,6 +28851,16 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Sleep"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 25,
+          "recharge": 90,
+          "endurance": 15.6,
+          "castTime": 2.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","&&"],true],
@@ -25009,6 +28916,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "castTime": 0.67,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -25087,6 +29002,22 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 12,
+          "recharge": 10,
+          "endurance": 0.52,
+          "castTime": 1.67,
+          "activatePeriod": 4,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Psionic",
+          "scale": 0.12,
+          "table": "Ranged_Damage",
+          "tickRate": 2
+        },
         "atoms": [
           ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
           ["Mez","Confused",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["@ToHitRoll","0.25","+","@ToHit","<","enttype","target>","player","eq","&&"],true],
@@ -25145,6 +29076,17 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 10,
+          "recharge": 180,
+          "endurance": 0.26,
+          "castTime": 1.13,
+          "activatePeriod": 0.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["MezResist","Knockup",100,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Telekinesis"],
           ["MezResist","Knockback",100,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Telekinesis"],
@@ -25234,6 +29176,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 0.1897,
+            "table": "Ranged_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          },
+          {
+            "type": "Fire",
+            "scale": 0.0853,
+            "table": "Ranged_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          }
+        ],
         "atoms": [
           ["Damage","Fire",0.1897,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -25315,6 +29281,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 0.22,
+            "table": "Ranged_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.09,
+            "table": "Ranged_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Fire",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -25388,6 +29378,42 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 3.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.045,
+            "table": "Ranged_Damage",
+            "duration": 3.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Fire",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -25470,6 +29496,16 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "radius": 10,
+          "recharge": 200,
+          "endurance": 18.2,
+          "castTime": 1.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Defense","All",2,1,40,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Resistance","Smashing",-3,1,40,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -25579,6 +29615,49 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.2,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.7,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 2.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          },
+          {
+            "type": "Fire",
+            "scale": 0.045,
+            "table": "Ranged_Damage",
+            "duration": 2.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.405,
+            "table": "Ranged_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -25693,6 +29772,19 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Cold",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Cold",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","Run",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -25798,6 +29890,21 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 150,
+          "recharge": 24,
+          "endurance": 14.352,
+          "castTime": 4.33,
+          "interruptTime": 3,
+          "timeToRoot": 1.33
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Cold",
+          "scale": 3.56,
+          "table": "Melee_Damage"
+        },
         "quickSnipe": {
           "condition": [
             "kEngaged",
@@ -25925,6 +30032,17 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Slow Movement"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 2.356194496154785,
+          "recharge": 24,
+          "endurance": 12.48,
+          "castTime": 2.17,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
         "atoms": [
           ["Movement","JumpHeight",0.65,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
           ["RechargeTime",null,0.65,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -26021,6 +30139,24 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.5235987901687622,
+          "recharge": 36,
+          "endurance": 16.848,
+          "castTime": 1.6,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Cold",
+          "scale": 0.2143,
+          "table": "Melee_Damage",
+          "duration": 3.2,
+          "tickRate": 0.5
+        },
         "atoms": [
           ["Damage","Cold",0.2143,1,3.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -26128,6 +30264,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -26203,6 +30347,33 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 10.795,
+          "castTime": 1.67,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.1088,
+            "table": "Ranged_Damage",
+            "duration": 5.2,
+            "tickRate": 2
+          },
+          {
+            "type": "Negative",
+            "scale": 0.1088,
+            "table": "Ranged_InherentDamage",
+            "duration": 5.2,
+            "tickRate": 2
+          }
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -26298,6 +30469,36 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 12,
+          "endurance": 6.864,
+          "castTime": 0.97
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.32,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Smashing",
+            "scale": 0.32,
+            "table": "Melee_InherentDamage"
+          },
+          {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",0.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -26390,6 +30591,26 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Ranged_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
@@ -26471,6 +30692,43 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 15,
+          "recharge": 36,
+          "endurance": 16.848,
+          "castTime": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 3.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          },
+          {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_InherentDamage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.1,
+            "table": "Melee_InherentDamage",
+            "duration": 3.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -26562,6 +30820,17 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "radius": 15,
+          "recharge": 20,
+          "endurance": 0.26,
+          "castTime": 1.67,
+          "activatePeriod": 0.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["DamageBuff","Smashing",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
           ["DamageBuff","Lethal",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -26664,6 +30933,28 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 10.795,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.251,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.251,
+            "table": "Ranged_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.251,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -26761,6 +31052,36 @@ export const EPIC_POOLS_RAW = {
           "Melee Damage",
           "Sleep",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 28,
+          "endurance": 13.52,
+          "castTime": 1.5
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 0.6,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 2,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Smashing",
+            "scale": 0.6,
+            "table": "Melee_InherentDamage"
+          },
+          {
+            "type": "Energy",
+            "scale": 2,
+            "table": "Melee_InherentDamage"
+          }
         ],
         "atoms": [
           ["Endurance",null,-0.1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -26870,6 +31191,26 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 16,
+          "endurance": 8.528,
+          "castTime": 2.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Ranged_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -26958,6 +31299,32 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 10,
+          "recharge": 20,
+          "endurance": 0.52,
+          "castTime": 2.03,
+          "activatePeriod": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.17,
+            "table": "Melee_Damage",
+            "duration": 10,
+            "tickRate": 2.0999999046325684
+          },
+          {
+            "type": "Energy",
+            "scale": 0.17,
+            "table": "Melee_InherentDamage",
+            "duration": 10,
+            "tickRate": 2.0999999046325684
+          }
+        ],
         "atoms": [
           ["Endurance",null,-0.02,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","entref","source>","entref","target>","eq","!","&&","cur.kHeld","source>","0",">","cur.kStun","source>","0",">","||","cur.kSleep","source>","0",">","||","cur.kTerrorized","source>","0",">","||","!","&&"]],
           ["Damage","Energy",0.17,1,10,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,2.0999999046325684,1,null,null,null,null,null,null,["enttype","target>","critter","eq","entref","source>","entref","target>","eq","!","&&","cur.kHeld","source>","0",">","cur.kStun","source>","0",">","||","cur.kSleep","source>","0",">","||","cur.kTerrorized","source>","0",">","||","!","&&"]],
@@ -27032,6 +31399,21 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 20,
+          "recharge": 32,
+          "endurance": 13,
+          "castTime": 1,
+          "maxTargets": 255
+        },
+        "effectArea": "Chain",
+        "damage": {
+          "type": "Heal",
+          "scale": 1,
+          "table": "Ranged_Heal"
+        },
         "atoms": [
           ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
         ],
@@ -27105,6 +31487,32 @@ export const EPIC_POOLS_RAW = {
           "Immobilize",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 10.795,
+          "castTime": 1.03,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 0.092,
+            "table": "Ranged_Damage",
+            "duration": 5.2,
+            "tickRate": 2
+          },
+          {
+            "type": "Fire",
+            "scale": 0.092,
+            "table": "Ranged_InherentDamage",
+            "duration": 5.2,
+            "tickRate": 2
+          }
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -27186,6 +31594,40 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 16,
+          "endurance": 8.528,
+          "castTime": 1.5
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 1.64,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 1.64,
+            "table": "Melee_InherentDamage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.164,
+            "table": "Melee_Damage",
+            "duration": 3.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.164,
+            "table": "Melee_InherentDamage",
+            "duration": 3.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Fire",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -27269,6 +31711,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 0.22,
+            "table": "Ranged_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.22,
+            "table": "Ranged_InherentDamage",
+            "duration": 4.2,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Fire",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Fire",0.22,1,4.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
@@ -27342,6 +31808,43 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 10,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 2.67,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Fire",
+            "scale": 1.424,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 1.424,
+            "table": "Melee_InherentDamage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 3.1,
+            "tickRate": 1,
+            "chance": 0.8,
+            "cancelOnMiss": true
+          },
+          {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Melee_InherentDamage",
+            "duration": 3.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Fire",1.424,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -27424,6 +31927,20 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 25,
+          "recharge": 32,
+          "endurance": 13,
+          "castTime": 2.03,
+          "maxTargets": 255
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Heal",
+          "scale": 1,
+          "table": "Ranged_Heal"
+        },
         "atoms": [
           ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
         ],
@@ -27498,6 +32015,32 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 10.795,
+          "castTime": 2.07,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Cold",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 5.2,
+            "tickRate": 2
+          },
+          {
+            "type": "Cold",
+            "scale": 0.0837,
+            "table": "Ranged_InherentDamage",
+            "duration": 5.2,
+            "tickRate": 2
+          }
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -27616,6 +32159,36 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 20,
+          "endurance": 10.192,
+          "castTime": 1.33
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.96,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Cold",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.96,
+            "table": "Melee_InherentDamage"
+          },
+          {
+            "type": "Cold",
+            "scale": 1,
+            "table": "Melee_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Damage","Lethal",0.96,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Cold",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -27730,6 +32303,26 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.87
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Cold",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Cold",
+            "scale": 1,
+            "table": "Melee_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Damage","Cold",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Cold",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
@@ -27840,6 +32433,27 @@ export const EPIC_POOLS_RAW = {
           "Sleep",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 10,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 2.1,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Cold",
+            "scale": 1.424,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Cold",
+            "scale": 1.424,
+            "table": "Melee_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Mez","Sleep",10,2,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.33],
           ["Damage","Cold",1.424,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -27912,6 +32526,17 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Slow Movement"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 25,
+          "recharge": 20,
+          "endurance": 0.26,
+          "castTime": 2.03,
+          "activatePeriod": 0.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Movement","Run",0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
           ["Movement","Fly",0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
@@ -28040,6 +32665,43 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 10.795,
+          "castTime": 2.37,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.1339,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.0595,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Negative",
+            "scale": 0.1339,
+            "table": "Ranged_InherentDamage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.0595,
+            "table": "Ranged_InherentDamage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",0.1339,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -28154,6 +32816,26 @@ export const EPIC_POOLS_RAW = {
           "Melee Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 13.199999809265137,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 2.23
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 3.56,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Smashing",
+            "scale": 3.56,
+            "table": "Melee_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -28232,6 +32914,40 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.87
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.2,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.2,
+            "table": "Ranged_InherentDamage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.1,
+            "table": "Ranged_InherentDamage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Lethal",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -28327,6 +33043,43 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2.33,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Cold",
+            "scale": 0.4796,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Cold",
+            "scale": 0.0977,
+            "table": "Ranged_Damage",
+            "duration": 4.25,
+            "tickRate": 1
+          },
+          {
+            "type": "Cold",
+            "scale": 0.4796,
+            "table": "Ranged_InherentDamage"
+          },
+          {
+            "type": "Cold",
+            "scale": 0.0977,
+            "table": "Ranged_InherentDamage",
+            "duration": 4.25,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Mez","Knockback",0.1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.03],
@@ -28514,6 +33267,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -28603,6 +33364,32 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 10.795,
+          "castTime": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Toxic",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 5.2,
+            "tickRate": 2
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.0837,
+            "table": "Ranged_InherentDamage",
+            "duration": 5.2,
+            "tickRate": 2
+          }
         ],
         "atoms": [
           ["Damage","Toxic",0.0837,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -28731,6 +33518,40 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 7,
+          "recharge": 16,
+          "endurance": 8.528,
+          "castTime": 1.5
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Smashing",
+            "scale": 1.64,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Smashing",
+            "scale": 1.64,
+            "table": "Melee_InherentDamage"
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 4.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.1,
+            "table": "Melee_InherentDamage",
+            "duration": 4.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Smashing",1.64,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
@@ -28821,6 +33642,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Slow Movement",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Toxic",
+            "scale": 0.1169,
+            "table": "Melee_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.1169,
+            "table": "Melee_InherentDamage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Toxic",0.1169,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -28925,6 +33770,16 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 25,
+          "recharge": 10,
+          "endurance": 0.312,
+          "castTime": 1.17,
+          "activatePeriod": 0.5,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["ToHit",null,0.5,1,0.75,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["ToHit",null,2,1,0.75,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -29019,6 +33874,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 3.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -29108,6 +33971,32 @@ export const EPIC_POOLS_RAW = {
           "Immobilize",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 10.795,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.0729,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Energy",
+            "scale": 0.0729,
+            "table": "Ranged_InherentDamage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -29226,6 +34115,38 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "radius": 10,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 2.53,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 2.98,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 2.98,
+            "table": "Melee_InherentDamage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.42,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.42,
+            "table": "Melee_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -29339,6 +34260,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.15,
+            "table": "Ranged_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          {
+            "type": "Energy",
+            "scale": 0.15,
+            "table": "Ranged_InherentDamage",
+            "duration": 6.3,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.15,1,6.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -29440,6 +34385,29 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 15.184,
+          "castTime": 2.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.958,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.958,
+            "table": "Ranged_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.958,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -29536,6 +34504,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.17
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -29609,6 +34585,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 25,
+          "recharge": 45,
+          "endurance": 7.8,
+          "castTime": 1.07
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]
         ],
@@ -29668,6 +34652,26 @@ export const EPIC_POOLS_RAW = {
           "Melee Damage",
           "Sentinel Archetype Sets",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 7,
+          "recharge": 10,
+          "endurance": 6.032,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 1.16,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 1.16,
+            "table": "Melee_InherentDamage"
+          }
         ],
         "atoms": [
           ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -29744,6 +34748,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Sentinel Archetype Sets",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.5
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Toxic",
+            "scale": 0.25,
+            "table": "Ranged_Damage",
+            "duration": 3.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.25,
+            "table": "Ranged_InherentDamage",
+            "duration": 3.1,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Toxic",0.25,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
@@ -29860,6 +34888,41 @@ export const EPIC_POOLS_RAW = {
           "Sentinel Archetype Sets",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "radius": 8,
+          "recharge": 28,
+          "endurance": 13,
+          "castTime": 1.83,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 1,
+            "table": "Melee_InherentDamage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.12,
+            "table": "Melee_Damage",
+            "duration": 2.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.12,
+            "table": "Melee_InherentDamage",
+            "duration": 2.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Lethal",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],
@@ -29952,6 +35015,15 @@ export const EPIC_POOLS_RAW = {
           "Threat Duration",
           "To Hit Debuff"
         ],
+        "stats": {
+          "accuracy": 1.4,
+          "radius": 20,
+          "recharge": 120,
+          "endurance": 15.6,
+          "castTime": 1.67,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Placate",15,4,0,"Ranged_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.2],
           ["DamageBuff","Smashing",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -30053,6 +35125,16 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Sleep"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 25,
+          "recharge": 90,
+          "endurance": 15.6,
+          "castTime": 2.03,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","&&"],true],
@@ -30111,6 +35193,26 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 20,
+          "endurance": 10.192,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Psionic",
+            "scale": 1.96,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Psionic",
+            "scale": 1.96,
+            "table": "Melee_InherentDamage"
+          }
         ],
         "atoms": [
           ["Damage","Psionic",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -30188,6 +35290,26 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.1
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Psionic",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Psionic",
+            "scale": 1,
+            "table": "Ranged_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -30259,6 +35381,27 @@ export const EPIC_POOLS_RAW = {
           "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 15,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 1.97,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Psionic",
+            "scale": 1.0954,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Psionic",
+            "scale": 1.0954,
+            "table": "Melee_InherentDamage"
+          }
         ],
         "atoms": [
           ["Damage","Psionic",1.0954,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -30340,6 +35483,15 @@ export const EPIC_POOLS_RAW = {
           "Defense Sets",
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "radius": 35,
+          "recharge": 300,
+          "endurance": 12.2304,
+          "castTime": 3.67,
+          "maxTargets": 255
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["ToHit",null,0.33,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["Resistance","Psionic",2,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
@@ -30497,6 +35649,43 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 10.795,
+          "castTime": 1.67,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Negative",
+            "scale": 0.113,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.0837,
+            "table": "Ranged_InherentDamage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Negative",
+            "scale": 0.113,
+            "table": "Ranged_InherentDamage"
+          }
+        ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -30612,6 +35801,40 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 30,
+          "endurance": 11.96,
+          "castTime": 2.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 2.21,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 2.21,
+            "table": "Melee_InherentDamage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Melee_Damage",
+            "duration": 3.1,
+            "tickRate": 0.75
+          },
+          {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Melee_InherentDamage",
+            "duration": 3.1,
+            "tickRate": 0.75
+          }
+        ],
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",2.21,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -30710,6 +35933,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Ranged_Damage",
+            "duration": 10,
+            "tickRate": 1
+          },
+          {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Ranged_InherentDamage",
+            "duration": 10,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Negative",0.11,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",0.11,1,10,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
@@ -30783,6 +36030,17 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "radius": 15,
+          "recharge": 20,
+          "endurance": 0.26,
+          "castTime": 1.67,
+          "activatePeriod": 0.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["DamageBuff","Smashing",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
           ["DamageBuff","Lethal",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -30874,6 +36132,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -30965,6 +36231,28 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 13,
+          "endurance": 7.28,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.84,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.14,
+            "table": "Melee_Damage",
+            "duration": 3.2,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Fire",0.378,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["arch","source>","Class_Scrapper","=="],null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
@@ -31093,6 +36381,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.3,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 20.8,
+          "castTime": 1.17
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30]
         ],
@@ -31148,6 +36444,14 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 0.13,
+          "castTime": 0.07,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "grantEdges": [
           {
             "op": "grant",
@@ -31270,6 +36574,28 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.87
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.2,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Lethal",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -31361,6 +36687,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -31453,6 +36787,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 12,
+          "endurance": 6.864,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 1.32,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",0.7,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -31560,6 +36907,21 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 150,
+          "recharge": 24,
+          "endurance": 14.352,
+          "castTime": 5,
+          "interruptTime": 3,
+          "timeToRoot": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 3.56,
+          "table": "Melee_Damage"
+        },
         "quickSnipe": {
           "condition": [
             "kEngaged",
@@ -31650,6 +37012,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Energy",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -31725,6 +37102,21 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Toxic",
+          "scale": 0.1169,
+          "table": "Melee_Damage",
+          "duration": 7.1,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Toxic",0.1169,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -31829,6 +37221,14 @@ export const EPIC_POOLS_RAW = {
           "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 3.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,240,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240],
           ["EntCreate",null,1,1,240,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -31924,6 +37324,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -32033,6 +37446,21 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 150,
+          "recharge": 24,
+          "endurance": 14.352,
+          "castTime": 4.33,
+          "interruptTime": 3,
+          "timeToRoot": 1.33
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 3.56,
+          "table": "Melee_Damage"
+        },
         "quickSnipe": {
           "condition": [
             "kEngaged",
@@ -32139,6 +37567,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1.07,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.3,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.18,
+            "table": "Melee_Damage",
+            "duration": 3.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Energy",0.3,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.18,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -32235,6 +37687,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.15,
+          "table": "Melee_Damage",
+          "duration": 6.3,
+          "tickRate": 1
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.15,1,6.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -32339,6 +37806,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.17
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -32432,6 +37907,19 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Negative",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["ToHit",null,0.75,1,6,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -32527,6 +38015,21 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 150,
+          "recharge": 24,
+          "endurance": 14.352,
+          "castTime": 4.33,
+          "interruptTime": 3,
+          "timeToRoot": 1.33
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Negative",
+          "scale": 4.5,
+          "table": "Melee_Damage"
+        },
         "quickSnipe": {
           "condition": [
             "kEngaged",
@@ -32616,6 +38119,13 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 90,
+          "endurance": 4.16,
+          "castTime": 3
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Ranged",2.7,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Defense","Melee",2.7,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -32735,6 +38245,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 2.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Melee_Damage",
+            "duration": 10,
+            "tickRate": 1
+          },
+          {
+            "type": "Fire",
+            "scale": 0.0495,
+            "table": "Melee_Damage",
+            "duration": 10,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",0.11,1,10,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -32820,6 +38354,14 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -32893,6 +38435,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 16,
+          "endurance": 8.528,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 1.64,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -32959,6 +38514,21 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 20,
+          "radius": 15,
+          "recharge": 20,
+          "endurance": 10.192,
+          "castTime": 2.1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Smashing",
+          "scale": 0.9,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -33029,6 +38599,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 4,
+          "endurance": 0.104,
+          "castTime": 0.73,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Defense","Smashing",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
           ["Defense","Lethal",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -33113,6 +38691,19 @@ export const EPIC_POOLS_RAW = {
           "Melee Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.2,
+          "range": 7,
+          "recharge": 28,
+          "endurance": 13.52,
+          "castTime": 1.5
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 2.6,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",2.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Held",8,4,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -33176,6 +38767,18 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Resist Damage"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 360,
+          "endurance": 10.4,
+          "castTime": 2.03
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Heal",
+          "scale": 4,
+          "table": "Melee_HealSelf"
+        },
         "atoms": [
           ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
@@ -33283,6 +38886,21 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.1724,
+          "table": "Ranged_Damage",
+          "duration": 9.2,
+          "tickRate": 2
+        },
         "atoms": [
           ["Damage","Negative",0.1724,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -33363,6 +38981,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Negative",
+          "scale": 1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -33427,6 +39058,26 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.5357,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -33503,6 +39154,24 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.3490658700466156,
+          "recharge": 20,
+          "endurance": 13.104,
+          "castTime": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.11,
+          "table": "Ranged_Damage",
+          "duration": 2.8,
+          "tickRate": 0.30000001192092896
+        },
         "atoms": [
           ["Damage","Negative",0.11,1,2.8,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -33571,6 +39240,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Slow Movement"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 7.8,
+          "castTime": 3.1
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,45,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]
         ],
@@ -33651,6 +39328,19 @@ export const EPIC_POOLS_RAW = {
           "Sleep",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.1,
+          "range": 100,
+          "recharge": 12,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Psionic",
+          "scale": 1,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Mez","Sleep",30,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -33720,6 +39410,26 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "castTime": 1.1
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Psionic",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -33785,6 +39495,11 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["EnduranceDiscount",null,0.125,1,10.25,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
@@ -33845,6 +39560,26 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 100,
+          "recharge": 8,
+          "endurance": 5.2,
+          "castTime": 1.67
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Psionic",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.45,
+            "table": "Ranged_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -33920,6 +39655,28 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 100,
+          "radius": 15,
+          "recharge": 40,
+          "endurance": 18.512,
+          "castTime": 1.83,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Psionic",
+            "scale": 1.1,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.495,
+            "table": "Ranged_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Psionic",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -34039,6 +39796,28 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 13,
+          "endurance": 7.28,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.84,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Lethal",
+            "scale": 0.14,
+            "table": "Ranged_Damage",
+            "duration": 3.2,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Lethal",0.84,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -34154,6 +39933,31 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 2.37,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.1673,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Negative",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Negative",0.1673,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Negative",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
@@ -34232,6 +40036,31 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1.6,
+          "maxTargets": 16
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Toxic",
+            "scale": 0.7,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Toxic",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 4.25,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Toxic",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Toxic",0.1,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -34305,6 +40134,31 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2.33,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Cold",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
+          {
+            "type": "Cold",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 4.25,
+            "tickRate": 1
+          }
         ],
         "atoms": [
           ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -34482,6 +40336,14 @@ export const EPIC_POOLS_RAW = {
           "Stuns",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -34574,6 +40436,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 12,
+          "endurance": 6.864,
+          "castTime": 2
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 1.32,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",0.7,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -34657,6 +40532,23 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 2,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Toxic",
+          "scale": 0.0837,
+          "table": "Ranged_Damage",
+          "duration": 5.2,
+          "tickRate": 2
+        },
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -34757,6 +40649,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 2,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Energy",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -34819,6 +40726,19 @@ export const EPIC_POOLS_RAW = {
           "Melee Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1.05,
+          "range": 7,
+          "recharge": 30,
+          "endurance": 14.352,
+          "castTime": 2.33
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 2.76,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Smashing",2.76,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Resistance","Smashing",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -34935,6 +40855,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 3.03
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -35027,6 +40955,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 12,
+          "endurance": 6.864,
+          "castTime": 1.17
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Energy",
+          "scale": 1.32,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Energy",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Endurance",null,-0.1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -35128,6 +41069,23 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 15,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 1.17,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.0837,
+          "table": "Melee_Damage",
+          "duration": 7.1,
+          "tickRate": 1
+        },
         "atoms": [
           ["Damage","Energy",0.0837,1,7.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -35214,6 +41172,30 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1.07,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Energy",
+            "scale": 0.3,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Energy",
+            "scale": 0.18,
+            "table": "Melee_Damage",
+            "duration": 3.1,
+            "tickRate": 1
+          }
+        ],
         "atoms": [
           ["Damage","Energy",0.3,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Energy",0.18,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -35299,6 +41281,22 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 40,
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "recharge": 24,
+          "endurance": 15.184,
+          "castTime": 2.07,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": {
+          "type": "Energy",
+          "scale": 0.96,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Damage","Energy",0.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -35381,6 +41379,14 @@ export const EPIC_POOLS_RAW = {
           "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.17
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -35474,6 +41480,21 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 16,
+          "endurance": 8.528,
+          "castTime": 1.1
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.22,
+          "table": "Melee_Damage",
+          "duration": 3.6,
+          "tickRate": 0.5
+        },
         "atoms": [
           ["Damage","Negative",0.22,1,3.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -35560,6 +41581,31 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "castTime": 1.67,
+          "maxTargets": 10
+        },
+        "effectArea": "Cone",
+        "damage": [
+          {
+            "type": "Negative",
+            "scale": 0.0837,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          {
+            "type": "Negative",
+            "scale": 0.113,
+            "table": "Ranged_Damage"
+          }
+        ],
         "atoms": [
           ["Damage","Negative",0.0837,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
           ["Damage","Negative",0.113,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -35641,6 +41687,21 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Negative",
+          "scale": 0.9,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Negative",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -35705,6 +41766,17 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Debuff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "radius": 15,
+          "recharge": 20,
+          "endurance": 0.26,
+          "castTime": 1.67,
+          "activatePeriod": 0.5,
+          "maxTargets": 10
+        },
+        "effectArea": "AoE",
         "atoms": [
           ["DamageBuff","Smashing",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
           ["DamageBuff","Lethal",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -35788,6 +41860,14 @@ export const EPIC_POOLS_RAW = {
           "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "castTime": 1.67
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
         ],
@@ -35863,6 +41943,19 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "castTime": 1.37
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 0.8621,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -35960,6 +42053,14 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 25,
+          "recharge": 45,
+          "endurance": 7.8,
+          "castTime": 1.07
+        },
+        "effectArea": "Location",
         "atoms": [
           ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]
         ],
@@ -36014,6 +42115,26 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 6,
+          "endurance": 4.368,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.84,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.378,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -36078,6 +42199,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 20,
+          "endurance": 0.156,
+          "castTime": 1,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,0.5,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -36162,6 +42291,28 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Universal Damage Sets"
+        ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": [
+          {
+            "type": "Lethal",
+            "scale": 0.9,
+            "table": "Melee_Damage"
+          },
+          {
+            "type": "Fire",
+            "scale": 0.405,
+            "table": "Melee_Damage"
+          }
         ],
         "atoms": [
           ["Damage","Lethal",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -36251,6 +42402,19 @@ export const EPIC_POOLS_RAW = {
           "Slow Movement",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "castTime": 1.37
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Smashing",
+          "scale": 0.8621,
+          "table": "Ranged_Damage"
+        },
         "atoms": [
           ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
@@ -36345,6 +42509,11 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing"
         ],
+        "stats": {
+          "accuracy": 1,
+          "activatePeriod": 10
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
@@ -36405,6 +42574,19 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 6,
+          "endurance": 4.368,
+          "castTime": 1.07
+        },
+        "effectArea": "SingleTarget",
+        "damage": {
+          "type": "Lethal",
+          "scale": 0.84,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Lethal",0.84,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>",".9","<","&&","arch","source>","Class_Stalker","eq","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
@@ -36461,6 +42643,14 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "To Hit Buff"
         ],
+        "stats": {
+          "accuracy": 1,
+          "recharge": 20,
+          "endurance": 0.156,
+          "castTime": 1,
+          "activatePeriod": 0.5
+        },
+        "effectArea": "SingleTarget",
         "atoms": [
           ["ToHit",null,0.5,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
@@ -36546,6 +42736,21 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "stats": {
+          "accuracy": 1,
+          "range": 80,
+          "radius": 15,
+          "recharge": 32,
+          "endurance": 15.184,
+          "castTime": 1,
+          "maxTargets": 16
+        },
+        "effectArea": "AoE",
+        "damage": {
+          "type": "Lethal",
+          "scale": 0.9,
+          "table": "Melee_Damage"
+        },
         "atoms": [
           ["Damage","Lethal",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Lethal",0.9,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["arch","source>","Class_Stalker","==","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","arch","source>","Class_Stalker","eq","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
