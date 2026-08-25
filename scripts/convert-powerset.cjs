@@ -8399,13 +8399,16 @@ const TSPY_FOE_TARGETS = new Set(['Foe', 'Location', 'DeadFoe']);
 // power is really a PET buff whose per-template target the binary dropped.
 const TSPY_PET_TARGETS = new Set(['MyPet']);
 
-// Foe-facing recipients for the applied-mez target-trap guard. Thunderspy's schema
-// drops the per-template target, so an applied mez/KB whose index the parser recovers
-// is routed by the power's `targets_affected` instead (the §7 discipline). Applied
-// control is always foe-facing (even PBAoE controls the caster casts on Self —
+// Foe-facing recipients for the applied-mez target-trap guard. The parser DOES read
+// the per-template target from Thunderspy's binary (byte-identical across forks), but
+// it does not discriminate self-buff from applied rows — damage rows are `AnyAffected`
+// too — so the guard routes on the power's `targets_affected` instead (the §7 discipline).
+// Applied control is always foe-facing (even PBAoE controls the caster casts on Self —
 // Psychic Wail, EMP Pulse, Mud Pots — carry `targets_affected=['Foe']`); a mez/KB on
 // a Self/ally-only power is a self-buff whose index merely names a mez (the Incarnate
-// `+mez-strength` / Alpha-slot definitions), not an applied effect.
+// `+mez-strength` / Alpha-slot definitions), not an applied effect. The 5-of-5 pet
+// strips are TSPY-9: unresolvable design intent (no authored defs, no TSPY test
+// server), accepted as-is.
 const TSPY_MEZ_FOE_TARGETS = new Set(['Foe', 'DeadFoe', 'DeadOrAliveFoe', 'Any']);
 // The applied-control keys the parser recovers from the tspy index array. Dropped by
 // guardThunderspyAppliedMez on a power that affects no foe.

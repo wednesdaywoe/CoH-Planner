@@ -19,12 +19,10 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**2 open, of 222 entries.** When an entry is open it is listed here with what it's waiting on.
+**1 open, of 222 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
-- **TSPY-9** — waiting on the authored `.powers` defs for the five ENT-20 pet abilities: the only
-  oracle that can say whether a no-foe power's recovered mez is real. → [parser-fidelity](gaps/parser-fidelity.md)
 - **MEZPROT-2** — protection off a `Res_Boolean` table reaches the bag and no total, on all four
   forks (~240 keys); waiting on whether the credit gate's discriminator should be the table or the
   sign of the scale. → [stat-routing](gaps/stat-routing.md)
@@ -95,10 +93,11 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   magnitude whose sign never reaches the wire, so real protection read as applied control and was
   stripped: 199 keys over 51 powers, Inner Will (Blaster/Martial Manipulation) losing all six.
   Carve-out reads all three spellings, `window_slots.rs` mirror moved in step; 531 keys → 332
-- [ ] **TSPY-9** — `guardThunderspyAppliedMez` drops recovered control keys on no-foe powers, but
-  where Thunderspy's atoms are byte-identical to the Parse7 twin's the recovery demonstrably worked
-  and the strip is a false positive: 2 of 506 same-atom player powers, and 5 of 5 of the pet rows
-  ENT-20 added. Only the authored defs can say which answer is right
+- [x] **TSPY-9** — not a parser gap, closed as unresolvable design intent: Thunderspy's binary
+  DOES carry the per-template target (read via `ATTRIB_MOD_TARGET`, byte-identical across all four
+  forks), so the guard's "schema drops the target" premise was stale; the authored-defs oracle
+  exists in no install and Thunderspy has no public test server, so the 2-of-506 / 5-of-5 false-
+  positive question is not settable — guard retained as an accepted, documented heuristic
 - [x] **MEZPROT-1** — the mez bag writer carried a bare `datasetId === 'thunderspy' && scale < 0 &&
   !table.includes('res_boolean')` arm, an undeclared Rule 0 fork branch that dropped 43 protection
   keys over 13 powers while Rebirth published the byte-identical atoms; read as four-fork twice
