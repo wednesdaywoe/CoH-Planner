@@ -4,6 +4,7 @@
  * This component only renders selected powers with slots, toggles, and enhancement management.
  */
 
+import type { SlotLevel } from '@/utils/slot-levels';
 import { useMemo, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory } from '@/stores';
@@ -377,7 +378,7 @@ interface PoolPowerGroupProps {
   onRemoveAllSlots: (powerName: string, totalSlots: number) => void;
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
   onInfoClick: (power: Power | SelectedPower) => void;
-  slotLevelsMap?: Map<string, number[]>;
+  slotLevelsMap?: Map<string, SlotLevel[]>;
 }
 
 function PoolPowerGroup({
@@ -609,7 +610,7 @@ function GrantedPoolSubPowers({
 interface EpicPoolSelectedPowersProps {
   epicPool: { id: string; name: string; powers: SelectedPower[] };
   isPowerLocked: (powerName: string) => boolean;
-  slotLevelsMap?: Map<string, number[]>;
+  slotLevelsMap?: Map<string, SlotLevel[]>;
 }
 
 function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: EpicPoolSelectedPowersProps) {
@@ -783,7 +784,7 @@ interface InherentPowerGroupProps {
   /** Suppress the group's own header/collapse chrome — used when the group is a
    *  standalone planner cell whose cell header already names it (goal 2). */
   headerless?: boolean;
-  slotLevelsMap?: Map<string, number[]>;
+  slotLevelsMap?: Map<string, SlotLevel[]>;
 }
 
 function InherentPowerGroup({

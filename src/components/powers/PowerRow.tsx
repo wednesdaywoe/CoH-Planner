@@ -19,7 +19,7 @@ import { PermaRing } from './PermaRing';
 import { ProcPotentialBadge } from './ProcPotentialBadge';
 import type { SlotSize } from './TouchableSlot';
 import { useBuildStore, useUIStore, type PowerCategory } from '@/stores';
-import { isMovableSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
+import { isMovableSlot, type SlotLevel, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
 
 type PowerRowSize = 'xs' | 'sm' | 'md' | 'lg';
 
@@ -81,7 +81,7 @@ interface PowerRowProps {
   onRightClick?: (e: React.MouseEvent) => void;
   onCompareSlotting?: () => void;
   onInfoClick?: () => void;
-  slotLevels?: number[];
+  slotLevels?: SlotLevel[];
   /** Full power object for perma ring display */
   selectedPower?: SelectedPower;
   /** Store category for this power — enables the slot-level move feature

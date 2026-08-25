@@ -7,6 +7,7 @@
  * - Mobile: Tap opens picker, touch-and-hold opens context menu
  */
 
+import type { SlotLevel } from '@/utils/slot-levels';
 import { useState, useRef, useEffect } from 'react';
 import type { Enhancement } from '@/types';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
@@ -22,6 +23,15 @@ const SIZE_CONFIG: Record<SlotSize, { className: string; iconSize: number; fontS
   md: { className: 'w-6 h-6', iconSize: 24, fontSize: 'text-[9px]', levelFontSize: 8 },
 };
 
+/**
+ * Shown on a slot the grant schedule could not place. It is a real state — the
+ * build asks for more slots at or above some pick level than the schedule
+ * issues from that level on — and it has to be visible, because the number that
+ * used to appear in its place looked like an ordinary assignment (SLOT-1).
+ */
+const UNPLACED_SLOT_TITLE =
+  'This slot has no level the game could grant it — the build wants more slots at this power’s level or later than the schedule issues. Free one from a later power.';
+
 const DRAG_THRESHOLD = 5; // Pixels before considering it a drag
 const PIXELS_PER_SLOT = 30; // Distance for each additional slot to remove
 
@@ -30,7 +40,9 @@ interface TouchableSlotProps {
   index: number;
   canRemoveSlot: boolean;
   size?: SlotSize;
-  slotLevel?: number;
+  /** The level this slot was granted at, or `null` when the schedule could
+   *  not place it — rendered as a break, never as a substitute number. */
+  slotLevel?: SlotLevel;
   onClick: () => void;
   onMouseEnter: () => void;
   onClearEnhancement: () => void;
@@ -357,10 +369,15 @@ export function TouchableSlot({
         )}
         {slotLevel !== undefined && (
           <div
-            className="absolute left-1/2 -translate-x-1/2 bg-gray-900/90 text-slate-300 border border-slate-600 rounded-sm pointer-events-none z-20 leading-none px-px"
+            className={`absolute left-1/2 -translate-x-1/2 rounded-sm pointer-events-none z-20 leading-none px-px ${
+              slotLevel === null
+                ? 'bg-red-900/90 text-red-200 border border-red-500'
+                : 'bg-gray-900/90 text-slate-300 border border-slate-600'
+            }`}
             style={{ bottom: -4, fontSize: config.levelFontSize, minWidth: config.levelFontSize * 1.6 }}
+            title={slotLevel === null ? UNPLACED_SLOT_TITLE : undefined}
           >
-            <span className="flex items-center justify-center">{slotLevel}</span>
+            <span className="flex items-center justify-center">{slotLevel ?? '!'}</span>
           </div>
         )}
       </div>

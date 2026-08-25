@@ -29,6 +29,11 @@ import {
 import { findSelectedPowerInBuild } from './powerDisplayUtils';
 import type { IOSetEnhancement, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, Enhancement } from '@/types';
 
+/** Matches the slot badge's own wording for an unplaceable slot (SLOT-1). */
+const UNPLACED_SLOT_TITLE =
+  'This slot has no level the game could grant it — the build wants more slots at this power\u2019s level or later than the schedule issues.';
+
+
 /**
  * How a slot's stored level offset reads to the player. A booster combine is a
  * bonus ("+3 Boosted"); a negative is an out-levelled enhancement, which is a
@@ -80,7 +85,8 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
             ? 'epic'
             : 'inherent';
   // The level this slot was placed at — same derivation the power list's slot-level
-  // chips use (respec vs leveling mode aware).
+  // chips use (respec vs leveling mode aware). `null` means the grant schedule
+  // had nothing left this slot could legally occupy (SLOT-1).
   const slotLevel = powerCategory
     ? slotLevelsMap.get(powerKey(powerCategory, powerName))?.[slotIndex]
     : undefined;
@@ -573,9 +579,15 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
             )}
           </span>
           {slotLevel !== undefined && (
-            <span className="text-slate-300">
-              Slotted at Lvl <span className="text-slate-200">{slotLevel}</span>
-            </span>
+            slotLevel === null ? (
+              <span className="text-red-400" title={UNPLACED_SLOT_TITLE}>
+                No grantable level
+              </span>
+            ) : (
+              <span className="text-slate-300">
+                Slotted at Lvl <span className="text-slate-200">{slotLevel}</span>
+              </span>
+            )
           )}
           {ioEnh.isUnique && (
             <span className="text-red-400">Unique</span>
@@ -728,9 +740,15 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
             </span>
           )}
           {slotLevel !== undefined && (
-            <span className="text-slate-300">
-              Slotted at Lvl <span className="text-slate-200">{slotLevel}</span>
-            </span>
+            slotLevel === null ? (
+              <span className="text-red-400" title={UNPLACED_SLOT_TITLE}>
+                No grantable level
+              </span>
+            ) : (
+              <span className="text-slate-300">
+                Slotted at Lvl <span className="text-slate-200">{slotLevel}</span>
+              </span>
+            )
           )}
           {enhancement.boost ? (
             <span className={levelOffsetClass(enhancement.boost)}>{levelOffsetLabel(enhancement.boost)}</span>
