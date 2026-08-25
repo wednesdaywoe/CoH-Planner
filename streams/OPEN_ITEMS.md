@@ -552,11 +552,13 @@ per-field evidence trail:
 - **Smaller pseudo-pet gaps** [L] — Burn's Fiery-Embrace bonus patch toggle;
   Voltaic Sentinel's secondary bolt component under-count; base-aura face-value
   AoE fuzziness.
-- **CopyCreatorMods flag bit** — `PseudoPet` emission is DONE (`convert-powerset.cjs`
-  wires `summon.isPseudoPet` to the flag; 110 HC powers carry it). The live remainder is
-  `CopyCreatorMods`: decoded in `_FLAG2_BITS_BY_ATTRIB` and emitted as
-  `resolvedEntities[].copyCreatorMods: true` (Burn, Voltaic Sentinel, …) but unconsumed by
-  calc. Lower Create_Entity bits 0x1/0x2 still undecoded.
+- **Create_Entity flag bits 0x1/0x2** — `PseudoPet` emission and `CopyCreatorMods` consumption are
+  both DONE: the converter wires `summon.isPseudoPet` to the flag (110 HC powers carry it), and
+  `copyCreatorMods` flows from the entity `binary` (`boolean(read_u4 & 1)`) into
+  `resolvedEntities[].copyCreatorMods` → `applyEnh` in `InfoPanel`/`PowerInfoTooltip` + 236 real
+  HC pet entities through `shouldApplyEnhancements`. The open remainder is the two lowest
+  Create_Entity flag bits (0x1/0x2) still undecoded in `_FLAG2_BITS_BY_ATTRIB` — parser
+  territory, upstream in 1.0.
 
 ## 12. Epic pool gating (from `streams/TODOs`)
 
