@@ -6,9 +6,9 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "4ecd07b0e4c2246a46c94a21dd1c043d6c297ab5",
-  "synced_from_subject": "SHOWFLAGS-1: read the Show* power flags both tail readers skipped",
-  "synced_from_date": "2026-08-24T21:44:25-04:00",
+  "synced_from_commit": "6614d64905e220d5860ae765b98bffd8b6a21352",
+  "synced_from_subject": "Close the three pseudo-pet follow-up gaps in HOMECOMING_PARSER (Burn FE variant split pinned, Voltaic secondary bolt disproven, base-aura AoE display-truth)",
+  "synced_from_date": "2026-08-25T13:25:03-04:00",
   "tree_fingerprint": "e16a740e39c0012296b8ef556a6973cee4e1b7e450131830aacd1d6f98130f1a",
   "export_manifest_digest": "6900680e2e867d644fe35ccfedb07a074ce12f96345ecda2513171004fa8977a",
   "export_manifest_count": 14

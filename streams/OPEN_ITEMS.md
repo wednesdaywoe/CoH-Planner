@@ -549,9 +549,12 @@ per-field evidence trail:
   the +Damage-buff grants (Power Siphon, Reach for the Limit, Perfection of Body)
   stay on the Mechanic-Adjuster surface only; folding the granted DoT into
   per-attack DPS is a separate calc feature.
-- **Smaller pseudo-pet gaps** [L] — Burn's Fiery-Embrace bonus patch toggle;
-  Voltaic Sentinel's secondary bolt component under-count; base-aura face-value
-  AoE fuzziness.
+- **Smaller pseudo-pet gaps — CLOSED** (see HOMECOMING_PARSER). Burn's Fiery-Embrace
+  variant split is pinned (base 0.14 vs FE-active 0.14+0.063 in
+  `pseudopet-redirect.test.ts`; chance-0 FE duplicate no longer bumps count). Voltaic
+  Sentinel's secondary bolt was disproven — the extra 0.213 strikes are critter/PvE-gated
+  RPN, correctly dropped; player-facing 0.56 matches CoD2. Base-aura face-value AoE was a
+  display-truth, not a bug.
 - **Create_Entity flag bits — all DONE / nothing open here.** `PseudoPet` emission
   (`summon.isPseudoPet`, 110 HC powers) and `CopyCreatorMods` consumption
   (`resolvedEntities[].copyCreatorMods` → `applyEnh` in InfoPanel/PowerInfoTooltip;
