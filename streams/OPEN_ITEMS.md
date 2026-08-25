@@ -545,10 +545,14 @@ per-field evidence trail:
 
 ## 11. Pseudo-pets, procs, flags (Homecoming, non-blocking)
 
-- **Granted-DoT per-attack DPS folding** — Bio Armor adaptation toxic proc +
-  the +Damage-buff grants (Power Siphon, Reach for the Limit, Perfection of Body)
-  stay on the Mechanic-Adjuster surface only; folding the granted DoT into
-  per-attack DPS is a separate calc feature.
+- **Granted-DoT per-attack DPS folding — DONE** (2026-08-25). The Attack Chain Builder now
+  folds each granted DoT proc's expected per-cast contribution (`tickChance × per-tick × ticks`)
+  into every attack's damage via `grantedDoTPerAttack` in `attack-chain-powers.ts`. Stance-gated
+  granting powers (Bio Offensive Adaptation) count only when their stance is the build's
+  `activeSubPower`; plain passives/toggles whenever taken; gated on `hasDamage` so pure buffs
+  (Build Up) don't gain pseudo-attack damage. Guard: `attack-chain-granted-dot.test.ts`. The
+  Mechanic-Adjuster informational display remains (it shows the raw proc block); the fold adds
+  the DPS side.
 - **Smaller pseudo-pet gaps — CLOSED** (see HOMECOMING_PARSER). Burn's Fiery-Embrace
   variant split is pinned (base 0.14 vs FE-active 0.14+0.063 in
   `pseudopet-redirect.test.ts`; chance-0 FE duplicate no longer bumps count). Voltaic
