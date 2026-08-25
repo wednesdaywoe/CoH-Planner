@@ -19,6 +19,9 @@ const {
   _readPowerFile: readGatedPowerFile,
   collectAtomTemplates,
   encodeAtomsForEmit,
+  guardThunderspyAppliedMez,
+  MEZ_TYPES,
+  KNOCKBACK_TYPES,
 } = require('./convert-powerset.cjs');
 
 const datasetId = parseDatasetArg();
@@ -143,6 +146,56 @@ const MEZ_ATTRIBS = {
   'knockup': 'Knockup',
   'taunt': 'Taunt',
 };
+
+// The PetEffect `type` each applied-control bag key is spelled as here. Derived rather
+// than hand-listed: `MEZ_ATTRIBS` and the powerset converter's `MEZ_TYPES`/`KNOCKBACK_TYPES`
+// are both keyed by attrib name, so the correspondence is a join over that shared
+// vocabulary and a table that grows on either side is picked up instead of silently
+// falling outside the guard.
+const PET_TYPE_TO_BAG_KEY = new Map(
+  Object.entries(MEZ_ATTRIBS)
+    .map(([attrib, petType]) => [petType, MEZ_TYPES[attrib] || KNOCKBACK_TYPES[attrib]])
+    .filter(([, bagKey]) => bagKey),
+);
+
+/**
+ * Run the powerset converter's Thunderspy applied-mez guard over a pet ability's rows.
+ *
+ * `convert-powerset.cjs` vetoes the Parse6 target-trap on every finished power
+ * (`guardThunderspyAppliedMez`): the schema drops the per-template target, so a Self/ally
+ * power whose recovered index names a mez is byte-indistinguishable from a real applied
+ * hold, and `targets_affected` is the surviving discriminator. This converter never asked,
+ * so Thunderspy pet abilities published control keys the guard classifies as index
+ * artifacts — `bag_slots` mirrors the guard and stripped them, and the pet-merge census
+ * read the gap as five atom-misses (ENT-20).
+ *
+ * The guard itself decides. This only adapts the shape: it mutates a bag OBJECT keyed by
+ * bag key, while a pet ability carries a `PetEffect[]`, so the rows are projected into that
+ * shape and the survivors read back. Restating the rule here — the foe test, the
+ * negative-magnitude protection carve-out, the key list — would be the second copy of a
+ * rule that drifts.
+ */
+function guardThunderspyPetAppliedMez(effects, atoms, targetsAffected) {
+  // No atoms means no evidence for the protection carve-out, and the guard would read that
+  // absence as "nothing is protected" and strip every keyed row. The callers without a file
+  // to re-read are the classification tests grading one row's face, so decline instead.
+  if (datasetId !== 'thunderspy' || !effects.length || !atoms) return effects;
+  const bag = {};
+  for (const row of effects) {
+    const key = PET_TYPE_TO_BAG_KEY.get(row.type);
+    if (key) bag[key] = row;
+  }
+  if (!Object.keys(bag).length) return effects;
+  // The guard deletes `effects` outright when only metadata survives; an empty bag reads as
+  // META_ONLY, so a fully stripped ability lands here as `undefined` and drops every keyed row.
+  const probe = { effects: bag, atoms };
+  guardThunderspyAppliedMez(probe, targetsAffected);
+  const survived = probe.effects || {};
+  return effects.filter((row) => {
+    const key = PET_TYPE_TO_BAG_KEY.get(row.type);
+    return !key || survived[key] !== undefined;
+  });
+}
 
 // Debuff attributes (negative effects on targets). The slow family is absent: what a
 // movement or recharge attrib IS depends on its aspect and direction, not on its name,
@@ -1316,12 +1369,17 @@ function processPetPower(powerFilePath, powerData) {
     }
   }
 
+  // ENT-20. Runs after the mint because the guard's protection carve-out reads the atoms —
+  // the same order `convert-powerset.cjs` uses, where it is called on the finished power
+  // past `encodeAtomsForEmit`.
+  const guardedEffects = guardThunderspyPetAppliedMez(effects, atoms, powerData.targets_affected);
+
   return {
     name: powerData.name,
     displayName: powerData.display_name || powerData.name.replace(/_/g, ' '),
     type: powerData.type, // Click, Auto, Toggle
     damage,
-    effects: effects.length > 0 ? effects : undefined,
+    effects: guardedEffects.length > 0 ? guardedEffects : undefined,
     // The ability's atoms, minted by the powerset converter's collectors (job 4). The
     // EncodedAtom[] wire form is the same shape Power.atoms ships; the window_slots
     // pet-merge census runs these through bag_slots and grades them against `effects`.

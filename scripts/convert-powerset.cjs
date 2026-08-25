@@ -6646,9 +6646,6 @@ function projectAtomsToEffects(atoms, powerName, targetsAffected) {
         if (!effects.specialBuff) effects.specialBuff = {};
         effects.specialBuff[mezType] = makeEffect();
         recordDuration('specialBuff');
-      } else if (datasetId === 'thunderspy' && scale < 0
-                 && !(table || '').toLowerCase().includes('res_boolean')) {
-        continue;
       } else {
         const newMez = makeMezEffect();
         const cur = effects[mezType];
@@ -8589,8 +8586,19 @@ function protectionBackedMezKeys(atoms) {
   const keys = new Set();
   for (const t of atoms || []) {
     if (t[0] !== 'Mez') continue;
-    if (!(t[2] < 0)) continue;
     if ((t[6] || '').toLowerCase() !== 'cur') continue;
+    // Protection is spelled three ways and the sign sits in a different slot in each, so
+    // testing only the first read 51 protected powers as applied control and stripped them
+    // (TSPY-8). Scale carries it on the Res_Boolean armors — Fortification's −24. Magnitude
+    // carries it on Duration-typed mez, where scale times the duration and the magnitude is
+    // the protection value: Phase Shift's Immobilized is scale +7, magnitude −100. And an
+    // Expression magnitude is computed at runtime, so no slot on the wire holds its sign —
+    // Inner Will's six keys evaluate through `negate` and encode as a flat +1. Decline to
+    // strip there rather than guess: the guard exists to drop RECOVERED index artifacts, and
+    // an authored expression is not one. That arm matches exactly one Thunderspy power and
+    // none of the 301 set-piece definitions the guard is aimed at.
+    const protection = t[2] < 0 || t[3] < 0 || t[7] === 'Expression';
+    if (!protection) continue;
     const sub = (t[1] || '').toLowerCase();
     const key = MEZ_TYPES[sub] || KNOCKBACK_TYPES[sub];
     if (key) keys.add(key);

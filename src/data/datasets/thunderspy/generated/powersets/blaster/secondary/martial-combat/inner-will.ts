@@ -60,11 +60,41 @@ export const InnerWill: Power = {
   ],
   "effects": {
     "buffDuration": 30,
+    "confuse": {
+      "ignoreStrength": true,
+      "mag": 1,
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "durations": {
+      "confuse": 30,
+      "fear": 30,
+      "hold": 30,
+      "immobilize": 30,
       "mezResistance": 30,
-      "specialBuff": 30
+      "sleep": 30,
+      "specialBuff": 30,
+      "stun": 30
     },
     "effectDuration": 30,
+    "fear": {
+      "ignoreStrength": true,
+      "mag": 1,
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "ignoreStrength": true,
+      "mag": 1,
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "ignoreStrength": true,
+      "mag": 1,
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "mezResistance": {
       "confuse": {
         "ignoreStrength": true,
@@ -97,6 +127,12 @@ export const InnerWill: Power = {
         "table": "Melee_Ones"
       }
     },
+    "sleep": {
+      "ignoreStrength": true,
+      "mag": 1,
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "specialBuff": {
       "confuse": {
         "ignoreStrength": true,
@@ -128,6 +164,12 @@ export const InnerWill: Power = {
         "scale": 0.5,
         "table": "Melee_Ones"
       }
+    },
+    "stun": {
+      "ignoreStrength": true,
+      "mag": 1,
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "maxStacks": 2,
     "stacksLinear": [

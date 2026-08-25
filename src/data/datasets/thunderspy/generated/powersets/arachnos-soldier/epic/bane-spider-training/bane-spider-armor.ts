@@ -35,11 +35,38 @@ export const BaneSpiderArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 10.25,
+    "buffDuration": 10,
+    "confuse": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
     "durations": {
+      "confuse": 10,
+      "fear": 10,
+      "hold": 10,
+      "immobilize": 10,
       "maxHPBuffUnenhanced": 10.25,
       "mezResistance": 10,
-      "resistance": 10.25
+      "resistance": 10.25,
+      "sleep": 10,
+      "stun": 10
+    },
+    "effectDuration": 10,
+    "fear": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
     },
     "maxHPBuffUnenhanced": {
       "ignoreStrength": true,
@@ -85,6 +112,16 @@ export const BaneSpiderArmor: Power = {
         "scale": 0.75,
         "table": "Melee_Res_DMG"
       }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
     }
   },
   "atoms": [

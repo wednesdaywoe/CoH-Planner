@@ -46,9 +46,16 @@ export const Grounded: Power = {
     },
     "durations": {
       "debuffResistance": 10.25,
+      "immobilize": 10.25,
       "knockback": 10.25,
       "knockup": 10.25,
       "resistance": 10.25
+    },
+    "effectDuration": 10.25,
+    "immobilize": {
+      "mag": 1,
+      "scale": 6,
+      "table": "Melee_Ones"
     },
     "knockback": {
       "ignoreStrength": true,

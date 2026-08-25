@@ -4937,8 +4937,15 @@ export const POWER_POOLS_RAW = {
           "durations": {
             "damageBuff": 120,
             "defenseBuff": 120,
+            "fear": 120,
             "mezResistance": 120,
             "tohitBuff": 120
+          },
+          "effectDuration": 120,
+          "fear": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
           },
           "mezResistance": {
             "confuse": {
@@ -5428,9 +5435,16 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 1.25,
           "durations": {
+            "hold": 1.25,
             "knockback": 1.25,
             "knockup": 1.25,
             "mezResistance": 1.25
+          },
+          "effectDuration": 1.25,
+          "hold": {
+            "mag": 1,
+            "scale": 2,
+            "table": "Melee_Ones"
           },
           "knockback": {
             "ignoreStrength": true,
@@ -6842,15 +6856,30 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 60,
           "durations": {
+            "hold": 60,
+            "immobilize": 60,
             "knockback": 60,
             "knockup": 60,
             "mezResistance": 60,
             "recoveryDebuff": 15,
-            "resistance": 60
+            "resistance": 60,
+            "sleep": 60,
+            "stun": 60
           },
+          "effectDuration": 60,
           "enduranceDrain": {
             "ignoreStrength": true,
             "scale": 0.25,
+            "table": "Ranged_Ones"
+          },
+          "hold": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "immobilize": {
+            "mag": 1,
+            "scale": 10,
             "table": "Ranged_Ones"
           },
           "knockback": {
@@ -6913,6 +6942,16 @@ export const POWER_POOLS_RAW = {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             }
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "stun": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Ranged_Ones"
           }
         }
       },
