@@ -813,6 +813,11 @@
       "sha256": "8b7530987d015d28d1eb8046ee1a4076690ddf691d29dff20f5596e74ae207ca"
     },
     {
+      "path": "tools/bin-crawler/tests/test_show_flags.py",
+      "status": "identical",
+      "sha256": "cc0181cf4d1415a2424e707caa17a32e6fc2e6beaba21ea16219ccf78ca3f1a3"
+    },
+    {
       "path": "tools/bin-crawler/tests/test_special_attrib_band_base.py",
       "status": "identical",
       "sha256": "5cf8b5ac3f075b95d40cd01118d4004d2ab09097086f3ead0096cb8e7b894cac"
