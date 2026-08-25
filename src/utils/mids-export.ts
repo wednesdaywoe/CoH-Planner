@@ -96,10 +96,14 @@ function displayNameToMidsUid(name: string): string {
 /**
  * Get the Mids internal name for a powerset from its icon.
  * Icon "willpower_set.png" → "Willpower"
- * Icon "fire_blast_set.png" → "Fire_Blast"
+ * Icon "thermal_radiation_set.ico" → "Thermal_Radiation"
+ * Rebirth and HC datasets store icons as .ico; the import mapper strips
+ * either extension, so strip any extension here to keep the round-trip.
  */
 function getMidsSetName(icon: string): string {
-  const stem = icon.replace(/_set\.png$/, '').replace(/\.png$/, '');
+  const stem = icon
+    .replace(/_set\.(?:png|ico|jpg|gif)$/, '')
+    .replace(/\.(?:png|ico|jpg|gif)$/, '');
   return titleCase(stem);
 }
 
