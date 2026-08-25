@@ -19,13 +19,9 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**1 open, of 222 entries.** When an entry is open it is listed here with what it's waiting on.
+**0 open, of 222 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
-
-- **MEZPROT-2** — protection off a `Res_Boolean` table reaches the bag and no total, on all four
-  forks (~240 keys); waiting on whether the credit gate's discriminator should be the table or the
-  sign of the scale. → [stat-routing](gaps/stat-routing.md)
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -265,13 +261,14 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Stat routing + caps
 
-[Full detail](gaps/stat-routing.md) — 52 of 53 closed
+[Full detail](gaps/stat-routing.md) — 53 of 53 closed
 
-- [ ] **MEZPROT-2** — the apply pass credits a protection slot only off a `Res_Boolean` table, so
-  protection-spelled winners on `Melee_Ones`/`Ranged_Ones` reach no total on any fork — 65/57/55/65
-  keys, including Grounded's immobilize, Minerals' confuse and Bane Spider Armor's six. The gate is
-  load-bearing (it also excludes foe control from the same fold), so the open question is whether
-  the discriminator should be the table or the sign of the scale
+- [x] **MEZPROT-2** — closed 2026-08-25: the discriminator is neither table nor bare sign but the
+  converter's three-spelling protection test plus recipient, graded on the fold winner (the gate
+  could not see spelling before — the fold abs'd it). The apply pass now credits a
+  protection-spelled, non-foe winner on any table (~65 to ~75 keys per fork: Grounded's
+  immobilize, Minerals' confuse, Bane Spider Armor's six). Full narrative in
+  [stat-routing](gaps/stat-routing.md).
 - [x] **DEBUFFRES-1** — Brainstorm's Light Affinity states an accuracy debuff resistance and
   Regeneration's Revive a range one, and neither reached a total: the type carried both keys while
   no global, stat definition or `ROUTED_SUBTYPES` entry did; `mod_Process` resists by the attrib's
