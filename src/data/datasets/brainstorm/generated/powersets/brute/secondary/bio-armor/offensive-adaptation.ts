@@ -144,5 +144,6 @@ export const OffensiveAdaptation: Power = {
   ],
   "setsModes": [
     "OffensiveAdaptation"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

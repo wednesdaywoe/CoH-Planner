@@ -79,5 +79,6 @@ export const DefensiveAdaptation: Power = {
   ],
   "setsModes": [
     "DefensiveAdaptation"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

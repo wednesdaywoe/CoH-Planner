@@ -231,6 +231,9 @@
       ]
     }
   ],
+  "show_in_inventory": "Never",
+  "show_in_manage": false,
+  "show_in_info": false,
   "available_level": 0,
   "powerset": "Villain_Pets.Arachnobot_Spiderling"
 }

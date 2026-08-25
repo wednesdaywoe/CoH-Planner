@@ -49,5 +49,5 @@ export const Shockwaves: Power = {
       "label": "Knockback"
     }
   ],
-  "mechanicType": "parentMechanic"
+  "mechanicType": "hiddenPassive"
 };

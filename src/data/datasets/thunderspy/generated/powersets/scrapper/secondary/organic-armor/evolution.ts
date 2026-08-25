@@ -32,5 +32,5 @@ export const Evolution: Power = {
   "atoms": [
     ["Meta",null,1,1,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null",null,null,null,null,null,null,"OnActivate"]
   ],
-  "mechanicType": "parentMechanic"
+  "mechanicType": "hiddenPassive"
 };

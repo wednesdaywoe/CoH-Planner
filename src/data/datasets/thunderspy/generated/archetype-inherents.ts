@@ -170,6 +170,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "@Class_Mastermind",
         "=="
       ],
+      "mechanicType": "hiddenPassive",
       "isLocked": true,
       "category": "archetype",
       "fullName": "Inherent.Inherent.Hold_Ground"
@@ -3978,6 +3979,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "@Class_Stalker",
         "=="
       ],
+      "mechanicType": "hiddenPassive",
       "isLocked": true,
       "category": "archetype",
       "fullName": "Inherent.Inherent.Placate"

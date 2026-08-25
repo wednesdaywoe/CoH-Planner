@@ -1707,6 +1707,12 @@ class PowerTail(NamedTuple):
     unknown_bools_raw: list[int]
     proc_main_target_only: bool
     anim_main_target_only: bool
+    # ShowInInventory / ShowInManage / ShowInInfo (SHOWFLAGS-1). Defaults are
+    # the parse table's (ShowPowerSetting Default / true / true), so a failed
+    # tail parse falls back to them the same way MaxBoosts falls back to 6.
+    show_in_inventory_raw: int = 1
+    show_in_manage: bool = True
+    show_in_info: bool = True
 
 
 def _parse_power_tail(r: BinReader) -> PowerTail:
@@ -1753,8 +1759,30 @@ def _parse_power_tail(r: BinReader) -> PowerTail:
     highlight/FX/position metadata) stays skipped by the caller's skip_to_end.
     Implausible values raise so the caller can drop the fields LOUDLY instead
     of shipping a misread.
+
+    The three Show* words were skipped until SHOWFLAGS-1: ShowInInventory is
+    the 5-value ShowPowerSetting enum (powers.h:436), ShowInManage/ShowInInfo
+    are bools. `ShowInManage kFalse` + `MaxBoosts 0` is how the defs mark a
+    set-mechanic grant (a power the game hands out and takes back) apart from
+    a real auto-power pick, so skipping them made the converter's
+    hiddenPassive/hiddenAuto arms unreachable and offered those grants as
+    level picks.
     """
-    r.skip(0x1c)
+    r.skip(0x08)  # IgnoreStrength, ShowBuffIcon (the icon bool authors -1 = unset)
+    show_in_inventory_raw = r.read_u4()
+    # ShowPowerSetting (powers.h:436): 0 Never, 1 Default, 2 Always,
+    # 3 IfUsable, 4 IfOwned. A 5th value would be a new game enum member —
+    # surface it as a layout suspect rather than shipping a guess.
+    if show_in_inventory_raw > 4:
+        raise ValueError(
+            f"implausible ShowInInventory {show_in_inventory_raw} — wrong position?")
+    show_in_manage_raw = r.read_u4()
+    show_in_info_raw = r.read_u4()
+    for label, value in (("ShowInManage", show_in_manage_raw),
+                         ("ShowInInfo", show_in_info_raw)):
+        if value > 1:
+            raise ValueError(f"implausible {label} {value} — wrong position?")
+    r.skip(0x08)  # Deletable, Tradeable
     max_boosts = r.read_u4()
     # 999 is a real authored value (the PsionicNexus Psionic_Link NPC powers);
     # the guard only rejects values that can't be a slot count at all.
@@ -1804,6 +1832,9 @@ def _parse_power_tail(r: BinReader) -> PowerTail:
         unknown_bools_raw=unknown_bools_raw,
         proc_main_target_only=bool(proc_main_target_only_raw),
         anim_main_target_only=bool(anim_main_target_only_raw),
+        show_in_inventory_raw=show_in_inventory_raw,
+        show_in_manage=bool(show_in_manage_raw),
+        show_in_info=bool(show_in_info_raw),
     )
 
 
@@ -1820,6 +1851,12 @@ class Parse6PowerTail(NamedTuple):
     strengths_disallowed: list[int]
     proc_main_target_only: bool
     anim_main_target_only: bool
+    # ShowInInventory / ShowInManage / ShowInInfo (SHOWFLAGS-1) — stock i24
+    # fields, same positions on both Parse6 flavors. Defaults are the parse
+    # table's, the failed-tail fallback.
+    show_in_inventory_raw: int = 1
+    show_in_manage: bool = True
+    show_in_info: bool = True
 
 
 def _parse_power_tail_parse6(
@@ -1879,10 +1916,28 @@ def _parse_power_tail_parse6(
     Tanker attack's non-boost templates to the main target. Homecoming
     reworked Gauntlet and dropped the flag; the forks kept i24's.
 
-    Implausible values raise so the caller drops the fields LOUDLY instead of
-    shipping a misread.
+    The three Show* words are stock i24 fields, so both flavors carry them at
+    the same positions; read since SHOWFLAGS-1 (they were skipped, which made
+    the converter's set-mechanic classification unreachable — see
+    `_parse_power_tail`). Implausible values raise so the caller drops the
+    fields LOUDLY instead of shipping a misread.
     """
-    r.skip(4 * (8 if rebirth_fork_words else 7))
+    r.skip(0x08)  # IgnoreStrength, ShowBuffIcon
+    show_in_inventory_raw = r.read_u4()
+    # Same closed ShowPowerSetting vocabulary as the HC read; the value guard
+    # doubles as the alignment check on both flavors, since a shifted read
+    # here would be consuming Deletable/Tradeable or the Rebirth fork word.
+    if show_in_inventory_raw > 4:
+        raise ValueError(
+            f"implausible ShowInInventory {show_in_inventory_raw} — wrong position?")
+    show_in_manage_raw = r.read_u4()
+    show_in_info_raw = r.read_u4()
+    for label, value in (("ShowInManage", show_in_manage_raw),
+                         ("ShowInInfo", show_in_info_raw)):
+        if value > 1:
+            raise ValueError(f"implausible {label} {value} — wrong position?")
+    # Deletable, Tradeable, plus Rebirth's pre-MaxBoosts fork word.
+    r.skip(4 * (3 if rebirth_fork_words else 2))
     max_boosts = r.read_u4()
     if max_boosts > 1000:
         raise ValueError(f"implausible MaxBoosts {max_boosts} — wrong position?")
@@ -1935,6 +1990,9 @@ def _parse_power_tail_parse6(
         strengths_disallowed=strengths_disallowed,
         proc_main_target_only=bool(proc_main_target_only_raw),
         anim_main_target_only=bool(anim_main_target_only_raw),
+        show_in_inventory_raw=show_in_inventory_raw,
+        show_in_manage=bool(show_in_manage_raw),
+        show_in_info=bool(show_in_info_raw),
     )
 
 
@@ -2216,7 +2274,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         except Exception as e:
             _warn_dropped(full_name,
                           f"post-effects tail parse failed ({e}); "
-                          f"MaxBoosts/ProcAllowed/StrengthsDisallowed/"
+                          f"ShowIn*/MaxBoosts/ProcAllowed/StrengthsDisallowed/"
                           f"ProcMainTargetOnly lost")
             tail = PowerTail(MAX_BOOSTS_DEFAULT, 0, [], [], [], False, False)
     r.skip_to_end()
@@ -2287,6 +2345,9 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         tail_unknown_bools_raw=tail.unknown_bools_raw,
         proc_main_target_only=tail.proc_main_target_only,
         anim_main_target_only=tail.anim_main_target_only,
+        show_in_inventory_raw=tail.show_in_inventory_raw,
+        show_in_manage=tail.show_in_manage,
+        show_in_info=tail.show_in_info,
         _field43_str=field43_str,
         effects=effects,
         activation_effects=activation_effects,
@@ -4074,7 +4135,8 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
         except Exception as e:
             _warn_dropped(full_name,
                           f"post-effects tail parse failed ({e}); "
-                          f"MaxBoosts/StrengthsDisallowed/ProcMainTargetOnly lost")
+                          f"ShowIn*/MaxBoosts/StrengthsDisallowed/"
+                          f"ProcMainTargetOnly lost")
             tail = Parse6PowerTail(MAX_BOOSTS_DEFAULT, 0, [], False, False)
     r.skip_to_end()
 
@@ -4142,6 +4204,9 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
         strengths_disallowed=tail.strengths_disallowed,
         proc_main_target_only=tail.proc_main_target_only,
         anim_main_target_only=tail.anim_main_target_only,
+        show_in_inventory_raw=tail.show_in_inventory_raw,
+        show_in_manage=tail.show_in_manage,
+        show_in_info=tail.show_in_info,
         effects=effects,
         activation_effects=activation_effects,
         redirects=redirects,

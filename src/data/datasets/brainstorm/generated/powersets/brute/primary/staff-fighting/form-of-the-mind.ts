@@ -81,5 +81,6 @@ export const FormoftheMind: Power = {
   ],
   "requires": [
     "Brute_Melee.Staff_Fighting.Staff_Mastery"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

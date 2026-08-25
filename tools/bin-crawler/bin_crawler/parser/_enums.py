@@ -22,6 +22,17 @@ CASTABLE_AFTER_DEATH: dict[int, str] = {
     2: "DeadOrAlive",
 }
 
+# ShowPowerSetting (powers.h:436) — the ShowInInventory tail word, all
+# layouts. The def grammar also accepts kTrue/kFalse as aliases for
+# Default/Never; the binary stores only these five (SHOWFLAGS-1).
+SHOW_POWER_SETTING: dict[int, str] = {
+    0: "Never",
+    1: "Default",
+    2: "Always",
+    3: "IfUsable",
+    4: "IfOwned",
+}
+
 POWER_TYPE: dict[int, str] = {
     0: "Click",
     1: "Auto",

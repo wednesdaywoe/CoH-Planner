@@ -161,6 +161,7 @@
     }
   ],
   "max_boosts": 0,
+  "show_in_manage": false,
   "modes_disallowed": [
     "Disable_All"
   ],

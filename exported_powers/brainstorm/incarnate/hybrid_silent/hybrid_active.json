@@ -131,6 +131,7 @@
     }
   ],
   "max_boosts": 0,
+  "show_in_inventory": "IfOwned",
   "available_level": 0,
   "powerset": "Incarnate.Hybrid_Silent"
 }

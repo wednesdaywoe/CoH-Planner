@@ -44,5 +44,5 @@ export const ClearSkiesText: Power = {
     "Controller_Control.Wind_Control.Vacuum",
     "&&"
   ],
-  "mechanicType": "parentMechanic"
+  "mechanicType": "hiddenAuto"
 };

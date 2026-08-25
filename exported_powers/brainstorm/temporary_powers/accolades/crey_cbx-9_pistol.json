@@ -414,6 +414,7 @@
   "strengths_disallowed": [
     "RechargeTime"
   ],
+  "show_in_manage": false,
   "modes_disallowed": [
     "Arena",
     "Disable_All"

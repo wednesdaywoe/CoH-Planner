@@ -121,6 +121,8 @@
       ]
     }
   ],
+  "show_in_manage": false,
+  "show_in_info": false,
   "modes_required": [
     "MysticFlightOn"
   ],

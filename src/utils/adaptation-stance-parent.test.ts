@@ -11,10 +11,10 @@ import type { Power, SelectedPower } from '@/types';
  *
  * Scrapper/Brute/Tanker Bio Armor has two powers matching
  * `STANCE_GROUPS.adaptation.parents`:
- *   • display "Adaptation"     / internal `Evolution`  — the switcher (`parentMechanic`)
+ *   • display "Adaptation"     / internal `Evolution`  — the switcher (`hiddenPassive`)
  *   • display "Evolving Armor" / internal `Adaptation` — an unrelated +Res toggle
  *
- * `findStanceParent` disambiguates on `mechanicType === 'parentMechanic'`, so any
+ * `findStanceParent` disambiguates on the mechanic classification, so any
  * caller that hands it powers WITHOUT that field silently falls back to
  * `candidates[0]` — i.e. to whichever the user picked FIRST. The picker then
  * writes `activeSubPower` onto Evolving Armor while the Header and the calc read
@@ -37,12 +37,15 @@ describe('Adaptation stance parent resolution (HC scrapper)', () => {
     return { ...def, powerSet: 'scrapper/bio-armor', level: 1, slots: [], isActive: true } as SelectedPower;
   };
 
-  it('the dataset really does offer two candidates, only one tagged parentMechanic', () => {
+  it('the dataset really does offer two candidates, only one mechanic-classified', () => {
     const set = getPowerset('scrapper/bio-armor')!;
     const candidates = set.powers.filter((p: Power) => GROUP.parents.includes(p.internalName));
     expect(candidates.map((p: Power) => p.internalName).sort()).toEqual(['Adaptation', 'Evolution']);
-    expect(candidates.filter((p: Power) => p.mechanicType === 'parentMechanic').map((p: Power) => p.internalName))
-      .toEqual(['Evolution']);
+    // `hiddenPassive` since SHOWFLAGS-1: the switcher authors `ShowInManage
+    // kFalse`, so it classifies as the hidden set-mechanic it is, and the
+    // impostor toggle carries no mechanicType at all.
+    expect(candidates.filter((p: Power) => p.mechanicType != null).map((p: Power) => [p.internalName, p.mechanicType]))
+      .toEqual([['Evolution', 'hiddenPassive']]);
   });
 
   it('resolves the switcher regardless of pick order', () => {
@@ -57,7 +60,7 @@ describe('Adaptation stance parent resolution (HC scrapper)', () => {
   // narrowing that omits `mechanicType` silently reverts the helper to pick order.
   it('the build→stance projection preserves the discriminator', () => {
     const flattened = toStancePowers([pick('Adaptation'), pick('Evolution')]);
-    expect(flattened.map((p) => p.mechanicType)).toEqual([undefined, 'parentMechanic']);
+    expect(flattened.map((p) => p.mechanicType)).toEqual([undefined, 'hiddenPassive']);
     // …and therefore still resolves the switcher from the breaking pick order.
     expect(findStanceParent(flattened, GROUP)?.internalName).toBe('Evolution');
   });
@@ -82,7 +85,7 @@ describe('Adaptation stance parent resolution (HC scrapper)', () => {
     const json = useBuildStore.getState().exportBuild();
     // The serializer is deliberately slim — prove it drops the discriminator, so
     // this test fails for the right reason if that ever changes.
-    expect(JSON.stringify(JSON.parse(json))).not.toContain('parentMechanic');
+    expect(JSON.stringify(JSON.parse(json))).not.toContain('hiddenPassive');
 
     useBuildStore.getState().resetBuild();
     expect(useBuildStore.getState().importBuild(json)).toBe(true);

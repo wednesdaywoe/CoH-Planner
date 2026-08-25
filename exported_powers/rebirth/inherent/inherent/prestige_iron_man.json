@@ -143,6 +143,7 @@
       ]
     }
   ],
+  "show_in_manage": false,
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

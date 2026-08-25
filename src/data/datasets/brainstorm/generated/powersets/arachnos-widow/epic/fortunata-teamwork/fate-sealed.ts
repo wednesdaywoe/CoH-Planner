@@ -115,5 +115,5 @@ export const FateSealed: Power = {
     ["MezResist","Sleep",1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["GlobalChanceMod",null,0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "mechanicType": "parentMechanic"
+  "mechanicType": "hiddenPassive"
 };

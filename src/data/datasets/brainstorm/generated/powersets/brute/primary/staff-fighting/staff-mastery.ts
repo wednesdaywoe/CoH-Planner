@@ -32,5 +32,5 @@ export const StaffMastery: Power = {
   "atoms": [
     ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
-  "mechanicType": "parentMechanic"
+  "mechanicType": "hiddenPassive"
 };

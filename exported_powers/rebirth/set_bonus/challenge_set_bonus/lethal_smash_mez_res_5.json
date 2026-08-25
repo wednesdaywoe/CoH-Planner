@@ -436,6 +436,8 @@
     }
   ],
   "max_boosts": 0,
+  "show_in_inventory": "Never",
+  "show_in_manage": false,
   "available_level": 0,
   "powerset": "Set_Bonus.Challenge_Set_Bonus"
 }

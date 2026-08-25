@@ -112,5 +112,6 @@ export const EnergyFlightQuantumAcceleration: Power = {
     "AfterburnerOff",
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Tanker_Mode"
-  ]
+  ],
+  "mechanicType": "hiddenAuto"
 };

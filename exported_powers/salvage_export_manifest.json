@@ -1,7 +1,7 @@
 {
   "schema": "bin-crawler-export-manifest/2",
   "note": "salvage_fingerprint is the sha256 of the salvage exporter (bin_crawler/parser/**/*.py + export_salvage.py) at export time. If it disagrees with the current committed exporter source, THIS salvage.json is stale \u2014 re-run export_salvage and commit. Guarded by src/data/export-staleness.test.ts. `source` names the assets shard the bytes were read from; guarded by src/data/export-provenance.test.ts.",
-  "salvage_fingerprint": "83dc836f8856ce5334f355062ade7d16c05f8996f89a49b83ec81c0a7436eccf",
+  "salvage_fingerprint": "ebb55fa1895c46e63df0cc2047d62792317eb480014358590d22eec6f5acf976",
   "source": {
     "assets_dir": "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/live",
     "shard": "live",

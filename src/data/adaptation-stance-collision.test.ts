@@ -36,9 +36,11 @@ describe('Adaptation stance internalName collision (homecoming)', () => {
     const evolvingArmor = set.powers.find((p) => p.internalName === 'Adaptation')!;
     expect(evolution, 'scrapper Evolution switcher').toBeTruthy();
     expect(evolvingArmor, 'scrapper Adaptation (Evolving Armor)').toBeTruthy();
-    // Sanity: the switcher is the parent-mechanic, Evolving Armor is not.
-    expect(evolution.mechanicType).toBe('parentMechanic');
-    expect(evolvingArmor.mechanicType).not.toBe('parentMechanic');
+    // Sanity: the switcher is mechanic-classified, Evolving Armor is not.
+    // `hiddenPassive` since SHOWFLAGS-1 landed the ShowInManage read — the
+    // game itself hides the switcher from the manage screen.
+    expect(evolution.mechanicType).toBe('hiddenPassive');
+    expect(evolvingArmor.mechanicType).toBeUndefined();
 
     // Evolving Armor ordered FIRST — the old first-match logic returned it.
     const parent = findStanceParent([evolvingArmor, evolution], bioGroup);

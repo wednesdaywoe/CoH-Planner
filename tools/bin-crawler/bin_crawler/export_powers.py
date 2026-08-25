@@ -38,6 +38,7 @@ from bin_crawler.assets_dir import add_source_arguments, resolve_export_source
 from bin_crawler._export_fingerprint import parser_fingerprint
 from bin_crawler.parser._enums import (
     POWER_TYPE, EFFECT_AREA, PVP_FLAG, CASTABLE_AFTER_DEATH,
+    SHOW_POWER_SETTING,
     BOOST_TYPE, BOOST_TYPE_REBIRTH,
     ATTRIB_NAME, ATTRIB_NAME_REBIRTH, ATTRIB_NAME_THUNDERSPY,
     resolve_attrib, resolve_attrib_rebirth,
@@ -504,6 +505,19 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
         d['procs_only_on_main_target'] = True
     if pw.anim_main_target_only:
         d['anim_main_target_only'] = True
+    # ShowInInventory / ShowInManage / ShowInInfo (SHOWFLAGS-1, both layouts):
+    # sparse against the parse-table defaults (Default / true / true), so
+    # absence states the default the same way the authored defs do. The
+    # parser's value guards close the vocabulary (enum <= 4, bools <= 1);
+    # `show_in_manage: false` is what separates a set-mechanic grant from a
+    # real auto-power pick, and the converter's mechanicType classifier reads
+    # all three fields under these exact names.
+    if pw.show_in_inventory_raw != 1:
+        d['show_in_inventory'] = SHOW_POWER_SETTING[pw.show_in_inventory_raw]
+    if not pw.show_in_manage:
+        d['show_in_manage'] = False
+    if not pw.show_in_info:
+        d['show_in_info'] = False
     # The two unnamed tail bools read [0, 1] on every authored player power;
     # only the ~50 NPC records that deviate are worth carrying (see
     # `_parse_power_tail`). Emitting the default would put a redundant pair on

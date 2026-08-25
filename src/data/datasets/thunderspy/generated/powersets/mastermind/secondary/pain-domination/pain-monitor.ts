@@ -44,5 +44,6 @@ export const PainMonitor: Power = {
     "Mastermind_Buff.Pain_Domination.Soothe",
     "Mastermind_Buff.Pain_Domination.Nullify_Pain",
     "||"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

@@ -72,5 +72,6 @@ export const CryoAmmunition: Power = {
   ],
   "modesRequired": [
     "LethalAmmo"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

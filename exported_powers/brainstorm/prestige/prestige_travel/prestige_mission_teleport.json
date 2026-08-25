@@ -132,6 +132,7 @@
   "strengths_disallowed": [
     "RechargeTime"
   ],
+  "show_in_manage": false,
   "modes_disallowed": [
     "CoOpTeam",
     "Disable_All",

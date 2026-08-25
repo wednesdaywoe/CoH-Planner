@@ -81,5 +81,6 @@ export const FormoftheMind: Power = {
   ],
   "requires": [
     "Tanker_Melee.Staff_Fighting.Staff_Mastery"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

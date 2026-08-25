@@ -94,6 +94,9 @@
       ]
     }
   ],
+  "show_in_inventory": "Never",
+  "show_in_manage": false,
+  "show_in_info": false,
   "modes_disallowed": [
     "Mastermind_Upgrade_2"
   ],

@@ -111,11 +111,12 @@ export const STANCE_GROUPS: readonly StanceGroup[] = [
 export interface StancePowerLike {
   internalName: string;
   activeSubPower?: string;
-  /** Distinguishes the stance SWITCHER (the `parentMechanic` that grants the
-   *  stance chips) from a same-internalName impostor. Bio Armor's switcher is
-   *  internal "Evolution" (Scrapper/Brute/Tanker) or "Adaptation" (Stalker/
-   *  Sentinel) and is always a `parentMechanic`; the "Evolving Armor" +Res
-   *  toggle *also* has internalName "Adaptation" but is NOT a parentMechanic. */
+  /** Distinguishes the stance SWITCHER (the mechanic-classified record that
+   *  grants the stance chips — `parentMechanic`, or `hiddenPassive` since the
+   *  SHOWFLAGS-1 flag read) from a same-internalName impostor. Bio Armor's
+   *  switcher is internal "Evolution" (Scrapper/Brute/Tanker) or "Adaptation"
+   *  (Stalker/Sentinel); the "Evolving Armor" +Res toggle *also* has
+   *  internalName "Adaptation" but carries no mechanicType at all. */
   mechanicType?: string;
 }
 
@@ -151,6 +152,17 @@ export function stanceGroupForConditionalId(id: string): StanceGroup | undefined
   return STANCE_GROUPS.find((g) => g.options.some((o) => o.id === id));
 }
 
+/** Is this power a stance/mechanic SWITCHER — the record the stance chips hang
+ *  off? Two classes qualify: `parentMechanic` (a visible mechanic parent like
+ *  Swap Ammo) and `hiddenPassive` (a set-mechanic grant the game hands out and
+ *  hides from the manage screen — Bio Armor's Adaptation, Staff Mastery, per
+ *  SHOWFLAGS-1's `ShowInManage kFalse` read). Before that read landed the
+ *  hidden class could not occur and every switcher stamped `parentMechanic`;
+ *  the def flags now separate them, and a switcher can be either. */
+function isStanceSwitcher(p: StancePowerLike): boolean {
+  return p.mechanicType === 'parentMechanic' || p.mechanicType === 'hiddenPassive';
+}
+
 /** The group's enabling parent power present in `powers`, or undefined. The
  *  stance is only available — and only settable — when this exists.
  *
@@ -159,17 +171,18 @@ export function stanceGroupForConditionalId(id: string): StanceGroup | undefined
  *  (internal "Evolution") and the unrelated "Evolving Armor" +Res toggle
  *  (internal "Adaptation") match `parents: ['Adaptation', 'Evolution']`. The
  *  real switcher — the one whose granted stance chips `requires` it, and the one
- *  the subpower chips (Surface A) bind to — is always the `parentMechanic`. Pick
- *  that over any same-name impostor so every stance surface resolves to the same
- *  parent. Falls back to the first match when nothing is tagged (single
- *  candidate, or callers passing minimal power shapes). */
+ *  the subpower chips (Surface A) bind to — is the mechanic-classified record
+ *  (see `isStanceSwitcher`); the impostor toggle carries no `mechanicType` at
+ *  all. Pick the switcher over any same-name impostor so every stance surface
+ *  resolves to the same parent. Falls back to the first match when nothing is
+ *  tagged (single candidate, or callers passing minimal power shapes). */
 export function findStanceParent(
   powers: readonly StancePowerLike[],
   group: StanceGroup,
 ): StancePowerLike | undefined {
   const candidates = powers.filter((p) => group.parents.includes(p.internalName));
   if (candidates.length <= 1) return candidates[0];
-  return candidates.find((p) => p.mechanicType === 'parentMechanic') ?? candidates[0];
+  return candidates.find(isStanceSwitcher) ?? candidates[0];
 }
 
 /** The active option id for a group given the build's powers. Reads the

@@ -44,5 +44,6 @@ export const EfficientAdaptation: Power = {
   ],
   "setsModes": [
     "RestedAdaptation"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

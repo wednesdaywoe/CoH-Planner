@@ -76,5 +76,6 @@ export const QuantumBoost: Power = {
   "modesDisallowed": [
     "Disable_FlyToggles",
     "Disable_Travel"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

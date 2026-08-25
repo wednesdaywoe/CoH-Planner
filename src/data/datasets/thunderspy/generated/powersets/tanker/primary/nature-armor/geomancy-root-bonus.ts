@@ -54,5 +54,5 @@ export const GeomancyRootBonus: Power = {
   "requires": [
     "Tanker_Defense.Sacred_Armor.Geomancy"
   ],
-  "mechanicType": "parentMechanic"
+  "mechanicType": "hiddenPassive"
 };

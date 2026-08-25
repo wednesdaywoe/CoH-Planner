@@ -47,5 +47,5 @@ export const ClearSkiesText: Power = {
   "modesRequired": [
     "ClearSkies"
   ],
-  "mechanicType": "parentMechanic"
+  "mechanicType": "hiddenAuto"
 };

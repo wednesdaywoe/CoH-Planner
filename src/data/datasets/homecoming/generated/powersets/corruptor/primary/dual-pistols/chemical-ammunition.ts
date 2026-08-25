@@ -60,5 +60,6 @@ export const ChemicalAmmunition: Power = {
   ],
   "modesRequired": [
     "LethalAmmo"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

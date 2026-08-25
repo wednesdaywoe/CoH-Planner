@@ -81,5 +81,6 @@ export const GroupEnergyFlightFree: Power = {
   ],
   "modesDisallowed": [
     "Peacebringer_Form_Change"
-  ]
+  ],
+  "mechanicType": "hiddenAuto"
 };

@@ -86,6 +86,7 @@
     }
   ],
   "procs_allowed": false,
+  "show_in_inventory": "Never",
   "available_level": 27,
   "powerset": "Redirects.Battle_Axe"
 }

@@ -44,5 +44,6 @@ export const PainMonitor: Power = {
     "Corruptor_Buff.Pain_Domination.Soothe",
     "Corruptor_Buff.Pain_Domination.Nullify_Pain",
     "||"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

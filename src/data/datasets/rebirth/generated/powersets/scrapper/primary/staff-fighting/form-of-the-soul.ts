@@ -81,5 +81,6 @@ export const FormoftheSoul: Power = {
   ],
   "requires": [
     "Scrapper_Melee.Staff_Fighting.Staff_Mastery"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

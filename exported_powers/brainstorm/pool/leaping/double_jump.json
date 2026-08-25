@@ -189,6 +189,8 @@
     }
   ],
   "max_toggle_time": 30.0,
+  "show_in_manage": false,
+  "show_in_info": false,
   "modes_required": [
     "SuperJumpOn"
   ],

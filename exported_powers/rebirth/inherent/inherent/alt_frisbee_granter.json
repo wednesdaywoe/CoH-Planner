@@ -132,6 +132,7 @@
       ]
     }
   ],
+  "show_in_manage": false,
   "modes_disallowed": [
     "Disable_Temp",
     "Disable_All"

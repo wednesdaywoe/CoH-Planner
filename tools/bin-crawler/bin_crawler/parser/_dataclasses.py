@@ -306,6 +306,24 @@ class PowerRecord:
     # accounted for rather than skipped.
     anim_main_target_only: bool = False
 
+    # ShowInInventory (i24 tail field, both layouts) — raw ShowPowerSetting
+    # enum (powers.h:436): 0 Never, 1 Default, 2 Always, 3 IfUsable,
+    # 4 IfOwned. Parse-table default kShowPowerSetting_Default = 1.
+    show_in_inventory_raw: int = 1
+
+    # ShowInManage (i24 tail field, bool, both layouts; parse-table default
+    # true) — whether the power is listed in the manage-powers UI. `kFalse` +
+    # `MaxBoosts 0` is how the defs mark a set-mechanic grant (Seismic
+    # Shockwaves, Bio Armor's Adaptation, Staff Mastery) apart from real
+    # auto-power picks, which keep it true; the converter's mechanicType
+    # classifier keys on it (SHOWFLAGS-1).
+    show_in_manage: bool = True
+
+    # ShowInInfo (i24 tail field, bool, both layouts; parse-table default
+    # true) — whether the power shows in the info window. The classifier's
+    # hiddenAuto arm reads it alongside ShowInInventory Never.
+    show_in_info: bool = True
+
     # Parse7/HC diagnostic scratch — field 43 is an FX / ChainIntoPower array, NOT
     # ChainTarget (that's 43b → chain_target_expression above). Kept for probes,
     # never emitted to the export (leading underscore + repr=False). See HOMECOMING_PARSER.

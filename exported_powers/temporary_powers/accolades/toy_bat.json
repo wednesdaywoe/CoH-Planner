@@ -180,6 +180,7 @@
   "strengths_disallowed": [
     "Range"
   ],
+  "show_in_manage": false,
   "modes_disallowed": [
     "Disable_All",
     "Peacebringer_Blaster_Mode",

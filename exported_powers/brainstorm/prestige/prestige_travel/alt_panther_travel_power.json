@@ -394,6 +394,7 @@
   "strengths_disallowed": [
     "EnduranceDiscount"
   ],
+  "show_in_manage": false,
   "modes_disallowed": [
     "Disable_Travel",
     "Disable_Walk",

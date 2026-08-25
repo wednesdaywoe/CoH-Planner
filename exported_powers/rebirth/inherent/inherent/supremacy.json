@@ -781,6 +781,7 @@
     }
   ],
   "max_boosts": 0,
+  "show_in_manage": false,
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

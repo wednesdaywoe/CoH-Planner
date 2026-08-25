@@ -62,5 +62,6 @@ export const RepulsionFieldNew: Power = {
   ],
   "setsModes": [
     "ForceBubbleRepel"
-  ]
+  ],
+  "mechanicType": "childToggle"
 };

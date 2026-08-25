@@ -63,5 +63,5 @@ export const GuidingLightRootBonus: Power = {
   "requires": [
     "Tanker_Defense.Sacred_Armor.Guiding_Light"
   ],
-  "mechanicType": "parentMechanic"
+  "mechanicType": "hiddenPassive"
 };
