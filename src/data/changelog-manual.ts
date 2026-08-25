@@ -49,16 +49,16 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-08-22',
 
     items: [
-      { id: 'brainstorm-not-in-server-picker', message: 'HC Brainstorm shipped but was missing from the Server dropdown, so there was no way to select it. Loading a ?serverId=brainstorm link silently fell back to Homecoming for the same reason. All four servers are now offered and the link works', type: 'fix' },
+      { id: 'brainstorm-not-in-server-picker', message: 'HC Brainstorm shipped but was missing from the Server dropdown, so there was no way to select it', type: 'fix' },
       { id: 'hc-brainstorm-dataset', message: 'HC Brainstorm is now a server option. I will try to keep it current but Open Beta moves fast, so please don\'t expect every new beta update to be reflected.', type: 'feat' },
       { id: 'incarnate-level-shift-ceiling', message: 'New Level Shift control in the header, available one your incarnate loadout has earned a shift. This allows you to adjust your level shift without unslotted Incarnate powers', type: 'feat' },
       { id: 'veat-recased-power-keys', message: 'Arachnos Soldiers and Widows: 22 powers were tripping the "not in the Homecoming data" warning. Sidekick had been re-casing those powers\' internal names, so the key your build saved never matched the one the engine looks up and resetting the build or clearing the cache would not fix it', type: 'fix' },
       { id: 'power-description-line-breaks', message: 'Power descriptions were running sentences together where the game puts a line break.', type: 'fix' },
       { id: 'accolade-description-markup', message: 'Accolade descriptions were showing the game\'s own markup as literal text (raw <br> and <color #fcfc95> tags mid-sentence)', type: 'fix' },
       { id: 'brawl-fighting-pool-synergy', message: 'Homecoming and Rebirth: Brawl\'s Fighting-pool synergy was in the game data but nothing could switch it on. Its -recharge/-tohit with Boxing or Kick, and its -regen/-recovery with Cross Punch, now appear as toggles under the power\'s Mechanic Adjusters', type: 'fix' },
-      { id: 'geode-spurious-taunt-resistance', message: 'Geode was granting taunt resistance it does not have, on the Scrapper, Stalker and Sentinel copies. Two opposite effects share one name in the game data and Sidekick was reading the wrong one', type: 'fix' },
-      { id: 'defense-softcap-real-total', message: 'The defense tiles stopped counting at 45.00%. At the softcap the dashboard showed 45.00% no matter how much defense you actually had. It now shows your real total, and the tooltip says how far over you are and why the surplus still matters', type: 'fix' },
-      { id: 'info-panel-scrollbar-shift', message: 'The whole app jumped a little to the left and back as you moved the mouse across powers. Longer info panels made the page tall enough to need a scrollbar and short ones did not, so the browser added and removed it under the pointer. The scrollbar track is now always reserved', type: 'fix' },
+      { id: 'geode-spurious-taunt-resistance', message: 'Geode was granting taunt resistance. Two opposite effects share one name in the game data and Sidekick was reading the wrong one', type: 'fix' },
+      { id: 'defense-softcap-real-total', message: 'The defense tiles stopped counting at 45.00%. At the softcap the dashboard showed 45.00% no matter how much defense you actually had. It now shows your real total, and the tooltip says how far over you are', type: 'fix' },
+      { id: 'info-panel-scrollbar-shift', message: 'The whole app jumped a little to the left and back as you moved the mouse across powers. Longer info panels made the page tall enough to need a scrollbar and short ones did not, so the browser added and removed it under the pointer', type: 'fix' },
     ]
   },
   {

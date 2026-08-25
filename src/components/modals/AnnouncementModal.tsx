@@ -161,7 +161,7 @@ export function AnnouncementModal() {
             onChange={(e) => setDontShow(e.target.checked)}
             className="w-4 h-4 rounded border-gray-600 bg-gray-800 accent-purple-500"
           />
-          Don&apos;t show the roadmap / these again
+          Don&apos;t show this again
         </label>
         <div className="flex items-center gap-2">
           <Button variant="ghost" onClick={close}>
