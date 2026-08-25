@@ -552,13 +552,14 @@ per-field evidence trail:
 - **Smaller pseudo-pet gaps** [L] — Burn's Fiery-Embrace bonus patch toggle;
   Voltaic Sentinel's secondary bolt component under-count; base-aura face-value
   AoE fuzziness.
-- **Create_Entity flag bits 0x1/0x2** — `PseudoPet` emission and `CopyCreatorMods` consumption are
-  both DONE: the converter wires `summon.isPseudoPet` to the flag (110 HC powers carry it), and
-  `copyCreatorMods` flows from the entity `binary` (`boolean(read_u4 & 1)`) into
-  `resolvedEntities[].copyCreatorMods` → `applyEnh` in `InfoPanel`/`PowerInfoTooltip` + 236 real
-  HC pet entities through `shouldApplyEnhancements`. The open remainder is the two lowest
-  Create_Entity flag bits (0x1/0x2) still undecoded in `_FLAG2_BITS_BY_ATTRIB` — parser
-  territory, upstream in 1.0.
+- **Create_Entity flag bits — all DONE / nothing open here.** `PseudoPet` emission
+  (`summon.isPseudoPet`, 110 HC powers) and `CopyCreatorMods` consumption
+  (`resolvedEntities[].copyCreatorMods` → `applyEnh` in InfoPanel/PowerInfoTooltip;
+  236 HC entity shells via `shouldApplyEnhancements`) are both wired. The two lowest
+  Create_Entity bits are NOT undecoded: 0x1 = `VanishEntOnTimeout`, 0x2 = `DoNotTintCostume`,
+  both in `_FLAG2_BITS_BY_ATTRIB` and surfacing on real templates (e.g. Shock_Therapy
+  Discharge carries `VanishEntOnTimeout`+`CopyBoosts`, flags2_raw 5). They are cosmetic
+  (vanish-on-timeout / dress-up) with no display impact — decoded-but-unconsumed by design.
 
 ## 12. Epic pool gating (from `streams/TODOs`)
 
