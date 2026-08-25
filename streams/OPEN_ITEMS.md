@@ -346,8 +346,16 @@ per-field evidence trail:
   (`archetypeicon_*`) icons absent from every local Sweet Tea pigg. Sourceable
   from HC texture piggs via `--assets-dir <…/Homecoming/assets/live>`. See
   `scripts/attic/extract-thunderspy-icons.py`. *(Also tracked in `streams/TODOs`.)*
-- **TSPY3 — 92 powerset records (1.4%) fail to parse** — Likely a fourth rare
-  layout variant. "Not investigated."
+- **TSPY3 — 92 powerset records (1.4%) fail to parse** — **Closed 2026-08-25, stale.**
+  The parser is now strict (`PowersetLayoutError`, no silent drop) and parses **all
+  6659 Thunderspy powersets cleanly** on the 2026-07-30 bin (92/6659 = 1.4% — the
+  exact figure here, i.e. the pre-strict-mode "counted and dropped behind a bare
+  `except: continue`" behavior the `_powersets.py` docstring documents as removed).
+  The "fourth rare layout variant" is moot: every record fits a known layout
+  (`ACCOUNT_STRINGS` + Parse6 `power_indices` structural detection), and any future
+  regression crashes the export loudly instead of vanishing. Verified:
+  `export_powers.py --assets-dir <tspy>` → "6659 powersets loaded", 0 dropped, exit 0.
+  No parser change needed (vendored copy byte-identical to canonical).
 - **TSPY4 — populate `pet-lifespans.json` / `self-destruct-delays.json`** [L] —
   Still 0 entries. Lifespan lives on each pet's bundled `Self_Destruct` power as
   a `Silent_Kill` delay; the tspy `Self_Destruct` powers either aren't reached or
