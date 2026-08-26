@@ -1,0 +1,1355 @@
+{
+  "version": 2,
+  "build": {
+    "name": "Untitled Build",
+    "archetype": {
+      "id": "defender",
+      "name": "Defender"
+    },
+    "level": 50,
+    "exemplarLevel": null,
+    "progressionMode": "auto",
+    "primary": {
+      "id": "defender/thermal-radiation",
+      "name": "Thermal Radiation",
+      "powers": [
+        {
+          "name": "Thermal Shield",
+          "level": 1,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "titanium_coating",
+              "pieceNum": 2,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "titanium_coating",
+              "pieceNum": 4,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "titanium_coating",
+              "pieceNum": 5,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Warmth",
+          "level": 2,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "numinas_convalesence",
+              "pieceNum": 3,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "numinas_convalesence",
+              "pieceNum": 4,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "numinas_convalesence",
+              "pieceNum": 5,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "numinas_convalesence",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Cauterize",
+          "level": 4,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "numinas_convalesence",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "numinas_convalesence",
+              "pieceNum": 3,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "numinas_convalesence",
+              "pieceNum": 4,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "numinas_convalesence",
+              "pieceNum": 5,
+              "level": 50
+            },
+            {
+              "type": "io-generic",
+              "stat": "Range",
+              "level": 50
+            },
+            {
+              "type": "io-generic",
+              "stat": "Range",
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Plasma Shield",
+          "level": 6,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "titanium_coating",
+              "pieceNum": 2,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "titanium_coating",
+              "pieceNum": 4,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "titanium_coating",
+              "pieceNum": 5,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Thaw",
+          "level": 12,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "unbreakable_guard",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Forge",
+          "level": 18,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "adjusted_targeting",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "adjusted_targeting",
+              "pieceNum": 2,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "adjusted_targeting",
+              "pieceNum": 3,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "adjusted_targeting",
+              "pieceNum": 4,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "adjusted_targeting",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Heat Exhaustion",
+          "level": 22,
+          "slots": [
+            {
+              "type": "special",
+              "id": "provocation",
+              "category": "d-sync"
+            },
+            {
+              "type": "special",
+              "id": "provocation",
+              "category": "d-sync"
+            }
+          ]
+        },
+        {
+          "name": "Melt Armor",
+          "level": 26,
+          "slots": [
+            {
+              "type": "io-generic",
+              "stat": "Accuracy",
+              "level": 50
+            },
+            {
+              "type": "io-generic",
+              "stat": "Accuracy",
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "touch_of_lady_grey",
+              "pieceNum": 2,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "touch_of_lady_grey",
+              "pieceNum": 3,
+              "level": 50
+            }
+          ]
+        }
+      ]
+    },
+    "secondary": {
+      "id": "defender/water-blast",
+      "name": "Water Blast",
+      "powers": [
+        {
+          "name": "Aqua Bolt",
+          "level": 1,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "superior_defenders_bastion",
+              "pieceNum": 2,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_defenders_bastion",
+              "pieceNum": 3,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_defenders_bastion",
+              "pieceNum": 5,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "vigilant_assault",
+              "pieceNum": 2,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "vigilant_assault",
+              "pieceNum": 3,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "vigilant_assault",
+              "pieceNum": 5,
+              "level": 1
+            }
+          ]
+        },
+        {
+          "name": "Whirlpool",
+          "level": 10,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "ragnarok",
+              "pieceNum": 2,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "ragnarok",
+              "pieceNum": 3,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "ragnarok",
+              "pieceNum": 4,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "ragnarok",
+              "pieceNum": 5,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "ragnarok",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Tidal Forces",
+          "level": 16,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "gaussians_synchronized_fire-control",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Dehydrate",
+          "level": 20,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "superior_defenders_bastion",
+              "pieceNum": 1,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_defenders_bastion",
+              "pieceNum": 4,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_defenders_bastion",
+              "pieceNum": 6,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "gladiators_javelin",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "ice_mistrals_torment",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "achilles_heel",
+              "pieceNum": 3,
+              "level": 20
+            }
+          ]
+        },
+        {
+          "name": "Water Jet",
+          "level": 24,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "vigilant_assault",
+              "pieceNum": 1,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "vigilant_assault",
+              "pieceNum": 4,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "vigilant_assault",
+              "pieceNum": 6,
+              "level": 1
+            },
+            {
+              "type": "io-set",
+              "setId": "gladiators_javelin",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "ice_mistrals_torment",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "apocalypse",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Geyser",
+          "level": 30,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "positrons_blast",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "positrons_blast",
+              "pieceNum": 3,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "positrons_blast",
+              "pieceNum": 4,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "positrons_blast",
+              "pieceNum": 5,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "positrons_blast",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "javelin_volley",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ]
+        }
+      ]
+    },
+    "pools": [
+      {
+        "id": "speed",
+        "name": "Speed",
+        "powers": [
+          {
+            "name": "Hasten",
+            "level": 8,
+            "slots": [
+              {
+                "type": "io-generic",
+                "stat": "Recharge",
+                "level": 50
+              },
+              {
+                "type": "io-generic",
+                "stat": "Recharge",
+                "level": 50
+              }
+            ],
+            "isActive": true
+          },
+          {
+            "name": "Super Speed",
+            "level": 14,
+            "slots": [
+              {
+                "type": "io-set",
+                "setId": "thrust",
+                "pieceNum": 1,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "thrust",
+                "pieceNum": 2,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "thrust",
+                "pieceNum": 3,
+                "level": 50
+              }
+            ],
+            "isActive": true
+          }
+        ]
+      },
+      {
+        "id": "leaping",
+        "name": "Leaping",
+        "powers": [
+          {
+            "name": "Combat Jumping",
+            "level": 28,
+            "slots": [
+              {
+                "type": "io-set",
+                "setId": "luck_of_the_gambler",
+                "pieceNum": 6,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "reactive_defenses",
+                "pieceNum": 6,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "shield_wall",
+                "pieceNum": 6,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "kismet",
+                "pieceNum": 5,
+                "level": 30
+              }
+            ],
+            "isActive": true
+          },
+          {
+            "name": "Super Jump",
+            "level": 32,
+            "slots": [
+              {
+                "type": "io-set",
+                "setId": "winters_gift",
+                "pieceNum": 1,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "winters_gift",
+                "pieceNum": 2,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "winters_gift",
+                "pieceNum": 3,
+                "level": 50
+              }
+            ],
+            "isActive": true
+          },
+          {
+            "name": "Acrobatics",
+            "level": 41,
+            "slots": [
+              {
+                "type": "io-generic",
+                "stat": "EnduranceReduction",
+                "level": 50
+              }
+            ],
+            "isActive": true
+          }
+        ]
+      },
+      {
+        "id": "fighting",
+        "name": "Fighting",
+        "powers": [
+          {
+            "name": "Boxing",
+            "level": 47,
+            "slots": [
+              null
+            ]
+          },
+          {
+            "name": "Tough",
+            "level": 49,
+            "slots": [
+              {
+                "type": "io-set",
+                "setId": "steadfast_protection",
+                "pieceNum": 1,
+                "level": 30
+              },
+              {
+                "type": "io-set",
+                "setId": "steadfast_protection",
+                "pieceNum": 3,
+                "level": 30
+              },
+              {
+                "type": "io-set",
+                "setId": "steadfast_protection",
+                "pieceNum": 2,
+                "level": 30
+              }
+            ],
+            "isActive": true
+          }
+        ]
+      }
+    ],
+    "epicPool": {
+      "id": "corruptor_leviathan_mastery",
+      "name": "Leviathan Mastery",
+      "powers": [
+        {
+          "name": "Shark Skin",
+          "level": 35,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "gladiators_armor",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "gladiators_armor",
+              "pieceNum": 2,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "gladiators_armor",
+              "pieceNum": 3,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "gladiators_armor",
+              "pieceNum": 4,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "gladiators_armor",
+              "pieceNum": 5,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "gladiators_armor",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ],
+          "isActive": true
+        },
+        {
+          "name": "Hibernate",
+          "level": 38,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "preventive_medicine",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "preventive_medicine",
+              "pieceNum": 4,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "preventive_medicine",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ],
+          "isActive": false
+        },
+        {
+          "name": "Summon Coralax",
+          "level": 44,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "soulbound_allegiance",
+              "pieceNum": 2,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "soulbound_allegiance",
+              "pieceNum": 3,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "soulbound_allegiance",
+              "pieceNum": 4,
+              "level": 50
+            }
+          ]
+        }
+      ]
+    },
+    "inherents": [
+      {
+        "name": "Swift",
+        "level": 1,
+        "slots": [
+          {
+            "type": "io-generic",
+            "stat": "Run Speed",
+            "level": 50
+          }
+        ]
+      },
+      {
+        "name": "Hurdle",
+        "level": 1,
+        "slots": [
+          {
+            "type": "io-generic",
+            "stat": "Jump",
+            "level": 50
+          }
+        ]
+      },
+      {
+        "name": "Health",
+        "level": 1,
+        "slots": [
+          {
+            "type": "io-set",
+            "setId": "miracle",
+            "pieceNum": 6,
+            "level": 40
+          },
+          {
+            "type": "io-set",
+            "setId": "panacea",
+            "pieceNum": 6,
+            "level": 50
+          }
+        ]
+      },
+      {
+        "name": "Stamina",
+        "level": 1,
+        "slots": [
+          {
+            "type": "io-set",
+            "setId": "performance_shifter",
+            "pieceNum": 1,
+            "level": 50
+          },
+          {
+            "type": "io-set",
+            "setId": "performance_shifter",
+            "pieceNum": 2,
+            "level": 50
+          },
+          {
+            "type": "io-set",
+            "setId": "performance_shifter",
+            "pieceNum": 6,
+            "level": 50
+          },
+          {
+            "type": "io-set",
+            "setId": "power_transfer",
+            "pieceNum": 6,
+            "level": 50
+          }
+        ]
+      }
+    ],
+    "accolades": [
+      {
+        "id": "atlas_medallion",
+        "name": "The Atlas Medallion",
+        "description": "+5 Max Endurance",
+        "icon": "accolade_atlas.png",
+        "bonuses": [
+          {
+            "stat": "maxEndurance",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "id": "freedom_phalanx",
+        "name": "Freedom Phalanx Reserve",
+        "description": "+10% Max Health",
+        "icon": "accolade_freedom.png",
+        "bonuses": [
+          {
+            "stat": "maxHP",
+            "value": 10
+          }
+        ]
+      },
+      {
+        "id": "task_force_commander",
+        "name": "Task Force Commander",
+        "description": "+5% Max Health",
+        "icon": "accolade_taskforce.png",
+        "bonuses": [
+          {
+            "stat": "maxHP",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "id": "portal_jockey",
+        "name": "Portal Jockey",
+        "description": "+5% Max Health, +5 Max Endurance",
+        "icon": "accolade_portal.png",
+        "bonuses": [
+          {
+            "stat": "maxHP",
+            "value": 5
+          },
+          {
+            "stat": "maxEndurance",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "settings": {
+      "globalIOLevel": 50,
+      "origin": "Natural"
+    },
+    "sets": {
+      "titanium_coating": {
+        "count": 3,
+        "pieces": [
+          2,
+          4,
+          5
+        ]
+      },
+      "numinas_convalesence": {
+        "count": 5,
+        "pieces": [
+          3,
+          4,
+          5,
+          6,
+          1
+        ]
+      },
+      "unbreakable_guard": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "adjusted_targeting": {
+        "count": 5,
+        "pieces": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ]
+      },
+      "touch_of_lady_grey": {
+        "count": 2,
+        "pieces": [
+          2,
+          3
+        ]
+      },
+      "superior_defenders_bastion": {
+        "count": 6,
+        "pieces": [
+          2,
+          3,
+          5,
+          1,
+          4,
+          6
+        ]
+      },
+      "vigilant_assault": {
+        "count": 6,
+        "pieces": [
+          2,
+          3,
+          5,
+          1,
+          4,
+          6
+        ]
+      },
+      "ragnarok": {
+        "count": 5,
+        "pieces": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "gaussians_synchronized_fire-control": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "gladiators_javelin": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "ice_mistrals_torment": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "achilles_heel": {
+        "count": 1,
+        "pieces": [
+          3
+        ]
+      },
+      "apocalypse": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "positrons_blast": {
+        "count": 5,
+        "pieces": [
+          1,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "javelin_volley": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "thrust": {
+        "count": 3,
+        "pieces": [
+          1,
+          2,
+          3
+        ]
+      },
+      "luck_of_the_gambler": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "reactive_defenses": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "shield_wall": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "kismet": {
+        "count": 1,
+        "pieces": [
+          5
+        ]
+      },
+      "winters_gift": {
+        "count": 3,
+        "pieces": [
+          1,
+          2,
+          3
+        ]
+      },
+      "steadfast_protection": {
+        "count": 3,
+        "pieces": [
+          1,
+          3,
+          2
+        ]
+      },
+      "gladiators_armor": {
+        "count": 6,
+        "pieces": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "preventive_medicine": {
+        "count": 3,
+        "pieces": [
+          1,
+          4,
+          6
+        ]
+      },
+      "soulbound_allegiance": {
+        "count": 3,
+        "pieces": [
+          2,
+          3,
+          4
+        ]
+      },
+      "miracle": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "panacea": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "performance_shifter": {
+        "count": 3,
+        "pieces": [
+          1,
+          2,
+          6
+        ]
+      },
+      "power_transfer": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      }
+    },
+    "incarnates": {
+      "alpha": {
+        "slotId": "alpha",
+        "powerId": "cardiac_radial_paragon",
+        "powerName": "Incarnate.Alpha.Cardiac_Radial_Paragon",
+        "displayName": "Cardiac Radial Paragon",
+        "icon": "incarnate_alpha_cardiac_veryrare.png",
+        "tier": "veryrare",
+        "treeId": "cardiac",
+        "treeName": "Cardiac"
+      },
+      "judgement": null,
+      "interface": null,
+      "destiny": null,
+      "lore": null,
+      "hybrid": null
+    },
+    "craftingChecklist": {},
+    "shoppingListAcquired": {},
+    "slotOrder": [
+      {
+        "powerName": "Shark Skin",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Shark Skin",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Shark Skin",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Shark Skin",
+        "slotIndex": 4
+      },
+      {
+        "powerName": "Shark Skin",
+        "slotIndex": 5
+      },
+      {
+        "powerName": "Tough",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Tough",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Summon Coralax",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Summon Coralax",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Hibernate",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Hibernate",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Super Jump",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Super Jump",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Geyser",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Geyser",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Geyser",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Geyser",
+        "slotIndex": 4
+      },
+      {
+        "powerName": "Whirlpool",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Whirlpool",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Whirlpool",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Whirlpool",
+        "slotIndex": 4
+      },
+      {
+        "powerName": "Geyser",
+        "slotIndex": 5
+      },
+      {
+        "powerName": "Combat Jumping",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Combat Jumping",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Heat Exhaustion",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Melt Armor",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Melt Armor",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Melt Armor",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Water Jet",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Water Jet",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Water Jet",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Water Jet",
+        "slotIndex": 4
+      },
+      {
+        "powerName": "Water Jet",
+        "slotIndex": 5
+      },
+      {
+        "powerName": "Dehydrate",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Dehydrate",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Dehydrate",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Dehydrate",
+        "slotIndex": 4
+      },
+      {
+        "powerName": "Dehydrate",
+        "slotIndex": 5
+      },
+      {
+        "powerName": "Forge",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Forge",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Forge",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Forge",
+        "slotIndex": 4
+      },
+      {
+        "powerName": "Super Speed",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Super Speed",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Warmth",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Warmth",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Warmth",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Cauterize",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Cauterize",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Cauterize",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Cauterize",
+        "slotIndex": 4
+      },
+      {
+        "powerName": "Cauterize",
+        "slotIndex": 5
+      },
+      {
+        "powerName": "Aqua Bolt",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Aqua Bolt",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Aqua Bolt",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Aqua Bolt",
+        "slotIndex": 4
+      },
+      {
+        "powerName": "Aqua Bolt",
+        "slotIndex": 5
+      },
+      {
+        "powerName": "Stamina",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Stamina",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Stamina",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Health",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Thermal Shield",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Thermal Shield",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Plasma Shield",
+        "slotIndex": 1
+      },
+      {
+        "powerName": "Plasma Shield",
+        "slotIndex": 2
+      },
+      {
+        "powerName": "Combat Jumping",
+        "slotIndex": 3
+      },
+      {
+        "powerName": "Hasten",
+        "slotIndex": 1
+      }
+    ]
+  },
+  "meta": {
+    "exportedAt": "2026-03-21T14:44:02.965Z"
+  }
+}

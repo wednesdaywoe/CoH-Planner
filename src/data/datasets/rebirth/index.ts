@@ -31,6 +31,7 @@ import { GENERATED_ARCHETYPE_INHERENTS } from './generated/archetype-inherents';
 import { PET_ENTITIES } from './pet-entities';
 import { MODULAR_POWERSETS } from './powersets/index';
 import { IO_SETS_RAW } from './io-sets-raw';
+import { MIDS_UIDS } from './generated/mids-uids';
 import { EPIC_POOLS_RAW } from './epic-pools-raw';
 import type { LegacyEpicPoolRegistry } from '../../epic-pools';
 import * as IncarnateGen from './generated/incarnate-effects';
@@ -85,6 +86,7 @@ const dataset: Dataset = {
 
   powersetsRaw: MODULAR_POWERSETS,
   ioSetsRaw: IO_SETS_RAW,
+  midsUids: MIDS_UIDS,
   epicPoolsRaw: EPIC_POOLS_RAW as unknown as LegacyEpicPoolRegistry,
   incarnateEffectsRaw: {
     alpha: IncarnateGen.GENERATED_ALPHA_EFFECTS,

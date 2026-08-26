@@ -4,11 +4,19 @@
  * because `getMidsSetName` only stripped `.png` while the datasets ship `.ico`
  * icons. Mids dropped every power in the unresolvable sets → empty build.
  */
+import { readFileSync } from 'node:fs';
 import { beforeAll, describe, expect, it } from 'vitest';
-import { loadDataset } from '@/data/dataset';
-import { getPowerset } from '@/data';
-import { exportToMids } from './mids-export';
-import type { Build } from '@/types';
+import { loadDataset, type DatasetId } from '@/data/dataset';
+import { getPowerset, getAllIOSets } from '@/data';
+import { createGenericIOEnhancement, createIOSetEnhancement, createOriginEnhancement, createSpecialEnhancement } from '@/data/enhancement-registry';
+import { getSpecialRegistry } from '@/data/special-enhancements';
+import { COMMON_IO_TYPES } from '@/data/enhancements';
+import { getMidsUids, resolveMidsUid } from '@/data/mids-uids';
+import { parseIOSetUid } from '@/utils/enhancement-uid';
+import { exportToMids, exportToMidsWithReport } from './mids-export';
+import { hydrateBuild } from '@/utils/build-serialization';
+import type { MbdFile } from '@/utils/mids-import/types';
+import type { Build, Enhancement } from '@/types';
 
 // Minimal but realistic build skeleton; only primary/secondary paths matter here.
 function buildFor(primaryId: string, secondaryId: string): Build {
@@ -36,6 +44,36 @@ function buildFor(primaryId: string, secondaryId: string): Build {
   } as unknown as Build;
 }
 
+/** A one-power build whose single slot holds `enh`. */
+function buildWithSlot(enh: Enhancement): Build {
+  const build = buildFor('defender/thermal-radiation', 'defender/water-blast');
+  build.primary.powers = [{ ...build.primary.powers[0], slots: [enh] }];
+  build.secondary.powers = [];
+  return build;
+}
+
+/** Every UID the active dataset's Mids database carries. */
+function knownUids(): Set<string> {
+  const table = getMidsUids();
+  const known = new Set<string>([
+    ...Object.values(table.ioSetPieces).flatMap((pieces) => [...pieces]),
+    ...table.genericIO,
+    ...table.special,
+  ]);
+  known.delete('');
+  return known;
+}
+
+/** The UID of the first slotted enhancement in an exported .mbd. */
+function firstSlottedUid(mbd: { PowerEntries: { SlotEntries: { Enhancement: { Uid: string } | null }[] }[] }): string | null {
+  for (const pe of mbd.PowerEntries) {
+    for (const se of pe.SlotEntries) {
+      if (se.Enhancement?.Uid) return se.Enhancement.Uid;
+    }
+  }
+  return null;
+}
+
 describe('mids-export powerset paths', () => {
   beforeAll(async () => { await loadDataset('homecoming'); }, 120000);
 
@@ -57,5 +95,254 @@ describe('mids-export powerset paths', () => {
     const mbd = JSON.parse(exportToMids(buildFor('defender/thermal-radiation', 'defender/water-blast')));
     expect(mbd.PowerSets[0]).not.toMatch(/\.png/);
     expect(mbd.PowerSets[0]).not.toMatch(/\.ico/);
+  });
+});
+/**
+ * The UID corpus.
+ *
+ * Mids resolves a slot by UID string and, on a miss, leaves the slot empty
+ * without an error — `DatabaseAPI.GetEnhancementByUIDName` returns -1 and
+ * `LoadEnhancementData` returns having set nothing. So an exported UID Mids
+ * doesn't recognise is invisible on both sides: our tests pass, Mids opens the
+ * file, and the user's build is just missing enhancements.
+ *
+ * That is what shipped. The exporter derived UIDs from set display names, which
+ * cannot work — the prefix is a per-set fact and Mids carries its own spellings
+ * — so Numina's Convalescence, every ATO, and seven of the generic IOs came out
+ * as names Mids has never heard of. These sweeps are the standing check that
+ * the whole slottable population resolves, not the handful a fixture covers.
+ */
+describe('mids-export enhancement UIDs', () => {
+  /**
+   * Sets our data carries that the vendored Mids database does not, so the
+   * export has nothing to name them with. Declared per set rather than tolerated
+   * as a count: a new gap has to be added here on purpose, which is the only way
+   * a *regression* stays distinguishable from a fork whose sets Mids never
+   * shipped. Each of these leaves the list by a newer EnhDB, not by editing the
+   * expectation.
+   */
+  const UNNAMEABLE: Record<string, string[]> = {
+    homecoming: [],
+    brainstorm: [],
+    // Mids' Rebirth EnhDB has no `_A` for Return From the Grave, and no
+    // Superior Endless Nightmare at all.
+    rebirth: [
+      'return_from_the_grave piece 1',
+      ...[1, 2, 3, 4, 5, 6].map((n) => `superior_endless_nightmare piece ${n}`),
+    ],
+    // Thunderspy ships KB and the Primalist ATOs; Mids has no Thunderspy build
+    // of its own, so its Generic database predates all three.
+    thunderspy: [
+      ...[1, 2, 3, 4, 5, 6].flatMap((n) => [
+        `kb piece ${n}`,
+        `primalists_nature piece ${n}`,
+        `superior_primalists_nature piece ${n}`,
+      ]),
+    ],
+  };
+
+  const DATASETS: DatasetId[] = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'];
+
+  for (const datasetId of DATASETS) {
+    describe(datasetId, () => {
+      beforeAll(async () => { await loadDataset(datasetId); }, 120000);
+
+      it('names every IO set piece the planner can slot with a UID Mids has', () => {
+        // Mids matches by substring, so a UID that is merely a *prefix* of a real
+        // one silently resolves to a different enhancement. Membership in the
+        // roster is what rules that out; "we emitted something" does not.
+        const known = knownUids();
+        const missing: string[] = [];
+        for (const set of Object.values(getAllIOSets())) {
+          for (const [index, piece] of set.pieces.entries()) {
+            const enh = createIOSetEnhancement(set, piece, index, { attuned: false, level: 50 });
+            const mbd = JSON.parse(exportToMids(buildWithSlot(enh)));
+            const uid = firstSlottedUid(mbd);
+            if (!uid || !known.has(uid)) missing.push(`${set.id} piece ${piece.num}`);
+          }
+        }
+        expect(missing.sort()).toEqual([...UNNAMEABLE[datasetId]].sort());
+      });
+
+      it('names every common IO with a UID Mids has', () => {
+        const known = knownUids();
+        const missing = COMMON_IO_TYPES.filter((stat) => {
+          const uid = firstSlottedUid(JSON.parse(exportToMids(buildWithSlot(createGenericIOEnhancement(stat, 50)))));
+          return !uid || !known.has(uid);
+        });
+        expect(missing).toEqual([]);
+      });
+
+      it('names every exotic (Hamidon/Titan/Hydra/D-Sync) enhancement with a UID Mids has', () => {
+        const known = knownUids();
+        const missing: string[] = [];
+        for (const category of ['hamidon', 'titan', 'hydra', 'd-sync'] as const) {
+          for (const [id, def] of Object.entries(getSpecialRegistry(category))) {
+            const enh = createSpecialEnhancement(id, def, category);
+            const uid = firstSlottedUid(JSON.parse(exportToMids(buildWithSlot(enh))));
+            if (!uid || !known.has(uid)) missing.push(`${category}/${id}`);
+          }
+        }
+        expect(missing).toEqual([]);
+      });
+
+    });
+  }
+});
+
+/**
+ * Round trip.
+ *
+ * Both directions read the same generated table, so this is checking that the
+ * table is an injection: no two set pieces may share a UID, or the build that
+ * comes back is not the build that went out. Nothing here would catch the two
+ * halves agreeing on a UID Mids doesn't have — the sweeps above own that.
+ */
+describe('mids-export → mids-import round trip', () => {
+  beforeAll(async () => { await loadDataset('homecoming'); }, 120000);
+
+  it('returns every set piece to the same set and piece number', () => {
+    const drift: string[] = [];
+    for (const set of Object.values(getAllIOSets())) {
+      for (const [index, piece] of set.pieces.entries()) {
+        const enh = createIOSetEnhancement(set, piece, index, { attuned: false, level: 50 });
+        const uid = firstSlottedUid(JSON.parse(exportToMids(buildWithSlot(enh))));
+        if (!uid) continue;
+        const back = resolveMidsUid(uid);
+        if (back?.setId !== (set.id ?? '').replace(/-/g, '') || back?.pieceNum !== piece.num) {
+          drift.push(`${set.id}#${piece.num} → ${uid} → ${back?.setId}#${back?.pieceNum}`);
+        }
+      }
+    }
+    expect(drift).toEqual([]);
+  });
+
+  /**
+   * The text-parsing fallback is what handles a UID the table has never seen —
+   * another fork's file, a set newer than the vendored EnhDB. It agrees with
+   * the table almost everywhere; where it doesn't, the table has to win, and
+   * these are the cases proving it does.
+   */
+  it('resolves the UIDs whose text lies about which set they belong to', () => {
+    // Mids renamed Shrapnel to Artillery and kept the old piece UIDs.
+    expect(resolveMidsUid('Crafted_Shrapnel_A')).toEqual({ setId: 'artillery', pieceNum: 1 });
+    expect(parseIOSetUid('Crafted_Shrapnel_A')?.setId).toBe('shrapnel');
+    // Exploit Weakness's third piece ends in a lowercase letter.
+    expect(resolveMidsUid('Crafted_Exploit_Weakness_c')).toEqual({ setId: 'exploit_weakness', pieceNum: 3 });
+    expect(parseIOSetUid('Crafted_Exploit_Weakness_c')?.pieceNum).toBe(6);
+  });
+});
+
+/**
+ * The build a user actually exported, from the bug report that started this.
+ *
+ * The first fix made Mids open the file at all (the powerset paths carried a
+ * `.ico` extension, so every power landed in an unresolvable set). What came
+ * back after it was still missing thirteen slotted enhancements, all four
+ * Fitness inherents with the eight uniques in them, the alpha slot, the
+ * character's origin, and every slot's placement level. Each of those is a
+ * separate omission with its own way of looking like nothing is wrong, so each
+ * gets its own assertion here.
+ */
+describe('mids-export regression: therm/water defender', () => {
+  beforeAll(async () => { await loadDataset('homecoming'); }, 120000);
+
+  function exported() {
+    const raw = readFileSync(new URL('./mids-fixtures/therm-water-defender.skif', import.meta.url), 'utf8');
+    const build = hydrateBuild(JSON.parse(raw).build);
+    const { json, warnings } = exportToMidsWithReport(build);
+    return { mbd: JSON.parse(json) as MbdFile, warnings };
+  }
+
+  it('names every enhancement in the build', () => {
+    const { mbd, warnings } = exported();
+    expect(warnings).toEqual([]);
+    const slotted = mbd.PowerEntries.flatMap((pe) => pe.SlotEntries)
+      .filter((se) => se.Enhancement !== null);
+    // Every filled slot in the source build; Boxing's lone slot is empty there.
+    expect(slotted).toHaveLength(94);
+    expect(slotted.every((se) => resolveMidsUid(se.Enhancement!.Uid)
+      || getMidsUids().genericIO.includes(se.Enhancement!.Uid)
+      || getMidsUids().special.includes(se.Enhancement!.Uid))).toBe(true);
+  });
+
+  it('carries the Fitness inherents and what is slotted in them', () => {
+    const { mbd } = exported();
+    const byName = new Map(mbd.PowerEntries.map((pe) => [pe.PowerName, pe]));
+    expect(byName.get('Inherent.Fitness.Health')?.SlotEntries.map((s) => s.Enhancement?.Uid))
+      .toEqual(['Crafted_Miracle_F', 'Crafted_Panacea_F']);
+    expect(byName.get('Inherent.Fitness.Stamina')?.SlotEntries.map((s) => s.Enhancement?.Uid))
+      .toEqual(['Crafted_Performance_Shifter_A', 'Crafted_Performance_Shifter_B',
+                'Crafted_Performance_Shifter_F', 'Crafted_Power_Transfer_F']);
+    expect(byName.has('Inherent.Fitness.Swift')).toBe(true);
+    expect(byName.has('Inherent.Fitness.Hurdle')).toBe(true);
+    // An inherent with nothing in it is Mids' to re-create, so we don't send it.
+    expect(byName.has('Inherent.Inherent.Rest')).toBe(false);
+  });
+
+  it('carries the alpha slot', () => {
+    const { mbd } = exported();
+    expect(mbd.PowerEntries.map((pe) => pe.PowerName))
+      .toContain('Incarnate.Alpha.Cardiac_Radial_Paragon');
+  });
+
+  it('keeps LastPower pointing at the last CHOSEN power', () => {
+    const { mbd } = exported();
+    // Everything past LastPower is auto-granted as far as Mids is concerned, so
+    // the inherents and the alpha have to sit behind the marker.
+    expect(mbd.PowerEntries[mbd.LastPower].PowerName)
+      .toBe('Epic.Corruptor_Leviathan_Mastery.Summon_Coralax');
+    expect(mbd.PowerEntries.slice(mbd.LastPower + 1).every(
+      (pe) => pe.PowerName.startsWith('Inherent.') || pe.PowerName.startsWith('Incarnate.'),
+    )).toBe(true);
+  });
+
+  it("uses the character's origin, not a placeholder", () => {
+    expect(exported().mbd.Origin).toBe('Natural');
+  });
+
+  it('dates each slot from when it was placed, not from its power', () => {
+    const { mbd } = exported();
+    const warmth = mbd.PowerEntries.find((pe) => pe.PowerName.endsWith('.Warmth'))!;
+    // Warmth is picked at 2 and holds four slots. Stamping all four with the
+    // power's level claims four slot grants at level 2, which is not a build
+    // anyone can level into.
+    expect(warmth.SlotEntries[0].Level).toBe(2);
+    expect(new Set(warmth.SlotEntries.map((s) => s.Level)).size).toBeGreaterThan(1);
+    for (const pe of mbd.PowerEntries) {
+      for (const se of pe.SlotEntries) expect(se.Level).toBeGreaterThanOrEqual(pe.Level);
+    }
+  });
+});
+
+/**
+ * Origin enhancements. Mids keeps one record per stat, spelled `Magic_*`
+ * whatever the character's origin, and reads the tier off `Grade`. The old
+ * export wrote the bare stat name and relied on Mids' substring matcher landing
+ * on something — which it did, on whichever record happened to contain the
+ * string.
+ */
+describe('mids-export origin enhancements', () => {
+  beforeAll(async () => { await loadDataset('homecoming'); }, 120000);
+
+  it('names every origin enhancement tier and stat with a UID Mids has', () => {
+    const known = new Set(getMidsUids().origin);
+    const missing: string[] = [];
+    for (const tier of ['TO', 'DO', 'SO'] as const) {
+      for (const stat of COMMON_IO_TYPES) {
+        const enh = createOriginEnhancement(stat, tier);
+        const mbd = JSON.parse(exportToMids(buildWithSlot(enh)));
+        const uid = firstSlottedUid(mbd);
+        if (!uid || !known.has(uid)) missing.push(`${tier} ${stat}`);
+      }
+    }
+    expect(missing).toEqual([]);
+  });
+
+  it('carries the tier in Grade, where Mids reads it', () => {
+    const mbd = JSON.parse(exportToMids(buildWithSlot(createOriginEnhancement('Accuracy', 'SO'))));
+    const slot = mbd.PowerEntries.flatMap((pe: { SlotEntries: unknown[] }) => pe.SlotEntries)
+      .find((se: { Enhancement: { Grade: string } | null }) => se.Enhancement)!;
+    expect(slot.Enhancement.Grade).toBe('SO');
   });
 });

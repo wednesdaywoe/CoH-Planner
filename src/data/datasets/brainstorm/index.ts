@@ -33,6 +33,7 @@ import { getBaseToHit, getCombatModifier, getDefenseSoftcap } from './purple-pat
 import { GRANTED_POWER_GROUPS } from './granted-powers';
 import { PET_ENTITIES } from './pet-entities';
 import { IO_SETS_RAW } from './io-sets-raw';
+import { MIDS_UIDS } from './generated/mids-uids';
 import { MODULAR_POWERSETS } from './powersets/index';
 import { EPIC_POOLS_RAW } from './epic-pools-raw';
 import type { LegacyEpicPoolRegistry } from '../../epic-pools';
@@ -80,6 +81,7 @@ const dataset: Dataset = {
 
   powersetsRaw: MODULAR_POWERSETS,
   ioSetsRaw: IO_SETS_RAW,
+  midsUids: MIDS_UIDS,
   epicPoolsRaw: EPIC_POOLS_RAW as unknown as LegacyEpicPoolRegistry,
   incarnateEffectsRaw: {
     alpha: IncarnateGen.GENERATED_ALPHA_EFFECTS,

@@ -19,7 +19,7 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**0 open, of 222 entries.** When an entry is open it is listed here with what it's waiting on.
+**0 open, of 223 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
@@ -335,8 +335,14 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 38 of 38 closed
+[Full detail](gaps/pipeline-provenance.md) — 39 of 39 closed
 
+- [x] **MBDEXPORT-1** — the .mbd exporter built Mids' enhancement UIDs out of set display names, and
+  Mids answers a UID it does not know by leaving the slot empty with no error: a user's exported
+  build arrived missing 13 of 63 enhancements, all four Fitness inherents and the uniques in them,
+  the alpha slot, the origin and every slot's placement level; UIDs are now read from Mids' own
+  EnhDB per fork, both directions share the table, and three population sweeps plus a source-hash
+  staleness gate hold it
 - [x] **PARTSTAT-1** — four converters wrote a power's execution stats into the `effects` bag
   under the export's own field names, and the loader's rename reached only two of them: every
   accolade and archetype inherent projected with no cast time and no endurance cost (82 and 30
