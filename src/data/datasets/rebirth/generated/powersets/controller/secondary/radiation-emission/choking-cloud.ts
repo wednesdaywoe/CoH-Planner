@@ -45,6 +45,7 @@ export const ChokingCloud: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 4,
       "table": "Ranged_Immobilize"

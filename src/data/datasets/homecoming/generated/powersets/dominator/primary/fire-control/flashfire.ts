@@ -56,6 +56,7 @@ export const Flashfire: Power = {
   },
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
@@ -76,6 +77,7 @@ export const Flashfire: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 12,
           "table": "Ranged_Stun"

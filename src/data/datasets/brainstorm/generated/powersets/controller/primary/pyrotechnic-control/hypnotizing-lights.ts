@@ -83,11 +83,13 @@ export const HypnotizingLights: Power = {
   },
   "effects": {
     "confuse": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 7.5,
       "table": "Ranged_Fear"
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Sleep"

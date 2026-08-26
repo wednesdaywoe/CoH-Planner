@@ -55,6 +55,7 @@ export const ParalyzingBlast: Power = {
       "table": "Ranged_Ones"
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Immobilize"
@@ -80,6 +81,7 @@ export const ParalyzingBlast: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 15,
           "table": "Ranged_Immobilize"

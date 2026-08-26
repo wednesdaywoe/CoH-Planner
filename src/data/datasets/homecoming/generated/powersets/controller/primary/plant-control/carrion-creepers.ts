@@ -101,6 +101,7 @@ export const CarrionCreepers: Power = {
                 {
                   "type": "Immobilize",
                   "magnitude": 4,
+                  "attribType": "Duration",
                   "scale": 15,
                   "table": "Ranged_Immobilize"
                 }

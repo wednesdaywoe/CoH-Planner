@@ -47,6 +47,7 @@ export const Allseer: Power = {
   "effects": {
     "buffDuration": 1.25,
     "confuse": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
@@ -113,18 +114,21 @@ export const Allseer: Power = {
     },
     "effectDuration": 1.25,
     "fear": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "hold": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
@@ -135,12 +139,14 @@ export const Allseer: Power = {
       "table": "Melee_Ones"
     },
     "sleep": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,

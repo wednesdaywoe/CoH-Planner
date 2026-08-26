@@ -50,6 +50,7 @@ export const TacticalTrainingLeadership: Power = {
   "effects": {
     "buffDuration": 2.25,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 15,
       "table": "Ranged_Res_Boolean"
@@ -70,6 +71,7 @@ export const TacticalTrainingLeadership: Power = {
     },
     "effectDuration": 2.25,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 15,
       "table": "Ranged_Res_Boolean"

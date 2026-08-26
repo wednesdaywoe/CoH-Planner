@@ -68,6 +68,7 @@ export const HandClap: Power = {
       "table": "Melee_Ones"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 4,
       "table": "Melee_Stun"

@@ -54,6 +54,7 @@ export const Vacuum: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"

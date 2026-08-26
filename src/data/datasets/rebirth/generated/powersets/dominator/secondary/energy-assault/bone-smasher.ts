@@ -62,6 +62,7 @@ export const BoneSmasher: Power = {
   ],
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
@@ -87,6 +88,7 @@ export const BoneSmasher: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 12,
           "table": "Melee_Stun"

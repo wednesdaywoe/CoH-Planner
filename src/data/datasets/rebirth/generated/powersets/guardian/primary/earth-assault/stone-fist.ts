@@ -55,6 +55,7 @@ export const StoneFist: Power = {
   },
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"

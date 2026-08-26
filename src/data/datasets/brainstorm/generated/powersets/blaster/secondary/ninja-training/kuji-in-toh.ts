@@ -53,6 +53,7 @@ export const KujiInToh: Power = {
     },
     "effectDuration": 210,
     "fear": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,

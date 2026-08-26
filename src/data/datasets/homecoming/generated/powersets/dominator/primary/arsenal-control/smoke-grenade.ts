@@ -71,6 +71,7 @@ export const SmokeGrenade: Power = {
                 {
                   "type": "Confuse",
                   "magnitude": 3,
+                  "attribType": "Duration",
                   "scale": 2,
                   "table": "Ranged_Fear",
                   "conditional": true

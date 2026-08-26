@@ -89,6 +89,7 @@ export const TimeShift: Power = {
       }
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Immobilize"
@@ -127,6 +128,7 @@ export const TimeShift: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 1,
           "scale": 4,
           "table": "Ranged_Immobilize"

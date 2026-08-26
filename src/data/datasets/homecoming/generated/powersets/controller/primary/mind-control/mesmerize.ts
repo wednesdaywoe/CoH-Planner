@@ -59,6 +59,7 @@ export const Mesmerize: Power = {
   ],
   "effects": {
     "sleep": {
+      "attribType": "Duration",
       "mag": 3.5,
       "scale": 30,
       "table": "Ranged_Sleep"

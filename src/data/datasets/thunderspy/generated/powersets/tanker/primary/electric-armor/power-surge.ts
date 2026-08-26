@@ -74,11 +74,13 @@ export const PowerSurge: Power = {
     },
     "effectDuration": 90,
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
@@ -165,6 +167,7 @@ export const PowerSurge: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
@@ -177,6 +180,7 @@ export const PowerSurge: Power = {
       }
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"

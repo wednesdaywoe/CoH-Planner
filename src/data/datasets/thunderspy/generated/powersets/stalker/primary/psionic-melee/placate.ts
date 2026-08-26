@@ -78,6 +78,7 @@ export const Placate: Power = {
       "table": "Melee_Slow"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 5,
       "table": "Melee_Stun"
@@ -124,6 +125,7 @@ export const Placate: Power = {
       },
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 5,
           "table": "Melee_Stun"

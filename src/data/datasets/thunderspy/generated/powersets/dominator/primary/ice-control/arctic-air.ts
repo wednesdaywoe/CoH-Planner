@@ -61,6 +61,7 @@ export const ArcticAir: Power = {
   "effects": {
     "buffDuration": 2.25,
     "confuse": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Fear"
@@ -72,6 +73,7 @@ export const ArcticAir: Power = {
       "stealth": 2.25
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 2,
       "table": "Ranged_Fear"

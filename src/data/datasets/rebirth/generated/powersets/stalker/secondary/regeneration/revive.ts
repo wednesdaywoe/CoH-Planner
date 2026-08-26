@@ -57,6 +57,7 @@ export const Revive: Power = {
       "table": "Melee_Ones"
     },
     "immobilize": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 50,
       "scale": 4,

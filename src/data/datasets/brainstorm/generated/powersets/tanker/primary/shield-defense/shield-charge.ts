@@ -82,6 +82,7 @@ export const ShieldCharge: Power = {
                 {
                   "type": "Knockback",
                   "magnitude": 1,
+                  "attribType": "Magnitude",
                   "scale": 0.64,
                   "table": "Melee_Ones",
                   "chance": 0.8

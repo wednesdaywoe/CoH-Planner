@@ -62,6 +62,7 @@ export const FRTPsychicWail: Power = {
       "table": "Ranged_Slow"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"

@@ -72,6 +72,7 @@ export const TeslaCage: Power = {
       "table": "Ranged_Ones"
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Ones"

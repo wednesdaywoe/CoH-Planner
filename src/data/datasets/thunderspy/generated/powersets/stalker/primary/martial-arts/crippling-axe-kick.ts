@@ -72,6 +72,7 @@ export const CripplingAxeKick: Power = {
       "slow": 8
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 10,
       "table": "Melee_Immobilize"

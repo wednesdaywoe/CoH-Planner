@@ -57,6 +57,7 @@ export const SweepingCross: Power = {
   },
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"

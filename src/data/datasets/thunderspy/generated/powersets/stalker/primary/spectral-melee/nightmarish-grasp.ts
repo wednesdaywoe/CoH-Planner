@@ -68,11 +68,13 @@ export const NightmarishGrasp: Power = {
   ],
   "effects": {
     "fear": {
+      "attribType": "Duration",
       "mag": 0.75,
       "scale": 20,
       "table": "Melee_Fear"
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Melee_Immobilize"

@@ -47,6 +47,7 @@ export const MassConfusion: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 20,
       "table": "Ranged_Immobilize"
@@ -66,6 +67,7 @@ export const MassConfusion: Power = {
       "defaultActive": false,
       "effects": {
         "confuse": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 30,
           "table": "Ranged_Immobilize"

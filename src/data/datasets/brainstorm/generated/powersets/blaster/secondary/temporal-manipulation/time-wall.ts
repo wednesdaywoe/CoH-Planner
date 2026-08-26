@@ -73,6 +73,7 @@ export const TimeWall: Power = {
       "slow": 20
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

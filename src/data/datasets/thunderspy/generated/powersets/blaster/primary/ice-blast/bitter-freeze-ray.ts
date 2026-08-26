@@ -68,6 +68,7 @@ export const BitterFreezeRay: Power = {
       "slow": 18
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
@@ -78,6 +79,7 @@ export const BitterFreezeRay: Power = {
       "table": "Ranged_Slow"
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 30,
       "table": "Ranged_Sleep"

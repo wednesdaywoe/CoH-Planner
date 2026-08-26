@@ -73,6 +73,7 @@ export const FreezingTouch: Power = {
       "damageBuff": 8.5
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"

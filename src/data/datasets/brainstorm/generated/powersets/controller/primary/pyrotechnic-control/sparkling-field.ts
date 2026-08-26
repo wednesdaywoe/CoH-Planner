@@ -84,6 +84,7 @@ export const SparklingField: Power = {
       "resistanceDebuff": 5
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

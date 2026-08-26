@@ -79,6 +79,7 @@ export const ChargedBrawl: Power = {
       "table": "Melee_Ones"
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Sleep"
@@ -113,6 +114,7 @@ export const ChargedBrawl: Power = {
       "defaultActive": false,
       "effects": {
         "sleep": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 15,
           "table": "Melee_Sleep"

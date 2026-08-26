@@ -46,6 +46,7 @@ export const DarkPit: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"

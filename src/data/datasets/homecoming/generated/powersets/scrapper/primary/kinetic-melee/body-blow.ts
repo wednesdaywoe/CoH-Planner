@@ -70,6 +70,7 @@ export const BodyBlow: Power = {
       "damageDebuff": 8
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"

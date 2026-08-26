@@ -10,6 +10,10 @@ const path = require('path');
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
 const { isPvpOnlyGroup: isPvpOnlyByRequires } = require('./_pv-scope.cjs');
 const { gateText } = require('./_gate-tokens.cjs');
+require('tsx/cjs');
+// The atomizer's own AttribType mapping, so a pet control row folds `Constant` and absence
+// exactly as the atom it projects does rather than through a second copy of the rule.
+const { mapAttribType } = require('../src/data/core/atomic-effect.ts');
 // The atomizer: the same collectors + encoder the powerset converter runs, so a pet
 // ability's atoms are minted by the identical code path (window_slots' pet-merge census
 // grades the atom side against the PetEffect rows it already ships). Requiring the
@@ -1198,6 +1202,15 @@ function extractEffects(powerData) {
               effect.scale = template.scale;
               effect.table = template.table;
             }
+            // Which number `scale × table` computes. The pseudo-pet merge mints a control row
+            // in the same `{mag, scale, table}` shape a parent power writes, and the display
+            // reader routes both off this field, so a control row without it is one the
+            // reader cannot resolve (MEZDUR-1). Stamped for every mez-family type rather
+            // than for the six the merge routes as control, because the split lives in the
+            // engine's route table and re-stating it here is a second copy to drift. Mapped
+            // through the atomizer's own function, so `Constant` and absence fold exactly as
+            // they do on the atom this effect is the projection of.
+            effect.attribType = mapAttribType(template.type);
             push(effect);
           }
 
@@ -2009,6 +2022,12 @@ function generateTypeScript(entities) {
   lines.push(`  chance?: number;`);
   lines.push(`  scale?: number;`);
   lines.push(`  table?: string;`);
+  lines.push(`  /** Mez-family rows: which of the mod's two numbers \`scale × table\` computes,`);
+  lines.push(`   *  carried so the pseudo-pet merge hands the display reader the same`);
+  lines.push(`   *  discriminator a parent power's mez row carries. Read by the control merge;`);
+  lines.push(`   *  a knock row's quantity is a distance either way. See`);
+  lines.push(`   *  {@link MezEffect.attribType}. */`);
+  lines.push(`  attribType?: string;`);
   lines.push(`  /** The movement axis a Slow / MovementCapDebuff row applies to, spelled the`);
   lines.push(`   *  way a parent power's \`slow[axis]\` spells it. A power states several axes`);
   lines.push(`   *  at different scales, so the merge holds one value per axis rather than`);

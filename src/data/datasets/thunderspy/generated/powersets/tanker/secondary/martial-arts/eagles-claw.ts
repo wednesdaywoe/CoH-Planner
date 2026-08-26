@@ -59,6 +59,7 @@ export const EaglesClaw: Power = {
   },
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 4,
       "table": "Melee_Stun"

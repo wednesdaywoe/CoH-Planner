@@ -70,6 +70,7 @@ export const StaticField: Power = {
                 {
                   "type": "Sleep",
                   "magnitude": 3,
+                  "attribType": "Duration",
                   "scale": 3.5,
                   "table": "Ranged_Immobilize"
                 },

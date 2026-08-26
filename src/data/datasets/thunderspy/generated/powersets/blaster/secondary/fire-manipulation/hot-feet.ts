@@ -57,6 +57,7 @@ export const HotFeet: Power = {
       "slow": 2.3
     },
     "fear": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 3,
       "scale": 4,

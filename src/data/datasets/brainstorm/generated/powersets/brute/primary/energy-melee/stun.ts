@@ -75,6 +75,7 @@ export const Stun: Power = {
   ],
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"

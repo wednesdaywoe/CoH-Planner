@@ -60,6 +60,7 @@ export const Burn: Power = {
       "damageBuff": 9.53
     },
     "immobilize": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": -15,
       "scale": 100,

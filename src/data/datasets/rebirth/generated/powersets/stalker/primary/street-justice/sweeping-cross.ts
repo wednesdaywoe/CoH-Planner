@@ -70,6 +70,7 @@ export const SweepingCross: Power = {
   ],
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
@@ -121,6 +122,7 @@ export const SweepingCross: Power = {
       },
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 6,
           "table": "Melee_Stun"
@@ -145,6 +147,7 @@ export const SweepingCross: Power = {
       },
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 6,
           "table": "Melee_Stun"
@@ -173,6 +176,7 @@ export const SweepingCross: Power = {
           "table": "Melee_Ones"
         },
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 6,
           "table": "Melee_Stun"

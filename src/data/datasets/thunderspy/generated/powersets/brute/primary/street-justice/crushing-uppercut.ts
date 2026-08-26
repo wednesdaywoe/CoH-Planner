@@ -69,6 +69,7 @@ export const CrushingUppercut: Power = {
       "table": "Melee_Knockback"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 7.5,
       "table": "Melee_Stun"
@@ -123,6 +124,7 @@ export const CrushingUppercut: Power = {
       },
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 8.25,
           "table": "Melee_Stun"
@@ -147,6 +149,7 @@ export const CrushingUppercut: Power = {
       },
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 9.375,
           "table": "Melee_Stun"
@@ -171,6 +174,7 @@ export const CrushingUppercut: Power = {
       },
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 10.5,
           "table": "Melee_Stun"

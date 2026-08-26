@@ -52,6 +52,7 @@ export const ImpassionedSerenade: Power = {
   },
   "effects": {
     "confuse": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 20,
       "table": "Ranged_Immobilize"

@@ -53,6 +53,7 @@ export const PlasmaShield: Power = {
     },
     "effectDuration": 0.75,
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -72,6 +73,7 @@ export const PlasmaShield: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

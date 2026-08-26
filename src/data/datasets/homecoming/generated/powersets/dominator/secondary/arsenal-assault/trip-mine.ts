@@ -73,6 +73,7 @@ export const TripMine: Power = {
                 {
                   "type": "Knockback",
                   "magnitude": 1,
+                  "attribType": "Magnitude",
                   "scale": 0.75,
                   "table": "Melee_Ones",
                   "chance": 0.5

@@ -61,6 +61,7 @@ export const FlashBang: Power = {
       "tohitDebuff": 20
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"

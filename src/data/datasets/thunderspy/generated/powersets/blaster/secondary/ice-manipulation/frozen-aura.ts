@@ -52,6 +52,7 @@ export const FrozenAura: Power = {
       "damageBuff": 9.6
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 20,
       "table": "Ranged_Sleep"

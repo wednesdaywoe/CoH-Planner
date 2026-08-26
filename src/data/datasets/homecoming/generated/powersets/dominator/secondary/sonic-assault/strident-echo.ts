@@ -65,6 +65,7 @@ export const StridentEcho: Power = {
   ],
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 5,
       "table": "Melee_Immobilize"
@@ -87,6 +88,7 @@ export const StridentEcho: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 7.5,
           "table": "Melee_Immobilize"

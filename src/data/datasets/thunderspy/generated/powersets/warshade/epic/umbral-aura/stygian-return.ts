@@ -67,6 +67,7 @@ export const StygianReturn: Power = {
       "perTarget": 30
     },
     "immobilize": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 50,
       "scale": 4,

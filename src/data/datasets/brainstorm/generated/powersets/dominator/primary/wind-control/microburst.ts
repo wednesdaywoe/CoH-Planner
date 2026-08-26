@@ -88,6 +88,7 @@ export const Microburst: Power = {
       }
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
@@ -119,6 +120,7 @@ export const Microburst: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 12,
           "table": "Ranged_Stun"

@@ -100,6 +100,7 @@ export const UmbralSmite: Power = {
       }
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 6,
       "table": "Melee_Immobilize"

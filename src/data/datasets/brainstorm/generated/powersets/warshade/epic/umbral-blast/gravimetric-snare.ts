@@ -61,6 +61,7 @@ export const GravimetricSnare: Power = {
       "slow": 6
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

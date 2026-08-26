@@ -52,6 +52,7 @@ export const Subdue: Power = {
   },
   "effects": {
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 6,
       "table": "Ranged_Immobilize"

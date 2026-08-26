@@ -47,6 +47,7 @@ export const Confuse: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
+      "attribType": "Duration",
       "mag": 4,
       "scale": 4,
       "table": "Ranged_Immobilize"

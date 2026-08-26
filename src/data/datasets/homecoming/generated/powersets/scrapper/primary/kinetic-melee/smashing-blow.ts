@@ -70,6 +70,7 @@ export const SmashingBlow: Power = {
       "damageDebuff": 10
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"

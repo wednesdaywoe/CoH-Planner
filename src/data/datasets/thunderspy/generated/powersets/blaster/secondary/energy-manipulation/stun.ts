@@ -70,6 +70,7 @@ export const Stun: Power = {
       "damageBuff": 9.3
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Stun"

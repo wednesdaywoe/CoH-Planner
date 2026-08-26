@@ -73,6 +73,7 @@ export const PenumbralGrasp: Power = {
       "tohitDebuff": 10
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

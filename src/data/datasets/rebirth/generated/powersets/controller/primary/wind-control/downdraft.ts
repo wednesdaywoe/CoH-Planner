@@ -61,6 +61,7 @@ export const Downdraft: Power = {
       "slow": 12
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"

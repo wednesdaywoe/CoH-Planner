@@ -94,6 +94,7 @@ export const GraviticEmanation: Power = {
       }
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 6,
       "table": "Ranged_Stun"

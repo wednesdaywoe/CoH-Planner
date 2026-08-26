@@ -62,6 +62,7 @@ export const GaleWinds: Power = {
       "table": "Ranged_Knockback"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 10,
       "table": "Melee_Stun"

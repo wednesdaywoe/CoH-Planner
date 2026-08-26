@@ -63,6 +63,7 @@ export const PsiWhipCoil: Power = {
   ],
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 6,
       "table": "Ranged_Immobilize"
@@ -97,6 +98,7 @@ export const PsiWhipCoil: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 9,
           "table": "Ranged_Immobilize"

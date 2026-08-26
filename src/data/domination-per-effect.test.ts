@@ -41,7 +41,8 @@ describe('Domination per-effect bonus (data-driven, shared conditional)', () => 
     const bonus = domBonus(Dominate, 'hold');
     expect(hold?.mag).toBe(3);
     expect(hold?.scale).toBe(12);
-    expect(bonus).toEqual({ mag: 3, scale: 18, table: 'Ranged_Immobilize' });
+    expect(bonus).toEqual(
+      { attribType: 'Duration', mag: 3, scale: 18, table: 'Ranged_Immobilize' });
     // Effective under Domination: mag 3+3=6, duration scale 18/12 = ×1.5.
     expect(hold!.mag + bonus!.mag).toBe(6);
     expect(bonus!.scale / hold!.scale).toBeCloseTo(1.5);

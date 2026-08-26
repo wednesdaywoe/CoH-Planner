@@ -53,6 +53,7 @@ export const Glacier: Power = {
       "slow": 18
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
@@ -105,6 +106,7 @@ export const Glacier: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 12,
           "table": "Ranged_Immobilize"

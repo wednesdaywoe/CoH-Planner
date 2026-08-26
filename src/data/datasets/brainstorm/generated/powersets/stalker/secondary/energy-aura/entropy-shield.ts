@@ -73,11 +73,13 @@ export const EntropyShield: Power = {
     },
     "effectDuration": 0.75,
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -120,11 +122,13 @@ export const EntropyShield: Power = {
       "table": "Melee_Ones"
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

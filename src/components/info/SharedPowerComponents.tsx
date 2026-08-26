@@ -8,7 +8,7 @@ import type { PowerEffects, SpecialEffect } from '@/types';
 import type { ExtraInstance } from './powerDisplayUtils';
 import { isScaledEffect } from '@/types';
 import { AT_INHERENT_CONDITIONAL_IDS } from './powerDisplayUtils';
-import { resolvePowerMagnitudes } from './resolvePowerMagnitudes';
+import { resolvePowerMagnitudes, type MagnitudeQuantity } from './resolvePowerMagnitudes';
 import type { ThreeTierValues } from './powerDisplayUtils';
 import { abbreviateDamageType, type PowerDamageResult } from '@/utils/calculations';
 import {
@@ -215,6 +215,11 @@ interface DisplayableEffect {
   effect: GroupedEffect;
   baseValue: number;
   tiers: ThreeTierValues;
+  /** What {@link tiers} is a quantity OF, as `resolvePowerMagnitudes` classified it. The
+   *  `mag`-format rows used to re-derive this here from the raw value's shape, which put a
+   *  third copy of the mez rule in the render edge and got it wrong for every row whose
+   *  `scale × table` is a magnitude rather than seconds (MEZDUR-1). */
+  quantity: MagnitudeQuantity;
   byTypeLabel?: string;
   expandedLabel?: string;
   /** Dominator inherent bonus for this mez — the extra stacking mez the power's
@@ -739,6 +744,7 @@ export function RegistryEffectsDisplay({
       effect: { key: row.rowKey, effectKey: row.effectKey, value: row.rawValue, config: row.config },
       baseValue: row.tiers.base,
       tiers: row.tiers,
+      quantity: row.quantity,
       byTypeLabel: row.byTypeLabel,
       expandedLabel: row.expandedLabel,
       dominationBonus,
@@ -1026,7 +1032,7 @@ export function RegistryEffectsDisplay({
           );
         }
 
-        const { effect, tiers, byTypeLabel, expandedLabel } = group.item;
+        const { effect, tiers, quantity, byTypeLabel, expandedLabel } = group.item;
         const { key, value: rawValue, config } = effect;
         const enhanceable = !!config.enhancementAspect;
         const hasEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;
@@ -1050,18 +1056,43 @@ export function RegistryEffectsDisplay({
             ? extraInstances?.[key]?.find((e) => e.conditionalId === 'domination')
             : undefined;
           const dom = domExtra && isMezEffect(domExtra.value) ? domExtra.value : undefined;
-          const rawMag = dom ? tiers.base + dom.mag : tiers.base;
+          // The mez rank this row applies at. A duration row carries it beside the tiers
+          // (the tiers are seconds); every other `mag` row's tiers ARE the rank (MEZDUR-1).
+          const ownMag = quantity.kind === 'mez_duration' ? quantity.magnitude : tiers.base;
+          const rawMag = dom ? ownMag + dom.mag : ownMag;
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const colorClass = dom ? 'text-pink-400' : config.colorClass;
 
+          // A mez the data does not value: an expression reads live character state (Inner
+          // Will takes whatever is mezzing you), and an unstated one lost its `attribType`
+          // on the way to the bag — a converter regression, worded so it reads as one.
+          if (quantity.kind === 'mez_expression' || quantity.kind === 'mez_unstated') {
+            return (
+              <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+                <span className={colorClass}>{label}</span>
+                <span className="text-slate-400 italic">
+                  {quantity.kind === 'mez_expression' ? 'Varies' : 'unstated'}
+                </span>
+                <span className="text-slate-500">—</span>
+                <span className="text-slate-500">—</span>
+              </div>
+            );
+          }
+
           // Duration-based mez (stun, hold, etc.) — magnitude is fixed, duration is enhanceable
-          if (isMezEffect(rawValue) && archetypeId && level) {
+          if (quantity.kind === 'mez_duration' && isMezEffect(rawValue) && archetypeId && level) {
             // Under Domination the effective hold is the tagged bonus (it stacks
             // onto the base with a longer duration), so display uses its scale/table.
-            const durScale = dom ? dom.scale : rawValue.scale;
-            const durTable = dom ? dom.table : rawValue.table;
-            const tableVal = getTableValue(archetypeId, durTable, level);
-            const baseDuration = tableVal !== undefined ? Math.abs(durScale * tableVal) : undefined;
+            // Undominated, the resolved tier IS the duration, so it is read rather than
+            // recomputed. Domination substitutes the tagged bonus's own scale and table
+            // (the extra mez stacks onto the base with a longer duration), and that value
+            // never went through the resolver, so it still resolves here.
+            const baseDuration = dom
+              ? (() => {
+                  const domTableVal = getTableValue(archetypeId, dom.table, level);
+                  return domTableVal !== undefined ? Math.abs(dom.scale * domTableVal) : undefined;
+                })()
+              : tiers.base;
 
             if (baseDuration !== undefined && baseDuration > 0) {
               const enhBonus = enhancementBonuses[key] || 0;
@@ -1118,7 +1149,7 @@ export function RegistryEffectsDisplay({
           }
 
           // Distance-based mez (knockback, knockup, repel) — no mag, distance is enhanceable
-          if (!isMezEffect(rawValue) && rawValue && typeof rawValue === 'object' && 'scale' in rawValue && 'table' in rawValue && archetypeId && level) {
+          if (quantity.kind === 'distance') {
             const enhBonus = enhancementBonuses[key] || 0;
             const globalBonus = globalBonuses[key] || 0;
             const enhanced = tiers.base * (1 + enhBonus);
@@ -1140,10 +1171,17 @@ export function RegistryEffectsDisplay({
             );
           }
 
-          // Fallback: simple magnitude (no AT data or plain number) — not enhanceable
-          // Also used by protection entries which have plain number values
+          // Magnitude-valued mez, and the plain-number protection entries the `protection`
+          // key expands to. The tiers are the RANK here, and the duration is the template's
+          // own — the bag records it under `durations` rather than on the value, because
+          // nothing scales it (MEZDUR-1). A `mez_magnitude` row is enhanceable on the same
+          // coupling a duration row is; an expanded protection number is not.
           let mezDuration = durations?.[key];
           if (mezDuration == null || mezDuration <= 0) mezDuration = undefined;
+          const magEnhanceable = quantity.kind === 'mez_magnitude'
+            && Math.abs(tiers.final - tiers.base) > 0.001;
+          const magEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;
+          const magFinal = Math.abs(tiers.final - tiers.enhanced) > 0.001;
 
           return (
             <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
@@ -1157,8 +1195,21 @@ export function RegistryEffectsDisplay({
                   <span className="text-pink-300 text-[10px] ml-1">[Dom]</span>
                 )}
               </span>
-              <span className="text-slate-500">—</span>
-              <span className="text-slate-500">—</span>
+              {magEnhanceable ? (
+                <>
+                  <span className={magEnh ? 'text-green-400' : 'text-slate-300'}>
+                    Mag {tiers.enhanced.toFixed(1)}
+                  </span>
+                  <span className={magFinal ? finalColumnColor : 'text-slate-300'}>
+                    Mag {tiers.final.toFixed(1)}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="text-slate-500">—</span>
+                  <span className="text-slate-500">—</span>
+                </>
+              )}
             </div>
           );
         }

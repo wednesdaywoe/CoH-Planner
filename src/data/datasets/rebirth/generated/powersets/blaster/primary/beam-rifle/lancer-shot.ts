@@ -62,6 +62,7 @@ export const LancerShot: Power = {
       "damageBuff": 9.4
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"

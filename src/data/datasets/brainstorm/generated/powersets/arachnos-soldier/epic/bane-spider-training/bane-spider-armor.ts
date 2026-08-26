@@ -37,6 +37,7 @@ export const BaneSpiderArmor: Power = {
   "effects": {
     "buffDuration": 10.25,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
@@ -54,16 +55,19 @@ export const BaneSpiderArmor: Power = {
     },
     "effectDuration": 10.25,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
     },
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
@@ -114,11 +118,13 @@ export const BaneSpiderArmor: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"

@@ -61,6 +61,7 @@ export const Stun: Power = {
   ],
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Stun"
@@ -112,6 +113,7 @@ export const Stun: Power = {
       ],
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 2,
           "scale": 6.25,
           "table": "Ranged_Stun"
@@ -596,6 +598,7 @@ export const Stun: Power = {
       ],
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 2,
           "scale": 10,
           "table": "Ranged_Stun"
@@ -1078,6 +1081,7 @@ export const Stun: Power = {
       ],
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 2,
           "scale": 6.25,
           "table": "Melee_Stun"

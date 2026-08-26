@@ -54,6 +54,7 @@ export const FearsomeStare: Power = {
       "tohitDebuff": 20
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Fear"

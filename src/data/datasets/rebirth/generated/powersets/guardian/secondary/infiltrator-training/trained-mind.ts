@@ -47,6 +47,7 @@ export const TrainedMind: Power = {
   "effects": {
     "buffDuration": 0.75,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -62,16 +63,19 @@ export const TrainedMind: Power = {
     },
     "effectDuration": 0.75,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -83,11 +87,13 @@ export const TrainedMind: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

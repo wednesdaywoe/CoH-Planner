@@ -43,6 +43,7 @@ export const InspireBetrayal: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12.6,
       "table": "Ranged_Immobilize"

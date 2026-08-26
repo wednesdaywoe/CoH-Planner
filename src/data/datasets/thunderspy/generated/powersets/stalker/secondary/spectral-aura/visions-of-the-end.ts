@@ -42,6 +42,7 @@ export const VisionsOfTheEnd: Power = {
   "maxSlots": 6,
   "effects": {
     "fear": {
+      "attribType": "Duration",
       "mag": 1,
       "scale": 10,
       "table": "Melee_Fear"

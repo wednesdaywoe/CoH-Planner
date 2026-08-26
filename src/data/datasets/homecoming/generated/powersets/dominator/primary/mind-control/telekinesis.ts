@@ -53,6 +53,7 @@ export const Telekinesis: Power = {
   "maxSlots": 6,
   "effects": {
     "immobilize": {
+      "attribType": "Duration",
       "mag": 4,
       "scale": 5,
       "table": "Ranged_Immobilize"
@@ -81,6 +82,7 @@ export const Telekinesis: Power = {
       "defaultActive": false,
       "effects": {
         "immobilize": {
+          "attribType": "Duration",
           "mag": 4,
           "scale": 7.5,
           "table": "Ranged_Immobilize"

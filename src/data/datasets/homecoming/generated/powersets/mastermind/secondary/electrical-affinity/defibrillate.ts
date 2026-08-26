@@ -68,6 +68,7 @@ export const Defibrillate: Power = {
       "table": "Ranged_Ones"
     },
     "sleep": {
+      "attribType": "Expression",
       "mag": 3,
       "scale": 30,
       "table": "Ranged_Sleep"

@@ -41,28 +41,33 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
   // --- Type corrected from the index array (front != applied mez) -----------
   it('Blind is a Mag-3 Hold, not the front-string Immobilize', () => {
     // front `Immobilize` (enhancement category) → index `Held`; k+12 Magnitude 3.
-    expect(Blind.effects?.hold).toEqual({ mag: 3, scale: 10, table: 'Ranged_Immobilize' });
+    expect(Blind.effects?.hold).toEqual(
+      { attribType: 'Duration', mag: 3, scale: 10, table: 'Ranged_Immobilize' });
     expect(Blind.effects?.immobilize).toBeUndefined();
   });
 
   it('Fossilize is a Mag-3 Hold (was mislabelled immobilize Mag 1)', () => {
-    expect(Fossilize.effects?.hold).toEqual({ mag: 3, scale: 12, table: 'Ranged_Immobilize' });
+    expect(Fossilize.effects?.hold).toEqual(
+      { attribType: 'Duration', mag: 3, scale: 12, table: 'Ranged_Immobilize' });
     expect(Fossilize.effects?.immobilize).toBeUndefined();
   });
 
   it('Freeze Ray is a Mag-3 Hold even though its front string / table is Sleep', () => {
-    expect(FreezeRay.effects?.hold).toEqual({ mag: 3, scale: 8, table: 'Ranged_Sleep' });
+    expect(FreezeRay.effects?.hold).toEqual(
+      { attribType: 'Duration', mag: 3, scale: 8, table: 'Ranged_Sleep' });
     expect(FreezeRay.effects?.sleep).toBeUndefined();
   });
 
   // --- Magnitude corrected from the placeholder (type already matched) -------
   it('Cobra Strike keeps its Stun type but at the real Mag 3 (was Mag 1)', () => {
-    expect(CobraStrike.effects?.stun).toEqual({ mag: 3, scale: 10, table: 'Melee_Stun' });
+    expect(CobraStrike.effects?.stun).toEqual(
+      { attribType: 'Duration', mag: 3, scale: 10, table: 'Melee_Stun' });
   });
 
   // --- PBAoE control cast on Self but foe-facing → KEPT (targets_affected=Foe)
   it('EMP Pulse (PBAoE, target_type Self) keeps its Mag-3 Hold — targets_affected is Foe', () => {
-    expect(EMPPulse.effects?.hold).toEqual({ mag: 3, scale: 15, table: 'Ranged_Immobilize' });
+    expect(EMPPulse.effects?.hold).toEqual(
+      { attribType: 'Duration', mag: 3, scale: 15, table: 'Ranged_Immobilize' });
   });
 
   // --- Offensive knockdown / knockup recovered from a Ones front ------------
@@ -94,7 +99,8 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
   it('Time Stop is a pure Hold — its negative-scale Stun artifact is not emitted', () => {
     // Time Stop carries a Held Mag 3 plus a scale -0.25 `Stun` on Ranged_Stun (a
     // debuff/duration artifact, not applied mez). Only the Hold must survive.
-    expect(TimeStop.effects?.hold).toEqual({ mag: 3, scale: 8, table: 'Ranged_Immobilize' });
+    expect(TimeStop.effects?.hold).toEqual(
+      { attribType: 'Duration', mag: 3, scale: 8, table: 'Ranged_Immobilize' });
     expect(TimeStop.effects?.stun).toBeUndefined();
   });
 
@@ -104,7 +110,9 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
   // applied control is always positive. Dropping these left the whole Thunderspy fork
   // without status protection while its HC and Rebirth twins carried it.
   it('Fortification keeps its self status protection (Rebirth twin carries the same −24)', () => {
-    const prot = { mag: 1, scale: 24, table: 'Melee_Res_Boolean' };
+    // `attribType: Magnitude` is the reading, not decoration: the points are
+    // `|scale| × table`, and the flat mag 1 is the def compiler's placeholder (MEZDUR-1).
+    const prot = { attribType: 'Magnitude', mag: 1, scale: 24, table: 'Melee_Res_Boolean' };
     expect(Fortification.effects?.hold).toEqual(prot);
     expect(Fortification.effects?.stun).toEqual(prot);
     expect(Fortification.effects?.sleep).toEqual(prot);
@@ -113,7 +121,9 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
 
   it('Clear Mind keeps its ALLY-cast protection — recipient is not part of the test', () => {
     // toWho `Target`, not `Self`: the protection rule is sign + aspect, nothing else.
-    expect(ClearMind.effects?.hold).toEqual({ mag: 1, scale: 30, table: 'Ranged_Res_Boolean' });
-    expect(ClearMind.effects?.fear).toEqual({ mag: 1, scale: 30, table: 'Ranged_Res_Boolean' });
+    expect(ClearMind.effects?.hold).toEqual(
+      { attribType: 'Magnitude', mag: 1, scale: 30, table: 'Ranged_Res_Boolean' });
+    expect(ClearMind.effects?.fear).toEqual(
+      { attribType: 'Magnitude', mag: 1, scale: 30, table: 'Ranged_Res_Boolean' });
   });
 });

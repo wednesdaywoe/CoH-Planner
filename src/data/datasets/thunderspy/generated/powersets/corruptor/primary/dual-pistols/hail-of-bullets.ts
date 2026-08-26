@@ -170,6 +170,7 @@ export const HailofBullets: Power = {
           "slow": 10
         },
         "immobilize": {
+          "attribType": "Duration",
           "mag": 1,
           "scale": 10.1,
           "table": "Ranged_Immobilize"

@@ -75,6 +75,7 @@ export const Liquefy: Power = {
                 {
                   "type": "Knockback",
                   "magnitude": 1,
+                  "attribType": "Magnitude",
                   "scale": 0.67,
                   "table": "Ranged_Ones",
                   "chance": 0.03

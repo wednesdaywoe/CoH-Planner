@@ -41,6 +41,7 @@ export const KujiInRin: Power = {
   "effects": {
     "buffDuration": 120,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -56,16 +57,19 @@ export const KujiInRin: Power = {
     },
     "effectDuration": 120,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -77,11 +81,13 @@ export const KujiInRin: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

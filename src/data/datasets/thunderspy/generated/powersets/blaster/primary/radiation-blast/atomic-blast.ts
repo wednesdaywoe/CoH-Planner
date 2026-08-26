@@ -74,6 +74,7 @@ export const AtomicBlast: Power = {
       "defenseDebuff": 20
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"

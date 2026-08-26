@@ -54,6 +54,7 @@ export const GeneticCorruption: Power = {
       "damageDebuff": 5
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"

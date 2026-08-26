@@ -67,12 +67,14 @@ export const HardenedCarapace: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,

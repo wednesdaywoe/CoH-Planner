@@ -55,11 +55,13 @@ export const IncreaseDensity: Power = {
     },
     "effectDuration": 240,
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
@@ -113,6 +115,7 @@ export const IncreaseDensity: Power = {
       }
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"

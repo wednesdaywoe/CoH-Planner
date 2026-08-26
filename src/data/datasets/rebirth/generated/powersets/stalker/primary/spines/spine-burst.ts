@@ -77,6 +77,7 @@ export const SpineBurst: Power = {
       "slow": 10
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 0.33000001311302185,
       "scale": 10,
       "table": "Melee_Immobilize"

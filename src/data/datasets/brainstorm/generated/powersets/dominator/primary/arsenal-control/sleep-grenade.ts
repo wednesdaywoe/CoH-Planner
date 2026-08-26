@@ -73,6 +73,7 @@ export const SleepGrenade: Power = {
                 {
                   "type": "Sleep",
                   "magnitude": 3,
+                  "attribType": "Duration",
                   "scale": 3.4,
                   "table": "Melee_Immobilize"
                 },

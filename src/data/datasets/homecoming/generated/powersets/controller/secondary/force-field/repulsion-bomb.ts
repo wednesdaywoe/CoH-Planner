@@ -105,6 +105,7 @@ export const RepulsionBomb: Power = {
       }
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"

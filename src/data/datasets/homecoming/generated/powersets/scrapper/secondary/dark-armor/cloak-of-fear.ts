@@ -69,6 +69,7 @@ export const CloakofFear: Power = {
     },
     "effectDuration": 3,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"

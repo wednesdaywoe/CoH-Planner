@@ -105,11 +105,13 @@ export const GraniteArmor: Power = {
     },
     "effectDuration": 0.75,
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
@@ -173,6 +175,7 @@ export const GraniteArmor: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
@@ -191,6 +194,7 @@ export const GraniteArmor: Power = {
       }
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"

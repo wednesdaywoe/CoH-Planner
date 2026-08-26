@@ -62,6 +62,7 @@ export const FlashFreeze: Power = {
   ],
   "effects": {
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Sleep"
@@ -83,6 +84,7 @@ export const FlashFreeze: Power = {
       "defaultActive": false,
       "effects": {
         "sleep": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 18,
           "table": "Ranged_Sleep"

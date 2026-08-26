@@ -66,12 +66,14 @@ export const Serum: Power = {
     },
     "effectDuration": 60,
     "hold": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
@@ -127,12 +129,14 @@ export const Serum: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,

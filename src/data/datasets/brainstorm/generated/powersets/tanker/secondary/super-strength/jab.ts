@@ -56,6 +56,7 @@ export const Jab: Power = {
   },
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 1.5,
       "scale": 2,

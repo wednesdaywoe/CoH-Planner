@@ -61,6 +61,7 @@ export const Taser: Power = {
       "damageBuff": 8.5
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Stun"

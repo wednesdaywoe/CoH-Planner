@@ -74,6 +74,7 @@ export const SoundBarrier: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,

@@ -70,6 +70,7 @@ export const FireShield: Power = {
       }
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

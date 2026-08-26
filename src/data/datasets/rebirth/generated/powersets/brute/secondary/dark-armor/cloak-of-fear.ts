@@ -53,6 +53,7 @@ export const CloakofFear: Power = {
       "tohitDebuff": 5
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 5,
       "table": "Melee_Fear"

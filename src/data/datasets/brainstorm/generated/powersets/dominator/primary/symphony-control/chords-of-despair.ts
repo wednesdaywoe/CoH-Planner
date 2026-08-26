@@ -46,6 +46,7 @@ export const ChordsofDespair: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
@@ -67,6 +68,7 @@ export const ChordsofDespair: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 12,
           "table": "Ranged_Immobilize"

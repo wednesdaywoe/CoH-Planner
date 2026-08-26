@@ -121,6 +121,7 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 60,
           "confuse": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 30,
             "table": "Ranged_Res_Boolean"
@@ -137,16 +138,19 @@ export const POWER_POOLS_RAW = {
           },
           "effectDuration": 60,
           "fear": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 30,
             "table": "Ranged_Res_Boolean"
           },
           "hold": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 30,
             "table": "Ranged_Res_Boolean"
           },
           "immobilize": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 30,
             "table": "Ranged_Res_Boolean"
@@ -160,11 +164,13 @@ export const POWER_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "sleep": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 30,
             "table": "Ranged_Res_Boolean"
           },
           "stun": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 30,
             "table": "Ranged_Res_Boolean"
@@ -737,6 +743,7 @@ export const POWER_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 2,
             "scale": 4,
             "table": "Melee_Stun"
@@ -755,6 +762,7 @@ export const POWER_POOLS_RAW = {
             },
             "effects": {
               "stun": {
+                "attribType": "Duration",
                 "mag": 3,
                 "scale": 4,
                 "table": "Melee_Stun"
@@ -797,6 +805,7 @@ export const POWER_POOLS_RAW = {
             ],
             "effects": {
               "stun": {
+                "attribType": "Duration",
                 "mag": 2,
                 "scale": 6,
                 "table": "Melee_Stun"
@@ -1336,6 +1345,7 @@ export const POWER_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 6,
             "table": "Melee_Ones"
@@ -1357,6 +1367,7 @@ export const POWER_POOLS_RAW = {
             ],
             "effects": {
               "stun": {
+                "attribType": "Duration",
                 "mag": 3,
                 "scale": 6,
                 "table": "Melee_Stun"
@@ -5086,6 +5097,7 @@ export const POWER_POOLS_RAW = {
           "maxTargets": 255,
           "buffDuration": 2.25,
           "confuse": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 15,
             "table": "Ranged_Res_Boolean"
@@ -5294,6 +5306,7 @@ export const POWER_POOLS_RAW = {
           },
           "effectDuration": 120,
           "fear": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
@@ -5546,6 +5559,7 @@ export const POWER_POOLS_RAW = {
             "table": "Melee_Knockback"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 2,
             "scale": 6,
             "table": "Melee_Stun"
@@ -5696,6 +5710,7 @@ export const POWER_POOLS_RAW = {
           },
           "effectDuration": 0.75,
           "immobilize": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 30,
             "table": "Melee_Res_Boolean"
@@ -6010,6 +6025,7 @@ export const POWER_POOLS_RAW = {
           },
           "effectDuration": 1.25,
           "hold": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 2,
             "table": "Melee_Ones"
@@ -6364,6 +6380,7 @@ export const POWER_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "fear": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 7,
             "table": "Melee_Fear"
@@ -6380,6 +6397,7 @@ export const POWER_POOLS_RAW = {
             ],
             "effects": {
               "fear": {
+                "attribType": "Duration",
                 "mag": 3,
                 "scale": 10.5,
                 "table": "Melee_Fear"
@@ -6461,6 +6479,7 @@ export const POWER_POOLS_RAW = {
           "radius": 20,
           "maxTargets": 10,
           "fear": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 7,
             "table": "Melee_Fear"
@@ -6477,6 +6496,7 @@ export const POWER_POOLS_RAW = {
             ],
             "effects": {
               "fear": {
+                "attribType": "Duration",
                 "mag": 3,
                 "scale": 10.5,
                 "table": "Melee_Fear"
@@ -7615,11 +7635,13 @@ export const POWER_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "hold": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 10,
             "table": "Ranged_Ones"
           },
           "immobilize": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 10,
             "table": "Ranged_Ones"
@@ -7684,11 +7706,13 @@ export const POWER_POOLS_RAW = {
             }
           },
           "sleep": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 10,
             "table": "Ranged_Ones"
           },
           "stun": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 10,
             "table": "Ranged_Ones"
@@ -8213,6 +8237,7 @@ export const POWER_POOLS_RAW = {
             }
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 2,
             "scale": 2,
             "table": "Ranged_Ones"
@@ -9784,6 +9809,7 @@ export const POWER_POOLS_RAW = {
             "knockback": 12
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 12,
             "table": "Ranged_Immobilize"

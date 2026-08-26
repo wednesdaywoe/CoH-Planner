@@ -225,6 +225,7 @@ export const Upheaval: Power = {
           "table": "Melee_Ones"
         },
         "stun": {
+          "attribType": "Duration",
           "mag": 2,
           "scale": 5,
           "table": "Melee_Stun"

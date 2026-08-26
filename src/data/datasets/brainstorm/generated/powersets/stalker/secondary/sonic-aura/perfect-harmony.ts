@@ -119,12 +119,14 @@ export const PerfectHarmony: Power = {
     },
     "effectDuration": 15,
     "hold": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 50,
@@ -201,12 +203,14 @@ export const PerfectHarmony: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 50,

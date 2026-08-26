@@ -52,6 +52,7 @@ export const ZombieHorde: Power = {
       "stealth": 2
     },
     "immobilize": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 500,
       "scale": 3,

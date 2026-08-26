@@ -61,6 +61,7 @@ export const Fissure: Power = {
       "table": "Ranged_Ones"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"

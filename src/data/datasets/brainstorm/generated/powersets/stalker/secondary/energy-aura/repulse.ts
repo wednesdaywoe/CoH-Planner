@@ -54,6 +54,7 @@ export const Repulse: Power = {
       "table": "Melee_Ones"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 4,
       "table": "Melee_Stun"

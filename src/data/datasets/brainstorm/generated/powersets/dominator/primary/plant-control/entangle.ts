@@ -63,6 +63,7 @@ export const Entangle: Power = {
   ],
   "effects": {
     "immobilize": {
+      "attribType": "Duration",
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
@@ -89,6 +90,7 @@ export const Entangle: Power = {
       "defaultActive": false,
       "effects": {
         "immobilize": {
+          "attribType": "Duration",
           "mag": 4,
           "scale": 22.5,
           "table": "Ranged_Immobilize"

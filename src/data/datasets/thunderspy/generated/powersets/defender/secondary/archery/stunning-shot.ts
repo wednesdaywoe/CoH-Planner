@@ -52,6 +52,7 @@ export const StunningShot: Power = {
   },
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"

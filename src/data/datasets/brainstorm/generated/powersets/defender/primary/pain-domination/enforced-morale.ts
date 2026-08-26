@@ -44,6 +44,7 @@ export const EnforcedMorale: Power = {
   "effects": {
     "buffDuration": 90,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
@@ -69,16 +70,19 @@ export const EnforcedMorale: Power = {
     },
     "effectDuration": 90,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
@@ -121,11 +125,13 @@ export const EnforcedMorale: Power = {
       "table": "Ranged_Ones"
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"

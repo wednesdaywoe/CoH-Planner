@@ -79,6 +79,7 @@ export const JacobsLadder: Power = {
       "table": "Melee_Ones"
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 6,
       "table": "Melee_Sleep"

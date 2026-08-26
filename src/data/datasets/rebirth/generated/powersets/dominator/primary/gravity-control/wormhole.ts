@@ -65,6 +65,7 @@ export const Wormhole: Power = {
       }
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
@@ -91,6 +92,7 @@ export const Wormhole: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 15,
           "table": "Ranged_Stun"

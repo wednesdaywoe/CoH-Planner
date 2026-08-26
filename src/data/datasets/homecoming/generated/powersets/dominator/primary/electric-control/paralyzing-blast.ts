@@ -81,6 +81,7 @@ export const ParalyzingBlast: Power = {
                 {
                   "type": "Hold",
                   "magnitude": 3,
+                  "attribType": "Duration",
                   "scale": 7,
                   "table": "Ranged_Immobilize"
                 },
@@ -143,6 +144,7 @@ export const ParalyzingBlast: Power = {
                 {
                   "type": "Hold",
                   "magnitude": 3,
+                  "attribType": "Duration",
                   "scale": 8,
                   "table": "Ranged_Immobilize"
                 },

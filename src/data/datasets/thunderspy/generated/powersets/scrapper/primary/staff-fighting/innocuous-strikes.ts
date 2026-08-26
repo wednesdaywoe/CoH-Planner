@@ -65,6 +65,7 @@ export const InnocuousStrikes: Power = {
       "slow": 10
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"

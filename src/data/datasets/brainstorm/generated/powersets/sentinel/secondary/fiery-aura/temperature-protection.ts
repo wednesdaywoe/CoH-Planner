@@ -62,6 +62,7 @@ export const TemperatureProtection: Power = {
     },
     "effectDuration": 10.25,
     "fear": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 8,

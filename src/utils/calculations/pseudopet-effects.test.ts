@@ -60,7 +60,10 @@ describe('synthesizePseudoPetEffects', () => {
     const out = synthesizePseudoPetEffects(summon);
     expect(out).not.toBeNull();
     // The guaranteed pulse (mag 3, scale 8) wins over the aura's 5% proc.
-    expect(out!.hold).toEqual({ mag: 3, scale: 8, table: 'Melee_Ones', petClass: 'minion_pets' });
+    // `attribType` rides with the row: the reader takes the mez's quantity off it, and a
+    // merged pet row that arrived without one resolves as unstated (MEZDUR-1).
+    expect(out!.hold).toEqual(
+      { mag: 3, scale: 8, table: 'Melee_Ones', attribType: 'Duration', petClass: 'minion_pets' });
     // The pet's ToHitDebuff still surfaces alongside the hold.
     expect(out!.tohitDebuff).toEqual({ scale: 1.5, table: 'Melee_DeBuff_ToHit', petClass: 'minion_pets' });
   });

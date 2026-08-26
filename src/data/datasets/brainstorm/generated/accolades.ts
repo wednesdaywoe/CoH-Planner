@@ -322,6 +322,7 @@ export const ACCOLADES_POWERSET = {
           "slow": 18
         },
         "immobilize": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 15,
           "table": "Ranged_Immobilize"
@@ -821,6 +822,7 @@ export const ACCOLADES_POWERSET = {
           "slow": 18
         },
         "immobilize": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 15,
           "table": "Ranged_Immobilize"
@@ -1487,6 +1489,7 @@ export const ACCOLADES_POWERSET = {
         "effectArea": "SingleTarget",
         "buffDuration": 30,
         "confuse": {
+          "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
           "scale": 15,
@@ -1505,18 +1508,21 @@ export const ACCOLADES_POWERSET = {
         },
         "effectDuration": 30,
         "fear": {
+          "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
           "scale": 15,
           "table": "Melee_Ones"
         },
         "hold": {
+          "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
           "scale": 15,
           "table": "Melee_Ones"
         },
         "immobilize": {
+          "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
           "scale": 15,
@@ -1550,12 +1556,14 @@ export const ACCOLADES_POWERSET = {
           }
         },
         "sleep": {
+          "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
           "scale": 15,
           "table": "Melee_Ones"
         },
         "stun": {
+          "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
           "scale": 15,

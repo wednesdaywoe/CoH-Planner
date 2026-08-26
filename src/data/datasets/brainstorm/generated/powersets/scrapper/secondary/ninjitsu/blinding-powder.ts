@@ -53,6 +53,7 @@ export const BlindingPowder: Power = {
   "effects": {
     "buffDuration": 20,
     "confuse": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12,
       "table": "Melee_Immobilize"
@@ -70,6 +71,7 @@ export const BlindingPowder: Power = {
       "table": "Melee_Taunt"
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Sleep"

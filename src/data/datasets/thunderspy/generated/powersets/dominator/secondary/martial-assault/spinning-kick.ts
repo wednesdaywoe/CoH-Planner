@@ -53,6 +53,7 @@ export const SpinningKick: Power = {
   },
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 4,
       "table": "Melee_Stun"
@@ -75,6 +76,7 @@ export const SpinningKick: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 6,
           "table": "Melee_Stun"

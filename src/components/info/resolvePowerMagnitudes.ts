@@ -48,10 +48,27 @@ import {
 /**
  * What quantity a row's three-tier carries. A mez row shows a fixed magnitude beside an
  * enhanceable duration, so the two travel together.
+ *
+ * The four mez members are one decision, taken off the atom's `attribType` (MEZDUR-1). That
+ * field states which of the AttribMod's two numbers `scale × table` computes, and nothing
+ * else on the row does: a Duration mez and a Magnitude mez are identical on effect type,
+ * sub-type, sign, aspect, recipient and table, and differ only in what the product MEANS.
+ * This used to be inferred from the table NAME — a `res_boolean` sniff — which was wrong in
+ * both directions at once: it read every applied mez's duration as its magnitude, and read
+ * every protection row off a `*_Ones` table as the def compiler's unscaled `Magnitude 1.0`
+ * placeholder.
+ *
+ * `mez_expression`: valued by a stack-machine program rather than by its scale (Inner Will's
+ * six break-free templates read whatever is mezzing you right now), so no static tier states
+ * it. `mez_unstated`: the discriminator never reached the bag — a converter regression, not
+ * a state the game has, which `mezAttribTypeStamped` fails on.
  */
 export type MagnitudeQuantity =
   | { kind: 'value' }
   | { kind: 'mez_duration'; magnitude: number }
+  | { kind: 'mez_magnitude' }
+  | { kind: 'mez_expression' }
+  | { kind: 'mez_unstated' }
   | { kind: 'distance' };
 
 export interface ResolvedMagnitude {
@@ -232,12 +249,17 @@ function termBaseValue(
   if (config.format === 'mag') {
     if (typeof value === 'number') return value;
     if (isMezEffect(value)) {
-      // Mez protection effects use res_boolean tables — calculate from scale × tableValue
-      if (archetypeId && value.table.toLowerCase().includes('res_boolean')) {
-        const tableVal = getTableValue(archetypeId, value.table, level ?? DEFAULT_TABLE_LEVEL);
-        if (tableVal !== undefined) return Math.abs(value.scale) * tableVal;
-      }
-      return value.mag;
+      // A mez states ONE resolved number either way — `|scale × table|`, in seconds when the
+      // atom says Duration and in magnitude points when it says Magnitude. What the flat
+      // `mag` beside it means depends on the same field, so it is never the value here: on a
+      // Duration row it is the rank the mez grabs, and on a Magnitude row it is the def
+      // compiler's unscaled 1.0. Expression-valued and unstated rows have no resolvable base
+      // at all; the row is built from the quantity alone.
+      if (value.attribType !== 'Duration' && value.attribType !== 'Magnitude') return null;
+      // Through `tableProduct`, so a merged pseudo-pet row resolves against the class it names
+      // rather than the summoner's — Choking Cloud's gas is a second character (ENT-10).
+      const product = tableProduct(value, archetypeId, level ?? DEFAULT_TABLE_LEVEL);
+      return product === undefined ? null : Math.abs(product);
     }
     // ScaledEffect without mag (knockback, knockup, repel) — resolve via table when available
     {
@@ -317,24 +339,22 @@ function maxHPFractionPercent(value: unknown): number | undefined {
 }
 
 /**
- * Classify a `mag`-format effect: a mez whose table resolves a positive duration carries
- * that duration beside its fixed magnitude; a `{ scale, table }` with no `mag` is a
- * distance; anything else is a plain magnitude.
+ * Classify a `mag`-format effect off the discriminator the atom carries: a mez states its own
+ * `attribType`, and a `{ scale, table }` with no `mag` at all is a distance.
+ *
+ * A pure function of the value and its registry config — no table read. The classification
+ * used to depend on one (`tableVal > 0` stood in for "this is a duration"), which made the
+ * row's unit hostage to whether the AT happened to carry the table.
  */
-function classifyMagQuantity(
-  value: unknown,
-  config: EffectDisplayConfig,
-  archetypeId?: string,
-  level?: number
-): MagnitudeQuantity {
+function classifyMagQuantity(value: unknown, config: EffectDisplayConfig): MagnitudeQuantity {
   if (config.format !== 'mag') return { kind: 'value' };
-  if (!archetypeId || !level) return { kind: 'value' };
   if (isMezEffect(value)) {
-    const tableVal = getTableValue(archetypeId, value.table, level);
-    if (tableVal !== undefined && Math.abs(value.scale * tableVal) > 0) {
-      return { kind: 'mez_duration', magnitude: value.mag };
+    switch (value.attribType) {
+      case 'Duration': return { kind: 'mez_duration', magnitude: value.mag };
+      case 'Magnitude': return { kind: 'mez_magnitude' };
+      case 'Expression': return { kind: 'mez_expression' };
+      default: return { kind: 'mez_unstated' };
     }
-    return { kind: 'value' };
   }
   if (typeof value === 'object' && value !== null && 'scale' in value && 'table' in value) {
     return { kind: 'distance' };
@@ -427,16 +447,34 @@ export function resolvePowerMagnitudes({
         ? { ...config, label: `${config.label} (% Max HP)`, format: 'percent' }
         : config;
 
+      const quantity = classifyMagQuantity(value, config);
+      // A row whose value the data does not state still gets a row. It carries no number —
+      // the surface says so in words — because the alternatives are both worse: a fabricated
+      // one is the soft-wrong MEZDUR-1 was filed for, and dropping the row is the silent
+      // omission ENT-6 measured, where a power's card simply lacked an effect the game shows.
+      if (quantity.kind === 'mez_expression' || quantity.kind === 'mez_unstated') {
+        push({
+          rowKey: key,
+          effectKey,
+          config,
+          rawValue: value,
+          tiers: { base: 0, enhanced: 0, final: 0 },
+          quantity,
+        });
+        continue;
+      }
+
       const baseValue = percentForm !== undefined
         ? percentForm
         : getEffectBaseValue(value, config, buffDebuffMod, archetypeId, level);
       if (baseValue === null || baseValue === 0) continue;
 
-      const quantity = classifyMagQuantity(value, config, archetypeId, level);
-
-      // A mez's duration and a knockback's distance are scaled by the bonus named by the
-      // EFFECT key (a hold's duration reads the `hold` bonus), not by the config's
-      // enhancement aspect — which `mag`-format effects do not declare.
+      // A mez and a knockback's distance are scaled by the bonus named by the EFFECT key (a
+      // hold reads the `hold` bonus), not by the config's enhancement aspect — which
+      // `mag`-format effects do not declare. The coupling holds for both mez quantities: the
+      // server applies Strength at the mod's own attrib offset before deciding which number
+      // the product becomes (`attribmod.c` `mod_Fill`), so a Magnitude mez takes it on the
+      // magnitude exactly as a Duration one takes it on the seconds.
       //
       // A split slot takes neither: the slot NAME is the IgnoreStrength mark, so the
       // row is flat at every tier (ENT-6). A value carrying the mark on itself is the

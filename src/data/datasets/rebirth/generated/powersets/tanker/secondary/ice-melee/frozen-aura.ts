@@ -58,6 +58,7 @@ export const FrozenAura: Power = {
   },
   "effects": {
     "sleep": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 10,
       "table": "Melee_Sleep"

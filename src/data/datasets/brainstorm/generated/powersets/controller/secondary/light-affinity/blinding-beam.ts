@@ -52,6 +52,7 @@ export const BlindingBeam: Power = {
       "tohitDebuff": 30
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"

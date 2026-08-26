@@ -61,6 +61,7 @@ export const Earsplitter: Power = {
   ],
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 5,
       "table": "Melee_Immobilize"
@@ -83,6 +84,7 @@ export const Earsplitter: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 1,
           "scale": 7.5,
           "table": "Melee_Immobilize"

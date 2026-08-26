@@ -66,6 +66,7 @@ export const HauntingBlow: Power = {
   ],
   "effects": {
     "fear": {
+      "attribType": "Duration",
       "mag": 0.75,
       "scale": 10,
       "table": "Melee_Fear"

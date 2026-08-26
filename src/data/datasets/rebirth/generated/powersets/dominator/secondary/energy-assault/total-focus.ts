@@ -62,6 +62,7 @@ export const TotalFocus: Power = {
   ],
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
@@ -88,6 +89,7 @@ export const TotalFocus: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 15,
           "table": "Melee_Immobilize"

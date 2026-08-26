@@ -55,6 +55,7 @@ export const Clobber: Power = {
   },
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"

@@ -79,11 +79,13 @@ export const LightForm: Power = {
       "table": "Melee_Ones"
     },
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"
@@ -155,11 +157,13 @@ export const LightForm: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"

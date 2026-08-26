@@ -52,6 +52,7 @@ export const SteamyMist: Power = {
   "effects": {
     "buffDuration": 2.25,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"

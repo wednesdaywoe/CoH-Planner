@@ -61,6 +61,7 @@ export const ShadowyBinds: Power = {
       "tohitDebuff": 15
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
@@ -90,6 +91,7 @@ export const ShadowyBinds: Power = {
       "defaultActive": false,
       "effects": {
         "immobilize": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 22.5,
           "table": "Ranged_Immobilize"

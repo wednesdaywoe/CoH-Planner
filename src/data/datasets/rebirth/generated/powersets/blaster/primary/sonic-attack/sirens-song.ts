@@ -65,6 +65,7 @@ export const SirensSong: Power = {
       "damageBuff": 9.5
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 30,
       "table": "Ranged_Sleep"

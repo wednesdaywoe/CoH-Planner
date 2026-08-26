@@ -106,6 +106,7 @@ export const ShadowFall: Power = {
     },
     "effectDuration": 0.75,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"

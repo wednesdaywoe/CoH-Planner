@@ -52,6 +52,7 @@ export const GravityDistortionField: Power = {
       "slow": 12
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Immobilize"

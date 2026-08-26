@@ -147,18 +147,21 @@ export const CategoryFive: Power = {
                 {
                   "type": "Knockback",
                   "magnitude": 1,
+                  "attribType": "Magnitude",
                   "scale": 1.1,
                   "table": "Ranged_Knockback"
                 },
                 {
                   "type": "Knockback",
                   "magnitude": 1,
+                  "attribType": "Magnitude",
                   "scale": 1,
                   "table": "Ranged_Ones"
                 },
                 {
                   "type": "Fear",
                   "magnitude": 50,
+                  "attribType": "Duration",
                   "scale": 1,
                   "table": "Melee_Ones",
                   "ignoreStrength": true

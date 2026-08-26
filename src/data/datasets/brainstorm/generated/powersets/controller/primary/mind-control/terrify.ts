@@ -55,6 +55,7 @@ export const Terrify: Power = {
   },
   "effects": {
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Fear"

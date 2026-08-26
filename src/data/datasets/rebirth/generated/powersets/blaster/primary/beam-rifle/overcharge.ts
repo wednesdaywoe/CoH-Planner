@@ -82,6 +82,7 @@ export const Overcharge: Power = {
       "defenseDebuff": 15
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Stun"
@@ -114,6 +115,7 @@ export const Overcharge: Power = {
       "mode": "replace",
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 8,
           "table": "Ranged_Stun"

@@ -65,11 +65,13 @@ export const IcyBastion: Power = {
     },
     "effectDuration": 30,
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 1000,
       "scale": 0.75,
@@ -151,11 +153,13 @@ export const IcyBastion: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"

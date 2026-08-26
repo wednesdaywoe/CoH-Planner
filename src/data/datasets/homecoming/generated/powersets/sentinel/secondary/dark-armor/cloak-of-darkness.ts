@@ -108,6 +108,7 @@ export const CloakofDarkness: Power = {
     },
     "effectDuration": 0.75,
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

@@ -54,6 +54,7 @@ export const TimeStop: Power = {
       "specialBuff": 20
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 10,
       "table": "Ranged_Immobilize"
@@ -101,6 +102,7 @@ export const TimeStop: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 1,
           "scale": 3,
           "table": "Ranged_Immobilize"

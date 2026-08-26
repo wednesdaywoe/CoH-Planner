@@ -47,6 +47,7 @@ export const Smoke: Power = {
   "effects": {
     "buffDuration": 60,
     "confuse": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 10,
       "table": "Ranged_Immobilize"
@@ -80,6 +81,7 @@ export const Smoke: Power = {
       "defaultActive": false,
       "effects": {
         "confuse": {
+          "attribType": "Duration",
           "mag": 2,
           "scale": 20,
           "table": "Ranged_Immobilize"

@@ -82,6 +82,7 @@ export const FuturePain: Power = {
       }
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
@@ -125,6 +126,7 @@ export const FuturePain: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 22,
           "table": "Ranged_Stun"

@@ -108,6 +108,7 @@ export const StridentEcho: Power = {
       "debuffResistance": 15
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 5,
       "table": "Melee_Immobilize"

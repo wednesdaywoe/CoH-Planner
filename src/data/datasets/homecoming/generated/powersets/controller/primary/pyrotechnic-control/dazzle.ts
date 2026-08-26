@@ -63,6 +63,7 @@ export const Dazzle: Power = {
       "resistanceDebuff": 5
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"

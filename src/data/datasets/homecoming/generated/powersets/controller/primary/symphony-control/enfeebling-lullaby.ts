@@ -64,6 +64,7 @@ export const EnfeeblingLullaby: Power = {
       "damageDebuff": 15
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Sleep"

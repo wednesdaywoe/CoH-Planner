@@ -62,6 +62,7 @@ export const MementoMori: Power = {
       "maxHPBuff": 30
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"

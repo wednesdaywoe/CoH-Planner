@@ -284,6 +284,7 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
         "teleport": 0.55
       },
       "immobilize": {
+        "attribType": "Duration",
         "ignoreStrength": true,
         "mag": 100,
         "scale": 0.3,
@@ -369,12 +370,14 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
         }
       },
       "sleep": {
+        "attribType": "Duration",
         "ignoreStrength": true,
         "mag": 1,
         "scale": 0.55,
         "table": "Melee_Ones"
       },
       "stun": {
+        "attribType": "Duration",
         "ignoreStrength": true,
         "mag": 1,
         "scale": 0.55,

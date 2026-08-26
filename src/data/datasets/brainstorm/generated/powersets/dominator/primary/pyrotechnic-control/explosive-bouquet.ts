@@ -50,6 +50,7 @@ export const ExplosiveBouquet: Power = {
       "resistanceDebuff": 5
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
@@ -128,6 +129,7 @@ export const ExplosiveBouquet: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 12,
           "table": "Ranged_Immobilize"

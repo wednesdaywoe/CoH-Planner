@@ -67,6 +67,7 @@ export const GravityWell: Power = {
       "slow": 10
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"

@@ -74,6 +74,7 @@ export const Bonfire: Power = {
                 {
                   "type": "Knockback",
                   "magnitude": 1,
+                  "attribType": "Magnitude",
                   "scale": 3,
                   "table": "Melee_Knockback"
                 }

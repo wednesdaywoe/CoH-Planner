@@ -70,6 +70,7 @@ export const RingofFire: Power = {
       "damageBuff": 8.67
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

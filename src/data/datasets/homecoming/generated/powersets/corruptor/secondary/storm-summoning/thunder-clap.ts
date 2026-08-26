@@ -43,6 +43,7 @@ export const ThunderClap: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 10,
       "table": "Ranged_Stun"

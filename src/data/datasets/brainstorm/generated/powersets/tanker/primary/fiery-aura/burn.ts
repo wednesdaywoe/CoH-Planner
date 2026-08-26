@@ -50,6 +50,7 @@ export const Burn: Power = {
     },
     "effectDuration": 100,
     "immobilize": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,

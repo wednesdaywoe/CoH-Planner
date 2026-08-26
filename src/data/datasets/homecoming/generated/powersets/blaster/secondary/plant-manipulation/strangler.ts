@@ -54,6 +54,7 @@ export const Strangler: Power = {
   },
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 10,
       "table": "Ranged_Immobilize"

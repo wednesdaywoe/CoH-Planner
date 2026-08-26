@@ -59,6 +59,7 @@ export const WorldofConfusion: Power = {
   },
   "effects": {
     "confuse": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 1.5,
       "table": "Ranged_Ones"

@@ -54,6 +54,7 @@ export const PaleWind: Power = {
       "repel": 0.4
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 0.5,
       "table": "Melee_Fear"

@@ -38,6 +38,7 @@ export const CrabSpiderArmor: Power = {
   "effects": {
     "buffDuration": 10,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
@@ -54,16 +55,19 @@ export const CrabSpiderArmor: Power = {
     },
     "effectDuration": 10,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
     },
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
@@ -89,11 +93,13 @@ export const CrabSpiderArmor: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"

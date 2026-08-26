@@ -71,11 +71,13 @@ export const TRCocoon: Power = {
       "slow": 15
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Immobilize"
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 15,
       "table": "Ranged_Immobilize"

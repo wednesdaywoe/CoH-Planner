@@ -71,6 +71,7 @@ export const ElectronShackles: Power = {
       "defenseDebuff": 10
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

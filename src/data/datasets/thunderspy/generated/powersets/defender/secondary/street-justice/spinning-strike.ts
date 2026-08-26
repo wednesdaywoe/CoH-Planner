@@ -193,6 +193,7 @@ export const SpinningStrike: Power = {
       ],
       "effects": {
         "fear": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 6,
           "table": "Melee_Fear"

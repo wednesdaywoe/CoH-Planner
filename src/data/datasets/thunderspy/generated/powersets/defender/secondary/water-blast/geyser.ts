@@ -154,6 +154,7 @@ export const Geyser: Power = {
       ],
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 5,
           "table": "Ranged_Stun"
@@ -186,6 +187,7 @@ export const Geyser: Power = {
       ],
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 5,
           "table": "Ranged_Stun"
@@ -218,6 +220,7 @@ export const Geyser: Power = {
       ],
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 5,
           "table": "Ranged_Stun"

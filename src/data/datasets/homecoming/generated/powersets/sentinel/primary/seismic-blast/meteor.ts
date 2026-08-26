@@ -86,6 +86,7 @@ export const Meteor: Power = {
                 {
                   "type": "Knockback",
                   "magnitude": 1,
+                  "attribType": "Magnitude",
                   "scale": 10,
                   "table": "Ranged_Knockback"
                 }

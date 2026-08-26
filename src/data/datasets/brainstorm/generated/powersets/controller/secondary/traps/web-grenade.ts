@@ -60,6 +60,7 @@ export const WebGrenade: Power = {
       "slow": 30
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

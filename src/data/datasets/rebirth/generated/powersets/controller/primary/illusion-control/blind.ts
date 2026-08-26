@@ -55,6 +55,7 @@ export const Blind: Power = {
   },
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Immobilize"

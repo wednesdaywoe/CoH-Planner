@@ -52,6 +52,7 @@ export const NeurotoxicBreath: Power = {
       "slow": 20
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 3,
       "table": "Ranged_Immobilize"

@@ -71,6 +71,7 @@ export const EnergyPunch: Power = {
       "damageBuff": 8.33
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 5,
       "table": "Melee_Stun"

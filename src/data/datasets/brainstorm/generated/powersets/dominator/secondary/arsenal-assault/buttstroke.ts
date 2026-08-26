@@ -54,6 +54,7 @@ export const Buttstroke: Power = {
   },
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
@@ -76,6 +77,7 @@ export const Buttstroke: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 12,
           "table": "Melee_Stun"

@@ -54,6 +54,7 @@ export const Blind: Power = {
   },
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
@@ -76,6 +77,7 @@ export const Blind: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 18,
           "table": "Ranged_Immobilize"

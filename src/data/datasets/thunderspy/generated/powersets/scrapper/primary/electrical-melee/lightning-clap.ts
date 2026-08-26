@@ -53,6 +53,7 @@ export const LightningClap: Power = {
       "table": "Melee_Knockback"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"

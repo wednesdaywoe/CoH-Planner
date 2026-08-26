@@ -101,11 +101,13 @@ export const TouchofFear: Power = {
           "tohitDebuff": 20
         },
         "fear": {
+          "attribType": "Duration",
           "mag": 2,
           "scale": 10,
           "table": "Melee_Fear"
         },
         "hold": {
+          "attribType": "Duration",
           "mag": 2,
           "scale": 6,
           "table": "Ranged_Immobilize"

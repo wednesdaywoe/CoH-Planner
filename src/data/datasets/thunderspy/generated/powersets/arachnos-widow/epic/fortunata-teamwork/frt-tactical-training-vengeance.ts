@@ -106,6 +106,7 @@ export const FRTTacticalTrainingVengeance: Power = {
     },
     "effectDuration": 120,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 10,
       "table": "Melee_Ones"

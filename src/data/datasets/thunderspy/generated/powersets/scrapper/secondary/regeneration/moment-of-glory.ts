@@ -84,11 +84,13 @@ export const MomentofGlory: Power = {
     },
     "effectDuration": 15,
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 60,
       "table": "Melee_Res_Boolean"
@@ -160,11 +162,13 @@ export const MomentofGlory: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"

@@ -63,6 +63,7 @@ export const FuturePain: Power = {
       "damageBuff": 9.17
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 5,
       "table": "Melee_Fear"
@@ -96,6 +97,7 @@ export const FuturePain: Power = {
       "defaultActive": false,
       "effects": {
         "fear": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 5,
           "table": "Melee_Fear"

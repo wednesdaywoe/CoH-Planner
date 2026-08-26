@@ -41,6 +41,7 @@ export const AuraofConfusion: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 20,
       "table": "Ranged_Immobilize"

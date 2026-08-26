@@ -79,6 +79,7 @@ export const GravityDistortionField: Power = {
                 {
                   "type": "Hold",
                   "magnitude": 3,
+                  "attribType": "Duration",
                   "scale": 5,
                   "table": "Ranged_Immobilize"
                 }
@@ -156,12 +157,14 @@ export const GravityDistortionField: Power = {
                 {
                   "type": "Hold",
                   "magnitude": 3,
+                  "attribType": "Duration",
                   "scale": 8,
                   "table": "Ranged_Immobilize"
                 },
                 {
                   "type": "Hold",
                   "magnitude": 1,
+                  "attribType": "Duration",
                   "scale": 4,
                   "table": "Ranged_Immobilize",
                   "chance": 0.2

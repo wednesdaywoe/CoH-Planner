@@ -64,6 +64,7 @@ export const PsychicShockwave: Power = {
       "table": "Melee_Slow"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
@@ -89,6 +90,7 @@ export const PsychicShockwave: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 2,
           "scale": 9,
           "table": "Melee_Stun"

@@ -62,6 +62,7 @@ export const FreezeRay: Power = {
       "damageBuff": 8.5
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Sleep"

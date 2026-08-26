@@ -66,6 +66,7 @@ export const TouchofFear: Power = {
       "tohitDebuff": 20
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Fear"

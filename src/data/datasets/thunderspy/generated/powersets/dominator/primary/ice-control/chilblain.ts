@@ -55,6 +55,7 @@ export const Chilblain: Power = {
       "slow": 5
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 2,
       "table": "Ranged_Immobilize"

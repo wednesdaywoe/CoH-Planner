@@ -93,6 +93,7 @@ export const UnchainEssence: Power = {
       }
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 5,
       "table": "Ranged_Stun"

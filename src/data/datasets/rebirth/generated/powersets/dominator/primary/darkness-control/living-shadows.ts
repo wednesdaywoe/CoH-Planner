@@ -66,6 +66,7 @@ export const LivingShadows: Power = {
       "tohitDebuff": 8
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
@@ -97,6 +98,7 @@ export const LivingShadows: Power = {
       "defaultActive": false,
       "effects": {
         "immobilize": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 22.5,
           "table": "Ranged_Immobilize"

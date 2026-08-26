@@ -311,6 +311,7 @@ export const ACCOLADES_POWERSET = {
           "slow": 18
         },
         "immobilize": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 15,
           "table": "Ranged_Immobilize"
@@ -811,6 +812,7 @@ export const ACCOLADES_POWERSET = {
           "slow": 18
         },
         "immobilize": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 15,
           "table": "Ranged_Immobilize"

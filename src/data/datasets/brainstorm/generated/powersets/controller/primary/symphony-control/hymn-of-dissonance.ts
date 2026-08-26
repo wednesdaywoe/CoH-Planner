@@ -56,6 +56,7 @@ export const HymnofDissonance: Power = {
       "rechargeDebuff": 18
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12,
       "table": "Melee_Immobilize"

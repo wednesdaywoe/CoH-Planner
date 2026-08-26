@@ -66,6 +66,7 @@ export const HauntingStrike: Power = {
   ],
   "effects": {
     "fear": {
+      "attribType": "Duration",
       "mag": 0.75,
       "scale": 6,
       "table": "Melee_Fear"

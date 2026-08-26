@@ -107,6 +107,7 @@ export const ShadowCloak: Power = {
     },
     "effectDuration": 0.75,
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"

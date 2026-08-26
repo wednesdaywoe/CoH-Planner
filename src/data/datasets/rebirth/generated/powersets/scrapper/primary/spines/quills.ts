@@ -62,6 +62,7 @@ export const Quills: Power = {
       "slow": 3
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 0.33000001311302185,
       "scale": 3,
       "table": "Melee_Immobilize"

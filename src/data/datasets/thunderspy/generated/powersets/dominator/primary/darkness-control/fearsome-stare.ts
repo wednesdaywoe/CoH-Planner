@@ -54,6 +54,7 @@ export const FearsomeStare: Power = {
       "tohitDebuff": 20
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Fear"
@@ -78,6 +79,7 @@ export const FearsomeStare: Power = {
       "defaultActive": false,
       "effects": {
         "fear": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 22.5,
           "table": "Ranged_Fear"

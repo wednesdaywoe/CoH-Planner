@@ -72,6 +72,7 @@ export const ProtonVolley: Power = {
       "defenseDebuff": 12
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
@@ -100,6 +101,7 @@ export const ProtonVolley: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 12,
           "table": "Ranged_Stun"

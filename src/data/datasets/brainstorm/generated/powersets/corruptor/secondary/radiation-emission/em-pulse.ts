@@ -54,6 +54,7 @@ export const EMPulse: Power = {
       "table": "Ranged_EndDrain"
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

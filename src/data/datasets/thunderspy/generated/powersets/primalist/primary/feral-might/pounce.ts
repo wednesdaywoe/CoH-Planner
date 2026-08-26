@@ -70,6 +70,7 @@ export const Pounce: Power = {
   ],
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 4,
       "scale": 4,
       "table": "Melee_Stun"
@@ -115,6 +116,7 @@ export const Pounce: Power = {
       ],
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 4,
           "scale": 6,
           "table": "Melee_Stun"

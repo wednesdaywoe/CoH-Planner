@@ -83,6 +83,7 @@ export const LightningStrike: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 2,
           "table": "Ranged_Stun"

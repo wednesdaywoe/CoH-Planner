@@ -71,11 +71,13 @@ export const GrippingTerror: Power = {
   ],
   "effects": {
     "fear": {
+      "attribType": "Duration",
       "mag": 0.75,
       "scale": 10,
       "table": "Melee_Fear"
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

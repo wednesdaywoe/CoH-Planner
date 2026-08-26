@@ -67,6 +67,7 @@ export const ConservePower: Power = {
       "table": "Melee_Ones"
     },
     "stun": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,

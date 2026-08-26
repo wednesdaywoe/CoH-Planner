@@ -130,6 +130,7 @@ export const KineticShockwave: Power = {
       },
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 9,
           "table": "Melee_Immobilize"

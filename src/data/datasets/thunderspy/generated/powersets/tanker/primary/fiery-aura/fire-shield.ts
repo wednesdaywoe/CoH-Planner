@@ -53,6 +53,7 @@ export const FireShield: Power = {
     },
     "effectDuration": 0.75,
     "immobilize": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,
@@ -77,6 +78,7 @@ export const FireShield: Power = {
       }
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

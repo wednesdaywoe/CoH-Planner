@@ -79,6 +79,7 @@ export const TotalFocus: Power = {
       "damageDebuff": 12
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"

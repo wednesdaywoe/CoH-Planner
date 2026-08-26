@@ -51,6 +51,7 @@ export const EntanglingArrow: Power = {
       "slow": 15
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

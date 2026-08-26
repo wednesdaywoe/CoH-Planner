@@ -57,6 +57,7 @@ export const OppressiveGloom: Power = {
   },
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"

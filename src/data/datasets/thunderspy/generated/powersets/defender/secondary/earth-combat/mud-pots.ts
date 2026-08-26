@@ -59,6 +59,7 @@ export const MudPots: Power = {
       "slow": 5
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 2.25,
       "table": "Melee_Ones"

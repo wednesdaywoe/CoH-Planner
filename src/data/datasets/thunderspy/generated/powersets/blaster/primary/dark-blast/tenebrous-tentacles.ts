@@ -77,6 +77,7 @@ export const TenebrousTentacles: Power = {
       "tohitDebuff": 8
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

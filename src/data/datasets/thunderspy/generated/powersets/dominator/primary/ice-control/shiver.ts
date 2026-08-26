@@ -86,6 +86,7 @@ export const Shiver: Power = {
       }
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Stun"
@@ -111,6 +112,7 @@ export const Shiver: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 22,
           "table": "Ranged_Stun"

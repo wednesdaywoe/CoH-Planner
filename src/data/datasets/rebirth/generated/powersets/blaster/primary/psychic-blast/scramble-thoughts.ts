@@ -62,6 +62,7 @@ export const ScrambleThoughts: Power = {
       "damageBuff": 10.5
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"

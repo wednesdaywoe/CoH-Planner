@@ -77,6 +77,7 @@ export const PowerSink: Power = {
       "table": "Melee_Ones"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"
@@ -106,6 +107,7 @@ export const PowerSink: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 7.5,
           "table": "Melee_Stun"

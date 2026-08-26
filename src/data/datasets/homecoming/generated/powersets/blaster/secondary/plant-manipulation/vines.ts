@@ -47,11 +47,13 @@ export const Vines: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

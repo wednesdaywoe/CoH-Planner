@@ -59,6 +59,7 @@ export const WrathOfHell: Power = {
       "resistanceDebuff": 7
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Immobilize"

@@ -1122,7 +1122,7 @@ const ASPECT_MAP: Record<string, Aspect> = {
   Absolute: 'Abs', Current: 'Cur', Resistance: 'Res', Strength: 'Str', Maximum: 'Max',
 };
 
-function mapAttribType(t?: string): AttribType {
+export function mapAttribType(t?: string): AttribType {
   if (t === 'Duration') return 'Duration';
   if (t === 'Expression') return 'Expression';
   return 'Magnitude'; // Magnitude, Constant, undefined

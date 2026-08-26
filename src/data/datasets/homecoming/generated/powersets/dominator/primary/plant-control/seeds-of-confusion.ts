@@ -47,6 +47,7 @@ export const SeedsofConfusion: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
@@ -67,6 +68,7 @@ export const SeedsofConfusion: Power = {
       "defaultActive": false,
       "effects": {
         "confuse": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 12,
           "table": "Ranged_Immobilize"

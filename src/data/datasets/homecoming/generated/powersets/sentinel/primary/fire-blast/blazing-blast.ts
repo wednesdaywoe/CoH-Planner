@@ -77,6 +77,7 @@ export const BlazingBlast: Power = {
     },
     "effectDuration": 0.61,
     "hold": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 4,

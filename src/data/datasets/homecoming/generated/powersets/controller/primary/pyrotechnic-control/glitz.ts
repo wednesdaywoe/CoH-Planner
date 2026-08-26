@@ -63,11 +63,13 @@ export const Glitz: Power = {
   ],
   "effects": {
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Fear"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"

@@ -53,6 +53,7 @@ export const Scare: Power = {
       "damageBuff": 10.17
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Fear"

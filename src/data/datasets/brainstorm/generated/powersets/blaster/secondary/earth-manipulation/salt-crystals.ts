@@ -54,6 +54,7 @@ export const SaltCrystals: Power = {
       "defenseDebuff": 10
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Sleep"

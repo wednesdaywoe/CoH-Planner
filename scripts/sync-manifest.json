@@ -64,7 +64,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "419685ca66fd800e9adf8c08c01e39eb44375018809e70298a9738b5fd546e0d"
+      "sha256": "ddf0e2d3ef1c49e4b34a40b9e95b2e880a01344978b53031ff557ba97e60e34a"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -244,7 +244,7 @@
     {
       "path": "scripts/convert-pet-entities.cjs",
       "status": "identical",
-      "sha256": "6ce2474cd857ebb268dd6c7412bd80e5cd06876b2f0253d0b9a061177a35abf9"
+      "sha256": "65989c2d5183e7d3dad54cfa0e958622573378430fa6d0de6a15bcbe612b7c92"
     },
     {
       "path": "scripts/convert-pool-powers.cjs",
@@ -254,7 +254,7 @@
     {
       "path": "scripts/convert-powerset.cjs",
       "status": "identical",
-      "sha256": "280ade5f92ab3d8c7fb4676e58282611ad57802bc69baf25019bd65964bc59ec"
+      "sha256": "3b688d058803b00e26281c98c7a45e87206eb95e4c8098ddc8dbca152ce89eda"
     },
     {
       "path": "scripts/convert-salvage.cjs",
@@ -415,12 +415,12 @@
     {
       "path": "src/data/core/atomic-effect.ts",
       "status": "identical",
-      "sha256": "2da662662d358ae2bac6dbe77b8b31cd8627c9993161b99de1c0c749cc6f669d"
+      "sha256": "2dca42f115a5f61f7138be303bdd266fc7a5642e9839527c73920d820f166616"
     },
     {
       "path": "src/data/dataset.ts",
       "status": "identical",
-      "sha256": "31aa1202833e40b6c82878f0a6d9cedb801b4e84e083a8134ff12f3e02e6cfec"
+      "sha256": "cbce62e13dccaa7023e3cfcc7ac892915b032e7f5a8ab8140f891e1dcae07ec9"
     },
     {
       "path": "src/data/enhancement-curves.ts",
@@ -490,7 +490,7 @@
     {
       "path": "src/types/power.ts",
       "status": "identical",
-      "sha256": "58bdb9804c9a936416bf72fa2e56b4d78f65ff47f75acbe795b269f014edcebd"
+      "sha256": "eef6416a1d3a642b1b098b7b1a2d8ae738e38c3da73414fd793d6ac483c11ba7"
     },
     {
       "path": "src/types/shared.ts",

@@ -140,6 +140,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 18
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -275,6 +276,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 18
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -774,6 +776,7 @@ export const EPIC_POOLS_RAW = {
             "tohitDebuff": 20
           },
           "fear": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Fear"
@@ -874,6 +877,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 30,
           "confuse": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 8,
             "table": "Ranged_Immobilize"
@@ -1088,6 +1092,7 @@ export const EPIC_POOLS_RAW = {
           },
           "effectDuration": 30,
           "immobilize": {
+            "attribType": "Magnitude",
             "mag": 1,
             "scale": 3,
             "table": "Ranged_Ones"
@@ -1332,6 +1337,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -1707,6 +1713,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -2121,6 +2128,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -2224,6 +2232,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Ones"
@@ -2343,6 +2352,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 2
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
@@ -2435,6 +2445,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
@@ -4008,6 +4019,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -4686,6 +4698,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -5241,6 +5254,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -5834,6 +5848,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -6284,6 +6299,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Ones"
@@ -6415,6 +6431,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 5,
             "table": "Melee_Stun"
@@ -6623,6 +6640,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 8,
             "table": "Ranged_Immobilize"
@@ -6838,6 +6856,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "sleep": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Sleep"
@@ -7117,6 +7136,7 @@ export const EPIC_POOLS_RAW = {
             "regenBuff": 0.75
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
@@ -7374,6 +7394,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "sleep": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Sleep"
@@ -7653,6 +7674,7 @@ export const EPIC_POOLS_RAW = {
             "regenBuff": 0.75
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
@@ -8081,6 +8103,7 @@ export const EPIC_POOLS_RAW = {
             "tohitDebuff": 20
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
@@ -8905,6 +8928,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -9076,6 +9100,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
@@ -9329,6 +9354,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -9518,6 +9544,7 @@ export const EPIC_POOLS_RAW = {
             "regenBuff": 0.75
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
@@ -9657,6 +9684,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -9865,6 +9893,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -10185,6 +10214,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -10587,6 +10617,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Ones"
@@ -10862,6 +10893,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -11438,6 +11470,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 2,
             "scale": 6,
             "table": "Melee_Stun"
@@ -11717,6 +11750,7 @@ export const EPIC_POOLS_RAW = {
             "perTarget": 30
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
@@ -11729,6 +11763,7 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 30,
             "scale": 8,
             "table": "Melee_Stun"
@@ -12065,6 +12100,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -12429,6 +12465,7 @@ export const EPIC_POOLS_RAW = {
             "tohitDebuff": 8
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
@@ -12615,6 +12652,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -12786,6 +12824,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
@@ -13097,6 +13136,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "sleep": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 12,
             "table": "Ranged_Sleep"
@@ -14090,6 +14130,7 @@ export const EPIC_POOLS_RAW = {
             "regenBuff": 0.75
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
@@ -16032,6 +16073,7 @@ export const EPIC_POOLS_RAW = {
             "defenseDebuff": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 4,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -16110,6 +16152,7 @@ export const EPIC_POOLS_RAW = {
             "defenseDebuff": 15
           },
           "sleep": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 20,
             "table": "Ranged_Sleep"
@@ -16211,6 +16254,7 @@ export const EPIC_POOLS_RAW = {
             "defenseDebuff": 12
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -16377,6 +16421,7 @@ export const EPIC_POOLS_RAW = {
             "defenseDebuff": 12
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 8,
             "table": "Ranged_Stun"
@@ -16572,6 +16617,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -16873,6 +16919,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -17005,6 +17052,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_EndDrain"
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -17136,6 +17184,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 5,
             "table": "Melee_Stun"
@@ -17318,6 +17367,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -19192,6 +19242,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
@@ -19655,6 +19706,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
@@ -19955,6 +20007,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -20246,6 +20299,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
@@ -20758,6 +20812,7 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 2,
             "scale": 8,
             "table": "Ranged_Stun"
@@ -21238,6 +21293,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
@@ -21322,6 +21378,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
@@ -21548,6 +21605,7 @@ export const EPIC_POOLS_RAW = {
             "regenBuff": 0.75
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
@@ -22040,6 +22098,7 @@ export const EPIC_POOLS_RAW = {
             "regenBuff": 0.75
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
@@ -22523,6 +22582,7 @@ export const EPIC_POOLS_RAW = {
             "tohitDebuff": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 4,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -22593,6 +22653,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 20,
           "maxTargets": 10,
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 8,
             "table": "Ranged_Stun"
@@ -22686,6 +22747,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 30,
           "confuse": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 8,
             "table": "Ranged_Immobilize"
@@ -23061,6 +23123,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -23256,6 +23319,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Stun"
@@ -23440,6 +23504,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -23571,6 +23636,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -24073,6 +24139,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -24440,6 +24507,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 5,
             "table": "Melee_Stun"
@@ -24541,6 +24609,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -24644,6 +24713,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Ones"
@@ -24959,6 +25029,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 2,
             "scale": 6,
             "table": "Melee_Stun"
@@ -25064,6 +25135,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -25145,6 +25217,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -25787,6 +25860,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 12
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -25892,6 +25966,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "sleep": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 20,
             "table": "Ranged_Sleep"
@@ -26728,6 +26803,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
@@ -27393,6 +27469,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 8,
             "table": "Melee_Stun"
@@ -27888,6 +27965,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 90,
           "confuse": {
+            "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
@@ -27909,24 +27987,28 @@ export const EPIC_POOLS_RAW = {
           },
           "effectDuration": 90,
           "fear": {
+            "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "hold": {
+            "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "sleep": {
+            "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "stun": {
+            "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
@@ -28398,6 +28480,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 90,
           "confuse": {
+            "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
@@ -28419,24 +28502,28 @@ export const EPIC_POOLS_RAW = {
           },
           "effectDuration": 90,
           "fear": {
+            "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "hold": {
+            "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "sleep": {
+            "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
           "stun": {
+            "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
             "scale": 10,
@@ -28615,6 +28702,7 @@ export const EPIC_POOLS_RAW = {
             "defaultActive": false,
             "effects": {
               "confuse": {
+                "attribType": "Duration",
                 "mag": 1,
                 "scale": 1.5,
                 "table": "Ranged_Ones"
@@ -28806,6 +28894,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -28876,6 +28965,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 25,
           "maxTargets": 10,
           "sleep": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 12,
             "table": "Ranged_Sleep"
@@ -29111,6 +29201,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 10,
           "maxTargets": 10,
           "immobilize": {
+            "attribType": "Duration",
             "mag": 4,
             "scale": 5,
             "table": "Ranged_Immobilize"
@@ -29233,6 +29324,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -29336,6 +29428,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -29970,6 +30063,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "sleep": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 8,
             "table": "Ranged_Sleep"
@@ -30418,6 +30512,7 @@ export const EPIC_POOLS_RAW = {
             "tohitDebuff": 8
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -30644,6 +30739,7 @@ export const EPIC_POOLS_RAW = {
             "tohitDebuff": 10
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -30999,6 +31095,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -31144,6 +31241,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "sleep": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Melee_Sleep"
@@ -31254,6 +31352,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 12,
             "table": "Ranged_Immobilize"
@@ -31551,6 +31650,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -31767,6 +31867,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
@@ -32089,6 +32190,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -32365,6 +32467,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 18
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
@@ -32486,6 +32589,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "sleep": {
+            "attribType": "Duration",
             "mag": 2,
             "scale": 10,
             "table": "Melee_Sleep"
@@ -32753,6 +32857,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -32866,6 +32971,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Stun"
@@ -32996,6 +33102,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -33438,6 +33545,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -33596,6 +33704,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "stun": {
+            "attribType": "Duration",
             "mag": 2,
             "scale": 5,
             "table": "Melee_Stun"
@@ -33710,6 +33819,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -34046,6 +34156,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -34213,6 +34324,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 5,
             "table": "Melee_Stun"
@@ -34332,6 +34444,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Ones"
@@ -34815,6 +34928,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 18
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -35150,6 +35264,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 25,
           "maxTargets": 16,
           "sleep": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 12,
             "table": "Ranged_Sleep"
@@ -35338,6 +35453,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -35442,6 +35558,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Slow"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 2,
             "scale": 6,
             "table": "Melee_Stun"
@@ -35737,6 +35854,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -35884,6 +36002,7 @@ export const EPIC_POOLS_RAW = {
             "tohitDebuff": 20
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
@@ -35989,6 +36108,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -36490,6 +36610,7 @@ export const EPIC_POOLS_RAW = {
             "regenBuff": 0.75
           },
           "immobilize": {
+            "attribType": "Duration",
             "ignoreStrength": true,
             "mag": 1000,
             "scale": 0.75,
@@ -36636,6 +36757,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
@@ -37156,6 +37278,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -37747,6 +37870,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Ones"
@@ -38307,6 +38431,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
@@ -38559,6 +38684,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "stun": {
+            "attribType": "Duration",
             "mag": 2,
             "scale": 8,
             "table": "Melee_Stun"
@@ -38725,6 +38851,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 4,
             "scale": 8,
             "table": "Melee_Immobilize"
@@ -38929,6 +39056,7 @@ export const EPIC_POOLS_RAW = {
             "tohitDebuff": 10
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -39013,6 +39141,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -39362,6 +39491,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "sleep": {
+            "attribType": "Duration",
             "mag": 3.5,
             "scale": 30,
             "table": "Ranged_Sleep"
@@ -39457,6 +39587,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
@@ -39993,6 +40124,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -40585,6 +40717,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -41123,6 +41256,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
@@ -41641,6 +41775,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -41991,6 +42126,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
@@ -42451,6 +42587,7 @@ export const EPIC_POOLS_RAW = {
             "slow": 15
           },
           "immobilize": {
+            "attribType": "Duration",
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"

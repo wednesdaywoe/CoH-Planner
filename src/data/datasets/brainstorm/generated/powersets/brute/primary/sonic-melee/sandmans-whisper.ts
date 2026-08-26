@@ -110,6 +110,7 @@ export const SandmansWhisper: Power = {
       }
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Melee_Sleep"

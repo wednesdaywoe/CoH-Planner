@@ -178,6 +178,7 @@ export const StormCell: Power = {
                 {
                   "type": "Stun",
                   "magnitude": 3,
+                  "attribType": "Duration",
                   "scale": 4,
                   "table": "Ranged_Stun",
                   "chance": 0.33
@@ -185,6 +186,7 @@ export const StormCell: Power = {
                 {
                   "type": "Knockback",
                   "magnitude": 1,
+                  "attribType": "Magnitude",
                   "scale": 1,
                   "table": "Ranged_Knockback",
                   "chance": 0.17

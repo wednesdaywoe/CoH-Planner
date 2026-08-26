@@ -62,6 +62,7 @@ export const WillDomination: Power = {
       "damageBuff": 8.6
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 16,
       "table": "Ranged_Sleep"

@@ -63,6 +63,7 @@ export const ThrowSand: Power = {
       "table": "Ranged_Ones"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 10,
       "table": "Ranged_Sleep"

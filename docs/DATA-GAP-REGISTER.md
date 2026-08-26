@@ -19,14 +19,20 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**1 open, of 224 entries.** When an entry is open it is listed here with what it's waiting on.
+**3 open, of 227 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
-- **MEZDUR-1** ([stat-routing](gaps/stat-routing.md)) — waiting on a decision, not evidence:
-  route the granted-magnitude mez row off the atom's `attrib_type` instead of the bag's table
-  name, and decide separately what the sentinel-magnitude flags (`Untouchable` 1000,
-  `OnlyAffectsSelf` 100) should render as.
+- **MEZFACE-1** ([stat-routing](gaps/stat-routing.md)) — MEZDUR-1's residue. The mez bag value
+  abs-es its scale and carries no recipient, so the display still sniffs `res_boolean` to decide
+  what is protection. ~37 rows per fork miss the group; Hibernate's self-root reads as foe control.
+- **ATTRTYPE-1** ([parser-fidelity](gaps/parser-fidelity.md)) — `mapAttribType` folds `Constant`
+  into `Magnitude`, so 4,746 Homecoming templates lose their type. Measured inert (no mez template
+  carries it) but it is a converter soft-default, the shape STACK-3 was.
+- **EXPRMAG-1** ([parser-fidelity](gaps/parser-fidelity.md)) — 13 atoms state
+  `attribType: Expression` and carry no `magnitudeExpression`. Needs a binary read to say whether
+  the parser drops the program or the game stores none; Defibrillate's foe sleep is the carrier
+  whose numbers would look right either way.
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -87,8 +93,18 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Parser + binary fidelity
 
-[Full detail](gaps/parser-fidelity.md) — 42 of 42 closed
+[Full detail](gaps/parser-fidelity.md) — 42 of 44 closed
 
+- [ ] **ATTRTYPE-1** — `mapAttribType` maps three of the parser's four `ATTRIB_MOD_TYPE` values
+  and falls through, so `Constant` reaches the wire as `Magnitude` and 4,746 Homecoming templates
+  (`Set_Mode` 2636, `Set_Costume` 1125, `Null` 301, …) lose their type. Measured inert — no mez
+  template carries it, so MEZDUR-1's routing cannot be reading a folded one — but it is the STACK-3
+  shape: a converter soft-default turning a parse fact into plausible data.
+- [ ] **EXPRMAG-1** — 13 Homecoming atoms (13 brainstorm, 9 each Parse6 fork) state
+  `attribType: Expression` and carry no `magnitudeExpression`. Unseparated: the parser drops the
+  program, or the game stores none. Defibrillate's foe sleep is the carrier that matters — its
+  `scale 30 × Ranged_Sleep @ mag 3` reads as a plausible ~35.8s either way, and the def oracle
+  cannot settle it because the sleep arrives through an unexported `Redirects/` power.
 - [x] **TSPY-8** — `guardThunderspyAppliedMez`'s protection carve-out tested signed SCALE alone,
   but protection is also spelled as signed magnitude on `Duration` templates and as an `Expression`
   magnitude whose sign never reaches the wire, so real protection read as applied control and was
@@ -266,13 +282,18 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Stat routing + caps
 
-[Full detail](gaps/stat-routing.md) — 53 of 54 closed
+[Full detail](gaps/stat-routing.md) — 54 of 55 closed
 
-- [ ] **MEZDUR-1** — a mez APPLICATION row states the atom's flat `magnitude` and then multiplies
-  it by the mez DURATION aspect, so a mag-3 stun displays as 5.3 (crossing the boss threshold it
-  does not cross) while the duration the enhancement actually buys is shown nowhere; the
-  discriminator is `attrib_type`, which the bag object the row reads cannot carry, so a
-  `res_boolean` table-name sniff stands in for it. 298 powers, plus the mag-1000 sentinel flags.
+- [x] **MEZDUR-1** — closed 2026-08-26: the discriminator is the atom's `attribType`, which the
+  converters now stamp on the mez bag value; the table sniff standing in for it was wrong in BOTH
+  directions (applied mez showed its rank as seconds, protection off a `*_Ones` table showed the
+  def compiler's unscaled 1.0). Beanbag 3.00s → 11.92s, Detention Field Mag 1.0 → Mag 4.77. Three
+  producers stamped, three readers routed, six mutations red. Full narrative in
+  [stat-routing](gaps/stat-routing.md).
+- [ ] **MEZFACE-1** — the mez bag value abs-es its scale and carries no `toWho`, so the display
+  cannot tell protection from applied control and falls back to the same `res_boolean` sniff
+  MEZDUR-1 retired a layer up; ~37 protection rows per fork on `*_Ones` tables miss the Status Prot
+  group, and Hibernate's `toWho: Self` immobilize renders as foe control. Numbers are right.
 - [x] **MEZPROT-2** — closed 2026-08-25: the discriminator is neither table nor bare sign but the
   converter's three-spelling protection test plus recipient, graded on the fold winner (the gate
   could not see spelling before — the fold abs'd it). The apply pass now credits a

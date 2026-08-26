@@ -86,6 +86,7 @@ export const HavocPunch: Power = {
       "table": "Melee_Ones"
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Melee_Sleep"

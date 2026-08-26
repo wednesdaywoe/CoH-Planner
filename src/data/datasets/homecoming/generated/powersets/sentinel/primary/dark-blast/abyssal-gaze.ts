@@ -70,6 +70,7 @@ export const AbyssalGaze: Power = {
       "tohitDebuff": 10
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 4.4,
       "table": "Ranged_Immobilize"

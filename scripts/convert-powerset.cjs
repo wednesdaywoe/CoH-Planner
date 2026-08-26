@@ -2376,6 +2376,13 @@ function classifyPseudoPetEffectRow(template) {
     if (mezType) {
       const eff = { type: mezType };
       if (template.magnitude && template.magnitude > 0) eff.magnitude = template.magnitude;
+      // Which number `scale × table` computes. The merge mints a control row in the same
+      // `{mag, scale, table}` shape a parent power writes, and the display reader routes
+      // both off this field (MEZDUR-1). Stamped only on the applied-mez row, which is the
+      // only one that shape reaches: the protection and resistance branches above publish
+      // `*Protection`/`*Resist` types that fold into the summoner's totals, never a
+      // magnitude-format display row.
+      eff.attribType = _getAtomCore().mapAttribType(template.type);
       return [withScale(eff)];
     }
 
@@ -6398,8 +6405,18 @@ function projectAtomsToEffects(atoms, powerName, targetsAffected) {
       if (ignoresStrength) e.ignoreStrength = true;
       return e;
     };
+    // `attribType` says WHICH of the mod's two numbers `scale × table` computes, and it is
+    // the only thing separating a mez that lasts `scale × table` seconds at a fixed
+    // `Magnitude` from one whose MAGNITUDE is `scale × table` and whose duration is the
+    // template's own `Duration` line. Beanbag states the first (`Type kDuration`, Scale 10,
+    // Magnitude 3 — a mag-3 stun for 11.9s); Detention Field states the second (no `Type`,
+    // Scale 4, Duration 30, Magnitude 1.0 — a mag-4.8 immobilize for 30s, where the authored
+    // 1.0 is the compiler's unscaled placeholder, not a value). The two are identical on
+    // every other field, so a reader without this one has to guess, and the granted-magnitude
+    // reader guessed with a `res_boolean` table-name sniff that was wrong in both directions
+    // (MEZDUR-1). It rides on the value because a named bag slot has nowhere else to put it.
     const makeMezEffect = () => {
-      const e = { mag: magnitude, scale: Math.abs(scale), table };
+      const e = { mag: magnitude, scale: Math.abs(scale), table, attribType: a.attribType };
       if (ignoresStrength) e.ignoreStrength = true;
       return e;
     };

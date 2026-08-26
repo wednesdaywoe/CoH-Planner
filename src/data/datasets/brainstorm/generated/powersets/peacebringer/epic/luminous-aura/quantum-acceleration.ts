@@ -139,6 +139,7 @@ export const QuantumAcceleration: Power = {
         },
         "effectDuration": 0.2,
         "immobilize": {
+          "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
           "scale": 30,

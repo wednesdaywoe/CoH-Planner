@@ -85,6 +85,7 @@ export const ScorpionsSting: Power = {
       "slow": 15
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 5,
       "table": "Ranged_Immobilize"

@@ -63,6 +63,7 @@ export const Stalagmites: Power = {
       "defenseDebuff": 12
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"

@@ -70,6 +70,7 @@ export const PsychicShockwave: Power = {
       "table": "Ranged_Slow"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 5,
       "table": "Ranged_Stun"

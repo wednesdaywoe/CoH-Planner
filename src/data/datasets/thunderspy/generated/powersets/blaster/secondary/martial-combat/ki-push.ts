@@ -74,6 +74,7 @@ export const KiPush: Power = {
     },
     "effectDuration": 2,
     "hold": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 4,

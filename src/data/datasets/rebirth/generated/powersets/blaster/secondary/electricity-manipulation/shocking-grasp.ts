@@ -78,6 +78,7 @@ export const ShockingGrasp: Power = {
       "table": "Melee_Ones"
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Melee_Immobilize"

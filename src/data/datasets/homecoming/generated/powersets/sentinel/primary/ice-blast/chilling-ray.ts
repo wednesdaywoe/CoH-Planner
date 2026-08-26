@@ -71,6 +71,7 @@ export const ChillingRay: Power = {
       "table": "Ranged_Slow"
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Sleep"

@@ -77,6 +77,7 @@ export const ElectricFence: Power = {
       "perTarget": 2.6
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"

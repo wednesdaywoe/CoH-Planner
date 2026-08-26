@@ -55,6 +55,7 @@ export const Spotlight: Power = {
     },
     "buffDuration": 2,
     "confuse": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 20,
@@ -114,30 +115,35 @@ export const Spotlight: Power = {
     },
     "effectDuration": 2,
     "fear": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
     },
     "hold": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
     },
     "sleep": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
     },
     "stun": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 20,

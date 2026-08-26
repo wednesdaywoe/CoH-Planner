@@ -80,6 +80,7 @@ export const ElixirofLife: Power = {
       "table": "Ranged_Ones"
     },
     "hold": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1000,

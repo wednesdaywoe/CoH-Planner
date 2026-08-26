@@ -44,6 +44,7 @@ export const Deceive: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 20,
       "table": "Ranged_Immobilize"
@@ -63,6 +64,7 @@ export const Deceive: Power = {
       "defaultActive": false,
       "effects": {
         "confuse": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 30,
           "table": "Ranged_Immobilize"

@@ -55,6 +55,7 @@ export const SonicRepulsion: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 1,
       "table": "Ranged_Immobilize"

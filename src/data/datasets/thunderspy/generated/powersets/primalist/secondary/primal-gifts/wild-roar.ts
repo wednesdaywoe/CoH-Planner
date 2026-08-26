@@ -73,6 +73,7 @@ export const WildRoar: Power = {
           "defenseDebuff": 30
         },
         "fear": {
+          "attribType": "Duration",
           "mag": 4,
           "scale": 12,
           "table": "Melee_Fear"
@@ -94,6 +95,7 @@ export const WildRoar: Power = {
           "defenseDebuff": 30
         },
         "fear": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 10,
           "table": "Melee_Fear"

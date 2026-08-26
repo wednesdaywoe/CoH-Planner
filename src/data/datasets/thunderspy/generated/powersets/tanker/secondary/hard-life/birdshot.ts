@@ -57,6 +57,7 @@ export const Birdshot: Power = {
       "slow": 15
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 1.5,
       "scale": 15,
       "table": "Melee_Immobilize"

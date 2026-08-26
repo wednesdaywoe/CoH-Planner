@@ -77,6 +77,7 @@ export const PoisonGasArrow: Power = {
                 {
                   "type": "Sleep",
                   "magnitude": 2,
+                  "attribType": "Duration",
                   "scale": 1,
                   "table": "Melee_Sleep"
                 }

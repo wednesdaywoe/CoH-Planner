@@ -80,6 +80,7 @@ export const WhiteDwarfSmite: Power = {
       "table": "Melee_Ones"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"

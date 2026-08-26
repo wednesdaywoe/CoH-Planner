@@ -55,6 +55,7 @@ export const Shiver: Power = {
       "slow": 18
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Fear"

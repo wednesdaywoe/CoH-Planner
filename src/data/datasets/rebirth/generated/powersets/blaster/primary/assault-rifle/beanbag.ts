@@ -62,6 +62,7 @@ export const Beanbag: Power = {
       "damageBuff": 8.4
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"

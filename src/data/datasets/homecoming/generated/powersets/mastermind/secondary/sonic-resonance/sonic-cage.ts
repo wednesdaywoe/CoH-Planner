@@ -46,6 +46,7 @@ export const SonicCage: Power = {
     },
     "effectDuration": 30,
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Ranged_Immobilize"

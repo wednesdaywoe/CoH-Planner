@@ -81,6 +81,7 @@ export const HavokPunch: Power = {
       "table": "Melee_Ones"
     },
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Melee_Sleep"
@@ -111,6 +112,7 @@ export const HavokPunch: Power = {
       "defaultActive": false,
       "effects": {
         "sleep": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 22.5,
           "table": "Melee_Sleep"

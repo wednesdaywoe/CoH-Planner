@@ -59,6 +59,7 @@ export const EMPArrow: Power = {
       "table": "Ranged_Ones"
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 7,
       "table": "Ranged_Immobilize"

@@ -61,6 +61,7 @@ export const AuraofInsanity: Power = {
   "effects": {
     "buffDuration": 4,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 2,
       "scale": 2,
       "table": "Melee_Ones"
@@ -80,21 +81,25 @@ export const AuraofInsanity: Power = {
     },
     "effectDuration": 4,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 2,
       "scale": 2,
       "table": "Melee_Ones"
     },
     "hold": {
+      "attribType": "Magnitude",
       "mag": 2,
       "scale": 2,
       "table": "Melee_Ones"
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 2,
       "scale": 2,
       "table": "Melee_Ones"
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 2,
       "scale": 2,
       "table": "Melee_Ones"

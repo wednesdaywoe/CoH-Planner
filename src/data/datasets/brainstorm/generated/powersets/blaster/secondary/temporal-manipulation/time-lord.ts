@@ -67,6 +67,7 @@ export const TimeLord: Power = {
       }
     },
     "stun": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 10,

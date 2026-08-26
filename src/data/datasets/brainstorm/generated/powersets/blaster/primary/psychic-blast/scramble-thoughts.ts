@@ -54,18 +54,21 @@ export const ScrambleThoughts: Power = {
   },
   "effects": {
     "fear": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     },
     "hold": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
     "immobilize": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 3,
       "scale": 10,
@@ -77,12 +80,14 @@ export const ScrambleThoughts: Power = {
       "table": "Ranged_Stun"
     },
     "sleep": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"

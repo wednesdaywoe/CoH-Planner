@@ -61,6 +61,7 @@ export const InnerWill: Power = {
   "effects": {
     "buffDuration": 30,
     "confuse": {
+      "attribType": "Expression",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
@@ -78,18 +79,21 @@ export const InnerWill: Power = {
     },
     "effectDuration": 30,
     "fear": {
+      "attribType": "Expression",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
     },
     "hold": {
+      "attribType": "Expression",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
     },
     "immobilize": {
+      "attribType": "Expression",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
@@ -128,6 +132,7 @@ export const InnerWill: Power = {
       }
     },
     "sleep": {
+      "attribType": "Expression",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
@@ -166,6 +171,7 @@ export const InnerWill: Power = {
       }
     },
     "stun": {
+      "attribType": "Expression",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,

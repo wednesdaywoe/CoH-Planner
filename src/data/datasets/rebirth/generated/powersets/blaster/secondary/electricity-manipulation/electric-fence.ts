@@ -78,6 +78,7 @@ export const ElectricFence: Power = {
       "table": "Ranged_Ones"
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

@@ -73,6 +73,7 @@ export const StygianReturn: Power = {
       "perTarget": 30
     },
     "immobilize": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 50,
       "scale": 4,
@@ -89,6 +90,7 @@ export const StygianReturn: Power = {
       "perTarget": 0.15
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 30,
       "scale": 10,
       "table": "Melee_Stun"

@@ -75,6 +75,7 @@ export const Lunge: Power = {
       "slow": 6
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 0.33000001311302185,
       "scale": 8,
       "table": "Melee_Immobilize"

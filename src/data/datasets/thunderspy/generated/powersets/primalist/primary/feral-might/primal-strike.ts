@@ -167,6 +167,7 @@ export const PrimalStrike: Power = {
       ],
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 2,
           "scale": 5,
           "table": "Melee_Stun"

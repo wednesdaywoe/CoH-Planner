@@ -53,6 +53,7 @@ export const WildFortress: Power = {
     },
     "buffDuration": 2.5,
     "confuse": {
+      "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 30,

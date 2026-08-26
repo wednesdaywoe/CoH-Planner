@@ -59,6 +59,7 @@ export const DrowningPool: Power = {
       "defenseDebuff": 15
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"

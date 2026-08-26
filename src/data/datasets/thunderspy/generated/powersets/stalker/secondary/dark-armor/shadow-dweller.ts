@@ -90,6 +90,7 @@ export const ShadowDweller: Power = {
     },
     "effectDuration": 10.25,
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"

@@ -12,7 +12,7 @@ import type {
 } from './common';
 // Plan B, Phase 0: the pre-projection atom list carried on `Power.atoms`.
 // `atomic-effect.ts` has no imports, so this type-only reference is cycle-free.
-import type { EncodedAtom } from '@/data/core/atomic-effect';
+import type { AttribType, EncodedAtom } from '@/data/core/atomic-effect';
 
 // ============================================
 // SCALED EFFECT (new format with AT tables)
@@ -213,6 +213,19 @@ export interface MezEffect {
   scale: number;
   /** AT table for duration calculation */
   table: string;
+  /**
+   * Which of the mod's two numbers `scale × table` computes — the atom's own
+   * {@link AttribType}, carried here because a named bag slot has nowhere else to put it.
+   *
+   * `'Duration'`: the product is SECONDS and {@link mag} is the mez rank the effect grabs.
+   * `'Magnitude'`: the product is the MAGNITUDE, the duration is the template's own
+   * `durations` entry, and {@link mag} is the def compiler's unscaled placeholder rather
+   * than a value. `'Expression'`: the magnitude comes from a stack-machine program, so
+   * neither product is the answer.
+   *
+   * Absent on a bundle minted before MEZDUR-1; a reader must say so rather than pick one.
+   */
+  attribType?: AttribType;
   /** See {@link ScaledEffect.ignoreStrength} — a mez whose duration takes no enhancement. */
   ignoreStrength?: boolean;
 }
@@ -383,6 +396,11 @@ export interface ResolvedPseudoPetEffect {
   scale?: number;
   table?: string;
   magnitude?: number;
+  /** Mez rows only: which of the mod's two numbers `scale × table` computes, carried so the
+   *  pseudo-pet merge hands the display reader the same discriminator a parent power's mez row
+   *  carries. Read by the control merge; a knock row's quantity is a distance either way. See
+   *  {@link MezEffect.attribType}. */
+  attribType?: AttribType;
   /** Proc chance the binary gates this effect with (< 1), e.g. the 33% lightning stun. */
   chance?: number;
   /** IgnoreStrength: the player's enhancements/buffs do NOT scale this — show informational/unenhanced. */

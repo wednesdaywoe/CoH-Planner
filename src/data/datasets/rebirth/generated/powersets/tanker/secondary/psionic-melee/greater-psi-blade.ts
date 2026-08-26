@@ -71,6 +71,7 @@ export const GreaterPsiBlade: Power = {
       "rechargeDebuff": 6
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
@@ -120,6 +121,7 @@ export const GreaterPsiBlade: Power = {
       },
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 12,
           "table": "Melee_Stun"

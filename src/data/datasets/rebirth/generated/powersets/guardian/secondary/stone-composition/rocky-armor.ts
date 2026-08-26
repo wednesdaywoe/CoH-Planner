@@ -47,6 +47,7 @@ export const RockyArmor: Power = {
   "effects": {
     "buffDuration": 10.25,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Ones"
@@ -84,6 +85,7 @@ export const RockyArmor: Power = {
     },
     "effectDuration": 0.75,
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

@@ -48,6 +48,7 @@ export const BerylCrystals: Power = {
     },
     "buffDuration": 0.75,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"

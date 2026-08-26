@@ -59,6 +59,7 @@ export const DeafeningWave: Power = {
   ],
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 5,
       "table": "Melee_Immobilize"
@@ -81,6 +82,7 @@ export const DeafeningWave: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 2,
           "scale": 7.5,
           "table": "Melee_Immobilize"

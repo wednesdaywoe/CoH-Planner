@@ -47,6 +47,7 @@ export const FocusedFighting: Power = {
   "effects": {
     "buffDuration": 0.75,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"

@@ -53,6 +53,7 @@ export const WillDomination: Power = {
   },
   "effects": {
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 16,
       "table": "Ranged_Sleep"

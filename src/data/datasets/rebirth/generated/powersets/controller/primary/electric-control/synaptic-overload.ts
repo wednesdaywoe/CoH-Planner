@@ -47,6 +47,7 @@ export const SynapticOverload: Power = {
   "effects": {
     "buffDuration": 8,
     "confuse": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

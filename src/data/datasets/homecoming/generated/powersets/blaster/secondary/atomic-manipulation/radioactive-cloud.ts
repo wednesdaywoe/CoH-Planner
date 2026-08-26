@@ -43,11 +43,13 @@ export const RadioactiveCloud: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Melee_Immobilize"
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Immobilize"

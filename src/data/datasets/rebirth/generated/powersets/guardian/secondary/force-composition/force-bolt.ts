@@ -61,6 +61,7 @@ export const ForceBolt: Power = {
       "table": "Ranged_Ones"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 1.5,
       "scale": 8,
       "table": "Ranged_Stun"

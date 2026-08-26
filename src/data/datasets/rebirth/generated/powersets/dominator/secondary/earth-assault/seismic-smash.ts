@@ -52,6 +52,7 @@ export const SeismicSmash: Power = {
   },
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Melee_Immobilize"
@@ -74,6 +75,7 @@ export const SeismicSmash: Power = {
       "defaultActive": false,
       "effects": {
         "hold": {
+          "attribType": "Duration",
           "mag": 1,
           "scale": 12,
           "table": "Melee_Immobilize"

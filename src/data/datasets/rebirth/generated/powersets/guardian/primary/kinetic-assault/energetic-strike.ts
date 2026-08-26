@@ -71,6 +71,7 @@ export const EnergeticStrike: Power = {
       "damageDebuff": 10
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
@@ -129,6 +130,7 @@ export const EnergeticStrike: Power = {
       },
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 14,
           "table": "Melee_Immobilize"
@@ -142,6 +144,7 @@ export const EnergeticStrike: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 15,
           "table": "Melee_Immobilize"

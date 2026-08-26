@@ -56,6 +56,7 @@ export const Hypothermia: Power = {
     },
     "effectDuration": 15.1,
     "sleep": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Sleep"
@@ -112,6 +113,7 @@ export const Hypothermia: Power = {
         },
         "effectDuration": 15.1,
         "sleep": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 4,
           "table": "Ranged_Sleep"

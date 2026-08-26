@@ -74,6 +74,7 @@ export const GlitteringColumn: Power = {
                 {
                   "type": "Taunt",
                   "magnitude": 4,
+                  "attribType": "Duration",
                   "scale": 7,
                   "table": "Melee_Ones"
                 }

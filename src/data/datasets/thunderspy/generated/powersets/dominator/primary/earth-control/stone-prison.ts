@@ -62,6 +62,7 @@ export const StonePrison: Power = {
       "defenseDebuff": 15
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
@@ -89,6 +90,7 @@ export const StonePrison: Power = {
       "defaultActive": false,
       "effects": {
         "immobilize": {
+          "attribType": "Duration",
           "mag": 4,
           "scale": 22.5,
           "table": "Ranged_Immobilize"

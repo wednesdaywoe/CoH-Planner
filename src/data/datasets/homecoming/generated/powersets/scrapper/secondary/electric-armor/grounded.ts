@@ -51,6 +51,7 @@ export const Grounded: Power = {
     },
     "effectDuration": 1,
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 6,
       "table": "Melee_Ones"

@@ -60,6 +60,7 @@ export const HowlingTwilight: Power = {
       "slow": 30
     },
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Ones"
@@ -94,6 +95,7 @@ export const HowlingTwilight: Power = {
       }
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 15,
       "table": "Ranged_Ones"

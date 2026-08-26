@@ -79,16 +79,19 @@ export const SoulTransfer: Power = {
     },
     "effectDuration": 30,
     "fear": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 25,
       "table": "Melee_Res_Boolean"
     },
     "hold": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 25,
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 25,
       "table": "Melee_Res_Boolean"
@@ -98,11 +101,13 @@ export const SoulTransfer: Power = {
       "table": "Melee_Res_Boolean"
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 25,
       "table": "Melee_Res_Boolean"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Melee_Stun"

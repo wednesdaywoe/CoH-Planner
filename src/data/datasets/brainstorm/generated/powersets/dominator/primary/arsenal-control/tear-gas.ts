@@ -80,6 +80,7 @@ export const TearGas: Power = {
                 {
                   "type": "Hold",
                   "magnitude": 3,
+                  "attribType": "Duration",
                   "scale": 5,
                   "table": "Ranged_Immobilize"
                 }
@@ -103,6 +104,7 @@ export const TearGas: Power = {
                 {
                   "type": "Hold",
                   "magnitude": 3,
+                  "attribType": "Duration",
                   "scale": 8,
                   "table": "Ranged_Immobilize"
                 }

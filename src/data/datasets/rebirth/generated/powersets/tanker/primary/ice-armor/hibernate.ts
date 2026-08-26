@@ -56,6 +56,7 @@ export const Hibernate: Power = {
       "regenBuff": 0.75
     },
     "immobilize": {
+      "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 100,
       "scale": 0.75,

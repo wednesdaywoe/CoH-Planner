@@ -87,11 +87,13 @@ export const PowerSurge: Power = {
       "table": "Ranged_Ones"
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
     "immobilize": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
@@ -178,6 +180,7 @@ export const PowerSurge: Power = {
       }
     },
     "sleep": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
@@ -190,6 +193,7 @@ export const PowerSurge: Power = {
       }
     },
     "stun": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"

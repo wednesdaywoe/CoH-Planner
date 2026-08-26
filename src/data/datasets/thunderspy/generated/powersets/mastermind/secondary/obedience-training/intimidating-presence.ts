@@ -48,11 +48,13 @@ export const IntimidatingPresence: Power = {
   "maxSlots": 6,
   "effects": {
     "fear": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Fear"
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Melee_Immobilize"

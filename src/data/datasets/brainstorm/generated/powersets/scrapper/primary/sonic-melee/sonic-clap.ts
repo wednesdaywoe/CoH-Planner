@@ -69,6 +69,7 @@ export const SonicClap: Power = {
       "table": "Melee_Ones"
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Melee_Fear"

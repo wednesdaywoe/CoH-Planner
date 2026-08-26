@@ -53,6 +53,7 @@ export const Dominate: Power = {
   },
   "effects": {
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"

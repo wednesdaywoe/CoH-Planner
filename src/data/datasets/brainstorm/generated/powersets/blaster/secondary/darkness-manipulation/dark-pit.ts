@@ -54,6 +54,7 @@ export const DarkPit: Power = {
       "damageBuff": 8.57
     },
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"

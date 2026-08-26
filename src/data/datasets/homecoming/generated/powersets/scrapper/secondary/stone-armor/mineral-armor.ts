@@ -47,6 +47,7 @@ export const MineralArmor: Power = {
   "effects": {
     "buffDuration": 0.75,
     "confuse": {
+      "attribType": "Magnitude",
       "mag": 1,
       "scale": 30,
       "table": "Melee_Ones"

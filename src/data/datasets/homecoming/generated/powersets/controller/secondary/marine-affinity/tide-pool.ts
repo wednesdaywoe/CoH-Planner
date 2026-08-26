@@ -94,6 +94,7 @@ export const TidePool: Power = {
                 {
                   "type": "Knockback",
                   "magnitude": 1,
+                  "attribType": "Magnitude",
                   "scale": 0.67,
                   "table": "Melee_Ones",
                   "conditional": true

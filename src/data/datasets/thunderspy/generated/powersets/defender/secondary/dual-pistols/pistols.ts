@@ -133,6 +133,7 @@ export const Pistols: Power = {
           "slow": 10
         },
         "immobilize": {
+          "attribType": "Duration",
           "mag": 0.75,
           "scale": 10.1,
           "table": "Ranged_Immobilize"

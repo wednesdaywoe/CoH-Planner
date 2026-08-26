@@ -159,6 +159,7 @@ export const Sleet: Power = {
                 {
                   "type": "Knockback",
                   "magnitude": 1,
+                  "attribType": "Magnitude",
                   "scale": 0.1,
                   "table": "Ranged_Ones",
                   "ignoreStrength": true,

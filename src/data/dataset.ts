@@ -128,6 +128,11 @@ export interface PetEffect {
   chance?: number;
   scale?: number;
   table?: string;
+  /** Mez-family rows: which of the mod's two numbers `scale × table` computes, carried so the
+   *  pseudo-pet merge hands the display reader the same discriminator a parent power's mez row
+   *  carries. Read by the control merge; a knock row's quantity is a distance either way. See
+   *  {@link MezEffect.attribType}. */
+  attribType?: string;
   /** The movement axis a Slow / MovementCapDebuff row applies to, spelled the
    *  way a parent power's `slow[axis]` spells it. A power states several axes
    *  at different scales, so the merge holds one value per axis rather than

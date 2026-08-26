@@ -74,6 +74,7 @@ export const TeslaCage: Power = {
       "table": "Ranged_EndDrain"
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Ones"

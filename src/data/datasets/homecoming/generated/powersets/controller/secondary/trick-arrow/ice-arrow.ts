@@ -59,6 +59,7 @@ export const IceArrow: Power = {
       "specialDebuff": 60
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"

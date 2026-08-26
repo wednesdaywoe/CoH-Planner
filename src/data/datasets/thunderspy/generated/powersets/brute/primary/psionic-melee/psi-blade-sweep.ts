@@ -66,6 +66,7 @@ export const PsiBladeSweep: Power = {
   ],
   "effects": {
     "stun": {
+      "attribType": "Duration",
       "mag": 2,
       "scale": 5,
       "table": "Melee_Stun"
@@ -114,6 +115,7 @@ export const PsiBladeSweep: Power = {
       },
       "effects": {
         "stun": {
+          "attribType": "Duration",
           "mag": 3,
           "scale": 5,
           "table": "Melee_Stun"

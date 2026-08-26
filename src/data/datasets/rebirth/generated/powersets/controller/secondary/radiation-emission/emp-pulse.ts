@@ -56,6 +56,7 @@ export const EMPPulse: Power = {
       "table": "Ranged_Ones"
     },
     "hold": {
+      "attribType": "Duration",
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"

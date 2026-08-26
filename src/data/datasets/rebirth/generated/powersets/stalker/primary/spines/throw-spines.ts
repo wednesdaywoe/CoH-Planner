@@ -77,6 +77,7 @@ export const ThrowSpines: Power = {
       "slow": 15
     },
     "immobilize": {
+      "attribType": "Duration",
       "mag": 0.6700000166893005,
       "scale": 10,
       "table": "Melee_Immobilize"
