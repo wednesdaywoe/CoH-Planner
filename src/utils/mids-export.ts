@@ -13,7 +13,7 @@ import { getEpicPool } from '@/data/epic-pools';
 import { getIOSet } from '@/data/io-sets';
 import { getMidsGenericIOUid, getMidsIOSetPieceUid, getMidsOriginUid, getMidsSpecialUid } from '@/data/mids-uids';
 import { MIDS_STAT_MAP } from '@/utils/mids-import/mappers';
-import { getInherentPowers, getArchetypeInherentPowers } from '@/data';
+import { getInherentPowers, getArchetypeInherentPowers, POWER_PICK_LEVELS, getPicksGrantedAtLevel } from '@/data';
 import { computeAllSlotLevels, type SlotLevel } from '@/utils/slot-levels';
 import { powerKey, type PowerCategory } from '@/utils/power-key';
 
@@ -423,6 +423,81 @@ function buildPowerEntry(
 // ============================================
 
 /**
+ * The seven powers Mids files under `eGridType.Inherent`, in the order its
+ * scratch array indexes them.
+ *
+ * Order is not cosmetic here — `SortGridPowers` writes each of these to a fixed
+ * array position while sizing the array by how many of them the file carries, so
+ * a file that omits any of them can crash the load. See the comment at the export
+ * site.
+ */
+const MIDS_INHERENT_GRID = ['Brawl', 'Sprint', 'Rest', 'Swift', 'Hurdle', 'Health', 'Stamina'] as const;
+
+/**
+ * The level-up pick schedule expanded to one entry per pick — HC's level 1
+ * grants two, so it appears twice.
+ *
+ * This is the shape `PowerEntries` has to take. Mids does not look a power up
+ * by name and file it: `LoadBuild` walks the array by index and assigns
+ * `CurrentBuild.Powers[powerIndex] = powerEntry`, so position i *is* the i-th
+ * level-up pick. Grouping the array by powerset — primary, then secondary,
+ * then pools — put Hasten in the level-28 slot and left the grid reading in an
+ * order nobody picked.
+ */
+function pickSchedule(): number[] {
+  const slots: number[] = [];
+  for (const level of POWER_PICK_LEVELS) {
+    for (let i = 0; i < getPicksGrantedAtLevel(level); i++) slots.push(level);
+  }
+  return slots;
+}
+
+/** An unfilled pick. Mids writes one of these for a skipped slot and reads it back as `NIDPower < 0`. */
+function blankPowerEntry(): MbdPowerEntry {
+  return {
+    PowerName: '',
+    Level: 0,
+    StatInclude: false,
+    ProcInclude: false,
+    VariableValue: 0,
+    InherentSlotsUsed: 0,
+    SubPowerEntries: [],
+    SlotEntries: [],
+  };
+}
+
+/**
+ * Lay the chosen powers out along the pick schedule, blanking the slots the
+ * build skipped.
+ *
+ * Padding matters as much as ordering: the inherents and incarnates that follow
+ * are addressed by index too, so a build that skipped a pick would slide them
+ * one slot forward into a level-up position.
+ */
+function orderByPickSchedule(chosen: { level: number; entry: MbdPowerEntry }[]): MbdPowerEntry[] {
+  const sorted = [...chosen].sort((a, b) => a.level - b.level);
+  const schedule = pickSchedule();
+  const entries: MbdPowerEntry[] = [];
+
+  let slot = 0;
+  for (const power of sorted) {
+    while (slot < schedule.length && schedule[slot] < power.level) {
+      entries.push(blankPowerEntry());
+      slot++;
+    }
+    entries.push(power.entry);
+    slot++;
+  }
+  // Pad out the remaining picks so the run of level-up slots is the length Mids
+  // expects before anything auto-granted starts.
+  while (slot < schedule.length) {
+    entries.push(blankPowerEntry());
+    slot++;
+  }
+  return entries;
+}
+
+/**
  * Export a Sidekick Build to Mids Reborn .mbd JSON format.
  *
  * Returns the JSON alongside every enhancement that could not be named, so the
@@ -478,55 +553,54 @@ export function exportToMidsWithReport(build: Build): { json: string; warnings: 
 
   const powerSets = [primaryPath, secondaryPath, '', ...poolPaths, epicPath];
 
-  // Build PowerEntries from all selected powers
-  const powerEntries: MbdPowerEntry[] = [];
-
-  for (const power of build.primary.powers) {
-    const powerName = buildPowerName(power, build.primary.id || '', archetypeId, 'primary');
-    powerEntries.push(buildPowerEntry(power, powerName, 'primary', slotLevels, warnings));
-  }
-
-  for (const power of build.secondary.powers) {
-    const powerName = buildPowerName(power, build.secondary.id || '', archetypeId, 'secondary');
-    powerEntries.push(buildPowerEntry(power, powerName, 'secondary', slotLevels, warnings));
-  }
-
-  for (const pool of build.pools) {
-    for (const power of pool.powers) {
-      const powerName = buildPowerName(power, pool.id, archetypeId, 'pool');
-      powerEntries.push(buildPowerEntry(power, powerName, 'pool', slotLevels, warnings));
+  // Collect the chosen powers, then lay them out along the pick schedule —
+  // Mids reads this array positionally, so grouping by powerset scrambles the
+  // grid even though every Level field is right.
+  const chosen: { level: number; entry: MbdPowerEntry }[] = [];
+  const collect = (
+    powers: SelectedPower[],
+    powersetId: string,
+    category: 'primary' | 'secondary' | 'pool' | 'epic',
+  ) => {
+    for (const power of powers) {
+      const powerName = buildPowerName(power, powersetId, archetypeId, category);
+      chosen.push({
+        level: power.level,
+        entry: buildPowerEntry(power, powerName, category, slotLevels, warnings),
+      });
     }
-  }
+  };
 
-  if (build.epicPool) {
-    for (const power of build.epicPool.powers) {
-      const powerName = buildPowerName(power, build.epicPool.id, archetypeId, 'epic');
-      powerEntries.push(buildPowerEntry(power, powerName, 'epic', slotLevels, warnings));
-    }
-  }
+  collect(build.primary.powers, build.primary.id || '', 'primary');
+  collect(build.secondary.powers, build.secondary.id || '', 'secondary');
+  for (const pool of build.pools) collect(pool.powers, pool.id, 'pool');
+  if (build.epicPool) collect(build.epicPool.powers, build.epicPool.id, 'epic');
+
+  const powerEntries: MbdPowerEntry[] = orderByPickSchedule(chosen);
 
   // `LastPower` is the index of the last CHOSEN power; Mids reads everything
   // past it as auto-granted. Inherents and incarnates therefore have to follow
-  // the chosen powers, and the marker has to be taken before they are added.
+  // the level-up run, and the marker has to be taken before they are added.
   const lastPower = powerEntries.length - 1;
 
-  // Inherents. Mids re-creates Health/Stamina/Swift/Hurdle itself, but only the
-  // build file carries what the user slotted into them — and that is where a
-  // build keeps Miracle, Panacea, Performance Shifter and Numina's. Dropping
-  // these entries dropped those procs, and every set bonus they carried, from
-  // the exported build.
-  for (const power of build.inherents) {
-    // Only the slotted ones. Mids rebuilds the inherent roster itself, so an
-    // entry with nothing in it is noise — and the prestige sprints carry names
-    // Mids may not recognise.
-    if (!power.slots.some(Boolean)) continue;
-    const fullName = inherentFullName(power, archetypeId);
-    if (!fullName) {
-      warnings.push({
-        power: power.name,
-        slot: 0,
-        detail: 'inherent has no Mids power name — its slots were not exported',
-      });
+  // Inherents. Mids re-creates the roster itself, but only the build file
+  // carries what the user slotted into them — and that is where a build keeps
+  // Miracle, Panacea, Performance Shifter and Numina's.
+  //
+  // All seven go, always, even the empty ones. `CharacterBuildData.SortGridPowers`
+  // sizes its scratch array by how many `eGridType.Inherent` powers the FILE
+  // carries, then writes each one to a FIXED index — Brawl 0, Sprint 1, Rest 2,
+  // Swift 3, Hurdle 4, Health 5, Stamina 6. Send only the four Fitness powers and
+  // the array has four slots: Swift lands at [3] and Hurdle throws
+  // IndexOutOfRange. That exception aborts `LoadBuild` wholesale, so the inherent
+  // grid is never built and `Validate()` never runs — which reads, on screen, as
+  // inherents that are present but have lost every slot.
+  for (const name of MIDS_INHERENT_GRID) {
+    const power = build.inherents.find((p) => (p.internalName || p.name) === name || p.name === name);
+    const fullName = power ? inherentFullName(power, archetypeId) : null;
+    if (!power || !fullName) {
+      // A fork without this power still has to hold the index open.
+      powerEntries.push({ ...blankPowerEntry(), PowerName: `Inherent.Inherent.${name}`, Level: 1 });
       continue;
     }
     powerEntries.push(buildPowerEntry(power, fullName, 'inherent', slotLevels, warnings));

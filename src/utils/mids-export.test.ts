@@ -274,10 +274,32 @@ describe('mids-export regression: therm/water defender', () => {
     expect(byName.get('Inherent.Fitness.Stamina')?.SlotEntries.map((s) => s.Enhancement?.Uid))
       .toEqual(['Crafted_Performance_Shifter_A', 'Crafted_Performance_Shifter_B',
                 'Crafted_Performance_Shifter_F', 'Crafted_Power_Transfer_F']);
-    expect(byName.has('Inherent.Fitness.Swift')).toBe(true);
-    expect(byName.has('Inherent.Fitness.Hurdle')).toBe(true);
-    // An inherent with nothing in it is Mids' to re-create, so we don't send it.
-    expect(byName.has('Inherent.Inherent.Rest')).toBe(false);
+  });
+
+  /**
+   * Verified against Mids Reborn 3.8.6 / DB 2026.5.1337 running under Wine.
+   *
+   * `CharacterBuildData.SortGridPowers` allocates `new PowerEntry[tList.Count]`
+   * — one slot per `eGridType.Inherent` power the FILE carries — then writes each
+   * power to a hardcoded index: Brawl 0, Sprint 1, Rest 2, Swift 3, Hurdle 4,
+   * Health 5, Stamina 6. Sending only the four Fitness powers gives a
+   * four-element array, so Swift lands at [3] and Hurdle throws IndexOutOfRange.
+   *
+   * The throw is caught in `LoadBuild`, which abandons the rest of the load: the
+   * inherent grid is never assembled and `Validate()` never runs. On screen that
+   * reads as inherents that are present but have lost every slot — not as an
+   * error, which is why it survived a round of fixes.
+   *
+   * So all seven ship, always, empty ones included.
+   */
+  it("sends all seven of Mids' inherent-grid powers, so its fixed indices are in range", () => {
+    const { mbd } = exported();
+    expect(mbd.PowerEntries.slice(mbd.LastPower + 1, mbd.LastPower + 8).map((pe) => pe.PowerName))
+      .toEqual([
+        'Inherent.Inherent.Brawl', 'Inherent.Inherent.Sprint', 'Inherent.Inherent.Rest',
+        'Inherent.Fitness.Swift', 'Inherent.Fitness.Hurdle',
+        'Inherent.Fitness.Health', 'Inherent.Fitness.Stamina',
+      ]);
   });
 
   it('carries the alpha slot', () => {
@@ -286,15 +308,31 @@ describe('mids-export regression: therm/water defender', () => {
       .toContain('Incarnate.Alpha.Cardiac_Radial_Paragon');
   });
 
-  it('keeps LastPower pointing at the last CHOSEN power', () => {
+  it('keeps LastPower at the end of the level-up run', () => {
     const { mbd } = exported();
     // Everything past LastPower is auto-granted as far as Mids is concerned, so
-    // the inherents and the alpha have to sit behind the marker.
-    expect(mbd.PowerEntries[mbd.LastPower].PowerName)
-      .toBe('Epic.Corruptor_Leviathan_Mastery.Summon_Coralax');
+    // the inherents and the alpha have to sit behind the marker. The marker is
+    // the last PICK SLOT, not the last named power — a build that skipped its
+    // level-49 pick still has to keep the inherents out of that slot.
+    expect(mbd.PowerEntries[mbd.LastPower].PowerName).toBe('Pool.Fighting.Tough');
     expect(mbd.PowerEntries.slice(mbd.LastPower + 1).every(
       (pe) => pe.PowerName.startsWith('Inherent.') || pe.PowerName.startsWith('Incarnate.'),
     )).toBe(true);
+  });
+
+  /**
+   * Mids assigns `CurrentBuild.Powers[powerIndex] = powerEntry` — the array is
+   * positional, so entry i is the i-th level-up pick. Grouping by powerset gave
+   * every power the right Level label in a grid position nobody picked: Hasten
+   * at 8 rendered after Geyser at 30, Shark Skin at 35 after Tough at 49.
+   */
+  it('lays the chosen powers out along the pick schedule', () => {
+    const { mbd } = exported();
+    const picks = mbd.PowerEntries.slice(0, mbd.LastPower + 1);
+    const levels = picks.map((pe) => pe.Level);
+    expect(levels).toEqual([...levels].sort((a, b) => a - b));
+    expect(levels).toEqual([1, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24,
+                            26, 28, 30, 32, 35, 38, 41, 44, 47, 49]);
   });
 
   it("uses the character's origin, not a placeholder", () => {

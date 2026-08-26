@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Open a .mbd in a real Mids Reborn, under Wine.
+#
+# The point is that Mids fails quietly. An unknown enhancement UID leaves an
+# empty slot with no error; a malformed inherent block throws inside LoadBuild's
+# try/catch and the build comes up looking merely incomplete. Reading the C#
+# tells you what COULD happen — only running it tells you what did. Both bugs
+# behind MBDEXPORT-1 were found this way after source reading had produced two
+# equally plausible stories.
+#
+#   ./mids-wine.sh path/to/build.mbd     # open a build
+#   ./mids-wine.sh                       # just launch
+#
+# Setup (once):
+#   WINEPREFIX=~/Games/mids-reborn WINEARCH=win64 wineboot -u
+#   WINEPREFIX=~/Games/mids-reborn winetricks -q dotnetdesktop8
+#   # MRB_Release_*.zip from github.com/LoadedCamel/MidsReborn/releases,
+#   # extracted to $PREFIX/drive_c/MidsReborn.
+#
+# GitHub only ever carries the release the repo was tagged at, and its committed
+# database lags — master shipped DB 2026.1.1242 while live was on 2026.5.1337.
+# The current app and database come from Mids' own channel instead:
+#
+#   curl -s https://updates.midsreborn.com/update_manifest.json
+#   # then fetch the named .mru files. An .mru is zlib around a
+#   # "Mids Reborn Patch Data" container: [str header][i32 count]
+#   # then count × ([i32 size][str name][str folder][size bytes]).
+#   # The app .mru holds a mids<ver>+db<ver>.zip; unzip that over drive_c/MidsReborn.
+set -euo pipefail
+
+PREFIX="${MIDS_WINEPREFIX:-$HOME/Games/mids-reborn}"
+APP="$PREFIX/drive_c/MidsReborn"
+[ -x "$APP/MidsReborn.exe" ] || { echo "no Mids at $APP — see setup above" >&2; exit 1; }
+
+if [ $# -ge 1 ]; then
+  cp "$1" "$APP/test.mbd"
+  # Passing the path on the command line only sets LastFileName for the NEXT
+  # start (MainWindow2 ctor), and the -load switch is broken upstream — it tests
+  # DlgOpen.FileName instead of the argument it was handed. Writing the config is
+  # the only route that loads on this run.
+  python3 - "$APP/appSettings.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+cfg = json.load(open(p))
+cfg['LastFileName'] = r'C:\MidsReborn\test.mbd'
+cfg['DisableLoadLastFileOnStart'] = False
+# AutomaticUpdates is an AutoUpdate object, not a bool — writing `false` there
+# throws a JsonSerializationException on startup before any window appears.
+cfg['AutomaticUpdates'] = {'Type': 'Disabled', 'Delay': 3, 'LastChecked': None}
+json.dump(cfg, open(p, 'w'), indent=2)
+PY
+fi
+
+cd "$APP"
+WINEPREFIX="$PREFIX" WINEDEBUG=-all setsid nohup wine MidsReborn.exe >/tmp/mids-wine.log 2>&1 </dev/null &
+echo "launched; window appears in ~40s. Screenshot with:"
+echo "  W=\$(DISPLAY=:0 xdotool search --name \"Mids' Reborn\" | head -1)"
+echo "  DISPLAY=:0 import -window \$W /tmp/mids.png"
+echo "An error shows up as a separate 'MessageBoxEx' or 'Microsoft .NET' window — check for those before trusting a screenshot."
