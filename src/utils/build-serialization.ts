@@ -397,9 +397,16 @@ export function hydrateBuild(slim: Record<string, any>, notes?: HydrationNote[])
     epicPool,
     inherents,
     // Accolades are selected ids now; fold any legacy { id, … } object from an older code.
-    accolades: (slim.accolades ?? []).map((a: string | { id: string }) =>
-      typeof a === 'string' ? a : a.id
-    ),
+    // Two ids predate the game-internal-name convention and need renaming
+    // (`atlas_medallion`→`the_atlas_medallion`) before a calculate pass can resolve them.
+    // Share links, JSON/.skif imports and localStorage all pass through hydrateBuild,
+    // so this lives here alongside the fold rather than in one storage migration.
+    accolades: (slim.accolades ?? []).map((a: string | { id: string }) => {
+      const id = typeof a === 'string' ? a : a.id;
+      if (id === 'atlas_medallion') return 'the_atlas_medallion';
+      if (id === 'freedom_phalanx') return 'freedom_phalanx_reserve';
+      return id;
+    }),
     settings: slim.settings ?? { origin: 'Natural' },
     sets,
     incarnates: slim.incarnates ?? createEmptyIncarnateBuildState(),

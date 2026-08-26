@@ -680,10 +680,14 @@ delta is the new `temporary_powers/` dir (+67 files). Regen is idempotent (only 
 Guard: [granted-damage-procs.test.ts](src/data/granted-damage-procs.test.ts) (5 cases incl. the
 Bio-not-attached regression + the table-resolves guard). tsc clean, **577 tests**.
 
-**Follow-up (not done — deliberate scope cut).** The Bio Armor adaptation toxic proc + the
-+Damage-buff grants (Power Siphon, Reach for the Limit, Perfection of Body) remain on the
-Mechanic-Adjuster surface only; folding the granted DoT into per-attack DPS (it fires off the
-player's attack chain) is a separate calc feature, not a data gap.
+**Follow-up — DONE (2026-08-25, calc work in the 1.0 app, not a data gap).** The Bio Armor
+adaptation toxic proc + the +Damage-buff grants (Power Siphon, Reach for the Limit, Perfection
+of Body) remain on the Mechanic-Adjuster surface, but the granted DoT now ALSO folds into
+per-attack DPS: the Attack Chain Builder adds each proc's expected per-cast contribution
+(`tickChance × per-tick × ticks`) to every attack (`grantedDoTPerAttack` in
+`attack-chain-powers.ts`), gated on `hasDamage` (a pure Build Up gains no pseudo-attack damage)
+and on the stance (`activeSubPower`) for stance-scoped grants like Bio Offensive Adaptation.
+Guard: `attack-chain-granted-dot.test.ts`.
 
 **Audit-harness note (context, not a pipeline bug):** the production exporter DOES capture
 `child_effects` (raw `child_groups`) and caster-on-cast buffs under `activation_effects` (e.g.
@@ -1314,9 +1318,14 @@ Summary of what shipped (verified present + committed 2026-06-11):
 - **Guard:** `pseudopet-redirect.test.ts` (in-game-verified scales) +
   `pseudopet-effects.test.ts` — both green (38 cases).
 
-Remaining items are smaller and explicitly non-blocking (Burn's Fiery-Embrace bonus
-patch toggle, Voltaic Sentinel's secondary bolt component under-count, base-aura
-face-value AoE fuzziness) — tracked in the to-do doc, not reopened.
+Both follow-ups from that list were closed. Burn's Fiery-Embrace variant split is
+covered: the base patch (`Fire 0.14`) and the FE-active `fieryburn` (
+0.14 + 0.063) are pinned in `pseudopet-redirect.test.ts`, and the
+chance-0 FE duplicate no longer bumps the count. Voltaic Sentinel's "secondary
+bolt component" was disproven: the real pet's two extra 0.213 strikes are
+gated on a critter/PvE RPN (`enttype target> critter/player eq`) AI-side
+effect, correctly dropped — the player-facing 0.56 bolt matches CoD2. The
+base-aura face-value AoE fuzziness was a display-truth, not a bug.
 
 - [x] Rebirth `is_pvp` — Phalanx Fighting ally scaling restored; Parse6 ally-buff vs PvP-split disambiguated (2026-06-11)
 

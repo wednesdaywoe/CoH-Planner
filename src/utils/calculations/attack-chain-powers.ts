@@ -9,13 +9,15 @@
 
 import type { ArchetypeStats, Build, SelectedPower, PowerEffects } from '@/types';
 import { hasSelfDirectedPenalty, INCARNATE_REQUIRED_LEVEL } from '@/types';
-import { getIOSet, arcToDegrees, getJudgementEffects } from '@/data';
+import { getIOSet, arcToDegrees, getJudgementEffects, STANCE_GROUPS, toStancePowers, activeStanceOptionId } from '@/data';
 import { getTableValue, calculateIncarnateDamage } from '@/data/at-tables';
 import {
   calculatePowerEnhancementBonuses,
   calculatePowerDamage,
   calculateArcanaTime,
   calculateCharacterTotals,
+  calculateDamageWithATTable,
+  dotTickCount,
 } from '@/utils/calculations';
 import { calcThreeTier, convertGlobalBonusesToAspects, applyActiveConditionals } from '@/components/info/powerDisplayUtils';
 import { selectActiveConditionals, type ATInherentState } from '@/utils/conditional-effects';
@@ -28,6 +30,56 @@ import type { ChainPower, ChainDoT, ChainForm, ChainPowerType, EnduranceParams, 
 
 type CalcResult = ReturnType<typeof calculateCharacterTotals>;
 type GlobalBonuses = CalcResult['globalBonuses'];
+
+/**
+ * Expected per-attack damage contributed by GRANTED DoT procs (Molten Embrace,
+ * Bio Armor Offensive Adaptation, Toxins, Envenomed Blades, …). These live on
+ * a hidden Temporary_Powers power the granting power hands out and proc off the
+ * player's OWN attacks, so every attack in the chain carries the expected
+ * contribution (`tickChance × per-tick × ticks`). A granting power counts only
+ * when it is actually active: stance-gated ones (Bio adaptation) only when its
+ * option is the build's selected stance (`activeSubPower`); plain passives and
+ * toggles whenever taken.
+ */
+function grantedDoTPerAttack(
+  build: Build,
+  archetypeId: string | undefined,
+  enhDamage: number,
+  globalDamageBuffs: number,
+): number {
+  if (!archetypeId) return 0;
+  const stancePowers = toStancePowers(
+    build.primary?.powers,
+    build.secondary?.powers,
+    ...(build.pools ?? []).map((pool) => pool.powers),
+    build.epicPool?.powers,
+  );
+  let total = 0;
+  for (const p of allBuildPowers(build)) {
+    const procs = p.grantedDamageProcs;
+    if (!procs || procs.length === 0) continue;
+    // Stance-gated granting power (Bio Offensive Adaptation): only its own
+    // stance is selected. Same gate the Mechanic Adjusters picker reads.
+    const group = STANCE_GROUPS.find((g) => g.options.some((o) => o.subPower === p.internalName));
+    if (group) {
+      const option = group.options.find((o) => o.subPower === p.internalName);
+      if (!option || activeStanceOptionId(stancePowers, group) !== option.id) continue;
+    }
+    for (const proc of procs) {
+      const ticks = proc.period && proc.duration ? dotTickCount(proc.duration, proc.period) : 1;
+      const perTick = proc.damage.reduce((sum, d) => {
+        const v = calculateDamageWithATTable(
+          d.scale, d.table, archetypeId, build.level,
+          proc.enhanceable ? enhDamage : 0,
+          proc.enhanceable ? globalDamageBuffs : 0,
+        ) ?? 0;
+        return sum + v;
+      }, 0);
+      total += (proc.tickChance ?? 1) * perTick * ticks;
+    }
+  }
+  return total;
+}
 
 interface Candidate {
   /** The variant for `modes[0]` — the power's DEFAULT numbers in this chain. */
@@ -689,7 +741,15 @@ export function buildChainPowers(
       // (1.96 + 0.49) × 2 where the game gives 1.96 × 2 + 0.49. Same seam the
       // InfoPanel's damage column uses, so the two surfaces cannot diverge.
       const exempt = isPureDot ? 0 : (dmg?.atMechanicExemptDamage?.final ?? 0);
-      const damage = applyAtMechanicBonus(directHit + (dotInCast ? dotTotal : 0), mult, exempt) + procDmg;
+      // Granted DoT procs (Molten Embrace, Bio Offensive Adaptation, …) fire off
+      // the player's attacks at their expected per-cast value — folded into the
+      // per-attack damage the chain schedules, exactly the open-item ask. Gated
+      // on `hasDamage` so a pure buff (Build Up) doesn't gain pseudo-attack
+      // damage and flip its chain classification.
+      const grantedDmg = hasDamage
+        ? grantedDoTPerAttack(build, archetypeId, enh.damage || 0, globalForCalc.damage ?? 0)
+        : 0;
+      const damage = applyAtMechanicBonus(directHit + (dotInCast ? dotTotal : 0), mult, exempt) + procDmg + grantedDmg;
       return { damage, dot };
     };
 

@@ -4,6 +4,7 @@
  * Displays Fitness, Basic, and Archetype inherent powers in a collapsible section.
  */
 
+import type { SlotLevel } from '@/utils/slot-levels';
 import { useMemo, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { useShowSlotLevels } from '@/stores/uiStore';
@@ -252,7 +253,7 @@ interface InherentGroupProps {
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
   onInfoClick: (power: SelectedPower) => void;
   onToggle: (powerName: string) => void;
-  slotLevelsMap?: Map<string, number[]>;
+  slotLevelsMap?: Map<string, SlotLevel[]>;
 }
 
 function InherentGroup({

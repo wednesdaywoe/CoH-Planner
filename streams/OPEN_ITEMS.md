@@ -346,8 +346,16 @@ per-field evidence trail:
   (`archetypeicon_*`) icons absent from every local Sweet Tea pigg. Sourceable
   from HC texture piggs via `--assets-dir <…/Homecoming/assets/live>`. See
   `scripts/attic/extract-thunderspy-icons.py`. *(Also tracked in `streams/TODOs`.)*
-- **TSPY3 — 92 powerset records (1.4%) fail to parse** — Likely a fourth rare
-  layout variant. "Not investigated."
+- **TSPY3 — 92 powerset records (1.4%) fail to parse** — **Closed 2026-08-25, stale.**
+  The parser is now strict (`PowersetLayoutError`, no silent drop) and parses **all
+  6659 Thunderspy powersets cleanly** on the 2026-07-30 bin (92/6659 = 1.4% — the
+  exact figure here, i.e. the pre-strict-mode "counted and dropped behind a bare
+  `except: continue`" behavior the `_powersets.py` docstring documents as removed).
+  The "fourth rare layout variant" is moot: every record fits a known layout
+  (`ACCOUNT_STRINGS` + Parse6 `power_indices` structural detection), and any future
+  regression crashes the export loudly instead of vanishing. Verified:
+  `export_powers.py --assets-dir <tspy>` → "6659 powersets loaded", 0 dropped, exit 0.
+  No parser change needed (vendored copy byte-identical to canonical).
 - **TSPY4 — populate `pet-lifespans.json` / `self-destruct-delays.json`** [L] —
   Still 0 entries. Lifespan lives on each pet's bundled `Self_Destruct` power as
   a `Silent_Kill` delay; the tspy `Self_Destruct` powers either aren't reached or
@@ -545,17 +553,28 @@ per-field evidence trail:
 
 ## 11. Pseudo-pets, procs, flags (Homecoming, non-blocking)
 
-- **Granted-DoT per-attack DPS folding** — Bio Armor adaptation toxic proc +
-  the +Damage-buff grants (Power Siphon, Reach for the Limit, Perfection of Body)
-  stay on the Mechanic-Adjuster surface only; folding the granted DoT into
-  per-attack DPS is a separate calc feature.
-- **Smaller pseudo-pet gaps** [L] — Burn's Fiery-Embrace bonus patch toggle;
-  Voltaic Sentinel's secondary bolt component under-count; base-aura face-value
-  AoE fuzziness.
-- **PseudoPet + CopyCreatorMods flag bits** — Emitting `PseudoPet` flips
-  `summon.isPseudoPet` on ~68 powers (Power-Info display); belongs with the
-  pseudo-pet resolution work. `CopyCreatorMods` decoded but unconsumed. Both
-  documented (commented out) in `_FLAG2_BITS`. Lower bits 0x1/0x2 undecoded.
+- **Granted-DoT per-attack DPS folding — DONE** (2026-08-25). The Attack Chain Builder now
+  folds each granted DoT proc's expected per-cast contribution (`tickChance × per-tick × ticks`)
+  into every attack's damage via `grantedDoTPerAttack` in `attack-chain-powers.ts`. Stance-gated
+  granting powers (Bio Offensive Adaptation) count only when their stance is the build's
+  `activeSubPower`; plain passives/toggles whenever taken; gated on `hasDamage` so pure buffs
+  (Build Up) don't gain pseudo-attack damage. Guard: `attack-chain-granted-dot.test.ts`. The
+  Mechanic-Adjuster informational display remains (it shows the raw proc block); the fold adds
+  the DPS side.
+- **Smaller pseudo-pet gaps — CLOSED** (see HOMECOMING_PARSER). Burn's Fiery-Embrace
+  variant split is pinned (base 0.14 vs FE-active 0.14+0.063 in
+  `pseudopet-redirect.test.ts`; chance-0 FE duplicate no longer bumps count). Voltaic
+  Sentinel's secondary bolt was disproven — the extra 0.213 strikes are critter/PvE-gated
+  RPN, correctly dropped; player-facing 0.56 matches CoD2. Base-aura face-value AoE was a
+  display-truth, not a bug.
+- **Create_Entity flag bits — all DONE / nothing open here.** `PseudoPet` emission
+  (`summon.isPseudoPet`, 110 HC powers) and `CopyCreatorMods` consumption
+  (`resolvedEntities[].copyCreatorMods` → `applyEnh` in InfoPanel/PowerInfoTooltip;
+  236 HC entity shells via `shouldApplyEnhancements`) are both wired. The two lowest
+  Create_Entity bits are NOT undecoded: 0x1 = `VanishEntOnTimeout`, 0x2 = `DoNotTintCostume`,
+  both in `_FLAG2_BITS_BY_ATTRIB` and surfacing on real templates (e.g. Shock_Therapy
+  Discharge carries `VanishEntOnTimeout`+`CopyBoosts`, flags2_raw 5). They are cosmetic
+  (vanish-on-timeout / dress-up) with no display impact — decoded-but-unconsumed by design.
 
 ## 12. Epic pool gating (from `streams/TODOs`)
 

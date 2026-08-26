@@ -21,7 +21,7 @@ import type { HydrationNote } from '@/utils/build-serialization';
 import { crossDatasetChoice } from '@/utils/build-open-route';
 import { generatePopmenu } from '@/utils/export-popmenu';
 import { openPrintView } from '@/utils/export-print';
-import { exportToMids } from '@/utils/mids-export';
+import { exportToMidsWithReport, type MidsExportWarning } from '@/utils/mids-export';
 import { findIllegalSlots } from '@/utils/build-enhancement-validation';
 
 interface ExportImportModalProps {
@@ -43,6 +43,9 @@ function serverLabel(serverId: string | undefined): string {
 
 export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [activeTab, setActiveTab] = useState<TabType>('save');
+  // Enhancements Mids has no name for. Mids drops an unresolvable slot without
+  // saying so, so the only place the user can learn the file is short is here.
+  const [midsExportWarnings, setMidsExportWarnings] = useState<MidsExportWarning[]>([]);
   const requestedTab = useUIStore((s) => s.exportImportModalTab);
 
   // Sync tab when modal opens with a specific tab requested
@@ -1609,7 +1612,8 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                     variant="secondary"
                     size="sm"
                     onClick={() => {
-                      const json = exportToMids(build);
+                      const { json, warnings } = exportToMidsWithReport(build);
+                      setMidsExportWarnings(warnings);
                       const blob = new Blob([json], { type: 'application/json' });
                       const url = URL.createObjectURL(blob);
                       const link = document.createElement('a');
@@ -1652,6 +1656,24 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                     Test Server Popmenu
                   </Button>
                 </div>
+
+                {midsExportWarnings.length > 0 && (
+                  <div className="rounded border border-amber-600/50 bg-amber-950/30 p-3 text-xs">
+                    <p className="font-semibold text-amber-300">
+                      {midsExportWarnings.length} enhancement{midsExportWarnings.length === 1 ? '' : 's'} could not be written to the .mbd
+                    </p>
+                    <p className="mt-1 text-amber-200/80">
+                      Mids has no name for these, so those slots will open empty. Everything else exported normally.
+                    </p>
+                    <ul className="mt-2 space-y-0.5 text-amber-200/70">
+                      {midsExportWarnings.map((w, i) => (
+                        <li key={`${w.power}-${w.slot}-${i}`}>
+                          {w.power} slot {w.slot}: {w.detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 {/* Popmenu expanded section */}
                 {showPopmenu && (

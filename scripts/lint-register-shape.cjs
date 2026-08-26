@@ -34,6 +34,12 @@
  *      one is canonical-only: the narratives quote the private source defs, so
  *      the public repo cannot hold them. The beta's report says so out loud
  *      rather than skipping quietly.
+ *   7. each section's "[Full detail](...) — N of M closed" line agrees with the
+ *      rows under it. Rule 2 grades the same claim for the file as a whole, and
+ *      the per-section copies rotted underneath it precisely because nothing
+ *      did: on 2026-08-24 four of eight had drifted, and two of them ("26 of 27",
+ *      "35 of 36") still advertised an open entry while the header correctly
+ *      said 0 open. A count nobody grades is a comment.
  *
  * Rules 1, 3 and 6 all key on the id pattern, and until 2026-08-18 that pattern
  * ended in `\d+`, which only matches an id whose digits follow a letter directly.
@@ -183,6 +189,52 @@ for (let i = 0; i < lines.length; i++) {
   i = j - 1;
 }
 
+// -- 7: per-section counts agree with the rows under them -------------------------
+// The section header states "N of M closed" over its own rows. Only lines carrying that
+// shape are graded — `gaps/method-notes.md` is linked with a description instead of a
+// count, and a pointer is not a claim about a population.
+{
+  let cur = null; // { line, stated, closed, total, file }
+  const flushSection = () => {
+    if (!cur) return;
+    if (cur.stated.closed !== cur.closed || cur.stated.total !== cur.total) {
+      errors.push(
+        `line ${cur.line}: section "${cur.file}" states "${cur.stated.closed} of ${cur.stated.total} ` +
+          `closed" but the rows under it are ${cur.closed} of ${cur.total}`
+      );
+    }
+    cur = null;
+  };
+  for (const [i, line] of lines.entries()) {
+    const head = line.match(/^\[Full detail\]\((gaps\/[^)]+)\)\s+—\s+(\d+) of (\d+) closed\s*$/);
+    if (head) {
+      flushSection();
+      cur = {
+        line: i + 1,
+        file: head[1],
+        stated: { closed: Number(head[2]), total: Number(head[3]) },
+        closed: 0,
+        total: 0,
+      };
+      continue;
+    }
+    // any other [Full detail] pointer ends the previous section without opening one
+    if (line.startsWith('[Full detail](')) {
+      flushSection();
+      continue;
+    }
+    if (line.startsWith('## ')) flushSection();
+    if (!cur) continue;
+    if (/^[-*] \[x\] \*\*/.test(line)) {
+      cur.closed++;
+      cur.total++;
+    } else if (/^[-*] \[ \] \*\*/.test(line)) {
+      cur.total++;
+    }
+  }
+  flushSection();
+}
+
 // -- 6: every checkbox ID has a narrative section in docs/gaps/ --------------------
 const gapSections = new Map();
 for (const f of NARRATED_HERE ? fs.readdirSync(GAPS_DIR).filter((f) => f.endsWith('.md')) : []) {
@@ -206,7 +258,8 @@ if (errors.length) {
   if (gate) process.exit(1);
 } else {
   console.log(
-    `ok: ${allBoxes} entries (${openBoxes} open), frontier prose under ${MAX_FRONTIER_PROSE} chars/paragraph, ` +
+    `ok: ${allBoxes} entries (${openBoxes} open), section counts agree, ` +
+      `frontier prose under ${MAX_FRONTIER_PROSE} chars/paragraph, ` +
       `rows under ${MAX_ROW} chars, ` +
       (NARRATED_HERE
         ? `all ${checkboxIds.length} ids narrated in docs/gaps/`

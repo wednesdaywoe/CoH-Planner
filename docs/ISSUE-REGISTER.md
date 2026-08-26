@@ -20,19 +20,19 @@ from this point forward are recorded here.
 
 ## Current frontier
 
-Both entries closed the same day they were filed. Fix: a new scoped RPN evaluator
-(`src/utils/conditionExpr.ts`, NOT a full port of `coh_math::expr` — just the source-relative
-subset `quickSnipe`/`formVariants` conditions actually use) plugged into `resolveEffectivePower.ts`
-so it evaluates `power.formVariants[].condition` and `power.quickSnipe.condition` for real instead
-of trusting the raw `combatMode` toggle. Getting the two failing assertions green surfaced two
-more bugs past the ones originally filed, both fixed alongside: `Source.Mode?` tokens are
-`k`-prefixed (`kBoostPower`) while `setsModes`/`activeModes` publish the bare mode (`BoostPower`)
-— canonical's `collect_source_modes` inserts both spellings and `toConditionContext` now does too
-— and the test's own `strengthCandidates` fixture built a raw `Build` by hand, bypassing the store
-logic that normally keeps `activeModes` synced with active `setsModes`-carrying powers, so it had
-to gain that sync itself. Full suite green (the only remaining red is 11 pre-existing
-`storage.setItem is not a function` / dataset-load-timeout failures, confirmed byte-identical on a
-clean `git stash` baseline — unrelated, not touched).
+SLOT-1 closed 2026-08-24, the day it was reported. It is the first entry here found from outside —
+a user noticed two slots missing from low levels and a level-38 power claiming two slots granted at
+38, a level the Homecoming schedule issues none at. The cause was a shape mismatch, not an
+arithmetic slip: slot-to-grant allocation is a matching, and `slot-levels.ts` walked `slotOrder`
+first-come-first-served instead. A walk cannot see that re-housing one early-power slot onto a
+freed low grant releases the high grant a late power needs, so it reported the build full while a
+valid assignment sat one swap away — and then the caller invented a level for the slot it had
+failed to place, the display showed it, and the rehydrate backfill froze it in. Fixed by routing
+respec mode, leveling mode, the placement probe and the relocation check through one solver
+(`assignGrants`, Kuhn's augmenting-path matching over the grant pool), so the probe cannot disagree
+with the display, plus a `SlotLevel = number | null` return that made the compiler find every
+consumer of the old fabricated number. Full suite green (2302 passing); the new guard is
+mutation-tested 15 of 15.
 
 ---
 
@@ -69,6 +69,25 @@ trees had drifted wholesale (canonical's BOOST-5). The port landed 2026-08-20.
       globals as `Special` where canonical says `Perception`; the extractor port turned out to be
       four deltas, not a divergence, and regenerating exposed a live pet-stamp defect in the shared
       script (canonical's PROCPET-1) that had to be fixed before the regen was shippable
+
+---
+
+## Slot grant allocation
+
+Enhancement slots are placed against a lumpy, level-gated grant schedule — Homecoming issues 67 of
+them at 28 specific levels and none at all at 38, 41, 44, 47 or 49. Pairing slots to grants is a
+matching; beta allocated them with a walk.
+
+[Full detail](gaps/slot-grant-allocation.md) — 1 of 1 closed
+
+- [x] **SLOT-1** — deleting a slot and placing it on a later-picked power stranded the freed grant
+      and stamped the new slot with its power's pick level (a level the schedule may grant nothing
+      at), which the rehydrate backfill then froze in as a stored level while both exporters, keyed
+      by display name, printed the pick level for every slot and so could not reveal it; fixed by a
+      single Kuhn matching behind respec mode, leveling mode, the placement probe and the
+      relocation check, a `SlotLevel = number | null` that refuses to substitute a plausible number
+      for an unplaceable slot, and a `scrubFabricatedSlotLevels` migration for poisoned saves.
+      Guarded by `slot-allocation.test.ts` (16 tests, mutation-tested 15/15)
 
 ---
 

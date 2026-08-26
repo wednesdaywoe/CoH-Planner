@@ -46,6 +46,11 @@ export const MineralArmor: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 0.75,
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Ones"
+    },
     "debuffResistance": {
       "perception": {
         "scale": 0.6,
@@ -59,11 +64,13 @@ export const MineralArmor: Power = {
       }
     },
     "durations": {
+      "confuse": 0.75,
       "debuffResistance": 0.75,
       "defenseBuff": 0.75,
       "mezResistance": 0.75,
       "perceptionBuff": 0.75
     },
+    "effectDuration": 0.75,
     "mezResistance": {
       "confuse": {
         "scale": 5,

@@ -64,7 +64,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "5ddd1fa23375294c4218dcc0f6d90e0dd7e3b77ec818b27ab642bf2fea67e2f4"
+      "sha256": "419685ca66fd800e9adf8c08c01e39eb44375018809e70298a9738b5fd546e0d"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -244,7 +244,7 @@
     {
       "path": "scripts/convert-pet-entities.cjs",
       "status": "identical",
-      "sha256": "8dfb87d5676c5d144bf2639671bc8a8c6d54ebe84369e7df2de5da7c8cbf5f13"
+      "sha256": "6ce2474cd857ebb268dd6c7412bd80e5cd06876b2f0253d0b9a061177a35abf9"
     },
     {
       "path": "scripts/convert-pool-powers.cjs",
@@ -254,7 +254,7 @@
     {
       "path": "scripts/convert-powerset.cjs",
       "status": "identical",
-      "sha256": "d205ac8df4402d43e63d279c750c4ebebbe58438326ffc406e4e5b78f61b5020"
+      "sha256": "280ade5f92ab3d8c7fb4676e58282611ad57802bc69baf25019bd65964bc59ec"
     },
     {
       "path": "scripts/convert-salvage.cjs",
@@ -339,7 +339,7 @@
     {
       "path": "scripts/lint-register-shape.cjs",
       "status": "identical",
-      "sha256": "8464c611bd988439c09efc3716d3c6e87bbbc1d35ccbcc56a890805b2a1aa08a"
+      "sha256": "06959d08e3d213a92138fbc64e5f7d8be12b53a0867ed839914bae29b5a68af1"
     },
     {
       "path": "scripts/planb-shadow-bag.cjs",
@@ -420,7 +420,7 @@
     {
       "path": "src/data/dataset.ts",
       "status": "identical",
-      "sha256": "109f41c5a8c216e5a02be58136618b52c432ae335d4154ce637913e190ec085d"
+      "sha256": "31aa1202833e40b6c82878f0a6d9cedb801b4e84e083a8134ff12f3e02e6cfec"
     },
     {
       "path": "src/data/enhancement-curves.ts",
@@ -446,6 +446,11 @@
       "path": "src/data/levels.ts",
       "status": "identical",
       "sha256": "148f203c5c74d35cf74dd989717c6ca1adea7859cfdcc9cd975a9690e063d081"
+    },
+    {
+      "path": "src/data/mids-uids.ts",
+      "status": "identical",
+      "sha256": "e73a34e1019ad696a9957f5fd1ea6b630b4ffa26238e945bba167463b3c3f5d2"
     },
     {
       "path": "src/data/power-pools.ts",

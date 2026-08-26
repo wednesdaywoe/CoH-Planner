@@ -15,6 +15,7 @@
 
 import type { ArchetypeId, ArchetypeRegistry, Archetype, Powerset } from '@/types';
 import type { LegacyIOSetRegistry } from './io-sets';
+import type { MidsUidTable } from './mids-uids';
 import type { LegacyEpicPoolRegistry } from './epic-pools';
 import type { IncarnateEffectsRaw } from './incarnate-effects';
 import type { LegacyPowerPoolRegistry } from './power-pools';
@@ -404,6 +405,11 @@ export interface Dataset {
   // ~600 KB per server. The `io-sets` facade transforms it to the runtime
   // `IOSetRegistry` lazily.
   ioSetsRaw: LegacyIOSetRegistry;
+
+  // Mids Reborn's enhancement-UID namespace for this server, generated from the
+  // matching EnhDB.mhd. Only the .mbd export path reads it; see
+  // `src/data/mids-uids.ts` for why the UIDs are read rather than derived.
+  midsUids?: MidsUidTable;
 
   // Raw epic-pool registry. Same rationale again. The per-dataset generated
   // literal is structurally looser than the facade's `LegacyEpicPoolRegistry`,

@@ -100,8 +100,15 @@ export const FRTTacticalTrainingVengeance: Power = {
     "durations": {
       "damageBuff": 120,
       "defenseBuff": 120,
+      "fear": 120,
       "mezResistance": 120,
       "tohitBuff": 120
+    },
+    "effectDuration": 120,
+    "fear": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Ones"
     },
     "mezResistance": {
       "confuse": {

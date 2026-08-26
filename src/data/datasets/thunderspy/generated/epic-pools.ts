@@ -26942,6 +26942,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "buffDuration": 90,
+          "confuse": {
+            "ignoreStrength": true,
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
           "defenseBuff": {
             "psionic": {
               "scale": 2.5,
@@ -26949,7 +26955,37 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "durations": {
-            "defenseBuff": 90
+            "confuse": 90,
+            "defenseBuff": 90,
+            "fear": 90,
+            "hold": 90,
+            "sleep": 90,
+            "stun": 90
+          },
+          "effectDuration": 90,
+          "fear": {
+            "ignoreStrength": true,
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "hold": {
+            "ignoreStrength": true,
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "sleep": {
+            "ignoreStrength": true,
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "stun": {
+            "ignoreStrength": true,
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
           },
           "maxStacks": 2,
           "stacksLinear": [
@@ -27277,6 +27313,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "buffDuration": 90,
+          "confuse": {
+            "ignoreStrength": true,
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
           "defenseBuff": {
             "psionic": {
               "scale": 2.5,
@@ -27284,7 +27326,37 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "durations": {
-            "defenseBuff": 90
+            "confuse": 90,
+            "defenseBuff": 90,
+            "fear": 90,
+            "hold": 90,
+            "sleep": 90,
+            "stun": 90
+          },
+          "effectDuration": 90,
+          "fear": {
+            "ignoreStrength": true,
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "hold": {
+            "ignoreStrength": true,
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "sleep": {
+            "ignoreStrength": true,
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "stun": {
+            "ignoreStrength": true,
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
           }
         }
       },

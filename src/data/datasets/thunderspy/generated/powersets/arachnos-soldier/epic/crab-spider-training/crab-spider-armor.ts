@@ -36,10 +36,37 @@ export const CrabSpiderArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 10.25,
+    "buffDuration": 10,
+    "confuse": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
     "durations": {
+      "confuse": 10,
+      "fear": 10,
+      "hold": 10,
+      "immobilize": 10,
       "mezResistance": 10,
-      "resistance": 10.25
+      "resistance": 10.25,
+      "sleep": 10,
+      "stun": 10
+    },
+    "effectDuration": 10,
+    "fear": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
     },
     "mezResistance": {
       "sleep": {
@@ -60,6 +87,16 @@ export const CrabSpiderArmor: Power = {
         "scale": 0.3,
         "table": "Melee_Res_DMG"
       }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
     }
   },
   "atoms": [

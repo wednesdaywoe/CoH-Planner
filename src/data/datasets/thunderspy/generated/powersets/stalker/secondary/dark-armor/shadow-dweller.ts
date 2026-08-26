@@ -84,8 +84,15 @@ export const ShadowDweller: Power = {
     "durations": {
       "debuffResistance": 10.25,
       "defenseBuff": 10.25,
+      "immobilize": 10.25,
       "mezResistance": 10.25,
       "perceptionBuff": 10.25
+    },
+    "effectDuration": 10.25,
+    "immobilize": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
     },
     "mezResistance": {
       "immobilize": {

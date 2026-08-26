@@ -28,6 +28,7 @@ import {
   SPECIAL_SUFFIX_MAPS,
   type SpecialCategory,
 } from '@/utils/enhancement-uid';
+import { resolveMidsUid } from '@/data/mids-uids';
 
 // ============================================
 // ARCHETYPE MAPPING
@@ -680,7 +681,14 @@ function getIOSetNameLookup(): Map<string, string> {
 /**
  * Known enhancement stat names in Mids and their app equivalents
  */
-const MIDS_STAT_MAP: Record<string, string> = {
+/**
+ * Mids UID suffix → planner stat. Many-to-one: Mids has spelled the same stat
+ * several ways across its history, and every spelling has to import.
+ *
+ * The export path inverts this against the EnhDB roster rather than keeping a
+ * second hand-written map — see `midsGenericIOSuffix` in mids-export.ts.
+ */
+export const MIDS_STAT_MAP: Record<string, string> = {
   'Damage': 'Damage',
   'Accuracy': 'Accuracy',
   'Recharge': 'Recharge',
@@ -723,7 +731,9 @@ const MIDS_STAT_MAP: Record<string, string> = {
   // wearing the Unknown icon rather than warning.
   'Res_Damage': 'Resistance',
   'Defense_Debuff': 'Defense Debuff',
+  'Defense_DeBuff': 'Defense Debuff',
   'ToHit_Debuff': 'ToHit Debuff',
+  'ToHit_DeBuff': 'ToHit Debuff',
   'Snare': 'Slow',
   'Intangible': 'Intangible',
   'Interrupt': 'Interrupt',
@@ -828,8 +838,15 @@ export function mapEnhancementUid(
     }
   }
 
-  // IO Set enhancement: parse the UID
-  const parsed = parseIOSetUid(uid);
+  // IO Set enhancement. The dataset's own copy of Mids' UID table answers first
+  // — it knows the fossil spellings (`Crafted_Shrapnel_*` is Mids' Artillery,
+  // `Crafted_Exploit_Weakness_c` is that set's third piece) that reading the UID
+  // as text gets wrong. `parseIOSetUid` stays as the fallback for UIDs the table
+  // doesn't carry: other forks' files, and sets newer than the vendored EnhDB.
+  const resolved = resolveMidsUid(uid);
+  const parsed = resolved
+    ? { ...parseIOSetUid(uid), ...resolved } as ReturnType<typeof parseIOSetUid>
+    : parseIOSetUid(uid);
   if (!parsed) {
     return {
       enhancement: null,

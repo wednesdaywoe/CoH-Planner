@@ -12,7 +12,8 @@ import type { Enhancement } from '@/types/enhancement';
 import type { IncarnateBuildState } from '@/types/incarnate';
 import { INCARNATE_SLOT_ORDER } from '@/types';
 import { calculateCharacterTotals, type GlobalBonuses } from '@/utils/calculations/character-totals';
-import { computeAllSlotLevels } from '@/utils/slot-levels';
+import { computeAllSlotLevels, type SlotLevel } from '@/utils/slot-levels';
+import { powerKey, type PowerCategory } from '@/utils/power-key';
 import { getIOSet } from '@/data';
 
 // ============================================
@@ -239,13 +240,23 @@ function buildStatsHTML(g: GlobalBonuses): string {
 // POWER LIST
 // ============================================
 
-function powerRow(power: SelectedPower, slotLevels: Map<string, number[]>): string {
-  const levels = slotLevels.get(power.name);
+function powerRow(
+  power: SelectedPower,
+  category: PowerCategory,
+  slotLevels: Map<string, SlotLevel[]>
+): string {
+  // Keyed by powerKey, not by display name: `computeAllSlotLevels` has always
+  // returned `category:internalName`, so a display-name lookup missed on every
+  // power and every printed slot fell back to its power's pick level (SLOT-1).
+  const levels = slotLevels.get(powerKey(category, power.internalName));
 
   const slots = power.slots
     .map((enh, idx) => {
       if (!enh) return null;
-      const slotLevel = levels?.[idx] ?? power.level;
+      // `?` is a slot the schedule could not place. Printing the pick level in
+      // its place is what made the fabrication invisible.
+      const level = levels?.[idx];
+      const slotLevel = level === null || level === undefined ? '?' : level;
       return `<div class="slot"><span class="slot-level">(${slotLevel})</span> ${formatEnhancementName(enh)}</div>`;
     })
     .filter(Boolean)
@@ -267,13 +278,18 @@ function powerRow(power: SelectedPower, slotLevels: Map<string, number[]>): stri
     </div>`;
 }
 
-function powersetSection(title: string, powers: SelectedPower[], slotLevels: Map<string, number[]>): string {
+function powersetSection(
+  title: string,
+  powers: SelectedPower[],
+  category: PowerCategory,
+  slotLevels: Map<string, SlotLevel[]>
+): string {
   if (powers.length === 0) return '';
   const sorted = [...powers].sort((a, b) => a.level - b.level);
   return `
     <div class="powerset">
       <h2>${esc(title)}</h2>
-      ${sorted.map((p) => powerRow(p, slotLevels)).join('')}
+      ${sorted.map((p) => powerRow(p, category, slotLevels)).join('')}
     </div>`;
 }
 
@@ -319,17 +335,17 @@ export function generatePrintHTML(build: Build): string {
 
   // Build all powerset sections as individual blocks for the column flow
   const allPowersetSections: string[] = [];
-  allPowersetSections.push(powersetSection(build.primary.name, build.primary.powers, slotLevels));
-  allPowersetSections.push(powersetSection(build.secondary.name, build.secondary.powers, slotLevels));
+  allPowersetSections.push(powersetSection(build.primary.name, build.primary.powers, 'primary', slotLevels));
+  allPowersetSections.push(powersetSection(build.secondary.name, build.secondary.powers, 'secondary', slotLevels));
   for (const pool of build.pools) {
-    allPowersetSections.push(powersetSection(pool.name, pool.powers, slotLevels));
+    allPowersetSections.push(powersetSection(pool.name, pool.powers, 'pool', slotLevels));
   }
   if (build.epicPool) {
-    allPowersetSections.push(powersetSection(build.epicPool.name, build.epicPool.powers, slotLevels));
+    allPowersetSections.push(powersetSection(build.epicPool.name, build.epicPool.powers, 'epic', slotLevels));
   }
   if (build.inherents && build.inherents.length > 0) {
     const slottedInherents = build.inherents.filter(p => p.slots.some(s => s !== null));
-    allPowersetSections.push(powersetSection('Inherent Powers', slottedInherents, slotLevels));
+    allPowersetSections.push(powersetSection('Inherent Powers', slottedInherents, 'inherent', slotLevels));
   }
   const incarnateSection = buildIncarnateHTML(build.incarnates);
   if (incarnateSection) allPowersetSections.push(incarnateSection);

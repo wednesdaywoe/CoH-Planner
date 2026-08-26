@@ -68,7 +68,7 @@ import {
   composePersistedState,
   type StoredBuild,
 } from '@/utils/per-server-builds';
-import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, canRelocateSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
+import { findNextAvailableGrantLevel, backfillSlotOrderLevels, scrubFabricatedSlotLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, canRelocateSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
 import { enhancementAllowedInPower } from '@/utils/enhancement-eligibility';
 import { dedupePools } from '@/utils/build-powers';
 import { branchPowersInBuild, branchSetIds } from '@/utils/branch-powers';
@@ -2221,14 +2221,21 @@ export const useBuildStore = create<BuildStore>()(
         // Inherent power slots are excluded entirely from the budget.
         if (countPlacedSlots(state.build) >= getPlacedSlotLimit(state.build.level, state.build.serverId)) return false;
 
-        historyCheckpoint();
-        const newSlotIndex = power.slots.length; // index of the slot being added
         // Resolve the assigned grant level *before* the slot exists on the power,
-        // so the helper sees the same slotOrder it will see in compute. The new
-        // entry consumes the lowest free grant >= the power's pick level, which
-        // is exactly the grant freed by a recent removeSlot if one matches.
+        // so the solver sees the same build it will see in compute. It returns the
+        // lowest grant >= the power's pick level that the whole build can spare —
+        // re-housing another slot onto a freed lower grant where that is what it
+        // takes.
         const pickLevel = category === 'inherent' ? 1 : power.level;
         const assignedLevel = findNextAvailableGrantLevel(state.build, pickLevel);
+        // No grant the slot could legally occupy: refuse, the way the count budget
+        // above refuses. Placing it anyway is what wrote an entry with no level,
+        // which the display then filled in with the power's pick level — a level
+        // the game may grant no slots at (SLOT-1).
+        if (assignedLevel === null) return false;
+
+        historyCheckpoint();
+        const newSlotIndex = power.slots.length; // index of the slot being added
         set((s) => {
           const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
@@ -2239,7 +2246,7 @@ export const useBuildStore = create<BuildStore>()(
             powerName,
             slotIndex: newSlotIndex,
             category,
-            ...(assignedLevel !== null ? { level: assignedLevel } : {}),
+            level: assignedLevel,
           };
           newBuild.slotOrder = [...newBuild.slotOrder, newEntry];
           return { build: newBuild };
@@ -2388,6 +2395,9 @@ export const useBuildStore = create<BuildStore>()(
                 : p
             )
           );
+          // `canRelocateSlot` above already refused a target the schedule cannot
+          // serve, so this resolves; the guard keeps a level-less entry from
+          // being written if the two ever drift apart.
           const newEntry: Build['slotOrder'][number] = {
             powerName: target.powerName,
             slotIndex: targetNewIndex,
@@ -3027,10 +3037,18 @@ export const useBuildStore = create<BuildStore>()(
         const found = findPower(state.build, powerName, categoryHint);
         if (!found) return false;
 
-        return (
-          found.power.slots.length < found.power.maxSlots &&
-          countPlacedSlots(state.build) < getPlacedSlotLimit(state.build.level, state.build.serverId)
-        );
+        if (found.power.slots.length >= found.power.maxSlots) return false;
+        if (countPlacedSlots(state.build) >= getPlacedSlotLimit(state.build.level, state.build.serverId)) {
+          return false;
+        }
+        // The count budget is not the only limit. A slot must also land on a
+        // grant at or above its power's pick level, and those run out
+        // separately — Homecoming issues 24 grants from level 39 on, so a build
+        // can be well inside its 67 and still have nowhere to put a slot on a
+        // power taken at 38 (SLOT-1). Mirror addSlot so the + button and the
+        // action agree.
+        const pickLevel = found.category === 'inherent' ? 1 : found.power.level;
+        return findNextAvailableGrantLevel(state.build, pickLevel) !== null;
       },
 
       canAddPool: () => get().build.pools.length < getMaxPowerPools(get().build.serverId),
@@ -3142,6 +3160,9 @@ export const useBuildStore = create<BuildStore>()(
           // Normalize VEAT branch powersets to base powersets
           normalizeBranchPowersets(build);
 
+          // Clear stored levels the schedule never grants — an export written
+          // before SLOT-1 can carry the old pick-level fallback frozen in.
+          scrubFabricatedSlotLevels(build);
           // Back-fill grant levels on slotOrder entries from pre-fix exports
           // so removing slots behaves like Mids from the first interaction.
           backfillSlotOrderLevels(build);
@@ -3186,6 +3207,7 @@ export const useBuildStore = create<BuildStore>()(
         if (!build.slotOrder) {
           build.slotOrder = [];
         }
+        scrubFabricatedSlotLevels(build);
         backfillSlotOrderLevels(build);
         // Mids imports come in with slotOrder empty (or partial). Lock in
         // respec-mode levels as stored entries so the first add/remove
@@ -3547,6 +3569,14 @@ export const useBuildStore = create<BuildStore>()(
               }
             }
           }
+
+          // Migration: clear stored slot levels the schedule never grants. A
+          // build saved before SLOT-1 can carry a level frozen in from the old
+          // pick-level fallback (e.g. `level: 38`, a level Homecoming grants no
+          // slots at); it can never be honored, so drop it and let the solver
+          // re-house the slot. Must run BEFORE the backfill, which would
+          // otherwise leave it in place.
+          scrubFabricatedSlotLevels(state.build);
 
           // Migration: Back-fill `level` on slotOrder entries placed before the
           // Mids-style remove/replace fix. Without this, the first removeSlot

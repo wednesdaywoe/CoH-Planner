@@ -130,7 +130,7 @@ export function AnnouncementModal() {
 
       <ModalBody>
         {onRoadmapTab ? (
-          <RoadmapPanel onClose={close} />
+          <RoadmapPanel />
         ) : (
           <div className="space-y-4">
             <div className="flex items-center gap-2">
@@ -153,29 +153,27 @@ export function AnnouncementModal() {
         )}
       </ModalBody>
 
-      {!onRoadmapTab && (
-        <ModalFooter className="flex items-center justify-between gap-3">
-          <label className="flex items-center gap-2 text-xs text-gray-400 cursor-pointer select-none">
-            <input
-              type="checkbox"
-              checked={dontShow}
-              onChange={(e) => setDontShow(e.target.checked)}
-              className="w-4 h-4 rounded border-gray-600 bg-gray-800 accent-purple-500"
-            />
-            Don&apos;t show these again
-          </label>
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" onClick={close}>
-              Ok!
+      <ModalFooter className="flex items-center justify-between gap-3">
+        <label className="flex items-center gap-2 text-xs text-gray-400 cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={dontShow}
+            onChange={(e) => setDontShow(e.target.checked)}
+            className="w-4 h-4 rounded border-gray-600 bg-gray-800 accent-purple-500"
+          />
+          Don&apos;t show this again
+        </label>
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" onClick={close}>
+            Ok!
+          </Button>
+          {active?.cta && !onRoadmapTab && (
+            <Button variant="primary" onClick={act}>
+              {active.cta.label}
             </Button>
-            {active?.cta && (
-              <Button variant="primary" onClick={act}>
-                {active.cta.label}
-              </Button>
-            )}
-          </div>
-        </ModalFooter>
-      )}
+          )}
+        </div>
+      </ModalFooter>
     </Modal>
   );
 }

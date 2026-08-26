@@ -16,6 +16,7 @@
 import type { Build, SelectedPower, Enhancement } from '@/types';
 import { INCARNATE_SLOT_ORDER } from '@/types';
 import { computeAllSlotLevels } from '@/utils/slot-levels';
+import { powerKey, type PowerCategory } from '@/utils/power-key';
 import { getIOSet } from '@/data';
 
 export type ForumExportFormat = 'plain' | 'bbcode' | 'markdown';
@@ -70,25 +71,32 @@ export function generateForumExport(
   lines.push(fmt.bold('Powers Taken:'));
   lines.push('');
 
-  const allPowers: SelectedPower[] = [
-    ...build.primary.powers,
-    ...build.secondary.powers,
-    ...build.pools.flatMap((p) => p.powers),
-    ...(build.epicPool?.powers ?? []),
-    ...(build.inherents ?? []).filter((p) => p.slots.some((s) => s !== null)),
+  // Category travels with the power: `computeAllSlotLevels` keys on
+  // `category:internalName`, and looking it up by display name missed on every
+  // power, so every exported slot printed its power's pick level (SLOT-1).
+  const allPowers: { power: SelectedPower; category: PowerCategory }[] = [
+    ...build.primary.powers.map((power) => ({ power, category: 'primary' as const })),
+    ...build.secondary.powers.map((power) => ({ power, category: 'secondary' as const })),
+    ...build.pools.flatMap((p) => p.powers.map((power) => ({ power, category: 'pool' as const }))),
+    ...(build.epicPool?.powers ?? []).map((power) => ({ power, category: 'epic' as const })),
+    ...(build.inherents ?? [])
+      .filter((p) => p.slots.some((s) => s !== null))
+      .map((power) => ({ power, category: 'inherent' as const })),
   ];
-  const ordered = [...allPowers].sort((a, b) => a.level - b.level);
+  const ordered = [...allPowers].sort((a, b) => a.power.level - b.power.level);
 
-  for (const power of ordered) {
+  for (const { power, category } of ordered) {
     lines.push(fmt.bold(`Level ${power.level}: ${power.name}`));
-    const levels = slotLevels.get(power.name) ?? [];
+    const levels = slotLevels.get(powerKey(category, power.internalName)) ?? [];
     const slotItems: string[] = [];
     power.slots.forEach((enh, idx) => {
       if (!enh) return;
-      const slotLevel = levels[idx] ?? power.level;
       // First slot uses 'A' (the auto-grant); subsequent slots show their
-      // taken-level. Matches Mids' convention so paste-readers parse it.
-      const slotPrefix = idx === 0 ? 'A' : String(slotLevel);
+      // taken-level. Matches Mids' convention so paste-readers parse it. A slot
+      // the schedule could not place prints '?' rather than a stand-in level.
+      const level = levels[idx];
+      const slotPrefix =
+        idx === 0 ? 'A' : level === null || level === undefined ? '?' : String(level);
       slotItems.push(`${slotPrefix}: ${formatEnhancementName(enh)}`);
     });
     if (slotItems.length > 0) {
@@ -99,7 +107,7 @@ export function generateForumExport(
 
   // ── Set bonuses ────────────────────────────────────────────────
   if (includeSetBonuses) {
-    const setSummary = summarizeSetBonuses(allPowers);
+    const setSummary = summarizeSetBonuses(allPowers.map((p) => p.power));
     if (setSummary.length > 0) {
       lines.push(fmt.hr());
       lines.push('');

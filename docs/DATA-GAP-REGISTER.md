@@ -19,11 +19,14 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**0 open, of 216 entries.** When an entry is open it is listed here with what it's waiting on.
+**1 open, of 224 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
-Nothing open. The next finding gets a row below and a pointer here.
+- **MEZDUR-1** ([stat-routing](gaps/stat-routing.md)) — waiting on a decision, not evidence:
+  route the granted-magnitude mez row off the atom's `attrib_type` instead of the bag's table
+  name, and decide separately what the sentinel-magnitude flags (`Untouchable` 1000,
+  `OnlyAffectsSelf` 100) should render as.
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -32,7 +35,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Sets, boosts, incarnates, inherents
 
-[Full detail](gaps/sets-boosts-incarnates.md) — 26 of 27 closed
+[Full detail](gaps/sets-boosts-incarnates.md) — 27 of 27 closed
 
 - [x] **HYBRID-2** — Homecoming and its Brainstorm beta dropped the Melee Hybrid's status-protection
   rows at Total Radial Graft and both T4 Embodiments while the tooltip still promises them, where
@@ -84,8 +87,23 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Parser + binary fidelity
 
-[Full detail](gaps/parser-fidelity.md) — 39 of 39 closed
+[Full detail](gaps/parser-fidelity.md) — 42 of 42 closed
 
+- [x] **TSPY-8** — `guardThunderspyAppliedMez`'s protection carve-out tested signed SCALE alone,
+  but protection is also spelled as signed magnitude on `Duration` templates and as an `Expression`
+  magnitude whose sign never reaches the wire, so real protection read as applied control and was
+  stripped: 199 keys over 51 powers, Inner Will (Blaster/Martial Manipulation) losing all six.
+  Carve-out reads all three spellings, `window_slots.rs` mirror moved in step; 531 keys → 332
+- [x] **TSPY-9** — not a parser gap, closed as unresolvable design intent: Thunderspy's binary
+  DOES carry the per-template target (read via `ATTRIB_MOD_TARGET`, byte-identical across all four
+  forks), so the guard's "schema drops the target" premise was stale; the authored-defs oracle
+  exists in no install and Thunderspy has no public test server, so the 2-of-506 / 5-of-5 false-
+  positive question is not settable — guard retained as an accepted, documented heuristic
+- [x] **MEZPROT-1** — the mez bag writer carried a bare `datasetId === 'thunderspy' && scale < 0 &&
+  !table.includes('res_boolean')` arm, an undeclared Rule 0 fork branch that dropped 43 protection
+  keys over 13 powers while Rebirth published the byte-identical atoms; read as four-fork twice
+  because the missing keys were partitioned by recipient rather than by `gated`, and every other
+  fork's misses are gated and correctly absent. Branch deleted, live-contract guard added
 - [x] **SHOWFLAGS-1** — the three `Show*` power flags (ShowInInventory / ShowInManage /
   ShowInInfo) were located in both tail readers' docstrings and skipped by both, so
   `show_in_manage` never reached the export, the converter's `hiddenPassive`/`hiddenAuto` arms
@@ -135,7 +153,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pets + summoned entities
 
-[Full detail](gaps/pets-entities.md) — 18 of 18 closed
+[Full detail](gaps/pets-entities.md) — 21 of 21 closed
 
 - [x] **ENT-1** — Rebirth pet commandability was guessed from the class name
 - [x] **ENT-2** — the villaindef level element was read at Homecoming's width on both forks
@@ -167,13 +185,21 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   audit; the three families the corpus actually holds now emit through the same vocabulary the fold
   already spends, and a converter-side tripwire fails the regen on the next ally-buff-shaped row
   that classifies to nothing
+- [x] **ENT-20** — `convert-pet-entities.cjs` ran neither Thunderspy target-trap guard while
+  `bag_slots` ran both on the same pet abilities, so on Thunderspy the bag kept five control keys the
+  atom view had already dropped; the converter now runs `guardThunderspyAppliedMez` through a shape
+  adapter, and the census grades 5311 statements across four forks with 0 unstated
+- [x] **ENT-21** — `strip_thunderspy_ones_buffs` decides every arm by what a power's `shortHelp`
+  advertises and defaulted an absent field to `""`, so on pet records — which carry no `shortHelp`
+  and no `targetType` — it degraded to an unconditional strip and took all 13 Thunderspy pet
+  `rechargeBuff` rows, the only reader that key has ever had; the mirror now declines on absence
 - [x] **SHELL-1** — opaque-shell pseudo-pet summons were unresolved
 
 ---
 
 ## Procs + PPM
 
-[Full detail](gaps/procs-ppm.md) — 9 of 9 closed
+[Full detail](gaps/procs-ppm.md) — 10 of 10 closed
 
 - [x] **PROCCAT-1** — `proc-data.ts` gave each of 184 procs a hand-authored `setCategory` in front
   of the `type` each fork's registry owns, wrong in 52 and read by nothing; the field is deleted in
@@ -240,8 +266,19 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Stat routing + caps
 
-[Full detail](gaps/stat-routing.md) — 52 of 52 closed
+[Full detail](gaps/stat-routing.md) — 53 of 54 closed
 
+- [ ] **MEZDUR-1** — a mez APPLICATION row states the atom's flat `magnitude` and then multiplies
+  it by the mez DURATION aspect, so a mag-3 stun displays as 5.3 (crossing the boss threshold it
+  does not cross) while the duration the enhancement actually buys is shown nowhere; the
+  discriminator is `attrib_type`, which the bag object the row reads cannot carry, so a
+  `res_boolean` table-name sniff stands in for it. 298 powers, plus the mag-1000 sentinel flags.
+- [x] **MEZPROT-2** — closed 2026-08-25: the discriminator is neither table nor bare sign but the
+  converter's three-spelling protection test plus recipient, graded on the fold winner (the gate
+  could not see spelling before — the fold abs'd it). The apply pass now credits a
+  protection-spelled, non-foe winner on any table (~65 to ~75 keys per fork: Grounded's
+  immobilize, Minerals' confuse, Bane Spider Armor's six). Full narrative in
+  [stat-routing](gaps/stat-routing.md).
 - [x] **DEBUFFRES-1** — Brainstorm's Light Affinity states an accuracy debuff resistance and
   Regeneration's Revive a range one, and neither reached a total: the type carried both keys while
   no global, stat definition or `ROUTED_SUBTYPES` entry did; `mod_Process` resists by the attrib's
@@ -308,8 +345,14 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 35 of 36 closed
+[Full detail](gaps/pipeline-provenance.md) — 39 of 39 closed
 
+- [x] **MBDEXPORT-1** — the .mbd exporter built Mids' enhancement UIDs out of set display names, and
+  Mids answers a UID it does not know by leaving the slot empty with no error: a user's exported
+  build arrived missing 13 of 63 enhancements, all four Fitness inherents and the uniques in them,
+  the alpha slot, the origin and every slot's placement level; UIDs are now read from Mids' own
+  EnhDB per fork, both directions share the table, and three population sweeps plus a source-hash
+  staleness gate hold it
 - [x] **PARTSTAT-1** — four converters wrote a power's execution stats into the `effects` bag
   under the export's own field names, and the loader's rename reached only two of them: every
   accolade and archetype inherent projected with no cast time and no endurance cost (82 and 30

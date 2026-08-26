@@ -36,9 +36,36 @@ export const WolfSpiderArmor: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 10.25,
+    "confuse": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
     "durations": {
+      "confuse": 10.25,
+      "fear": 10.25,
+      "hold": 10.25,
+      "immobilize": 10.25,
       "mezResistance": 10.25,
-      "resistance": 10.25
+      "resistance": 10.25,
+      "sleep": 10.25,
+      "stun": 10.25
+    },
+    "effectDuration": 10.25,
+    "fear": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
     },
     "mezResistance": {
       "sleep": {
@@ -63,6 +90,16 @@ export const WolfSpiderArmor: Power = {
         "scale": 0.3,
         "table": "Melee_Res_DMG"
       }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
     }
   },
   "atoms": [

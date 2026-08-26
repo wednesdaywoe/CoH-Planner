@@ -7,11 +7,22 @@
  * Two modes:
  * - **Respec mode** (slotOrder empty): slots are assigned by power-pick order,
  *   redistributing optimally as if doing a respec.
- * - **Leveling mode** (slotOrder populated): slots are assigned in the
- *   chronological order they were added, preserving the user's leveling sequence.
+ * - **Leveling mode** (slotOrder populated): each entry's stored level is
+ *   honored where the schedule allows, preserving the user's leveling sequence.
  *
  * Slot 0 on every power is free (comes with the power pick at that level).
  * Additional slots (index 1+) consume from the SLOT_GRANTS pool.
+ *
+ * Both modes route through one solver, `assignGrants`, and so does the
+ * placement probe. Every grant is claimed by at most one slot, and a slot may
+ * only claim a grant at or above its power's pick level — which makes this a
+ * bipartite matching rather than a walk down a list. See that function for why
+ * the difference is load-bearing.
+ *
+ * A slot the schedule cannot serve resolves to `null`, never to a plausible
+ * substitute. The pick level in particular is NOT a safe fallback: on a power
+ * taken at 38 it names a level that grants no slots at all, and on a power
+ * taken at 3 it is indistinguishable from a real assignment (SLOT-1).
  *
  * Keys: Uses powerKey("category:internalName") to avoid collisions when
  * multiple powers share the same internalName across categories.
@@ -48,6 +59,13 @@ export function countPlacedBudgetSlots(
   );
 }
 
+/**
+ * A resolved slot level, or `null` when the grant schedule has nothing left
+ * this slot could legally occupy. Rule 1: an unassignable slot surfaces as a
+ * visible break, never as a number that reads like a real assignment.
+ */
+export type SlotLevel = number | null;
+
 /** Number of inherent (auto-granted) slots a power has, if any. */
 function inherentCount(power: SelectedPower): number {
   return power.inherentSlotCount ?? 0;
@@ -61,6 +79,20 @@ function inherentLevels(power: SelectedPower): readonly number[] {
   const fixed = getInherentAutoGrantedSlotLevels(power.internalName);
   if (fixed.length === 0) return fixed;
   return fixed.slice(0, inherentCount(power));
+}
+
+/**
+ * First user-allocatable slot index on a power: index 0 is the free base
+ * slot, and inherents may carry auto-granted (fixed-level) slots after it.
+ * Neither is drawn from the grant pool, and neither can have its level moved.
+ */
+function userSlotFloor(power: SelectedPower, category: PowerCategory): number {
+  return category === 'inherent' ? 1 + inherentCount(power) : 1;
+}
+
+/** A power's pick level — the earliest a slot on it may be placed. */
+function powerPickLevel(power: SelectedPower, category: PowerCategory): number {
+  return category === 'inherent' ? 1 : power.level;
 }
 
 interface CategorizedPower {
@@ -80,7 +112,176 @@ function buildGrantPool(maxLevel: number, serverId?: string): number[] {
   return pool.sort((a, b) => a - b);
 }
 
-/** Collect all powers in the build (excluding auto-granted sub-powers). */
+/**
+ * One placed slot that needs a grant from the schedule.
+ *
+ * `pickLevel` is the floor — a slot cannot sit earlier than its power was
+ * taken. `preferred` is the level stored on the slotOrder entry, the level the
+ * user actually placed it at while leveling; it is honored where the assignment
+ * allows and given up where honoring it would strand another slot.
+ */
+interface SlotDemand {
+  key: string;
+  slotIndex: number;
+  pickLevel: number;
+  preferred?: number;
+}
+
+/**
+ * Assign each demand a distinct grant, serving as many demands as the schedule
+ * possibly can.
+ *
+ * This is a bipartite matching, and that it is a matching rather than a walk is
+ * the whole point. A demand may take any grant at or above its pick level, so a
+ * grant freed at level 21 is worthless to a power taken at 38 — but the slot
+ * currently holding a level-39 grant may well be re-housable onto that freed 21,
+ * which releases the 39 for the power that needs it. A first-come walk cannot
+ * see that trade: it declares the build full while a valid assignment sits one
+ * swap away, and the caller then invents a level for the slot it could not
+ * place. That is SLOT-1, and the augmenting search below is the fix.
+ *
+ * Stored levels are seeded first, so an untouched build keeps every slot exactly
+ * where the user put it. Kuhn's augmenting paths then extend that seed to a
+ * maximum matching, displacing a stored level only when leaving it in place
+ * would cost some other slot its grant entirely.
+ *
+ * Returns the grant INDEX per demand, or -1 for a demand the schedule genuinely
+ * cannot serve — over-subscription is a real state and it must be reportable.
+ */
+function assignGrants(demands: SlotDemand[], grantPool: number[]): number[] {
+  const demandGrant = new Array<number>(demands.length).fill(-1);
+  const grantOwner = new Array<number>(grantPool.length).fill(-1);
+
+  const claim = (demand: number, grant: number) => {
+    demandGrant[demand] = grant;
+    grantOwner[grant] = demand;
+  };
+
+  // Seed with the stored levels that are legal and still free. `grantPool` is
+  // sorted, and grants at one level are interchangeable, so the first free
+  // exact match is as good as any other.
+  demands.forEach((demand, d) => {
+    if (demand.preferred === undefined || demand.preferred < demand.pickLevel) return;
+    const grant = grantPool.findIndex(
+      (level, g) => level === demand.preferred && grantOwner[g] === -1
+    );
+    if (grant !== -1) claim(d, grant);
+  });
+
+  // Grants are scanned lowest-first: a demand that takes the smallest grant it
+  // can use leaves the high ones for the demands that have nowhere else to go.
+  const augment = (demand: number, seen: boolean[]): boolean => {
+    for (let grant = 0; grant < grantPool.length; grant++) {
+      if (grantPool[grant] < demands[demand].pickLevel) continue;
+      if (seen[grant]) continue;
+      seen[grant] = true;
+      const owner = grantOwner[grant];
+      if (owner === -1 || augment(owner, seen)) {
+        claim(demand, grant);
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const unseeded = demands
+    .map((_, d) => d)
+    .filter((d) => demandGrant[d] === -1)
+    .sort((a, b) => demands[a].pickLevel - demands[b].pickLevel);
+  for (const demand of unseeded) {
+    augment(demand, new Array<boolean>(grantPool.length).fill(false));
+  }
+
+  return demandGrant;
+}
+
+/** Write a solved assignment back onto the per-power level arrays. */
+function applyAssignment(
+  result: Map<string, SlotLevel[]>,
+  demands: SlotDemand[],
+  grantPool: number[]
+): void {
+  const assigned = assignGrants(demands, grantPool);
+  demands.forEach((demand, d) => {
+    const levels = result.get(demand.key);
+    if (!levels) return;
+    const grant = assigned[d];
+    levels[demand.slotIndex] = grant === -1 ? null : grantPool[grant];
+  });
+}
+
+/** Every user-allocated slot in the build, with no stored levels to honor. */
+function collectRespecDemands(allPowers: CategorizedPower[]): SlotDemand[] {
+  const demands: SlotDemand[] = [];
+  for (const { power, category } of allPowers) {
+    const key = powerKey(category, power.internalName);
+    const pickLevel = powerPickLevel(power, category);
+    for (let s = userSlotFloor(power, category); s < power.slots.length; s++) {
+      demands.push({ key, slotIndex: s, pickLevel });
+    }
+  }
+  return demands;
+}
+
+/**
+ * Every user-allocated slot in the build, carrying the stored level from its
+ * `slotOrder` entry where it has one.
+ *
+ * Two rules here were once split across the compute and the placement probe,
+ * which is how the two came to disagree (SLOT-1):
+ *
+ * - An entry that addresses no real user slot — power gone, index past the end
+ *   of the row, or pointing into an inherent's auto-granted block — contributes
+ *   nothing. The probe used to let such entries consume grants, so it reported
+ *   the pool as fuller than the display believed it was.
+ * - A placed slot with NO entry is still a placed slot and still needs a grant.
+ *   Leveling mode used to skip it, which is why a partially-populated slotOrder
+ *   read as "every untouched slot sits at its power's pick level".
+ */
+function collectLevelingDemands(build: Build, allPowers: CategorizedPower[]): SlotDemand[] {
+  const shape = new Map<string, { pickLevel: number; slotCount: number; floor: number }>();
+  for (const { power, category } of allPowers) {
+    shape.set(powerKey(category, power.internalName), {
+      pickLevel: powerPickLevel(power, category),
+      slotCount: power.slots.length,
+      floor: userSlotFloor(power, category),
+    });
+  }
+
+  const demands: SlotDemand[] = [];
+  const claimed = new Set<string>();
+  for (const entry of build.slotOrder) {
+    const category = resolveSlotCategory(build, entry.powerName, entry.category);
+    if (!category) continue;
+    const key = powerKey(category, entry.powerName);
+    const power = shape.get(key);
+    if (!power) continue;
+    if (entry.slotIndex < power.floor || entry.slotIndex >= power.slotCount) continue;
+    // Duplicate entries for one slot would each claim a grant. First wins.
+    const id = `${key}|${entry.slotIndex}`;
+    if (claimed.has(id)) continue;
+    claimed.add(id);
+    demands.push({
+      key,
+      slotIndex: entry.slotIndex,
+      pickLevel: power.pickLevel,
+      ...(entry.level !== undefined ? { preferred: entry.level } : {}),
+    });
+  }
+
+  for (const { power, category } of allPowers) {
+    const key = powerKey(category, power.internalName);
+    const pickLevel = powerPickLevel(power, category);
+    for (let s = userSlotFloor(power, category); s < power.slots.length; s++) {
+      if (claimed.has(`${key}|${s}`)) continue;
+      demands.push({ key, slotIndex: s, pickLevel });
+    }
+  }
+
+  return demands;
+}
+
+/** Collect all powers in the build. */
 function collectAllPowers(build: Build): CategorizedPower[] {
   const allPowers: CategorizedPower[] = [];
   const categoryOrder: PowerCategory[] = ['inherent', 'primary', 'secondary', 'pool', 'epic'];
@@ -88,11 +289,15 @@ function collectAllPowers(build: Build): CategorizedPower[] {
   for (const p of build.inherents) {
     allPowers.push({ power: p, category: 'inherent' });
   }
+  // Auto-granted sub-powers (Kheldian forms) belong here. They are slottable and
+  // `countPlacedBudgetSlots` bills their extra slots to the same budget, so
+  // holding them out of the demand list made the placement probe and the display
+  // compute disagree about how much of the pool was spent (SLOT-1).
   for (const p of build.primary.powers) {
-    if (!p.isAutoGranted) allPowers.push({ power: p, category: 'primary' });
+    allPowers.push({ power: p, category: 'primary' });
   }
   for (const p of build.secondary.powers) {
-    if (!p.isAutoGranted) allPowers.push({ power: p, category: 'secondary' });
+    allPowers.push({ power: p, category: 'secondary' });
   }
   for (const pool of build.pools) {
     for (const p of pool.powers) {
@@ -123,11 +328,15 @@ function collectAllPowers(build: Build): CategorizedPower[] {
  *  For inherent powers with auto-granted inherent slots (Rebirth Health/Stamina),
  *  pre-fill those slot indices with their fixed grant levels so subsequent
  *  pool consumption skips them. */
-function initSlotLevels(allPowers: CategorizedPower[]): Map<string, number[]> {
-  const result = new Map<string, number[]>();
+function initSlotLevels(allPowers: CategorizedPower[]): Map<string, SlotLevel[]> {
+  const result = new Map<string, SlotLevel[]>();
   for (const { power, category } of allPowers) {
     const pickLevel = category === 'inherent' ? 1 : power.level;
-    const levels = new Array(power.slots.length).fill(pickLevel);
+    // Slot 0 comes free with the pick. Every later slot starts unassigned and is
+    // filled in by the solver, so a slot the solver cannot serve stays visibly
+    // null rather than inheriting the pick level.
+    const levels: SlotLevel[] = new Array(power.slots.length).fill(null);
+    if (levels.length > 0) levels[0] = pickLevel;
     if (category === 'inherent') {
       const fixed = inherentLevels(power);
       for (let i = 0; i < fixed.length && i + 1 < levels.length; i++) {
@@ -137,24 +346,6 @@ function initSlotLevels(allPowers: CategorizedPower[]): Map<string, number[]> {
     result.set(powerKey(category, power.internalName), levels);
   }
   return result;
-}
-
-/** Add auto-granted sub-powers (Kheldian forms, etc.) to the result. */
-function addAutoGrantedPowers(build: Build, result: Map<string, number[]>) {
-  const primaryCategory: PowerCategory = 'primary';
-  const secondaryCategory: PowerCategory = 'secondary';
-  for (const p of build.primary.powers) {
-    const key = powerKey(primaryCategory, p.internalName);
-    if (p.isAutoGranted && !result.has(key)) {
-      result.set(key, p.slots.map(() => p.level));
-    }
-  }
-  for (const p of build.secondary.powers) {
-    const key = powerKey(secondaryCategory, p.internalName);
-    if (p.isAutoGranted && !result.has(key)) {
-      result.set(key, p.slots.map(() => p.level));
-    }
-  }
 }
 
 /**
@@ -182,228 +373,104 @@ function resolveSlotCategory(
 }
 
 /**
- * Respec mode: assign slot levels by power-pick order.
- * Each power consumes grants sequentially from the pool.
+ * Respec mode: no leveling history to honor, so every slot is up for grabs and
+ * the solver places them all from scratch.
  */
-function computeSlotLevelsRespec(build: Build): Map<string, number[]> {
+function computeSlotLevelsRespec(build: Build): Map<string, SlotLevel[]> {
   const allPowers = collectAllPowers(build);
   const result = initSlotLevels(allPowers);
-  const grantPool = buildGrantPool(build.level, build.serverId);
-
-  let grantIndex = 0;
-
-  for (const { power, category } of allPowers) {
-    const pickLevel = category === 'inherent' ? 1 : power.level;
-    const key = powerKey(category, power.internalName);
-    const levels = result.get(key)!;
-    // Auto-granted inherent slots (Rebirth Health/Stamina) sit at fixed levels
-    // and don't consume from the user grant pool — skip them.
-    const skipUntil = category === 'inherent' ? 1 + inherentCount(power) : 1;
-
-    for (let s = skipUntil; s < power.slots.length; s++) {
-      while (grantIndex < grantPool.length && grantPool[grantIndex] < pickLevel) {
-        grantIndex++;
-      }
-      levels[s] = grantPool[grantIndex] ?? pickLevel;
-      grantIndex++;
-    }
-  }
-
-  addAutoGrantedPowers(build, result);
+  applyAssignment(
+    result,
+    collectRespecDemands(allPowers),
+    buildGrantPool(build.level, build.serverId)
+  );
   return result;
 }
 
 /**
- * Leveling mode: assign slot levels honoring each entry's stored `level`
- * when valid. Entries without a stored level (legacy / first-time placements)
- * fall back to greedy assignment in chronological order.
+ * Leveling mode: same solver, with each entry's stored level fed in as a
+ * preference.
  *
- * Storing the assigned level per entry is what makes removing a slot behave
- * like Mids: peers keep the level they were placed at instead of cascading
- * down to fill the gap. The freed grant is naturally available for the next
- * slot placement.
+ * Storing the assigned level per entry is what makes removing a slot behave like
+ * Mids — peers keep the level they were placed at instead of cascading down to
+ * fill the gap, and the freed grant is what the next placement draws on. The
+ * solver adds the half that was missing: when the freed grant sits below the
+ * next placement's pick level, it re-houses whichever slot can take it and hands
+ * the newly-released high grant over, instead of reporting the build full.
  */
-function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
+function computeSlotLevelsLeveling(build: Build): Map<string, SlotLevel[]> {
   const allPowers = collectAllPowers(build);
   const result = initSlotLevels(allPowers);
-  const grantPool = buildGrantPool(build.level, build.serverId);
-
-  // Build a lookup for power pick levels (keyed by powerKey)
-  const pickLevelMap = new Map<string, number>();
-  for (const { power, category } of allPowers) {
-    pickLevelMap.set(
-      powerKey(category, power.internalName),
-      category === 'inherent' ? 1 : power.level
-    );
-  }
-
-  // Track which grants have been consumed (by index)
-  const usedGrants = new Set<number>();
-
-  // Track inherent-slot indices to skip when iterating slotOrder
-  const inherentSkipIndex = new Map<string, number>(); // key → first user-placeable index
-  for (const { power, category } of allPowers) {
-    if (category !== 'inherent') continue;
-    const skipUntil = 1 + inherentCount(power);
-    if (skipUntil > 1) {
-      inherentSkipIndex.set(powerKey(category, power.internalName), skipUntil);
-    }
-  }
-
-  interface PendingEntry {
-    entry: Build['slotOrder'][number];
-    key: string;
-    pickLevel: number;
-    levels: number[];
-  }
-
-  // Pass 1: honor entries with a valid stored grant level.
-  // A stored level is valid when it's >= the power's pick level and an
-  // unused grant at that exact level still exists in the pool. (Pool only
-  // contains levels <= build.level, so out-of-range levels naturally fail.)
-  const needsAssign: PendingEntry[] = [];
-  for (const entry of build.slotOrder) {
-    const cat = resolveSlotCategory(build, entry.powerName, entry.category);
-    if (!cat) continue;
-
-    const key = powerKey(cat, entry.powerName);
-    const levels = result.get(key);
-    const pickLevel = pickLevelMap.get(key);
-    if (!levels || pickLevel === undefined || entry.slotIndex >= levels.length) continue;
-    const skipUntil = inherentSkipIndex.get(key) ?? 1;
-    if (entry.slotIndex < skipUntil) continue;
-
-    const stored = entry.level;
-    if (stored !== undefined && stored >= pickLevel) {
-      const gi = findUnusedGrantAtLevel(grantPool, stored, usedGrants);
-      if (gi !== -1) {
-        levels[entry.slotIndex] = stored;
-        usedGrants.add(gi);
-        continue;
-      }
-    }
-    needsAssign.push({ entry, key, pickLevel, levels });
-  }
-
-  // Pass 2: greedy assignment for entries without a usable stored level
-  // (legacy entries, or stored levels invalidated by a level/pick-level change).
-  for (const { entry, pickLevel, levels } of needsAssign) {
-    let assigned = false;
-    for (let gi = 0; gi < grantPool.length; gi++) {
-      if (usedGrants.has(gi)) continue;
-      if (grantPool[gi] < pickLevel) continue;
-      levels[entry.slotIndex] = grantPool[gi];
-      usedGrants.add(gi);
-      assigned = true;
-      break;
-    }
-    if (!assigned) {
-      // No grants left — use pick level as fallback
-      levels[entry.slotIndex] = pickLevel;
-    }
-  }
-
-  addAutoGrantedPowers(build, result);
+  applyAssignment(
+    result,
+    collectLevelingDemands(build, allPowers),
+    buildGrantPool(build.level, build.serverId)
+  );
   return result;
 }
 
-/** Find the index of an unused grant whose level exactly matches `target`. */
-function findUnusedGrantAtLevel(
-  grantPool: number[],
-  target: number,
-  used: Set<number>
-): number {
-  for (let gi = 0; gi < grantPool.length; gi++) {
-    if (grantPool[gi] !== target) continue;
-    if (used.has(gi)) continue;
-    return gi;
-  }
-  return -1;
+/**
+ * A key no real power can produce, for the speculative demand the probes below
+ * add to the build. `powerKey` always emits `category:name`, so a leading NUL
+ * cannot collide.
+ */
+const PROBE_KEY = '\u0000probe';
+
+/** Every demand the build currently makes on the grant pool. */
+function collectDemands(build: Build, allPowers: CategorizedPower[]): SlotDemand[] {
+  return build.slotOrder.length > 0
+    ? collectLevelingDemands(build, allPowers)
+    : collectRespecDemands(allPowers);
 }
 
 /**
- * Find the next available grant level for a new slot placement on a power
- * with `pickLevel`. Honors stored levels on existing slotOrder entries so
- * removed slots' levels return to the pool first (Mids-style behavior).
+ * Solve the build as it stands plus one speculative slot, and report the level
+ * that slot lands on — `null` when the schedule cannot serve it.
  *
- * Returns null when no grant >= pickLevel is free at the current build level.
+ * The probe IS the compute, deliberately: it runs the same solver over the same
+ * demands. Answering from a separate walk down `slotOrder` is exactly how the
+ * probe and the display came to disagree, and a probe that under-reports what is
+ * free is what makes a placement land with no level at all (SLOT-1).
+ */
+function probeGrantLevel(
+  build: Build,
+  pickLevel: number,
+  existing: SlotDemand[]
+): number | null {
+  const grantPool = buildGrantPool(build.level, build.serverId);
+  const probe: SlotDemand = { key: PROBE_KEY, slotIndex: 0, pickLevel };
+  const assigned = assignGrants([...existing, probe], grantPool);
+  const grant = assigned[assigned.length - 1];
+  return grant === -1 ? null : grantPool[grant];
+}
+
+/**
+ * The grant level a new slot on a power with `pickLevel` would be placed at, or
+ * `null` when every grant the slot could legally occupy is already spoken for.
+ *
+ * `null` is a real answer, not an error: 25 slots on powers taken at 38 or later
+ * cannot all be served by the 24 grants Homecoming issues from 39 on. Callers
+ * must refuse the placement rather than invent a level for it.
  */
 export function findNextAvailableGrantLevel(
   build: Build,
   pickLevel: number
 ): number | null {
-  const grantPool = buildGrantPool(build.level, build.serverId);
-  const usedGrants = new Set<number>();
-
-  // Replay existing slotOrder, honoring stored levels first, greedy fallback after.
-  const pendingPickLevels: number[] = [];
-  for (const entry of build.slotOrder) {
-    const cat = resolveSlotCategory(build, entry.powerName, entry.category);
-    if (!cat) continue;
-    const entryPickLevel = cat === 'inherent' ? 1 : pickLevelForEntry(build, cat, entry.powerName);
-    if (entryPickLevel === null) continue;
-
-    const stored = entry.level;
-    if (stored !== undefined && stored >= entryPickLevel) {
-      const gi = findUnusedGrantAtLevel(grantPool, stored, usedGrants);
-      if (gi !== -1) {
-        usedGrants.add(gi);
-        continue;
-      }
-    }
-    pendingPickLevels.push(entryPickLevel);
-  }
-  for (const pl of pendingPickLevels) {
-    for (let gi = 0; gi < grantPool.length; gi++) {
-      if (usedGrants.has(gi)) continue;
-      if (grantPool[gi] < pl) continue;
-      usedGrants.add(gi);
-      break;
-    }
-  }
-
-  for (let gi = 0; gi < grantPool.length; gi++) {
-    if (usedGrants.has(gi)) continue;
-    if (grantPool[gi] < pickLevel) continue;
-    return grantPool[gi];
-  }
-  return null;
-}
-
-function pickLevelForEntry(
-  build: Build,
-  category: PowerCategory,
-  powerName: string
-): number | null {
-  const findIn = (powers: readonly SelectedPower[]) =>
-    powers.find((p) => p.internalName === powerName);
-  let p: SelectedPower | undefined;
-  switch (category) {
-    case 'primary': p = findIn(build.primary.powers); break;
-    case 'secondary': p = findIn(build.secondary.powers); break;
-    case 'pool':
-      for (const pool of build.pools) {
-        p = findIn(pool.powers);
-        if (p) break;
-      }
-      break;
-    case 'epic': p = build.epicPool ? findIn(build.epicPool.powers) : undefined; break;
-    case 'inherent': return 1;
-  }
-  return p ? p.level : null;
+  return probeGrantLevel(build, pickLevel, collectDemands(build, collectAllPowers(build)));
 }
 
 /**
  * Compute slot level assignments for every power in the build.
  *
- * Returns a Map keyed by powerKey ("category:internalName"), where each value
- * is a number[] parallel to the power's slots array. Index 0 = power pick level
- * (free slot), index 1+ = the grant pool level consumed for that slot.
+ * Returns a Map keyed by powerKey ("category:internalName"), where each value is
+ * parallel to the power's slots array. Index 0 = power pick level (the free
+ * slot), index 1+ = the grant level consumed for that slot, or `null` where the
+ * schedule has no grant left the slot could legally occupy.
  *
  * Automatically selects leveling mode if slotOrder has entries,
  * otherwise uses respec mode.
  */
-export function computeAllSlotLevels(build: Build): Map<string, number[]> {
+export function computeAllSlotLevels(build: Build): Map<string, SlotLevel[]> {
   // Defensive: `slotOrder` is normally initialized by every load path
   // (importBuild / hydrateBuild / rehydrate migration), but a build whose
   // rehydrate migration aborted partway can reach here with it undefined.
@@ -458,11 +525,16 @@ export function ensureSlotOrderPopulated(build: Build): boolean {
     const skipUntil = category === 'inherent' ? 1 + inherentCount(power) : 1;
     for (let s = skipUntil; s < power.slots.length; s++) {
       if (existing.has(`${category}|${power.internalName}|${s}`)) continue;
+      const level = levels[s];
+      // A slot the schedule could not serve has no level to freeze. Writing one
+      // anyway is what turned a transient over-subscription into a stored level
+      // that no grant matches, which no later solve could ever honor (SLOT-1).
+      if (level === null || level === undefined) continue;
       newEntries.push({
         powerName: power.internalName,
         slotIndex: s,
         category,
-        level: levels[s],
+        level,
       });
     }
   }
@@ -492,7 +564,36 @@ export function backfillSlotOrderLevels(build: Build): boolean {
     const key = powerKey(cat, entry.powerName);
     const powerLevels = levels.get(key);
     if (!powerLevels || entry.slotIndex >= powerLevels.length) continue;
-    entry.level = powerLevels[entry.slotIndex];
+    const level = powerLevels[entry.slotIndex];
+    // Same guard as `ensureSlotOrderPopulated`: an unassignable slot stays
+    // level-less so the solver can re-house it once the pressure lifts.
+    if (level === null) continue;
+    entry.level = level;
+    changed = true;
+  }
+  return changed;
+}
+
+/**
+ * Drop stored slot levels the grant schedule does not issue. Mutates the build
+ * in place; returns whether anything changed.
+ *
+ * Before SLOT-1, a placement the allocator could not serve was written out with
+ * no level and then DISPLAYED at its power's pick level — and the rehydrate
+ * backfill froze that display value in as a stored level. A power taken at 38 on
+ * Homecoming produced `level: 38`, a level that grants no slots at all, so the
+ * entry could never be honored again and fell through to greedy on every
+ * recompute. Clearing the level rather than the entry keeps the slot and lets
+ * the solver re-house it properly.
+ */
+export function scrubFabricatedSlotLevels(build: Build): boolean {
+  if (!build.slotOrder?.length) return false;
+  const grants = getSlotGrants(build.serverId);
+  let changed = false;
+  for (const entry of build.slotOrder) {
+    if (entry.level === undefined) continue;
+    if ((grants[entry.level] ?? 0) > 0) continue;
+    delete entry.level;
     changed = true;
   }
   return changed;
@@ -528,20 +629,6 @@ function resolveRef(build: Build, ref: SlotLevelRef): ResolvedRef | null {
     (c) => c.category === category && c.power.internalName === ref.powerName
   );
   return cp ? { power: cp.power, category } : null;
-}
-
-/**
- * First user-allocatable slot index on a power: index 0 is the free base
- * slot, and inherents may carry auto-granted (fixed-level) slots after it.
- * Neither can have its level moved.
- */
-function userSlotFloor(power: SelectedPower, category: PowerCategory): number {
-  return category === 'inherent' ? 1 + inherentCount(power) : 1;
-}
-
-/** A power's pick level — the earliest a slot on it may be placed. */
-function powerPickLevel(power: SelectedPower, category: PowerCategory): number {
-  return category === 'inherent' ? 1 : power.level;
 }
 
 /**
@@ -583,7 +670,10 @@ export function canMoveSlotLevel(
   const levels = computeAllSlotLevels(build);
   const sLevel = levels.get(powerKey(s.category, source.powerName))?.[source.slotIndex];
   const tLevel = levels.get(powerKey(t.category, target.powerName))?.[target.slotIndex];
-  if (sLevel === undefined || tLevel === undefined) return false;
+  // `null` is a slot the schedule could not place at all — there is no level on
+  // it to trade away, so the swap is not offered.
+  if (sLevel === undefined || sLevel === null) return false;
+  if (tLevel === undefined || tLevel === null) return false;
 
   // After the swap, source holds tLevel and target holds sLevel.
   return tLevel >= powerPickLevel(s.power, s.category) &&
@@ -614,8 +704,9 @@ export function applySlotLevelMove(
   backfillSlotOrderLevels(next);
 
   const levels = computeAllSlotLevels(next);
-  const sLevel = levels.get(powerKey(s.category, source.powerName))![source.slotIndex];
-  const tLevel = levels.get(powerKey(t.category, target.powerName))![target.slotIndex];
+  // Both non-null: `canMoveSlotLevel` above refuses the swap otherwise.
+  const sLevel = levels.get(powerKey(s.category, source.powerName))![source.slotIndex]!;
+  const tLevel = levels.get(powerKey(t.category, target.powerName))![target.slotIndex]!;
 
   const matches = (
     entry: Build['slotOrder'][number],
@@ -650,11 +741,15 @@ export interface PowerRef {
  * `canMoveSlotLevel`, which only swaps two slots' grant levels in place.
  *
  * Valid when: the source is a user-allocated slot (not a free base slot or an
- * auto-granted inherent slot), the target resolves to a DIFFERENT power, and
- * the target has an open slot (`slots.length < maxSlots`). The slot budget is
- * net-neutral across a relocation (one freed, one placed), so there is no
- * budget gate here — the store performs the actual mutation and grant-level
- * reassignment.
+ * auto-granted inherent slot), the target resolves to a DIFFERENT power, the
+ * target has an open slot (`slots.length < maxSlots`), and the schedule can
+ * actually place the slot on the target.
+ *
+ * That last check is not redundant with the slot BUDGET, which is net-neutral
+ * across a relocation. The schedule is not: freeing a grant at level 21 does
+ * nothing for a power taken at 38, and dragging a slot across that gap is
+ * precisely the gesture that used to produce a slot stamped with an impossible
+ * level (SLOT-1).
  */
 export function canRelocateSlot(
   build: Build,
@@ -673,5 +768,22 @@ export function canRelocateSlot(
   if (s.category === t.category && source.powerName === target.powerName) return false;
   // Target needs an open slot.
   if (t.power.slots.length >= t.power.maxSlots) return false;
-  return true;
+  return relocatedGrantLevel(build, source, s, t) !== null;
+}
+
+/**
+ * The grant level a relocated slot would land on, or `null` when the schedule
+ * cannot serve it once the source slot's own grant is returned to the pool.
+ */
+function relocatedGrantLevel(
+  build: Build,
+  source: SlotLevelRef,
+  s: ResolvedRef,
+  t: ResolvedRef
+): number | null {
+  const sourceKey = powerKey(s.category, source.powerName);
+  const remaining = collectDemands(build, collectAllPowers(build)).filter(
+    (d) => !(d.key === sourceKey && d.slotIndex === source.slotIndex)
+  );
+  return probeGrantLevel(build, powerPickLevel(t.power, t.category), remaining);
 }
