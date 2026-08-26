@@ -82,7 +82,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Parser + binary fidelity
 
-[Full detail](gaps/parser-fidelity.md) — 41 of 42 closed
+[Full detail](gaps/parser-fidelity.md) — 42 of 42 closed
 
 - [x] **TSPY-8** — `guardThunderspyAppliedMez`'s protection carve-out tested signed SCALE alone,
   but protection is also spelled as signed magnitude on `Duration` templates and as an `Expression`

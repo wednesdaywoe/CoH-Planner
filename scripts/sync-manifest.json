@@ -64,7 +64,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "00101c4d3c59b27cd50890fa88eda2500e2093567965c1095f0e545814629dbd"
+      "sha256": "9c32077b75246100c1b2a866d1d021ede90a611d0ae378eebca4c19d1c7072af"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -254,7 +254,7 @@
     {
       "path": "scripts/convert-powerset.cjs",
       "status": "identical",
-      "sha256": "b277960c2006decb88d19b47517b349359d763ff64cbbe5851fa57720542c6a6"
+      "sha256": "280ade5f92ab3d8c7fb4676e58282611ad57802bc69baf25019bd65964bc59ec"
     },
     {
       "path": "scripts/convert-salvage.cjs",
