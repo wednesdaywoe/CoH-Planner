@@ -19,9 +19,14 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**0 open, of 223 entries.** When an entry is open it is listed here with what it's waiting on.
+**1 open, of 224 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
+
+- **MEZDUR-1** ([stat-routing](gaps/stat-routing.md)) — waiting on a decision, not evidence:
+  route the granted-magnitude mez row off the atom's `attrib_type` instead of the bag's table
+  name, and decide separately what the sentinel-magnitude flags (`Untouchable` 1000,
+  `OnlyAffectsSelf` 100) should render as.
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -261,8 +266,13 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Stat routing + caps
 
-[Full detail](gaps/stat-routing.md) — 53 of 53 closed
+[Full detail](gaps/stat-routing.md) — 53 of 54 closed
 
+- [ ] **MEZDUR-1** — a mez APPLICATION row states the atom's flat `magnitude` and then multiplies
+  it by the mez DURATION aspect, so a mag-3 stun displays as 5.3 (crossing the boss threshold it
+  does not cross) while the duration the enhancement actually buys is shown nowhere; the
+  discriminator is `attrib_type`, which the bag object the row reads cannot carry, so a
+  `res_boolean` table-name sniff stands in for it. 298 powers, plus the mag-1000 sentinel flags.
 - [x] **MEZPROT-2** — closed 2026-08-25: the discriminator is neither table nor bare sign but the
   converter's three-spelling protection test plus recipient, graded on the fold winner (the gate
   could not see spelling before — the fold abs'd it). The apply pass now credits a
