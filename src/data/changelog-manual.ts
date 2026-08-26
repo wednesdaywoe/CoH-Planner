@@ -46,6 +46,14 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-08-26',
+
+    items: [
+      { id: 'slot-levels-placed-in-reverse', message: 'Fix a bug causing placing enhancement slots one at a time to be labeled in reverse. Saved builds affected by this should heal on load. The order you placed slots in was never lost, so the levels can be reconstructed... however interleaved slotting between powers picked at different levels is the one thing that cannot be rebuilt exactly. The same levels come back, but not necessarily on the same power 😔.', type: 'fix' },
+      { id: 'mids-export-fix', message: 'Fix for Mids export utility that should make the build reconstruction more reliable', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-08-22',
 
     items: [

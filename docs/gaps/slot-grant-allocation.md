@@ -99,3 +99,96 @@ no grant; the print exporter must mark `?` rather than reprint the pick level).
 If `leveling-schedule.ts` itself is wrong for a fork, every test here stays green — the schedule is
 the oracle, and the tests use Homecoming's. The Thunderspy 71-slot and Rebirth auto-granted-slot
 paths are exercised only through the shared code, not with their own fixtures.
+
+---
+
+## SLOT-2 — the placement probe displaced an incumbent when a free grant was available, so the leveling column read newest-first
+
+**Found:** 2026-08-26, from a user report: placing slots one at a time on the first three powers
+labelled each new slot level 3 and pushed the slots already placed up to 5, 7 and beyond. The
+fourth power labelled correctly.
+
+**What's wrong.** One line of the SLOT-1 solver. `augment` scans grants lowest-first and takes the
+first one it can reach, and a grant an incumbent owns is reachable whenever that incumbent can be
+re-housed:
+
+```
+if (owner === -1 || augment(owner, seen)) { claim(demand, grant); return true }
+```
+
+Displacement is the point of the matching — it is how a power taken at 38 reaches a grant nothing
+else can spare. But nothing made it a *last resort*. `probeGrantLevel` appends the speculative slot
+as the final demand and runs the solver, so the new slot walked to grant 0, found it owned by the
+slot placed a moment earlier, re-housed that one onto the next grant, and kept level 3 for itself.
+The report's shape falls straight out: every power taken at level 1 or 2 makes the whole pool
+legally reachable, so the reversal held for the first three picks and stopped at the power taken at
+6, whose pick level put the level-3 and level-5 grants out of reach.
+
+The stored levels went with it — `addSlot` writes the probe's answer — so a build leveled slot by
+slot accumulated `slotOrder` entries all claiming level 3. On reload only as many as the schedule
+issues at 3 could be honored, and the rest fell to greedy assignment, which is a second, quieter
+scramble of the same history.
+
+**Reproduced** at build level 50, five slots placed one at a time on a power taken at level 1:
+
+```
+placement 1   stored 3        displayed [1, 3]
+placement 2   stored 3        displayed [1, 3, 3]
+placement 3   stored 3        displayed [1, 3, 5, 3]      <- newest slot took the 3
+placement 4   stored 3        displayed [1, 5, 5, 3, 3]
+placement 5   stored 3        displayed [1, 5, 7, 3, 3, ...]
+after fix     stored 3 3 5 5 7            [1, 3, 3, 5, 5, 7]
+```
+
+**Blast radius.** Every slot placed on a power whose pick level leaves a lower grant reachable —
+which is most of a build's slots, since the early powers are the ones that get slotted heavily.
+SLOT-1's own guards stayed green throughout: they grade whether an assignment exists and whether
+every slot sits on a real grant, and a scrambled assignment satisfies both. Nothing in the suite
+asked whether placing a slot moved a slot already placed.
+
+**Severity.** High, and the same severity in the same place as SLOT-1: the level-by-level slotting
+order is what a build plan is *for*, and this rewrote it on every placement.
+
+**Fixed** 2026-08-26. `augment` now scans free grants before owned ones. A free grant costs nobody
+anything; displacing an owner to hand its grant to a demand that had a free one available rewrites
+a level the user placed by hand. Maximality is untouched — a free grant is an augmenting path of
+length one, and the second pass still explores every owned grant when none is free, which is what
+keeps SLOT-1's re-housing case working.
+
+**Guard:** two tests in `src/utils/slot-allocation.test.ts` — sequential placements walk the
+schedule forward (3, 3, 5, 5, 7) in both the displayed and the stored levels, and a placement on a
+later-taken power leaves an earlier power's slots where they are. Both mutation-tested: disabling
+the free-grant pass turns both red. The second needed tightening to get there — with the later
+power taken at 6 the low grants were out of its reach anyway and the test passed against the
+defect, so it now takes that power at 2.
+
+**What the guard cannot see.** Same blind spot as SLOT-1 — the schedule is the oracle, and these
+tests use Homecoming's. It also grades a placement against the assignment, not against Mids: if
+both agree the third slot on a level-1 power belongs at 5, no test here would notice them agreeing
+wrongly.
+
+**Recovery.** Saves made between 2026-08-24 and this fix are not lost. `addSlot` appends, so
+`slotOrder`'s array order *is* the placement order, and the fixed solver rebuilds a legal forward
+assignment from it that occupies exactly the grants a clean replay of the same clicks would have
+occupied. On the reported build it reproduces the clean replay slot for slot.
+
+What it cannot rebuild in general is which power holds which grant. Unseeded demands are ordered by
+pick level, not by when they were clicked, so where powers of different pick levels interleaved
+chronologically the grants can land differently than they did in the session. Both assignments are
+legal and consume the same grants; nothing stored survives that could tell them apart.
+
+Display alone was not enough, though. A stored level no grant can honor is, on every recompute,
+indistinguishable from an entry that never had one — so a poisoned build cascaded its peers on a
+removal instead of holding their place, which is the whole reason a level is stored.
+`reconcileStoredSlotLevels` writes the solved assignment back over any stored level the solver
+could not honor, on rehydrate and on both import paths. A level the solver CAN honor always
+survives, because honoring it is what makes stored and computed agree — so the migration only ever
+touches an entry whose level was already dead. `scrubFabricatedSlotLevels` could not do this job:
+these are levels the schedule genuinely issues, just more often than it issues them.
+
+**Guard (recovery):** two more tests in the same file — a poisoned save rebuilds an assignment
+consuming the same grants as a clean replay, and the repair moves no slot, is idempotent, and stops
+a removal cascading onto peers. Mutation-tested: disabling the write turns the second red.
+
+An earlier draft of this entry called the saves permanently mangled. That was written from reading
+the code; the replay comparison above is what corrected it.

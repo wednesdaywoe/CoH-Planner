@@ -20,19 +20,22 @@ from this point forward are recorded here.
 
 ## Current frontier
 
-SLOT-1 closed 2026-08-24, the day it was reported. It is the first entry here found from outside —
-a user noticed two slots missing from low levels and a level-38 power claiming two slots granted at
-38, a level the Homecoming schedule issues none at. The cause was a shape mismatch, not an
-arithmetic slip: slot-to-grant allocation is a matching, and `slot-levels.ts` walked `slotOrder`
-first-come-first-served instead. A walk cannot see that re-housing one early-power slot onto a
-freed low grant releases the high grant a late power needs, so it reported the build full while a
-valid assignment sat one swap away — and then the caller invented a level for the slot it had
-failed to place, the display showed it, and the rehydrate backfill froze it in. Fixed by routing
-respec mode, leveling mode, the placement probe and the relocation check through one solver
-(`assignGrants`, Kuhn's augmenting-path matching over the grant pool), so the probe cannot disagree
-with the display, plus a `SlotLevel = number | null` return that made the compiler find every
-consumer of the old fabricated number. Full suite green (2302 passing); the new guard is
-mutation-tested 15 of 15.
+SLOT-2 closed 2026-08-26, the day it was reported, and it is SLOT-1's fix reporting a second defect
+in itself. The matching solver displaces an incumbent slot to reach a grant — that is how a power
+taken at 38 gets served at all — but nothing made displacement a last resort, so the placement
+probe took the lowest grant in the build every time and shoved the slot already sitting there
+upward. Placing slots one at a time on early powers therefore labelled them newest-first, and
+`addSlot` stored what the probe said, so the scramble persisted into the save. Fixed by scanning
+free grants before owned ones in `augment`; SLOT-1's re-housing case is untouched because the
+second pass still runs when nothing is free. The lesson is the one that matters for the next
+solver: SLOT-1's sixteen guards all stayed green, because they ask whether an assignment exists
+and whether every slot sits on a real grant, and a scrambled assignment answers yes to both.
+Nothing asked whether placing a slot MOVED one already placed.
+
+Builds saved through the defect recover: `slotOrder` is append-ordered, so the placement order was
+never lost and the solver rebuilds a legal assignment consuming the same grants a clean replay
+would have. The attribution across powers of different pick levels is not perfectly recoverable,
+and no stored data survives that could make it so.
 
 ---
 
@@ -78,7 +81,7 @@ Enhancement slots are placed against a lumpy, level-gated grant schedule — Hom
 them at 28 specific levels and none at all at 38, 41, 44, 47 or 49. Pairing slots to grants is a
 matching; beta allocated them with a walk.
 
-[Full detail](gaps/slot-grant-allocation.md) — 1 of 1 closed
+[Full detail](gaps/slot-grant-allocation.md) — 2 of 2 closed
 
 - [x] **SLOT-1** — deleting a slot and placing it on a later-picked power stranded the freed grant
       and stamped the new slot with its power's pick level (a level the schedule may grant nothing
@@ -88,6 +91,16 @@ matching; beta allocated them with a walk.
       relocation check, a `SlotLevel = number | null` that refuses to substitute a plausible number
       for an unplaceable slot, and a `scrubFabricatedSlotLevels` migration for poisoned saves.
       Guarded by `slot-allocation.test.ts` (16 tests, mutation-tested 15/15)
+- [x] **SLOT-2** — the placement probe displaced an incumbent slot whenever it could be re-housed,
+      even with a free grant available, so each newly placed slot took the lowest grant in the
+      build and pushed the slot already there upward: the leveling column read newest-first on
+      every power whose pick level left a low grant reachable, and `addSlot` stored the probe's
+      answer so the scramble survived the save; fixed by scanning free grants before owned ones in
+      `augment`, leaving SLOT-1's re-housing to the second pass, plus a `reconcileStoredSlotLevels`
+      migration that writes the solved assignment back over stored levels no grant can honor —
+      poisoned saves display correctly on the fix alone, but cascaded peers on a removal until
+      their storage was made honest. Guarded by four tests in `slot-allocation.test.ts`
+      (mutation-tested 4/4)
 
 ---
 

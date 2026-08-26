@@ -15,6 +15,7 @@ import {
   backfillSlotOrderLevels,
   ensureSlotOrderPopulated,
   scrubFabricatedSlotLevels,
+  reconcileStoredSlotLevels,
   countPlacedBudgetSlots,
   canRelocateSlot,
 } from './slot-levels';
@@ -132,6 +133,114 @@ describe('slot grant allocation — Homecoming', () => {
   it('leaves stored levels alone when nothing forces a move', () => {
     install(50, [pow('Alpha', 1, 3)], [entry('Alpha', 1, 25), entry('Alpha', 2, 43)]);
     expect(levelsFor('Alpha')).toEqual([1, 25, 43]);
+  });
+
+  /**
+   * Placing slots one at a time must walk the schedule FORWARD. The probe used
+   * to displace an incumbent whenever an augmenting path existed, so each new
+   * slot landed on the lowest grant in the build and shoved the slot already
+   * there upward — the leveling column read newest-first (SLOT-2). Powers taken
+   * at level 1 make the whole pool reachable, which is why the reversal showed
+   * on the first three picks and stopped at a power taken later.
+   */
+  it('walks the schedule forward as slots are placed one at a time', () => {
+    install(50, [pow('Alpha', 1, 1)], []);
+
+    const placed: (number | null)[] = [];
+    for (let i = 0; i < 5; i++) {
+      expect(useBuildStore.getState().addSlot('Alpha', 'primary')).toBe(true);
+      placed.push(levelsFor('Alpha')[i + 1]);
+    }
+
+    // Homecoming grants two slots each at 3, 5 and 7.
+    expect(placed).toEqual([3, 3, 5, 5, 7]);
+    // The stored levels are what the next session reloads; they must agree.
+    expect(
+      useBuildStore.getState().build.slotOrder.map((e) => e.level)
+    ).toEqual([3, 3, 5, 5, 7]);
+    noGrantOverclaimed(['Alpha']);
+  });
+
+  /**
+   * The same reversal across powers. Beta is taken at 2, so both level-3 grants
+   * are legally within its reach — which is exactly when the displacing probe
+   * took one and pushed an Alpha slot up to 5. A slot already placed is not a
+   * grant a later placement may draw on.
+   */
+  it('does not move a placed slot when a later power takes one', () => {
+    install(50, [pow('Alpha', 1, 3), pow('Beta', 2, 1)], [entry('Alpha', 1, 3), entry('Alpha', 2, 3)]);
+
+    expect(levelsFor('Alpha')).toEqual([1, 3, 3]);
+    expect(useBuildStore.getState().addSlot('Beta', 'primary')).toBe(true);
+
+    expect(levelsFor('Alpha')).toEqual([1, 3, 3]);
+    expect(levelsFor('Beta')[1]).toBe(5);
+    noGrantOverclaimed(['Alpha', 'Beta']);
+  });
+
+  /**
+   * A build leveled through SLOT-2 saved a run of entries all claiming the
+   * lowest grant. It is not garbage: the placement ORDER survives (`addSlot`
+   * appends), so the solver rebuilds a legal forward assignment from it, and the
+   * build occupies exactly the grants a clean replay of the same clicks would
+   * have occupied.
+   *
+   * What it does NOT rebuild is which power holds which grant. Unseeded demands
+   * are ordered by pick level, not by when they were clicked, so where powers of
+   * different pick levels interleaved chronologically the grants can land on
+   * different powers than they did in the session. Both assignments are legal
+   * and consume the same grants; only the attribution differs, and no stored
+   * data survives that could tell them apart.
+   */
+  it('rebuilds a legal assignment from a build poisoned by SLOT-2', () => {
+    const order = ['Alpha', 'Alpha', 'Alpha', 'Beta', 'Beta', 'Alpha'];
+    install(50, [pow('Alpha', 1, 1), pow('Beta', 2, 1)], []);
+    for (const name of order) {
+      expect(useBuildStore.getState().addSlot(name, 'primary')).toBe(true);
+    }
+    const replayed = [...levelsFor('Alpha').slice(1), ...levelsFor('Beta').slice(1)].sort();
+
+    // The same build as SLOT-2 would have saved it: every entry stamped 3.
+    install(
+      50,
+      [pow('Alpha', 1, 5), pow('Beta', 2, 3)],
+      [
+        entry('Alpha', 1, 3), entry('Alpha', 2, 3), entry('Alpha', 3, 3),
+        entry('Beta', 1, 3), entry('Beta', 2, 3), entry('Alpha', 4, 3),
+      ]
+    );
+    const recovered = [...levelsFor('Alpha').slice(1), ...levelsFor('Beta').slice(1)].sort();
+
+    expect(recovered).toEqual(replayed);
+    noGrantOverclaimed(['Alpha', 'Beta']);
+  });
+
+  it('repairs the poisoned save without moving anything, so removals stop cascading', () => {
+    const poisoned = () =>
+      install(
+        50,
+        [pow('Alpha', 1, 5), pow('Beta', 2, 3)],
+        [
+          entry('Alpha', 1, 3), entry('Alpha', 2, 3), entry('Alpha', 3, 3),
+          entry('Beta', 1, 3), entry('Beta', 2, 3), entry('Alpha', 4, 3),
+        ]
+      );
+
+    poisoned();
+    const before = [levelsFor('Alpha'), levelsFor('Beta')];
+
+    const build = poisoned();
+    expect(reconcileStoredSlotLevels(build)).toBe(true);
+    useBuildStore.setState({ build });
+    // The repair writes down what was already on screen — it must not move a slot.
+    expect([levelsFor('Alpha'), levelsFor('Beta')]).toEqual(before);
+    // And every stored level is now one the solver honors.
+    expect(reconcileStoredSlotLevels(build)).toBe(false);
+
+    const betaBefore = levelsFor('Beta');
+    expect(useBuildStore.getState().removeSlot('Alpha', 1, 'primary')).toBe(true);
+    expect(levelsFor('Beta')).toEqual(betaBefore);
+    noGrantOverclaimed(['Alpha', 'Beta']);
   });
 
   it('never places two slots on one grant', () => {

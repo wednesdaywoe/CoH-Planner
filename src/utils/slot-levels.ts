@@ -170,9 +170,25 @@ function assignGrants(demands: SlotDemand[], grantPool: number[]): number[] {
 
   // Grants are scanned lowest-first: a demand that takes the smallest grant it
   // can use leaves the high ones for the demands that have nowhere else to go.
+  //
+  // Free grants are scanned BEFORE owned ones, and that order is load-bearing.
+  // Displacing an owner is how a late power reaches a grant nothing else can
+  // spare; doing it when a free grant was available instead rewrites a level the
+  // user placed by hand, and the newcomer lands on the low grant it took. That
+  // is the reversed leveling order the placement probe reported (SLOT-2).
+  // Maximality is untouched — a free grant is an augmenting path of length one,
+  // and the second pass still explores every owned grant when none is free.
   const augment = (demand: number, seen: boolean[]): boolean => {
+    const { pickLevel } = demands[demand];
     for (let grant = 0; grant < grantPool.length; grant++) {
-      if (grantPool[grant] < demands[demand].pickLevel) continue;
+      if (grantPool[grant] < pickLevel) continue;
+      if (seen[grant] || grantOwner[grant] !== -1) continue;
+      seen[grant] = true;
+      claim(demand, grant);
+      return true;
+    }
+    for (let grant = 0; grant < grantPool.length; grant++) {
+      if (grantPool[grant] < pickLevel) continue;
       if (seen[grant]) continue;
       seen[grant] = true;
       const owner = grantOwner[grant];
@@ -481,6 +497,43 @@ export function computeAllSlotLevels(build: Build): Map<string, SlotLevel[]> {
     return computeSlotLevelsRespec(build);
   }
   return computeSlotLevelsLeveling(build);
+}
+
+/**
+ * Rewrite stored slot levels the solver could not honor to the level it actually
+ * assigned. Mutates the build in place; returns whether anything changed.
+ *
+ * SLOT-2 stamped every placement with the lowest grant in the build, so a build
+ * leveled through that defect carries a run of entries all claiming one level.
+ * The display is already right — the solver seeds what the schedule can serve
+ * and assigns the rest forward — but an entry whose level no grant can honor is,
+ * on every recompute, indistinguishable from an entry that never had one. It
+ * cascades on a removal instead of holding its place, which is the entire reason
+ * a level is stored.
+ *
+ * A stored level the solver CAN honor always survives, because honoring it is
+ * what makes computed and stored agree. So a difference means the stored level
+ * was already dead, and writing over it repairs rather than rewrites the
+ * leveling history. `scrubFabricatedSlotLevels` cannot do this job: the levels
+ * here are ones the schedule genuinely issues, just more often than it issues
+ * them.
+ */
+export function reconcileStoredSlotLevels(build: Build): boolean {
+  if (!build.slotOrder?.length) return false;
+  const levels = computeAllSlotLevels(build);
+  let changed = false;
+  for (const entry of build.slotOrder) {
+    const category = resolveSlotCategory(build, entry.powerName, entry.category);
+    if (!category) continue;
+    const level = levels.get(powerKey(category, entry.powerName))?.[entry.slotIndex];
+    // Same rule as the freezers: a slot the schedule could not serve stays
+    // level-less, so the solver can re-house it once the pressure lifts.
+    if (level === null || level === undefined) continue;
+    if (entry.level === level) continue;
+    entry.level = level;
+    changed = true;
+  }
+  return changed;
 }
 
 /**

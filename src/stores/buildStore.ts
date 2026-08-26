@@ -68,7 +68,7 @@ import {
   composePersistedState,
   type StoredBuild,
 } from '@/utils/per-server-builds';
-import { findNextAvailableGrantLevel, backfillSlotOrderLevels, scrubFabricatedSlotLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, canRelocateSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
+import { findNextAvailableGrantLevel, backfillSlotOrderLevels, scrubFabricatedSlotLevels, reconcileStoredSlotLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, canRelocateSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
 import { enhancementAllowedInPower } from '@/utils/enhancement-eligibility';
 import { dedupePools } from '@/utils/build-powers';
 import { branchPowersInBuild, branchSetIds } from '@/utils/branch-powers';
@@ -3170,6 +3170,9 @@ export const useBuildStore = create<BuildStore>()(
           // their assigned levels when add/remove slot kicks computation
           // into leveling mode.
           ensureSlotOrderPopulated(build);
+          // Make storage agree with the assignment. Runs LAST: it reads the
+          // solved levels, so every migration that can change them is above it.
+          reconcileStoredSlotLevels(build);
 
           // Repair invalid/duplicate/below-unlock pick levels in the import
           // itself — an export carrying addPower's old silent level-50 stamp
@@ -3213,6 +3216,7 @@ export const useBuildStore = create<BuildStore>()(
         // respec-mode levels as stored entries so the first add/remove
         // slot interaction doesn't collapse untouched slots' levels.
         ensureSlotOrderPopulated(build);
+        reconcileStoredSlotLevels(build);
         useUIStore.getState().clearCompareSlottingCopies();
         set({ build });
       },
@@ -3589,6 +3593,12 @@ export const useBuildStore = create<BuildStore>()(
           // to their pick level (the symptom of Mids-imported / legacy
           // builds that left slotOrder empty or partial).
           ensureSlotOrderPopulated(state.build);
+
+          // Migration: a build leveled through SLOT-2 carries a run of entries
+          // all claiming one level. They display correctly but cascade on a
+          // removal, because a level no grant can honor reads the same as no
+          // level at all. Freeze the solved assignment in. Must run LAST.
+          reconcileStoredSlotLevels(state.build);
 
           // Auto-detect branch for VEAT builds on rehydration
           const branch = detectBranch(state.build);
