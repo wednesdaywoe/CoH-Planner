@@ -8,7 +8,7 @@ import { useBuildStore, useUIStore } from '@/stores';
 import { useIsTouchDevice } from '@/hooks';
 
 import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getPickShadowingInherentPowers, getPowerPicksAtLevel } from '@/data';
-import { evaluateRequires, setKeyFromId, type RequiresContext } from '@/data/power-requires';
+import { evaluateRequires, isBuyablePick, setKeyFromId, type RequiresContext } from '@/data/power-requires';
 import { resolvePath } from '@/utils/paths';
 import { ProcPotentialBadge } from './ProcPotentialBadge';
 import type { Power } from '@/types';
@@ -333,19 +333,11 @@ export function AvailablePowers({
   // Form sub-powers (Kheldian Nova/Dwarf attacks) are auto-granted and hidden
   const allPowers = powerset
     ? powerset.powers.filter(p => {
-        // Filter out auto-granted powers. The auto-grant sentinel is -1, but
-        // the HC pigg/bin source stores it UNSIGNED, so it arrives as
-        // 0xFFFFFFFF (4294967295) — i.e. -1's high bit is set. Catch both the
-        // signed and unsigned forms, otherwise granted toggles (Dual Pistols
-        // ammo, Bio Armor adaptations, Staff forms) leak into the picker once
-        // their parent power satisfies their `requires`.
-        if (p.available < 0 || p.available >= 0x80000000) return false;
-        // Filter out hidden GlobalBoost procs (auto-issued global enhancements
-        // like Martial Combat's Build_Up_Proc). They share a real power's
-        // display name and are never player-picked.
-        if (p.powerType === 'Global Enhancement') return false;
-        // Filter out set mechanics/inherents (hiddenPassive, hiddenAuto, etc.)
-        if (p.mechanicType === 'hiddenPassive' || p.mechanicType === 'hiddenAuto') return false;
+        // The auto-grant sentinel, GlobalBoost procs, and the set mechanics the game hands
+        // over — the three checks that need only the power. Shared with the powerset-pairing
+        // reader rather than copied here, which is how the hidden-mechanic check came to be
+        // wrong in two places at once (SHOWFLAGS-2).
+        if (!isBuyablePick(p)) return false;
         // Filter out form sub-powers (auto-granted on HC; redirect-only on Rebirth).
         // Match on internalName since form-variant names use that format
         // (`Bright_Nova_Bolt`); display name (`Bright Nova Bolt`) wouldn't.

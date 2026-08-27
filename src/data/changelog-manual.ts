@@ -49,6 +49,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-08-26',
 
     items: [
+      { id: 'hidden-mechanic-picks-restored', message: 'Bio Armor\'s Adaptation, Staff Fighting\'s Staff Mastery and Fortunata Teamwork\'s Fate Sealed were missing from the power picker. A recent change meant to stop powers like Seismic Shockwaves from appearing as a power selection accidentally caught some other powers. Existing builds are unaffected; the powers are simply selectable again.', type: 'fix' },
       { id: 'slot-levels-placed-in-reverse', message: 'Fix a bug causing placing enhancement slots one at a time to be labeled in reverse. Saved builds affected by this should heal on load. The order you placed slots in was never lost, so the levels can be reconstructed... however interleaved slotting between powers picked at different levels is the one thing that cannot be rebuilt exactly. The same levels come back, but not necessarily on the same power 😔.', type: 'fix' },
       { id: 'mids-export-fix', message: 'Fix for Mids export utility that should make the build reconstruction more reliable', type: 'fix' },
     ]

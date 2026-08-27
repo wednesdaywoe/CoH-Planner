@@ -302,12 +302,19 @@ export function evaluateRequires(requires: string | readonly string[], ctx: Requ
  * The picker also drops form sub-powers and archetype inherents, both of which need state this
  * function doesn't have. Omitting them can only ever make a set look MORE buyable than it is,
  * so a pairing check built on this fails open (no block) rather than blocking a legal pair.
+ *
+ * Exported because `AvailablePowers` used to carry a hand-copied twin of these three checks,
+ * and the copies drifted: SHOWFLAGS-2 had to be fixed in both places. One predicate, so the
+ * gate that grades it (`hidden-mechanic-picks.test.ts`) grades what the picker actually runs.
  */
-function isBuyablePick(p: Power): boolean {
+export function isBuyablePick(p: Power): boolean {
   // -1 is the auto-grant sentinel; HC's bin stores it unsigned, so it also arrives as 0xFFFFFFFF.
   if (p.available < 0 || p.available >= 0x80000000) return false;
   if (p.powerType === 'Global Enhancement') return false;
-  if (p.mechanicType === 'hiddenPassive' || p.mechanicType === 'hiddenAuto') return false;
+  // Hidden from the Manage screen is not the same as not for sale — see SHOWFLAGS-2 and
+  // the picker's own copy of this filter in AvailablePowers.tsx. `free` is the axis.
+  if ((p.mechanicType === 'hiddenPassive' || p.mechanicType === 'hiddenAuto')
+      && (p.free || p.autoIssue)) return false;
   return true;
 }
 

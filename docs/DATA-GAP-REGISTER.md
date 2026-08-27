@@ -19,7 +19,7 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**3 open, of 228 entries.** When an entry is open it is listed here with what it's waiting on.
+**1 open, of 229 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
@@ -27,13 +27,6 @@ doesn't accumulate closure prose.
   `DeadOrAliveAny`, the one recipient word the corpus carries that is neither foe-listed nor
   unambiguously friendly, so Defibrillate's `Expression`-spelled foe sleep reads as protection.
   Waiting on an oracle to say whether that word is foe-capable.
-- **ATTRTYPE-1** ([parser-fidelity](gaps/parser-fidelity.md)) — `mapAttribType` folds `Constant`
-  into `Magnitude`, so 4,746 Homecoming templates lose their type. Measured inert (no mez template
-  carries it) but it is a converter soft-default, the shape STACK-3 was.
-- **EXPRMAG-1** ([parser-fidelity](gaps/parser-fidelity.md)) — 13 atoms state
-  `attribType: Expression` and carry no `magnitudeExpression`. Needs a binary read to say whether
-  the parser drops the program or the game stores none; Defibrillate's foe sleep is the carrier
-  whose numbers would look right either way.
 
 Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
 guards and their mutations) lives in its [gaps/](gaps/) file, not here.
@@ -94,18 +87,17 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Parser + binary fidelity
 
-[Full detail](gaps/parser-fidelity.md) — 42 of 44 closed
+[Full detail](gaps/parser-fidelity.md) — 45 of 45 closed
 
-- [ ] **ATTRTYPE-1** — `mapAttribType` maps three of the parser's four `ATTRIB_MOD_TYPE` values
+- [x] **ATTRTYPE-1** — `mapAttribType` maps three of the parser's four `ATTRIB_MOD_TYPE` values
   and falls through, so `Constant` reaches the wire as `Magnitude` and 4,746 Homecoming templates
   (`Set_Mode` 2636, `Set_Costume` 1125, `Null` 301, …) lose their type. Measured inert — no mez
   template carries it, so MEZDUR-1's routing cannot be reading a folded one — but it is the STACK-3
   shape: a converter soft-default turning a parse fact into plausible data.
-- [ ] **EXPRMAG-1** — 13 Homecoming atoms (13 brainstorm, 9 each Parse6 fork) state
-  `attribType: Expression` and carry no `magnitudeExpression`. Unseparated: the parser drops the
-  program, or the game stores none. Defibrillate's foe sleep is the carrier that matters — its
-  `scale 30 × Ranged_Sleep @ mag 3` reads as a plausible ~35.8s either way, and the def oracle
-  cannot settle it because the sleep arrives through an unexported `Redirects/` power.
+- [x] **EXPRMAG-1** — `Expression`-typed AttribMods carrying no `magnitudeExpression`: read the
+  carriers out of `powers.bin`, the `magnitude_expression` is genuinely count=0 on the wire so the
+  parser is faithful and "Varies" is correct. Guarded by `test_exprmag.py` (export census, per-fork
+  floors + mutation-scored). Full narrative in [parser-fidelity.md](gaps/parser-fidelity.md).
 - [x] **TSPY-8** — `guardThunderspyAppliedMez`'s protection carve-out tested signed SCALE alone,
   but protection is also spelled as signed magnitude on `Duration` templates and as an `Expression`
   magnitude whose sign never reaches the wire, so real protection read as applied control and was
@@ -121,6 +113,12 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   keys over 13 powers while Rebirth published the byte-identical atoms; read as four-fork twice
   because the missing keys were partitioned by recipient rather than by `gated`, and every other
   fork's misses are gated and correctly absent. Branch deleted, live-contract guard added
+- [x] **SHOWFLAGS-2** — SHOWFLAGS-1's classification was faithful, the inference off it was not:
+  both planners read `hiddenPassive`/`hiddenAuto` as "never a pick" where `ShowInManage kFalse`
+  only means "no Manage-screen row", which every slotless power carries. Bio Armor's Adaptation,
+  Staff Mastery and Fate Sealed were withheld, eight powersets a pick short. `free` is the axis
+  and splits all 42 hidden rows on every fork; both planners narrowed, gates re-cut to grade
+  both halves plus a powerset-size oracle
 - [x] **SHOWFLAGS-1** — the three `Show*` power flags (ShowInInventory / ShowInManage /
   ShowInInfo) were located in both tail readers' docstrings and skipped by both, so
   `show_in_manage` never reached the export, the converter's `hiddenPassive`/`hiddenAuto` arms
