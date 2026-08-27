@@ -710,11 +710,16 @@ export function synthesizePseudoPetEffects(
         table,
         // The pet row's own discriminator, forwarded rather than re-derived: a merged control
         // row is read by the same `mag`-format path a parent power's is, and without it every
-        // summoned mez resolves as unstated (MEZDUR-1). The face rides the same way
-        // (MEZFACE-1): the source sign is already on `scale`, and a self-directed pet row
-        // would otherwise render as foe control.
+        // summoned mez resolves as unstated (MEZDUR-1).
+        //
+        // The FACE does not ride along, though MEZFACE-1 wrote this line as if it did.
+        // Nothing produces a `toWho` on a pet effect: it is absent from the generated
+        // `PetEffect` type, `convert-pet-entities.cjs` never emits it (it emits `attribType`
+        // one line up), and all four datasets carry zero. So the forward read a field that
+        // cannot exist — surface without a producer behind it — and only broke the build.
+        // The intent is real and filed rather than deleted: a self-directed pet mez still
+        // renders as foe control until the converter emits the recipient.
         ...(eff.attribType !== undefined ? { attribType: eff.attribType } : {}),
-        ...(eff.toWho !== undefined ? { toWho: eff.toWho } : {}),
         ...(petClass !== undefined ? { petClass } : {}),
         ...(eff.ignoreStrength ? { ignoreStrength: true as const } : {}),
       };

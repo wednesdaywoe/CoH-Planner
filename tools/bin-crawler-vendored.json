@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "ef9c3a282fb1603b7c2f9b9c99d38d35399f2068",
-  "synced_from_subject": "Close the granted-DoT per-attack DPS follow-up in HOMECOMING_PARSER (calc work, done 2026-08-25)",
-  "synced_from_date": "2026-08-25T13:41:47-04:00",
-  "tree_fingerprint": "e16a740e39c0012296b8ef556a6973cee4e1b7e450131830aacd1d6f98130f1a",
+  "synced_from_commit": "70db0c6ffcee38d206441383d7c3c0d00f208ead",
+  "synced_from_subject": "ATTRTYPE-1: correct \"never become atoms\" — they do, as Meta rows",
+  "synced_from_date": "2026-08-27T00:03:50-04:00",
+  "tree_fingerprint": "d2fd76637243ccfd7632d2ae15563bcebf40603ea093f2df512f8e7b0044ce28",
   "export_manifest_digest": "6900680e2e867d644fe35ccfedb07a074ce12f96345ecda2513171004fa8977a",
   "export_manifest_count": 14
 }

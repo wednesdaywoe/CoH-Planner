@@ -770,6 +770,26 @@
       "id": "info-panel-scrollbar-shift",
       "date": "2026-08-22",
       "preview": "The whole app jumped a little to the left and back as you moved the mouse across"
+    },
+    {
+      "id": "hidden-mechanic-picks-restored",
+      "date": "2026-08-26",
+      "preview": "Bio Armor's Adaptation, Staff Fighting's Staff Mastery and Fortunata Teamwork's "
+    },
+    {
+      "id": "slot-levels-placed-in-reverse",
+      "date": "2026-08-26",
+      "preview": "Fix a bug causing placing enhancement slots one at a time to be labeled in rever"
+    },
+    {
+      "id": "mids-export-fix",
+      "date": "2026-08-26",
+      "preview": "Fix for Mids export utility that should make the build reconstruction more relia"
+    },
+    {
+      "id": "brainstorm-not-in-server-picker",
+      "date": "2026-08-22",
+      "preview": "HC Brainstorm shipped but was missing from the Server dropdown, so there was no "
     }
   ]
 }

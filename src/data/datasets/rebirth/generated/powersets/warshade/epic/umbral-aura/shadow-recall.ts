@@ -62,12 +62,12 @@ export const ShadowRecall: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["target.isFriend?","!","Warshade_Offensive.Umbral_Blast.Starless_Step","source.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["target.isFriend?","!","Warshade_Offensive.Umbral_Blast.Starless_Step","source.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["target.isFriend?"],true,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Warshade_Offensive.Umbral_Blast.Starless_Step","source.ownPower?","&&","target.isFriend?","!","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","Warshade_Offensive.Umbral_Blast.Starless_Step","source.ownPower?","&&","target.isFriend?","!","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["target.isFriend?"],true,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Warshade_Offensive.Umbral_Blast.Starless_Step","source.ownPower?","&&","target.isFriend?","!","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","Warshade_Offensive.Umbral_Blast.Starless_Step","source.ownPower?","&&","target.isFriend?","!","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"]
   ],
   "formVariants": [
     {

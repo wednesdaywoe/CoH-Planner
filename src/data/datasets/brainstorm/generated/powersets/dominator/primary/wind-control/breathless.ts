@@ -102,7 +102,7 @@ export const Breathless: Power = {
     ["Mez","Immobilized",22.5,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"Domination",null,null,null,null,null,null,null,null,null,null,"domination"],
     ["Mez","Immobilized",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Domination"],
     ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","SelfAndPets","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power",null,0.2],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"null"]
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "conditionalEffects": [
     {

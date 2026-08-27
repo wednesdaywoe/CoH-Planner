@@ -661,6 +661,7 @@ export function RegistryEffectsDisplay({
   purplePatchInfo,
   specialEffects,
   extraInstances,
+  targetsAffected,
 }: RegistryEffectsDisplayProps) {
   const allowedSet = new Set(allowedEnhancements);
 

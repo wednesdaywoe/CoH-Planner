@@ -243,11 +243,11 @@ export const GraniteArmor: Power = {
     ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties"],
     ["Meta",null,-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"jump pack"],
     ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties"],
-    ["Meta",null,1,35,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
-    ["Meta",null,1,36,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
-    ["Meta",null,1,37,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
-    ["Meta",null,1,6,10,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,["kMiniature","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
+    ["Meta",null,1,35,0.75,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
+    ["Meta",null,1,36,0.75,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
+    ["Meta",null,1,37,0.75,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
+    ["Meta",null,1,6,10,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Constant","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,["kMiniature","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Resistance","Smashing",5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Resistance","Lethal",5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Resistance","Fire",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
@@ -280,7 +280,7 @@ export const GraniteArmor: Power = {
     ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,["kMiniature","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"set_costume"]
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Constant","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,["kMiniature","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"set_costume"]
   ],
   "setsModes": [
     "Suppress_FlyToggles",

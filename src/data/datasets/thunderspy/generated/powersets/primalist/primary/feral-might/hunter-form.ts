@@ -74,11 +74,11 @@ export const HunterForm: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,9,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
-    ["Meta",null,1,101,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
-    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Wodan","eq","!","@CustomFX","ShadowHound","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"set_costume"],
-    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Wodan","eq","@CustomFX","ShadowHound","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"set_costume"],
-    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,["@CustomFX","ShadowHound","eq","@CustomFX","Wodan","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"set_costume"],
+    ["Meta",null,1,9,2.25,"Melee_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+    ["Meta",null,1,101,2.25,"Melee_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Constant","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Wodan","eq","!","@CustomFX","ShadowHound","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"set_costume"],
+    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Constant","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Wodan","eq","@CustomFX","ShadowHound","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"set_costume"],
+    ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Constant","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,["@CustomFX","ShadowHound","eq","@CustomFX","Wodan","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"set_costume"],
     ["Movement","JumpHeight",0.25,1,2.25,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Leap"],
     ["Movement","Jump",0.55,1,2.25,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedJumping"],
     ["Movement","Control",10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Ones"],

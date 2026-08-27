@@ -75,7 +75,7 @@ export const Vacuum: Power = {
     ["Meta",null,1,159,0,"Ranged_Ones","Cur","Expression","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["kCloudedSkies","Source.Mode?","!","entref","target.owner>","entref","source>","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,"set_mode"],
     ["Meta",null,1,160,239,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["entref","target.owner>","entref","source>","eq"],true,null,null,null,null,null,null,null,null,null,null,"set_mode",null,0.5],
     ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","SelfAndPets","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power",null,0.2],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"null"]
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"null"]
   ],
   "conditionalEffects": [
     {

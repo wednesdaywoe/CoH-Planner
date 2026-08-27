@@ -49,7 +49,7 @@ export const EnergyFlightQuantumAcceleration: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,30],
+    ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Constant","Self","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,30],
     ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kFlightActive","Source.Mode?"],true,null,true,null,null,null,null,0,null,"FlightActive",null,null,null,null,null,null,null,null,null,null,"flightactive"],
     ["Movement","Fly",-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kGroupFlying","Source.Mode?"],true,null,null,null,null,null,null,0,null,"GroupFlying",null,null,null,null,null,null,null,null,null,null,"groupflying"],

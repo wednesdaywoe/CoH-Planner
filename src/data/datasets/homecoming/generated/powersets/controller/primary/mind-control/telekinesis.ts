@@ -62,7 +62,7 @@ export const Telekinesis: Power = {
   "atoms": [
     ["Mez","Immobilized",5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kHitPoints%","target>","0",">","&&"]],
     ["Mez","Immobilized",2.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","critter","eq","kHitPoints%","target>","0",">","&&"],null,null,null,null,null,null,null,null,null,"Overpower"],
-    ["Meta",null,1,175,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Telekinesis",null,"set_mode"],
+    ["Meta",null,1,175,1.5,"Melee_Ones","Cur","Constant","Target","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Telekinesis",null,"set_mode"],
     ["Mez","Immobilized",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kHitPoints%","target>","0",">","&&"],true],
     ["MezResist","Knockup",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,"Immobilized",null,null,"Telekinesis"],
     ["MezResist","Knockback",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,"Immobilized",null,null,"Telekinesis"],

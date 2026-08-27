@@ -207,7 +207,7 @@ export const GraniteArmor: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Constant","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Defense","All",1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Smashing",5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -244,10 +244,10 @@ export const GraniteArmor: Power = {
     ["Movement","FlyMode",-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties"],
     ["Meta",null,-10000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"jump pack"],
     ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties"],
-    ["Meta",null,1,35,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
-    ["Meta",null,1,36,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
-    ["Meta",null,1,37,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
-    ["Meta",null,1,6,10,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
+    ["Meta",null,1,35,0.75,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
+    ["Meta",null,1,36,0.75,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
+    ["Meta",null,1,37,0.75,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
+    ["Meta",null,1,6,10,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
     ["Resistance","Smashing",5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Resistance","Lethal",5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Resistance","Fire",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],

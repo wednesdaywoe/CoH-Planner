@@ -110,7 +110,7 @@ export const Microburst: Power = {
     ["Defense","All",2,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","5","=="],true,null,null,null,null,null,null,null,null,"Debuff_Def",null,null,null,null,null,null,null,null,null,null,"wind_control_pressure-5"],
     ["Defense","All",2.5,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","6","=="],true,null,null,null,null,null,null,null,null,"Debuff_Def",null,null,null,null,null,null,null,null,null,null,"wind_control_pressure-6"],
     ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","SelfAndPets","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"revoke_power",null,0.2],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"]
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"null"]
   ],
   "conditionalEffects": [
     {
