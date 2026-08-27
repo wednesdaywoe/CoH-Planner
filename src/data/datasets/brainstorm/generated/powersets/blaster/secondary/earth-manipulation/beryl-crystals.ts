@@ -50,8 +50,9 @@ export const BerylCrystals: Power = {
     "confuse": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
+      "scale": -30,
+      "table": "Ranged_Res_Boolean",
+      "toWho": "Self"
     },
     "debuffResistance": {
       "perception": {

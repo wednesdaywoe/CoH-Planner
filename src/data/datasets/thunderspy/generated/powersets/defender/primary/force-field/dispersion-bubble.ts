@@ -101,19 +101,19 @@ export const DispersionBubble: Power = {
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     }
   },

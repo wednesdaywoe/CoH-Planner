@@ -65,8 +65,9 @@ export const Temperatureprotection: Power = {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 8,
-      "table": "Melee_Res_Boolean"
+      "scale": -8,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "knockback": {
       "ignoreStrength": true,

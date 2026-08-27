@@ -122,7 +122,7 @@ export const POWER_POOLS_RAW = {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 20,
+            "scale": -20,
             "table": "Ranged_Res_Boolean"
           },
           "durations": {
@@ -140,21 +140,21 @@ export const POWER_POOLS_RAW = {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 20,
+            "scale": -20,
             "table": "Ranged_Res_Boolean"
           },
           "hold": {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 20,
+            "scale": -20,
             "table": "Ranged_Res_Boolean"
           },
           "immobilize": {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 20,
+            "scale": -20,
             "table": "Ranged_Res_Boolean"
           },
           "recoveryBuff": {
@@ -169,14 +169,14 @@ export const POWER_POOLS_RAW = {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 20,
+            "scale": -20,
             "table": "Ranged_Res_Boolean"
           },
           "stun": {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 20,
+            "scale": -20,
             "table": "Ranged_Res_Boolean"
           }
         }
@@ -2223,8 +2223,9 @@ export const POWER_POOLS_RAW = {
                 "attribType": "Magnitude",
                 "ignoreStrength": true,
                 "mag": 1,
-                "scale": 30,
-                "table": "Melee_Res_Boolean"
+                "scale": -30,
+                "table": "Melee_Res_Boolean",
+                "toWho": "Self"
               },
               "knockback": {
                 "ignoreStrength": true,
@@ -4770,7 +4771,7 @@ export const POWER_POOLS_RAW = {
           "confuse": {
             "attribType": "Magnitude",
             "mag": 1,
-            "scale": 15,
+            "scale": -15,
             "table": "Ranged_Res_Boolean"
           },
           "debuffResistance": {
@@ -4984,7 +4985,7 @@ export const POWER_POOLS_RAW = {
           "fear": {
             "attribType": "Magnitude",
             "mag": 1,
-            "scale": 10,
+            "scale": -10,
             "table": "Melee_Ones"
           },
           "mezResistance": {
@@ -5338,8 +5339,9 @@ export const POWER_POOLS_RAW = {
           "immobilize": {
             "attribType": "Magnitude",
             "mag": 1,
-            "scale": 30,
-            "table": "Melee_Res_Boolean"
+            "scale": -30,
+            "table": "Melee_Res_Boolean",
+            "toWho": "Self"
           },
           "movement": {
             "jumpHeight": {
@@ -5550,8 +5552,9 @@ export const POWER_POOLS_RAW = {
           "hold": {
             "attribType": "Magnitude",
             "mag": 1,
-            "scale": 2,
-            "table": "Melee_Ones"
+            "scale": -2,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "knockback": {
             "ignoreStrength": true,
@@ -7158,14 +7161,16 @@ export const POWER_POOLS_RAW = {
           "hold": {
             "attribType": "Magnitude",
             "mag": 1,
-            "scale": 10,
-            "table": "Ranged_Ones"
+            "scale": -10,
+            "table": "Ranged_Ones",
+            "toWho": "Self"
           },
           "immobilize": {
             "attribType": "Magnitude",
             "mag": 1,
-            "scale": 10,
-            "table": "Ranged_Ones"
+            "scale": -10,
+            "table": "Ranged_Ones",
+            "toWho": "Self"
           },
           "knockback": {
             "scale": 10,
@@ -7224,14 +7229,16 @@ export const POWER_POOLS_RAW = {
           "sleep": {
             "attribType": "Magnitude",
             "mag": 1,
-            "scale": 10,
-            "table": "Ranged_Ones"
+            "scale": -10,
+            "table": "Ranged_Ones",
+            "toWho": "Self"
           },
           "stun": {
             "attribType": "Magnitude",
             "mag": 1,
-            "scale": 10,
-            "table": "Ranged_Ones"
+            "scale": -10,
+            "table": "Ranged_Ones",
+            "toWho": "Self"
           }
         }
       },

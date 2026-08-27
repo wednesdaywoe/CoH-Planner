@@ -74,14 +74,16 @@ export const FalloutShelter: Power = {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "knockback": {
       "ignoreStrength": true,
@@ -119,15 +121,17 @@ export const FalloutShelter: Power = {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "stun": {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     }
   },
   "atoms": [

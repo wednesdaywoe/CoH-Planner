@@ -62,7 +62,8 @@ export const Revive: Power = {
       "ignoreStrength": true,
       "mag": 50,
       "scale": 4,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "recoveryBuff": {
       "scale": 0.5,

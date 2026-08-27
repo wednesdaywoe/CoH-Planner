@@ -56,8 +56,9 @@ export const WildFortress: Power = {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
+      "scale": -30,
+      "table": "Ranged_Res_Boolean",
+      "toWho": "Self"
     },
     "durations": {
       "absorb": 12,

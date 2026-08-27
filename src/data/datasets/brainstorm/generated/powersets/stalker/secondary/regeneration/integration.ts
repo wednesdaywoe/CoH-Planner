@@ -61,14 +61,16 @@ export const Integration: Power = {
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "knockback": {
       "scale": 10,
@@ -102,14 +104,16 @@ export const Integration: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     }
   },
   "atoms": [

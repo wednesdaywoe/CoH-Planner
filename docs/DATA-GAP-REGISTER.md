@@ -19,13 +19,14 @@ each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method note
 
 ## Current frontier
 
-**3 open, of 227 entries.** When an entry is open it is listed here with what it's waiting on.
+**3 open, of 228 entries.** When an entry is open it is listed here with what it's waiting on.
 Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
 doesn't accumulate closure prose.
 
-- **MEZFACE-1** ([stat-routing](gaps/stat-routing.md)) — MEZDUR-1's residue. The mez bag value
-  abs-es its scale and carries no recipient, so the display still sniffs `res_boolean` to decide
-  what is protection. ~37 rows per fork miss the group; Hibernate's self-root reads as foe control.
+- **VOCAB-1** ([stat-routing](gaps/stat-routing.md)) — `affects_foe`'s vocabulary omits
+  `DeadOrAliveAny`, the one recipient word the corpus carries that is neither foe-listed nor
+  unambiguously friendly, so Defibrillate's `Expression`-spelled foe sleep reads as protection.
+  Waiting on an oracle to say whether that word is foe-capable.
 - **ATTRTYPE-1** ([parser-fidelity](gaps/parser-fidelity.md)) — `mapAttribType` folds `Constant`
   into `Magnitude`, so 4,746 Homecoming templates lose their type. Measured inert (no mez template
   carries it) but it is a converter soft-default, the shape STACK-3 was.
@@ -282,7 +283,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Stat routing + caps
 
-[Full detail](gaps/stat-routing.md) — 54 of 55 closed
+[Full detail](gaps/stat-routing.md) — 55 of 56 closed
 
 - [x] **MEZDUR-1** — closed 2026-08-26: the discriminator is the atom's `attribType`, which the
   converters now stamp on the mez bag value; the table sniff standing in for it was wrong in BOTH
@@ -290,10 +291,12 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   def compiler's unscaled 1.0). Beanbag 3.00s → 11.92s, Detention Field Mag 1.0 → Mag 4.77. Three
   producers stamped, three readers routed, six mutations red. Full narrative in
   [stat-routing](gaps/stat-routing.md).
-- [ ] **MEZFACE-1** — the mez bag value abs-es its scale and carries no `toWho`, so the display
-  cannot tell protection from applied control and falls back to the same `res_boolean` sniff
-  MEZDUR-1 retired a layer up; ~37 protection rows per fork on `*_Ones` tables miss the Status Prot
-  group, and Hibernate's `toWho: Self` immobilize renders as foe control. Numbers are right.
+- [x] **MEZFACE-1** — closed 2026-08-26: the mez bag value rides the SIGNED scale and a
+  `toWho: Self` mark, and both displays read the face off the stamps instead of sniffing
+  `res_boolean`; ~37 rows per fork back in the group, self-roots labelled. Residue: VOCAB-1.
+- [ ] **VOCAB-1** — `affects_foe`'s vocabulary omits `DeadOrAliveAny`, the one recipient word the
+  corpus carries that is neither foe-listed nor unambiguously friendly, so Defibrillate's
+  `Expression`-spelled foe sleep reads as protection. Pinned, not fixed.
 - [x] **MEZPROT-2** — closed 2026-08-25: the discriminator is neither table nor bare sign but the
   converter's three-spelling protection test plus recipient, graded on the fold winner (the gate
   could not see spelling before — the fold abs'd it). The apply pass now credits a

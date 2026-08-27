@@ -86,8 +86,9 @@ export const ResistDisorientation: Power = {
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 15,
-      "table": "Melee_Res_Boolean"
+      "scale": -15,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     }
   },
   "atoms": [

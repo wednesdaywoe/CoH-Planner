@@ -86,14 +86,16 @@ export const Rooted: Power = {
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "knockback": {
       "ignoreStrength": true,
@@ -139,8 +141,9 @@ export const Rooted: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "slow": {
       "jumpHeight": {
@@ -158,8 +161,9 @@ export const Rooted: Power = {
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     }
   },
   "atoms": [

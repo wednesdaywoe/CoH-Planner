@@ -566,6 +566,7 @@ export function CompareSlottingModal() {
               globalBonuses={globalBonusesForCalc}
               archetypeId={archetypeId ?? undefined}
               level={build.level}
+              targetsAffected={power.targetsAffected}
               categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
               damage={activeDamage}
               duration={mergedEffects?.buffDuration as number | undefined}

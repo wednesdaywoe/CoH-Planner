@@ -123,15 +123,17 @@ export const PerfectHarmony: Power = {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "knockback": {
       "ignoreStrength": true,
@@ -207,15 +209,17 @@ export const PerfectHarmony: Power = {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "stun": {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     }
   },
   "atoms": [

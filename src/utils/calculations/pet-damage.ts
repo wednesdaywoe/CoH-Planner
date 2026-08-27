@@ -674,7 +674,7 @@ export function synthesizePseudoPetEffects(
   if (!summon) return null;
   // Keyed by display key, then by movement axis ('' for the keys that carry none).
   const contributions: Record<string, Record<string, PetContribution[]>> = {};
-  type MezValue = { mag: number; scale: number; table: string; attribType?: string; petClass?: string; ignoreStrength?: true };
+  type MezValue = { mag: number; scale: number; table: string; attribType?: string; toWho?: string; petClass?: string; ignoreStrength?: true };
   const outMez: Record<string, MezValue> = {};
 
   // `petClass` is the entity's own `characterClass`, or undefined for a row from the inline
@@ -710,8 +710,11 @@ export function synthesizePseudoPetEffects(
         table,
         // The pet row's own discriminator, forwarded rather than re-derived: a merged control
         // row is read by the same `mag`-format path a parent power's is, and without it every
-        // summoned mez resolves as unstated (MEZDUR-1).
+        // summoned mez resolves as unstated (MEZDUR-1). The face rides the same way
+        // (MEZFACE-1): the source sign is already on `scale`, and a self-directed pet row
+        // would otherwise render as foe control.
         ...(eff.attribType !== undefined ? { attribType: eff.attribType } : {}),
+        ...(eff.toWho !== undefined ? { toWho: eff.toWho } : {}),
         ...(petClass !== undefined ? { petClass } : {}),
         ...(eff.ignoreStrength ? { ignoreStrength: true as const } : {}),
       };

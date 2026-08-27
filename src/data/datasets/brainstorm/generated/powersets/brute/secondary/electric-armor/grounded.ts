@@ -53,8 +53,9 @@ export const Grounded: Power = {
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": -6,
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "knockback": {
       "scale": 6,

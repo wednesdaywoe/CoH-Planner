@@ -112,7 +112,9 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
   it('Fortification keeps its self status protection (Rebirth twin carries the same −24)', () => {
     // `attribType: Magnitude` is the reading, not decoration: the points are
     // `|scale| × table`, and the flat mag 1 is the def compiler's placeholder (MEZDUR-1).
-    const prot = { attribType: 'Magnitude', mag: 1, scale: 24, table: 'Melee_Res_Boolean' };
+    // The scale rides SIGNED and the row is self-marked (MEZFACE-1): the bag no longer
+    // abs-es the spelling or drops the recipient.
+    const prot = { attribType: 'Magnitude', mag: 1, scale: -24, table: 'Melee_Res_Boolean', toWho: 'Self' };
     expect(Fortification.effects?.hold).toEqual(prot);
     expect(Fortification.effects?.stun).toEqual(prot);
     expect(Fortification.effects?.sleep).toEqual(prot);
@@ -120,10 +122,11 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
   });
 
   it('Clear Mind keeps its ALLY-cast protection — recipient is not part of the test', () => {
-    // toWho `Target`, not `Self`: the protection rule is sign + aspect, nothing else.
+    // toWho `Target`, not `Self`: the protection rule is sign + aspect, nothing else — so
+    // the signed scale (MEZFACE-1) rides with no self mark.
     expect(ClearMind.effects?.hold).toEqual(
-      { attribType: 'Magnitude', mag: 1, scale: 30, table: 'Ranged_Res_Boolean' });
+      { attribType: 'Magnitude', mag: 1, scale: -30, table: 'Ranged_Res_Boolean' });
     expect(ClearMind.effects?.fear).toEqual(
-      { attribType: 'Magnitude', mag: 1, scale: 30, table: 'Ranged_Res_Boolean' });
+      { attribType: 'Magnitude', mag: 1, scale: -30, table: 'Ranged_Res_Boolean' });
   });
 });

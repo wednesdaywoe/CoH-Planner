@@ -49,8 +49,9 @@ export const TrainedMind: Power = {
     "confuse": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "durations": {
       "confuse": 0.75,
@@ -65,20 +66,23 @@ export const TrainedMind: Power = {
     "fear": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "resistance": {
       "psionic": {
@@ -89,14 +93,16 @@ export const TrainedMind: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     }
   },
   "atoms": [

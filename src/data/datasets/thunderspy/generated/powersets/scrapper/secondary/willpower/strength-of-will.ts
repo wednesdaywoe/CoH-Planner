@@ -69,14 +69,16 @@ export const StrengthofWill: Power = {
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "knockback": {
       "ignoreStrength": true,
@@ -151,14 +153,16 @@ export const StrengthofWill: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     }
   },
   "atoms": [

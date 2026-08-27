@@ -95,8 +95,9 @@ export const ShadowDweller: Power = {
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 4,
-      "table": "Melee_Ones"
+      "scale": -4,
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "mezResistance": {
       "immobilize": {

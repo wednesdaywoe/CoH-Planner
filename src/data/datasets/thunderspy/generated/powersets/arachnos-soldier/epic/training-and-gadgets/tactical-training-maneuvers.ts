@@ -52,7 +52,7 @@ export const TacticalTrainingManeuvers: Power = {
     "confuse": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 15,
+      "scale": -15,
       "table": "Ranged_Res_Boolean"
     },
     "defenseBuff": {
@@ -109,7 +109,7 @@ export const TacticalTrainingManeuvers: Power = {
     "fear": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 15,
+      "scale": -15,
       "table": "Ranged_Res_Boolean"
     },
     "mezResistance": {

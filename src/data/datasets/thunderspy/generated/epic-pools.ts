@@ -12417,7 +12417,8 @@ export const EPIC_POOLS_RAW = {
             "ignoreStrength": true,
             "mag": 50,
             "scale": 4,
-            "table": "Melee_Ones"
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "stun": {
             "attribType": "Duration",
@@ -27005,8 +27006,9 @@ export const EPIC_POOLS_RAW = {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
+            "scale": -10,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "defenseBuff": {
             "psionic": {
@@ -27027,29 +27029,33 @@ export const EPIC_POOLS_RAW = {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
+            "scale": -10,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "hold": {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
+            "scale": -10,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "sleep": {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
+            "scale": -10,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "stun": {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
+            "scale": -10,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "maxStacks": 2,
           "stacksLinear": [
@@ -27382,8 +27388,9 @@ export const EPIC_POOLS_RAW = {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
+            "scale": -10,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "defenseBuff": {
             "psionic": {
@@ -27404,29 +27411,33 @@ export const EPIC_POOLS_RAW = {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
+            "scale": -10,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "hold": {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
+            "scale": -10,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "sleep": {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
+            "scale": -10,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           },
           "stun": {
             "attribType": "Magnitude",
             "ignoreStrength": true,
             "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
+            "scale": -10,
+            "table": "Melee_Ones",
+            "toWho": "Self"
           }
         }
       },

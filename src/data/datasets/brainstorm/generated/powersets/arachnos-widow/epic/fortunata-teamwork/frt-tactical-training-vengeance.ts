@@ -113,7 +113,7 @@ export const FRTTacticalTrainingVengeance: Power = {
     "fear": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 10,
+      "scale": -10,
       "table": "Melee_Ones"
     },
     "mezResistance": {

@@ -39,7 +39,7 @@ export const WolfSpiderArmor: Power = {
     "confuse": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 2,
+      "scale": -2,
       "table": "Melee_Ones"
     },
     "durations": {
@@ -56,19 +56,19 @@ export const WolfSpiderArmor: Power = {
     "fear": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 2,
+      "scale": -2,
       "table": "Melee_Ones"
     },
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 2,
+      "scale": -2,
       "table": "Melee_Ones"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 2,
+      "scale": -2,
       "table": "Melee_Ones"
     },
     "mezResistance": {
@@ -98,13 +98,13 @@ export const WolfSpiderArmor: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 2,
+      "scale": -2,
       "table": "Melee_Ones"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 2,
+      "scale": -2,
       "table": "Melee_Ones"
     }
   },

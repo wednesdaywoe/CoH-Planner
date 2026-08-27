@@ -65,7 +65,8 @@ export const InnerWill: Power = {
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "durations": {
       "confuse": 30,
@@ -83,21 +84,24 @@ export const InnerWill: Power = {
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "hold": {
       "attribType": "Expression",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "immobilize": {
       "attribType": "Expression",
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "mezResistance": {
       "confuse": {
@@ -136,7 +140,8 @@ export const InnerWill: Power = {
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "specialBuff": {
       "confuse": {
@@ -175,7 +180,8 @@ export const InnerWill: Power = {
       "ignoreStrength": true,
       "mag": 1,
       "scale": 1,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "maxStacks": 2,
     "stacksLinear": [

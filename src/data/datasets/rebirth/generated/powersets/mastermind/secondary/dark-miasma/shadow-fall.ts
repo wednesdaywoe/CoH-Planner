@@ -104,7 +104,7 @@ export const ShadowFall: Power = {
     "fear": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "mezResistance": {

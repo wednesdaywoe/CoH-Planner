@@ -83,13 +83,13 @@ export const Lightfield: Power = {
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "perceptionBuff": {
@@ -103,7 +103,7 @@ export const Lightfield: Power = {
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     }
   },

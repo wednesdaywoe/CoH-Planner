@@ -916,6 +916,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         globalBonuses={globalBonusesWithStrength}
         archetypeId={archetypeId ?? undefined}
         level={build.level}
+        targetsAffected={power?.targetsAffected}
         categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
         executionKeys={['accuracy', 'enduranceCost', 'recharge', 'healing']}
         dominationActive={dominationActive}

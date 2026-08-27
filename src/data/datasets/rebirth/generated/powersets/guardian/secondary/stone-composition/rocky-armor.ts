@@ -49,8 +49,9 @@ export const RockyArmor: Power = {
     "confuse": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Ones"
+      "scale": -30,
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "debuffResistance": {
       "defense": {
@@ -87,8 +88,9 @@ export const RockyArmor: Power = {
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "knockback": {
       "scale": 10,

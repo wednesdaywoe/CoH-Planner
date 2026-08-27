@@ -72,7 +72,8 @@ export const StygianReturn: Power = {
       "ignoreStrength": true,
       "mag": 50,
       "scale": 4,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "stealth": {
       "stealthPvE": {

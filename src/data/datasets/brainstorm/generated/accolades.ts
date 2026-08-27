@@ -1492,8 +1492,9 @@ export const ACCOLADES_POWERSET = {
           "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
-          "scale": 15,
-          "table": "Melee_Ones"
+          "scale": -15,
+          "table": "Melee_Ones",
+          "toWho": "Self"
         },
         "durations": {
           "confuse": 30,
@@ -1511,22 +1512,25 @@ export const ACCOLADES_POWERSET = {
           "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
-          "scale": 15,
-          "table": "Melee_Ones"
+          "scale": -15,
+          "table": "Melee_Ones",
+          "toWho": "Self"
         },
         "hold": {
           "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
-          "scale": 15,
-          "table": "Melee_Ones"
+          "scale": -15,
+          "table": "Melee_Ones",
+          "toWho": "Self"
         },
         "immobilize": {
           "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
-          "scale": 15,
-          "table": "Melee_Ones"
+          "scale": -15,
+          "table": "Melee_Ones",
+          "toWho": "Self"
         },
         "knockback": {
           "ignoreStrength": true,
@@ -1559,15 +1563,17 @@ export const ACCOLADES_POWERSET = {
           "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
-          "scale": 15,
-          "table": "Melee_Ones"
+          "scale": -15,
+          "table": "Melee_Ones",
+          "toWho": "Self"
         },
         "stun": {
           "attribType": "Magnitude",
           "ignoreStrength": true,
           "mag": 1,
-          "scale": 15,
-          "table": "Melee_Ones"
+          "scale": -15,
+          "table": "Melee_Ones",
+          "toWho": "Self"
         }
       },
       "targetsAffected": [

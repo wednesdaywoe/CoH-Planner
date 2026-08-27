@@ -620,6 +620,9 @@ interface RegistryEffectsDisplayProps {
   extraInstances?: Record<string, ExtraInstance[]>;
   /** Purple patch info for adjusting accuracy and damage final values */
   purplePatchInfo?: { factor: number; offset: number; toHitBonus?: number; combatModifier: number };
+  /** The power's `targets_affected` — needed to read the mez FACE off the value's own
+   *  protection spelling instead of sniffing table names (MEZFACE-1). */
+  targetsAffected?: string[];
 }
 
 /** Get con-colored arrow symbol for target level offset (matches in-game con system) */
@@ -787,19 +790,25 @@ export function RegistryEffectsDisplay({
     priority: 10,
   };
 
-  // Distinguish mez PROTECTION from APPLIED mez. Self mez protection (armor
-  // toggles) is encoded with a *_Res_Boolean table — the magnitude is the
-  // protection points, applied permanently while toggled. APPLIED mez (a foe
-  // hold, or a confuse/fear AURA like Arctic Air) uses a duration table
-  // (Ranged_Fear, Ranged_Immobilize, Ranged_Ones, …) where duration = scale ×
-  // table. Only the former belongs in the "Status Prot" group; the latter must
-  // render as individual control rows ("Confuse Mag 3 (Xs)") so foe-applied mez
-  // isn't mislabeled as self protection.
+  // Distinguish mez PROTECTION from APPLIED mez. The FACE reads the same discriminator pair
+  // the applier credits (MEZFACE-1): the converter's protection spelling — negative scale,
+  // TSPY-8's first spelling, negative magnitude its second, an Expression-valued row — on a
+  // power that affects no foe. The `res_boolean` table sniff this used to be was wrong in
+  // both directions: every `*_Ones` armor (Bane/Crab/Wolf Spider, the SFC accolade) missed
+  // the group, and a spelled foe control on a Res_Boolean table would have been kept. A bare
+  // number is the protection magnitude as a different producer shapes it, and still is.
+  const FOE_TARGETS = ['Foe', 'DeadFoe', 'DeadOrAliveFoe', 'Any'];
+  const powerAffectsFoe = (targetsAffected ?? []).some((t) => FOE_TARGETS.includes(t));
   const isProtectionMez = (item: DisplayableEffect): boolean => {
-    const v = item.effect.value as { table?: string } | number | undefined | null;
+    const v = item.effect.value as
+      | { scale?: number; mag?: number; attribType?: string }
+      | number
+      | undefined
+      | null;
     if (typeof v === 'number') return true; // bare protection magnitude
-    const tbl = (v && typeof v === 'object' && typeof v.table === 'string') ? v.table.toLowerCase() : '';
-    return tbl.includes('res_boolean');
+    if (!v || typeof v !== 'object') return false;
+    const spelled = (v.scale ?? 0) < 0 || (v.mag ?? 0) < 0 || v.attribType === 'Expression';
+    return spelled && !powerAffectsFoe;
   };
 
   // Find and group consecutive mez protection effects
@@ -1043,7 +1052,17 @@ export function RegistryEffectsDisplay({
         // baked into the visible label: a long list overflowed the fixed label
         // column and collided with the value columns. It moves to a hover
         // tooltip on the standard row instead.
-        const label = expandedLabel || config.label;
+        const label0 = expandedLabel || config.label;
+        // MEZFACE-1: a self-directed mez row (the caster's own root — Hibernate, Icy
+        // Bastion) states its recipient instead of reading as foe control. The protection
+        // rows already say caster-facing, so the group does not earn a redundant mark.
+        const label =
+          MEZ_PROT_KEYS.has(key)
+          && isMezEffect(rawValue)
+          && rawValue.toWho === 'Self'
+          && !isProtectionMez(group.item)
+            ? `${label0} (Self)`
+            : label0;
 
         // Handle mez effects (magnitude format)
         if (config.format === 'mag') {

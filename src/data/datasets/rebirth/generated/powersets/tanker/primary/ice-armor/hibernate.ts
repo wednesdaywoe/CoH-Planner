@@ -60,7 +60,8 @@ export const Hibernate: Power = {
       "ignoreStrength": true,
       "mag": 100,
       "scale": 0.75,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "knockback": {
       "scale": 10,

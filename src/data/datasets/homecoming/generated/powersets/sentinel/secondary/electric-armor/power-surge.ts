@@ -95,8 +95,9 @@ export const PowerSurge: Power = {
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "knockback": {
       "ignoreStrength": true,
@@ -182,8 +183,9 @@ export const PowerSurge: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "stealth": {
       "translucency": {
@@ -195,8 +197,9 @@ export const PowerSurge: Power = {
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     }
   },
   "atoms": [

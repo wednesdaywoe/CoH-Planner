@@ -41,7 +41,7 @@ export const ClearMind: Power = {
     "confuse": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     },
     "debuffResistance": {
@@ -65,19 +65,19 @@ export const ClearMind: Power = {
     "fear": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     },
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     },
     "mezResistance": {
@@ -93,13 +93,13 @@ export const ClearMind: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     }
   },

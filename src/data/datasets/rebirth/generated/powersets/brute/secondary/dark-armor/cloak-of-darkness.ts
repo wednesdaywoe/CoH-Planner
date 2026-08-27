@@ -105,8 +105,9 @@ export const CloakofDarkness: Power = {
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": -30,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "perceptionBuff": {
       "scale": 0.6,

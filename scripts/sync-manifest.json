@@ -64,7 +64,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "ddf0e2d3ef1c49e4b34a40b9e95b2e880a01344978b53031ff557ba97e60e34a"
+      "sha256": "c03bce40ba01e0c4a4be6f7be0b4e47012a8ff6b59bfd985b0bc5fb00a901886"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -254,7 +254,7 @@
     {
       "path": "scripts/convert-powerset.cjs",
       "status": "identical",
-      "sha256": "3b688d058803b00e26281c98c7a45e87206eb95e4c8098ddc8dbca152ce89eda"
+      "sha256": "d632e330d0d2051629a46b4b80cfc326ca9fa91e05037b841937b06a8ce9236f"
     },
     {
       "path": "scripts/convert-salvage.cjs",
@@ -490,7 +490,7 @@
     {
       "path": "src/types/power.ts",
       "status": "identical",
-      "sha256": "eef6416a1d3a642b1b098b7b1a2d8ae738e38c3da73414fd793d6ac483c11ba7"
+      "sha256": "4e6ab2173b10379ee0772f5f7971808de2f1d7266762490637513b4c360d574a"
     },
     {
       "path": "src/types/shared.ts",

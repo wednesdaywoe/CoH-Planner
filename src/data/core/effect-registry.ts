@@ -816,7 +816,8 @@ export function formatMezValue(value: NumberOrMez): string {
   }
   if (isMezEffect(value)) {
     const mag = value.mag;
-    const duration = value.scale ? `${value.scale.toFixed(1)}s` : '';
+    // Duration is never negative — the sign on `scale` is the protection spelling (MEZFACE-1).
+    const duration = value.scale ? `${Math.abs(value.scale).toFixed(1)}s` : '';
     return duration ? `Mag ${mag} (${duration})` : `Mag ${mag}`;
   }
   return String(value);

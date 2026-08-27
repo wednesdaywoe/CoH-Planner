@@ -2249,8 +2249,8 @@ function classifyPseudoPetEffectRow(template) {
   const tableL = (table || '').toLowerCase();
   const attribsL = template.attribs.map((a) => (a || '').toLowerCase());
   const a0 = attribsL[0] || '';
-  const withScale = (eff) => {
-    if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
+  const withScale = (eff, signed = false) => {
+    if (scale && table) { eff.scale = signed ? scale : Math.abs(scale); eff.table = table; }
     if (ignoreStrength) eff.ignoreStrength = true;
     return eff;
   };
@@ -2383,7 +2383,9 @@ function classifyPseudoPetEffectRow(template) {
       // `*Protection`/`*Resist` types that fold into the summoner's totals, never a
       // magnitude-format display row.
       eff.attribType = _getAtomCore().mapAttribType(template.type);
-      return [withScale(eff)];
+      // The same row shape a parent power's carries, so the face rides the same way
+      // (MEZFACE-1): the source sign; applied pet control is never a self row.
+      return [withScale(eff, true)];
     }
 
     const debuffType = PSEUDOPET_DEBUFF_ATTRIBS[a];
@@ -6415,9 +6417,18 @@ function projectAtomsToEffects(atoms, powerName, targetsAffected) {
     // every other field, so a reader without this one has to guess, and the granted-magnitude
     // reader guessed with a `res_boolean` table-name sniff that was wrong in both directions
     // (MEZDUR-1). It rides on the value because a named bag slot has nowhere else to put it.
+    // The scale rides SIGNED and the recipient rides as `toWho: 'Self'` (MEZFACE-1): the sign
+    // is the protection spelling (negative scale is TSPY-8's first), the display needs it to
+    // tell an armor's status protection from applied foe control on ANY table - the
+    // `res_boolean` sniff the old abs-es scale left behind missed every `*_Ones` armor - and
+    // `toWho` marks the self-root (Hibernate, Icy Bastion) that otherwise renders beside the
+    // power's foe-facing rows as applied control. Absence of `toWho` means the atom is not
+    // caster-directed: true rather than defaulted, the convention the `defenseDebuff`
+    // self-penalty slot already uses.
     const makeMezEffect = () => {
-      const e = { mag: magnitude, scale: Math.abs(scale), table, attribType: a.attribType };
+      const e = { mag: magnitude, scale, table, attribType: a.attribType };
       if (ignoresStrength) e.ignoreStrength = true;
+      if (isSelfTargeting) e.toWho = 'Self';
       return e;
     };
     const recordDuration = (effectKey) => {

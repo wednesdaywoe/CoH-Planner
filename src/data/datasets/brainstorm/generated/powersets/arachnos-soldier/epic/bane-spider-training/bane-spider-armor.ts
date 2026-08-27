@@ -39,7 +39,7 @@ export const BaneSpiderArmor: Power = {
     "confuse": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 4,
+      "scale": -4,
       "table": "Melee_Ones"
     },
     "durations": {
@@ -57,19 +57,19 @@ export const BaneSpiderArmor: Power = {
     "fear": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 4,
+      "scale": -4,
       "table": "Melee_Ones"
     },
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 4,
+      "scale": -4,
       "table": "Melee_Ones"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 4,
+      "scale": -4,
       "table": "Melee_Ones"
     },
     "maxHPBuffUnenhanced": {
@@ -120,13 +120,13 @@ export const BaneSpiderArmor: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 4,
+      "scale": -4,
       "table": "Melee_Ones"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 4,
+      "scale": -4,
       "table": "Melee_Ones"
     }
   },

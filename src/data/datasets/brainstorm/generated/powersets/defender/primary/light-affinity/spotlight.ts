@@ -58,7 +58,7 @@ export const Spotlight: Power = {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "debuffResistance": {
@@ -118,35 +118,35 @@ export const Spotlight: Power = {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "hold": {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "sleep": {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "stun": {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     }
   },

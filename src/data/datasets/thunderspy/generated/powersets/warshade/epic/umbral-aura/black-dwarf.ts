@@ -72,14 +72,16 @@ export const BlackDwarf: Power = {
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 60,
-      "table": "Melee_Res_Boolean"
+      "scale": -60,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "knockback": {
       "scale": 10,
@@ -161,14 +163,16 @@ export const BlackDwarf: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "threatBuff": {
       "ignoreStrength": true,

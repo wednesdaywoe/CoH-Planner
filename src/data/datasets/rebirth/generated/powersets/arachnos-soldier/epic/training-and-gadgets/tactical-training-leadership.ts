@@ -52,7 +52,7 @@ export const TacticalTrainingLeadership: Power = {
     "confuse": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 15,
+      "scale": -15,
       "table": "Ranged_Res_Boolean"
     },
     "debuffResistance": {
@@ -73,7 +73,7 @@ export const TacticalTrainingLeadership: Power = {
     "fear": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 15,
+      "scale": -15,
       "table": "Ranged_Res_Boolean"
     },
     "mezResistance": {

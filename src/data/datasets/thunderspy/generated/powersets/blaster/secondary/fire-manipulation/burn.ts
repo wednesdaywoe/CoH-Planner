@@ -64,7 +64,8 @@ export const Burn: Power = {
       "ignoreStrength": true,
       "mag": -15,
       "scale": 100,
-      "table": "Melee_Res_Boolean"
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "mezResistance": {
       "immobilize": {

@@ -81,20 +81,23 @@ export const SoulTransfer: Power = {
     "fear": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
+      "scale": -25,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
+      "scale": -25,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
+      "scale": -25,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "knockback": {
       "scale": 26.25,
@@ -103,8 +106,9 @@ export const SoulTransfer: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
+      "scale": -25,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "stun": {
       "attribType": "Duration",

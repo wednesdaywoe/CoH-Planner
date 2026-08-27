@@ -49,8 +49,9 @@ export const Minerals: Power = {
     "confuse": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
-      "table": "Melee_Ones"
+      "scale": -30,
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "debuffResistance": {
       "perception": {

@@ -94,13 +94,13 @@ export const O2Boost: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 20,
+      "scale": -20,
       "table": "Ranged_Res_Boolean"
     }
   },

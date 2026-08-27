@@ -72,15 +72,17 @@ export const Hibernate: Power = {
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "immobilize": {
       "attribType": "Duration",
       "ignoreStrength": true,
       "mag": 1000,
       "scale": 0.75,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "knockback": {
       "ignoreStrength": true,
@@ -160,14 +162,16 @@ export const Hibernate: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "scale": -50,
+      "table": "Melee_Res_Boolean",
+      "toWho": "Self"
     },
     "untouchable": {
       "ignoreStrength": true,

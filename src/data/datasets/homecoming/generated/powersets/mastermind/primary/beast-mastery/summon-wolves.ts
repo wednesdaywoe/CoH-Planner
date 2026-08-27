@@ -66,7 +66,8 @@ export const SummonWolves: Power = {
       "ignoreStrength": true,
       "mag": 500,
       "scale": 3,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "stealth": {
       "translucency": {

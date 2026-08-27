@@ -47,7 +47,7 @@ export const Clarity: Power = {
     "confuse": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     },
     "debuffResistance": {
@@ -72,19 +72,19 @@ export const Clarity: Power = {
     "fear": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     },
     "hold": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     },
     "immobilize": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     },
     "mezResistance": {
@@ -106,13 +106,13 @@ export const Clarity: Power = {
     "sleep": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     },
     "stun": {
       "attribType": "Magnitude",
       "mag": 1,
-      "scale": 30,
+      "scale": -30,
       "table": "Ranged_Res_Boolean"
     }
   },

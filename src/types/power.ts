@@ -209,7 +209,8 @@ export interface DotEffect {
 export interface MezEffect {
   /** Mez magnitude (determines what rank of enemies are affected) */
   mag: number;
-  /** Duration scale */
+  /** Duration scale, SIGNED (MEZFACE-1): the sign is the protection spelling, so a reader
+   *  needs no table-name sniff to tell an armor's status protection from applied control. */
   scale: number;
   /** AT table for duration calculation */
   table: string;
@@ -228,6 +229,10 @@ export interface MezEffect {
   attribType?: AttribType;
   /** See {@link ScaledEffect.ignoreStrength} — a mez whose duration takes no enhancement. */
   ignoreStrength?: boolean;
+  /** `'Self'` when the atom is directed at the caster — the self-root (Hibernate, Icy
+   *  Bastion) that holds the caster still, not applied control (MEZFACE-1). Absent means
+   *  the atom is not caster-directed. */
+  toWho?: string;
 }
 
 /** Helper type for mez that can be number (magnitude only) OR full MezEffect */
@@ -405,6 +410,9 @@ export interface ResolvedPseudoPetEffect {
   chance?: number;
   /** IgnoreStrength: the player's enhancements/buffs do NOT scale this — show informational/unenhanced. */
   ignoreStrength?: boolean;
+  /** Mez rows only: the row is directed at the CASTER — a self-root, not applied control.
+   *  Rides the pseudo-pet merge the same way `attribType` does (MEZFACE-1). */
+  toWho?: string;
   /** Mode-gated: only applies while the power is in its empowered/triggered state
    *  (Storm Cell's lightning effects — "while High Winds is active"). */
   conditional?: boolean;

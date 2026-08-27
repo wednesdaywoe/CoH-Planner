@@ -70,7 +70,7 @@ export const TimeLord: Power = {
       "attribType": "Magnitude",
       "ignoreStrength": true,
       "mag": 1,
-      "scale": 10,
+      "scale": -10,
       "table": "Melee_Res_Boolean"
     }
   },
